@@ -9,6 +9,3 @@ end
 
 describe 'Factory' do
 end
-
-un cambio
-
