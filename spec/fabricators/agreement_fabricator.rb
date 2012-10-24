@@ -1,0 +1,2 @@
+Fabricator(:agreement) do
+end

@@ -1,0 +1,13 @@
+estructura.txt
+
+  describe 'Relations' do
+  end
+
+  describe 'Attributes' do
+  end
+
+  describe 'Validations' do
+  end
+
+  describe 'Factory' do
+  end
