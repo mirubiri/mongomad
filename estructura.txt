@@ -1,17 +1,12 @@
-estructura.txt
+describe 'Relations' do
+end
 
-  describe 'Relations' do
-  end
+describe 'Attributes' do
+end
 
-  describe 'Attributes' do
-  end
+describe 'Validations' do
+end
 
-  describe 'Validations' do
-  end
-
-  describe 'Factory' do
-  end
-
-nuevo contenido
-adnvcaserngfaui4niansbf9ausnco9asd
+describe 'Factory' do
+end
 
