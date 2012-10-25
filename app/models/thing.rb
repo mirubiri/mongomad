@@ -1,25 +1,35 @@
 class Thing
+
+  #Modules
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  #Relations
   embedded_in :thing_box
   #embeds_one :main_photo, class_name:'Photo', as: :polymorphic_photo, cascade_callbacks: true
   #embeds_many :photos, as: :polymorphic_photo, cascade_callbacks: true
+
+  #Attributes
   field :name, type: String
   field :description, type: String
   field :stock, type: Integer, default: 1
 
-  validates :name,
+  #Validations
+  validates :thing_box,
+            :name,
             :description,
             :stock,
-            :thing_box,
             presence: true
 
-  validates :stock, allow_nil: false,
-                    numericality: { greater_than_or_equal_to: 0,
-                                    only_integer:true }
+  validates :stock,
+            allow_nil: false,
+            numericality: { greater_than_or_equal_to: 0,
+                            only_integer:true }
 
+  #Behaviour
+end
 
+=begin
   def owner
     thing_box.user
   end
@@ -34,4 +44,4 @@ class Thing
     p.quantity=nil
     return p
   end
-end
+=end

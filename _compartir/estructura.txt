@@ -17,11 +17,11 @@ end
 class Thing
   #Modules
 
-  #Structure_Relations
+  #Relations
 
-  #Structure_Attributes
+  #Attributes
 
-  #Structure_Validations
+  #Validations
 
   #Behaviour
 

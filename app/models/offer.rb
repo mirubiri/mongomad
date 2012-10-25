@@ -1,9 +1,23 @@
 class Offer
+
+  #Modules
   include Mongoid::Document
+
+  #Relations
   belongs_to :offer_inbox
   belongs_to :offer_outbox
-  embeds_one :money
   embeds_one :composer
   embeds_one :receiver
-  validates :offer_inbox, :offer_outbox, :composer, :receiver, presence: true
+  embeds_one :money
+
+  #Attributes
+
+  #Validations
+  validates :offer_inbox,
+            :offer_outbox,
+            :composer,
+            :receiver,
+            presence: true
+
+  #Behaviour
 end
