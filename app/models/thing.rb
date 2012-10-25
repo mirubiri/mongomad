@@ -27,6 +27,8 @@ class Thing
                             only_integer:true }
 
   #Behaviour
+end
+
 =begin
   def owner
     thing_box.user
@@ -43,4 +45,3 @@ class Thing
     return p
   end
 =end
-end

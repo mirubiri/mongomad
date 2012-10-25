@@ -1,20 +1,31 @@
 class Product
+
+  #Modules
   include Mongoid::Document
   include Mongoid::Timestamps
+
+  #Relations
   embedded_in :product_box
+
+  #Attributes
+  field :thing_id, type: Moped::BSON::ObjectId
   field :name, type: String
   field :description, type: String
   field :quantity, type: Integer, default: 1
-  field :thing_id, type: Moped::BSON::ObjectId
   #field :main_photo_url
   #field :photos_url, type: Array
-  validates :description,
-            :quantity,
+
+  #Validations
+  validates :thing_id,
             :name,
-            :thing_id,
+            :description,
+            :quantity,
             presence:true
+
   validates :quantity,
-             numericality: { greater_than:0, only_integer: true }, allow_nil:false
+            allow_nil: false,
+            numericality: { greater_than: 0,
+                            only_integer: true }
 
-
+  #Behaviour
 end

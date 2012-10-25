@@ -1,21 +1,16 @@
 class ProductBox
-  include Mongoid::Document
-  embeds_many :products
-  embedded_in :polymorphic_product_box, polymorphic: true
-
-  validates :products,
-            presence: true
-end
-
 
   #Modules
+  include Mongoid::Document
 
   #Relations
+  embeds_many :products
+  embedded_in :polymorphic_product_box, polymorphic: true
 
   #Attributes
 
   #Validations
-
+  validates :products,
+            presence: true
   #Behaviour
-
 end
