@@ -6,3 +6,16 @@ class ProductBox
   validates :products,
             presence: true
 end
+
+
+  #Modules
+
+  #Relations
+
+  #Attributes
+
+  #Validations
+
+  #Behaviour
+
+end
