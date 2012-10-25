@@ -8,6 +8,13 @@ class Product
   field :thing_id
   #field :main_photo_url
   #field :photos_url, type: Array
-  validates :description,:quantity,:name, presence:true
-  validates :quantity, numericality: { greater_than:0, only_integer: true }, allow_nil:false
+  validates :description,
+            :quantity,
+            :name,
+            :thing_id,
+            presence:true
+  validates :quantity,
+             numericality: { greater_than:0, only_integer: true }, allow_nil:false
+
+
 end

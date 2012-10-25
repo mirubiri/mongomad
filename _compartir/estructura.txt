@@ -1,0 +1,28 @@
+describe 'Relations' do
+end
+
+describe 'Attributes' do
+end
+
+describe 'Validations' do
+end
+
+describe 'Factory' do
+end
+
+
+
+
+
+class Thing
+  #Modules
+
+  #Structure_Relations
+
+  #Structure_Attributes
+
+  #Structure_Validations
+
+  #Behaviour
+
+end
