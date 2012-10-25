@@ -17,7 +17,7 @@ describe Money do
   end
 
   describe 'Factory' do
-    let (:money) { Fabricate.build(:money) }
+    let (:money) { Fabricate(:money) }
     specify { money.should be_valid }
   end
 

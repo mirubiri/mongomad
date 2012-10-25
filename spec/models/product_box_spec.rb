@@ -16,7 +16,7 @@ describe ProductBox do
   end
 
   describe 'Factory' do
-    let (:product_box) { Fabricate.build(:product_box) }
+    let (:product_box) { Fabricate(:product_box) }
     specify { product_box.should be_valid }
   end
 end
