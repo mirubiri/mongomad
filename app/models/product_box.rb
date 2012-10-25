@@ -3,6 +3,6 @@ class ProductBox
   embeds_many :products
   embedded_in :polymorphic_product_box, polymorphic: true
 
-  validate :products,
-           presence: true
+  validates :products,
+            presence: true
 end
