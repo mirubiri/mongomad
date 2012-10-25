@@ -5,7 +5,7 @@ class Product
   field :name, type: String
   field :description, type: String
   field :quantity, type: Integer, default: 1
-  field :thing_id
+  field :thing_id, type: Moped::BSON::ObjectId
   #field :main_photo_url
   #field :photos_url, type: Array
   validates :description,

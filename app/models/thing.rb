@@ -13,7 +13,7 @@ class Thing
             :description,
             :stock,
             :thing_box,
-            presence:true
+            presence: true
 
   validates :stock, allow_nil: false,
                     numericality: { greater_than_or_equal_to: 0,
