@@ -8,8 +8,12 @@ class Composer
   embeds_many :products, as: :polymorphic_money
 
   #Attributes
+  #TODO: Attributes (or DELETE)
 
   #Validations
+  #TODO: Validations (or DELETE)
 
   #Behaviour
+  #TODO: Behaviour (or DELETE)
+
 end

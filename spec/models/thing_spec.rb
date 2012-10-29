@@ -1,18 +1,23 @@
+#Modules
 require 'spec_helper'
 
 describe Thing do
+
+  #Relations
   describe 'Relations' do
     it { should be_embedded_in :user }
     it { should embed_one(:main_photo).of_type(Photo) }
     it { should embed_many(:photos) }
   end
 
+  #Attributes
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
     it { should have_fields(:name,:description).of_type(String) }
   end
 
+  #Validations
   describe 'Validations' do
     xit { should validate_presence_of :main_photo }
     it { should validate_presence_of :name }
@@ -24,6 +29,12 @@ describe Thing do
                                                           only_integer:true,
                                                           nil:false) }
   end
+
+  #Behaviour
+  describe 'Factory' do
+    pending("TODO: Factory")
+  end
+
 end
 
 =begin

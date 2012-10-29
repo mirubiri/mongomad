@@ -15,6 +15,9 @@ class User
   field :name, type: String
 
   #Validations
+  #TODO: Validations (or DELETE)
 
   #Behaviour
+  #TODO: Behaviour (or DELETE)
+
 end

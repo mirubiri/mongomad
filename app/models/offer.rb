@@ -20,4 +20,6 @@ class Offer
             presence: true
 
   #Behaviour
+  #TODO: Behaviour (or DELETE)
+
 end

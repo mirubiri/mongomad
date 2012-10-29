@@ -27,6 +27,8 @@ class Thing
                             only_integer:true }
 
   #Behaviour
+  #TODO: Behaviour (or DELETE)
+
 end
 
 =begin

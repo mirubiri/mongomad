@@ -19,5 +19,7 @@ class Money
             allow_nil: false,
             numericality: { greater_than: 0 }
 
-#Behaviour
+  #Behaviour
+  #TODO: Behaviour (or DELETE)
+
 end
