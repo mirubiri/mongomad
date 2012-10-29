@@ -5,9 +5,9 @@ class Thing
   include Mongoid::Timestamps
 
   #Relations
-  embedded_in :thing_box
-  #embeds_one :main_photo, class_name:'Photo', as: :polymorphic_photo, cascade_callbacks: true
-  #embeds_many :photos, as: :polymorphic_photo, cascade_callbacks: true
+  embedded_in :user
+  embeds_one :main_photo, class_name:'Photo', as: :polymorphic_photo, cascade_callbacks: true
+  embeds_many :photos, as: :polymorphic_photo, cascade_callbacks: true
 
   #Attributes
   field :name, type: String

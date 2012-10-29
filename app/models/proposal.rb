@@ -4,7 +4,7 @@ class Proposal
   include Mongoid::Document
 
   #Relations
-  embedded_in :proposal_box
+  embedded_in :polymorphic_proposal, polymorphic: true
 
   #Attributes
 

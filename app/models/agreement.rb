@@ -5,6 +5,8 @@ class Agreement
 
   #Relations
   embedded_in :deal
+  embeds_many(:proposals)
+  embeds_many(:messages)
 
   #Attributes
 

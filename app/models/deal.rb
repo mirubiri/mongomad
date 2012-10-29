@@ -6,7 +6,7 @@ class Deal
   #Relations
   belongs_to :deal_box
   embeds_one :agreement
-  embeds_one :conversation, as: :polymorphic_conversation
+  embeds_many :messages, as: :polymorphic_message
 
   #Attributes
 

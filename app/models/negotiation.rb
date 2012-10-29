@@ -4,9 +4,8 @@ class Negotiation
   include Mongoid::Document
 
   #Relations
-  belongs_to :negotiation_box
-  embeds_one :conversation, as: :polymorphic_conversation
-  embeds_one :proposal_box
+  embeds_many :proposals, as: :polymorphic_proposal
+  embeds_many :messages, as: :polymorphic_message
 
   #Attributes
 

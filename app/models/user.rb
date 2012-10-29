@@ -4,15 +4,16 @@ class User
   include Mongoid::Document
 
   #Relations
-  embeds_one :offer_inbox, cascade_callbacks: true
-  embeds_one :offer_outbox, cascade_callbacks: true
-  embeds_one :thing_box, cascade_callbacks: true
-  embeds_one :negotiation_box, cascade_callbacks: true
-  embeds_one :deal_box, cascade_callbacks: true
-  embeds_one :profile, cascade_callbacks: true
+  embeds_one :profile
+  embeds_many :things
+  has_and_belongs_to_many :offer_inbox, class_name: "Offer", inverse_of: nil
+  has_and_belongs_to_many :offer_outbox, class_name: "Offer", inverse_of: nil
+  has_and_belongs_to_many :negotiations, inverse_of: nil
+  has_and_belongs_to_many :deals, inverse_of: nil
 
   #Attributes
   field :name, type: String
+
   #Validations
 
   #Behaviour

@@ -4,7 +4,7 @@ class Message
   include Mongoid::Document
 
   #Relations
-  embedded_in :conversation
+  embedded_in :polymorphic_message, polymorphic: true
 
   #Attributes
 
