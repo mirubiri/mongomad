@@ -8,7 +8,7 @@ class Offer
   belongs_to :offer_outbox
   embeds_one :composer
   embeds_one :receiver
-  embeds_one :money
+  embeds_one :money, as: :polymorphic_money
 
   #Attributes
 

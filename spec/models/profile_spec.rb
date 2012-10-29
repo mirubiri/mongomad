@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Profile do
-  it { should be_embedded_in :user }
+  describe 'Relations' do
+    it { should be_embedded_in :user }
+  end
 
   describe 'Factory' do
     let (:profile) { Fabricate(:profile) }

@@ -12,7 +12,7 @@ class User
   embeds_one :profile, cascade_callbacks: true
 
   #Attributes
-
+  field :name, type: String
   #Validations
 
   #Behaviour

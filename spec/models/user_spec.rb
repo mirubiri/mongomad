@@ -1,17 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  describe 'Embedded' do
+  describe 'Relations' do
     it { should embed_one(:profile) }
-    it { should embed_one(:offer_inbox) }
-    it { should embed_one(:offer_outbox) }
-    it { should embed_one(:thing_box) }
-    it { should embed_one(:negotiation_box) }
-    it { should embed_one(:deal_box) }
-  end
-
-  describe 'Attributes' do
-    pending 'Anadir los atributos para usuario'
+    it { should embed_many(:things) }
+    it { should have_and_belong_to_many(:offer_inbox).of_type(Offer).as_inverse_of(nil) }
+    it { should have_and_belong_to_many(:offer_outbox).of_type(Offer).as_inverse_of(nil) }
+    it { should have_and_belong_to_many(:negotiations).as_inverse_of(nil) }
+    it { should have_and_belong_to_many(:deals).as_inverse_of(nil) }
   end
 
   describe 'Factory' do

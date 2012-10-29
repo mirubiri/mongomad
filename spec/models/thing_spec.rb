@@ -1,12 +1,10 @@
 require 'spec_helper'
 
 describe Thing do
-
-  #Structure
   describe 'Relations' do
-    xit { should embed_one(:main_photo).of_type(Photo) }
-    xit { should embed_many :photos }
-    it { should be_embedded_in :thing_box }
+    it { should be_embedded_in :user }
+    it { should embed_one(:main_photo).of_type(Photo) }
+    it { should embed_many(:photos) }
   end
 
   describe 'Attributes' do
@@ -26,6 +24,7 @@ describe Thing do
                                                           only_integer:true,
                                                           nil:false) }
   end
+end
 
 =begin
 #Behaviour
@@ -58,4 +57,3 @@ describe Thing do
     end
   end
 =end
-end

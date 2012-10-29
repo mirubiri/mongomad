@@ -5,7 +5,7 @@ class Product
   include Mongoid::Timestamps
 
   #Relations
-  embedded_in :product_box
+  embedded_in :polymorphic_product, polymorphic: true
 
   #Attributes
   field :thing_id, type: Moped::BSON::ObjectId

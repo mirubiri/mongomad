@@ -4,7 +4,7 @@ class Money
   include Mongoid::Document
 
   #Relations
-  embedded_in :offer
+  embedded_in :polymorphic_money, polymorphic: true
 
   #Attributes
   field :money_owner, type: Moped::BSON::ObjectId

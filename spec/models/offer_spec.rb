@@ -1,18 +1,10 @@
 require 'spec_helper'
 
 describe Offer do
-  describe 'Associated models' do
-    it { should belong_to :offer_inbox }
-    it { should belong_to :offer_outbox }
-  end
-
-  describe 'Embedded' do
-    it { should embed_one :money }
+  describe 'Relations' do
     it { should embed_one :composer }
     it { should embed_one :receiver }
-  end
-
-  describe 'Attributes' do
+    it { should embed_one :money }
   end
 
   describe 'Validations' do

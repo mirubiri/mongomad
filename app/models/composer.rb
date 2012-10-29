@@ -4,8 +4,8 @@ class Composer
   include Mongoid::Document
 
   #Relations
-  embedded_in :offer
-  embeds_one :product_box, as: :polymorphic_product_box
+  embedded_in :polymorphic_composer, polymorphic: true
+  embeds_many :products, as: :polymorphic_money
 
   #Attributes
 

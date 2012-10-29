@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Deal do
-  it { should belong_to :deal_box }
-  it { should embed_one(:conversation) }
-  it { should embed_one :agreement }
+  describe 'Relations' do
+    it { should embed_one(:agreement) }
+    it { should embed_many(:messages) }
+  end
 
   describe 'Factory' do
     let (:deal) { Fabricate(:deal) }

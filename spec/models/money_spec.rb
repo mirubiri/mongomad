@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Money do
   describe 'Relations' do
-    it { should be_embedded_in :offer }
+    it { should be_embedded_in :polymorphic_money }
   end
 
   describe 'Attributes' do
@@ -20,6 +20,4 @@ describe Money do
     let (:money) { Fabricate(:money) }
     specify { money.should be_valid }
   end
-
-
 end

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Photo do
-
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_photo }
   end
@@ -20,7 +19,7 @@ describe Photo do
   end
 
   describe 'Factory' do
-    #let (:photo) { Fabricate.build(:photo) }
-    #specify { photo.should be_valid }
+    let (:photo) { Fabricate.build(:photo) }
+    specify { photo.should be_valid }
   end
 end
