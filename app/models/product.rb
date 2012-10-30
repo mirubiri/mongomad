@@ -15,7 +15,11 @@ class Product
   #field :main_photo_url
   #field :photos_url, type: Array
 
-  #Validations
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
   validates :thing_id,
             :name,
             :description,

@@ -14,8 +14,11 @@ class User
   #Attributes
   field :name, type: String
 
-  #Validations
-  #TODO: Validations (or DELETE)
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
 
   #Behaviour
   #TODO: Behaviour (or DELETE)

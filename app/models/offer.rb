@@ -11,8 +11,13 @@ class Offer
   embeds_one :money, as: :polymorphic_money
 
   #Attributes
+  #TODO: Attributes (or DELETE)
 
-  #Validations
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
   validates :offer_inbox,
             :offer_outbox,
             :composer,

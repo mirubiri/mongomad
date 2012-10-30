@@ -14,7 +14,11 @@ class Thing
   field :description, type: String
   field :stock, type: Integer, default: 1
 
-  #Validations
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
   validates :thing_box,
             :name,
             :description,

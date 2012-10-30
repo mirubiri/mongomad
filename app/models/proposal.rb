@@ -9,8 +9,11 @@ class Proposal
   #Attributes
   #TODO: Attributes (or DELETE)
 
-  #Validations
-  #TODO: Validations (or DELETE)
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
 
   #Behaviour
   #TODO: Behaviour (or DELETE)

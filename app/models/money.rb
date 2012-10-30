@@ -10,7 +10,11 @@ class Money
   field :money_owner, type: Moped::BSON::ObjectId
   field :quantity, type: BigDecimal
 
-  #Validations
+  #Validations (Relations)
+  #TODO: Validations Relations(or DELETE)
+
+  #Validations (Attributes)
+  #TODO: Validations Attributes(or DELETE)
   validates :money_owner,
             :quantity,
             presence: true
