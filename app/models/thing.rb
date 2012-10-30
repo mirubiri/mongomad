@@ -6,8 +6,8 @@ class Thing
 
   #Relations
   embedded_in :user
-  embeds_one :main_photo, class_name:'Photo', as: :polymorphic_photo, cascade_callbacks: true
-  embeds_many :photos, as: :polymorphic_photo, cascade_callbacks: true
+  embeds_one :main_photo, class_name:'Photo'
+  embeds_many :photos, as: :polymorphic_photo
 
   #Attributes
   field :name, type: String
@@ -15,7 +15,8 @@ class Thing
   field :stock, type: Integer, default: 1
 
   #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  validates :main_photo,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

@@ -5,13 +5,14 @@ class Receiver
 
   #Relations
   embedded_in :polymorphic_receiver, polymorphic: true
-  embeds_many :products, as: :polymorphic_receiver
+  embeds_many :products, as: :polymorphic_product
 
   #Attributes
   #TODO: Attributes (or DELETE)
 
   #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  validates :products,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

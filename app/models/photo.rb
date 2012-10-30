@@ -14,9 +14,6 @@ class Photo
   field :photo_file_size
   field :photo_content_type
 
-  #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
-
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)
   validates :photo,

@@ -15,7 +15,8 @@ class User
   field :name, type: String
 
   #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  validates :profile,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

@@ -12,11 +12,8 @@ class Product
   field :name, type: String
   field :description, type: String
   field :quantity, type: Integer, default: 1
-  #field :main_photo_url
-  #field :photos_url, type: Array
-
-  #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  field :main_photo_url
+  field :photos_url, type: Array
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

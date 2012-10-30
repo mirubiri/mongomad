@@ -5,14 +5,16 @@ class Agreement
 
   #Relations
   embedded_in :deal
-  embeds_many :proposals
-  embeds_many :messages
+  embeds_many :proposals, as: :polymorphic_proposal
+  embeds_many :messages, as: :polymorphic_message
 
   #Attributes
   #TODO: Attributes (or DELETE)
 
   #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  validates :proposals,
+            :messages,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

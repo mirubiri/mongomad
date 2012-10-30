@@ -11,7 +11,9 @@ class Negotiation
   #TODO: Attributes (or DELETE)
 
   #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  validates :proposals,
+            :messages,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)
