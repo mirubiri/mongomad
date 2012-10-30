@@ -20,6 +20,8 @@ describe Product do
 
   #Validations
   describe 'Validations' do
+    #Attributes
+    pending("REVISAR: Attributes Validations")
     xit { should validate_presence_of :main_photo_url }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }

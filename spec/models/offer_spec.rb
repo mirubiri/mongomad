@@ -17,10 +17,11 @@ describe Offer do
 
   #Validations
   describe 'Validations' do
-    it { should validate_presence_of(:offer_inbox) }
-    it { should validate_presence_of(:offer_outbox) }
+    #Relations
     it { should validate_presence_of(:composer) }
     it { should validate_presence_of(:receiver) }
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

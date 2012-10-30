@@ -16,7 +16,10 @@ describe Composer do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    it { should validate_presence_of(:products) }
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

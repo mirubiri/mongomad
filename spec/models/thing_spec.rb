@@ -19,7 +19,10 @@ describe Thing do
 
   #Validations
   describe 'Validations' do
-    xit { should validate_presence_of :main_photo }
+    #Relations
+    it { should validate_presence_of :main_photo }
+    #Attributes
+    pending("REVISAR: Attributes Validations")
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :thing_box }

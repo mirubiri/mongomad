@@ -16,7 +16,11 @@ describe Deal do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    it { should validate_presence_of(:agreement) }
+    it { should validate_presence_of(:messages) }
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

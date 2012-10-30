@@ -16,6 +16,8 @@ describe Money do
 
   #Validations
   describe 'Validations' do
+    #Attributes
+    pending("REVISAR: Attributes Validations")
     it { should validate_presence_of :money_owner }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(greater_than:0, nil:false)}

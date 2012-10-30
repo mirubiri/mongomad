@@ -20,7 +20,11 @@ describe User do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    it { should validate_presence_of(:profile) }
+    pending("PREGUNTA: Relations Validations") #¿hay que validar los have_and_belong?
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

@@ -16,7 +16,12 @@ describe Negotiation do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    pending("PREGUNTA: Relations Validations") #¿esto va con s?
+    it { should validate_presence_of(:proposals) }
+    it { should validate_presence_of(:messages) }
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

@@ -5,6 +5,9 @@
 (padre) has_and_belongs_to_many :negotiations, inverse_of: nil
 (padre) has_and_belongs_to_many :offer_outbox, class_name: "Offer", inverse_of: nil
 -----------------------------------------------------------------------------------
+pending("REVISAR: Relations Validations")
+pending("PREGUNTA: Relations Validations")
+-----------------------------------------------------------------------------------
 #Modules
 require 'spec_helper'
 
@@ -22,7 +25,10 @@ describe Money do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    pending("TODO: Relations Validations")
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

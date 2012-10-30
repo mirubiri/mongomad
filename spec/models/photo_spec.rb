@@ -18,6 +18,8 @@ describe Photo do
 
   #Validations
   describe 'Validations' do
+    #Attributes
+    pending("REVISAR: Attributes Validations")
     it { should validate_presence_of :photo_file_name }
     it { should validate_presence_of :photo_file_size }
     it { should validate_presence_of :photo_content_type }

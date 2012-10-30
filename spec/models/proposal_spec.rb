@@ -6,6 +6,9 @@ describe Proposal do
   #Relations
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_proposal }
+    it { should embed_one(:composer) }
+    it { should embed_one(:receiver) }
+    it { should embed_one(:money) }
   end
 
   #Attributes
@@ -15,7 +18,11 @@ describe Proposal do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Relations
+    it { should validate_presence_of(:composer) }
+    it { should validate_presence_of(:receiver) }
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour

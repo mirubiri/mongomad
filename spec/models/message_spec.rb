@@ -15,7 +15,8 @@ describe Message do
 
   #Validations
   describe 'Validations' do
-    pending("TODO: Validations")
+    #Attributes
+    pending("TODO: Attributes Validations")
   end
 
   #Behaviour
