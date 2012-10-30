@@ -13,8 +13,10 @@ describe Thing do
   #Attributes
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should have_fields(:name,
+                            :description)
+                            .of_type(String) }
     it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
-    it { should have_fields(:name,:description).of_type(String) }
   end
 
   #Validations
@@ -22,15 +24,13 @@ describe Thing do
     #Relations
     it { should validate_presence_of :main_photo }
     #Attributes
-    pending("REVISAR: Attributes Validations")
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
-    it { should validate_presence_of :thing_box }
     it { should validate_presence_of :stock }
 
-    it { should validate_numericality_of(:stock).to_allow(greater_than_or_equal_to:0,
+    it { should validate_numericality_of(:stock).to_allow(nil:false,
                                                           only_integer:true,
-                                                          nil:false) }
+                                                          greater_than_or_equal_to:0) }
   end
 
   #Behaviour

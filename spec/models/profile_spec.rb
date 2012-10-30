@@ -6,6 +6,7 @@ describe Profile do
   #Relations
   describe 'Relations' do
     it { should be_embedded_in :user }
+    it { should embed_one(:photo) }
   end
 
   #Attributes
@@ -15,6 +16,8 @@ describe Profile do
 
   #Validations
   describe 'Validations' do
+    #Relations
+    it { should validate_presence_of :photo }
     #Attributes
     pending("TODO: Attributes Validations")
   end

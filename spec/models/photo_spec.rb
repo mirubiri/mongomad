@@ -11,6 +11,7 @@ describe Photo do
   #Attributes
   describe 'Attributes' do
     it { should be_timestamped_document }
+    #TODO: ¿Poner tipos en los campos? ¿Campo con la foto adjunta?
     it { should have_fields(:photo_file_name,
                             :photo_file_size,
                             :photo_content_type) }
@@ -19,7 +20,6 @@ describe Photo do
   #Validations
   describe 'Validations' do
     #Attributes
-    pending("REVISAR: Attributes Validations")
     it { should validate_presence_of :photo_file_name }
     it { should validate_presence_of :photo_file_size }
     it { should validate_presence_of :photo_content_type }
