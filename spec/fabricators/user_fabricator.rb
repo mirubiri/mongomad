@@ -8,25 +8,3 @@ Fabricator(:user) do
     user.offer_outbox=Fabricate(:offer_outbox,user: user)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

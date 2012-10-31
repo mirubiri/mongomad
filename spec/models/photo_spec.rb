@@ -3,13 +3,12 @@ require 'spec_helper'
 
 describe Photo do
 
-  #Relations
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_photo }
   end
 
-  #Attributes
   describe 'Attributes' do
+    pending("TODO: Attributes")
     it { should be_timestamped_document }
     #TODO: ¿Poner tipos en los campos? ¿Campo con la foto adjunta?
     it { should have_fields(:photo_file_name,
@@ -17,9 +16,9 @@ describe Photo do
                             :photo_content_type) }
   end
 
-  #Validations
   describe 'Validations' do
     #Attributes
+    pending("TODO: Attributes Validations")
     it { should validate_presence_of :photo_file_name }
     it { should validate_presence_of :photo_file_size }
     it { should validate_presence_of :photo_content_type }

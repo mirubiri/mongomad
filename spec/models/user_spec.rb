@@ -3,7 +3,6 @@ require 'spec_helper'
 
 describe User do
 
-  #Relations
   describe 'Relations' do
     it { should embed_one(:profile) }
     it { should embed_many(:things) }
@@ -13,12 +12,10 @@ describe User do
     it { should have_and_belong_to_many(:deals).as_inverse_of(nil) }
   end
 
-  #Attributes
   describe 'Attributes' do
     pending("TODO: Attributes")
   end
 
-  #Validations
   describe 'Validations' do
     #Relations
     it { should validate_presence_of(:profile) }

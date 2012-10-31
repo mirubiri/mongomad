@@ -9,6 +9,7 @@ class Photo
   embedded_in :polymorphic_photo, polymorphic: true
 
   #Attributes
+  #TODO: Attributes (or DELETE)
   has_attached_file :photo, styles: { medium: '300x300', thumb:'100x100'}
   field :photo_file_name
   field :photo_file_size

@@ -7,6 +7,7 @@ class Money
   embedded_in :polymorphic_money, polymorphic: true
 
   #Attributes
+  #TODO: Attributes (or DELETE)
   field :money_owner, type: Moped::BSON::ObjectId
   field :quantity, type: BigDecimal
 

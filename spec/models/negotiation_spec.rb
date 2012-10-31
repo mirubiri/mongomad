@@ -3,21 +3,18 @@ require 'spec_helper'
 
 describe Negotiation do
 
-  #Relations
   describe 'Relations' do
     it { should embed_many :proposals }
     it { should embed_many :messages }
   end
 
-  #Attributes
   describe 'Attributes' do
     pending("TODO: Attributes")
   end
 
-  #Validations
   describe 'Validations' do
     #Relations
-    pending("PREGUNTA: Relations Validations") #¿esto va con s?
+    pending("PREGUNTA: Relations Validations")
     it { should validate_presence_of(:proposals) }
     it { should validate_presence_of(:messages) }
     #Attributes

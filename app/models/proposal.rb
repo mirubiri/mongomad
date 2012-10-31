@@ -13,9 +13,9 @@ class Proposal
   #TODO: Attributes (or DELETE)
 
   #Validations (Relations)
-    validates :composer,
-              :receiver,
-              presence: true
+  validates :composer,
+            :receiver,
+            presence: true
 
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)

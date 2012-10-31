@@ -3,13 +3,12 @@ require 'spec_helper'
 
 describe Product do
 
-  #Relations
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
   end
 
-  #Attributes
   describe 'Attributes' do
+    pending("TODO: Attributes")
     it { should be_timestamped_document }
     xit { should have_field(:main_photo_url) }
     xit { should have_field(:photos_url).of_type(Array) }
@@ -18,9 +17,9 @@ describe Product do
     it { should have_fields(:name,:description).of_type(String) }
   end
 
-  #Validations
   describe 'Validations' do
     #Attributes
+    pending("TODO: Attributes Validations")
     pending("REVISAR: Attributes Validations")
     xit { should validate_presence_of :main_photo_url }
     it { should validate_presence_of :name }

@@ -13,17 +13,14 @@ require 'spec_helper'
 
 describe Money do
 
-  #Relations
   describe 'Relations' do
     pending("TODO: Relations")
   end
 
-  #Attributes
   describe 'Attributes' do
     pending("TODO: Attributes")
   end
 
-  #Validations
   describe 'Validations' do
     #Relations
     pending("TODO: Relations Validations")
@@ -60,3 +57,56 @@ class Money
 
 end
 --------------------------------------------------------------------------------------
+Codigo en thing:
+
+=begin
+  def owner
+    thing_box.user
+  end
+
+  def to_product
+    p=Product.new
+    #p.main_photo=main_photo
+    p.name=name
+    p.description=description
+    #p.photos=photos.dup
+    p.thing_id=_id
+    p.quantity=nil
+    return p
+  end
+=end
+
+
+codigo en el test de thing------------------------------------------
+
+=begin
+#Behaviour
+  before (:all) do
+    @thing=Fabricate(:thing)
+    @product=@thing.to_product
+  end
+
+  describe 'Factory' do
+    specify { @thing.should be_valid }
+  end
+
+  describe '#owner' do
+    it 'return the user owner id' do
+      @thing.owner.should eq @thing.thing_box.user
+    end
+  end
+
+  describe '#to_product' do
+    describe '=> product' do
+#No dan un texto descriptivo
+      specify { @product.should be_kind_of(Product) }
+      specify { @product.should_not be_persisted }
+      specify { @product.name.should eq @thing.name }
+      specify { @product.description.should eq @thing.description }
+      specify { @product.main_photo.should eq @thing.main_photo }
+      specify { @product.thing_id.should eq @thing._id }
+      specify { @product.quantity.should be_nil }
+      specify { @product.photos.should eq @thing.photos }
+    end
+  end
+=end

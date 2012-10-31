@@ -2,12 +2,12 @@ class Product
 
   #Modules
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   #Relations
   embedded_in :polymorphic_product, polymorphic: true
 
   #Attributes
+  #TODO: Attributes (or DELETE)
   field :thing_id, type: Moped::BSON::ObjectId
   field :name, type: String
   field :description, type: String

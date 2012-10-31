@@ -3,19 +3,16 @@ require 'spec_helper'
 
 describe Agreement do
 
-  #Relations
   describe 'Relations' do
     it { should be_embedded_in (:deal) }
     it { should embed_many(:proposals) }
     it { should embed_many(:messages) }
   end
 
-  #Attributes
   describe 'Attributes' do
     pending("TODO: Attributes")
   end
 
-  #Validations
   describe 'Validations' do
     #Relations
     it { should validate_presence_of(:proposals) }

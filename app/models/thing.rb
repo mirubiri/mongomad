@@ -2,7 +2,6 @@ class Thing
 
   #Modules
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   #Relations
   embedded_in :user
@@ -10,6 +9,7 @@ class Thing
   embeds_many :photos, as: :polymorphic_photo
 
   #Attributes
+  #TODO: Attributes (or DELETE)
   field :name, type: String
   field :description, type: String
   field :stock, type: Integer, default: 1
@@ -35,20 +35,3 @@ class Thing
   #TODO: Behaviour (or DELETE)
 
 end
-
-=begin
-  def owner
-    thing_box.user
-  end
-
-  def to_product
-    p=Product.new
-    #p.main_photo=main_photo
-    p.name=name
-    p.description=description
-    #p.photos=photos.dup
-    p.thing_id=_id
-    p.quantity=nil
-    return p
-  end
-=end

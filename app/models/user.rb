@@ -12,6 +12,7 @@ class User
   has_and_belongs_to_many :deals, inverse_of: nil
 
   #Attributes
+  #TODO: Attributes (or DELETE)
   field :name, type: String
 
   #Validations (Relations)

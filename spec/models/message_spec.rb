@@ -3,17 +3,14 @@ require 'spec_helper'
 
 describe Message do
 
-  #Relations
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_message }
   end
 
-  #Attributes
   describe 'Attributes' do
     pending("TODO: Attributes")
   end
 
-  #Validations
   describe 'Validations' do
     #Attributes
     pending("TODO: Attributes Validations")
