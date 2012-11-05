@@ -10,6 +10,7 @@ describe Negotiation do
 
   describe 'Attributes' do
     pending("TODO: Attributes")
+    it { should be_timestamped_document }
   end
 
   describe 'Validations' do

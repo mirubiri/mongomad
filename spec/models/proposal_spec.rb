@@ -11,7 +11,7 @@ describe Proposal do
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
+    it { should have_field(:creation_date).of_type(DateTime) }
   end
 
   describe 'Validations' do
@@ -19,7 +19,7 @@ describe Proposal do
     it { should validate_presence_of(:composer) }
     it { should validate_presence_of(:receiver) }
     #Attributes
-    pending("TODO: Attributes Validations")
+    it { should validate_presence_of :creation_date }
   end
 
   #Behaviour

@@ -10,15 +10,16 @@ describe Offer do
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
+    it { should be_timestamped_document }
+    it { should have_field (:initial_message).of_type(String) }
   end
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of(:composer) }
-    it { should validate_presence_of(:receiver) }
+    it { should validate_presence_of :composer }
+    it { should validate_presence_of :receiver }
     #Attributes
-    pending("TODO: Attributes Validations")
+    it { should validate_presence_of :receiver }
   end
 
   #Behaviour

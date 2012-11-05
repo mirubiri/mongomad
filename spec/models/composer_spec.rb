@@ -11,7 +11,7 @@ describe Composer do
 
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_fields(:complete_name).of_type(String) }
+    it { should have_field(:complete_name).of_type(String) }
   end
 
   describe 'Validations' do

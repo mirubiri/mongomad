@@ -30,7 +30,8 @@ describe Thing do
 
   #Behaviour
   describe 'Factory' do
-    pending("TODO: Factory")
+    let (:thing) { Fabricate(:thing) }
+    specify { thing.should be_valid }
   end
 
 end

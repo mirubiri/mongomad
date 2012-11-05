@@ -13,6 +13,7 @@ describe Profile do
                             :surname,
                             :nickname,
                             :password,
+                            :sex,
                             :country,
                             :flag_url,
                             :email,
@@ -33,6 +34,7 @@ describe Profile do
     it { should validate_presence_of :surname }
     it { should validate_presence_of :nickname }
     it { should validate_presence_of :password }
+    it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
     it { should validate_presence_of :flag_url }
     it { should validate_presence_of :email }
