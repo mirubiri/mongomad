@@ -110,3 +110,26 @@ codigo en el test de thing------------------------------------------
     end
   end
 =end
+-----------------------------------------------------------------------
+    it { should validate_presence_of :name }
+    it { should validate_length_of(:name).within(2..20) }
+    it { should validate_presence_of :surname }
+    it { should validate_length_of(:surname).within(2..20) }
+    it { should validate_presence_of :nickname }
+    it { should validate_uniqueness_of(:nickname) }
+    it { should validate_length_of(:nickname).within(2..20) }
+    it { should validate_presence_of :password }
+    it { should validate_length_of(:password).within(6..20) }
+    it { should validate_presence_of :country }
+    it { should validate_length_of(:country).within(2..20) }
+    it { should validate_presence_of :flag_url }
+    it { should validate_length_of(:flag_url).within(2..20) }
+    it { should validate_presence_of :email }
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_confirmation_of(:email) }
+    it { should validate_presence_of :birth_date }
+    it { should validate_presence_of :registration_date }
+
+        it { should be_timestamped_document }
+            it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
+                .of_type(String) }

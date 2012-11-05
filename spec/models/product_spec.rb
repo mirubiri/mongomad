@@ -5,28 +5,29 @@ describe Product do
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
+    it { should embed_one(:main_photo).of_type(Photo) }
+    it { should embed_many :photos }
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
-    it { should be_timestamped_document }
-    xit { should have_field(:main_photo_url) }
-    xit { should have_field(:photos_url).of_type(Array) }
+    it { should have_field(:thind_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_fields(:name,
+                            :description)
+                            .of_type(String) }
     it { should have_field(:quantity).of_type(Integer).with_default_value_of(1) }
-    it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_fields(:name,:description).of_type(String) }
   end
 
   describe 'Validations' do
+    #Relations
+    it { should validate_presence_of :main_photo }
     #Attributes
-    pending("TODO: Attributes Validations")
-    pending("REVISAR: Attributes Validations")
-    xit { should validate_presence_of :main_photo_url }
+    it { should validate_presence_of :thind_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should validate_presence_of :thing_id }
-    it { should validate_numericality_of(:quantity).to_allow(greater_than:0,only_integer:true,nil:false) }
+    it { should validate_numericality_of(:quantity).to_allow(nil:false,
+                                                             only_integer:true,
+                                                             greater_than_or_equal_to:0) }
   end
 
   #Behaviour

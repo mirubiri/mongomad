@@ -6,12 +6,10 @@ describe Thing do
   describe 'Relations' do
     it { should be_embedded_in :user }
     it { should embed_one(:main_photo).of_type(Photo) }
-    it { should embed_many(:photos) }
+    it { should embed_many :photos }
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
-    it { should be_timestamped_document }
     it { should have_fields(:name,
                             :description)
                             .of_type(String) }

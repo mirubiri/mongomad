@@ -9,14 +9,14 @@ describe Receiver do
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
+    it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
   end
 
   describe 'Validations' do
     #Relations
     it { should validate_presence_of(:products) }
     #Attributes
-    pending("TODO: Attributes Validations")
+    it { should validate_presence_of :user_id }
   end
 
   #Behaviour

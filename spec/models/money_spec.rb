@@ -8,14 +8,12 @@ describe Money do
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
     it { should have_field(:owner).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:quantity).of_type(Integer) }
   end
 
   describe 'Validations' do
     #Attributes
-    pending("TODO: Attributes Validations")
     it { should validate_presence_of :owner }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil:false,

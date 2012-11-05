@@ -8,20 +8,23 @@ describe Photo do
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
-    it { should be_timestamped_document }
-    #TODO: ¿Poner tipos en los campos? ¿Campo con la foto adjunta?
-    it { should have_fields(:photo_file_name,
-                            :photo_file_size,
-                            :photo_content_type) }
+    #TODO: ¿Campo con la foto adjunta o campo string con url de la foto?
+    it { should have_fields(:file_name,
+                            :file_content_type,
+                            :file_url)
+                            .of_type(String) }
+    it { should have_field(:file_size).of_type(Integer) }
   end
 
   describe 'Validations' do
     #Attributes
-    pending("TODO: Attributes Validations")
-    it { should validate_presence_of :photo_file_name }
-    it { should validate_presence_of :photo_file_size }
-    it { should validate_presence_of :photo_content_type }
+    it { should validate_presence_of :file_name }
+    it { should validate_presence_of :file_content_type }
+    it { should validate_presence_of :file_url }
+    it { should validate_presence_of :file_size }
+    it { should validate_numericality_of(:file_size).to_allow(nil:false,
+                                                              only_integer:true,
+                                                              greater_than_or_equal_to:0) }
   end
 
   #Behaviour
