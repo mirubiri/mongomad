@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe User do
-
   describe 'Relations' do
     it { should embed_one :profile }
     it { should embed_many :things }
@@ -19,7 +18,6 @@ describe User do
   describe 'Validations' do
     #Relations
     it { should validate_presence_of :profile }
-    pending("PREGUNTA: Relations Validations") #¿Hay que validar los have_and_belong_to_many?
   end
 
   #Behaviour
