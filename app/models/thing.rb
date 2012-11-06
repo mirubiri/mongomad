@@ -18,8 +18,8 @@ class Thing
 
   validates :stock,
             allow_nil: false,
-            numericality: { greater_than_or_equal_to: 0,
-                            only_integer: true }
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 0 }
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
