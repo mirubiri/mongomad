@@ -16,8 +16,8 @@ class Money
 
   validates :quantity,
             allow_nil: false,
-            numericality: {only_integer: true,
-                           greater_than: 0 }
+            numericality: { only_integer: true,
+                            greater_than: 0 }
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
