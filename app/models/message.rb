@@ -1,18 +1,22 @@
 class Message
-
   #Modules
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   #Relations
   embedded_in :polymorphic_message, polymorphic: true
 
   #Attributes
-  #TODO: Attributes (or DELETE)
+  field :sender_id, type: Moped::BSON::ObjectId
+  field :sender_full_name, type: String
+  field :text, type: String
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
+  validates :sender_id,
+            :sender_full_name,
+            :text,
+            presence:true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
