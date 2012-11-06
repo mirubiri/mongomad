@@ -1,3 +1,4 @@
+=begin
 class Photo
 
   #Modules
@@ -30,3 +31,4 @@ class Photo
   #TODO: Behaviour (or DELETE)
 
 end
+=end

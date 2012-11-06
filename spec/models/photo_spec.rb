@@ -1,4 +1,4 @@
-#Modules
+=begin
 require 'spec_helper'
 
 describe Photo do
@@ -34,3 +34,4 @@ describe Photo do
   end
 
 end
+=end
