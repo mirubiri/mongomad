@@ -15,11 +15,11 @@ describe Negotiation do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of(:proposals) }
-    it { should validate_presence_of(:messages) }
+    it { should validate_presence_of :proposals }
+    it { should validate_presence_of :messages }
     #Attributes
-    it { should validate_presence_of(:token_owner) }
-    it { should validate_presence_of(:token_state) }
+    it { should validate_presence_of :token_owner }
+    it { should validate_presence_of :token_state }
   end
 
   #Behaviour
