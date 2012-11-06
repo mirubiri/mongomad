@@ -162,3 +162,16 @@ class Money
   #TODO: Behaviour (or DELETE)
 
 end
+
+ #Attributes
+  field :thing_id, type: Moped::BSON::ObjectId
+  field :name, type: String
+  field :description, type: String
+  field :quantity, type: Integer, default: 1
+
+  #Validations (Attributes)
+  validates :thing_id,
+            :name,
+            :description,
+            :quantity,
+            presence:true
