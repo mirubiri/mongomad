@@ -15,7 +15,7 @@ class Message
   validates :sender_id,
             :sender_full_name,
             :text,
-            presence:true
+            presence: true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
