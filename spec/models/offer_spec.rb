@@ -10,7 +10,7 @@ describe Offer do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field (:initial_message).of_type(String) }
+    it { should have_field(:initial_message).of_type(String) }
   end
 
   describe 'Validations' do
