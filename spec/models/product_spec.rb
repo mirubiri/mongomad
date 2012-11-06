@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Product do
-
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
   end
@@ -16,7 +15,6 @@ describe Product do
   end
 
   describe 'Validations' do
-    #Relations
     #Attributes
     it { should validate_presence_of :thind_id }
     it { should validate_presence_of :name }
@@ -32,5 +30,4 @@ describe Product do
    let (:product) { Fabricate(:product) }
     specify { product.should be_valid }
   end
-
 end
