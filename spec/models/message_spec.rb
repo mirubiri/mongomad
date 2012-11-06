@@ -7,11 +7,11 @@ describe Message do
   end
 
   describe 'Attributes' do
+    it { should be_timestamped_document }
     it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
     it { should have_fields(:sender_full_name,
                             :text)
                             .of_type(String) }
-    it { should have_field(:sending_date).of_type(DateTime) }
   end
 
   describe 'Validations' do
@@ -19,7 +19,6 @@ describe Message do
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_full_name }
     it { should validate_presence_of :text }
-    it { should validate_presence_of :sending_date }
   end
 
   #Behaviour
