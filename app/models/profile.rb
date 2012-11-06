@@ -13,7 +13,6 @@ class Profile
   field :password, type: String
   field :sex, type: String
   field :country, type: String
-  field :flag_url, type: String
   field :email, type: String
   field :delivery_address, type: String
   field :phone_number, type: String
@@ -27,7 +26,6 @@ class Profile
             :password,
             :sex,
             :country,
-            :flag_url,
             :email,
             :delivery_address,
             :phone_number,
