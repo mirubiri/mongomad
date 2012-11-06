@@ -12,7 +12,6 @@ pending("PREGUNTA: Relations Validations")
 require 'spec_helper'
 
 describe Money do
-
   describe 'Relations' do
     pending("TODO: Relations")
   end
@@ -32,11 +31,9 @@ describe Money do
   describe 'Factory' do
     pending("TODO: Factory")
   end
-
 end
 ------------------------------------------------------------------------------------
 class Money
-
   #Modules
   #TODO: Modules (or DELETE)
 
@@ -54,7 +51,6 @@ class Money
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
 --------------------------------------------------------------------------------------
 Codigo en thing:
@@ -130,12 +126,11 @@ codigo en el test de thing------------------------------------------
     it { should validate_presence_of :birth_date }
     it { should validate_presence_of :registration_date }
 
-        it { should be_timestamped_document }
-            it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
-                .of_type(String) }
+    it { should be_timestamped_document }
+    it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
+    .of_type(String) }
 
-                ------------------------------------------------------------------------------------
-
+-----------------------------------------------------------------------------------
 class Money
 
   #Modules
