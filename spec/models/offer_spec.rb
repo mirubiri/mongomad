@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Offer do
-
   describe 'Relations' do
     it { should embed_one :composer }
     it { should embed_one :receiver }
@@ -24,5 +23,4 @@ describe Offer do
     let (:offer) { Fabricate(:offer) }
     specify { offer.should be_valid }
   end
-
 end
