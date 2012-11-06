@@ -1,17 +1,16 @@
 class Request
   #Modules
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   #Relations
   embedded_in :user
 
   #Attributes
   field :text, type: String
-  field :creation_date, type: DateTime
 
   #Validations (Attributes)
   validates :text,
-            :creation_date,
             presence: true
 
   #Behaviour
