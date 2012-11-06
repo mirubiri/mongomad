@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Message do
-
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_message }
   end
@@ -16,7 +15,6 @@ describe Message do
   end
 
   describe 'Validations' do
-    #Relations
     #Attributes
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_full_name }
@@ -29,5 +27,4 @@ describe Message do
     let (:message) { Fabricate(:message) }
     specify { message.should be_valid }
   end
-
 end
