@@ -15,8 +15,8 @@ describe Proposal do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of(:composer) }
-    it { should validate_presence_of(:receiver) }
+    it { should validate_presence_of :composer }
+    it { should validate_presence_of :receiver }
     #Attributes
     it { should validate_presence_of :creation_date }
   end
