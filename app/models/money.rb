@@ -1,5 +1,4 @@
 class Money
-
   #Modules
   include Mongoid::Document
 
@@ -22,5 +21,4 @@ class Money
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
