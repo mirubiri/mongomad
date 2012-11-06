@@ -19,7 +19,7 @@ describe Profile do
                             :phone_number,
                             :website)
                             .of_type(String) }
-    it { should have_fields(:birth_date).of_type(DateTime) }
+    it { should have_fields(:birth_date).of_type(Date) }
   end
 
   describe 'Validations' do
