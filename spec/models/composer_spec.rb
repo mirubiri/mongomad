@@ -26,5 +26,4 @@ describe Composer do
     let (:composer) { Fabricate(:composer) }
     specify { composer.should be_valid }
   end
-
 end

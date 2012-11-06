@@ -20,6 +20,7 @@ describe Profile do
                             :phone_number,
                             :website)
                             .of_type(String) }
+
     it { should have_fields(:birth_date,
                             :registration_date)
                             .of_type(DateTime) }
@@ -45,5 +46,4 @@ describe Profile do
     let (:profile) { Fabricate(:profile) }
     specify { profile.should be_valid }
   end
-
 end
