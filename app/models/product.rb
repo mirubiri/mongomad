@@ -16,7 +16,7 @@ class Product
             :name,
             :description,
             :quantity,
-            presence:true
+            presence: true
 
   validates :quantity,
             allow_nil: false,
