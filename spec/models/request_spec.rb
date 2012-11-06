@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Request do
-
   describe 'Relations' do
     it { should be_embedded_in :user }
   end
@@ -23,5 +22,4 @@ describe Request do
     let (:request) { Fabricate(:request) }
     specify { request.should be_valid }
   end
-
 end
