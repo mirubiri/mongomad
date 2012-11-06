@@ -18,7 +18,7 @@ describe Request do
 
   #Behaviour
   describe 'Factory' do
-    let (:request) { Fabricate(:request) }
+    let (:request) { Fabricate.build(:request) }
     specify { request.should be_valid }
   end
 end
