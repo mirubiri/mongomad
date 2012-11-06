@@ -17,7 +17,7 @@ class Profile
   field :delivery_address, type: String
   field :phone_number, type: String
   field :website, type: String
-  field :birth_date, type: DateTime
+  field :birth_date, type: Date
 
   #Validations (Attributes)
   validates :name,
