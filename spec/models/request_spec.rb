@@ -7,14 +7,13 @@ describe Request do
   end
 
   describe 'Attributes' do
+    it { should be_timestamped_document }
     it { should have_field(:text).of_type(String) }
-    it { should have_field(:creation_date).of_type(DateTime) }
   end
 
   describe 'Validations' do
     #Attributes
     it { should validate_presence_of :text }
-    it { should validate_presence_of :creation_date }
   end
 
   #Behaviour
