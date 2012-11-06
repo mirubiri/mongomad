@@ -1,7 +1,7 @@
 class Offer
-
   #Modules
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   #Relations
   embeds_one :composer, as: :polymorphic_composer
@@ -9,7 +9,7 @@ class Offer
   embeds_one :money, as: :polymorphic_money
 
   #Attributes
-  #TODO: Attributes (or DELETE)
+  field :initial_message, type: String
 
   #Validations (Relations)
   validates :composer,
@@ -17,9 +17,9 @@ class Offer
             presence: true
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
+  validates :initial_message,
+            presence: true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
