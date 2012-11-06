@@ -36,7 +36,7 @@ describe Profile do
 
   #Behaviour
   describe 'Factory' do
-    let (:profile) { Fabricate(:profile) }
+    let (:profile) { Fabricate.build(:profile) }
     specify { profile.should be_valid }
   end
 end
