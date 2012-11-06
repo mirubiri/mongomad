@@ -16,7 +16,7 @@ describe Product do
 
   describe 'Validations' do
     #Attributes
-    it { should validate_presence_of :thind_id }
+    it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
