@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe Profile do
-
   describe 'Relations' do
     it { should be_embedded_in :user }
   end
@@ -27,7 +26,6 @@ describe Profile do
   end
 
   describe 'Validations' do
-    #Relations
     #Attributes
     it { should validate_presence_of :name }
     it { should validate_presence_of :surname }
