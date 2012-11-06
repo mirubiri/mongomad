@@ -1,21 +1,19 @@
 class Request
-
   #Modules
-  #TODO: Modules (or DELETE)
+  include Mongoid::Document
 
   #Relations
-  #TODO: Relations (or DELETE)
+  embedded_in :user
 
   #Attributes
-  #TODO: Attributes (or DELETE)
-
-  #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
+  field :text, type: String
+  field :creation_date, type: DateTime
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
+  validates :text,
+            :creation_date,
+            presence: true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
