@@ -21,7 +21,7 @@ describe Proposal do
 
   #Behaviour
   describe 'Factory' do
-    let (:proposal) { Fabricate(:proposal) }
+    let (:proposal) { Fabricate.build(:proposal) }
     specify { proposal.should be_valid }
   end
 end

@@ -22,7 +22,7 @@ describe Composer do
 
   #Behaviour
   describe 'Factory' do
-    let (:composer) { Fabricate(:composer) }
+    let (:composer) { Fabricate.build(:composer) }
     specify { composer.should be_valid }
   end
 end

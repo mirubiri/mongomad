@@ -16,7 +16,7 @@ describe Agreement do
 
   #Behaviour
   describe 'Factory' do
-    let (:agreement) { Fabricate(:agreement) }
+    let (:agreement) { Fabricate.build(:agreement) }
     specify { agreement.should be_valid }
   end
 end

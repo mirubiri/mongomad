@@ -23,7 +23,7 @@ describe Message do
 
   #Behaviour
   describe 'Factory' do
-    let (:message) { Fabricate(:message) }
+    let (:message) { Fabricate.build(:message) }
     specify { message.should be_valid }
   end
 end
