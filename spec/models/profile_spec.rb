@@ -34,7 +34,6 @@ describe Profile do
     it { should validate_presence_of :flag_url }
     it { should validate_presence_of :email }
     it { should validate_presence_of :birth_date }
-    it { should validate_presence_of :registration_date }
   end
 
   #Behaviour
