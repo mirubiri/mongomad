@@ -1,6 +1,7 @@
 class Proposal
   #Modules
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   #Relations
   embedded_in :polymorphic_proposal, polymorphic: true
