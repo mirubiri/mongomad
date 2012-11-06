@@ -5,8 +5,6 @@ describe Thing do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_one(:main_photo).of_type(Photo) }
-    it { should embed_many :photos }
   end
 
   describe 'Attributes' do
@@ -18,7 +16,6 @@ describe Thing do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of :main_photo }
     #Attributes
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }

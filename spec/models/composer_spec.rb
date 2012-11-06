@@ -6,7 +6,6 @@ describe Composer do
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_composer }
     it { should embed_many :products }
-    it { should embed_one :photo }
   end
 
   describe 'Attributes' do
@@ -17,7 +16,6 @@ describe Composer do
   describe 'Validations' do
     #Relations
     it { should validate_presence_of :products }
-    it { should validate_presence_of :photo }
     #Attributes
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :complete_name }

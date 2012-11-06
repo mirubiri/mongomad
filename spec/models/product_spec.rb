@@ -5,8 +5,6 @@ describe Product do
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
-    it { should embed_one(:main_photo).of_type(Photo) }
-    it { should embed_many :photos }
   end
 
   describe 'Attributes' do
@@ -19,7 +17,6 @@ describe Product do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of :main_photo }
     #Attributes
     it { should validate_presence_of :thind_id }
     it { should validate_presence_of :name }

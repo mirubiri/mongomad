@@ -5,7 +5,6 @@ describe Message do
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_message }
-    it { should embed_one :photo }
   end
 
   describe 'Attributes' do
@@ -18,7 +17,6 @@ describe Message do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of :photo }
     #Attributes
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_complete_name }

@@ -5,8 +5,7 @@ class Thing
 
   #Relations
   embedded_in :user
-  embeds_one :main_photo, class_name:'Photo'
-  embeds_many :photos, as: :polymorphic_photo
+
 
   #Attributes
   #TODO: Attributes (or DELETE)
@@ -15,9 +14,6 @@ class Thing
   field :stock, type: Integer, default: 1
 
   #Validations (Relations)
-  validates :main_photo,
-            presence: true
-
   #Validations (Attributes)
   #TODO: Validations Attributes(or DELETE)
   validates :thing_box,

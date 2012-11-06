@@ -5,7 +5,6 @@ describe Profile do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_one :photo }
   end
 
   describe 'Attributes' do
@@ -28,7 +27,6 @@ describe Profile do
 
   describe 'Validations' do
     #Relations
-    it { should validate_presence_of :photo }
     #Attributes
     it { should validate_presence_of :name }
     it { should validate_presence_of :surname }
