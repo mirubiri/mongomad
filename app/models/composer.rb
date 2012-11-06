@@ -1,5 +1,4 @@
 class Composer
-
   #Modules
   include Mongoid::Document
 
@@ -8,16 +7,18 @@ class Composer
   embeds_many :products, as: :polymorphic_product
 
   #Attributes
-  #TODO: Attributes (or DELETE)
+  field :user_id, type: Moped::BSON::ObjectId
+  field :full_name, type: String
 
   #Validations (Relations)
   validates :products,
             presence: true
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
+  validates :user_id,
+            :full_name,
+            presence: true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
