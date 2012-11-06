@@ -7,6 +7,7 @@ describe Profile do
   end
 
   describe 'Attributes' do
+    it { should be_timestamped_document }
     it { should have_fields(:name,
                             :surname,
                             :nickname,
@@ -19,9 +20,7 @@ describe Profile do
                             :phone_number,
                             :website)
                             .of_type(String) }
-    it { should have_fields(:birth_date,
-                            :registration_date)
-                            .of_type(DateTime) }
+    it { should have_fields(:birth_date).of_type(DateTime) }
   end
 
   describe 'Validations' do
