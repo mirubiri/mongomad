@@ -10,7 +10,7 @@ describe Composer do
 
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:complete_name).of_type(String) }
+    it { should have_field(:full_name).of_type(String) }
   end
 
   describe 'Validations' do
@@ -18,7 +18,7 @@ describe Composer do
     it { should validate_presence_of :products }
     #Attributes
     it { should validate_presence_of :user_id }
-    it { should validate_presence_of :complete_name }
+    it { should validate_presence_of :full_name }
   end
 
   #Behaviour
