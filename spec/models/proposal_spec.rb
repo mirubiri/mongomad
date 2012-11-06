@@ -10,15 +10,13 @@ describe Proposal do
   end
 
   describe 'Attributes' do
-    it { should have_field(:creation_date).of_type(DateTime) }
+    it { should be_timestamped_document }
   end
 
   describe 'Validations' do
     #Relations
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
-    #Attributes
-    it { should validate_presence_of :creation_date }
   end
 
   #Behaviour
