@@ -4,9 +4,9 @@ require 'spec_helper'
 describe Proposal do
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_proposal }
-    it { should embed_one(:composer) }
-    it { should embed_one(:receiver) }
-    it { should embed_one(:money) }
+    it { should embed_one :composer }
+    it { should embed_one :receiver }
+    it { should embed_one :money }
   end
 
   describe 'Attributes' do
