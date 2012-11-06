@@ -1,7 +1,7 @@
 class User
-
   #Modules
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   #Relations
   embeds_one :profile
@@ -12,18 +12,10 @@ class User
   has_and_belongs_to_many :negotiations, inverse_of: nil
   has_and_belongs_to_many :deals, inverse_of: nil
 
-  #Attributes
-  #TODO: Attributes (or DELETE)
-  field :name, type: String
-
   #Validations (Relations)
   validates :profile,
             presence: true
 
-  #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
-
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
