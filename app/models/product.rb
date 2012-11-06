@@ -1,5 +1,4 @@
 class Product
-
   #Modules
   include Mongoid::Document
 
@@ -7,14 +6,12 @@ class Product
   embedded_in :polymorphic_product, polymorphic: true
 
   #Attributes
-  #TODO: Attributes (or DELETE)
   field :thing_id, type: Moped::BSON::ObjectId
   field :name, type: String
   field :description, type: String
   field :quantity, type: Integer, default: 1
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
   validates :thing_id,
             :name,
             :description,
@@ -23,10 +20,9 @@ class Product
 
   validates :quantity,
             allow_nil: false,
-            numericality: { greater_than: 0,
-                            only_integer: true }
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 0 }
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
-
 end
