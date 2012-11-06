@@ -14,7 +14,6 @@ describe Profile do
                             :password,
                             :sex,
                             :country,
-                            :flag_url,
                             :email,
                             :delivery_address,
                             :phone_number,
@@ -31,7 +30,6 @@ describe Profile do
     it { should validate_presence_of :password }
     it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
-    it { should validate_presence_of :flag_url }
     it { should validate_presence_of :email }
     it { should validate_presence_of :birth_date }
   end
