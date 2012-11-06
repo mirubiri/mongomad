@@ -7,19 +7,18 @@ class Money
   embedded_in :polymorphic_money, polymorphic: true
 
   #Attributes
-  #TODO: Attributes (or DELETE)
-  field :money_owner, type: Moped::BSON::ObjectId
-  field :quantity, type: BigDecimal
+  field :owner, type: Moped::BSON::ObjectId
+  field :quantity, type: Integer
 
   #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
-  validates :money_owner,
+  validates :owner,
             :quantity,
             presence: true
 
   validates :quantity,
             allow_nil: false,
-            numericality: { greater_than: 0 }
+            numericality: {only_integer: true,
+                           greater_than: 0 }
 
   #Behaviour
   #TODO: Behaviour (or DELETE)
