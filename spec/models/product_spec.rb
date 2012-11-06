@@ -7,7 +7,7 @@ describe Product do
   end
 
   describe 'Attributes' do
-    it { should have_field(:thind_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
     it { should have_fields(:name,
                             :description)
                             .of_type(String) }
