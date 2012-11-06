@@ -8,10 +8,6 @@ describe Agreement do
     it { should embed_many :messages }
   end
 
-  describe 'Attributes' do
-    it { should be_timestamped_document }
-  end
-
   describe 'Validations' do
     #Relations
     it { should validate_presence_of :proposals }
