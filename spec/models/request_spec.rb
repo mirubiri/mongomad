@@ -12,6 +12,8 @@ describe Request do
   end
 
   describe 'Validations' do
+    #Relations
+    it { should validate_presence_of :user }
     #Attributes
     it { should validate_presence_of :text }
   end
@@ -23,13 +25,12 @@ describe Request do
   end
 
   describe '#publish' do
-
-    it 'Saves a valid request' do
+    it 'saves a valid request' do
       request = Fabricate(:request)
          request.publish.should be_true
     end
 
-    it 'not saves an request without a text' do
+    it 'not saves a request without a text' do
       request=Fabricate(:request,text:nil)
       request.publish.should be_false
     end
