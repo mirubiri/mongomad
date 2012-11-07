@@ -11,7 +11,7 @@ class Thing
   field :stock, type: Integer, default: 1
 
   #Validations (Relations)
-  validates :user
+  validates :user,
             presence: true
 
   #Validations (Attributes)
