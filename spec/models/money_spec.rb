@@ -12,6 +12,8 @@ describe Money do
   end
 
   describe 'Validations' do
+    #Relations
+    it { should validate_presence_of :polymorphic_money }
     #Attributes
     it { should validate_presence_of :owner }
     it { should validate_presence_of :quantity }
