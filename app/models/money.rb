@@ -10,7 +10,7 @@ class Money
   field :quantity, type: Integer
 
   #Validations (Relations)
-  validates :polymorphic_money
+  validates :polymorphic_money,
             presence: true
 
   #Validations (Attributes)
