@@ -11,6 +11,10 @@ class Product
   field :description, type: String
   field :quantity, type: Integer, default: 1
 
+  #Validations (Relations)
+  validates :polymorphic_product,
+            presence: true
+
   #Validations (Attributes)
   validates :thing_id,
             :name,
