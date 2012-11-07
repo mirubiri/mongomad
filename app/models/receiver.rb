@@ -10,7 +10,8 @@ class Receiver
   field :user_id, type: Moped::BSON::ObjectId
 
   #Validations (Relations)
-  validates :products,
+  validates :polymorphic_receiver,
+            :products,
             presence: true
 
   #Validations (Attributes)
