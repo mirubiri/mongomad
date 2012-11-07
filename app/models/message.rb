@@ -11,6 +11,10 @@ class Message
   field :sender_full_name, type: String
   field :text, type: String
 
+  #Validations (Relations)
+  validates :polymorphic_message,
+            presence: true
+
   #Validations (Attributes)
   validates :sender_id,
             :sender_full_name,
