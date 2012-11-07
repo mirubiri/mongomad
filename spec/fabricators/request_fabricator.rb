@@ -1,3 +1,3 @@
 Fabricator(:request) do
-  text 'a petition'
+  text 'text'
 end
