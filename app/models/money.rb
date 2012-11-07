@@ -9,6 +9,10 @@ class Money
   field :owner, type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
+  #Validations (Relations)
+  validates :polymorphic_money
+            presence: true
+
   #Validations (Attributes)
   validates :owner,
             :quantity,
