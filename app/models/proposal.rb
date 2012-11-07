@@ -10,7 +10,8 @@ class Proposal
   embeds_one :money, as: :polymorphic_money
 
   #Validations (Relations)
-  validates :composer,
+  validates :polymorphic_proposal,
+            :composer,
             :receiver,
             presence: true
 
