@@ -19,6 +19,10 @@ class Profile
   field :website, type: String
   field :birth_date, type: Date
 
+  #Validations (Relations)
+  validates :user,
+            presence: true
+
   #Validations (Attributes)
   validates :name,
             :surname,
