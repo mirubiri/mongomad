@@ -10,6 +10,10 @@ class Thing
   field :description, type: String
   field :stock, type: Integer, default: 1
 
+  #Validations (Relations)
+  validates :user
+            presence: true
+
   #Validations (Attributes)
   validates :name,
             :description,
