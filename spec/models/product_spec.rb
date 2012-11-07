@@ -15,6 +15,8 @@ describe Product do
   end
 
   describe 'Validations' do
+    #Relations
+    it { should validate_presence_of :polymorphic_product }
     #Attributes
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
