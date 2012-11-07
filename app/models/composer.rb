@@ -11,7 +11,8 @@ class Composer
   field :full_name, type: String
 
   #Validations (Relations)
-  validates :products,
+  validates :polymorphic_composer,
+            :products,
             presence: true
 
   #Validations (Attributes)
