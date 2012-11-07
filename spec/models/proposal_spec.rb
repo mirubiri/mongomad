@@ -15,6 +15,7 @@ describe Proposal do
 
   describe 'Validations' do
     #Relations
+    it { should validate_presence_of :polymorphic_proposal }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
   end
