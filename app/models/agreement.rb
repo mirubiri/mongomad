@@ -8,7 +8,8 @@ class Agreement
   embeds_many :messages, as: :polymorphic_message
 
   #Validations (Relations)
-  validates :proposals,
+  validates :deal,
+            :proposals,
             :messages,
             presence: true
 
