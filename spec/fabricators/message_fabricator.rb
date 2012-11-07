@@ -1,5 +1,5 @@
 Fabricator(:message) do
-  sender_id { Fabricate(:user)._id }
-  sender_full_name 'a full name'
+  sender_id { Fabricate.build(:user)._id }
+  sender_full_name 'sender full name'
   text 'text'
 end
