@@ -1,3 +1,3 @@
 Fabricator(:user) do
-    profile { Fabricate.build(:profile) }
+  profile { Fabricate.build(:profile) }
 end
