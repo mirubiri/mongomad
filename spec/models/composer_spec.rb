@@ -21,9 +21,9 @@ describe Composer do
     it { should validate_presence_of :full_name }
   end
 
-  #Behaviour
-  #describe 'Factory' do
-  #  let (:composer) { Fabricate.build(:composer) }
-  #  specify { composer.should be_valid }
-  #end
+  Behaviour
+  describe 'Factory' do
+    let (:composer) { Fabricate.build(:composer) }
+    specify { composer.should be_valid }
+  end
 end

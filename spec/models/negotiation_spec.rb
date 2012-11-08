@@ -22,9 +22,9 @@ describe Negotiation do
     it { should validate_presence_of :token_state }
   end
 
-  #Behaviour
-  #describe 'Factory' do
-  #  let (:negotiation) { Fabricate(:negotiation) }
-  #  specify { negotiation.should be_valid }
-  #end
+  Behaviour
+  describe 'Factory' do
+    let (:negotiation) { Fabricate(:negotiation) }
+    specify { negotiation.should be_valid }
+  end
 end

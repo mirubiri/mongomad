@@ -23,9 +23,9 @@ describe Message do
     it { should validate_presence_of :text }
   end
 
-  #Behaviour
-  #describe 'Factory' do
-  #  let (:message) { Fabricate.build(:message) }
-  #  specify { message.should be_valid }
-  #end
+  Behaviour
+  describe 'Factory' do
+    let (:message) { Fabricate.build(:message) }
+    specify { message.should be_valid }
+  end
 end

@@ -21,9 +21,9 @@ describe Offer do
     it { should validate_presence_of :initial_message }
   end
 
-  #Behaviour
-  #describe 'Factory' do
-  #  let (:offer) { Fabricate(:offer) }
-  #  specify { offer.should be_valid }
-  #end
+  Behaviour
+  describe 'Factory' do
+    let (:offer) { Fabricate(:offer) }
+    specify { offer.should be_valid }
+  end
 end

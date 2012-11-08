@@ -27,9 +27,9 @@ describe Product do
                                                              greater_than_or_equal_to: 0) }
   end
 
-  #Behaviour
-  #describe 'Factory' do
-  # let (:product) { Fabricate.build(:product) }
-  #  specify { product.should be_valid }
-  #end
+  Behaviour
+  describe 'Factory' do
+   let (:product) { Fabricate.build(:product) }
+    specify { product.should be_valid }
+  end
 end
