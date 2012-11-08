@@ -17,5 +17,6 @@ describe Deal do
   describe 'Factory' do
     let (:deal) { Fabricate(:deal) }
     specify { deal.should be_valid }
+    specify { deal.save.should be_true }
   end
 end

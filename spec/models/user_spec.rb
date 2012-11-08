@@ -22,5 +22,6 @@ describe User do
   describe 'Factory' do
     let (:user) { Fabricate(:user) }
     specify { user.should be_valid }
+    specify { user.save.should be_true }
   end
 end

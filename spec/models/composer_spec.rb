@@ -24,5 +24,6 @@ describe Composer do
   describe 'Factory' do
     let (:composer) { Fabricate.build(:composer) }
     specify { composer.should be_valid }
+    specify { composer.save.should be_true }
   end
 end

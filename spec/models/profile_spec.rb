@@ -37,5 +37,6 @@ describe Profile do
   describe 'Factory' do
     let (:profile) { Fabricate.build(:profile) }
     specify { profile.should be_valid }
+    specify { profile.save.should be_true }
   end
 end

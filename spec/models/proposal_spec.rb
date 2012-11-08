@@ -21,5 +21,6 @@ describe Proposal do
   describe 'Factory' do
     let (:proposal) { Fabricate.build(:proposal) }
     specify { proposal.should be_valid }
+    specify { proposal.save.should be_true }
   end
 end

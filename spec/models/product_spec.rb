@@ -27,5 +27,6 @@ describe Product do
   describe 'Factory' do
    let (:product) { Fabricate.build(:product) }
     specify { product.should be_valid }
+    specify { product.save.should be_true }
   end
 end

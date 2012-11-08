@@ -18,6 +18,7 @@ describe Request do
   describe 'Factory' do
     let (:request) { Fabricate.build(:request) }
     specify { request.should be_valid }
+    specify { request.save.should be_true }
   end
 
   describe '#publish' do
