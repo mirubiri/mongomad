@@ -1,6 +1,6 @@
 Fabricator(:request) do
-  #Relaciones
+  #Relations
   user
-  #Atributos
+  #Attributes
   text 'text'
 end
