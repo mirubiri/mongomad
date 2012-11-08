@@ -5,6 +5,6 @@ Fabricator(:composer) do
   full_name 'full name'
 
   after_build do |composer|
-    composer.products << Fabricate.build(:polymorphic_product,offer:offer)
+    composer.products << Fabricate.build(:product,offer:offer)
   end
 end
