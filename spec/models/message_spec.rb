@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Message do
@@ -15,9 +14,7 @@ describe Message do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :polymorphic_message }
-    #Attributes
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_full_name }
     it { should validate_presence_of :text }

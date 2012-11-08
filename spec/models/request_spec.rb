@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Request do
@@ -12,13 +11,10 @@ describe Request do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :user }
-    #Attributes
     it { should validate_presence_of :text }
   end
 
-  #Behaviour
   describe 'Factory' do
     let (:request) { Fabricate.build(:request) }
     specify { request.should be_valid }

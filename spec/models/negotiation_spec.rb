@@ -1,4 +1,3 @@
-##Modules
 require 'spec_helper'
 
 describe Negotiation do
@@ -14,9 +13,7 @@ describe Negotiation do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :proposals }
-    #Attributes
     it { should validate_presence_of :token_owner }
     it { should validate_presence_of :token_state }
   end

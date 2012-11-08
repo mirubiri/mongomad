@@ -1,12 +1,9 @@
 class Profile
-  #Modules
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  #Relations
   embedded_in :user
 
-  #Attributes
   field :name, type: String
   field :surname, type: String
   field :nickname, type: String
@@ -19,12 +16,8 @@ class Profile
   field :website, type: String
   field :birth_date, type: Date
 
-  #Validations (Relations)
-  validates :user,
-            presence: true
-
-  #Validations (Attributes)
   validates :name,
+            :user,
             :surname,
             :nickname,
             :password,
@@ -36,7 +29,4 @@ class Profile
             :website,
             :birth_date,
             presence: true
-
-  #Behaviour
-  #TODO: Behaviour (or DELETE)
 end

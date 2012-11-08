@@ -1,4 +1,3 @@
-##Modules
 require 'spec_helper'
 
 describe Offer do
@@ -14,10 +13,8 @@ describe Offer do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
-    #Attributes
     it { should validate_presence_of :initial_message }
   end
 

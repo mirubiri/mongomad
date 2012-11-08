@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Money do
@@ -12,16 +11,13 @@ describe Money do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :polymorphic_money }
-    #Attributes
     it { should validate_presence_of :owner }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than: 0) }
   end
-
 
   describe 'Factory' do
     let (:money) { Fabricate.build(:money) }

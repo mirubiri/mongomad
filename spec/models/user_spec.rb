@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe User do
@@ -17,11 +16,9 @@ describe User do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :profile }
   end
 
-  #Behaviour
   describe 'Factory' do
     let (:user) { Fabricate(:user) }
     specify { user.should be_valid }

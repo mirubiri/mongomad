@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Agreement do
@@ -9,10 +8,8 @@ describe Agreement do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :deal }
     it { should validate_presence_of :proposals }
-    it { should validate_presence_of :messages }
   end
 
   describe 'Factory' do

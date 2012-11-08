@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Receiver do
@@ -12,10 +11,8 @@ describe Receiver do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :polymorphic_receiver }
     it { should validate_presence_of :products }
-    #Attributes
     it { should validate_presence_of :user_id }
   end
 

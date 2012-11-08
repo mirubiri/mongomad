@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Composer do

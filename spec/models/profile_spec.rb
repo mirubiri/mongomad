@@ -1,4 +1,3 @@
-##Modules
 require 'spec_helper'
 
 describe Profile do
@@ -23,9 +22,7 @@ describe Profile do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :user }
-    #Attributes
     it { should validate_presence_of :name }
     it { should validate_presence_of :surname }
     it { should validate_presence_of :nickname }

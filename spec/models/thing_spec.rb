@@ -1,4 +1,3 @@
-#Modules
 require 'spec_helper'
 
 describe Thing do
@@ -14,9 +13,7 @@ describe Thing do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :user }
-    #Attributes
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :stock }
@@ -25,7 +22,6 @@ describe Thing do
                                                           greater_than_or_equal_to: 0) }
   end
 
-  #Behaviour
   describe 'Factory' do
     let (:thing) { Fabricate.build(:thing) }
     specify { thing.should be_valid }

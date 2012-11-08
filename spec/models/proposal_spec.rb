@@ -1,4 +1,3 @@
-##Modules
 require 'spec_helper'
 
 describe Proposal do
@@ -14,7 +13,6 @@ describe Proposal do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :polymorphic_proposal }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
