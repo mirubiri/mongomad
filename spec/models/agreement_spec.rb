@@ -15,7 +15,7 @@ describe Agreement do
     it { should validate_presence_of :messages }
   end
 
-  Behaviour
+
   describe 'Factory' do
     let (:agreement) { Fabricate.build(:agreement) }
     specify { agreement.should be_valid }

@@ -20,7 +20,6 @@ describe Proposal do
     it { should validate_presence_of :receiver }
   end
 
-  Behaviour
   describe 'Factory' do
     let (:proposal) { Fabricate.build(:proposal) }
     specify { proposal.should be_valid }

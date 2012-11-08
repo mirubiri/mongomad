@@ -36,7 +36,7 @@ describe Profile do
     it { should validate_presence_of :birth_date }
   end
 
-  #Behaviour
+
   describe 'Factory' do
     let (:profile) { Fabricate.build(:profile) }
     specify { profile.should be_valid }

@@ -17,7 +17,6 @@ describe Deal do
     it { should validate_presence_of :messages }
   end
 
-  Behaviour
   describe 'Factory' do
     let (:deal) { Fabricate(:deal) }
     specify { deal.should be_valid }
