@@ -18,9 +18,8 @@ describe Deal do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:deal) { Fabricate(:deal) }
-    specify { deal.should be_valid }
-  end
-
+  #describe 'Factory' do
+  #  let (:deal) { Fabricate(:deal) }
+  #  specify { deal.should be_valid }
+  #end
 end

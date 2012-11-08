@@ -20,8 +20,8 @@ describe Receiver do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:receiver) { Fabricate.build(:receiver) }
-    specify { receiver.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:receiver) { Fabricate.build(:receiver) }
+  #  specify { receiver.should be_valid }
+  #end
 end

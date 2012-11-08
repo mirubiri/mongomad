@@ -19,26 +19,26 @@ describe Request do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:request) { Fabricate.build(:request) }
-    specify { request.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:request) { Fabricate.build(:request) }
+  #  specify { request.should be_valid }
+  #end
 
-  describe '#publish' do
-    it 'saves a valid request' do
-      request = Fabricate(:request)
-         request.publish.should be_true
-    end
+  #describe '#publish' do
+  #  it 'saves a valid request' do
+  #    request = Fabricate(:request)
+  #       request.publish.should be_true
+  #  end
 
-    it 'not saves a request without a text' do
-      request=Fabricate(:request,text:nil)
-      request.publish.should be_false
-    end
-  end
+  #  it 'not saves a request without a text' do
+  #    request=Fabricate(:request,text:nil)
+  #    request.publish.should be_false
+  #  end
+  #end
 
-  describe '#modify' do
-  end
+  #describe '#modify' do
+  #end
 
-  describe '#unpublish' do
-  end
+  #describe '#unpublish' do
+  #end
 end

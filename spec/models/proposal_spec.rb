@@ -1,4 +1,4 @@
-#Modules
+##Modules
 require 'spec_helper'
 
 describe Proposal do
@@ -21,8 +21,8 @@ describe Proposal do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:proposal) { Fabricate.build(:proposal) }
-    specify { proposal.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:proposal) { Fabricate.build(:proposal) }
+  #  specify { proposal.should be_valid }
+  #end
 end

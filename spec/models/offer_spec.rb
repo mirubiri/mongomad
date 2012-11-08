@@ -1,4 +1,4 @@
-#Modules
+##Modules
 require 'spec_helper'
 
 describe Offer do
@@ -22,8 +22,8 @@ describe Offer do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:offer) { Fabricate(:offer) }
-    specify { offer.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:offer) { Fabricate(:offer) }
+  #  specify { offer.should be_valid }
+  #end
 end

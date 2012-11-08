@@ -1,4 +1,4 @@
-#Modules
+##Modules
 require 'spec_helper'
 
 describe Negotiation do
@@ -23,8 +23,8 @@ describe Negotiation do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:negotiation) { Fabricate(:negotiation) }
-    specify { negotiation.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:negotiation) { Fabricate(:negotiation) }
+  #  specify { negotiation.should be_valid }
+  #end
 end

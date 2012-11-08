@@ -1,9 +1,8 @@
 Fabricator(:offer) do
   #Relations
-  after_build do |user|
-    user.profile = Fabricate.build(:profile,user:user)
-    user.things << Fabricate.build(:thing,user:user)
-    user.requests << Fabricate.build(:request,user:user)
+  after_build do |offer|
+    offer.composer = Fabricate.build(:polymorphic_composer,offer:offer)
+    offer.receiver = Fabricate.build(:polymorphic_receiver,offer:offer)
   end
   #Attributes
   initial_message 'initial message'

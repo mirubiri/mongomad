@@ -23,8 +23,8 @@ describe Money do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:money) { Fabricate.build(:money) }
-    specify { money.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:money) { Fabricate.build(:money) }
+  #  specify { money.should be_valid }
+  #end
 end

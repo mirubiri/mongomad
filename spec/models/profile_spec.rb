@@ -1,4 +1,4 @@
-#Modules
+##Modules
 require 'spec_helper'
 
 describe Profile do
@@ -37,8 +37,8 @@ describe Profile do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:profile) { Fabricate.build(:profile) }
-    specify { profile.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:profile) { Fabricate.build(:profile) }
+  #  specify { profile.should be_valid }
+  #end
 end

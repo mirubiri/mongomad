@@ -22,8 +22,8 @@ describe User do
   end
 
   #Behaviour
-  describe 'Factory' do
-    let (:user) { Fabricate(:user) }
-    specify { user.should be_valid }
-  end
+  #describe 'Factory' do
+  #  let (:user) { Fabricate(:user) }
+  #  specify { user.should be_valid }
+  #end
 end

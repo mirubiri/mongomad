@@ -28,8 +28,8 @@ describe Product do
   end
 
   #Behaviour
-  describe 'Factory' do
-   let (:product) { Fabricate.build(:product) }
-    specify { product.should be_valid }
-  end
+  #describe 'Factory' do
+  # let (:product) { Fabricate.build(:product) }
+  #  specify { product.should be_valid }
+  #end
 end
