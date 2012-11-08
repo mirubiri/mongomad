@@ -19,10 +19,10 @@ describe Request do
   end
 
   #Behaviour
-  #describe 'Factory' do
-  #  let (:request) { Fabricate.build(:request) }
-  #  specify { request.should be_valid }
-  #end
+  describe 'Factory' do
+    let (:request) { Fabricate.build(:request) }
+    specify { request.should be_valid }
+  end
 
   #describe '#publish' do
   #  it 'saves a valid request' do
