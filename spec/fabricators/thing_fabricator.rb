@@ -1,7 +1,7 @@
 Fabricator(:thing) do
-  #Relaciones
+  #Relations
   user
-  #Atributos
+  #Attributes
   name 'name'
   description 'description'
   stock 5
