@@ -1,7 +1,7 @@
 Fabricator(:profile) do
   #Relations
   user
-  #Atributos
+  #Attributes
   name 'name'
   surname 'surname'
   nickname 'nickname'
