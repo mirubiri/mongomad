@@ -1,7 +1,7 @@
 Fabricator(:money) do
-  #Relaciones
+  #Relations
   polymorphic_money
-  #Atributos
+  #Attributes
   owner { Fabricate.build(:user)._id }
   quantity 100
 end
