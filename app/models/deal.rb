@@ -8,9 +8,7 @@ class Deal
   embeds_many :messages, as: :polymorphic_message
 
   #Validations (Relations)
-  validates :agreement,
-            :messages,
-            presence: true
+  validates :agreement, presence: true
 
   #Behaviour
   #TODO: Behaviour (or DELETE)

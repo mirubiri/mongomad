@@ -14,7 +14,6 @@ describe Deal do
   describe 'Validations' do
     #Relations
     it { should validate_presence_of :agreement }
-    it { should validate_presence_of :messages }
   end
 
   describe 'Factory' do
