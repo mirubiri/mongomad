@@ -23,8 +23,8 @@ describe Request do
 
   describe '#publish' do
     it 'saves a valid request' do
-      request = Fabricate(:request)
-         request.publish.should be_true
+      request=Fabricate(:request)
+      request.publish.should be_true
     end
 
     it 'not saves a request without a text' do
