@@ -16,17 +16,14 @@ class Profile
   field :website, type: String
   field :birth_date, type: Date
 
-  validates :name,
-            :user,
+  validates :user,
+            :name,
             :surname,
             :nickname,
             :password,
             :sex,
             :country,
             :email,
-            :delivery_address,
-            :phone_number,
-            :website,
             :birth_date,
             presence: true
 end
