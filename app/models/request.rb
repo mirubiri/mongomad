@@ -9,4 +9,8 @@ class Request
   validates :user,
             :text,
             presence: true
+
+  def publish
+    self.save
+  end
 end
