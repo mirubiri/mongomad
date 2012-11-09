@@ -26,7 +26,6 @@ describe Request do
       request=Fabricate(:request)
       request.publish.should be_true
     end
-
     it 'not saves a request without a text' do
       request=Fabricate(:request,text:nil)
       request.publish.should be_false
