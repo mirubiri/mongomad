@@ -23,4 +23,6 @@ describe Offer do
     specify { offer.should be_valid }
     specify { offer.save.should be_true }
   end
+
+  
 end
