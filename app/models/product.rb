@@ -8,8 +8,8 @@ class Product
   field :description, type: String
   field :quantity, type: Integer, default: 1
 
-  validates :thing_id,
-            :polymorphic_product,
+  validates :polymorphic_product,
+            :thing_id,
             :name,
             :description,
             :quantity,

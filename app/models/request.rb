@@ -6,5 +6,11 @@ class Request
 
   field :text, type: String
 
-  validates :user, :text, presence: true
+  validates :user,
+            :text,
+            presence: true
+
+  def publish
+    self.save
+  end
 end

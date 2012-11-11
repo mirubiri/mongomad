@@ -12,10 +12,8 @@ describe Composer do
   end
 
   describe 'Validations' do
-    #Relations
     it { should validate_presence_of :polymorphic_composer }
     it { should validate_presence_of :products }
-    #Attributes
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :full_name }
   end
