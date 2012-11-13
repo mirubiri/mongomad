@@ -1,5 +1,4 @@
 Fabricator(:profile) do
-  user
   name 'name'
   surname 'surname'
   nickname 'nickname'

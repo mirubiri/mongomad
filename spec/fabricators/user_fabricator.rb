@@ -1,5 +1,5 @@
 Fabricator(:user) do
-  after_build do |user|
-    user.profile = Fabricate.build(:profile,user:user)
-  end
+  profile { Fabricate.build(:profile) }
+  things(count:1) { Fabricate.build(:thing) }
+  request(count:1) { Fabricate.build(:request) }
 end
