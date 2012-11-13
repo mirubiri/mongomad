@@ -13,7 +13,7 @@ describe Request do
   end
 
   describe 'Factory' do
-    let (:request) { Fabricate.build(:request) }
+    let (:request) { Fabricate(:request) }
     specify { request.should be_valid }
     specify { request.save.should be_true }
   end
@@ -23,7 +23,7 @@ describe Request do
       request=Fabricate.build(:request)
       request.publish.should be_true
     end
-    it 'not saves a not valid request (without a text)' do
+    it 'not saves a not valid request' do
       request=Fabricate.build(:request,text:nil)
       request.publish.should be_false
     end
@@ -38,6 +38,6 @@ describe Request do
     it 'not delete a not published request' do
       request=Fabricate.build(:request)
       request.unpublish.should be_false
-    end
+   end
   end
 end

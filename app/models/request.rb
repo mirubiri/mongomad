@@ -12,4 +12,12 @@ class Request
   def publish
     self.save
   end
+
+  def unpublish
+    if self.persisted?
+      self.delete #Always returns 'true'
+    else
+      return false
+    end
+  end
 end
