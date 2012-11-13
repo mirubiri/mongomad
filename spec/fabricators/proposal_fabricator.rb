@@ -1,7 +1,6 @@
 Fabricator(:proposal) do
-  polymorphic_proposal { Fabricate(:negotiation) }
-  after_build do |proposal|
-    proposal.composer = Fabricate.build(:composer,polymorphic_composer:proposal)
-    proposal.receiver = Fabricate.build(:receiver,polymorphic_receiver:proposal)
-  end
+  polymorphic_proposal { Fabricate.build(:negotiation,proposals:nil) }
+  money nil
+  composer { Fabricate.build(:composer,polymorphic_composer:nil) }
+  receiver { Fabricate.build(:receiver,polymorphic_receiver:nil) }
 end

@@ -1,5 +1,5 @@
 Fabricator(:thing) do
-  user
+  user {Fabricate.build(:user,things:nil)}
   name 'name'
   description 'description'
   stock 5

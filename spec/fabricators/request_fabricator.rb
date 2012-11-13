@@ -1,4 +1,4 @@
 Fabricator(:request) do
-  user
+  user { Fabricate.build(:user,requests:nil)}
   text 'text'
 end

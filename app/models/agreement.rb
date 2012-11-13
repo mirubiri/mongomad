@@ -7,6 +7,5 @@ class Agreement
 
   validates :deal,
             :proposals,
-            :messages,
             presence: true
 end
