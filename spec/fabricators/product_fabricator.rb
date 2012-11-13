@@ -1,6 +1,7 @@
 Fabricator(:product) do
-  polymorphic_product { Fabricate.build(:composer,products:nil,polymorphic_composer:nil) }
-  thing_id 'an existing thing_id'
+  polymorphic_product { Fabricate.build(:composer,polymorphic_composer:nil,
+                                                  products:nil) }
+  thing_id 'an existing thing_product_id'
   name 'name'
   description 'description'
   quantity 5

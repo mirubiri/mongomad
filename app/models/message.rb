@@ -8,9 +8,9 @@ class Message
   field :sender_full_name, type: String
   field :text, type: String
 
-  validates :sender_id,
+  validates :polymorphic_message,
+            :sender_id,
             :sender_full_name,
             :text,
-            :polymorphic_message,
             presence: true
 end

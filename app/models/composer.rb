@@ -7,9 +7,9 @@ class Composer
   field :user_id, type: Moped::BSON::ObjectId
   field :full_name, type: String
 
-  validates :user_id,
-            :full_name,
+  validates :polymorphic_composer,
             :products,
-            :polymorphic_composer,
+            :user_id,
+            :full_name,
             presence: true
 end

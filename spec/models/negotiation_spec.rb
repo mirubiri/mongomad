@@ -8,13 +8,13 @@ describe Negotiation do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:token_owner).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:token_owner_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:token_state).of_type(Boolean) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :proposals }
-    it { should validate_presence_of :token_owner }
+    it { should validate_presence_of :token_owner_id }
     it { should validate_presence_of :token_state }
   end
 

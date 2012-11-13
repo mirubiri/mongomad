@@ -16,7 +16,6 @@ describe Receiver do
     it { should validate_presence_of :user_id }
   end
 
-
   describe 'Factory' do
     let (:receiver) { Fabricate(:receiver) }
     specify { receiver.should be_valid }

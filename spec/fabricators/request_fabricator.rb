@@ -1,4 +1,4 @@
 Fabricator(:request) do
-  user { Fabricate.build(:user,requests:nil)}
+  requester_id 'an existing user_requester_id'
   text 'text'
 end

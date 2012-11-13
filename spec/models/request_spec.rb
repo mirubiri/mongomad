@@ -1,17 +1,14 @@
 require 'spec_helper'
 
 describe Request do
-  describe 'Relations' do
-    it { should be_embedded_in :user }
-  end
-
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should have_field(:requester_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:text).of_type(String) }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :user }
+    it { should validate_presence_of :requester_id }
     it { should validate_presence_of :text }
   end
 
@@ -26,7 +23,7 @@ describe Request do
       request=Fabricate.build(:request)
       request.publish.should be_true
     end
-    it 'not saves a request without a text' do
+    it 'not saves a not valid request (without a text)' do
       request=Fabricate.build(:request,text:nil)
       request.publish.should be_false
     end
@@ -38,7 +35,7 @@ describe Request do
       request=Request.all.last
       request.unpublish.should be_true
     end
-    it 'not delete a request a not published request' do
+    it 'not delete a not published request' do
       request=Fabricate.build(:request)
       request.unpublish.should be_false
     end

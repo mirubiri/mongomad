@@ -1,5 +1,5 @@
 Fabricator(:money) do
   polymorphic_money { Fabricate.build(:offer) }
-  owner 'owner_id'
+  owner_id 'an exiting user_owner_id'
   quantity 100
 end

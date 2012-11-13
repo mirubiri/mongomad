@@ -2,11 +2,10 @@ class Request
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :user
-
+  field :requester_id, type: Moped::BSON::ObjectId
   field :text, type: String
 
-  validates :user,
+  validates :requester_id,
             :text,
             presence: true
 

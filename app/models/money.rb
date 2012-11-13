@@ -3,12 +3,12 @@ class Money
 
   embedded_in :polymorphic_money, polymorphic: true
 
-  field :owner, type: Moped::BSON::ObjectId
+  field :owner_id, type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-  validates :owner,
+  validates :polymorphic_money,
+            :owner_id,
             :quantity,
-            :polymorphic_money,
             presence: true
 
   validates :quantity,

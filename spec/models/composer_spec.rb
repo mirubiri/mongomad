@@ -18,7 +18,6 @@ describe Composer do
     it { should validate_presence_of :full_name }
   end
 
-
   describe 'Factory' do
     let (:composer) { Fabricate(:composer) }
     specify { composer.should be_valid }
