@@ -21,7 +21,7 @@ describe Message do
   end
 
   describe 'Factory' do
-    let (:message) { Fabricate.build(:message) }
+    let (:message) { Fabricate(:message) }
     specify { message.should be_valid }
     specify { message.save.should be_true }
   end
