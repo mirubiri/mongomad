@@ -1,4 +1,5 @@
 Fabricator(:profile) do
+  user { Fabricate.build(:user,profile:nil)}
   name 'name'
   surname 'surname'
   nickname 'nickname'

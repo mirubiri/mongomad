@@ -1,5 +1,4 @@
 Fabricator(:agreement) do
-  deal
-  proposals { [Fabricate.build(:proposal)] }
-  messages { [Fabricate.build(:message)] }
+  deal { Fabricate.build(:deal,agreement:nil) }
+  proposals(count:10) { Fabricate.build(:proposal,composer:Fabricate.build(:composer,_id:'el id de composer'),receiver:Fabricate.build(:receiver,_id:'el id de receiver')) }
 end
