@@ -9,6 +9,7 @@ class Negotiation
   field :token_state, type: Boolean
 
   validates :proposals,
+            :messages,
             :token_owner_id,
             :token_state,
             presence: true

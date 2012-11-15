@@ -14,6 +14,7 @@ describe Negotiation do
 
   describe 'Validations' do
     it { should validate_presence_of :proposals }
+    it { should validate_presence_of :messages }
     it { should validate_presence_of :token_owner_id }
     it { should validate_presence_of :token_state }
   end

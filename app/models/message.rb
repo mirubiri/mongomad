@@ -5,12 +5,12 @@ class Message
   embedded_in :polymorphic_message, polymorphic: true
 
   field :sender_id, type: Moped::BSON::ObjectId
-  field :sender_full_name, type: String
+  field :sender_name, type: String
   field :text, type: String
 
   validates :polymorphic_message,
             :sender_id,
-            :sender_full_name,
+            :sender_name,
             :text,
             presence: true
 end

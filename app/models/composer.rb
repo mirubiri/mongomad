@@ -4,12 +4,12 @@ class Composer
   embedded_in :polymorphic_composer, polymorphic: true
   embeds_many :products, as: :polymorphic_product
 
-  field :user_id, type: Moped::BSON::ObjectId
-  field :full_name, type: String
+  field :composer_id, type: Moped::BSON::ObjectId
+  field :composer_name, type: String
 
   validates :polymorphic_composer,
             :products,
-            :user_id,
-            :full_name,
+            :composer_id,
+            :composer_name,
             presence: true
 end
