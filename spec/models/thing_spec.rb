@@ -27,4 +27,57 @@ describe Thing do
     specify { thing.should be_valid }
     specify { thing.save.should be_true }
   end
+
+
+
+  describe '#publish' do
+    xit 'saves a valid thing' do
+      thing=Fabricate.build(:thing)
+      thing.publish.should be_true
+    end
+    xit 'not saves a not valid request' do
+      thing=Fabricate.build(:thing,text:nil)
+      thing.publish.should be_false
+    end
+  end
+
+  describe '#unpublish' do
+    xit 'deletes the current thing' do
+      thing=Fabricate(:thing)
+      qty=Thing.count
+      thing.unpublish
+      qty.should be > Thing.count
+    end
+    xit 'cannot delete an unsaved thing' do
+     thing=Fabricate.build(:thing)
+      qty=Thing.count
+      thing.unpublish
+      qty.should eq Thing.count
+    end
+  end
+
+  describe '#sell_one' do
+    context 'When stock is available' do
+      xit 'decreases stock by one unit'
+      xit 'returns true'
+    end
+    context 'When stock is 0' do
+      xit 'returns false'
+    end
+  end
+
+  describe '#sell(quantity)' do
+    context 'When stock is avaliable' do
+      xit 'decreases stock by quantity'
+      xit 'returns true'
+    end
+    context 'When stock is less than quantity' do
+      xit 'doesnt change stock value'
+      xit 'returns false'
+    end
+
+  describe '#restock(quantity)'
+    xit 'increases stock by quantity'
+    xit 'returns true'
+  end
 end

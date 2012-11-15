@@ -18,6 +18,16 @@ describe Request do
     specify { request.save.should be_true }
   end
 
+  describe '#restate(text)' do
+    xit 'Changes the request to the given text'
+    xit 'Cannot change the request with an invalid text'
+    xit 'Saves the current request'
+  end
+
+  describe '#requester' do
+    xit 'Returns the requester'
+  end
+  
   describe '#publish' do
     it 'saves a valid request' do
       request=Fabricate.build(:request)
@@ -30,13 +40,17 @@ describe Request do
   end
 
   describe '#unpublish' do
-    it 'delete a saved request' do
+    it 'deletes the request' do
       request=Fabricate(:request)
-      request.unpublish.should be_true
+      qty=Request.count
+      request.unpublish
+      qty.should be > Request.count
     end
-    it 'not delete a not saved request' do
+    it 'not deletes a not saved request' do
       request=Fabricate.build(:request)
-      request.unpublish.should be_false
+      qty=Request.count
+      request.unpublish
+      qty.should eq Request.count
    end
   end
 end
