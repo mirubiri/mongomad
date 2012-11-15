@@ -24,6 +24,100 @@ describe Offer do
     specify { offer.save.should be_true }
   end
 
+  describe '#composer_name' do
+    xit 'Returns the offer\'s composer name'
+  end
+
+  describe '#composer_name=' do
+  #describe '#composer_name=(text|composer_name)' do    #  <----elegir una de las formas
+    xit 'Changes the offer\'s composer name to the given text|composer_name'
+    xit 'Cannot change the offer\'s composer name with an invalid text|composer_name'
+    xit 'Saves the current offer with offer\'s composer name changed'
+  end
+
+  describe '#receiver_name' do
+    xit 'Returns the offer\'s receiver name'
+  end
+
+  describe '#receiver_name=' do
+  #describe '#receiver_name=(text|receiver_name)' do    #  <----elegir una de las formas
+    xit 'Changes the offer\'s receiver name to the given text|receiver_name'
+    xit 'Cannot change the offer\'s receiver name with an invalid text|receiver_name'
+    xit 'Saves the current offer with offer\'s receiver name changed'
+  end
+
+  describe '#initial_message' do
+    xit 'Returns the offer\'s initial_message'
+  end
+
+  describe '#initial_message=' do
+  #describe '#initial_message=(text|initial_message)' do    #  <----elegir una de las formas
+    xit 'Changes the offer\'s initial_message to the given text|initial_message'
+    xit 'Cannot change the offer\'s initial_message with an invalid text|initial_message'
+    xit 'Saves the current offer with offer\'s initial_message changed'
+  end
+
+  #Elegir una de las dos siguientes
+  describe '#user_composer' do
+    xit 'Returns user who composes the offer'
+  end
+
+  describe '#user_composer_id' do
+    xit 'Returns the id of the user who composes the offer'
+  end
+
+  #Elegir una de las dos siguientes
+  describe '#user_receiver' do
+    xit 'Returns user who receives the offer'
+  end
+
+  describe '#user_receiver_id' do
+    xit 'Returns the id of the user who receives the offer'
+  end
+
+  describe '#composer_products' do
+    xit 'Returns the composer\'s products'
+  end
+
+  describe '#receiver_products' do
+    xit 'Returns the receiver\'s products'
+  end
+
+  # ¿que notacion usamos aqui?
+  describe '#add_composer_product(product)' do
+    xit 'Add the given product to the composer\'s products'
+    ## no añadir si no es bueno?
+    ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
+  end
+  ## seguir aqui mañana :)
+
+  describe '#publish' do
+    it 'Saves a valid request' do
+      request=Fabricate.build(:request)
+      request.publish.should be_true
+    end
+    it 'Cannot save a not valid request' do
+      request=Fabricate.build(:request,text:nil)
+      request.publish.should be_false
+    end
+  end
+
+  describe '#unpublish' do
+    it 'Deletes a saved request' do
+      request=Fabricate(:request)
+      quantity=Request.count
+      request.unpublish
+      quantity.should be > Request.count
+    end
+    it 'Cannot delete a not saved request' do
+      request=Fabricate.build(:request)
+      quantity=Request.count
+      request.unpublish
+      quantity.should eq Request.count
+   end
+  end
+
+
   xit '#composer_name'
   xit '#composer_products'
   xit '#receiver_name'
