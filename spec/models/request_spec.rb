@@ -20,6 +20,67 @@ describe Request do
     specify { request.save.should be_true }
   end
 
+  describe '#owner_name' do
+    xit 'Returns the request\'s owner name'
+  end
+
+  describe '#owner_name=' do
+  #describe '#owner_name=(text|owner_name)' do    #  <----elegir una de las formas
+    xit 'Changes the request\'s owner name to the given text|owner_name'
+    xit 'Cannot change the request\'s owner name with an invalid text|owner_name'
+    xit 'Saves the current request with request\'s owner name changed'
+  end
+
+  describe '#text' do
+    xit 'Returns the request\'s text'
+  end
+
+  describe '#text=' do
+  #describe '#text=(text)' do  #  <----elegir una de las formas
+    xit 'Changes the request\'s text to the given text'
+    xit 'Cannot change the request\'s text with an invalid text'
+    xit 'Saves the current request with request\'s text changed'
+  end
+
+  #Elegir una de las dos siguientes
+  describe '#user_owner' do,
+    xit 'Returns user who owns the request'
+  end
+
+  describe '#user_owner_id' do
+    xit 'Returns the id of the user who owns the request'
+  end
+
+  describe '#publish' do
+    it 'Saves a valid request' do
+      request=Fabricate.build(:request)
+      request.publish.should be_true
+    end
+    it 'Cannot save a not valid request' do
+      request=Fabricate.build(:request,text:nil)
+      request.publish.should be_false
+    end
+  end
+
+  describe '#unpublish' do
+    it 'Deletes a saved request' do
+      request=Fabricate(:request)
+      quantity=Request.count
+      request.unpublish
+      quantity.should be > Request.count
+    end
+    it 'Cannot delete a not saved request' do
+      request=Fabricate.build(:request)
+      quantity=Request.count
+      request.unpublish
+      quantity.should eq Request.count
+   end
+  end
+=begin
+  describe '#requester' do
+    xit 'Returns the requester'
+  end
+
   describe '#restate(text)' do
     xit 'Changes the request to the given text'
     xit 'Cannot change the request with an invalid text'
@@ -29,30 +90,5 @@ describe Request do
   describe '#requester' do
     xit 'Returns the requester'
   end
-
-  describe '#publish' do
-    it 'saves a valid request' do
-      request=Fabricate.build(:request)
-      request.publish.should be_true
-    end
-    it 'not saves a not valid request' do
-      request=Fabricate.build(:request,text:nil)
-      request.publish.should be_false
-    end
-  end
-
-  describe '#unpublish' do
-    it 'deletes the request' do
-      request=Fabricate(:request)
-      qty=Request.count
-      request.unpublish
-      qty.should be > Request.count
-    end
-    it 'not deletes a not saved request' do
-      request=Fabricate.build(:request)
-      qty=Request.count
-      request.unpublish
-      qty.should eq Request.count
-   end
-  end
+=end
 end
