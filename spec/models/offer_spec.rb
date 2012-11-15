@@ -23,4 +23,14 @@ describe Offer do
     specify { offer.should be_valid }
     specify { offer.save.should be_true }
   end
+
+  xit '#composer_name'
+  xit '#composer_products'
+  xit '#receiver_name'
+  xit '#receiver_products'
+  xit '#composer_user'
+  xit '#receiver_user'
+  xit '#publication_date'
+  xit '#send'
+  xit '#withdraw'
 end

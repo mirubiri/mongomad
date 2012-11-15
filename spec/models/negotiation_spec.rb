@@ -23,4 +23,20 @@ describe Negotiation do
     specify { negotiation.should be_valid }
     specify { negotiation.save.should be_true }
   end
+
+  xit '#send_proposal(proposal)'
+  xit '#leave(participant)'
+  xit '#join(participant)'
+  xit '#write_message(participant,message)'
+  xit '#accept_proposal(participant)'
+  xit '#reject_proposal(participant)'
+  xit '#make_deal'
+  xit '#finish'
+  xit '#date_started'
+  xit '#current_proposal'
+  xit '#historic_proposals'
+  xit 'Una funcion para reiniciar el juego'
+  xit '#participants'
+  xit '#conversation'
+  xit ''
 end
