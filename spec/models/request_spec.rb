@@ -24,8 +24,7 @@ describe Request do
     xit 'Returns the request\'s owner name'
   end
 
-  describe '#owner_name=' do
-  #describe '#owner_name=(text|owner_name)' do    #  <----elegir una de las formas
+  describe '#owner_name=(name)' do
     xit 'Changes the request\'s owner name to the given text|owner_name'
     xit 'Cannot change the request\'s owner name with an invalid text|owner_name'
     xit 'Saves the current request with request\'s owner name changed'
@@ -35,8 +34,7 @@ describe Request do
     xit 'Returns the request\'s text'
   end
 
-  describe '#text=' do
-  #describe '#text=(text)' do  #  <----elegir una de las formas
+  describe '#text=(text)' do
     xit 'Changes the request\'s text to the given text'
     xit 'Cannot change the request\'s text with an invalid text'
     xit 'Saves the current request with request\'s text changed'
