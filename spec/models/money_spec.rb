@@ -18,7 +18,7 @@ describe Money do
                                                              only_integer: true,
                                                              greater_than: 0) }
   end
-
+  
   describe 'Factory' do
     let (:money) { Fabricate(:money) }
     specify { money.should be_valid }
