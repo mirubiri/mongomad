@@ -39,5 +39,4 @@ describe Negotiation do
   xit 'Una funcion para reiniciar el juego'
   xit '#participants'
   xit '#conversation'
-  xit ''
 end
