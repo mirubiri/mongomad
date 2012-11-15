@@ -43,7 +43,7 @@ describe Request do
   end
 
   #Elegir una de las dos siguientes
-  describe '#user_owner' do,
+  describe '#user_owner' do
     xit 'Returns user who owns the request'
   end
 
