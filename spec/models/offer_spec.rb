@@ -25,13 +25,13 @@ describe Offer do
   end
 
   describe '#composer_name' do
-    xit 'Returns the offer\'s composer name'
+    xit 'Returns the composer name'
   end
 
   describe '#composer_name=(name)' do
-    xit 'Changes the offer\'s composer name to the given text|composer_name'
-    xit 'Cannot change the offer\'s composer name with an invalid text|composer_name'
-    xit 'Saves the current offer with offer\'s composer name changed'
+    xit 'Changes the composer name to the given name'
+    xit 'Cannot change the composer name with an invalid name'
+    xit 'Saves the current offer with the new name'
   end
 
   describe '#receiver_name' do
@@ -39,19 +39,19 @@ describe Offer do
   end
 
   describe '#receiver_name=(name)' do
-    xit 'Changes the offer\'s receiver name to the given text|receiver_name'
-    xit 'Cannot change the offer\'s receiver name with an invalid text|receiver_name'
-    xit 'Saves the current offer with offer\'s receiver name changed'
+    xit 'Changes the receiver name to the given name'
+    xit 'Cannot change the receiver name with an invalid name'
+    xit 'Saves the current offer with the new name'
   end
 
   describe '#initial_message' do
-    xit 'Returns the offer\'s initial_message'
+    xit 'Returns the initial_message'
   end
 
   describe '#initial_message=(message)' do
-    xit 'Changes the offer\'s initial_message to the given text|initial_message'
-    xit 'Cannot change the offer\'s initial_message with an invalid text|initial_message'
-    xit 'Saves the current offer with offer\'s initial_message changed'
+    xit 'Changes the initial_message to the given message'
+    xit 'Cannot change the initial_message with an invalid message'
+    xit 'Saves the current offer with the new initial_message'
   end
 
   #Elegir una de las dos siguientes
