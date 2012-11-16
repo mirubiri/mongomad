@@ -20,7 +20,7 @@ describe Negotiation do
   end
 
   describe 'Factory' do
-    let (:negotiation) { Fabricate(:negotiation) }
+    let(:negotiation) { Fabricate(:negotiation) }
     specify { negotiation.should be_valid }
     specify { negotiation.save.should be_true }
   end

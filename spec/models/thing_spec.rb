@@ -23,7 +23,7 @@ describe Thing do
   end
 
   describe 'Factory' do
-    let (:thing) { Fabricate(:thing) }
+    let(:thing) { Fabricate(:thing) }
     specify { thing.should be_valid }
     specify { thing.save.should be_true }
   end

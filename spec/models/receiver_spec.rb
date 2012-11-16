@@ -19,7 +19,7 @@ describe Receiver do
   end
 
   describe 'Factory' do
-    let (:receiver) { Fabricate(:receiver) }
+    let(:receiver) { Fabricate(:receiver) }
     specify { receiver.should be_valid }
     specify { receiver.save.should be_true }
   end
