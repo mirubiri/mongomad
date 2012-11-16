@@ -70,21 +70,6 @@ describe Request do
       quantity=Request.count
       request.unpublish
       quantity.should eq Request.count
-   end
+    end
   end
-=begin
-  describe '#requester' do
-    xit 'Returns the requester'
-  end
-
-  describe '#restate(text)' do
-    xit 'Changes the request to the given text'
-    xit 'Cannot change the request with an invalid text'
-    xit 'Saves the current request'
-  end
-
-  describe '#requester' do
-    xit 'Returns the requester'
-  end
-=end
 end
