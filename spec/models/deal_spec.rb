@@ -17,8 +17,31 @@ describe Deal do
   end
 
   describe 'Factory' do
-
     specify { deal.should be_valid }
     specify { deal.save.should be_true }
+  end
+
+  describe '#conversation' do
+    xit 'Returns all messages'
+  end
+
+  describe '#write_message(message)' do
+    xit 'Add new message to deal'
+  end
+
+  describe '#agreement' do
+    xit 'Returns the agreement'
+  end
+
+  describe '#other_id(id_dealer)' do
+    xit 'Returns the id of the other dealer'
+  end
+
+  describe '#user_dealer' do
+    xit 'Returns user who composes the offer'
+  end
+
+  describe '#user_dealer_id' do
+    xit 'Returns the id of the user who composes the offer'
   end
 end
