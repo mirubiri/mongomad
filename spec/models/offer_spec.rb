@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Offer do
-
   let(:offer) { Fabricate(:offer) }
 
   describe 'Relations' do
@@ -20,7 +19,6 @@ describe Offer do
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :initial_message }
   end
-
 
   describe 'Factory' do
     specify { offer.should be_valid }
@@ -84,6 +82,22 @@ describe Offer do
     ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
   end
 
+  describe '#add_receiver_product(product)' do
+    xit 'Add the given product to the receiver products'
+    ## no añadir si no es bueno?
+    ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
+  end
+
+  describe '#remove_composer_product(product)' do
+    xit 'Remove the given product from the composer products'
+    ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
+  end
+
+  describe '#remove_receiver_product(product)' do
+    xit 'Remove the given product from the receiver products'
+    ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
+  end
+
   describe '#publish' do
     it 'Saves a valid request' do
       request=Fabricate.build(:request)
@@ -107,6 +121,6 @@ describe Offer do
       quantity=Request.count
       request.unpublish
       quantity.should eq Request.count
-   end
+    end
   end
 end
