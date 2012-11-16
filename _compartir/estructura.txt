@@ -1,79 +1,28 @@
 #Relations
  (hijo) embedded_in :polymorphic_money, polymorphic: true
 (padre) embeds_one :money, as: :polymorphic_money
-
-(padre) has_and_belongs_to_many :negotiations, inverse_of: nil
-(padre) has_and_belongs_to_many :offer_outbox, class_name: "Offer", inverse_of: nil
 -----------------------------------------------------------------------------------
-pending("REVISAR: Relations Validations")
-pending("PREA: Relations Validations")
------------------------------------------------------------------------------------
-#Modules
 require 'spec_helper'
 
 describe Money do
   describe 'Relations' do
-    pending("TODO: Relations")
   end
 
   describe 'Attributes' do
-    pending("TODO: Attributes")
   end
 
   describe 'Validations' do
-    #Relations
-    pending("TODO: Relations Validations")
-    #Attributes
-    pending("TODO: Attributes Validations")
   end
 
-  #Behaviour
   describe 'Factory' do
-    pending("TODO: Factory")
+  end
+
+  describe '#' do
+    xit ''
   end
 end
 ------------------------------------------------------------------------------------
-class Money
-  #Modules
-  #TODO: Modules (or DELETE)
-
-  #Relations
-  #TODO: Relations (or DELETE)
-
-  #Attributes
-  #TODO: Attributes (or DELETE)
-
-  #Validations (Relations)
-  #TODO: Validations Relations(or DELETE)
-
-  #Validations (Attributes)
-  #TODO: Validations Attributes(or DELETE)
-
-  #Behaviour
-  #TODO: Behaviour (or DELETE)
-end
---------------------------------------------------------------------------------------
-Codigo en thing:
-
-=begin
-  def owner
-    thing_box.user
-  end
-
-  def to_product
-    p=Product.new
-    #p.main_photo=main_photo
-    p.name=name
-    p.description=description
-    #p.photos=photos.dup
-    p.thing_id=_id
-    p.quantity=nil
-    return p
-  end
-=end
-
-
-codigo en el test de thing------------------------------------------
+codigo en el test de thing
 
 =begin
 #Behaviour
@@ -125,48 +74,3 @@ codigo en el test de thing------------------------------------------
     it { should validate_confirmation_of(:email) }
     it { should validate_presence_of :birth_date }
     it { should validate_presence_of :registration_date }
-
-    it { should be_timestamped_document }
-    it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
-    .of_type(String) }
-
------------------------------------------------------------------------------------
-class Money
-
-  #Modules
-  include Mongoid::Document
-
-  #Relations
-  embedded_in :polymorphic_money, polymorphic: true
-
-  #Attributes
-  field :owner, type: Moped::BSON::ObjectId
-  field :quantity, type: Integer
-
-  #Validations (Attributes)
-  validates :owner,
-            :quantity,
-            presence: true
-
-  validates :quantity,
-            allow_nil: false,
-            numericality: {only_integer: true,
-                           greater_than: 0 }
-
-  #Behaviour
-  #TODO: Behaviour (or DELETE)
-
-end
-
- #Attributes
-  field :thing_id, type: Moped::BSON::ObjectId
-  field :name, type: String
-  field :description, type: String
-  field :quantity, type: Integer, default: 1
-
-  #Validations (Attributes)
-  validates :thing_id,
-            :name,
-            :description,
-            :quantity,
-            presence:true
