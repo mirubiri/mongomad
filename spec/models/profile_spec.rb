@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Profile do
+  let(:profile) { Fabricate(:profile) }
+
   describe 'Relations' do
     it { should be_embedded_in :user }
   end
@@ -34,7 +36,6 @@ describe Profile do
   end
 
   describe 'Factory' do
-    let(:profile) { Fabricate(:profile) }
     specify { profile.should be_valid }
     specify { profile.save.should be_true }
   end

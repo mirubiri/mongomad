@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe Offer do
+
+  let(:offer) { Fabricate(:offer) }
+
   describe 'Relations' do
     it { should embed_one :composer }
     it { should embed_one :receiver }
@@ -18,8 +21,8 @@ describe Offer do
     it { should validate_presence_of :initial_message }
   end
 
+
   describe 'Factory' do
-    let(:offer) { Fabricate(:offer) }
     specify { offer.should be_valid }
     specify { offer.save.should be_true }
   end

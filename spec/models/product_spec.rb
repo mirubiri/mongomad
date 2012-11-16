@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Product do
+  let(:product) { Fabricate(:product) }
+
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
   end
@@ -25,7 +27,7 @@ describe Product do
   end
 
   describe 'Factory' do
-    let(:product) { Fabricate(:product) }
+
     specify { product.should be_valid }
     specify { product.save.should be_true }
   end

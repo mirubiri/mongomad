@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Proposal do
+  let(:proposal) { Fabricate(:proposal) }
+
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_proposal }
     it { should embed_one :composer }
@@ -19,7 +21,6 @@ describe Proposal do
   end
 
   describe 'Factory' do
-    let(:proposal) { Fabricate(:proposal) }
     specify { proposal.should be_valid }
     specify { proposal.save.should be_true }
   end

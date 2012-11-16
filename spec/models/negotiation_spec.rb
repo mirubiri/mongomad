@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Negotiation do
+  let(:negotiation) { Fabricate(:negotiation) }
+
   describe 'Relations' do
     it { should embed_many :proposals }
     it { should embed_many :messages }
@@ -20,7 +22,6 @@ describe Negotiation do
   end
 
   describe 'Factory' do
-    let(:negotiation) { Fabricate(:negotiation) }
     specify { negotiation.should be_valid }
     specify { negotiation.save.should be_true }
   end

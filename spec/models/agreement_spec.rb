@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Agreement do
+  let(:agreement) { Fabricate(:agreement) }
+
   describe 'Relations' do
     it { should be_embedded_in :deal }
     it { should embed_many :proposals }
@@ -13,7 +15,6 @@ describe Agreement do
   end
 
   describe 'Factory' do
-    let(:agreement) { Fabricate(:agreement) }
     specify { agreement.should be_valid }
     specify { agreement.save.should be_true }
   end

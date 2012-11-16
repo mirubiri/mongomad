@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  let(:user) { Fabricate(:user) }
+
   describe 'Relations' do
     it { should embed_one :profile }
     it { should embed_many :things }
@@ -20,7 +22,6 @@ describe User do
   end
 
   describe 'Factory' do
-    let(:user) { Fabricate(:user) }
     specify { user.should be_valid }
     specify { user.save.should be_true }
   end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Request do
+  let(:request) { Fabricate(:request) }
+
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
@@ -15,7 +17,6 @@ describe Request do
   end
 
   describe 'Factory' do
-    let(:request) { Fabricate(:request) }
     specify { request.should be_valid }
     specify { request.save.should be_true }
   end
