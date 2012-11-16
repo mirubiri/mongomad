@@ -26,18 +26,51 @@ describe Negotiation do
     specify { negotiation.save.should be_true }
   end
 
-  xit '#send_proposal(proposal)'
-  xit '#leave(participant)'
-  xit '#join(participant)'
-  xit '#write_message(participant,message)'
-  xit '#accept_proposal(participant)'
-  xit '#reject_proposal(participant)'
-  xit '#make_deal'
-  xit '#finish'
-  xit '#date_started'
-  xit '#current_proposal'
-  xit '#historic_proposals'
-  xit 'Una funcion para reiniciar el juego'
-  xit '#participants'
-  xit '#conversation'
+  describe '#other_id(id_negotiator)' do
+    xit 'Returns the id of the other user'
+  end
+
+  describe '#user_negotiator(id_negotiator)' do
+    xit 'Returns negotiator with the given id'
+  end
+
+  describe '#make_proposal(proposal)' do
+    xit 'Adds proposal to negotiation'
+  end
+
+  describe '#last_proposal' do
+    xit 'Returns last proposal'
+  end
+
+  describe '#conversation' do
+    xit 'Returns all messages'
+  end
+
+  describe '#write_message(message)' do
+    xit 'Add new message to negotiation'
+  end
+
+  describe '#can_offer_deal?(id_negotiator)' do
+    xit 'Return if negotiator can offer a deal'
+  end
+
+  describe '#offer_deal(id_negotiator)' do
+    xit 'Offers a deal to other negotiator'
+  end
+
+  describe '#can_accept_deal?(id_negotiator)' do
+    xit 'Return if negotiator can accept a deal'
+  end
+
+  describe '#accept_deal(id_negotiator)' do
+    xit 'Acceps deal from other negotiatior'
+  end
+
+  describe '#join(id_negotiator)' do
+    xit 'Negotiator joins negotiation'
+  end
+
+  describe '#leave(id_negotiator)' do
+    xit 'Negotiator leaves negotiation'
+  end
 end
