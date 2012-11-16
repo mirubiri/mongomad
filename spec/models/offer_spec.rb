@@ -28,8 +28,7 @@ describe Offer do
     xit 'Returns the offer\'s composer name'
   end
 
-  describe '#composer_name=' do
-  #describe '#composer_name=(text|composer_name)' do    #  <----elegir una de las formas
+  describe '#composer_name=(name)' do
     xit 'Changes the offer\'s composer name to the given text|composer_name'
     xit 'Cannot change the offer\'s composer name with an invalid text|composer_name'
     xit 'Saves the current offer with offer\'s composer name changed'
@@ -39,8 +38,7 @@ describe Offer do
     xit 'Returns the offer\'s receiver name'
   end
 
-  describe '#receiver_name=' do
-  #describe '#receiver_name=(text|receiver_name)' do    #  <----elegir una de las formas
+  describe '#receiver_name=(name)' do
     xit 'Changes the offer\'s receiver name to the given text|receiver_name'
     xit 'Cannot change the offer\'s receiver name with an invalid text|receiver_name'
     xit 'Saves the current offer with offer\'s receiver name changed'
@@ -50,8 +48,7 @@ describe Offer do
     xit 'Returns the offer\'s initial_message'
   end
 
-  describe '#initial_message=' do
-  #describe '#initial_message=(text|initial_message)' do    #  <----elegir una de las formas
+  describe '#initial_message=(message)' do
     xit 'Changes the offer\'s initial_message to the given text|initial_message'
     xit 'Cannot change the offer\'s initial_message with an invalid text|initial_message'
     xit 'Saves the current offer with offer\'s initial_message changed'
@@ -83,13 +80,11 @@ describe Offer do
     xit 'Returns the receiver\'s products'
   end
 
-  # ¿que notacion usamos aqui?
   describe '#add_composer_product(product)' do
     xit 'Add the given product to the composer\'s products'
     ## no añadir si no es bueno?
     ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
   end
-  ## seguir aqui mañana :)
 
   describe '#publish' do
     it 'Saves a valid request' do
@@ -116,15 +111,4 @@ describe Offer do
       quantity.should eq Request.count
    end
   end
-
-
-  xit '#composer_name'
-  xit '#composer_products'
-  xit '#receiver_name'
-  xit '#receiver_products'
-  xit '#composer_user'
-  xit '#receiver_user'
-  xit '#publication_date'
-  xit '#send'
-  xit '#withdraw'
 end
