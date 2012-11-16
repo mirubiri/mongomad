@@ -15,32 +15,29 @@ describe Request do
   end
 
   describe 'Factory' do
-    let (:request) { Fabricate(:request) }
+    let(:request) { Fabricate(:request) }
     specify { request.should be_valid }
     specify { request.save.should be_true }
   end
 
   describe '#owner_name' do
-    xit 'Returns the request\'s owner name'
+    xit 'Returns the owner name'
   end
 
   describe '#owner_name=(name)' do
-    xit 'Changes the request\'s owner name to the given text|owner_name'
-    xit 'Cannot change the request\'s owner name with an invalid text|owner_name'
-    xit 'Saves the current request with request\'s owner name changed'
+    xit 'Changes the owner name to the given name'
+    xit 'Cannot change the owner name with an invalid name'
   end
 
   describe '#text' do
-    xit 'Returns the request\'s text'
+    xit 'Returns the request text'
   end
 
   describe '#text=(text)' do
-    xit 'Changes the request\'s text to the given text'
-    xit 'Cannot change the request\'s text with an invalid text'
-    xit 'Saves the current request with request\'s text changed'
+    xit 'Changes the request text to the given text'
+    xit 'Cannot change the request text with an invalid text'
   end
 
-  #Elegir una de las dos siguientes
   describe '#user_owner' do
     xit 'Returns user who owns the request'
   end
