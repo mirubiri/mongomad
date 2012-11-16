@@ -35,7 +35,7 @@ describe Offer do
   end
 
   describe '#receiver_name' do
-    xit 'Returns the offer\'s receiver name'
+    xit 'Returns the receiver name'
   end
 
   describe '#receiver_name=(name)' do
@@ -73,15 +73,15 @@ describe Offer do
   end
 
   describe '#composer_products' do
-    xit 'Returns the composer\'s products'
+    xit 'Returns the composer products'
   end
 
   describe '#receiver_products' do
-    xit 'Returns the receiver\'s products'
+    xit 'Returns the receiver products'
   end
 
   describe '#add_composer_product(product)' do
-    xit 'Add the given product to the composer\'s products'
+    xit 'Add the given product to the composer products'
     ## no añadir si no es bueno?
     ## salvar la current offer whit blablabla??? (como en los casos de arriba?)
   end
