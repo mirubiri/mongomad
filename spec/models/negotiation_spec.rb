@@ -27,7 +27,7 @@ describe Negotiation do
   end
 
   describe '#other_id(id_negotiator)' do
-    xit 'Returns the id of the other user'
+    xit 'Returns the id of the other negotiator'
   end
 
   describe '#user_negotiator(id_negotiator)' do
