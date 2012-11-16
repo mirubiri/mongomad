@@ -31,7 +31,6 @@ describe Offer do
   describe '#composer_name=(name)' do
     xit 'Changes the composer name to the given name'
     xit 'Cannot change the composer name with an invalid name'
-    xit 'Saves the current offer with the new name'
   end
 
   describe '#receiver_name' do
@@ -41,7 +40,6 @@ describe Offer do
   describe '#receiver_name=(name)' do
     xit 'Changes the receiver name to the given name'
     xit 'Cannot change the receiver name with an invalid name'
-    xit 'Saves the current offer with the new name'
   end
 
   describe '#initial_message' do
@@ -51,10 +49,8 @@ describe Offer do
   describe '#initial_message=(message)' do
     xit 'Changes the initial_message to the given message'
     xit 'Cannot change the initial_message with an invalid message'
-    xit 'Saves the current offer with the new initial_message'
   end
 
-  #Elegir una de las dos siguientes
   describe '#user_composer' do
     xit 'Returns user who composes the offer'
   end
@@ -63,7 +59,6 @@ describe Offer do
     xit 'Returns the id of the user who composes the offer'
   end
 
-  #Elegir una de las dos siguientes
   describe '#user_receiver' do
     xit 'Returns user who receives the offer'
   end
