@@ -5,6 +5,7 @@ describe Profile do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
+    it { should embed_one :photo }
   end
 
   describe 'Attributes' do
