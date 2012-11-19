@@ -25,5 +25,6 @@ class Profile
             :country,
             :email,
             :birth_date,
+            :website,
             presence: true
 end

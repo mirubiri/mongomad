@@ -1,11 +1,10 @@
 Fabricator(:profile) do
   user { Fabricate.build(:user,profile:nil) }
-  name 'name'
-  surname 'surname'
-  nickname 'nickname'
-  password 'password'
+  name {Faker::Name.first_name}
+  surname {Faker::Name.last_name}
+  nickname {Faker::Internet.user_name }
   sex 'men'
-  country 'spain'
-  email 'mail@mail.com'
+  country {Faker::Address.country}
   birth_date '10-10-2000'
+  website {Faker::Internet.domain_name}
 end

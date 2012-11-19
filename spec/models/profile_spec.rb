@@ -12,10 +12,8 @@ describe Profile do
     it { should have_fields(:name,
                             :surname,
                             :nickname,
-                            :password,
                             :sex,
                             :country,
-                            :email,
                             :delivery_address,
                             :phone_number,
                             :website)
@@ -33,10 +31,11 @@ describe Profile do
     it { should validate_presence_of :country }
     it { should validate_presence_of :email }
     it { should validate_presence_of :birth_date }
+    it { should validate_presence_of :website }
   end
 
   describe 'Factory' do
-    specify { profile.should be_valid }
-    specify { profile.save.should be_true }
+    specify { expect {profile.valid?}.to be_true }
+    specify { expect {profile.save}.to be_true }
   end
 end
