@@ -12,7 +12,7 @@ describe Image do
     it { should validate_presence_of :file }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { expect(image.valid?).to be_true }
     specify { expect(image.save).to be_true }
   end

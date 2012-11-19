@@ -27,7 +27,7 @@ describe Thing do
                                                           greater_than_or_equal_to: 0) }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { expect(thing.valid?).to be_true }
     specify { expect(thing.save).to be_true }
     it 'main_image must be saved on disk' do

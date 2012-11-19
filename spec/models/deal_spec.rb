@@ -16,7 +16,7 @@ describe Deal do
     it { should validate_presence_of :agreement }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { deal.should be_valid }
     specify { deal.save.should be_true }
   end

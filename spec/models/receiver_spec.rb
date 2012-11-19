@@ -23,7 +23,7 @@ describe Receiver do
     it { should validate_presence_of :photo }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { receiver.should be_valid }
     specify { receiver.save.should be_true }
     it 'photo must be saved on disk' do

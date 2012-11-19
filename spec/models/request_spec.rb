@@ -16,7 +16,7 @@ describe Request do
     it { should validate_presence_of :text }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { request.should be_valid }
     specify { request.save.should be_true }
   end

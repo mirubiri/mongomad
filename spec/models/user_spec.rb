@@ -20,7 +20,7 @@ describe User do
     it { should validate_presence_of :profile }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { expect(user.valid?).to be_true }
     specify { expect(user.save).to be_true,"A ver que tenemos #{user.errors.messages}" }
   end

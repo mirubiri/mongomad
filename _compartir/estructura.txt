@@ -14,7 +14,7 @@ describe Money do
   describe 'Validations' do
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
   end
 
   describe '#' do
@@ -31,7 +31,7 @@ codigo en el test de thing
     @product=@thing.to_product
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { @thing.should be_valid }
   end
 

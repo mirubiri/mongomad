@@ -29,7 +29,7 @@ describe Product do
                                                              greater_than_or_equal_to: 0) }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { product.should be_valid }
     specify { product.save.should be_true }
     it 'main_image must be saved on disk' do

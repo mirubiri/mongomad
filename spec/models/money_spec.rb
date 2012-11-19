@@ -21,7 +21,7 @@ describe Money do
                                                              greater_than: 0) }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { money.should be_valid }
     specify { money.save.should be_true }
   end

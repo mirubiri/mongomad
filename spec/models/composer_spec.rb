@@ -23,7 +23,7 @@ describe Composer do
 
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { composer.should be_valid }
     specify { composer.save.should be_true }
     it 'photo must be saved on disk' do

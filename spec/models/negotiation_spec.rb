@@ -21,7 +21,7 @@ describe Negotiation do
     it { should validate_presence_of :token_state }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { negotiation.should be_valid }
     specify { negotiation.save.should be_true }
   end

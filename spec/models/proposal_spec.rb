@@ -20,7 +20,7 @@ describe Proposal do
     it { should validate_presence_of :receiver }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { proposal.should be_valid }
     specify { proposal.save.should be_true }
   end

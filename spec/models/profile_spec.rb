@@ -33,7 +33,7 @@ describe Profile do
     it { should validate_presence_of :website }
   end
 
-  describe 'Factory' do
+  describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
     specify { expect(profile.save).to be_true }
     it 'photo must be saved on disk' do

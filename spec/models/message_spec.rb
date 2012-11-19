@@ -24,7 +24,7 @@ describe Message do
 
   xit "Cada mensaje debe ir acompanado del avatar del usuario que lo escribe"
 
-  describe 'Factory' do
+  describe 'Factories' do
 
     specify { message.should be_valid }
     specify { message.save.should be_true }
