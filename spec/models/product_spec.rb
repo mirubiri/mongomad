@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Product do
-  let(:product) { Fabricate(:product) }
+  let(:product) { Fabricate.build(:product) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }

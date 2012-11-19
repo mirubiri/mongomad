@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Receiver do
-  let(:receiver) { Fabricate(:receiver) }
+  let(:receiver) { Fabricate.build(:receiver) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_receiver }

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Deal do
-  let(:deal) { Fabricate(:deal) }
+  let(:deal) { Fabricate.build(:deal) }
 
   describe 'Relations' do
     it { should embed_one :agreement }

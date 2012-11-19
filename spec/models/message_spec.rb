@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Message do
-  let(:message) { Fabricate(:message) }
+  let(:message) { Fabricate.build(:message) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_message }

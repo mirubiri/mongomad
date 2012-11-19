@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Money do
-  let(:money) { Fabricate(:money) }
+  let(:money) { Fabricate.build(:money) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_money }

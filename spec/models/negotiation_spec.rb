@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Negotiation do
-  let(:negotiation) { Fabricate(:negotiation) }
+  let(:negotiation) { Fabricate.build(:negotiation) }
 
   describe 'Relations' do
     it { should embed_many :proposals }

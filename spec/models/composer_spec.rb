@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Composer do
-  let(:composer) { Fabricate(:composer) }
+  let(:composer) { Fabricate.build(:composer) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_composer }

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Proposal do
-  let(:proposal) { Fabricate(:proposal) }
+  let(:proposal) { Fabricate.build(:proposal) }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_proposal }

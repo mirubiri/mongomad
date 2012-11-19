@@ -24,10 +24,12 @@ group :development,:test do
 	gem 'rspec-rails'
 	gem 'fabrication'
 	gem 'mongoid-rspec'
+  gem 'faker'
 end
 
 gem 'awesome_print'
 gem 'mongoid'
+gem 'devise'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
