@@ -5,6 +5,8 @@ describe Product do
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
+    it { should embed_many :secondary_images }
+    it { should embed_one :main_image }
   end
 
   describe 'Attributes' do
@@ -19,6 +21,7 @@ describe Product do
     it { should validate_presence_of :polymorphic_product }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
+    it { should validate_presence_of :main_image }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
@@ -27,7 +30,6 @@ describe Product do
   end
 
   describe 'Factory' do
-
     specify { product.should be_valid }
     specify { product.save.should be_true }
   end

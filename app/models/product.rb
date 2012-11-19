@@ -2,6 +2,8 @@ class Product
   include Mongoid::Document
 
   embedded_in :polymorphic_product, polymorphic: true
+  embeds_many :secondary_images,class_name: "Image", as: :polymorphic_image,cascade_callbacks: true
+  embeds_one :main_image,class_name: "Image", as: :polymorphic_image,cascade_callbacks: true
 
   field :thing_id, type: Moped::BSON::ObjectId
   field :name, type: String
@@ -13,6 +15,7 @@ class Product
             :name,
             :description,
             :quantity,
+            :main_image,
             presence: true
 
   validates :quantity,

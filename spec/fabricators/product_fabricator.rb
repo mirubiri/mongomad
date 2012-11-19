@@ -5,4 +5,5 @@ Fabricator(:product) do
   name 'name'
   description 'description'
   quantity 5
+  main_image { Fabricate.build(:image,polymorphic_image:nil) }
 end
