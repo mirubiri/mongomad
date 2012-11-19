@@ -30,5 +30,9 @@ describe Thing do
   describe 'Factory' do
     specify { expect(thing.valid?).to be_true }
     specify { expect(thing.save).to be_true }
+    it 'main_image must be saved on disk' do
+      thing.save
+      expect(File.exists?(thing.main_image.file.path)).to be_true
+    end
   end
 end

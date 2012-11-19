@@ -32,5 +32,9 @@ describe Product do
   describe 'Factory' do
     specify { product.should be_valid }
     specify { product.save.should be_true }
+    it 'main_image must be saved on disk' do
+      product.save
+      expect(File.exists?(product.main_image.file.path)).to be_true
+    end
   end
 end

@@ -26,5 +26,9 @@ describe Composer do
   describe 'Factory' do
     specify { composer.should be_valid }
     specify { composer.save.should be_true }
+    it 'photo must be saved on disk' do
+      composer.save
+      expect(File.exists?(composer.photo.file.path)).to be_true
+    end
   end
 end

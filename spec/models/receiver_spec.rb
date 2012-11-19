@@ -26,5 +26,9 @@ describe Receiver do
   describe 'Factory' do
     specify { receiver.should be_valid }
     specify { receiver.save.should be_true }
+    it 'photo must be saved on disk' do
+      receiver.save
+      expect(File.exists?(receiver.photo.file.path)).to be_true
+    end
   end
 end
