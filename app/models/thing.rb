@@ -2,7 +2,6 @@ class Thing
   include Mongoid::Document
 
   embedded_in :user
-  embeds_many :secondary_images,class_name: "Image", as: :polymorphic_image,cascade_callbacks: true
   embeds_one :main_image,class_name: "Image", as: :polymorphic_image,cascade_callbacks: true
 
   field :name, type: String

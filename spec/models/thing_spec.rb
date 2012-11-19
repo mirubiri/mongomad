@@ -6,7 +6,6 @@ describe Thing do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_many :secondary_images }
     it { should embed_one :main_image }
   end
 
