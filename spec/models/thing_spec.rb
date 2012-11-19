@@ -35,4 +35,13 @@ describe Thing do
       expect(File.exists?(thing.main_image.file.path)).to be_true
     end
   end
+
+  describe '#destroy' do
+    it 'deletes main_image files from disk' do
+      file_path=thing.main_image.file.path
+      thing.save
+      thing.destroy
+      expect(File.exists?(file_path)).to be_false
+    end
+  end
 end

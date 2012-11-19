@@ -31,4 +31,13 @@ describe Receiver do
       expect(File.exists?(receiver.photo.file.path)).to be_true
     end
   end
+
+  describe '#destroy' do
+    it 'deletes photo files from disk' do
+      file_path=receiver.photo.file.path
+      receiver.save
+      receiver.destroy
+      expect(File.exists?(file_path)).to be_false
+    end
+  end
 end

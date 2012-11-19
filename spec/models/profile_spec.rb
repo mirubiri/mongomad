@@ -41,4 +41,13 @@ describe Profile do
       expect(File.exists?(profile.photo.file.path)).to be_true
     end
   end
+
+  describe '#destroy' do
+    it 'deletes photo files from disk' do
+      file_path=profile.photo.file.path
+      profile.save
+      profile.destroy
+      expect(File.exists?(file_path)).to be_false
+    end
+  end
 end

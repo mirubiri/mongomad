@@ -31,4 +31,13 @@ describe Composer do
       expect(File.exists?(composer.photo.file.path)).to be_true
     end
   end
+
+  describe '#destroy' do
+    it 'deletes photo files from disk' do
+      file_path=composer.photo.file.path
+      composer.save
+      composer.destroy
+      expect(File.exists?(file_path)).to be_false
+    end
+  end
 end
