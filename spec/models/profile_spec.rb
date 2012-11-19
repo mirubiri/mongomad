@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Profile do
   let(:profile) { Fabricate.build(:profile) }
+  after(:each) { profile && profile.user.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :user }

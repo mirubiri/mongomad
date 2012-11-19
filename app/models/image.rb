@@ -3,8 +3,10 @@ class Image
   include Mongoid::Paperclip
 
   embedded_in :polymorphic_image, polymorphic: true
-  
-  has_mongoid_attached_file :file#,
+
+  has_mongoid_attached_file :file
+
+  #,
     #:styles => {
       #:original => ['1920x1680>', :jpg],
       #:small    => ['100x100#',   :jpg],
@@ -12,7 +14,7 @@ class Image
       #:large    => ['500x500>',   :jpg]
     #}
 
-    validates :file, 
-              :polymorphic_image,
-              presence: true
+  validates :file,
+            :polymorphic_image,
+            presence: true
 end

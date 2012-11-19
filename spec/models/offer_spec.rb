@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Offer do
   let(:offer) { Fabricate.build(:offer) }
+  after(:each) { offer && offer.destroy }
 
   describe 'Relations' do
     it { should embed_one :composer }

@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Image do
   let(:image) { Fabricate.build(:image) }
-
+  after(:each) do
+    image && image.polymorphic_image.destroy
+  end
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_image }
   end

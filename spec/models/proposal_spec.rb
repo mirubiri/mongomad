@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Proposal do
   let(:proposal) { Fabricate.build(:proposal) }
+  after(:each) { proposal && proposal.polymorphic_proposal.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_proposal }

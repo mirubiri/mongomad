@@ -2,7 +2,7 @@ class Negotiation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_many :proposals, as: :polymorphic_proposal
+  embeds_many :proposals, as: :polymorphic_proposal,cascade_callbacks: true
   embeds_many :messages, as: :polymorphic_message
 
   field :token_user_id, type: Moped::BSON::ObjectId

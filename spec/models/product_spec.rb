@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Product do
   let(:product) { Fabricate.build(:product) }
+  after(:each) { product && product.polymorphic_product.polymorphic_composer.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_product }
@@ -46,4 +47,5 @@ describe Product do
       expect(File.exists?(file_path)).to be_false
     end
   end
+
 end

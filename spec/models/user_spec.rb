@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe User do
   let(:user) { Fabricate.build(:user) }
+  after(:each) { user && user.destroy }
+
   describe 'Relations' do
     it { should embed_one :profile }
     it { should embed_many :things }
