@@ -5,12 +5,12 @@ class Negotiation
   embeds_many :proposals, as: :polymorphic_proposal
   embeds_many :messages, as: :polymorphic_message
 
-  field :token_owner_id, type: Moped::BSON::ObjectId
+  field :token_user_id, type: Moped::BSON::ObjectId
   field :token_state, type: Boolean
 
   validates :proposals,
             :messages,
-            :token_owner_id,
+            :token_user_id,
             :token_state,
             presence: true
 end

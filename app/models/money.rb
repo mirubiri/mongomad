@@ -3,11 +3,11 @@ class Money
 
   embedded_in :polymorphic_money, polymorphic: true
 
-  field :owner_id, type: Moped::BSON::ObjectId
+  field :user_id, type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
   validates :polymorphic_money,
-            :owner_id,
+            :user_id,
             :quantity,
             presence: true
 
