@@ -5,6 +5,8 @@ describe Thing do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
+    it { should embed_many :secondary_images }
+    it { should embed_one :main_image }
   end
 
   describe 'Attributes' do
@@ -19,13 +21,14 @@ describe Thing do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :stock }
+    it { should validate_presence_of :main_image}
     it { should validate_numericality_of(:stock).to_allow(nil: false,
                                                           only_integer: true,
                                                           greater_than_or_equal_to: 0) }
   end
 
   describe 'Factory' do
-    specify { thing.should be_valid }
-    specify { thing.save.should be_true }
+    specify { expect(thing.valid?).to be_true }
+    specify { expect(thing.save).to be_true }
   end
 end

@@ -20,10 +20,8 @@ class Profile
             :name,
             :surname,
             :nickname,
-            :password,
             :sex,
             :country,
-            :email,
             :birth_date,
             :website,
             presence: true

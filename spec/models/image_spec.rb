@@ -13,7 +13,7 @@ describe Image do
   end
 
   describe 'Factory' do
-    specify { image.should be_valid }
-    specify { image.save.should be_true }
+    specify { expect {image.valid?}.to be_true }
+    specify { expect {image.save}.to be_true }
   end
 end

@@ -26,16 +26,14 @@ describe Profile do
     it { should validate_presence_of :name }
     it { should validate_presence_of :surname }
     it { should validate_presence_of :nickname }
-    it { should validate_presence_of :password }
     it { should validate_presence_of :sex }
-    it { should validate_presence_of :country }
-    it { should validate_presence_of :email }
+    it { should validate_presence_of :country }   
     it { should validate_presence_of :birth_date }
     it { should validate_presence_of :website }
   end
 
   describe 'Factory' do
-    specify { expect {profile.valid?}.to be_true }
-    specify { expect {profile.save}.to be_true }
+    specify { expect(profile.valid?).to be_true }
+    specify { expect(profile.save).to be_true }
   end
 end
