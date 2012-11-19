@@ -22,6 +22,8 @@ describe Message do
     it { should validate_presence_of :text }
   end
 
+  xit "Cada mensaje debe ir acompanado del avatar del usuario que lo escribe"
+
   describe 'Factory' do
 
     specify { message.should be_valid }
