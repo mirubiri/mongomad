@@ -29,6 +29,7 @@ end
 
 gem 'awesome_print'
 gem 'mongoid'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'devise'
 gem 'jquery-rails'
 
