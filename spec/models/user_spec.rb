@@ -21,7 +21,7 @@ describe User do
   end
 
   describe 'Factory' do
-    specify { expect {user.valid?}.to be_true }
-    specify { expect {user.save}.to be_true }
+    specify { expect(user.valid?).to be_true }
+    specify { expect(user.save).to be_true,"A ver que tenemos #{user.errors.messages}" }
   end
 end

@@ -2,8 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one :profile
-  embeds_many :things
+  embeds_one :profile,cascade_callbacks:true
+  embeds_many :things,cascade_callbacks:true
 
   has_and_belongs_to_many :requests, inverse_of: nil
   has_and_belongs_to_many :sent_offers, class_name: "Offer", inverse_of: nil
