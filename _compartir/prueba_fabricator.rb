@@ -1,0 +1,2 @@
+Fabricator(:prueba) do
+end
