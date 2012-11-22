@@ -7,8 +7,10 @@ class Deal::Agreement::Offer
     embeds_one :receiver,cascade_callbacks:true
     embeds_one :money
 
+=begin
     validates :agreement,
               :composer,
               :receiver,
               presence: true
+=end
 end
