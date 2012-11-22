@@ -74,4 +74,4 @@ codigo en el test de thing
     it { should validate_confirmation_of(:email) }
     it { should validate_presence_of :birth_date }
     it { should validate_presence_of :registration_date }
-    -----
+    ------
