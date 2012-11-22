@@ -1,19 +1,21 @@
 module Negotiation
-  class Composer
-    include Mongoid::Document
+  module Composer
+    class Composer
+      include Mongoid::Document
 
-    embedded_in :polymorphic_composer, polymorphic: true
-    embeds_many :products, as: :polymorphic_product, cascade_callbacks: true
-    embeds_one :photo,class_name:"Image",as: :polymorphic_image,cascade_callbacks: true
+      embedded_in :proposal
+      embeds_many :products, cascade_callbacks: true
+      embeds_one :photo,class_name:"Image",
 
-    field :user_id, type: Moped::BSON::ObjectId
-    field :name, type: String
+      field :user_id, type: Moped::BSON::ObjectId
+      field :name, type: String
 
-    validates :polymorphic_composer,
-              :products,
-              :user_id,
-              :name,
-              :photo,
-              presence: true
+      validates :proposal,
+                :products,
+                :user_id,
+                :name,
+                :photo,
+                presence: true
+    end
   end
 end

@@ -3,12 +3,12 @@ module Negotiation
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    embedded_in :polymorphic_proposal, polymorphic: true
-    embeds_one :composer, as: :polymorphic_composer,cascade_callbacks:true
-    embeds_one :receiver, as: :polymorphic_receiver,cascade_callbacks:true
-    embeds_one :money, as: :polymorphic_money
+    embedded_in :negotiation #, class_name: 'Negotiation::negotiation'
+    embeds_one :composer, cascade_callbacks:true
+    embeds_one :receiver, cascade_callbacks:true
+    embeds_one :money
 
-    validates :polymorphic_proposal,
+    validates :negotiation,
               :composer,
               :receiver,
               presence: true
