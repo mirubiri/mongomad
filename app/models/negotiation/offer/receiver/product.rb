@@ -1,4 +1,4 @@
-class Negotiation::Receiver::Product
+class Negotiation::Offer::Receiver::Product
   include Mongoid::Document
 
   embedded_in :receiver
