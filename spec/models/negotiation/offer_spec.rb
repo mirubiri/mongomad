@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe offer do
+describe Offer do
   let(:offer) { Fabricate.build(:offer) }
   after(:each) { offer && offer.polymorphic_offer.destroy }
 
