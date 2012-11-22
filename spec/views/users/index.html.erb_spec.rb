@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe "userds/index" do
+describe "users/index" do
   before(:each) do
-    assign(:userds, [
-      stub_model(Userd),
-      stub_model(Userd)
+    assign(:users, [
+      stub_model(user),
+      stub_model(user)
     ])
   end
 
-  it "renders a list of userds" do
+  it "renders a list of users" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
   end

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "userds/show" do
+describe "users/show" do
   before(:each) do
-    @userd = assign(:userd, stub_model(Userd))
+    @user = assign(:user, stub_model(user))
   end
 
   it "renders attributes in <p>" do

@@ -1,5 +1,4 @@
 Mongomad::Application.routes.draw do
-  resources :userds
 
 
   resources :requests
