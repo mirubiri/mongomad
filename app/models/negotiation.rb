@@ -1,4 +1,4 @@
-class Negotiation::Negotiation
+class Negotiation
   include Mongoid::Document
   include Mongoid::Timestamps
 

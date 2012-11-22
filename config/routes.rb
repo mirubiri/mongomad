@@ -1,5 +1,5 @@
 Mongomad::Application.routes.draw do
-  devise_for :users, :class_name => 'User::User'
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

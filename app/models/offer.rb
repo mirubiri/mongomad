@@ -1,4 +1,4 @@
-class Offer::Offer
+class Offer
     include Mongoid::Document
     include Mongoid::Timestamps
 

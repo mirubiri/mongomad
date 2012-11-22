@@ -1,4 +1,4 @@
-class Offer::Receiver::Receiver
+class Offer::Receiver
   include Mongoid::Document
 
   embedded_in :offer

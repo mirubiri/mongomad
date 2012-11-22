@@ -1,4 +1,4 @@
-class Deal::Composer::Product
+class Deal::Agreement::Composer::Product
   include Mongoid::Document
 
   embedded_in :composer

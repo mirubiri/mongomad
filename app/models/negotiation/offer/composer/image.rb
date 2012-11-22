@@ -1,4 +1,4 @@
-class Negotiation::Composer::Image
+class Negotiation::Offer::Composer::Image
     include Mongoid::Document
     include Mongoid::Paperclip
 

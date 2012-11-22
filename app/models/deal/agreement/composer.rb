@@ -1,9 +1,9 @@
-class Negotiation::Composer::Composer
+class Deal::Agreement::Composer
       include Mongoid::Document
 
       embedded_in :offer
       embeds_many :products, cascade_callbacks: true
-      embeds_one :image,class_name:"Image"
+      embeds_one :image
 
       field :user_id, type: Moped::BSON::ObjectId
       field :name, type: String

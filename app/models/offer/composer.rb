@@ -1,10 +1,10 @@
-class Negotiation::Receiver::Receiver
+class Offer::Composer
+
   include Mongoid::Document
 
-  embedded_in :receiver
+  embedded_in :offer
   embeds_many :products, cascade_callbacks: true
-  embeds_one :image
-
+  embeds_one :image,cascade_callbacks: true
 
   field :user_id, type: Moped::BSON::ObjectId
   field :name, type: String
