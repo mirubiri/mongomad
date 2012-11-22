@@ -1,4 +1,4 @@
-class Deal::Agreement::Money
+class Deal::Agreement::Offer::Money
     include Mongoid::Document
 
     embedded_in :agreement

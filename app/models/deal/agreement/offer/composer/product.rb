@@ -1,7 +1,7 @@
-class Deal::Agreement::Receiver::Product
+class Deal::Agreement::Offer::Composer::Product
   include Mongoid::Document
 
-  embedded_in :receiver
+  embedded_in :composer
   embeds_one :main_image
 
   field :thing_id, type: Moped::BSON::ObjectId
@@ -9,7 +9,7 @@ class Deal::Agreement::Receiver::Product
   field :description, type: String
   field :quantity, type: Integer, default: 1
 
-  validates :receiver,
+  validates :product,
             :thing_id,
             :name,
             :description,

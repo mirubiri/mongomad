@@ -1,4 +1,4 @@
-class Deal::Agreement::Receiver::Image
+class Deal::Agreement::Offer::Composer::Image
   include Mongoid::Document
   include Mongoid::Paperclip
 
@@ -15,6 +15,6 @@ class Deal::Agreement::Receiver::Image
     #}
 
   validates :file,
-            :product,
+            :deal,
             presence: true
 end
