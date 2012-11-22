@@ -8,6 +8,22 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require buttons
+ *= require contentSide
+ *= require footer
+ *= require header
+ *= require index
+ *= require modals
+ *= require newOffer
+ *= require newPetition
+ *= require newProduct
+ *= require offer
+ *= require petition
+ *= require product
+ *= require profile
+ *= require style
+ *= require table
+ *= require userSide
  *= require_self
  *= require_tree .
  */

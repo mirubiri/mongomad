@@ -1,0 +1,2 @@
+Fabricator(:deal) do
+end

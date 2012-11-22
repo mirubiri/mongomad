@@ -1,0 +1,2 @@
+Fabricator(:userd) do
+end

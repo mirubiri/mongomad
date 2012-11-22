@@ -1,0 +1,2 @@
+Fabricator(:negotiation) do
+end

@@ -1,0 +1,21 @@
+<h1>Listing negotiations</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @negotiations.each do |negotiation| %>
+  <tr>
+    <td><%= link_to 'Show', negotiation %></td>
+    <td><%= link_to 'Edit', edit_negotiation_path(negotiation) %></td>
+    <td><%= link_to 'Destroy', negotiation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Negotiation', new_negotiation_path %>
