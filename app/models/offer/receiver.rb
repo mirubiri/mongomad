@@ -1,5 +1,4 @@
 module Offer
-  module Receiver
     class Receiver
       include Mongoid::Document
 
@@ -18,5 +17,4 @@ module Offer
                 :photo,
                 presence: true
     end
-  end
 end
