@@ -10,7 +10,7 @@ module Negotiation
     field :user_id, type: Moped::BSON::ObjectId
     field :name, type: String
 
-    validates :proposal,
+    validates :offer,
               :products,
               :user_id,
               :name,

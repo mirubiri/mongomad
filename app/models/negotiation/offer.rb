@@ -1,5 +1,5 @@
 module Negotiation
-  class Proposal
+  class offer
     include Mongoid::Document
     include Mongoid::Timestamps
 
