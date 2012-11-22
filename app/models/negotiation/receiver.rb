@@ -4,7 +4,7 @@ module Negotiation
 
     embedded_in :receiver
     embeds_many :products, cascade_callbacks: true
-    embeds_one :photo,class_name:"Image"
+    embeds_one :image
 
 
     field :user_id, type: Moped::BSON::ObjectId
@@ -14,7 +14,7 @@ module Negotiation
               :products,
               :user_id,
               :name,
-              :photo,
+              :image,
               presence: true
   end
 end

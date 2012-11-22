@@ -2,12 +2,12 @@ module Deal
   class Money
     include Mongoid::Document
 
-    embedded_in :polymorphic_money, polymorphic: true
+    embedded_in :agreement
 
     field :user_id, type: Moped::BSON::ObjectId
     field :quantity, type: Integer
 
-    validates :polymorphic_money,
+    validates :agreement,
               :user_id,
               :quantity,
               presence: true

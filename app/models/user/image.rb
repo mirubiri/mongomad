@@ -1,9 +1,9 @@
-module Negotiation
+module User
   class Image
     include Mongoid::Document
     include Mongoid::Paperclip
 
-    embedded_in :product
+    embedded_in :profile
 
     has_mongoid_attached_file :file
 
@@ -16,7 +16,7 @@ module Negotiation
       #}
 
     validates :file,
-              :product,
+              :profile,
               presence: true
   end
 end

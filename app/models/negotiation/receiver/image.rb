@@ -4,7 +4,7 @@ module Negotiation
       include Mongoid::Document
       include Mongoid::Paperclip
 
-      embedded_in :polymorphic_image, polymorphic: true
+      embedded_in :product
 
       has_mongoid_attached_file :file
 
@@ -17,7 +17,7 @@ module Negotiation
         #}
 
       validates :file,
-                :polymorphic_image,
+                :product,
                 presence: true
     end
   end

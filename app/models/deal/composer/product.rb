@@ -3,8 +3,8 @@ module Deal
     class Product
       include Mongoid::Document
 
-      embedded_in :composer, class_name: 'Deal::Composer'
-      embeds_one :main_image, class_name: "Deal::Composer::Image"
+      embedded_in :composer
+      embeds_one :main_image
 
       field :thing_id, type: Moped::BSON::ObjectId
       field :name, type: String

@@ -4,7 +4,7 @@ module Offer
 
       embedded_in :offer
       embeds_many :products, cascade_callbacks: true
-      embeds_one :photo,class_name:"Image",as: :polymorphic_image,cascade_callbacks: true
+      embeds_one :image, cascade_callbacks: true
 
 
       field :user_id, type: Moped::BSON::ObjectId
@@ -14,7 +14,7 @@ module Offer
                 :products,
                 :user_id,
                 :name,
-                :photo,
+                :image,
                 presence: true
     end
 end

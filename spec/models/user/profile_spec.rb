@@ -6,7 +6,7 @@ describe Profile do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_one :photo }
+    it { should embed_one :image }
   end
 
   describe 'Attributes' do
@@ -37,15 +37,15 @@ describe Profile do
   describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
     specify { expect(profile.save).to be_true }
-    it 'photo must be saved on disk' do
+    it 'image must be saved on disk' do
       profile.save
-      expect(File.exists?(profile.photo.file.path)).to be_true
+      expect(File.exists?(profile.image.file.path)).to be_true
     end
   end
 
   describe '#destroy' do
-    it 'deletes photo files from disk' do
-      file_path=profile.photo.file.path
+    it 'deletes image files from disk' do
+      file_path=profile.image.file.path
       profile.save
       profile.destroy
       expect(File.exists?(file_path)).to be_false

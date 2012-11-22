@@ -7,7 +7,7 @@ describe Composer do
   describe 'Relations' do
     it { should be_embedded_in :polymorphic_composer }
     it { should embed_many :products }
-    it { should embed_one :photo }
+    it { should embed_one :image }
   end
 
   describe 'Attributes' do
@@ -20,22 +20,22 @@ describe Composer do
     it { should validate_presence_of :products }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :name }
-    it { should validate_presence_of :photo }
+    it { should validate_presence_of :image }
 
   end
 
   describe 'Factories' do
     specify { composer.should be_valid }
     specify { composer.save.should be_true }
-    it 'photo must be saved on disk' do
+    it 'image must be saved on disk' do
       composer.save
-      expect(File.exists?(composer.photo.file.path)).to be_true
+      expect(File.exists?(composer.image.file.path)).to be_true
     end
   end
 
   describe '#destroy' do
-    it 'deletes photo files from disk' do
-      file_path=composer.photo.file.path
+    it 'deletes image files from disk' do
+      file_path=composer.image.file.path
       composer.save
       composer.destroy
       expect(File.exists?(file_path)).to be_false

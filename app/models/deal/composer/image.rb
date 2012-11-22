@@ -4,7 +4,7 @@ module Deal
       include Mongoid::Document
       include Mongoid::Paperclip
 
-      embedded_in :deal, class_name: 'Deal::Composer::Product'
+      embedded_in :product
 
       has_mongoid_attached_file :file
 

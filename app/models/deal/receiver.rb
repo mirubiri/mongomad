@@ -2,9 +2,9 @@ module Deal
   class Receiver
     include Mongoid::Document
 
-    embedded_in :deal, class_name: 'Deal::Deal'
-    embeds_many :products, class_name: 'Deal::Receiver::Product', cascade_callbacks: true
-    embeds_one :photo,class_name:'Deal::Receiver::Image',cascade_callbacks: true
+    embedded_in :deal
+    embeds_many :products, cascade_callbacks: true
+    embeds_one :image
 
 
     field :user_id, type: Moped::BSON::ObjectId
@@ -14,7 +14,7 @@ module Deal
               :products,
               :user_id,
               :name,
-              :photo,
+              :image,
               presence: true
   end
 end

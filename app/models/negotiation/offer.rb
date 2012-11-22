@@ -1,9 +1,9 @@
 module Negotiation
-  class offer
+  class Offer
     include Mongoid::Document
     include Mongoid::Timestamps
 
-    embedded_in :negotiation #, class_name: 'Negotiation::negotiation'
+    embedded_in :negotiation
     embeds_one :composer, cascade_callbacks:true
     embeds_one :receiver, cascade_callbacks:true
     embeds_one :money

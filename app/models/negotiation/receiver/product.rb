@@ -3,15 +3,15 @@ module Negotiation
     class Product
       include Mongoid::Document
 
-      embedded_in :polymorphic_product, polymorphic: true
-      embeds_one :main_image,class_name: "Image", as: :polymorphic_image,cascade_callbacks: true
+      embedded_in :receiver
+      embeds_one :main_image,class_name: "Image",cascade_callbacks: true
 
       field :thing_id, type: Moped::BSON::ObjectId
       field :name, type: String
       field :description, type: String
       field :quantity, type: Integer, default: 1
 
-      validates :polymorphic_product,
+      validates :preceiver,
                 :thing_id,
                 :name,
                 :description,

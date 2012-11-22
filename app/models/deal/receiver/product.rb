@@ -3,8 +3,8 @@ module Deal
     class Product
       include Mongoid::Document
 
-      embedded_in :receiver, class_name: 'Deal::Receiver'
-      embeds_one :main_image,class_name: 'Deal::Receiver::Image'
+      embedded_in :receiver
+      embeds_one :main_image
 
       field :thing_id, type: Moped::BSON::ObjectId
       field :name, type: String

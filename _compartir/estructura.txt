@@ -48,10 +48,10 @@ codigo en el test de thing
       specify { @product.should_not be_persisted }
       specify { @product.name.should eq @thing.name }
       specify { @product.description.should eq @thing.description }
-      specify { @product.main_photo.should eq @thing.main_photo }
+      specify { @product.main_image.should eq @thing.main_image }
       specify { @product.thing_id.should eq @thing._id }
       specify { @product.quantity.should be_nil }
-      specify { @product.photos.should eq @thing.photos }
+      specify { @product.images.should eq @thing.images }
     end
   end
 =end
