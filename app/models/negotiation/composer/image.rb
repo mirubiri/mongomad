@@ -1,5 +1,4 @@
-module Negotiation
-  class Image
+class Negotiation::Composer::Image
     include Mongoid::Document
     include Mongoid::Paperclip
 
@@ -18,5 +17,4 @@ module Negotiation
     validates :file,
               :product,
               presence: true
-  end
 end

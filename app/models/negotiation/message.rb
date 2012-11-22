@@ -1,5 +1,4 @@
-module Negotiation
-  class Message
+class Negotiation::Message
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -14,5 +13,4 @@ module Negotiation
               :sender_name,
               :text,
               presence: true
-  end
 end

@@ -1,5 +1,4 @@
-module Negotiation
-  class Negotiation
+class Negotiation::Negotiation
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -14,5 +13,4 @@ module Negotiation
               :token_user_id,
               :token_state,
               presence: true
-  end
 end

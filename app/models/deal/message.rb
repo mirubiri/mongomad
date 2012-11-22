@@ -1,5 +1,4 @@
-module Deal
-  class Message
+class Deal::Message
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -14,5 +13,4 @@ module Deal
               :sender_name,
               :text,
               presence: true
-  end
 end

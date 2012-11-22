@@ -1,5 +1,4 @@
-module Deal
-  class Money
+class Deal::Agreement::Money
     include Mongoid::Document
 
     embedded_in :agreement
@@ -16,5 +15,4 @@ module Deal
               allow_nil: false,
               numericality: { only_integer: true,
                               greater_than: 0 }
-  end
 end

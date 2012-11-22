@@ -1,6 +1,4 @@
-module Negotiation
-  module Composer
-    class Product
+class Negotiation::Composer::Product
       include Mongoid::Document
 
       embedded_in :offer
@@ -23,6 +21,4 @@ module Negotiation
                 allow_nil: false,
                 numericality: { only_integer: true,
                                 greater_than_or_equal_to: 0 }
-    end
-  end
 end

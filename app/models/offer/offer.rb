@@ -1,5 +1,4 @@
-module Offer
-  class Offer
+class Offer::Offer
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -13,5 +12,4 @@ module Offer
               :receiver,
               :initial_message,
               presence: true
-  end
 end

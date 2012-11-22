@@ -1,5 +1,4 @@
-module Negotiation
-  class Offer
+class Negotiation::Offer
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -12,5 +11,4 @@ module Negotiation
               :composer,
               :receiver,
               presence: true
-  end
 end

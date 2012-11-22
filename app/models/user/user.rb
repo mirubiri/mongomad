@@ -1,5 +1,4 @@
-module User
-  class User
+class User::User
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -56,6 +55,4 @@ module User
 
     ## Token authenticatable
     # field :authentication_token, :type => String
-
-  end
 end

@@ -1,5 +1,4 @@
-module Deal
-  class Offer
+class Deal::Agreement::Offer
     include Mongoid::Document
     include Mongoid::Timestamps
 
@@ -12,5 +11,4 @@ module Deal
               :composer,
               :receiver,
               presence: true
-  end
 end
