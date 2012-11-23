@@ -1,5 +1,5 @@
-Fabricator(:offer) do
+Fabricator('deal::agreement::offer') do
+  polymorphic_offer { Fabricate.build(:negotiation,offers:nil) }
   composer { Fabricate.build(:composer,polymorphic_composer:nil) }
   receiver { Fabricate.build(:receiver,polymorphic_receiver:nil) }
-  initial_message 'initial message'
 end
