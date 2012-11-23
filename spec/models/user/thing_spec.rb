@@ -1,12 +1,13 @@
 require 'spec_helper'
 
-describe Thing do
-  let(:thing) { Fabricate.build(:thing) }
-  after(:each) { thing && thing.user.destroy }
+describe User::Thing do
+  #let(:thing) { Fabricate.build(:thing) }
+  #after(:each) { thing && thing.user.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_one :main_image }
+    it { should embed_one(:main_image).of_type(User::Thing::Image) }
+    it { should embed_many(:secondary_images).of_type(User::Thing::Image) }
   end
 
   describe 'Attributes' do
