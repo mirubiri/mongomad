@@ -3,5 +3,5 @@ Fabricator(:composer) do
   products(count:1) { Fabricate.build(:product,product_parent:nil) }
   user_id 'an existing user_id'
   name 'composer name'
-  photo {Fabricate.build(:image,image_parent:nil)}
+  image { File.open('app/assets/images/rails.png') }
 end

@@ -5,7 +5,7 @@ describe Product do
 
   describe 'Relations' do
     it { should be_embedded_in :product_parent }
-    it { should embed_one :main_image }
+    it { should embed_many :secondary_images }
   end
 
   describe 'Attributes' do

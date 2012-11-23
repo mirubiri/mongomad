@@ -1,9 +1,10 @@
 class Receiver
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   embedded_in :receiver_parent, polymorphic: true
   embeds_many :products, as: :product_parent, cascade_callbacks: true
-  embeds_one :photo,class_name:"Image",as: :image_parent,cascade_callbacks: true
+  has_mongoid_attached_file :image, preseve_files:true
 
 
   field :user_id, type: Moped::BSON::ObjectId
@@ -13,6 +14,6 @@ class Receiver
             :products,
             :user_id,
             :name,
-            :photo,
+            :image,
             presence: true
 end

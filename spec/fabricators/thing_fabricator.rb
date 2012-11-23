@@ -3,5 +3,5 @@ Fabricator(:thing) do
   name 'name'
   description 'description'
   stock 5
-  main_image { Fabricate.build(:image,image_parent:nil) }
+  main_image { File.open('app/assets/images/rails.png') }
 end

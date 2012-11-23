@@ -1,9 +1,10 @@
 class Profile
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
 
   embedded_in :user
-  embeds_one :photo,class_name:"Image",as: :image_parent,cascade_callbacks: true
+  has_mongoid_attached_file :image
 
   field :name, type: String
   field :surname, type: String
@@ -25,5 +26,6 @@ class Profile
             :country,
             :birth_date,
             :website,
+            :image,
             presence: true
 end

@@ -1,5 +1,6 @@
 class Money
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   embedded_in :money_parent, polymorphic: true
 

@@ -4,5 +4,5 @@ Fabricator(:product) do
   name 'name'
   description 'description'
   quantity 5
-  main_image { Fabricate.build(:image,image_parent:nil) }
+  main_image { File.open('app/assets/images/rails.png') }
 end

@@ -5,7 +5,6 @@ describe Profile do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_one :photo }
   end
 
   describe 'Attributes' do
@@ -31,6 +30,7 @@ describe Profile do
     it { should validate_presence_of :country }
     it { should validate_presence_of :birth_date }
     it { should validate_presence_of :website }
+    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do

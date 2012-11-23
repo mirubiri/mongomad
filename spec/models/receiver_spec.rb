@@ -6,8 +6,6 @@ describe Receiver do
   describe 'Relations' do
     it { should be_embedded_in :receiver_parent }
     it { should embed_many :products }
-    it { should embed_one :photo}
-
   end
 
   describe 'Attributes' do
@@ -20,7 +18,7 @@ describe Receiver do
     it { should validate_presence_of :products }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :name }
-    it { should validate_presence_of :photo }
+    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do

@@ -1,8 +1,10 @@
 class Thing
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   embedded_in :user
-  embeds_one :main_image,class_name: "Image", as: :image_parent,cascade_callbacks: true
+  has_mongoid_attached_file :main_image
+  embeds_many :secondary_images,class_name: "Image", as: :image_parent,cascade_callbacks: true
 
   field :name, type: String
   field :description, type: String

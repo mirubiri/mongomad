@@ -7,5 +7,5 @@ Fabricator(:profile) do
   country {Faker::Address.country}
   birth_date '10-10-2000'
   website {Faker::Internet.domain_name}
-  photo {Fabricate.build(:image,image_parent:nil)}
+  image { File.open('app/assets/images/rails.png') }
 end

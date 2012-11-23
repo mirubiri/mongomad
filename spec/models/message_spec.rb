@@ -20,6 +20,7 @@ describe Message do
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_name }
     it { should validate_presence_of :text }
+    it { should validate_presence_of :image }
   end
 
   xit "Cada mensaje debe ir acompanado del avatar del usuario que lo escribe"
