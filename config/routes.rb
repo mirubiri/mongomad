@@ -1,5 +1,16 @@
 Mongomad::Application.routes.draw do
-  devise_for :users
+
+  resources :users, :deals, :offers, :negotiations, :requests
+
+  devise_for :users do
+    get "/", :to => "devise/sessions#new"
+  end
+
+  authenticated :user do
+    root :to => "users#show"
+  end
+
+  root :to => "devise/sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,4 +68,5 @@ Mongomad::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end
