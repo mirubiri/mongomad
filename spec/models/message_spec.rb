@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Message do
   let(:message) { Fabricate.build(:message) }
-  after(:each) { message && message.message_parent.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :message_parent }

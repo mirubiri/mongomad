@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Proposal do
   let(:proposal) { Fabricate.build(:proposal) }
-  after(:each) { proposal && proposal.proposal_parent.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :proposal_parent }

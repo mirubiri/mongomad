@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Agreement do
   let(:agreement) { Fabricate.build(:agreement) }
-  after(:each) { agreement && agreement.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :deal }

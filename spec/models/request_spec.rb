@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Request do
   let(:request) { Fabricate.build(:request) }
-  after(:each) { request && request.destroy }
 
   describe 'Attributes' do
     it { should be_timestamped_document }
