@@ -3,7 +3,7 @@ class Profile
   include Mongoid::Timestamps
 
   embedded_in :user
-  embeds_one :photo,class_name:"Image",as: :polymorphic_image,cascade_callbacks: true
+  embeds_one :photo,class_name:"Image",as: :image_parent,cascade_callbacks: true
 
   field :name, type: String
   field :surname, type: String

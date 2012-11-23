@@ -2,12 +2,12 @@ class Proposal
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embedded_in :polymorphic_proposal, polymorphic: true
-  embeds_one :composer, as: :polymorphic_composer,cascade_callbacks:true
-  embeds_one :receiver, as: :polymorphic_receiver,cascade_callbacks:true
-  embeds_one :money, as: :polymorphic_money
+  embedded_in :proposal_parent, polymorphic: true
+  embeds_one :composer, as: :composer_parent,cascade_callbacks:true
+  embeds_one :receiver, as: :receiver_parent,cascade_callbacks:true
+  embeds_one :money, as: :money_parent
 
-  validates :polymorphic_proposal,
+  validates :proposal_parent,
             :composer,
             :receiver,
             presence: true

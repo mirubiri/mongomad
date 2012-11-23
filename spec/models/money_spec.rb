@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Money do
   let(:money) { Fabricate.build(:money) }
-  after(:each) { money && money.polymorphic_money.destroy }
+  after(:each) { money && money.money_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_money }
+    it { should be_embedded_in :money_parent }
   end
 
   describe 'Attributes' do
@@ -14,7 +14,7 @@ describe Money do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_money }
+    it { should validate_presence_of :money_parent }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,

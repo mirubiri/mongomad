@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Proposal do
   let(:proposal) { Fabricate.build(:proposal) }
-  after(:each) { proposal && proposal.polymorphic_proposal.destroy }
+  after(:each) { proposal && proposal.proposal_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_proposal }
+    it { should be_embedded_in :proposal_parent }
     it { should embed_one :composer }
     it { should embed_one :receiver }
     it { should embed_one :money }
@@ -16,7 +16,7 @@ describe Proposal do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_proposal }
+    it { should validate_presence_of :proposal_parent }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
   end

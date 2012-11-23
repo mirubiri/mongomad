@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Product do
   let(:product) { Fabricate.build(:product) }
-  after(:each) { product && product.polymorphic_product.polymorphic_composer.destroy }
+  after(:each) { product && product.product_parent.composer_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_product }
+    it { should be_embedded_in :product_parent }
     it { should embed_one :main_image }
   end
 
@@ -18,7 +18,7 @@ describe Product do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_product }
+    it { should validate_presence_of :product_parent }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :main_image }

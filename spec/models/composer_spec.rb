@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Composer do
   let(:composer) { Fabricate.build(:composer) }
-  after(:each) { composer && composer.polymorphic_composer.destroy }
+  after(:each) { composer && composer.composer_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_composer }
+    it { should be_embedded_in :composer_parent }
     it { should embed_many :products }
     it { should embed_one :photo }
   end
@@ -16,7 +16,7 @@ describe Composer do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_composer }
+    it { should validate_presence_of :composer_parent }
     it { should validate_presence_of :products }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :name }

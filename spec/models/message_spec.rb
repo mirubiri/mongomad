@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Message do
   let(:message) { Fabricate.build(:message) }
-  after(:each) { message && message.polymorphic_message.destroy }
+  after(:each) { message && message.message_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_message }
+    it { should be_embedded_in :message_parent }
   end
 
   describe 'Attributes' do
@@ -17,7 +17,7 @@ describe Message do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_message }
+    it { should validate_presence_of :message_parent }
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_name }
     it { should validate_presence_of :text }

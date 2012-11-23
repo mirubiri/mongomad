@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe Receiver do
   let(:receiver) { Fabricate.build(:receiver) }
-  after(:each) { receiver && receiver.polymorphic_receiver.destroy }
+  after(:each) { receiver && receiver.receiver_parent.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_receiver }
+    it { should be_embedded_in :receiver_parent }
     it { should embed_many :products }
     it { should embed_one :photo}
 
@@ -17,7 +17,7 @@ describe Receiver do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_receiver }
+    it { should validate_presence_of :receiver_parent }
     it { should validate_presence_of :products }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :name }

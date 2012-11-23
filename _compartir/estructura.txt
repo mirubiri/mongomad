@@ -1,6 +1,6 @@
 #Relations
- (hijo) embedded_in :polymorphic_money, polymorphic: true
-(padre) embeds_one :money, as: :polymorphic_money
+ (hijo) embedded_in :money_parent, polymorphic: true
+(padre) embeds_one :money, as: :money_parent
 -----------------------------------------------------------------------------------
 require 'spec_helper'
 

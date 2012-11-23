@@ -6,11 +6,11 @@ describe Image do
     image.destroy
   end
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_image }
+    it { should be_embedded_in :image_parent }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_image }
+    it { should validate_presence_of :image_parent }
     it { should validate_presence_of :file }
   end
 

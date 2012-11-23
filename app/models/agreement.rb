@@ -2,8 +2,8 @@ class Agreement
   include Mongoid::Document
 
   embedded_in :deal
-  embeds_many :proposals, as: :polymorphic_proposal,cascade_callbacks:true
-  embeds_many :messages, as: :polymorphic_message
+  embeds_many :proposals, as: :proposal_parent,cascade_callbacks:true
+  embeds_many :messages, as: :message_parent
 
   validates :deal,
             :proposals,

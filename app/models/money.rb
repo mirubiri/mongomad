@@ -1,12 +1,12 @@
 class Money
   include Mongoid::Document
 
-  embedded_in :polymorphic_money, polymorphic: true
+  embedded_in :money_parent, polymorphic: true
 
   field :user_id, type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-  validates :polymorphic_money,
+  validates :money_parent,
             :user_id,
             :quantity,
             presence: true
