@@ -3,7 +3,7 @@ require 'spec_helper'
 describe UsersController do  
 
   describe "GET index" do
-    it "assigns all users to @users" do
+    it "=> assigns all users to @users" do
       user = Fabricate(:user)
       get :index
       expect(assigns(:users)).to eq([user])
@@ -13,7 +13,8 @@ describe UsersController do
       response.should render_template("index")
     end
   end
-  /
+
+=begin
   describe "GET show" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
@@ -131,6 +132,7 @@ describe UsersController do
       delete :destroy, {:id => user.to_param}, valid_session
       response.should redirect_to(users_url)
     end
-  end/
+  end
+=end
 
 end
