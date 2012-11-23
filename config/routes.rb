@@ -2,7 +2,7 @@ Mongomad::Application.routes.draw do
 
   resources :users, :deals, :offers, :negotiations, :requests
 
-  devise_for :users do
+  devise_scope :user do
     get "/", :to => "devise/sessions#new"
   end
 

@@ -5,11 +5,15 @@ describe UsersController do
   describe "GET index" do
     it "assigns all users to @users" do
       user = Fabricate(:user)
-      get :index, {}, valid_session
-      assigns(:users).should eq([user])
+      get :index
+      expect(assigns(:users)).to eq([user])
+    end
+    it "renders the index template" do
+      get :index
+      response.should render_template("index")
     end
   end
-
+  /
   describe "GET show" do
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
@@ -127,6 +131,6 @@ describe UsersController do
       delete :destroy, {:id => user.to_param}, valid_session
       response.should redirect_to(users_url)
     end
-  end
+  end/
 
 end
