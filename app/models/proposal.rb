@@ -5,7 +5,7 @@ class Proposal
   embedded_in :proposal_parent, polymorphic: true
   embeds_one :composer, as: :composer_parent,cascade_callbacks:true
   embeds_one :receiver, as: :receiver_parent,cascade_callbacks:true
-  embeds_one :money, as: :money_parent
+  embeds_one :money, as: :money_parent, cascade_callbacks: true
 
   validates :proposal_parent,
             :composer,

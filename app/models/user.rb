@@ -2,8 +2,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one :profile,cascade_callbacks:true
-  embeds_many :things,cascade_callbacks:true
+  embeds_one :profile, cascade_callbacks: true
+  embeds_many :things, cascade_callbacks: true
 
   has_and_belongs_to_many :requests, inverse_of: nil
   has_and_belongs_to_many :sent_offers, class_name: "Offer", inverse_of: nil
@@ -27,7 +27,7 @@ class User
 
   validates_presence_of :email
   validates_presence_of :encrypted_password
-  
+
   ## Recoverable
   field :reset_password_token,   :type => String
   field :reset_password_sent_at, :type => Time
@@ -55,5 +55,5 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  
+
 end

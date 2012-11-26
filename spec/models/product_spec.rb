@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Product do
   let(:product) { Fabricate.build(:product) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :product_parent }

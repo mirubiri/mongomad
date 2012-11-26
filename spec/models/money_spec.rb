@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Money do
   let(:money) { Fabricate.build(:money) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :money_parent }

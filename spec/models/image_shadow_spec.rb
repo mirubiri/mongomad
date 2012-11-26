@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe ImageShadow do
   let(:image) { Fabricate.build(:image_shadow) }
-  
+  include_context 'clean collections'
+
   describe 'Relations' do
     it { should be_embedded_in :image_shadow_parent }
   end

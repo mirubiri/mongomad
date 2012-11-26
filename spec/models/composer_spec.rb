@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Composer do
   let(:composer) { Fabricate.build(:composer) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :composer_parent }

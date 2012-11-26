@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Receiver do
   let(:receiver) { Fabricate.build(:receiver) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :receiver_parent }

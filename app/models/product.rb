@@ -3,7 +3,7 @@ class Product
   include Mongoid::Paperclip
 
   embedded_in :product_parent, polymorphic: true
-  embeds_many :secondary_images, class_name: 'ImageShadow', as: :image_shadow_parent,cascade_callbacks: true
+  embeds_many :secondary_images, class_name: 'ImageShadow', as: :image_shadow_parent, inverse_of: :image_shadow_parent, cascade_callbacks: true
   has_mongoid_attached_file :main_image, preseve_files:true
 
   field :thing_id, type: Moped::BSON::ObjectId

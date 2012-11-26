@@ -2,7 +2,7 @@ class ImageShadow
   include Mongoid::Document
   include Mongoid::Paperclip
 
-  embedded_in :image_shadow_parent, polymorphic: true
+  embedded_in :image_shadow_parent, polymorphic: true, inverse_of: :secondary_image
 
   has_mongoid_attached_file :file, preserve_files:true
 

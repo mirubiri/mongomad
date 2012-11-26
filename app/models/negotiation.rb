@@ -2,8 +2,8 @@ class Negotiation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_many :proposals, as: :proposal_parent,cascade_callbacks: true
-  embeds_many :messages, as: :message_parent
+  embeds_many :proposals, as: :proposal_parent, cascade_callbacks: true
+  embeds_many :messages, as: :message_parent, cascade_callbacks:true
 
   field :token_user_id, type: Moped::BSON::ObjectId
   field :token_state, type: Boolean

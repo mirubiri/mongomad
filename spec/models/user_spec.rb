@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) { Fabricate.build(:user) }
-  after(:each) { user && user.destroy }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should embed_one :profile }
