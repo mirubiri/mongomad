@@ -14,30 +14,33 @@ describe UsersController do
     end
   end
 
-=begin
+
   describe "GET show" do
     it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
-      get :show, {:id => user.to_param}, valid_session
-      assigns(:user).should eq(user)
+      user = Fabricate(:user)
+      get :show, {:id => user.to_param}
+      expect(assigns(:user)).to eq([user])
     end
   end
+
 
   describe "GET new" do
     it "assigns a new user as @user" do
-      get :new, {}, valid_session
-      assigns(:user).should be_a_new(User)
+      get :new, {}
+      expect(assigns(:user)).to be_a_new(User)
     end
   end
+
 
   describe "GET edit" do
     it "assigns the requested user as @user" do
-      user = User.create! valid_attributes
-      get :edit, {:id => user.to_param}, valid_session
-      assigns(:user).should eq(user)
+      user = Fabricate(:user)
+      get :edit, {:id => user.to_param}
+      expect(assigns(:user)).to eq(user)
     end
   end
 
+=begin
   describe "POST create" do
     describe "with valid params" do
       it "creates a new User" do
@@ -74,6 +77,8 @@ describe UsersController do
       end
     end
   end
+
+
 
   describe "PUT update" do
     describe "with valid params" do
