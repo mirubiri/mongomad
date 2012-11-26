@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do  
+include_context 'clean collections'
 
   describe "GET index" do
     it "=> assigns all users to @users" do
@@ -19,7 +20,7 @@ describe UsersController do
     it "assigns the requested user as @user" do
       user = Fabricate(:user)
       get :show, {:id => user.to_param}
-      expect(assigns(:user)).to eq([user])
+      expect(assigns(:user)).to eq(user)
     end
   end
 
@@ -40,45 +41,40 @@ describe UsersController do
     end
   end
 
-=begin
+
   describe "POST create" do
+
+    before(:each) do
+        @user = Fabricate.build(:user)
+    end
+
     describe "with valid params" do
       it "creates a new User" do
         expect {
-          post :create, {:user => valid_attributes}, valid_session
+          post :create, :user => {}
         }.to change(User, :count).by(1)
       end
 
-      it "assigns a newly created user as @user" do
-        post :create, {:user => valid_attributes}, valid_session
-        assigns(:user).should be_a(User)
-        assigns(:user).should be_persisted
-      end
-
       it "redirects to the created user" do
-        post :create, {:user => valid_attributes}, valid_session
+        post :create, :user => {}
         response.should redirect_to(User.last)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved user as @user" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => {  }}, valid_session
-        assigns(:user).should be_a_new(User)
+       it "never creates a new User" do
+        expect {
+          post :create, :user => {}
+        }.to change(User, :count).by(0)
       end
-
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        User.any_instance.stub(:save).and_return(false)
-        post :create, {:user => {  }}, valid_session
+        post :create, :user => {}
         response.should render_template("new")
       end
     end
   end
 
-
+=begin
 
   describe "PUT update" do
     describe "with valid params" do
