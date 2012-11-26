@@ -5,7 +5,7 @@ describe Negotiation do
   #after(:each) { negotiation && negotiation.destroy }
 
   describe 'Relations' do
-    it { should embed_many(:offers).of_type(Negotiation::Offer) }
+    it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
     it { should embed_many(:messages).of_type(Negotiation::Message) }
   end
 
@@ -16,7 +16,7 @@ describe Negotiation do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :offers }
+    it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
     it { should validate_presence_of :token_owner_id }
     it { should validate_presence_of :token_state }

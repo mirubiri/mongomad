@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Deal::Agreement::Offer::Composer::Product::Image do
+describe Deal::Agreement::Proposal::Receiver::Product::Image do
   #let(:image) { Fabricate.build(:image) }
   #after(:each) do
   #  image.destroy
   #end
 
   describe 'Relations' do
-    it { should be_embedded_in(:product).of_type(Deal::Agreement::Offer::Composer::Product) }
+    it { should be_embedded_in(:product).of_type(Deal::Agreement::Proposal::Receiver::Product) }
   end
 
   describe 'Attributes' do

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Deal::Agreement::Offer::Money do
+describe Negotiation::Proposal::Money do
   #let(:money) { Fabricate.build(:money) }
   #after(:each) { money && money.polymorphic_money.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in(:offer).of_type(Deal::Agreement::Offer) }
+    it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
   end
 
   describe 'Attributes' do
@@ -14,7 +14,7 @@ describe Deal::Agreement::Offer::Money do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :offer }
+    it { should validate_presence_of :proposal }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,

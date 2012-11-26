@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Negotiation::Offer do
+describe Deal::Agreement::Proposal do
   #let(:offer) { Fabricate.build(:offer) }
   #after(:each) { offer && offer.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :negotiation }
-    it { should embed_one(:composer).of_type(Negotiation::Offer::Composer) }
-    it { should embed_one(:receiver).of_type(Negotiation::Offer::Receiver) }
-    it { should embed_one(:money).of_type(Negotiation::Offer::Money) }
+    it { should be_embedded_in(:agreement).of_type(Deal::Agreement) }
+    it { should embed_one(:composer).of_type(Deal::Agreement::Proposal::Composer) }
+    it { should embed_one(:receiver).of_type(Deal::Agreement::Proposal::Receiver) }
+    it { should embed_one(:money).of_type(Deal::Agreement::Proposal::Money) }
   end
 
   describe 'Attributes' do
@@ -17,6 +17,7 @@ describe Negotiation::Offer do
   end
 
   describe 'Validations' do
+    it { should validate_presence_of :agreement }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :initial_message }

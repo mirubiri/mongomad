@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Negotiation::Offer::Composer do
+describe Negotiation::Proposal::Composer do
   #let(:composer) { Fabricate.build(:composer) }
   #after(:each) { composer && composer.polymorphic_composer.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in(:offer).of_type(Negotiation::Offer) }
-    it { should embed_many(:products).of_type(Negotiation::Offer::Composer::Product) }
+    it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
+    it { should embed_many(:products).of_type(Negotiation::Proposal::Composer::Product) }
   end
 
   describe 'Attributes' do
@@ -16,7 +16,7 @@ describe Negotiation::Offer::Composer do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :offer }
+    it { should validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :composer_id }
     it { should validate_presence_of :composer_name }

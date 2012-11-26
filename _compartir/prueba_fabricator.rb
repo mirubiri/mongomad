@@ -1,2 +1,0 @@
-Fabricator(:prueba) do
-end

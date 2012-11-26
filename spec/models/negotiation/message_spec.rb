@@ -26,7 +26,6 @@ describe Negotiation::Message do
 
 =begin
   describe 'Factories' do
-
     specify { message.should be_valid }
     specify { message.save.should be_true }
   end

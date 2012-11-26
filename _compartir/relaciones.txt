@@ -1,36 +1,3 @@
-class Request
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Paperclip
-
-  field :owner_id, type: Moped::BSON::ObjectId
-  field :owner_name, type: String
-  field :text, type: String
-  has_mongoid_attached_file :image
-
-  validates :owner_id,
-            :owner_name,
-            :text,
-            :image,
-            presence: true
-end
-
   embedded_in :thing, class_name "User::Thing"
 
   has_mongoid_attached_file :file
-
-  describe 'Relations' do
-    it { should be_embedded_in :thing, class_name: "User::Thing" }
-  end
-
-  describe 'Attributes' do
-    # TODO: ¿Validar campo 'file' (Paperclip)?
-  end
-
- it { should embed_many :secondary_images, class_name "User::Thing::Image" }
-  end
-
-
-
-  it { should have_field(:text).of_type(String) }
-    # TODO: ¿Validar campo 'image' (Paperclip)?

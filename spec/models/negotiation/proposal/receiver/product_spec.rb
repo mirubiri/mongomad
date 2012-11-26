@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Deal::Agreement::Offer::Receiver::Product do
+describe Negotiation::Proposal::Receiver::Product do
   #let(:product) { Fabricate.build(:product) }
   #after(:each) { product && product.polymorphic_product.polymorphic_composer.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in(:receiver).of_type(Deal::Agreement::Offer::Receiver) }
-    it { should embed_one(:secondary_image).of_type(Deal::Agreement::Offer::Receiver::Product::Image) }
+    it { should be_embedded_in(:receiver).of_type(Negotiation::Proposal::Receiver) }
+    it { should embed_one(:secondary_image).of_type(Negotiation::Proposal::Receiver::Product::Image) }
   end
 
   describe 'Attributes' do

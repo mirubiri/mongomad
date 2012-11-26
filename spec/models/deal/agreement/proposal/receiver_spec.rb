@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Negotiation::Offer::Receiver do
+describe Deal::Agreement::Proposal::Receiver do
   #let(:receiver) { Fabricate.build(:receiver) }
   #after(:each) { receiver && receiver.polymorphic_receiver.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in(:offer).of_type(Negotiation::Offer) }
-    it { should embed_many(:products).of_type(Negotiation::Offer::Receiver::Product) }
+    it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }
+    it { should embed_many(:products).of_type(Deal::Agreement::Proposal::Receiver::Product) }
   end
 
   describe 'Attributes' do
@@ -16,7 +16,7 @@ describe Negotiation::Offer::Receiver do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :offer }
+    it { should validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :receiver_id }
     it { should validate_presence_of :receiver_name }
