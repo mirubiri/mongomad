@@ -7,7 +7,7 @@ describe User::Thing::Image do
   #end
 
   describe 'Relations' do
-    it { should be_embedded_in :thing, class_name: "User::Thing" }
+    it { should be_embedded_in(:thing).of_type("User::Thing") }
   end
 
   describe 'Attributes' do

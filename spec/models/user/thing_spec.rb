@@ -6,14 +6,14 @@ describe User::Thing do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_many :secondary_images, class_name "User::Thing::Image" }
+    it { should embed_many(:secondary_images).of_type(User::Thing::Image) }
   end
 
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
-    # TODO: ¿Validar campo 'image' (Paperclip)?
+    # TODO: ¿Validar campo 'main_image' (Paperclip)?
   end
 
   describe 'Validations' do
