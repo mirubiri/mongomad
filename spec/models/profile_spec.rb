@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Profile do
   let(:profile) { Fabricate.build(:profile) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :user }

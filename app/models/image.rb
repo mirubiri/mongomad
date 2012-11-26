@@ -2,7 +2,7 @@ class Image
   include Mongoid::Document
   include Mongoid::Paperclip
 
-  embedded_in :image_parent, polymorphic: true
+  embedded_in :image_parent, polymorphic: true, inverse_of: :secondary_images
 
   has_mongoid_attached_file :file
 

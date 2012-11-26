@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Proposal do
   let(:proposal) { Fabricate.build(:proposal) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :proposal_parent }

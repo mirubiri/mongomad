@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Message do
   let(:message) { Fabricate.build(:message) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :message_parent }

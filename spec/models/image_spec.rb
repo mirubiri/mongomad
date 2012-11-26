@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Image do
   let(:image) { Fabricate.build(:image) }
+  include_context 'clean collections'
+
   describe 'Relations' do
     it { should be_embedded_in :image_parent }
   end

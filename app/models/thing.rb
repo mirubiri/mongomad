@@ -4,7 +4,7 @@ class Thing
 
   embedded_in :user
   has_mongoid_attached_file :main_image
-  embeds_many :secondary_images,class_name: "Image", as: :image_parent,cascade_callbacks: true
+  embeds_many :secondary_images,class_name: "Image", as: :image_parent, inverse_of: :image_parent, cascade_callbacks: true
 
   field :name, type: String
   field :description, type: String

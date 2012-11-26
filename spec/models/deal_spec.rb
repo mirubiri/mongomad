@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal do
   let(:deal) { Fabricate.build(:deal) }
-  after(:each) { deal && deal.destroy }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should embed_one :agreement }

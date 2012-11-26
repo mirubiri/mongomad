@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Thing do
   let(:thing) { Fabricate.build(:thing) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :user }

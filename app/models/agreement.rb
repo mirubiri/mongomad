@@ -3,7 +3,7 @@ class Agreement
 
   embedded_in :deal
   embeds_many :proposals, as: :proposal_parent,cascade_callbacks:true
-  embeds_many :messages, as: :message_parent
+  embeds_many :messages, as: :message_parent,cascade_callbacks:true
 
   validates :deal,
             :proposals,
