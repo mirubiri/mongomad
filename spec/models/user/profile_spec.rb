@@ -10,17 +10,16 @@ describe User::Profile do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_fields(:name,
-                            :surname,
-                            :nickname,
-                            :sex,
-                            :country,
-                            :delivery_address,
-                            :phone_number,
-                            :website)
-                            .of_type(String) }
+    it { should have_field(:name).of_type(String) }
+    it { should have_field(:surname).of_type(String) }
+    it { should have_field(:nickname).of_type(String) }
+    it { should have_field(:sex).of_type(String) }
+    it { should have_field(:country).of_type(String) }
+    it { should have_field(:delivery_address).of_type(String) }
+    it { should have_field(:phone_number).of_type(String) }
+    it { should have_field(:website).of_type(String) }
     it { should have_field(:birth_date).of_type(Date) }
-    it { should have_field(:image).of_type() }
+    # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do
@@ -31,6 +30,7 @@ describe User::Profile do
     it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
     it { should validate_presence_of :birth_date }
+    it { should validate_presence_of :image }
   end
 
 =begin
