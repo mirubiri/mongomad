@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Receiver do

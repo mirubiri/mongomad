@@ -9,8 +9,7 @@ describe Request do
     it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:owner_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
-    #Cual de todas?
-    it { should have_field(:image).of_type(String) }
+    # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do

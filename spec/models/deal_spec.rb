@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Deal do

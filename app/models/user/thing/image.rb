@@ -1,20 +1,12 @@
-class User::Image
+class User::Thing::Image
   include Mongoid::Document
   include Mongoid::Paperclip
 
-  embedded_in :profile
+  embedded_in :thing, class_name "User::Thing"
 
   has_mongoid_attached_file :file
 
-  #,
-    #:styles => {
-      #:original => ['1920x1680>', :jpg],
-      #:small    => ['100x100#',   :jpg],
-      #:medium   => ['250x250',    :jpg],
-      #:large    => ['500x500>',   :jpg]
-    #}
-
-  validates :file,
-            :profile,
+  validates :thing,
+            :file,
             presence: true
 end
