@@ -1,30 +1,29 @@
-=begin
 require 'spec_helper'
 
-describe Composer do
-  let(:composer) { Fabricate.build(:composer) }
-  after(:each) { composer && composer.polymorphic_composer.destroy }
+describe Offer::Composer do
+  #let(:composer) { Fabricate.build(:composer) }
+  #after(:each) { composer && composer.polymorphic_composer.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_composer }
-    it { should embed_many :products }
-    it { should embed_one :image }
+    it { should be_embedded_in :offer }
+    it { should embed_many(:products).of_type(Offer::Composer::Product) }
   end
 
   describe 'Attributes' do
-    it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:name).of_type(String) }
+    it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:composer_name).of_type(String) }
+    # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_composer }
+    it { should validate_presence_of :offer }
     it { should validate_presence_of :products }
-    it { should validate_presence_of :user_id }
-    it { should validate_presence_of :name }
+    it { should validate_presence_of :composer_id }
+    it { should validate_presence_of :composer_name }
     it { should validate_presence_of :image }
-
   end
 
+=begin
   describe 'Factories' do
     specify { composer.should be_valid }
     specify { composer.save.should be_true }
@@ -42,4 +41,5 @@ describe Composer do
       expect(File.exists?(file_path)).to be_false
     end
   end
+=end
 end

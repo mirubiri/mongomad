@@ -1,34 +1,34 @@
-=begin
 require 'spec_helper'
 
-describe Message do
-  let(:message) { Fabricate.build(:message) }
-  after(:each) { message && message.polymorphic_message.destroy }
+describe Deal::Message do
+  #let(:message) { Fabricate.build(:message) }
+  #after(:each) { message && message.polymorphic_message.destroy }
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_message }
+    it { should be_embedded_in :deal }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_fields(:sender_name,
-                            :text)
-                            .of_type(String) }
+    it { should have_field(:sender_name).of_type(String) }
+    it { should have_field(:text).of_type(String) }
+    # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :polymorphic_message }
+    it { should validate_presence_of :negotiation }
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_name }
     it { should validate_presence_of :text }
+    it { should validate_presence_of :image }
   end
 
-  xit "Cada mensaje debe ir acompanado del avatar del usuario que lo escribe"
-
+=begin
   describe 'Factories' do
 
     specify { message.should be_valid }
     specify { message.save.should be_true }
   end
+=end
 end

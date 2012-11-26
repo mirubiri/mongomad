@@ -1,23 +1,32 @@
-=begin
 require 'spec_helper'
 
-describe Agreement do
-  let(:agreement) { Fabricate.build(:agreement) }
-  after(:each) { agreement && agreement.destroy }
+describe Deal::Agreement do
+  #let(:negotiation) { Fabricate.build(:negotiation) }
+  #after(:each) { negotiation && negotiation.destroy }
 
   describe 'Relations' do
     it { should be_embedded_in :deal }
-    it { should embed_many :offers }
-    it { should embed_many :messages }
+    it { should embed_many(:offers).of_type(Deal::Agreement::Offer) }
+    it { should embed_many(:messages).of_type(Deal::Agreement::Message) }
+  end
+
+  describe 'Attributes' do
+    it { should be_timestamped_document }
+    it { should have_field(:token_owner_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:token_state).of_type(Boolean) }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :deal }
     it { should validate_presence_of :offers }
+    it { should validate_presence_of :messages }
+    it { should validate_presence_of :token_owner_id }
+    it { should validate_presence_of :token_state }
   end
 
+=begin
   describe 'Factories' do
-    specify { agreement.should be_valid }
-    specify { agreement.save.should be_true }
+    specify { negotiation.should be_valid }
+    specify { negotiation.save.should be_true }
   end
+=end
 end

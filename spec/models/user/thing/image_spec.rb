@@ -7,7 +7,7 @@ describe User::Thing::Image do
   #end
 
   describe 'Relations' do
-    it { should be_embedded_in(:thing).of_type("User::Thing") }
+    it { should be_embedded_in(:thing).of_type(User::Thing) }
   end
 
   describe 'Attributes' do
@@ -15,6 +15,7 @@ describe User::Thing::Image do
   end
 
   describe 'Validations' do
+    it { should validate_presence_of :thing }
     it { should validate_presence_of :file }
   end
 
