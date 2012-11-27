@@ -11,7 +11,8 @@ class User
   has_and_belongs_to_many :negotiations, inverse_of: nil
   has_and_belongs_to_many :deals, inverse_of: nil
 
-  validates :profile, presence: true
+  validates :profile,
+            presence: true
 
 
   # -------------- DEVISE GENERATED----------------------------
@@ -55,5 +56,4 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-
 end
