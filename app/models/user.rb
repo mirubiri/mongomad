@@ -2,24 +2,27 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one :profile, cascade_callbacks:true
-  embeds_many :things, cascade_callbacks:true
-
+  embeds_one :profile, class_name: "User::Profile", cascade_callbacks: true
+  embeds_many :things, class_name: "User::Thing", cascade_callbacks: true
   has_and_belongs_to_many :requests, inverse_of: nil
   has_and_belongs_to_many :sent_offers, class_name: "Offer", inverse_of: nil
   has_and_belongs_to_many :received_offers, class_name: "Offer", inverse_of: nil
   has_and_belongs_to_many :negotiations, inverse_of: nil
   has_and_belongs_to_many :deals, inverse_of: nil
 
-  validates :profile, presence: true
-
+  validates :profile,
+            presence: true
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :validatable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
