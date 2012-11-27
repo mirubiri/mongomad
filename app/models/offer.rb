@@ -2,9 +2,9 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one :composer, cascade_callbacks: true
-  embeds_one :receiver, cascade_callbacks: true
-  embeds_one :money
+  embeds_one :composer, class_name: "Offer::Composer", cascade_callbacks: true
+  embeds_one :receiver, class_name: "Offer::Receiver", cascade_callbacks: true
+  embeds_one :money, class_name: "Offer::Money"
 
   field :initial_message, type: String
 
