@@ -3,11 +3,11 @@ class User::Thing
   include Mongoid::Paperclip
 
   embedded_in :user
-  embeds_many :secondary_image, class_name: "User::Thing::Image", cascade_callbacks: true
+  embeds_many :secondary_images, class_name: "User::Thing::Image", cascade_callbacks: true
 
-  field :name, type: String
+  field :name,        type: String
   field :description, type: String
-  field :stock, type: Integer, default: 1
+  field :stock,       type: Integer, default: 1
   has_mongoid_attached_file :image
 
   validates :user,
