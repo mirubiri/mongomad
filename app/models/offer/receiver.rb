@@ -1,18 +1,18 @@
 class Offer::Receiver
   include Mongoid::Document
+  include Mongoid::Paperclip
 
   embedded_in :offer
-  embeds_many :products, cascade_callbacks: true
-  embeds_one :image, cascade_callbacks: true
+  embeds_many :products, class_name: "Offer::Receiver::Product", cascade_callbacks: true
 
-
-  field :user_id, type: Moped::BSON::ObjectId
-  field :name, type: String
+  field :receiver_id,   type: Moped::BSON::ObjectId
+  field :receiver_name, type: String
+  has_mongoid_attached_file :image
 
   validates :offer,
             :products,
-            :user_id,
-            :name,
+            :receiver_id,
+            :receiver_name,
             :image,
             presence: true
 end
