@@ -6,7 +6,7 @@ describe Deal::Agreement::Proposal::Receiver::Product do
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Deal::Agreement::Proposal::Receiver) }
-    it { should embed_one(:secondary_image).of_type(Deal::Agreement::Proposal::Receiver::Product::Image) }
+    it { should embed_manyt(:secondary_images).of_type(Deal::Agreement::Proposal::Receiver::Product::Image) }
   end
 
   describe 'Attributes' do
@@ -19,7 +19,6 @@ describe Deal::Agreement::Proposal::Receiver::Product do
 
   describe 'Validations' do
     it { should validate_presence_of :receiver }
-    it { should validate_presence_of :secondary_image }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
