@@ -6,7 +6,7 @@ describe Offer::Composer::Product do
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
-    it { should embed_one(:secondary_image).of_type(Offer::Composer::Product::Image) }
+    it { should embed_many(:secondary_images).of_type(Offer::Composer::Product::Image) }
   end
 
   describe 'Attributes' do
@@ -19,7 +19,6 @@ describe Offer::Composer::Product do
 
   describe 'Validations' do
     it { should validate_presence_of :composer }
-    it { should validate_presence_of :secondary_image }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }

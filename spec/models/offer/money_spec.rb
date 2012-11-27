@@ -15,7 +15,7 @@ describe Offer::Money do
 
   describe 'Validations' do
     it { should validate_presence_of :offer }
-    it { should validate_presence_of :user_id }
+    it { should validate_presence_of :owner_id }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
