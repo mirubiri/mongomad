@@ -1,5 +1,5 @@
 Fabricator(:request) do
-  user_id 'an existing user_id'
-  user_name 'owner name'
+  owner_id 'owner_id'
+  owner_name 'owner name'
   text 'text'
 end

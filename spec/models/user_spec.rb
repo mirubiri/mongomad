@@ -23,7 +23,7 @@ describe User do
   end
 
   describe 'Factories' do
-    specify { expect(user.valid?).to be_true }
-    specify { expect(user.save).to be_true,"A ver que tenemos #{user.errors.messages}" }
+    specify { user.should be_valid }
+    specify { user.save.should be_true }
   end
 end
