@@ -1,13 +1,13 @@
-class Negotiation::Offer::Money
+class Negotiation::Proposal::Money
   include Mongoid::Document
 
-  embedded_in :offer
+  embedded_in :proposal, class_name: "Negotiation::Proposal"
 
-  field :user_id, type: Moped::BSON::ObjectId
+  field :owner_id, type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-  validates :offer,
-            :user_id,
+  validates :proposal,
+            :owner_id,
             :quantity,
             presence: true
 

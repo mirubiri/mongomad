@@ -1,13 +1,15 @@
-class Deal::Agreement::Offer::Receiver::Product
+class Deal::Agreement::Proposal::Receiver::Product
   include Mongoid::Document
+  include Mongoid::Paperclip
 
-  embedded_in :receiver
-  embeds_one :main_image
+  embedded_in :receiver, class_name: "Deal::Agreement::Proposal::Receiver"
+  embeds_many :secondary_images, class_name: "Deal::Agreement::Proposal::Receiver::Product::Image", cascade_callbacks: true
 
-  field :thing_id, type: Moped::BSON::ObjectId
-  field :name, type: String
+  field :thing_id,    type: Moped::BSON::ObjectId
+  field :name,        type: String
   field :description, type: String
-  field :quantity, type: Integer, default: 1
+  field :quantity,    type: Integer, default: 1
+  has_mongoid_attached_file :image
 
   validates :receiver,
             :thing_id,

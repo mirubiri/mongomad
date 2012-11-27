@@ -1,17 +1,18 @@
-class Deal::Agreement::Offer::Composer
-      include Mongoid::Document
+class Deal::Agreement::Proposal::Composer
+  include Mongoid::Document
+  include Mongoid::Paperclip
 
-      embedded_in :offer
-      embeds_many :products, cascade_callbacks: true
-      embeds_one :image
+  embedded_in :proposal, class_name: "Deal::Agreement::Proposal"
+  embeds_many :products, class_name: "Deal::Agreement::Proposal::Composer::Product", cascade_callbacks: true
 
-      field :user_id, type: Moped::BSON::ObjectId
-      field :name, type: String
+  field :composer_id,   type: Moped::BSON::ObjectId
+  field :composer_name, type: String
+  has_mongoid_attached_file :image
 
-      validates :offer,
-                :products,
-                :user_id,
-                :name,
-                :image,
-                presence: true
+  validates :proposal,
+            :products,
+            :composer_id,
+            :composer_name,
+            :image,
+            presence: true
 end

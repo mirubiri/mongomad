@@ -6,7 +6,7 @@ describe Deal::Agreement::Proposal::Receiver::Product do
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Deal::Agreement::Proposal::Receiver) }
-    it { should embed_manyt(:secondary_images).of_type(Deal::Agreement::Proposal::Receiver::Product::Image) }
+    it { should embed_many(:secondary_images).of_type(Deal::Agreement::Proposal::Receiver::Product::Image) }
   end
 
   describe 'Attributes' do

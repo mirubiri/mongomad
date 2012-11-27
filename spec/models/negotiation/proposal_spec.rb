@@ -13,13 +13,12 @@ describe Negotiation::Proposal do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:initial_message).of_type(String) }
   end
 
   describe 'Validations' do
+    it { should validate_presence_of :negotiation }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
-    it { should validate_presence_of :initial_message }
   end
 
 =begin

@@ -1,18 +1,18 @@
-class Deal::Agreement::Offer::Receiver
+class Deal::Agreement::Proposal::Receiver
   include Mongoid::Document
+  include Mongoid::Paperclip
 
-  embedded_in :deal
-  embeds_many :products, cascade_callbacks: true
-  embeds_one :image
+  embedded_in :proposal, class_name: "Deal::Agreement::Proposal"
+  embeds_many :products, class_name: "Deal::Agreement::Proposal::Receiver::Product", cascade_callbacks: true
 
+  field :receiver_id,   type: Moped::BSON::ObjectId
+  field :receiver_name, type: String
+  has_mongoid_attached_file :image
 
-  field :user_id, type: Moped::BSON::ObjectId
-  field :name, type: String
-
-  validates :deal,
+  validates :proposal,
             :products,
-            :user_id,
-            :name,
+            :receiver_id,
+            :receiver_name,
             :image,
             presence: true
 end

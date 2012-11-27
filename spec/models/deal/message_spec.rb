@@ -17,7 +17,7 @@ describe Deal::Message do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :negotiation }
+    it { should validate_presence_of :deal }
     it { should validate_presence_of :sender_id }
     it { should validate_presence_of :sender_name }
     it { should validate_presence_of :text }
