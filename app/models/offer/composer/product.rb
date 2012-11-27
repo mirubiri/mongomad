@@ -1,13 +1,15 @@
 class Offer::Composer::Product
   include Mongoid::Document
+  include Mongoid::Paperclip
 
-  embedded_in :composer
-  embeds_one :main_image,class_name: "Image",cascade_callbacks: true
+  embedded_in :composer, class_name: "Offer::Composer"
+  embeds_many :secondary_images, class_name: "Offer::Composer::Product::Image", cascade_callbacks: true
 
-  field :thing_id, type: Moped::BSON::ObjectId
-  field :name, type: String
+  field :thing_id,    type: Moped::BSON::ObjectId
+  field :name,        type: String
   field :description, type: String
-  field :quantity, type: Integer, default: 1
+  field :quantity,    type: Integer, default: 1
+  has_mongoid_attached_file :image
 
   validates :composer,
             :thing_id,
