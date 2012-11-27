@@ -9,7 +9,7 @@ class Deal::Agreement::Proposal::Composer::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  has_mongoid_attached_file :image
+  has_mongoid_attached_file :main_image
 
   validates :composer,
             :thing_id,

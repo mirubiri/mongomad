@@ -8,7 +8,7 @@ class User::Thing
   field :name,        type: String
   field :description, type: String
   field :stock,       type: Integer, default: 1
-  has_mongoid_attached_file :image
+  has_mongoid_attached_file :main_image
 
   validates :user,
             :name,

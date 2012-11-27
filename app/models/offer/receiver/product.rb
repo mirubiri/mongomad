@@ -9,7 +9,7 @@ class Offer::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  has_mongoid_attached_file :image
+  has_mongoid_attached_file :main_image
 
   validates :receiver,
             :thing_id,
