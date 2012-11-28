@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="description" content="Esta es nuestra web">  
   <title>Mongomad</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>  
 </head>
-<body>
 
-<%= yield %>
+<body>
+    
+  <div class="header">
+    <div class="header_logo"></div>
+    <nav class="header_menu" >
+        <a href="/html/"></a>
+        <a href="/html5/"></a>
+        <a href="/css/"></a>
+        <a href="/css3/"></a>
+    </nav>    
+    <input type="search" name="busqueda" />    
+    <div class="header_user_image"></div>
+    <div class="header_user_description">
+      <p>nombre</p>
+      <p>apellidos</p>
+    </div>    
+  </div> 
+    
+  <p id="notice"><%= notice %></p>
+  
+  <div class="mainlayout">
+    <%= yield %> 
+    <footer>@copyright derechos reservados a improcex ingenieria informatica s.l.</footer>
+  </div>  
 
 </body>
 </html>

@@ -1,0 +1,29 @@
+@import "variables";
+
+
+.petition{          
+  float:left;
+  width: 260px;
+  height: 60px;
+  margin: 10px 10px 10px 0px;
+  overflow: hidden;
+
+  .profile_image{
+    float:left;
+    margin-right:5px;
+    width: 58px;
+    height: 58px;
+    border: $bordeElementos;
+    border-radius:5px;
+    img{
+    }
+  }
+
+  .description{
+    float: left;
+    width: 170px;
+    height: 58px;
+    border: $bordeElementos;
+    border-radius:5px;
+  }          
+}

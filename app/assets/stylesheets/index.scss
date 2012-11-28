@@ -1,0 +1,105 @@
+@import "variables";
+
+.header_inicio{
+  position: fixed;
+  width: 100%;
+  max-width:100%;
+  min-width:1200px;
+  height:120px;
+  overflow: hidden;
+  border: $bordeElementos;
+  background-color:white; 
+  display: inline;
+  z-index: 1000;
+
+    .header_inicio_logo{
+      float: left;
+      margin-left:80px;
+      margin-top:30px;
+      width: 260px;
+      height: 60px;
+      border: $bordeElementos;        
+    }
+    
+    nav{
+      float: right;
+      margin-right:0px;
+      margin-top:50px;
+
+      .register_element{
+        float:left;
+
+        input{
+          float: left;          
+        }
+
+        p{
+          float:left;
+          width:100%;
+          margin-top:0px;
+        } 
+      }               
+    }
+}
+
+.initial_content {
+    position:absolute;
+    top: 150px;
+    left:100px;      
+    width:1000px;
+    min-width:1000px;
+    height:600px;
+    overflow: auto;
+
+    .explanation_side{
+      float: left;
+      width:498px;
+
+      .petition_sample{//abre la petición          
+        float:left;
+        width: 350px;
+        height: 62px;
+        margin-bottom: 15px;
+        overflow: hidden;
+
+        .profile_image{
+          float:left;
+          margin-right:5px;
+          width: 60px;
+          height: 60px;
+          border: $bordeElementos;
+          border-radius:5px;
+          img{
+          }
+        }
+
+        .description{
+          float: left;
+          width: 270px;
+          height: 60px;
+          border: $bordeElementos;
+          border-radius:5px;              
+
+          textarea{
+            float:left;
+            -webkit-appearance: textarea;
+            font-size: 11px;
+            width: 50%;
+            border:none;
+            resize: none;
+            overflow: hidden;
+            maxlenght: 135;
+
+          }
+        }          
+      }//cierra la petition
+
+    }
+
+    .register_side{
+      float: left;
+      width:498px;
+      text-align:right;
+    }
+
+}

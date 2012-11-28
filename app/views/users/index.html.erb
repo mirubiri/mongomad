@@ -12,6 +12,7 @@
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     <td><%= link_to 'hola', user_offers_create_path(@user, @offer)%></td>
   </tr>
 <% end %>
 </table>
