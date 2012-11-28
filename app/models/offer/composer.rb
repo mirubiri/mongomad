@@ -5,14 +5,14 @@ class Offer::Composer
   embedded_in :offer
   embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
 
-  field :composer_id,   type: Moped::BSON::ObjectId
-  field :composer_name, type: String
+  field :user_id, type: Moped::BSON::ObjectId
+  field :name,    type: String
   has_mongoid_attached_file :image
 
   validates :offer,
             :products,
-            :composer_id,
-            :composer_name,
+            :user_id,
+            :name,
             :image,
             presence: true
 end

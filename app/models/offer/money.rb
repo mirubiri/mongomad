@@ -3,11 +3,11 @@ class Offer::Money
 
   embedded_in :offer
 
-  field :owner_id, type: Moped::BSON::ObjectId
+  field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
   validates :offer,
-            :owner_id,
+            :user_id,
             :quantity,
             presence: true
 

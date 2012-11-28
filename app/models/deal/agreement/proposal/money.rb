@@ -3,11 +3,11 @@ class Deal::Agreement::Proposal::Money
 
   embedded_in :proposal, class_name: "Deal::Agreement::Proposal"
 
-  field :owner_id, type: Moped::BSON::ObjectId
+  field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
   validates :proposal,
-            :owner_id,
+            :user_id,
             :quantity,
             presence: true
 

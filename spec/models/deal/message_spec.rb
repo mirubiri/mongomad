@@ -10,23 +10,22 @@ describe Deal::Message do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:sender_name).of_type(String) }
+    it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
     # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do
     it { should validate_presence_of :deal }
-    it { should validate_presence_of :sender_id }
-    it { should validate_presence_of :sender_name }
+    it { should validate_presence_of :user_id }
+    it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
     it { should validate_presence_of :image }
   end
 
 =begin
   describe 'Factories' do
-
     specify { message.should be_valid }
     specify { message.save.should be_true }
   end

@@ -5,14 +5,14 @@ class Deal::Message
 
     embedded_in :deal
 
-    field :sender_id,   type: Moped::BSON::ObjectId
-    field :sender_name, type: String
-    field :text,        type: String
+    field :user_id,   type: Moped::BSON::ObjectId
+    field :user_name, type: String
+    field :text,      type: String
     has_mongoid_attached_file :image
 
     validates :deal,
-              :sender_id,
-              :sender_name,
+              :user_id,
+              :user_name,
               :text,
               :image,
               presence: true
