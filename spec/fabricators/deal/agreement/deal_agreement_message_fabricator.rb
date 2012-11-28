@@ -1,4 +1,4 @@
-Fabricator('deal::agreement::message') do
+Fabricator('Deal::Agreement::Message') do
   polymorphic_message { Fabricate.build(:negotiation) }
   sender_id 'an existing sender_id'
   sender_name 'sender name'
