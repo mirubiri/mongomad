@@ -1,21 +1,150 @@
-<h1>Listing negotiations</h1>
+<section class="userside" id="user-side">
+  
+  <aside class="userside_profile">
+    <div class="image"></div>
+    <div class="user_name">user_name</br>user_nationality</div>
+    <a href="newOffer.html" target="_blank">
+      <button id="new-offer" class="profile_button">nueva oferta</button>
+    </a>
+    <nav class="profile_menu">
+      <div class="menu_icon"><a href="profile.html">perfil</a></div>
+      <div class="menu_icon"><a href="products.html">prod</a></div>
+      <div class="menu_icon"><a href="alerts.html">alertas</a></div>
+    </nav>
+  </aside>
+  
+  <aside class="userside_petitions">
+      <a href="newPetition.html">
+        <button id="new-petition" class="add_petition_button">Nueva Petición
+        </button>
+      </a>
+    <aside class="petitions_petitionsList">
+      <% @requests.each do |offer| %>
+        <div class="petition">
+          <div class="profile_image"></div>
+          <div class="description"></div>
+        </div> 
+        <tr>
+          <td><%= link_to 'Show', offer %></td>
+          <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+          <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>                
+    </aside>
+  </aside>
+    
+</section>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @negotiations.each do |negotiation| %>
-  <tr>
-    <td><%= link_to 'Show', negotiation %></td>
-    <td><%= link_to 'Edit', edit_negotiation_path(negotiation) %></td>
-    <td><%= link_to 'Destroy', negotiation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
+<section class="contentside" id="content-side">  
+  <header class="contentside_header">
+    <div class="contentsideheader_menu">
+       <nav>
+        <div class="nav_element">
+          <div class="icono_navegacion"></div>
+          <a href="offers.html">Ofertas</a>
+        </div>
+        <div class="nav_element">
+          <div class="icono_navegacion"></div>
+          <a href="negotiations.html">Negociaciones</a>
+        </div>
+        <div class="nav_element">
+          <div class="icono_navegacion"></div>
+          <a href="deals.html">Acuerdos</a>
+        </div>
+       </nav>
+       <div class="contentsideheader_search">
+        <input type="search">
+       </div>
+    </div>
+  </header>
+  
+  <aside class="contentside_elementList" id="ppal_container">    
+    <% @negotiations.each do |negotiation| %>
+      <div class="table" id="table1">
+          <div class="proposition_side">
+            <div class="proposition">
+               <div class="proposition_header">
+                <div class="triangle"></div>
+                <div class="profile_image"></div>
+              </div>
+              <div class="offered_things">
+                <div class="offered_product">
+                  <div class="product-image">
+                  </div>
+                  <div class="product-title">      
+                  </div>
+                </div>                
+                <div class="offered_product">
+                  <div class="product-image">
+                  </div>
+                  <div class="product-title">       
+                  </div>
+                </div>
+              </div>
+              <div class="orderer_things">
+                <div class="orderer_product">
+                </div>
+                <div class="orderer_money">120€                
+                </div>
+              </div>
+              <div class="orderer_things">
+                <div class="orderer_product">
+                </div>
+              </div>
+            </div>
+            <div class="actions">
+              <div class="reputation">                
+              </div>
+              <div class="action_buttons"> 
+              <button>aceptar</button>               
+              </div>
+            </div>
+          </div>
+          <div class="dialog_side">
+            <div class="dialog_head">
+              <div class="dialogin">Conversation...</div>
+            </div>
+            <div class="conversation" id="conversationoftable">
+              <div class="comment">
+                <div class="comment_user_image">                  
+                </div>
+                <div class="comment_text">                  
+                </div>
+              </div>
+              <div class="comment">
+                <div class="comment_user_image">                  
+                </div>
+                <div class="comment_text">                 
+                </div>
+              </div>
+              <div class="comment">
+                <div class="comment_user_image">                  
+                </div>
+                <div class="comment_text">                 
+                </div>
+              </div>
+            </div>
+            <div class="writting_box">
+              <form action="">
+                <div class="message">
+                  <input type="">                
+                </div>
+                <div class="sender">
+                  <input type="">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      <tr>
+        <td><%= link_to 'Show', negotiation %></td>
+        <td><%= link_to 'Edit', edit_negotiation_path(negotiation) %></td>
+        <td><%= link_to 'Destroy', negotiation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>          
+  </aside>
+  
+</section>
 
 <%= link_to 'New Negotiation', new_negotiation_path %>
