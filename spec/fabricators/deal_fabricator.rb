@@ -1,3 +1,4 @@
 Fabricator(:deal) do
-  agreement { Fabricate.build(:agreement) }
+  agreement nil
+  messages  nil
 end
