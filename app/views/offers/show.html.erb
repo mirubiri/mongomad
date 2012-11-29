@@ -5,15 +5,15 @@
        <nav>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="offers.html">Ofertas</a>
+            <%= link_to 'Ofertas', user_offers_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="negotiations.html">Negociaciones</a>
+            <%= link_to 'Negociaciones', user_negotiations_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="deals.html">Acuerdos</a>
+            <%= link_to 'Tratos', user_deals_path(@user) %>
         </div>
        </nav>
        <div class="contentsideheader_search">
@@ -24,10 +24,4 @@
 
 <% end %>
 
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
-<%= link_to 'Back', offers_path %>
-
-<!-- Lo usaremos solo en caso de querer mostrar una oferta sola y no queramos utilizar los efectos de zoom que estan muy bien, Zoomooz.js o Zoombox.js -->
+<!-- utilizo el show para almacenar los content_for de la clase, sin embargo a las ofertas podemos hacerles un zoom directamente -->

@@ -5,15 +5,15 @@
        <nav>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="offers.html">Ofertas</a>
+            <%= link_to 'Ofertas', user_offers_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="negotiations.html">Negociaciones</a>
+            <%= link_to 'Negociaciones', user_negotiations_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="deals.html">Acuerdos</a>
+            <%= link_to 'Tratos', user_deals_path(@user) %>
         </div>
        </nav>
        <div class="contentsideheader_search">

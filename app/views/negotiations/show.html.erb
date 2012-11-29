@@ -5,15 +5,15 @@
        <nav>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="offers.html">Ofertas</a>
+            <%= link_to 'Ofertas', user_offers_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="negotiations.html">Negociaciones</a>
+            <%= link_to 'Negociaciones', user_negotiations_path(@user) %>
         </div>
         <div class="nav_element">
           <div class="icono_navegacion"></div>
-          <a href="deals.html">Acuerdos</a>
+            <%= link_to 'Tratos', user_deals_path(@user) %>
         </div>
        </nav>
        <div class="contentsideheader_search">
@@ -24,12 +24,4 @@
 
 <% end %>
 
-
-<p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_negotiation_path(@negotiation) %> |
-<%= link_to 'Back', negotiations_path %>
-
-
-<!-- podemos hacerle un zoom y no utilizar ni la vista ni el controlador de del show -->
+<!-- utilizo el show para almacenar los content_for de la clase, sin embargo a las negociaciones podemos hacerles un zoom directamente -->
