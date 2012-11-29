@@ -1,5 +1,5 @@
-Fabricator(:offer) do
-  polymorphic_offer { Fabricate.build(:negotiation,offers:nil) }
-  composer { Fabricate.build(:composer,polymorphic_composer:nil) }
-  receiver { Fabricate.build(:receiver,polymorphic_receiver:nil) }
+Fabricator(:negotiation_proposal, class_name: "Negotiation::Proposal") do
+  negotiation nil
+  composer        nil
+  receiver        nil
 end
