@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
-  def index
+  def index    
     @requests = Request.all
 
     respond_to do |format|

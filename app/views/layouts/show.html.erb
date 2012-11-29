@@ -4,30 +4,37 @@
     
     <aside class="userside_profile">
       <div class="image"></div>
-      <div class="user_name">user_name</br>user_nationality</div>
-      <a href="newOffer.html" target="_blank">
-        <button id="new-offer" class="profile_button">nueva oferta</button>
+      <div class="user_name">@user.name</br>@user.nationality</div>
+      <a href="newOffer.html" target="_blank">        
+        <%= button_to "Nueva Oferta",new_offer_path,
+        {:class => "profile_button",:id => "new-offer"} %>
       </a>
       <nav class="profile_menu">
-        <div class="menu_icon"><a href="profile.html">perfil</a></div>
-        <div class="menu_icon"><a href="products.html">prod</a></div>
-        <div class="menu_icon"><a href="alerts.html">alertas</a></div>
+        <div class="menu_icon">
+          <%= link_to 'Perfil', user_profile_path(@user) %>
+        </div>
+        <div class="menu_icon">
+          <%= link_to 'Prod', user_products_path(@user) %>
+        </div>
+        <div class="menu_icon">
+          <%= link_to 'Alertas', user_alerts_path(@user) %>
+        </div>
       </nav>
     </aside>
     
     <aside class="userside_requests">
-        <a href="newrequest.html">
-          <button id="new-request" class="add_request_button">Nueva Petición
-          </button>
+        <a href="newrequest.html">          
+          <%= button_to "Nueva Petición",new_request_path, 
+          {:class => "add_request_button",:id => "add_request_button"} %>      
         </a>
       <aside class="requests_requestsList">
         <% @requests.each do |offer| %>
           <div class="request">
             <div class="profile_image"></div>
             <div class="description"></div>
-          </div> 
+          </div>
+          <!-- Las siguientes 2 las mantengo pq seran las opciones de un request probablemente --> 
           <tr>
-            <td><%= link_to 'Show', offer %></td>
             <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
             <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
