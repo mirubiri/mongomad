@@ -1,64 +1,6 @@
-<section class="userside" id="user-side">
-  
-  <aside class="userside_profile">
-    <div class="image"></div>
-    <div class="user_name">user_name</br>user_nationality</div>
-    <a href="newOffer.html" target="_blank">
-      <button id="new-offer" class="profile_button">nueva oferta</button>
-    </a>
-    <nav class="profile_menu">
-      <div class="menu_icon"><a href="profile.html">perfil</a></div>
-      <div class="menu_icon"><a href="products.html">prod</a></div>
-      <div class="menu_icon"><a href="alerts.html">alertas</a></div>
-    </nav>
-  </aside>
-  
-  <aside class="userside_requests">
-      <a href="newrequest.html">
-        <button id="new-request" class="add_request_button">Nueva Petición
-        </button>
-      </a>
-    <aside class="requests_requestsList">
-      <% @requests.each do |offer| %>
-        <div class="request">
-          <div class="profile_image"></div>
-          <div class="description"></div>
-        </div> 
-        <tr>
-          <td><%= link_to 'Show', offer %></td>
-          <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-          <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>                
-    </aside>
-  </aside>
-    
-</section>
-
-
 <section class="contentside" id="content-side">
   
-  <header class="contentside_header">
-    <div class="contentsideheader_menu">
-       <nav>
-        <div class="nav_element">
-          <div class="icono_navegacion"></div>
-          <a href="offers.html">Ofertas</a>
-        </div>
-        <div class="nav_element">
-          <div class="icono_navegacion"></div>
-          <a href="negotiations.html">Negociaciones</a>
-        </div>
-        <div class="nav_element">
-          <div class="icono_navegacion"></div>
-          <a href="deals.html">Acuerdos</a>
-        </div>
-       </nav>
-       <div class="contentsideheader_search">
-        <input type="search">
-       </div>
-    </div>
-  </header>
+  <%= yield :contentside_header %>
   
   <aside class="contentside_elementList" id="ppal_container">    
     <%= render @creations %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->
