@@ -1,7 +1,8 @@
-Fabricator(:thing) do
-  user { Fabricate.build(:user,things:nil) }
-  name 'name'
-  description 'description'
-  stock 5
-  main_image
+Fabricator(:user_thing, class_name: "User::Thing") do
+  user             nil
+  secondary_images nil
+  name             'name'
+  description      'description'
+  stock            2
+  main_image       nil
 end
