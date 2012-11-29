@@ -1,8 +1,8 @@
-Fabricator(:product) do
-  polymorphic_product { Fabricate.build(:composer, products:nil) }
-  thing_id 'an existing thing_id'
+Fabricator(:deal_agreement_proposal_receiver_product, class_name: "Deal::Agreement::Proposal::Receiver::Product") do
+  receiver nil
+  thing_id 'thing_id'
   name 'name'
   description 'description'
   quantity 5
-  main_image { Fabricate.build(:image,polymorphic_image:nil) }
+  main_image { File.open('app/assets/images/rails.png') }
 end
