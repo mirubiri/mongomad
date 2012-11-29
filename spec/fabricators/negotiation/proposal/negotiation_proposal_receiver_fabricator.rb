@@ -1,7 +1,7 @@
-Fabricator(:receiver) do
-  polymorphic_receiver { Fabricate.build(:offer,receiver:nil) }
-  products(count:1) { Fabricate.build(:product,polymorphic_product:nil) }
-  user_id 'an existing user_id'
-  name 'receiver name'
-  image {Fabricate.build(:image,polymorphic_image:nil)}
+Fabricator(:negotiation_proposal_receiver, class_name: "Negotiation::Proposal::Receiver") do
+  proposal nil
+  products nil
+  user_id 'user_id'
+  name 'name'
+  image { File.open('app/assets/images/rails.png') }
 end
