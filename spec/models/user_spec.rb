@@ -23,6 +23,7 @@ describe User do
   end
 
 =begin
+
   describe 'Factories' do
     #las factorias y metodos hay que revisarlos
     specify { user.should be_valid }
