@@ -3,5 +3,5 @@ Fabricator(:offer_composer, class_name: "Offer::Composer") do
   products nil
   user_id 'user_id'
   name 'name'
-  image nil
+  image { File.open('app/assets/images/rails.png') }
 end
