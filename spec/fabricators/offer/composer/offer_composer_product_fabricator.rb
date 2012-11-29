@@ -1,8 +1,8 @@
-Fabricator(:product) do
-  polymorphic_product { Fabricate.build(:composer, products:nil) }
-  thing_id 'an existing thing_id'
+Fabricator(:offer_composer_product, class_name: "Offer::Composer::Product") do
+  composer nil
+  thing_id 'thing_id'
   name 'name'
   description 'description'
   quantity 5
-  main_image { Fabricate.build(:image,polymorphic_image:nil) }
+  main_image nil
 end
