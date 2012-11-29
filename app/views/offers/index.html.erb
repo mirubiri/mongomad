@@ -61,34 +61,7 @@
   </header>
   
   <aside class="contentside_elementList" id="ppal_container">    
-    <% @offers.each do |offer| %>
-      <div class="offer">
-        <div class="offer_header">
-          <div class="triangle"></div>
-          <div class="profile_image"></div>
-          <div class="description">
-            <textarea name="offer-description" id="offer-description" cols="1" rows="1">
-            </textarea>
-          </div>
-        </div>
-        <div class="offer_things">
-          <div class="recieved">
-            <div class="thing"></div>
-          </div>
-          <div class="given">
-            <div class="thing"></div>
-          </div>
-        </div>
-        <div class="offer_button">
-          <button>enviar</button>
-        </div>
-      </div>
-      <tr>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>            
+    <%= render @creations %><!-- Helper que itera sobre _offers -->
   </aside>
   
 </section>

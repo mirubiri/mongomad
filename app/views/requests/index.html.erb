@@ -13,14 +13,14 @@
     </nav>
   </aside>
   
-  <aside class="userside_petitions">
-      <a href="newPetition.html">
-        <button id="new-petition" class="add_petition_button">Nueva Petición
+  <aside class="userside_requests">
+      <a href="newrequest.html">
+        <button id="new-request" class="add_request_button">Nueva Petición
         </button>
       </a>
-    <aside class="petitions_petitionsList">
+    <aside class="requests_requestsList">
       <% @requests.each do |offer| %>
-        <div class="petition">
+        <div class="request">
           <div class="profile_image"></div>
           <div class="description"></div>
         </div> 
@@ -61,18 +61,7 @@
   </header>
   
   <aside class="contentside_elementList" id="ppal_container">    
-    <% @requests.each do |offer| %>
-      <div class="petition">
-          <div class="profile_image">
-          </div>
-          <div class="description"></div>
-        </div>
-      <tr>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>            
+    <%= render @creations %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->
   </aside>
   
 </section>

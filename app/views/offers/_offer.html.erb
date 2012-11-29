@@ -1,0 +1,22 @@
+<%= div_for, offer,'class'=> "offer",'data-id' => offer.id do %>
+  <div class="offer_header">
+    <div class="triangle"></div>
+    <div class="profile_image"></div>
+    <div class="description">
+      <textarea name="offer-description" id="offer-description" cols="1" rows="1">
+      </textarea>
+    </div>
+  </div>
+  <div class="offer_things">
+    <div class="recieved">
+      <div class="thing"></div>
+    </div>
+    <div class="given">
+      <div class="thing"></div>
+    </div>
+  </div>
+  <div class="offer_button">
+    <button>enviar</button>
+  </div>
+<% end %>
+  

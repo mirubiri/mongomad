@@ -1,9 +1,9 @@
 $(document).ready(function() {
   
-  $('#new-petition').click(function(e){
+  $('#new-request').click(function(e){
       e.preventDefault();
 
-      $('#new-petition-form').modal({
+      $('#new-request-form').modal({
           opacity:60,
           overlayCss: {backgroundColor:"#000000"}
       });
