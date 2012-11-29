@@ -1,7 +1,7 @@
-Fabricator(:composer) do
-  polymorphic_composer { Fabricate.build(:offer,composer:nil) }
-  products(count:1) { Fabricate.build(:product,polymorphic_product:nil) }
-  user_id 'an existing user_id'
-  name 'composer name'
-  image {Fabricate.build(:image,polymorphic_image:nil)}
+Fabricator(:deal_agreement_proposal_composer, class_name: "Deal::Agreement::Proposal::Composer") do
+  proposal nil
+  products nil
+  user_id 'user_id'
+  name 'name'
+  image { File.open('app/assets/images/rails.png') }
 end
