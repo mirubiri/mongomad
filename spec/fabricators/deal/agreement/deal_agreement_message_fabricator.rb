@@ -1,6 +1,7 @@
-Fabricator('Deal::Agreement::Message') do
-  polymorphic_message { Fabricate.build(:negotiation) }
-  sender_id 'an existing sender_id'
-  sender_name 'sender name'
+Fabricator(:deal_agreement_message, class_name: "Deal::Agreement::Message") do
+  agreement nil
+  user_id 'user_id'
+  user_name 'user name'
   text 'text'
+  image { File.open('app/assets/images/rails.png') }
 end
