@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  #let(:user) { Fabricate.build(:user) }
-  #after(:each) { user && user.destroy }
+  let(:user) { Fabricate.build(:user) }
 
   describe 'Relations' do
     it { should embed_one(:profile).of_type(User::Profile) }
@@ -20,14 +19,12 @@ describe User do
 
   describe 'Validations' do
     it { should validate_presence_of :profile }
+    it { should validate_presence_of :email }
+    it { should validate_presence_of :password }
   end
-
-=begin
 
   describe 'Factories' do
-    #las factorias y metodos hay que revisarlos
-    specify { user.should be_valid }
-    specify { user.save.should be_true }
+    specify { expect(user.valid?).to be_true }
+    specify { expect(user.save).to be_true }
   end
-=end
 end

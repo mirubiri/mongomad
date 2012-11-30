@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Offer::Composer::Product do
-  #let(:product) { Fabricate.build(:product) }
-  #after(:each) { product && product.polymorphic_product.polymorphic_composer.destroy }
+  let(:product) { Fabricate.build(:offer).composer.products[0] }
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
@@ -29,23 +28,8 @@ describe Offer::Composer::Product do
                                                              greater_than_or_equal_to: 0) }
   end
 
-=begin
   describe 'Factories' do
-    specify { product.should be_valid }
-    specify { product.save.should be_true }
-    it 'main_image must be saved on disk' do
-      product.save
-      expect(File.exists?(product.main_image.file.path)).to be_true
-    end
+    specify { expect(product.valid?).to be_true }
+    specify { expect(product.save).to be_true }
   end
-
-  describe '#destroy' do
-    it 'deletes main_image files from disk' do
-      file_path=product.main_image.file.path
-      product.save
-      product.destroy
-      expect(File.exists?(file_path)).to be_false
-    end
-  end
-=end
 end

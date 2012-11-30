@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Request do
-  #let(:request) { Fabricate.build(:request) }
-  #xafter(:each) { request && request.destroy }
+  let(:request) { Fabricate.build(:request) }
 
   describe 'Attributes' do
     it { should be_timestamped_document }
@@ -19,8 +18,8 @@ describe Request do
     it { should validate_presence_of :image }
   end
 
-  #describe 'Factories' do
-  #  specify { request.should be_valid }
-  #  specify { request.save.should be_true }
-  #end
+  describe 'Factories' do
+    specify { expect(request.valid?).to be_true }
+    specify { expect(request.save).to be_true }
+  end
 end

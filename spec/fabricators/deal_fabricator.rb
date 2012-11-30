@@ -1,4 +1,4 @@
 Fabricator(:deal) do
-  agreement nil
-  messages  nil
+  agreement         { Fabricate.build(:deal_agreement) }
+  messages(count:1) { Fabricate.build(:deal_message) }
 end

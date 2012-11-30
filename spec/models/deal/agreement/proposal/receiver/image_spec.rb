@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Receiver::Product::Image do
-  #let(:image) { Fabricate.build(:image) }
-  #after(:each) do
-  #  image.destroy
-  #end
+  let(:image) { Fabricate.build(:deal).agreement.proposals[0].receiver.products[0].secondary_images[0] }
 
   describe 'Relations' do
     it { should be_embedded_in(:product).of_type(Deal::Agreement::Proposal::Receiver::Product) }
@@ -19,10 +16,8 @@ describe Deal::Agreement::Proposal::Receiver::Product::Image do
     it { should validate_presence_of :file }
   end
 
-=begin
   describe 'Factories' do
     specify { expect(image.valid?).to be_true }
     specify { expect(image.save).to be_true }
   end
-=end
 end

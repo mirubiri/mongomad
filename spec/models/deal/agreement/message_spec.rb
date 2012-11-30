@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Message do
-  #let(:message) { Fabricate.build(:message) }
-  #after(:each) { message && message.polymorphic_message.destroy }
+  let(:message) { Fabricate.build(:deal).agreement.messages[0] }
 
   describe 'Relations' do
     it { should be_embedded_in(:agreement).of_type(Deal::Agreement) }
@@ -24,11 +23,8 @@ describe Deal::Agreement::Message do
     it { should validate_presence_of :image }
   end
 
-=begin
   describe 'Factories' do
-
-    specify { message.should be_valid }
-    specify { message.save.should be_true }
+    specify { expect(message.valid?).to be_true }
+    specify { expect(message.save).to be_true }
   end
-=end
 end

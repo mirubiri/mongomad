@@ -1,5 +1,6 @@
 Fabricator(:offer) do
-  composer        nil
-  receiver        nil
+  composer        { Fabricate.build(:offer_composer) }
+  receiver        { Fabricate.build(:offer_receiver) }
+  money           { Fabricate.build(:offer_money) }
   initial_message 'initial message'
 end

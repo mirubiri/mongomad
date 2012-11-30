@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Offer::Composer do
-  #let(:composer) { Fabricate.build(:composer) }
-  #after(:each) { composer && composer.polymorphic_composer.destroy }
+  let(:composer) { Fabricate.build(:offer).composer }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -23,23 +22,8 @@ describe Offer::Composer do
     it { should validate_presence_of :image }
   end
 
-=begin
   describe 'Factories' do
-    specify { composer.should be_valid }
-    specify { composer.save.should be_true }
-    it 'image must be saved on disk' do
-      composer.save
-      expect(File.exists?(composer.image.file.path)).to be_true
-    end
+    specify { expect(composer.valid?).to be_true }
+    specify { expect(composer.save).to be_true }
   end
-
-  describe '#destroy' do
-    it 'deletes image files from disk' do
-      file_path=composer.image.file.path
-      composer.save
-      composer.destroy
-      expect(File.exists?(file_path)).to be_false
-    end
-  end
-=end
 end

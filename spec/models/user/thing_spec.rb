@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe User::Thing do
-  #let(:thing) { Fabricate.build(:thing) }
-  #after(:each) { thing && thing.user.destroy }
+  let(:thing) { Fabricate.build(:user).things[0] }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
@@ -26,23 +25,9 @@ describe User::Thing do
                                                           only_integer: true,
                                                           greater_than_or_equal_to: 0) }
   end
-=begin
+
   describe 'Factories' do
     specify { expect(thing.valid?).to be_true }
     specify { expect(thing.save).to be_true }
-    it 'main_image must be saved on disk' do
-      thing.save
-      expect(File.exists?(thing.main_image.file.path)).to be_true
-    end
   end
-
-  describe '#destroy' do
-    it 'deletes main_image files from disk' do
-      file_path=thing.main_image.file.path
-      thing.save
-      thing.destroy
-      expect(File.exists?(file_path)).to be_false
-    end
-  end
-=end
 end

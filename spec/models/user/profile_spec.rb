@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe User::Profile do
-  #let(:profile) { Fabricate.build(:profile) }
-  #after(:each) { profile && profile.user.destroy }
+  let(:profile) { Fabricate.build(:user).profile }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
@@ -33,23 +32,8 @@ describe User::Profile do
     it { should validate_presence_of :image }
   end
 
-=begin
   describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
     specify { expect(profile.save).to be_true }
-    it 'image must be saved on disk' do
-      profile.save
-      expect(File.exists?(profile.image.file.path)).to be_true
-    end
   end
-
-  describe '#destroy' do
-    it 'deletes image files from disk' do
-      file_path=profile.image.file.path
-      profile.save
-      profile.destroy
-      expect(File.exists?(file_path)).to be_false
-    end
-  end
-=end
 end

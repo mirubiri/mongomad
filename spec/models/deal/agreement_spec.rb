@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Deal::Agreement do
-  #let(:negotiation) { Fabricate.build(:negotiation) }
-  #after(:each) { negotiation && negotiation.destroy }
+  let(:agreement) { Fabricate.build(:deal).agreement }
 
   describe 'Relations' do
     it { should be_embedded_in :deal }
@@ -15,10 +14,8 @@ describe Deal::Agreement do
     it { should validate_presence_of :messages }
   end
 
-=begin
   describe 'Factories' do
-    specify { negotiation.should be_valid }
-    specify { negotiation.save.should be_true }
+    specify { expect(agreement.valid?).to be_true }
+    specify { expect(agreement.save).to be_true }
   end
-=end
 end

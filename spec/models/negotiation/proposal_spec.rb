@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal do
-  #let(:offer) { Fabricate.build(:offer) }
-  #after(:each) { offer && offer.destroy }
+  let(:proposal) { Fabricate.build(:negotiation).proposals[0] }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -21,10 +20,8 @@ describe Negotiation::Proposal do
     it { should validate_presence_of :receiver }
   end
 
-=begin
   describe 'Factories' do
-    specify { offer.should be_valid }
-    specify { offer.save.should be_true }
+    specify { expect(proposal.valid?).to be_true }
+    specify { expect(proposal.save).to be_true }
   end
-=end
 end

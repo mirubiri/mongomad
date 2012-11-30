@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal::Receiver do
-  #let(:receiver) { Fabricate.build(:receiver) }
-  #after(:each) { receiver && receiver.polymorphic_receiver.destroy }
+  let(:receiver) { Fabricate.build(:negotiation).proposals[0].receiver }
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
@@ -23,23 +22,8 @@ describe Negotiation::Proposal::Receiver do
     it { should validate_presence_of :image }
   end
 
-=begin
   describe 'Factories' do
-    specify { receiver.should be_valid }
-    specify { receiver.save.should be_true }
-    it 'image must be saved on disk' do
-      receiver.save
-      expect(File.exists?(receiver.image.file.path)).to be_true
-    end
+    specify { expect(receiver.valid?).to be_true }
+    specify { expect(receiver.save).to be_true }
   end
-
-  describe '#destroy' do
-    it 'deletes image files from disk' do
-      file_path=receiver.image.file.path
-      receiver.save
-      receiver.destroy
-      expect(File.exists?(file_path)).to be_false
-    end
-  end
-=end
 end

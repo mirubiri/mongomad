@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Offer::Money do
-  #let(:money) { Fabricate.build(:money) }
-  #after(:each) { money && money.polymorphic_money.destroy }
+  let(:money) { Fabricate.build(:offer).money }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -22,10 +21,8 @@ describe Offer::Money do
                                                              greater_than: 0) }
   end
 
-=begin
   describe 'Factories' do
-    specify { money.should be_valid }
-    specify { money.save.should be_true }
+    specify { expect(money.valid?).to be_true }
+    specify { expect(money.save).to be_true }
   end
-=end
 end
