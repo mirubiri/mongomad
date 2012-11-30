@@ -1,4 +1,5 @@
 <%= form_for(@offer) do |f| %>
+
   <% if @offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -9,8 +10,7 @@
       <% end %>
       </ul>
     </div>
-  <% end %>
-  
+  <% end %>  
   
   <div class="new_offer_title">
     <div class="icon"></div>
