@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Negotiation do
   let(:negotiation) { Fabricate.build(:negotiation) }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
