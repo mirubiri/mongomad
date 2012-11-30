@@ -1,18 +1,23 @@
 <%= <%= div_for(@offer, :class => "offer") do %>
   <div class="offer_header">
     <div class="triangle"></div>
-    <div class="profile_image"></div>
+    <div class="profile_image"><%= @composer.image %></div>
     <div class="description">
       <textarea name="offer-description" id="offer-description" cols="1" rows="1">
+        <%= @offer.initial_message %>
       </textarea>
     </div>
   </div>
   <div class="offer_things">
     <div class="recieved">
-      <div class="thing"></div>
+      <% @composer_selected_things.each do |thing| %>
+        <div class="thing"><%= thing.image %></div>
+      <% end %>
     </div>
     <div class="given">
-      <div class="thing"></div>
+      <% @receiver_selected_things.each do |thing| %>
+        <div class="thing"><%= thing.image %></div>
+      <% end %>
     </div>
   </div>
   <div class="offer_button">

@@ -18,7 +18,7 @@
   </div>    
   <div class="his_products">
     <div class="title">
-      <div class="sender_image"><%= @user.image %></div>
+      <div class="sender_image"><%= @composer.image %></div>
       <div class="description">Sus productos</div>        
     </div>
     <div class="monney_to_recieve">
@@ -28,44 +28,34 @@
       <button></button>
     </div>
     <div class="product_container">
-      <div class="product">
-        <div class="product-image">
+      <% @receiver_things.each do |thing| %>
+        <div class="product">
+          <div class="product-image"></div>
+          <div class="product-title">
+            <input type="text">
+          </div>
         </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
+      <% end %>      
     </div>
   </div>
+  
   <div class="offer_summary">
     <div class="title">
       <div class="description">Resumen de la oferta</div>        
     </div>
     <div class="summary">        
       <div class="summary_header">          
-        <div class="summary_header_image">
-        </div>
+        <div class="summary_header_image"><%= @user.image %></div>
         <div class="summary_header_text">
           <div class="nombre_usuario">Sergio</div>
-          <textarea name="" id="" cols="5" rows="2"></textarea>
+          <textarea name="" id="" cols="5" rows="2">
+            Aqui rellenaran el texto de la oferta
+          </textarea>
         </div>
         <div class="triangle"></div>
       </div>
-      <div class="summary_body">          
+      <div class="summary_body">
+        <!-- se enlaza con el javascript para rellenar los productos -->
         <div class="summary_body_products_given">            
           <div class="product_given">              
             <div class="product_given_imagen">
@@ -93,36 +83,24 @@
 
   <div class="my_products">
     <div class="title">
-      <div class="reciever_image"></div>
+      <div class="reciever_image"><%= @user.image %></div>
       <div class="description">Mis productos</div>       
     </div>
     <div class="monney_to_give">
-      <button >
-      </button>
-      <textarea name="" id="" cols="1" rows="1">Cantidad que ofreces</textarea>
+      <button></button>
+      <textarea name="" id="" cols="1" rows="1">
+        Cantidad que ofreces
+      </textarea>
     </div>
     <div class="product_container">
-      <div class="product">
-        <div class="product-image">
+      <% @composer_things.each do |thing| %>
+        <div class="product">
+          <div class="product-image"></div>
+          <div class="product-title">
+            <input type="text">
+          </div>
         </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
-      <div class="product">
-        <div class="product-image">
-        </div>
-        <div class="product-title">
-          <input type="text">
-        </div>
-      </div>
+      <% end %>      
     </div>
   </div>
 
