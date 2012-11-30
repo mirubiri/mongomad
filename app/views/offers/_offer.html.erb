@@ -11,12 +11,12 @@
   <div class="offer_things">
     <div class="recieved">
       <% @composer_selected_things.each do |thing| %>
-        <div class="thing"><%= thing.image %></div>
+        <div class="thing"><%= thing.main_image %></div>
       <% end %>
     </div>
     <div class="given">
       <% @receiver_selected_things.each do |thing| %>
-        <div class="thing"><%= thing.image %></div>
+        <div class="thing"><%= thing.main_image %></div>
       <% end %>
     </div>
   </div>

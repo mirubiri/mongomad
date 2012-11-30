@@ -30,9 +30,9 @@
     <div class="product_container">
       <% @receiver_things.each do |thing| %>
         <div class="product">
-          <div class="product-image"></div>
+          <div class="product-image"><%= thing.main_image %></div>
           <div class="product-title">
-            <input type="text">
+            <input type="text"><%= thing.name %>
           </div>
         </div>
       <% end %>      
@@ -95,9 +95,9 @@
     <div class="product_container">
       <% @composer_things.each do |thing| %>
         <div class="product">
-          <div class="product-image"></div>
+          <div class="product-image"><%= thing.main_image %></div>
           <div class="product-title">
-            <input type="text">
+            <input type="text"><%= thing.name %>
           </div>
         </div>
       <% end %>      
