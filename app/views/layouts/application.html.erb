@@ -20,10 +20,10 @@
         <a href="/css3/"></a>
     </nav>    
     <input type="search" name="busqueda" />    
-    <div class="header_user_image">@user.image</div>
+    <div class="header_user_image"><%= @profile.image %></div>
     <div class="header_user_description">
-      <p>@user.nombre</p>
-      <p>@user.apellidos</p>
+      <p><%= @profile.name %></p>
+      <p><%= @profile.surname %></p>
     </div>    
   </div>   
   

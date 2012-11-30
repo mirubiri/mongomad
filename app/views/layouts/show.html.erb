@@ -3,11 +3,14 @@
   <section class="userside" id="user-side">
     
     <aside class="userside_profile">
-      <div class="image"></div>
-      <div class="user_name">@user.name</br>@user.nationality</div>
+      <div class="image"><%= @profile.image %></div>
+      <div class="user_name">
+        <%= @profile.nickname %></br>
+        <%= @profile.country %>
+      </div>
       <a href="newOffer.html" target="_blank">        
-        <%= button_to "Nueva Oferta",new_offer_path,
-        {:class => "profile_button",:id => "new-offer"} %>
+        <%= button_tag "Nueva Oferta", :class => "addofferbutton",
+        :id => "new-offer" %>
       </a>
       <nav class="profile_menu">
         <div class="menu_icon">
@@ -23,22 +26,11 @@
     </aside>
     
     <aside class="userside_requests">
-        <a href="newrequest.html">          
-          <%= button_to "Nueva Petición",new_request_path, 
-          {:class => "add_request_button",:id => "add_request_button"} %>      
+        <a href="newrequest.html">
+          <%= button_tag "Nueva Peticion", :class => "addofferbutton",:id => "add_request_button" %>      
         </a>
       <aside class="requests_requestsList">
-        <% @requests.each do |offer| %>
-          <div class="request">
-            <div class="profile_image"></div>
-            <div class="description"></div>
-          </div>
-          <!-- Las siguientes 2 las mantengo pq seran las opciones de un request probablemente --> 
-          <tr>
-            <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-            <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>                
+        <%= render @requests %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->             
       </aside>
     </aside>
       
