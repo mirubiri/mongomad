@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Offer::Receiver::Product do
   let(:product) { Fabricate.build(:offer).receiver.products[0] }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }

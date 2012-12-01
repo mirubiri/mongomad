@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User::Thing::Image do
   let(:image) { Fabricate.build(:user).things[0].secondary_images[0] }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:thing).of_type(User::Thing) }

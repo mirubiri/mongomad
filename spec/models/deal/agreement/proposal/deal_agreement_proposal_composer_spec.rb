@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Composer do
   let(:composer) { Fabricate.build(:deal).agreement.proposals[0].composer }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }

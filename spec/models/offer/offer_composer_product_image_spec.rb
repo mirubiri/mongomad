@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Offer::Composer::Product::Image do
   let(:image) { Fabricate.build(:offer).composer.products[0].secondary_images[0] }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:product).of_type(Offer::Composer::Product) }

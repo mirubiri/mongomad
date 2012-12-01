@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Negotiation::Proposal::Composer::Product do
   let(:product) { Fabricate.build(:negotiation).proposals[0].composer.products[0] }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Negotiation::Proposal::Composer) }

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Money do
   let(:money) { Fabricate.build(:deal).agreement.proposals[0].money }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }

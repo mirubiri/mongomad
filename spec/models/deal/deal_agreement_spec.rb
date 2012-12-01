@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement do
   let(:agreement) { Fabricate.build(:deal).agreement }
+  include_context 'clean collections'
 
   describe 'Relations' do
     it { should be_embedded_in :deal }
