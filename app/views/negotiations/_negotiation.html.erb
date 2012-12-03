@@ -3,38 +3,34 @@
     <div class="proposition">
        <div class="proposition_header">
         <div class="triangle"></div>
-        <div class="profile_image"></div>
+        <div class="profile_image"><%= @rival_user.image %></div>
       </div>
       <div class="offered_things">
-        <div class="offered_product">
-          <div class="product-image">
-          </div>
-          <div class="product-title">      
-          </div>
-        </div>                
-        <div class="offered_product">
-          <div class="product-image">
-          </div>
-          <div class="product-title">       
-          </div>
+        <% @composer_things.each do |thing| %>
+          <div class="offered_product">
+            <div class="product-image"><%= thing.main_image %></div>
+            <div class="product-title"><%= thing.name %></div>
+          </div>             
+        <% end %>
+        <div class="orderer_money"><%= @proposal.money.quantity %>
         </div>
       </div>
       <div class="orderer_things">
-        <div class="orderer_product">
+        <% @receiver_things.each do |thing| %>
+          <div class="orderer_product">
+            <div class="product-image"><%= thing.main_image %></div>
+            <div class="product-title"><%= thing.name %></div>
+          </div>          
+        <% end %>
+        <div class="orderer_money"><%= @proposal.money.quantity %>
         </div>
-        <div class="orderer_money">120€                
-        </div>
-      </div>
-      <div class="orderer_things">
-        <div class="orderer_product">
-        </div>
-      </div>
+      </div>      
     </div>
     <div class="actions">
       <div class="reputation">                
       </div>
       <div class="action_buttons"> 
-      <button>aceptar</button>               
+        <button>aceptar</button>               
       </div>
     </div>
   </div>
@@ -43,25 +39,15 @@
       <div class="dialogin">Conversation...</div>
     </div>
     <div class="conversation" id="conversationoftable">
+      <!-- aqui viene el javascript que rellena la conversacion con los comments -->
       <div class="comment">
         <div class="comment_user_image">                  
         </div>
         <div class="comment_text">                  
         </div>
-      </div>
-      <div class="comment">
-        <div class="comment_user_image">                  
-        </div>
-        <div class="comment_text">                 
-        </div>
-      </div>
-      <div class="comment">
-        <div class="comment_user_image">                  
-        </div>
-        <div class="comment_text">                 
-        </div>
-      </div>
+      </div>      
     </div>
+    
     <div class="writting_box">
       <form action="">
         <div class="message">
