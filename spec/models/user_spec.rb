@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe User do
   let(:user) { Fabricate.build(:user) }
-  include_context 'clean collections'
 
   describe 'Relations' do
     it { should embed_one(:profile).of_type(User::Profile) }
