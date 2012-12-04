@@ -2,6 +2,7 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
+    @user = current_user
     @offers = Offer.all.to_a
 
     respond_to do |format|

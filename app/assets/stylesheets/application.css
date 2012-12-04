@@ -9,21 +9,21 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require buttons
- *= require contentSide
+ *= require content_side
  *= require footer
  *= require header
  *= require index
  *= require modals
- *= require newOffer
- *= require newPetition
- *= require newProduct
+ *= require new_offer
+ *= require new_petition
+ *= require new_product
  *= require offer
  *= require petition
  *= require product
  *= require profile
  *= require style
  *= require negotiation
- *= require userSide
+ *= require user_side
  *= require_self
  *= require_tree .
  */

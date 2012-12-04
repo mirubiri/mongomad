@@ -15,10 +15,10 @@
 //= require jquery.simplemodal.1.4.2.min
 //= require jquery.equal-height-columns
 //= require jquery_ujs
-//= ajaxRequest
+//= ajax_request
 //= modals
 //= modernizr-2.5.3
 //= modernizr-transitions
-//= myscript
-//= reposicionarOfertas
+//= my_script
+//= reposicionar_ofertas
 //= require_tree .
