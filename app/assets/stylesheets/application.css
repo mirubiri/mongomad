@@ -22,7 +22,7 @@
  *= require product
  *= require profile
  *= require style
- *= require table
+ *= require negotiation
  *= require userSide
  *= require_self
  *= require_tree .
