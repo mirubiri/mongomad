@@ -2,8 +2,8 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @offers = Offer.all
     @user = current_user
+    @offers = Offer.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb
@@ -49,7 +49,7 @@ class OffersController < ApplicationController
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }
-        format.json { render json: @offer.errors, 
+        format.json { render json: @offer.errors,
           status: :unprocessable_entity }
       end
     end
