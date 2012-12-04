@@ -11,11 +11,11 @@
 
 <body>
     
-  <%= yield :main_navigation %>   
+  <%= render 'layouts/navigation' %>   
   
   <div class="mainlayout">
     
-    <%= yield :userside %>
+    <%= render 'layouts/userside' %>
     
     <%= yield %> 
     
