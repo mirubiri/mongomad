@@ -11,5 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.masonry
+//= require jquery.simplemodal.1.4.2
+//= require jquery.equal-height-columns
 //= require jquery_ujs
+//= ajaxRequest
+//= modals
+//= modernizr-2.5.3
+//= modernizr-transitions
+//= myscript
+//= reposicionarOfertas
 //= require_tree .

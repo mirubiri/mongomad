@@ -10,16 +10,16 @@
       <% end %>
       </ul>
     </div>
-  <% end %>  
-  
+  <% end %>
+
   <div class="new_offer_title">
     <div class="icon">icono de nueva oferta</div>
     <div class="description">Crear Oferta</div>
-  </div>    
+  </div>
   <div class="his_products">
     <div class="title">
       <div class="sender_image"><%= @composer.image %></div>
-      <div class="description">Sus productos</div>        
+      <div class="description">Sus productos</div>
     </div>
     <div class="money_to_recieve">
       <textarea name="" id="" cols="1" rows="1">
@@ -35,18 +35,18 @@
             <input type="text"><%= thing.name %>
           </div>
         </div>
-      <% end %>      
+      <% end %>
     </div>
   </div>
-  <!-- se mandan los id's de las cosas que se piden/dan 
-    
-  -->
+
+  <!-- se mandan los id's de las cosas que se piden/dan -->
+
   <div class="offer_summary">
     <div class="title">
-      <div class="description">Resumen de la oferta</div>        
+      <div class="description">Resumen de la oferta</div>
     </div>
-    <div class="summary">        
-      <div class="summary_header">          
+    <div class="summary">
+      <div class="summary_header">
         <div class="summary_header_image"><%= @user.image %></div>
         <div class="summary_header_text">
           <div class="nombre_usuario">Sergio</div>
@@ -58,35 +58,35 @@
       </div>
       <div class="summary_body">
         <!-- se enlaza con el javascript para rellenar los productos -->
-        <div class="summary_body_products_given">            
-          <div class="product_given">              
+        <div class="summary_body_products_given">
+          <div class="product_given">
             <div class="product_given_imagen">
             </div>
             <div class="product_given_title">
             </div>
           </div>
         </div>
-        <div class="summary_body_produts_recieved">            
+        <div class="summary_body_produts_recieved">
             <div class="produt_recieved">
               <div class="produt_recieved_image">
               </div>
               <div class="produt_recieved_title">
             </div>
-         </div>            
-        </div>         
+         </div>
+        </div>
       </div>
     </div>
       <div class="summary_footer">
         <button type="button" name="boton" value="" class="addofferbutton">
           Enviar Oferta
-        </button>                  
+        </button>
       </div>
   </div>
 
   <div class="my_products">
     <div class="title">
       <div class="reciever_image"><%= @user.image %></div>
-      <div class="description">Mis productos</div>       
+      <div class="description">Mis productos</div>
     </div>
     <div class="monney_to_give">
       <button></button>
@@ -102,10 +102,9 @@
             <input type="text"><%= thing.name %>
           </div>
         </div>
-      <% end %>      
+      <% end %>
     </div>
   </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

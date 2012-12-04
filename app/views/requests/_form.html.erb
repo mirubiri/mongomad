@@ -10,18 +10,22 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="new_request_title">
     <div class="icon">icono de nueva peticion</div>
     <div class="description">Nueva Petición</div>
-  </div> 
+  </div>
   <div class="new_offer_text">
     <%= text_area :request, :text %>
   </div>
   <div class="send_button">
-    <button type="button" name="boton" value="" class="addofferbutton">
+    <button type="button" name="boton" value="" 
+    class="addofferbutton">
       <%= form.submit %> Enviar Petición
     </button>
   </div>
-    
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

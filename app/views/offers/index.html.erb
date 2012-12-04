@@ -1,11 +1,9 @@
 <section class="contentside" id="content-side">
-  
+
   <%= yield :contentside_header %>
-  
-  <aside class="contentside_elementList" id="ppal_container">    
+
+  <aside class="contentside_elementList" id="ppal_container">
     <%= render @offers %><!-- Helper que itera sobre _offers -->
   </aside>
-  
-</section>
 
-<%= link_to 'New Offer', new_offer_path %>
+</section>

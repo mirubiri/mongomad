@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe Deal do
   let(:deal) { Fabricate.build(:deal) }
-  include_context 'clean collections'
 
   describe 'Relations' do
-    it { should embed_one :agreement }
-    it { should embed_many :messages }
+    it { should embed_one(:agreement).of_type(Deal::Agreement) }
+    it { should embed_many(:messages).of_type(Deal::Message) }
   end
 
   describe 'Attributes' do
@@ -18,7 +17,7 @@ describe Deal do
   end
 
   describe 'Factories' do
-    specify { deal.should be_valid }
-    specify { deal.save.should be_true }
+    specify { expect(deal.valid?).to be_true }
+    specify { expect(deal.save).to be_true }
   end
 end
