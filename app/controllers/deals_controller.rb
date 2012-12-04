@@ -2,6 +2,8 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
+    @user = current_user
+    @requests = @user.requests.all.to_a
     @deals = Deal.all.to_a
 
     respond_to do |format|

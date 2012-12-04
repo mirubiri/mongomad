@@ -1,0 +1,7 @@
+<% @requests.each do |request| %>
+  <div class="petition">
+    <div class="profile_image"><%= @user.profile.image %></div>
+    <div class="description"><%= request.text %></div>
+  </div>
+<% end %>
+
