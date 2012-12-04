@@ -2,7 +2,7 @@ class Deal::Agreement::Proposal::Composer::Product
   include Mongoid::Document
   include Mongoid::Paperclip
 
-  embedded_in :composer, class_name: "Deal::Agreement::Proposal::Composer"
+  embedded_in :composer,         class_name: "Deal::Agreement::Proposal::Composer"
   embeds_many :secondary_images, class_name: "Deal::Agreement::Proposal::Composer::Product::Image", cascade_callbacks: true
 
   field :thing_id,    type: Moped::BSON::ObjectId

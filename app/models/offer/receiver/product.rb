@@ -2,7 +2,7 @@ class Offer::Receiver::Product
   include Mongoid::Document
   include Mongoid::Paperclip
 
-  embedded_in :receiver, class_name: "Offer::Receiver"
+  embedded_in :receiver,         class_name: "Offer::Receiver"
   embeds_many :secondary_images, class_name: "Offer::Receiver::Product::Image", cascade_callbacks: true
 
   field :thing_id,    type: Moped::BSON::ObjectId

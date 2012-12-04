@@ -7,7 +7,6 @@ class Offer::Money
   field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-
   validates :offer,
             :user_id,
             :quantity,
