@@ -11,8 +11,8 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery.masonry
-//= require jquery.simplemodal.1.4.2
+//= require jquery.masonry.min
+//= require jquery.simplemodal.1.4.2.min
 //= require jquery.equal-height-columns
 //= require jquery_ujs
 //= ajaxRequest
