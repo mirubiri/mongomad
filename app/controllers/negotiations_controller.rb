@@ -2,6 +2,8 @@ class NegotiationsController < ApplicationController
   # GET /negotiations
   # GET /negotiations.json
   def index
+    @user = current_user
+    @requests = @user.requests.all.to_a
     @negotiations = Negotiation.all.to_a
 
     respond_to do |format|
