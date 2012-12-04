@@ -5,3 +5,11 @@
       #:medium   => ['250x250',    :jpg],
       #:large    => ['500x500>',   :jpg]
     #}
+
+sintaxis expect nueva:
+
+    it { should have_field(:user_name).of_type(String) }
+    it { expect(request).to have_field(:user_name).of_type(String) }
+
+    it { should have_field(:text).of_type(String) }
+    it { expect(request).to have_field(:text).of_type(String) }
