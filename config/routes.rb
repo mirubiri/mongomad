@@ -8,21 +8,11 @@ Mongomad::Application.routes.draw do
 
   #Recursos del user
   resources :users do
-    resources :profile do
-      resources :image
-    end
+    resource :profile
     resources :requests
-    resources :things do
-      resources :images
-    end
-    resources :offers do
-      resources :images, :composer, :receiver, :money
-    end
-    resources :negotiations do
-      resources :proposals, :messages
-    end
-    resources :deals do
-      resources :agreement, :messages
-    end
+    resources :things
+    resources :offers
+    resources :negotiations
+    resources :deals
   end
 end
