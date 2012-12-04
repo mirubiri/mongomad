@@ -14,10 +14,10 @@
     </a>
     <nav class="profile_menu">
       <div class="menu_icon">
-        <%#= link_to 'Perfil', user_profile_path(current_user) %>
+        <%= link_to 'Perfil', user_profile_path(current_user) %>
       </div>
       <div class="menu_icon">
-        <%#= link_to 'Prod', user_products_path(current_user) %>
+        <%= link_to 'Prod', user_things_path(current_user) %>
       </div>
       <div class="menu_icon">
         <%#= link_to 'Alertas', user_alerts_path(current_user) %>
@@ -30,7 +30,7 @@
         <%= button_tag "Nueva Peticion", :class => "addofferbutton",:id => "add_request_button" %>      
       </a>
     <aside class="requests_requestsList">
-      <%#= render @requests %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->             
+      <%= render @requests %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->             
     </aside>
   </aside>
     
