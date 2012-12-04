@@ -9,8 +9,8 @@ require 'rspec/autorun'
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  
-  config.after(:each) do
+
+  config.after(:suite) do
     User.all.destroy
     Request.all.destroy
     Offer.all.destroy
