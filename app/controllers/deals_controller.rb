@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    @deals = Deal.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb

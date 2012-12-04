@@ -2,7 +2,7 @@ class NegotiationsController < ApplicationController
   # GET /negotiations
   # GET /negotiations.json
   def index
-    @negotiations = Negotiation.all
+    @negotiations = Negotiation.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb
