@@ -1,4 +1,4 @@
-<%= form_for(@request) do |f| %>
+<%= form_for @request do |form| %>
 
   <% if @request.errors.any? %>
     <div id="error_explanation">
@@ -16,17 +16,12 @@
     <div class="description">Nueva Petición</div>
   </div> 
   <div class="new_offer_text">
-    <textarea name="" id="" cols="30" rows="10">
-      nueva peticion
-    </textarea>
+    <%= text_area :request, :text %>
   </div>
   <div class="send_button">
     <button type="button" name="boton" value="" class="addofferbutton">
-      Enviar Petición
+      <%= form.submit %> Enviar Petición
     </button>
-  </div> 
-  <div class="actions">
-    <%= f.submit %>
   </div>
-  
+    
 <% end %>

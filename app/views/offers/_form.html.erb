@@ -1,4 +1,4 @@
-<%= form_for(@offer) do |f| %>
+<%= form_for(@offer) do |form| %>
 
   <% if @offer.errors.any? %>
     <div id="error_explanation">
@@ -21,7 +21,7 @@
       <div class="sender_image"><%= @composer.image %></div>
       <div class="description">Sus productos</div>        
     </div>
-    <div class="monney_to_recieve">
+    <div class="money_to_recieve">
       <textarea name="" id="" cols="1" rows="1">
         Cantidad que pides
       </textarea>
@@ -38,7 +38,9 @@
       <% end %>      
     </div>
   </div>
-  
+  <!-- se mandan los id's de las cosas que se piden/dan 
+    
+  -->
   <div class="offer_summary">
     <div class="title">
       <div class="description">Resumen de la oferta</div>        
@@ -105,6 +107,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= form.submit %>
   </div>
 <% end %>

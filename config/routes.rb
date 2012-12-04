@@ -3,12 +3,8 @@ Mongomad::Application.routes.draw do
   #Devise gestiona a los usuarios y sus sesiones
   devise_for :users
 
-  devise_scope :user do 
-    match "/" => "devise/sessions#new" 
-  end
-
   #La ruta por defecto sera a la pantalla inicial de la plataforma
-  root :to => "devise/sessions#new"  
+  root :to => "requests#index"
 
   #Recursos del user
   resources :users do
@@ -29,6 +25,5 @@ Mongomad::Application.routes.draw do
       resources :agreement, :messages
     end   
   end
-
 
 end

@@ -48,7 +48,8 @@ class OffersController < ApplicationController
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+        format.json { render json: @offer.errors, 
+          status: :unprocessable_entity }
       end
     end
   end
