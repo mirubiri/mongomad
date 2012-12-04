@@ -10,13 +10,13 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
 
-  #config.after(:each) do
-  #  User.all.destroy
-  #  Request.all.destroy
-  #  Offer.all.destroy
-  #  Negotiation.all.destroy
-  #  Deal.all.destroy
-  #end
+  config.after(:suite) do
+    User.all.destroy
+    Request.all.destroy
+    Offer.all.destroy
+    Negotiation.all.destroy
+    Deal.all.destroy
+  end
 
   # ## Mock Framework
   #
