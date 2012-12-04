@@ -1,36 +1,34 @@
 require "spec_helper"
 
 describe NegotiationsController do
-
   describe "routing" do
 
     it "routes to #index" do
-      get("/users/1/negotiations").should route_to("negotiations#index",  :user_id => "1")
+      get("/negotiations").should route_to("negotiations#index")
     end
 
-    it "routes to users/negotiations#new" do
-      get("/users/1/negotiations/new").should route_to("negotiations#new",  :user_id => "1")
+    it "routes to #new" do
+      get("/negotiations/new").should route_to("negotiations#new")
     end
 
-    it "routes to users/negotiations#show" do
-      get("/users/1/negotiations/1").should route_to("negotiations#show",  :user_id => "1",:id => "1")
+    it "routes to #show" do
+      get("/negotiations/1").should route_to("negotiations#show", :id => "1")
     end
 
-    it "routes to users/negotiations#edit" do
-      get("/users/1/negotiations/1/edit").should route_to("negotiations#edit",  :user_id => "1", :id => "1")
+    it "routes to #edit" do
+      get("/negotiations/1/edit").should route_to("negotiations#edit", :id => "1")
     end
 
-    it "routes to users/negotiations#create" do
-      post("/users/1/negotiations").should route_to("negotiations#create",  :user_id => "1")
+    it "routes to #create" do
+      post("/negotiations").should route_to("negotiations#create")
     end
 
-    it "routes to users/negotiations#update" do
-      put("/users/1/negotiations/1").should route_to("negotiations#update",  :user_id => "1", :id => "1")
+    it "routes to #update" do
+      put("/negotiations/1").should route_to("negotiations#update", :id => "1")
     end
 
-    it "routes to users/negotiations#destroy" do
-      delete("/users/1/negotiations/1").should route_to("negotiations#destroy",  :user_id => "1", :id => "1")
+    it "routes to #destroy" do
+      delete("/negotiations/1").should route_to("negotiations#destroy", :id => "1")
     end
-    
   end
 end

@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe Offer do
   let(:offer) { Fabricate.build(:offer) }
-  include_context 'clean collections'
 
   describe 'Relations' do
-    it { should embed_one :composer }
-    it { should embed_one :receiver }
-    it { should embed_one :money }
+    it { should embed_one(:composer).of_type(Offer::Composer) }
+    it { should embed_one(:receiver).of_type(Offer::Receiver) }
+    it { should embed_one(:money).of_type(Offer::Money) }
   end
 
   describe 'Attributes' do
@@ -22,7 +21,7 @@ describe Offer do
   end
 
   describe 'Factories' do
-    specify { offer.should be_valid }
-    specify { offer.save.should be_true }
+    specify { expect(offer.valid?).to be_true }
+    specify { expect(offer.save).to be_true }
   end
 end

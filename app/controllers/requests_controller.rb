@@ -1,8 +1,9 @@
 class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
-  def index    
-    @requests = Request.all
+
+  def index
+    @requests = Request.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,5 +1,6 @@
 Fabricator(:request) do
-  owner_id 'owner_id'
-  owner_name 'owner name'
-  text 'text'
+  user_id   'user_id'
+  user_name 'user_name'
+  text      'text'
+  image     { File.open('app/assets/images/rails.png') }
 end
