@@ -13,8 +13,12 @@
     
   <%= render 'layouts/navigation' %>   
   
-  <div class="mainlayout">    
-    
+  <div class="mainlayout">
+
+    <% if user_signed_in? %>
+      <%= render 'layouts/userside' %>
+    <% end %>   
+
     <%= yield %> 
     
     <footer>@copyright derechos reservados a improcex ingenieria informatica s.l.</footer>
