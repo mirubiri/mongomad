@@ -1,6 +1,5 @@
 class Deal::Agreement::Proposal::Receiver::Product
   include Mongoid::Document
-  include Mongoid::Paperclip
 
   embedded_in :receiver,         class_name: "Deal::Agreement::Proposal::Receiver"
   embeds_many :secondary_images, class_name: "Deal::Agreement::Proposal::Receiver::Product::Image", cascade_callbacks: true
@@ -9,7 +8,7 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  has_mongoid_attached_file :main_image
+  field :main_image,  type: String
 
   validates :receiver,
             :thing_id,
