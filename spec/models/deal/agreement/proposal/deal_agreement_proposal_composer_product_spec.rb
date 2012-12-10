@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Deal::Agreement::Proposal::Composer::Product do
   let(:product) { Fabricate.build(:deal).agreement.proposals[0].composer.products[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Deal::Agreement::Proposal::Composer) }
     it { should embed_many(:secondary_images).of_type(Deal::Agreement::Proposal::Composer::Product::Image) }
@@ -14,7 +13,7 @@ describe Deal::Agreement::Proposal::Composer::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer).with_default_value_of(1) }
-    # TODO: ¿Validar campo 'main_image' (Paperclip)?
+    it { should have_field(:main_image).of_type(String) }
   end
 
   describe 'Validations' do
