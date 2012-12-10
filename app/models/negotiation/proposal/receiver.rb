@@ -7,7 +7,7 @@ class Negotiation::Proposal::Receiver
 
   field :user_id, type: Moped::BSON::ObjectId
   field :name,    type: String
-  has_mongoid_attached_file :image
+  field :image,   type: String
 
   validates :proposal,
             :products,
