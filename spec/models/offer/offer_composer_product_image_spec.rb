@@ -3,13 +3,12 @@ require 'spec_helper'
 describe Offer::Composer::Product::Image do
   let(:image) { Fabricate.build(:offer).composer.products[0].secondary_images[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:product).of_type(Offer::Composer::Product) }
   end
 
   describe 'Attributes' do
-    # TODO: ¿Validar campo 'file' (Paperclip)?
+    it { should have_field(:file).of_type(String) }
   end
 
   describe 'Validations' do
