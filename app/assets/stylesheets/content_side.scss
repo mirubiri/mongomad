@@ -7,6 +7,7 @@
   width:$anchuraLadoContenidos;
   min-width:$anchuraLadoContenidos;
   border: 2px solid rgb(220,220,220);
+  background-color: rgb(143,188,143);
   overflow: visible;
 
 
@@ -18,6 +19,7 @@
     height: auto;
     margin-bottom:15px;
     border-bottom: $bordeElementos;
+    background-color: white;
 
     .contentsideheader_menu{
       width:100%;
