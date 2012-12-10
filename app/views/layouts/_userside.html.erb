@@ -1,38 +1,42 @@
 <section class="userside" id="user-side">
   
-  <aside class="userside_profile">
-    <div class="image">
-      <%= image_tag(current_user.profile.image) %>
-    </div>
-    <div class="user_name">
-      <%= current_user.profile.nickname %></br>
-      <%= current_user.profile.country %></br>
-    </div>
-    <a href="newOffer.html" target="_blank">        
-      <%= button_tag "Nueva Oferta", :class => "addofferbutton",
-      :id => "new-offer" %>
-    </a>
-    <nav class="profile_menu">
-      <div class="menu_icon">
-        <%= link_to 'Perfil', user_profile_path(current_user) %>
+  <% user_data_for do |user| %>
+
+    <aside class="userside_profile">
+      <div class="image">
+        <%= image_tag(user.image) %>
       </div>
-      <div class="menu_icon">
-        <%= link_to 'Prod', user_things_path(current_user) %>
+      <div class="user_name">
+        <%= user.nickname %></br>
+        <%= user.country %></br>
       </div>
-      <div class="menu_icon">
-        <%#= link_to 'Alertas', user_alerts_path(current_user) %>
-      </div>
-    </nav>
-  </aside>
-  
-  <aside class="userside_requests">
-      <a href="newrequest.html">
-        <%= button_tag "Nueva Peticion", :class => "addofferbutton",:id => "add_request_button" %>      
+      <a href="newOffer.html" target="_blank">        
+        <%= button_tag "Nueva Oferta", :class => "addofferbutton",
+        :id => "new-offer" %>
       </a>
-    <aside class="requests_requestsList">
-      <%= render @requests %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->             
+      <nav class="profile_menu">
+        <div class="menu_icon">
+          <%= link_to 'Perfil', user_profile_path(current_user) %>
+        </div>
+        <div class="menu_icon">
+          <%= link_to 'Prod', user_things_path(current_user) %>
+        </div>
+        <div class="menu_icon">
+          <%#= link_to 'Alertas', user_alerts_path(current_user) %>
+        </div>
+      </nav>
     </aside>
-  </aside>
+    
+    <aside class="userside_requests">
+        <a href="newrequest.html">
+          <%= button_tag "Nueva Peticion", :class => "addofferbutton",:id => "add_request_button" %>      
+        </a>
+      <aside class="requests_requestsList">
+        <%= render @requests %><!--Helper que itera sobre _requests y los va renderizando uno a uno-->             
+      </aside>
+    </aside>
+
+  <% end %> 
     
 </section>
 

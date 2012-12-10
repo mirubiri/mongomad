@@ -3,15 +3,15 @@
      <nav>
       <div class="nav_element">
         <div class="icono_navegacion"></div>
-          <%= link_to 'Ofertas', user_offers_path(@user, :remote => true) %>
+          <%= link_to 'Ofertas', user_offers_path(@user) %>
       </div>
       <div class="nav_element">
         <div class="icono_navegacion"></div>
-          <%= link_to 'Negociaciones', user_negotiations_path(@user, :remote => true) %>
+          <%= link_to 'Negociaciones', user_negotiations_path(@user) %>
       </div>
       <div class="nav_element">
         <div class="icono_navegacion"></div>
-          <%= link_to 'Tratos', user_deals_path(@user, :remote => true) %>
+          <%= link_to 'Tratos', user_deals_path(@user) %>
       </div>
      </nav>
      <div class="contentsideheader_search">
