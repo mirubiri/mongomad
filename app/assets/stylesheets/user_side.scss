@@ -6,6 +6,7 @@
   width:$anchuraLadoUsuario;
   min-width:$anchuraLadoUsuario;
   border: $bordeLadoUsuario;
+  background-color: white;
   overflow: visible;
 
   .userside_profile{
@@ -57,11 +58,14 @@
 
       .menu_icon{
         float:left;
-        width:40px;
-        height:40px;
         margin-left:8px;
         border: $bordeElementos;
-        border-radius:3px;  
+        border-radius:3px;
+
+        img{
+          width:40px;
+          height:40px;
+        }  
       }
     }
   } 
@@ -100,12 +104,14 @@
 
         .profile_image{
           float:left;
-          margin-right:5px;
-          width: 15%;
-          height: 30px;
+          margin-right:5px;          
           border: $bordeElementos;
           border-radius:5px;
+
           img{
+            width: 15%;
+            height: 30px;
+            border-radius:5px;
           }
         }
 
@@ -125,9 +131,7 @@
             resize: none;
             overflow: hidden;
             maxlenght: 135;
-
           }
-
         }
       }
     }
