@@ -12,7 +12,7 @@ describe User::Thing do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
-    # TODO: ¿Validar campo 'main_image' (Paperclip)?
+    it { should have_field(:main_image).of_type(String) }
   end
 
   describe 'Validations' do
