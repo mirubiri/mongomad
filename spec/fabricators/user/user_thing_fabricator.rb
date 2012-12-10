@@ -4,5 +4,5 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   name                      'name'
   description               'description'
   stock                     1
-  main_image                { File.open('app/assets/images/rails.png') }
+  main_image                'app/assets/images/rails.png'
 end
