@@ -6,7 +6,7 @@ Mongomad::Application.routes.draw do
   root :to => "offers#index"
 
   #Recursos del user
-  resources :users do
+  resources :users, path:'' do
     resource :profile
     resources :requests
     resources :things

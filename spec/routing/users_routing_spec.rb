@@ -2,33 +2,33 @@ require "spec_helper"
 
 describe UsersController do
   describe "routing" do
-
-    it "routes to #index" do
-      get("/users").should route_to("users#index")
+    let(:user_name) { Fabricate(:user).profile.name }
+    it "not routes to #index" do
+      get("/users").should_not route_to("users#index")
     end
 
     it "routes to #new" do
-      get("/users/new").should route_to("users#new")
+      get("/new").should route_to("users#new")
     end
 
     it "routes to #show" do
-      get("/users/1").should route_to("users#show", :id => "1")
+      get("/#{user_name}").should route_to("users#show", :id => "#{user_name}")
     end
 
     it "routes to #edit" do
-      get("/users/1/edit").should route_to("users#edit", :id => "1")
+      get("#{user_name}/edit").should route_to("users#edit", :id => "#{user_name}")
     end
 
-    it "routes to #create" do
-      post("/users").should route_to("users#create")
+    it "not routes to #create" do
+      post("/users").should_not route_to("users#create")
     end
 
     it "routes to #update" do
-      put("/users/1").should route_to("users#update", :id => "1")
+      put("#{user_name}").should route_to("users#update", :id => "#{user_name}")
     end
 
     it "routes to #destroy" do
-      delete("/users/1").should route_to("users#destroy", :id => "1")
+      delete("#{user_name}").should route_to("users#destroy", :id => "#{user_name}")
     end
   end
 end
