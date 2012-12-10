@@ -9,7 +9,8 @@
   <input type="search" name="busqueda" />
       
   <% if user_signed_in? %>    
-    <div class="header_user_image"><%= current_user.profile.name %>
+    <div class="header_user_image">
+      <%= image_tag(current_user.profile.image) %>
     </div>
     <div class="header_user_description">
       <p><%= current_user.profile.name %></p>

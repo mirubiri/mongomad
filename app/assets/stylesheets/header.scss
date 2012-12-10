@@ -40,9 +40,13 @@
 
     .header_user_image{
       float:left;
-      width:30px;
-      height:30px;
-      border: $bordeElementos;        
+      border: $bordeElementos;
+
+      img{
+        width:30px;
+        height:30px;
+      }
+
     }
 
     .header_user_description{

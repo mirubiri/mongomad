@@ -17,15 +17,19 @@
     border: 2px solid rgb(220,220,220);
     overflow: auto;
 
-    .image{              
-      width:80%;
-      height: 180px;
+    .image{      
       margin-top:10px;
       margin-left:auto;
       margin-right:auto;
       border: $bordeElementos;
       border-top-left-radius:5px;
       border-top-right-radius:5px;
+
+      img{
+        width:80%;
+        height: 180px;
+      }
+
     }
 
     .user_name{

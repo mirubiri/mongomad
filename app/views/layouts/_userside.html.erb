@@ -2,7 +2,7 @@
   
   <aside class="userside_profile">
     <div class="image">
-      <%= current_user.profile.image %>
+      <%= image_tag(current_user.profile.image) %>
     </div>
     <div class="user_name">
       <%= current_user.profile.nickname %></br>
