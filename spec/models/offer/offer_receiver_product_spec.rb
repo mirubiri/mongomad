@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Offer::Receiver::Product do
   let(:product) { Fabricate.build(:offer).receiver.products[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
     it { should embed_many(:secondary_images).of_type(Offer::Receiver::Product::Image) }
