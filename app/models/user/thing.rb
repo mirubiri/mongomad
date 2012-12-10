@@ -1,6 +1,5 @@
 class User::Thing
   include Mongoid::Document
-  include Mongoid::Paperclip
 
   embedded_in :user
   embeds_many :secondary_images, class_name: "User::Thing::Image", cascade_callbacks: true
@@ -8,7 +7,7 @@ class User::Thing
   field :name,        type: String
   field :description, type: String
   field :stock,       type: Integer, default: 1
-  has_mongoid_attached_file :main_image
+  field :main_image,  type: String
 
   validates :user,
             :name,
