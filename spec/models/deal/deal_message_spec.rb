@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Message do
   let(:message) { Fabricate.build(:deal).messages[0] }
-  include_context 'clean collections'
+
 
   describe 'Relations' do
     it { should be_embedded_in :deal }
