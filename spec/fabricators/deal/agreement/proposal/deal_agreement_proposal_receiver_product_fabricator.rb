@@ -5,5 +5,5 @@ Fabricator(:deal_agreement_proposal_receiver_product, class_name: "Deal::Agreeme
   name                      'name'
   description               'description'
   quantity                  5
-  main_image                { File.open('app/assets/images/rails.png') }
+  main_image                'app/assets/images/rails.png'
 end
