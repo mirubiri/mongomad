@@ -2,7 +2,7 @@ class NegotiationsController < ApplicationController
   # GET /negotiations
   # GET /negotiations.json
   def index
-    @user = Negotiation.find(params[:id])
+    @user = current_user
     @requests = @user.requests.all.to_a
     @negotiations = Negotiation.all.to_a
 
