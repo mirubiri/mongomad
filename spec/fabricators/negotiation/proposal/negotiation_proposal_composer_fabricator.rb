@@ -4,3 +4,4 @@ Fabricator(:negotiation_proposal_composer, class_name: "Negotiation::Proposal::C
   user_id           'user_id'
   name              'name'
   image             'app/assets/images/rails.png'
+end
