@@ -7,20 +7,24 @@
       <a href="/css3/"></a>
   </nav>    
   <input type="search" name="busqueda" />
-      
-  <% if user_signed_in? %>    
-    <div class="header_user_image">
-      <%= image_tag(current_user.profile.image) %>
-    </div>
-    <div class="header_user_description">
-      <p><%= current_user.profile.name %></p>
-      <p><%= current_user.profile.surname %></p>
-    </div>
-    Not you?
-    <%= link_to "sign out", destroy_user_session_path %>
-    <% else %>
-      <%= link_to "sign up", new_user_registration_path %> 
-      or <%= link_to "sign in", new_user_session_path %>
+
+  <% user_data_for do |user| %>
+    
+    <% if user_signed_in? %>    
+      <div class="header_user_image">
+        <%= image_tag(user.image) %>
+      </div>
+      <div class="header_user_description">
+        <p><%= user.name %></p>
+        <p><%= user.surname %></p>
+      </div>
+      Not you?
+      <%= link_to "sign out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "sign up", new_user_registration_path %> 
+        or <%= link_to "sign in", new_user_session_path %>
+    <% end %> 
+
   <% end %> 
 
 </div> 
