@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Negotiation::Message do
   let(:message) { Fabricate.build(:negotiation).messages[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
   end

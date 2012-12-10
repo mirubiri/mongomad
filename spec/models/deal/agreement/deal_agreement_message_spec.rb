@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Deal::Agreement::Message do
   let(:message) { Fabricate.build(:deal).agreement.messages[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:agreement).of_type(Deal::Agreement) }
   end

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Negotiation::Proposal do
   let(:proposal) { Fabricate.build(:negotiation).proposals[0] }
 
-
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
     it { should embed_one(:composer).of_type(Negotiation::Proposal::Composer) }
