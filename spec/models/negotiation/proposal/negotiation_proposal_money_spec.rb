@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Negotiation::Proposal::Money do
   let(:money) { Fabricate.build(:negotiation).proposals[0].money }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
   end
