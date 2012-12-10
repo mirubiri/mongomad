@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @user = Offer.find(params[:id])
+    @user = current_user
     @requests = @user.requests.all.to_a
     @offers = Offer.all.to_a
 

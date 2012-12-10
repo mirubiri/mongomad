@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   # GET /requests.json
 
   def index
-    @user = Request.find(params[:id])
+    @user = current_user
     @requests = Request.all.to_a
 
     respond_to do |format|
