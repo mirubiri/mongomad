@@ -1,0 +1,9 @@
+var url = this.href;
+
+$("#ppal_container").html("<%= render :partial => "negotiations/negotiation" %>");
+
+ejecutarMasonry();
+igualaAlturaUsersideContentside();
+maximizaAlturaConversacion();
+
+history.pushState({path:url},"", url);

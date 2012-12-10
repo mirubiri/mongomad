@@ -1,5 +1,9 @@
-<p id="notice"><%= notice %></p>
+<section class="contentside" id="content-side">
 
+  <%= render 'users/subnavigation' %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <aside class="contentside_elementList" id="ppal_container">
+    <%= render @offers %><!-- Helper que itera sobre _offers -->
+  </aside>
+
+</section>

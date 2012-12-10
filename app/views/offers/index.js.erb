@@ -1,0 +1,7 @@
+var url = this.href;
+
+$("#ppal_container").html("<%= render :partial => "offers/offer" %>");
+ejecutarMasonry();
+igualaAlturaUsersideContentside();
+
+history.pushState({path:url},"", url);
