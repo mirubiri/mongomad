@@ -5,5 +5,5 @@ Fabricator(:offer_composer_product, class_name: "Offer::Composer::Product") do
   name                      'name'
   description               'description'
   quantity                  5
-  main_image                { File.open('app/assets/images/rails.png') }
+  main_image                'app/assets/images/rails.png'
 end
