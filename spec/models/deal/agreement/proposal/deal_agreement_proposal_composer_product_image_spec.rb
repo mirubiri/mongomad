@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Composer::Product::Image do
   let(:image) { Fabricate.build(:deal).agreement.proposals[0].composer.products[0].secondary_images[0] }
-  include_context 'clean collections'
+
 
   describe 'Relations' do
     it { should be_embedded_in(:product).of_type(Deal::Agreement::Proposal::Composer::Product) }

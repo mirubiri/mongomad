@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Money do
   let(:money) { Fabricate.build(:offer).money }
-  include_context 'clean collections'
+
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
