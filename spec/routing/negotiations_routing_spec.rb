@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe NegotiationsController do
   describe "routing" do
-
     it "routes to #index" do
       get("/negotiations").should route_to("negotiations#index")
     end
