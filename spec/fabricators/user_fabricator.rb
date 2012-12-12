@@ -8,4 +8,11 @@ Fabricator(:user) do
   deals           nil
   email           { Faker::Internet.email }
   password        'password'
+
+  after_create do |user|
+    offer=Fabricate.build(:offer)
+    offer.composer.image=user.profile.image
+    user.received_offers<<offer
+  end
+
 end
