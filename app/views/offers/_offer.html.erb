@@ -1,27 +1,29 @@
-<%= div_for(@offer, :class => "offer") do %>
-  <div class="offer_header">
-    <div class="triangle"></div>
-    <div class="profile_image"><%= @composer.image %></div>
-    <div class="description">
-      <textarea name="offer-description" id="offer-description" cols="1" rows="1">
-        <%= @offer.initial_message %>
-      </textarea>
+<%= @offers.each do |offer| %>
+  <div class="offer">
+    <div class="offer_header">
+      <div class="triangle"></div>
+      <div class="profile_image"><%= offer.composer.image %></div>
+      <div class="description">
+        <textarea name="offer-description" id="offer-description" cols="1" rows="1">
+          <%= offer.initial_message %>
+        </textarea>
+      </div>
     </div>
-  </div>
-  <div class="offer_things">
-    <div class="recieved">
-      <% @composer_selected_things.each do |thing| %>
-        <div class="thing"><%= thing.main_image %></div>
-      <% end %>
+    <div class="offer_things">
+      <div class="recieved">
+        <% offer.composer.products.each do |thing| %>
+          <div class="thing"><%= thing.main_image %></div>
+        <% end %>
+      </div>
+      <div class="given">
+        <% offer.receiver.products.each do |thing| %>
+          <div class="thing"><%= thing.main_image %></div>
+        <% end %>
+      </div>
     </div>
-    <div class="given">
-      <% @receiver_selected_things.each do |thing| %>
-        <div class="thing"><%= thing.main_image %></div>
-      <% end %>
+    <div class="offer_button">
+      <button>enviar</button>
     </div>
-  </div>
-  <div class="offer_button">
-    <button>enviar</button>
   </div>
 <% end %>
   

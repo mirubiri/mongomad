@@ -1,62 +1,64 @@
-<%= div_for(@negotiation, :class => "table") do %>  
-  <div class="proposition_side">
-    <div class="proposition">
-       <div class="proposition_header">
-        <div class="triangle"></div>
-        <div class="profile_image"><%= @rival_user.image %></div>
+<%= @negotiations.each do |offer| %>
+  <div class="table">  
+    <div class="proposition_side">
+      <div class="proposition">
+         <div class="proposition_header">
+          <div class="triangle"></div>
+          <div class="profile_image"><%= @rival_user.image %></div>
+        </div>
+        <div class="offered_things">
+          <% @composer_things.each do |thing| %>
+            <div class="offered_product">
+              <div class="product-image"><%= thing.main_image %></div>
+              <div class="product-title"><%= thing.name %></div>
+            </div>             
+          <% end %>
+          <div class="orderer_money"><%= @proposal.money.quantity %>
+          </div>
+        </div>
+        <div class="orderer_things">
+          <% @receiver_things.each do |thing| %>
+            <div class="orderer_product">
+              <div class="product-image"><%= thing.main_image %></div>
+              <div class="product-title"><%= thing.name %></div>
+            </div>          
+          <% end %>
+          <div class="orderer_money"><%= @proposal.money.quantity %>
+          </div>
+        </div>      
       </div>
-      <div class="offered_things">
-        <% @composer_things.each do |thing| %>
-          <div class="offered_product">
-            <div class="product-image"><%= thing.main_image %></div>
-            <div class="product-title"><%= thing.name %></div>
-          </div>             
-        <% end %>
-        <div class="orderer_money"><%= @proposal.money.quantity %>
+      <div class="actions">
+        <div class="reputation">                
+        </div>
+        <div class="action_buttons"> 
+          <button>aceptar</button>               
         </div>
       </div>
-      <div class="orderer_things">
-        <% @receiver_things.each do |thing| %>
-          <div class="orderer_product">
-            <div class="product-image"><%= thing.main_image %></div>
-            <div class="product-title"><%= thing.name %></div>
-          </div>          
-        <% end %>
-        <div class="orderer_money"><%= @proposal.money.quantity %>
-        </div>
-      </div>      
     </div>
-    <div class="actions">
-      <div class="reputation">                
+    <div class="dialog_side">
+      <div class="dialog_head">
+        <div class="dialogin">Conversation...</div>
       </div>
-      <div class="action_buttons"> 
-        <button>aceptar</button>               
+      <div class="conversation" id="conversationoftable">
+        <!-- aqui viene el javascript que rellena la conversacion con los comments -->
+        <div class="comment">
+          <div class="comment_user_image">                  
+          </div>
+          <div class="comment_text">                  
+          </div>
+        </div>      
       </div>
-    </div>
-  </div>
-  <div class="dialog_side">
-    <div class="dialog_head">
-      <div class="dialogin">Conversation...</div>
-    </div>
-    <div class="conversation" id="conversationoftable">
-      <!-- aqui viene el javascript que rellena la conversacion con los comments -->
-      <div class="comment">
-        <div class="comment_user_image">                  
-        </div>
-        <div class="comment_text">                  
-        </div>
-      </div>      
-    </div>
-    
-    <div class="writting_box">
-      <form action="">
-        <div class="message">
-          <input type="">                
-        </div>
-        <div class="sender">
-          <input type="">
-        </div>
-      </form>
+      
+      <div class="writting_box">
+        <form action="">
+          <div class="message">
+            <input type="">                
+          </div>
+          <div class="sender">
+            <input type="">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 <% end %>
