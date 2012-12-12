@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe RequestsController do
   describe "routing" do
-
     it "routes to #index" do
       get("/requests").should route_to("requests#index")
     end
