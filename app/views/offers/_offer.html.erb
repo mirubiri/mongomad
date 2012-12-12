@@ -1,8 +1,10 @@
-<%= @offers.each do |offer| %>
+<% @offers.each do |offer| %>
   <div class="offer">
     <div class="offer_header">
       <div class="triangle"></div>
-      <div class="profile_image"><%= offer.composer.image %></div>
+      <div class="profile_image">
+        <%= image_tag(offer.composer.image) %>
+      </div>
       <div class="description">
         <textarea name="offer-description" id="offer-description" cols="1" rows="1">
           <%= offer.initial_message %>
@@ -12,12 +14,16 @@
     <div class="offer_things">
       <div class="recieved">
         <% offer.composer.products.each do |thing| %>
-          <div class="thing"><%= thing.main_image %></div>
+          <div class="thing">
+            <%= image_tag(thing.main_image) %>
+          </div>
         <% end %>
       </div>
       <div class="given">
         <% offer.receiver.products.each do |thing| %>
-          <div class="thing"><%= thing.main_image %></div>
+          <div class="thing">
+            <%= image_tag(thing.main_image) %>
+          </div>
         <% end %>
       </div>
     </div>

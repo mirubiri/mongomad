@@ -1,29 +1,36 @@
-<%= @negotiations.each do |offer| %>
+<% @negotiations.each do |negotiation| %>
   <div class="table">  
     <div class="proposition_side">
       <div class="proposition">
          <div class="proposition_header">
           <div class="triangle"></div>
-          <div class="profile_image"><%= @rival_user.image %></div>
+          <div class="profile_image">
+            <%#= proposal.composer.profile.image %></div>
         </div>
         <div class="offered_things">
-          <% @composer_things.each do |thing| %>
+          
+          <%# negotiation.proposal.composer.products.each do |product| %>
             <div class="offered_product">
-              <div class="product-image"><%= thing.main_image %></div>
-              <div class="product-title"><%= thing.name %></div>
+              <div class="product-image"><%#= product.main_image %></div>
+              <div class="product-title"><%#= product.name %></div>
             </div>             
-          <% end %>
-          <div class="orderer_money"><%= @proposal.money.quantity %>
+          <%# end %>
+          
+          <div class="orderer_money">
+            <%#= negotiation.proposal.money.quantity %>
           </div>
         </div>
         <div class="orderer_things">
-          <% @receiver_things.each do |thing| %>
+          
+          <%# negotiation.proposal.receiver.products.each do |thing| %>
             <div class="orderer_product">
-              <div class="product-image"><%= thing.main_image %></div>
-              <div class="product-title"><%= thing.name %></div>
+              <div class="product-image"><%#= thing.main_image %></div>
+              <div class="product-title"><%#= thing.name %></div>
             </div>          
-          <% end %>
-          <div class="orderer_money"><%= @proposal.money.quantity %>
+          <%# end %>
+          
+          <div class="orderer_money">
+            <%#= negotiation.proposal.money.quantity %>
           </div>
         </div>      
       </div>
