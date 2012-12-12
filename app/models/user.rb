@@ -14,10 +14,6 @@ class User
   validates :profile,
             presence: true
 
-  def to_param
-    profile.name
-  end
-
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
