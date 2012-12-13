@@ -3,7 +3,7 @@ Mongomad::Application.routes.draw do
   devise_for :users
 
   #La ruta por defecto sera a la pantalla inicial de la plataforma
-  root :to => "offers#index"
+  root :to => "users#show"
 
   #Recursos del user
   resources :users do

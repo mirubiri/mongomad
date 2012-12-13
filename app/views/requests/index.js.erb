@@ -1,7 +1,9 @@
 var url = this.href;
 
-$("#ppal_container").html("<%= render :partial => "requests/request" %>");
-ejecutarMasonry();
+$("#ppal_container").html('<%= escape_javascript(render @requests) %>');
+
+alert('funciona');
+
 igualaAlturaUsersideContentside();
 
 history.pushState({path:url},"", url);

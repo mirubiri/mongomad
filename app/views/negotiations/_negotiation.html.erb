@@ -10,8 +10,8 @@
         <div class="offered_things">
           
           <%# negotiation.proposal.composer.products.each do |product| %>
-            <div class="offered_product">
-              <div class="product-image"><%#= product.main_image %></div>
+            <div class="offered_product">              
+              <%#= image_tag(product.main_image) %>
               <div class="product-title"><%#= product.name %></div>
             </div>             
           <%# end %>
@@ -24,7 +24,7 @@
           
           <%# negotiation.proposal.receiver.products.each do |thing| %>
             <div class="orderer_product">
-              <div class="product-image"><%#= thing.main_image %></div>
+              <%#= image_tag(product.main_image) %>
               <div class="product-title"><%#= thing.name %></div>
             </div>          
           <%# end %>

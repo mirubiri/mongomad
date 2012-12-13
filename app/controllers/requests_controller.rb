@@ -2,6 +2,10 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
 
+  def sub_layout
+    "common" 
+  end
+
   def index
     @user = current_user
     @requests = Request.all.to_a

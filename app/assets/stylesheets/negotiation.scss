@@ -53,20 +53,19 @@
 
           .offered_product{
             float: left;
+            width:140px;
+            height:140px;
             overflow: auto;
-            margin: 10px 5px 0px 5px;                   
+            border: $bordeElementos;
+            margin: 10px 5px 0px 5px;
+            border-radius:5px;
 
-            .product-image{
-              float:left;
+            .img{
               width:140px;
               height:140px;
-              border: $bordeElementos;
-              border-radius:5px;
-
-              img{
-              }
             }
             .product-title{
+              float: left;
               font-size: 10px;
               text-align: center;
             }
@@ -95,25 +94,24 @@
           padding:10px 0px 0px 15px;
 
           .orderer_product{
-            width: 100%;
+            width: 110px;
+            height: 110px;
             float:left;
             border: $bordeElementos;
             border-radius:5px;
-            
-            .product-image{
+
+            img{
               float:left;
               width:90px;
               height:90px;
-              border: $bordeElementos;
-              border-radius:5px;
-
-              img{
-              }
             }
+
             .product-title{
+              float: left;
               font-size: 10px;
               text-align: center;
             }
+
           }
 
           .orderer_money{
@@ -128,10 +126,9 @@
 
             img{
             }
-
           }
-
         }
+        
       }
 
 

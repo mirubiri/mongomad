@@ -4,4 +4,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   helper :all 
 
+  def sub_layout
+    "devise" 
+  end
+
 end

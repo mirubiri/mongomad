@@ -1,6 +1,11 @@
 class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
+
+  def sub_layout
+    "common" 
+  end
+
   def index
     @user = current_user
     @requests = @user.requests.all.to_a

@@ -1,6 +1,11 @@
 class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
+
+  def sub_layout
+    "common" 
+  end
+  
   def index
     @user = current_user
     @requests = @user.requests.all.to_a

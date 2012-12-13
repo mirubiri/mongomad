@@ -1,6 +1,9 @@
 var url = this.href;
 
-$("#ppal_container").html("<%= render :partial => "offers/offer" %>");
+$("#ppal_container").html('<%= escape_javascript(render @offers) %>');
+
+alert('funciona');
+
 ejecutarMasonry();
 igualaAlturaUsersideContentside();
 

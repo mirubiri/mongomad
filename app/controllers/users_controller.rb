@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   # GET /users
   # GET /users.json
+
+  def sub_layout
+    "common" 
+  end
+  
   def index
     @users = User.all.to_a
     @requests = User.requests

@@ -10,8 +10,10 @@
  *
  *= require buttons
  *= require content_side
+ *= require devise
  *= require footer
  *= require header
+ *= require header_big
  *= require index
  *= require modals
  *= require new_offer

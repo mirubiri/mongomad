@@ -9,20 +9,9 @@
   <%= csrf_meta_tags %>  
 </head>
 
-<body>
-    
-  <%= render 'layouts/navigation' %>   
-  
-  <div class="mainlayout">
+<body>    
 
-    <% if user_signed_in? %>
-      <%= render 'layouts/userside' %>
-    <% end %>   
-
-    <%= yield %> 
-    
-    <footer>@copyright derechos reservados a improcex ingenieria informatica s.l.</footer>
-  </div>  
+  <%= render :partial=>"layouts/#{controller.sub_layout}" %>    
 
 </body>
 </html>

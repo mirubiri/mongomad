@@ -1,0 +1,20 @@
+<div class="header_big">
+  <div class="header_logo"></div>
+  <nav class="header_menu" >
+      <a href="/html/"></a>
+      <a href="/html5/"></a>
+      <a href="/css/"></a>
+      <a href="/css3/"></a>
+  </nav>
+  <input type="search" name="busqueda" />
+
+  <% if user_signed_in? %>
+    <%= yield :header_user_description %>
+    Not you?
+    <%= link_to "sign out", destroy_user_session_path,:method => :delete %>
+    <% else %>
+      <%= link_to "sign up", new_user_registration_path %>
+      or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+
+</div>
