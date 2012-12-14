@@ -27,11 +27,4 @@ describe User do
     specify { expect(user.valid?).to be_true }
     specify { expect(user.save).to be_true }
   end
-
-  describe '#to_param' do
-    it 'returns user nickname' do
-      user.save
-      user.to_param.should eq user.profile.name
-    end
-  end
 end
