@@ -21,5 +21,14 @@ function ejecutarMasonry(){
                 isAnimated: true
             });
         break;
+
+        default:
+            $('#content-side #ppal_container').masonry({
+                itemSelector : '.offer',
+                gutterWidth: 14,
+                columnWidth : 266,
+                isAnimated: true
+            });
+        break;
     }
 }
