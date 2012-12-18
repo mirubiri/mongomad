@@ -1,7 +1,11 @@
 function ejecutarMasonry(){
     var pagina = location.pathname.split("/");
-    var ultimoPath = pagina.length-1;
-    var lugar = location.pathname.split("/")[ultimoPath];
+    var urlTokens = 3;
+    var lugar = "home";
+
+    if (pagina.length != urlTokens){
+        lugar = location.pathname.split("/")[urlTokens];
+    }
 
     switch (lugar) {
         case "offers":
@@ -14,7 +18,7 @@ function ejecutarMasonry(){
         break;
 
         case "products":
-            $('#content-side #ppal_container_products').masonry({
+            $('#content-side #ppal_container').masonry({
                 itemSelector : '.product',
                 gutterWidth: 13,
                 columnWidth : 195,
@@ -22,7 +26,7 @@ function ejecutarMasonry(){
             });
         break;
 
-        default:
+        case "home":
             $('#content-side #ppal_container').masonry({
                 itemSelector : '.offer',
                 gutterWidth: 14,
