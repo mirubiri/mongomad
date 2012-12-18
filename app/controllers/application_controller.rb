@@ -8,4 +8,8 @@ class ApplicationController < ActionController::Base
     "devise" 
   end
 
+  def after_sign_in_path_for(resource)
+    user_url(current_user)
+  end
+
 end
