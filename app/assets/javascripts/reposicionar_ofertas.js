@@ -4,7 +4,7 @@ function ejecutarMasonry(){
     var lugar = location.pathname.split("/")[ultimoPath];
 
     switch (lugar) {
-        case "offers.html":
+        case "offers":
             $('#content-side #ppal_container').masonry({
                 itemSelector : '.offer',
                 gutterWidth: 14,
@@ -13,7 +13,7 @@ function ejecutarMasonry(){
             });
         break;
 
-        case "products.html":
+        case "products":
             $('#content-side #ppal_container_products').masonry({
                 itemSelector : '.product',
                 gutterWidth: 13,
