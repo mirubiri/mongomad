@@ -1,5 +1,9 @@
-<%= div_for(current_user.requests, :class => "request") do %>
-  <div class="profile_image"></div>
-  <div class="description"></div>
+<% current_user.requests.each do |request| %>
+  <div class="request">
+    <div class="profile_image">      
+      <%= image_tag(request.image) %>
+    </div>
+    <div class="description"><%= request.text %></div>
+  </div>
 <% end %>
  

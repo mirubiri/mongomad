@@ -8,7 +8,7 @@ class RequestsController < ApplicationController
 
   def index
     @user = current_user
-    @requests = Request.all.to_a
+    @requests = @user.requests
 
     respond_to do |format|
       format.html # index.html.erb
