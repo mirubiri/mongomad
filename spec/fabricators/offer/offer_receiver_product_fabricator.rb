@@ -4,6 +4,6 @@ Fabricator(:offer_receiver_product, class_name: "Offer::Receiver::Product") do
   thing_id                  'thing_id'
   name                      'name'
   description               'description'
-  quantity                  5
-  main_image                'app/assets/images/rails.png'
+  quantity                  3
+  main_image                'main_image_path'
 end

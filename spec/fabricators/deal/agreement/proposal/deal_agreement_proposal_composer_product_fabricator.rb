@@ -4,6 +4,6 @@ Fabricator(:deal_agreement_proposal_composer_product, class_name: "Deal::Agreeme
   thing_id                  'thing_id'
   name                      'name'
   description               'description'
-  quantity                  5
-  main_image                'app/assets/images/rails.png'
+  quantity                  6
+  main_image                'main_image_path'
 end

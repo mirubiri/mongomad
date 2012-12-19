@@ -3,6 +3,6 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   secondary_images(count:1) { Fabricate.build(:user_thing_image) }
   name                      'name'
   description               'description'
-  stock                     1
-  main_image                'app/assets/images/rails.png'
+  stock                     7
+  main_image                'main_image_path'
 end
