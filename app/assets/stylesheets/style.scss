@@ -10,17 +10,11 @@ body{
   background-color: rgb(220,220,220);
   overflow: auto;
 
-  //Aqui viene el header      
-
   .mainlayout{
     position: relative;
     top: 50px;
     width:100%;
-    overflow: visible;
-
-    //Primero va el userSide, la parte izquierda donde esta el perfil del usuario
-    //Despues va el contentSide, la parte derecha donde estan todos los contenidos
-    //Debajo de todo viene el footer, que esta aqui dentro para que vaya pegado siempre
+    overflow: visible;    
   }
   
 }

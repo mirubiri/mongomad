@@ -1,4 +1,4 @@
-function igualaAlturaUsersideContentside(){
+function igualaAlturaUserContainerMainContainer(){
   var alturaVentana = $(document).height()-90;// alturas del footer + header
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
@@ -7,10 +7,10 @@ function igualaAlturaUsersideContentside(){
 }
 
 function maximizaAlturaConversacion(){
-  $("[id^=table]").each(function(){
+  $("[id^=negotiation]").each(function(){
     $(this).equalHeightColumns({children:':not(h2,p)'});
   });
-  $("[id^=conversationoftable]").each(function(){
+  $("[id^=conversationofnegotiation]").each(function(){
     $(this).css({'height':($(this).parent().height()-57)+'px'});
   });
 }
@@ -24,12 +24,12 @@ function lineaSeparadoraComentariosPerfil(){
 $(window).load(function(){
   ejecutarMasonry();
   maximizaAlturaConversacion();
-  igualaAlturaUsersideContentside();
+  igualaAlturaUserContainerMainContainer();
   lineaSeparadoraComentariosPerfil();
 });
 
 $(window).bind('resize', function() {
   ejecutarMasonry();
   maximizaAlturaConversacion();
-  igualaAlturaUsersideContentside();
+  igualaAlturaUserContainerMainContainer();
 });

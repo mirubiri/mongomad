@@ -1,6 +1,6 @@
-<div class="header_big">
-  <div class="header_logo"></div>
-  <nav class="header_menu" >
+<div class="login_header">
+  <div class="login_header_logo"></div>
+  <nav class="login_header_menu" >
       <a href="/html/"></a>
       <a href="/html5/"></a>
       <a href="/css/"></a>
@@ -9,7 +9,7 @@
   <input type="search" name="busqueda" />
 
   <% if user_signed_in? %>
-    <%= yield :header_user_description %>
+    <%= yield :login_header_user_description %>
     Not you?
     <%= link_to "sign out", destroy_user_session_path,:method => :delete %>
     <% else %>

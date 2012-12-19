@@ -1,6 +1,6 @@
 @import "variables";
 
-.contentside{
+.main_container{
   position:absolute;
   top:0px;
   left:300px; 
@@ -11,7 +11,7 @@
   overflow: visible;
 
 
-  .contentside_header{
+  .main_container_header{
     position: relative;
     float:left;
     width:100%;
@@ -21,7 +21,7 @@
     border-bottom: $bordeElementos;
     background-color: white;
 
-    .contentsideheader_menu{
+    .main_container_header_menu{
       width:100%;
       float:left;
       display: inline;          
@@ -79,7 +79,7 @@
 
       }
 
-      .contentsideheader_search{
+      .main_container_header_search{
         float:right;
       }
 
@@ -103,7 +103,7 @@
     }
   }
       
-  .contentside_elementList{        
+  .main_container_elementList{        
     width:$anchuraListaContenidos;
     min-width:$anchuraListaContenidos;
     margin-left:auto;

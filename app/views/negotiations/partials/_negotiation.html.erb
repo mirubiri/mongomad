@@ -1,6 +1,6 @@
 <% @negotiations.each do |negotiation| %>
-  <div class="table" id="table<%= negotiation._id %>">  
-    <div class="proposition_side">
+  <div class="negotiation" id="negotiation<%= negotiation._id %>">  
+    <div class="proposition_container">
       <div class="proposition">
          <div class="proposition_header">
           <div class="triangle"></div>
@@ -42,11 +42,11 @@
         </div>
       </div>
     </div>
-    <div class="dialog_side">
+    <div class="dialog_container">
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
       </div>
-      <div class="conversation" id="conversationoftable">
+      <div class="conversation" id="conversationofnegotiation">
         <!-- aqui viene el javascript que rellena la conversacion con los comments -->
         <div class="comment">
           <div class="comment_user_image">                  

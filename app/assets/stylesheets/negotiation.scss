@@ -1,6 +1,6 @@
 @import "variables";
 
-.table {
+.negotiation {
   width: 825px;
   min-width:825px;
   margin-bottom: 25px;
@@ -8,7 +8,7 @@
   border: $bordeElementos;
   background-color: white;
 
-    .proposition_side{
+    .proposition_container{
       width: 313px;
       float:left;
       overflow: hidden;
@@ -160,7 +160,7 @@
 
     }
 
-    .dialog_side{
+    .dialog_container{
       width: 510px;
       float:right;
       overflow: hidden;

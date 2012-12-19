@@ -1,6 +1,6 @@
 @import "variables";
 
-.header_big{
+.login_header{
   position: fixed;
   width: 100%;
   height: 60px;
@@ -13,7 +13,7 @@
   display: inline;
   z-index: 1000;
 
-    .header_logo{
+    .login_header_logo{
       float: left;
       margin-left: $logoMarginLeft;
       width: 120px;
@@ -39,7 +39,7 @@
       margin-top: 5px;
     }
 
-    .header_user_image{
+    .login_header_user_image{
       width:30px;
       height:30px;
       float:left;
@@ -51,7 +51,7 @@
       }
     }
 
-    .header_user_description{
+    .login_header_user_description{
       float:left;
       width:120px;
       height:30px;
