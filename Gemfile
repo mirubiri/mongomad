@@ -28,7 +28,7 @@ gem 'awesome_print'
 gem 'mongoid'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'devise'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.1'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

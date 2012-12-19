@@ -11,10 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery.masonry.min
 //= require jquery.simplemodal.1.4.2.min
 //= require jquery.equal-height-columns
-//= require jquery_ujs
 //= ajax_request
 //= modals
 //= modernizr-2.5.3

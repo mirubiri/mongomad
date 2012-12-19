@@ -159,7 +159,7 @@ DEPENDENCIES
   devise
   fabrication
   faker
-  jquery-rails
+  jquery-rails (~> 2.1)
   mongoid
   mongoid-paperclip
   mongoid-rspec
