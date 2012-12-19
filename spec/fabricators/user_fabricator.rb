@@ -10,9 +10,28 @@ Fabricator(:user) do
   password        'password'
 
   after_create do |user|
-    offer=Fabricate.build(:offer)
-    offer.composer.image=user.profile.image
-    user.received_offers<<offer
-  end
 
+    request=Fabricate.build(:request)
+    user.requests<<request
+
+    received_offer=Fabricate.build(:offer)
+    user.received_offers<<received_offer
+
+    sent_offer=Fabricate.build(:offer)
+    user.sent_offers<<sent_offer
+
+    negotiation=Fabricate.build(:negotiation)
+    user.negotiations<<negotiation
+
+    deal=Fabricate.build(:deal)
+    user.deals<<deal
+
+    #Añadir mas cosas aleatoriamente
+
+    image_path=user.profile.image.path
+    user.things.each do |thing|
+      thing.main_image=image_path
+    end
+
+  end
 end

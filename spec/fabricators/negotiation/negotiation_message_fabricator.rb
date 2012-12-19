@@ -3,5 +3,5 @@ Fabricator(:negotiation_message, class_name: "Negotiation::Message") do
   user_id     'user_id'
   user_name   'user name'
   text        'text'
-  image       'app/assets/images/rails.png'
+  image       'image_path'
 end
