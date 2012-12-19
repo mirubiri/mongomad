@@ -1,6 +1,6 @@
 $(document).ready(function() {
   
-  $('#new-request').click(function(e){
+  $('#add_request_button').click(function(e){
       e.preventDefault();
 
       $('#new-request-form').modal({
@@ -9,7 +9,7 @@ $(document).ready(function() {
       });
   });
 
-  $('#new-offer').click(function(e){
+  $('#new-offer-button').click(function(e){
       e.preventDefault();
 
       $('#new-offer-form').modal({

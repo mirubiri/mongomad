@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   # GET /deals.json
 
   def sub_layout
-    "common" 
+    "deals" 
   end
 
   def index

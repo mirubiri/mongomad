@@ -3,7 +3,7 @@ function ejecutarMasonry(){
     var urlTokens = 3;
     var lugar = "home";
 
-    if (pagina.length != urlTokens){
+    if (pagina.length == urlTokens + 1){
         lugar = location.pathname.split("/")[urlTokens];
     }
 

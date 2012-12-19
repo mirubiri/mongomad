@@ -1,0 +1,20 @@
+<aside class="userside_profile">
+
+  <%= yield :user_description %>
+  
+  <a href="newOffer.html" target="_blank">        
+    <%= button_tag "Nueva Oferta", :class => "addofferbutton",
+    :id => "new-offer-button" %>
+  </a>
+  <nav class="profile_menu">
+    <div class="menu_icon">
+      <%= link_to 'Perfil', user_profile_path(current_user) %>
+    </div>
+    <div class="menu_icon">
+      <%= link_to 'Prod', user_things_path(current_user) %>
+    </div>
+    <div class="menu_icon">
+      <%#= link_to 'Alertas', user_alerts_path(current_user) %>
+    </div>
+  </nav>
+</aside>

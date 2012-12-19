@@ -1,11 +1,6 @@
-<%= render 'layouts/big_header_navigation' %>
+<%= render partial: 'layouts/global_partials/header' %>
 
-
-<div class="devise_content"> 
-
-  <%= yield %> 
-
+<div class="devise_content">
+  <%= yield %>
+  <%= render partial: 'layouts/global_partials/footer' %>
 </div>
-
-<footer>@copyright derechos reservados a improcex ingenieria informatica s.l.</footer>
-

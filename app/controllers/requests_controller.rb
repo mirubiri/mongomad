@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   # GET /requests.json
 
   def sub_layout
-    "common" 
+    "requests" 
   end
 
   def index

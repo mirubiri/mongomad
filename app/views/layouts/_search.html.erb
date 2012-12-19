@@ -1,13 +1,6 @@
-<%= render 'layouts/soft_header_navigation' %>
+<%= render partial: 'layouts/global_partials/header' %>
 
 <div class="mainlayout">
-
-    <div class="result_zone"> 
-
-      <%= yield %> 
-
-    </div>
-    
-    <footer>@copyright derechos reservados a improcex ingenieria informatica s.l.</footer>
-
+  <%= render partial: 'layouts/global_partials/main_container' %>
+  <%= render partial: 'layouts/global_partials/footer' %>
 </div>
