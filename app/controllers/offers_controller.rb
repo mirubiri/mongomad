@@ -3,13 +3,13 @@ class OffersController < ApplicationController
   # GET /offers.json
 
   def sub_layout
-    "offers" 
+    "offers"
   end
-  
+
   def index
     @user = current_user
     @requests = @user.requests.all.to_a
-    @offers = Offer.all.to_a
+    @offers = @user.received_offers
 
     respond_to do |format|
       format.html # index.html.erb
