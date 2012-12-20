@@ -4,11 +4,11 @@ Fabricator(:offer) do
   money           { Fabricate.build(:offer_money) }
   initial_message 'a long initial message to try the interface with a long text'
 
-  after_create do |offer|
+  after_build do |offer|
 
     #Añadir mas cosas aleatoriamente
 
-    image_path=Fabricate(:user).profile.image.path
+    image_path='/images/rails.png'
 
     offer.composer.image=image_path
     offer.composer.products.each do |product|

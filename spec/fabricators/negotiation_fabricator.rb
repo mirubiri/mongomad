@@ -2,11 +2,11 @@ Fabricator(:negotiation) do
   proposals(count:1) { Fabricate.build(:negotiation_proposal) }
   messages(count:1)  { Fabricate.build(:negotiation_message) }
 
-  after_create do |negotiation|
+  after_build do |negotiation|
 
-     #Añadir mas cosas aleatoriamente
+    #Añadir mas cosas aleatoriamente
 
-    image_path=Fabricate(:user).profile.image.path
+    image_path='/images/rails.png'
 
     negotiation.proposals.each do |proposal|
       proposal.composer.image=image_path
