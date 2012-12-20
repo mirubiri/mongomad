@@ -10,11 +10,11 @@
 
   <% if user_signed_in? %>
     <div class="header_user_image">
-      <%= image_tag(current_user.profile.image) %>
+      <%= image_tag(user_logged.profile.image) %>
     </div>
     <div class="header_user_description">
-      <p><%= current_user.profile.name %></p>
-      <p><%= current_user.profile.surname %></p>
+      <p><%= user_logged.profile.name %></p>
+      <p><%= user_logged.profile.surname %></p>
     </div>
     
     Not you?

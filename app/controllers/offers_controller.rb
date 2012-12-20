@@ -7,13 +7,12 @@ class OffersController < ApplicationController
   end
   
   def index
-    @user = current_user
+    @user = user_logged
     @requests = @user.requests.all.to_a
-    @offers = Offer.all.to_a
+    @offers = @user.received_offers.to_a
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @offers }
       format.json # renders index.js.erb
     end
   end

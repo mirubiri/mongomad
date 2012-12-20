@@ -1,11 +1,11 @@
 <aside class="user_container_profile">
 
   <div class="image">      
-    <%= image_tag(current_user.profile.image) %>
+    <%= image_tag(@user.profile.image) %>
   </div>
   <div class="user_name">
-    <%= current_user.profile.nickname %></br>
-    <%= current_user.profile.country %></br>
+    <%= @user.profile.nickname %></br>
+    <%= @user.profile.country %></br>
   </div>
   
   <a href="newOffer.html" target="_blank">        
@@ -14,10 +14,10 @@
   </a>
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil', user_profile_path(current_user) %>
+      <%= link_to 'Perfil', user_profile_path(@user) %>
     </div>
     <div class="menu_icon">
-      <%= link_to 'Prod', user_things_path(current_user) %>
+      <%= link_to 'Prod', user_things_path(@user) %>
     </div>
     <div class="menu_icon">
       <%#= link_to 'Alertas', user_alerts_path(current_user) %>
