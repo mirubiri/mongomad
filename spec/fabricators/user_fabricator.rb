@@ -28,7 +28,8 @@ Fabricator(:user) do
 
     #Añadir mas cosas aleatoriamente
 
-    image_path=user.profile.image.path
+    image_path='/images/rails.png'
+    user.profile.image.path
     user.things.each do |thing|
       thing.main_image=image_path
     end
