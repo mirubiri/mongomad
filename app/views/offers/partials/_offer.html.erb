@@ -1,9 +1,13 @@
 <% @offers.each do |offer| %>
-  <div class="offer">
+  <div class="offer" id="<%= offer.composer.user_id %>">
     <div class="offer_header">
       <div class="triangle"></div>
       <div class="profile_image">
-        <%= image_tag(offer.composer.image) %>
+        <%= link_to image_tag(offer.composer.image),
+          :controller => "users", 
+          :action => "show",
+          :id => offer.composer.user_id
+        %>
       </div>
       <div class="description">
           <%= offer.initial_message %>
