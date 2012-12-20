@@ -1,6 +1,12 @@
 <aside class="user_container_profile">
 
-  <%= yield :user_description %>
+  <div class="image">      
+    <%= image_tag(current_user.profile.image) %>
+  </div>
+  <div class="user_name">
+    <%= current_user.profile.nickname %></br>
+    <%= current_user.profile.country %></br>
+  </div>
   
   <a href="newOffer.html" target="_blank">        
     <%= button_tag "Nueva Oferta", :class => "add_offer_button",
