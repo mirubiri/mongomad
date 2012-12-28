@@ -84,7 +84,7 @@ class NegotiationsController < ApplicationController
     @negotiation.destroy
 
     respond_to do |format|
-      format.html { redirect_to negotiations_url }
+      format.html { redirect_to user_negotiations_url }
       format.json { head :no_content }
     end
   end
