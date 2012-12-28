@@ -1,0 +1,28 @@
+Formulario de la Oferta(se generará con JS para tener los id's)
+
+<input name="composer_id" type="text" value="5684asdf654"/>
+<input name="receiver_id" type="text" value="684asdf6844"/>
+<input name="money_owner" type="text" value="5684asdf654"/>
+<input name="money_quantity" type="text" value="1450"/>
+<input name="composer_things[10254879]" type="text" value="3"/>
+<input name="composer_things[11521454]" type="text" value="1"/>
+<input name="composer_things[12745145]" type="text" value="1"/>
+<input name="receiver_things[10252451]" type="text" value="1"/>
+
+
+Respuesta en JSON:
+
+{
+  "composer_id" => "5684asdf654",
+  "receiver_id" => "684asdf6844",
+  "money_owner"=>"5684asdf654",
+  "money_quantity"=>"1450",
+  "composer_things"=> {
+    "10254879"=>"3",
+    "11521454"=>"1",
+    "12745145"=>"1"
+  }
+  "receiver_things"=> {
+    "10252451"=>"1"
+  }  
+}

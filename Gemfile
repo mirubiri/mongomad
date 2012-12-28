@@ -29,6 +29,10 @@ gem 'mongoid'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'devise'
 gem 'jquery-rails'
+#Estos son los servidores de WebSockets para eventos y mensajes
+#gem 'eventmachine'
+#gem 'em-websocket'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
