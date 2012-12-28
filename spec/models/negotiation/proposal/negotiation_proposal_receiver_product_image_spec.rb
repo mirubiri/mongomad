@@ -18,6 +18,5 @@ describe Negotiation::Proposal::Receiver::Product::Image do
 
   describe 'Factories' do
     specify { expect(image.valid?).to be_true }
-    specify { expect(image.save).to be_true }
   end
 end

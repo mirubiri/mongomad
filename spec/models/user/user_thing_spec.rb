@@ -28,6 +28,5 @@ describe User::Thing do
 
   describe 'Factories' do
     specify { expect(thing.valid?).to be_true }
-    specify { expect(thing.save).to be_true }
   end
 end

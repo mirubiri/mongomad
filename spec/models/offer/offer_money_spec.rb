@@ -23,6 +23,5 @@ describe Offer::Money do
 
   describe 'Factories' do
     specify { expect(money.valid?).to be_true }
-    specify { expect(money.save).to be_true }
   end
 end

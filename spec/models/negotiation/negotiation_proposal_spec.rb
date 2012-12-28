@@ -22,6 +22,5 @@ describe Negotiation::Proposal do
 
   describe 'Factories' do
     specify { expect(proposal.valid?).to be_true }
-    specify { expect(proposal.save).to be_true }
   end
 end

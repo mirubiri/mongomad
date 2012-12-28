@@ -24,6 +24,5 @@ describe Offer::Receiver do
 
   describe 'Factories' do
     specify { expect(receiver.valid?).to be_true }
-    specify { expect(receiver.save).to be_true }
   end
 end

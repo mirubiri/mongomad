@@ -34,6 +34,5 @@ describe User::Profile do
 
   describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
-    specify { expect(profile.save).to be_true }
   end
 end
