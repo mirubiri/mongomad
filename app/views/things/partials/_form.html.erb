@@ -1,0 +1,111 @@
+<%= form_for(@offer) do |form| %>
+
+  <% if @offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+      <% @offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="new_offer_title">
+    <div class="icon">icono de nueva oferta</div>
+    <div class="description">Crear Oferta</div>
+  </div>
+  <div class="his_products">
+    <div class="title">
+      <div class="sender_image"><%= @composer.image %></div>
+      <div class="description">Sus productos</div>
+    </div>
+    <div class="money_to_recieve">
+      <textarea name="" id="" cols="1" rows="1">
+        Cantidad que pides
+      </textarea>
+      <button></button>
+    </div>
+    <div class="product_container">
+      <% @receiver_things.each do |thing| %>
+        <div class="product">
+          <div class="product-image"><%= thing.main_image %></div>
+          <div class="product-title">
+            <input type="text"><%= thing.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- se mandan los id's de las cosas que se piden/dan -->
+
+  <div class="offer_summary">
+    <div class="title">
+      <div class="description">Resumen de la oferta</div>
+    </div>
+    <div class="summary">
+      <div class="summary_header">
+        <div class="summary_header_image"><%= @user.image %></div>
+        <div class="summary_header_text">
+          <div class="nombre_usuario">Sergio</div>
+          <textarea name="" id="" cols="5" rows="2">
+            Aqui rellenaran el texto de la oferta
+          </textarea>
+        </div>
+        <div class="triangle"></div>
+      </div>
+      <div class="summary_body">
+        <!-- se enlaza con el javascript para rellenar los productos -->
+        <div class="summary_body_products_given">
+          <div class="product_given">
+            <div class="product_given_imagen">
+            </div>
+            <div class="product_given_title">
+            </div>
+          </div>
+        </div>
+        <div class="summary_body_produts_recieved">
+            <div class="produt_recieved">
+              <div class="produt_recieved_image">
+              </div>
+              <div class="produt_recieved_title">
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+      <div class="summary_footer">
+        <button type="button" name="boton" value="" class="add_offer_button">
+          Enviar Oferta
+        </button>
+      </div>
+  </div>
+
+  <div class="my_products">
+    <div class="title">
+      <div class="reciever_image"><%= @user.image %></div>
+      <div class="description">Mis productos</div>
+    </div>
+    <div class="monney_to_give">
+      <button></button>
+      <textarea name="" id="" cols="1" rows="1">
+        Cantidad que ofreces
+      </textarea>
+    </div>
+    <div class="product_container">
+      <% @composer_things.each do |thing| %>
+        <div class="product">
+          <div class="product-image"><%= thing.main_image %></div>
+          <div class="product-title">
+            <input type="text"><%= thing.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
