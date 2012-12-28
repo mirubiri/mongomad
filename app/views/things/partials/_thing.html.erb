@@ -1,0 +1,11 @@
+<% @things.each do |thing| %>
+  <div class="thing">
+    <div class="thing_image"></div>
+    <div class="thing_description">         
+    </div>
+    <%= link_to "editar", 
+              edit_user_thing_path(current_user,thing.id),
+              :method => :edit %>
+  </div>  
+<% end %>
+  

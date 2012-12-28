@@ -16,14 +16,14 @@
     <div class="offer_things">
       <div class="recieved">
         <% offer.composer.products.each do |thing| %>
-          <div class="thing">
+          <div class="product">
             <%= image_tag(thing.main_image) %>
           </div>
         <% end %>
       </div>
       <div class="given">
         <% offer.receiver.products.each do |thing| %>
-          <div class="thing">
+          <div class="product">
             <%= image_tag(thing.main_image) %>
           </div>
         <% end %>

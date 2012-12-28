@@ -1,0 +1,28 @@
+@import "variables";
+
+.thing{
+  background-color: white;
+  width: 195px;
+  margin:3px 10px 10px 3px;
+  float: left;
+  border: $bordeElementos;
+  //box-shadow: 0px 1px 3px rgb(170,170,170);
+  overflow:auto;
+
+  .thing_image{
+    float: left;
+    width: 175px;
+    height: 175px;
+    margin: 15px 0px 5px 9px;
+    border: $bordeElementos;
+  }
+  .thing_description{
+    float: left;
+    width: 175px;
+    height: 45px;
+    margin: 0px 0px 15px 9px;
+    border: $bordeElementos;
+    overflow: auto;    
+  }
+
+}
