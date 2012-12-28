@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Message do
-  let(:message) { Fabricate.build(:deal).agreement.messages[0] }
+  let(:message) do
+    Fabricate.build(:deal).agreement.messages[0]
+  end
 
   describe 'Relations' do
     it { should be_embedded_in(:agreement).of_type(Deal::Agreement) }

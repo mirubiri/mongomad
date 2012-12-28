@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal::Receiver::Product::Image do
-  let(:image) { Fabricate.build(:negotiation).proposals[0].receiver.products[0].secondary_images[0] }
+  let(:image) do
+    Fabricate.build(:negotiation_proposal_receiver_product_image, product:Fabricate.build(:negotiation_proposal_receiver_product, receiver:Fabricate.build(:negotiation_proposal_receiver, proposal:Fabricate.build(:negotiation_proposal, negotiation:Fabricate.build(:negotiation)))))
+  end
 
   describe 'Relations' do
     it { should be_embedded_in(:product).of_type(Negotiation::Proposal::Receiver::Product) }

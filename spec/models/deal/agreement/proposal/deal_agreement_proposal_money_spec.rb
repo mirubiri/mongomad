@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Money do
-  let(:money) { Fabricate.build(:deal).agreement.proposals[0].money }
+  let(:money) do
+    Fabricate.build(:deal_agreement_proposal_money, proposal:Fabricate.build(:deal_agreement_proposal, agreement:Fabricate.build(:deal_agreement, deal:Fabricate.build(:deal))))
+  end
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }

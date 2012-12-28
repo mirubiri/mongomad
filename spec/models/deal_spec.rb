@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Deal do
-  let(:deal) { Fabricate.build(:deal) }
+  let(:deal) do
+    Fabricate.build(:deal)
+  end
 
   describe 'Relations' do
     it { should embed_one(:agreement).of_type(Deal::Agreement) }

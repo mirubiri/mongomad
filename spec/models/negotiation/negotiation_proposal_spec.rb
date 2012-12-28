@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal do
-  let(:proposal) { Fabricate.build(:negotiation).proposals[0] }
+  let(:proposal) do
+    Fabricate.build(:negotiation).proposals[0]
+  end
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }

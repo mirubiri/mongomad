@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe User::Profile do
-  let(:profile) { Fabricate.build(:user).profile }
+  let(:profile) do
+    Fabricate.build(:user).profile
+  end
 
   describe 'Relations' do
     it { should be_embedded_in :user }

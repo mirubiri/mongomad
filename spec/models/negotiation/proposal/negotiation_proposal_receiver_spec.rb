@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal::Receiver do
-  let(:receiver) { Fabricate.build(:negotiation).proposals[0].receiver }
+  let(:receiver) do
+    Fabricate.build(:negotiation).proposals[0].receiver
+  end
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
