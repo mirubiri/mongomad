@@ -77,17 +77,18 @@
 
           .thing{
             float:left;
-            width:140px;
-            height:140px;
+            width:130px;
+            height:130px;
             margin-left:5px;
             margin-bottom:5px;
             border: $bordeElementos;
             border-radius:5px;
+            overflow: auto;
 
             img{
-              width:140px;
-              height:140px;
-              overflow: none;
+              width:130px;
+              height:130px;
+              overflow: auto;
             }
 
           }               
@@ -108,11 +109,12 @@
             margin-bottom:5px;
             border: $bordeElementos;
             border-radius:5px;
+            overflow: auto;
 
             img{
               width:80px;
               height:80px;
-              overflow: none;
+              overflow: auto;
             }
 
           }                             
