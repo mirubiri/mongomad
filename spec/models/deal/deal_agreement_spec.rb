@@ -16,6 +16,5 @@ describe Deal::Agreement do
 
   describe 'Factories' do
     specify { expect(agreement.valid?).to be_true }
-    specify { expect(agreement.save).to be_true }
   end
 end

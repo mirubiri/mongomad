@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe User::Thing::Image do
-  let(:image) { Fabricate.build(:user).things[0].secondary_images[0] }
+  let(:user) { Fabricate.build(:user).things << Fabricate.build(:user_thing).secondary_images << Fabricate.build(:user_thing_image) }
+  let(:image) { user.things.last.secondary_images[0] }
 
 
   describe 'Relations' do
@@ -19,6 +20,5 @@ describe User::Thing::Image do
 
   describe 'Factories' do
     specify { expect(image.valid?).to be_true }
-    specify { expect(image.save).to be_true }
   end
 end

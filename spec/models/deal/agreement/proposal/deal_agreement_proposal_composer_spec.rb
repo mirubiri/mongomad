@@ -24,6 +24,5 @@ describe Deal::Agreement::Proposal::Composer do
 
   describe 'Factories' do
     specify { expect(composer.valid?).to be_true }
-    specify { expect(composer.save).to be_true }
   end
 end

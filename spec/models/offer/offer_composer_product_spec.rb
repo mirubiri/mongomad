@@ -30,6 +30,5 @@ describe Offer::Composer::Product do
 
   describe 'Factories' do
     specify { expect(product.valid?).to be_true }
-    specify { expect(product.save).to be_true }
   end
 end
