@@ -1,3 +1,10 @@
+tareas:
+1) dejar los test con el minimo:   describe User::Thing::Image do
+      let(:image) do
+        Fabricate.build(:user_thing_image)
+      end
+
+2) Cambiar las fabricas para que generen todo lo que necesiten para ser validas
 Fabricator(:user_thing, class_name: "User::Thing") do
   user                      { Fabricate.build(:user) }
   secondary_images(count:1) { Fabricate.build(:user_thing_image,thing:nil)}
@@ -6,14 +13,3 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   stock                     10
   main_image                { |attrs| attrs[:secondary_images][0].file.url }
 end
-
-
-describe User do
-  let(:user) do
-    Fabricate.build(:user)
-  end
-
-  describe User::Thing::Image do
-  let(:image) do
-    Fabricate.build(:user_thing_image)
-  end
