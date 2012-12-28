@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Receiver do
-  let(:receiver) { Fabricate.build(:offer).receiver }
+  let(:receiver) do
+    Fabricate.build(:offer).receiver
+  end
 
   describe 'Relations' do
     it { should be_embedded_in :offer }

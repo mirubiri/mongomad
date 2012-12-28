@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe User::Thing do
-  let(:thing) { Fabricate.build(:user).things[0] }
+  let(:thing) do
+    Fabricate.build(:user_thing, user:Fabricate.build(:user))
+  end
 
   describe 'Relations' do
     it { should be_embedded_in :user }

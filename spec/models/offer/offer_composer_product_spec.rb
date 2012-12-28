@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Composer::Product do
-  let(:product) { Fabricate.build(:offer).composer.products[0] }
+  let(:product) do
+    Fabricate.build(:offer).composer.products[0]
+  end
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }

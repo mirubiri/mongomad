@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Request do
-  let(:request) { Fabricate.build(:request) }
+  let(:request) do
+    Fabricate.build(:request)
+  end
 
   describe 'Attributes' do
     it { should be_timestamped_document }

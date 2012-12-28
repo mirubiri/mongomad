@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Money do
-  let(:money) { Fabricate.build(:offer).money }
+  let(:money) do
+    Fabricate.build(:offer_money, offer:Fabricate.build(:offer))
+  end
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
