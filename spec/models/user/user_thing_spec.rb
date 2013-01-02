@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User::Thing do
-  let(:thing) do
-    Fabricate.build(:user_thing, user:Fabricate.build(:user))
+  let(:user) do
+    Fabricate.build(:user_thing)
   end
 
   describe 'Relations' do

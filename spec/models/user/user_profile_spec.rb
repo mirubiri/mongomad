@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe User::Profile do
-  let(:profile) do
-    Fabricate.build(:user).profile
+  let(:user) do
+    Fabricate.build(:user_profile)
   end
 
   describe 'Relations' do

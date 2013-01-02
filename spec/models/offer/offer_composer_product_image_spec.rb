@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Composer::Product::Image do
   let(:image) do
-    Fabricate.build(:offer_composer_product_image, product:Fabricate.build(:offer_composer_product, composer:Fabricate.build(:offer_composer, offer:Fabricate.build(:offer))))
+    Fabricate.build(:offer_composer_product_image)
   end
 
   describe 'Relations' do

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Message do
   let(:message) do
-    Fabricate.build(:deal_message, deal:Fabricate.build(:deal))
+    Fabricate.build(:deal_message)
   end
 
   describe 'Relations' do

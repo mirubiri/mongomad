@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Composer::Product::Image do
   let(:image) do
-    Fabricate.build(:deal_agreement_proposal_composer_product_image, product:Fabricate.build(:deal_agreement_proposal_composer_product, composer:Fabricate.build(:deal_agreement_proposal_composer, proposal:Fabricate.build(:deal_agreement_proposal, agreement:Fabricate.build(:deal_agreement, deal:Fabricate.build(:deal))))))
+    Fabricate.build(:deal_agreement_proposal_composer_product_image)
   end
 
   describe 'Relations' do

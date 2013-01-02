@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Composer::Product do
   let(:product) do
-    Fabricate.build(:deal).agreement.proposals[0].composer.products[0]
+    Fabricate.build(:deal_agreement_proposal_composer_product)
   end
 
   describe 'Relations' do
