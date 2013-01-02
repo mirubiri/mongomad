@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User::Thing::Image do
-  let(:user) do
+  let(:image) do
     Fabricate.build(:user_thing_image)
   end
 

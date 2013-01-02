@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User::Profile do
-  let(:user) do
+  let(:profile) do
     Fabricate.build(:user_profile)
   end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User::Thing do
-  let(:user) do
+  let(:thing) do
     Fabricate.build(:user_thing)
   end
 
