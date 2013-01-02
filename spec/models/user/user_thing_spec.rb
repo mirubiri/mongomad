@@ -7,7 +7,7 @@ describe User::Thing do
 
   describe 'Relations' do
     it { should be_embedded_in :user }
-    it { should embed_many(:secondary_images).of_type(User::Thing::Image) }
+    it { should embed_many(:images).of_type(User::Thing::Image) }
   end
 
   describe 'Attributes' do
@@ -19,6 +19,7 @@ describe User::Thing do
 
   describe 'Validations' do
     it { should validate_presence_of :user }
+    it { should validate_presence_of :images }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :stock }

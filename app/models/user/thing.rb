@@ -2,7 +2,7 @@ class User::Thing
   include Mongoid::Document
 
   embedded_in :user
-  embeds_many :secondary_images, class_name: "User::Thing::Image", cascade_callbacks: true
+  embeds_many :images, class_name: "User::Thing::Image", cascade_callbacks: true
 
   field :name,        type: String
   field :description, type: String
@@ -10,6 +10,7 @@ class User::Thing
   field :main_image,  type: String
 
   validates :user,
+            :images,
             :name,
             :description,
             :stock,
