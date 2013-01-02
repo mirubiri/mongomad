@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Money do
   let(:money) do
-    Fabricate.build(:offer_money, offer:Fabricate.build(:offer))
+    Fabricate.build(:offer_money)
   end
 
   describe 'Relations' do

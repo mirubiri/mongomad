@@ -1,6 +1,6 @@
 Fabricator(:offer_composer_product, class_name: "Offer::Composer::Product") do
-  composer         nil
-  secondary_images nil
+  composer         { Fabricate.build(:offer_composer, product:nil)}
+  secondary_images(count:1) { Fabricate.build(:offer_composer_product_image, product:nil) }
   thing_id         'thing_id'
   name             'name'
   description      'description'

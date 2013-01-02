@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Receiver::Product::Image do
   let(:image) do
-    Fabricate.build(:offer_receiver_product_image, product:Fabricate.build(:offer_receiver_product, receiver:Fabricate.build(:offer_receiver, offer:Fabricate.build(:offer))))
+    Fabricate.build(:offer_receiver_product_image)
   end
 
   describe 'Relations' do
