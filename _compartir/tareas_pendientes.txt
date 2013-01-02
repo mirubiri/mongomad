@@ -1,0 +1,2 @@
+renombrar las secondary images > images
+    - en el documento de visio
