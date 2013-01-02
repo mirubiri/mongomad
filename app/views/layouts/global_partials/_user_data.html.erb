@@ -14,7 +14,8 @@
   </a>
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil', user_profile_path(@user) %>
+      <%= link_to 'Perfil', :controller => :profiles, 
+                            :action => :show %>
     </div>
     <div class="menu_icon">
       <%= link_to 'Prod', user_things_path(@user) %>
