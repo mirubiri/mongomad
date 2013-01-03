@@ -1,6 +1,5 @@
 class Offer::Money
   include Mongoid::Document
-  include Mongoid::Paperclip
 
   embedded_in :offer
 
