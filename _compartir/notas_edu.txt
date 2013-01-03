@@ -1,8 +1,5 @@
 TAREAS:
 - renombrar las secondary images > images en el documento de visio
-- eliminar papertclip de money
-- cambiar secondary images en la fabrica de user_thing
-- reordenar los archivos de los tests y las fabricas
 
 ======================================================================================
 NOTAS:
@@ -25,12 +22,13 @@ sintaxis expect nueva:
 ------------------------------------------------------------------------
 
 Fabricator(:user_thing, class_name: "User::Thing") do
-  user                      { Fabricate.build(:user, thing:nil) }
-  secondary_images(count:1) { Fabricate.build(:user_thing_image, thing:nil) }
-  name                      'name'
-  description               'description'
-  stock                     10
-  main_image                { |attrs| attrs[:secondary_images][0].file.url }
+  user            { Fabricate.build(:user, things:nil) }
+  images(count:1) { Fabricate.build(:user_thing_image, thing:nil) }
+  name            'name'
+  description     'description'
+  stock           10
+  main_image      { |attrs| attrs[:images] &&
+                            attrs[:images].last.file.url }
 end
 
 Fabricator(:request) do
@@ -47,7 +45,7 @@ Fabricator(:request) do
 end
 
 Fabricator(:user_thing_image, class_name: "User::Thing::Image") do
-  thing { Fabricate.build(:user_thing,secondary_images:nil) }
+  thing { Fabricate.build(:user_thing, secondary_images:nil) }
   file  { File.open('app/assets/images/rails.png') }
 
   after_build do |image|
