@@ -55,3 +55,16 @@ Fabricator(:user_thing_image, class_name: "User::Thing::Image") do
 end
 
 ======================================================================================
+
+
+  user_id           nil
+  name              nil
+  image             nil
+
+  after_build do |composer|
+    user = Fabricate.build(:user)
+    composer.user_id ||= user._id
+    composer.name ||= user.profile.name
+    composer.image ||= user.profile.image
+  end
+end

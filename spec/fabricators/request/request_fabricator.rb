@@ -5,7 +5,7 @@ Fabricator(:request) do
   image     'image_path'
 
   after_build do |request|
-    user = Fabricate.build(:user)
+    user = Fabricate(:user)
     request.user_id ||= user._id
     request.user_name ||= user.profile.name
   end
