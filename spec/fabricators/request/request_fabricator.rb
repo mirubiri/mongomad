@@ -6,7 +6,7 @@ Fabricator(:request) do
 
   after_build do |request|
     user=Fabricate.build(:user)
-    request.user_id||=user._id
-    request.user_name||=user.profile.name
+    request.user_id ||= user._id
+    request.user_name ||= user.profile.name
   end
 end
