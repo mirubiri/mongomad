@@ -5,7 +5,6 @@
   top:0px;
   left:300px; 
   width:$anchuraLadoContenidos;
-  min-width:$anchuraLadoContenidos;
   border: 2px solid rgb(220,220,220);
   background-color: transparent;
   overflow: visible;
@@ -15,7 +14,7 @@
     position: relative;
     float:left;
     width:100%;
-    min-width:100%;
+    min-width:500px;
     height: auto;
     margin-bottom:15px;
     border-bottom: $bordeElementos;
@@ -28,7 +27,9 @@
 
       nav{
         float:left;
-        width:60%;            
+        width:60%;
+        max-width: 60%;
+        min-width: 60%;            
 
         .nav_element{
           overflow:auto;
