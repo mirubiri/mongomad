@@ -1,5 +1,4 @@
 <aside class="user_container_profile">
-
   <div class="image">      
     <%= image_tag(@user.profile.image) %>
   </div>
@@ -14,11 +13,13 @@
   </a>
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil', :controller => :profiles, 
-                            :action => :show %>
+      <%= link_to 'Perfil' %>
     </div>
     <div class="menu_icon">
       <%= link_to 'Prod', user_things_path(@user) %>
+    </div>
+    <div class="menu_icon">
+      <%= link_to 'Alertas'%>
     </div>
     <div class="menu_icon">
       <%#= link_to 'Alertas', user_alerts_path(current_user) %>

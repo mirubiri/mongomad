@@ -10,10 +10,6 @@ gem 'rails'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier'
 end
 
@@ -22,13 +18,14 @@ group :development,:test do
 	gem 'fabrication'
 	gem 'mongoid-rspec'
   gem 'faker'
+  gem 'awesome_print'
+  gem 'mongoid'
+  gem "mongoid-paperclip", :require => "mongoid_paperclip"
+  gem 'devise'
+  gem 'jquery-rails'
 end
 
-gem 'awesome_print'
-gem 'mongoid'
-gem "mongoid-paperclip", :require => "mongoid_paperclip"
-gem 'devise'
-gem 'jquery-rails'
+
 #Estos son los servidores de WebSockets para eventos y mensajes
 #gem 'eventmachine'
 #gem 'em-websocket'

@@ -9,29 +9,46 @@
   background-color: white;
   overflow: visible;
 
+  #user_reputation_container{
+    width: 100%;
+    height: 26px;
+    margin-bottom: 10px;
+    float: left;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
+    background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
+    border-bottom: 2px solid rgb(220,220,220);
+
+    img{
+      margin: 8px 0px 0px 30px;
+    }
+
+  }  
+
   .user_container_profile{
     width:$anchuraZonasPrincipalesUsuario;
-    margin-left:auto;
-    margin-right:auto;
+    margin:{
+      left:auto;
+      right: auto;
+    }
     margin-top:10px;
     border: 2px solid rgb(220,220,220);
     overflow: auto;
 
-    .image{ 
+    .image{
+      margin: inherit; 
       width:80%;
-      height: 180px;     
+      height: 180px;
       margin-top:10px;
-      margin-left:auto;
-      margin-right:auto;
       border: $bordeElementos;
-      border-top-left-radius:5px;
-      border-top-right-radius:5px;
+      //@include border-radius(5px);
 
       img{
         width:100%;
         height: 180px;
       }
-
     }
 
     .user_name{

@@ -2,7 +2,7 @@
 
 .profile_complete{
   float:left;
-  width:825px;
+  width:99%;
   min-width:825px;
   overflow:auto;
   margin-left:5px;
@@ -10,12 +10,13 @@
   .person_info{
     float: left;
     padding-left:10px;
-    width: 380px;
+    width: 48%;
     height:252px;
     border:$bordeElementos;
     margin-bottom:15px;
     margin-right:8px;
     overflow:auto;
+    background-color: white;
 
     .info_side{
       float:left;
@@ -61,25 +62,25 @@
       margin-bottom: 10px;
       margin-top:10px;
 
-      .user_image{
+      img{
         float:left;
         margin-right:5px;
         margin-top:30px;
         width:160px;
         height:160px;
-        border:$bordeElementos;
-        img{}
+        border:$bordeElementos;        
       }
     }
   }
 
   .statistics{
     float:left;
-    padding-left:20px;
-    width: 400px;
+    padding-left:10px;
+    width: 48%;
     border:$bordeElementos;
     margin-bottom:15px;
     overflow:auto;
+    background-color: white;
 
     .result_side{
       float:left;
@@ -125,11 +126,12 @@
   }
 
   .comments_recieved{
-    padding-left:20px;
-    width: 800px;
+    padding-left:10px;
+    width: 98.3%;
     border:$bordeElementos;
     margin-bottom:15px;
     overflow:auto;
+    background-color: white;
 
     .title{
       float: left;

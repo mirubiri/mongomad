@@ -2,26 +2,37 @@
   <div class="person_info">
     <div class="info_side">
       <div class="title">Personal Info</div>
-      <div class="name_age">User Name, User Age</div>
+      <div class="name_age">
+        <%= @user.profile.name %>, <%= @user.profile.birth_date %>
+      </div>
       <div class="info_element">
         <div class="info_element_title">Direction:</div>
-        <div class="info_element_description">direction description</div>
+        <div class="info_element_description">
+          <%= @user.profile.country %>
+        </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">E-Mail:</div>
-        <div class="info_element_description">e-mai description</div>
+        <div class="info_element_description">
+          <%= @user.profile.name %>@<%= @user.profile.surname %>.com
+        </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Phones:</div>
-        <div class="info_element_description">Phones description</div>
+        <div class="info_element_description">
+          <%= @user.profile.phone_number %>655555555
+        </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Web:</div>
-        <div class="info_element_description">web description</div>
+        <div class="info_element_description">
+          www.<%= @user.profile.name %><%= @user.profile.surname %>.com
+        </div>
       </div>            
     </div>
     <div class="image_side">
-      <div class="user_image"></div>
+      
+        <%= image_tag(@user.profile.image) %>
     </div>
   </div>
   <div class="statistics">

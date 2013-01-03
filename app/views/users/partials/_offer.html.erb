@@ -15,17 +15,13 @@
     </div>
     <div class="offer_things">
       <div class="recieved">
-        <% offer.composer.products.each do |thing| %>
-          <div class="thing">
-            <%= image_tag(thing.main_image) %>
-          </div>
+        <% offer.composer.products.each do |thing| %>          
+          <%= image_tag(thing.main_image) %>          
         <% end %>
       </div>
       <div class="given">
-        <% offer.receiver.products.each do |thing| %>
-          <div class="thing">
-            <%= image_tag(thing.main_image) %>
-          </div>
+        <% offer.receiver.products.each do |thing| %>          
+          <%= image_tag(thing.main_image) %>          
         <% end %>
       </div>
     </div>
