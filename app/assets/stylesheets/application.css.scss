@@ -1,0 +1,28 @@
+/*
+* application.scss
+*
+* Important! Do *not* use Sprockets "require" syntax.
+* Use @import to include other stylesheets and Compass mixins.
+*/
+
+//compass mixins
+@import "compass/css3";
+
+//my own partial stylesheets
+@import "buttons";
+@import "devise";
+@import "footer";
+@import "header";
+@import "login_header";
+@import "main_container";
+@import "modals";
+@import "negotiation";
+@import "new_offer";
+@import "new_petition";
+@import "new_product";
+@import "normalize";
+@import "offer";
+@import "profile";
+@import "style";
+@import "thing";
+@import "user_container";
