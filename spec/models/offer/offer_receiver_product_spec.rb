@@ -2,12 +2,12 @@ require 'spec_helper'
 
 describe Offer::Receiver::Product do
   let(:product) do
-    Fabricate.build(:offer).receiver.products[0]
+    Fabricate.build(:offer_receiver_product)
   end
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
-    it { should embed_many(:secondary_images).of_type(Offer::Receiver::Product::Image) }
+    it { should embed_many(:images).of_type(Offer::Receiver::Product::Image) }
   end
 
   describe 'Attributes' do
@@ -20,6 +20,7 @@ describe Offer::Receiver::Product do
 
   describe 'Validations' do
     it { should validate_presence_of :receiver }
+    it { should validate_presence_of :images }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }

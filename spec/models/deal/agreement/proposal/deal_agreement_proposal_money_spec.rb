@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Money do
   let(:money) do
-    Fabricate.build(:deal_agreement_proposal_money, proposal:Fabricate.build(:deal_agreement_proposal, agreement:Fabricate.build(:deal_agreement, deal:Fabricate.build(:deal))))
+    Fabricate.build(:deal_agreement_proposal_money)
   end
 
   describe 'Relations' do
