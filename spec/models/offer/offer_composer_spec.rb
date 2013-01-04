@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Composer do
   let(:composer) do
-    Fabricate.build(:offer_composer)
+    Fabricate(:offer).composer
   end
 
   describe 'Relations' do

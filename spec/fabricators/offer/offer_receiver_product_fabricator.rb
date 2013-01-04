@@ -1,14 +1,21 @@
 Fabricator(:offer_receiver_product, class_name: "Offer::Receiver::Product") do
   transient       :thing
-  receiver        { Fabricate.build(:offer_receiver, products:nil, user:Fabricate(:user),user_composer:Fabricate(:user)) }
-  images(count:1) { Fabricate.build(:offer_receiver_product_image, product:nil) }
+
+  receiver        nil
+  images          nil
+
   thing_id        { |a| a[:thing]._id }
+  main_image      { |a| a[:thing].main_image }
   name            { |a| a[:thing].name }
   description     { |a| a[:thing].description }
   quantity        1
-  main_image      { |a| a[:thing].try{ |thing| thing.images.last.file.url } }
-  
+
+
   after_build do |product|
-    product.receiver.try { |receiver| receiver.products << product }
+    user = User.where(:"things.thing_id" == product.thing_id)
+    things = user.first.things.where(:_id == product.thing_id)
+    images << things.first.images.each do |image|
+      Fabricate.build(:offer_receiver_product_image,file:image.file.url)
+    end
   end
 end

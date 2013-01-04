@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Request do
   let(:request) do
-    Fabricate.build(:request)
+    Fabricate(:request)
   end
 
   describe 'Attributes' do

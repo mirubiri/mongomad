@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User::Thing::Image do
   let(:image) do
-    Fabricate.build(:user_thing_image)
+    Fabricate(:user).things.last.images.last
   end
 
   describe 'Relations' do

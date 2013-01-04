@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Receiver do
   let(:receiver) do
-    Fabricate.build(:offer_receiver)
+    Fabricate(:offer).receiver
   end
 
   describe 'Relations' do

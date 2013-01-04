@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) do
-    Fabricate.build(:user)
+    Fabricate(:user)
   end
 
   describe 'Relations' do
