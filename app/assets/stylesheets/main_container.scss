@@ -1,4 +1,5 @@
 @import "variables";
+@import "compass/typography/links/unstyled-link";
 
 .main_container{
   position:absolute;
@@ -51,27 +52,15 @@
           }
 
           a{
-            text-decoration:none;
+            @include unstyled-link;
             float:left;
-            margin-top: 5px;
-
-            a:link{
-              color:#FF0000;
-            }
-            a:visited{
-              color:#00FF00;
-            }
-            a:hover{
-              color:#FF00FF;
-            }
-            a:active{
-              color:#0000FF;
-            }
+            margin-top: 5px;           
           }
         }
 
         .nav_element:hover{
           background-color:grey;
+          color: white;
         }
 
         .nav_element:last-child{

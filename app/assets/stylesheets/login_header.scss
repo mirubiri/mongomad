@@ -1,4 +1,5 @@
 @import "variables";
+@import "compass/typography/links/unstyled-link";
 
 .login_header{
   position: fixed;
@@ -26,6 +27,7 @@
       margin: 6px 10px 0px 400px;
       
       a{
+        @include unstyled-link;
         width:30px;
         height:30px;
         margin-right:8px;

@@ -1,6 +1,7 @@
 @import "variables";
 
 .new_offer_content{
+  @include border-radius(5px, 5px);
   position: absolute;
   top: 5px;
   left: 5px;
@@ -13,7 +14,6 @@
   background-color: white;
   margin: 0px 0px 0px 0px;
   border: 2px solid rgb(220,220,220);
-  border-radius: 8px;
   overflow:auto;
 
   .new_offer_title{
@@ -83,7 +83,6 @@
         background-color: transparent;
         color: #000000;
         overflow: hidden;
-        maxlenght: 10;
         border: $bordeElementos;
       }
 
@@ -110,12 +109,12 @@
       overflow: auto;
 
       .product{
+        @include border-radius(5px, 5px);
         float: left;
         width: 125px;
         height: 125px;
         margin:12px 0px 0px 12px;
         border: $bordeElementos;
-        border-radius: 5px;
         overflow: none;
 
         .product-image{
@@ -190,7 +189,6 @@
         background-color: transparent;
         color: #000000;
         overflow: hidden;
-        maxlenght: 10;
         border: $bordeElementos;
       }
 
@@ -216,12 +214,12 @@
       overflow: auto;
 
       .product{
+        @include border-radius(5px, 5px);
         float: left;
         width: 50px;
         height: 50px;
         margin:10px 0px 0px 10px;
         border: $bordeElementos;
-        border-radius: 5px;
         overflow: hidden;
 
         .product-image{
@@ -279,6 +277,7 @@
     }
 
     .summary{
+      @include border-radius(5px, 5px);
       width: 278px;
       height:450px;
       min-height:450px;
@@ -286,7 +285,6 @@
       background-color:white;
       margin:10px 0px 10px 18px;
       border: $bordeElementos;
-      border-radius: 8px;        
       float: left;
 
       .summary_header{
@@ -307,11 +305,11 @@
         }
 
         .summary_header_image{
+          @include border-radius(5px, 5px);
           float:left;
           width:46px;
           height:46px;
           border: $bordeElementos;
-          border-radius: 5px;
           margin-right:5px;
 
           img{
@@ -345,7 +343,6 @@
             background-color: transparent;
             color: #000000;
             overflow: hidden;
-            maxlenght: 10;
             border: $bordeElementos;
           }
 
@@ -367,11 +364,11 @@
           margin-left: 25px;
 
           .product_given{
+            @include border-radius(5px, 5px);
             width: 140px;
             margin: 5px 15px 5px 5px;
             float: left;
             border: $bordeElementos;
-            border-radius: 5px;
             overflow: auto;
 
             .product_given_imagen{
@@ -399,12 +396,12 @@
           overflow: auto;
 
           .produt_recieved{
+            @include border-radius(5px, 5px);
             width: 65px;
             height:65px;
             margin: 5px 15px 5px 5px;
             float: left;
             border: $bordeElementos;
-            border-radius: 5px;
             overflow: auto;
 
             .produt_recieved_image{
@@ -431,12 +428,12 @@
       margin:0px 0px 10px 0px;
 
       button{
+        @include border-radius(5px, 5px);
         background-color:red;
         color:white;
         width:260px;
         margin-left: 30px;
         font-size: 16px;
-        border-radius: 5px;
       }            
     }
   }

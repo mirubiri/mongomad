@@ -45,7 +45,7 @@
       border: $bordeElementos;
       //@include border-radius(5px);
 
-      img{
+      img{        
         width:100%;
         height: 180px;
       }
@@ -80,10 +80,10 @@
       overflow: auto;
 
       .menu_icon{
+        @include border-radius(3px, 3px);
         float:left;
         margin-left:8px;
         border: $bordeElementos;
-        border-radius:3px;
 
         img{
           width:40px;
@@ -126,26 +126,26 @@
         overflow: hidden;
 
         .profile_image{
+          @include border-radius(5px, 5px);
           float:left;
           margin-right:5px;
           width: 40px;
           height: 40px;          
           border: $bordeElementos;
-          border-radius:5px;
 
           img{
+            @include border-radius(5px, 5px);
             width: 40px;
             height: 40px;
-            border-radius:5px;
           }
         }
 
         .description{
+          @include border-radius(5px, 5px);
           float: left;
           width: 160px;
           height: 40px;
           border: $bordeElementos;
-          border-radius:5px;              
 
           textarea{
             float:left;

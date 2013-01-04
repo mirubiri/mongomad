@@ -178,13 +178,13 @@
           overflow: hidden;                  
 
           .profile_image{
+            @include border-radius(5px, 5px);
             position:relative;
             top: 0px;
             left: 8px;
             width: 50px;
             height: 50px;
             border: $bordeElementos;
-            border-radius:5px;
           }
 
           .description{
@@ -203,7 +203,6 @@
               resize: none;
               overflow: hidden;
               maxlenght: 135;
-
             }
           }
         }

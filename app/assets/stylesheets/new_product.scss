@@ -1,6 +1,7 @@
 @import "variables";
 
 .new_product_content{
+  @include border-radius(5px, 5px);
   position: absolute;
   top: 5px;
   left: 5px;
@@ -9,7 +10,6 @@
   background-color: transparent;
   margin: 0px 0px 0px 0px;
   border: 2px solid rgb(220,220,220);
-  border-radius: 8px;
   overflow:auto;
 
   .new_product_title{
@@ -45,7 +45,6 @@
       background-color: transparent;
       color: #000000;
       overflow: hidden;
-      maxlenght: 10;
       border: $bordeElementos;
     }      
   }
