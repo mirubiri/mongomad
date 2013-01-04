@@ -4,6 +4,9 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   name            'name'
   description     'description'
   stock           1
-  main_image      { |attrs| attrs[:images] &&
-                            attrs[:images].last.file.url }
+  main_image      { |attrs| attrs[:images].try {|images| images.last.file.url} }
+
+  after_build do |thing|
+  	thing.user.try { |user| user.things << thing }
+  end
 end
