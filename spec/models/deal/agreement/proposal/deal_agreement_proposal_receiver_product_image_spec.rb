@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Receiver::Product::Image do
   let(:image) do
-    Fabricate.build(:deal_agreement_proposal_receiver_product_image)
+    Fabricate(:deal).agreement.proposals.last.receiver.products.last.images.last
   end
 
   describe 'Relations' do
