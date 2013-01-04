@@ -1,5 +1,6 @@
 @import "variables";
 @import "compass/typography/links/unstyled-link";
+@import 'stitch';
 
 .login_header{
   position: fixed;
@@ -23,6 +24,7 @@
     }
     
     nav{
+      @include float-children('a',left);
       float: left;
       margin: 6px 10px 0px 400px;
       
@@ -35,7 +37,8 @@
       }
     }
 
-    input{
+    input[type='search'] {
+      @include reset-search-field;
       float: left;
       margin-right:20px;
       margin-top: 5px;
@@ -48,6 +51,7 @@
       border: $bordeElementos;
 
       img{
+        @include high-quality-image;
         width:30px;
         height:30px;
       }

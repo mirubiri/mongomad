@@ -123,6 +123,7 @@
           height:123px;
 
           img{
+            @include high-quality-image;
             width:123px;
             height:123px;
           }
@@ -228,6 +229,7 @@
           height:48px;
 
           img{
+            @include high-quality-image;
             width:48px;
             height:48px;
           }
@@ -313,6 +315,7 @@
           margin-right:5px;
 
           img{
+            @include high-quality-image;
             width: 43px;
             height: 43px;
             float: left;
@@ -377,6 +380,7 @@
               height: 125px;
 
               img{
+                @include high-quality-image;
                 width:120px;
                 height:120px;
               }
@@ -410,6 +414,7 @@
               height:62px;
 
               img{
+                @include high-quality-image;
                 width:62px;
                 height:62px;
               }

@@ -1,5 +1,6 @@
 @import "variables";
 @import "compass/typography/links/unstyled-link";
+@import 'stitch';
 
 .header{
   position: fixed;
@@ -22,19 +23,21 @@
     }
     
     nav{
+      @include float-children('a',left);
       float: left;
-      margin: 6px 10px 0px 400px;
+      margin: 6px 10px 0px 200px;
       
       a{
         @include unstyled-link;
-        width:30px;
-        height:30px;
+        width:20px;
+        height:20px;
         margin-right:8px;
         border: $bordeElementos;
       }
     }
 
-    input{
+    input[type='search']{
+      @include reset-search-field;
       float: left;
       margin-right:20px;
       margin-top: 5px;
@@ -47,6 +50,7 @@
       border: $bordeElementos;
 
       img{
+        @include high-quality-image;
         width:30px;
         height:30px;
       }
@@ -59,7 +63,6 @@
       margin-left:5px;        
       font-size:8px;
       font-weight:bolder;
-      border: $bordeElementos;
       vertical-align:text-top;
 
       p{
@@ -70,5 +73,10 @@
         margin:0px;
         margin-bottom:2px;
       } 
+    }
+
+    a{
+      @include unstyled-link;
+      margin-left: 10px;
     }
 }

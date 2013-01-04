@@ -4,8 +4,6 @@
   height:29px;
   display:inline;
   z-index:3200;
-  position:absolute;
-  top:6px;
-  right:-2px;
+  @include absolute($top:6px,$right:-2px);
   cursor:pointer;
 }

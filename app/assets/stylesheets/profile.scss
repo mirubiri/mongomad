@@ -63,6 +63,7 @@
       margin-top:10px;
 
       img{
+        @include high-quality-image;
         float:left;
         margin-right:5px;
         margin-top:30px;
@@ -120,7 +121,9 @@
         width:220px;
         height:220px;
         border:$bordeElementos;
-        img{}
+        img{
+          @include high-quality-image;
+        }
       }
     }            
   }

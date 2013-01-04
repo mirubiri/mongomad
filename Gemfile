@@ -13,6 +13,7 @@ group :assets do
   gem 'blueprint-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'stitch'
 end
 
 group :development,:test do
