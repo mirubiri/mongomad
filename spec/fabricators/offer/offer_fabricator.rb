@@ -17,3 +17,9 @@ Fabricator(:offer) do
 
   end
 end
+
+Fabricator(:offer_with_money, from: :offer) do
+  after_build do |offer|
+    offer.money=Fabricate.build(:offer_money,user_id:offer.composer.user_id)
+  end
+end
