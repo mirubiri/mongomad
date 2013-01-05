@@ -6,12 +6,12 @@ Fabricator(:offer) do
 
   after_build do |offer|
 
-    user_composer = Fabricate(:user)
+    user_composer = Fabricate(:user_with_things)
     offer.composer = Fabricate.build(:offer_composer,user:user_composer)
     user_composer.sent_offers << offer
 
 
-  	user_receiver = Fabricate(:user)
+  	user_receiver = Fabricate(:user_with_things)
     offer.receiver = Fabricate.build(:offer_receiver,user:user_receiver)
     user_receiver.received_offers << offer
 
