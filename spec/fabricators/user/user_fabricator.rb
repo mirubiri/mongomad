@@ -1,6 +1,6 @@
 Fabricator(:user) do
   profile         { Fabricate.build(:user_profile) }
-  things(count:1) { Fabricate.build(:user_thing) }
+  things          nil
   requests        nil
   sent_offers     nil
   received_offers nil
