@@ -2,71 +2,71 @@
 
 .profile_complete{
   float:left;
-  width:99%;
-  min-width:825px;
   overflow:auto;
   margin-left:5px;
+  min-width:825px;
+  width:99%;
 
   .person_info{
     float: left;
+    overflow:auto;
+    margin-right:8px;
+    margin-bottom:15px;
     padding-left:10px;
     width: 48%;
     height:252px;
     border:$borde1px;
-    margin-bottom:15px;
-    margin-right:8px;
-    overflow:auto;
     background-color: white;
 
     .info_side{
       float:left;
-      width:200px;
       margin-bottom: 10px;
+      width:200px;
 
       .title{
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-        font-size:14px;
-        font-weight:bolder;
         margin: 10px 0px 10px 0px;
+        font-weight:bolder;
+        font-size:14px;
+        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
       }
       .name_age{
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-        font-size:12px;
-        font-weight:bold;
         margin: 0px 0px 8px 0px;
+        font-weight:bold;
+        font-size:12px;
+        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
       }
       .info_element{
         float:left;
         width:90%;
         .info_element_title{
           float: left;
-          width:100%;
-          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-          font-size:10px;
-          font-weight:bold;
           margin: 0px 5px 0px 0px;
+          width:100%;
+          font-weight:bold;
+          font-size:10px;
+          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
         }
         .info_element_description{
           float: left;
-          width:100%;
-          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-          font-size:10px;
           margin: 0px 0px 5px 0px;
+          width:100%;
+          font-size:10px;
+          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
         }
       }
     }
     .image_side{
       float:left;
-      width:175px;
       overflow:auto;
-      margin-bottom: 10px;
       margin-top:10px;
+      margin-bottom: 10px;
+      width:175px;
 
       img{
         @include high-quality-image;
         float:left;
-        margin-right:5px;
         margin-top:30px;
+        margin-right:5px;
         width:160px;
         height:160px;
         border:$borde1px;        
@@ -76,44 +76,44 @@
 
   .statistics{
     float:left;
+    overflow:auto;
+    margin-bottom:15px;
     padding-left:10px;
     width: 48%;
     border:$borde1px;
-    margin-bottom:15px;
-    overflow:auto;
     background-color: white;
 
     .result_side{
       float:left;
-      width:150px;
       margin-bottom: 10px;
+      width:150px;
 
       .title{
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-        font-size:14px;
-        font-weight:bolder;
         margin: 10px 0px 10px 0px;
+        font-weight:bolder;
+        font-size:14px;
+        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
       }
       .result_title{
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-        font-size:10px;
+        margin: 0px 0px 5px 0px;
         font-weight:bold;
         font-style:italic;
-        margin: 0px 0px 5px 0px;
+        font-size:10px;
+        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
       }
       .result_number{
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-        font-size:18px;
-        font-weight:bold;
         margin: 0px 0px 10px 0px;
+        font-weight:bold;
+        font-size:18px;
+        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
       }
     }
     .graphique_side{
       float:left;
-      width:240px;
       overflow:auto;
-      margin-bottom: 10px;
       margin-top:10px;
+      margin-bottom: 10px;
+      width:240px;
 
       .graphique{
         float:right;
@@ -129,29 +129,29 @@
   }
 
   .comments_recieved{
+    overflow:auto;
+    margin-bottom:15px;
     padding-left:10px;
     width: 98.3%;
     border:$borde1px;
-    margin-bottom:15px;
-    overflow:auto;
     background-color: white;
 
     .title{
       float: left;
-      width:100%;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:bolder;
       margin: 10px 0px 20px 0px;
+      width:100%;
+      font-weight:bolder;
+      font-size:14px;
+      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     }
     #data_list{
       float: left;
-      width:250px;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:bolder;
       margin: 0px 0px 10px 0px;
+      width:250px;
       border-right:none;
+      font-weight:bolder;
+      font-size:14px;
+      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
 
       .data_numbers{
         .data_element{
@@ -161,28 +161,28 @@
     }            
     #comment_list{              
       float: left;
-      width:530px;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
-      font-size:14px;
-      font-weight:bolder;
       margin: 0px 0px 10px 0px;
       padding-left:15px;
+      width:530px;
       border-left:none;
+      font-weight:bolder;
+      font-size:14px;
+      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
 
       .comment{
         float:left;
-        width:520px;
         margin-bottom:15px;
+        width:520px;
 
         .comment_header{
-          width: 100%;
-          height: 60px;
+          overflow: hidden;
           margin-bottom: 5px;
-          overflow: hidden;                  
+          width: 100%;
+          height: 60px;                  
 
           .profile_image{
-            @include border-radius(5px, 5px);
             @include relative($top:0px,$left:8px);
+            @include border-radius(5px, 5px);
             width: 50px;
             height: 50px;
             border: $borde1px;
@@ -196,11 +196,11 @@
 
             textarea{
               float:left;
-              font-size: 11px;
+              overflow: hidden;
               width: 50%;
               border:none;
+              font-size: 11px;
               resize: none;
-              overflow: hidden;
               maxlenght: 135;
             }
           }

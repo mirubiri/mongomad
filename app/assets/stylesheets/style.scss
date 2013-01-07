@@ -2,19 +2,19 @@
 @import 'stitch';
 
 body{
+  display: block;
+  overflow: auto;
   margin: 0;
   padding: 0;
-  display: block;
-  font-family: Verdana,'DejaVu Sans',sans-serif;
-  font-size: 13px;
-  line-height: 18px;
   background-color: transparent;
-  overflow: auto;
+  font-size: 13px;
+  font-family: Verdana,'DejaVu Sans',sans-serif;
+  line-height: 18px;
 
   .mainlayout{
     @include relative($top:0px);
-    width:100%;
-    overflow: visible;    
+    overflow: visible;
+    width:100%;    
   }
   
 }

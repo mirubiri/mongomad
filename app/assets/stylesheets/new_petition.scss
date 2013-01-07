@@ -1,14 +1,14 @@
 @import "variables";
 
 .new_request_content{
+  @include absolute($top:5px,$left:5px);
   @include border-radius(5px, 5px);
-  @include absolute($top:5px,$left:5px);  
-  width: 430px;
-  min-width:430px;    
-  background-color: white;
-  margin: 0px 0px 0px 0px;
-  border: 2px solid rgb(220,220,220);
   overflow:auto;
+  margin: 0px 0px 0px 0px;
+  min-width:430px;  
+  width: 430px;
+  border: 2px solid rgb(220,220,220);    
+  background-color: white;
 
   .new_request_title{
     float:left;
@@ -32,18 +32,18 @@
 
   .new_offer_text{
     float:left;
-    width:85%;
     margin:5px 0px 10px 30px;
+    width:85%;
 
     textarea{
-      font-size: 11px;
+      overflow: hidden;
       width: 98%;
-      resize: none;
       border: none;
+      border: $borde1px;
       background-color: transparent;
       color: #000000;
-      overflow: hidden;
-      border: $borde1px;
+      font-size: 11px;
+      resize: none;
     }      
   }
   .send_button{

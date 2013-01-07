@@ -2,24 +2,24 @@
 
 .user_container{
   @include relative($top:50px,$left:35px);
-  width:$width80px;
+  overflow: visible;
   min-width:$width80px;
+  width:$width80px;
   border: $borde2px;
   background-color: white;
-  overflow: visible;
 
   #user_reputation_container{
+    float: left;
+    margin-bottom: 10px;
     width: 100%;
     height: 26px;
-    margin-bottom: 10px;
-    float: left;
+    border-bottom: 2px solid rgb(220,220,220);
 
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
     background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
     background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
     background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
     background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
-    border-bottom: 2px solid rgb(220,220,220);
 
     img{
       @include high-quality-image;
@@ -30,46 +30,46 @@
 
   .user_container_profile{
     @include center-horizontally($width80px);
-    width:$widthUserSections90;    
+    overflow: auto;    
     margin-top:10px;
+    width:$width98pct;
     border: 2px solid rgb(220,220,220);
-    overflow: auto;
 
     .image{
-      margin: inherit; 
+      margin: inherit;
+      margin-top:10px; 
       width:80%;
       height: 180px;
-      margin-top:10px;
       border: $borde1px;
-      //@include border-radius(5px);
 
       img{ 
         @include high-quality-image;       
         width:100%;
         height: 180px;
       }
+      //@include border-radius(5px);
     }
 
     .user_name{
       @include center-horizontally(80%);      
       height:auto;
-      text-align:center;        
-      border-left: $borde1px;
       border-right: $borde1px; 
-      border-bottom: $borde1px;
+      border-bottom: $borde1px;        
+      border-left: $borde1px;
+      text-align:center;
     }
 
     .profile_button{
-      @include center-horizontally(80%);      
+      @include center-horizontally(80%);
+      margin-top:10px;      
       height: 20px;
-      margin-top:10px;
     }
 
     .profile_menu{
       @include center-horizontally(70%);
-      margin-bottom:10px;
-      margin-top: 10px;
       overflow: auto;
+      margin-top: 10px;
+      margin-bottom:10px;
 
       .menu_icon{
         @include border-radius(3px, 3px);
@@ -87,26 +87,26 @@
 
   .user_container_requests{
     @include center-horizontally($width80px);
-    width:$widthUserSections90;
+    overflow: auto;
     margin-top:10px;
-    border: 2px solid rgb(220,220,220);
-    overflow: auto;    
+    width:$width98pct;
+    border: 2px solid rgb(220,220,220);    
 
     .add_request_button{
       @include center-horizontally(80%);
-      height: 20px;
       margin-top:10px;
+      height: 20px;
     }    
 
     .requests_requestsList{
       @include center-horizontally(97%);
-      margin-top:10px;
       overflow:auto;
+      margin-top:10px;
 
       .request{
         @include center-horizontally(100%);
-        margin-bottom: 5px;
         overflow: hidden;
+        margin-bottom: 5px;
 
         .profile_image{
           @include border-radius(5px, 5px);
@@ -118,9 +118,9 @@
 
           img{
             @include high-quality-image;
-            @include border-radius(5px, 5px);
             width: 40px;
             height: 40px;
+            @include border-radius(5px, 5px);
           }
         }
 
@@ -133,12 +133,12 @@
 
           textarea{
             float:left;
-            -webkit-appearance: textarea;
-            font-size: 11px;
+            overflow: hidden;
             width: 50%;
             border:none;
+            font-size: 11px;
             resize: none;
-            overflow: hidden;
+            -webkit-appearance: textarea;
             maxlenght: 135;
           }
         }

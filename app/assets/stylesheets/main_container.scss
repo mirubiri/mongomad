@@ -4,7 +4,7 @@
 
 .main_container{
   @include absolute($top:50px,$left:300px);
-  width:$widthContentSide72;
+  width:$width72pct;
   border: 2px solid rgb(220,220,220);
   background-color: transparent;
   overflow: visible;
@@ -76,9 +76,9 @@
   }
       
   .main_container_elementList{
-    @include center-horizontally($widthContentList98);
-    width:$widthContentList98;
-    min-width:$widthContentList98;
+    @include center-horizontally($width98pct);
+    width:$width98pct;
+    min-width:$width98pct;
     overflow: auto;
   }
 }

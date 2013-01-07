@@ -1,18 +1,18 @@
 @import "variables";
 
 .new_offer_content{
-  @include border-radius(5px, 5px);
   @include absolute($top:5px,$left:5px);
-  width: 800px;
-  max-width:800px;
-  min-width:800px;
-  height:600px;
-  min-height:600px;
-  max-height:600px;
-  background-color: white;
-  margin: 0px 0px 0px 0px;
-  border: 2px solid rgb(220,220,220);
+  @include border-radius(5px, 5px);
   overflow:auto;
+  margin: 0px 0px 0px 0px;
+  min-width:800px;
+  min-height:600px;
+  max-width:800px;
+  max-height:600px;
+  width: 800px;
+  height:600px;
+  border: 2px solid rgb(220,220,220);
+  background-color: white;
 
   .new_offer_title{
     float:left;
@@ -36,26 +36,26 @@
 
   .his_products{
     float: left;
-    width: 316px;
-    max-width:316px;
-    min-width:316px;
-    height:555px;
-    min-height:555px;
-    max-height:555px;
     overflow:none;
+    min-width:316px;
+    min-height:555px;
+    max-width:316px;
+    max-height:555px;
+    width: 316px;
+    height:555px;
     background-color: white;
 
     .title{
-      width:316px;
       float:left;
+      width:316px;
       height: 40px;
       background-color: #2B3750;
       color:white;
 
       .sender_image{
         float:left;
-        margin-left:30px;
         margin-right:10px;
+        margin-left:30px;
         width:40px;
         height: 40px;
       }
@@ -68,20 +68,20 @@
 
     .monney_to_recieve{
       float:left;
-      width: 300px;
       margin: 10px 7px 10px 7px;
+      width: 300px;
 
       textarea{
         float:left;
+        overflow: hidden;
         width: 260px;
         height:24px;
-        font-size: 10px;
-        resize: none;
         border: none;
+        border: $borde1px;
         background-color: transparent;
         color: #000000;
-        overflow: hidden;
-        border: $borde1px;
+        font-size: 10px;
+        resize: none;
       }
 
       button{
@@ -98,22 +98,22 @@
     }
 
     .product_container{
-      float: left;
-      width: 300px;
-      height: 430px;
+      float: left;        
+      overflow: auto;
+      margin:10px 7px 10px 7px;
       min-height:430px;
       max-height:430px;
-      margin:10px 7px 10px 7px;        
-      overflow: auto;
+      width: 300px;
+      height: 430px;
 
       .product{
         @include border-radius(5px, 5px);
         float: left;
+        overflow: none;
+        margin:12px 0px 0px 12px;
         width: 125px;
         height: 125px;
-        margin:12px 0px 0px 12px;
         border: $borde1px;
-        overflow: none;
 
         .product-image{
           float:left;
@@ -128,13 +128,13 @@
         }
 
         .product-title{
-          width: 126px;
           float: left;
           margin: 1px;
+          width: 126px;
 
           input{
-            width: 124px;
             visibility: hidden;
+            width: 124px;
           }
         }
       }
@@ -143,26 +143,26 @@
 
   .my_products{
     float: left;
-    width: 164px;
-    max-width:164px;
-    min-width:164px;
-    height:555px;
-    min-height:555px;
-    max-height:555px;
     overflow:auto;
+    min-width:164px;
+    min-height:555px;
+    max-width:164px;
+    max-height:555px;
+    width: 164px;
+    height:555px;
     background-color: white;
 
     .title{
-      width:164px;
       float:left;
+      width:164px;
       height: 40px;
       background-color: #2B3750;
       color:white;
 
       .reciever_image{
         float:left;
-        margin-left:10px;
         margin-right:5px;
+        margin-left:10px;
         width:40px;
         height: 40px;
       }
@@ -175,20 +175,20 @@
 
     .monney_to_give{
       float:left;
-      width: 148px;
       margin: 10px 7px 10px 7px;
+      width: 148px;
 
       textarea{
         float:left;
+        overflow: hidden;
         width: 110px;
         height:24px;
-        font-size: 8px;
-        resize: none;
         border: none;
+        border: $borde1px;
         background-color: transparent;
         color: #000000;
-        overflow: hidden;
-        border: $borde1px;
+        font-size: 8px;
+        resize: none;
       }
 
       button{
@@ -204,22 +204,22 @@
     }
 
     .product_container{
-      float: left;
-      width: 150px;
-      height: 430px;
+      float: left;        
+      overflow: auto;
+      margin:10px 7px 10px 7px;
       min-height:430px;
       max-height:430px;
-      margin:10px 7px 10px 7px;        
-      overflow: auto;
+      width: 150px;
+      height: 430px;
 
       .product{
         @include border-radius(5px, 5px);
         float: left;
+        overflow: hidden;
+        margin:10px 0px 0px 10px;
         width: 50px;
         height: 50px;
-        margin:10px 0px 0px 10px;
         border: $borde1px;
-        overflow: hidden;
 
         .product-image{
           float:left;
@@ -234,12 +234,12 @@
         }
 
         .product-title{
-          width: 50px;
           float: left;
+          width: 50px;
 
           input{
-            width:48px;
             visibility: hidden;
+            width:48px;
           }
         }
       }
@@ -248,127 +248,127 @@
 
   .offer_summary{
     float: left;
-    width: 316px;
-    max-width:316px;
-    min-width:316px;
-    height:555px;
-    min-height:555px;
-    max-height:555px;
-    background-color: rgb(225,225,225);
-    border: 2px solid rgb(220,220,220);
-    border-bottom:none;
-    border-top:none;
     overflow:auto;
+    min-width:316px;
+    min-height:555px;
+    max-width:316px;
+    max-height:555px;
+    width: 316px;
+    height:555px;
+    border: 2px solid rgb(220,220,220);
+    border-top:none;
+    border-bottom:none;
+    background-color: rgb(225,225,225);
 
     .title{
-      width:316px;
       float:left;
+      width:316px;
       height: 40px;
       background-color: #2B3750;
       color:white;
 
       .description{
         float: left;
+        margin-top: 10px;
         width:100%;
         text-align:center;
-        margin-top: 10px;
         font-weight:bold;
       }
     }
 
     .summary{
       @include border-radius(5px, 5px);
-      width: 278px;
-      height:450px;
+      float: left;
+      margin:10px 0px 10px 18px;
       min-height:450px;
       max-height:450px;
-      background-color:white;
-      margin:10px 0px 10px 18px;
+      width: 278px;
+      height:450px;
       border: $borde1px;
-      float: left;
+      background-color:white;
 
       .summary_header{
-        width: 100%;
-        padding: 5px;
         overflow: auto;
         margin:0px 0px 10px 0px;
+        padding: 5px;
+        width: 100%;
 
         .triangle {
           @include relative($top:-5px,$right:-248px);
           width: 0;
           height: 0;
-          border-left: 25px solid transparent;
-          border-right: 0px solid transparent;
           border-top: 25px solid rgb(0,0,0);
+          border-right: 0px solid transparent;
+          border-left: 25px solid transparent;
         }
 
         .summary_header_image{
           @include border-radius(5px, 5px);
           float:left;
+          margin-right:5px;
           width:46px;
           height:46px;
           border: $borde1px;
-          margin-right:5px;
 
           img{
             @include high-quality-image;
+            float: left;
             width: 43px;
             height: 43px;
-            float: left;
           }
 
         }
         .summary_header_text{
-          width: 195px;
           float: left;
           margin: 1px;
+          width: 195px;
 
           .nombre_usuario{
-            width:100%;
-            height:12px;
             float:left;
-            font-weight:bold;
+            overflow:none;
             margin-top:-4px;
             margin-bottom:5px;
+            width:100%;
+            height:12px;
+            font-weight:bold;
             font-size:10px;
-            overflow:none;
           }
 
           textarea{
-            font-size: 11px;
+            overflow: hidden;
             width: 98%;
-            resize: none;
             border: none;
+            border: $borde1px;
             background-color: transparent;
             color: #000000;
-            overflow: hidden;
-            border: $borde1px;
+            font-size: 11px;
+            resize: none;
           }
 
         }
       }
 
       .summary_body{
-        width: 100%;
-        height:375px;
-        min-height:375px;
-        max-height:375px;
         overflow: auto;
         margin:0px 0px 0px 0px;
+        min-height:375px;
+        max-height:375px;
+        width: 100%;
+        height:375px;
 
         .summary_body_products_given{
-          width: 55%;
           float:left;
           overflow: auto;
           margin-left: 25px;
+          width: 55%;
 
           .product_given{
             @include border-radius(5px, 5px);
-            width: 140px;
-            margin: 5px 15px 5px 5px;
             float: left;
-            border: $borde1px;
             overflow: auto;
+            margin: 5px 15px 5px 5px;
+            width: 140px;
+            border: $borde1px;
 
             .product_given_imagen{
               float:left;
@@ -383,26 +383,26 @@
             }
 
             .product_given_title{
-              width: 125px;
               float: left;
+              width: 125px;
             }
 
           }
         }
 
         .summary_body_produts_recieved{
-          width: 30%;
           float:left;
           overflow: auto;
+          width: 30%;
 
           .produt_recieved{
             @include border-radius(5px, 5px);
+            float: left;
+            overflow: auto;
+            margin: 5px 15px 5px 5px;
             width: 65px;
             height:65px;
-            margin: 5px 15px 5px 5px;
-            float: left;
             border: $borde1px;
-            overflow: auto;
 
             .produt_recieved_image{
               float:left;
@@ -424,16 +424,16 @@
       }        
     }
     .summary_footer{
-      width: 100%;
       overflow: auto;
       margin:0px 0px 10px 0px;
+      width: 100%;
 
       button{
         @include border-radius(5px, 5px);
+        margin-left: 30px;
+        width:260px;
         background-color:red;
         color:white;
-        width:260px;
-        margin-left: 30px;
         font-size: 16px;
       }            
     }

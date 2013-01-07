@@ -2,18 +2,18 @@
 
 .thing{
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
-  background-color: white;
-  width: 195px;
-  margin:3px 10px 10px 3px;
   float: left;
-  border: $borde1px;
   overflow:auto;
+  margin:3px 10px 10px 3px;
+  width: 195px;
+  border: $borde1px;
+  background-color: white;
 
   .thing_image{
     float: left;
+    margin: 15px 0px 5px 9px;
     width: 175px;
     height: 175px;
-    margin: 15px 0px 5px 9px;
     border: $borde1px;
 
     img{
@@ -22,11 +22,11 @@
   }
   .thing_description{
     float: left;
+    overflow: auto;
+    margin: 0px 0px 15px 9px;
     width: 175px;
     height: 45px;
-    margin: 0px 0px 15px 9px;
-    border: $borde1px;
-    overflow: auto;    
+    border: $borde1px;    
   }
 
 }

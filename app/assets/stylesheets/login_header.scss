@@ -4,16 +4,16 @@
 
 .login_header{
   position: fixed;
+  z-index: 1000; 
+  display: inline;
+  overflow: hidden;
+  min-width:1200px;
+  max-width:100%;
   width: 100%;
   height: 60px;
-  max-width:100%;
-  min-width:1200px;
-  overflow: hidden;
   border: $borde1px;
   background-color:#0a67a3;
-  color: white; 
-  display: inline;
-  z-index: 1000;
+  color: white;
 
     .login_header_logo{
       float: left;
@@ -30,9 +30,9 @@
       
       a{
         @include unstyled-link;
+        margin-right:8px;
         width:30px;
         height:30px;
-        margin-right:8px;
         border: $borde1px;
       }
     }
@@ -40,14 +40,14 @@
     input[type='search'] {
       @include reset-search-field;
       float: left;
-      margin-right:20px;
       margin-top: 5px;
+      margin-right:20px;
     }
 
     .login_header_user_image{
+      float:left;
       width:30px;
       height:30px;
-      float:left;
       border: $borde1px;
 
       img{
@@ -59,21 +59,21 @@
 
     .login_header_user_description{
       float:left;
+      margin-left:5px;
       width:120px;
       height:30px;
-      margin-left:5px;        
-      font-size:8px;
-      font-weight:bolder;
       border: $borde1px;
       vertical-align:text-top;
+      font-weight:bolder;        
+      font-size:8px;
 
       p{
         float: left;
-        height:10px;
-        width:100%;
-        font-size:9px;
         margin:0px;
         margin-bottom:2px;
+        width:100%;
+        height:10px;
+        font-size:9px;
       } 
     }
 }
