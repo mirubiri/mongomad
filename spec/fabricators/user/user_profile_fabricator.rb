@@ -1,5 +1,5 @@
 Fabricator(:user_profile, class_name: "User::Profile") do
-  user             { Fabricate.build(:user, profile:nil) }
+  user             nil
   name             { Faker::Name.first_name }
   surname          { Faker::Name.last_name }
   nickname         { Faker::Internet.user_name }
@@ -10,8 +10,4 @@ Fabricator(:user_profile, class_name: "User::Profile") do
   website          nil
   birth_date       '10-10-2000'
   image            { File.open('app/assets/images/rails.png') }
-
-  after_build do |profile|
-    profile.user && profile.user.profile = profile
-  end
 end
