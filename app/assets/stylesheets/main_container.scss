@@ -3,27 +3,23 @@
 @import "compass/typography/links/unstyled-link";
 
 .main_container{
-  @include absolute($top:0px,$left:300px);
-  width:$anchuraLadoContenidos;
+  @include absolute($top:50px,$left:300px);
+  width:$widthContentSide72;
   border: 2px solid rgb(220,220,220);
   background-color: transparent;
   overflow: visible;
 
-
   .main_container_header{
-    @include relative($top:0px,$left:0px);
     float:left;
     width:100%;
     min-width:500px;
-    height: auto;
     margin-bottom:15px;
-    border-bottom: $bordeElementos;
+    border-bottom: $borde1px;
     background-color: white;
 
     .main_container_header_menu{
-      width:100%;
+      width:inherit;
       float:left;
-      display: inline;          
 
       nav{
         @include float-children('.nav_element',left);
@@ -31,23 +27,9 @@
         width:60%;           
 
         .nav_element{
-          overflow:auto;
-          float:left;
-          height:26px;
-          padding-left:10px;
-          padding-right:5px;
-          overflow:auto;
-          border-right: $bordeElementos;
-
-          .icono_navegacion{
-            float:left;
-            width:15px;
-            height:15px;
-            border: $bordeElementos;
-            border-radius:3px;
-            margin-right:5px;
-            margin-top: 5px;
-          }
+          height:26px; // tiene para que este a la misma altura que el gradiente izdo
+          padding: 0px 5px 0px 10px;
+          border-right: $borde1px;
 
           a{
             @include unstyled-link;
@@ -57,8 +39,9 @@
         }
 
         .nav_element:hover{
-          background-color:grey;
+          background-color: grey;
           color: white;
+          cursor: auto;
         }
 
         .nav_element:last-child{
@@ -92,12 +75,10 @@
     }
   }
       
-  .main_container_elementList{        
-    width:$anchuraListaContenidos;
-    min-width:$anchuraListaContenidos;
-    margin-left:auto;
-    margin-right:auto;
+  .main_container_elementList{
+    @include center-horizontally($widthContentList98);
+    width:$widthContentList98;
+    min-width:$widthContentList98;
     overflow: auto;
-    //Aqui vienen todos los elementos que se pueden listar
   }
 }

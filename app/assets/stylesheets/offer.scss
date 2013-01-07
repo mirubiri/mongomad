@@ -5,11 +5,11 @@
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
   @include box-sizing(border-box);
   float: left;
-  width: $anchuraOferta;
-  min-width: $anchuraOferta;
+  width: $offerWidth265px;
+  min-width: $offerWidth265px;
   margin:5px 0px 8px 12px;
   background-color: white;
-  border: $bordeElementos;
+  border: $borde1px;
   overflow:auto;
 
   .offer_header{
@@ -19,9 +19,7 @@
     overflow: hidden;
 
     .triangle {
-      position: relative;
-      top:0;
-      right:-91.1%;
+      @include relative($top:0px,$right:-240px);
       width: 0;
       height: 0;
       border-left: 25px solid transparent;
@@ -30,9 +28,7 @@
 
       a{
         @include unstyled-link;
-        position: absolute;
-        top:-28px;
-        left:-10px;
+        @include absolute($top:-28px,$left:-10px);
         font-size:12px;
         
       }          
@@ -40,12 +36,12 @@
 
     .profile_image{
       @include border-radius(5px, 5px);
-      position:relative;
+      @include relative($top:-20px,$left:6px);
       top: -20px;
       left: 6px;
       width: 50px;
       height: 50px;
-      border: $bordeElementos;
+      border: $borde1px;
 
       img{
         @include high-quality-image;
@@ -57,12 +53,10 @@
     }
 
     .description{
-      position:relative;
-      top: -72px;
-      left: 67px;
+      @include relative($top:-72px,$left:67px); 
       width: 172px;
       height: 50px;
-      border: $bordeElementos;
+      border: $borde1px;
     }
   }
 
@@ -87,7 +81,7 @@
         height:130px;
         margin-left:5px;
         margin-bottom:5px;
-        border: $bordeElementos;
+        border: $borde1px;
         overflow: auto;
       }               
      }
@@ -107,7 +101,7 @@
         height:80px;
         margin-left:5px;
         margin-bottom:5px;
-        border: $bordeElementos;
+        border: $borde1px;
         overflow: auto;
       }                             
     }

@@ -2,15 +2,15 @@ $near-black: #333;
 $light-blue: #d4f2ff;
 $dark-blue: darken($light-blue, 25%);
 $highlight: #ffc;
-$logoMarginLeft: 80px;
-$bordeElementos: 1px solid rgb(220,220,220);
+$margen80px: 80px;
+$borde1px: 1px solid rgb(220,220,220);
 
 //user_container
-$anchuraLadoUsuario: 250px;
-$bordeLadoUsuario: 2px solid rgb(220,220,220);
-  $anchuraZonasPrincipalesUsuario: 90%;
+$width80px: 250px;
+$borde2px: 2px solid rgb(220,220,220);
+  $widthUserSections90: 90%;
 
 //main_container
-$anchuraLadoContenidos: 72%;
-  $anchuraListaContenidos: 98%;
-    $anchuraOferta: 265px;
+$widthContentSide72: 72%;
+  $widthContentList98: 98%;
+    $offerWidth265px: 265px;

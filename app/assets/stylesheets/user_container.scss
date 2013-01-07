@@ -1,11 +1,10 @@
 @import "variables";
 
 .user_container{
-  position:relative;
-  left:35px;      
-  width:$anchuraLadoUsuario;
-  min-width:$anchuraLadoUsuario;
-  border: $bordeLadoUsuario;
+  @include relative($top:50px,$left:35px);
+  width:$width80px;
+  min-width:$width80px;
+  border: $borde2px;
   background-color: white;
   overflow: visible;
 
@@ -14,6 +13,7 @@
     height: 26px;
     margin-bottom: 10px;
     float: left;
+
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
     background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
     background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
@@ -29,11 +29,8 @@
   }  
 
   .user_container_profile{
-    width:$anchuraZonasPrincipalesUsuario;
-    margin:{
-      left:auto;
-      right: auto;
-    }
+    @include center-horizontally($width80px);
+    width:$widthUserSections90;    
     margin-top:10px;
     border: 2px solid rgb(220,220,220);
     overflow: auto;
@@ -43,7 +40,7 @@
       width:80%;
       height: 180px;
       margin-top:10px;
-      border: $bordeElementos;
+      border: $borde1px;
       //@include border-radius(5px);
 
       img{ 
@@ -54,29 +51,22 @@
     }
 
     .user_name{
-      width:80%;
+      @include center-horizontally(80%);      
       height:auto;
-      margin-left:auto;
-      margin-right:auto;
       text-align:center;        
-      border-left: $bordeElementos;
-      border-right: $bordeElementos; 
-      border-bottom: $bordeElementos;
+      border-left: $borde1px;
+      border-right: $borde1px; 
+      border-bottom: $borde1px;
     }
 
     .profile_button{
-      display: block;
-      width:80%;
+      @include center-horizontally(80%);      
       height: 20px;
-      margin-left:auto;
-      margin-right:auto;
       margin-top:10px;
     }
 
     .profile_menu{
-      width:70%;
-      margin-left:auto;
-      margin-right:auto;
+      @include center-horizontally(70%);
       margin-bottom:10px;
       margin-top: 10px;
       overflow: auto;
@@ -85,7 +75,7 @@
         @include border-radius(3px, 3px);
         float:left;
         margin-left:8px;
-        border: $bordeElementos;
+        border: $borde1px;
 
         img{
           width:40px;
@@ -96,34 +86,25 @@
   } 
 
   .user_container_requests{
-    width:$anchuraZonasPrincipalesUsuario;
-    margin-left:auto;
-    margin-right:auto;
+    @include center-horizontally($width80px);
+    width:$widthUserSections90;
     margin-top:10px;
     border: 2px solid rgb(220,220,220);
     overflow: auto;    
 
     .add_request_button{
-      display: block;
-      width:80%;
+      @include center-horizontally(80%);
       height: 20px;
-      margin-left:auto;
-      margin-right:auto;
       margin-top:10px;
     }    
 
     .requests_requestsList{
-      width:96%;
-      margin-left:auto;
-      margin-right:auto;
+      @include center-horizontally(97%);
       margin-top:10px;
       overflow:auto;
 
       .request{
-        width:100%;
-        height: 45px;
-        margin-left:auto;
-        margin-right:auto;        
+        @include center-horizontally(100%);
         margin-bottom: 5px;
         overflow: hidden;
 
@@ -133,7 +114,7 @@
           margin-right:5px;
           width: 40px;
           height: 40px;          
-          border: $bordeElementos;
+          border: $borde1px;
 
           img{
             @include high-quality-image;
@@ -148,7 +129,7 @@
           float: left;
           width: 160px;
           height: 40px;
-          border: $bordeElementos;
+          border: $borde1px;
 
           textarea{
             float:left;

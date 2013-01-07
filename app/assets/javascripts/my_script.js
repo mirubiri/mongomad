@@ -4,6 +4,7 @@ function igualaAlturaUserContainerMainContainer(){
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
   $('#user-side,#content-side').equalHeightColumns();
+  $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
 }
 
 function maximizaAlturaConversacion(){

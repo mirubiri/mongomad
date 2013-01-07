@@ -2,9 +2,7 @@
 
 .new_offer_content{
   @include border-radius(5px, 5px);
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  @include absolute($top:5px,$left:5px);
   width: 800px;
   max-width:800px;
   min-width:800px;
@@ -26,7 +24,7 @@
       margin: 12px 5px 0px 30px;
       width:20px;
       height: 20px;
-      border: $bordeElementos;
+      border: $borde1px;
     }
     .description{
       float: left;
@@ -83,7 +81,7 @@
         background-color: transparent;
         color: #000000;
         overflow: hidden;
-        border: $bordeElementos;
+        border: $borde1px;
       }
 
       button{
@@ -114,7 +112,7 @@
         width: 125px;
         height: 125px;
         margin:12px 0px 0px 12px;
-        border: $bordeElementos;
+        border: $borde1px;
         overflow: none;
 
         .product-image{
@@ -190,7 +188,7 @@
         background-color: transparent;
         color: #000000;
         overflow: hidden;
-        border: $bordeElementos;
+        border: $borde1px;
       }
 
       button{
@@ -220,7 +218,7 @@
         width: 50px;
         height: 50px;
         margin:10px 0px 0px 10px;
-        border: $bordeElementos;
+        border: $borde1px;
         overflow: hidden;
 
         .product-image{
@@ -286,7 +284,7 @@
       max-height:450px;
       background-color:white;
       margin:10px 0px 10px 18px;
-      border: $bordeElementos;
+      border: $borde1px;
       float: left;
 
       .summary_header{
@@ -296,9 +294,7 @@
         margin:0px 0px 10px 0px;
 
         .triangle {
-          position: relative;
-          top:-5px;
-          right:-248px;
+          @include relative($top:-5px,$right:-248px);
           width: 0;
           height: 0;
           border-left: 25px solid transparent;
@@ -311,7 +307,7 @@
           float:left;
           width:46px;
           height:46px;
-          border: $bordeElementos;
+          border: $borde1px;
           margin-right:5px;
 
           img{
@@ -346,7 +342,7 @@
             background-color: transparent;
             color: #000000;
             overflow: hidden;
-            border: $bordeElementos;
+            border: $borde1px;
           }
 
         }
@@ -371,7 +367,7 @@
             width: 140px;
             margin: 5px 15px 5px 5px;
             float: left;
-            border: $bordeElementos;
+            border: $borde1px;
             overflow: auto;
 
             .product_given_imagen{
@@ -405,7 +401,7 @@
             height:65px;
             margin: 5px 15px 5px 5px;
             float: left;
-            border: $bordeElementos;
+            border: $borde1px;
             overflow: auto;
 
             .produt_recieved_image{

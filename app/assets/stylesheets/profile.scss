@@ -12,7 +12,7 @@
     padding-left:10px;
     width: 48%;
     height:252px;
-    border:$bordeElementos;
+    border:$borde1px;
     margin-bottom:15px;
     margin-right:8px;
     overflow:auto;
@@ -69,7 +69,7 @@
         margin-top:30px;
         width:160px;
         height:160px;
-        border:$bordeElementos;        
+        border:$borde1px;        
       }
     }
   }
@@ -78,7 +78,7 @@
     float:left;
     padding-left:10px;
     width: 48%;
-    border:$bordeElementos;
+    border:$borde1px;
     margin-bottom:15px;
     overflow:auto;
     background-color: white;
@@ -120,7 +120,7 @@
         margin-right:5px;
         width:220px;
         height:220px;
-        border:$bordeElementos;
+        border:$borde1px;
         img{
           @include high-quality-image;
         }
@@ -131,7 +131,7 @@
   .comments_recieved{
     padding-left:10px;
     width: 98.3%;
-    border:$bordeElementos;
+    border:$borde1px;
     margin-bottom:15px;
     overflow:auto;
     background-color: white;
@@ -182,21 +182,17 @@
 
           .profile_image{
             @include border-radius(5px, 5px);
-            position:relative;
-            top: 0px;
-            left: 8px;
+            @include relative($top:0px,$left:8px);
             width: 50px;
             height: 50px;
-            border: $bordeElementos;
+            border: $borde1px;
           }
 
           .description{
-            position:relative;
-            top: -52px;
-            left: 67px;
+            @include relative($top:-52px,$left:67px);
             width: 400px;
             height: 50px;
-            border: $bordeElementos;
+            border: $borde1px;
 
             textarea{
               float:left;

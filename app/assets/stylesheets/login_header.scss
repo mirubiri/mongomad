@@ -9,7 +9,7 @@
   max-width:100%;
   min-width:1200px;
   overflow: hidden;
-  border: $bordeElementos;
+  border: $borde1px;
   background-color:#0a67a3;
   color: white; 
   display: inline;
@@ -17,10 +17,10 @@
 
     .login_header_logo{
       float: left;
-      margin-left: $logoMarginLeft;
+      margin-left: $margen80px;
       width: 120px;
       height: 30px;
-      border: $bordeElementos;        
+      border: $borde1px;        
     }
     
     nav{
@@ -33,7 +33,7 @@
         width:30px;
         height:30px;
         margin-right:8px;
-        border: $bordeElementos;
+        border: $borde1px;
       }
     }
 
@@ -48,7 +48,7 @@
       width:30px;
       height:30px;
       float:left;
-      border: $bordeElementos;
+      border: $borde1px;
 
       img{
         @include high-quality-image;
@@ -64,7 +64,7 @@
       margin-left:5px;        
       font-size:8px;
       font-weight:bolder;
-      border: $bordeElementos;
+      border: $borde1px;
       vertical-align:text-top;
 
       p{

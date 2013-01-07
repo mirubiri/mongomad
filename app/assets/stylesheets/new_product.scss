@@ -2,9 +2,7 @@
 
 .new_product_content{
   @include border-radius(5px, 5px);
-  position: absolute;
-  top: 5px;
-  left: 5px;
+  @include absolute($top:5px,$left:5px);
   width: 430px;
   min-width:430px;    
   background-color: transparent;
@@ -22,7 +20,7 @@
       margin: 12px 5px 0px 30px;
       width:20px;
       height: 20px;
-      border: $bordeElementos;
+      border: $borde1px;
     }
     .description{
       float: left;
@@ -45,7 +43,7 @@
       background-color: transparent;
       color: #000000;
       overflow: hidden;
-      border: $bordeElementos;
+      border: $borde1px;
     }      
   }
 
