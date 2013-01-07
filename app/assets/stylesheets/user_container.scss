@@ -3,8 +3,8 @@
 .user_container{
   @include relative($top:50px,$left:35px);
   overflow: visible;
-  min-width:$width80px;
-  width:$width80px;
+  min-width:$width250px;
+  width:$width250px;
   border: $borde2px;
   background-color: white;
 
@@ -13,7 +13,7 @@
     margin-bottom: 10px;
     width: 100%;
     height: 26px;
-    border-bottom: 2px solid rgb(220,220,220);
+    border-bottom: $borde2px;
 
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
     background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
@@ -29,11 +29,11 @@
   }  
 
   .user_container_profile{
-    @include center-horizontally($width80px);
+    @include center-horizontally($width250px);
     overflow: auto;    
     margin-top:10px;
-    width:$width98pct;
-    border: 2px solid rgb(220,220,220);
+    width:$width90pct;
+    border: $borde2px;
 
     .image{
       margin: inherit;
@@ -86,11 +86,11 @@
   } 
 
   .user_container_requests{
-    @include center-horizontally($width80px);
+    @include center-horizontally($width250px);
     overflow: auto;
     margin-top:10px;
-    width:$width98pct;
-    border: 2px solid rgb(220,220,220);    
+    width:$width90pct;
+    border: $borde2px;    
 
     .add_request_button{
       @include center-horizontally(80%);

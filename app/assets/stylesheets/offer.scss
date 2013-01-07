@@ -38,24 +38,24 @@
       @include border-radius(5px, 5px);
       top: -20px;
       left: 6px;
+      overflow: hidden;
       width: 50px;
       height: 50px;
       border: $borde1px;
 
-      img{
-        @include high-quality-image;
-        overflow: none;
-        width: 50px;
-        height: 50px;
+      a{
+        img{
+          @include high-quality-image;
+          width: 50px;
+          height: 50px;
+        }
       }
-
     }
 
     .description{
       @include relative($top:-72px,$left:67px); 
       width: 172px;
       height: 50px;
-      border: $borde1px;
     }
   }
 
@@ -67,13 +67,14 @@
 
     .recieved{
       float:left;
-      overflow:auto;
+      overflow:hidden;
       margin-top: 5px;
       margin-left: 8px;
       width: 150px;
 
       img{
         @include border-radius(5px, 5px);
+        @include high-quality-image;
         float:left;
         overflow: auto;
         margin-bottom:5px;
@@ -81,27 +82,25 @@
         width:130px;
         height:130px;
         border: $borde1px;
-        @include high-quality-image;
       }               
      }
 
     .given{
       float: right;
-      overflow: auto;
+      overflow: hidden;
       margin-top: 5px;
       margin-right: 8px;
       width: 90px;
 
       img{
         @include border-radius(5px, 5px);
+        @include high-quality-image;
         float:left;
-        overflow: auto;
         margin-bottom:5px;
         margin-left:5px;
         width:80px;
         height:80px;
         border: $borde1px;
-        @include high-quality-image;
       }                             
     }
   }

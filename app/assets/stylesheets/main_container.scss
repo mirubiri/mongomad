@@ -5,7 +5,7 @@
 .main_container{
   @include absolute($top:50px,$left:300px);
   width:$width72pct;
-  border: 2px solid rgb(220,220,220);
+  border: $borde2px;
   background-color: transparent;
   overflow: visible;
 
@@ -14,7 +14,7 @@
     width:100%;
     min-width:500px;
     margin-bottom:15px;
-    border-bottom: $borde1px;
+    border-bottom: $borde2px;
     background-color: white;
 
     .main_container_header_menu{
@@ -29,7 +29,7 @@
         .nav_element{
           height:26px; // tiene para que este a la misma altura que el gradiente izdo
           padding: 0px 5px 0px 10px;
-          border-right: $borde1px;
+          border-right: $borde2px;
 
           a{
             @include unstyled-link;

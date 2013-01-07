@@ -77,7 +77,7 @@
             margin: 2px 0px 0px 2px;
             width: 80px;
             height:auto;
-            border: 2px solid rgb(220,220,220);
+            border: $borde2px;
             text-align: center;
             font-size: 12px;
 
@@ -121,7 +121,7 @@
             margin: 2px 0px 0px 2px;
             width: 80px;
             height:auto;
-            border: 2px solid rgb(220,220,220);
+            border: $borde2px;
             text-align: center;
             font-size: 12px;
 
@@ -168,7 +168,7 @@
       float:right;
       overflow: hidden;
       width: 62%;
-      border-left: 2px solid rgb(220,220,220);
+      border-left: $borde2px;
 
       .dialog_head{
         float: left;
@@ -247,7 +247,7 @@
             input{
               float: left;
               width: 100%;
-              border-top: 2px solid rgb(220,220,220);
+              border-top: $borde2px;
               border-left:none;
             }
           }

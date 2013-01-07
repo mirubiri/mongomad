@@ -11,7 +11,7 @@
   max-height:600px;
   width: 800px;
   height:600px;
-  border: 2px solid rgb(220,220,220);
+  border: $borde2px;
   background-color: white;
 
   .new_offer_title{
@@ -255,7 +255,7 @@
     max-height:555px;
     width: 316px;
     height:555px;
-    border: 2px solid rgb(220,220,220);
+    border: $borde2px;
     border-top:none;
     border-bottom:none;
     background-color: rgb(225,225,225);
