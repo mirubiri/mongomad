@@ -122,17 +122,8 @@
           @include proportions(160px,40px);
           float: left;          
           border: $borde1px;
-
-          textarea{
-            float:left;
-            overflow: hidden;
-            width: 50%;
-            border:none;
-            font-size: 11px;
-            resize: none;
-            -webkit-appearance: textarea;
-            maxlenght: 135;
-          }
+          font-size: 9px;
+          overflow: hidden;          
         }
       }
     }
