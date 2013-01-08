@@ -16,12 +16,12 @@
 
     .icon{
       @include proportions(20px,20px);
-      float:left;
+      float:inherit;
       margin: 12px 5px 0px 30px;     
       border: $borde1px;
     }
     .description{
-      float: left;
+      float: inherit;
       margin-top: 16px;
       font-weight:bold;
       font-size:14px;
@@ -37,17 +37,17 @@
 
     .title{
       @include proportions(316px,40px);
-      float:left;  
+      float:inherit;  
       background-color: #2B3750;
       color:white;
 
       .sender_image{
         @include proportions(40px,40px);
-        float:left;
+        float:inherit;
         margin: 0px 10px 0px 30px;             
       }
       .description{
-        float: left;
+        float: inherit;
         margin-top: 10px;
         font-weight:bold;
       }
@@ -60,7 +60,7 @@
 
       textarea{
         @include proportions(260px,24px);
-        float:left;
+        float:inherit;
         overflow: hidden;        
         border: $borde1px;
         background-color: transparent;
@@ -71,10 +71,10 @@
 
       button{
         @include proportions(30px,30px);
-        float:left;       
+        float:inherit;       
         img{
           @include proportions(26px,26px);
-          float:left;
+          float:inherit;
           margin:0px;          
         }
       }
@@ -90,14 +90,14 @@
       .product{
         @include border-radius(5px, 5px);
         @include proportions(125px,125px);
-        float: left;
+        float: inherit;
         overflow: none;
         margin:12px 0px 0px 12px;        
         border: $borde1px;
 
         .product-image{
           @include proportions(123px,123px);
-          float:left;          
+          float:inherit;          
 
           img{
             @include high-quality-image;
@@ -106,7 +106,7 @@
         }
 
         .product-title{
-          float: left;
+          float: inherit;
           margin: 1px;
           width: 126px;
 
@@ -128,18 +128,17 @@
 
     .title{
       @include proportions(164px,40px);
-      float:left;      
+      float:inherit;      
       background-color: #2B3750;
       color:white;
 
       .reciever_image{
         @include proportions(40px,40px);
-        float:left;
-        margin-right:5px;
-        margin-left:10px;        
+        float:inherit;
+        margin-right:0px 5px 0px 10px;
       }
       .description{
-        float: left;
+        float: inherit;
         margin-top: 10px;
         font-weight:bold;
       }
@@ -152,7 +151,7 @@
 
       textarea{
         @include proportions(110px,24px);
-        float:left;
+        float:inherit;
         overflow: hidden;        
         border: $borde1px;
         background-color: transparent;
@@ -163,10 +162,10 @@
 
       button{
         @include proportions(30px,30px);
-        float:left;        
+        float:inherit;        
         img{
           @include proportions(26px,26px);
-          float:left;          
+          float:inherit;          
         }
       }
     }
@@ -181,14 +180,14 @@
       .product{
         @include border-radius(5px, 5px);
         @include proportions(50px,50px);
-        float: left;
+        float: inherit;
         overflow: hidden;
         margin:10px 0px 0px 10px;        
         border: $borde1px;
 
         .product-image{
           @include proportions(48px,48px);
-          float:left;          
+          float:inherit;          
 
           img{
             @include high-quality-image;
@@ -197,7 +196,7 @@
         }
 
         .product-title{
-          float: left;
+          float: inherit;
           width: 50px;
 
           input{
@@ -215,18 +214,20 @@
     float: left;
     overflow:auto;    
     border: $borde2px;
-    border-top:none;
-    border-bottom:none;
+    border:{
+      top:none;
+      bottom:none;
+    }
     background-color: rgb(225,225,225);
 
     .title{
       @include proportions(316px,40px);
-      float:left; 
+      float:inherit; 
       background-color: #2B3750;
       color:white;
 
       .description{
-        float: left;
+        float: inherit;
         margin-top: 10px;
         width:100%;
         text-align:center;
@@ -238,7 +239,7 @@
       @include border-radius(5px, 5px);
       @include fixed_height(450px,450px,450px);
       width: 278px;
-      float: left;
+      float: inherit;
       margin:10px 0px 10px 18px;      
       border: $borde1px;
       background-color:white;
@@ -252,17 +253,18 @@
         .triangle {
           @include relative($top:-5px,$right:-248px);
           @include proportions(0,0);          
-          border-top: 25px solid rgb(0,0,0);
-          border-right: 0px solid transparent;
-          border-left: 25px solid transparent;
+          border:{
+            top: 25px solid rgb(0,0,0);
+            right: 0px solid transparent;
+            left: 25px solid transparent;
+          }
         }
 
         .summary_header_image{
           @include border-radius(5px, 5px);
+          @include proportions(46px,46px);
           float:left;
-          margin-right:5px;
-          width:46px;
-          height:46px;
+          margin-right:5px;          
           border: $borde1px;
 
           img{
@@ -281,16 +283,16 @@
             @include proportions(100%,12px);
             float:left;
             overflow:none;
-            margin-top:-4px;
-            margin-bottom:5px;           
-            font-weight:bold;
-            font-size:10px;
+            margin-top:-4px 0px 5px 0px;
+            font:{
+              weight:bold;
+              size:10px;
+            }
           }
 
           textarea{
             overflow: hidden;
             width: 98%;
-            border: none;
             border: $borde1px;
             background-color: transparent;
             color: #000000;

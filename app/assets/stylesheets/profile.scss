@@ -10,8 +10,7 @@
     @include proportions(48%,252px);
     float: left;
     overflow:auto;
-    margin-right:8px;
-    margin-bottom:15px;
+    margin:0px 8px 15px 0px;
     padding-left:10px;   
     border:$borde1px;
     background-color: white;
@@ -23,53 +22,63 @@
 
       .title{
         margin: 10px 0px 10px 0px;
-        font-weight:bolder;
-        font-size:14px;
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font:{
+          weight:bolder;
+          size:14px;
+          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
       }
+
       .name_age{
         margin: 0px 0px 8px 0px;
-        font-weight:bold;
-        font-size:12px;
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font:{
+          weight:bold;
+          size:12px;
+          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
       }
+
       .info_element{
         float:left;
         width:90%;
+
         .info_element_title{
           float: left;
           margin: 0px 5px 0px 0px;
           width:100%;
-          font-weight:bold;
-          font-size:10px;
-          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          font:{
+            weight:bold;
+            size:10px;
+            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          }
         }
         .info_element_description{
           float: left;
           margin: 0px 0px 5px 0px;
           width:100%;
-          font-size:10px;
-          font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          font:{
+            size:10px;
+            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          }
         }
       }
     }
     .image_side{
       float:left;
       overflow:auto;
-      margin-top:10px;
-      margin-bottom: 10px;
+      margin-top:10px 0px 10px 0px;
       width:175px;
 
       img{
         @include high-quality-image;
         @include proportions(160px,160px);
         float:left;
-        margin-top:30px;
-        margin-right:5px;       
+        margin-top:30px 5px 0px 0px;
         border:$borde1px;        
       }
     }
   }
+  
 
   .statistics{
     float:left;
@@ -87,29 +96,34 @@
 
       .title{
         margin: 10px 0px 10px 0px;
-        font-weight:bolder;
-        font-size:14px;
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font:{
+          weight:bolder;
+          size:14px;
+          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
       }
       .result_title{
         margin: 0px 0px 5px 0px;
         font-weight:bold;
-        font-style:italic;
-        font-size:10px;
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font:{
+            weight:italic;
+            size:10px;
+            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
       }
       .result_number{
         margin: 0px 0px 10px 0px;
-        font-weight:bold;
-        font-size:18px;
-        font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        font:{
+            weight:bold;
+            size:18px;
+            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        }
       }
     }
     .graphique_side{
       float:left;
       overflow:auto;
-      margin-top:10px;
-      margin-bottom: 10px;
+      margin:10px 0px 10px 0px;
       width:240px;
 
       .graphique{
@@ -137,22 +151,25 @@
       float: left;
       margin: 10px 0px 20px 0px;
       width:100%;
-      font-weight:bolder;
-      font-size:14px;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font:{
+        weight:bolder;
+        size:14px;
+        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      }
     }
     #data_list{
       float: left;
       margin: 0px 0px 10px 0px;
       width:250px;
       border-right:none;
-      font-weight:bolder;
-      font-size:14px;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font:{
+        weight:bolder;
+        size:14px;
+        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      }
 
       .data_numbers{
         .data_element{
-
         }
       }
     }            
@@ -162,9 +179,11 @@
       padding-left:15px;
       width:530px;
       border-left:none;
-      font-weight:bolder;
-      font-size:14px;
-      font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      font:{
+        weight:bolder;
+        size:14px;
+        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+      }
 
       .comment{
         float:left;

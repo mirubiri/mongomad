@@ -49,9 +49,11 @@
     .user_name{
       @include center-horizontally(80%);      
       height:auto;
-      border-right: $borde1px; 
-      border-bottom: $borde1px;        
-      border-left: $borde1px;
+      border:{
+        right: $borde1px; 
+        bottom: $borde1px;  
+        left: $borde1px;
+      }
       text-align:center;
     }
 
@@ -64,8 +66,7 @@
     .profile_menu{
       @include center-horizontally(70%);
       overflow: auto;
-      margin-top: 10px;
-      margin-bottom:10px;
+      margin: 10px 0px 10px 0px;
 
       .menu_icon{
         @include border-radius(3px, 3px);

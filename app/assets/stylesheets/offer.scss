@@ -18,9 +18,11 @@
     .triangle {
       @include relative($top:0px,$right:-240px);
       @include proportions(0,0);      
-      border-top: 25px solid rgb(220,220,220);
-      border-right: 0px solid transparent;
-      border-left: 25px solid transparent;
+      border:{
+            top: 25px solid rgb(0,0,0);
+            right: 0px solid transparent;
+            left: 25px solid transparent;
+      }
 
       a{
         @include absolute($top:-28px,$left:-10px);
@@ -43,8 +45,6 @@
         img{
           @include high-quality-image;
           @include proportions(50px,50px);
-          width: 50px;
-          height: 50px;
         }
       }
     }
@@ -64,8 +64,7 @@
     .recieved{
       float:left;
       overflow:hidden;
-      margin-top: 5px;
-      margin-left: 8px;
+      margin: 5px 0px 0px 8px;
       width: 150px;
 
       img{
@@ -74,8 +73,7 @@
         @include proportions(130px,130px);
         float:left;
         overflow: auto;
-        margin-bottom:5px;
-        margin-left:5px;        
+        margin:0px 0px 5px 5px;  
         border: $borde1px;
       }               
      }
@@ -83,8 +81,7 @@
     .given{
       float: right;
       overflow: hidden;
-      margin-top: 5px;
-      margin-right: 8px;
+      margin: 5px 0px 0px 8px;
       width: 90px;
 
       img{
@@ -92,8 +89,7 @@
         @include high-quality-image;
         @include proportions(80px,80px);
         float:left;
-        margin-bottom:5px;
-        margin-left:5px;        
+        margin:0px 0px 5px 5px;        
         border: $borde1px;
       }                             
     }
@@ -107,9 +103,7 @@
     button{
       @include border-radius(5px, 5px);
       float: right;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      margin-left: 5px;
+      margin: 0px 10px 10px 5px;
       font-size: 10px;
     }
   }

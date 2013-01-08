@@ -7,8 +7,10 @@ body{
   margin: 0;
   padding: 0;
   background-color: transparent;
-  font-size: 13px;
-  font-family: Verdana,'DejaVu Sans',sans-serif;
+  font:{
+    size: 13px;
+    family: Verdana,'DejaVu Sans',sans-serif;
+  }
   line-height: 18px;
 
   .mainlayout{

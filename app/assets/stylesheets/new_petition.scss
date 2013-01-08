@@ -15,15 +15,17 @@
 
     .icon{
       @include proportions(20px,20px);
-      float:left;
+      float:inherit;
       margin: 12px 5px 0px 30px;      
       border: $borde1px;
     }
     .description{
-      float: left;
+      float: inherit;
       margin-top: 16px;
-      font-weight:bold;
-      font-size:14px;
+      font:{
+        weight:bold;
+        size:14px;
+      }
     }
   }
 
@@ -35,7 +37,6 @@
     textarea{
       overflow: hidden;
       width: 98%;
-      border: none;
       border: $borde1px;
       background-color: transparent;
       color: #000000;
