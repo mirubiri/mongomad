@@ -14,3 +14,21 @@ $width90pct: 90%;
 $width72pct: 72%;
 $width98pct: 98%;
 $width265px: 265px;
+
+//my own mixins
+@mixin fixed_width($width,$minwidth,$maxwidth) {
+  width: $width;
+  min-width: $minwidth;
+  max-width: $maxwidth;
+}
+
+@mixin fixed_height($height,$minheight,$maxheight) {
+  height: $height;
+  min-height: $minheight;
+  max-height: $maxheight;
+}
+
+@mixin proportions($width,$height) {
+  width: $width;
+  height: $height;
+}

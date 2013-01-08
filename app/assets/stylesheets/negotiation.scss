@@ -2,11 +2,10 @@
 
 .negotiation {
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
+  @include fixed_width(825px,825px,825px);
   float: left;
   margin-bottom: 25px;
   margin-left: 15px;
-  min-width:825px;
-  width: 825px;
   border: $borde1px;
   background-color: white;
 
@@ -22,16 +21,14 @@
         width: 100%;
 
         .proposition_header{
+          @include proportions(100%,60px);
           overflow: hidden;
           margin-bottom: 5px;
-          width: 100%;
-          height: 60px;
           border-bottom:$borde1px;
 
           .triangle {
             @include relative($top:0px,$right:-290px);
-            width: 0;
-            height: 0;
+            @include proportions(0,0);
             border-top: 25px solid rgb(220,220,220);
             border-right: 0px solid transparent;
             border-left: 25px solid transparent;
@@ -39,9 +36,8 @@
 
           .profile_image{
             @include relative($top:-20px,$left:8px);
-            @include border-radius(5px, 5px);           
-            width: 50px;
-            height: 50px;
+            @include border-radius(5px, 5px); 
+            @include proportions(50px,50px);
             border: $borde1px;
           };
         }                
@@ -52,18 +48,17 @@
 
           .offered_product{
             @include border-radius(5px, 5px);
+            @include proportions(140px,140px);
             float: left;
             overflow: auto;
             margin: 10px 5px 0px 5px;
-            width:140px;
-            height:140px;
             border: $borde1px;
 
             .img{
               @include high-quality-image;
-              width:140px;
-              height:140px;
+              @include proportions(inherit,inherit);
             }
+
             .product-title{
               float: left;
               text-align: center;
@@ -73,10 +68,9 @@
 
           .offered_money{
             @include border-radius(5px, 5px);
+            @include proportions(80px,auto);
             float: left;
-            margin: 2px 0px 0px 2px;
-            width: 80px;
-            height:auto;
+            margin: 2px 0px 0px 2px;     
             border: $borde2px;
             text-align: center;
             font-size: 12px;
@@ -89,22 +83,20 @@
 
         }
 
-        .orderer_things{
+        .orderer_things{          
           float:left;
           padding:10px 0px 0px 15px;
           width: 110px;
 
           .orderer_product{
             @include border-radius(5px, 5px);
+            @include proportions(110px,110px);
             float:left;
-            width: 110px;
-            height: 110px;
             border: $borde1px;
 
             img{
-              float:left;
-              width:90px;
-              height:90px;
+              @include proportions(90px,90px);
+              float:left; 
             }
 
             .product-title{
@@ -117,10 +109,9 @@
 
           .orderer_money{
             @include border-radius(5px, 5px);
+            @include proportions(80px,auto);
             float: left;
-            margin: 2px 0px 0px 2px;
-            width: 80px;
-            height:auto;
+            margin: 2px 0px 0px 2px;           
             border: $borde2px;
             text-align: center;
             font-size: 12px;
@@ -171,10 +162,9 @@
       border-left: $borde2px;
 
       .dialog_head{
+        @include proportions(100%,25px);
         float: left;
         margin-bottom:10px;
-        width: 100%;
-        height: 25px;
         background-color:rgb(220,220,220);
 
         .dialogin{
@@ -198,10 +188,9 @@
 
           .comment_user_image{
             @include border-radius(5px, 5px);
+            @include proportions(30px,30px);
             float: left;
-            margin-right:3px;
-            width:30px;
-            height:30px;
+            margin-right:3px;           
             border: $borde1px;
 
             img{
@@ -211,9 +200,8 @@
 
           .comment_text{
             @include border-radius(5px, 5px);
-            float: left;
-            width: 450px;
-            height:30px;
+            @include proportions(450px,30px);
+            float: left;           
             border: $borde1px;
 
             textarea{
@@ -237,16 +225,16 @@
 
         form{
           float:right;
-          width: 100%;
+          width: inherit;
 
           .message{
             float: left;
             overflow: hidden;
-            width: 100%;
+            width: inherit;
 
             input{
               float: left;
-              width: 100%;
+              width: inherit;
               border-top: $borde2px;
               border-left:none;
             }

@@ -1,9 +1,8 @@
 #simplemodal-container a.modalCloseImg {
-  background:url('../../images/x.png') no-repeat; 
-  width:25px;
-  height:29px;
-  display:inline;
-  z-index:3200;
+  @include proportions(25px,29px);
   @include absolute($top:6px,$right:-2px);
+  background:url('../../images/x.png') no-repeat;
+  z-index:3200; 
+  display:inline;
   cursor:pointer;
 }

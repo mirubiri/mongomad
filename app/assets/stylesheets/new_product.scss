@@ -3,23 +3,20 @@
 .new_product_content{
   @include absolute($top:5px,$left:5px);
   @include border-radius(5px, 5px);
+  @include fixed_width(430px,430px,430px);
   overflow:auto;
-  margin: 0px 0px 0px 0px;
-  min-width:430px;
-  width: 430px;
+  margin: 0px 0px 0px 0px;  
   border: $borde2px;    
   background-color: transparent;
 
   .new_product_title{
+    @include proportions(100%,45px);
     float:left;
-    width:100%;
-    height:45px;
 
     .icon{
+      @include proportions(20px,20px);
       float:left;
-      margin: 12px 5px 0px 30px;
-      width:20px;
-      height: 20px;
+      margin: 12px 5px 0px 30px;      
       border: $borde1px;
     }
     .description{

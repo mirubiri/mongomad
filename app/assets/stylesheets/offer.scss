@@ -3,24 +3,21 @@
 
 .offer {
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
+  @include fixed_width($width265px,$width265px,$width265px);
   float: left;
   overflow:auto;
   margin:5px 0px 8px 12px;
-  min-width: $width265px;
-  width: $width265px;
   border: $borde1px;
   background-color: white;
 
   .offer_header{
+    @include proportions(100%,60px);
     overflow: hidden;
-    margin-bottom: 5px;
-    width: 100%;
-    height: 60px;
+    margin-bottom: 5px;  
 
     .triangle {
       @include relative($top:0px,$right:-240px);
-      width: 0;
-      height: 0;
+      @include proportions(0,0);      
       border-top: 25px solid rgb(220,220,220);
       border-right: 0px solid transparent;
       border-left: 25px solid transparent;
@@ -36,16 +33,16 @@
     .profile_image{
       @include relative($top:-20px,$left:6px);
       @include border-radius(5px, 5px);
+      @include proportions(50px,50px);
       top: -20px;
       left: 6px;
-      overflow: hidden;
-      width: 50px;
-      height: 50px;
+      overflow: hidden;      
       border: $borde1px;
 
       a{
         img{
           @include high-quality-image;
+          @include proportions(50px,50px);
           width: 50px;
           height: 50px;
         }
@@ -54,8 +51,7 @@
 
     .description{
       @include relative($top:-72px,$left:67px); 
-      width: 172px;
-      height: 50px;
+      @include proportions(172px,50px);     
     }
   }
 
@@ -75,12 +71,11 @@
       img{
         @include border-radius(5px, 5px);
         @include high-quality-image;
+        @include proportions(130px,130px);
         float:left;
         overflow: auto;
         margin-bottom:5px;
-        margin-left:5px;
-        width:130px;
-        height:130px;
+        margin-left:5px;        
         border: $borde1px;
       }               
      }
@@ -95,11 +90,10 @@
       img{
         @include border-radius(5px, 5px);
         @include high-quality-image;
+        @include proportions(80px,80px);
         float:left;
         margin-bottom:5px;
-        margin-left:5px;
-        width:80px;
-        height:80px;
+        margin-left:5px;        
         border: $borde1px;
       }                             
     }
