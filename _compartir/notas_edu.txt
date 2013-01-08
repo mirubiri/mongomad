@@ -1,10 +1,48 @@
+PREGUNTAS:
+
+- La 'a' de las fabricas no se puede poner algo menos horrible? :)
+- El id de composer y de receiver, no se podria hacer algo con el?
+  eliminarlo o que ponga el id del usuario: creo que se puede cambiar en la deficion
+  del modelo (me suena de verlo en un rail cast)
+           :composer => {
+             "_id" => "50ebebe8366f695236000011",
+         "user_id" => "50ebebe8366f69523600000f",
+
+
+             :money => {
+             "_id" => "50ebebe8366f695236000012",
+         "user_id" => "50ebebe8366f695236000011",
+
+         :receiver => {
+             "_id" => "50ebebe9366f695236000017",
+         "user_id" => "50ebebe9366f695236000016",
+
+  field :_id, type: String, default: ->{ name.to_s.parameterize }
+
+- no me aparece thing_id por ningun lado en los productos
+1.9.3-p327 :019 > ap o.composer.products.first.thing_id
+NoMethodError: undefined method `thing_id' for #<User::Thing:0x000000057fcf38>
+  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/mongoid-3.0.16/lib/mongoid/attributes.rb:249:in `method_missing'
+  from (irb):19
+  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands/console.rb:47:in `start'
+  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands/console.rb:8:in `start'
+  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands.rb:41:in `<top (required)>'
+  from script/rails:6:in `require'
+  from script/rails:6:in `<main>'
+
+1.9.3-p327 :018 > ap o.composer.products.first.name
+"name"
+1.9.3-p327 :020 > ap o.composer.products.first._id
+"50ebf02c366f69d1f5000003"
+
+
+======================================================================================
+
 TAREAS:
-- renombrar las secondary images > images en el documento de visio
 
 ======================================================================================
 NOTAS:
 
- #,
     #:styles => {
       #:original => ['1920x1680>', :jpg],
       #:small    => ['100x100#',   :jpg],
@@ -21,50 +59,105 @@ sintaxis expect nueva:
     it { expect(request).to have_field(:text).of_type(String) }
 ------------------------------------------------------------------------
 
-Fabricator(:user_thing, class_name: "User::Thing") do
-  user            { Fabricate.build(:user, things:nil) }
-  images(count:1) { Fabricate.build(:user_thing_image, thing:nil) }
-  name            'name'
-  description     'description'
-  stock           10
-  main_image      { |attrs| attrs[:images] &&
-                            attrs[:images].last.file.url }
+
+=begin
+
+  -Relaciones descendentes (Ex. composer,receiver,money)
+    Como norma general hay que fabricar solo las relaciones descendentes
+    imprescindibles en la definicíon de los campos de la fabrica utilizando
+    Fabricate.build()
+
+  -Relaciones ascendentes(Ex. No hay en este caso)
+    Como norma general hay que darles valor nulo
+
+  -Campos (Ex. initial_message)
+    Se les da valor en la definicion de los campos de la fabrica. Puede
+    ser a partir del valor de un campo definido previamente.
+
+ Asi seria la fabrica para offer en un caso normal.
+
+Fabricator(:offer) do
+  composer         { Fabricate.build(:offer_composer,user_id:Fabricate(:user_with_things)) }
+  receiver         { Fabricate.build(:offer_receiver,user_id:Fabricate(:user_with_things)) }
+  money            nil
+  initial_message 'message'
 end
 
-Fabricator(:request) do
-  user_id   nil
-  user_name nil
-  text      'el texto de mi peticion que es un poco largo y ocupa mas de una linea'
-  image     'image_path'
+El problema de esta solucion es que una Offer requiere estar presente como enviada
+o recibida en los usuarios que crea ella misma, asi que se necesita hacer uso de
+after_build, como se detalla a continuacion
+=end
 
-  after_build do |request|
-    user=Fabricate.build(:user)
-    request.user_id ||=user._id
-    request.user_name ||=user.profile.name
+# Lo siguiente es lo que hay que utilizar a la hora de definir las fabricas para
+# Negotiation y Deal.
+
+# ¿Listo para chinofarmear?
+
+Fabricator(:offer) do
+  composer        nil
+  receiver        nil
+  money           nil
+
+  initial_message 'message'
+
+  after_build do |offer|
+
+    user_composer = Fabricate(:user_with_things)
+
+    # user: es transient en :offer_composer, lo que me permite
+    # extraer en la fabrica de offer_composer los datos requeridos del usuario
+    offer.composer = Fabricate.build(:offer_composer,user:user_composer)
+
+
+    # En caso de que fabricaramos los usuarios en los atributos,
+    # en after_build solo podriamos acceder a ellos
+    # utilizando el user_id que guardan composer y receiver de la siguiente
+    # manera:
+    #
+    # composer=User.find(offer.composer.user_id)
+    # receiver=User.find(offer.receiver.user_ud)
+    #
+    # El problema de esto es que si utilizaramos Fabricate.build(:offer)
+    # para fabricar la oferta, obtendriamos una excepcion, ya que el usuario
+    # no se encuentra guardado en la base de datos donde lo busca User.find, con lo que
+    # no podriamos anadir la oferta a los respectivos usuarios dentro de
+    # after_build ya que no podriamos acceder a ellos de ninguna manera.
+    # En cambio al crearlos en after_build no nos hace falta recuperarlos
+    # con un User.find ya que disponemos de ellos en las variables, lo que
+    # a su vez permite el uso de offer=Fabricate.build(:offer) y el posterior
+    # offer.save, ademas de poder incluir en ellos la oferta sin problemas.
+    # Este es el motivo por lo que en este caso no fabricamos los usuarios en
+    # los atributos
+    user_composer.sent_offers << offer
+
+
+    user_receiver = Fabricate(:user_with_things)
+    offer.receiver = Fabricate.build(:offer_receiver,user:user_receiver)
+    user_receiver.received_offers << offer
+
   end
 end
 
-Fabricator(:user_thing_image, class_name: "User::Thing::Image") do
-  thing { Fabricate.build(:user_thing, secondary_images:nil) }
-  file  { File.open('app/assets/images/rails.png') }
-
-  after_build do |image|
-    image.thing &&
-    image.thing.main_image = image.thing.images.last.file.url
-  end
+Fabricator(:offer_with_money, from: :offer) do
+    money { Fabricate.build(:offer_money,user_id:offer.composer.user_id) }
 end
 
-======================================================================================
+-----------------------------------------------------------------------------
 
+Fabricator(:offer_composer, class_name: "Offer::Composer") do
+  transient :user
+  offer     nil # Como es una relacion hacia arriba es nil
 
-  user_id           nil
-  name              nil
-  image             nil
+  products  do |a|
+    # Devuelve un array de productos creados a partir de cada una
+    # de las things de user
+    a[:user].things.each do |thing|
+      Fabricate.build(:offer_composer_product,thing:thing) #thing: es transient igual que :user
+    end
 
-  after_build do |composer|
-    user = Fabricate.build(:user)
-    composer.user_id ||= user._id
-    composer.name ||= user.profile.name
-    composer.image ||= user.profile.image
   end
+
+  user_id   { |a| a[:user]._id }
+  name      { |a| a[:user].profile.name }
+  image     { |a| a[:user].profile.image.url }
 end

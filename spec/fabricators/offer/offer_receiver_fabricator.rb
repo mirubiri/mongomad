@@ -4,7 +4,7 @@ Fabricator(:offer_receiver, class_name: "Offer::Receiver") do
 
   products  do |a|
     a[:user].things.each do |thing|
-      Fabricate.build(:offer_receiver_product,thing:thing)
+      Fabricate.build(:offer_receiver_product, thing:thing)
     end
   end
 
