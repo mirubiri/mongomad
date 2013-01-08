@@ -4,5 +4,5 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   name            'name'
   description     'description'
   stock           1
-  main_image      { |attrs| attrs[:images].last.file.url }
+  main_image      { |a| a[:images].last.file.url }
 end

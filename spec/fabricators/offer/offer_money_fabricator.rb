@@ -1,5 +1,6 @@
 Fabricator(:offer_money, class_name: "Offer::Money") do
-  offer    nil
-  user_id  nil
+  transient :user
+  offer     nil
+  user_id   { |a| a[:user]._id }
   quantity 25
 end

@@ -15,6 +15,11 @@ Fabricator(:offer) do
   end
 end
 
+## TODO: Esto esta bien? :)
 Fabricator(:offer_with_money, from: :offer) do
-    money { Fabricate.build(:offer_money, user_id:offer.composer.user_id) }
+  money { Fabricate.build(:offer_money, user_id:nil) }
+
+  after_build do |offer|
+    offer.money.user_id = offer.composer._id
+  end
 end
