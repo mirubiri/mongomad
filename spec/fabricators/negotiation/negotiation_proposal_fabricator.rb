@@ -1,3 +1,4 @@
+=begin
 Fabricator(:negotiation_proposal, class_name: "Negotiation::Proposal") do
   transient :offer
   negotiation nil

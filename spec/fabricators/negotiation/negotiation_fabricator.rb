@@ -1,3 +1,4 @@
+=begin
 Fabricator(:negotiation) do
   proposals nil
   messages nil
@@ -16,12 +17,9 @@ end
 Fabricator(:negotiation_with_money, from: :negotiation) do
   proposal = Fabricate.build(:negotiation_proposal, offer:offer)
   negotiation.proposals.last = proposal
-
-
-
 end
 
-=begin
+
   money { Fabricate.build(:proposal_with_money, user_id:nil) }
 
   after_build do |negotiation|
@@ -35,3 +33,5 @@ end
     offer.money.user_id = offer.composer._id
   end
 end
+
+=end
