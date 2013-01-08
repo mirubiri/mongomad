@@ -4,8 +4,7 @@
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
   @include fixed_width(825px,825px,825px);
   float: left;
-  margin-bottom: 25px;
-  margin-left: 15px;
+  margin: 0px 0px 25px 15px;
   border: $borde1px;
   background-color: white;
 
@@ -16,22 +15,24 @@
       width: 38%;
 
       .proposition{
-        float:left;
-        overflow:hidden;
+        float:inherit;
+        overflow:inherit;
         width: 100%;
 
         .proposition_header{
           @include proportions(100%,60px);
-          overflow: hidden;
+          overflow: inherit;
           margin-bottom: 5px;
           border-bottom:$borde1px;
 
           .triangle {
             @include relative($top:0px,$right:-290px);
             @include proportions(0,0);
-            border-top: 25px solid rgb(220,220,220);
-            border-right: 0px solid transparent;
-            border-left: 25px solid transparent;
+            border:{
+              top: 25px solid rgb(220,220,220);
+              right: 0px solid transparent;
+              left: 25px solid transparent;
+            }
           }
 
           .profile_image{
@@ -91,16 +92,16 @@
           .orderer_product{
             @include border-radius(5px, 5px);
             @include proportions(110px,110px);
-            float:left;
+            float:inherit;
             border: $borde1px;
 
             img{
               @include proportions(90px,90px);
-              float:left; 
+              float:inherit; 
             }
 
             .product-title{
-              float: left;
+              float: inherit;
               text-align: center;
               font-size: 10px;
             }
@@ -110,7 +111,7 @@
           .orderer_money{
             @include border-radius(5px, 5px);
             @include proportions(80px,auto);
-            float: left;
+            float: inherit;
             margin: 2px 0px 0px 2px;           
             border: $borde2px;
             text-align: center;
@@ -169,8 +170,7 @@
 
         .dialogin{
           float:left;
-          margin-top: 4px;
-          margin-left:12px;
+          margin-top: 4px 0px 0px 12px;
           color:near-black;
           font-size:10px;
         }
@@ -233,10 +233,12 @@
             width: inherit;
 
             input{
-              float: left;
+              float: inherit;
               width: inherit;
-              border-top: $borde2px;
-              border-left:none;
+              border:{
+                top: $borde2px;
+                left:none;
+              }
             }
           }
 

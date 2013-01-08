@@ -35,8 +35,7 @@
     input[type='search']{
       @include reset-search-field;
       float: left;
-      margin-top: 5px;
-      margin-right:20px;
+      margin: 5px 20px 0px 0px;
     }
 
     .header_user_image{
@@ -55,14 +54,15 @@
       float:left;
       margin-left:5px;
       vertical-align:text-top;
-      font-weight:bolder;        
-      font-size:8px;
+      font:{
+        weight:bolder;
+        size:8px;
+      }
 
       p{
         @include proportions(100%,10px);
         float: left;
-        margin:0px;
-        margin-bottom:2px;   
+        margin:0px 0px 2px 0px;
         font-size:9px;
       } 
     }

@@ -33,7 +33,7 @@
           a{
             @include unstyled-link;
             float:left;
-            margin-top: 5px;           
+            margin-top: 3px;           
           }
         }
 
@@ -41,7 +41,7 @@
           background-color: grey;
           color: white;
           cursor: auto;
-        }
+        }        
 
         .nav_element:last-child{
           border:none;
