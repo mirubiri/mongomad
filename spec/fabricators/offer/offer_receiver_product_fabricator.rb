@@ -3,7 +3,7 @@ Fabricator(:offer_receiver_product, class_name: "Offer::Receiver::Product") do
   receiver    nil
   images      do |attrs|
     attrs[:thing].images.each do |image|
-      Fabricate.build(:offer_composer_product_image, file:image.file.url)
+      Fabricate.build(:offer_receiver_product_image, file:image.file.url)
     end
   end
   thing_id    { |attrs| attrs[:thing]._id }
