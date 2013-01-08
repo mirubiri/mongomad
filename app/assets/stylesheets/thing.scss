@@ -10,10 +10,9 @@
   background-color: white;
 
   .thing_image{
+    @include proportions(175px,175px);
     float: left;
-    margin: 15px 0px 5px 9px;
-    width: 175px;
-    height: 175px;
+    margin: 15px 0px 5px 9px;    
     border: $borde1px;
 
     img{
@@ -21,11 +20,10 @@
     }
   }
   .thing_description{
+    @include proportions(175px,45px);
     float: left;
     overflow: auto;
     margin: 0px 0px 15px 9px;
-    width: 175px;
-    height: 45px;
     border: $borde1px;    
   }
 

@@ -10,9 +10,8 @@
   overflow: visible;
 
   .main_container_header{
+    @include fixed_width(100%,500px,100%);
     float:left;
-    width:100%;
-    min-width:500px;
     margin-bottom:15px;
     border-bottom: $borde2px;
     background-color: white;
@@ -23,11 +22,11 @@
 
       nav{
         @include float-children('.nav_element',left);
-        float:left;
-        width:60%;           
+        @include proportions(60%,26px);
+        float:left;          
 
-        .nav_element{
-          height:26px; // tiene para que este a la misma altura que el gradiente izdo
+        .nav_element{  
+          height: 26px;        
           padding: 0px 5px 0px 10px;
           border-right: $borde2px;
 
@@ -77,8 +76,7 @@
       
   .main_container_elementList{
     @include center-horizontally($width98pct);
-    width:$width98pct;
-    min-width:$width98pct;
+    @include fixed_width($width98pct,$width98pct,$width98pct);
     overflow: auto;
   }
 }

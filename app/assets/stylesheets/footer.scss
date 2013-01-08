@@ -2,8 +2,7 @@
 
 footer{
   @include absolute($top:0px);
-  width:100%;
-  height:30px;
+  @include proportions(100%,30px);
   color:grey;
   text-align:center;
 }

@@ -1,12 +1,11 @@
+@import "variables";
+
 .devise_content{
+  @include fixed_width (100%,1200px,100%);
   position: fixed;
   top: 100px;
-  width: 100%;
-  max-width:100%;
-  min-width:1200px;
-  overflow: hidden;
-  color: black; 
+  z-index: 1000; 
   display: inline;
-  z-index: 1000;
   overflow: auto;
+  color: black;
 }
