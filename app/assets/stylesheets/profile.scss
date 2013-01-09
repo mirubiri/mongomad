@@ -25,7 +25,7 @@
         font:{
           weight:bolder;
           size:14px;
-          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          family:$verdana;
         }
       }
 
@@ -34,7 +34,7 @@
         font:{
           weight:bold;
           size:12px;
-          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          family:$verdana;
         }
       }
 
@@ -49,7 +49,7 @@
           font:{
             weight:bold;
             size:10px;
-            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+            family:$verdana;
           }
         }
         .info_element_description{
@@ -58,7 +58,7 @@
           width:100%;
           font:{
             size:10px;
-            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+            family:$verdana;
           }
         }
       }
@@ -99,7 +99,7 @@
         font:{
           weight:bolder;
           size:14px;
-          family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+          family:$verdana;
         }
       }
       .result_title{
@@ -108,7 +108,7 @@
         font:{
             weight:italic;
             size:10px;
-            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+            family:$verdana;
         }
       }
       .result_number{
@@ -116,7 +116,7 @@
         font:{
             weight:bold;
             size:18px;
-            family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+            family:$verdana;
         }
       }
     }
@@ -154,7 +154,7 @@
       font:{
         weight:bolder;
         size:14px;
-        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        family:$verdana;
       }
     }
     #data_list{
@@ -165,7 +165,7 @@
       font:{
         weight:bolder;
         size:14px;
-        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        family:$verdana;
       }
 
       .data_numbers{
@@ -182,7 +182,7 @@
       font:{
         weight:bolder;
         size:14px;
-        family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+        family:$verdana;
       }
 
       .comment{

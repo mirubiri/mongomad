@@ -15,6 +15,10 @@ $width72pct: 72%;
 $width98pct: 98%;
 $width265px: 265px;
 
+//font-family
+$verdana: Verdana, Arial, Helvetica, sans-serif;
+
+
 //my own mixins
 @mixin fixed_width($width,$minwidth,$maxwidth) {
   width: $width;
