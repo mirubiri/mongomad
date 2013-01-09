@@ -2,7 +2,7 @@ Fabricator(:offer) do
   composer        nil
   receiver        nil
   money           nil
-  initial_message 'message'
+  initial_message 'initial message'
 
   after_build do |offer|
     user_composer = Fabricate(:user_with_things)
@@ -15,7 +15,6 @@ Fabricator(:offer) do
   end
 end
 
-## TODO: Esto esta bien? :)
 Fabricator(:offer_with_money, from: :offer) do
   money { Fabricate.build(:offer_money, user_id:nil) }
 

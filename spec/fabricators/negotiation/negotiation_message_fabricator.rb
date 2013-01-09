@@ -1,8 +1,8 @@
 Fabricator(:negotiation_message, class_name: "Negotiation::Message") do
-  transient :offer
+  transient   :offer
   negotiation nil
-  user_id     { |a| a[:offer].composer._id }
-  user_name   { |a| a[:offer].composer.name }
-  text        { |a| a[:offer].initial_message }
-  image       { |a| a[:offer].composer.image }
+  user_id     { |attrs| attrs[:offer].composer._id }
+  user_name   { |attrs| attrs[:offer].composer.name }
+  text        { |attrs| attrs[:offer].initial_message }
+  image       { |attrs| attrs[:offer].composer.image }
 end
