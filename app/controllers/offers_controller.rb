@@ -31,6 +31,7 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.json
   def new
+    @user = user_logged
     @offer = Offer.new
 
     respond_to do |format|

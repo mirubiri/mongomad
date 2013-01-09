@@ -36,3 +36,70 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   width: $width;
   height: $height;
 }
+
+.product_in_offer{
+    float: left;
+    overflow:none;    
+    background-color: white;
+
+    .title{
+      float:inherit;  
+      background-color: #2B3750;
+      color:white;
+
+      .user_image{
+        float:inherit;
+      }
+      .description{
+        float: inherit;
+        font-weight:bold;
+      }
+    }
+
+    .monney{
+      float:left;
+
+      textarea{
+        float:inherit;
+        overflow: hidden;        
+        border: $borde1px;
+        background-color: transparent;
+        color: #000000;
+        font-size: 10px;
+        resize: none;
+      }
+
+      button{
+        float:inherit;       
+        img{
+          float:inherit;
+        }
+      }
+    }
+
+    .product_container{
+      float: left;        
+      overflow: auto;
+
+      .product{
+        float: inherit;
+        overflow: none;
+        border: $borde1px;
+
+        .product-image{
+          float:inherit;          
+
+          img{            
+          }
+        }
+
+        .product-title{
+          float: inherit;
+
+          input{
+            visibility: hidden;
+          }
+        }
+      }
+    }
+  }

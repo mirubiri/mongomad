@@ -23,31 +23,28 @@
       nav{
         @include float-children('.nav_element',left);
         @include proportions(60%,26px);
-        float:left;          
+        float:left;
 
-        .nav_element{  
-          height: 26px;        
-          padding: 0px 5px 0px 10px;
+        a{
+          float: inherit;
+          @include unstyled-link;
+          height: 27px;
           border-right: $borde2px;
 
-          a{
-            @include unstyled-link;
-            float:left;
-            margin-top: 3px;           
-          }
+          .nav_element{  
+            padding: 3px 5px 0px 10px;                      
+          }          
         }
 
-        .nav_element:hover{
-          background-color: grey;
+        a:hover{
+          background-color:grey;
           color: white;
-          cursor: auto;
-        }        
-
-        .nav_element:last-child{
-          border:none;
         }
 
-      }
+        a:last-child{
+          border:none;
+        }        
+      } 
 
       .main_container_header_search{
         float:right;

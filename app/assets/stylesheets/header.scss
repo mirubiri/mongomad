@@ -8,21 +8,26 @@
   z-index: 1000; 
   display: inline;
   overflow: hidden;
-  border: $borde1px;
   background-color:#0a67a3;
   color: white;
 
     .header_logo{
-      @include proportions(120px,30px);
+      @include proportions(140px,20px);
       float: left;
-      margin-left: $margen80px;      
-      border: $borde1px;        
+      background:{
+        image: image-url('http://localhost:3000/system/images/logo.png'); 
+        repeat:no-repeat;
+      }     
+      margin:{
+        top: 6px;
+        left: $margen80px; 
+      }   
     }
     
     nav{
       @include float-children('a',left);
       float: left;
-      margin: 6px 10px 0px 200px;
+      margin: 4px 10px 0px 200px;
       
       a{
         @include unstyled-link;
@@ -39,9 +44,9 @@
     }
 
     .header_user_image{
-      @include proportions(30px,30px);
-      float:left;   
-      border: $borde1px;
+      @include proportions(26px,26px);
+      float:left;
+      margin-top: 2px;   
 
       img{
         @include high-quality-image;

@@ -1,15 +1,15 @@
 <header class="main_container_header">
   <div class="main_container_header_menu">
-     <nav>      
-      <div class="nav_element">
-          <%= link_to 'Ofertas', user_offers_path(@user)%>
-      </div>
-      <div class="nav_element">
-          <%= link_to 'Negociaciones', user_negotiations_path(@user) %>
-      </div>
-      <div class="nav_element">
-          <%= link_to 'Tratos', user_deals_path(@user) %>
-      </div>
+     <nav>          
+      <%= link_to user_offers_path(@user) do %>
+        <div class="nav_element">Ofertas</div>
+      <% end %> 
+      <%= link_to user_negotiations_path(@user) do %>
+        <div class="nav_element">Negociaciones</div>
+      <% end %> 
+      <%= link_to user_deals_path(@user) do %>
+        <div class="nav_element">Tratos</div>
+      <% end %>      
      </nav>
      <div class="main_container_header_search">
       <input type="search">

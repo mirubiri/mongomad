@@ -9,6 +9,7 @@
   margin: 0px 0px 0px 0px;  
   border: $borde2px;
   background-color: white;
+  display: none;
 
   .new_offer_title{
     @include proportions(100%,45px);
@@ -29,52 +30,34 @@
   }
 
   .his_products{
+    @extend .product_in_offer;
     @include fixed_width(316px,316px,316px);
     @include fixed_height(555px,555px,555px);
-    float: left;
-    overflow:none;    
-    background-color: white;
 
     .title{
       @include proportions(316px,40px);
-      float:inherit;  
-      background-color: #2B3750;
-      color:white;
 
-      .sender_image{
+      .user_image{
         @include proportions(40px,40px);
-        float:inherit;
         margin: 0px 10px 0px 30px;             
       }
       .description{
-        float: inherit;
         margin-top: 10px;
-        font-weight:bold;
       }
     }
 
-    .monney_to_recieve{
-      float:left;
+    .monney{
       margin: 10px 7px 10px 7px;
       width: 300px;
 
       textarea{
         @include proportions(260px,24px);
-        float:inherit;
-        overflow: hidden;        
-        border: $borde1px;
-        background-color: transparent;
-        color: #000000;
-        font-size: 10px;
-        resize: none;
       }
 
       button{
         @include proportions(30px,30px);
-        float:inherit;       
         img{
           @include proportions(26px,26px);
-          float:inherit;
           margin:0px;          
         }
       }
@@ -83,21 +66,15 @@
     .product_container{
       @include fixed_height(430px,430px,430px);
       width: 300px;
-      float: left;        
-      overflow: auto;
       margin:10px 7px 10px 7px;      
 
       .product{
         @include border-radius(5px, 5px);
         @include proportions(125px,125px);
-        float: inherit;
-        overflow: none;
         margin:12px 0px 0px 12px;        
-        border: $borde1px;
 
         .product-image{
           @include proportions(123px,123px);
-          float:inherit;          
 
           img{
             @include high-quality-image;
@@ -106,12 +83,10 @@
         }
 
         .product-title{
-          float: inherit;
           margin: 1px;
           width: 126px;
 
           input{
-            visibility: hidden;
             width: 124px;
           }
         }
@@ -132,7 +107,7 @@
       background-color: #2B3750;
       color:white;
 
-      .reciever_image{
+      .user_image{
         @include proportions(40px,40px);
         float:inherit;
         margin-right:0px 5px 0px 10px;
@@ -144,7 +119,7 @@
       }
     }
 
-    .monney_to_give{
+    .monney{
       float:left;
       margin: 10px 7px 10px 7px;
       width: 148px;

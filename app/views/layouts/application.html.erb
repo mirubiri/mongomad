@@ -4,7 +4,13 @@
 <%= render partial: 'layouts/global_partials/metadata' %>
 
 <body>
-  <%= render :partial => "layouts/#{controller.sub_layout}" %>
+  <%= render :partial => "layouts/#{controller.sub_layout}" %> 
+
+  <% if current_user %>
+    <%= render :partial => "layouts/new_offer" %>
+    <%= render :partial => "layouts/new_petition" %>
+  <% end %>
+
 </body>
 
 </html>

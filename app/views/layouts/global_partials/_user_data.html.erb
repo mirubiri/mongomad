@@ -5,15 +5,16 @@
   <div class="user_name">
     <%= @user.profile.nickname %></br>
     <%= @user.profile.country %></br>
-  </div>
-  
+  </div> 
+
   <a href="newOffer.html" target="_blank">        
     <%= button_tag "Nueva Oferta", :class => "add_offer_button",
     :id => "new-offer-button" %>
   </a>
+
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil' %>
+      <%= link_to 'Perfil', user_profile_path(@user) %>
     </div>
     <div class="menu_icon">
       <%= link_to 'Prod', user_things_path(@user) %>

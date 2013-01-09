@@ -67,6 +67,7 @@
       @include center-horizontally(70%);
       overflow: auto;
       margin: 10px 0px 10px 0px;
+      padding-left: 40px;
 
       .menu_icon{
         @include border-radius(3px, 3px);

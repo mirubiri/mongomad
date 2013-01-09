@@ -1,7 +1,10 @@
 #simplemodal-container a.modalCloseImg {
   @include proportions(25px,29px);
   @include absolute($top:6px,$right:-2px);
-  background:url('../../images/x.png') no-repeat;
+  background:{
+    image: image-url('http://localhost:3000/system/images/x.png'); 
+    repeat:no-repeat;
+  } 
   z-index:3200; 
   display:inline;
   cursor:pointer;

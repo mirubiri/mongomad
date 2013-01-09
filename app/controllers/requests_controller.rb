@@ -30,6 +30,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
+    @user = current_user
     @request = Request.new
 
     respond_to do |format|

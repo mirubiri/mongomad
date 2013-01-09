@@ -1,6 +1,6 @@
 @import "variables";
 
-.new_request_content{
+.new_petition_content{
   @include absolute($top:5px,$left:5px);
   @include border-radius(5px, 5px);
   @include fixed_width(430px,430px,430px);
@@ -8,8 +8,9 @@
   margin: 0px 0px 0px 0px;  
   border: $borde2px;    
   background-color: white;
+  display: none;
 
-  .new_request_title{
+  .new_petition_title{
     @include proportions(100%,45px);
     float:left;   
 
