@@ -7,9 +7,6 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all.to_a
-    @requests = User.requests
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
