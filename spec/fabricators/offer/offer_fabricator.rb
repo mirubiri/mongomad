@@ -2,7 +2,7 @@ Fabricator(:offer) do
   composer        nil
   receiver        nil
   money           nil
-  initial_message 'initial message'
+  initial_message 'this is offer\'s initial message. it can\'t be too long but has to be long enought to try the interface.'
 
   after_build do |offer|
     user_composer = Fabricate(:user_with_things)
