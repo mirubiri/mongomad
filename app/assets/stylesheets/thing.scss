@@ -11,12 +11,14 @@
 
   .thing_image{
     @include proportions(175px,175px);
+    overflow: none;
     float: left;
     margin: 15px 0px 5px 9px;    
     border: $borde1px;
 
     img{
       @include high-quality-image;
+      @include proportions(175px,175px);
     }
   }
   .thing_description{

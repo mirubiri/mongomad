@@ -87,7 +87,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         border: $borde1px;
 
         .product-image{
-          float:inherit;          
+          float:inherit; 
+          overflow: none;         
 
           img{            
           }
