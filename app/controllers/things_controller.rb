@@ -40,7 +40,8 @@ class ThingsController < ApplicationController
 
   # GET /things/1/edit
   def edit
-    @thing = Thing.find(params[:id])
+    @user = current_user
+    @thing = @user.things.find(params[:id])
   end
 
   # POST /things
