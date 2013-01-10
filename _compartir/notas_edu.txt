@@ -1,6 +1,5 @@
 PREGUNTAS:
 
-- La 'a' de las fabricas no se puede poner algo menos horrible? :)
 - El id de composer y de receiver, no se podria hacer algo con el?
   eliminarlo o que ponga el id del usuario: creo que se puede cambiar en la deficion
   del modelo (me suena de verlo en un rail cast)
