@@ -8,6 +8,7 @@ describe Negotiation do
   describe 'Relations' do
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
     it { should embed_many(:messages).of_type(Negotiation::Message) }
+    it { should have_and_belong_to_many(:users) }
   end
 
   describe 'Attributes' do

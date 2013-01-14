@@ -9,7 +9,6 @@ Formulario de la Oferta(se generará con JS para tener los id's)
 <input name="composer_things[12745145]" type="text" value="1"/>
 <input name="receiver_things[10252451]" type="text" value="1"/>
 
-
 Respuesta en JSON:
 
 {
@@ -24,5 +23,5 @@ Respuesta en JSON:
   }
   "receiver_things"=> {
     "10252451"=>"1"
-  }  
+  }
 }

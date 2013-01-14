@@ -9,10 +9,9 @@ describe User do
     it { should embed_one(:profile).of_type(User::Profile) }
     it { should embed_many(:things).of_type(User::Thing) }
     it { should have_and_belong_to_many(:requests).as_inverse_of(nil) }
-    it { should have_and_belong_to_many(:sent_offers).of_type(Offer).as_inverse_of(nil) }
-    it { should have_and_belong_to_many(:received_offers).of_type(Offer).as_inverse_of(nil) }
-    it { should have_and_belong_to_many(:negotiations).as_inverse_of(nil) }
-    it { should have_and_belong_to_many(:deals).as_inverse_of(nil) }
+    it { should have_and_belong_to_many(:offers) }
+    it { should have_and_belong_to_many(:negotiations) }
+    it { should have_and_belong_to_many(:deals) }
   end
 
   describe 'Attributes' do
