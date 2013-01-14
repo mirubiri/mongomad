@@ -7,8 +7,8 @@ Fabricator(:offer_composer_product, class_name: "Offer::Composer::Product") do
     end
   end
   thing_id    { |attrs| attrs[:thing]._id }
-  main_image  { |attrs| attrs[:thing].main_image }
   name        { |attrs| attrs[:thing].name }
   description { |attrs| attrs[:thing].description }
   quantity    1
+  main_image  { |attrs| attrs[:thing].main_image }
 end

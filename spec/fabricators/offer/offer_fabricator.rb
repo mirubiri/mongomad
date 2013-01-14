@@ -5,7 +5,3 @@ Fabricator(:offer) do
   money           nil
   initial_message 'this is offer\'s initial message. it can\'t be too long but has to be long enought to try the interface.'
 end
-
-Fabricator(:offer_with_money, from: :offer) do
-  money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:users].first._id) }
-end

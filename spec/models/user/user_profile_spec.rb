@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User::Profile do
   let(:profile) do
-    Fabricate(:user).profile
+    Fabricate.build(:user).profile
   end
 
   describe 'Relations' do

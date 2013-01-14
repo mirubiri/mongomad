@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Negotiation::Proposal::Composer::Product::Image do
   let(:image) do
-    Fabricate(:negotiation).proposals.last.composer.products.last.images.last
+    Fabricate.build(:negotiation).proposals.last.composer.products.last.images.last
   end
 
   describe 'Relations' do

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Negotiation::Proposal::Composer do
   let(:composer) do
-    Fabricate(:negotiation).proposals.last.composer
+    Fabricate.build(:negotiation).proposals.last.composer
   end
 
   describe 'Relations' do
