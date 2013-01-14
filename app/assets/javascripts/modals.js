@@ -1,5 +1,8 @@
 $(document).ready(function() {
-  
+
+  $('#new-request-form').hide();
+  $('#new-offer-form').hide();
+
   $('#add_request_button').click(function(e){
       e.preventDefault();
       $('#new-request-form').modal({
@@ -16,4 +19,9 @@ $(document).ready(function() {
           overlayCss: {backgroundColor:"#000000"}
       });
   });
+
+  $("form").bind("ajax:success", function(xhr, data, status){
+    $.modal.close();
+  });
+  
 });

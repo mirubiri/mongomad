@@ -9,7 +9,6 @@
   margin: 0px 0px 0px 0px;  
   border: $borde2px;
   background-color: white;
-  display: none;
 
   .new_offer_title{
     @include proportions(100%,45px);
@@ -18,8 +17,11 @@
     .icon{
       @include proportions(20px,20px);
       float:inherit;
-      margin: 12px 5px 0px 30px;     
+      margin: 12px 5px 0px 10px;     
       border: $borde1px;
+      img{
+        @include proportions(20px,20px);
+      }
     }
     .description{
       float: inherit;
@@ -39,19 +41,23 @@
 
       .user_image{
         @include proportions(40px,40px);
-        margin: 0px 10px 0px 30px;             
+        margin: 2px 0px 0px 5px;        
+        img{
+          @include proportions(35px,35px);
+        }             
       }
       .description{
         margin-top: 10px;
       }
     }
 
-    .monney{
+    .money{
+      float:left;
       margin: 10px 7px 10px 7px;
-      width: 300px;
+      width: 148px;
 
       textarea{
-        @include proportions(260px,24px);
+        @include proportions(110px,24px);
       }
 
       button{
@@ -110,7 +116,10 @@
       .user_image{
         @include proportions(40px,40px);
         float:inherit;
-        margin-right:0px 5px 0px 10px;
+        margin:2px 0px 0px 5px;
+        img{
+          @include proportions(35px,35px);
+        }
       }
       .description{
         float: inherit;
@@ -119,7 +128,7 @@
       }
     }
 
-    .monney{
+    .money{
       float:left;
       margin: 10px 7px 10px 7px;
       width: 148px;
@@ -258,7 +267,7 @@
             @include proportions(100%,12px);
             float:left;
             overflow:none;
-            margin-top:-4px 0px 5px 0px;
+            margin:-5px 0px 3px 0px;
             font:{
               weight:bold;
               size:10px;

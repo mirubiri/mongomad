@@ -1,16 +1,18 @@
 <div class="new_petition_content" id="new-request-form">
-  <div class="new_petition_title">
-    <div class="icon"></div>
-    <div class="description">Nueva Petición</div>
-  </div> 
-  <div class="new_offer_text">
-    <textarea name="" id="" cols="30" rows="10">
-      nueva peticion
-    </textarea>
-  </div>
-  <div class="send_button">
-    <button type="button" name="boton" value="" class="addofferbutton">
-      Enviar Petición
-    </button>
-  </div>   
+  <%= form_for(Request.new, :url => users_path) do |form| %>
+    <div class="new_petition_title">
+      <div class="icon">
+        <%= image_tag(@user.profile.image) %>
+      </div>
+      <div class="description">Nueva Petición</div>
+    </div> 
+    <div class="new_offer_text">
+      <textarea name="" id="" cols="30" rows="10">
+        nueva peticion
+      </textarea>
+    </div>
+    <div class="send_button">
+      <%= form.submit %>
+    </div> 
+  <% end %>  
 </div>  

@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
-  # GET /offers
-  # GET /offers.json
+  
+  respond_to :html, :js
 
   def sub_layout
     "offers"
@@ -48,6 +48,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
+    @user = user_logged
     @offer = Offer.new(params[:offer])
 
     respond_to do |format|

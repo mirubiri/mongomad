@@ -8,7 +8,6 @@
   margin: 0px 0px 0px 0px;  
   border: $borde2px;    
   background-color: white;
-  display: none;
 
   .new_petition_title{
     @include proportions(100%,45px);
@@ -19,10 +18,13 @@
       float:inherit;
       margin: 12px 5px 0px 30px;      
       border: $borde1px;
+      img{
+        @include proportions(30px,30px);
+      }
     }
     .description{
       float: inherit;
-      margin-top: 16px;
+      margin: 16px 0px 0px 4px;
       font:{
         weight:bold;
         size:14px;
