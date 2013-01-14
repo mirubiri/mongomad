@@ -8,6 +8,7 @@ describe Deal do
   describe 'Relations' do
     it { should embed_one(:agreement).of_type(Deal::Agreement) }
     it { should embed_many(:messages).of_type(Deal::Message) }
+    it { should have_and_belong_to_many(:users) }
   end
 
   describe 'Attributes' do

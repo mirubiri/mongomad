@@ -9,6 +9,7 @@ describe Offer do
     it { should embed_one(:composer).of_type(Offer::Composer) }
     it { should embed_one(:receiver).of_type(Offer::Receiver) }
     it { should embed_one(:money).of_type(Offer::Money) }
+    it { should have_and_belong_to_many(:users) }
   end
 
   describe 'Attributes' do

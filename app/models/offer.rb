@@ -5,6 +5,7 @@ class Offer
   embeds_one :composer, class_name: "Offer::Composer", cascade_callbacks: true
   embeds_one :receiver, class_name: "Offer::Receiver", cascade_callbacks: true
   embeds_one :money,    class_name: "Offer::Money", cascade_callbacks: true
+  has_and_belongs_to_many :users
 
   field :initial_message, type: String
 
