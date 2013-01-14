@@ -1,4 +1,4 @@
-<%= form_for(@offer) do |form| %>
+<%= form_for(@offer, :url => user_offers_path) do |form| %>
 
   <% if @offer.errors.any? %>
     <div id="error_explanation">
@@ -18,7 +18,7 @@
   </div>
   <div class="his_products">
     <div class="title">
-      <div class="sender_image"><%= @composer.image %></div>
+      <div class="sender_image"><%= @user.profile.image %></div>
       <div class="description">Sus productos</div>
     </div>
     <div class="money_to_recieve">
@@ -28,7 +28,7 @@
       <button></button>
     </div>
     <div class="product_container">
-      <% @receiver_things.each do |thing| %>
+      <% @user.things do |thing| %>
         <div class="product">
           <div class="product-image"><%= thing.main_image %></div>
           <div class="product-title">
@@ -47,7 +47,7 @@
     </div>
     <div class="summary">
       <div class="summary_header">
-        <div class="summary_header_image"><%= @user.image %></div>
+        <div class="summary_header_image"><%= @user.profile.image %></div>
         <div class="summary_header_text">
           <div class="nombre_usuario">Sergio</div>
           <textarea name="" id="" cols="5" rows="2">
@@ -85,7 +85,7 @@
 
   <div class="my_products">
     <div class="title">
-      <div class="reciever_image"><%= @user.image %></div>
+      <div class="reciever_image"><%= @user.profile.image %></div>
       <div class="description">Mis productos</div>
     </div>
     <div class="monney_to_give">
@@ -95,7 +95,7 @@
       </textarea>
     </div>
     <div class="product_container">
-      <% @composer_things.each do |thing| %>
+      <% @user.things.each do |thing| %>
         <div class="product">
           <div class="product-image"><%= thing.main_image %></div>
           <div class="product-title">
