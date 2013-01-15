@@ -5,31 +5,34 @@
          <div class="proposition_header">
           <div class="triangle"></div>
           <div class="profile_image">
-            <%#= proposal.composer.profile.image %></div>
-        </div>
-        <div class="offered_things">          
-          <%# negotiation.proposal.composer.products.each do |product| %>
-            <div class="offered_product">              
-              <%#= image_tag(product.main_image) %>
-              <div class="product-title"><%#= product.name %></div>
-            </div>             
-          <%# end %>
-          
-          <div class="orderer_money">
-            <%#= negotiation.proposal.money.quantity %>
+            <%= image_tag(negotiation.proposals.last.composer.image) %>
           </div>
         </div>
-        <div class="orderer_things">
-          
-          <%# negotiation.proposal.receiver.products.each do |thing| %>
-            <div class="orderer_product">
-              <%#= image_tag(product.main_image) %>
-              <div class="product-title"><%#= thing.name %></div>
-            </div>          
-          <%# end %>
-          
+        <div class="offered_things">          
+          <% negotiation.proposals.last.composer.products.each do |product| %>
+            <div class="offered_product">              
+              <%= image_tag(product.main_image) %>
+              <div class="product-title">
+                <%= product.name %>
+              </div>
+            </div>             
+          <% end %>          
           <div class="orderer_money">
-            <%#= negotiation.proposal.money.quantity %>
+            <%#= negotiation.proposals.last.money.quantity %>
+          </div>
+        </div>
+
+        <div class="orderer_things">          
+          <% negotiation.proposals.last.receiver.products.each do |product| %>
+            <div class="orderer_product">
+              <%= image_tag(product.main_image) %>
+              <div class="product-title">
+                <%= product.name %>
+              </div>
+            </div>          
+          <% end %>          
+          <div class="orderer_money">
+            <%#= negotiation.proposals.last.money.quantity %>
           </div>
         </div>      
       </div>
@@ -45,20 +48,23 @@
     <div class="dialog_container">
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
-        <span style="float:right"><%= button_to "x", 
+        <%= link_to "x", 
               user_negotiation_path(current_user,negotiation.id),
               :method => :delete, 
-              :confirm => "Are you sure?" %>   
-        </span> 
+              :confirm => "Are you sure?" 
+        %>         
       </div>
       <div class="conversation" id="conversationofnegotiation">
-        <!-- aqui viene el javascript que rellena la conversacion con los comments -->
-        <div class="comment">
-          <div class="comment_user_image">                  
-          </div>
-          <div class="comment_text">                  
-          </div>
-        </div>      
+        <% negotiation.messages.each do |message| %>   
+          <div class="comment">
+            <div class="comment_user_image">
+              <%= image_tag(message.image) %>          
+            </div>
+            <div class="comment_text"> 
+              <%= message.text %>              
+            </div>
+          </div> 
+        <% end %>     
       </div>
       
       <div class="writting_box">

@@ -40,6 +40,10 @@
             @include border-radius(5px, 5px); 
             @include proportions(50px,50px);
             border: $borde1px;
+            img{
+              @include border-radius(5px, 5px); 
+              @include proportions(50px,50px);
+            }
           };
         }                
 
@@ -48,21 +52,20 @@
           width: 160px;
 
           .offered_product{
-            @include border-radius(5px, 5px);
-            @include proportions(140px,140px);
             float: left;
             overflow: auto;
             margin: 10px 5px 0px 5px;
-            border: $borde1px;
 
-            .img{
+            img{
               @include high-quality-image;
-              @include proportions(inherit,inherit);
+              @include proportions(132px,132px);
+              @include border-radius(5px, 5px);
+              float: left;
             }
 
             .product-title{
               float: left;
-              text-align: center;
+              width: 88%;
               font-size: 10px;
             }
           }
@@ -79,9 +82,7 @@
             img{
               @include high-quality-image;
             }
-
           }
-
         }
 
         .orderer_things{          
@@ -90,14 +91,14 @@
           width: 110px;
 
           .orderer_product{
-            @include border-radius(5px, 5px);
-            @include proportions(110px,110px);
-            float:inherit;
-            border: $borde1px;
+            float: left;
+            overflow: auto;
+            margin: 0px 5px 0px 5px;
 
             img{
+              @include border-radius(5px, 5px);
               @include proportions(90px,90px);
-              float:inherit; 
+              float:left; 
             }
 
             .product-title{
@@ -170,10 +171,18 @@
 
         .dialogin{
           float:left;
-          margin-top: 4px 0px 0px 12px;
+          margin: 4px 0px 0px 12px;
           color:near-black;
           font-size:10px;
         }
+
+        a{
+          @include unstyled-link;
+          margin: 0px 4px 0px 0px;
+          float: right;
+          font-size: 14px;
+        }
+
       }
 
       .conversation{
@@ -186,34 +195,25 @@
           margin:3px 0px 2px 3px;
           width:98%;
 
-          .comment_user_image{
-            @include border-radius(5px, 5px);
-            @include proportions(30px,30px);
+          .comment_user_image{            
             float: left;
-            margin-right:3px;           
-            border: $borde1px;
+            margin: 1px 8px 0px 5px;           
 
             img{
+              @include border-radius(5px, 5px);
+              @include proportions(30px,30px);
               @include high-quality-image;
             }
           }
 
           .comment_text{
-            @include border-radius(5px, 5px);
             @include proportions(450px,30px);
-            float: left;           
-            border: $borde1px;
-
-            textarea{
-              float: right;
-              overflow: hidden;
-              width: 98%;
-              border: none;
-              background-color: transparent;
-              color: #000000;
-              font-size: 10px;
-              resize: none;
-            }
+            margin-top: -2px;
+            float: left;
+            width: 90%;            
+            color: #000000;
+            text-align: left;
+            font-size: 10px;
           }
         }
       }
@@ -240,18 +240,7 @@
                 left:none;
               }
             }
-          }
-
-          .sender{
-            @include absolute($top:0px,$right:-500px);
-            z-index: 3000;
-            float: left;
-            width: 0%;
-
-            input{
-              visibility: hidden;
-            }
-          }
+          }          
         }
       }
     }

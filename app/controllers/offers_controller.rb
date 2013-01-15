@@ -9,7 +9,7 @@ class OffersController < ApplicationController
   def index
     @user = user_logged
     @requests = @user.requests.all.to_a
-    @offers = @user.received_offers.to_a
+    @offers = @user.offers.to_a
 
     respond_to do |format|
       format.html # index.html.erb

@@ -49,7 +49,8 @@
 
     .description{
       @include relative($top:-72px,$left:67px); 
-      @include proportions(172px,50px);     
+      @include proportions(172px,50px);
+      font-size: 9px;           
     }
   }
 
