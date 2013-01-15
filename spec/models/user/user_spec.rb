@@ -8,7 +8,7 @@ describe User do
   describe 'Relations' do
     it { should embed_one(:profile).of_type(User::Profile) }
     it { should embed_many(:things).of_type(User::Thing) }
-    it { should have_and_belong_to_many(:requests).as_inverse_of(nil) }
+    it { should have_many(:requests) }
     it { should have_and_belong_to_many(:offers) }
     it { should have_and_belong_to_many(:negotiations) }
     it { should have_and_belong_to_many(:deals) }

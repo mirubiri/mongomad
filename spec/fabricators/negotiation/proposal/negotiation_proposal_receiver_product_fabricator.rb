@@ -1,14 +1,16 @@
 Fabricator(:negotiation_proposal_receiver_product, class_name: "Negotiation::Proposal::Receiver::Product") do
-  transient   :thing
+  transient   :product
   receiver    nil
   images      do |attrs|
-    attrs[:thing].images.each do |image|
-      Fabricate.build(:negotiation_proposal_receiver_product_image, file:image.file.url)
+    images = []
+    attrs[:product].images.each do |image|
+      images << Fabricate.build(:negotiation_proposal_receiver_product_image, file:image.file)
     end
+    images
   end
-  thing_id    { |attrs| attrs[:thing]._id }
-  name        { |attrs| attrs[:thing].name }
-  description { |attrs| attrs[:thing].description }
-  quantity    1
-  main_image  { |attrs| attrs[:thing].main_image }
+  thing_id    { |attrs| attrs[:product].thing_id }
+  name        { |attrs| attrs[:product].name }
+  description { |attrs| attrs[:product].description }
+  quantity    { |attrs| attrs[:product].quantity }
+  main_image  { |attrs| attrs[:product].main_image }
 end

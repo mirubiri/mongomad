@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Request do
   let(:request) do
-    Fabricate(:request)
+    Fabricate.build(:request)
   end
 
   describe 'Attributes' do
@@ -11,6 +11,7 @@ describe Request do
     it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image).of_type(String) }
+    it { should belong_to(:user) }
   end
 
   describe 'Validations' do

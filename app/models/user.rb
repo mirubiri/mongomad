@@ -5,10 +5,11 @@ class User
   embeds_one  :profile, class_name: "User::Profile", cascade_callbacks: true
   embeds_many :things,  class_name: "User::Thing", cascade_callbacks: true
 
-  has_and_belongs_to_many :requests, inverse_of: nil
+  has_many :requests
   has_and_belongs_to_many :offers
   has_and_belongs_to_many :negotiations
   has_and_belongs_to_many :deals
+
 
   validates :profile,
             presence: true

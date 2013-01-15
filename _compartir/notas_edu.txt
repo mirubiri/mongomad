@@ -18,25 +18,11 @@ PREGUNTAS:
 
   field :_id, type: String, default: ->{ name.to_s.parameterize }
 
-- no me aparece thing_id por ningun lado en los productos
-1.9.3-p327 :019 > ap o.composer.products.first.thing_id
-NoMethodError: undefined method `thing_id' for #<User::Thing:0x000000057fcf38>
-  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/mongoid-3.0.16/lib/mongoid/attributes.rb:249:in `method_missing'
-  from (irb):19
-  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands/console.rb:47:in `start'
-  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands/console.rb:8:in `start'
-  from /home/alex/.rvm/gems/ruby-1.9.3-p327@mongomad/gems/railties-3.2.10/lib/rails/commands.rb:41:in `<top (required)>'
-  from script/rails:6:in `require'
-  from script/rails:6:in `<main>'
-
-1.9.3-p327 :018 > ap o.composer.products.first.name
-"name"
-1.9.3-p327 :020 > ap o.composer.products.first._id
-"50ebf02c366f69d1f5000003"
-
 =====================================================================================================
 
 TAREAS:
+- poner la moneda obligatoria (aunque dejemos el usuario nulo)
+
 =====================================================================================================
 NOTAS:
 
