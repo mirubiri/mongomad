@@ -6,8 +6,7 @@
 <body>
   <%= render :partial => "layouts/#{controller.sub_layout}" %> 
 
-  <% if current_user %>
-    <%= render :partial => "layouts/new_offer" %>
+  <% if current_user %>    
     <%= render :partial => "layouts/new_petition" %>
   <% end %>
 

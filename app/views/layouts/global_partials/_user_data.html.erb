@@ -7,10 +7,12 @@
     <%= @user.profile.country %></br>
   </div> 
 
-  <a href="newOffer.html" target="_blank">        
-    <%= button_tag "Nueva Oferta", :class => "add_offer_button",
-    :id => "new-offer-button" %>
-  </a> 
+  <% if controller.controller_name == 'users' || controller.controller_name == 'offers' %>
+    <a href="newOffer.html" target="_blank">        
+      <%= button_tag "Nueva Oferta", :class => "add_offer_button",
+      :id => "new-offer-button" %>
+    </a>
+  <% end %> 
 
   <nav class="profile_menu">
     <div class="menu_icon">
