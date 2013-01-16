@@ -1,10 +1,12 @@
 Fabricator(:offer_receiver_product, class_name: "Offer::Receiver::Product") do
   transient   :thing
-  receiver    nil
+  composer    nil
   images      do |attrs|
+    images = []
     attrs[:thing].images.each do |image|
-      Fabricate.build(:offer_receiver_product_image, file:image.file.url)
+      images << Fabricate.build(:offer_receiver_product_image, file:image.file.url)
     end
+    images
   end
   thing_id    { |attrs| attrs[:thing]._id }
   name        { |attrs| attrs[:thing].name }

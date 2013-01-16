@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Receiver do
   let(:receiver) do
-    Fabricate(:deal).agreement.proposals.last.receiver
+    Fabricate.build(:deal).agreement.proposals.last.receiver
   end
 
   describe 'Relations' do

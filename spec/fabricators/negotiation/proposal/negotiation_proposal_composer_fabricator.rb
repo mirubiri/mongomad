@@ -1,12 +1,14 @@
 Fabricator(:negotiation_proposal_composer, class_name: "Negotiation::Proposal::Composer") do
-  transient :user
+  transient :offer
   proposal  nil
   products  do |attrs|
-    attrs[:user].things.each do |thing|
-      Fabricate.build(:negotiation_proposal_composer_product, thing:thing)
+    products = []
+    attrs[:offer].composer.products.each do |product|
+      products << Fabricate.build(:negotiation_proposal_composer_product, product:product)
     end
+    products
   end
-  user_id   { |attrs| attrs[:user]._id }
-  name      { |attrs| attrs[:user].profile.name }
-  image     { |attrs| attrs[:user].profile.image.url }
+  user_id   { |attrs| attrs[:offer].composer.user_id }
+  name      { |attrs| attrs[:offer].composer.name }
+  image     { |attrs| attrs[:offer].composer.image }
 end
