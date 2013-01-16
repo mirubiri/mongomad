@@ -5,6 +5,11 @@ PREGUNTAS:
     offer: guardamos 2 usuarios
     negotiation: guardamos 1 offer y 2 usuarios
                  (si no guardo la offer, los usuarios se quedan colgando)
+    deal: guarda 1 negotiation , 1 offer y 2 usuarios
+
+
+- las imagenes de los tratos las tenemos puestas con el File open y la url puesta directamente
+  sin pillarlas de los objetos que vienen.
 
 
 
@@ -27,7 +32,6 @@ PREGUNTAS:
   field :_id, type: String, default: ->{ name.to_s.parameterize }
 
 =====================================================================================================
-
 TAREAS:
 - poner la moneda obligatoria (aunque dejemos el usuario nulo)
 
