@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @offers = @user.offers.all
     @request = Request.new
+    @offer = Offer.new
 
     respond_to do |format|
       format.html # show.html.erb

@@ -10,10 +10,11 @@ class OffersController < ApplicationController
     @user = user_logged
     @requests = @user.requests.all.to_a
     @offers = @user.offers.to_a
+    @offer = Offer.new
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json # renders index.js.erb
+      format.js # render index.js.erb
     end
   end
 
