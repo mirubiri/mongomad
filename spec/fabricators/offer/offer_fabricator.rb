@@ -1,5 +1,5 @@
 Fabricator(:offer) do
-  users(count: 2) { Fabricate.build(:user_with_things) }
+  users(count: 2) { Fabricate(:user_with_things) }
   composer        { |attrs| Fabricate.build(:offer_composer, user:attrs[:users].first) }
   receiver        { |attrs| Fabricate.build(:offer_composer, user:attrs[:users].last) }
   money           nil
