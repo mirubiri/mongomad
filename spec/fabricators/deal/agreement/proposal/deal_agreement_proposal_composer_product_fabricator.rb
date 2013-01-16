@@ -5,7 +5,7 @@ Fabricator(:deal_agreement_proposal_composer_product, class_name: "Deal::Agreeme
     images = []
     attrs[:product].images.each do |image|
       #images << Fabricate.build(:deal_agreement_proposal_composer_product_image, file:File.open(image.file.url))
-      images << Fabricate.build(:deal_agreement_proposal_composer_product_image, file:File.open('app/assets/images/rails.png'))
+      images << Fabricate.build(:deal_agreement_proposal_composer_product_image, file:File.open('app/assets/images/car.png'))
     end
     images
   end
