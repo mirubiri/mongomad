@@ -47,13 +47,21 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = current_user
-    Fabricate(:request,
-              user_id:params[:user_id],
-              text:params[:text],
-              user_name:params[:user_name],
-              image:params[:image])
-    redirect_to @user    
+    @user = current_user    
+    @request = Request.new(user_id:params[:user_id],
+                           text:params[:text],
+                           user_name:params[:user_name], 
+                           image:params[:image])
+
+    respond_to do |format|
+      if @request.save
+        format.html { redirect_to @user, notice: 'Request was successfully created.' }
+        format.json { render json: @user, status: :created, location: @request }
+      else
+        format.html { redirect_to @user, notice: 'la peticicion no se ha creado' }
+        format.json { render json: @request.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PUT /requests/1
