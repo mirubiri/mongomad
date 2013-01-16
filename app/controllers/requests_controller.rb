@@ -47,8 +47,11 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = current_user
-    @request = Fabricate(:request)
+    @user = current_user    
+    @request = Request.new(user_id:params[:user_id],
+                           text:params[:text],
+                           user_name:params[:user_name], 
+                           image:params[:image])
 
     respond_to do |format|
       if @request.save
