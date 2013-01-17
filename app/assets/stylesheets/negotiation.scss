@@ -7,6 +7,7 @@
   margin: 0px 0px 25px 15px;
   border: $borde1px;
   background-color: white;
+  overflow: auto;
 
     .proposition_container{
       @include box-sizing(border-box);

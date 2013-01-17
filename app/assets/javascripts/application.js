@@ -15,11 +15,8 @@
 //= require jquery.masonry.min
 //= require jquery.simplemodal.1.4.2.min
 //= require jquery.equal-height-columns
-//= ajax_request
 //= history
-//= modals
 //= modernizr-2.5.3
 //= modernizr-transitions
-//= my_script
-//= reposicionar_ofertas
+//= my_functions
 //= require_tree .
