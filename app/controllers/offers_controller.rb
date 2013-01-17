@@ -1,13 +1,11 @@
 class OffersController < ApplicationController
 
-  respond_to :html, :js
-
   def sub_layout
     "offers"
   end
 
   def index
-    @user = user_logged
+    @user = User.find(params[:user_id])
     @offers = @user.offers.all.to_a
     @requests = @user.requests.all.to_a
     @offer = Offer.new
@@ -32,7 +30,7 @@ class OffersController < ApplicationController
   # GET /offers/new
   # GET /offers/new.json
   def new
-    @user = user_logged
+    @user = User.find(params[:user_id])
     @offer = Offer.new
 
     respond_to do |format|
@@ -49,7 +47,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @user = user_logged
+    @user = User.find(params[:user_id])
     @offer = Offer.new(params[:offer])
 
     respond_to do |format|

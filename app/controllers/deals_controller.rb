@@ -7,7 +7,7 @@ class DealsController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @requests = @user.requests.all.to_a
     @deals = Deal.all.to_a
 

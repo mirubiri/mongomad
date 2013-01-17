@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
     user_url(current_user)
   end
 
-
   private
 
   def user_logged

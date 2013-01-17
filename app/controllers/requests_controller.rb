@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @requests = @user.requests
 
     respond_to do |format|
@@ -30,7 +30,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
-    @user = current_user
+    @user = User.find(params[:user_id])
     @request = Request.new
 
     respond_to do |format|
@@ -47,7 +47,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = current_user    
+    @user = User.find(params[:user_id])    
     @request = Request.new(user_id:params[:user_id],
                            text:params[:text],
                            user_name:params[:user_name], 

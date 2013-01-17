@@ -1,9 +1,3 @@
-var url = this.href;
-
 $("#ppal_container").html('<%= escape_javascript(render @requests) %>');
 
-alert('funciona');
-
 igualaAlturaUserContainerMainContainer();
-
-history.pushState({path:url},"", url);
