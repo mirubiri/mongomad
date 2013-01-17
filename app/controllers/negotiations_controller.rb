@@ -7,7 +7,7 @@ class NegotiationsController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @requests = @user.requests.all.to_a
     @negotiations = Negotiation.all.to_a
 

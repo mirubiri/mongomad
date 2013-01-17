@@ -7,7 +7,7 @@ class ThingsController < ApplicationController
   end
 
   def index
-    @user = user_logged
+    @user = User.find(params[:user_id])
     @things = @user.things.to_a
 
     respond_to do |format|
@@ -40,7 +40,7 @@ class ThingsController < ApplicationController
 
   # GET /things/1/edit
   def edit
-    @user = current_user
+    @user = User.find(params[:user_id])
     @thing = @user.things.find(params[:id])
   end
 

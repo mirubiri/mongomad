@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:user_id])
     respond_to do |format|
       format.html # show.html.erb
       format.js #show.js.erb
@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     respond_to do |format|
       format.html #show.html.erb
       format.js #show.js.erb
