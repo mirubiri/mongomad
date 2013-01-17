@@ -3,8 +3,14 @@ function igualaAlturaUserContainerMainContainer(){
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
+
   $('#user-side,#content-side').equalHeightColumns();
-  $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
+
+  if ( ($('#user-side').height()) === null ) {
+    $('#footer').css({'top': (alturaVentana +60)  + 'px'});
+  }else{
+    $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
+  }
 }
 
 function maximizaAlturaConversacion(){
