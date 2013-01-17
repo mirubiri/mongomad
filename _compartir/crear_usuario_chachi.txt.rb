@@ -10,7 +10,8 @@ sergio.profile.name = 'Sergio'
 sergio.profile.surname = 'de Torre'
 sergio.profile.nickname = 'deTorre82'
 sergio.profile.country = 'España'
-#sergio.profile.image = File.open('app/assets/images/receiver.png')
+sergio.profile.image = File.open('app/assets/images/receiver.png')
+sergio.save
 
 medico = Fabricate(:user_with_things)
 medico.email = 'medico@improcex.com'
@@ -18,7 +19,8 @@ medico.profile.name = 'Eduardo'
 medico.profile.surname = 'Hormilla'
 medico.profile.nickname = 'medico82'
 medico.profile.country = 'España'
-#medico.profile.image = File.open('app/assets/images/composer.png')
+medico.profile.image = File.open('app/assets/images/composer.png')
+medico.save
 
 rand(5..8).times do
   Fabricate(:request, user:sergio)
