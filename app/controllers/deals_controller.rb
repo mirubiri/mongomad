@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   # GET /deals.json
 
   def sub_layout
-    "deals" 
+    "deals"
   end
 
   def index
@@ -13,7 +13,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @deals }
+      format.js # render index.js.erb
     end
   end
 

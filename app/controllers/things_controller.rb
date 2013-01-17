@@ -12,7 +12,7 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json # renders index.js.erb
+      format.js # renders index.js.erb
     end
   end
 

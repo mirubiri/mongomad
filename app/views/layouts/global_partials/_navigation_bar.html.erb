@@ -4,10 +4,10 @@
       <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
         <div class="nav_element">Ofertas</div>
       <% end %>
-      <%= link_to user_negotiations_path(@user), :id => "link_negotiations" do %>
+      <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
         <div class="nav_element">Negociaciones</div>
       <% end %>
-      <%= link_to user_deals_path(@user), :id => "link_deals" do %>
+      <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
         <div class="nav_element">Tratos</div>
       <% end %>
      </nav>

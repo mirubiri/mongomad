@@ -1,25 +1,25 @@
 <aside class="user_container_profile">
-  <div class="image">      
+  <div class="image">
     <%= image_tag(@user.profile.image) %>
   </div>
   <div class="user_name">
     <%= @user.profile.nickname %></br>
     <%= @user.profile.country %></br>
-  </div> 
+  </div>
 
   <% if controller.controller_name == 'users' || controller.controller_name == 'offers' %>
-    <a href="newOffer.html" target="_blank">        
+    <a href="newOffer.html" target="_blank">
       <%= button_tag "Nueva Oferta", :class => "add_offer_button",
       :id => "new-offer-button" %>
     </a>
-  <% end %> 
+  <% end %>
 
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil', user_profile_path(@user) %>
+      <%= link_to 'Perfil', user_profile_path(@user), :remote => true, :id => "link_profile" %>
     </div>
     <div class="menu_icon">
-      <%= link_to 'Prod', user_things_path(@user) %>
+      <%= link_to 'Prod', user_things_path(@user), :remote => true, :id => "link_things" %>
     </div>
     <div class="menu_icon">
       <%= link_to 'Alertas'%>

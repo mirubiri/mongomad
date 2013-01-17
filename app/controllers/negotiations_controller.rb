@@ -3,9 +3,9 @@ class NegotiationsController < ApplicationController
   # GET /negotiations.json
 
   def sub_layout
-    "negotiations" 
+    "negotiations"
   end
-  
+
   def index
     @user = current_user
     @requests = @user.requests.all.to_a
@@ -13,7 +13,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json #{ render json: @negotiations }
+      format.js # render index.js.erb
       format.xml { render :xml => negotiations }
     end
   end

@@ -8,8 +8,8 @@ class OffersController < ApplicationController
 
   def index
     @user = user_logged
+    @offers = @user.offers.all.to_a
     @requests = @user.requests.all.to_a
-    @offers = @user.offers.to_a
     @offer = Offer.new
 
     respond_to do |format|
@@ -49,7 +49,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @user = user_logged    
+    @user = user_logged
     @offer = Offer.new(params[:offer])
 
     respond_to do |format|
