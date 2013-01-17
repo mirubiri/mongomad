@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   # GET /users.json
 
   def sub_layout
-    "users"
+    "users" 
   end
-
+  
   def index
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @offers = @user.offers.all.to_a
+    @offers = @user.offers.all
+    @request = Request.new
     @offer = Offer.new
 
     respond_to do |format|
