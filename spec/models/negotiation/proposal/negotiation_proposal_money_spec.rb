@@ -2,11 +2,14 @@ require 'spec_helper'
 
 describe Negotiation::Proposal::Money do
   let(:money) do
-    offer = Fabricate.build(:offer) {
-      money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:users].first._id ) }
+    negotiation = Fabricate.build(:negotiation) {
+      offer {
+        Fabricate.build(:offer) {
+          money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:users].first._id) }
+        }
+      }
     }
-    negotiation = Fabricate(:negotiation, offer:offer)
-    negotiation.proposals.first.money
+    negotiation.proposals.last.money
   end
 
   describe 'Relations' do
