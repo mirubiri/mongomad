@@ -1,5 +1,7 @@
 PREGUNTAS:
 
+- el campo name de la request, lo usamos para algo? :)
+
 - al crear:
     request: guardamos 1 usuario
     offer: guardamos 2 usuarios
@@ -30,6 +32,8 @@ PREGUNTAS:
 
 =====================================================================================================
 TAREAS:
+
+- eliminar las imagenes, y dejar solo 1, la main image
 
 - poner la moneda obligatoria (aunque dejemos el usuario nulo)
 

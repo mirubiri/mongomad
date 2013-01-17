@@ -2,8 +2,10 @@ require 'spec_helper'
 
 describe Offer::Money do
   let(:money) do
-    offer = Fabricate.build(:offer)
-    Fabricate.build(:offer_money, offer:offer, user_id:offer.composer.user_id)
+    offer = Fabricate.build(:offer) {
+      money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:users].first._id) }
+    }
+    offer.money
   end
 
   describe 'Relations' do
