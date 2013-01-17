@@ -16,10 +16,10 @@
 
   <nav class="profile_menu">
     <div class="menu_icon">
-      <%= link_to 'Perfil', user_profile_path(@user) %>
+      <%= link_to 'Perfil', user_profile_path(@user), :remote => true, :id => "link_profile" %>
     </div>
     <div class="menu_icon">
-      <%= link_to 'Prod', user_things_path(@user) %>
+      <%= link_to 'Prod', user_things_path(@user), :remote => true, :id => "link_things" %>
     </div>
     <div class="menu_icon">
       <%= link_to 'Alertas'%>
