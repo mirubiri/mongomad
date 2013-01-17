@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = user_logged
+    @user = User.find(params[:id])
     @offers = @user.offers.all.to_a
     @offer = Offer.new
 
