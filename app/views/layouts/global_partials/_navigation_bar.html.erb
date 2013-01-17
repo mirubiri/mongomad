@@ -1,15 +1,15 @@
 <header class="main_container_header">
   <div class="main_container_header_menu">
-     <nav>          
-      <%= link_to user_offers_path(@user) do %>
+     <nav>
+      <%= link_to user_offers_path(@user), :remote => true do %>
         <div class="nav_element">Ofertas</div>
-      <% end %> 
+      <% end %>
       <%= link_to user_negotiations_path(@user) do %>
         <div class="nav_element">Negociaciones</div>
-      <% end %> 
+      <% end %>
       <%= link_to user_deals_path(@user) do %>
         <div class="nav_element">Tratos</div>
-      <% end %>      
+      <% end %>
      </nav>
      <div class="main_container_header_search">
       <input type="search">

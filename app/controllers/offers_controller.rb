@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  
+
   respond_to :html, :js
 
   def sub_layout

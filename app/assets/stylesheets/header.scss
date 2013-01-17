@@ -5,7 +5,7 @@
 .header{
   @include fixed_width(100%,100%,100%);
   position: fixed;
-  z-index: 1000; 
+  z-index: 1000;
   display: inline;
   overflow: hidden;
   background-color:#0a67a3;
@@ -14,21 +14,23 @@
     .header_logo{
       @include proportions(140px,20px);
       float: left;
+      color: white;
+      border: $borde1px;
       background:{
-        image: image-url('http://localhost:3000/system/images/logo.png'); 
+        image: image-url('http://localhost:3000/system/images/logo.png');
         repeat:no-repeat;
-      }     
+      }
       margin:{
         top: 6px;
-        left: $margen80px; 
-      }   
+        left: $margen80px;
+      }
     }
-    
+
     nav{
       @include float-children('a',left);
       float: left;
       margin: 4px 10px 0px 200px;
-      
+
       a{
         @include unstyled-link;
         @include proportions(20px,20px);
@@ -46,7 +48,7 @@
     .header_user_image{
       @include proportions(26px,26px);
       float:left;
-      margin-top: 2px;   
+      margin-top: 2px;
 
       img{
         @include high-quality-image;
@@ -69,7 +71,7 @@
         float: left;
         margin:0px 0px 2px 0px;
         font-size:9px;
-      } 
+      }
     }
 
     a{
