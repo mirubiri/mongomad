@@ -49,7 +49,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @user = user_logged
+    @user = user_logged    
     @offer = Offer.new(params[:offer])
 
     respond_to do |format|
