@@ -3,5 +3,5 @@ Fabricator(:deal) do
   negotiation        { Fabricate(:negotiation) }
   users              { |attrs| attrs[:negotiation].users }
   agreement          { |attrs| Fabricate.build(:deal_agreement, negotiation:attrs[:negotiation]) }
-  messages(count: 1) { |attrs| Fabricate.build(:deal_message, message:attrs[:negotiation].messages.last) }
+  messages(count: 1) { |attrs| Fabricate.build(:deal_message, negotiation:attrs[:negotiation]) }
 end
