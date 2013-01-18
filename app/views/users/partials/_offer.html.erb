@@ -1,15 +1,15 @@
 <% @offers.each do |offer| %>
   <div class="offer" id="<%= offer.composer.user_id %>">
     <div class="offer_header">
-      <div class="triangle">        
-          <%= link_to "x", 
-              user_offer_path(current_user,offer.id),
-              :method => :delete, 
-              :confirm => "Are you sure?" %>
+      <div class="triangle">
+        <%= link_to "x",
+          user_offer_path(current_user,offer.id),
+          :method => :delete,
+          :confirm => "Are you sure?" %>
       </div>
       <div class="profile_image">
         <%= link_to image_tag(offer.composer.image),
-          :controller => "users", 
+          :controller => "users",
           :action => "show",
           :id => offer.composer.user_id
         %>
@@ -20,13 +20,13 @@
     </div>
     <div class="offer_things">
       <div class="recieved">
-        <% offer.composer.products.each do |thing| %>          
-          <%= image_tag(thing.main_image) %>          
+        <% offer.composer.products.each do |thing| %>
+          <%= image_tag(thing.image) %>
         <% end %>
       </div>
       <div class="given">
-        <% offer.receiver.products.each do |thing| %>          
-          <%= image_tag(thing.main_image) %>          
+        <% offer.receiver.products.each do |thing| %>
+          <%= image_tag(thing.image) %>
         <% end %>
       </div>
     </div>
@@ -35,4 +35,3 @@
     </div>
   </div>
 <% end %>
-  

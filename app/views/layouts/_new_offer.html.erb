@@ -20,7 +20,7 @@
         <% @user.things.each do |thing| %>
           <div class="product">
             <div class="product-image">
-              <%= image_tag(thing.main_image) %>
+              <%= image_tag(thing.image) %>
             </div>
             <div class="product-title">
               <input type="text"><%= thing.name %>
@@ -47,7 +47,7 @@
           </div>
           <div class="triangle"></div>
         </div>
-        <div class="summary_body">          
+        <div class="summary_body">
           <div class="summary_body_products_given">
             <div class="product_given">
               <div class="product_given_imagen">
@@ -89,7 +89,7 @@
         <% @user.things.each do |thing| %>
           <div class="product">
             <div class="product-image">
-              <%= image_tag(thing.main_image) %>
+              <%= image_tag(thing.image) %>
             </div>
             <div class="product-title">
               <input type="text"><%= thing.name %>
@@ -98,6 +98,6 @@
         <% end %>
       </div>
     </div>
-    
+
   <% end %>
 </div>
