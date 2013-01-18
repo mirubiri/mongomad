@@ -2,6 +2,7 @@ class Negotiation::Proposal::Receiver::Product
   include Mongoid::Document
 
   embedded_in :receiver, class_name: "Negotiation::Proposal::Receiver"
+
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String

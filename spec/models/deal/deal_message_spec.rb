@@ -14,6 +14,7 @@ describe Deal::Message do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
+    it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -21,6 +22,7 @@ describe Deal::Message do
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
+    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do

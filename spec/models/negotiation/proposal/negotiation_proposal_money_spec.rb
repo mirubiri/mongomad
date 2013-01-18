@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe Negotiation::Proposal::Money do
   let(:money) do
-    offer = Fabricate.build(:offer) {
-      money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:users].first._id ) }
-    }
-    negotiation = Fabricate(:negotiation, offer:offer)
-    negotiation.proposals.first.money
+    Fabricate.build(:negotiation).proposals.last.money
   end
 
   describe 'Relations' do
@@ -15,16 +11,16 @@ describe Negotiation::Proposal::Money do
 
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:quantity).of_type(Integer) }
+    it { should have_field(:quantity).of_type(Integer).with_default_value_of(0) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :proposal }
-    it { should validate_presence_of :user_id }
+    xit { should validate_presence_of :user_id }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
-                                                             greater_than: 0) }
+                                                             greater_than_or_equal_to: 0) }
   end
 
   describe 'Factories' do

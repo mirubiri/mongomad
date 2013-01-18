@@ -13,6 +13,7 @@ describe Deal::Agreement::Proposal::Composer do
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:name).of_type(String) }
+    it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -20,6 +21,7 @@ describe Deal::Agreement::Proposal::Composer do
     it { should validate_presence_of :products }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :name }
+    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do

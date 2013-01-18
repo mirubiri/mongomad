@@ -7,6 +7,7 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
+
   mount_uploader :image, ThingImageUploader
 
   validates :receiver,
@@ -14,6 +15,7 @@ class Deal::Agreement::Proposal::Receiver::Product
             :name,
             :description,
             :quantity,
+            :image,
             presence: true
 
   validates :quantity,

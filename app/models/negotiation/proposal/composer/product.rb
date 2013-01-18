@@ -2,12 +2,12 @@ class Negotiation::Proposal::Composer::Product
   include Mongoid::Document
 
   embedded_in :composer, class_name: "Negotiation::Proposal::Composer"
-  
+
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  field :image,  type: String
+  field :image,       type: String
 
   validates :composer,
             :thing_id,

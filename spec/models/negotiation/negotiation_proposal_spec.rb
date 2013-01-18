@@ -20,6 +20,7 @@ describe Negotiation::Proposal do
     it { should validate_presence_of :negotiation }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
+    it { should validate_presence_of :money }
   end
 
   describe 'Factories' do

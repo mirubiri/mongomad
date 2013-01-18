@@ -2,11 +2,12 @@ class Deal::Agreement::Proposal::Composer::Product
   include Mongoid::Document
 
   embedded_in :composer, class_name: "Deal::Agreement::Proposal::Composer"
- 
+
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
+
   mount_uploader :image, ThingImageUploader
 
   validates :composer,
@@ -14,6 +15,7 @@ class Deal::Agreement::Proposal::Composer::Product
             :name,
             :description,
             :quantity,
+            :image,
             presence: true
 
   validates :quantity,

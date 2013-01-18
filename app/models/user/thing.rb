@@ -3,13 +3,11 @@ class User::Thing
 
   embedded_in :user
 
-
   field :name,        type: String
   field :description, type: String
   field :stock,       type: Integer, default: 1
 
   mount_uploader :image, ThingImageUploader
-
 
   validates :user,
             :name,

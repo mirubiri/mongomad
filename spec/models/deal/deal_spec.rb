@@ -17,6 +17,7 @@ describe Deal do
 
   describe 'Validations' do
     it { should validate_presence_of :agreement }
+    it { should validate_presence_of :users }
   end
 
   describe 'Factories' do

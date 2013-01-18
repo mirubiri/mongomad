@@ -20,6 +20,8 @@ describe Offer do
   describe 'Validations' do
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
+    it { should validate_presence_of :money }
+    it { should validate_presence_of :users }
     it { should validate_presence_of :initial_message }
   end
 

@@ -5,13 +5,14 @@ class User
   embeds_one  :profile, class_name: "User::Profile", cascade_callbacks: true
   embeds_many :things,  class_name: "User::Thing", cascade_callbacks: true
 
-  has_many :requests
+  has_many                :requests
   has_and_belongs_to_many :offers
   has_and_belongs_to_many :negotiations
   has_and_belongs_to_many :deals
 
-
   validates :profile,
+            #:email,
+            #:password,
             presence: true
 
   # -------------- DEVISE GENERATED----------------------------

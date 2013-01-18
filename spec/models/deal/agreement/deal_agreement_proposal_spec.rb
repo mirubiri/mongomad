@@ -20,6 +20,7 @@ describe Deal::Agreement::Proposal do
     it { should validate_presence_of :agreement }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
+    it { should validate_presence_of :money }
   end
 
   describe 'Factories' do

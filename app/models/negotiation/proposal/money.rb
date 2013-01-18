@@ -4,15 +4,15 @@ class Negotiation::Proposal::Money
   embedded_in :proposal, class_name: "Negotiation::Proposal"
 
   field :user_id,  type: Moped::BSON::ObjectId
-  field :quantity, type: Integer
+  field :quantity, type: Integer, default: 0
 
   validates :proposal,
-            :user_id,
+            #:user_id,
             :quantity,
             presence: true
 
   validates :quantity,
             allow_nil: false,
             numericality: { only_integer: true,
-                            greater_than: 0 }
+                            greater_than_or_equal_to: 0 }
 end

@@ -7,7 +7,7 @@ class Offer::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  field :image,  type: String
+  field :image,       type: String
 
   validates :receiver,
             :thing_id,
