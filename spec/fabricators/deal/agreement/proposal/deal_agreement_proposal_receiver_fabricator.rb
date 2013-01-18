@@ -10,6 +10,5 @@ Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Prop
   end
   user_id   { |attrs| attrs[:receiver].user_id }
   name      { |attrs| attrs[:receiver].name }
-  #image     { |attrs| File.open(attrs[:receiver].image) }
   image     { File.open('app/assets/images/receiver.png') }
 end

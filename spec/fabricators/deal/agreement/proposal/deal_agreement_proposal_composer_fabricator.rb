@@ -10,6 +10,5 @@ Fabricator(:deal_agreement_proposal_composer, class_name: "Deal::Agreement::Prop
   end
   user_id   { |attrs| attrs[:composer].user_id }
   name      { |attrs| attrs[:composer].name }
-  #image     { |attrs| File.open(attrs[:composer].image) }
   image     { File.open('app/assets/images/composer.png') }
 end

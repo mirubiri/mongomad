@@ -5,5 +5,5 @@ Fabricator(:offer_receiver_product, class_name: "Offer::Receiver::Product") do
   name        { |attrs| attrs[:thing].name }
   description { |attrs| attrs[:thing].description }
   quantity    1
-  image  { |attrs| attrs[:thing].image }
+  image       { |attrs| attrs[:thing].image }
 end

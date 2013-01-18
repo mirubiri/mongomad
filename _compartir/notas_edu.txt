@@ -4,13 +4,14 @@ PREGUNTAS:
     it { should have_field(:image).of_type(Object) }
         it { should validate_presence_of :image }  ???
 
-- hay test inutiles en user ¿?
+- hay test inutiles en user ¿? lo de la contraseña y demas ....?¿?¿?
 
 - en request: validate presence de user???? en offer y los demas lo hacemos
 para mi que estos test se la sudan mil (no da error)
 
 
 - el campo name de la request, lo usamos para algo? :)
+    no deberia ser la union de los demas campos????
 
 - al crear:
     request: guardamos 1 usuario
