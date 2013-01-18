@@ -2,21 +2,18 @@ class Deal::Agreement::Proposal::Composer::Product
   include Mongoid::Document
 
   embedded_in :composer, class_name: "Deal::Agreement::Proposal::Composer"
-  embeds_many :images,   class_name: "Deal::Agreement::Proposal::Composer::Product::Image", cascade_callbacks: true
-
+ 
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  field :main_image,  type: String
+  mount_uploader :image, ThingImageUploader
 
   validates :composer,
-            :images,
             :thing_id,
             :name,
             :description,
             :quantity,
-            :main_image,
             presence: true
 
   validates :quantity,

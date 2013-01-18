@@ -20,7 +20,6 @@ describe User::Profile do
     it { should have_field(:phone_number).of_type(String) }
     it { should have_field(:website).of_type(String) }
     it { should have_field(:birth_date).of_type(Date) }
-    # TODO: ¿Validar campo 'image' (Paperclip)?
   end
 
   describe 'Validations' do

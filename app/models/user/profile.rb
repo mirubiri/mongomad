@@ -1,7 +1,7 @@
 class User::Profile
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Paperclip
+  
 
   embedded_in :user
 
@@ -14,9 +14,11 @@ class User::Profile
   field :phone_number,     type: String
   field :website,          type: String
   field :birth_date,       type: Date
-  has_mongoid_attached_file :image
+  mount_uploader :image, UserImageUploader
+
 
   validates :user,
+            :image,
             :name,
             :surname,
             :nickname,

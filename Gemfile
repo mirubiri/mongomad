@@ -23,7 +23,7 @@ group :development,:test do
   gem 'faker'
   gem 'awesome_print'
   gem 'mongoid'
-  gem "mongoid-paperclip", :require => "mongoid_paperclip"
+  gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
   gem 'devise'
   gem 'jquery-rails'
 end

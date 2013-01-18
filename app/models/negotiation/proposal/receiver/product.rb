@@ -2,21 +2,18 @@ class Negotiation::Proposal::Receiver::Product
   include Mongoid::Document
 
   embedded_in :receiver, class_name: "Negotiation::Proposal::Receiver"
-  embeds_many :images,   class_name: "Negotiation::Proposal::Receiver::Product::Image", cascade_callbacks: true
-
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer, default: 1
-  field :main_image,  type: String
+  field :image,       type: String
 
   validates :receiver,
-            :images,
             :thing_id,
             :name,
             :description,
             :quantity,
-            :main_image,
+            :image,
             presence: true
 
   validates :quantity,

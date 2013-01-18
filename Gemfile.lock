@@ -36,8 +36,14 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     builder (3.0.4)
+    carrierwave (0.7.1)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+    carrierwave-mongoid (0.3.0)
+      carrierwave (~> 0.7.1)
+      mongoid (~> 3.0)
+      mongoid-grid_fs (~> 1.3)
     chunky_png (1.2.7)
-    cocaine (0.4.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -81,8 +87,9 @@ GEM
       moped (~> 1.2)
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
-    mongoid-paperclip (0.0.8)
-      paperclip (>= 2.3.6)
+    mongoid-grid_fs (1.7.0)
+      mime-types (~> 1.19)
+      mongoid (~> 3.0)
     mongoid-rspec (1.5.6)
       mongoid (>= 3.0.1)
       rake
@@ -91,12 +98,6 @@ GEM
     multi_json (1.5.0)
     origin (1.0.11)
     orm_adapter (0.4.0)
-    paperclip (3.4.0)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
-      mime-types
     polyglot (0.3.3)
     rack (1.4.4)
     rack-cache (1.2)
@@ -170,6 +171,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   blueprint-rails
+  carrierwave-mongoid
   coffee-rails
   compass-rails
   devise
@@ -177,7 +179,6 @@ DEPENDENCIES
   faker
   jquery-rails
   mongoid
-  mongoid-paperclip
   mongoid-rspec
   rails
   rspec-rails

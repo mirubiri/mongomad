@@ -2,19 +2,20 @@ class User::Thing
   include Mongoid::Document
 
   embedded_in :user
-  embeds_many :images, class_name: "User::Thing::Image", cascade_callbacks: true
+
 
   field :name,        type: String
   field :description, type: String
   field :stock,       type: Integer, default: 1
-  field :main_image,  type: String
+
+  mount_uploader :image, ThingImageUploader
+
 
   validates :user,
-            :images,
             :name,
             :description,
             :stock,
-            :main_image,
+            :image,
             presence: true
 
   validates :stock,
