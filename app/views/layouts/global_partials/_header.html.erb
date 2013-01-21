@@ -10,7 +10,11 @@
 
   <% if user_signed_in? %>
     <div class="header_user_image">
-      <%= user_logged_image %>
+      <%= link_to user_logged_image,
+          :controller => "users", 
+          :action => "show",
+          :id => user_logged_id
+      %>
     </div>
     <div class="header_user_description">
       <p><%= user_logged_name %></p>

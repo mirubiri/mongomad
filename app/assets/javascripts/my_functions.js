@@ -31,7 +31,6 @@ function addProfileCommentsSeparator(){
 }
 
 function applyMasonry(){
-    alert("observador del masonry");
     var pagina = location.pathname.split("/");
     var urlTokens = 3;
     var lugar = "home";
@@ -42,7 +41,7 @@ function applyMasonry(){
 
     switch (lugar) {
         case "offers":
-            $('#content-side #ppal_container').masonry({
+            $('#ppal_container').masonry({
                 itemSelector : '.offer',
                 gutterWidth: 14,
                 columnWidth : 266,
@@ -51,7 +50,7 @@ function applyMasonry(){
         break;
 
         case "things":
-            $('#content-side #ppal_container').masonry({
+            $('#ppal_container').masonry({
                 itemSelector : '.thing',
                 gutterWidth: 13,
                 columnWidth : 195,
@@ -60,7 +59,7 @@ function applyMasonry(){
         break;
 
         case "home":
-            $('#content-side #ppal_container').masonry({
+            $('#ppal_container').masonry({
                 itemSelector : '.offer',
                 gutterWidth: 14,
                 columnWidth : 266,
@@ -71,30 +70,18 @@ function applyMasonry(){
 }
 
 function ajaxLinks(){
-    $('#link_offers').live('click',function(e){
+    $('#navigation_bar nav a').live('click',function(e){
         $.getScript(this.href);
         var url= this.href;
         history.pushState({path:url},"", url);
+        $('#ppal_container').removeClass('masonry');
     });
-    $('#link_negotiations').live('click',function(e){
+
+    $('#menu_user_data .menu_icon a').live('click',function(e){
         $.getScript(this.href);
         var url= this.href;
         history.pushState({path:url},"", url);
-    });
-    $('#link_deals').live('click',function(e){
-        $.getScript(this.href);
-        var url= this.href;
-        history.pushState({path:url},"", url);
-    });
-    $('#link_profile').live('click',function(e){
-        $.getScript(this.href);
-        var url= this.href;
-        history.pushState({path:url},"", url);
-    });
-    $('#link_things').live('click',function(e){
-        $.getScript(this.href);
-        var url= this.href;
-        history.pushState({path:url},"", url);
+        $('#ppal_container').removeClass('masonry');
     });
 
     $(window).bind("popstate", function() {
