@@ -1,11 +1,11 @@
 <% @things.each do |thing| %>
   <div class="thing">
     <div class="thing_image">
-      <%= image_tag(thing.main_image) %>
+      <%= thing_image(thing) %>
     </div>
-    <div class="thing_description"><%= thing.description %></div>
+    <div class="thing_description"><%= thing_description(thing) %></div>
     <%= link_to "editar", 
-              edit_user_thing_path(current_user,thing.id)%>
+              edit_user_thing_path(current_user,thing_id(thing))%>
   </div>  
 <% end %>
   

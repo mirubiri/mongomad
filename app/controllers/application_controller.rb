@@ -19,12 +19,12 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  def set_request_variable
-    @request = Request.new
-  end
-
   def user_visited(user_id)
     @user = User.find(params[:id])
   end
+
+  def set_request_variable
+    @request = Request.new
+  end  
 
 end

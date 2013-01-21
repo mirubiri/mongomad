@@ -1,10 +1,10 @@
 <aside class="user_container_profile">
   <div class="image">
-    <%= image_tag(@user.profile.image) %>
+    <%= user_visited_image %>
   </div>
   <div class="user_name">
-    <%= @user.profile.nickname %></br>
-    <%= @user.profile.country %></br>
+    <%= user_visited_nickname %></br>
+    <%= user_visited_country %></br>
   </div>
 
   <% if controller.controller_name == 'users' || controller.controller_name == 'offers' %>
@@ -14,7 +14,7 @@
     </a>
   <% end %>
 
-  <nav class="profile_menu">
+  <nav class="profile_menu" id="menu_user_data">
     <div class="menu_icon">
       <%= link_to 'Perfil', user_profile_path(@user), :remote => true, :id => "link_profile" %>
     </div>

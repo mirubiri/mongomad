@@ -1,19 +1,19 @@
-<% @negotiations.each do |negotiation| %>
+<% user_logged_negotiations.each do |negotiation| %>
   <div class="negotiation" id="negotiation<%= negotiation._id %>">  
     <div class="proposition_container">
       <div class="proposition">
          <div class="proposition_header">
           <div class="triangle"></div>
           <div class="profile_image">
-            <%= image_tag(negotiation.proposals.last.composer.image) %>
+            <%= negotiation_composer_image(negotiation) %>
           </div>
         </div>
         <div class="offered_things">          
-          <% negotiation.proposals.last.composer.products.each do |product| %>
+          <% negotiation_composer_products(negotiation).each do |product| %>
             <div class="offered_product">              
-              <%= image_tag(product.main_image) %>
+              <%= product_image(product) %>
               <div class="product-title">
-                <%= product.name %>
+                <%= product_name(product) %>
               </div>
             </div>             
           <% end %>          
@@ -23,11 +23,11 @@
         </div>
 
         <div class="orderer_things">          
-          <% negotiation.proposals.last.receiver.products.each do |product| %>
+          <% negotiation_receiver_products(negotiation) do |product| %>
             <div class="orderer_product">
-              <%= image_tag(product.main_image) %>
+              <%= product_image(product) %>
               <div class="product-title">
-                <%= product.name %>
+                <%= product_name(product) %>
               </div>
             </div>          
           <% end %>          

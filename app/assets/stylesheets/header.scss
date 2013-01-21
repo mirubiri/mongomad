@@ -48,12 +48,15 @@
     .header_user_image{
       @include proportions(26px,26px);
       float:left;
-      margin-top: 2px;
+      margin: 2px 4px 0px 0px;
 
-      img{
-        @include high-quality-image;
-        @include proportions(inherit,inherit);
-      }
+      a{
+        @include proportions(24px,24px);
+        img{          
+          @include high-quality-image;
+          @include proportions(24px,24px);
+        }
+      }      
     }
 
     .header_user_description{

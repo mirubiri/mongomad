@@ -7,7 +7,7 @@
     <div class="his_products">
       <div class="title">
         <div class="user_image">
-          <%= image_tag(@user.profile.image) %>
+          <%= user_visited_image %>
         </div>
         <div class="description">Sus productos</div>
       </div>
@@ -17,13 +17,13 @@
         </textarea>
       </div>
       <div class="product_container">
-        <% @user.things.each do |thing| %>
+        <% user_visited_things.each do |thing| %>
           <div class="product">
             <div class="product-image">
-              <%= image_tag(thing.image) %>
+              <%= thing_image(thing) %>
             </div>
             <div class="product-title">
-              <input type="text"><%= thing.name %>
+              <input type="text"><%= thing_name(thing) %>
             </div>
           </div>
         <% end %>
@@ -37,7 +37,7 @@
       <div class="summary">
         <div class="summary_header">
           <div class="summary_header_image">
-            <%= image_tag(@user.profile.image) %>
+            <%= user_logged_image %>
           </div>
           <div class="summary_header_text">
             <div class="nombre_usuario">Sergio</div>
@@ -76,7 +76,7 @@
     <div class="my_products">
       <div class="title">
         <div class="user_image">
-          <%= image_tag(@user.profile.image) %>
+          <%= user_logged_image %> %>
         </div>
         <div class="description">Mis productos</div>
       </div>
@@ -86,13 +86,13 @@
         </textarea>
       </div>
       <div class="product_container">
-        <% @user.things.each do |thing| %>
+        <% user_logged_things.each do |thing| %>
           <div class="product">
             <div class="product-image">
-              <%= image_tag(thing.image) %>
+              <%= thing_image(thing) %>
             </div>
             <div class="product-title">
-              <input type="text"><%= thing.name %>
+              <input type="text"><%= thing_name(thing) %>
             </div>
           </div>
         <% end %>
