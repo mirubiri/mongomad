@@ -6,7 +6,7 @@ function matchPrincipalContainersHeighs(){
   }
 
   $('#user-side,#content-side').equalHeightColumns();
-  $('#user-side,#ppal_container').equalHeightColumns();
+  $('#ppal_container').css({'height': ($('#user-side').height() - 50)  + 'px'});
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});
@@ -31,6 +31,7 @@ function addProfileCommentsSeparator(){
 }
 
 function applyMasonry(){
+    alert("observador del masonry");
     var pagina = location.pathname.split("/");
     var urlTokens = 3;
     var lugar = "home";
@@ -49,9 +50,9 @@ function applyMasonry(){
             });
         break;
 
-        case "products":
+        case "things":
             $('#content-side #ppal_container').masonry({
-                itemSelector : '.product',
+                itemSelector : '.thing',
                 gutterWidth: 13,
                 columnWidth : 195,
                 isAnimated: true
@@ -164,7 +165,6 @@ function newOfferModal(){
 }
 
 $(window).load(function(){
-  alert("observador para el load");
   modalWindows();
   newOfferModal();
   applyMasonry();
@@ -174,15 +174,7 @@ $(window).load(function(){
   matchPrincipalContainersHeighs();
 });
 
-
-$(window).bind('click', function() {
-  alert("observador para el click");
-});
-
-
 $(window).bind('resize', function() {
-  alert("observador para el resize");
-  applyMasonry();
   maximizeConversationsHeights();
   matchPrincipalContainersHeighs();
 });
