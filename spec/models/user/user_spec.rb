@@ -26,7 +26,6 @@ describe User do
 
   describe 'Factories' do
     specify { expect(user.valid?).to be_true }
-    specify { expect(user.save).to be_true }
   end
 
   describe '#save' do

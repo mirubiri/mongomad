@@ -23,10 +23,21 @@ describe Offer do
     it { should validate_presence_of :money }
     it { should validate_presence_of :users }
     it { should validate_presence_of :initial_message }
+    
+    specify { offer.users.should have(2).users }
+    it 'has two different users' do
+     offer.users.uniq.count.should eq offer.users.count
+    end 
   end
 
   describe 'Factories' do
     specify { expect(offer.valid?).to be_true }
     specify { expect(offer.save).to be_true }
+  end
+
+  describe '#save' do
+     it 'Creates two users' do
+      expect { offer.save }.to change{ User.count }.by(2)
+     end
   end
 end
