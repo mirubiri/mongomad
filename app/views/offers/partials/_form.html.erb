@@ -18,7 +18,7 @@
   </div>
   <div class="his_products">
     <div class="title">
-      <div class="sender_image"><%= @user.profile.image %></div>
+      <div class="sender_image"><%= user_logged_image %></div>
       <div class="description">Sus productos</div>
     </div>
     <div class="money_to_recieve">
@@ -28,11 +28,11 @@
       <button></button>
     </div>
     <div class="product_container">
-      <% @user.things do |thing| %>
+      <% user_logged_things do |thing| %>
         <div class="product">
-          <div class="product-image"><%= thing.main_image %></div>
+          <div class="product-image"><%= thing_image(thing) %></div>
           <div class="product-title">
-            <input type="text"><%= thing.name %>
+            <input type="text"><%= thing_name(thing) %>
           </div>
         </div>
       <% end %>

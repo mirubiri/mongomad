@@ -1,8 +1,8 @@
 <% @user.requests.each do |request| %>
   <div class="request">
     <div class="profile_image">      
-      <%= image_tag(request.image) %>
+      <%= request_image(request) %>
     </div>
-    <div class="description"><%= request.text %></div>
+    <div class="description"><%= request_text(request) %></div>
   </div>
 <% end %>
