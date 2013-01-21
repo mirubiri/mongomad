@@ -6,7 +6,8 @@ class Offer::Composer
 
   field :user_id, type: Moped::BSON::ObjectId
   field :name,    type: String
-  field :image,   type: String
+
+  mount_uploader :image, UserImageUploader
 
   validates :offer,
             :products,

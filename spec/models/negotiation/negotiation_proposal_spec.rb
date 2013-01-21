@@ -25,5 +25,14 @@ describe Negotiation::Proposal do
 
   describe 'Factories' do
     specify { expect(proposal.valid?).to be_true }
+    it 'Creates one negotiation' do
+      expect { proposal.save }.to change{ Negotiation.count}.by(1)
+    end
+    it 'Creates one offer' do
+      expect { proposal.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { proposal.save }.to change{ User.count }.by(2)
+    end
   end
 end

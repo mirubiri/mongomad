@@ -26,5 +26,24 @@ describe Deal::Agreement::Proposal::Receiver do
 
   describe 'Factories' do
     specify { expect(receiver.valid?).to be_true }
+    it 'Creates one deal' do
+      expect { receiver.save }.to change{ Deal.count}.by(1)
+    end
+    it 'Creates one negotiation' do
+      expect { receiver.save }.to change{ Negotiation.count}.by(1)
+    end
+    it 'Creates one offer' do
+      expect { receiver.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { receiver.save }.to change{ User.count }.by(2)
+    end
+  end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      receiver.save
+      File.exist?(File.new(receiver.image.path)).should be_true
+    end
   end
 end

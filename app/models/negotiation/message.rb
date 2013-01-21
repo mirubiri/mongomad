@@ -7,7 +7,8 @@ class Negotiation::Message
   field :user_id,   type: Moped::BSON::ObjectId
   field :user_name, type: String
   field :text,      type: String
-  field :image,     type: String
+
+  mount_uploader :image, UserImageUploader
 
   validates :negotiation,
             :user_id,

@@ -31,5 +31,21 @@ describe Negotiation::Proposal::Receiver::Product do
 
   describe 'Factories' do
     specify { expect(product.valid?).to be_true }
+    it 'Creates one negotiation' do
+      expect { product.save }.to change{ Negotiation.count}.by(1)
+    end
+    it 'Creates one offer' do
+      expect { product.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { product.save }.to change{ User.count }.by(2)
+    end
+  end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      product.save
+      File.exist?(File.new(product.image.path)).should be_true
+    end
   end
 end

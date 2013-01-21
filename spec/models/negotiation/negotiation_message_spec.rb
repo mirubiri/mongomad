@@ -14,7 +14,7 @@ describe Negotiation::Message do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
-    it { should have_field(:image).of_type(String) }
+    it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -27,5 +27,21 @@ describe Negotiation::Message do
 
   describe 'Factories' do
     specify { expect(message.valid?).to be_true }
+    it 'Creates one negotiation' do
+      expect { message.save }.to change{ Negotiation.count}.by(1)
+    end
+    it 'Creates one offer' do
+      expect { message.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { message.save }.to change{ User.count }.by(2)
+    end
+  end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      message.save
+      File.exist?(File.new(message.image.path)).should be_true
+    end
   end
 end

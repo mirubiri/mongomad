@@ -26,5 +26,24 @@ describe Deal::Agreement::Proposal::Composer do
 
   describe 'Factories' do
     specify { expect(composer.valid?).to be_true }
+    it 'Creates one deal' do
+      expect { composer.save }.to change{ Deal.count}.by(1)
+    end
+    it 'Creates one negotiation' do
+      expect { composer.save }.to change{ Negotiation.count}.by(1)
+    end
+    it 'Creates one offer' do
+      expect { composer.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { composer.save }.to change{ User.count }.by(2)
+    end
+  end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      composer.save
+      File.exist?(File.new(composer.image.path)).should be_true
+    end
   end
 end

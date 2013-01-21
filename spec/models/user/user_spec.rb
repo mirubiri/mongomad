@@ -26,9 +26,7 @@ describe User do
 
   describe 'Factories' do
     specify { expect(user.valid?).to be_true }
-  end
-
-  describe '#save' do
+    specify { expect(user.save).to be_true }
     it 'Creates one user' do
       expect { user.save }.to change{ User.count }.by(1)
     end

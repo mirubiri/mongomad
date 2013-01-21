@@ -27,20 +27,18 @@ describe Request do
 
   describe 'Factories' do
     specify { expect(request.valid?).to be_true }
+    it 'Creates one request' do
+      expect { request.save }.to change{ Request.count}.by(1)
+    end
+    it 'Creates one user' do
+      expect { request.save }.to change{ User.count }.by(1)
+    end
   end
 
   describe '#save' do
     it 'Uploads an image' do
       request.save
       File.exist?(File.new(request.image.path)).should be_true
-    end
-
-    it 'Creates one user' do
-      expect { request.save }.to change{ User.count }.by(1)
-    end
-
-    it 'Creates one request' do
-      expect { request.save }.to change{ Request.count}.by(1)
     end
   end
 end

@@ -13,7 +13,7 @@ describe Offer::Receiver do
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:name).of_type(String) }
-    it { should have_field(:image).of_type(String) }
+    it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -26,5 +26,18 @@ describe Offer::Receiver do
 
   describe 'Factories' do
     specify { expect(receiver.valid?).to be_true }
+    it 'Creates one offer' do
+      expect { receiver.save }.to change{ Offer.count}.by(1)
+    end
+    it 'Creates two users' do
+      expect { receiver.save }.to change{ User.count }.by(2)
+    end
+  end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      receiver.save
+      File.exist?(File.new(receiver.image.path)).should be_true
+    end
   end
 end
