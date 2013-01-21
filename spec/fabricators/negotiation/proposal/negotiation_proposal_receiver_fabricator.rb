@@ -10,5 +10,5 @@ Fabricator(:negotiation_proposal_receiver, class_name: "Negotiation::Proposal::R
   end
   user_id   { |attrs| attrs[:receiver].user_id }
   name      { |attrs| attrs[:receiver].name }
-  image     { |attrs| attrs[:receiver].image }
+  image     { |attrs| File.open(attrs[:receiver].image.path) }
 end

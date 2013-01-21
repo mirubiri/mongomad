@@ -1,5 +1,5 @@
 Fabricator(:negotiation) do
-  transient           :offer
+  transient :offer
   offer               { Fabricate(:offer) }
   users               { |attrs| attrs[:offer].users }
   proposals(count: 1) { |attrs| Fabricate.build(:negotiation_proposal, offer:attrs[:offer]) }

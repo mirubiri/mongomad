@@ -1,14 +1,14 @@
+=====================================================================================================
 PREGUNTAS:
+-----------------------------------------------------------------------------------------------------
 
-- test imagenes carrierwave:
-    it { should have_field(:image).of_type(Object) }
-    it { should validate_presence_of :image }  ???
+- los test funcionan pero:
+  + las imagenes se quedan en temp (tras el ultimo test)
+  + se quedan MUCHAS carpepetas vacias en /uploads
+  + he leido en el githb que hay que hacer que se borren a mano ;)
 
 - hay test inutiles en user ¿? lo de la contraseña y demas ....?¿?¿?
-
-- en request: validate presence de user???? en offer y los demas lo hacemos
-para mi que estos test se la sudan mil (no da error)
-  he dejad
+  comentados test email y password. comentada validacion de los campos
 
 - el campo name de la request, lo usamos para algo? :)
     no deberia ser la union de los demas campos????
@@ -20,40 +20,17 @@ para mi que estos test se la sudan mil (no da error)
                  (si no guardo la offer, los usuarios se quedan colgando)
     deal: guarda 1 negotiation , 1 offer y 2 usuarios
 
-- las imagenes de los tratos las tenemos puestas con el File open y la url puesta directamente
-  sin pillarlas de los objetos que vienen.
-
-- El id de composer y de receiver, no se podria hacer algo con el?
-  eliminarlo o que ponga el id del usuario: creo que se puede cambiar en la deficion
-  del modelo (me suena de verlo en un rail cast)
-           :composer => {
-             "_id" => "50ebebe8366f695236000011",
-         "user_id" => "50ebebe8366f69523600000f",
-
-
-             :money => {
-             "_id" => "50ebebe8366f695236000012",
-         "user_id" => "50ebebe8366f695236000011",
-
-         :receiver => {
-             "_id" => "50ebebe9366f695236000017",
-         "user_id" => "50ebebe9366f695236000016",
-
-  field :_id, type: String, default: ->{ name.to_s.parameterize }
+- la moneda esta obligatoria, validar ¿usuario?
+  test deshabilitado, validacion del campo del modelo comentada
 
 =====================================================================================================
 TAREAS:
+-----------------------------------------------------------------------------------------------------
 
-- eliminar las imagenes, y dejar solo 1, la main image
-
-- poner la moneda obligatoria (aunque dejemos el usuario nulo)
+- revisar las imagenes de renegociacion a partir de proposal para abajo
 
 =====================================================================================================
 NOTAS:
+-----------------------------------------------------------------------------------------------------
 
-    #:styles => {
-      #:original => ['1920x1680>', :jpg],
-      #:small    => ['100x100#',   :jpg],
-      #:medium   => ['250x250',    :jpg],
-      #:large    => ['500x500>',   :jpg]
-    #}
+=====================================================================================================

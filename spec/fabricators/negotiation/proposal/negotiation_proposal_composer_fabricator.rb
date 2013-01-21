@@ -10,5 +10,5 @@ Fabricator(:negotiation_proposal_composer, class_name: "Negotiation::Proposal::C
   end
   user_id   { |attrs| attrs[:composer].user_id }
   name      { |attrs| attrs[:composer].name }
-  image     { |attrs| attrs[:composer].image }
+  image     { |attrs| File.open(attrs[:composer].image.path) }
 end

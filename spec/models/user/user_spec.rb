@@ -20,8 +20,8 @@ describe User do
 
   describe 'Validations' do
     it { should validate_presence_of :profile }
-    it { should validate_presence_of :email }
-    it { should validate_presence_of :password }
+    xit { should validate_presence_of :email }
+    xit { should validate_presence_of :password }
   end
 
   describe 'Factories' do

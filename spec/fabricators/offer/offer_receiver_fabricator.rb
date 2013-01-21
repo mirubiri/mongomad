@@ -10,5 +10,5 @@ Fabricator(:offer_receiver, class_name: "Offer::Receiver") do
   end
   user_id   { |attrs| attrs[:user]._id }
   name      { |attrs| attrs[:user].profile.name }
-  image     { |attrs| attrs[:user].profile.image.url }
+  image     { File.open('app/assets/images/receiver.png') }
 end

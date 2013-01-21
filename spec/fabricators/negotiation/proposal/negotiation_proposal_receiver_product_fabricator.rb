@@ -5,5 +5,5 @@ Fabricator(:negotiation_proposal_receiver_product, class_name: "Negotiation::Pro
   name        { |attrs| attrs[:product].name }
   description { |attrs| attrs[:product].description }
   quantity    { |attrs| attrs[:product].quantity }
-  image       { |attrs| attrs[:product].image }
+  image       { |attrs| File.open(attrs[:product].image.path) }
 end
