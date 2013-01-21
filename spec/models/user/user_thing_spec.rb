@@ -30,4 +30,15 @@ describe User::Thing do
   describe 'Factories' do
     specify { expect(thing.valid?).to be_true }
   end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      thing.save
+      File.exist?(File.new(thing.image.path)).should be_true
+    end
+
+    it 'Creates one user' do
+      expect { thing.save }.to change{ User.count }.by(1)
+    end
+  end
 end

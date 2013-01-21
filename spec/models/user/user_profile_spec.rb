@@ -37,4 +37,15 @@ describe User::Profile do
   describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
   end
+
+  describe '#save' do
+    it 'Uploads an image' do
+      profile.save
+      File.exist?(File.new(profile.image.path)).should be_true
+    end
+
+    it 'Creates one user' do
+      expect { profile.save }.to change{ User.count }.by(1)
+    end
+  end
 end
