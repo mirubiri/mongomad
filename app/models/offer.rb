@@ -6,14 +6,16 @@ class Offer
   embeds_one :receiver, class_name: "Offer::Receiver", cascade_callbacks: true
   embeds_one :money,    class_name: "Offer::Money", cascade_callbacks: true
 
-  has_and_belongs_to_many :users
+  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers
+  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
 
   field :initial_message, type: String
 
   validates :composer,
             :receiver,
             :money,
-            :users,
+            :user_composer,
+            :user_receiver,
             :initial_message,
             presence: true
 end
