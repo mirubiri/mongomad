@@ -1,8 +1,14 @@
 <aside class="user_container_requests">
   <aside class="requests_requestsList">
-    <%= render :partial => 
-    'requests/partials/form' %>
-    <%= render :partial => 
-    'layouts/global_partials/requests_list' %>            
+    <% if user_logged_id == user_visited_id %> 
+      <%= render :partial => 
+      'requests/partials/form' %>
+    <% end %> 
+    <% if (user_visited_offers.count != 0)%>
+    <%= render :partial =>
+    'layouts/global_partials/requests_list' %>
+    <% else %>
+      <p>El usuario no tiene ninguna peticion actualmente</p>
+    <% end %>            
   </aside>
 </aside>

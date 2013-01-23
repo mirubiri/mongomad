@@ -27,8 +27,7 @@
       a{
         @include absolute($top:-28px,$left:-10px);
         @include unstyled-link;
-        font-size:12px;
-        
+        font-size:12px;        
       }          
     }
 

@@ -88,6 +88,7 @@
     background-color: white;
     overflow: auto;
     margin-top:10px;
+    margin-bottom: 10px;
     width:$width90pct;
     border: $borde2px;    
 
@@ -105,7 +106,7 @@
       .request{
         @include center-horizontally(100%);
         overflow: hidden;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
 
         .profile_image{
           @include border-radius(5px, 5px);
@@ -130,9 +131,15 @@
           overflow: hidden;
 
           .request_bar{
-            @include proportions(160px,40px);
+            @include proportions(160px,40px);             
           }
         }
+
+        a{
+          @include unstyled-link;
+          font-size:12px;
+          z-index: 10;        
+        }        
       }
     }
   }        

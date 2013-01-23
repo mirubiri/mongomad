@@ -126,6 +126,10 @@ module ApplicationHelper
     request.text
   end
 
+  def request_id(request)
+    request._id
+  end
+
 
 
   def offer_id(offer)
