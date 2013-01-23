@@ -4,18 +4,20 @@
 
 .header{
   @include fixed_width(100%,100%,100%);
+  height: 36px;
+  padding-top: 4px;
   position: fixed;
   z-index: 1000;
   display: inline;
   overflow: hidden;
-  background-color:#0a67a3;
+  background-color:#34708f;
   color: white;
 
     .header_logo{
       @include proportions(140px,20px);
       float: left;
       color: white;
-      border: $borde1px;
+      //border: $borde1px;
       background:{
         image: image-url('http://localhost:3000/system/images/logo.png');
         repeat:no-repeat;
@@ -35,7 +37,7 @@
         @include unstyled-link;
         @include proportions(20px,20px);
         margin-right:8px;
-        border: $borde1px;
+        //border: $borde1px;
       }
     }
 
