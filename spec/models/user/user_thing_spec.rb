@@ -73,8 +73,8 @@ describe User::Thing do
       end
 
       it 'cannot build a product if thing stock is 0' do
-       thing.stock=0
-       expect { thing.to_product }.to raise_error
+        thing.stock=0
+        expect { thing.to_product }.to raise_error
       end
     end
   end
