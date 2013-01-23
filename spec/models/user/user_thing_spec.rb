@@ -40,4 +40,42 @@ describe User::Thing do
       File.exist?(File.new(thing.image.path)).should be_true
     end
   end
+
+  describe '#to_product(quantity)' do
+      it 'builds an offer_product for an offer' do
+        product=thing.to_product
+        product.should_be kind_of("Offer::Product")
+        product.name.should eql thing.name
+        product.description.should eql thing.description
+        product.thing_id.should eql thing._id
+      end
+    
+    context 'When given quantity param' do
+      it 'builds an offer_product with the given quantity' do
+        product=thing.to_product(1)
+        product.quantity.should eql 1
+      end
+    
+      it 'cannot build a product with more quantity than stock' do
+        expect { thing.to_product(product.stock+1) }.to raise_error 
+      end
+
+      it 'cannot build a product with 0 or negative quantity' do
+        expect { thing.to_product(0).to raise_error }
+        expect { thing.to_product(-1).to raise_error }
+      end
+    end
+
+    context 'When not given quantity param' do
+      it 'builds an offer_product with quantity value of 1' do
+        product=thing.to_product
+        product.quantity.should eql 1
+      end
+
+      it 'cannot build a product if thing stock is 0' do
+       thing.stock=0
+       expect { thing.to_product }.to raise_error
+      end
+    end
+  end
 end
