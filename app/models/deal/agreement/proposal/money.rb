@@ -6,9 +6,7 @@ class Deal::Agreement::Proposal::Money
   field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer, default: 0
 
-  validates :proposal,
-            #:user_id,
-            :quantity,
+  validates :quantity,
             presence: true
 
   validates :quantity,

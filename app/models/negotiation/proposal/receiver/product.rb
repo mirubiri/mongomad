@@ -10,8 +10,7 @@ class Negotiation::Proposal::Receiver::Product
 
   mount_uploader :image, ThingImageUploader
 
-  validates :receiver,
-            :thing_id,
+  validates :thing_id,
             :name,
             :description,
             :quantity,

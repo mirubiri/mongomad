@@ -17,7 +17,7 @@ describe User::Thing do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :user }
+    it { should_not validate_presence_of :user }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :stock }
@@ -42,24 +42,24 @@ describe User::Thing do
   end
 
   describe '#to_product(quantity)' do
-      it { should respond_to(:to_product).with(1).arguments }
-      specify { thing.to_product(1).should_be kind_of("Offer::Product") }
+    it { should respond_to(:to_product).with(1).arguments }
+    specify { thing.to_product(1).should_be kind_of("Offer::Product") }
 
-      it 'builds an offer_product with the given quantity' do
-        product=thing.to_product(1)
-        product.name.should eql thing.name
-        product.description.should eql thing.description
-        product.thing_id.should eql thing._id
-        product.quantity.should eql 1
-      end
+    it 'Builds an offer_product with the given quantity' do
+      product = thing.to_product(1)
+      product.name.should eql thing.name
+      product.description.should eql thing.description
+      product.thing_id.should eql thing._id
+      product.quantity.should eql 1
+    end
 
-      it 'cannot build a product with quantity greater than stock' do
-        expect { thing.to_product(product.stock+1) }.to raise_error
-      end
+    it 'Cannot build a product with quantity greater than stock' do
+      expect { thing.to_product(product.stock+1) }.to raise_error
+    end
 
-      it 'cannot build a product with 0 or negative quantity' do
-        expect { thing.to_product(0).to raise_error }
-        expect { thing.to_product(-1).to raise_error }
-      end
+    it 'Cannot build a product with 0 or negative quantity' do
+      expect { thing.to_product(0).to raise_error }
+      expect { thing.to_product(-1).to raise_error }
+    end
   end
 end

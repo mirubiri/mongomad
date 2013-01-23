@@ -24,14 +24,13 @@ describe Negotiation do
   describe 'Factories' do
     specify { expect(negotiation.valid?).to be_true }
     specify { expect(negotiation.save).to be_true }
-    it 'Creates one negotiation' do
-      expect { negotiation.save }.to change{ Negotiation.count}.by(1)
-    end
+
     it 'Creates one offer' do
       expect { negotiation.save }.to change{ Offer.count}.by(1)
     end
-    it 'Creates two users' do
+    it 'Creates two different users' do
       expect { negotiation.save }.to change{ User.count }.by(2)
+      negotiation.user_composer.should_not eq negotiation.user_receiver
     end
   end
 end

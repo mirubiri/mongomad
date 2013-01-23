@@ -10,8 +10,7 @@ class Offer::Composer::Product
 
   mount_uploader :image, ThingImageUploader
 
-  validates :composer,
-            :thing_id,
+  validates :thing_id,
             :name,
             :description,
             :quantity,

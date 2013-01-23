@@ -12,8 +12,6 @@ class User
   has_and_belongs_to_many :deals
 
   validates :profile,
-            #:email,
-            #:password,
             presence: true
 
   # -------------- DEVISE GENERATED----------------------------

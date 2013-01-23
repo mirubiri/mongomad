@@ -6,9 +6,7 @@ class Offer::Money
   field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer, default: 0
 
-  validates :offer,
-            #:user_id,
-            :quantity,
+  validates :quantity,
             presence: true
 
   validates :quantity,

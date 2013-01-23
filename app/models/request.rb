@@ -4,13 +4,13 @@ class Request
 
   belongs_to :user
 
-  field :user_name, type: String
+  field :user_nickname, type: String
   field :text,      type: String
 
   mount_uploader :image, UserImageUploader
 
   validates :user,
-            :user_name,
+            :user_nickname,
             :text,
             :image,
             presence: true

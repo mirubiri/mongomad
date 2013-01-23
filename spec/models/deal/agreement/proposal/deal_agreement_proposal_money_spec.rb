@@ -15,8 +15,7 @@ describe Deal::Agreement::Proposal::Money do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :proposal }
-    xit { should validate_presence_of :user_id }
+    it { should_not validate_presence_of :proposal }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
@@ -27,15 +26,6 @@ describe Deal::Agreement::Proposal::Money do
     specify { expect(money.valid?).to be_true }
     it 'Creates one deal' do
       expect { money.save }.to change{ Deal.count}.by(1)
-    end
-    it 'Creates one negotiation' do
-      expect { money.save }.to change{ Negotiation.count}.by(1)
-    end
-    it 'Creates one offer' do
-      expect { money.save }.to change{ Offer.count}.by(1)
-    end
-    it 'Creates two users' do
-      expect { money.save }.to change{ User.count }.by(2)
     end
    end
 end

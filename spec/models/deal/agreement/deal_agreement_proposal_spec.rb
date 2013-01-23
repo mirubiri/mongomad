@@ -19,25 +19,18 @@ describe Deal::Agreement::Proposal do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :agreement }
+    it { should_not validate_presence_of :agreement }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :money }
+    it { should validate_presence_of :user_composer }
+    it { should validate_presence_of :user_receiver }
   end
 
   describe 'Factories' do
     specify { expect(proposal.valid?).to be_true }
     it 'Creates one deal' do
       expect { proposal.save }.to change{ Deal.count}.by(1)
-    end
-    it 'Creates one negotiation' do
-      expect { proposal.save }.to change{ Negotiation.count }.by(1)
-    end
-    it 'Creates one offer' do
-      expect { proposal.save }.to change{ Offer.count }.by(1)
-    end
-    it 'Creates two users' do
-      expect { proposal.save }.to change{ User.count }.by(2)
     end
   end
 end
