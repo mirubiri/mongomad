@@ -25,7 +25,7 @@ describe Negotiation::Proposal::Receiver do
   describe 'Factories' do
     specify { expect(receiver.valid?).to be_true }
     it 'Creates one negotiation' do
-      expect { receiver.save }.to change{ Negotiation.count}.by(1)
+      expect { receiver.save }.to change{ Negotiation.count }.by(1)
     end
   end
 

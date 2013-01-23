@@ -26,7 +26,7 @@ describe Negotiation::Message do
   describe 'Factories' do
     specify { expect(message.valid?).to be_true }
     it 'Creates one negotiation' do
-      expect { message.save }.to change{ Negotiation.count}.by(1)
+      expect { message.save }.to change{ Negotiation.count }.by(1)
     end
   end
 

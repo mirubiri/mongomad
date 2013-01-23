@@ -25,7 +25,7 @@ describe Deal::Agreement::Proposal::Receiver do
   describe 'Factories' do
     specify { expect(receiver.valid?).to be_true }
     it 'Creates one deal' do
-      expect { receiver.save }.to change{ Deal.count}.by(1)
+      expect { receiver.save }.to change{ Deal.count }.by(1)
     end
   end
 

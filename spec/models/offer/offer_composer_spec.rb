@@ -25,7 +25,7 @@ describe Offer::Composer do
   describe 'Factories' do
     specify { expect(composer.valid?).to be_true }
     it 'Creates one offer' do
-      expect { composer.save }.to change{ Offer.count}.by(1)
+      expect { composer.save }.to change{ Offer.count }.by(1)
     end
   end
 

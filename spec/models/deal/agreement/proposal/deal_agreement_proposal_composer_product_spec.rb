@@ -32,7 +32,7 @@ describe Deal::Agreement::Proposal::Composer::Product do
   describe 'Factories' do
     specify { expect(product.valid?).to be_true }
     it 'Creates one deal' do
-      expect { product.save }.to change{ Deal.count}.by(1)
+      expect { product.save }.to change{ Deal.count }.by(1)
     end
   end
 
