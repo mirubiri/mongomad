@@ -62,6 +62,10 @@ module ApplicationHelper
     @user.received_offers
   end
 
+  def user_visited_id
+    @user._id
+  end
+
 
 
   def thing_image(thing)

@@ -12,7 +12,7 @@
   .main_container_header{
     @include fixed_width(100%,500px,100%);
     float:left;
-    margin-bottom:15px;
+    margin-bottom:12px;
     border-bottom: $borde2px;
     background-color: white;
 
@@ -75,5 +75,14 @@
     @include center-horizontally($width98pct);
     @include fixed_width($width98pct,$width98pct,$width98pct);
     overflow: auto;
+
+    .boton_nueva_offerta{
+      @include proportions(100%,40px);      
+      margin-bottom: 10px;
+      float: left;      
+        button{
+          @include center-horizontally($width98pct);
+        }
+    }
   }
 }
