@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    @offers = @user.offers.all
+    @offers = @user.received_offers.all
     @request = Request.new
     @offer = Offer.new
 
