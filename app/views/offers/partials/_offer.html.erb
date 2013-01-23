@@ -1,3 +1,10 @@
+<% if user_logged_id != user_visited_id %> 
+  <div class="boton_nueva_offerta">       
+    <%= button_tag "Nueva Oferta", :class => "add_offer_button",
+    :id => "new-offer-button" %>    
+  </div>
+<% end %>
+
 <% user_visited_offers.each do |offer| %>
   <div class="offer" id="<%= offer.composer.user_id %>">
     <div class="offer_header">
@@ -33,6 +40,13 @@
     <div class="offer_button">
       <button>Negociar</button>
     </div>
-  </div>
+
+    <div class="offer_date">
+      <%= Time.new.inspect %>
+    </div>    
+  </div> 
+
 <% end %>
+
+<%= render :partial => "layouts/new_offer" %>
   

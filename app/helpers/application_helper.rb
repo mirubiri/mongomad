@@ -59,7 +59,11 @@ module ApplicationHelper
   end
 
   def user_visited_offers
-    @user.offers
+    @user.received_offers
+  end
+
+  def user_visited_id
+    @user._id
   end
 
 
@@ -95,7 +99,7 @@ module ApplicationHelper
   end
 
   def negotiation_receiver_products(negotiation)
-    negotiation.proposals.last.composer.products
+    negotiation.proposals.last.receiver.products
   end
 
 

@@ -6,7 +6,7 @@ class OffersController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @offers = @user.offers.all.to_a
+    @offers = @user.received_offers.all.to_a
     @requests = @user.requests.all.to_a
     @offer = Offer.new
 

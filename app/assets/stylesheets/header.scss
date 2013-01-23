@@ -48,10 +48,11 @@
     .header_user_image{
       @include proportions(26px,26px);
       float:left;
-      margin: 2px 4px 0px 0px;
+      margin: 3px 0px 0px 0px;
 
       a{
         @include proportions(24px,24px);
+        margin: 0px;
         img{          
           @include high-quality-image;
           @include proportions(24px,24px);

@@ -23,7 +23,7 @@
         </div>
 
         <div class="orderer_things">          
-          <% negotiation_receiver_products(negotiation) do |product| %>
+          <% negotiation_receiver_products(negotiation).each do |product| %>
             <div class="orderer_product">
               <%= product_image(product) %>
               <div class="product-title">
@@ -64,7 +64,7 @@
               <%= message.text %>              
             </div>
           </div> 
-        <% end %>     
+        <% end %>  
       </div>
       
       <div class="writting_box">

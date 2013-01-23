@@ -1,9 +1,9 @@
 <aside class="user_container_requests">
   
-  <a href="newrequest.html">
-    <%= button_tag "Nueva Peticion", :class => "add_offer_button",
-    :id => "add_request_button" %>      
-  </a>
+  <% if user_logged_id == user_visited_id %>    
+    <%= button_tag "Nueva Peticion", :class => "add_petition_button",
+    :id => "add_request_button" %>     
+  <% end %>
 
   <aside class="requests_requestsList">
     <%= render :partial => 

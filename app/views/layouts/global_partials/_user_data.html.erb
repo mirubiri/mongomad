@@ -5,14 +5,7 @@
   <div class="user_name">
     <%= user_visited_nickname %></br>
     <%= user_visited_country %></br>
-  </div>
-
-  <% if controller.controller_name == 'users' || controller.controller_name == 'offers' %>
-    <a href="newOffer.html" target="_blank">
-      <%= button_tag "Nueva Oferta", :class => "add_offer_button",
-      :id => "new-offer-button" %>
-    </a>
-  <% end %>
+  </div>  
 
   <nav class="profile_menu" id="menu_user_data">
     <div class="menu_icon">
