@@ -48,10 +48,10 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @user = User.find(params[:user_id])    
-    @request = Request.new(user_id:params[:user_id],
+    @request = Request.new(user:@user,
                            text:params[:text],
-                           user_name:params[:user_name], 
-                           image:params[:image])
+                           user_name:@user.profile.name, 
+                           image:@user.profile.image)
 
     respond_to do |format|
       if @request.save

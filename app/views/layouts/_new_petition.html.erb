@@ -2,17 +2,14 @@
   <%= form_for [current_user,@request] do |form| %>
     <div class="new_petition_title">
       <div class="icon">
-        <%= user_logged_image %>
-        <%= hidden_field_tag :image, user_logged_image %>
+        <%= user_logged_image %>       
       </div>
       <div class="description">Nueva Petición</div>
     </div> 
     <div class="new_offer_text">
       <%= text_area_tag(:text, "Texto de la peticion", 
       :size => "24x6") %>
-    </div>
-    <%= hidden_field_tag(:user_id, user_logged_id) %>
-    <%= hidden_field_tag(:user_name, user_logged_name) %>
+    </div>    
     <div class="action">      
       <%= form.submit %>
     </div> 
