@@ -11,15 +11,13 @@ describe Deal::Agreement::Proposal::Receiver do
   end
 
   describe 'Attributes' do
-    it { should_not have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:name).of_type(String) }
     it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :proposal }
+    it { should_not validate_presence_of :proposal }
     it { should validate_presence_of :products }
-    it { should_not validate_presence_of :user_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :image }
   end
@@ -28,15 +26,6 @@ describe Deal::Agreement::Proposal::Receiver do
     specify { expect(receiver.valid?).to be_true }
     it 'Creates one deal' do
       expect { receiver.save }.to change{ Deal.count}.by(1)
-    end
-    it 'Creates one negotiation' do
-      expect { receiver.save }.to change{ Negotiation.count}.by(1)
-    end
-    it 'Creates one offer' do
-      expect { receiver.save }.to change{ Offer.count}.by(1)
-    end
-    it 'Creates two users' do
-      expect { receiver.save }.to change{ User.count }.by(2)
     end
   end
 

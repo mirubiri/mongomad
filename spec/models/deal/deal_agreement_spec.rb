@@ -12,7 +12,7 @@ describe Deal::Agreement do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :deal }
+    it { should_not validate_presence_of :deal }
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
   end
@@ -21,15 +21,6 @@ describe Deal::Agreement do
     specify { expect(agreement.valid?).to be_true }
     it 'Creates one deal' do
       expect { agreement.save }.to change{ Deal.count}.by(1)
-    end
-    it 'Creates one negotiation' do
-      expect { agreement.save }.to change{ Negotiation.count}.by(1)
-    end
-    it 'Creates one offer' do
-      expect { agreement.save }.to change{ Offer.count}.by(1)
-    end
-    it 'Creates two users' do
-      expect { agreement.save }.to change{ User.count }.by(2)
     end
   end
 end

@@ -17,23 +17,22 @@ describe Deal do
 
   describe 'Validations' do
     it { should validate_presence_of :agreement }
+    it { should validate_presence_of :messages }
     it { should validate_presence_of :users }
   end
 
   describe 'Factories' do
     specify { expect(deal.valid?).to be_true }
     specify { expect(deal.save).to be_true }
-    it 'Creates one deal' do
-      expect { deal.save }.to change{ Deal.count}.by(1)
-    end
     it 'Creates one negotiation' do
       expect { deal.save }.to change{ Negotiation.count}.by(1)
     end
     it 'Creates one offer' do
       expect { deal.save }.to change{ Offer.count}.by(1)
     end
-    it 'Creates two users' do
+    it 'Creates two different users' do
       expect { deal.save }.to change{ User.count }.by(2)
+      deal.user_composer.should_not eq negotiation.user_receiver
     end
   end
 end

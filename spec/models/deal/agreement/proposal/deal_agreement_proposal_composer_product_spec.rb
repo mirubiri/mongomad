@@ -18,7 +18,7 @@ describe Deal::Agreement::Proposal::Composer::Product do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :composer }
+    it { should_not validate_presence_of :composer }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
@@ -33,15 +33,6 @@ describe Deal::Agreement::Proposal::Composer::Product do
     specify { expect(product.valid?).to be_true }
     it 'Creates one deal' do
       expect { product.save }.to change{ Deal.count}.by(1)
-    end
-    it 'Creates one negotiation' do
-      expect { product.save }.to change{ Negotiation.count}.by(1)
-    end
-    it 'Creates one offer' do
-      expect { product.save }.to change{ Offer.count}.by(1)
-    end
-    it 'Creates two users' do
-      expect { product.save }.to change{ User.count }.by(2)
     end
   end
 

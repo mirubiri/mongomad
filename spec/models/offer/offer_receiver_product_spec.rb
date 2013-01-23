@@ -18,7 +18,7 @@ describe Offer::Receiver::Product do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :receiver }
+    it { should_not validate_presence_of :receiver }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
@@ -33,9 +33,6 @@ describe Offer::Receiver::Product do
     specify { expect(product.valid?).to be_true }
     it 'Creates one offer' do
       expect { product.save }.to change{ Offer.count}.by(1)
-    end
-    it 'Creates two users' do
-      expect { product.save }.to change{ User.count }.by(2)
     end
   end
 

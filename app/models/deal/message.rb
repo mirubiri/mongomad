@@ -4,15 +4,12 @@ class Deal::Message
 
   embedded_in :deal
 
-  field :user_id,   type: Moped::BSON::ObjectId
-  field :user_name, type: String
-  field :text,      type: String
+  field :user_nickname, type: String
+  field :text,          type: String
 
   mount_uploader :image, UserImageUploader
 
-  validates :deal,
-            :user_id,
-            :user_name,
+  validates :user_nickname,
             :text,
             :image,
             presence: true

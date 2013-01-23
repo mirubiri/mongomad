@@ -21,15 +21,10 @@ describe User do
 
   describe 'Validations' do
     it { should validate_presence_of :profile }
-    xit { should validate_presence_of :email }
-    xit { should validate_presence_of :password }
   end
 
   describe 'Factories' do
     specify { expect(user.valid?).to be_true }
     specify { expect(user.save).to be_true }
-    it 'Creates one user' do
-      expect { user.save }.to change{ User.count }.by(1)
-    end
   end
 end
