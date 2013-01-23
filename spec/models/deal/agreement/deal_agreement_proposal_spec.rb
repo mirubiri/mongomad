@@ -14,6 +14,8 @@ describe Deal::Agreement::Proposal do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should have_field(:user_composer).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:user_receiver).of_type(Moped::BSON::ObjectId) }
   end
 
   describe 'Validations' do
@@ -29,10 +31,10 @@ describe Deal::Agreement::Proposal do
       expect { proposal.save }.to change{ Deal.count}.by(1)
     end
     it 'Creates one negotiation' do
-      expect { proposal.save }.to change{ Negotiation.count}.by(1)
+      expect { proposal.save }.to change{ Negotiation.count }.by(1)
     end
     it 'Creates one offer' do
-      expect { proposal.save }.to change{ Offer.count}.by(1)
+      expect { proposal.save }.to change{ Offer.count }.by(1)
     end
     it 'Creates two users' do
       expect { proposal.save }.to change{ User.count }.by(2)

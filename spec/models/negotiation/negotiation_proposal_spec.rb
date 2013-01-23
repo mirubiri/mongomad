@@ -13,6 +13,8 @@ describe Negotiation::Proposal do
   end
 
   describe 'Attributes' do
+    it { should have_field(:user_composer).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:user_receiver).of_type(Moped::BSON::ObjectId) }
     it { should be_timestamped_document }
   end
 
