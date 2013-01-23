@@ -9,6 +9,7 @@ class Negotiation::Proposal::Composer
   mount_uploader :image, UserImageUploader
 
   validates :products,
+  			:proposal,
             :name,
             :image,
             presence: true

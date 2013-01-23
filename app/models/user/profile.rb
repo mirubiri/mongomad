@@ -17,6 +17,7 @@ class User::Profile
   mount_uploader :image, UserImageUploader
 
   validates :name,
+            :user,
             :surname,
             :nickname,
             :sex,

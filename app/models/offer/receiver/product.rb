@@ -12,6 +12,7 @@ class Offer::Receiver::Product
 
   validates :thing_id,
             :name,
+            :receiver,
             :description,
             :quantity,
             :image,

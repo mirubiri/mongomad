@@ -8,7 +8,6 @@ Fabricator(:offer_composer, class_name: "Offer::Composer") do
     end
     products
   end
-  user_id   { |attrs| attrs[:user]._id }
   name      { |attrs| attrs[:user].profile.name }
   image     { File.open('app/assets/images/composer.png') }
 end

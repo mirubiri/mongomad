@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Negotiation do
   let(:negotiation) do
-    Fabricate.build(:negotiation)
+    Fabricate.build(:negotiation,offer:Fabricate(:offer))
   end
 
   describe 'Relations' do
@@ -26,11 +26,10 @@ describe Negotiation do
     specify { expect(negotiation.save).to be_true }
 
     it 'Creates one offer' do
-      expect { negotiation.save }.to change{ Offer.count}.by(1)
+      expect { negotiation.save }.to change{ Offer.count }.by(1)
     end
     it 'Creates two different users' do
       expect { negotiation.save }.to change{ User.count }.by(2)
-      negotiation.user_composer.should_not eq negotiation.user_receiver
     end
   end
 end

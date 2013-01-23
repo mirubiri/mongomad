@@ -15,7 +15,7 @@ describe Offer::Money do
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :offer }
+    it { should validate_presence_of :offer }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,

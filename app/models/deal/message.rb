@@ -4,13 +4,14 @@ class Deal::Message
 
   embedded_in :deal
 
-  field :user_nickname, type: String
+  field :user_name, type: String
   field :text,          type: String
 
   mount_uploader :image, UserImageUploader
 
-  validates :user_nickname,
+  validates :user_name,
             :text,
+            :deal,
             :image,
             presence: true
 end

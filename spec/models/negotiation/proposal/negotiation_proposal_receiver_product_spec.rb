@@ -18,7 +18,7 @@ describe Negotiation::Proposal::Receiver::Product do
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :receiver }
+    it { should validate_presence_of :receiver }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
@@ -30,9 +30,9 @@ describe Negotiation::Proposal::Receiver::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to be_true }
+    specify { expect(product.valid?).to be_true, "Is not valid because #{product.errors}" }
     it 'Creates one negotiation' do
-      expect { product.save }.to change{ Negotiation.count}.by(1)
+      expect { product.save }.to change{ Negotiation.count }.by(1)
     end
   end
 

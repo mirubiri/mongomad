@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Deal do
   let(:deal) do
-    Fabricate.build(:deal)
+    Fabricate.build(:deal,negotiation:Fabricate(:negotiation))
   end
 
   describe 'Relations' do
@@ -32,7 +32,6 @@ describe Deal do
     end
     it 'Creates two different users' do
       expect { deal.save }.to change{ User.count }.by(2)
-      deal.user_composer.should_not eq negotiation.user_receiver
     end
   end
 end

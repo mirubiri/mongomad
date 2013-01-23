@@ -11,6 +11,7 @@ class User::Thing
 
   validates :name,
             :description,
+            :user,
             :stock,
             :image,
             presence: true

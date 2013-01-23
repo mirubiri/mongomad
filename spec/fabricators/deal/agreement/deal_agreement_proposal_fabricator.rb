@@ -3,5 +3,7 @@ Fabricator(:deal_agreement_proposal, class_name: "Deal::Agreement::Proposal") do
   agreement nil
   composer  { |attrs| Fabricate.build(:deal_agreement_proposal_composer, composer:attrs[:proposal].composer) }
   receiver  { |attrs| Fabricate.build(:deal_agreement_proposal_receiver, receiver:attrs[:proposal].receiver) }
+  user_composer_id { |attrs| attrs[:proposal].user_composer_id }
+  user_receiver_id { |attrs| attrs[:proposal].user_receiver_id }
   money     { |attrs| Fabricate.build(:deal_agreement_proposal_money, money:attrs[:proposal].money) }
 end

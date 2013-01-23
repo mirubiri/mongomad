@@ -28,8 +28,9 @@ describe Offer do
   end
 
   describe 'Factories' do
-    specify { expect(offer.valid?).to be_true }
-    specify { expect(offer.save).to be_true }
+    specify { expect { offer.valid? }.to be_true }
+    specify { expect { offer.save }.to be_true }
+
     it 'Creates two different users' do
       expect { offer.save }.to change{ User.count }.by(2)
       offer.user_composer.should_not eq offer.user_receiver

@@ -7,6 +7,7 @@ class Offer::Money
   field :quantity, type: Integer, default: 0
 
   validates :quantity,
+            :offer,
             presence: true
 
   validates :quantity,

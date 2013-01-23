@@ -8,7 +8,6 @@ Fabricator(:negotiation_proposal_composer, class_name: "Negotiation::Proposal::C
     end
     products
   end
-  user_id   { |attrs| attrs[:composer].user_id }
   name      { |attrs| attrs[:composer].name }
   image     { |attrs| File.open(attrs[:composer].image.path) }
 end

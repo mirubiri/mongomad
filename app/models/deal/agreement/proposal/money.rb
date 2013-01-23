@@ -7,6 +7,7 @@ class Deal::Agreement::Proposal::Money
   field :quantity, type: Integer, default: 0
 
   validates :quantity,
+            :proposal,
             presence: true
 
   validates :quantity,

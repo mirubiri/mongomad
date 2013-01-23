@@ -11,14 +11,14 @@ describe Request do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:user_nickname).of_type(String) }
+    it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :user }
-    it { should validate_presence_of :user_nickname }
+    it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
     it { should validate_presence_of :image }
   end

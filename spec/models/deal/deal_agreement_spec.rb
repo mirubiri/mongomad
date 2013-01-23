@@ -12,7 +12,7 @@ describe Deal::Agreement do
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :deal }
+    it { should validate_presence_of :deal }
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
   end

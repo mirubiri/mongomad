@@ -12,6 +12,7 @@ class Deal::Agreement::Proposal::Receiver::Product
 
   validates :thing_id,
             :name,
+            :receiver,
             :description,
             :quantity,
             :image,

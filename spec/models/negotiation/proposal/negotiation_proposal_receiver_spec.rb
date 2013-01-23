@@ -16,7 +16,7 @@ describe Negotiation::Proposal::Receiver do
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :proposal }
+    it { should validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :name }
     it { should validate_presence_of :image }

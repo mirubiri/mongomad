@@ -14,17 +14,17 @@ describe Negotiation::Proposal do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:user_composer).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:user_receiver).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :negotiation }
+    it { should validate_presence_of :negotiation }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :money }
-    it { should validate_presence_of :user_composer }
-    it { should validate_presence_of :user_receiver }
+    it { should validate_presence_of :user_composer_id }
+    it { should validate_presence_of :user_receiver_id }
   end
 
   describe 'Factories' do

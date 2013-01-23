@@ -6,6 +6,7 @@ class Deal::Agreement
   embeds_many :messages,  class_name: "Deal::Agreement::Message", cascade_callbacks: true
 
   validates :proposals,
+  			:deal,
             :messages,
             presence: true
 end

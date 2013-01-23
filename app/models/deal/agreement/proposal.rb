@@ -7,13 +7,14 @@ class Deal::Agreement::Proposal
   embeds_one  :receiver,  class_name: "Deal::Agreement::Proposal::Receiver", cascade_callbacks: true
   embeds_one  :money,     class_name: "Deal::Agreement::Proposal::Money", cascade_callbacks: true
 
-  field :user_composer, type: Moped::BSON::ObjectId
-  field :user_receiver, type: Moped::BSON::ObjectId
+  field :user_composer_id, type: Moped::BSON::ObjectId
+  field :user_receiver_id, type: Moped::BSON::ObjectId
 
   validates :composer,
             :receiver,
+            :agreement,
             :money,
-            :user_composer,
-            :user_receiver,
+            :user_composer_id,
+            :user_receiver_id,
             presence: true
 end
