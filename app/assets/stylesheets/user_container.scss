@@ -5,7 +5,7 @@
   @include fixed_width($width250px,$width250px,$width250px);
   overflow: visible;  
   border: $borde2px;
-  background-color: white;
+  background-color: #f8fcf8;
 
   #user_reputation_container{
     @include proportions(100%,26px);
@@ -28,6 +28,7 @@
 
   .user_container_profile{
     @include center-horizontally($width250px);
+    background-color: white;
     overflow: auto;    
     margin-top:10px;
     width:$width90pct;
@@ -64,26 +65,27 @@
     }
 
     .profile_menu{
-      @include center-horizontally(70%);
+      @include center-horizontally(80%);
       overflow: auto;
-      margin: 10px 0px 10px 0px;
-      padding-left: 40px;
+      margin: 10px 0px 10px 2px;
+      padding-left: 20px;
 
       .menu_icon{
         @include border-radius(3px, 3px);
+        @include proportions(58px,20px);
         float:left;
-        margin-left:8px;
         border: $borde1px;
 
-        img{
-          @include proportions(40px,40px);          
-        }  
+        a{
+          margin-left: 3px;
+        }          
       }
     }
   } 
 
   .user_container_requests{
     @include center-horizontally($width250px);
+    background-color: white;
     overflow: auto;
     margin-top:10px;
     width:$width90pct;
@@ -125,7 +127,11 @@
           float: left;          
           border: $borde1px;
           font-size: 9px;
-          overflow: hidden;          
+          overflow: hidden;
+
+          .request_bar{
+            @include proportions(160px,40px);
+          }
         }
       }
     }

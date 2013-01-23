@@ -75,6 +75,8 @@ function ajaxLinks(){
         var url= this.href;
         history.pushState({path:url},"", url);
         $('#ppal_container').removeClass('masonry');
+        $('#navigation_bar nav a').removeClass("nav_selected");
+        $(this).addClass("nav_selected");
     });
 
     $('#menu_user_data .menu_icon a').live('click',function(e){

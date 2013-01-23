@@ -1,16 +1,10 @@
-<%= form_for :request do |form| %>  
-
-  <div class="new_request_title">
-    <div class="icon">icono de nueva peticion</div>
-    <div class="description">Nueva Petición</div>
-  </div>
-  <div class="new_offer_text">
-    <%= text_area :request, :text %>
-  </div>
-  <div class="send_button">
-    <div class="actions">
-      <%= form.submit %>
+<%= form_for [current_user,@request] do |form| %>
+  <div class="request">
+    <div class="profile_image">      
+      <%= user_visited_image %>
     </div>
-  </div>
-  
+    <div class="description">
+      <%= text_field_tag 'text', nil, :class => 'request_bar' %>
+    </div>
+  </div>  
 <% end %>

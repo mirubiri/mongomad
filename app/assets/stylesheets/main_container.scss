@@ -6,11 +6,16 @@
   @include absolute($top:50px,$left:300px);
   @include proportions($width72pct,auto);
   border: $borde2px;
-  background-color: transparent;
+  background-color: #f8fcf8;
   overflow: visible;
 
   .main_container_header{
     @include fixed_width(100%,500px,100%);
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
+    background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
+    background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
     float:left;
     margin-bottom:12px;
     border-bottom: $borde2px;
@@ -37,13 +42,18 @@
         }
 
         a:hover{
-          background-color:grey;
+          background-color:#85b1bf;
           color: white;
         }
 
         a:last-child{
           border:none;
         }        
+      }
+
+      .nav_selected{
+        background-color:#00698c;
+        color: white; 
       } 
 
       .main_container_header_search{
