@@ -5,5 +5,5 @@ Fabricator(:deal_agreement_proposal_receiver_product, class_name: "Deal::Agreeme
   name        { |attrs| attrs[:product].name }
   description { |attrs| attrs[:product].description }
   quantity    { |attrs| attrs[:product].quantity }
-  image       { File.open('app/assets/images/car.png') }
+  image       { |attrs| File.open(attrs[:product].image.path) }
 end
