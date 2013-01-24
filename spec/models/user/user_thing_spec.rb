@@ -43,8 +43,9 @@ describe User::Thing do
   end
 
   describe '#to_product(quantity)' do
-    it { should respond_to(:to_product).with(1).arguments }
     specify { thing.to_product(1).should_be kind_of("Offer::Product") }
+
+    it { should respond_to(:to_product).with(1).arguments }
 
     it 'Builds an offer_product with the given quantity' do
       product = thing.to_product(1)

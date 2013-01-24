@@ -28,6 +28,7 @@ describe Negotiation do
     it 'Creates one offer' do
       expect { negotiation.save }.to change{ Offer.count }.by(1)
     end
+
     it 'Creates two different users' do
       expect { negotiation.save }.to change{ User.count }.by(2)
     end

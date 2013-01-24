@@ -19,6 +19,7 @@ describe Deal::Agreement do
 
   describe 'Factories' do
     specify { expect(agreement.valid?).to be_true }
+
     it 'Creates one deal' do
       expect { agreement.save }.to change{ Deal.count }.by(1)
     end

@@ -24,12 +24,15 @@ describe Deal do
   describe 'Factories' do
     specify { expect(deal.valid?).to be_true }
     specify { expect(deal.save).to be_true }
+
     it 'Creates one negotiation' do
       expect { deal.save }.to change{ Negotiation.count }.by(1)
     end
+
     it 'Creates one offer' do
       expect { deal.save }.to change{ Offer.count }.by(1)
     end
+
     it 'Creates two different users' do
       expect { deal.save }.to change{ User.count }.by(2)
     end
