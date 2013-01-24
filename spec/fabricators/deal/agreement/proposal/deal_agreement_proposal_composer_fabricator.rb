@@ -9,5 +9,5 @@ Fabricator(:deal_agreement_proposal_composer, class_name: "Deal::Agreement::Prop
     products
   end
   name      { |attrs| attrs[:composer].name }
-  image     { File.open('app/assets/images/composer.png') }
+  image     { |attrs| File.open(attrs[:composer].image.path) }
 end
