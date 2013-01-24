@@ -136,6 +136,10 @@ module ApplicationHelper
     offer._id
   end
 
+  def offer_datetime(offer)
+    offer.created_at
+  end
+
   def offer_composer_image(offer)
     image_tag(offer.composer.image)
   end
@@ -145,7 +149,7 @@ module ApplicationHelper
   end
 
   def offer_composer_id(offer)
-    offer.user_composer_id
+    offer.user_composer._id
   end
 
   def offer_receiver_products(offer)
@@ -156,5 +160,18 @@ module ApplicationHelper
     offer.initial_message
   end
 
+
+
+  def message_image(message)
+    message.image
+  end
+
+  def message_text(message)
+    message.text
+  end
+
+  def message_datetime(message)
+    message.created_at
+  end
 
 end
