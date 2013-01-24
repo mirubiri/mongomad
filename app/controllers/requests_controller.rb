@@ -87,7 +87,7 @@ class RequestsController < ApplicationController
     @request.destroy
 
     respond_to do |format|
-      format.html { redirect_to requests_url }
+      format.html { redirect_to user_offers_url }
       format.json { head :no_content }
     end
   end
