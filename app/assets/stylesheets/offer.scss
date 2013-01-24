@@ -13,29 +13,29 @@
   .offer_header{
     @include proportions(100%,60px);
     overflow: hidden;
-    margin-bottom: 5px;  
+    margin-bottom: 5px;
 
     .triangle {
       @include relative($top:0px,$right:-240px);
-      @include proportions(0px,0px);      
+      @include proportions(0px,0px);
       border:{
             top: 25px solid rgb(220,220,220);
             right: 0px solid transparent;
             left: 25px solid transparent;
-      }     
+      }
 
       a{
         @include absolute($top:-28px,$left:-10px);
         @include unstyled-link;
-        font-size:12px;        
-      }          
+        font-size:12px;
+      }
     }
 
     .profile_image{
       @include relative($top:-20px,$left:6px);
       @include border-radius(5px, 5px);
-      @include proportions(50px,50px);      
-      overflow: hidden;      
+      @include proportions(50px,50px);
+      overflow: hidden;
       border: $borde1px;
 
       a{
@@ -47,9 +47,9 @@
     }
 
     .description{
-      @include relative($top:-72px,$left:67px); 
+      @include relative($top:-72px,$left:67px);
       @include proportions(172px,50px);
-      font-size: 9px;           
+      font-size: 9px;
     }
   }
 
@@ -62,7 +62,7 @@
     .recieved{
       float:left;
       overflow:hidden;
-      margin: 5px 0px 0px 8px;
+      margin: 5px 0px 0px 5px;
       width: 150px;
 
       img{
@@ -71,15 +71,15 @@
         @include proportions(130px,130px);
         float:left;
         overflow: auto;
-        margin:0px 0px 5px 5px;  
+        margin:0px 0px 5px 5px;
         border: $borde1px;
-      }               
+      }
      }
 
     .given{
       float: right;
       overflow: hidden;
-      margin: 5px 0px 0px 8px;
+      margin: 5px 5px 0px 0px;
       width: 90px;
 
       img{
@@ -87,9 +87,9 @@
         @include high-quality-image;
         @include proportions(80px,80px);
         float:left;
-        margin:0px 0px 5px 5px;        
+        margin:0px 0px 5px 5px;
         border: $borde1px;
-      }                             
+      }
     }
   }
 
@@ -109,7 +109,7 @@
   .offer_date{
     float: left;
     margin: -10px 0px 0px 5px;
-    font-size: 8px;   
+    font-size: 8px;
   }
 
   @include box-sizing(border-box);

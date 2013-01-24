@@ -1,12 +1,12 @@
 function matchPrincipalContainersHeighs(){
   var alturaVentana = $(document).height()-90;// alturas del footer + header
-  
+
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
 
   $('#user-side,#content-side').equalHeightColumns();
-  $('#ppal_container').css({'height': ($('#user-side').height() - 50)  + 'px'});
+  $('#ppal_container').css({'height': ($('#user-side').height() - 90)  + 'px'});
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});

@@ -36,14 +36,19 @@
           height: 27px;
           border-right: $borde2px;
 
-          .nav_element{  
-            padding: 3px 5px 0px 10px;                      
-          }          
-        }        
+          .nav_element{
+            padding: 3px 5px 0px 10px;
+          }
+        }
+
+        a:hover{
+          background-color:#85b1bf;
+          color: white;
+        }
 
         a:last-child{
           border:none;
-        }        
+        }
       }
 
       .nav_hover{
@@ -53,8 +58,8 @@
 
       .nav_selected{
         background-color:#00698c;
-        color: white; 
-      } 
+        color: white;
+      }
 
       .main_container_header_search{
         float:right;
@@ -68,31 +73,31 @@
 
         img{
           @include high-quality-image;
-          @include proportions(10px,10px);          
+          @include proportions(10px,10px);
           margin-right:4px;
-          
+
           button{
             float:left;
             text-align:center;
             vertical-align:center;
           }
-        }            
+        }
       }
     }
   }
-      
+
+  .main_offer_button{
+    @include proportions(100%,40px);
+    margin: 0px 0px 10px 8px;
+    float: left;
+      button{
+        @include center-horizontally($width98pct);
+      }
+  }
+
   .main_container_elementList{
     @include center-horizontally($width98pct);
     @include fixed_width($width98pct,$width98pct,$width98pct);
     overflow: auto;
-
-    .boton_nueva_offerta{
-      @include proportions(100%,40px);      
-      margin-bottom: 10px;
-      float: left;      
-        button{
-          @include center-horizontally($width98pct);
-        }
-    }
   }
 }

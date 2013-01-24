@@ -28,7 +28,8 @@ describe User::Thing do
   end
 
   describe 'Factories' do
-    specify { expect(thing.valid?).to be_true }
+    specify { expect(thing.valid?).to be_true, "Is not valid because #{thing.errors}" }
+
     it 'Creates one user' do
       expect { thing.save }.to change{ User.count }.by(1)
     end
@@ -42,8 +43,9 @@ describe User::Thing do
   end
 
   describe '#to_product(quantity)' do
-    it { should respond_to(:to_product).with(1).arguments }
     specify { thing.to_product(1).should_be kind_of("Offer::Product") }
+
+    it { should respond_to(:to_product).with(1).arguments }
 
     it 'Builds an offer_product with the given quantity' do
       product = thing.to_product(1)

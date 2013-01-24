@@ -35,7 +35,8 @@ describe User::Profile do
   end
 
   describe 'Factories' do
-    specify { expect(profile.valid?).to be_true }
+    specify { expect(profile.valid?).to be_true, "Is not valid because #{profile.errors}" }
+
     it 'Creates one user' do
       expect { profile.save }.to change{ User.count }.by(1)
     end

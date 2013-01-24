@@ -24,7 +24,8 @@ describe Deal::Message do
   end
 
   describe 'Factories' do
-    specify { expect(message.valid?).to be_true }
+    specify { expect(message.valid?).to be_true, "Is not valid because #{message.errors}" }
+
     it 'Creates one deal' do
       expect { message.save }.to change{ Deal.count }.by(1)
     end

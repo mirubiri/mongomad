@@ -30,7 +30,8 @@ describe Offer::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to be_true }
+    specify { expect(product.valid?).to be_true, "Is not valid because #{product.errors}" }
+
     it 'Creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)
     end

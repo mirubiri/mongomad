@@ -23,7 +23,8 @@ describe Negotiation::Proposal::Composer do
   end
 
   describe 'Factories' do
-    specify { expect(composer.valid?).to be_true }
+    specify { expect(composer.valid?).to be_true, "Is not valid because #{composer.errors}" }
+
     it 'Creates one negotiation' do
       expect { composer.save }.to change{ Negotiation.count }.by(1)
     end

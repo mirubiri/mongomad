@@ -8,8 +8,8 @@ class Offer::Receiver
 
   mount_uploader :image, UserImageUploader
 
-  validates :products,
-  			:offer,
+  validates :offer,
+            :products,
             :name,
             :image,
             presence: true

@@ -10,9 +10,9 @@ class Offer::Receiver::Product
 
   mount_uploader :image, ThingImageUploader
 
-  validates :thing_id,
+  validates :receiver,
+            :thing_id,
             :name,
-            :receiver,
             :description,
             :quantity,
             :image,
