@@ -65,13 +65,11 @@
     }
 
     .profile_menu{
-      @include center-horizontally(80%);
-      overflow: auto;
-      margin: 10px 0px 10px 2px;
-      padding-left: 20px;
+      @include proportions(80%,20px);
+      margin: inherit;
+      margin-bottom: 10px;
 
       .menu_icon{
-        @include border-radius(3px, 3px);
         @include proportions(58px,20px);
         float:left;
         border: $borde1px;

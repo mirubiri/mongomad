@@ -39,16 +39,16 @@
           .nav_element{  
             padding: 3px 5px 0px 10px;                      
           }          
-        }
-
-        a:hover{
-          background-color:#85b1bf;
-          color: white;
-        }
+        }        
 
         a:last-child{
           border:none;
         }        
+      }
+
+      .nav_hover{
+        background-color:#85b1bf;
+        color: white; 
       }
 
       .nav_selected{
