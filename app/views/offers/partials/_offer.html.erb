@@ -1,23 +1,23 @@
-<% if user_logged_id != user_visited_id %> 
-  <div class="boton_nueva_offerta">       
+<% if user_logged_id != user_visited_id %>
+  <div class="boton_nueva_offerta">
     <%= button_tag "Nueva Oferta", :class => "add_offer_button",
-    :id => "new-offer-button" %>    
+    :id => "new-offer-button" %>
   </div>
 <% end %>
 
 <% if (user_visited_offers.count != 0)%>
   <% user_visited_offers.each do |offer| %>
-    <div class="offer" id="<%= offer.composer.user_id %>">
+    <div class="offer" id="<%= offer_composer_id(offer) %>">
       <div class="offer_header">
-        <div class="triangle">        
-            <%= link_to "x", 
+        <div class="triangle">
+            <%= link_to "x",
                 user_offer_path(current_user,offer_id(offer)),
-                :method => :delete, 
+                :method => :delete,
                 :confirm => "Are you sure?" %>
         </div>
         <div class="profile_image">
           <%= link_to offer_composer_image(offer),
-            :controller => "users", 
+            :controller => "users",
             :action => "show",
             :id => offer_composer_id(offer)
           %>
@@ -28,13 +28,13 @@
       </div>
       <div class="offer_things">
         <div class="recieved">
-          <% offer_composer_products(offer).each do |thing| %>          
-            <%= thing_image(thing) %>          
+          <% offer_composer_products(offer).each do |thing| %>
+            <%= thing_image(thing) %>
           <% end %>
         </div>
         <div class="given">
-          <% offer_receiver_products(offer).each do |thing| %>          
-            <%= thing_image(thing) %>          
+          <% offer_receiver_products(offer).each do |thing| %>
+            <%= thing_image(thing) %>
           <% end %>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
       <div class="offer_date">
         <%= Time.new.inspect %>
-      </div>    
+      </div>
     </div>
   <% end %>
 <% else %>
@@ -52,4 +52,4 @@
 <% end %>
 
 <%= render :partial => "layouts/new_offer" %>
-  
+

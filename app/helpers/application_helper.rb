@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   def user_logged_name(user = user_logged)
     user.profile.name
   end
@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
 
-  
+
   def user_visited_name
     @user.profile.name
   end
@@ -95,7 +95,7 @@ module ApplicationHelper
   end
 
   def negotiation_receiver_image(negotiation)
-    image_tag(negotiation.proposals.last.composer.image)
+    image_tag(negotiation.proposals.last.receiver.image)
   end
 
   def negotiation_receiver_products(negotiation)
@@ -113,7 +113,7 @@ module ApplicationHelper
   end
 
   def product_description(product)
-    product.name
+    product.description
   end
 
 
@@ -145,7 +145,7 @@ module ApplicationHelper
   end
 
   def offer_composer_id(offer)
-    offer.composer.user_id
+    offer.user_composer_id
   end
 
   def offer_receiver_products(offer)

@@ -1,13 +1,13 @@
-<% if user_logged_id != user_visited_id %> 
-  <div class="boton_nueva_offerta">       
+<% if user_logged_id != user_visited_id %>
+  <div class="boton_nueva_offerta">
     <%= button_tag "Nueva Oferta", :class => "add_offer_button",
-    :id => "new-offer-button" %>    
+    :id => "new-offer-button" %>
   </div>
 <% end %>
 
 <% if (user_visited_offers.count != 0)%>
   <% @offers.each do |offer| %>
-    <div class="offer" id="<%= offer.composer.user_id %>">
+    <div class="offer" id="<%= offer_composer_id(offer) %>">
       <div class="offer_header">
         <div class="triangle">
           <%= link_to "x",
@@ -28,13 +28,13 @@
       </div>
       <div class="offer_things">
         <div class="recieved">
-          <% offer_composer_products(offer).each do |thing| %>          
-            <%= thing_image(thing) %>          
+          <% offer_composer_products(offer).each do |thing| %>
+            <%= thing_image(thing) %>
           <% end %>
         </div>
         <div class="given">
-          <% offer_receiver_products(offer).each do |thing| %>          
-            <%= thing_image(thing) %>          
+          <% offer_receiver_products(offer).each do |thing| %>
+            <%= thing_image(thing) %>
           <% end %>
         </div>
       </div>
