@@ -5,12 +5,12 @@ class Negotiation::Message
   embedded_in :negotiation
 
   field :user_name, type: String
-  field :text,          type: String
+  field :text,      type: String
 
   mount_uploader :image, UserImageUploader
 
-  validates :user_name,
-            :negotiation,
+  validates :negotiation,
+            :user_name,
             :text,
             :image,
             presence: true

@@ -24,6 +24,7 @@ describe Negotiation::Proposal::Composer do
 
   describe 'Factories' do
     specify { expect(composer.valid?).to be_true }
+
     it 'Creates one negotiation' do
       expect { composer.save }.to change{ Negotiation.count }.by(1)
     end

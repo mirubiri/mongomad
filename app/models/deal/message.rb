@@ -9,9 +9,9 @@ class Deal::Message
 
   mount_uploader :image, UserImageUploader
 
-  validates :user_name,
+  validates :deal,
+            :user_name,
             :text,
-            :deal,
             :image,
             presence: true
 end

@@ -10,8 +10,8 @@ class Deal::Agreement::Proposal::Composer::Product
 
   mount_uploader :image, ThingImageUploader
 
-  validates :thing_id,
-            :composer,
+  validates :composer,
+            :thing_id,
             :name,
             :description,
             :quantity,

@@ -36,6 +36,7 @@ describe User::Profile do
 
   describe 'Factories' do
     specify { expect(profile.valid?).to be_true }
+
     it 'Creates one user' do
       expect { profile.save }.to change{ User.count }.by(1)
     end

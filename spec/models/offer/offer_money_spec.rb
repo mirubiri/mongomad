@@ -24,6 +24,7 @@ describe Offer::Money do
 
   describe 'Factories' do
     specify { expect(money.valid?).to be_true }
+
     it 'Creates one offer' do
       expect { money.save }.to change{ Offer.count }.by(1)
     end
