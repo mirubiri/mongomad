@@ -28,7 +28,7 @@ describe Offer do
   end
 
   describe 'Factories' do
-    specify { expect(offer.valid).to be_true, "Is not valid because #{offer.errors}" }
+    specify { expect(offer.valid?).to be_true, "Is not valid because #{offer.errors}" }
     specify { expect(offer.save).to be_true }
 
     it 'Creates two different users' do
