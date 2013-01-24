@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal::Composer do
   end
 
   describe 'Factories' do
-    specify { expect(composer.valid?).to be_true }
+    specify { expect(composer.valid?).to be_true, "Is not valid because #{composer.errors}" }
 
     it 'Creates one deal' do
       expect { composer.save }.to change{ Deal.count }.by(1)

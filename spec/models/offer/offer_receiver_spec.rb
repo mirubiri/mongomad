@@ -23,7 +23,7 @@ describe Offer::Receiver do
   end
 
   describe 'Factories' do
-    specify { expect(receiver.valid?).to be_true }
+    specify { expect(receiver.valid?).to be_true, "Is not valid because #{receiver.errors}" }
 
     it 'Creates one offer' do
       expect { receiver.save }.to change{ Offer.count }.by(1)

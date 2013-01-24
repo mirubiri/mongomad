@@ -23,7 +23,7 @@ describe Offer::Money do
   end
 
   describe 'Factories' do
-    specify { expect(money.valid?).to be_true }
+    specify { expect(money.valid?).to be_true, "Is not valid because #{money.errors}" }
 
     it 'Creates one offer' do
       expect { money.save }.to change{ Offer.count }.by(1)

@@ -24,7 +24,7 @@ describe Request do
   end
 
   describe 'Factories' do
-    specify { expect(request.valid?).to be_true }
+    specify { expect(request.valid?).to be_true, "Is not valid because #{request.errors}" }
     specify { expect(request.save).to be_true }
 
     it 'Creates one user' do

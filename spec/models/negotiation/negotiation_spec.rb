@@ -22,7 +22,7 @@ describe Negotiation do
   end
 
   describe 'Factories' do
-    specify { expect(negotiation.valid?).to be_true }
+    specify { expect(negotiation.valid?).to be_true, "Is not valid because #{negotiation.errors}" }
     specify { expect(negotiation.save).to be_true }
 
     it 'Creates one offer' do

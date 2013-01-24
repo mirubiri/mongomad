@@ -28,7 +28,7 @@ describe User::Thing do
   end
 
   describe 'Factories' do
-    specify { expect(thing.valid?).to be_true }
+    specify { expect(thing.valid?).to be_true, "Is not valid because #{thing.errors}" }
 
     it 'Creates one user' do
       expect { thing.save }.to change{ User.count }.by(1)
