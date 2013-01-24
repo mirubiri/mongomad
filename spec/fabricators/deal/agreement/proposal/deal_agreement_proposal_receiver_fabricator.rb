@@ -9,5 +9,5 @@ Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Prop
     products
   end
   name      { |attrs| attrs[:receiver].name }
-  image     { File.open('app/assets/images/receiver.png') }
+  image     { |attrs| File.open(attrs[:receiver].image.path) }
 end
