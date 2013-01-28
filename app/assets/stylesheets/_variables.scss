@@ -8,6 +8,7 @@ $borde1px: 1px solid rgb(220,220,220);
 //user_container
 $width250px: 250px;
 $borde2px: 2px solid rgb(220,220,220);
+$borde2pxblack: 2px solid black;
 $width90pct: 90%;
 
 //main_container
@@ -76,14 +77,14 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         margin:5px 0px 0px 5px;
         overflow: none;
 
-        .product-image{
+        .product_image{
           overflow: auto;
           img{
             @include high-quality-image;
             @include proportions(123px,123px);
           }
         }
-        .product-title{
+        .product_title{
           @include center-horizontally(126px);
           text-align: center;
         }

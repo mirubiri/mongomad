@@ -7,7 +7,8 @@
   @include fixed_height(555px,555px,555px);
   overflow:auto;
   margin: 0px 0px 0px 0px;
-  border: $borde2px;
+  border: $borde2pxblack;
+
   background-color: white;
 
   .products_area{
@@ -50,11 +51,11 @@
 
       .product_container{
         .product{
-          .product-image{
+          .product_image{
             img{
             }
           }
-          .product-title{
+          .product_title{
             input{
             }
           }
@@ -72,11 +73,11 @@
 
       .product_container{
         .product{
-          .product-image{
+          .product_image{
             img{
             }
           }
-          .product-title{
+          .product_title{
             input{
             }
           }
@@ -86,16 +87,11 @@
   }
 
   .offer_summary{
-    @include fixed_width(312px,312px,312px);
+    @include fixed_width(320px,320px,320px);
     @include fixed_height(555px,555px,555px);
     position: absolute;
     top: 0px;
     left: 480px;
-    border: $borde2px;
-    border:{
-      top:none;
-      bottom:none;
-    }
     background-color: rgb(225,225,225);
 
     .title{
@@ -114,7 +110,7 @@
     }
 
     .summary{
-      @include proportions(280px,450px);
+      @include proportions(290px,470px);
       @include border-radius(5px, 5px);
       float: left;
       margin: 5px 0px 0px 14px;
@@ -189,28 +185,29 @@
         .summary_body_products_given{
           float:left;
           overflow: auto;
-          margin-left: 25px;
+          margin-left: 5px;
           width: 55%;
 
-          .product_given{
+          .product{
             @include border-radius(5px, 5px);
             float: left;
             overflow: auto;
             margin: 5px 15px 5px 5px;
             width: 140px;
-            border: $borde1px;
 
-            .product_given_imagen{
+
+            .product_image{
               @include proportions(125px,125px);
               float:left;
 
               img{
                 @include high-quality-image;
-                @include proportions(inherit,inherit);
+                @include proportions(123px,123px);
+                border: $borde1px;
               }
             }
 
-            .product_given_title{
+            .product_title{
               float: left;
               width: 125px;
             }
@@ -218,30 +215,30 @@
           }
         }
 
-        .summary_body_produts_recieved{
-          float:left;
+        .summary_body_products_received{
+          float:right;
+          margin-right: 15px;
           overflow: auto;
           width: 30%;
 
-          .produt_recieved{
+          .product{
             @include border-radius(5px, 5px);
-            @include proportions(65px,65px);
-            float: left;
+            float: right;
             overflow: auto;
-            margin: 5px 15px 5px 5px;
-            border: $borde1px;
+            margin: 5px 0px 5px 0px;
 
-            .produt_recieved_image{
+            .product_image{
               @include proportions(62px,62px);
               float:left;
 
               img{
                 @include high-quality-image;
-                @include proportions(inherit,inherit);
+                @include proportions(60px,60px);
+                border: $borde1px;
               }
             }
 
-            .produt_recieved_title{
+            .product_title{
               width: 62px;
             }
           }
@@ -249,7 +246,7 @@
       }
     }
     .summary_footer{
-      width: 280px;
+      width: 290px;
       float: left;
       margin: 5px 0px 0px 14px;
 

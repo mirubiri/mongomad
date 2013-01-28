@@ -243,6 +243,18 @@ module ApplicationHelper
   def negotiation_updatetime(negotiation)
     negotiation.updated_at
   end
+  def negotiation_composer_image(negotiation)
+    image_tag(negotiation.proposals.last.composer.image)
+  end
+  def negotiation_composer_products(negotiation)
+    negotiation.proposals.last.composer.products
+  end
+  def negotiation_receiver_image(negotiation)
+    image_tag(negotiation.proposals.last.receiver.image)
+  end
+  def negotiation_receiver_products(negotiation)
+    negotiation.proposals.last.receiver.products
+  end
 
   # PROPOSAL HELPERS -----------------------------------------
   def proposal_id(proposal)
@@ -342,21 +354,4 @@ module ApplicationHelper
     agreement.updated_at
   end
 
-  ## HELPERS DE NEGOTIATION ANTIGUOS, yo los eliminaria :)
-  # sino el lunes lo te lo comento la jugada
-  # si ligas los campos a negotiation en vez de aproposal, hay q hacer mil helpers
-  # para neg y para deal. asi solo se hacen pocos apra ney y deal y muchos para proposal :)
-  # y no se repiten :P
-  def negotiation_composer_image(negotiation)
-    image_tag(negotiation.proposals.last.composer.image)
-  end
-  def negotiation_composer_products(negotiation)
-    negotiation.proposals.last.composer.products
-  end
-  def negotiation_receiver_image(negotiation)
-    image_tag(negotiation.proposals.last.receiver.image)
-  end
-  def negotiation_receiver_products(negotiation)
-    negotiation.proposals.last.receiver.products
-  end
 end

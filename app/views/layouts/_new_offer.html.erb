@@ -33,10 +33,10 @@
         <div class="product_container">
           <% user_visited_things.each do |thing| %>
             <div class="product">
-              <div class="product-image">
+              <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
-              <div class="product-title">
+              <div class="product_title">
                 <%= thing_name(thing) %>
               </div>
             </div>
@@ -52,10 +52,10 @@
         <div class="product_container">
           <% user_logged_things.each do |thing| %>
             <div class="product">
-              <div class="product-image">
+              <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
-              <div class="product-title">
+              <div class="product_title">
                 <%= thing_name(thing) %>
               </div>
             </div>
@@ -82,21 +82,9 @@
           <div class="triangle"></div>
         </div>
         <div class="summary_body">
-          <div class="summary_body_products_given">
-            <div class="product_given">
-              <div class="product_given_imagen">
-              </div>
-              <div class="product_given_title">
-              </div>
-            </div>
+          <div class="summary_body_products_given" id="summary_offer_given_products_container">
           </div>
-          <div class="summary_body_produts_recieved">
-              <div class="produt_recieved">
-                <div class="produt_recieved_image">
-                </div>
-                <div class="produt_recieved_title">
-              </div>
-           </div>
+          <div class="summary_body_products_received" id="summary_offer_received_products_container">
           </div>
         </div>
       </div>

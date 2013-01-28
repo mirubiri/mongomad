@@ -174,6 +174,14 @@ function newOfferLinks(){
       $('#composer_products_container').removeClass("container_invisible");
       $('#receiver_products_container').addClass("container_invisible");
     });
+
+    $('#receiver_products_container .product_container .product').live('click',function(e){
+      $(this).clone().appendTo('#summary_offer_given_products_container');
+    });
+
+    $('#composer_products_container .product_container .product').live('click',function(e){
+      $(this).clone().appendTo('#summary_offer_received_products_container');
+    });
 }
 
 $(window).load(function(){
