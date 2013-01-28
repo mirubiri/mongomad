@@ -183,10 +183,18 @@
         margin:0px 0px 0px 0px;
 
         .summary_body_products_given{
-          float:left;
+          float: left;
           overflow: auto;
-          margin-left: 5px;
-          width: 55%;
+          margin-left: 20px;
+          width: 50%;
+
+          .money_given{
+            float: left;
+            overflow: auto;
+            margin-left: 20px;
+            width: 50%;
+            text-align: center;
+          }
 
           .product{
             @include border-radius(5px, 5px);
@@ -217,9 +225,17 @@
 
         .summary_body_products_received{
           float:right;
-          margin-right: 15px;
+          margin-right: 30px;
           overflow: auto;
           width: 30%;
+
+          .money_received{
+            float:left;
+            overflow: auto;
+            margin-left: 20px;
+            width: 50%;
+            text-align: center;
+          }
 
           .product{
             @include border-radius(5px, 5px);

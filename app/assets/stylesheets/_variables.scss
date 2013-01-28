@@ -52,14 +52,20 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       margin-top: 5px;
 
       textarea{
-        @include proportions(100%,24px);
-        float:inherit;
+        @include proportions(60%,24px);
+        float: left;
         overflow: hidden;
         border: $borde1px;
         background-color: white;
         color: #000000;
         font-size: 20px;
         resize: none;
+      }
+
+      button{
+        @include proportions(25%,30px);
+        float: left;
+        margin-left: 2px;
       }
     }
 

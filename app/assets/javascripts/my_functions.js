@@ -159,29 +159,55 @@ function newOfferModal(){
 }
 
 function newOfferLinks(){
-    $('#new_offer_receiver_selector').live('click',function(e){
-      e.preventDefault();
-      $('#receiver_selector_area').addClass("user_selected");
-      $('#composer_selector_area').removeClass("user_selected");
-      $('#receiver_products_container').removeClass("container_invisible");
-      $('#composer_products_container').addClass("container_invisible");
-    });
+  $('#new_offer_receiver_selector').live('click',function(e){
+    e.preventDefault();
+    $('#receiver_selector_area').addClass("user_selected");
+    $('#composer_selector_area').removeClass("user_selected");
+    $('#receiver_products_container').removeClass("container_invisible");
+    $('#composer_products_container').addClass("container_invisible");
+  });
 
-    $('#new_offer_composer_selector').live('click',function(e){
-      e.preventDefault();
-      $('#composer_selector_area').addClass("user_selected");
-      $('#receiver_selector_area').removeClass("user_selected");
-      $('#composer_products_container').removeClass("container_invisible");
-      $('#receiver_products_container').addClass("container_invisible");
-    });
+  $('#new_offer_composer_selector').live('click',function(e){
+    e.preventDefault();
+    $('#composer_selector_area').addClass("user_selected");
+    $('#receiver_selector_area').removeClass("user_selected");
+    $('#composer_products_container').removeClass("container_invisible");
+    $('#receiver_products_container').addClass("container_invisible");
+  });
 
-    $('#receiver_products_container .product_container .product').live('click',function(e){
-      $(this).clone().appendTo('#summary_offer_given_products_container');
-    });
+  $('#receiver_products_container .product_container .product').live('click',function(e){
+    $(this).clone().appendTo('#summary_offer_given_products_container');
+  });
 
-    $('#composer_products_container .product_container .product').live('click',function(e){
-      $(this).clone().appendTo('#summary_offer_received_products_container');
-    });
+  $('#composer_products_container .product_container .product').live('click',function(e){
+    $(this).clone().appendTo('#summary_offer_received_products_container');
+  });
+
+  $('#dineroPidesBotonAgregar').live('click',function(e){
+    e.preventDefault();
+    $('#dineroPidesEnSumario').html("");
+    $('#dineroPidesEnSumario').append($.trim($("#dineroPides").val()));
+    $('#dineroOfrecesBotonAgregar').addClass("container_invisible");
+  });
+
+  $('#dineroOfrecesBotonAgregar').live('click',function(e){
+    e.preventDefault();
+    $('#dineroOfrecesEnSumario').empty();
+    $('#dineroOfrecesEnSumario').append($.trim($("#dineroOfreces").val()));
+    $('#dineroPidesBotonAgregar').addClass("container_invisible");
+  });
+
+  // Faltan  por hacer estas dos funciones
+  $('#dineroPidesEnSumarioBotonEliminar').live('click',function(e){
+    e.preventDefault();
+    //borrar la cantidad del sumario y volver a activar los botones de envio
+  });
+
+  $('#dineroOfrecesEnSumarioBotonEliminar').live('click',function(e){
+    e.preventDefault();
+    //borrar la cantidad del sumario y volver a activar los botones de envio
+  });
+
 }
 
 $(window).load(function(){

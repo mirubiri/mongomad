@@ -26,9 +26,9 @@
       </div>
       <div class="his_products" id="receiver_products_container">
         <div class="money">
-          <textarea name="" id="" cols="1" rows="1" placeholder="Cantidad que pides">
-            Pides
+          <textarea name="" id="dineroPides" cols="1" rows="1" placeholder="Cantidad que pides">
           </textarea>
+          <button id="dineroPidesBotonAgregar">add</button>
         </div>
         <div class="product_container">
           <% user_visited_things.each do |thing| %>
@@ -45,9 +45,9 @@
       </div>
       <div class="my_products container_invisible" id="composer_products_container">
         <div class="money">
-          <textarea name="" id="" cols="1" rows="1" placeholder="Cantidad que ofreces">
-            Ofreces
+          <textarea name="" id="dineroOfreces" cols="1" rows="1" placeholder="Cantidad que ofreces">
           </textarea>
+          <button id="dineroOfrecesBotonAgregar">add</button>
         </div>
         <div class="product_container">
           <% user_logged_things.each do |thing| %>
@@ -83,8 +83,10 @@
         </div>
         <div class="summary_body">
           <div class="summary_body_products_given" id="summary_offer_given_products_container">
+            <div class="money_given" id="dineroOfrecesEnSumario"></div>
           </div>
           <div class="summary_body_products_received" id="summary_offer_received_products_container">
+            <div class="money_received" id="dineroPidesEnSumario"></div>
           </div>
         </div>
       </div>
