@@ -367,5 +367,4 @@ module ApplicationHelper
   def agreement_updatetime(agreement)
     agreement.updated_at
   end
-
 end
