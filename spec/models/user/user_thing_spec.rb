@@ -43,25 +43,26 @@ describe User::Thing do
   end
 
   describe '#to_product(quantity)' do
-    specify { thing.to_product(1).should_be kind_of("Offer::Product") }
-
     it { should respond_to(:to_product).with(1).arguments }
+
+    #TODO: Mirar lo de los tipos
+    specify { thing.to_product(1).should be_kind_of(Offer::Composer::Product) }
 
     it 'Builds an offer_product with the given quantity' do
       product = thing.to_product(1)
+      product.thing_id.should eql thing._id
       product.name.should eql thing.name
       product.description.should eql thing.description
-      product.thing_id.should eql thing._id
       product.quantity.should eql 1
     end
 
     it 'Cannot build a product with quantity greater than stock' do
-      expect { thing.to_product(product.stock+1) }.to raise_error
+      expect { thing.to_product(thing.stock+1) }.to raise_error(StandardError, "Not enough stock avaliable")
     end
 
     it 'Cannot build a product with 0 or negative quantity' do
-      expect { thing.to_product(0).to raise_error }
-      expect { thing.to_product(-1).to raise_error }
+      expect { thing.to_product(0) }.to raise_error(StandardError, "Quantity not valid")
+      expect { thing.to_product(-1) }.to raise_error(StandardError, "Quantity not valid")
     end
   end
 end

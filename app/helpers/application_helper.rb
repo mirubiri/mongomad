@@ -49,8 +49,9 @@ module ApplicationHelper
   def user_logged_sent_offers(user = user_logged)
     user.sent_offers
   end
+  #TODO: Cambiar nombre a 'user_logged_received_offers'
   #def user_logged_received_offers(user = user_logged)
-  def user_logged_offers(user = user_logged) #Sergio, deberías cambiarle el nombre a received :)
+  def user_logged_offers(user = user_logged) 
     user.received_offers
   end
   def user_logged_negotiations(user = user_logged)
@@ -109,8 +110,9 @@ module ApplicationHelper
   def user_visited_sent_offers
     @user.sent_offers
   end
+  #TODO: Cambiar nombre a 'user_visited_received_offers'
   #def user_visited_received_offers
-  def user_visited_offers #Sergio, deberías cambiarle el nombre a received :)
+  def user_visited_offers 
     @user.received_offers
   end
   def user_visited_negotiations
@@ -237,12 +239,6 @@ module ApplicationHelper
   def negotiation_users(negotiation)
     negotiation.users
   end
-  def negotiation_datetime(negotiation)
-    negotiation.created_at
-  end
-  def negotiation_updatetime(negotiation)
-    negotiation.updated_at
-  end
   def negotiation_composer_image(negotiation)
     image_tag(negotiation.proposals.last.composer.image)
   end
@@ -254,6 +250,12 @@ module ApplicationHelper
   end
   def negotiation_receiver_products(negotiation)
     negotiation.proposals.last.receiver.products
+  end
+  def negotiation_datetime(negotiation)
+    negotiation.created_at
+  end
+  def negotiation_updatetime(negotiation)
+    negotiation.updated_at
   end
 
   # PROPOSAL HELPERS -----------------------------------------
@@ -330,6 +332,18 @@ module ApplicationHelper
   def deal_users(deal)
     deal.users
   end
+  def deal_composer_image(deal)
+    image_tag(deal.agreement.proposals.last.composer.image)
+  end
+  def deal_composer_products(deal)
+    deal.agreement.proposals.last.composer.products
+  end
+  def deal_receiver_image(deal)
+    image_tag(deal.agreement.proposals.last.receiver.image)
+  end
+  def deal_receiver_products(deal)
+    deal.agreement.proposals.last.receiver.products
+  end
   def deal_datetime(deal)
     deal.created_at
   end
@@ -353,5 +367,4 @@ module ApplicationHelper
   def agreement_updatetime(agreement)
     agreement.updated_at
   end
-
 end
