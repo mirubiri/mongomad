@@ -19,11 +19,11 @@ end
 Fabricator(:user_with_things, from: :user) do
   things(count:6) { Fabricate.build(:user_thing) }
 
-  after_build {
+  after_build do |user|
     user.things[1].image = File.open('app/assets/images/house.png')
     user.things[2].image = File.open('app/assets/images/bicycle.png')
     user.things[3].image = File.open('app/assets/images/coffee.png')
     user.things[4].image = File.open('app/assets/images/monkey.png')
     user.things[5].image = File.open('app/assets/images/link.png')
-  }
+  end
 end
