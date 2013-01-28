@@ -1,32 +1,66 @@
 <div class="new_offer_content" id="new-offer-form">
   <%= form_for [current_user,@offer] do |form| %>
-    <div class="new_offer_title">
-      <div class="icon"></div>
-      <div class="description">Crear Oferta</div>
-    </div>
-    <div class="his_products">
+
+    <div class="products_area">
       <div class="title">
-        <div class="user_image">
-          <%= user_visited_image %>
-        </div>
-        <div class="description">Sus productos</div>
-      </div>
-      <div class="money">
-        <textarea name="" id="" cols="1" rows="1">
-          Cantidad que ofreces
-        </textarea>
-      </div>
-      <div class="product_container">
-        <% user_visited_things.each do |thing| %>
-          <div class="product">
-            <div class="product-image">
-              <%= thing_image(thing) %>
+        <a href="#blank" id="new_offer_receiver_selector">
+          <div class="user_products_selector user_selected" id="receiver_selector_area">
+            <div class="user_image">
+              <%= user_visited_image %>
             </div>
-            <div class="product-title">
-              <input type="text"><%= thing_name(thing) %>
+            <div class="description">
+              <%= user_visited_name %>
             </div>
           </div>
-        <% end %>
+        </a>
+        <a href="#blank" id="new_offer_composer_selector">
+          <div class="user_products_selector" id="composer_selector_area">
+            <div class="user_image">
+              <%= user_logged_image %>
+            </div>
+            <div class="description">
+              <%= user_logged_name %>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="his_products" id="receiver_products_container">
+        <div class="money">
+          <textarea name="" id="" cols="1" rows="1" placeholder="Cantidad que pides">
+            Pides
+          </textarea>
+        </div>
+        <div class="product_container">
+          <% user_visited_things.each do |thing| %>
+            <div class="product">
+              <div class="product-image">
+                <%= thing_image(thing) %>
+              </div>
+              <div class="product-title">
+                <%= thing_name(thing) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="my_products container_invisible" id="composer_products_container">
+        <div class="money">
+          <textarea name="" id="" cols="1" rows="1" placeholder="Cantidad que ofreces">
+            Ofreces
+          </textarea>
+        </div>
+        <div class="product_container">
+          <% user_logged_things.each do |thing| %>
+            <div class="product">
+              <div class="product-image">
+                <%= thing_image(thing) %>
+              </div>
+              <div class="product-title">
+                <%= thing_name(thing) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -71,32 +105,6 @@
             <%= form.submit %>
           </div>
         </div>
-    </div>
-
-    <div class="my_products">
-      <div class="title">
-        <div class="user_image">
-          <%= user_logged_image %> %>
-        </div>
-        <div class="description">Mis productos</div>
-      </div>
-      <div class="money">
-        <textarea name="" id="" cols="1" rows="1">
-          Cantidad que ofreces
-        </textarea>
-      </div>
-      <div class="product_container">
-        <% user_logged_things.each do |thing| %>
-          <div class="product">
-            <div class="product-image">
-              <%= thing_image(thing) %>
-            </div>
-            <div class="product-title">
-              <input type="text"><%= thing_name(thing) %>
-            </div>
-          </div>
-        <% end %>
-      </div>
     </div>
 
   <% end %>

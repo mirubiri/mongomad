@@ -70,7 +70,6 @@ function applyMasonry(){
 }
 
 function ajaxLinks(){
-
     $('#navigation_bar nav a').hover(
       function () {$(this).addClass("nav_hover");},
       function () {$(this).removeClass("nav_hover");}
@@ -159,11 +158,30 @@ function newOfferModal(){
     });
 }
 
+function newOfferLinks(){
+    $('#new_offer_receiver_selector').live('click',function(e){
+      e.preventDefault();
+      $('#receiver_selector_area').addClass("user_selected");
+      $('#composer_selector_area').removeClass("user_selected");
+      $('#receiver_products_container').removeClass("container_invisible");
+      $('#composer_products_container').addClass("container_invisible");
+    });
+
+    $('#new_offer_composer_selector').live('click',function(e){
+      e.preventDefault();
+      $('#composer_selector_area').addClass("user_selected");
+      $('#receiver_selector_area').removeClass("user_selected");
+      $('#composer_products_container').removeClass("container_invisible");
+      $('#receiver_products_container').addClass("container_invisible");
+    });
+}
+
 $(window).load(function(){
   modalWindows();
   newOfferModal();
   applyMasonry();
   ajaxLinks();
+  newOfferLinks();
   addProfileCommentsSeparator();
   maximizeConversationsHeights();
   matchPrincipalContainersHeighs();

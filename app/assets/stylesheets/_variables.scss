@@ -37,69 +37,55 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   height: $height;
 }
 
-.product_in_offer{
-    float: left;
-    overflow:none;    
+.product_of_user_selected{
+    @include fixed_width(480px,480px,480px);
+    @include fixed_height(520px,520px,520px);
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    overflow:none;
     background-color: white;
 
-    .title{
-      float:inherit;  
-      background-color: #2B3750;
-      color:white;
-
-      .user_image{
-        float:inherit;
-      }
-      .description{
-        float: inherit;
-        font-weight:bold;
-      }
-    }
-
     .money{
-      float:left;
+      @include center-horizontally(200px);
+      margin-top: 5px;
 
       textarea{
+        @include proportions(100%,24px);
         float:inherit;
-        overflow: hidden;        
+        overflow: hidden;
         border: $borde1px;
-        background-color: transparent;
+        background-color: white;
         color: #000000;
-        font-size: 10px;
+        font-size: 20px;
         resize: none;
-      }
-
-      button{
-        float:inherit;       
-        img{
-          float:inherit;
-        }
       }
     }
 
     .product_container{
-      float: left;        
+      @include fixed_width(470px,470px,470px);
+      @include fixed_height(470px,470px,470px);
+      margin:5px 0px 0px 0px;
       overflow: auto;
 
       .product{
-        float: inherit;
-        overflow: none;
+        @include proportions(125px,125px);
+        @include border-radius(5px, 5px);
         border: $borde1px;
+        float: left;
+        margin:5px 0px 0px 5px;
+        overflow: none;
 
         .product-image{
-          float:inherit; 
-          overflow: none;         
-
-          img{            
+          overflow: auto;
+          img{
+            @include high-quality-image;
+            @include proportions(123px,123px);
           }
         }
-
         .product-title{
-          float: inherit;
-
-          input{
-            visibility: hidden;
-          }
+          @include center-horizontally(126px);
+          text-align: center;
         }
       }
     }
