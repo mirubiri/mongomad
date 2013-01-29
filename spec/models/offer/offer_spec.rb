@@ -36,4 +36,12 @@ describe Offer do
       offer.user_composer.should_not eq offer.user_receiver
     end
   end
+
+  describe '.generate_from(hash)' do
+    xit 'generates a new offer with the given hash'
+  end
+
+  describe '#open_negotiation' do
+    xit 'Opens a new negotiation for this offer'
+  end
 end

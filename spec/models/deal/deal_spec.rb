@@ -37,4 +37,8 @@ describe Deal do
       expect { deal.save }.to change{ User.count }.by(2)
     end
   end
+
+  describe '.generate_from(accepted_negotiation)' do
+    xit 'Generates a new deal from an accepted_negotiation'
+  end
 end
