@@ -22,4 +22,14 @@ class Negotiation::Proposal::Receiver::Product
             allow_nil: false,
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
+
+  def to_deal_agreement_proposal_receiver_product
+    product = Deal::Agreement::Proposal::Receiver::Product.new
+    product.thing_id = self.thing_id
+    product.name = self.name
+    product.description = self.description
+    product.quantity = self.quantity
+    product.image = File.open(self.image.path)
+    product
+  end
 end

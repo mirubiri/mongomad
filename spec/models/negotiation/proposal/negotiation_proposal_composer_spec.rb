@@ -37,4 +37,3 @@ describe Negotiation::Proposal::Composer do
     end
   end
 end
-

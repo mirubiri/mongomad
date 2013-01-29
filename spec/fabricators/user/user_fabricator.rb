@@ -10,7 +10,6 @@ Fabricator(:user) do
   password        'password'
 end
 
-
 Fabricator(:user_with_things, from: :user) do
 	things(count:1) { Fabricate.build(:user_thing) }
 end
