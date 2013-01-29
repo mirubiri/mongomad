@@ -175,12 +175,14 @@ function newOfferLinks(){
     $('#receiver_products_container').addClass("container_invisible");
   });
 
-  $('#receiver_products_container .product_container .product').live('click',function(e){
+  $('#his_product_container .product').live('click',function(e){
     $(this).clone().appendTo('#summary_offer_given_products_container');
+    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $(this).attr("id") + "]\" value=\"1\" />");
   });
 
-  $('#composer_products_container .product_container .product').live('click',function(e){
+  $('#my_product_container .product').live('click',function(e){
     $(this).clone().appendTo('#summary_offer_received_products_container');
+    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $(this).attr("id") + "]\" value=\"1\" />");
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
