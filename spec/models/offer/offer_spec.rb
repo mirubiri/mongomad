@@ -37,9 +37,45 @@ describe Offer do
     end
   end
 
-  describe '.generate_from(hash)' do
-    xit 'generates a new offer with the given hash'
+=begin # estamos arreglando el destrodo este  :P
+
+NO SE COMO HACER UN HASH PARA PROBAR
+¿lo hago a pelo rellenando los campos con una oferta que me creo?
+¿lo tengo que pillar de algun lado?
+
+  describe '#generate_from(hash)' do
+    it { should respond_to(:generate_from).with(1).arguments }
+
+    # specify { offer.generate_from() }
+    # comprobar que es de tipo Offer
+    #specify { thing.to_offer_composer_product(1).should be_kind_of(Offer::Composer::Product) }
+
+    it 'Generates a new offer with the given hash' do
+      aux_offer = Fabricate(:offer)
+      offer_hash = {
+        "user_composer_id" => aux_offer.user_composer_id,
+        "user_receiver_id" => aux_offer.user_receiver_id,
+        "composer_things" => {
+          "" => "",
+          "" => "",
+          "" => "",
+        },
+        "receiver_things" => {
+          "" => "",
+          "" => "",
+          "" => "",
+        },
+        "money" => {
+          "user_id" => "",
+          "quantity" => "",
+        },
+        "initial_message" => ""
+      }
+
+    end
+
   end
+=end
 
   describe '#open_negotiation' do
     xit 'Opens a new negotiation for this offer'
