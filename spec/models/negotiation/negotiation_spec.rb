@@ -33,4 +33,22 @@ describe Negotiation do
       expect { negotiation.save }.to change{ User.count }.by(2)
     end
   end
+
+  describe '.open_from(offer)' do
+    xit 'Generates a new negotiation from a given offer'
+  end
+
+  describe '#make_new_proposal(hash)' do
+    xit 'Generates a new proposal with the given hash and post it into the negotiation'
+  end
+
+  describe '#part(user)' do
+    xit 'Makes the given user to leave the negotiation'
+    # ¿Podríamos conseguir que se ejecutara siempre desde el current_user sin pasarle ningun parametro?
+    # entonces quedaria como #user_part.
+  end
+
+  xit 'Un metodo para aceptar la propuesta actual'
+  xit 'Un metodo para rechazar la propuesta actual'
+  xit 'Un metodo para comprobar el estado de aceptacion de la propuesta actual'
 end
