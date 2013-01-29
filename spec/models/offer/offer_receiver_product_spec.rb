@@ -43,4 +43,18 @@ describe Offer::Receiver::Product do
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
+
+  describe '#to_negotiation_proposal_receiver_product' do
+    it { should respond_to(:to_negotiation_proposal_receiver_product).with(0).arguments }
+
+    specify { product.to_negotiation_proposal_receiver_product.should be_kind_of(Negotiation::Proposal::Receiver::Product) }
+
+    it 'Builds an negotiation_proposal_composer_product' do
+      aux_product = product.to_negotiation_proposal_receiver_product
+      product.thing_id.should eql aux_product.thing_id
+      product.name.should eql aux_product.name
+      product.description.should eql aux_product.description
+      product.quantity.should eql aux_product.quantity
+    end
+  end
 end
