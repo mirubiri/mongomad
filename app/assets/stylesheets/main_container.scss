@@ -98,6 +98,7 @@
   .main_container_elementList{
     @include center-horizontally($width98pct);
     @include fixed_width($width98pct,$width98pct,$width98pct);
-    overflow: auto;
+    overflow: visible;
+    float: left;
   }
 }
