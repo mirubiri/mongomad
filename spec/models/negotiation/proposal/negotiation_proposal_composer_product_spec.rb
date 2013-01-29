@@ -43,4 +43,18 @@ describe Negotiation::Proposal::Composer::Product do
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
+
+  describe '#to_deal_agreement_proposal_composer_product' do
+    it { should respond_to(:to_deal_agreement_proposal_composer_product).with(0).arguments }
+
+    specify { product.to_deal_agreement_proposal_composer_product.should be_kind_of(Deal::Agreement::Proposal::Composer::Product) }
+
+    it 'Builds an deal_agreement_proposal_composer_product' do
+      aux_product = product.to_deal_agreement_proposal_composer_product
+      product.thing_id.should eql aux_product.thing_id
+      product.name.should eql aux_product.name
+      product.description.should eql aux_product.description
+      product.quantity.should eql aux_product.quantity
+    end
+  end
 end
