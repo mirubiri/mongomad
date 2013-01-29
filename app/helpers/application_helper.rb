@@ -121,6 +121,9 @@ module ApplicationHelper
   def user_visited_deals
     @user.deals
   end
+  def user_requests
+    @user.requests
+  end
 
   # THING HELPERS -----------------------------------------
   def thing_id(thing)
