@@ -4,7 +4,7 @@ function matchPrincipalContainersHeighs(){
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
-
+  
   $('#user-side,#content-side').equalHeightColumns();
   $('#ppal_container').css({'height': ($('#user-side').height() - 90)  + 'px'});
 
@@ -99,10 +99,19 @@ function ajaxLinks(){
 function modalWindows(){
   $('#new-request-form').hide();
   $('#new-offer-form').hide();
+  $('#new-thing-form').hide();
 
   $('#add_request_button').live('click',function(e){
       e.preventDefault();
       $('#new-request-form').modal({
+          opacity:60,
+          overlayCss: {backgroundColor:"#000000"}
+      });
+  });
+
+  $('#new-thing-button').live('click',function(e){
+      e.preventDefault();
+      $('#new-thing-form').modal({
           opacity:60,
           overlayCss: {backgroundColor:"#000000"}
       });

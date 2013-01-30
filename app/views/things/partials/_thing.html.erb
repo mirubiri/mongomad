@@ -1,3 +1,10 @@
+<% if user_logged_id == user_visited_id %>
+  <div class="main_offer_button">
+    <%= button_tag "Añadir un nuevo producto", :class => "add_offer_button",
+    :id => "new-thing-button" %>
+  </div>
+<% end %>
+
 <% @things.each do |thing| %>
   <div class="thing">
     <div class="thing_image">
@@ -8,4 +15,6 @@
               edit_user_thing_path(current_user,thing_id(thing))%>
   </div>  
 <% end %>
+
+<%= render :partial => "layouts/new_thing" %>
   

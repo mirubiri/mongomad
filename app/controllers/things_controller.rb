@@ -9,6 +9,7 @@ class ThingsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @things = @user.things.to_a
+    @thing = User::Thing.new
 
     respond_to do |format|
       format.html # index.html.erb
