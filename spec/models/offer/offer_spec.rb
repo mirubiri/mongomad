@@ -71,6 +71,21 @@ describe Offer do
       new_offer.money.quantity eql offer_hash[:money].values.first
       new_offer.initial_message eql offer_hash[:initial_message]
     end
+
+    it 'Cannot generate an offer with an invalid user composer id' do
+    end
+    it 'Cannot generate an offer with an invalid user receiver id' do
+    end
+    it 'Cannot generate an offer without composer money or products' do
+    end
+    it 'Cannot generate an offer without receiver money or products' do
+    end
+    it 'Cannot generate an offer with no money owner and money quantity greater than 0' do
+    end
+    it 'Cannot generate an offer with an invalid initial message' do
+    end
+
+
 =begin
 
 
