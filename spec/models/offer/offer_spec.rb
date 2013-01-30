@@ -51,102 +51,54 @@ describe Offer do
     end
   end
 
+
+
+
   describe '.generate_from(hash)' do
-    it { should respond_to(:generate_from).with(1).arguments }
-
-    it 'Generates a new offer with the given hash' do
+    let(:generated_offer) do
       offer.save
-      new_offer = Offer.generate_from(offer_hash)
-      new_offer.user_composer_id eql offer_hash[:user_composer_id]
-      new_offer.user_receiver_id eql offer_hash[:user_receiver_id]
-      new_offer.composer.products.size eql offer_hash[:composer_things].length
-      new_offer.composer.products.each do |product|
-        product.quantity eql offer_hash[product.thing_id.to_sym]
-      end
-      new_offer.receiver.products.size eql offer_hash[:receiver_things].length
-      new_offer.receiver.products.each do |product|
-        product.quantity eql offer_hash[product.thing_id.to_sym]
-      end
-      new_offer.money.user_id eql offer_hash[:money].keys.first
-      new_offer.money.quantity eql offer_hash[:money].values.first
-      new_offer.initial_message eql offer_hash[:initial_message]
+      Offer.generate_from(offer_hash)
     end
 
-    it 'Cannot generate an offer with an invalid user composer id' do
-    end
-    it 'Cannot generate an offer with an invalid user receiver id' do
-    end
-    it 'Cannot generate an offer without composer money or products' do
-    end
-    it 'Cannot generate an offer without receiver money or products' do
-    end
-    it 'Cannot generate an offer with no money owner and money quantity greater than 0' do
-    end
-    it 'Cannot generate an offer with an invalid initial message' do
-    end
-
-
-=begin
-
-
-=end
-
-
-    end
-  end
-
-=begin # estamos arreglando el destrodo este  :P
-
-
-Metodos y validaciones oferta:
-- generar oferta desde hash
-  *  comporbar que responde al metodo con los parametros q sean
-- empezar negociacion desde oferta
-  *  comporbar que responde al metodo con los parametros q sean
-
-
-
-
-
-NO SE COMO HACER UN HASH PARA PROBAR
-¿lo hago a pelo rellenando los campos con una oferta que me creo?
-¿lo tengo que pillar de algun lado?
-
-  describe '#generate_from(hash)' do
     it { should respond_to(:generate_from).with(1).arguments }
 
-    # specify { offer.generate_from() }
-    # comprobar que es de tipo Offer
-    #specify { thing.to_offer_composer_product(1).should be_kind_of(Offer::Composer::Product) }
+    specify { generated_offer.should be_kind_of(Offer) }
 
-    it 'Generates a new offer with the given hash' do
-      aux_offer = Fabricate(:offer)
-      offer_hash = {
-        "user_composer_id" => aux_offer.user_composer_id,
-        "user_receiver_id" => aux_offer.user_receiver_id,
-        "composer_things" => {
-          "" => "",
-          "" => "",
-          "" => "",
-        },
-        "receiver_things" => {
-          "" => "",
-          "" => "",
-          "" => "",
-        },
-        "money" => {
-          "user_id" => "",
-          "quantity" => "",
-        },
-        "initial_message" => ""
-      }
+    specify { generated_offer.valid?.should be_true, "Is not valid because #{generated_offer.errors}" }
 
+    specify { generated_offer.save.should be_true }
+
+    it 'Generates an offer with the user_composer_id value from hash' do
+      generated_offer.user_composer_id eql offer_hash[:user_composer_id]
     end
 
-  end
-=end
+    it 'Generates an offer with the user_receiver_id value from hash' do
+      generated_offer.user_receiver_id eql offer_hash[:user_receiver_id]
+    end
 
-  describe '#open_negotiation' do
-    xit 'Opens a new negotiation for this offer'
+    it 'Generates an offer with the composer products built from the values from hash' do
+      generated_offer.composer.products.size eql offer_hash[:composer_things].length
+      generated_offer.composer.products.each do |product|
+        product.quantity eql offer_hash[:composer_things][product.thing_id.to_sym]
+      end
+    end
+
+    it 'Generates an offer with the receiver products built from the values from hash' do
+      generated_offer.receiver.products.size eql offer_hash[:receiver_things].length
+      generated_offer.receiver.products.each do |product|
+        product.quantity eql offer_hash[:receiver_things][product.thing_id.to_sym]
+      end
+    end
+
+    it 'Generates an offer with the money value from hash' do
+      generated_offer.money.user_id eql offer_hash[:money].keys.first
+      generated_offer.money.quantity eql offer_hash[:money].values.first
+    end
+
+    it 'Generates an offer with the initial_message value from hash' do
+      generated_offer.initial_message eql offer_hash[:initial_message]
+    end
+
+    # Faltan los negados
   end
 end
