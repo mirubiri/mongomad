@@ -170,8 +170,9 @@ function newOfferLinks(){
     $('#dineroPidesEnSumario').append($.trim($("#dineroPides").val()));
     $('#dineroPidesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroOfrecesBotonAgregar').addClass("container_invisible");
-    $('#id_usuario_dinero').attr( "value", $('#his_product_container').children().first().attr("id"));
-    $('#usuario_cantidad_dinero').attr( "value",$("#dineroPides").val());
+    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_composer_selector').attr("value") + "]\"");
+    $('#usuario_dinero').attr("value",$("#dineroPides").val());
+    $('#dineroPides').val("");
   });
 
   $('#dineroOfrecesBotonAgregar').live('click',function(e){
@@ -180,24 +181,25 @@ function newOfferLinks(){
     $('#dineroOfrecesEnSumario').append($.trim($("#dineroOfreces").val()));
     $('#dineroOfrecesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroPidesBotonAgregar').addClass("container_invisible");
-    $('#id_usuario_dinero').attr( "value", $('#my_product_container').children().first().attr("id"));
-    $('#usuario_cantidad_dinero').attr( "value",$("#dineroOfreces").val());
+    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_receiver_selector').attr("value") + "]\"");
+    $('#usuario_dinero').attr("value",$("#dineroOfreces").val());
+    $('#dineroOfreces').val("");
   });
   
   $('#dineroPidesEnSumario a').live('click',function(e){
     e.preventDefault();
     $(this).parent().empty();
     $('#dineroOfrecesBotonAgregar').removeClass("container_invisible");
-    $('#id_usuario_dinero').attr( "value", 0);
-    $('#usuario_cantidad_dinero').attr( "value",0);
+    $('#usuario_dinero').attr("name", "offer[money][nil]");
+    $('#usuario_dinero').attr("value",0);
   });
 
   $('#dineroOfrecesEnSumario a').live('click',function(e){
     e.preventDefault();
     $(this).parent().empty();
     $('#dineroPidesBotonAgregar').removeClass("container_invisible");
-    $('#id_usuario_dinero').attr( "value", 0);
-    $('#usuario_cantidad_dinero').attr( "value",0);
+    $('#usuario_dinero').attr("name", "offer[money][nil]");
+    $('#usuario_dinero').attr("value",0);
   });
 
 }
