@@ -5,6 +5,20 @@ describe Offer do
     Fabricate.build(:offer)
   end
 
+  let(:offer_hash) do {
+    user_composer_id: offer.user_composer_id,
+    user_receiver_id: offer.user_receiver_id,
+    composer_things:  offer.composer.products.inject({}) do |hash, product|
+                        hash.merge({ product[:thing_id] => product[:quantity] })
+                      end,
+    receiver_things:  offer.receiver.products.inject({}) do |hash, product|
+                        hash.merge({ product[:thing_id] => product[:quantity] })
+                      end,
+    money:            { offer.money.user_id => offer.money.quantity },
+    initial_message:  offer.initial_message
+    }
+  end
+
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
     it { should embed_one(:receiver).of_type(Offer::Receiver) }
@@ -37,7 +51,47 @@ describe Offer do
     end
   end
 
+  describe '.generate_from(hash)' do
+    it { should respond_to(:generate_from).with(1).arguments }
+
+    it 'Generates a new offer with the given hash' do
+      offer.save
+      new_offer = Offer.generate_from(offer_hash)
+      new_offer.user_composer_id eql offer_hash[:user_composer_id]
+      new_offer.user_receiver_id eql offer_hash[:user_receiver_id]
+      new_offer.composer.products.size eql offer_hash[:composer_things].length
+      new_offer.composer.products.each do |product|
+        product.quantity eql offer_hash[product.thing_id.to_sym]
+      end
+      new_offer.receiver.products.size eql offer_hash[:receiver_things].length
+      new_offer.receiver.products.each do |product|
+        product.quantity eql offer_hash[product.thing_id.to_sym]
+      end
+      new_offer.money.user_id eql offer_hash[:money].keys.first
+      new_offer.money.quantity eql offer_hash[:money].values.first
+      new_offer.initial_message eql offer_hash[:initial_message]
+    end
+=begin
+
+
+=end
+
+
+    end
+  end
+
 =begin # estamos arreglando el destrodo este  :P
+
+
+Metodos y validaciones oferta:
+- generar oferta desde hash
+  *  comporbar que responde al metodo con los parametros q sean
+- empezar negociacion desde oferta
+  *  comporbar que responde al metodo con los parametros q sean
+
+
+
+
 
 NO SE COMO HACER UN HASH PARA PROBAR
 ¿lo hago a pelo rellenando los campos con una oferta que me creo?
