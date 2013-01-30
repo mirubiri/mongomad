@@ -194,6 +194,13 @@
             margin-left: 20px;
             width: 50%;
             text-align: center;
+
+            a{
+              @include unstyled-link;
+              margin-left: 2px;
+              font-size:12px;
+              z-index: 10;
+            }
           }
 
           .product{
@@ -235,6 +242,13 @@
             margin-left: 20px;
             width: 50%;
             text-align: center;
+
+            a{
+              @include unstyled-link;
+              margin-left: 2px;
+              font-size:12px;
+              z-index: 10;
+            }
           }
 
           .product{
