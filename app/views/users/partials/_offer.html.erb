@@ -1,3 +1,10 @@
+<% if user_logged_id != user_visited_id %>
+  <div class="main_offer_button">
+    <%= button_tag "Nueva Oferta", :class => "add_offer_button",
+    :id => "new-offer-button" %>
+  </div>
+<% end %>
+
 <% if (user_visited_offers.count != 0)%>
   <% @offers.each do |offer| %>
     <div class="offer" id="<%= offer_composer_id(offer) %>">

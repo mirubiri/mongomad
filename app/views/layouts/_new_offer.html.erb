@@ -3,7 +3,7 @@
 
     <div class="products_area">
       <div class="title">
-        <a href="#blank" id="new_offer_receiver_selector">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%=user_logged_id%>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
               <%= user_visited_image %>
@@ -13,7 +13,7 @@
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector">
+        <a href="#blank" id="new_offer_composer_selector" value="<%=user_visited_id%>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
               <%= user_logged_image %>
@@ -26,8 +26,7 @@
       </div>
       <div class="his_products" id="receiver_products_container">
         <div class="money">
-          <textarea name="" id="dineroPides" cols="1" rows="1" placeholder="Cantidad que pides">
-          </textarea>
+          <textarea name="" id="dineroPides" cols="1" rows="1" placeholder="Cantidad que pides"></textarea>
           <button id="dineroPidesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="his_product_container">
@@ -45,8 +44,7 @@
       </div>
       <div class="my_products container_invisible" id="composer_products_container">
         <div class="money">
-          <textarea name="" id="dineroOfreces" cols="1" rows="1" placeholder="Cantidad que ofreces">
-          </textarea>
+          <textarea name="" id="dineroOfreces" cols="1" rows="1" placeholder="Cantidad que ofreces"></textarea>
           <button id="dineroOfrecesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="my_product_container">
@@ -67,8 +65,7 @@
     
     <input type="hidden" name="offer[user_composer_id]" value="<%= user_logged_id%>" />
     <input type="hidden" name="offer[user_receiver_id]" value="<%= user_visited_id%>" />
-    <input type="hidden" name="offer[money][user_id]" value="" />
-    <input type="hidden" name="offer[money][quantity]" value="" />
+    <input type="hidden" name="offer[money][nil]" value="0" id="usuario_dinero" />  
 
 
     <div class="offer_summary">
@@ -88,10 +85,14 @@
         </div>
         <div class="summary_body">
           <div class="summary_body_products_given" id="summary_offer_given_products_container">
-            <div class="money_given" id="dineroOfrecesEnSumario"></div>
+            <div class="money_given" id="dineroOfrecesEnSumario">
+              <div class="money_composition"></div>
+            </div>
           </div>
           <div class="summary_body_products_received" id="summary_offer_received_products_container">
-            <div class="money_received" id="dineroPidesEnSumario"></div>
+            <div class="money_received" id="dineroPidesEnSumario">
+              <div class="money_composition"></div>
+            </div>
           </div>
         </div>
       </div>

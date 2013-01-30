@@ -4,7 +4,7 @@ function matchPrincipalContainersHeighs(){
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
-
+  
   $('#user-side,#content-side').equalHeightColumns();
   $('#ppal_container').css({'height': ($('#user-side').height() - 90)  + 'px'});
 
@@ -99,10 +99,19 @@ function ajaxLinks(){
 function modalWindows(){
   $('#new-request-form').hide();
   $('#new-offer-form').hide();
+  $('#new-thing-form').hide();
 
   $('#add_request_button').live('click',function(e){
       e.preventDefault();
       $('#new-request-form').modal({
+          opacity:60,
+          overlayCss: {backgroundColor:"#000000"}
+      });
+  });
+
+  $('#new-thing-button').live('click',function(e){
+      e.preventDefault();
+      $('#new-thing-form').modal({
           opacity:60,
           overlayCss: {backgroundColor:"#000000"}
       });
@@ -123,34 +132,13 @@ function modalWindows(){
 }
 
 function newOfferModal(){
-    $('#nueva-oferta-mis-productos .nueva-oferta-producto').live('click',function(){
-        $(this).clone().prependTo('.nueva-oferta-mesa-cuerpo-item-izda');
-        $('.nueva-oferta-mesa-cuerpo-item-izda .nueva-oferta-producto .nueva-oferta-producto-titulo input').attr('checked', 'checked');
-    });
-
-
-    $('#nueva-oferta-sus-productos .nueva-oferta-producto').live('click',function(){
-        $(this).clone().prependTo('.nueva-oferta-mesa-cuerpo-item-dcha-superior');
-        $('.nueva-oferta-mesa-cuerpo-item-dcha-superior .nueva-oferta-producto .nueva-oferta-producto-titulo input').attr('checked', 'checked');
-
-    });
-
-    $('#agregar-mis-productos').live('click',function(){
-        $('#nueva-oferta-mis-productos').toggle();
-        });
-
-    $('#agregar-sus-productos').live('click',function(){
-        $('#nueva-oferta-sus-productos').toggle();
-    });
 
     $('#eliminarMiProducto').live('click',function(){
-        alert("entrar entra");
-        $(this).parent().remove();
+      $(this).parent().remove();
     });
 
     $('#eliminarSuProducto').live('click',function(){
-        alert("entrar entra");
-        $(this).parent().remove();
+      $(this).parent().remove();
     });
 
     $('.quitaProducto').live('click',function() {
@@ -187,27 +175,40 @@ function newOfferLinks(){
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
     e.preventDefault();
-    $('#dineroPidesEnSumario').html("");
+    $('#dineroPidesEnSumario').empty();
     $('#dineroPidesEnSumario').append($.trim($("#dineroPides").val()));
+    $('#dineroPidesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroOfrecesBotonAgregar').addClass("container_invisible");
+    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_composer_selector').attr("value") + "]\"");
+    $('#usuario_dinero').attr("value",$("#dineroPides").val());
+    $('#dineroPides').val("");
   });
 
   $('#dineroOfrecesBotonAgregar').live('click',function(e){
     e.preventDefault();
     $('#dineroOfrecesEnSumario').empty();
     $('#dineroOfrecesEnSumario').append($.trim($("#dineroOfreces").val()));
+    $('#dineroOfrecesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroPidesBotonAgregar').addClass("container_invisible");
+    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_receiver_selector').attr("value") + "]\"");
+    $('#usuario_dinero').attr("value",$("#dineroOfreces").val());
+    $('#dineroOfreces').val("");
+  });
+  
+  $('#dineroPidesEnSumario a').live('click',function(e){
+    e.preventDefault();
+    $(this).parent().empty();
+    $('#dineroOfrecesBotonAgregar').removeClass("container_invisible");
+    $('#usuario_dinero').attr("name", "offer[money][nil]");
+    $('#usuario_dinero').attr("value",0);
   });
 
-  // Faltan  por hacer estas dos funciones
-  $('#dineroPidesEnSumarioBotonEliminar').live('click',function(e){
+  $('#dineroOfrecesEnSumario a').live('click',function(e){
     e.preventDefault();
-    //borrar la cantidad del sumario y volver a activar los botones de envio
-  });
-
-  $('#dineroOfrecesEnSumarioBotonEliminar').live('click',function(e){
-    e.preventDefault();
-    //borrar la cantidad del sumario y volver a activar los botones de envio
+    $(this).parent().empty();
+    $('#dineroPidesBotonAgregar').removeClass("container_invisible");
+    $('#usuario_dinero').attr("name", "offer[money][nil]");
+    $('#usuario_dinero').attr("value",0);
   });
 
 }

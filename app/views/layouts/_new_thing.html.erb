@@ -1,0 +1,23 @@
+<div class="new_thing_content" id="new-thing-form">
+  <%= form_for [@thing] do |form| %>
+    <div class="new_thing_title">
+      <div class="icon">
+        <%= form.file_field :imagen %>
+      </div>
+      <div class="description">
+        <%= text_area_tag(:nombre, "Titulo", :size => "1x1") %>  
+      </div>
+    </div> 
+    <div class="new_thing_text">
+      <%= text_area_tag(:descripcion, "Descríbelo", :size => "24x6") %>
+    </div>
+    <div class="stock">
+      <%= text_area_tag(:stock, "Cuantos tienes", :size => "1x1") %>
+    </div>
+    <div class="send_button">      
+      <div class="action">      
+        <%= form.submit %>
+      </div> 
+    </div>
+  <% end %>   
+</div> 

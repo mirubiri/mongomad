@@ -8,7 +8,6 @@
   overflow:auto;
   margin: 0px 0px 0px 0px;
   border: $borde2pxblack;
-
   background-color: white;
 
   .products_area{
@@ -194,6 +193,13 @@
             margin-left: 20px;
             width: 50%;
             text-align: center;
+
+            a{
+              @include unstyled-link;
+              margin-left: 2px;
+              font-size:12px;
+              z-index: 10;
+            }
           }
 
           .product{
@@ -235,6 +241,13 @@
             margin-left: 20px;
             width: 50%;
             text-align: center;
+
+            a{
+              @include unstyled-link;
+              margin-left: 2px;
+              font-size:12px;
+              z-index: 10;
+            }
           }
 
           .product{
