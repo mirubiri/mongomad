@@ -69,6 +69,7 @@ describe User::Thing do
     it { should respond_to(:to_offer_receiver_product).with(1).arguments }
 
     specify { thing.to_offer_receiver_product(1).should be_kind_of(Offer::Receiver::Product) }
+    specify { thing.to_offer_receiver_product(1).valid?.should be_true, "Is not valid because #{thing.errors}" }
 
     it 'Builds an offer_receiver_product with the given quantity' do
       product = thing.to_offer_receiver_product(1)
