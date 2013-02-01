@@ -3,8 +3,7 @@
 
 .offer {
   @include box-shadow(rgb(170,170,170) 1px 1px 3px);
-  @include fixed_width($width265px,$width265px,$width265px);
-  float: left;
+  width: $offerWidth;
   overflow:auto;
   margin:0px 0px 8px 12px;
   border: $borde1px;
@@ -16,7 +15,7 @@
     margin-bottom: 5px;
 
     .triangle {
-      @include relative($top:0px,$right:-240px);
+      @include relative($top:0px,$left:$trianglePosition);
       @include proportions(0px,0px);
       border:{
             top: 25px solid rgb(220,220,220);
@@ -32,23 +31,23 @@
     }
 
     .profile_image{
-      @include relative($top:-20px,$left:6px);
-      @include border-radius(5px, 5px);
-      @include proportions(50px,50px);
-      overflow: hidden;
-      border: $borde1px;
+      @include relative($top:-20px,$left:$profileImageLeftMargin);
+      @include border-radius(5px, 5px);      
+      overflow: visible;      
 
       a{
         img{
           @include high-quality-image;
-          @include proportions(50px,50px);
+          @include proportions($profileImageDimension,$profileImageDimension);
+          border: $borde1px;
         }
       }
     }
 
     .description{
-      @include relative($top:-72px,$left:67px);
-      @include proportions(172px,50px);
+      @include relative($top:-78px,$left:$commentPosition);
+      @include proportions($commentWidth,profileImageDimension);
+      overflow: visible;
       font-size: 9px;
     }
   }
@@ -56,22 +55,20 @@
   .offer_things{
     float:left;
     overflow: visible;
-    margin-top: 5px;
-    width: 100%;
+    margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
 
     .recieved{
       float:left;
       overflow:hidden;
-      margin: 5px 0px 0px 5px;
-      width: 150px;
+      margin: 0px $productRightMargin 0px 0px;
 
       img{
         @include border-radius(5px, 5px);
         @include high-quality-image;
-        @include proportions(130px,130px);
+        @include proportions($bigImageDimension,$bigImageDimension);
         float:left;
         overflow: auto;
-        margin:0px 0px 5px 5px;
+        margin:0px 0px 0px 0px;
         border: $borde1px;
       }
      }
@@ -79,15 +76,14 @@
     .given{
       float: right;
       overflow: hidden;
-      margin: 5px 5px 0px 0px;
-      width: 90px;
+      margin: 0px $productRightMargin 0px 0px;
 
       img{
         @include border-radius(5px, 5px);
         @include high-quality-image;
-        @include proportions(80px,80px);
+        @include proportions($smallImageDimension,$smallImageDimension);
         float:left;
-        margin:0px 0px 5px 5px;
+        margin:0px 0px 0px 0px;
         border: $borde1px;
       }
     }
@@ -95,20 +91,21 @@
 
   .offer_button{
     float: left;
+    margin-bottom: 10px;
     overflow: auto;
     width: 100%;
 
     button{
       @include border-radius(5px, 5px);
       float: right;
-      margin: 0px 10px 10px 5px;
+      margin: 0px 10px 0px 5px;
       font-size: 10px;
     }
   }
 
   .offer_date{
     float: left;
-    margin: -10px 0px 0px 5px;
+    margin: 0px 0px 0px 5px;
     font-size: 8px;
   }
 

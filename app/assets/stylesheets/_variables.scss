@@ -5,6 +5,23 @@ $highlight: #ffc;
 $margen80px: 80px;
 $borde1px: 1px solid rgb(220,220,220);
 
+//offer_variables
+$bigImageDimension: 150px;
+$smallImageDimension: 80px;
+$productsLeftMargin: 15px;
+$productRightMargin: 8px;
+$productsTopMargin: 5px;
+$productsBottomMargin: 8px;
+$offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (2 * $productRightMargin) + 8px;
+$trianglePosition: $offerWidth - 25px;
+$profileImageLeftMargin: 6px;
+$profileImageDimension: 50px;
+$commentLeftMargin: 8px;
+$commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLeftMargin;
+$commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
+$commentWidth: $offerWidth - 27px - $commentDistance;
+
+
 //user_container
 $width250px: 250px;
 $borde2px: 2px solid rgb(220,220,220);
