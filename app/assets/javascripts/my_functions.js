@@ -24,6 +24,12 @@ function maximizeConversationsHeights(){
   });
 }
 
+function triangleTopRight(){
+  $(".triangle").each(function(){
+    $(this).css({'left': (($(this).parent().width()) -24)+'px'});
+  });
+}
+
 function addProfileCommentsSeparator(){
   if ( ($('#comment_list').height()) > ($('#data_list').height()) ) {
       $('#comment_list').css({'border-left': '1px solid rgb(220,220,220)'});
