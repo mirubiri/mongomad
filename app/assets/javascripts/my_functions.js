@@ -164,13 +164,19 @@ function newOfferLinks(){
   });
 
   $('#his_product_container .product').live('click',function(e){
+    rpcv = parseInt(($('#received_products_counter').attr("value")), 10);
+    $('#received_products_counter').attr('value', (rpcv + 1));
     $(this).clone().appendTo('#summary_offer_given_products_container');
-    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $(this).attr("id") + "]\" value=\"1\" />");
+    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $('#received_products_counter').attr('value') + "][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $('#received_products_counter').attr('value') + "][quantity]\" value=\""+ 0 + "\" />");
   });
 
   $('#my_product_container .product').live('click',function(e){
+    gpcv = parseInt(($('#given_products_counter').attr("value")), 10);
+    $('#given_products_counter').attr('value', (gpcv + 1));
     $(this).clone().appendTo('#summary_offer_received_products_container');
-    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $(this).attr("id") + "]\" value=\"1\" />");
+    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $('#given_products_counter').attr('value') + "][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $('#given_products_counter').attr('value') + "][quantity]\" value=\""+ 0 + "\" />");
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
@@ -179,7 +185,7 @@ function newOfferLinks(){
     $('#dineroPidesEnSumario').append($.trim($("#dineroPides").val()));
     $('#dineroPidesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroOfrecesBotonAgregar').addClass("container_invisible");
-    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_composer_selector').attr("value") + "]\"");
+    $('#usuario_id').attr( "value",$('#new_offer_receiver_selector').attr("value"));
     $('#usuario_dinero').attr("value",$("#dineroPides").val());
     $('#dineroPides').val("");
   });
@@ -190,7 +196,7 @@ function newOfferLinks(){
     $('#dineroOfrecesEnSumario').append($.trim($("#dineroOfreces").val()));
     $('#dineroOfrecesEnSumario').append('<a href="#blank">x</a>');
     $('#dineroPidesBotonAgregar').addClass("container_invisible");
-    $('#usuario_dinero').attr( "name","\"offer[money]["+ $('#new_offer_receiver_selector').attr("value") + "]\"");
+    $('#usuario_id').attr( "value",$('#new_offer_composer_selector').attr("value"));
     $('#usuario_dinero').attr("value",$("#dineroOfreces").val());
     $('#dineroOfreces').val("");
   });
@@ -201,6 +207,7 @@ function newOfferLinks(){
     $('#dineroOfrecesBotonAgregar').removeClass("container_invisible");
     $('#usuario_dinero').attr("name", "offer[money][nil]");
     $('#usuario_dinero').attr("value",0);
+    $('#usuario_id').attr("value",0);
   });
 
   $('#dineroOfrecesEnSumario a').live('click',function(e){
@@ -209,6 +216,7 @@ function newOfferLinks(){
     $('#dineroPidesBotonAgregar').removeClass("container_invisible");
     $('#usuario_dinero').attr("name", "offer[money][nil]");
     $('#usuario_dinero').attr("value",0);
+    $('#usuario_id').attr("value",0);
   });
 
 }
