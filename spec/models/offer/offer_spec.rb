@@ -5,19 +5,7 @@ describe Offer do
     Fabricate.build(:offer)
   end
 
-  let(:offer_hash) do {
-    user_composer_id: offer.user_composer_id,
-    user_receiver_id: offer.user_receiver_id,
-    composer_things:  offer.composer.products.inject({}) do |hash, product|
-                        hash.merge({ product[:thing_id] => product[:quantity] })
-                      end,
-    receiver_things:  offer.receiver.products.inject({}) do |hash, product|
-                        hash.merge({ product[:thing_id] => product[:quantity] })
-                      end,
-    money:            { offer.money.user_id => offer.money.quantity },
-    initial_message:  offer.initial_message
-    }
-  end
+
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -54,51 +42,37 @@ describe Offer do
 
 
 
-  describe '.generate_from(hash)' do
-    let(:generated_offer) do
-      offer.save
-      Offer.generate_from(offer_hash)
+  describe '.generate_from' do
+
+    new_offer = Fabricate(:offer)
+
+    offer_hash = {
+      user_composer_id: new_offer.user_composer_id,
+      user_receiver_id: new_offer.user_receiver_id,
+      composer_things:  new_offer.composer.products.map do |product|
+                          { thing:product[:thing_id], quantity:product[:quantity] }
+                        end,
+      receiver_things:  new_offer.receiver.products.map do |product|
+                          { thing:product[:thing_id],quantity: product[:quantity] }
+                        end,
+      money:            { user: new_offer.money.user_id, quantity: new_offer.money.quantity },
+      initial_message:  new_offer.initial_message
+    }
+
+    subject { Offer.generate_from(offer_hash) }
+    
+    its(:user_composer_id) { should eql offer_hash[:user_composer_id] }
+    its(:user_receiver_id) { should eql offer_hash[:user_receiver_id] }
+
+    offer_hash[:composer_things].each_index do |index|
+      its("composer.products[#{index}].thing_id") { should eql offer_hash[:composer_things][index][:thing_id] }
+      its("composer.products[#{index}].quantity") { should eql offer_hash[:composer_things][index][:quantity] }
     end
 
-    it { should respond_to(:generate_from).with(1).arguments }
-
-    specify { generated_offer.should be_kind_of(Offer) }
-
-    specify { generated_offer.valid?.should be_true, "Is not valid because #{generated_offer.errors}" }
-
-    specify { generated_offer.save.should be_true }
-
-    it 'Generates an offer with the user_composer_id value from hash' do
-      generated_offer.user_composer_id eql offer_hash[:user_composer_id]
+    offer_hash[:receiver_things].each_index do |index|
+      its("receiver.products[#{index}].thing_id") { should eql offer_hash[:receiver_things][index][:thing_id] }
+      its("receiver.products[#{index}].quantity") { should eql offer_hash[:receiver_things][index][:quantity] }
     end
-
-    it 'Generates an offer with the user_receiver_id value from hash' do
-      generated_offer.user_receiver_id eql offer_hash[:user_receiver_id]
-    end
-
-    it 'Generates an offer with the composer products built from the values from hash' do
-      generated_offer.composer.products.size eql offer_hash[:composer_things].length
-      generated_offer.composer.products.each do |product|
-        product.quantity eql offer_hash[:composer_things][product.thing_id.to_sym]
-      end
-    end
-
-    it 'Generates an offer with the receiver products built from the values from hash' do
-      generated_offer.receiver.products.size eql offer_hash[:receiver_things].length
-      generated_offer.receiver.products.each do |product|
-        product.quantity eql offer_hash[:receiver_things][product.thing_id.to_sym]
-      end
-    end
-
-    it 'Generates an offer with the money value from hash' do
-      generated_offer.money.user_id eql offer_hash[:money].keys.first
-      generated_offer.money.quantity eql offer_hash[:money].values.first
-    end
-
-    it 'Generates an offer with the initial_message value from hash' do
-      generated_offer.initial_message eql offer_hash[:initial_message]
-    end
-
-    # Faltan los negados
+  
   end
 end

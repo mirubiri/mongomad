@@ -19,15 +19,27 @@ class Offer
             :initial_message,
             presence: true
 
+<<<<<<< HEAD
   def self.publish(offer_hash)
     user_composer = User.find(offer_hash[:user_composer_id])
     user_receiver = User.find(offer_hash[:user_receiver_id])
+=======
+  def self.generate_from(hash)
+    user_composer = User.find(hash[:user_composer_id])
+    user_receiver = User.find(hash[:user_receiver_id])
+>>>>>>> 25cb4611e8ae103e31c766bac890ef873f2a5b6f
+
 
     offer = Offer.new
     offer.composer = Offer::Composer.new
     offer.composer.name = user_composer.profile.name
     offer.composer.image = File.open(user_composer.profile.image.path)
+<<<<<<< HEAD
     offer_hash[:composer_things].keys.each do |key|
+=======
+    
+    hash[:composer_things].keys.each do |key|
+>>>>>>> 25cb4611e8ae103e31c766bac890ef873f2a5b6f
       t = User.find(user_composer._id).things.find(key)
       offer.composer.products << t.to_composer_product
     end
@@ -36,7 +48,12 @@ class Offer
     offer.receiver = Offer::Receiver.new
     offer.receiver.name = user_receiver.profile.name
     offer.receiver.image = File.open(user_receiver.profile.image.path)
+<<<<<<< HEAD
     offer_hash[:receiver_things].keys.each do |key|
+=======
+    
+    hash[:receiver_things].keys.each do |key|
+>>>>>>> 25cb4611e8ae103e31c766bac890ef873f2a5b6f
       t = User.find(user_receiver._id).things.find(key)
       offer.receiver.products << t.to_receiver_product
     end
@@ -48,7 +65,14 @@ class Offer
     offer.user_composer_id = user_composer._id
     offer.user_receiver_id = user_receiver._id
 
+<<<<<<< HEAD
     offer.initial_message = offer_hash[:initial_message]
+=======
+    offer.initial_message = hash[:initial_message]
+
+
+
+>>>>>>> 25cb4611e8ae103e31c766bac890ef873f2a5b6f
 
   end
 end
