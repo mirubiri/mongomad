@@ -50,6 +50,6 @@ class Offer
     offer.user_receiver_id = user_receiver._id
 
     offer.initial_message = offer_hash[:initial_message]
-    offer
+    offer.save
   end
 end
