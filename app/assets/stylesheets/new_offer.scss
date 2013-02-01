@@ -21,7 +21,7 @@
 
       a{
         .user_products_selector{
-          @include fixed_width(238px,238px,238px);
+          @include fixed_width(234px,234px,234px);
           @include fixed_height(30px,30px,30px);
           float: left;
           border: $borde1px;
