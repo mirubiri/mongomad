@@ -5,8 +5,6 @@ describe Offer do
     Fabricate.build(:offer)
   end
 
-
-
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
     it { should embed_one(:receiver).of_type(Offer::Receiver) }
@@ -39,28 +37,24 @@ describe Offer do
     end
   end
 
-
-
-
-  describe '.generate_from' do
-
+  describe '.publish' do
     new_offer = Fabricate(:offer)
 
     offer_hash = {
       user_composer_id: new_offer.user_composer_id,
       user_receiver_id: new_offer.user_receiver_id,
       composer_things:  new_offer.composer.products.map do |product|
-                          { thing:product[:thing_id], quantity:product[:quantity] }
+                          { thing_id: product[:thing_id], quantity: product[:quantity] }
                         end,
       receiver_things:  new_offer.receiver.products.map do |product|
-                          { thing:product[:thing_id],quantity: product[:quantity] }
+                          { thing_id: product[:thing_id], quantity: product[:quantity] }
                         end,
-      money:            { user: new_offer.money.user_id, quantity: new_offer.money.quantity },
+      money:            { user_id: new_offer.money.user_id, quantity: new_offer.money.quantity },
       initial_message:  new_offer.initial_message
     }
 
     subject { Offer.generate_from(offer_hash) }
-    
+
     its(:user_composer_id) { should eql offer_hash[:user_composer_id] }
     its(:user_receiver_id) { should eql offer_hash[:user_receiver_id] }
 
@@ -73,6 +67,9 @@ describe Offer do
       its("receiver.products[#{index}].thing_id") { should eql offer_hash[:receiver_things][index][:thing_id] }
       its("receiver.products[#{index}].quantity") { should eql offer_hash[:receiver_things][index][:quantity] }
     end
-  
+
+    its(:initial_message) { should eql offer_hash[:initial_message] }
+    its(:initial_message) { should eql offer_hash[:initial_message] }
+
   end
 end
