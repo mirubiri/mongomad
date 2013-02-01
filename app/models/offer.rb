@@ -29,17 +29,17 @@ class Offer
     offer.composer.image = File.open(user_composer.profile.image.path)
 
     offer_hash[:composer_things].each do |index|
-      thing = User.find(user_composer._id).things.find(index[:thing_id])
-      offer.composer.products << thing.to_composer_product
+      thing = user_composer.things.find(index[:thing_id])
+      offer.composer.products << thing.to_offer_composer_product(index[:quantity])
     end
 
     offer.receiver = Offer::Receiver.new
     offer.receiver.name = user_receiver.profile.name
     offer.receiver.image = File.open(user_receiver.profile.image.path)
 
-    offer_hash[:receiver_things].keys.each do |key|
-      thing = User.find(user_receiver._id).things.find(index[:thing_id])
-      offer.composer.products << thing.to_receiver_product
+    offer_hash[:receiver_things].each do |index|
+      thing = user_receiver.things.find(index[:thing_id])
+      offer.receiver.products << thing.to_offer_receiver_product(index[:quantity])
     end
 
     offer.money = Offer::Money.new
@@ -50,5 +50,6 @@ class Offer
     offer.user_receiver_id = user_receiver._id
 
     offer.initial_message = offer_hash[:initial_message]
+    offer
   end
 end

@@ -53,7 +53,7 @@ describe Offer do
       initial_message:  new_offer.initial_message
     }
 
-    subject { Offer.generate_from(offer_hash) }
+    subject { Offer.publish(offer_hash) }
 
     its(:user_composer_id) { should eql offer_hash[:user_composer_id] }
     its(:user_receiver_id) { should eql offer_hash[:user_receiver_id] }
