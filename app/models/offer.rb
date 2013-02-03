@@ -36,8 +36,10 @@ class Offer
     offer
   end
 
-  def update_data
-    composer.data_update
-    receiver.data_update
+  def auto_update
+    self.reload
+    self.composer.auto_update
+    self.receiver.auto_update
+    self
   end
 end

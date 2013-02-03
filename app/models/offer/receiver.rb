@@ -20,15 +20,20 @@ class Offer::Receiver
     end
   end
 
-  def data_update
-    self.name=offer.user_receiver.profile.name
-    self.image=offer.user_receiver.profile.image
+  def update_receiver_data
+    self.name=self.offer.user_receiver.profile.name
+    self.image=self.offer.user_receiver.profile.image
+  end
 
-    products.each do |product|
-      thing=offer.user_receiver.things.find(product.thing_id)
-      product.name=thing.name
-      product.description=thing.description
-      product.image=thing.image
+  def update_receiver_products
+    self.products.each do |product|
+      product.auto_update
     end
+  end
+
+  def auto_update
+    self.update_receiver_data
+    self.update_receiver_products
+    self
   end
 end

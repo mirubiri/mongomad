@@ -20,15 +20,20 @@ class Offer::Composer
     end
   end
 
-  def data_update
-    self.name=offer.user_composer.profile.name
-    self.image=offer.user_composer.profile.image
+  def update_composer_data
+    self.name=self.offer.user_composer.profile.name
+    self.image=self.offer.user_composer.profile.image
+  end
 
-    products.each do |product|
-      thing=offer.user_composer.things.find(product.thing_id)
-      product.name=thing.name
-      product.description=thing.description
-      product.image=thing.image
+  def update_composer_products
+    self.products.each do |product|
+      product.auto_update
     end
+  end
+
+  def auto_update
+    self.update_composer_data
+    self.update_composer_products
+    self
   end
 end
