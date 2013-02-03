@@ -13,4 +13,22 @@ class Offer::Receiver
             :name,
             :image,
             presence: true
+
+  def add_products(params)
+    params.each do |thing|
+      products.build(thing_id:thing[:thing_id],quantity:thing[:quantity])
+    end
+  end
+
+  def data_update
+    self.name=offer.user_receiver.profile.name
+    self.image=offer.user_receiver.profile.image
+
+    products.each do |product|
+      thing=offer.user_receiver.things.find(product.thing_id)
+      product.name=thing.name
+      product.description=thing.description
+      product.image=thing.image
+    end
+  end
 end

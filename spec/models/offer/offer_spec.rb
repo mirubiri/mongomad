@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) do
-    Fabricate.build(:offer)
-  end
+  let(:offer) { Fabricate.build(:offer) }
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -37,39 +35,41 @@ describe Offer do
     end
   end
 
-  describe '.publish' do
-    new_offer = Fabricate(:offer)
+  describe '.generate' do
 
-    offer_hash = {
-      user_composer_id: new_offer.user_composer_id,
-      user_receiver_id: new_offer.user_receiver_id,
-      composer_things:  new_offer.composer.products.map do |product|
-                          { thing_id: product[:thing_id], quantity: product[:quantity] }
-                        end,
-      receiver_things:  new_offer.receiver.products.map do |product|
-                          { thing_id: product[:thing_id], quantity: product[:quantity] }
-                        end,
-      money:            { user_id: new_offer.money.user_id, quantity: new_offer.money.quantity },
-      initial_message:  new_offer.initial_message
-    }
+    saved_offer=Fabricate(:offer)
+    offer_hash =
+      {
+        user_composer_id: saved_offer.user_composer_id,
+        user_receiver_id: saved_offer.user_receiver_id,
+        composer_things:  saved_offer.composer.products.map do |product|
+                            { thing_id: product[:thing_id], quantity: product[:quantity] }
+                          end,
+        receiver_things:  saved_offer.receiver.products.map do |product|
+                            { thing_id: product[:thing_id], quantity: product[:quantity] }
+                          end,
+        money:            { user_id: saved_offer.money.user_id, quantity: saved_offer.money.quantity },
+        initial_message:  saved_offer.initial_message
+      }
 
-    subject { Offer.publish(offer_hash) }
+    subject(:new_offer) { Offer.generate(offer_hash) }
 
     its(:user_composer_id) { should eql offer_hash[:user_composer_id] }
     its(:user_receiver_id) { should eql offer_hash[:user_receiver_id] }
 
-    offer_hash[:composer_things].each_index do |index|
-      its("composer.products[#{index}].thing_id") { should eql offer_hash[:composer_things][index][:thing_id] }
-      its("composer.products[#{index}].quantity") { should eql offer_hash[:composer_things][index][:quantity] }
+
+    ['composer','receiver'].each do |person|
+      offer_hash[:"#{person}_things"].each_index do |index|
+        its("#{person}.products[#{index}].thing_id") { should eql offer_hash[:"#{person}_things"][index][:thing_id] }
+        its("#{person}.products[#{index}].quantity") { should eql offer_hash[:"#{person}_things"][index][:quantity] }
+        its("#{person}.products[#{index}].name") { should eql offer_hash[:"#{person}_things"][index][:name] }
+        its("#{person}.products[#{index}].description") { should eql offer_hash[:"#{person}_things"][index][:description] }
+      end
     end
 
-    offer_hash[:receiver_things].each_index do |index|
-      its("receiver.products[#{index}].thing_id") { should eql offer_hash[:receiver_things][index][:thing_id] }
-      its("receiver.products[#{index}].quantity") { should eql offer_hash[:receiver_things][index][:quantity] }
-    end
-
-    its(:initial_message) { should eql offer_hash[:initial_message] }
-    its(:initial_message) { should eql offer_hash[:initial_message] }
+    its("initial_message") { should eql offer_hash[:initial_message] }
+    its("money.user_id") { should eql offer_hash[:money][:user_id] }
+    its("money.quantity") { should eql offer_hash[:money][:quantity] }
 
   end
 end
