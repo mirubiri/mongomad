@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer do
   let(:offer) { Fabricate.build(:offer) }
-
+  
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
     it { should embed_one(:receiver).of_type(Offer::Receiver) }
@@ -31,7 +31,6 @@ describe Offer do
 
     it 'Creates two different users' do
       expect { offer.save }.to change{ User.count }.by(2)
-      offer.user_composer.should_not eq offer.user_receiver
     end
   end
 
@@ -63,24 +62,25 @@ describe Offer do
 
   describe '.generate' do
 
-    #let(:saved_offer) { offer.publish }
-    let!(:offer_hash) do
+    let(:offer_hash) do
+      offer.save
       {
-        user_composer_id: saved_offer.user_composer_id,
-        user_receiver_id: saved_offer.user_receiver_id,
-        composer_things:  saved_offer.composer.products.map do |product|
+        user_composer_id: offer.user_composer_id,
+        user_receiver_id: offer.user_receiver_id,
+        composer_things:  offer.composer.products.map do |product|
                             { thing_id: product[:thing_id], quantity: product[:quantity] }
                           end,
-        receiver_things:  saved_offer.receiver.products.map do |product|
+        receiver_things:  offer.receiver.products.map do |product|
                             { thing_id: product[:thing_id], quantity: product[:quantity] }
                           end,
-        money:            { user_id: saved_offer.money.user_id, quantity: saved_offer.money.quantity },
-        initial_message:  saved_offer.initial_message
+        money:            { user_id: offer.money.user_id, quantity: offer.money.quantity },
+        initial_message:  offer.initial_message
       }
     end
-  
 
-    let!(:new_offer) { Offer.generate(offer_hash).publish }
+    let(:new_offer) do 
+      Offer.generate(offer_hash).publish
+    end
 
     context 'new_offer -> money' do
       specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
