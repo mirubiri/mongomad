@@ -15,8 +15,8 @@ class Offer::Receiver
             presence: true
 
   def add_products(params)
-    params.keys.each do |key|
-      products.build(thing_id: params[key][:thing_id], quantity: params[key][:quantity])
+    params.each do |index|
+      products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
   end
 
