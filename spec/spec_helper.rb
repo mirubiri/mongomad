@@ -11,7 +11,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 RSpec.configure do |config|
 
 
-  config.after(:all) do
+  config.after(:each) do
     User.all.destroy
     Request.all.destroy
     Offer.all.destroy
