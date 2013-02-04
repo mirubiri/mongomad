@@ -15,8 +15,8 @@ class Offer::Composer
             presence: true
 
   def add_products(params)
-    params.each do |thing|
-      products.build(thing_id: thing[:thing_id], quantity: thing[:quantity])
+    params.keys.each do |key|
+      products.build(thing_id: params[key][:thing_id], quantity: params[key][:quantity])
     end
   end
 

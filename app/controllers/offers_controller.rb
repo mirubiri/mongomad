@@ -47,10 +47,11 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
-      
-      if Offer.publish(params).save
+
+      if Offer.generate(params).save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
