@@ -12,7 +12,7 @@ describe User::Thing do
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
-    it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
+    it { should have_field(:stock).of_type(Integer) }
     it { should have_field(:image).of_type(Object) }
   end
 
@@ -42,5 +42,5 @@ describe User::Thing do
     end
   end
 
-  
+
 end
