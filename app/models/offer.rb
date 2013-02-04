@@ -19,37 +19,27 @@ class Offer
             :initial_message,
             presence: true
 
-  def self.publish(offer_hash)
-    user_composer = User.find(offer_hash[:user_composer_id])
-    user_receiver = User.find(offer_hash[:user_receiver_id])
+  def self.generate(params)
+    offer=Offer.new(
+      user_composer: User.find(params[:user_composer_id]),
+      user_receiver: User.find(params[:user_receiver_id]),
+      initial_message: params[:initial_message])
+    offer.build_composer.add_products(params[:composer_things])
+    offer.build_receiver.add_products(params[:receiver_things])
+    offer.build_money(user_id: params[:money][:user_id],
+                      quantity: params[:money][:quantity])
+    offer.auto_update
+  end
 
-    offer = Offer.new
-    offer.composer = Offer::Composer.new
-    offer.composer.name = user_composer.profile.name
-    offer.composer.image = File.open(user_composer.profile.image.path)
+  def auto_update
+    self.reload if self.persisted?
+    self.receiver.auto_update
+    self.composer.auto_update
+    self
+  end
 
-    offer_hash[:composer_things].each do |index|
-      thing = user_composer.things.find(index[:thing_id])
-      offer.composer.products << thing.to_offer_composer_product(index[:quantity])
-    end
-
-    offer.receiver = Offer::Receiver.new
-    offer.receiver.name = user_receiver.profile.name
-    offer.receiver.image = File.open(user_receiver.profile.image.path)
-
-    offer_hash[:receiver_things].each do |index|
-      thing = user_receiver.things.find(index[:thing_id])
-      offer.receiver.products << thing.to_offer_receiver_product(index[:quantity])
-    end
-
-    offer.money = Offer::Money.new
-    offer.money.user_id = offer_hash[:money][:user_id]
-    offer.money.quantity = offer_hash[:money][:quantity]
-
-    offer.user_composer_id = user_composer._id
-    offer.user_receiver_id = user_receiver._id
-
-    offer.initial_message = offer_hash[:initial_message]
-    offer.save
+  def publish
+    # WARNING: It returns this offer instead of "true" like #save method when saving
+    self.save && self
   end
 end

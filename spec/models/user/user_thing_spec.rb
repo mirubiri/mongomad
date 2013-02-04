@@ -12,7 +12,7 @@ describe User::Thing do
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
-    it { should have_field(:stock).of_type(Integer).with_default_value_of(1) }
+    it { should have_field(:stock).of_type(Integer) }
     it { should have_field(:image).of_type(Object) }
   end
 
@@ -42,50 +42,5 @@ describe User::Thing do
     end
   end
 
-  describe '#to_offer_composer_product(quantity)' do
-    it { should respond_to(:to_offer_composer_product).with(1).arguments }
 
-    specify { thing.to_offer_composer_product(1).should be_kind_of(Offer::Composer::Product) }
-
-    it 'Builds an offer_composer_product with the given quantity' do
-      product = thing.to_offer_composer_product(1)
-      product.thing_id.should eql thing._id
-      product.name.should eql thing.name
-      product.description.should eql thing.description
-      product.quantity.should eql 1
-    end
-
-    it 'Cannot build an offer_composer_product with quantity greater than stock' do
-      expect { thing.to_offer_composer_product(thing.stock+1) }.to raise_error(StandardError, "Not enough stock avaliable")
-    end
-
-    it 'Cannot build an offer_composer_product with 0 or negative quantity' do
-      expect { thing.to_offer_composer_product(0) }.to raise_error(StandardError, "Quantity not valid")
-      expect { thing.to_offer_composer_product(-1) }.to raise_error(StandardError, "Quantity not valid")
-    end
-  end
-
-  describe '#to_offer_receiver_product(quantity)' do
-    it { should respond_to(:to_offer_receiver_product).with(1).arguments }
-
-    specify { thing.to_offer_receiver_product(1).should be_kind_of(Offer::Receiver::Product) }
-    specify { thing.to_offer_receiver_product(1).valid?.should be_true, "Is not valid because #{thing.errors}" }
-
-    it 'Builds an offer_receiver_product with the given quantity' do
-      product = thing.to_offer_receiver_product(1)
-      product.thing_id.should eql thing._id
-      product.name.should eql thing.name
-      product.description.should eql thing.description
-      product.quantity.should eql 1
-    end
-
-    it 'Cannot build an offer_receiver_product with quantity greater than stock' do
-      expect { thing.to_offer_receiver_product(thing.stock+1) }.to raise_error(StandardError, "Not enough stock avaliable")
-    end
-
-    it 'Cannot build an offer_receiver_product with 0 or negative quantity' do
-      expect { thing.to_offer_receiver_product(0) }.to raise_error(StandardError, "Quantity not valid")
-      expect { thing.to_offer_receiver_product(-1) }.to raise_error(StandardError, "Quantity not valid")
-    end
-  end
 end

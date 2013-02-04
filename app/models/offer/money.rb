@@ -4,7 +4,7 @@ class Offer::Money
   embedded_in :offer
 
   field :user_id,  type: Moped::BSON::ObjectId
-  field :quantity, type: Integer, default: 0
+  field :quantity, type: Integer
 
   validates :offer,
             :quantity,

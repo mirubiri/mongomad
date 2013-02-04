@@ -10,14 +10,13 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
 
-  config.after(:all) do
+  config.after(:each) do
     User.all.destroy
     Request.all.destroy
     Offer.all.destroy
     Negotiation.all.destroy
     Deal.all.destroy
   end
-
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -28,7 +27,6 @@ RSpec.configure do |config|
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

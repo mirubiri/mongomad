@@ -5,7 +5,7 @@ class Deal::Message
   embedded_in :deal
 
   field :user_name, type: String
-  field :text,          type: String
+  field :text,      type: String
 
   mount_uploader :image, UserImageUploader
 

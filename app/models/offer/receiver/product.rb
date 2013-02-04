@@ -6,7 +6,7 @@ class Offer::Receiver::Product
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
-  field :quantity,    type: Integer, default: 1
+  field :quantity,    type: Integer
 
   mount_uploader :image, ThingImageUploader
 
@@ -31,5 +31,13 @@ class Offer::Receiver::Product
     product.quantity = self.quantity
     product.image = File.open(self.image.path)
     product
+  end
+
+  def auto_update
+    thing = receiver.offer.user_receiver.things.find(self.thing_id)
+    self.name = thing.name
+    self.description = thing.description
+    self.image = thing.image
+    self
   end
 end
