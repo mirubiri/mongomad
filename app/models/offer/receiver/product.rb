@@ -32,12 +32,12 @@ class Offer::Receiver::Product
     product.image = File.open(self.image.path)
     product
   end
-  
+
   def auto_update
-      thing=receiver.offer.user_receiver.things.find(self.thing_id)
-      self.name=thing.name
-      self.description=thing.description
-      self.image=thing.image
-      self
+    thing = receiver.offer.user_receiver.things.find(self.thing_id)
+    self.name = thing.name
+    self.description = thing.description
+    self.image = thing.image
+    self
   end
 end

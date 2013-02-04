@@ -5,7 +5,7 @@ class User::Thing
 
   field :name,        type: String
   field :description, type: String
-  field :stock,       type: Integer, default: 1
+  field :stock,       type: Integer
 
   mount_uploader :image, ThingImageUploader
 

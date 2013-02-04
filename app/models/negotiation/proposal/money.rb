@@ -4,7 +4,7 @@ class Negotiation::Proposal::Money
   embedded_in :proposal, class_name: "Negotiation::Proposal"
 
   field :user_id,  type: Moped::BSON::ObjectId
-  field :quantity, type: Integer, default: 0
+  field :quantity, type: Integer
 
   validates :proposal,
             :quantity,

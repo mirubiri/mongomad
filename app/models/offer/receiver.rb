@@ -16,13 +16,13 @@ class Offer::Receiver
 
   def add_products(params)
     params.each do |thing|
-      products.build(thing_id:thing[:thing_id],quantity:thing[:quantity])
+      products.build(thing_id: thing[:thing_id], quantity: thing[:quantity])
     end
   end
 
   def update_receiver_data
-    self.name=self.offer.user_receiver.profile.name
-    self.image=self.offer.user_receiver.profile.image
+    self.name = self.offer.user_receiver.profile.name
+    self.image = self.offer.user_receiver.profile.image
   end
 
   def update_receiver_products

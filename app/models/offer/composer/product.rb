@@ -34,10 +34,10 @@ class Offer::Composer::Product
   end
 
   def auto_update
-      thing=composer.offer.user_composer.things.find(self.thing_id)
-      self.name=thing.name
-      self.description=thing.description
-      self.image=thing.image
-      self
+    thing = composer.offer.user_composer.things.find(self.thing_id)
+    self.name = thing.name
+    self.description = thing.description
+    self.image = thing.image
+    self
   end
 end

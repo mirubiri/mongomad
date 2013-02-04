@@ -16,13 +16,13 @@ class Offer::Composer
 
   def add_products(params)
     params.each do |thing|
-      products.build(thing_id:thing[:thing_id],quantity:thing[:quantity])
+      products.build(thing_id: thing[:thing_id], quantity: thing[:quantity])
     end
   end
 
   def update_composer_data
-    self.name=self.offer.user_composer.profile.name
-    self.image=self.offer.user_composer.profile.image
+    self.name = self.offer.user_composer.profile.name
+    self.image = self.offer.user_composer.profile.image
   end
 
   def update_composer_products
