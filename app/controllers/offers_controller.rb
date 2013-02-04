@@ -49,6 +49,8 @@ class OffersController < ApplicationController
   def create
 
     respond_to do |format|
+
+      @user = User.find(params[:offer][:user_receiver_id])
       
       if Offer.publish(params).save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
