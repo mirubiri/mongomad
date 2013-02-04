@@ -35,10 +35,36 @@ describe Offer do
     end
   end
 
+  describe '#publish' do
+    context 'When offer is salvable' do
+      it 'Saves the offer' do
+        offer.should_receive(:save).and_return(true)
+        offer.publish
+      end
+
+      it 'Returns this offer' do
+        offer.publish.should be_instance_of(Offer)
+      end
+    end
+
+    context 'When offer is not salvable' do
+      before { offer.composer=nil }
+
+      it 'Dont saves the offer' do
+        offer.should_receive(:save).and_return(false)
+        offer.publish
+      end
+
+      it 'Returns false' do
+        offer.publish.should be_false
+      end
+    end
+  end
+
   describe '.generate' do
 
-    saved_offer=Fabricate(:offer)
-    offer_hash =
+    #let(:saved_offer) { offer.publish }
+    let!(:offer_hash) do
       {
         user_composer_id: saved_offer.user_composer_id,
         user_receiver_id: saved_offer.user_receiver_id,
@@ -51,25 +77,65 @@ describe Offer do
         money:            { user_id: saved_offer.money.user_id, quantity: saved_offer.money.quantity },
         initial_message:  saved_offer.initial_message
       }
+    end
+  
 
-    subject(:new_offer) { Offer.generate(offer_hash) }
+    let!(:new_offer) { Offer.generate(offer_hash).publish }
 
-    its(:user_composer_id) { should eql offer_hash[:user_composer_id] }
-    its(:user_receiver_id) { should eql offer_hash[:user_receiver_id] }
-
-
-    ['composer','receiver'].each do |person|
-      offer_hash[:"#{person}_things"].each_index do |index|
-        its("#{person}.products[#{index}].thing_id") { should eql offer_hash[:"#{person}_things"][index][:thing_id] }
-        its("#{person}.products[#{index}].quantity") { should eql offer_hash[:"#{person}_things"][index][:quantity] }
-        its("#{person}.products[#{index}].name") { should eql offer_hash[:"#{person}_things"][index][:name] }
-        its("#{person}.products[#{index}].description") { should eql offer_hash[:"#{person}_things"][index][:description] }
-      end
+    context 'new_offer -> money' do
+      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
+      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
     end
 
-    its("initial_message") { should eql offer_hash[:initial_message] }
-    its("money.user_id") { should eql offer_hash[:money][:user_id] }
-    its("money.quantity") { should eql offer_hash[:money][:quantity] }
+    context 'new_offer -> users data' do
+      specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
+      specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
+      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
+    end
+    
+    context 'new_offer -> products' do
+      it 'Transform all passed things into products' do
+        
+        
+        ['receiver','composer'].each do |person|
+          user=User.find(offer_hash[:"user_#{person}_id"])
+          selected_things=offer_hash[:"#{person}_things"]
 
+          selected_things.each do |selected_thing|
+            product=new_offer.send("#{person}").products.find(selected_thing[:thing_id])
+            thing=user.products.find(selected_thing.thing_id)
+            
+            ['thing_id','quantity'].each do |field|
+              selected_thing[:"#{field}"].should eq product.send(field)
+            end
+
+            ['name','description','image'].each do |field|
+              product.send(field).should eq thing.send(field)
+            end
+          end
+        end
+      end
+    end    
+  end
+
+
+  describe '#auto_update' do
+    before { offer.save }
+    xit 'calls to self.reload' do
+      offer.should_receive(:reload)
+      offer.auto_update
+    end
+    xit 'calls to self.composer.auto_update' do
+      offer.composer.should_receive(:auto_update)
+      offer.auto_update
+    end
+    xit 'calls to self.receiver.auto_update' do
+      offer.receiver.should_receive(:auto_update)
+      offer.auto_update
+    end
+    xit 'returns self' do
+      offer.auto_update.should_receive(:self)
+      offer.auto_update
+    end
   end
 end

@@ -6,7 +6,7 @@ class Offer::Composer::Product
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
   field :description, type: String
-  field :quantity,    type: Integer, default: 1
+  field :quantity,    type: Integer
 
   mount_uploader :image, ThingImageUploader
 

@@ -32,14 +32,19 @@ class Offer
     offer.build_money(user_id:params[:money][:user_id],quantity:params[:money][:quantity])
 
     
-    offer.update_data
-    offer
+    offer.auto_update
+
   end
 
   def auto_update
-    self.reload
-    self.composer.auto_update
+    self.reload if self.persisted?
     self.receiver.auto_update
+    self.composer.auto_update
     self
+  end
+
+  def publish
+    # WARNING: It returns this offer instead of "true" like #save method when saving
+    self.save && self
   end
 end
