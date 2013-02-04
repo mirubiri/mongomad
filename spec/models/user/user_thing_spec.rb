@@ -42,50 +42,5 @@ describe User::Thing do
     end
   end
 
-  describe '#to_offer_composer_product(quantity)' do
-    it { should respond_to(:to_offer_composer_product).with(1).arguments }
-
-    specify { thing.to_offer_composer_product(1).should be_kind_of(Offer::Composer::Product) }
-
-    it 'Builds an offer_composer_product with the given quantity' do
-      product = thing.to_offer_composer_product(1)
-      product.thing_id.should eql thing._id
-      product.name.should eql thing.name
-      product.description.should eql thing.description
-      product.quantity.should eql 1
-    end
-
-    it 'Cannot build an offer_composer_product with quantity greater than stock' do
-      expect { thing.to_offer_composer_product(thing.stock+1) }.to raise_error(StandardError, "Not enough stock avaliable")
-    end
-
-    it 'Cannot build an offer_composer_product with 0 or negative quantity' do
-      expect { thing.to_offer_composer_product(0) }.to raise_error(StandardError, "Quantity not valid")
-      expect { thing.to_offer_composer_product(-1) }.to raise_error(StandardError, "Quantity not valid")
-    end
-  end
-
-  describe '#to_offer_receiver_product(quantity)' do
-    it { should respond_to(:to_offer_receiver_product).with(1).arguments }
-
-    specify { thing.to_offer_receiver_product(1).should be_kind_of(Offer::Receiver::Product) }
-    specify { thing.to_offer_receiver_product(1).valid?.should be_true, "Is not valid because #{thing.errors}" }
-
-    it 'Builds an offer_receiver_product with the given quantity' do
-      product = thing.to_offer_receiver_product(1)
-      product.thing_id.should eql thing._id
-      product.name.should eql thing.name
-      product.description.should eql thing.description
-      product.quantity.should eql 1
-    end
-
-    it 'Cannot build an offer_receiver_product with quantity greater than stock' do
-      expect { thing.to_offer_receiver_product(thing.stock+1) }.to raise_error(StandardError, "Not enough stock avaliable")
-    end
-
-    it 'Cannot build an offer_receiver_product with 0 or negative quantity' do
-      expect { thing.to_offer_receiver_product(0) }.to raise_error(StandardError, "Quantity not valid")
-      expect { thing.to_offer_receiver_product(-1) }.to raise_error(StandardError, "Quantity not valid")
-    end
-  end
+  
 end
