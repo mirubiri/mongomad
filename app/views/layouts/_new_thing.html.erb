@@ -1,4 +1,4 @@
-<div class="new_thing_content" id="new-thing-form">
+<div class="new_thing_content container_invisible" id="new-thing-form">
   <%= form_for [@thing] do |form| %>
     <div class="new_thing_title">
       <div class="icon">
@@ -16,7 +16,7 @@
     </div>
     <div class="send_button">      
       <div class="action">      
-        <%= form.submit %>
+        <%= form.submit  "submit", :id => 'new-thing-send-button'  %>
       </div> 
     </div>
   <% end %>   

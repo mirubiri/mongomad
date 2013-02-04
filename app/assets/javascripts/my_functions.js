@@ -97,9 +97,14 @@ function ajaxLinks(){
 }
 
 function modalWindows(){
-  $('#new-request-form').hide();
-  $('#new-offer-form').hide();
-  $('#new-thing-form').hide();
+
+  $('#new-offer-send-button').live('click',function(e){
+    $('#new-offer-form').addClass("container_invisible");
+  });
+
+  $('#new-thing-send-button').live('click',function(e){
+    $('#new-thing-form').addClass("container_invisible");
+  });
 
   $('#add_request_button').live('click',function(e){
       e.preventDefault();
@@ -111,18 +116,27 @@ function modalWindows(){
 
   $('#new-thing-button').live('click',function(e){
       e.preventDefault();
+      $('#new-thing-form').removeClass("container_invisible");
       $('#new-thing-form').modal({
           opacity:60,
-          overlayCss: {backgroundColor:"#000000"}
+          overlayCss: {backgroundColor:"#000000"},
+          onClose: function () {
+            $.modal.close();
+            $('#new-thing-form').addClass("container_invisible");
+          }
       });
   });
 
   $('#new-offer-button').live('click',function(e){
       e.preventDefault();
-
+      $('#new-offer-form').removeClass("container_invisible");
       $('#new-offer-form').modal({
           opacity:60,
-          overlayCss: {backgroundColor:"#000000"}
+          overlayCss: {backgroundColor:"#000000"},
+          onClose: function () {
+            $.modal.close();
+            $('#new-offer-form').addClass("container_invisible");
+          }
       });
   });
 
@@ -218,6 +232,8 @@ function newOfferLinks(){
     $('#usuario_dinero').attr("value",0);
     $('#usuario_id').attr("value",0);
   });
+
+
 
 }
 

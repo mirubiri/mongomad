@@ -1,4 +1,4 @@
-<div class="new_offer_content" id="new-offer-form">
+<div class="new_offer_content container_invisible" id="new-offer-form">
   <%= form_for [current_user,@offer] do |form| %>
 
     <div class="products_area">
@@ -101,7 +101,7 @@
       </div>
         <div class="summary_footer">
           <div class="actions">
-            <%= form.submit %>
+            <%= form.submit "submit", :id => 'new-offer-send-button' %>
           </div>
         </div>
     </div>
