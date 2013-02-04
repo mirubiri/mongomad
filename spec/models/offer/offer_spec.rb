@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate(:offer) }
+  let(:offer) { Fabricate.build(:offer) }
   
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -62,8 +62,8 @@ describe Offer do
 
 
   describe '.generate' do
-
-    let(:offer_hash) do
+    offer = Fabricate(:offer)
+    offer_hash =
       {
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
@@ -76,11 +76,8 @@ describe Offer do
         money:            { user_id: offer.money.user_id, quantity: offer.money.quantity },
         initial_message:  offer.initial_message
       }
-    end
 
-    let(:new_offer) do 
-      Offer.generate(offer_hash).publish
-    end
+    new_offer = Offer.generate(offer_hash).publish
 
     context 'new_offer -> money' do
       specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
