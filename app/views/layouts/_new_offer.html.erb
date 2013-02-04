@@ -31,7 +31,7 @@
         </div>
         <div class="product_container" id="his_product_container">
           <% user_visited_things.each do |thing| %>
-            <div class="product" id="<%= thing._id%>">              
+            <div class="product" id="<%= thing._id%>">
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
@@ -49,7 +49,7 @@
         </div>
         <div class="product_container" id="my_product_container">
           <% user_logged_things.each do |thing| %>
-            <div class="product" id="<%= thing._id%>">              
+            <div class="product" id="<%= thing._id%>">
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
@@ -64,11 +64,11 @@
 
     <div class="container_invisible" id="given_products_counter" value="-1"></div>
     <div class="container_invisible" id="received_products_counter" value="-1"></div>
-    
+
     <input type="hidden" name="offer[user_composer_id]" value="<%= user_logged_id%>" />
     <input type="hidden" name="offer[user_receiver_id]" value="<%= user_visited_id%>" />
     <input type="hidden" name="offer[money][user_id]" value="0" id="usuario_id" />
-    <input type="hidden" name="offer[money][quantity]" value="0" id="usuario_dinero" />  
+    <input type="hidden" name="offer[money][quantity]" value="0" id="usuario_dinero" />
 
 
     <div class="offer_summary">
