@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate.build(:offer) }
+  let(:offer) { Fabricate(:offer) }
   
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -47,7 +47,7 @@ describe Offer do
     end
 
     context 'When offer is not salvable' do
-      before { offer.composer=nil }
+      before(:each) { offer.composer=nil }
 
       it 'Dont saves the offer' do
         offer.should_receive(:save).and_return(false)
@@ -60,10 +60,10 @@ describe Offer do
     end
   end
 
+
   describe '.generate' do
 
     let(:offer_hash) do
-      offer.save
       {
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
@@ -102,15 +102,15 @@ describe Offer do
           selected_things=offer_hash[:"#{person}_things"]
 
           selected_things.each do |selected_thing|
-            product=new_offer.send("#{person}").products.find(selected_thing[:thing_id])
-            thing=user.products.find(selected_thing.thing_id)
+            product=new_offer.send("#{person}").products.where(thing_id:selected_thing[:thing_id]).first
+            thing=user.things.find(selected_thing[:thing_id])
             
             ['thing_id','quantity'].each do |field|
               selected_thing[:"#{field}"].should eq product.send(field)
             end
 
-            ['name','description','image'].each do |field|
-              product.send(field).should eq thing.send(field)
+            ['name','description','attributes["image"]'].each do |field|
+              product.instance_eval(field).should eq thing.instance_eval(field)
             end
           end
         end
@@ -138,4 +138,5 @@ describe Offer do
       offer.auto_update
     end
   end
+
 end

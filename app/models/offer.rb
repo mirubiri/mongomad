@@ -21,8 +21,8 @@ class Offer
 
   def self.generate(params)
     offer=Offer.new(
-      user_composer_id:params[:user_composer_id],
-      user_receiver_id:params[:user_receiver_id],
+      user_composer: User.find(params[:user_composer_id]),
+      user_receiver: User.find(params[:user_receiver_id]),
       initial_message:params[:initial_message])
 
 

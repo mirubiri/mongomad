@@ -6,7 +6,7 @@ Fabricator(:user) do
   received_offers nil
   negotiations    nil
   deals           nil
-  email           { "#{rand(1..9999999999999999999999999999)}@example.com" }
+  email           { Faker::Internet.email }
   password        'password'
 end
 
