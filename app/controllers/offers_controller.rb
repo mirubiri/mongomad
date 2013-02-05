@@ -47,29 +47,12 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-
-    puts "----------------------PRUEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaa------------------"
-    offer_hash =    {
-        user_composer_id: params[:user_composer_id],
-        #user_receiver_id: params[:offer][:user_receiver_id]
-      #  composer_things:  params[:user_id]
-      #  receiver_things:  params[:user_id]
-       # money:            params[:user_id]
-       # initial_message:  params[:user_id]
-      }
-
-puts offer_hash[:user_composer_id]
-Offer.count
-Offer.generate(params[:offer]).publish
-Offer.count
- puts "----------------------PRUEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaa------------------"
-
+    @offer = Offer.generate(params)
     @user = User.find(params[:user_id])
 
     respond_to do |format|
-
-      if Offer.generate(params[:offer]).save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+      if @offer.publish
+        format.html { redirect_to @user, notice: 'Offer was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }

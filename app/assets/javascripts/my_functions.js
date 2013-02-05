@@ -4,7 +4,7 @@ function matchPrincipalContainersHeighs(){
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
-  
+
   $('#user-side,#content-side').equalHeightColumns();
   $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
 
@@ -181,16 +181,16 @@ function newOfferLinks(){
     rpcv = parseInt(($('#received_products_counter').attr("value")), 10);
     $('#received_products_counter').attr('value', (rpcv + 1));
     $(this).clone().appendTo('#summary_offer_given_products_container');
-    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $('#received_products_counter').attr('value') + "][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
-    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"offer[receiver_things]["+ $('#received_products_counter').attr('value') + "][quantity]\" value=\""+ 0 + "\" />");
+    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][quantity]\" value=\""+ 0 + "\" />");
   });
 
   $('#my_product_container .product').live('click',function(e){
     gpcv = parseInt(($('#given_products_counter').attr("value")), 10);
     $('#given_products_counter').attr('value', (gpcv + 1));
     $(this).clone().appendTo('#summary_offer_received_products_container');
-    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $('#given_products_counter').attr('value') + "][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
-    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"offer[composer_things]["+ $('#given_products_counter').attr('value') + "][quantity]\" value=\""+ 0 + "\" />");
+    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][quantity]\" value=\""+ 0 + "\" />");
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
@@ -214,7 +214,7 @@ function newOfferLinks(){
     $('#usuario_dinero').attr("value",$("#dineroOfreces").val());
     $('#dineroOfreces').val("");
   });
-  
+
   $('#dineroPidesEnSumario a').live('click',function(e){
     e.preventDefault();
     $(this).parent().empty();

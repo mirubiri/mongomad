@@ -15,9 +15,18 @@ class Offer::Composer
             presence: true
 
   def add_products(params)
+    puts "---------------------------------------"
+
+
+
     params.each do |index|
+      #puts index
+      #puts index[:thing_id]
+      #puts index[:quantity]
+      puts "PRODUCTO CREADO!"
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
+        puts "---------------------------------------"
   end
 
   def update_composer_data
