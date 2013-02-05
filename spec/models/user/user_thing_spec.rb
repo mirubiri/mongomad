@@ -41,6 +41,4 @@ describe User::Thing do
       File.exist?(File.new(thing.image.path)).should be_true
     end
   end
-
-
 end
