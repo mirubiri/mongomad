@@ -13,7 +13,7 @@ describe Negotiation::Proposal::Receiver::Product do
     it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
-    it { should have_field(:quantity).of_type(Integer).with_default_value_of(1) }
+    it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image).of_type(Object) }
   end
 
