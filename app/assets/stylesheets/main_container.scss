@@ -11,7 +11,9 @@
 
   .main_container{
     @include ppal_container_style;
-    float: left;    
+    float: left;
+    overflow: visible;
+    display:inline-block;    
 
     .main_container_header{
       @include top_main_header_style;
@@ -77,17 +79,21 @@
     }
 
     .main_offer_button{
-      @include center-horizontally($width98pct);
-      height: 40px;
+      @include center-horizontally(95%);
+      margin-bottom: 10px;
+
         button{
-          @include center-horizontally($width98pct);
+          width: 100%;
+          height: 30px;
         }
     }
 
-    .main_container_elementList{
+    .main_container_elementList{      
       @include container_into_PpalSide_style;
       @include center-horizontally(95%);
       padding: 10px 10px 10px 10px;
+      overflow: visible;
+
     }
   }
 

@@ -3,6 +3,13 @@
 
     <%= render :partial => 'layouts/global_partials/navigation_bar' %> 
 
+    <% if user_logged_id != user_visited_id %>
+      <div class="main_offer_button">
+        <%= button_tag "Nueva Oferta", :class => "add_offer_button",
+        :id => "new-offer-button" %>
+      </div>
+    <% end %>
+
     <aside class="main_container_elementList" id="ppal_container">
       <%= yield %>
     </aside>

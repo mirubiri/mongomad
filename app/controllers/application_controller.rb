@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  def user_visited(user_id)
+  def user_visited
     @user = User.find(params[:id])
   end
 
