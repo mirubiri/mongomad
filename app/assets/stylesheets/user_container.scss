@@ -2,48 +2,30 @@
 
 .left_container{
   @include box-sizing(border-box);
-  float:left;
-  width: 25%;
+  width: $userContainerWidth;
+  float:left;  
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
   .user_container{
-    float: right;
-    width: 100%;
-    overflow: visible;
-    border: $borde2px;
-    background-color: #f8fcf8;
+    @include ppal_container_style;
+    float: right;    
 
     #user_reputation_container{
-      @include proportions(100%,26px);
-      float: left;
-      margin-bottom: 10px;
-      border-bottom: $borde2px;
-
-      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
-      background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
+      @include top_main_header_style;
 
       img{
         @include high-quality-image;
         margin: 8px 0px 0px 30px;
       }
-
     }
 
     .user_container_profile{
-      @include center-horizontally($width250px);
-      background-color: white;
-      overflow: auto;
-      margin-top:10px;
-      width:$width90pct;
-      border: $borde2px;
+      @include container_into_PpalSide_style;
 
       .image{
         @include proportions(80%,180px);
         margin: inherit;
-        margin-top:10px;
+        margin-bottom: 0px;
         border: $borde1px;
 
         img{
@@ -62,13 +44,7 @@
           left: $borde1px;
         }
         text-align:center;
-      }
-
-      .profile_button{
-        @include center-horizontally(80%);
-        margin-top:10px;
-        height: 20px;
-      }
+      }      
 
       .profile_menu{
         @include proportions(80%,20px);
@@ -77,7 +53,7 @@
 
         .menu_icon{
           @include box-sizing(border-box);
-          @include proportions(33%,20px);
+          @include proportions(33.3%,20px);
           float:left;
           border: $borde1px;
 
@@ -89,13 +65,7 @@
     }
 
     .user_container_requests{
-      @include center-horizontally($width250px);
-      background-color: white;
-      overflow: auto;
-      margin-top:10px;
-      margin-bottom: 10px;
-      width:$width90pct;
-      border: $borde2px;
+      @include container_into_PpalSide_style;
 
       .add_request_button{
         @include center-horizontally(80%);

@@ -27,12 +27,14 @@ $MCTopPadding: 50px;
 $MCCenterMargin: 15px;
 
 //user_container
+$userContainerWidth: 25%;
 $width250px: 250px;
 $borde2px: 2px solid rgb(220,220,220);
 $borde2pxblack: 2px solid black;
 $width90pct: 90%;
 
 //main_container
+$mainContainerWidth: 75%;
 $width72pct: 72%;
 $width98pct: 98%;
 $width265px: 265px;
@@ -57,6 +59,30 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin proportions($width,$height) {
   width: $width;
   height: $height;
+}
+
+@mixin ppal_container_style{  
+  width: 100%;
+  background: rgba(140, 140, 140, 0.15);
+  overflow: visible;  
+}
+
+@mixin top_main_header_style{
+  @include proportions(100%,26px);
+  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
+  float: left;
+  margin-bottom:12px;
+  border-bottom: $borde1px;
+  background-color: white;
+}
+
+@mixin container_into_PpalSide_style{
+  @include center-horizontally($width90pct);
+  margin-top: 10px;
+  margin-bottom: 5px;
+  background-color: white;
+  overflow: auto;  
+  border: $borde1px;
 }
 
 .product_of_user_selected{
