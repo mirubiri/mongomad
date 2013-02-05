@@ -5,28 +5,16 @@
 
 .right_container{
   @include box-sizing(border-box);
+  width: $mainContainerWidth;
   float:left;
-  width: 75%;
   padding: $MCTopPadding $MCExtPadding 0px 0px;
 
   .main_container{
-    float: left;
-    width: 100%;
-    overflow: visible;
-    border: $borde2px;
-    background-color: #f8fcf8;
+    @include ppal_container_style;
+    float: left;    
 
     .main_container_header{
-      @include fixed_width(100%,500px,100%);
-      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
-      background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
-      background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
-      float:left;
-      margin-bottom:12px;
-      border-bottom: $borde2px;
-      background-color: white;
+      @include top_main_header_style;
 
       .main_container_header_menu{
         width:inherit;
@@ -38,8 +26,8 @@
           float:left;
 
           a{
-            float: inherit;
             @include unstyled-link;
+            float: inherit;            
             height: 27px;
             border-right: $borde2px;
 
@@ -56,12 +44,7 @@
           a:last-child{
             border:none;
           }
-        }
-
-        .nav_hover{
-          background-color:#85b1bf;
-          color: white; 
-        }
+        }        
 
         .nav_selected{
           background-color:#00698c;
@@ -94,19 +77,17 @@
     }
 
     .main_offer_button{
-      @include proportions(100%,40px);
-      margin: 0px 0px 10px 8px;
-      float: left;
+      @include center-horizontally($width98pct);
+      height: 40px;
         button{
           @include center-horizontally($width98pct);
         }
     }
 
     .main_container_elementList{
-      @include center-horizontally($width98pct);
-      @include fixed_width($width98pct,$width98pct,$width98pct);
-      overflow: visible;
-      float: left;
+      @include container_into_PpalSide_style;
+      @include center-horizontally(95%);
+      padding: 10px 10px 10px 10px;
     }
   }
 
