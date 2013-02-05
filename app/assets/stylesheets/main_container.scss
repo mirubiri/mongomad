@@ -2,103 +2,112 @@
 @import 'stitch';
 @import "compass/typography/links/unstyled-link";
 
-.main_container{
-  @include absolute($top:50px,$left:300px);
-  @include proportions($width72pct,auto);
-  border: $borde2px;
-  background-color: #f8fcf8;
-  overflow: visible;
 
-  .main_container_header{
-    @include fixed_width(100%,500px,100%);
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
-    background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
-    background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
-    background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
-    background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
-    float:left;
-    margin-bottom:12px;
-    border-bottom: $borde2px;
-    background-color: white;
+.right_container{
+  @include box-sizing(border-box);
+  float:left;
+  width: 75%;
+  padding: 50px 0px 0px 0px;
 
-    .main_container_header_menu{
-      width:inherit;
+  .main_container{
+    float: left;
+    width: 95%;
+    overflow: visible;
+    border: $borde2px;
+    background-color: #f8fcf8;
+
+    .main_container_header{
+      @include fixed_width(100%,500px,100%);
+      background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FAFAFA), to(#DEDEDE));
+      background: -webkit-linear-gradient(top, #FAFAFA, #DEDEDE);
+      background: -moz-linear-gradient(top, #FAFAFA, #DEDEDE);
+      background: -ms-linear-gradient(top, #FAFAFA, #DEDEDE);
+      background: -o-linear-gradient(top, #FAFAFA, #DEDEDE);
       float:left;
+      margin-bottom:12px;
+      border-bottom: $borde2px;
+      background-color: white;
 
-      nav{
-        @include float-children('.nav_element',left);
-        @include proportions(60%,26px);
+      .main_container_header_menu{
+        width:inherit;
         float:left;
 
-        a{
-          float: inherit;
-          @include unstyled-link;
-          height: 27px;
-          border-right: $borde2px;
+        nav{
+          @include float-children('.nav_element',left);
+          @include proportions(60%,26px);
+          float:left;
 
-          .nav_element{
-            padding: 3px 5px 0px 10px;
+          a{
+            float: inherit;
+            @include unstyled-link;
+            height: 27px;
+            border-right: $borde2px;
+
+            .nav_element{
+              padding: 3px 5px 0px 10px;
+            }
+          }
+
+          a:hover{
+            background-color:#85b1bf;
+            color: white;
+          }
+
+          a:last-child{
+            border:none;
           }
         }
 
-        a:hover{
+        .nav_hover{
           background-color:#85b1bf;
+          color: white; 
+        }
+
+        .nav_selected{
+          background-color:#00698c;
           color: white;
         }
 
-        a:last-child{
-          border:none;
+        .main_container_header_search{
+          float:right;
+          margin:2px 10px 0px 0px;
         }
-      }
 
-      .nav_hover{
-        background-color:#85b1bf;
-        color: white; 
-      }
+        .add_product{
+          float:right;
+          height:22px;
+          margin-right:10px;
 
-      .nav_selected{
-        background-color:#00698c;
-        color: white;
-      }
+          img{
+            @include high-quality-image;
+            @include proportions(10px,10px);
+            margin-right:4px;
 
-      .main_container_header_search{
-        float:right;
-        margin:2px 10px 0px 0px;
-      }
-
-      .add_product{
-        float:right;
-        height:22px;
-        margin-right:10px;
-
-        img{
-          @include high-quality-image;
-          @include proportions(10px,10px);
-          margin-right:4px;
-
-          button{
-            float:left;
-            text-align:center;
-            vertical-align:center;
+            button{
+              float:left;
+              text-align:center;
+              vertical-align:center;
+            }
           }
         }
       }
     }
+
+    .main_offer_button{
+      @include proportions(100%,40px);
+      margin: 0px 0px 10px 8px;
+      float: left;
+        button{
+          @include center-horizontally($width98pct);
+        }
+    }
+
+    .main_container_elementList{
+      @include center-horizontally($width98pct);
+      @include fixed_width($width98pct,$width98pct,$width98pct);
+      overflow: visible;
+      float: left;
+    }
   }
 
-  .main_offer_button{
-    @include proportions(100%,40px);
-    margin: 0px 0px 10px 8px;
-    float: left;
-      button{
-        @include center-horizontally($width98pct);
-      }
-  }
-
-  .main_container_elementList{
-    @include center-horizontally($width98pct);
-    @include fixed_width($width98pct,$width98pct,$width98pct);
-    overflow: visible;
-    float: left;
-  }
 }
