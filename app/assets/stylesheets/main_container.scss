@@ -44,12 +44,7 @@
           a:last-child{
             border:none;
           }
-        }
-
-        .nav_hover{
-          background-color:#85b1bf;
-          color: white; 
-        }
+        }        
 
         .nav_selected{
           background-color:#00698c;
@@ -91,7 +86,8 @@
 
     .main_container_elementList{
       @include container_into_PpalSide_style;
-      @include center-horizontally($width98pct);
+      @include center-horizontally(95%);
+      padding: 10px 10px 10px 10px;
     }
   }
 

@@ -1,13 +1,10 @@
 @import "variables";
 
 .negotiation {
-  @include box-shadow(rgb(170,170,170) 1px 1px 3px);
-  @include fixed_width(825px,825px,825px);
-  float: left;
-  margin: 0px 0px 25px 12px;
-  border: $borde1px;
-  background-color: white;
-  overflow: auto;
+  @include element_into_ElementList_style;
+  @include box-sizing(border-box);
+  width: 100%;
+  float: left;  
 
     .proposition_container{
       @include box-sizing(border-box);

@@ -2,12 +2,8 @@
 @import "compass/typography/links/unstyled-link";
 
 .offer {
-  @include box-shadow(rgb(170,170,170) 1px 1px 3px);
-  width: $offerWidth;
-  overflow:auto;
-  margin:0px 0px 8px 12px;
-  border: $borde1px;
-  background-color: white;
+  @include element_into_ElementList_style;  
+  width: $offerWidth;  
 
   .offer_header{
     @include proportions(100%,60px);
@@ -31,23 +27,24 @@
     }
 
     .profile_image{
+      @include images_style;
       @include relative($top:-20px,$left:$profileImageLeftMargin);
-      @include border-radius(5px, 5px);      
-      overflow: visible;      
+      @include proportions($profileImageDimension,$profileImageDimension);
 
       a{
+        @include proportions(100%,100%); 
+
         img{
           @include high-quality-image;
-          @include proportions($profileImageDimension,$profileImageDimension);
-          border: $borde1px;
+          @include proportions(100%,100%);  
         }
       }
     }
 
     .description{
-      @include relative($top:-78px,$left:$commentPosition);
-      @include proportions($commentWidth,profileImageDimension);
-      overflow: visible;
+      @include relative($top:-74px,$left:$commentPosition);
+      @include proportions($commentWidth,$profileImageDimension);
+      overflow: hidden;
       font-size: 9px;
     }
   }
@@ -59,18 +56,20 @@
 
     .recieved{
       float:left;
-      overflow:hidden;
+      overflow: hidden;
       margin: 0px $productRightMargin 0px 0px;
 
-      img{
-        @include border-radius(5px, 5px);
-        @include high-quality-image;
+      .image_container{
+        @include images_style;
         @include proportions($bigImageDimension,$bigImageDimension);
         float:left;
-        overflow: auto;
         margin:0px 0px 0px 0px;
-        border: $borde1px;
-      }
+
+        img{
+          @include high-quality-image;
+          @include proportions(100%,100%);
+        }
+      }      
      }
 
     .given{
@@ -78,14 +77,18 @@
       overflow: hidden;
       margin: 0px $productRightMargin 0px 0px;
 
-      img{
-        @include border-radius(5px, 5px);
-        @include high-quality-image;
+      .image_container{
+        @include images_style;
         @include proportions($smallImageDimension,$smallImageDimension);
         float:left;
         margin:0px 0px 0px 0px;
-        border: $borde1px;
-      }
+
+        img{
+          @include border-radius(5px, 5px);
+          @include high-quality-image;
+          @include proportions(100%,100%);          
+        }
+      }      
     }
   }
 
