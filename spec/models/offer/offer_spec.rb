@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer do
   let(:offer) { Fabricate(:offer) }
-  
+
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
     it { should embed_one(:receiver).of_type(Offer::Receiver) }
@@ -34,33 +34,6 @@ describe Offer do
     end
   end
 
-  describe '#publish' do
-    context 'When offer is salvable' do
-      it 'Saves the offer' do
-        offer.should_receive(:save).and_return(true)
-        offer.publish
-      end
-
-      it 'Returns this offer' do
-        offer.publish.should be_instance_of(Offer)
-      end
-    end
-
-    context 'When offer is not salvable' do
-      before(:each) { offer.composer=nil }
-
-      it 'Dont saves the offer' do
-        offer.should_receive(:save).and_return(false)
-        offer.publish
-      end
-
-      it 'Returns false' do
-        offer.publish.should be_false
-      end
-    end
-  end
-
-
   describe '.generate' do
     let(:offer_hash) do
       {
@@ -87,21 +60,18 @@ describe Offer do
     context 'new_offer -> users data' do
       specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
       specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
-      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
     end
-    
+
     context 'new_offer -> products' do
       it 'Transform all passed things into products' do
-        
-        
         ['receiver','composer'].each do |person|
-          user=User.find(offer_hash[:"user_#{person}_id"])
-          selected_things=offer_hash[:"#{person}_things"]
+          user = User.find(offer_hash[:"user_#{person}_id"])
+          selected_things = offer_hash[:"#{person}_things"]
 
           selected_things.each do |selected_thing|
-            product=new_offer.send("#{person}").products.where(thing_id:selected_thing[:thing_id]).first
-            thing=user.things.find(selected_thing[:thing_id])
-            
+            product = new_offer.send("#{person}").products.where(thing_id:selected_thing[:thing_id]).first
+            thing = user.things.find(selected_thing[:thing_id])
+
             ['thing_id','quantity'].each do |field|
               selected_thing[:"#{field}"].should eq product.send(field)
             end
@@ -112,9 +82,38 @@ describe Offer do
           end
         end
       end
-    end    
+    end
+
+    context 'new_offer -> initial_message' do
+      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
+    end
   end
 
+ describe '#publish' do
+    context 'When offer is salvable' do
+      it 'Saves the offer' do
+        offer.should_receive(:save).and_return(true)
+        offer.publish
+      end
+
+      it 'Returns this offer' do
+        offer.publish.should be_instance_of(Offer)
+      end
+    end
+
+    context 'When offer is not salvable' do
+      before(:each) { offer.composer = nil }
+
+      it 'Dont saves the offer' do
+        offer.should_receive(:save).and_return(false)
+        offer.publish
+      end
+
+      it 'Returns false' do
+        offer.publish.should be_false
+      end
+    end
+  end
 
   describe '#auto_update' do
     before { offer.save }
@@ -135,5 +134,4 @@ describe Offer do
       offer.auto_update
     end
   end
-
 end
