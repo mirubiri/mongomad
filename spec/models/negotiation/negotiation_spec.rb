@@ -40,7 +40,7 @@ describe Negotiation do
 
     context 'new_negotiation -> users data' do
       specify { new_offer.proposals.last.user_composer_id.should eql offer.user_composer_id }
-      specify { new_offer.proposals.last.user_receiver_id.should eql offer.user_receiver_id }    end
+      specify { new_offer.proposals.last.user_receiver_id.should eql offer.user_receiver_id }
     end
 
     context 'new_negotiation -> products' do
