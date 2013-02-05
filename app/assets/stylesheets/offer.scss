@@ -55,6 +55,7 @@
     margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
 
     .recieved{
+      width: $bigImageDimension;
       float:left;
       overflow: hidden;
       margin: 0px $productRightMargin 0px 0px;
@@ -63,7 +64,7 @@
         @include images_style;
         @include proportions($bigImageDimension,$bigImageDimension);
         float:left;
-        margin:0px 0px 0px 0px;
+        margin:0px 0px 5px 0px;
 
         img{
           @include high-quality-image;
@@ -73,6 +74,7 @@
      }
 
     .given{
+      width: $smallImageDimension;
       float: right;
       overflow: hidden;
       margin: 0px $productRightMargin 0px 0px;
@@ -81,7 +83,7 @@
         @include images_style;
         @include proportions($smallImageDimension,$smallImageDimension);
         float:left;
-        margin:0px 0px 0px 0px;
+        margin:0px 0px 5px 0px;
 
         img{
           @include border-radius(5px, 5px);

@@ -6,8 +6,8 @@ $margen80px: 80px;
 $borde1px: 1px solid rgb(220,220,220);
 
 //offer_variables
-$bigImageDimension: 150px;
-$smallImageDimension: 80px;
+$bigImageDimension: 146px;
+$smallImageDimension: 78px;
 $productsLeftMargin: 15px;
 $productRightMargin: 8px;
 $productsTopMargin: 5px;
@@ -69,8 +69,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin top_main_header_style{
   @include proportions(100%,26px);
-  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
-  float: left;
+  @include box-shadow(rgb(170,170,170) 0px 1px 3px);  
   margin-bottom:12px;
   border-bottom: $borde1px;
   background-color: white;
