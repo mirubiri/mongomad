@@ -6,7 +6,7 @@ function matchPrincipalContainersHeighs(){
   }
   
   $('#user-side,#content-side').equalHeightColumns();
-  $('#ppal_container').css({'height': ($('#user-side').height() - 90)  + 'px'});
+  $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});

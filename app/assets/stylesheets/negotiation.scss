@@ -42,7 +42,7 @@
               @include border-radius(5px, 5px);
               @include proportions(50px,50px);
             }
-          };
+          }
         }
 
         .offered_things{
@@ -50,6 +50,8 @@
           width: 180px;
 
           .offered_product{
+            @include images_style;
+            @include proportions(132px,132px);
             float: left;
             overflow: auto;
             margin: 10px 5px 0px 5px;
@@ -57,9 +59,7 @@
 
             img{
               @include high-quality-image;
-              @include proportions(132px,132px);
-              @include border-radius(5px, 5px);
-              border: $borde1px;
+              @include proportions(100%,100%);             
               float: left;
             }
 
@@ -91,14 +91,14 @@
           width: 90px;
 
           .orderer_product{
+            @include images_style;
+            @include proportions(90px,90px);
             float: left;
             overflow: auto;
             margin: 0px 5px 0px 5px;
 
             img{
-              @include border-radius(5px, 5px);
-              @include proportions(90px,90px);
-              border: $borde1px;
+              @include proportions(100%,100%);
               float:left;
             }
 
