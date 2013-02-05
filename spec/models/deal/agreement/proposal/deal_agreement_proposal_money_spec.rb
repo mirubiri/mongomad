@@ -11,7 +11,7 @@ describe Deal::Agreement::Proposal::Money do
 
   describe 'Attributes' do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:quantity).of_type(Integer).with_default_value_of(0) }
+    it { should have_field(:quantity).of_type(Integer) }
   end
 
   describe 'Validations' do
