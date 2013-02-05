@@ -34,8 +34,45 @@ describe Negotiation do
     end
   end
 
-  describe '.open_from(offer)' do
-    xit 'Generates a new negotiation from a given offer'
+  describe '.open' do
+    let(:offer) { Fabricate(:offer) }
+    let(:new_negotiation) { Negotiation.open(offer).publish }
+
+    context 'new_negotiation -> users data' do
+      specify { new_offer.proposals.last.user_composer_id.should eql offer.user_composer_id }
+      specify { new_offer.proposals.last.user_receiver_id.should eql offer.user_receiver_id }    end
+    end
+
+    context 'new_negotiation -> products' do
+      it 'Copy all offer products into negotiation products' do
+        ['receiver','composer'].each do |person|
+          offer_products = offer.send("#{person}").products
+
+          offer_products.size.should eql new_negotiation.proposals.last.send("#{person}").products.size
+
+          offer_products.each do |offer_product|
+            product = new_negotiation.proposals.last.send("#{person}").products.where(_id:offer_product._id).first
+
+            ['_id','thing_id','quantity'].each do |field|
+              product.send(field).should eq offer_product.send(field)
+            end
+
+            ['name','description','attributes["image"]'].each do |field|
+              product.instance_eval(field).should eq offer_product.instance_eval(field)
+            end
+          end
+        end
+      end
+    end
+
+    context 'new_negotiation.proposals.last -> money' do
+      specify { new_offer.proposals.last.money.user_id.should eql offer.money.user_id }
+      specify { new_offer.proposals.last.money.quantity.should eql offer.money.quantity }
+    end
+
+    context 'new_negotiation -> initial_message' do
+      specify { new_offer.proposals.last.initial_message.should eql offer.initial_message }
+    end
   end
 
   describe '#make_new_proposal(hash)' do

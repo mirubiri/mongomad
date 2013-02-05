@@ -52,11 +52,6 @@ describe Offer do
 
     let(:new_offer) { Offer.generate(offer_hash).publish }
 
-    context 'new_offer -> money' do
-      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
-      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
-    end
-
     context 'new_offer -> users data' do
       specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
       specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
@@ -82,6 +77,11 @@ describe Offer do
           end
         end
       end
+    end
+
+    context 'new_offer -> money' do
+      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
+      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
     end
 
     context 'new_offer -> initial_message' do
