@@ -4,11 +4,11 @@
   @include box-sizing(border-box);
   float:left;
   width: 25%;
-  padding: 50px 15px 0px 0px; 
+  padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
   .user_container{
     float: right;
-    width: 86%;
+    width: 100%;
     overflow: visible;
     border: $borde2px;
     background-color: #f8fcf8;

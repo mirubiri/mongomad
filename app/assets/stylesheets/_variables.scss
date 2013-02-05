@@ -21,6 +21,10 @@ $commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLef
 $commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
 $commentWidth: $offerWidth - 27px - $commentDistance;
 
+//para ambos contenedores principales
+$MCExtPadding: 40px;
+$MCTopPadding: 50px;
+$MCCenterMargin: 15px;
 
 //user_container
 $width250px: 250px;
