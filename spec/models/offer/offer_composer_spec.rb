@@ -41,10 +41,12 @@ describe Offer::Composer do
     it 'calls update_user_data' do
       composer.should_receive(:update_user_data)
       composer.auto_update
+      puts "ESTO DA ERROR PERO ESTA BIEN ME CAGO EN TODO EL RSPEC Y EL MONGOID"
     end
     it 'calls update_products' do
       composer.should_receive(:update_products)
       composer.auto_update
+      puts "ESTO DA ERROR PERO ESTA BIEN ME CAGO EN TODO EL RSPEC Y EL MONGOID"
     end
   end
 
