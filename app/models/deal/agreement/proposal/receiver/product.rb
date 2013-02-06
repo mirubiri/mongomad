@@ -8,7 +8,7 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :description, type: String
   field :quantity,    type: Integer
 
-  mount_uploader :image, ThingImageUploader
+  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
 
   validates :receiver,
             :thing_id,

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate(:offer) }
+  let(:offer) { Fabricate.build(:offer) }
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -36,6 +36,7 @@ describe Offer do
 
   describe '.generate' do
     let(:offer_hash) do
+      offer.save
       {
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
@@ -51,11 +52,6 @@ describe Offer do
     end
 
     let(:new_offer) { Offer.generate(offer_hash).publish }
-
-    context 'new_offer -> money' do
-      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
-      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
-    end
 
     context 'new_offer -> users data' do
       specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
@@ -76,12 +72,17 @@ describe Offer do
               selected_thing[:"#{field}"].should eq product.send(field)
             end
 
-            ['name','description','attributes["image"]'].each do |field|
+            ['name','description','image_name'].each do |field|
               product.instance_eval(field).should eq thing.instance_eval(field)
             end
           end
         end
       end
+    end
+
+    context 'new_offer -> money' do
+      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
+      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
     end
 
     context 'new_offer -> initial_message' do
@@ -97,7 +98,7 @@ describe Offer do
       end
 
       it 'Returns this offer' do
-        offer.publish.should be_instance_of(Offer)
+        offer.publish.should eq offer
       end
     end
 
@@ -116,22 +117,33 @@ describe Offer do
   end
 
   describe '#auto_update' do
-    before { offer.save }
-    xit 'calls to self.reload' do
+    it 'calls reload if persisted' do
+      offer.save
       offer.should_receive(:reload)
       offer.auto_update
     end
-    xit 'calls to self.composer.auto_update' do
+
+    it 'do not call reload if not persisted' do
+      offer.should_not_receive(:reload)
+      offer.auto_update
+    end
+
+    it 'calls to offer.composer.auto_update' do
       offer.composer.should_receive(:auto_update)
       offer.auto_update
     end
-    xit 'calls to self.receiver.auto_update' do
+    it 'calls to offer.receiver.auto_update' do
       offer.receiver.should_receive(:auto_update)
       offer.auto_update
     end
-    xit 'returns self' do
-      offer.auto_update.should_receive(:self)
-      offer.auto_update
+    it 'returns self if auto_update success' do
+      offer.auto_update.should eq offer
+    end
+
+    it 'raise error if auto_update fails' do
+      offer.composer.stub(:auto_update).and_raise("StandardError")
+      offer.receiver.stub(:auto_update).and_raise("StandardError")
+      expect { offer.auto_update }.to raise_error
     end
   end
 end

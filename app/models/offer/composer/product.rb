@@ -8,7 +8,7 @@ class Offer::Composer::Product
   field :description, type: String
   field :quantity,    type: Integer
 
-  mount_uploader :image, ThingImageUploader
+  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
 
   validates :composer,
             :thing_id,

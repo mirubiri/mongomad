@@ -14,7 +14,7 @@ describe Deal::Agreement::Proposal::Receiver::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
-    it { should have_field(:image).of_type(Object) }
+    it { should have_field(:image_name).of_type(Object) }
   end
 
   describe 'Validations' do

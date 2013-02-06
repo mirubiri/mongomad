@@ -7,7 +7,7 @@ class User::Thing
   field :description, type: String
   field :stock,       type: Integer
 
-  mount_uploader :image, ThingImageUploader
+  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
 
   validates :user,
             :name,

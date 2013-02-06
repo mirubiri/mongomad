@@ -7,7 +7,7 @@ class Request
   field :user_name, type: String
   field :text,      type: String
 
-  mount_uploader :image, UserImageUploader
+  mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :user,
             :user_name,

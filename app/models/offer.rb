@@ -32,14 +32,14 @@ class Offer
   end
 
   def auto_update
-    self.reload if self.persisted?
-    self.receiver.auto_update
-    self.composer.auto_update
+    reload if persisted?
+    receiver.auto_update
+    composer.auto_update
     self
   end
 
   def publish
     # WARNING: It returns this offer instead of "true" like #save method when saving
-    self.save && self
+    save && self
   end
 end

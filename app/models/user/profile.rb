@@ -14,7 +14,7 @@ class User::Profile
   field :website,          type: String
   field :birth_date,       type: Date
 
-  mount_uploader :image, UserImageUploader
+  mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :user,
             :name,
