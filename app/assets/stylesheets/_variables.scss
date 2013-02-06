@@ -20,6 +20,8 @@ $commentLeftMargin: 8px;
 $commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLeftMargin;
 $commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
 $commentWidth: $offerWidth - 27px - $commentDistance;
+$quantityContainerProportion: ($offerWidth * 0.06);
+$quantityContainerPosition: $offerWidth - $quantityContainerProportion;
 
 //para ambos contenedores principales
 $MCExtPadding: 40px;
@@ -101,6 +103,17 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   @include border-radius(5px, 5px);
   border: $borde1px;
   padding:2px;
+  overflow: visible;
+
+  .quantity_container{
+    @include border-radius(5px, 5px);
+    float: left;
+    width:$quantityContainerProportion;
+    height: $quantityContainerProportion;
+    background-color: grey;
+    color: white;
+  }
+
 }
 
 .product_of_user_selected{
@@ -141,6 +154,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       overflow: auto;
 
       .product{
+        @include images_style;
         @include proportions(125px,125px);
         @include border-radius(5px, 5px);
         border: $borde1px;
@@ -148,7 +162,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         margin:5px 0px 0px 5px;
         overflow: none;
 
-        .product_image{
+        .product_image{          
           overflow: auto;
           img{
             @include high-quality-image;

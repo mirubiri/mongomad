@@ -21,16 +21,18 @@
       </div>
       <div class="offer_things">
         <div class="recieved">
-          <% offer_composer_products(offer).each do |thing| %>
+          <% offer_composer_products(offer).each do |product| %>
             <div class="image_container">
-              <%= thing_image(thing) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div>
+              <%= product_image(product) %>
             </div>
           <% end %>
         </div>
         <div class="given">
-          <% offer_receiver_products(offer).each do |thing| %>
+          <% offer_receiver_products(offer).each do |product| %>
             <div class="image_container">
-              <%= thing_image(thing) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div>
+              <%= product_image(product) %>
             </div>
           <% end %>
         </div>
@@ -53,5 +55,7 @@
   <p>El usuario no tiene ninguna oferta actualmente</p>
 <% end %>
 
-<%= render :partial => "layouts/new_offer" %>
+<% if user_logged_id != user_visited_id %>
+  <%= render :partial => "layouts/new_offer" %>
+<% end %>
 

@@ -32,6 +32,7 @@
         <div class="product_container" id="his_product_container">
           <% user_visited_things.each do |thing| %>
             <div class="product" id="<%= thing._id%>">
+              <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
@@ -50,6 +51,7 @@
         <div class="product_container" id="my_product_container">
           <% user_logged_things.each do |thing| %>
             <div class="product" id="<%= thing._id%>">
+              <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>

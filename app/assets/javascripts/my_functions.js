@@ -178,19 +178,33 @@ function newOfferLinks(){
   });
 
   $('#his_product_container .product').live('click',function(e){
-    rpcv = parseInt(($('#received_products_counter').attr("value")), 10);
-    $('#received_products_counter').attr('value', (rpcv + 1));
-    $(this).clone().appendTo('#summary_offer_given_products_container');
-    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
-    $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][quantity]\" value=\""+ 0 + "\" />");
+    if ($("input[id='"+$(this).attr("id")+"']").length > 0){
+      valr = parseInt(($("input[id='"+$(this).attr("id")+"']")).attr('value'), 10);
+      $("#summary_offer_received_products_container div[id='"+$(this).attr("id")+"'] .quantity_container").html(valr+1);
+      $("input[id='"+$(this).attr("id")+"']").attr('value', (valr +1 ));
+      rpcv = parseInt(($('#received_products_counter').attr("value")), 10);
+      $('#received_products_counter').attr('value', (rpcv + 1));
+    }
+    else{
+      $(this).clone().appendTo('#summary_offer_given_products_container');
+      $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+      $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][quantity]\" value=\""+ 1 + "\" id=\""+ $(this).attr("id") + "\" />");
+    }
   });
 
   $('#my_product_container .product').live('click',function(e){
-    gpcv = parseInt(($('#given_products_counter').attr("value")), 10);
-    $('#given_products_counter').attr('value', (gpcv + 1));
-    $(this).clone().appendTo('#summary_offer_received_products_container');
-    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
-    $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][quantity]\" value=\""+ 0 + "\" />");
+    if ($("input[id='"+$(this).attr("id")+"']").length > 0){
+      valr = parseInt(($("input[id='"+$(this).attr("id")+"']")).attr('value'), 10);
+      $("#summary_offer_given_products_container div[id='"+$(this).attr("id")+"'] .quantity_container").html(valr+1);
+      $("input[id='"+$(this).attr("id")+"']").attr('value', (valr +1 ));
+      gpcv = parseInt(($('#given_products_counter').attr("value")), 10);
+      $('#given_products_counter').attr('value', (gpcv + 1));
+    }
+    else{
+      $(this).clone().appendTo('#summary_offer_received_products_container');
+      $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
+      $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][quantity]\" value=\""+ 1 + "\" id=\""+ $(this).attr("id") + "\" />");
+    }
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){

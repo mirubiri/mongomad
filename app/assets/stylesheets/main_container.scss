@@ -88,12 +88,13 @@
         }
     }
 
-    .main_container_elementList{      
-      @include container_into_PpalSide_style;
+    .main_container_elementList{            
       @include center-horizontally(95%);
+      margin-top: 10px;
+      margin-bottom: 5px;
+      overflow: auto; 
       padding: 10px 10px 10px 10px;
       overflow: visible;
-
     }
   }
 
