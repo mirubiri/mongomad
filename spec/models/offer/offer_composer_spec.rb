@@ -36,4 +36,35 @@ describe Offer::Composer do
       File.exist?(File.new(composer.image.path)).should be_true
     end
   end
+
+  describe '#auto_update' do
+    it 'calls update_user_data' do
+      composer.should_receive(:update_user_data)
+      composer.auto_update
+    end
+    it 'calls update_products' do
+      composer.should_receive(:update_products)
+      composer.auto_update
+    end
+  end
+
+  describe '#update_user_data' do
+    around(:each) do 
+      composer.stub_chain(:offer,:user_composer,:profile,:name).and_return('updated')
+      composer.stub_chain(:offer,:user_composer,:profile,:image).and_return('updated.png')
+    end
+
+    it 'updates composer name with the current user composer name' do
+      composer.name.should eq 'updated'
+    end
+
+    it 'updates composer image with the current user composer image' do
+      composer.image.should eq 'updated'
+    end
+
+  end
+
+  describe 'update_products' do
+  end
+
 end
