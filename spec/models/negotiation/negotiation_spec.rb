@@ -57,7 +57,7 @@ describe Negotiation do
               product.send(field).should eq offer_product.send(field)
             end
 
-            ['name','description','attributes["image"]'].each do |field|
+            ['name','description','image_name'].each do |field|
               product.instance_eval(field).should eq offer_product.instance_eval(field)
             end
           end

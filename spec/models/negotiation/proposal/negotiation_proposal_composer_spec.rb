@@ -12,7 +12,7 @@ describe Negotiation::Proposal::Composer do
 
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
-    it { should have_field(:image).of_type(Object) }
+    it { should have_field(:image_name).of_type(Object) }
   end
 
   describe 'Validations' do

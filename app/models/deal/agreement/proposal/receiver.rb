@@ -7,7 +7,7 @@ class Deal::Agreement::Proposal::Receiver
 
   field :name, type: String
 
-  mount_uploader :image, UserImageUploader
+  mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :proposal,
             :products,

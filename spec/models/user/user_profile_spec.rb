@@ -20,7 +20,7 @@ describe User::Profile do
     it { should have_field(:phone_number).of_type(String) }
     it { should have_field(:website).of_type(String) }
     it { should have_field(:birth_date).of_type(Date) }
-    it { should have_field(:image).of_type(Object) }
+    it { should have_field(:image_name).of_type(Object) }
   end
 
   describe 'Validations' do

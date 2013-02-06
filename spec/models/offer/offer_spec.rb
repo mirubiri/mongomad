@@ -72,7 +72,7 @@ describe Offer do
               selected_thing[:"#{field}"].should eq product.send(field)
             end
 
-            ['name','description','attributes["image"]'].each do |field|
+            ['name','description','image_name'].each do |field|
               product.instance_eval(field).should eq thing.instance_eval(field)
             end
           end
@@ -143,7 +143,7 @@ describe Offer do
     it 'raise error if auto_update fails' do
       offer.composer.stub(:auto_update).and_raise("StandardError")
       offer.receiver.stub(:auto_update).and_raise("StandardError")
-      expect { offer.auto_update }.to raise_error 
+      expect { offer.auto_update }.to raise_error
     end
   end
 end

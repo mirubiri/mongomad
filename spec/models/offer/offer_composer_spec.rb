@@ -12,7 +12,7 @@ describe Offer::Composer do
 
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
-    it { should have_field(:image).of_type(Object) }
+    it { should have_field(:image_name).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -51,7 +51,7 @@ describe Offer::Composer do
   end
 
   describe '#update_user_data' do
-    around(:each) do 
+    around(:each) do
       composer.stub_chain(:offer,:user_composer,:profile,:name).and_return('updated')
       composer.stub_chain(:offer,:user_composer,:profile,:image).and_return('updated.png')
     end
