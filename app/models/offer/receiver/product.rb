@@ -23,16 +23,6 @@ class Offer::Receiver::Product
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
 
-  def to_negotiation_proposal_receiver_product
-    product = Negotiation::Proposal::Receiver::Product.new
-    product.thing_id = self.thing_id
-    product.name = self.name
-    product.description = self.description
-    product.quantity = self.quantity
-    product.image = File.open(self.image.path)
-    product
-  end
-
   def auto_update
     thing = receiver.offer.user_receiver.things.find(self.thing_id)
     self.name = thing.name

@@ -13,4 +13,17 @@ class Negotiation::Proposal::Receiver
             :name,
             :image,
             presence: true
+
+  def add_products(products)
+    products.each do |product|
+      new_product = Negotiation::Proposal::Composer::Product.new
+      new_product.thing_id = product.thing_id
+      new_product.name = product.name
+      new_product.description = product.description
+      new_product.quantity = product.quantity
+      new_product.image = File.open(product.image.path)
+
+      self.products << new_product
+    end
+  end
 end

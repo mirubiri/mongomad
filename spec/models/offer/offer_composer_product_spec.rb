@@ -45,11 +45,11 @@ describe Offer::Composer::Product do
   end
 
   describe '#to_negotiation_proposal_composer_product' do
-    it { should respond_to(:to_negotiation_proposal_composer_product).with(0).arguments }
+    xit { should respond_to(:to_negotiation_proposal_composer_product).with(0).arguments }
 
-    specify { product.to_negotiation_proposal_composer_product.should be_kind_of(Negotiation::Proposal::Composer::Product) }
+    xspecify { product.to_negotiation_proposal_composer_product.should be_kind_of(Negotiation::Proposal::Composer::Product) }
 
-    it 'Builds an negotiation_proposal_composer_product' do
+    xit 'Builds an negotiation_proposal_composer_product' do
       aux_product = product.to_negotiation_proposal_composer_product
       product.thing_id.should eql aux_product.thing_id
       product.name.should eql aux_product.name

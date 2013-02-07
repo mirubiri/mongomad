@@ -17,4 +17,17 @@ class Negotiation::Proposal
             :user_composer_id,
             :user_receiver_id,
             presence: true
+
+  def self.generate(offer)
+    proposal = Negotiation::Proposal.new
+
+    proposal.user_composer_id = offer.user_composer_id
+    proposal.user_receiver_id = offer.user_receiver_id
+
+    proposal.build_composer.add_products(offer.composer.products)
+    proposal.build_receiver.add_products(offer.receiver.products)
+    proposal.build_money(user_id: offer.money.user_id,
+                         quantity: offer.money.quantity)
+    proposal
+  end
 end
