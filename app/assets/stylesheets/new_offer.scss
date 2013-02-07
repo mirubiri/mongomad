@@ -181,13 +181,13 @@
         overflow: auto;
         margin:0px 0px 0px 0px;
 
-        .summary_body_products_given{
+        .summary_body_products_received{
           float: left;
           overflow: auto;
           margin-left: 20px;
           width: 50%;
 
-          .money_given{
+          .money_received{
             float: left;
             overflow: auto;
             margin-left: 20px;
@@ -229,13 +229,13 @@
           }
         }
 
-        .summary_body_products_received{
+        .summary_body_products_given{
           float:right;
           margin-right: 30px;
           overflow: auto;
           width: 30%;
 
-          .money_received{
+          .money_given{
             float:left;
             overflow: auto;
             margin-left: 20px;

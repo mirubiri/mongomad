@@ -186,7 +186,7 @@ function newOfferLinks(){
       $('#received_products_counter').attr('value', (rpcv + 1));
     }
     else{
-      $(this).clone().appendTo('#summary_offer_given_products_container');
+      $(this).clone().prepend('<div class="delete_button">x</div>').appendTo('#summary_offer_received_products_container');
       $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
       $('#summary_offer_received_products_container').append("<input type=\"hidden\" name=\"receiver_things[][quantity]\" value=\""+ 1 + "\" id=\""+ $(this).attr("id") + "\" />");
     }
@@ -201,10 +201,22 @@ function newOfferLinks(){
       $('#given_products_counter').attr('value', (gpcv + 1));
     }
     else{
-      $(this).clone().appendTo('#summary_offer_received_products_container');
+      $(this).clone().prepend('<div class="delete_button">x</div>').appendTo('#summary_offer_given_products_container');
       $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][thing_id]\" value=\""+ $(this).attr("id") + "\" />");
       $('#summary_offer_given_products_container').append("<input type=\"hidden\" name=\"composer_things[][quantity]\" value=\""+ 1 + "\" id=\""+ $(this).attr("id") + "\" />");
     }
+  });
+
+  $('#summary_offer_received_products_container > .product > .delete_button').live('click',function(e){
+    $(this).parent().remove();
+    $("#summary_offer_received_products_container input[id='"+$(this).parent().attr("id")+"']").remove();
+    $("#summary_offer_received_products_container input[value='"+$(this).parent().attr("id")+"']").remove();
+  });
+
+  $('#summary_offer_given_products_container > .product > .delete_button').live('click',function(e){
+    $(this).parent().remove();
+    $("#summary_offer_given_products_container input[id='"+$(this).parent().attr("id")+"']").remove();
+    $("#summary_offer_given_products_container input[value='"+$(this).parent().attr("id")+"']").remove();
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
