@@ -21,8 +21,7 @@ class Negotiation::Proposal::Composer
       new_product.name = product.name
       new_product.description = product.description
       new_product.quantity = product.quantity
-      new_product.image = File.open(product.image.path)
-
+      new_product.image = product.image
       self.products << new_product
     end
   end

@@ -26,14 +26,14 @@ class Offer::Composer
   end
 
   def update_products
-    products.each do |product|
+    self.products.each do |product|
       product.auto_update
     end
   end
 
   def auto_update
-    update_user_data
-    update_products
+    self.update_user_data
+    self.update_products
     self
   end
 end

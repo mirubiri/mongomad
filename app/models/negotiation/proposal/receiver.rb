@@ -16,13 +16,12 @@ class Negotiation::Proposal::Receiver
 
   def add_products(products)
     products.each do |product|
-      new_product = Negotiation::Proposal::Composer::Product.new
+      new_product = Negotiation::Proposal::Receiver::Product.new
       new_product.thing_id = product.thing_id
       new_product.name = product.name
       new_product.description = product.description
       new_product.quantity = product.quantity
-      new_product.image = File.open(product.image.path)
-
+      new_product.image = product.image
       self.products << new_product
     end
   end

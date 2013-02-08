@@ -24,10 +24,29 @@ class Negotiation::Proposal
     proposal.user_composer_id = offer.user_composer_id
     proposal.user_receiver_id = offer.user_receiver_id
 
-    proposal.build_composer.add_products(offer.composer.products)
-    proposal.build_receiver.add_products(offer.receiver.products)
-    proposal.build_money(user_id: offer.money.user_id,
-                         quantity: offer.money.quantity)
+    proposal.set_composer(offer.composer)
+    proposal.set_receiver(offer.receiver)
+    proposal.set_money(offer.money)
     proposal
+  end
+
+  def set_composer(composer)
+    self.composer = Negotiation::Proposal::Composer.new
+    self.composer.name = composer.name
+    self.composer.image = composer.image
+    self.composer.add_products(composer.products)
+  end
+
+  def set_receiver(receiver)
+    self.receiver = Negotiation::Proposal::Receiver.new
+    self.receiver.name = receiver.name
+    self.receiver.image = receiver.image
+    self.receiver.add_products(receiver.products)
+  end
+
+  def set_money(money)
+    self.money = Negotiation::Proposal::Money.new
+    self.money.user_id = money.user_id
+    self.money.quantity = money.quantity
   end
 end

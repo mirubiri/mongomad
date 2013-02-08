@@ -24,19 +24,26 @@ class Negotiation
       image: offer.composer.image)
     negotiation.add_message(message)
 
-    negotiation.add_users(offer)
+    negotiation.set_users(offer)
   end
 
   def add_proposal(proposal)
     self.proposals << proposal
+    self
   end
 
   def add_message(message)
     self.messages << message
+    self
   end
 
-  def add_users(offer)
+  def set_users(offer)
     self.users << offer.user_composer
     self.users << offer.user_receiver
+    self
+  end
+
+  def publish
+    self.save && self
   end
 end
