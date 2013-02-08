@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @offers = @user.received_offers.all
     @request = Request.new
     @offer = Offer.new
+    @negotiation = Negotiation.new
 
     respond_to do |format|
       format.html # show.html.erb
