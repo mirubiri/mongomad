@@ -12,7 +12,8 @@ class Negotiation
             :users,
             presence: true
 
-  def self.open(offer)
+  def self.open(params)
+    offer = Offer.find(params[:offer_id])
     negotiation = Negotiation.new
 
     proposal = Negotiation::Proposal.generate(offer)
