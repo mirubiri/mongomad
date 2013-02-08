@@ -9,6 +9,7 @@ class OffersController < ApplicationController
     @offers = @user.received_offers.all.to_a
     @requests = @user.requests.all.to_a
     @offer = Offer.new
+    @negotiation = Negotiation.new
 
     respond_to do |format|
       format.html # index.html.erb

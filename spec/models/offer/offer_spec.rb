@@ -53,15 +53,15 @@ describe Offer do
 
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
-      
+
       specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
       specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
-      
+
       specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
       specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
 
-      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }   
-     
+      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
+
 
       it 'Transform all passed things into products' do
         ['receiver','composer'].each do |person|
@@ -88,32 +88,6 @@ describe Offer do
 
     end
 
-  end
-
- describe '#publish' do
-    context 'When offer is salvable' do
-      it 'Saves the offer' do
-        offer.should_receive(:save).and_return(true)
-        offer.publish
-      end
-
-      it 'Returns this offer' do
-        offer.publish.should eq offer
-      end
-    end
-
-    context 'When offer is not salvable' do
-      before(:each) { offer.composer = nil }
-
-      it 'Dont saves the offer' do
-        offer.should_receive(:save).and_return(false)
-        offer.publish
-      end
-
-      it 'Returns false' do
-        offer.publish.should be_false
-      end
-    end
   end
 
   describe '#auto_update' do
@@ -146,4 +120,31 @@ describe Offer do
       expect { offer.auto_update }.to raise_error
     end
   end
+
+ describe '#publish' do
+    context 'When offer is salvable' do
+      it 'Saves the offer' do
+        offer.should_receive(:save).and_return(true)
+        offer.publish
+      end
+
+      it 'Returns this offer' do
+        offer.publish.should eq offer
+      end
+    end
+
+    context 'When offer is not salvable' do
+      before(:each) { offer.composer = nil }
+
+      it 'Dont saves the offer' do
+        offer.should_receive(:save).and_return(false)
+        offer.publish
+      end
+
+      it 'Returns false' do
+        offer.publish.should be_false
+      end
+    end
+  end
+
 end
