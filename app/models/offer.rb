@@ -32,9 +32,9 @@ class Offer
   end
 
   def auto_update
-    self.reload if self.persisted?
-    self.receiver.auto_update
-    self.composer.auto_update
+    reload if self.persisted?
+    receiver.auto_update
+    composer.auto_update
     self
   end
 
