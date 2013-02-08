@@ -9,5 +9,5 @@ Fabricator(:offer_composer, class_name: "Offer::Composer") do
     products
   end
   name      { |attrs| attrs[:user].profile.name }
-  image     { File.open('app/assets/images/composer.png') }
+  image_name { |attrs| attrs[:user].profile.image_name }
 end

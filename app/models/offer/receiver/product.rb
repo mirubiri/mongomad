@@ -8,7 +8,7 @@ class Offer::Receiver::Product
   field :description, type: String
   field :quantity,    type: Integer
 
-  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :receiver,
             :thing_id,
@@ -27,7 +27,7 @@ class Offer::Receiver::Product
     thing = receiver.offer.user_receiver.things.find(self.thing_id)
     self.name = thing.name
     self.description = thing.description
-    self.image = thing.image
+    self.image_name = thing.image_name
     self
   end
 end

@@ -37,24 +37,27 @@ describe Offer::Receiver::Product do
     end
   end
 
-  describe '#save' do
+  describe 'on save' do
     it 'Uploads an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
 
-  describe '#to_negotiation_proposal_receiver_product' do
-    xit { should respond_to(:to_negotiation_proposal_receiver_product).with(0).arguments }
-
-    xspecify { product.to_negotiation_proposal_receiver_product.should be_kind_of(Negotiation::Proposal::Receiver::Product) }
-
-    xit 'Builds an negotiation_proposal_composer_product' do
-      aux_product = product.to_negotiation_proposal_receiver_product
-      product.thing_id.should eql aux_product.thing_id
-      product.name.should eql aux_product.name
-      product.description.should eql aux_product.description
-      product.quantity.should eql aux_product.quantity
+  describe '#auto_update' do
+    before(:each) do
+      @thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
+      product.receiver.offer.user_receiver.things.stub(:find).and_return(@thing)
+      product.auto_update
+    end
+    it 'updates name' do
+      product.name.should eq 'updated'
+    end
+    it 'updates description' do
+      product.description.should eq 'updated'
+    end
+    it 'updates image_name' do
+      product.image_name.should eq 'updated.png'
     end
   end
 end

@@ -6,7 +6,7 @@ class Offer::Receiver
 
   field :name, type: String
 
-  mount_uploader :image, UserImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :offer,
             :products,
@@ -14,26 +14,27 @@ class Offer::Receiver
             :image,
             presence: true
 
+
   def add_products(params)
     params.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
   end
 
-  def update_receiver_data
-    self.name = self.offer.user_receiver.profile.name
-    self.image = self.offer.user_receiver.profile.image
+  def update_user_data
+    self.name = offer.user_receiver.profile.name
+    self.image_name = offer.user_receiver.profile.image_name
   end
 
-  def update_receiver_products
-    self.products.each do |product|
+  def update_products
+    products.each do |product|
       product.auto_update
     end
   end
 
   def auto_update
-    self.update_receiver_data
-    self.update_receiver_products
+    update_user_data
+    update_products
     self
   end
 end
