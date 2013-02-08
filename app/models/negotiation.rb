@@ -29,22 +29,22 @@ class Negotiation
   end
 
   def add_proposal(proposal)
-    self.proposals << proposal
+    proposals << proposal
     self
   end
 
   def add_message(message)
-    self.messages << message
+    messages << message
     self
   end
 
   def set_users(offer)
-    self.users << offer.user_composer
-    self.users << offer.user_receiver
+    users << offer.user_composer
+    users << offer.user_receiver
     self
   end
 
   def publish
-    self.save && self
+    save && self
   end
 end
