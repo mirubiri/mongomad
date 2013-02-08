@@ -6,13 +6,14 @@ class Offer::Receiver
 
   field :name, type: String
 
-  mount_uploader :image, UserImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :offer,
             :products,
             :name,
             :image,
             presence: true
+
 
   def add_products(params)
     params.each do |index|
@@ -21,12 +22,12 @@ class Offer::Receiver
   end
 
   def update_user_data
-    self.name = offer.user_composer.profile.name
-    self.image = offer.user_composer.profile.image
+    self.name = offer.user_receiver.profile.name
+    self.image_name = offer.user_receiver.profile.image_name
   end
 
   def update_products
-    self.products.each do |product|
+    products.each do |product|
       product.auto_update
     end
   end

@@ -10,4 +10,9 @@ Fabricator(:user_profile, class_name: "User::Profile") do
   website          nil
   birth_date       '10-10-2000'
   image            { File.open('app/assets/images/user.png') }
+  image_name       'user.png'
+  
+  after_build do |profile|
+    profile.image.store!
+  end
 end

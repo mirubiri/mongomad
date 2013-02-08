@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Offer::Composer do
   let(:composer) do
-    Fabricate.build(:offer).composer
+    composer=Fabricate.build(:offer).composer
   end
 
   describe 'Relations' do
@@ -30,7 +30,7 @@ describe Offer::Composer do
     end
   end
 
-  describe '#save' do
+  describe 'on save' do
     it 'Uploads an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should be_true
@@ -38,35 +38,27 @@ describe Offer::Composer do
   end
 
   describe '#auto_update' do
-    xit 'calls update_user_data' do
-      composer.should_receive(:update_user_data)
+    it 'calls update_user_data' do
+       # Use relationship.target to access to the wrapped object
+      composer.target.should_receive(:update_user_data)
       composer.auto_update
-      puts "ESTO DA ERROR PERO ESTA BIEN ME CAGO EN TODO EL RSPEC Y EL MONGOID"
-    end
-    xit 'calls update_products' do
-      composer.should_receive(:update_products)
-      composer.auto_update
-      puts "ESTO DA ERROR PERO ESTA BIEN ME CAGO EN TODO EL RSPEC Y EL MONGOID"
-    end
-  end
-
-  describe '#update_user_data' do
-    around(:each) do
-      composer.stub_chain(:offer,:user_composer,:profile,:name).and_return('updated')
-      composer.stub_chain(:offer,:user_composer,:profile,:image).and_return('updated.png')
     end
 
-    xit 'updates composer name with the current user composer name' do
+    it 'calls update_products' do
+      composer.target.should_receive(:update_products)
+      composer.auto_update
+    end
+
+    it 'updates composer name with the current user composer name' do
+      composer.offer.user_composer.profile.stub(:name).and_return('updated')
+      composer.auto_update
       composer.name.should eq 'updated'
     end
 
-    xit 'updates composer image with the current user composer image' do
-      composer.image.should eq 'updated'
+    it 'updates composer image_name with the current user composer image_name' do
+      composer.offer.user_composer.profile.stub(:image_name).and_return('updated.png')
+      composer.auto_update
+      composer.image_name.should eq 'updated.png'
     end
-
   end
-
-  describe 'update_products' do
-  end
-
 end
