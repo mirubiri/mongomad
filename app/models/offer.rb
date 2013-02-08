@@ -39,6 +39,6 @@ class Offer
   end
 
   def publish
-    self.save && self
+    save && self
   end
 end
