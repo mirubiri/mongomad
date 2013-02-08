@@ -33,8 +33,8 @@ class Offer::Receiver
   end
 
   def auto_update
-    self.update_user_data
-    self.update_products
+    update_user_data
+    update_products
     self
   end
 end
