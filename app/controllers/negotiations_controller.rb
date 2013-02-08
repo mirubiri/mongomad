@@ -48,10 +48,10 @@ class NegotiationsController < ApplicationController
   # POST /negotiations
   # POST /negotiations.json
   def create
-    @negotiation = Negotiation.new(params[:negotiation])
+    @negotiation = Negotiation.open(params)
 
     respond_to do |format|
-      if @negotiation.save
+      if @negotiation.publish
         format.html { redirect_to @negotiation, notice: 'Negotiation was successfully created.' }
         format.json { render json: @negotiation, status: :created, location: @negotiation }
       else
