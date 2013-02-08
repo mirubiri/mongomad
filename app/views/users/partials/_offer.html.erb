@@ -39,16 +39,16 @@
       </div>
       <% if user_logged_id == user_visited_id %>
         <%= form_for [current_user,@negotiation] do |form| %>
-        <input type="hidden" name="user_composer_id" value="<%= offer_id(offer)%>" />
+        <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "negociar", :id => 'new-offer-send-button' %>
+            <%= form.submit "negociar" %>
           </div>
         <% end %>
       <% else %>
         <%= form_for [current_user,@negotiation] do |form| %>
-          <input type="hidden" name="user_composer_id" value="<%= offer_id(offer)%>" />
+          <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "para mi", :id => 'new-offer-send-button' %>
+            <%= form.submit "para mi" %>
           </div>
         <% end %>
       <% end %>
