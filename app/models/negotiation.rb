@@ -14,7 +14,7 @@ class Negotiation
 
   def self.open(params)
     offer = Offer.find(params[:offer_id])
-    negotiation = Negotiation.new
+    negotiation = new
 
     proposal = Negotiation::Proposal.generate(offer)
     negotiation.add_proposal(proposal)
@@ -45,6 +45,6 @@ class Negotiation
   end
 
   def publish
-    save && self
+   save && self
   end
 end

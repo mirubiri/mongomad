@@ -19,10 +19,8 @@ class Negotiation::Proposal
             presence: true
 
   def self.generate(offer)
-    proposal = Negotiation::Proposal.new
-
-    proposal.user_composer_id = offer.user_composer_id
-    proposal.user_receiver_id = offer.user_receiver_id
+    proposal = new(user_composer_id:offer.user_composer_id,
+                   user_receiver_id:offer.user_receiver_id )
 
     proposal.set_composer(offer.composer)
     proposal.set_receiver(offer.receiver)
@@ -30,23 +28,20 @@ class Negotiation::Proposal
     proposal
   end
 
-  def set_composer(composer)
-    self.composer = Negotiation::Proposal::Composer.new
-    self.composer.name = composer.name
-    self.composer.image = composer.image
-    self.composer.add_products(composer.products)
+  def set_composer(offer_composer)
+    build_composer(name:offer_composer.name,
+                   image_name:offer_composer.image_name)
+    composer.add_products(offer_composer.products)
   end
 
-  def set_receiver(receiver)
-    self.receiver = Negotiation::Proposal::Receiver.new
-    self.receiver.name = receiver.name
-    self.receiver.image = receiver.image
-    self.receiver.add_products(receiver.products)
+  def set_receiver(offer_receiver)
+    build_receiver(name:offer_receiver_name,
+                   image_name:offer_receiver.image_name)
+    receiver.add_products(offer_receiver.products)
   end
 
-  def set_money(money)
-    self.money = Negotiation::Proposal::Money.new
-    self.money.user_id = money.user_id
-    self.money.quantity = money.quantity
+  def set_money(offer_money)
+    build_money(user_id:offer_money.user_id,
+                quantity:offer_money.quantity)
   end
 end
