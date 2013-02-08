@@ -22,14 +22,4 @@ class Negotiation::Proposal::Composer::Product
             allow_nil: false,
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
-
-  def to_deal_agreement_proposal_composer_product
-    product = Deal::Agreement::Proposal::Composer::Product.new
-    product.thing_id = self.thing_id
-    product.name = self.name
-    product.description = self.description
-    product.quantity = self.quantity
-    product.image = File.open(self.image.path)
-    product
-  end
 end

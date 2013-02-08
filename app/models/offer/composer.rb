@@ -6,7 +6,7 @@ class Offer::Composer
 
   field :name, type: String
 
-  mount_uploader :image, UserImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :offer,
             :products,
@@ -20,9 +20,10 @@ class Offer::Composer
     end
   end
 
+
   def update_user_data
     self.name = offer.user_composer.profile.name
-    self.image = offer.user_composer.profile.image
+    self.image_name = offer.user_composer.profile.image_name
   end
 
   def update_products
@@ -36,4 +37,5 @@ class Offer::Composer
     update_products
     self
   end
+
 end

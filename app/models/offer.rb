@@ -20,7 +20,7 @@ class Offer
             presence: true
 
   def self.generate(params)
-    offer=Offer.new(
+    offer = Offer.new(
       user_composer: User.find(params[:user_composer_id]),
       user_receiver: User.find(params[:user_receiver_id]),
       initial_message: params[:initial_message])
@@ -39,7 +39,6 @@ class Offer
   end
 
   def publish
-    # WARNING: It returns this offer instead of "true" like #save method when saving
     save && self
   end
 end

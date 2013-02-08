@@ -51,14 +51,18 @@ describe Offer do
       }
     end
 
-    let(:new_offer) { Offer.generate(offer_hash).publish }
-
-    context 'new_offer -> users data' do
+    describe 'returned offer' do
+      let(:new_offer) { Offer.generate(offer_hash) }
+      
       specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
       specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
-    end
+      
+      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
+      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
 
-    context 'new_offer -> products' do
+      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }   
+     
+
       it 'Transform all passed things into products' do
         ['receiver','composer'].each do |person|
           user = User.find(offer_hash[:"user_#{person}_id"])
@@ -75,19 +79,15 @@ describe Offer do
             ['name','description','image_name'].each do |field|
               product.instance_eval(field).should eq thing.instance_eval(field)
             end
+
           end
+
         end
+
       end
+
     end
 
-    context 'new_offer -> money' do
-      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
-      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
-    end
-
-    context 'new_offer -> initial_message' do
-      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
-    end
   end
 
  describe '#publish' do
