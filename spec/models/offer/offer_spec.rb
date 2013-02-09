@@ -63,6 +63,8 @@ describe Offer do
       specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
 
 
+
+
       it 'Transform all passed things into products' do
         ['receiver','composer'].each do |person|
           user = User.find(offer_hash[:"user_#{person}_id"])
