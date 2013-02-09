@@ -28,13 +28,13 @@ class Offer
     offer.build_receiver.add_products(params[:receiver_things])
     offer.build_money(user_id: params[:money][:user_id],
                       quantity: params[:money][:quantity])
-    offer.auto_update
+    offer.self_update
   end
 
-  def auto_update
+  def self_update
     reload if persisted?
-    receiver.auto_update
-    composer.auto_update
+    receiver.self_update
+    composer.self_update
     self
   end
 

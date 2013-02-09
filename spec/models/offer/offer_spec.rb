@@ -90,34 +90,34 @@ describe Offer do
 
   end
 
-  describe '#auto_update' do
+  describe '#self_update' do
     it 'calls reload if persisted' do
       offer.save
       offer.should_receive(:reload)
-      offer.auto_update
+      offer.self_update
     end
 
     it 'do not call reload if not persisted' do
       offer.should_not_receive(:reload)
-      offer.auto_update
+      offer.self_update
     end
 
-    it 'calls to offer.composer.auto_update' do
-      offer.composer.should_receive(:auto_update)
-      offer.auto_update
+    it 'calls to offer.composer.self_update' do
+      offer.composer.should_receive(:self_update)
+      offer.self_update
     end
-    it 'calls to offer.receiver.auto_update' do
-      offer.receiver.should_receive(:auto_update)
-      offer.auto_update
+    it 'calls to offer.receiver.self_update' do
+      offer.receiver.should_receive(:self_update)
+      offer.self_update
     end
-    it 'returns self if auto_update success' do
-      offer.auto_update.should eq offer
+    it 'returns self if self_update success' do
+      offer.self_update.should eq offer
     end
 
-    it 'raise error if auto_update fails' do
-      offer.composer.stub(:auto_update).and_raise("StandardError")
-      offer.receiver.stub(:auto_update).and_raise("StandardError")
-      expect { offer.auto_update }.to raise_error
+    it 'raise error if self_update fails' do
+      offer.composer.stub(:self_update).and_raise("StandardError")
+      offer.receiver.stub(:self_update).and_raise("StandardError")
+      expect { offer.self_update }.to raise_error
     end
   end
 

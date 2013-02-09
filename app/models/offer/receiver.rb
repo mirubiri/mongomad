@@ -28,11 +28,11 @@ class Offer::Receiver
 
   def update_products
     products.each do |product|
-      product.auto_update
+      product.self_update
     end
   end
 
-  def auto_update
+  def self_update
     update_user_data
     update_products
     self

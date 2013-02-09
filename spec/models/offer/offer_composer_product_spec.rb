@@ -44,11 +44,11 @@ describe Offer::Composer::Product do
     end
   end
 
-  describe '#auto_update' do
+  describe '#self_update' do
     before(:each) do
       thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
       product.composer.offer.user_composer.things.stub(:find).and_return(thing)
-      product.auto_update
+      product.self_update
     end
     it 'updates name' do
       product.name.should eq 'updated'
