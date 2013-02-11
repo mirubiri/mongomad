@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Negotiation do
+  let(:offer) do
+    Fabricate(:offer)
+  end
   let(:negotiation) do
-    Fabricate.build(:negotiation, offer:Fabricate(:offer))
+    Fabricate.build(:negotiation, offer:offer)
   end
 
   describe 'Relations' do
@@ -34,12 +37,21 @@ describe Negotiation do
     end
   end
 
-  describe '.open' do
-    let(:offer) { negotiation.offer }
-    let(:new_negotiation) { Negotiation.open(offer).publish }
+  let(:new_negotiation) { Negotiation.open(offer).publish }
 
-    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
-    # Sin terminar
+  describe '.open' do
+
+    it 'generates a valid negotiation given an offer' do
+      Negotiation.open(offer).should be_valid
+    end
+
+    it 'throws an exception given an invalid offer' do
+      offer.should_receive(:valid?).and_return(:false)
+      Negotiation.open(offer).should raise_error
+      pending 'Choose wich exception to throw'
+    end
+    
+    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }  
   end
 
   describe '#make_new_proposal(hash)' do

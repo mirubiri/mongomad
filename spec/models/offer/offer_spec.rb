@@ -30,13 +30,13 @@ describe Offer do
     specify { expect(offer.save).to be_true }
 
     it 'Creates two different users' do
-      expect { offer.save }.to change{ User.count }.by(2)
+      expect { offer.publish }.to change{ User.count }.by(2)
     end
   end
 
   describe '.generate' do
     let(:offer_hash) do
-      offer.save
+      offer.publish
       {
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
@@ -51,6 +51,14 @@ describe Offer do
       }
     end
 
+    it 'generates a valid offer given correct parameters' do
+      Offer.generate(offer_hash).should be_valid
+    end
+
+    it 'throws exception given incorrect parameters' do
+      pending 'Choosing what kind of exception to throw'
+    end
+
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
 
@@ -63,9 +71,7 @@ describe Offer do
       specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
 
 
-
-
-      it 'Transform all passed things into products' do
+      it 'Transform all passed things params into products' do
         ['receiver','composer'].each do |person|
           user = User.find(offer_hash[:"user_#{person}_id"])
           selected_things = offer_hash[:"#{person}_things"]
@@ -75,26 +81,22 @@ describe Offer do
             thing = user.things.find(selected_thing[:thing_id])
 
             ['thing_id','quantity'].each do |field|
-              selected_thing[:"#{field}"].should eq product.send(field)
+              product.send(field).should eq selected_thing[field.to_sym]
             end
 
             ['name','description','image_name'].each do |field|
-              product.instance_eval(field).should eq thing.instance_eval(field)
+              product.send(field).should eq thing.send(field)
             end
 
           end
-
         end
-
       end
-
     end
-
   end
 
   describe '#self_update' do
     it 'calls reload if persisted' do
-      offer.save
+      offer.publish
       offer.should_receive(:reload)
       offer.self_update
     end
@@ -123,7 +125,7 @@ describe Offer do
     end
   end
 
- describe '#publish' do
+  describe '#publish' do
     context 'When offer is salvable' do
       it 'Saves the offer' do
         offer.should_receive(:save).and_return(true)
@@ -149,4 +151,15 @@ describe Offer do
     end
   end
 
+  describe '#unpublish' do
+    it 'removes a offer' do
+      offer.publish
+      expect { offer.unpublish }.to change {Offer.count}.by(-1)
+    end
+  end
+
+  describe '#modify' do
+    xit 'modifies the offer with the given params/actions'
+  end
+  
 end
