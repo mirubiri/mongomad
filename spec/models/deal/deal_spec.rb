@@ -41,4 +41,12 @@ describe Deal do
   describe '.generate_from(accepted_negotiation)' do
     xit 'Generates a new deal from an accepted_negotiation'
   end
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  .generate(hash)    -> crea un deal con los datos de un hash
+  store              -> salva/alamacena el deal
+  post_message       -> publica un nuevo mensage en la negociacion
+=end
 end

@@ -35,7 +35,7 @@ describe User::Thing do
     end
   end
 
-  describe '#save' do
+  describe 'On save' do
     it 'Uploads an image' do
       thing.save
       File.exist?(File.new(thing.image.path)).should be_true

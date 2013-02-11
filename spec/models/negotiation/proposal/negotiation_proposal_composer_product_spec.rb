@@ -57,4 +57,6 @@ describe Negotiation::Proposal::Composer::Product do
       product.quantity.should eql aux_product.quantity
     end
   end
+
+  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

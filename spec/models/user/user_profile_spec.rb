@@ -42,10 +42,16 @@ describe User::Profile do
     end
   end
 
-  describe '#save' do
+  describe 'On save' do
     it 'Uploads an image' do
       profile.save
       File.exist?(File.new(profile.image.path)).should be_true
     end
   end
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  update(hash)    -> actiualiza el perfil con los datos del hash
+=end
 end

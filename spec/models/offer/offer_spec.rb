@@ -30,13 +30,13 @@ describe Offer do
     specify { expect(offer.save).to be_true }
 
     it 'Creates two different users' do
-      expect { offer.save }.to change{ User.count }.by(2)
+      expect { offer.publish }.to change{ User.count }.by(2)
     end
   end
 
   describe '.generate' do
     let(:offer_hash) do
-      offer.save
+      offer.publish
       {
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
@@ -51,6 +51,14 @@ describe Offer do
       }
     end
 
+    it 'generates a valid offer given correct parameters' do
+      Offer.generate(offer_hash).should be_valid
+    end
+
+    it 'throws exception given incorrect parameters' do
+      pending 'Choosing what kind of exception to throw'
+    end
+
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
 
@@ -63,7 +71,7 @@ describe Offer do
       specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
 
 
-      it 'Transform all passed things into products' do
+      it 'Transform all passed things params into products' do
         ['receiver','composer'].each do |person|
           user = User.find(offer_hash[:"user_#{person}_id"])
           selected_things = offer_hash[:"#{person}_things"]
@@ -73,55 +81,51 @@ describe Offer do
             thing = user.things.find(selected_thing[:thing_id])
 
             ['thing_id','quantity'].each do |field|
-              selected_thing[:"#{field}"].should eq product.send(field)
+              product.send(field).should eq selected_thing[field.to_sym]
             end
 
             ['name','description','image_name'].each do |field|
-              product.instance_eval(field).should eq thing.instance_eval(field)
+              product.send(field).should eq thing.send(field)
             end
 
           end
-
         end
-
       end
-
     end
-
   end
 
-  describe '#auto_update' do
+  describe '#self_update' do
     it 'calls reload if persisted' do
-      offer.save
+      offer.publish
       offer.should_receive(:reload)
-      offer.auto_update
+      offer.self_update
     end
 
     it 'do not call reload if not persisted' do
       offer.should_not_receive(:reload)
-      offer.auto_update
+      offer.self_update
     end
 
-    it 'calls to offer.composer.auto_update' do
-      offer.composer.should_receive(:auto_update)
-      offer.auto_update
+    it 'calls to offer.composer.self_update' do
+      offer.composer.should_receive(:self_update)
+      offer.self_update
     end
-    it 'calls to offer.receiver.auto_update' do
-      offer.receiver.should_receive(:auto_update)
-      offer.auto_update
+    it 'calls to offer.receiver.self_update' do
+      offer.receiver.should_receive(:self_update)
+      offer.self_update
     end
-    it 'returns self if auto_update success' do
-      offer.auto_update.should eq offer
+    it 'returns self if self_update success' do
+      offer.self_update.should eq offer
     end
 
-    it 'raise error if auto_update fails' do
-      offer.composer.stub(:auto_update).and_raise("StandardError")
-      offer.receiver.stub(:auto_update).and_raise("StandardError")
-      expect { offer.auto_update }.to raise_error
+    it 'raise error if self_update fails' do
+      offer.composer.stub(:self_update).and_raise("StandardError")
+      offer.receiver.stub(:self_update).and_raise("StandardError")
+      expect { offer.self_update }.to raise_error
     end
   end
 
- describe '#publish' do
+  describe '#publish' do
     context 'When offer is salvable' do
       it 'Saves the offer' do
         offer.should_receive(:save).and_return(true)
@@ -147,4 +151,24 @@ describe Offer do
     end
   end
 
+  describe '#unpublish' do
+    it 'removes a offer' do
+      offer.publish
+      expect { offer.unpublish }.to change {Offer.count}.by(-1)
+    end
+  end
+
+  describe '#modify' do
+    xit 'modifies the offer with the given params/actions'
+  end
+
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  .generate(hash) -> crea una offer con los datos de un hash
+  publish         -> salva la offer
+  unpublish       -> elimina la offer
+  update(hash)    -> actualiza los datos de la request con los del hash
+=end
 end

@@ -23,7 +23,7 @@ class Offer::Receiver::Product
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
 
-  def auto_update
+  def self_update
     thing = receiver.offer.user_receiver.things.find(self.thing_id)
     self.name = thing.name
     self.description = thing.description

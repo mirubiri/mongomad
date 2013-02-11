@@ -31,34 +31,36 @@ describe Offer::Composer do
   end
 
   describe 'on save' do
-    it 'Uploads an image' do
+    it 'has an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should be_true
     end
   end
 
-  describe '#auto_update' do
+  describe '#self_update' do
     it 'calls update_user_data' do
        # Use relationship.target to access to the wrapped object
       composer.target.should_receive(:update_user_data)
-      composer.auto_update
+      composer.self_update
     end
 
     it 'calls update_products' do
       composer.target.should_receive(:update_products)
-      composer.auto_update
+      composer.self_update
     end
 
     it 'updates composer name with the current user composer name' do
       composer.offer.user_composer.profile.stub(:name).and_return('updated')
-      composer.auto_update
+      composer.self_update
       composer.name.should eq 'updated'
     end
 
     it 'updates composer image_name with the current user composer image_name' do
       composer.offer.user_composer.profile.stub(:image_name).and_return('updated.png')
-      composer.auto_update
+      composer.self_update
       composer.image_name.should eq 'updated.png'
     end
   end
+
+  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe Negotiation do
+  let(:offer) do
+    Fabricate(:offer)
+  end
   let(:negotiation) do
-    Fabricate.build(:negotiation, offer:Fabricate(:offer))
+    Fabricate.build(:negotiation, offer:offer)
   end
 
   describe 'Relations' do
@@ -34,45 +37,21 @@ describe Negotiation do
     end
   end
 
+  let(:new_negotiation) { Negotiation.open(offer).publish }
+
   describe '.open' do
-    let(:offer) { Fabricate(:offer) }
-    let(:new_negotiation) { Negotiation.open(offer).publish }
 
-    context 'new_negotiation -> users data' do
-      specify { new_offer.proposals.last.user_composer_id.should eql offer.user_composer_id }
-      specify { new_offer.proposals.last.user_receiver_id.should eql offer.user_receiver_id }
+    it 'generates a valid negotiation given an offer' do
+      Negotiation.open(offer).should be_valid
     end
 
-    context 'new_negotiation -> products' do
-      it 'Copy all offer products into negotiation products' do
-        ['receiver','composer'].each do |person|
-          offer_products = offer.send("#{person}").products
-
-          offer_products.size.should eql new_negotiation.proposals.last.send("#{person}").products.size
-
-          offer_products.each do |offer_product|
-            product = new_negotiation.proposals.last.send("#{person}").products.where(_id:offer_product._id).first
-
-            ['_id','thing_id','quantity'].each do |field|
-              product.send(field).should eq offer_product.send(field)
-            end
-
-            ['name','description','image_name'].each do |field|
-              product.instance_eval(field).should eq offer_product.instance_eval(field)
-            end
-          end
-        end
-      end
+    it 'throws an exception given an invalid offer' do
+      offer.should_receive(:valid?).and_return(:false)
+      Negotiation.open(offer).should raise_error
+      pending 'Choose wich exception to throw'
     end
 
-    context 'new_negotiation.proposals.last -> money' do
-      specify { new_offer.proposals.last.money.user_id.should eql offer.money.user_id }
-      specify { new_offer.proposals.last.money.quantity.should eql offer.money.quantity }
-    end
-
-    context 'new_negotiation -> initial_message' do
-      specify { new_offer.proposals.last.initial_message.should eql offer.initial_message }
-    end
+    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
 
   describe '#make_new_proposal(hash)' do
@@ -88,4 +67,26 @@ describe Negotiation do
   xit 'Un metodo para aceptar la propuesta actual'
   xit 'Un metodo para rechazar la propuesta actual'
   xit 'Un metodo para comprobar el estado de aceptacion de la propuesta actual'
+
+
+
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  .generate(hash)    -> crea una negotiation con los datos de un hash
+  open               -> salva la negotiation
+
+  update_proposal    -> actualiza la propuesta actual (añadiendo otra)
+  post_message       -> publica un nuevo mensage en la negociacion
+
+  leave(hash)        -> elimina el usuario (que viene en el hash) de la negociacion
+  propose_deal(hash) -> el usuario del hash propone crear un trato
+  #NOTA: el estado de cada usuario lo sacaríamos con un helper.
+         cuando un usuario tiene el boton para proponer un trato
+         se ejecutaria propose_deal(hash) y actualizaria lo necesario.
+         al otro usuario entonces le saldria un boton aceptar el cual le llevaria
+         al controlador de deal así que no es necesario ningun accept_deal
+
+=end
 end
