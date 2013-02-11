@@ -61,4 +61,6 @@ describe Offer::Composer do
       composer.image_name.should eq 'updated.png'
     end
   end
+
+  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

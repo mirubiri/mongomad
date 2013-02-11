@@ -50,8 +50,8 @@ describe Negotiation do
       Negotiation.open(offer).should raise_error
       pending 'Choose wich exception to throw'
     end
-    
-    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }  
+
+    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
 
   describe '#make_new_proposal(hash)' do
@@ -67,4 +67,26 @@ describe Negotiation do
   xit 'Un metodo para aceptar la propuesta actual'
   xit 'Un metodo para rechazar la propuesta actual'
   xit 'Un metodo para comprobar el estado de aceptacion de la propuesta actual'
+
+
+
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  .generate(hash)    -> crea una negotiation con los datos de un hash
+  open               -> salva la negotiation
+
+  update_proposal    -> actualiza la propuesta actual (añadiendo otra)
+  post_message       -> publica un nuevo mensage en la negociacion
+
+  leave(hash)        -> elimina el usuario (que viene en el hash) de la negociacion
+  propose_deal(hash) -> el usuario del hash propone crear un trato
+  #NOTA: el estado de cada usuario lo sacaríamos con un helper.
+         cuando un usuario tiene el boton para proponer un trato
+         se ejecutaria propose_deal(hash) y actualizaria lo necesario.
+         al otro usuario entonces le saldria un boton aceptar el cual le llevaria
+         al controlador de deal así que no es necesario ningun accept_deal
+
+=end
 end

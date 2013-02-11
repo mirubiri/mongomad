@@ -32,7 +32,7 @@ describe Request do
     end
   end
 
-  describe '#on save' do
+  describe 'On save' do
     it 'Uploads an image' do
       request.save
       File.exist?(File.new(request.image.path)).should be_true
@@ -42,7 +42,7 @@ describe Request do
 =begin
   # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
 
-  .generate(hash) -> crea una request con los dados de un hash
+  .generate(hash) -> crea una request con los datos de un hash
   publish         -> salva la request
   unpublish       -> elimina la request
 =end

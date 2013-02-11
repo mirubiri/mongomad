@@ -27,4 +27,20 @@ describe User do
     specify { expect(user.valid?).to be_true, "Is not valid because #{user.errors}" }
     specify { expect(user.save).to be_true }
   end
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  # FUNCIONES DEL USUARIO
+  close_account      -> elimina/cierra la cuenta del usuario
+
+  # FUNCIONES DE COSAS
+  add_thing(hash)    -> añade una cosa al usuario con los datos del hash
+  remove_thing       -> elimina la cosa del usuario
+  update_thing(hash) -> actualiza los datos de una cosa con los recibidos en el hash
+
+  # FUNCIONES CON DUDAS :)
+  - .generate  y  create(save) // esto lo hace todo devise?
+  - update user: mail o pass   // lo hace el devise tambien
+=end
 end

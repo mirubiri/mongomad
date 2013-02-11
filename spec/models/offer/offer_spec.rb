@@ -161,5 +161,14 @@ describe Offer do
   describe '#modify' do
     xit 'modifies the offer with the given params/actions'
   end
-  
+
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  .generate(hash) -> crea una offer con los datos de un hash
+  publish         -> salva la offer
+  unpublish       -> elimina la offer
+  update(hash)    -> actualiza los datos de la request con los del hash
+=end
 end

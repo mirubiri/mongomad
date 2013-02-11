@@ -37,7 +37,7 @@ describe Offer::Receiver::Product do
     end
   end
 
-  describe 'on save' do
+  describe 'On save' do
     it 'Uploads an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
@@ -60,4 +60,6 @@ describe Offer::Receiver::Product do
       product.image_name.should eq 'updated.png'
     end
   end
+
+  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end
