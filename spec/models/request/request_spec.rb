@@ -39,12 +39,19 @@ describe Request do
     end
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+  describe '.generate(hash)' do
+    xit 'Creates a new request with the given hash'
+  end
 
-  .generate(hash) -> crea una request con los datos de un hash
-  publish         -> salva la request
-  modify(hash)    -> actualiza la request con los datos del hash
-  unpublish       -> elimina la request
-=end
+  describe '#publish' do
+    xit 'Saves the request'
+  end
+
+  describe 'modify(hash)' do
+    xit 'Updates the request with the given hash'
+  end
+
+  describe 'unpublish' do
+    xit 'Deletes the request'
+  end
 end
