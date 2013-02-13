@@ -4,6 +4,7 @@ describe Negotiation do
   let(:offer) do
     Fabricate(:offer)
   end
+
   let(:negotiation) do
     Fabricate.build(:negotiation, offer:offer)
   end
@@ -41,6 +42,46 @@ describe Negotiation do
     end
   end
 
+  describe '#start_with(offer)' do
+    xit 'Starts a new negotiation from the given offer'
+  end
+
+  describe '#kick(user)' do
+    xit 'Kicks the given user from the negotiation'
+  end
+
+  describe '#do_new_proposal(hash)' do
+    xit 'Adds to negotiation a new proposal from the given hash'
+  end
+
+  describe '#post_message(hash)' do
+    xit 'Adds to negotiation a new message from the given hash'
+  end
+
+  describe '#can_propose?(user)' do
+    xit 'Returns if the given user can propose a deal'
+  end
+
+  describe '#propose_deal(user)' do
+    xit 'Updates token to set the given user has proposed a deal'
+  end
+
+  describe '#can_close?(user)' do
+    xit 'Returns if the given user can close a deal'
+  end
+
+  describe '#make_deal' do
+    xit 'Returns a deal from the current negotiation'
+  end
+
+  describe '#self_update ' do
+    xit 'Updates itself'
+  end
+
+  #TODO: A apartir de aqui los test antiguos, mover a donde corresponda :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
+
   let(:new_negotiation) { Negotiation.open(offer).publish }
 
   describe '.open' do
@@ -57,52 +98,4 @@ describe Negotiation do
 
     specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
-
-  describe '#make_new_proposal(hash)' do
-    xit 'Generates a new proposal with the given hash and post it into the negotiation'
-  end
-
-  describe '#part(user)' do
-    xit 'Makes the given user to leave the negotiation'
-    # ¿Podríamos conseguir que se ejecutara siempre desde el current_user sin pasarle ningun parametro?
-    # entonces quedaria como #user_part.
-  end
-
-  xit 'Un metodo para aceptar la propuesta actual'
-  xit 'Un metodo para rechazar la propuesta actual'
-  xit 'Un metodo para comprobar el estado de aceptacion de la propuesta actual'
-
-
-
-
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  start_with(offer)      -> Inicia una negociación con la oferta recibida
-  kick(user)             -> elimina el usuario (que viene en el hash) de la negociacion
-  do_new_proposal(hash)  -> actualiza la propuesta actual (añadiendo otra)
-  post_message(hash)     -> publica un nuevo mensage en la negociacion
-  can_propose?(user)     -> pregunta si el usuario puede proposer cerrar la negociacion
-  propose_deal(user)     -> el usuario propone cerrar el trato
-  can_close?(user)       -> pregunta si el usuario puede cerrar la negociacion
-  make_deal              -> crea un trato con la negociacion actual
-  self_update            -> actualiza la propia negociacion
-
-
-
-  kick
-  .generate(hash)    -> crea una negotiation con los datos de un hash
-  open               -> salva la negotiation
-
-  update_proposal    ->
-  post_message
-
-  propose_deal(hash) -> el usuario del hash propone crear un trato
-  #NOTA: el estado de cada usuario lo sacaríamos con un helper.
-         cuando un usuario tiene el boton para proponer un trato
-         se ejecutaria propose_deal(hash) y actualizaria lo necesario.
-         al otro usuario entonces le saldria un boton aceptar el cual le llevaria
-         al controlador de deal así que no es necesario ningun accept_deal
-
-=end
 end
