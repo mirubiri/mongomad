@@ -24,6 +24,8 @@ describe Negotiation do
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
     it { should validate_presence_of :users }
+    it { should validate_presence_of :token_user_id }
+    it { should validate_presence_of :token_state }
   end
 
   describe 'Factories' do
