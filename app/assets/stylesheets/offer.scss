@@ -5,7 +5,7 @@
   @include element_into_ElementList_style;  
   width: $offerWidth;
     
-  @include offer_options;
+  @include container_options;
   @include offer_header;
   @include offer_products;
 
