@@ -45,8 +45,7 @@ describe Deal do
 =begin
   # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
 
-  .generate(hash)    -> crea un deal con los datos de un hash
-  store              -> salva/alamacena el deal
-  post_message       -> publica un nuevo mensage en la negociacion
+  make_with(negotiation) -> crea un deal con los datos de la negotiation
+  post_message           -> publica un nuevo mensage en la negociacion
 =end
 end

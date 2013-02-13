@@ -30,11 +30,10 @@ describe Negotiation::Proposal::Receiver do
     end
   end
 
-  describe '#save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       receiver.save
       File.exist?(File.new(receiver.image.path)).should be_true
     end
   end
 end
-

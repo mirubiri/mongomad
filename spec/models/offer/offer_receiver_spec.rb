@@ -30,8 +30,8 @@ describe Offer::Receiver do
     end
   end
 
-  describe 'on save' do
-    it 'has an image' do
+  describe 'On save' do
+    it 'Has an image' do
       receiver.save
       File.exist?(File.new(receiver.image.path)).should be_true
     end

@@ -37,8 +37,8 @@ describe Offer::Composer::Product do
     end
   end
 
-  describe 'on save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end

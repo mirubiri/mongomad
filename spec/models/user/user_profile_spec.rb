@@ -52,6 +52,6 @@ describe User::Profile do
 =begin
   # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
 
-  update(hash)    -> actiualiza el perfil con los datos del hash
+  modify(hash)    -> actualiza el perfil con los datos del hash
 =end
 end

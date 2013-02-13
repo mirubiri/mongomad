@@ -41,4 +41,10 @@ describe User::Thing do
       File.exist?(File.new(thing.image.path)).should be_true
     end
   end
+
+=begin
+  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+
+  update_thing(hash) -> actualiza los datos de una cosa con los recibidos en el hash
+=end
 end

@@ -74,13 +74,25 @@ describe Negotiation do
 =begin
   # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
 
+  start_with(offer)      -> Inicia una negociación con la oferta recibida
+  kick(user)             -> elimina el usuario (que viene en el hash) de la negociacion
+  do_new_proposal(hash)  -> actualiza la propuesta actual (añadiendo otra)
+  post_message(hash)     -> publica un nuevo mensage en la negociacion
+  can_propose?(user)     -> pregunta si el usuario puede proposer cerrar la negociacion
+  propose_deal(user)     -> el usuario propone cerrar el trato
+  can_close?(user)       -> pregunta si el usuario puede cerrar la negociacion
+  make_deal              -> crea un trato con la negociacion actual
+  self_update            -> actualiza la propia negociacion
+
+
+
+  kick
   .generate(hash)    -> crea una negotiation con los datos de un hash
   open               -> salva la negotiation
 
-  update_proposal    -> actualiza la propuesta actual (añadiendo otra)
-  post_message       -> publica un nuevo mensage en la negociacion
+  update_proposal    ->
+  post_message
 
-  leave(hash)        -> elimina el usuario (que viene en el hash) de la negociacion
   propose_deal(hash) -> el usuario del hash propone crear un trato
   #NOTA: el estado de cada usuario lo sacaríamos con un helper.
          cuando un usuario tiene el boton para proponer un trato

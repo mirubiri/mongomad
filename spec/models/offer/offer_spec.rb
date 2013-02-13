@@ -162,13 +162,14 @@ describe Offer do
     xit 'modifies the offer with the given params/actions'
   end
 
-
 =begin
   # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
 
-  .generate(hash) -> crea una offer con los datos de un hash
-  publish         -> salva la offer
-  unpublish       -> elimina la offer
-  update(hash)    -> actualiza los datos de la request con los del hash
+  .generate(hash)    -> crea una offer con los datos de un hash
+  publish            -> salva la offer
+  unpublish          -> elimina la offer
+  modify(hash)       -> actualiza los datos de la request con los del hash
+  start_negotiation  -> inicia una negociacion
+  self_update        -> se actualiza ella misma
 =end
 end

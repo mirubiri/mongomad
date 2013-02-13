@@ -38,7 +38,7 @@ describe Offer::Receiver::Product do
   end
 
   describe 'On save' do
-    it 'Uploads an image' do
+    it 'Has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
