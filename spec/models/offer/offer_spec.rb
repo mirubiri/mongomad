@@ -35,13 +35,6 @@ describe Offer do
   end
 
 
-  describe '#modify(hash)' do
-    xit 'Updates the offer with the given hash'
-  end
-
-  describe '#start_negotiation' do
-    xit 'Starts a new negotiation with this offer as initial proposal'
-  end
 
   describe '.generate(hash)' do
     let(:offer_hash) do
@@ -64,9 +57,7 @@ describe Offer do
       Offer.generate(offer_hash).should be_valid
     end
 
-    it 'throws exception given incorrect parameters' do
-      pending 'Choosing what kind of exception to throw'
-    end
+    xit 'throws exception given incorrect parameters'
 
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
@@ -101,6 +92,23 @@ describe Offer do
         end
       end
     end
+  end
+
+  describe '#modify(hash)' do
+    xit 'Updates the offer with the given hash'
+  end
+
+  describe '#start_negotiation' do
+    it 'calls Negotiation.start_with(offer)' do
+      Negotiation.should_receive(:start_with).with(offer)
+      offer.start_negotiation
+    end
+
+    describe 'returned negotiation' do
+      specify { offer.start_negotiation.should be_persisted }
+    end
+
+    xit 'raise exception if new negotiation is not created correctly'
   end
 
   describe '#self_update' do
@@ -146,11 +154,13 @@ describe Offer do
       end
 
       it 'adds the offer to sent_offers for user_composer' do
-        expect { offer.publish }.to change { offer.user_composer.sent_offers.count }.by(1)
+        offer.publish
+        offer.should eq offer.user_composer.sent_offers.find(offer.id)
       end
 
       it 'adds the offer to received_offers for user_receiver' do
-        expect { offer.publish }.to change { offer.user_receiver.received_offers.count }.by(1)
+        offer.publish
+        offer.should eq offer.user_receiver.received_offers.find(offer.id)
       end
     end
 
@@ -169,18 +179,21 @@ describe Offer do
   end
 
   describe '#unpublish' do
-    before { offer.publish }
-    
+    before do 
+      offer.publish
+      offer.unpublish
+    end
+
     it 'removes a offer' do
-      expect { offer.unpublish }.to change { Offer.count }.by(-1)
+      expect { Offer.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
     end
 
     it 'removes the offer from sent_offers for user_composer' do
-      expect { offer.unpublish }.to change { offer.user_composer.sent_offers.count }.by(-1)
+      expect { offer.user_composer.sent_offers.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
     end
 
     it 'removes the offer from received_offers for user_receiver' do
-      expect { offer.unpublish }.to change { offer.user_receiver.received_offers.count }.by(-1)
+      expect { offer.user_receiver.received_offers.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
     end
   end
 end

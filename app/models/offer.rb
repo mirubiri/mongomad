@@ -45,4 +45,8 @@ class Offer
   def unpublish
     destroy
   end
+
+  def start_negotiation
+    Negotiation.start_with(self)
+  end
 end
