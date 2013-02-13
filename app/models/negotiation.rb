@@ -17,7 +17,8 @@ class Negotiation
             :token_state,
             presence: true
 
-  validates :token_state, :inclusion => { :in => [:propose, :accept] }
+  validates :token_state,
+            :inclusion => { :in => [:propose, :accept] }
 
   def self.open(params)
     offer = Offer.find(params[:offer_id])
