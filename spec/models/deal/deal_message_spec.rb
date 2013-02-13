@@ -31,8 +31,8 @@ describe Deal::Message do
     end
   end
 
-  describe '#save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       message.save
       File.exist?(File.new(message.image.path)).should be_true
     end

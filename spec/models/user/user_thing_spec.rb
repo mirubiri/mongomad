@@ -41,4 +41,8 @@ describe User::Thing do
       File.exist?(File.new(thing.image.path)).should be_true
     end
   end
+
+  describe '#modify(hash)' do
+    xit 'Updates the thing with the given hash'
+  end
 end

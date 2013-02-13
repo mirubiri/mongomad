@@ -49,9 +49,7 @@ describe User::Profile do
     end
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  update(hash)    -> actiualiza el perfil con los datos del hash
-=end
+  describe '#modify(hash)' do
+    xit 'Updates the user profile with the given hash'
+  end
 end

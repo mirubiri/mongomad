@@ -38,11 +38,15 @@ describe Offer::Receiver::Product do
   end
 
   describe 'On save' do
-    it 'Uploads an image' do
+    it 'Has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
+
+  #TODO: A apartir de aqui los test antiguos, revisar :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
 
   describe '#self_update' do
     before(:each) do
@@ -60,6 +64,4 @@ describe Offer::Receiver::Product do
       product.image_name.should eq 'updated.png'
     end
   end
-
-  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

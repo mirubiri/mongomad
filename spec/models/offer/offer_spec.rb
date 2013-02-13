@@ -34,6 +34,34 @@ describe Offer do
     end
   end
 
+  describe '.generate(hash)' do
+    xit 'Creates a new offer with the given hash'
+  end
+
+  describe '#publish' do
+    xit 'Saves the offer'
+  end
+
+  describe '#modify(hash)' do
+    xit 'Updates the offer with the given hash'
+  end
+
+  describe '#unpublish' do
+    xit 'Deletes the offer'
+  end
+
+  describe '#start_negotiation' do
+    xit 'Starts a new negotiation from the offer'
+  end
+
+  describe '#self_update' do
+    xit 'Updates itself'
+  end
+
+  #TODO: A apartir de aqui los test antiguos, mover a donde corresponda :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
+
   describe '.generate' do
     let(:offer_hash) do
       offer.publish
@@ -140,7 +168,7 @@ describe Offer do
     context 'When offer is not salvable' do
       before(:each) { offer.composer = nil }
 
-      it 'Dont saves the offer' do
+      it 'Doenst save the offer' do
         offer.should_receive(:save).and_return(false)
         offer.publish
       end
@@ -157,18 +185,4 @@ describe Offer do
       expect { offer.unpublish }.to change {Offer.count}.by(-1)
     end
   end
-
-  describe '#modify' do
-    xit 'modifies the offer with the given params/actions'
-  end
-
-
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  .generate(hash) -> crea una offer con los datos de un hash
-  publish         -> salva la offer
-  unpublish       -> elimina la offer
-  update(hash)    -> actualiza los datos de la request con los del hash
-=end
 end

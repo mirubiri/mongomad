@@ -30,8 +30,8 @@ describe Deal::Agreement::Proposal::Composer do
     end
   end
 
-  describe '#save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should be_true
     end

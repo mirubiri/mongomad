@@ -7,10 +7,18 @@ class Negotiation
 
   has_and_belongs_to_many :users
 
+  field :token_user_id, type: Moped::BSON::ObjectId
+  field :token_state,   type: Symbol
+
   validates :proposals,
             :messages,
             :users,
+            :token_user_id,
+            :token_state,
             presence: true
+
+  validates :token_state,
+            :inclusion => { :in => [:propose, :accept] }
 
   def self.open(params)
     offer = Offer.find(params[:offer_id])

@@ -4,6 +4,7 @@ describe Negotiation do
   let(:offer) do
     Fabricate(:offer)
   end
+
   let(:negotiation) do
     Fabricate.build(:negotiation, offer:offer)
   end
@@ -16,12 +17,17 @@ describe Negotiation do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should have_field(:token_user_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:token_state).of_type(Symbol) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
     it { should validate_presence_of :users }
+    it { should validate_presence_of :token_user_id }
+    it { should validate_presence_of :token_state }
+    it { should validate_inclusion_of(:token_state).to_allow([:propose, :accept]) }
   end
 
   describe 'Factories' do
@@ -36,6 +42,46 @@ describe Negotiation do
       expect { negotiation.save }.to change{ User.count }.by(2)
     end
   end
+
+  describe '#start_with(offer)' do
+    xit 'Starts a new negotiation from the given offer'
+  end
+
+  describe '#kick(user)' do
+    xit 'Kicks the given user from the negotiation'
+  end
+
+  describe '#do_new_proposal(hash)' do
+    xit 'Adds to negotiation a new proposal from the given hash'
+  end
+
+  describe '#post_message(hash)' do
+    xit 'Adds to negotiation a new message from the given hash'
+  end
+
+  describe '#can_propose?(user)' do
+    xit 'Returns if the given user can propose a deal'
+  end
+
+  describe '#propose_deal(user)' do
+    xit 'Updates token to set the given user has proposed a deal'
+  end
+
+  describe '#can_close?(user)' do
+    xit 'Returns if the given user can close a deal'
+  end
+
+  describe '#make_deal' do
+    xit 'Returns a deal from the current negotiation'
+  end
+
+  describe '#self_update ' do
+    xit 'Updates itself'
+  end
+
+  #TODO: A apartir de aqui los test antiguos, mover a donde corresponda :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
 
   let(:new_negotiation) { Negotiation.open(offer).publish }
 
@@ -53,40 +99,4 @@ describe Negotiation do
 
     specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
-
-  describe '#make_new_proposal(hash)' do
-    xit 'Generates a new proposal with the given hash and post it into the negotiation'
-  end
-
-  describe '#part(user)' do
-    xit 'Makes the given user to leave the negotiation'
-    # ¿Podríamos conseguir que se ejecutara siempre desde el current_user sin pasarle ningun parametro?
-    # entonces quedaria como #user_part.
-  end
-
-  xit 'Un metodo para aceptar la propuesta actual'
-  xit 'Un metodo para rechazar la propuesta actual'
-  xit 'Un metodo para comprobar el estado de aceptacion de la propuesta actual'
-
-
-
-
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  .generate(hash)    -> crea una negotiation con los datos de un hash
-  open               -> salva la negotiation
-
-  update_proposal    -> actualiza la propuesta actual (añadiendo otra)
-  post_message       -> publica un nuevo mensage en la negociacion
-
-  leave(hash)        -> elimina el usuario (que viene en el hash) de la negociacion
-  propose_deal(hash) -> el usuario del hash propone crear un trato
-  #NOTA: el estado de cada usuario lo sacaríamos con un helper.
-         cuando un usuario tiene el boton para proponer un trato
-         se ejecutaria propose_deal(hash) y actualizaria lo necesario.
-         al otro usuario entonces le saldria un boton aceptar el cual le llevaria
-         al controlador de deal así que no es necesario ningun accept_deal
-
-=end
 end

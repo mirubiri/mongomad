@@ -30,12 +30,16 @@ describe Offer::Composer do
     end
   end
 
-  describe 'on save' do
-    it 'has an image' do
+  describe 'On save' do
+    it 'Has an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should be_true
     end
   end
+
+  #TODO: A apartir de aqui los test antiguos, revisar :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
 
   describe '#self_update' do
     it 'calls update_user_data' do
@@ -61,6 +65,4 @@ describe Offer::Composer do
       composer.image_name.should eq 'updated.png'
     end
   end
-
-  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

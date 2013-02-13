@@ -28,19 +28,23 @@ describe User do
     specify { expect(user.save).to be_true }
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+  describe '#change_password(password)' do
+    xit 'Changes old password to the given one'
+  end
 
-  # FUNCIONES DEL USUARIO
-  close_account      -> elimina/cierra la cuenta del usuario
+  describe '#change_email(email)' do
+    xit 'Changes old email to the given one'
+  end
 
-  # FUNCIONES DE COSAS
-  add_thing(hash)    -> añade una cosa al usuario con los datos del hash
-  remove_thing       -> elimina la cosa del usuario
-  update_thing(hash) -> actualiza los datos de una cosa con los recibidos en el hash
+  describe '#close_account' do
+    xit 'Deletes user from the platform'
+  end
 
-  # FUNCIONES CON DUDAS :)
-  - .generate  y  create(save) // esto lo hace todo devise?
-  - update user: mail o pass   // lo hace el devise tambien
-=end
+  describe '#add_thing(hash)' do
+    xit 'Adds a new thing created from the given hash'
+  end
+
+  describe '#remove_thing(hash)' do
+    xit 'Removes the given thing from the user'
+  end
 end

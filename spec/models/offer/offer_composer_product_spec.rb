@@ -37,17 +37,21 @@ describe Offer::Composer::Product do
     end
   end
 
-  describe 'on save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
 
+  #TODO: A apartir de aqui los test antiguos, revisar :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
+
   describe '#self_update' do
     before(:each) do
-      thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
-      product.composer.offer.user_composer.things.stub(:find).and_return(thing)
+      @thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
+      product.composer.offer.user_composer.things.stub(:find).and_return(@thing)
       product.self_update
     end
     it 'updates name' do
@@ -60,6 +64,4 @@ describe Offer::Composer::Product do
       product.image_name.should eq 'updated.png'
     end
   end
-
-  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end

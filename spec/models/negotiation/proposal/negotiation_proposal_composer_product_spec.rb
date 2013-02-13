@@ -37,12 +37,16 @@ describe Negotiation::Proposal::Composer::Product do
     end
   end
 
-  describe '#save' do
-    it 'Uploads an image' do
+  describe 'On save' do
+    it 'Has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
+
+  #TODO: A apartir de aqui los test antiguos, revisar :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
 
   describe '#to_deal_agreement_proposal_composer_product' do
     xit { should respond_to(:to_deal_agreement_proposal_composer_product).with(0).arguments }
@@ -57,6 +61,4 @@ describe Negotiation::Proposal::Composer::Product do
       product.quantity.should eql aux_product.quantity
     end
   end
-
-  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end
