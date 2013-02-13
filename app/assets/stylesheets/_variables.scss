@@ -1,4 +1,4 @@
-$near-black: #333;
+ $near-black: #333;
 $light-blue: #d4f2ff;
 $dark-blue: darken($light-blue, 25%);
 $highlight: #ffc;
@@ -24,7 +24,7 @@ $quantityContainerProportion: ($offerWidth * 0.06);
 $quantityContainerPosition: $offerWidth - $quantityContainerProportion;
 
 //para ambos contenedores principales
-$MCExtPadding: 40px;
+$MCExtPadding: 0px;
 $MCTopPadding: 50px;
 $MCCenterMargin: 15px;
 
@@ -176,3 +176,124 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       }
     }
   }
+
+@mixin offer_header{
+
+  .offer_header{
+    @include proportions(100%,60px);
+    overflow: hidden;
+    margin-bottom: 5px;
+
+    .triangle {
+      @include relative($top:0px,$left:$trianglePosition);
+      @include proportions(0px,0px);
+      z-index: 1001;
+      border:{
+            top: 25px solid rgb(220,220,220);
+            right: 0px solid transparent;
+            left: 25px solid transparent;
+      }
+
+      img{
+        @include proportions(12px,10px);
+        @include absolute($top:-24px,$left:-15px);   
+      }
+    }
+
+    .profile_image{
+      @include images_style;
+      @include relative($top:-20px,$left:$profileImageLeftMargin);
+      @include proportions($profileImageDimension,$profileImageDimension);
+
+      a{
+        @include proportions(100%,100%); 
+
+        img{
+          @include high-quality-image;
+          @include proportions(100%,100%);  
+        }
+      }
+    }
+
+    .description{
+      @include relative($top:-74px,$left:$commentPosition);
+      @include proportions($commentWidth,$profileImageDimension);
+      overflow: hidden;
+      font-size: 9px;
+    }
+  }
+}
+
+@mixin offer_products{
+  .offer_things{
+    float:left;
+    overflow: visible;
+    margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
+
+    .recieved{
+      width: $bigImageDimension;
+      float:left;
+      overflow: hidden;
+      margin: 0px $productRightMargin 0px 0px;
+
+      .image_container{
+        @include images_style;
+        @include proportions($bigImageDimension,$bigImageDimension);
+        float:left;
+        margin:0px 0px 5px 0px;
+
+        img{
+          @include high-quality-image;
+          @include proportions(100%,100%);
+        }
+      }      
+     }
+
+    .given{
+      width: $smallImageDimension;
+      float: right;
+      overflow: hidden;
+      margin: 0px $productRightMargin 0px 0px;
+
+      .image_container{
+        @include images_style;
+        @include proportions($smallImageDimension,$smallImageDimension);
+        float:left;
+        margin:0px 0px 5px 0px;
+
+        img{
+          @include border-radius(5px, 5px);
+          @include high-quality-image;
+          @include proportions(100%,100%);          
+        }
+      }      
+    }
+  }
+}
+
+@mixin offer_options{
+  #options{    
+    position: fixed;
+    width: $offerWidth;
+    overflow: visible;
+    background-color:grey;
+    z-index: 1000;
+    display: none;
+
+    .menu{
+      @include float-children('a',left);
+      @include box-sizing(border-box);
+      border: $borde2px;
+      display: inline;
+      float:left;
+      width: 100%;
+      color: white;
+
+      a{ 
+        border-bottom: $borde2px;       
+        @include unstyled-link;
+        @include proportions(100%,20px);
+      }
+    }
+  }
+}

@@ -1,12 +1,18 @@
 <% if (user_visited_offers.count != 0)%>
   <% @offers.each do |offer| %>
     <div class="offer" id="<%= offer_composer_id(offer) %>">
+      <div id="options">
+        <div class="menu">
+          <%= link_to "Eliminar Oferta",
+                user_offer_path(current_user,offer_id(offer)),
+                :method => :delete,                
+                :confirm => "Are you sure?" %>
+          <a href="#blank">Opcion 2</a>
+        </div>
+      </div>
       <div class="offer_header">
         <div class="triangle">
-          <%= link_to "x",
-            user_offer_path(current_user,offer_id(offer)),
-            :method => :delete,
-            :confirm => "Are you sure?" %>
+          <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button">
         </div>
         <div class="profile_image">
           <%= link_to offer_composer_image(offer),

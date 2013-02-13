@@ -3,96 +3,11 @@
 
 .offer {
   @include element_into_ElementList_style;  
-  width: $offerWidth;  
-
-  .offer_header{
-    @include proportions(100%,60px);
-    overflow: hidden;
-    margin-bottom: 5px;
-
-    .triangle {
-      @include relative($top:0px,$left:$trianglePosition);
-      @include proportions(0px,0px);
-      border:{
-            top: 25px solid rgb(220,220,220);
-            right: 0px solid transparent;
-            left: 25px solid transparent;
-      }
-
-      a{
-        @include absolute($top:-28px,$left:-10px);
-        @include unstyled-link;
-        font-size:12px;
-      }
-    }
-
-    .profile_image{
-      @include images_style;
-      @include relative($top:-20px,$left:$profileImageLeftMargin);
-      @include proportions($profileImageDimension,$profileImageDimension);
-
-      a{
-        @include proportions(100%,100%); 
-
-        img{
-          @include high-quality-image;
-          @include proportions(100%,100%);  
-        }
-      }
-    }
-
-    .description{
-      @include relative($top:-74px,$left:$commentPosition);
-      @include proportions($commentWidth,$profileImageDimension);
-      overflow: hidden;
-      font-size: 9px;
-    }
-  }
-
-  .offer_things{
-    float:left;
-    overflow: visible;
-    margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
-
-    .recieved{
-      width: $bigImageDimension;
-      float:left;
-      overflow: hidden;
-      margin: 0px $productRightMargin 0px 0px;
-
-      .image_container{
-        @include images_style;
-        @include proportions($bigImageDimension,$bigImageDimension);
-        float:left;
-        margin:0px 0px 5px 0px;
-
-        img{
-          @include high-quality-image;
-          @include proportions(100%,100%);
-        }
-      }      
-     }
-
-    .given{
-      width: $smallImageDimension;
-      float: right;
-      overflow: hidden;
-      margin: 0px $productRightMargin 0px 0px;
-
-      .image_container{
-        @include images_style;
-        @include proportions($smallImageDimension,$smallImageDimension);
-        float:left;
-        margin:0px 0px 5px 0px;
-
-        img{
-          @include border-radius(5px, 5px);
-          @include high-quality-image;
-          @include proportions(100%,100%);          
-        }
-      }      
-    }
-  }
+  width: $offerWidth;
+    
+  @include offer_options;
+  @include offer_header;
+  @include offer_products;
 
   .offer_button{
     float: left;

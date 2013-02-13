@@ -248,6 +248,9 @@ module ApplicationHelper
   def negotiation_composer_products(negotiation)
     negotiation.proposals.last.composer.products
   end
+  def negotiation_composer_id(negotiation)
+    negotiation.proposals.last.user_composer_id
+  end
   def negotiation_receiver_image(negotiation)
     image_tag(negotiation.proposals.last.receiver.image)
   end

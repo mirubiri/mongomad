@@ -14,12 +14,14 @@
   color: white;
 
     .header_logo{
-      @include proportions(140px,20px);
-      float: left;
+      @include proportions(140px,30px);
+      position: absolute;
+      top: 2%;
+      left: 10%;
       color: white;
       //border: $borde1px;
       background:{
-        image: image-url('http://localhost:3000/system/images/logo.png');
+        image: image-url('http://localhost:3000/images/logo.png');
         repeat:no-repeat;
       }
       margin:{
@@ -30,7 +32,9 @@
 
     nav{
       @include float-children('a',left);
-      float: left;
+      position: absolute;
+      top: 10%;
+      left: 33%;
       margin: 4px 10px 0px 200px;
 
       a{
@@ -43,13 +47,17 @@
 
     input[type='search']{
       @include reset-search-field;
-      float: left;
+      position: absolute;
+      top: 10%;
+      left: 76%;
       margin: 5px 20px 0px 0px;
     }
 
     .header_user_image{
       @include proportions(26px,26px);
-      float:left;
+      position: absolute;
+      top: 2%;
+      left: 50%;
       margin: 3px 0px 0px 0px;
 
       a{
@@ -64,7 +72,9 @@
 
     .header_user_description{
       @include proportions(120px,30px);
-      float:left;
+      position: absolute;
+      top: 15%;
+      left: 54%;
       margin-left:5px;
       vertical-align:text-top;
       font:{
@@ -82,6 +92,9 @@
 
     a{
       @include unstyled-link;
+      position: absolute;
+      top: 25%;
+      left: 90%;
       margin-left: 10px;
     }
 }

@@ -21,7 +21,6 @@
       <p><%= user_logged_surname %></p>
     </div>
     
-    Not you?
     <%= link_to "sign out", destroy_user_session_path,:method => :delete %>
     <% else %>
       <%= link_to "sign up", new_user_registration_path %>

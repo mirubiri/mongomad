@@ -256,7 +256,15 @@ function newOfferScript(){
   });
 }
 
+function slideOptionsPanel(){
+  $(".triangle > #options_button").live('click',function(e){
+    $(this).parent().parent().parent().find('#options').slideToggle('slow');
+    e.preventDefault();
+  });
+}
+
 $(window).load(function(){
+  slideOptionsPanel();
   modalWindows();
   applyMasonry();
   ajaxLinks();
