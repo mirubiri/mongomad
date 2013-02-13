@@ -38,14 +38,11 @@ describe Deal do
     end
   end
 
-  describe '.generate_from(accepted_negotiation)' do
-    xit 'Generates a new deal from an accepted_negotiation'
+  describe '#make_with(negotiation)' do
+    xit 'Makes a new deal from the given negotiation'
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  make_with(negotiation) -> crea un deal con los datos de la negotiation
-  post_message           -> publica un nuevo mensage en la negociacion
-=end
+  describe '#post_message(hash)' do
+    xit 'Adds to deal a new message from the given hash'
+  end
 end
