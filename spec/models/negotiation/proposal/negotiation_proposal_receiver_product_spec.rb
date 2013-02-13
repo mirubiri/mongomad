@@ -44,6 +44,10 @@ describe Negotiation::Proposal::Receiver::Product do
     end
   end
 
+  #TODO: A apartir de aqui los test antiguos, revisar :)
+  #      mirar a ver que funciones son privadas y no deben testearse
+  #----------------------------------------------------------------------
+
   describe '#to_deal_agreement_proposal_receiver_product' do
     xit { should respond_to(:to_deal_agreement_proposal_receiver_product).with(0).arguments }
 
@@ -57,6 +61,4 @@ describe Negotiation::Proposal::Receiver::Product do
       product.quantity.should eql aux_product.quantity
     end
   end
-
-  #TODO: TODAS ESTAS FUNCIONES NO DEBERIAN SER PRIVADAS Y NO TESTEARSE?
 end
