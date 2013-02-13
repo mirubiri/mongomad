@@ -28,16 +28,23 @@ describe User do
     specify { expect(user.save).to be_true }
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
+  describe '#change_password(password)' do
+    xit 'Changes old password to the given one'
+  end
 
-  # FUNCIONES DEL USUARIO
-  change_password    -> cambio de contraseña
-  change_email       -> cambio de email
-  close_account      -> cierra la cuenta del usuario
+  describe '#change_email(email)' do
+    xit 'Changes old email to the given one'
+  end
 
-  # FUNCIONES DE LAS COSAS
-  add_thing(hash)    -> añade una cosa al usuario con los datos del hash
-  remove_thing(hash) -> elimina la cosa del usuario
-=end
+  describe '#close_account' do
+    xit 'Deletes user from the platform'
+  end
+
+  describe '#add_thing(hash)' do
+    xit 'Adds a new thing created from the given hash'
+  end
+
+  describe '#remove_thing(hash)' do
+    xit 'Removes the given thing from the user'
+  end
 end
