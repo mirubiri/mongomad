@@ -18,7 +18,7 @@ describe Negotiation do
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:token_user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:token_state).of_type(String) }
+    it { should have_field(:token_state).of_type(Symbol) }
   end
 
   describe 'Validations' do
@@ -27,6 +27,7 @@ describe Negotiation do
     it { should validate_presence_of :users }
     it { should validate_presence_of :token_user_id }
     it { should validate_presence_of :token_state }
+    it { should validate_inclusion_of(:token_state).to_allow([:propose, :accept]) }
   end
 
   describe 'Factories' do
