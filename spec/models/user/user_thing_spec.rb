@@ -42,9 +42,7 @@ describe User::Thing do
     end
   end
 
-=begin
-  # Funciones PUBLICAS necesarias (debatidas en el fuego de campamento)
-
-  update_thing(hash) -> actualiza los datos de una cosa con los recibidos en el hash
-=end
+  describe '#modify(hash)' do
+    xit 'Updates the thing with the given hash'
+  end
 end
