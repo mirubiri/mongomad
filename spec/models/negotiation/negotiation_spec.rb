@@ -42,9 +42,22 @@ describe Negotiation do
       expect { negotiation.save }.to change{ User.count }.by(2)
     end
   end
+  
+  
+  let(:new_negotiation) { Negotiation.open(offer).publish }
 
-  describe '#start_with(offer)' do
-    xit 'Starts a new negotiation from the given offer'
+  describe '.start_with(offer)' do
+    it 'generates a valid negotiation given an offer' do
+      Negotiation.start_with(offer).should be_valid
+    end
+
+    it 'throws an exception given an invalid offer' do
+      offer.should_receive(:valid?).and_return(:false)
+      Negotiation.start_with(offer).should raise_error
+      pending 'Choose wich exception to throw'
+    end
+
+    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
 
   describe '#kick(user)' do
@@ -77,26 +90,5 @@ describe Negotiation do
 
   describe '#self_update ' do
     xit 'Updates itself'
-  end
-
-  #TODO: A apartir de aqui los test antiguos, mover a donde corresponda :)
-  #      mirar a ver que funciones son privadas y no deben testearse
-  #----------------------------------------------------------------------
-
-  let(:new_negotiation) { Negotiation.open(offer).publish }
-
-  describe '.open' do
-
-    it 'generates a valid negotiation given an offer' do
-      Negotiation.open(offer).should be_valid
-    end
-
-    it 'throws an exception given an invalid offer' do
-      offer.should_receive(:valid?).and_return(:false)
-      Negotiation.open(offer).should raise_error
-      pending 'Choose wich exception to throw'
-    end
-
-    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
 end

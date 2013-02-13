@@ -34,35 +34,16 @@ describe Offer do
     end
   end
 
-  describe '.generate(hash)' do
-    xit 'Creates a new offer with the given hash'
-  end
-
-  describe '#publish' do
-    xit 'Saves the offer'
-  end
 
   describe '#modify(hash)' do
     xit 'Updates the offer with the given hash'
   end
 
-  describe '#unpublish' do
-    xit 'Deletes the offer'
-  end
-
   describe '#start_negotiation' do
-    xit 'Starts a new negotiation from the offer'
+    xit 'Starts a new negotiation with this offer as initial proposal'
   end
 
-  describe '#self_update' do
-    xit 'Updates itself'
-  end
-
-  #TODO: A apartir de aqui los test antiguos, mover a donde corresponda :)
-  #      mirar a ver que funciones son privadas y no deben testearse
-  #----------------------------------------------------------------------
-
-  describe '.generate' do
+  describe '.generate(hash)' do
     let(:offer_hash) do
       offer.publish
       {

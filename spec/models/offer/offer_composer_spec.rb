@@ -37,10 +37,6 @@ describe Offer::Composer do
     end
   end
 
-  #TODO: A apartir de aqui los test antiguos, revisar :)
-  #      mirar a ver que funciones son privadas y no deben testearse
-  #----------------------------------------------------------------------
-
   describe '#self_update' do
     it 'calls update_user_data' do
        # Use relationship.target to access to the wrapped object

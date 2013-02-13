@@ -44,10 +44,6 @@ describe Offer::Composer::Product do
     end
   end
 
-  #TODO: A apartir de aqui los test antiguos, revisar :)
-  #      mirar a ver que funciones son privadas y no deben testearse
-  #----------------------------------------------------------------------
-
   describe '#self_update' do
     before(:each) do
       @thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')

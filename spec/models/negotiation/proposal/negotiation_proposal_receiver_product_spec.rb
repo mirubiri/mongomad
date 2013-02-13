@@ -43,22 +43,4 @@ describe Negotiation::Proposal::Receiver::Product do
       File.exist?(File.new(product.image.path)).should be_true
     end
   end
-
-  #TODO: A apartir de aqui los test antiguos, revisar :)
-  #      mirar a ver que funciones son privadas y no deben testearse
-  #----------------------------------------------------------------------
-
-  describe '#to_deal_agreement_proposal_receiver_product' do
-    xit { should respond_to(:to_deal_agreement_proposal_receiver_product).with(0).arguments }
-
-    xspecify { product.to_deal_agreement_proposal_receiver_product.should be_kind_of(Deal::Agreement::Proposal::Receiver::Product) }
-
-    xit 'Builds an deal_agreement_proposal_receiver_product' do
-      aux_product = product.to_deal_agreement_proposal_receiver_product
-      product.thing_id.should eql aux_product.thing_id
-      product.name.should eql aux_product.name
-      product.description.should eql aux_product.description
-      product.quantity.should eql aux_product.quantity
-    end
-  end
 end
