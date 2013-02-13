@@ -41,4 +41,8 @@ class Offer
   def publish
     save && self
   end
+
+  def unpublish
+    destroy
+  end
 end

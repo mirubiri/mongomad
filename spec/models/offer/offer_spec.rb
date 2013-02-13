@@ -144,6 +144,14 @@ describe Offer do
       it 'Returns this offer' do
         offer.publish.should eq offer
       end
+
+      it 'adds the offer to sent_offers for user_composer' do
+        expect { offer.publish }.to change { offer.user_composer.sent_offers.count }.by(1)
+      end
+
+      it 'adds the offer to received_offers for user_receiver' do
+        expect { offer.publish }.to change { offer.user_receiver.received_offers.count }.by(1)
+      end
     end
 
     context 'When offer is not salvable' do
@@ -161,9 +169,18 @@ describe Offer do
   end
 
   describe '#unpublish' do
+    before { offer.publish }
+    
     it 'removes a offer' do
-      offer.publish
-      expect { offer.unpublish }.to change {Offer.count}.by(-1)
+      expect { offer.unpublish }.to change { Offer.count }.by(-1)
+    end
+
+    it 'removes the offer from sent_offers for user_composer' do
+      expect { offer.unpublish }.to change { offer.user_composer.sent_offers.count }.by(-1)
+    end
+
+    it 'removes the offer from received_offers for user_receiver' do
+      expect { offer.unpublish }.to change { offer.user_receiver.received_offers.count }.by(-1)
     end
   end
 end

@@ -38,7 +38,7 @@ describe Deal do
     end
   end
 
-  describe '#make_with(negotiation)' do
+  describe '.make_with(negotiation)' do
     xit 'Makes a new deal from the given negotiation'
   end
 
