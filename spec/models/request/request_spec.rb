@@ -47,11 +47,11 @@ describe Request do
     xit 'Saves the request'
   end
 
-  describe 'modify(hash)' do
+  describe '#modify(hash)' do
     xit 'Updates the request with the given hash'
   end
 
-  describe 'unpublish' do
+  describe '#unpublish' do
     xit 'Deletes the request'
   end
 end
