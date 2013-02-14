@@ -9,10 +9,10 @@ class Offer::Composer
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :offer,
-            :products,
-            :name,
-            :image,
-            presence: true
+    :products,
+    :name,
+    :image,
+    presence: true
 
   def add_products(params)
     params.each do |index|

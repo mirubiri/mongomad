@@ -9,10 +9,10 @@ class Negotiation::Proposal::Receiver
   mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :proposal,
-            :products,
-            :name,
-            :image,
-            presence: true
+    :products,
+    :name,
+    :image,
+    presence: true
 
   def add_products(products)
     products.each do |product|

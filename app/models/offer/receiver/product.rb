@@ -11,17 +11,16 @@ class Offer::Receiver::Product
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   validates :receiver,
-            :thing_id,
-            :name,
-            :description,
-            :quantity,
-            :image,
-            presence: true
+    :thing_id,
+    :name,
+    :description,
+    :quantity,
+    :image,
+    presence: true
 
   validates :quantity,
-            allow_nil: false,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 0 }
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def self_update
     thing = receiver.offer.user_receiver.things.find(self.thing_id)

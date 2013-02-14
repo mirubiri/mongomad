@@ -10,8 +10,8 @@ class Negotiation::Message
   mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :negotiation,
-            :user_name,
-            :text,
-            :image,
-            presence: true
+    :user_name,
+    :text,
+    :image,
+    presence: true
 end

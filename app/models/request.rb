@@ -10,8 +10,8 @@ class Request
   mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :user,
-            :user_name,
-            :text,
-            :image,
-            presence: true
+    :user_name,
+    :text,
+    :image,
+    presence: true
 end

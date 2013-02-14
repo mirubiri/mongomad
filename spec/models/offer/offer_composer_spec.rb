@@ -39,7 +39,7 @@ describe Offer::Composer do
 
   describe '#self_update' do
     it 'calls update_user_data' do
-       # Use relationship.target to access to the wrapped object
+      # Use relationship.target to access to the wrapped object
       composer.target.should_receive(:update_user_data)
       composer.self_update
     end

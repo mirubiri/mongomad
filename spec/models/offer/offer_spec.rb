@@ -43,11 +43,11 @@ describe Offer do
         user_composer_id: offer.user_composer_id,
         user_receiver_id: offer.user_receiver_id,
         composer_things:  offer.composer.products.map do |product|
-                            { thing_id: product[:thing_id], quantity: product[:quantity] }
-                          end,
+          { thing_id: product[:thing_id], quantity: product[:quantity] }
+        end,
         receiver_things:  offer.receiver.products.map do |product|
-                            { thing_id: product[:thing_id], quantity: product[:quantity] }
-                          end,
+          { thing_id: product[:thing_id], quantity: product[:quantity] }
+        end,
         money:            { user_id: offer.money.user_id, quantity: offer.money.quantity },
         initial_message:  offer.initial_message
       }
@@ -143,8 +143,8 @@ describe Offer do
   end
 
   describe '#publish' do
-    
-    context 'When offer is valid' do 
+
+    context 'When offer is valid' do
       it 'saves the offer' do
         offer.publish
         Offer.all.to_a.should include(offer)
@@ -167,11 +167,11 @@ describe Offer do
 
     context 'When offer is not valid' do
       before { offer.should_receive(:save).and_return(false) }
-      
+
       it 'returns false' do
         offer.publish.should eq false
       end
-      
+
       it 'do not save the offer' do
         offer.publish
         Offer.all.to_a.should_not include(offer)
@@ -191,7 +191,7 @@ describe Offer do
   end
 
   describe '#unpublish' do
-    before do 
+    before do
       offer.publish
       offer.unpublish
     end

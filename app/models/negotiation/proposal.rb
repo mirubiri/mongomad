@@ -11,12 +11,12 @@ class Negotiation::Proposal
   field :user_receiver_id, type: Moped::BSON::ObjectId
 
   validates :negotiation,
-            :composer,
-            :receiver,
-            :money,
-            :user_composer_id,
-            :user_receiver_id,
-            presence: true
+    :composer,
+    :receiver,
+    :money,
+    :user_composer_id,
+    :user_receiver_id,
+    presence: true
 
   def self.generate(offer)
     proposal = new(user_composer_id:offer.user_composer_id,

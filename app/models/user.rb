@@ -12,18 +12,18 @@ class User
   has_and_belongs_to_many :deals
 
   validates :profile,
-            presence: true
+    presence: true
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :trackable,
-         :validatable
+    :registerable,
+    :recoverable,
+    :rememberable,
+    :trackable,
+    :validatable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""

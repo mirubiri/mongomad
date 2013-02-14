@@ -11,10 +11,10 @@ class Deal::Agreement::Proposal
   field :user_receiver_id, type: Moped::BSON::ObjectId
 
   validates :agreement,
-            :composer,
-            :receiver,
-            :money,
-            :user_composer_id,
-            :user_receiver_id,
-            presence: true
+    :composer,
+    :receiver,
+    :money,
+    :user_composer_id,
+    :user_receiver_id,
+    presence: true
 end

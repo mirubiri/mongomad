@@ -99,7 +99,7 @@ describe Negotiation do
 
     context 'when negotiators match with composer and receiver in given hash' do
       before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(true) }
-      
+
       it 'calls to proposal.generate with the given hash' do
         Negotiation::Proposal.should_receive(:generate).with(proposal_form_hash)
         negotiation.make_proposal(proposal_form_hash)
@@ -111,7 +111,7 @@ describe Negotiation do
 
       specify { negotiation.make_proposal(proposal_form_hash).should be_true }
     end
-    
+
     context 'when negotiators do not match with composer and receiver in given hash' do
       before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(false) }
 

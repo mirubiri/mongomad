@@ -10,8 +10,8 @@ class Deal::Message
   mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :deal,
-            :user_name,
-            :text,
-            :image,
-            presence: true
+    :user_name,
+    :text,
+    :image,
+    presence: true
 end

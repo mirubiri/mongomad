@@ -7,11 +7,10 @@ class Negotiation::Proposal::Money
   field :quantity, type: Integer
 
   validates :proposal,
-            :quantity,
-            presence: true
+    :quantity,
+    presence: true
 
   validates :quantity,
-            allow_nil: false,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 0 }
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

@@ -8,7 +8,7 @@ class Deal
   has_and_belongs_to_many :users
 
   validates :agreement,
-            :messages,
-            :users,
-            presence: true
+    :messages,
+    :users,
+    presence: true
 end

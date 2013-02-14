@@ -11,15 +11,14 @@ class Deal::Agreement::Proposal::Composer::Product
   mount_uploader :image, ThingImageUploader, :mount_on => :image_name
 
   validates :composer,
-            :thing_id,
-            :name,
-            :description,
-            :quantity,
-            :image,
-            presence: true
+    :thing_id,
+    :name,
+    :description,
+    :quantity,
+    :image,
+    presence: true
 
   validates :quantity,
-            allow_nil: false,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 0 }
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

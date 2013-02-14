@@ -11,14 +11,14 @@ class Negotiation
   field :token_state,   type: Symbol
 
   validates :proposals,
-            :messages,
-            :users,
-            :token_user_id,
-            :token_state,
-            presence: true
+    :messages,
+    :users,
+    :token_user_id,
+    :token_state,
+    presence: true
 
   validates :token_state,
-            :inclusion => { :in => [:propose, :accept] }
+    inclusion: { :in => [:propose, :accept] }
 
   def self.open(params)
     offer = Offer.find(params[:offer_id])
@@ -30,7 +30,8 @@ class Negotiation
     message = Negotiation::Message.new(
       user_name: offer.composer.name,
       text: offer.initial_message,
-      image: offer.composer.image)
+      image: offer.composer.image
+    )
     negotiation.add_message(message)
 
     negotiation.set_users(offer)
@@ -53,6 +54,6 @@ class Negotiation
   end
 
   def publish
-   save && self
+    save && self
   end
 end

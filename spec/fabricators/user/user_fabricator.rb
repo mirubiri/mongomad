@@ -11,5 +11,5 @@ Fabricator(:user) do
 end
 
 Fabricator(:user_with_things, from: :user) do
-	things(count:1) { Fabricate.build(:user_thing) }
+  things(count:1) { Fabricate.build(:user_thing) }
 end

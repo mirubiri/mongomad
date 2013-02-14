@@ -9,8 +9,8 @@ class Deal::Agreement::Proposal::Composer
   mount_uploader :image, UserImageUploader, :mount_on => :image_name
 
   validates :proposal,
-            :products,
-            :name,
-            :image,
-            presence: true
+    :products,
+    :name,
+    :image,
+    presence: true
 end

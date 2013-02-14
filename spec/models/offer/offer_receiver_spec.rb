@@ -39,7 +39,7 @@ describe Offer::Receiver do
 
   describe '#self_update' do
     it 'calls update_user_data' do
-       # Use relationship.target to access to the wrapped object
+      # Use relationship.target to access to the wrapped object
       receiver.target.should_receive(:update_user_data)
       receiver.self_update
     end
