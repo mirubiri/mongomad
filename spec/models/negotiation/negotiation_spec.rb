@@ -90,23 +90,40 @@ describe Negotiation do
     end
   end
 
-  describe '#do_new_proposal(proposal_form_hash)' do
-    xit 'Adds to negotiation a new proposal from the given hash'
+  describe '#current_proposal' do
+    it 'returns the last proposed proposal'
+  end
+
+  describe '#make_proposal(proposal_form_hash)' do
+    it 'Adds a new proposal from the given hash' do
+      Negotiation::Proposal.should_receive(:generate).with(proposal_form_hash)
+      negotiation.make_proposal(proposal_form_hash)
+    end
+
+    it 'check that negotiators from proposal_form_hash are into the negotiation' do
+      negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(true)
+      negotiation.make_proposal(proposal_form_hash)
+    end
+
+    it 'raise error if negotiators in proposal_form_hash are not into the negotiation' do
+      negotiation.should_receive(:check_negotiatorss).with(proposal_form_hash).and_return(false)
+      negotiation.make_proposal(proposal_form_hash).should raise_error
+    end
   end
 
   describe '#post_message(message_form_hash)' do
     xit 'Adds to negotiation a new message from the given hash'
   end
 
-  describe '#can_propose?(negotiator)' do
+  describe '#can_agree?(negotiator)' do
     it 'Returns true if the given negotiator can propose a deal'
   end
 
-  describe '#propose_deal(negotiator)' do
+  describe '#agree(negotiator)' do
     xit 'Updates token to set the given negotiator has proposed a deal'
   end
 
-  describe '#can_close?(negotiator)' do
+  describe '#can_make_deal?(negotiator)' do
     xit 'Returns true if the given negotiator can close a deal'
   end
 
