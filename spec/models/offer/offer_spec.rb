@@ -36,7 +36,7 @@ describe Offer do
 
 
 
-  describe '.generate(hash)' do
+  describe '.generate(offer_form_hash)' do
     let(:offer_hash) do
       offer.publish
       {
@@ -94,7 +94,7 @@ describe Offer do
     end
   end
 
-  describe '#modify(hash)' do
+  describe '#modify(offer_form_hash)' do
     xit 'Updates the offer with the given hash'
   end
 

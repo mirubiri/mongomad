@@ -61,7 +61,7 @@ describe Negotiation do
   end
 
   describe '#kick(negotiator)' do
-    
+
     let(:leaving_negotiator) { negotiation.negotiators.first }
 
     context 'When negotiator is in negotiation' do
@@ -90,11 +90,11 @@ describe Negotiation do
     end
   end
 
-  describe '#do_new_proposal(proposal_hash)' do
+  describe '#do_new_proposal(proposal_form_hash)' do
     xit 'Adds to negotiation a new proposal from the given hash'
   end
 
-  describe '#post_message(message_hash)' do
+  describe '#post_message(message_form_hash)' do
     xit 'Adds to negotiation a new message from the given hash'
   end
 
