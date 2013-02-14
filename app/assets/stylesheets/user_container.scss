@@ -67,6 +67,8 @@
 
     .user_container_requests{
       @include container_into_PpalSide_style;
+      margin-bottom: 0px;
+      border-bottom: none;      
 
       .add_request_button{
         @include center-horizontally(80%);

@@ -1,7 +1,7 @@
 @import 'stitch';
 
 footer{
-  @include absolute($top:0px);
+  float:left;
   @include proportions(90%,30px);
   color:grey;
   text-align:center;

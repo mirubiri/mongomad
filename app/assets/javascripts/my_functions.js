@@ -15,6 +15,16 @@ function matchPrincipalContainersHeighs(){
   }
 }
 
+function expandRequestContainer(){
+  var alturaUserSide = $('#user-side').height();
+  var alturaUserReputation = $('#user_reputation_container').height();
+  var alturaUserData = $('#user_data_container').height();
+
+  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -27;
+
+  $('#user_request_list').css('height', alturaRequesContainer);
+}
+
 function maximizeConversationsHeights(){
   $("[id^=negotiation]").each(function(){
     $(this).equalHeightColumns({children:':not(h2,p)'});
@@ -272,6 +282,7 @@ $(window).load(function(){
   addProfileCommentsSeparator();
   maximizeConversationsHeights();
   matchPrincipalContainersHeighs();
+  expandRequestContainer();
 });
 
 $(window).bind('resize', function() {
