@@ -92,7 +92,7 @@ describe Negotiation do
   end
 
   describe '#current_proposal' do
-    it 'returns the last proposed proposal'
+    xit 'returns the last proposed proposal'
   end
 
   describe '#make_proposal(proposal_form_hash)' do
