@@ -95,13 +95,13 @@ describe Offer do
   end
 
   describe '#modify(offer_form_hash)' do
-    xit 'Updates the offer with the given hash'
+    xit 'updates the offer with the given hash'
   end
 
   describe '#start_negotiation' do
     it 'calls .start_with(offer)' do
       Negotiation.should_receive(:start_with).with(offer)
-      offer.start_negotiation(offer)
+      offer.start_negotiation
     end
 
     describe 'returned negotiation' do
