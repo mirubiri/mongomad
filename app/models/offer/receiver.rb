@@ -14,13 +14,13 @@ class Offer::Receiver
     :image,
     presence: true
 
-
-  def add_products(params)
-    params.each do |index|
+  def add_products(hash)
+    hash.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
   end
 
+  private
   def update_user_data
     self.name = offer.user_receiver.profile.name
     self.image_name = offer.user_receiver.profile.image_name
@@ -32,6 +32,7 @@ class Offer::Receiver
     end
   end
 
+  public
   def self_update
     update_user_data
     update_products

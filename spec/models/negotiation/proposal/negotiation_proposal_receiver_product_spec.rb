@@ -30,7 +30,7 @@ describe Negotiation::Proposal::Receiver::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true,  }
+    specify { expect(product.valid?).to eq true }
 
     it 'Creates one negotiation' do
       expect { product.save }.to change{ Negotiation.count }.by(1)

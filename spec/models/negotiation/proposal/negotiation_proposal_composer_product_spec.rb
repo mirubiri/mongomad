@@ -7,7 +7,7 @@ describe Negotiation::Proposal::Composer::Product do
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Negotiation::Proposal::Composer) }
-   end
+  end
 
   describe 'Attributes' do
     it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
@@ -30,7 +30,7 @@ describe Negotiation::Proposal::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true,  }
+    specify { expect(product.valid?).to eq true }
 
     it 'Creates one negotiation' do
       expect { product.save }.to change{ Negotiation.count }.by(1)
