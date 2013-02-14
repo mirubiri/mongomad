@@ -1,10 +1,10 @@
 Fabricator(:user_profile, class_name: "User::Profile") do
-  user             nil
-  name             { Faker::Name.first_name }
-  surname          { Faker::Name.last_name }
-  nickname         { Faker::Internet.user_name }
+  user             nil 
+  name             { Faker::Name.first_name                  }
+  surname          { Faker::Name.last_name                   }
+  nickname         { Faker::Internet.user_name               }
   sex              'man'
-  country          { Faker::Address.country }
+  country          { Faker::Address.country                  }
   delivery_address nil
   phone_number     nil
   website          nil
