@@ -150,17 +150,17 @@ describe Offer do
       end
 
       it 'Returns this offer' do
-        offer.publish.should eq offer
+        offer.publish.should be_true
       end
 
       it 'adds the offer to sent_offers for user_composer' do
         offer.publish
-        offer.should eq offer.user_composer.sent_offers.find(offer.id)
+        offer.user_composer.sent_offers.should include(offer)
       end
 
       it 'adds the offer to received_offers for user_receiver' do
         offer.publish
-        offer.should eq offer.user_receiver.received_offers.find(offer.id)
+        offer.user_receiver.received_offers.should include(offer)
       end
     end
 
@@ -184,16 +184,16 @@ describe Offer do
       offer.unpublish
     end
 
-    it 'removes a offer' do
-      expect { Offer.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
+    it 'removes the offer' do
+      Offer.all.to_a.should_not include(offer)
     end
 
     it 'removes the offer from sent_offers for user_composer' do
-      expect { offer.user_composer.sent_offers.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
+      offer.user_composer.reload.sent_offers.should_not include(offer)
     end
 
     it 'removes the offer from received_offers for user_receiver' do
-      expect { offer.user_receiver.received_offers.find(offer.id) }.to raise_error(Mongoid::Errors::DocumentNotFound)
+      offer.user_receiver.reload.received_offers.should_not include(offer)
     end
   end
 end
