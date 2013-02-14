@@ -11,8 +11,8 @@ describe User do
     it { should have_many(:requests) }
     it { should have_many(:sent_offers).of_type(Offer) }
     it { should have_many(:received_offers).of_type(Offer) }
-    it { should have_and_belong_to_many(:negotiations) }
-    it { should have_and_belong_to_many(:deals) }
+    it { should have_and_belong_to_many(:negotiations).of_type(Negotiation) }
+    it { should have_and_belong_to_many(:deals).of_type(Deal) }
   end
 
   describe 'Attributes' do
@@ -28,11 +28,11 @@ describe User do
     specify { expect(user.save).to be_true }
   end
 
-  describe '#change_password(password)' do
+  describe '#change_password(old_password,new_password)' do
     xit 'Changes old password to the given one'
   end
 
-  describe '#change_email(email)' do
+  describe '#change_email(new_email)' do
     xit 'Changes old email to the given one'
   end
 

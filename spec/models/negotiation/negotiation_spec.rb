@@ -61,7 +61,9 @@ describe Negotiation do
   end
 
   describe '#kick(negotiator)' do
+    
     let(:leaving_negotiator) { negotiation.negotiators.first }
+
     context 'When negotiator is in negotiation' do
       it 'kicks a given negotiatior from the negotiation' do
         negotiation.kick(leaving_negotiator)
