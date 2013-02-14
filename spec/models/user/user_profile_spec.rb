@@ -35,7 +35,7 @@ describe User::Profile do
   end
 
   describe 'Factories' do
-    specify { expect(profile.valid?).to be_true, "Is not valid because #{profile.errors}" }
+    specify { expect(profile.valid?).to eq true }
 
     it 'Creates one user' do
       expect { profile.save }.to change{ User.count }.by(1)
@@ -45,7 +45,7 @@ describe User::Profile do
   describe 'On save' do
     it 'Uploads an image' do
       profile.save
-      File.exist?(File.new(profile.image.path)).should be_true
+      File.exist?(File.new(profile.image.path)).should eq true
     end
   end
 

@@ -26,8 +26,8 @@ describe Offer do
   end
 
   describe 'Factories' do
-    specify { expect(offer.valid?).to be_true, "Is not valid because #{offer.errors}" }
-    specify { expect(offer.save).to be_true }
+    specify { expect(offer.valid?).to eq true }
+    specify { expect(offer.save).to eq true }
 
     it 'Creates two different users' do
       expect { offer.publish }.to change{ User.count }.by(2)
@@ -56,8 +56,6 @@ describe Offer do
     it 'generates a valid offer given correct parameters' do
       Offer.generate(offer_hash).should be_valid
     end
-
-    xit 'throws exception given incorrect parameters'
 
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
@@ -95,11 +93,11 @@ describe Offer do
   end
 
   describe '#modify(offer_form_hash)' do
-    xit 'Updates the offer with the given hash'
+    xit 'updates the offer with the given hash'
   end
 
   describe '#start_negotiation' do
-    it 'calls Negotiation.start_with(offer)' do
+    it 'calls .start_with(offer)' do
       Negotiation.should_receive(:start_with).with(offer)
       offer.start_negotiation
     end
@@ -107,8 +105,6 @@ describe Offer do
     describe 'returned negotiation' do
       specify { offer.start_negotiation.should be_persisted }
     end
-
-    xit 'raise exception if new negotiation is not created correctly'
   end
 
   describe '#self_update' do

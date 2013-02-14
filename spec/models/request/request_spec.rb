@@ -24,8 +24,8 @@ describe Request do
   end
 
   describe 'Factories' do
-    specify { expect(request.valid?).to be_true, "Is not valid because #{request.errors}" }
-    specify { expect(request.save).to be_true }
+    specify { expect(request.valid?).to eq true }
+    specify { expect(request.save).to eq true }
 
     it 'Creates one user' do
       expect { request.save }.to change{ User.count }.by(1)
@@ -35,7 +35,7 @@ describe Request do
   describe 'On save' do
     it 'Has an image' do
       request.save
-      File.exist?(File.new(request.image.path)).should be_true
+      File.exist?(File.new(request.image.path)).should eq true
     end
   end
 
