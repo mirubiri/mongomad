@@ -25,24 +25,24 @@ describe Deal do
     specify { expect(deal.valid?).to be_true, "Is not valid because #{deal.errors}" }
     specify { expect(deal.save).to be_true }
 
-    it 'Creates one negotiation' do
+    it 'creates one negotiation' do
       expect { deal.save }.to change{ Negotiation.count }.by(1)
     end
 
-    it 'Creates one offer' do
+    it 'creates one offer' do
       expect { deal.save }.to change{ Offer.count }.by(1)
     end
 
-    it 'Creates two different users' do
+    it 'creates two different users' do
       expect { deal.save }.to change{ User.count }.by(2)
     end
   end
 
   describe '.make_with(negotiation)' do
-    xit 'Makes a new deal from the given negotiation'
+    xit 'makes a new deal from the given negotiation'
   end
 
   describe '#post_message(hash)' do
-    xit 'Adds to deal a new message from the given hash'
+    xit 'adds to deal a new message from the given hash'
   end
 end

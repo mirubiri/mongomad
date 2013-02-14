@@ -124,27 +124,27 @@ describe Negotiation do
   end
 
   describe '#post_message(message_form_hash)' do
-    xit 'Adds to negotiation a new message from the given hash'
+    xit 'adds to negotiation a new message from the given hash'
   end
 
   describe '#can_agree?(negotiator)' do
-    it 'Returns true if the given negotiator can propose a deal'
+    xit 'returns true if the given negotiator can propose a deal'
   end
 
   describe '#agree(negotiator)' do
-    xit 'Updates token to set the given negotiator has proposed a deal'
+    xit 'updates token to set the given negotiator has proposed a deal'
   end
 
   describe '#can_make_deal?(negotiator)' do
-    xit 'Returns true if the given negotiator can close a deal'
+    xit 'returns true if the given negotiator can close a deal'
   end
 
   describe '#make_deal' do
-    it 'Returns a new deal from the current negotiation'
+    xit 'returns a new deal from the current negotiation'
   end
 
   describe '#self_update ' do
-    xit 'Updates itself'
+    xit 'updates itself'
   end
 
   describe '#finish' do

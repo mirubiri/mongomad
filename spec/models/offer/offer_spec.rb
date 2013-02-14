@@ -143,23 +143,23 @@ describe Offer do
   end
 
   describe '#publish' do
-    context 'When offer is valid' do
-      
-      it 'Saves the offer' do
+    
+    context 'When offer is valid' do 
+      it 'saves the offer' do
         offer.publish
         Offer.all.to_a.should include(offer)
       end
 
-      it 'returns true when offer is saved' do
-        offer.publish.should be true
+      it 'returns true' do
+        offer.publish.should eq true
       end
 
-      it 'Adds the offer to sent_offers for user_composer' do
+      it 'adds the offer to sent_offers for user_composer' do
         offer.publish
         offer.user_composer.sent_offers.should include(offer)
       end
 
-      it 'Adds the offer to received_offers for user_receiver' do
+      it 'adds the offer to received_offers for user_receiver' do
         offer.publish
         offer.user_receiver.received_offers.should include(offer)
       end
@@ -168,13 +168,24 @@ describe Offer do
     context 'When offer is not valid' do
       before { offer.should_receive(:save).and_return(false) }
       
-      it 'Returns false' do
-        offer.publish.should be false
+      it 'returns false' do
+        offer.publish.should eq false
       end
       
-      it 'Do not save the offer' do
+      it 'do not save the offer' do
         offer.publish
         Offer.all.to_a.should_not include(offer)
+      end
+    end
+
+    context 'When offer is published' do
+      before { offer.publish }
+      it 'returns true' do
+        offer.publish.should eq true
+      end
+
+      it 'do not create a new offer' do
+        expect { offer.publish }.to_not change { Offer.count }
       end
     end
   end
@@ -185,16 +196,28 @@ describe Offer do
       offer.unpublish
     end
 
-    it 'removes the offer' do
-      Offer.all.to_a.should_not include(offer)
+    context 'When offer is saved' do
+      it 'removes the offer' do
+        Offer.all.to_a.should_not include(offer)
+      end
+
+      it 'removes the offer from sent_offers for user_composer' do
+        offer.user_composer.reload.sent_offers.should_not include(offer)
+      end
+
+      it 'removes the offer from received_offers for user_receiver' do
+        offer.user_receiver.reload.received_offers.should_not include(offer)
+      end
+
+      it 'returns true' do
+        offer.unpublish.should eq true
+      end
     end
 
-    it 'removes the offer from sent_offers for user_composer' do
-      offer.user_composer.reload.sent_offers.should_not include(offer)
-    end
-
-    it 'removes the offer from received_offers for user_receiver' do
-      offer.user_receiver.reload.received_offers.should_not include(offer)
+    context 'When offer is not saved' do
+      it 'returns true' do
+        offer.unpublish.should eq true
+      end
     end
   end
 end

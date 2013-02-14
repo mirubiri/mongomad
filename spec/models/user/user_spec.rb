@@ -29,22 +29,22 @@ describe User do
   end
 
   describe '#change_password(old_password,new_password)' do
-    xit 'Changes old password to the given one'
+    xit 'changes old password to the given one'
   end
 
   describe '#change_email(new_email)' do
-    xit 'Changes old email to the given one'
+    xit 'changes old email to the given one'
   end
 
   describe '#close_account' do
-    xit 'Deletes user from the platform'
+    xit 'deletes user from the platform'
   end
 
   describe '#add_thing(thing_form_hash)' do
-    xit 'Adds a new thing created from the given hash'
+    xit 'adds a new thing created from the given hash'
   end
 
   describe '#remove_thing(thing)' do
-    xit 'Removes the given thing from the user'
+    xit 'removes the given thing from the user'
   end
 end

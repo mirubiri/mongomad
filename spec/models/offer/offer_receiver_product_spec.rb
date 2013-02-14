@@ -32,13 +32,13 @@ describe Offer::Receiver::Product do
   describe 'Factories' do
     specify { expect(product.valid?).to be_true, "Is not valid because #{product.errors}" }
 
-    it 'Creates one offer' do
+    it 'creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)
     end
   end
 
   describe 'On save' do
-    it 'Has an image' do
+    it 'has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should be_true
     end
