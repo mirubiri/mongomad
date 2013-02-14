@@ -20,7 +20,7 @@ function expandRequestContainer(){
   var alturaUserReputation = $('#user_reputation_container').height();
   var alturaUserData = $('#user_data_container').height();
 
-  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -27;
+  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -28;
 
   $('#user_request_list').css('height', alturaRequesContainer);
 }

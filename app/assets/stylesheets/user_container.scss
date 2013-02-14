@@ -77,21 +77,20 @@
       }
 
       .requests_requestsList{
-        @include center-horizontally(99%);
+        @include center-horizontally(98%);
         overflow:auto;
         margin-top:10px;
 
         .request{
-          @include center-horizontally(100%);
+          @include center-horizontally(96%);
           @include box-sizing(border-box);
           overflow: hidden;
           margin-bottom: 8px;
-          border-bottom: $borde1px;
 
           .profile_image{
             @include box-sizing(border-box);
             @include border-radius(5px, 5px);
-            @include proportions(20%,40px);
+            @include proportions(40px,40px);
             padding: 2px;
             float:left;
             margin:0px 5px 5px 0px;
@@ -106,7 +105,7 @@
           .description{
             @include box-sizing(border-box);
             @include border-radius(5px, 5px);
-            @include proportions(74%,40px);
+            @include proportions(79%,40px);
             float: left;
             border: $borde1px;
             font-size: 9px;
