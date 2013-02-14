@@ -5,55 +5,64 @@ class Negotiation
   embeds_many :proposals, class_name: "Negotiation::Proposal", cascade_callbacks: true
   embeds_many :messages,  class_name: "Negotiation::Message", cascade_callbacks: true
 
-  has_and_belongs_to_many :users
-
-  field :token_user_id, type: Moped::BSON::ObjectId
-  field :token_state,   type: Symbol
+  has_and_belongs_to_many :negotiators, class_name: "User"
 
   validates :proposals,
     :messages,
-    :users,
-    :token_user_id,
-    :token_state,
+    :negotiators,
     presence: true
 
-  validates :token_state,
-    inclusion: { :in => [:propose, :accept] }
+  def self.start_with(offer)
+    raise error unless offer.valid?
 
-  def self.open(params)
-    offer = Offer.find(params[:offer_id])
-    negotiation = new
+    negotiation = Negotiation.new
 
     proposal = Negotiation::Proposal.generate(offer)
-    negotiation.add_proposal(proposal)
 
     message = Negotiation::Message.new(
       user_name: offer.composer.name,
       text: offer.initial_message,
       image: offer.composer.image
     )
-    negotiation.add_message(message)
 
-    negotiation.set_users(offer)
+    negotiation.proposals << proposal
+    negotiation.messages << message
+    negotiation.negotiators << offer.user_composer
+    negotiation.negotiators << offer.user_receiver
+
+    negotiation.save
+    negotiation
   end
 
-  def add_proposal(proposal)
-    proposals << proposal
-    self
+  def kick(negotiator)
+    puts "PENDING"
   end
 
-  def add_message(message)
-    messages << message
-    self
+  def do_new_proposal(hash)
+    puts "PENDING"
   end
 
-  def set_users(offer)
-    users << offer.user_composer
-    users << offer.user_receiver
-    self
+  def post_message(hash)
+    puts "PENDING"
   end
 
-  def publish
-    save && self
+  def can_propose?(user)
+    puts "PENDING"
+  end
+
+  def propose_deal(user)
+    puts "PENDING"
+  end
+
+  def can_close?(user)
+    puts "PENDING"
+  end
+
+  def make_deal
+    puts "PENDING"
+  end
+
+  def self_update
+    puts "PENDING"
   end
 end

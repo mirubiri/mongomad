@@ -34,8 +34,6 @@ describe Offer do
     end
   end
 
-
-
   describe '.generate(offer_form_hash)' do
     let(:offer_hash) do
       offer.publish

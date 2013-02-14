@@ -35,7 +35,7 @@ class Negotiation::Proposal
   end
 
   def set_receiver(offer_receiver)
-    build_receiver(name:offer_receiver_name,
+    build_receiver(name:offer_receiver.name,
                    image_name:offer_receiver.image_name)
     receiver.add_products(offer_receiver.products)
   end
