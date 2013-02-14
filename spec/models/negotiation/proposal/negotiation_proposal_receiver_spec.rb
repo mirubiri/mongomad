@@ -23,7 +23,7 @@ describe Negotiation::Proposal::Receiver do
   end
 
   describe 'Factories' do
-    specify { expect(receiver.valid?).to eq true, "Is not valid because #{receiver.errors}" }
+    specify { expect(receiver.valid?).to eq true }
 
     it 'Creates one negotiation' do
       expect { receiver.save }.to change{ Negotiation.count }.by(1)

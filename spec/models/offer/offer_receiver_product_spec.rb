@@ -30,7 +30,7 @@ describe Offer::Receiver::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true, "Is not valid because #{product.errors}" }
+    specify { expect(product.valid?).to eq true }
 
     it 'creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)

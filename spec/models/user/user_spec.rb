@@ -24,7 +24,7 @@ describe User do
   end
 
   describe 'Factories' do
-    specify { expect(user.valid?).to eq true, "Is not valid because #{user.errors}" }
+    specify { expect(user.valid?).to eq true }
     specify { expect(user.save).to eq true }
   end
 

@@ -30,7 +30,7 @@ describe Deal::Agreement::Proposal::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true, "Is not valid because #{product.errors}" }
+    specify { expect(product.valid?).to eq true,  }
 
     it 'Creates one deal' do
       expect { product.save }.to change{ Deal.count }.by(1)

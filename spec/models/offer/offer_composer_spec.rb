@@ -23,7 +23,7 @@ describe Offer::Composer do
   end
 
   describe 'Factories' do
-    specify { expect(composer.valid?).to eq true, "Is not valid because #{composer.errors}" }
+    specify { expect(composer.valid?).to eq true }
 
     it 'Creates one offer' do
       expect { composer.save }.to change{ Offer.count }.by(1)

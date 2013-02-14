@@ -18,7 +18,7 @@ describe Deal::Agreement do
   end
 
   describe 'Factories' do
-    specify { expect(agreement.valid?).to eq true, "Is not valid because #{agreement.errors}" }
+    specify { expect(agreement.valid?).to eq true }
 
     it 'creates one deal' do
       expect { agreement.save }.to change{ Deal.count }.by(1)

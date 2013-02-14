@@ -23,7 +23,7 @@ describe Negotiation::Proposal::Money do
   end
 
   describe 'Factories' do
-    specify { expect(money.valid?).to eq true, "Is not valid because #{money.errors}" }
+    specify { expect(money.valid?).to eq true }
 
     it 'Creates one negotiation' do
       expect { money.save }.to change{ Negotiation.count }.by(1)

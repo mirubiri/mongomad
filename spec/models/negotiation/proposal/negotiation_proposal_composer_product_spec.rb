@@ -30,7 +30,7 @@ describe Negotiation::Proposal::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true, "Is not valid because #{product.errors}" }
+    specify { expect(product.valid?).to eq true,  }
 
     it 'Creates one negotiation' do
       expect { product.save }.to change{ Negotiation.count }.by(1)

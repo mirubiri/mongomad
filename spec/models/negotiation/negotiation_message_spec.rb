@@ -24,7 +24,7 @@ describe Negotiation::Message do
   end
 
   describe 'Factories' do
-    specify { expect(message.valid?).to eq true, "Is not valid because #{message.errors}" }
+    specify { expect(message.valid?).to eq true }
 
     it 'creates one negotiation' do
       expect { message.save }.to change{ Negotiation.count }.by(1)
