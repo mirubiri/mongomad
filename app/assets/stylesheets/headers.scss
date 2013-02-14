@@ -1,0 +1,117 @@
+@import "variables";
+@import "compass/typography/links/unstyled-link";
+@import 'stitch';
+
+.header,.login_header{
+  float: left;
+  width: 100%;
+  min-width: 1100px;
+  height: 40px;
+  display: block;
+  background-color:#004e6a;
+  color: white;
+  overflow: hidden;
+
+  .header_container{
+    @include center-horizontally(851px);
+    overflow: hidden;    
+
+    .header_logo{
+      @include proportions(140px,40px);
+      float: left;
+      color: white;
+      //border: $borde1px;
+      background:{
+        image: image-url('http://localhost:3000/images/logo.png');
+        repeat:no-repeat;
+      }
+      margin:{
+        top: 6px;
+      }
+    }
+
+    .header_options{
+      float: right;
+      min-width: 562px;
+      padding-top: 5px;
+      margin-right: 120px;
+
+      nav{
+        @include float-children('a',left);
+        float: left;
+        margin: 4px 10px 0px 0px;
+
+        a{
+          @include unstyled-link;
+          @include proportions(20px,20px);
+          margin-right:8px;
+          //border: $borde1px;
+        }
+      }
+
+      input[type='search']{
+        @include reset-search-field;
+        float: left;
+        margin: 5px 20px 0px 0px;
+      }
+
+      .header_user_image{
+        @include proportions(26px,26px);
+        float: left;
+        margin: 3px 0px 0px 0px;
+
+        a{
+          @include proportions(24px,24px);
+          margin: 0px;
+          img{          
+            @include high-quality-image;
+            @include proportions(24px,24px);
+          }
+        }      
+      }
+
+      .header_user_description{
+        @include proportions(120px,30px);
+        float: left;
+        margin-left:5px;
+        vertical-align:text-top;
+        font:{
+          weight:bolder;
+          size:8px;
+        }
+
+        p{
+          @include proportions(100%,10px);
+          float: left;
+          margin:0px 0px 2px 0px;
+          font-size:9px;
+        }
+      }
+
+      a{
+        @include unstyled-link;
+        float: left;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.login_header{
+  .header_container{
+    width: 880px;
+    .header_options{
+      margin-right: 60px;
+    }
+  }
+}
+
+.clearfix::after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
+}

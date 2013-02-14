@@ -14,8 +14,9 @@ body{
   line-height: 18px;
 
   .mainlayout{
-    @include center-horizontally(90%);
-    overflow: visible;
+    @include center-horizontally(1100px);
+    @include box-sizing(border-box);
+    overflow: auto;
   }
   
 }
