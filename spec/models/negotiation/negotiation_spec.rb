@@ -36,25 +36,27 @@ describe Negotiation do
     specify { expect(negotiation.valid?).to be_true }
     specify { expect(negotiation.save).to be_true }
 
-    it 'Creates one offer' do
+    it 'creates one offer' do
       expect { negotiation.save }.to change{ Offer.count }.by(1)
     end
 
-    it 'Creates two different users' do
+    it 'creates two different users' do
       expect { negotiation.save }.to change{ User.count }.by(2)
     end
   end
 
   describe '.start_with(offer)' do
-    it 'generates a valid negotiation given an offer' do
+    it 'generates a new negotiation with the given offer as current proposal' do
       Negotiation.start_with(offer).should be_valid
     end
 
-    it 'throws an exception given an invalid offer' do
+    it 'raise error if the given offer is not valid' do
       offer.should_receive(:valid?).and_return(:false)
       Negotiation.start_with(offer).should raise_error
       pending 'Choose wich exception to throw'
     end
+
+    xit 'it updates the new negotiation' # PIIIIENSAR
 
     specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
   end
@@ -124,23 +126,24 @@ describe Negotiation do
   end
 
   describe '#post_message(message_form_hash)' do
-    xit 'adds to negotiation a new message from the given hash'
+    xit 'post a new message into the negotiation'
   end
 
   describe '#can_agree?(negotiator)' do
-    xit 'returns true if the given negotiator can propose a deal'
+    xit 'returns true if the given negotiator can agree with the current proposal'
   end
 
   describe '#agree(negotiator)' do
-    xit 'updates token to set the given negotiator has proposed a deal'
+    xit 'makes a negotiator to agree with the current proposal'
   end
 
   describe '#can_make_deal?(negotiator)' do
-    xit 'returns true if the given negotiator can close a deal'
+    xit 'returns true if the given negotiator has the opportunity of make a deal'
   end
 
   describe '#make_deal' do
-    xit 'returns a new deal from the current negotiation'
+    xit 'makes a deal with the current proposal as agreement'
+    xit 'finish the negotiation'
   end
 
   describe '#self_update ' do
@@ -153,7 +156,7 @@ describe Negotiation do
       negotiation.finish
     end
 
-    it 'deletes the negotiation from each negotiator in the negotiation' do
+    it 'removes the negotiation from each negotiator participating in' do
       negotiation.finish
       negotiation.negotiators.reload
       negotiation.negotiators.each do |negotiator|
