@@ -66,7 +66,7 @@ describe Negotiation do
     let(:leaving_negotiator) { negotiation.negotiators.first }
 
     context 'When negotiator is in negotiation' do
-      it 'kicks a given negotiatior from the negotiation' do
+      it 'kicks a given negotiator from the negotiation' do
         negotiation.kick(leaving_negotiator)
         negotiation.negotiators.should_not include(leaving_negotiator)
       end
@@ -81,7 +81,7 @@ describe Negotiation do
         it 'calls finish' do
           negotiation.kick(leaving_negotiator)
           negotiation.should_receive(:finish).and_return(true)
-          negotiaiton.kick(negotiation.negotiators.last)
+          negotiation.kick(negotiation.negotiators.last)
         end
       end
     end
