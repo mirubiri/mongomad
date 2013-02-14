@@ -99,16 +99,14 @@ describe Offer do
   end
 
   describe '#start_negotiation' do
-    it 'calls Negotiation.start_with(offer)' do
+    it 'calls .start_with(offer)' do
       Negotiation.should_receive(:start_with).with(offer)
-      offer.start_negotiation
+      offer.start_negotiation(offer)
     end
 
     describe 'returned negotiation' do
       specify { offer.start_negotiation.should be_persisted }
     end
-
-    xit 'raise exception if new negotiation is not created correctly'
   end
 
   describe '#self_update' do
