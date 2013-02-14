@@ -143,37 +143,38 @@ describe Offer do
   end
 
   describe '#publish' do
-    context 'When offer is salvable' do
+    context 'When offer is valid' do
+      
       it 'Saves the offer' do
-        offer.should_receive(:save).and_return(true)
         offer.publish
+        Offer.all.to_a.should include(offer)
       end
 
-      it 'Returns this offer' do
-        offer.publish.should be_true
+      it 'returns true when offer is saved' do
+        offer.publish.should be true
       end
 
-      it 'adds the offer to sent_offers for user_composer' do
+      it 'Adds the offer to sent_offers for user_composer' do
         offer.publish
         offer.user_composer.sent_offers.should include(offer)
       end
 
-      it 'adds the offer to received_offers for user_receiver' do
+      it 'Adds the offer to received_offers for user_receiver' do
         offer.publish
         offer.user_receiver.received_offers.should include(offer)
       end
     end
 
-    context 'When offer is not salvable' do
-      before(:each) { offer.composer = nil }
-
-      it 'Doenst save the offer' do
-        offer.should_receive(:save).and_return(false)
-        offer.publish
-      end
-
+    context 'When offer is not valid' do
+      before { offer.should_receive(:save).and_return(false) }
+      
       it 'Returns false' do
-        offer.publish.should be_false
+        offer.publish.should be false
+      end
+      
+      it 'Do not save the offer' do
+        offer.publish
+        Offer.all.to_a.should_not include(offer)
       end
     end
   end

@@ -14,7 +14,6 @@ describe Negotiation do
     it { should embed_many(:messages).of_type(Negotiation::Message) }
     it { should_not have_and_belong_to_many(:users) }
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
-    it { should embed_one(:token).of_type(Negotiation::Token) }
   end
 
   describe 'Attributes' do
@@ -95,19 +94,32 @@ describe Negotiation do
   end
 
   describe '#make_proposal(proposal_form_hash)' do
-    it 'Adds a new proposal from the given hash' do
-      Negotiation::Proposal.should_receive(:generate).with(proposal_form_hash)
-      negotiation.make_proposal(proposal_form_hash)
-    end
 
-    it 'check that negotiators from proposal_form_hash are into the negotiation' do
-      negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(true)
-      negotiation.make_proposal(proposal_form_hash)
-    end
+    context 'when negotiators match with composer and receiver in given hash' do
+      before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(true) }
+      
+      it 'calls to proposal.generate with the given hash' do
+        Negotiation::Proposal.should_receive(:generate).with(proposal_form_hash)
+        negotiation.make_proposal(proposal_form_hash)
+      end
 
-    it 'raise error if negotiators in proposal_form_hash are not into the negotiation' do
-      negotiation.should_receive(:check_negotiatorss).with(proposal_form_hash).and_return(false)
-      negotiation.make_proposal(proposal_form_hash).should raise_error
+      it 'adds a new proposal' do
+        expect { negotiation.make_proposal(proposal_form_hash) }.to change {negotiation.proposals.count}.by(1)
+      end
+
+      specify { negotiation.make_proposal(proposal_form_hash).should be_true }
+    end
+    
+    context 'when negotiators do not match with composer and receiver in given hash' do
+      before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(false) }
+
+      it 'raise error' do
+        negotiation.make_proposal(proposal_form_hash).should raise_error
+      end
+
+      it 'does not add a new proposal' do
+        expect { negotiation.make_proposal(proposal_form_hash) }.to_not change {negotiation.proposals.count}.by(1)
+      end
     end
   end
 
