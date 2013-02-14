@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal::Receiver do
   end
 
   describe 'Factories' do
-    specify { expect(receiver.valid?).to be_true, "Is not valid because #{receiver.errors}" }
+    specify { expect(receiver.valid?).to eq true, "Is not valid because #{receiver.errors}" }
 
     it 'Creates one deal' do
       expect { receiver.save }.to change{ Deal.count }.by(1)
@@ -33,7 +33,7 @@ describe Deal::Agreement::Proposal::Receiver do
   describe 'On save' do
     it 'Has an image' do
       receiver.save
-      File.exist?(File.new(receiver.image.path)).should be_true
+      File.exist?(File.new(receiver.image.path)).should eq true
     end
   end
 end

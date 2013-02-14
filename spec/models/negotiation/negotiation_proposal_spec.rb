@@ -28,7 +28,7 @@ describe Negotiation::Proposal do
   end
 
   describe 'Factories' do
-    specify { expect(proposal.valid?).to be_true, "Is not valid because #{proposal.errors}" }
+    specify { expect(proposal.valid?).to eq true, "Is not valid because #{proposal.errors}" }
 
     it 'creates one negotiation' do
       expect { proposal.save }.to change{ Negotiation.count }.by(1)

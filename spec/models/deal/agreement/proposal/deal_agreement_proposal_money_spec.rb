@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal::Money do
   end
 
   describe 'Factories' do
-    specify { expect(money.valid?).to be_true, "Is not valid because #{money.errors}" }
+    specify { expect(money.valid?).to eq true, "Is not valid because #{money.errors}" }
 
     it 'Creates one deal' do
       expect { money.save }.to change{ Deal.count }.by(1)

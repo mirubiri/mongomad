@@ -24,7 +24,7 @@ describe Deal::Message do
   end
 
   describe 'Factories' do
-    specify { expect(message.valid?).to be_true, "Is not valid because #{message.errors}" }
+    specify { expect(message.valid?).to eq true, "Is not valid because #{message.errors}" }
 
     it 'creates one deal' do
       expect { message.save }.to change{ Deal.count }.by(1)
@@ -34,7 +34,7 @@ describe Deal::Message do
   describe 'On save' do
     it 'has an image' do
       message.save
-      File.exist?(File.new(message.image.path)).should be_true
+      File.exist?(File.new(message.image.path)).should eq true
     end
   end
 end

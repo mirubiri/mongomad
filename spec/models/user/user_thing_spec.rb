@@ -28,7 +28,7 @@ describe User::Thing do
   end
 
   describe 'Factories' do
-    specify { expect(thing.valid?).to be_true, "Is not valid because #{thing.errors}" }
+    specify { expect(thing.valid?).to eq true, "Is not valid because #{thing.errors}" }
 
     it 'Creates one user' do
       expect { thing.save }.to change{ User.count }.by(1)
@@ -38,7 +38,7 @@ describe User::Thing do
   describe 'On save' do
     it 'Uploads an image' do
       thing.save
-      File.exist?(File.new(thing.image.path)).should be_true
+      File.exist?(File.new(thing.image.path)).should eq true
     end
   end
 

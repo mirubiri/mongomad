@@ -33,8 +33,8 @@ describe Negotiation do
   end
 
   describe 'Factories' do
-    specify { expect(negotiation.valid?).to be_true }
-    specify { expect(negotiation.save).to be_true }
+    specify { expect(negotiation.valid?).to eq true }
+    specify { expect(negotiation.save).to eq true }
 
     it 'creates one offer' do
       expect { negotiation.save }.to change{ Offer.count }.by(1)
@@ -109,7 +109,7 @@ describe Negotiation do
         expect { negotiation.make_proposal(proposal_form_hash) }.to change {negotiation.proposals.count}.by(1)
       end
 
-      specify { negotiation.make_proposal(proposal_form_hash).should be_true }
+      specify { negotiation.make_proposal(proposal_form_hash).should eq true }
     end
 
     context 'when negotiators do not match with composer and receiver in given hash' do

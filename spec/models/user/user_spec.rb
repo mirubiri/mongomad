@@ -24,8 +24,8 @@ describe User do
   end
 
   describe 'Factories' do
-    specify { expect(user.valid?).to be_true, "Is not valid because #{user.errors}" }
-    specify { expect(user.save).to be_true }
+    specify { expect(user.valid?).to eq true, "Is not valid because #{user.errors}" }
+    specify { expect(user.save).to eq true }
   end
 
   describe '#change_password(old_password,new_password)' do
