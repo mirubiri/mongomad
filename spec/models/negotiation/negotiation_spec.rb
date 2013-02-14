@@ -58,7 +58,7 @@ describe Negotiation do
 
     xit 'it updates the new negotiation' # PIIIIENSAR
 
-    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
+    specify { new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver) }
   end
 
   describe '#kick(negotiator)' do
