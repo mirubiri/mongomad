@@ -55,8 +55,6 @@ describe Offer do
       Offer.generate(offer_hash).should be_valid
     end
 
-    xit 'throws exception given incorrect parameters'
-
     describe 'returned offer' do
       let(:new_offer) { Offer.generate(offer_hash) }
 

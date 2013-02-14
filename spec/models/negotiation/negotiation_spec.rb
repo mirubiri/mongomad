@@ -58,7 +58,7 @@ describe Negotiation do
 
     xit 'it updates the new negotiation' # PIIIIENSAR
 
-    specify { new_negotiation.users.should include(offer.user_composer,offer.user_receiver) }
+    specify { new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver) }
   end
 
   describe '#kick(negotiator)' do
@@ -92,7 +92,7 @@ describe Negotiation do
   end
 
   describe '#current_proposal' do
-    it 'returns the last proposed proposal'
+    xit 'returns the last proposed proposal'
   end
 
   describe '#make_proposal(proposal_form_hash)' do
