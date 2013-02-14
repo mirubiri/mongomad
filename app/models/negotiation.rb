@@ -33,36 +33,4 @@ class Negotiation
     negotiation.save
     negotiation
   end
-
-  def kick(negotiator)
-    puts "PENDING"
-  end
-
-  def do_new_proposal(hash)
-    puts "PENDING"
-  end
-
-  def post_message(hash)
-    puts "PENDING"
-  end
-
-  def can_propose?(user)
-    puts "PENDING"
-  end
-
-  def propose_deal(user)
-    puts "PENDING"
-  end
-
-  def can_close?(user)
-    puts "PENDING"
-  end
-
-  def make_deal
-    puts "PENDING"
-  end
-
-  def self_update
-    puts "PENDING"
-  end
 end
