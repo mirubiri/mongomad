@@ -13,6 +13,8 @@ class Negotiation
     presence: true
 
   def self.start_with(offer)
+    raise error unless offer.valid?
+
     negotiation = Negotiation.new
 
     proposal = Negotiation::Proposal.generate(offer)
@@ -32,7 +34,7 @@ class Negotiation
     negotiation
   end
 
-  def kick(user)
+  def kick(negotiator)
     puts "PENDING"
   end
 
