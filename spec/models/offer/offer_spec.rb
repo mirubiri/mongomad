@@ -150,12 +150,12 @@ describe Offer do
 
       it 'adds the offer to sent_offers for user_composer' do
         offer.publish
-        offer.user_composer.sent_offers.should include(offer)
+        User.find(offer.user_composer).sent_offers.should include(offer)
       end
 
       it 'adds the offer to received_offers for user_receiver' do
         offer.publish
-        offer.user_receiver.received_offers.should include(offer)
+        User.find(offer.user_receiver).received_offers.should include(offer)
       end
     end
 

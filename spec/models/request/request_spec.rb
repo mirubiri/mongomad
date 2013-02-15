@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Request do
   let(:request) do
-    Fabricate.build(:request)
+    Fabricate.build(:request, user:Fabricate(:user))
   end
 
   describe 'Relations' do
@@ -56,7 +56,7 @@ describe Request do
       let(:new_request) { Request.generate(request_params) }
 
       specify { new_request.user.should eql request_params[:user] }
-      specify { new_request.user_name.should eql request.name }
+      specify { new_request.user_name.should eql request.user_name }
       specify { new_request.text.should eql request_params[:text] }
       specify { new_request.image_name.should eql request.image_name }
     end
@@ -65,7 +65,7 @@ describe Request do
   describe '#publish' do
     context 'When request is valid' do
       it 'returns true' do
-        resquest.publish.should eq true
+        request.publish.should eq true
       end
 
       it 'saves the request' do
@@ -75,7 +75,7 @@ describe Request do
 
       it 'adds the request to requests for user' do
         request.publish
-        request.user.requests.should include(request)
+        User.find(request.user).requests.should include(request)
       end
     end
 
@@ -93,7 +93,7 @@ describe Request do
 
       it 'does not add the request to requests for user' do
         request.publish
-        request.user.requests.should_not include(request)
+        User.find(request.user).requests.should_not include(request)
       end
     end
 
@@ -130,7 +130,7 @@ describe Request do
       end
 
       it 'removes the request from requests for user' do
-        request.user.reload.requests.should_not include(request)
+        User.find(request.user).requests.should_not include(request)
       end
 
       it 'does not remove image' do
