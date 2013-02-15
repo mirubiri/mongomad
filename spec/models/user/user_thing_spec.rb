@@ -42,7 +42,7 @@ describe User::Thing do
     end
   end
 
-  describe '#modify(hash)' do
-    xit 'Updates the thing with the given hash'
+  describe '#modify(params=[])' do
+    xit 'Updates the thing with the given params'
   end
 end

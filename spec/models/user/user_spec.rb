@@ -40,7 +40,7 @@ describe User do
     xit 'deletes user from the platform'
   end
 
-  describe '#add_thing(thing_form_hash)' do
+  describe '#add_thing(thing_params)' do
     xit 'adds a new thing created from the given hash'
   end
 

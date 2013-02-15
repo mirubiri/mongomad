@@ -19,7 +19,7 @@ class Offer
     :initial_message,
     presence: true
 
-  def self.generate(hash)
+  def self.generate(params=[])
     offer = new(
       user_composer: User.find(hash[:user_composer_id]),
       user_receiver: User.find(hash[:user_receiver_id]),
@@ -36,7 +36,7 @@ class Offer
   def publish
     save
   end
-  
+
   def unpublish
     destroy
   end

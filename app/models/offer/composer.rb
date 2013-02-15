@@ -14,8 +14,8 @@ class Offer::Composer
     :image,
     presence: true
 
-  def add_products(hash)
-    hash.each do |index|
+  def add_products(params=[])
+    params.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
   end

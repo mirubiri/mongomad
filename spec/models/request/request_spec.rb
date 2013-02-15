@@ -39,8 +39,8 @@ describe Request do
     end
   end
 
-  describe '.generate(request_form_hash)' do
-    let(:request_hash) do
+  describe '.generate(params=[])' do
+    let(:request_params) do
       request.publish
       {
         user: request.user,
@@ -49,17 +49,18 @@ describe Request do
     end
 
     it 'Generates a valid request given correct parameters' do
-      Request.generate(request_hash).should be_valid
+      Request.generate(request_params).should be_valid
     end
 
-    describe 'Returned request' do
-      let(:new_request) { Request.generate(request_hash) }
+    describe 'returned request' do
+      let(:new_request) { Request.generate(request_params) }
 
-      specify { new_request.user.should eql request_hash[:user] }
+      specify { new_request.user.should eql request_params[:user] }
       specify { new_request.user_name.should eql request.name }
-      specify { new_request.text.should eql request_hash[:text] }
+      specify { new_request.text.should eql request_params[:text] }
       specify { new_request.image_name.should eql request.image_name }
     end
+
   end
 
   describe '#publish' do
@@ -110,8 +111,8 @@ describe Request do
     end
   end
 
-  describe '#modify(hash)' do
-    xit 'Updates the request with the given hash'
+  describe '#modify(params=[])' do
+    xit 'Updates the request with the given params'
   end
 
   describe '#unpublish' do
