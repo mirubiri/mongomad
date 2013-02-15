@@ -87,12 +87,14 @@ describe Negotiation do
     end
 
     context 'When given negotiator is not into the negotiation' do
-      specify{ negotiation.kick('0').should raise_error }
+      specify{ negotiation.kick('not_negotiator').should raise_error }
     end
   end
 
   describe '#current_proposal' do
-    xit 'returns the last proposed proposal'
+    it 'returns the last proposal maked' do
+      negotiation.current_proposal.should eq negotiation.proposals.last
+    end
   end
 
   describe '#make_proposal(proposal_params)' do
