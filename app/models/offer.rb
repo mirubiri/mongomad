@@ -36,11 +36,7 @@ class Offer
   def publish
     save
   end
-
-  def modify
-    puts "PENDING"
-  end
-
+  
   def unpublish
     destroy
   end
