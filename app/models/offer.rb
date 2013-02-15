@@ -21,15 +21,15 @@ class Offer
 
   def self.generate(params=[])
     offer = new(
-      user_composer: User.find(hash[:user_composer_id]),
-      user_receiver: User.find(hash[:user_receiver_id]),
-      initial_message: hash[:initial_message]
+      user_composer: User.find(params[:user_composer_id]),
+      user_receiver: User.find(params[:user_receiver_id]),
+      initial_message: params[:initial_message]
     )
 
-    offer.build_composer.add_products(hash[:composer_things])
-    offer.build_receiver.add_products(hash[:receiver_things])
-    offer.build_money(user_id: hash[:money][:user_id],
-                      quantity: hash[:money][:quantity])
+    offer.build_composer.add_products(params[:composer_things])
+    offer.build_receiver.add_products(params[:receiver_things])
+    offer.build_money(user_id: params[:money][:user_id],
+                      quantity: params[:money][:quantity])
     offer.self_update
   end
 
