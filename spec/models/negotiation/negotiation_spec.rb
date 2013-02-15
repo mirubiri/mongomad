@@ -51,7 +51,7 @@ describe Negotiation do
     end
 
     it 'raise error if the given offer is not valid' do
-      offer.should_receive(:valid?).and_return(:false)
+      offer.stub(:valid?).and_return false
       Negotiation.start_with(offer).should raise_error
       pending 'Choose wich exception to throw'
     end
@@ -87,45 +87,61 @@ describe Negotiation do
     end
 
     context 'When given negotiator is not into the negotiation' do
-      specify{ negotiation.kick('0').should raise_error }
+      specify{ negotiation.kick('not_negotiator').should raise_error }
     end
   end
 
   describe '#current_proposal' do
-    xit 'returns the last proposed proposal'
+    it 'returns the last proposal maked' do
+      negotiation.current_proposal.should eq negotiation.proposals.last
+    end
   end
 
-  describe '#make_proposal(proposal_form_hash)' do
+  describe '#make_proposal(proposal_params)' do
+    let(:proposal) { negotiation.proposals.first }
+    let(:proposal_params) do
+      {
+        user_composer_id: proposal.user_composer_id,
+        user_receiver_id: proposal.user_receiver_id,
+        composer_things:  proposal.composer.products.map do |product|
+          { thing_id: product[:thing_id], quantity: product[:quantity] }
+        end,
+        receiver_things:  proposal.receiver.products.map do |product|
+          { thing_id: product[:thing_id], quantity: product[:quantity] }
+        end,
+        money: { user_id: proposal.money.user_id, quantity: proposal.money.quantity },
+      }
+    end
 
     context 'when negotiators match with composer and receiver in given hash' do
-      before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(true) }
+      before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(true) }
 
       it 'calls to proposal.generate with the given hash' do
-        Negotiation::Proposal.should_receive(:generate).with(proposal_form_hash)
-        negotiation.make_proposal(proposal_form_hash)
+        Negotiation::Proposal.should_receive(:generate).with(proposal_params)
+        negotiation.make_proposal(proposal_params)
       end
 
       it 'adds a new proposal' do
-        expect { negotiation.make_proposal(proposal_form_hash) }.to change {negotiation.proposals.count}.by(1)
+        expect { negotiation.make_proposal(proposal_params) }.to change {negotiation.proposals.count}.by(1)
       end
 
-      specify { negotiation.make_proposal(proposal_form_hash).should eq true }
+      specify { negotiation.make_proposal(proposal_params).should eq true }
     end
 
     context 'when negotiators do not match with composer and receiver in given hash' do
-      before { negotiation.should_receive(:check_negotiators).with(proposal_form_hash).and_return(false) }
+      before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(false) }
 
       it 'raise error' do
-        negotiation.make_proposal(proposal_form_hash).should raise_error
+        negotiation.make_proposal(proposal_params).should raise_error
       end
 
       it 'does not add a new proposal' do
-        expect { negotiation.make_proposal(proposal_form_hash) }.to_not change {negotiation.proposals.count}.by(1)
+        expect { negotiation.make_proposal(proposal_params) }.to_not change {negotiation.proposals.count}.by(1)
       end
     end
   end
 
-  describe '#post_message(message_form_hash)' do
+  describe '#post_message(message_params)' do
     xit 'post a new message into the negotiation'
   end
 

@@ -42,7 +42,7 @@ describe Deal do
     xit 'makes a new deal from the given negotiation'
   end
 
-  describe '#post_message(hash)' do
+  describe '#post_message(params=[])' do
     xit 'adds to deal a new message from the given hash'
   end
 end

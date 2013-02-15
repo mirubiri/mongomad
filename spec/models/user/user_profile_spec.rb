@@ -49,7 +49,7 @@ describe User::Profile do
     end
   end
 
-  describe '#modify(hash)' do
-    xit 'Updates the user profile with the given hash'
+  describe '#modify(params=[])' do
+    xit 'Updates the user profile with the given params'
   end
 end
