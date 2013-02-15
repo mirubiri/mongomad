@@ -27,13 +27,13 @@ describe Request do
     specify { expect(request.valid?).to eq true }
     specify { expect(request.save).to eq true }
 
-    it 'Creates one user' do
+    it 'creates one user' do
       expect { request.save }.to change{ User.count }.by(1)
     end
   end
 
   describe 'On save' do
-    it 'Has an image' do
+    it 'has an image' do
       request.save
       File.exist?(File.new(request.image.path)).should eq true
     end
@@ -48,11 +48,11 @@ describe Request do
       }
     end
 
-    it 'Generates a valid request given correct parameters' do
+    it 'generates a valid request given correct parameters' do
       Request.generate(request_params).should be_valid
     end
 
-    describe 'returned request' do
+    describe 'Returned request' do
       let(:new_request) { Request.generate(request_params) }
 
       specify { new_request.user.should eql request_params[:user] }
@@ -60,21 +60,20 @@ describe Request do
       specify { new_request.text.should eql request_params[:text] }
       specify { new_request.image_name.should eql request.image_name }
     end
-
   end
 
   describe '#publish' do
     context 'When request is valid' do
-      it 'Returns true' do
+      it 'returns true' do
         resquest.publish.should eq true
       end
 
-      it 'Saves the request' do
+      it 'saves the request' do
         request.publish
         Request.all.to_a.should include(request)
       end
 
-      it 'Adds the request to requests for user' do
+      it 'adds the request to requests for user' do
         request.publish
         request.user.requests.should include(request)
       end
@@ -83,16 +82,16 @@ describe Request do
     context 'When request is not valid' do
       before { request.should_receive(:save).and_return(false) }
 
-      it 'Returns false' do
+      it 'returns false' do
         request.publish.should eq false
       end
 
-      it 'Does not save the request' do
+      it 'does not save the request' do
         request.publish
         Request.all.to_a.should_not include(request)
       end
 
-      it 'Does not add the request to requests for user' do
+      it 'does not add the request to requests for user' do
         request.publish
         request.user.requests.should_not include(request)
       end
@@ -101,11 +100,11 @@ describe Request do
     context 'When request is published' do
       before { request.publish }
 
-      it 'Returns true' do
+      it 'returns true' do
         request.publish.should eq true
       end
 
-      it 'Does not create a new request' do
+      it 'does not create a new request' do
         expect { request.publish }.to_not change { Request.count }
       end
     end
@@ -122,25 +121,25 @@ describe Request do
     end
 
     context 'When request is saved' do
-      it 'Removes the request' do
-        Request.all.to_a.should_not include(request)
-      end
-
-      it 'Removes the request from requests for user' do
-        request.user.reload.request.should_not include(request)
-      end
-
-      it 'Returns true' do
+      it 'returns true' do
         request.unpublish.should eq true
       end
 
-      it 'Do not removes image' do
+      it 'deletes the request' do
+        Request.all.to_a.should_not include(request)
+      end
+
+      it 'removes the request from requests for user' do
+        request.user.reload.request.should_not include(request)
+      end
+
+      it 'does not remove image' do
         request.image.file.should be_exists
       end
     end
 
     context 'When request is not saved' do
-      it 'Returns true' do
+      it 'returns true' do
         request.unpublish.should eq true
       end
     end
