@@ -125,7 +125,7 @@ describe Request do
         request.unpublish.should eq true
       end
 
-      it 'deletes the request' do
+      it 'removes the request' do
         Request.all.to_a.should_not include(request)
       end
 
@@ -146,6 +146,24 @@ describe Request do
   end
 
   describe '#self_update' do
-    xit 'autoupdate itself pending'
+    it 'calls reload if persisted' do
+      request.publish
+      request.should_receive(:reload)
+      request.self_update
+    end
+
+    it 'does not call reload if not persisted' do
+      request.should_not_receive(:reload)
+      request.self_update
+    end
+  end
+
+  it 'returns self if self_update success' do
+    request.self_update.should eq request
+  end
+
+  it 'raise error if self_update fails' do
+    request.stub(:self_update).and_raise("StandardError")
+    expect { request.self_update }.to raise_error
   end
 end
