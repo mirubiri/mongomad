@@ -130,7 +130,7 @@ describe Request do
       end
 
       it 'removes the request from requests for user' do
-        request.user.reload.request.should_not include(request)
+        request.user.reload.requests.should_not include(request)
       end
 
       it 'does not remove image' do
@@ -143,5 +143,9 @@ describe Request do
         request.unpublish.should eq true
       end
     end
+  end
+
+  describe '#self_update' do
+    xit 'autoupdate itself pending'
   end
 end
