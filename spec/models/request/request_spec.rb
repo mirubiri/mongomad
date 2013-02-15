@@ -43,7 +43,7 @@ describe Request do
     let(:request_params) do
       request.publish
       {
-        user: request.user,
+        user_id: request.user,
         text: request.text
       }
     end
@@ -55,7 +55,7 @@ describe Request do
     describe 'Returned request' do
       let(:new_request) { Request.generate(request_params) }
 
-      specify { new_request.user.should eql request_params[:user] }
+      specify { new_request.user.should eql request_params[:user_id] }
       specify { new_request.user_name.should eql request.user_name }
       specify { new_request.text.should eql request_params[:text] }
       specify { new_request.image_name.should eql request.image_name }

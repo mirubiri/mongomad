@@ -17,7 +17,7 @@ class Request
 
   def self.generate(params=[])
     request = new(
-      user: User.find(params[:user]),
+      user: User.find(params[:user_id]),
       text: params[:text]
     )
     request.self_update
