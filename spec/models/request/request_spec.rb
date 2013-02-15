@@ -39,16 +39,16 @@ describe Request do
     end
   end
 
-  describe '.generate(hash)' do
-    xit 'Creates a new request with the given hash'
+  describe '.generate(params=[])' do
+    xit 'Creates a new request with the given params'
   end
 
   describe '#publish' do
     xit 'Saves the request'
   end
 
-  describe '#modify(hash)' do
-    xit 'Updates the request with the given hash'
+  describe '#modify(params=[])' do
+    xit 'Updates the request with the given params'
   end
 
   describe '#unpublish' do
