@@ -57,4 +57,8 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   def filename
     "#{ model.image_name }"
   end
+
+  def remove!
+    true
+  end
 end

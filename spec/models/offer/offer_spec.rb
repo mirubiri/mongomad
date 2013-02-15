@@ -206,6 +206,26 @@ describe Offer do
       it 'returns true' do
         offer.unpublish.should eq true
       end
+
+      it 'do not removes composer image' do
+        offer.composer.image.file.should be_exists
+      end
+
+      it 'do not removes receiver image' do
+        offer.receiver.image.file.should be_exists
+      end
+
+      it 'do not remove product images from receiver' do
+        offer.receiver.products.each do |product|
+          product.image.file.should be_exists
+        end
+      end
+
+      it 'do not remove product images from composer' do
+        offer.composer.products.each do |product|
+          product.image.file.should be_exists
+        end
+      end
     end
 
     context 'When offer is not saved' do
