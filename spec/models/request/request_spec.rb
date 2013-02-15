@@ -111,7 +111,7 @@ describe Request do
   end
 
   describe '#modify(params=[])' do
-    xit 'Updates the request with the given params'
+    xit 'updates the request with the given params'
   end
 
   describe '#unpublish' do
