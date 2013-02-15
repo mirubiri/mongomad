@@ -40,11 +40,70 @@ describe Request do
   end
 
   describe '.generate(params=[])' do
-    xit 'Creates a new request with the given params'
+    let(:request_params) do
+      request.publish
+      {
+        user: request.user,
+        text: request.text
+      }
+    end
+
+    it 'Generates a valid request given correct parameters' do
+      Request.generate(request_params).should be_valid
+    end
+
+    describe 'returned request' do
+      let(:new_request) { Request.generate(request_params) }
+
+      specify { new_request.user.should eql request_params[:user] }
+      specify { new_request.user_name.should eql request.name }
+      specify { new_request.text.should eql request_params[:text] }
+      specify { new_request.image_name.should eql request.image_name }
+    end
+
   end
 
   describe '#publish' do
-    xit 'Saves the request'
+
+    context 'When request is valid' do
+      it 'Saves the request' do
+        request.publish
+        Request.all.to_a.should include(request)
+      end
+
+      it 'Returns true' do
+        resquest.publish.should eq true
+      end
+
+      it 'Adds the request to requests for user' do
+        request.publish
+        request.user.requests.should include(request)
+      end
+    end
+
+    context 'When request is not valid' do
+      before { request.should_receive(:save).and_return(false) }
+
+      it 'Returns false' do
+        request.publish.should eq false
+      end
+
+      it 'Do not save the request' do
+        request.publish
+        Request.all.to_a.should_not include(request)
+      end
+    end
+
+    context 'When request is published' do
+      before { request.publish }
+      it 'Returns true' do
+        request.publish.should eq true
+      end
+
+      it 'Do not create a new request' do
+        expect { request.publish }.to_not change { Request.count }
+      end
+    end
   end
 
   describe '#modify(params=[])' do
@@ -52,6 +111,33 @@ describe Request do
   end
 
   describe '#unpublish' do
-    xit 'Deletes the request'
+    before do
+      request.publish
+      request.unpublish
+    end
+
+    context 'When request is saved' do
+      it 'Removes the request' do
+        Request.all.to_a.should_not include(request)
+      end
+
+      it 'Removes the request from requests for user' do
+        request.user.reload.request.should_not include(request)
+      end
+
+      it 'Returns true' do
+        request.unpublish.should eq true
+      end
+
+      it 'Do not removes image' do
+        request.image.file.should be_exists
+      end
+    end
+
+    context 'When request is not saved' do
+      it 'Returns true' do
+        request.unpublish.should eq true
+      end
+    end
   end
 end
