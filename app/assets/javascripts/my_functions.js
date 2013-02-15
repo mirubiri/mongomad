@@ -119,6 +119,13 @@ function modalWindows(){
   $('#add_request_button').live('click',function(e){
       e.preventDefault();
       $('#new-request-form').modal({
+          onOpen: function (dialog) {
+            dialog.overlay.fadeIn('slow', function () {
+              dialog.container.slideDown('slow', function () {
+                dialog.data.fadeIn('slow');
+              });
+            });
+          },
           opacity:60,
           overlayCss: {backgroundColor:"#000000"}
       });
@@ -128,6 +135,13 @@ function modalWindows(){
       e.preventDefault();
       $('#new-thing-form').removeClass("container_invisible");
       $('#new-thing-form').modal({
+          onOpen: function (dialog) {
+            dialog.overlay.fadeIn('slow', function () {
+              dialog.container.slideDown('fast', function () {
+                dialog.data.fadeIn('fast');
+              });
+            });
+          },
           opacity:60,
           overlayCss: {backgroundColor:"#000000"},
           onClose: function () {

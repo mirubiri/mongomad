@@ -48,14 +48,15 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    @thing = Thing.new(params[:thing])
+    @user = User.find(params[:user_id])
+    @thing = User::Thing.new(params[:thing])
 
     respond_to do |format|
       if @thing.save
-        format.html { redirect_to @thing, notice: 'thing was successfully created.' }
-        format.json { render json: @thing, status: :created, location: @thing }
+        format.html { redirect_to user_things, notice: 'thing was successfully created.' }
+        format.json { render json: user_things, status: :created}
       else
-        format.html { render action: "new" }
+        format.html { render action: "index" }
         format.json { render json: @thing.errors,
           status: :unprocessable_entity }
       end
