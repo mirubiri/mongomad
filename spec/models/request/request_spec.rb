@@ -64,15 +64,14 @@ describe Request do
   end
 
   describe '#publish' do
-
     context 'When request is valid' do
+      it 'Returns true' do
+        resquest.publish.should eq true
+      end
+
       it 'Saves the request' do
         request.publish
         Request.all.to_a.should include(request)
-      end
-
-      it 'Returns true' do
-        resquest.publish.should eq true
       end
 
       it 'Adds the request to requests for user' do
@@ -88,19 +87,25 @@ describe Request do
         request.publish.should eq false
       end
 
-      it 'Do not save the request' do
+      it 'Does not save the request' do
         request.publish
         Request.all.to_a.should_not include(request)
+      end
+
+      it 'Does not add the request to requests for user' do
+        request.publish
+        request.user.requests.should_not include(request)
       end
     end
 
     context 'When request is published' do
       before { request.publish }
+
       it 'Returns true' do
         request.publish.should eq true
       end
 
-      it 'Do not create a new request' do
+      it 'Does not create a new request' do
         expect { request.publish }.to_not change { Request.count }
       end
     end
