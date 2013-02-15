@@ -83,7 +83,7 @@ class OffersController < ApplicationController
   # DELETE /offers/1.json
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
+    @offer.unpublish
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }
