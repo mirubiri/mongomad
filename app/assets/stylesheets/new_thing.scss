@@ -7,55 +7,63 @@
   overflow:auto;
   margin: 0px 0px 0px 0px;  
   border: $borde2px;    
-  background-color: transparent;
+  background-color: white;
 
-  .new_thing_title{
-    @include proportions(100%,45px);
-    float:left;
+  form{    
+    width: 100%;
 
-    .icon{
-      @include proportions(20px,20px);
-      float:inherit;
-      margin: 12px 5px 0px 30px;      
-      border: $borde1px;
+    .new_thing_title{
+      @include proportions(100%,20px);
+      float:left;      
+      margin-bottom: 10px;
     }
-    .description{
-      float: inherit;
-      margin-top: 16px;
-      font:{
-        weight:bold;
-        size:14px;
+
+    .new_thing_image{
+      width: 100%;
+      float: inherit; 
+      margin-bottom: 10px;     
+    }
+
+    .new_thing_text{
+      width: 100%;
+      float:left;
+
+      textarea{
+        overflow: hidden;
+        width: 98%;
+        border: $borde1px;
+        background-color: transparent;
+        color: #000000;
+        font-size: 11px;
+        resize: none;
+        margin-bottom: 5px;
+      }      
+    }
+    .stock{
+      width: 100%;
+      float: left;
+      margin-bottom: 10px;
+
+      textarea{
+        overflow: hidden;
+        width: 98%;
+        border: $borde1px;
+        background-color: transparent;
+        color: #000000;
+        font-size: 11px;
+        resize: none;
+        margin-bottom: 5px;
       }
     }
-  }
 
-  .new_thing_text{
-    float:left;
-    margin:5px 0px 10px 30px;
-    width:85%;
+    .send_button{
+      float:left;
+      margin-bottom:10px;
 
-    textarea{
-      overflow: hidden;
-      width: 98%;
-      border: $borde1px;
-      background-color: transparent;
-      color: #000000;
-      font-size: 11px;
-      resize: none;
-    }      
-  }
-
-  .new_thing_images{
-
-  }
-
-  .send_button{
-    float:left;
-    margin-bottom:10px;
-
-    button{
-      float:inherit;
-      margin-left:30px;
+      button{
+        float:inherit;
+        margin-left:30px;
+      }
     }
   }
 }
