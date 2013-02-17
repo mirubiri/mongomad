@@ -85,10 +85,6 @@ describe Negotiation do
         end
       end
     end
-
-    context 'When given negotiator is not into the negotiation' do
-      specify{ negotiation.kick('not_negotiator').should raise_error }
-    end
   end
 
   describe '#current_proposal' do
@@ -122,7 +118,7 @@ describe Negotiation do
       end
 
       it 'adds a new proposal' do
-        expect { negotiation.make_proposal(proposal_params) }.to change {negotiation.proposals.count}.by(1)
+        expect { negotiation.make_proposal(proposal_params) }.to change { negotiation.proposals.count }.by(1)
       end
 
       specify { negotiation.make_proposal(proposal_params).should eq true }
@@ -174,9 +170,8 @@ describe Negotiation do
 
     it 'removes the negotiation from each negotiator participating in' do
       negotiation.finish
-      negotiation.negotiators.reload
       negotiation.negotiators.each do |negotiator|
-        negotiator.negotiations.should_not include(negotiation)
+        User.find(negotiator).negotiations.should_not include(negotiation)
       end
     end
   end

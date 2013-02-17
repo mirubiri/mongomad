@@ -33,4 +33,16 @@ class Negotiation
     negotiation.save
     negotiation
   end
+
+  def finish
+    destroy
+  end
+
+  def kick(negotiator)
+    if negotiators.count >= 2
+      negotiators.delete(negotiator)
+    else
+      finish
+    end
+  end
 end
