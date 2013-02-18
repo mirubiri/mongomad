@@ -8,7 +8,8 @@ describe Deal do
   describe 'Relations' do
     it { should embed_one(:agreement).of_type(Deal::Agreement) }
     it { should embed_many(:messages).of_type(Deal::Message) }
-    it { should have_and_belong_to_many(:users) }
+    it { should_not have_and_belong_to_many(:users) }
+    it { should have_and_belong_to_many(:signers).of_type(User) }
   end
 
   describe 'Attributes' do
@@ -20,7 +21,8 @@ describe Deal do
   describe 'Validations' do
     it { should validate_presence_of :agreement }
     it { should validate_presence_of :messages }
-    it { should validate_presence_of :users }
+    it { should_not validate_presence_of :users }
+    it { should validate_presence_of :signers }
   end
 
   describe 'Factories' do

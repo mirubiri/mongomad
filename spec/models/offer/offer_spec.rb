@@ -4,7 +4,7 @@ describe Offer do
   let(:user_composer) { Fabricate(:user_with_things) }
   let(:user_receiver) { Fabricate(:user_with_things) }
   let(:offer) do
-    Fabricate.build(:offer, 
+    Fabricate.build(:offer,
       user_composer:user_composer,
       user_receiver:user_receiver
       )
@@ -53,7 +53,7 @@ describe Offer do
     end
 
     it 'returns an offer corresponding to the given params' do
-      Offer.generate(offer_params).should have_same_contents_as offer 
+      Offer.generate(offer_params).should match_stuff_with offer
     end
   end
 
