@@ -21,12 +21,21 @@ module MongomadHelpers
 	    hash
 	  end
 
+	  def params_for_request(request)
+	  	{
+	  		user_id: request.user_id,
+	  		user_name: request.user_name,
+	  		text: request.text,
+	  		image_name:request.image_name
+	  	}
+	  end
+
 	  alias_method :params_for_proposal, :params_for_offerable
 end
 
 
 
 
-	  
+
 
 

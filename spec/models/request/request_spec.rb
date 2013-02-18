@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe Request do
-  let(:request) do
-    Fabricate.build(:request, user:Fabricate(:user))
-  end
+  let(:request) { Fabricate.build(:request, user:Fabricate(:user)) }
+  let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
     it { should belong_to(:user) }
@@ -40,13 +39,7 @@ describe Request do
   end
 
   describe '.generate(params=[])' do
-    let(:request_params) do
-      request.publish
-      {
-        user_id: request.user,
-        text: request.text
-      }
-    end
+
 
     it 'generates a valid request given correct parameters' do
       Request.generate(request_params).should be_valid
@@ -54,10 +47,9 @@ describe Request do
 
     describe 'Returned request' do
       let(:new_request) { Request.generate(request_params) }
-
-      specify { new_request.user.should eql request_params[:user_id] }
+      specify { new_request.user_id.should eql request.user_id }
       specify { new_request.user_name.should eql request.user_name }
-      specify { new_request.text.should eql request_params[:text] }
+      specify { new_request.text.should eql request.text }
       specify { new_request.image_name.should eql request.image_name }
     end
   end
@@ -138,6 +130,13 @@ describe Request do
       it 'returns true' do
         request.unpublish.should eq true
       end
+    end
+  end
+
+  describe '#modify' do
+    it 'call to update_attributes with given params' do
+      request.should_receive(:update_attributes).with(request_params)
+      request.modify(request_params)
     end
   end
 
