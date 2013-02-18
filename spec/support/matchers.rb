@@ -2,7 +2,7 @@ require 'rspec/expectations'
 
 module MongomadMatchersHelpers
 
-  def same_users?(actual,expected)
+  def same_participants?(actual,expected)
     expected.user_composer_id == actual.user_composer_id &&
     expected.user_receiver_id == actual.user_receiver_id
   end
@@ -34,7 +34,7 @@ module MongomadMatchersHelpers
 
   def same_proposal?(actual,expected)
     same_money?(actual.money,expected.money) &&
-    same_users?(actual,expected) &&
+    same_participants?(actual,expected) &&
 
     %w(composer receiver).each do |participant|
       return false unless
@@ -50,18 +50,27 @@ module MongomadMatchersHelpers
       same_proposal?(actual,expected)
     end
   end
+
+  def same_messages?(actual,expected)
+    actual.messages.each_index do |index|
+      return false unless
+      actual.messages[index].user_name = expected.messages[index].user_name &&
+      actual.messages[index].text = expected.messages[index].text &&
+      actual.messages[index].image_name = expected..messages[index].image_name
+    end
+  end
 end
 
 module MongomadMatchers
   extend RSpec::Matchers::DSL
   include MongomadMatchersHelpers
 
-  matcher :have_same_participants do |expected|
+  matcher :match_participants_with do |expected|
     match { |actual| same_participants?(actual,expected) }
     diffable
   end
 
-  matcher :have_same_products do |expected|
+  matcher :match_products_with do |expected|
     match do |actual|
       %w(composer receiver).each do |participant|
         return false unless
@@ -71,14 +80,19 @@ module MongomadMatchers
     diffable
   end
 
-  matcher :have_same_money do |expected|
+  matcher :match_money_with do |expected|
     match { |actual| same_money?(actual,expected) }
     diffable
   end
 
-  matcher :have_same_contents_as do |expected|
+  matcher :match_stuff_with do |expected|
     match { |actual| same_contents?(actual,expected) }
     # TO-DO Mensaje para las diferencias
+    diffable
+  end
+
+  matcher :match_messages_with do |expected|
+    match { |actual| same_messages?(actual,expected)}
     diffable
   end
 end
