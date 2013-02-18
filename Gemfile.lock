@@ -82,7 +82,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
-    mongoid (3.1.0)
+    mongoid (3.1.1)
       activemodel (~> 3.2)
       moped (~> 1.4.2)
       origin (~> 1.0)
