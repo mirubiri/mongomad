@@ -110,17 +110,6 @@ describe Request do
     end
   end
 
-  describe '#modify(params={})' do
-    let (:params) do
-      { text: 'nuevo texto'}
-    end
-    it 'updates the request with the given params' do
-      request.should_receive(:update_attributes).with(params)
-      request.modify(params)
-      request.text.should eq 'nuevo texto'
-    end
-  end
-
   describe '#unpublish' do
     before do
       request.publish

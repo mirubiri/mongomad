@@ -1,10 +1,16 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate.build(:offer,
-                  user_composer:Fabricate(:user_with_things),
-                  user_receiver:Fabricate(:user_with_things))
-              }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) do
+    Fabricate.build(:offer, 
+      user_composer:user_composer,
+      user_receiver:user_receiver
+      )
+  end
+
+  let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -41,57 +47,13 @@ describe Offer do
   end
 
   describe '.generate(offer_params)' do
-    let(:offer_hash) do
-      offer.publish
-      {
-        user_composer_id: offer.user_composer_id,
-        user_receiver_id: offer.user_receiver_id,
-        composer_things:  offer.composer.products.map do |product|
-          { thing_id: product[:thing_id], quantity: product[:quantity] }
-        end,
-        receiver_things:  offer.receiver.products.map do |product|
-          { thing_id: product[:thing_id], quantity: product[:quantity] }
-        end,
-        money:            { user_id: offer.money.user_id, quantity: offer.money.quantity },
-        initial_message:  offer.initial_message
-      }
-    end
 
     it 'generates a valid offer given correct parameters' do
-      Offer.generate(offer_hash).should be_valid
+      Offer.generate(offer_params).should be_valid
     end
 
-    describe 'Returned offer' do
-      let(:new_offer) { Offer.generate(offer_hash) }
-
-      specify { new_offer.user_composer_id.should eql offer_hash[:user_composer_id] }
-      specify { new_offer.user_receiver_id.should eql offer_hash[:user_receiver_id] }
-
-      specify { new_offer.money.user_id.should eql offer_hash[:money][:user_id] }
-      specify { new_offer.money.quantity.should eql offer_hash[:money][:quantity] }
-
-      specify { new_offer.initial_message.should eql offer_hash[:initial_message] }
-
-
-      it 'transform all passed thing params into products' do
-        ['receiver','composer'].each do |person|
-          user = User.find(offer_hash[:"user_#{person}_id"])
-          selected_things = offer_hash[:"#{person}_things"]
-
-          selected_things.each do |selected_thing|
-            product = new_offer.send("#{person}").products.where(thing_id:selected_thing[:thing_id]).first
-            thing = user.things.find(selected_thing[:thing_id])
-
-            ['thing_id','quantity'].each do |field|
-              product.send(field).should eq selected_thing[field.to_sym]
-            end
-
-            ['name','description','image_name'].each do |field|
-              product.send(field).should eq thing.send(field)
-            end
-          end
-        end
-      end
+    it 'returns an offer corresponding to the given params' do
+      Offer.generate(offer_params).should have_same_contents_as offer 
     end
   end
 
@@ -153,8 +115,8 @@ describe Offer do
     end
   end
 
-  describe '#modify(offer_params)' do
-    xit 'updates the offer with the given hash'
+  describe '#modify(params={})' do
+    xit 'modify things'
   end
 
   describe '#unpublish' do
