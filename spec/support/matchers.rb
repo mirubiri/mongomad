@@ -1,39 +1,4 @@
 require 'rspec/expectations'
-module MongomadMatchers
-  extend RSpec::Matchers::DSL
-  include MongomadMatchersHelpers
-
-  matcher :match_participants_with do |expected|
-    match { |actual| same_participants?(actual,expected) }
-    diffable
-  end
-
-  matcher :match_products_with do |expected|
-    match do |actual|
-      %w(composer receiver).each do |participant|
-        return false unless
-          same_products?(actual.send(participant).products,expected.send(participant).products)
-      end
-    end
-    diffable
-  end
-
-  matcher :match_money_with do |expected|
-    match { |actual| same_money?(actual,expected) }
-    diffable
-  end
-
-  matcher :match_stuff_with do |expected|
-    match { |actual| same_contents?(actual,expected) }
-    # TO-DO Mensaje para las diferencias
-    diffable
-  end
-
-  matcher :match_messages_with do |expected|
-    match { |actual| same_messages?(actual,expected)}
-    diffable
-  end
-end
 
 module MongomadMatchersHelpers
 
@@ -93,6 +58,42 @@ module MongomadMatchersHelpers
       actual.messages[index].text = expected.messages[index].text &&
       actual.messages[index].image_name = expected..messages[index].image_name
     end
+  end
+end
+
+module MongomadMatchers
+  extend RSpec::Matchers::DSL
+  include MongomadMatchersHelpers
+
+  matcher :match_participants_with do |expected|
+    match { |actual| same_participants?(actual,expected) }
+    diffable
+  end
+
+  matcher :match_products_with do |expected|
+    match do |actual|
+      %w(composer receiver).each do |participant|
+        return false unless
+          same_products?(actual.send(participant).products,expected.send(participant).products)
+      end
+    end
+    diffable
+  end
+
+  matcher :match_money_with do |expected|
+    match { |actual| same_money?(actual,expected) }
+    diffable
+  end
+
+  matcher :match_stuff_with do |expected|
+    match { |actual| same_contents?(actual,expected) }
+    # TO-DO Mensaje para las diferencias
+    diffable
+  end
+
+  matcher :match_messages_with do |expected|
+    match { |actual| same_messages?(actual,expected)}
+    diffable
   end
 end
 

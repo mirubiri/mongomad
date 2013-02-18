@@ -15,6 +15,8 @@ class Request
     :image,
     presence: true
 
+  attr_protected :user_name
+
   def self.generate(params=[])
     request = new(
       user: User.find(params[:user_id]),
