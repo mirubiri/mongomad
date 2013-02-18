@@ -5,7 +5,9 @@
   </div>
 <% end %>
 
-<% @things.each do |thing| %>
+<%= flash[:message] %>
+
+<% user_visited_things.each do |thing| %>
   <div class="thing">
     <div class="thing_image">
       <%= thing_image(thing) %>
