@@ -3,8 +3,12 @@
     <div class="profile_image">      
       <%= user_visited_image %>
     </div>
-    <div class="description">
-      <%= text_field_tag 'text', nil, :class => 'request_bar', :placeholder => "Texto de su nueva peticion", :maxlength => 135 %>      
-    </div>
+    <div class="description">      
+      <%= form.text_field :text,
+       :class => 'request_bar',
+       :placeholder => "Texto de su nueva peticion",
+       :maxlength => 135 %>      
+    </div>   
+    <input type="hidden" name="request[user_id]" value="<%= user_logged_id%>" /> 
   </div>  
 <% end %>

@@ -49,11 +49,7 @@ class ThingsController < ApplicationController
   # POST /things.json
   def create
     @user = User.find(params[:user_id])
-    #@thing = current_user.things.build(params[:user_thing]) 
-    @thing = current_user.things.build(image: params[:image],
-                                       name: params[:name],
-                                       description: params[:description],
-                                       stock: params[:stock]) 
+    @thing = current_user.things.build(params[:user_thing])    
 
     respond_to do |format|
       if @thing.save

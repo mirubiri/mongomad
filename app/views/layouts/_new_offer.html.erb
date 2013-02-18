@@ -82,9 +82,10 @@
             <%= user_logged_image %>
           </div>
           <div class="summary_header_text">
-            <div class="nombre_usuario">Sergio</div>
-            <%#= text_area_tag(:offer,:initial_message, "Mensaje inicial", :size => "5x2") %>
-            <%= form.text_area :initial_message, :size => "5x2" %>
+            <div class="nombre_usuario">Sergio</div>           
+            <%= form.text_area :initial_message,
+            :placeholder => "Mensaje Inicial",
+             :size => "5x2" %>
           </div>
           <div class="triangle"></div>
         </div>

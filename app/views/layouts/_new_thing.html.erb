@@ -1,5 +1,5 @@
 <div class="new_thing_content container_invisible" id="new-thing-form">
-  <%= form_for new_user_thing_path do |form| %>
+  <%= form_for @thing do |form| %>
     <div class="new_thing_title">
       Añade un nuevo producto      
     </div> 
@@ -7,11 +7,17 @@
       <%= form.file_field :image %>
     </div>
     <div class="new_thing_text">
-      <%= text_area_tag(:name, "", :placeholder => "Título del producto", :size => "4x1") %>
-      <%= text_area_tag(:description, "",:placeholder => "Describa de forma concisa el producto",  :size => "24x6") %>
+      <%= form.text_area :name, 
+              :placeholder => "Título del producto",
+              :size => "4x1" %>
+      <%= form.text_area :description,
+                :placeholder => "Describa de forma concisa el producto",
+                :size => "24x6" %>
     </div>
     <div class="stock">
-      <%= text_area_tag(:stock, "",:placeholder => "Unidades del producto de las que dispone",  :size => "15x2") %>
+      <%= form.text_area :stock, 
+            :placeholder => "Unidades del producto de las que dispone",  
+            :size => "15x2" %>
     </div>
     <div class="send_button">      
       <div class="action">      
