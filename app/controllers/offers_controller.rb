@@ -48,7 +48,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.generate(params)
+    @offer = Offer.generate(params[:offer])
     @user = User.find(params[:user_id])
 
     respond_to do |format|
