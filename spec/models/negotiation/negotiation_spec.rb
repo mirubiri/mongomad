@@ -20,6 +20,8 @@ describe Negotiation do
     it { should be_timestamped_document }
     it { should_not have_field(:token_user_id).of_type(Moped::BSON::ObjectId) }
     it { should_not have_field(:token_state).of_type(Symbol) }
+    it { should accept_nested_attributes_for :proposals }
+    it { should accept_nested_attributes_for :messages }
   end
 
   describe 'Validations' do
@@ -84,6 +86,10 @@ describe Negotiation do
           negotiation.kick(negotiation.negotiators.last)
         end
       end
+    end
+
+    context 'When given negotiator is not into the negotiation' do
+      specify{ negotiation.kick(Fabricate(:user)).should eq true }
     end
   end
 

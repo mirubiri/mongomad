@@ -37,4 +37,8 @@ class Request
     self.image_name = user.profile.image_name
     self
   end
+
+  def modify(params={})
+    update_attributes(params)
+  end
 end

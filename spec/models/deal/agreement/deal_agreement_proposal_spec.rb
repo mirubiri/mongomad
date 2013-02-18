@@ -16,6 +16,9 @@ describe Deal::Agreement::Proposal do
     it { should be_timestamped_document }
     it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
+    it { should accept_nested_attributes_for :composer }
+    it { should accept_nested_attributes_for :receiver }
+    it { should accept_nested_attributes_for :money }
   end
 
   describe 'Validations' do

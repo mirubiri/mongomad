@@ -13,6 +13,7 @@ describe Negotiation::Proposal::Composer do
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should accept_nested_attributes_for :products }
   end
 
   describe 'Validations' do
