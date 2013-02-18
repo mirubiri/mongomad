@@ -24,10 +24,10 @@ module MongomadMatchersHelpers
 
 # MESSAGES
   def same_messages?(actual,expected)
-      return false unless
-        actual.user_name = expected.user_name &&
-        actual.text = expected.text &&
-        actual.image_name = expected.image_name
+    return false unless
+      actual.user_name = expected.user_name &&
+      actual.text = expected.text &&
+      actual.image_name = expected.image_name
   end
 
 # OFFERS & PROPOSALS
@@ -92,6 +92,7 @@ module MongomadMatchersHelpers
     return same_requests?(actual,expected)  if are_requests?(actual,expected)
     return same_messages?(actual,expected)  if are_messages?(actual,expected)
     false
+    # TO-DO LA COMPARACION DE THINGS Y PRODUCTS TODAVIA NO FUNCIONA
   end
 end
 
