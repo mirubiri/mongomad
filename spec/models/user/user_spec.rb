@@ -28,7 +28,7 @@ describe User do
     specify { expect(user.save).to eq true }
   end
 
-  describe '.generate(params=[])' do
+  describe '.generate(user_params=[])' do
     xit 'creates an user with the given params'
   end
 
@@ -40,7 +40,7 @@ describe User do
     xit 'removes the user'
   end
 
-  describe '#modify(params=[])' do
+  describe '#modify(user_params=[])' do
     xit 'updates the user with the given params'
   end
 
