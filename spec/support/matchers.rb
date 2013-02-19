@@ -2,7 +2,7 @@ require 'rspec/expectations'
 
 module MongomadMatchersHelpers
 
-
+protected
 #THING & PRODUCT
   def eq_vendable?(actual,expected)
     ['name', 'description', 'image_name',].concat(yield).each do |field|
