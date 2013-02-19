@@ -16,7 +16,6 @@ describe User do
   end
 
   describe 'Attributes' do
-    it { should accept_nested_attributes_for :profile }
     it { should be_timestamped_document }
   end
 

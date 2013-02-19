@@ -14,8 +14,6 @@ describe Deal do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :agreement }
-    it { should accept_nested_attributes_for :messages }
   end
 
   describe 'Validations' do

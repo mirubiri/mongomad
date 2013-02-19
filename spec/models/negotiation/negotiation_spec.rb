@@ -20,8 +20,6 @@ describe Negotiation do
     it { should be_timestamped_document }
     it { should_not have_field(:token_user_id).of_type(Moped::BSON::ObjectId) }
     it { should_not have_field(:token_state).of_type(Symbol) }
-    it { should accept_nested_attributes_for :proposals }
-    it { should accept_nested_attributes_for :messages }
   end
 
   describe 'Validations' do

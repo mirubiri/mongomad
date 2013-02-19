@@ -11,10 +11,6 @@ describe Deal::Agreement do
     it { should embed_many(:messages).of_type(Deal::Agreement::Message) }
   end
 
-  describe 'Attributes' do
-    it { should accept_nested_attributes_for :proposals }
-    it { should_accept_nested_attributes_for :messages }
-  end
   describe 'Validations' do
     it { should validate_presence_of :deal }
     it { should validate_presence_of :proposals }
