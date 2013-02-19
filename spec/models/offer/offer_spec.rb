@@ -6,10 +6,8 @@ describe Offer do
   let(:offer) do
     Fabricate.build(:offer,
       user_composer:user_composer,
-      user_receiver:user_receiver
-      )
+      user_receiver:user_receiver )
   end
-
   let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
@@ -44,7 +42,6 @@ describe Offer do
   end
 
   describe '.generate(offer_params)' do
-
     it 'generates a valid offer given correct parameters' do
       Offer.generate(offer_params).should be_valid
     end
@@ -112,10 +109,6 @@ describe Offer do
     end
   end
 
-  describe '#modify(params={})' do
-    xit 'modify things'
-  end
-
   describe '#unpublish' do
     before do
       offer.publish
@@ -167,15 +160,8 @@ describe Offer do
     end
   end
 
-  describe '#start_negotiation' do
-    it 'calls .start_with(offer)' do
-      Negotiation.should_receive(:start_with).with(offer)
-      offer.start_negotiation
-    end
-
-    describe 'Returned negotiation' do
-      specify { offer.start_negotiation.should be_persisted }
-    end
+  describe '#modify(offer_params)' do
+    xit 'modify the thing with the given params'
   end
 
   describe '#self_update' do
@@ -194,6 +180,7 @@ describe Offer do
       offer.composer.should_receive(:self_update)
       offer.self_update
     end
+
     it 'calls to offer.receiver.self_update' do
       offer.receiver.should_receive(:self_update)
       offer.self_update
@@ -207,6 +194,17 @@ describe Offer do
       offer.composer.stub(:self_update).and_raise("StandardError")
       offer.receiver.stub(:self_update).and_raise("StandardError")
       expect { offer.self_update }.to raise_error
+    end
+  end
+
+  describe '#start_negotiation' do
+    it 'calls .start_with(offer)' do
+      Negotiation.should_receive(:start_with).with(offer)
+      offer.start_negotiation
+    end
+
+    describe 'Returned negotiation' do
+      specify { offer.start_negotiation.should be_persisted }
     end
   end
 end
