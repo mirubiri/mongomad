@@ -7,8 +7,7 @@ describe Deal do
 
   describe 'Relations' do
     it { should embed_one(:agreement).of_type(Deal::Agreement) }
-    it { should embed_many(:messages).of_type(Deal::Message) }
-    it { should_not have_and_belong_to_many(:users) }
+    it { should embed_one(:conversation).of_type(Deal::Conversation) }
     it { should have_and_belong_to_many(:signers).of_type(User) }
   end
 
@@ -18,8 +17,7 @@ describe Deal do
 
   describe 'Validations' do
     it { should validate_presence_of :agreement }
-    it { should validate_presence_of :messages }
-    it { should_not validate_presence_of :users }
+    it { should validate_presence_of :conversation }
     it { should validate_presence_of :signers }
   end
 
@@ -40,11 +38,23 @@ describe Deal do
     end
   end
 
-  describe '.make_with(negotiation)' do
-    xit 'makes a new deal from the given negotiation'
+  describe '.generate(negotiation)' do
+    xit 'creates a deal with the given params'
   end
 
-  describe '#post_message(params=[])' do
+  describe '#publish' do
+    xit 'saves the deal'
+  end
+
+  describe '#unpublish' do
+    xit 'removes the deal'
+  end
+
+  describe '#self_update' do
+    xit 'updates itself'
+  end
+
+  describe '#post_message(message_params)' do
     xit 'adds to deal a new message from the given hash'
   end
 end

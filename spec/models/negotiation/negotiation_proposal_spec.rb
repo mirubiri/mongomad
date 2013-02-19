@@ -34,4 +34,12 @@ describe Negotiation::Proposal do
       expect { proposal.save }.to change{ Negotiation.count }.by(1)
     end
   end
+
+  describe '.generate(proposal_params)' do
+    xit 'creates a proposal with the given params'
+  end
+
+  describe '#publish' do
+    xit 'saves the deal'
+  end
 end
