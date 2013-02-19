@@ -42,7 +42,23 @@ describe User::Thing do
     end
   end
 
+  describe '.generate(params=[])' do
+    xit 'creates a thing with the given params'
+  end
+
+  describe '#publish' do
+    xit 'saves the thing'
+  end
+
+  describe '#unpublish' do
+    xit 'removes the thing'
+  end
+
   describe '#modify(params=[])' do
-    xit 'Updates the thing with the given params'
+    xit 'updates the thing with the given params'
+  end
+
+  describe '#self_update' do
+    xit 'updates itself'
   end
 end
