@@ -42,7 +42,7 @@ describe User::Thing do
     end
   end
 
-  describe '.generate(thing_params=[])' do
+  describe '.generate(thing_params)' do
     xit 'creates a thing with the given params'
   end
 
@@ -54,7 +54,7 @@ describe User::Thing do
     xit 'removes the thing'
   end
 
-  describe '#modify(thing_params=[])' do
+  describe '#modify(thing_params)' do
     xit 'updates the thing with the given params'
   end
 
