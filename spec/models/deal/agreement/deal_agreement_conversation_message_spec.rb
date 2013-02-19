@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Deal::Agreeement::Conversation::Message do
+describe Deal::Agreement::Conversation::Message do
   let(:message) do
     Fabricate.build(:deal).agreement.conversation.messages.last
   end
