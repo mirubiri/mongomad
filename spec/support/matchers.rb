@@ -2,132 +2,196 @@ require 'rspec/expectations'
 
 module MongomadMatchersHelpers
 
-# THINGS & PRODUCTS
-  def same_things?(actual,expected)
-    expected.products.each_index do |index|
-      ['name', 'description', 'thing_id', 'image_name', yield || 'quantity'].each do |field|
-        return false unless
-          actual.products[index].send(field) == expected.products[index].send(field)
-      end
+
+#THING & PRODUCT
+  def eq_vendable?(actual,expected)
+    ['name', 'description', 'image_name',].concat(yield).each do |field|
+      return false unless
+        actual.send(field) == expected.send(field)
     end
   end
 
-  def same_vendables?(actual,expected)
-    same_things?(actual,expected) { 'stock' }
+  def eq_thing?(actual,expected)
+    eq_vendable?(actual,expected) { ['stock'] }
   end
 
-# MONEY
-  def same_moneys?(actual,expected)
+  def eq_product?(actual,expected)
+    eq_vendable?(actual,expected) { ['quantity','thing_id'] }
+  end
+
+
+#MONEY
+  def eq_money?(actual,expected)
     expected.user_id == actual.user_id &&
     expected.quantity == actual.quantity
   end
 
-# MESSAGES
-  def same_messages?(actual,expected)
-    return false unless
-      actual.user_name = expected.user_name &&
-      actual.text = expected.text &&
-      actual.image_name = expected.image_name
+
+#MESSAGE
+  def eq_message?(actual,expected)
+    actual.user_name = expected.user_name &&
+    actual.text = expected.text &&
+    actual.image_name = expected.image_name
   end
 
-# OFFERS & PROPOSALS
-  def same_participants?(actual,expected)
-    expected.user_composer_id == actual.user_composer_id &&
-    expected.user_receiver_id == actual.user_receiver_id
-  end
+#COMPOSER & RECEIVER
+  ## No vale para negociaciones y deals
 
-  def same_participant_datas?(actual,expected)
+  def eq_personal_data?(actual,expected)
     expected.name == actual.name &&
     expected.image_name == actual.image_name
   end
 
-  def same_proposals?(actual,expected)
-    same_moneys?(actual.money,expected.money) &&
-    same_participants?(actual,expected) &&
-
-    %w(composer receiver).each do |participant|
-      return false unless
-        same_participant_datas?(actual.send(participant),expected.send(participant)) &&
-        same_products?(actual.send(participant),expected.send(participant))
-    end
+  def eq_side?(actual,expected)
+    eq_personal_data?(actual,expected) &&
+    equivalent?(actual.products,expected.products)
   end
 
-  def same_offers?(actual,expected)
+#OFFER & PROPOSAL
+  
+  def eq_offerable_participants?(actual,expected)
+    expected.user_composer_id == actual.user_composer_id &&
+    expected.user_receiver_id == actual.user_receiver_id
+  end
+  
+  def eq_offerable?(actual,expected)
+    eq_offerable_participants?(actual,expected) &&
+    eq_money?(actual.money,expected.money) &&
+
+    eq_side?(actual.composer,expected.composer) &&
+    eq_side?(actual.receiver,expected.receiver)
+  end
+
+
+  def eq_proposal?(actual,expected)
+    eq_offerable?(actual,expected)
+  end
+
+  def eq_offer?(actual,expected)
     actual.initial_message == expected.initial_message &&
-    same_proposals?(actual,expected)
+    eq_offerable?(actual,expected)
   end
 
 
-# CHECKERS
-  def check_class(instance,class_name)
+
+#REQUEST
+
+  def eq_request?(actual,expected)
+    actual.user_name == expected.user_name &&
+    actual.text == expected.text &&
+    actual.image == expected.image
+  end
+
+=begin
+#AGREEMENT
+
+# def eq_agreement(actual,expected)
+
+#DEAL & NEGOTIATION
+
+def eq_negotiation_participants(actual,expected)
+  actual.negotiator_ids == expected.negotiator_ids
+end
+
+def eq_negotiation(actual,expected)
+  eq_negotiation_participants(actual,expected) &&
+  equivalent?(actual.proposals,expected.proposals) &&
+  equivalent?(actual.messages,expected.messages)
+end
+
+#def eq_deal(actual,expected)
+=end
+
+#COMPARATOR ENGINE
+
+#CHECKERS
+  def eq_klass?(instance,class_name)
     instance.class.name.demodulize.include?(class_name)
   end
 
   def are_offers?(actual,expected)
-    check_class(actual,'Offer') && check_class(expected,'Offer')
+    eq_klass?(actual,'Offer') && eq_klass?(expected,'Offer')
+  end
+
+  def are_proposals?(actual,expected)
+    eq_klass?(actual,'Proposal') && eq_klass?(expected,'Proposal')
   end
 
   def are_offerables?(actual,expected)
-    check_class(actual,'Offer') || check_class(actual,'Proposal') &&
-    check_class(expected,'Offer') || check_class(expected,'Proposal')
+    eq_klass?(actual,'Offer') || eq_klass?(actual,'Proposal') &&
+    eq_klass?(expected,'Offer') || eq_klass?(expected,'Proposal')
+  end
+
+  def are_products?(actual,expected)
+    eq_klass?(actual,'Product') && eq_klass?(expected,'Product')
   end
 
   def are_things?(actual,expected)
-    check_class(actual,'Thing') && check_class(expected,'Thing')
+    eq_klass?(actual,'Thing') && eq_klass?(expected,'Thing')
   end
 
   def are_vendables?(actual,expected)
-    check_class(actual,'Product') || check_class(actual,'Thing') &&
-    check_class(expected,'Product') || check_class(expected,'Thing')
+    eq_klass?(actual,'Product') || eq_klass?(actual,'Thing') &&
+    eq_klass?(expected,'Product') || eq_klass?(expected,'Thing')
+  end
+  
+  def are_requests?(actual,expected)
+    eq_klass?(actual,'Request') && eq_klass?(expected,'Request')
   end
 
-# COMPARATOR
-  def same_contents?(actual,expected)
-    return same_offers?(actual,expected)    if are_offers?(actual,expected)
-    return same_proposals?(actual,expected) if are_offerables?(actual,expected)
 
-    return same_things(actual,expected)     if are_things?(actual,expected)
-    return same_vendables?(actual,expected) if are_vendables?(actual,expected)
 
-    return same_requests?(actual,expected)  if are_requests?(actual,expected)
-    return same_messages?(actual,expected)  if are_messages?(actual,expected)
+  def eq_array?(actual,expected)
+    return false unless actual.size == expected.size
+    
+    actual.each_index do |index|
+      return false unless
+        yield(actual[index],expected[index])
+    end
+  end
+
+  def similar?(actual,expected)
+    # El orden es importante, no se puede cambiar
+
+    return eq_offer?(actual,expected)     if are_offers?(actual,expected)
+    return eq_proposal?(actual,expected)  if are_proposals?(actual,expected)
+    return eq_offerable?(actual,expected) if are_offerables?(actual,expected)
+    
+    return eq_thing?(actual,expected)    if are_things?(actual,expected)
+    return eq_product?(actual,expected)  if are_products?(actual,expected)
+    return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
+
+    return eq_message?(actual,expected)  if are_messages?(actual,expected)
+    return eq_request?(actual,expected)  if are_requests?(actual,expected)
+
+    #return eq_negotiation?(actual,expected)  if are_negotiations?(actual,expected)
+    #return eq_deal?(actual,expected)         if are_deals?(actual,expected)
+    #return eq_agreement?(actual,expected)    if are_deals?(actual,expected)
+    #return eq_business?(actual,expected)     if are_business?(actual,expected)
     false
-    # TO-DO LA COMPARACION DE THINGS Y PRODUCTS TODAVIA NO FUNCIONA
   end
+
+  def equivalent?(actual,expected)
+    if eq_klass?(actual,'Array') && eq_klass?(expected,'Array') 
+      
+      eq_array?(actual,expected) do |actual_element,expected_element|
+        similar?(actual_element,expected_element)
+      end
+
+    else
+      similar?(actual,expected)
+    end
+  end
+
 end
 
 module MongomadMatchers
   extend RSpec::Matchers::DSL
   include MongomadMatchersHelpers
 
-  matcher :match_participants_with do |expected|
-    match { |actual| same_participants?(actual,expected) }
-    diffable
-  end
-
-  matcher :match_products_with do |expected|
-    match do |actual|
-      %w(composer receiver).each do |participant|
-        return false unless
-          same_products?(actual.send(participant).products,expected.send(participant).products)
-      end
-    end
-    diffable
-  end
-
-  matcher :match_money_with do |expected|
-    match { |actual| same_moneys?(actual,expected) }
-    diffable
-  end
-
-  matcher :match_stuff_with do |expected|
-    match { |actual| same_contents?(actual,expected) }
+  matcher :be_like do |expected|
+    match { |actual| equivalent?(actual,expected) }
     # TO-DO Mensaje para las diferencias
-    diffable
-  end
-
-  matcher :match_messages_with do |expected|
-    match { |actual| same_messages?(actual,expected) }
     diffable
   end
 end

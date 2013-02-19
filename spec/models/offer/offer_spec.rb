@@ -53,7 +53,7 @@ describe Offer do
     end
 
     it 'returns an offer corresponding to the given params' do
-      Offer.generate(offer_params).should match_stuff_with offer
+      Offer.generate(offer_params).should be_like offer
     end
   end
 
