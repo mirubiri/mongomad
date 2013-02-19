@@ -11,15 +11,15 @@ describe Negotiation::Conversation do
   end
 
   describe 'Attributes' do
-    it { should have_field(:starter_negotiator_image_name).of_type(Object) }
-    it { should have_field(:follower_negotiator_image_name).of_type(Object) }
+    xit { should have_field(:starter_negotiator_image_name).of_type(Object) }
+    xit { should have_field(:follower_negotiator_image_name).of_type(Object) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :negotiation }
     it { should validate_presence_of :messages }
-    it { should validate_presence_of :starter_negotiator_image }
-    it { should validate_presence_of :follower_negotiator_image }
+    xit { should validate_presence_of :starter_negotiator_image }
+    xit { should validate_presence_of :follower_negotiator_image }
   end
 
   describe 'Factories' do
@@ -31,7 +31,7 @@ describe Negotiation::Conversation do
   end
 
   describe 'On save' do
-    it 'has both images' do
+    xit 'has both images' do
       conversation.save
       File.exist?(File.new(conversation.starter_negotiator_image.path)).should eq true
       File.exist?(File.new(conversation.follower_negotiator_image.path)).should eq true

@@ -1,7 +1,5 @@
-Fabricator(:negotiation_message, class_name: "Negotiation::Message") do
-  transient   :composer
+Fabricator(:negotiation_conversation, class_name: "Negotiation::Conversation") do
+  transient   :offer
   negotiation nil
-  user_name   { |attrs| attrs[:composer].name              }
-  text        "this is the first negotiation's message. it's written by the composer when he responds an offer"
-  image       { File.open('app/assets/images/message.png') }
+  messages(count: 1) { |attrs| Fabricate.build(:negotiation_conversation_message, composer:attrs[:offer].composer)            }
 end

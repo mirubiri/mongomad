@@ -1,4 +1,4 @@
-class Negotiation::Message
+class Negotiation::Conversation::Message
   include Mongoid::Document
   include Mongoid::Timestamps
 

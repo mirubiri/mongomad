@@ -3,5 +3,5 @@ Fabricator(:negotiation) do
   offer               { Fabricate(:offer)                                                              }
   negotiators         { |attrs| [ attrs[:offer].user_composer, attrs[:offer].user_receiver ]           }
   proposals(count: 1) { |attrs| Fabricate.build(:negotiation_proposal, offer:attrs[:offer])            }
-  messages(count: 1)  { |attrs| Fabricate.build(:negotiation_message, composer:attrs[:offer].composer) }
+  conversation        { |attrs| Fabricate.build(:negotiation_conversation, offer:attrs[:offer])        }
 end

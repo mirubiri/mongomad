@@ -11,15 +11,15 @@ describe Deal::Agreement::Conversation do
   end
 
   describe 'Attributes' do
-    it { should have_field(:starter_signer_image_name).of_type(Object) }
-    it { should have_field(:follower_signer_image_name).of_type(Object) }
+    xit { should have_field(:starter_signer_image_name).of_type(Object) }
+    xit { should have_field(:follower_signer_image_name).of_type(Object) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :agreement }
     it { should validate_presence_of :messages }
-    it { should validate_presence_of :starter_signer_image_name }
-    it { should validate_presence_of :follower_signer_image_name }
+    xit { should validate_presence_of :starter_signer_image_name }
+    xit { should validate_presence_of :follower_signer_image_name }
   end
 
   describe 'Factories' do
@@ -31,7 +31,7 @@ describe Deal::Agreement::Conversation do
   end
 
   describe 'On save' do
-    it 'has both images' do
+    xit 'has both images' do
       conversation.save
       File.exist?(File.new(conversation.starter_signer_image_name.path)).should eq true
       File.exist?(File.new(conversation.follower_signer_image.path)).should eq true

@@ -1,6 +1,5 @@
-class Deal::Message
+class Deal::Conversation
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   embedded_in :deal
 

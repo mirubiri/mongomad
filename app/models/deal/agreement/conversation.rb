@@ -1,6 +1,5 @@
-class Deal::Agreement::Message
+class Deal::Agreement::Conversation
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   embedded_in :agreement, class_name: "Deal::Agreement"
 

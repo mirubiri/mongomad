@@ -1,6 +1,5 @@
-class Negotiation::Message
+class Negotiation::Conversation
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   embedded_in :negotiation
 
