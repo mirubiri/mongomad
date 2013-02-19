@@ -29,4 +29,8 @@ describe Offer::Money do
       expect { money.save }.to change{ Offer.count }.by(1)
     end
   end
+
+  describe '#self_update' do
+    xit 'updates itself'
+  end
 end
