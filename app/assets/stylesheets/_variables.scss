@@ -6,8 +6,8 @@ $margen80px: 80px;
 $borde1px: 1px solid rgb(220,220,220);
 
 //offer_variables
-$bigImageDimension: 146px;
-$smallImageDimension: 78px;
+$bigImageDimension: 126px;
+$smallImageDimension: 58px;
 $productsLeftMargin: 15px;
 $productRightMargin: 8px;
 $productsTopMargin: 5px;
@@ -45,7 +45,7 @@ $width265px: 265px;
 $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 
-//my own mixins
+//Inicio mixins Propiedades generales***************************
 @mixin fixed_width($width,$minwidth,$maxwidth) {
   width: $width;
   min-width: $minwidth;
@@ -62,11 +62,18 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   width: $width;
   height: $height;
 }
+//Fin mixins Propiedades generales***************************
 
-@mixin ppal_container_style{  
-  width: 100%;
-  background: rgba(140, 140, 140, 0.15);
-  overflow: visible;  
+
+
+
+
+
+//Inicio mixins Contenedores*********************************
+@mixin border_Element_into_container{
+  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
+  @include border-radius(3px, 3px);
+  border: $borde1px;
 }
 
 @mixin top_main_header_style{
@@ -77,14 +84,16 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   background-color: white;
 }
 
-@mixin border_Element_into_container{
-  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
-  border: $borde1px;
+@mixin ppal_container_style{  
+  width: 100%;
+  background: rgba(140, 140, 140, 0.15);
+  overflow: visible;  
 }
 
 @mixin container_into_PpalSide_style{
   @include center-horizontally($width90pct);
   @include border_Element_into_container;
+  @include border-radius(3px, 3px);
   margin-top: 10px;
   margin-bottom: 5px;
   background-color: white;
@@ -97,6 +106,13 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   margin:0px 5px 5px 0px;
   background-color: white;
 }
+//Fin mixins Contenedores*****************************************
+
+
+
+
+
+//Inicio mixins de Product****************************************
 
 @mixin images_style{
   @include box-sizing(border-box);
@@ -113,7 +129,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     background-color: grey;
     color: white;
   }
-
 }
 
 .product_of_user_selected{
@@ -176,6 +191,13 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       }
     }
   }
+
+//Fin mixins de Product****************************************
+
+
+
+
+//Inicio mixins oferta**************************************
 
 @mixin offer_header{
 
@@ -297,3 +319,5 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
   }
 }
+
+//Fin mixins oferta**************************************

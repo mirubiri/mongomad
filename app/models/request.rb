@@ -17,10 +17,10 @@ class Request
 
   attr_protected :user_name
 
-  def self.generate(params=[])
+  def self.generate(request_params=[])
     request = new(
-      user: User.find(params[:user_id]),
-      text: params[:text]
+      user: User.find(request_params[:user_id]),
+      text: request_params[:text]
     )
     request.self_update
   end
@@ -33,14 +33,14 @@ class Request
     destroy
   end
 
+  def modify(request_params=[])
+    update_attributes(request_params)
+  end
+
   def self_update
     reload if persisted?
     self.user_name = user.profile.nickname
     self.image_name = user.profile.image_name
     self
-  end
-
-  def modify(params={})
-    update_attributes(params)
   end
 end

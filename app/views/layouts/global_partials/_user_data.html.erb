@@ -7,13 +7,13 @@
     <%= user_visited_country %></br>
   </div> 
 
-  <div class="new_offer_button">
-    <% if user_logged_id != user_visited_id %>      
+  <% if user_logged_id != user_visited_id %> 
+    <div class="new_offer_button">     
       <%= link_to "Hazme una nueva oferta",
           new_user_offer_path(current_user),
-          :remote => true %>      
-    <% end %>
-  </div> 
+          :remote => true %> 
+    </div>      
+  <% end %>
 
   <nav class="profile_menu" id="menu_user_data">
     <div class="menu_icon">

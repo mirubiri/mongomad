@@ -8,8 +8,6 @@ class NegotiationsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @requests = @user.requests.all.to_a
-    @negotiations = Negotiation.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb
