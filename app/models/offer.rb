@@ -40,10 +40,6 @@ class Offer
     destroy
   end
 
-  def start_negotiation
-    Negotiation.start_with(self)
-  end
-
   def self_update
     reload if persisted?
     receiver.self_update

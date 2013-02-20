@@ -196,6 +196,4 @@ describe Offer do
       expect { offer.self_update }.to raise_error
     end
   end
-
-  xit '#start_negotiation'
 end
