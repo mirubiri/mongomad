@@ -31,18 +31,22 @@ class ThingsController < ApplicationController
   # GET /things/new
   # GET /things/new.json
   def new
-    @thing = Thing.new
+    @thing = User::Thing.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @thing }
+      format.js # render new.js.erb
     end
   end
 
   # GET /things/1/edit
   def edit
-    @user = User.find(params[:user_id])
-    @thing = @user.things.find(params[:id])
+    @thing = current_user.things.find(params[:id])
+
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js # render edit.js.erb
+    end
   end
 
   # POST /things
@@ -69,7 +73,7 @@ class ThingsController < ApplicationController
   # PUT /things/1
   # PUT /things/1.json
   def update
-    @thing = Thing.find(params[:id])
+    @thing = current_user.things.find(params[:id])
 
     respond_to do |format|
       if @thing.update_attributes(params[:thing])

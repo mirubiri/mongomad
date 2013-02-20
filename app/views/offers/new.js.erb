@@ -1,0 +1,9 @@
+$('#new-offer-form').removeClass("container_invisible");
+$('#new-offer-form').modal({
+    opacity:60,
+    overlayCss: {backgroundColor:"#000000"},
+    onClose: function () {
+      $.modal.close();
+      $('#new-offer-form').addClass("container_invisible");
+    }
+});

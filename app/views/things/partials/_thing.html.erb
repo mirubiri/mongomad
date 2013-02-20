@@ -1,22 +1,28 @@
 <% if user_logged_id == user_visited_id %>
-  <div class="main_offer_button">
-    <%= button_tag "Añadir un nuevo producto", :class => "add_offer_button",
-    :id => "new-thing-button" %>
+  <div class="main_offer_button">    
+    <%= link_to "Añadir un nuevo producto_Ajax",
+        new_user_thing_path(current_user,thing),
+        :remote => true %>
   </div>
 <% end %>
 
 <%= flash[:message] %>
 
 <% user_visited_things.each do |thing| %>
-  <div class="thing">
+  <div class="thing" id="<%= thing_id(thing) %>">
     <div class="thing_image">
       <%= thing_image(thing) %>
     </div>
     <div class="thing_description"><%= thing_description(thing) %></div>
-    <%= link_to "editar", 
-              edit_user_thing_path(current_user,thing_id(thing))%>
+    <% if user_logged_id == user_visited_id %>      
+      <%= link_to "editar producto",
+          edit_user_thing_path(current_user,thing),
+          :remote => true %>        
+    <% end %>    
+      
   </div>  
 <% end %>
 
 <%= render :partial => "layouts/new_thing" %>
+<%= render :partial => "layouts/edit_thing" %>
   
