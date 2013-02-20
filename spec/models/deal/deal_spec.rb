@@ -54,7 +54,7 @@ describe Deal do
     xit 'updates itself'
   end
 
-  describe '#post_message(message_params)' do
+  describe '#post_message(message_params=[])' do
     xit 'adds to deal a new message from the given hash'
   end
 end
