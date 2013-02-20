@@ -35,7 +35,7 @@ describe Negotiation::Proposal do
     end
   end
 
-  describe '.generate(proposal_params)' do
+  describe '.generate(proposal_params=[])' do
     xit 'creates a proposal with the given params'
   end
 
