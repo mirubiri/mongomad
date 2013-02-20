@@ -14,10 +14,12 @@
       <%= thing_image(thing) %>
     </div>
     <div class="thing_description"><%= thing_description(thing) %></div>
-    <%= button_tag "editar producto", :class => "edit-thing-button" %>
-    <%= link_to "Edit_Ajax",
-        edit_user_thing_path(current_user,thing),
-        :remote => true %>    
+    <% if user_logged_id == user_visited_id %>      
+      <%= link_to "editar producto",
+          edit_user_thing_path(current_user,thing),
+          :remote => true %>        
+    <% end %>    
+      
   </div>  
 <% end %>
 
