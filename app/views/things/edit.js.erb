@@ -5,6 +5,7 @@ $('#edit-thing-form').modal({
     onClose: function () {
       $.modal.close();
       $('#edit-thing-form').addClass("container_invisible");
+      $('#ppal_container').masonry('reload');
     }
 });
 

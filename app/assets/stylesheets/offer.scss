@@ -2,12 +2,12 @@
 @import "compass/typography/links/unstyled-link";
 
 .offer {
-  @include element_into_ElementList_style;  
-  width: $offerWidth;
-    
+  @include element_into_ElementList_style;      
   @include container_options;
   @include offer_header;
   @include offer_products;
+  width: $offerWidth;
+  float: left;
 
   .offer_button{
     float: left;

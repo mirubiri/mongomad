@@ -4,9 +4,9 @@
       <%= render :partial => 
       'requests/partials/form' %>
     <% end %> 
-    <% if (user_visited_offers.count != 0)%>
-    <%= render :partial =>
-    'layouts/global_partials/requests_list' %>
+    <% if (user_visited_requests.count != 0)%>
+      <%= render :partial =>
+      'layouts/global_partials/requests_list' %>
     <% else %>
       <p>El usuario no tiene ninguna peticion actualmente</p>
     <% end %>            
