@@ -198,6 +198,6 @@ describe Offer do
   end
 
   describe '#start_negotiation' do
-    xir 'starts a negotiation froom the offer'
+    xit 'starts a negotiation froom the offer'
   end
 end
