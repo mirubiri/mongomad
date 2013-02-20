@@ -31,7 +31,7 @@ describe Deal::Agreement::Proposal::Receiver do
   end
 
   describe 'On save' do
-    it 'Has an image' do
+    it 'has an image' do
       receiver.save
       File.exist?(File.new(receiver.image.path)).should eq true
     end

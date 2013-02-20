@@ -38,7 +38,7 @@ describe Negotiation::Proposal::Composer::Product do
   end
 
   describe 'On save' do
-    it 'Has an image' do
+    it 'has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should eq true
     end

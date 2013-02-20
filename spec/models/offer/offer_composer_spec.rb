@@ -31,7 +31,7 @@ describe Offer::Composer do
   end
 
   describe 'On save' do
-    it 'Has an image' do
+    it 'has an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should eq true
     end
