@@ -93,7 +93,7 @@ describe Negotiation do
     end
   end
 
-  describe '#propose(proposal_params)' do
+  describe '#propose(proposal_params=[])' do
     let(:proposal) { negotiation.proposals.first }
     let(:proposal_params) do
       {
@@ -137,7 +137,7 @@ describe Negotiation do
     end
   end
 
-  describe '#post_message(message_params)' do
+  describe '#post_message(message_params=[])' do
     xit 'post a new message into the negotiation'
   end
 
