@@ -48,12 +48,12 @@ protected
   end
 
 #OFFER & PROPOSAL
-  
+
   def eq_offerable_participants?(actual,expected)
     expected.user_composer_id == actual.user_composer_id &&
     expected.user_receiver_id == actual.user_receiver_id
   end
-  
+
   def eq_offerable?(actual,expected)
     eq_offerable_participants?(actual,expected) &&
     eq_money?(actual.money,expected.money) &&
@@ -118,8 +118,8 @@ end
   end
 
   def are_offerables?(actual,expected)
-    eq_klass?(actual,'Offer') || eq_klass?(actual,'Proposal') &&
-    eq_klass?(expected,'Offer') || eq_klass?(expected,'Proposal')
+    (eq_klass?(actual,'Offer') || eq_klass?(actual,'Proposal')) &&
+    (eq_klass?(expected,'Offer') || eq_klass?(expected,'Proposal'))
   end
 
   def are_products?(actual,expected)
@@ -131,10 +131,10 @@ end
   end
 
   def are_vendables?(actual,expected)
-    eq_klass?(actual,'Product') || eq_klass?(actual,'Thing') &&
-    eq_klass?(expected,'Product') || eq_klass?(expected,'Thing')
+    (eq_klass?(actual,'Product') || eq_klass?(actual,'Thing')) &&
+    (eq_klass?(expected,'Product') || eq_klass?(expected,'Thing'))
   end
-  
+
   def are_requests?(actual,expected)
     eq_klass?(actual,'Request') && eq_klass?(expected,'Request')
   end
@@ -143,7 +143,7 @@ end
 
   def eq_array?(actual,expected)
     return false unless actual.size == expected.size
-    
+
     actual.each_index do |index|
       return false unless
         yield(actual[index],expected[index])
@@ -156,7 +156,7 @@ end
     return eq_offer?(actual,expected)     if are_offers?(actual,expected)
     return eq_proposal?(actual,expected)  if are_proposals?(actual,expected)
     return eq_offerable?(actual,expected) if are_offerables?(actual,expected)
-    
+
     return eq_thing?(actual,expected)    if are_things?(actual,expected)
     return eq_product?(actual,expected)  if are_products?(actual,expected)
     return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
@@ -172,8 +172,8 @@ end
   end
 
   def equivalent?(actual,expected)
-    if eq_klass?(actual,'Array') && eq_klass?(expected,'Array') 
-      
+    if eq_klass?(actual,'Array') && eq_klass?(expected,'Array')
+
       eq_array?(actual,expected) do |actual_element,expected_element|
         similar?(actual_element,expected_element)
       end

@@ -3,33 +3,17 @@ class Negotiation
   include Mongoid::Timestamps
 
   embeds_many :proposals, class_name: "Negotiation::Proposal", cascade_callbacks: true
-
+  embeds_one :conversation, class_name: "Negotiation::Conversation",cascade_callbacks:true
   has_and_belongs_to_many :negotiators, class_name: "User"
 
   validates :proposals,
     :negotiators,
+    :conversation,
     presence: true
 
-  def self.start_with(offer)
+  def self.generate(offer)
     raise error unless offer.valid?
 
-    negotiation = Negotiation.new
-
-    proposal = Negotiation::Proposal.generate(offer)
-
-    message = Negotiation::Message.new(
-      user_name: offer.composer.name,
-      text: offer.initial_message,
-      image: offer.composer.image
-    )
-
-    negotiation.proposals << proposal
-    negotiation.messages << message
-    negotiation.negotiators << offer.user_composer
-    negotiation.negotiators << offer.user_receiver
-
-    negotiation.save
-    negotiation
   end
 
   def kick(negotiator)
