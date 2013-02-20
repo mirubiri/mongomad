@@ -197,14 +197,5 @@ describe Offer do
     end
   end
 
-  describe '#start_negotiation' do
-    it 'calls .start_with(offer)' do
-      Negotiation.should_receive(:start_with).with(offer)
-      offer.start_negotiation
-    end
-
-    describe 'Returned negotiation' do
-      specify { offer.start_negotiation.should be_persisted }
-    end
-  end
+  xit '#start_negotiation'
 end

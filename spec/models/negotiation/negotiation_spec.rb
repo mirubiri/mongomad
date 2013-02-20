@@ -49,8 +49,6 @@ describe Negotiation do
       pending 'Choose wich exception to throw'
     end
 
-    xit 'it updates the new negotiation' # PIIIIENSAR
-
     specify { new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver) }
   end
 

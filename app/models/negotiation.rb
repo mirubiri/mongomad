@@ -3,12 +3,10 @@ class Negotiation
   include Mongoid::Timestamps
 
   embeds_many :proposals, class_name: "Negotiation::Proposal", cascade_callbacks: true
-  embeds_many :messages,  class_name: "Negotiation::Message", cascade_callbacks: true
 
   has_and_belongs_to_many :negotiators, class_name: "User"
 
   validates :proposals,
-    :messages,
     :negotiators,
     presence: true
 
@@ -32,10 +30,6 @@ class Negotiation
 
     negotiation.save
     negotiation
-  end
-
-  def finish
-    destroy
   end
 
   def kick(negotiator)
