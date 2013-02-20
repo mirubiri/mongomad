@@ -1,11 +1,3 @@
-<% if user_logged_id == user_visited_id %>
-  <div class="main_offer_button">    
-    <%= link_to "Añadir un nuevo producto_Ajax",
-        new_user_thing_path(current_user,thing),
-        :remote => true %>
-  </div>
-<% end %>
-
 <%= flash[:message] %>
 
 <% user_visited_things.each do |thing| %>

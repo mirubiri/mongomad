@@ -37,39 +37,39 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
-function applyMasonry(){    
-    var pagina = location.pathname.split("/");
-    var urlTokens = 3;
-    var lugar = "home";
+function applyMasonry(){
+  var pagina = location.pathname.split("/");
+  var urlTokens = 3;
+  var lugar = "home";
 
-    if (pagina.length == urlTokens + 1){
-        lugar = location.pathname.split("/")[urlTokens];
-    }
+  if (pagina.length == urlTokens + 1){
+      lugar = location.pathname.split("/")[urlTokens];
+  }
 
-    alert(lugar);
-    
-    switch (lugar) {
-        case "offers":
-            $('#ppal_container').masonry({
-                itemSelector : '.offer',
-                isAnimated: true
-            });
-        break;
+  //alert(lugar); funciona correctamente
 
-        case "things":
-            $('#ppal_container').masonry({
-                itemSelector : '.thing',
-                isAnimated: true
-            });
-        break;
+  switch (lugar) {
+      case "offers":
+          $('#ppal_container').masonry({
+              itemSelector : '.offer',
+              isAnimated: true
+          });
+      break;
 
-        case "home":
-            $('#ppal_container').masonry({
-                itemSelector : '.offer',
-                isAnimated: true
-            });
-        break;
-    }
+      case "things":
+          $('#ppal_container').masonry({
+              itemSelector : '.thing',
+              isAnimated: true
+          });
+      break;
+
+      case "home":
+          $('#ppal_container').masonry({
+              itemSelector : '.offer',
+              isAnimated: true
+          });
+      break;
+  }
 }
 
 function ajaxLinks(){

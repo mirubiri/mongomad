@@ -6,8 +6,8 @@ $margen80px: 80px;
 $borde1px: 1px solid rgb(220,220,220);
 
 //offer_variables
-$bigImageDimension: 126px;
-$smallImageDimension: 58px;
+$bigImageDimension: 144px;
+$smallImageDimension: 67px;
 $productsLeftMargin: 15px;
 $productRightMargin: 8px;
 $productsTopMargin: 5px;
@@ -103,7 +103,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin element_into_ElementList_style{
   @include border_Element_into_container;
   overflow:auto;
-  margin:0px 5px 5px 0px;
+  margin:0px 8px 5px 8px;
   background-color: white;
 }
 //Fin mixins Contenedores*****************************************
