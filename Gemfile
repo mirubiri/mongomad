@@ -26,6 +26,7 @@ group :development,:test do
   gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
   gem 'devise'
   gem 'jquery-rails'
+  gem 'better_errors'
 end
 
 
