@@ -16,7 +16,6 @@ describe User do
   end
 
   describe 'Attributes' do
-    it { should accept_nested_attributes_for :profile }
     it { should be_timestamped_document }
   end
 
@@ -29,23 +28,27 @@ describe User do
     specify { expect(user.save).to eq true }
   end
 
-  describe '#change_password(old_password,new_password)' do
-    xit 'changes old password to the given one'
+  describe '.generate(user_params=[])' do
+    xit 'creates an user with the given params'
   end
 
-  describe '#change_email(new_email)' do
-    xit 'changes old email to the given one'
+  describe '#publish' do
+    xit 'saves the user'
   end
 
-  describe '#close_account' do
-    xit 'deletes user from the platform'
+  describe '#unpublish' do
+    xit 'removes the user'
   end
 
-  describe '#add_thing(thing_params)' do
+  describe '#modify(user_params=[])' do
+    xit 'updates the user with the given params'
+  end
+
+  describe '#add_thing(thing_params=[])' do
     xit 'adds a new thing created from the given hash'
   end
 
-  describe '#remove_thing(thing)' do
+  describe '#remove_thing(thing_params=[])' do
     xit 'removes the given thing from the user'
   end
 end

@@ -1,0 +1,2 @@
+class Negotiation::Conversation
+end

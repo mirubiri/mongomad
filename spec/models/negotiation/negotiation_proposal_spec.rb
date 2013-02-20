@@ -16,9 +16,6 @@ describe Negotiation::Proposal do
     it { should be_timestamped_document }
     it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
-    it { should accept_nested_attributes_for :composer }
-    it { should accept_nested_attributes_for :receiver }
-    it { should accept_nested_attributes_for :money }
   end
 
   describe 'Validations' do
@@ -36,5 +33,13 @@ describe Negotiation::Proposal do
     it 'creates one negotiation' do
       expect { proposal.save }.to change{ Negotiation.count }.by(1)
     end
+  end
+
+  describe '.generate(proposal_params)' do
+    xit 'creates a proposal with the given params'
+  end
+
+  describe '#publish' do
+    xit 'saves the deal'
   end
 end

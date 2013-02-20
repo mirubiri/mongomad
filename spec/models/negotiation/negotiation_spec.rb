@@ -11,27 +11,18 @@ describe Negotiation do
 
   describe 'Relations' do
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
-    it { should embed_many(:messages).of_type(Negotiation::Message) }
-    it { should_not have_and_belong_to_many(:users) }
+    it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should_not have_field(:token_user_id).of_type(Moped::BSON::ObjectId) }
-    it { should_not have_field(:token_state).of_type(Symbol) }
-    it { should accept_nested_attributes_for :proposals }
-    it { should accept_nested_attributes_for :messages }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :proposals }
-    it { should validate_presence_of :messages }
-    it { should_not validate_presence_of :users }
+    it { should validate_presence_of :conversation }
     it { should validate_presence_of :negotiators }
-    it { should_not validate_presence_of :token_user_id }
-    it { should_not validate_presence_of :token_state }
-    it { should_not validate_inclusion_of(:token_state).to_allow([:propose, :accept]) }
   end
 
   describe 'Factories' do
@@ -47,7 +38,7 @@ describe Negotiation do
     end
   end
 
-  describe '.start_with(offer)' do
+  describe '.generate(offer)' do
     it 'generates a new negotiation with the given offer as current proposal' do
       Negotiation.start_with(offer).should be_valid
     end
@@ -63,8 +54,19 @@ describe Negotiation do
     specify { new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver) }
   end
 
-  describe '#kick(negotiator)' do
+  describe '#publish' do
+    xit 'saves the negotiation'
+  end
 
+  describe '#unpublish' do
+    xit 'removes the negotiation'
+  end
+
+  describe '#self_update' do
+    xit 'updates itself'
+  end
+
+  describe '#kick(negotiator)' do
     let(:leaving_negotiator) { negotiation.negotiators.first }
 
     context 'When negotiator is in negotiation' do
@@ -93,13 +95,7 @@ describe Negotiation do
     end
   end
 
-  describe '#current_proposal' do
-    it 'returns the last proposal maked' do
-      negotiation.current_proposal.should eq negotiation.proposals.last
-    end
-  end
-
-  describe '#make_proposal(proposal_params)' do
+  describe '#propose(proposal_params)' do
     let(:proposal) { negotiation.proposals.first }
     let(:proposal_params) do
       {
@@ -147,38 +143,20 @@ describe Negotiation do
     xit 'post a new message into the negotiation'
   end
 
-  describe '#can_agree?(negotiator)' do
-    xit 'returns true if the given negotiator can agree with the current proposal'
+  describe '#can_sign?(negotiator)' do
+    xit 'returns true if the given negotiator can sign the negotiation with the current proposal'
   end
 
-  describe '#agree(negotiator)' do
-    xit 'makes a negotiator to agree with the current proposal'
+  describe '#sign(negotiator)' do
+    xit 'makes a negotiator to sign the deal with the current proposal'
   end
 
-  describe '#can_make_deal?(negotiator)' do
-    xit 'returns true if the given negotiator has the opportunity of make a deal'
+  describe '#can_seal?(negotiator)' do
+    xit 'returns true if the given negotiator can seal the deal'
   end
 
-  describe '#make_deal' do
+  describe '#seal' do
     xit 'makes a deal with the current proposal as agreement'
     xit 'finish the negotiation'
-  end
-
-  describe '#self_update ' do
-    xit 'updates itself'
-  end
-
-  describe '#finish' do
-    it 'destroy the negotiation' do
-      negotiation.should_receive(:destroy).and_return(:true)
-      negotiation.finish
-    end
-
-    it 'removes the negotiation from each negotiator participating in' do
-      negotiation.finish
-      negotiation.negotiators.each do |negotiator|
-        User.find(negotiator).negotiations.should_not include(negotiation)
-      end
-    end
   end
 end

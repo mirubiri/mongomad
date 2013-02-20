@@ -38,9 +38,7 @@ describe Request do
     end
   end
 
-  describe '.generate(params=[])' do
-
-
+  describe '.generate(request_params)' do
     it 'generates a valid request given correct parameters' do
       Request.generate(request_params).should be_valid
     end
@@ -133,7 +131,7 @@ describe Request do
     end
   end
 
-  describe '#modify' do
+  describe '#modify(request_params)' do
     it 'call to update_attributes with given params' do
       request.should_receive(:update_attributes).with(request_params)
       request.modify(request_params)
@@ -151,14 +149,14 @@ describe Request do
       request.should_not_receive(:reload)
       request.self_update
     end
-  end
 
-  it 'returns self if self_update success' do
-    request.self_update.should eq request
-  end
+    it 'returns self if self_update success' do
+      request.self_update.should eq request
+    end
 
-  it 'raise error if self_update fails' do
-    request.stub(:self_update).and_raise("StandardError")
-    expect { request.self_update }.to raise_error
+    it 'raise error if self_update fails' do
+      request.stub(:self_update).and_raise("StandardError")
+      expect { request.self_update }.to raise_error
+    end
   end
 end
