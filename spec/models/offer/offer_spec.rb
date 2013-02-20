@@ -41,7 +41,7 @@ describe Offer do
     end
   end
 
-  describe '.generate(offer_params)' do
+  describe '.generate(offer_params=[])' do
     it 'generates a valid offer given correct parameters' do
       Offer.generate(offer_params).should be_valid
     end
@@ -160,7 +160,7 @@ describe Offer do
     end
   end
 
-  describe '#modify(offer_params)' do
+  describe '#modify(offer_params=[])' do
     xit 'modify the thing with the given params'
   end
 
@@ -195,5 +195,9 @@ describe Offer do
       offer.receiver.stub(:self_update).and_raise("StandardError")
       expect { offer.self_update }.to raise_error
     end
+  end
+
+  describe '#start_negotiation' do
+    xir 'starts a negotiation froom the offer'
   end
 end
