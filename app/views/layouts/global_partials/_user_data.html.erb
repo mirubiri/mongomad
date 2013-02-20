@@ -5,7 +5,15 @@
   <div class="user_name">
     <%= user_visited_nickname %></br>
     <%= user_visited_country %></br>
-  </div>  
+  </div> 
+
+  <div class="new_offer_button">
+    <% if user_logged_id != user_visited_id %>      
+      <%= link_to "Hazme una nueva oferta",
+          new_user_offer_path(current_user),
+          :remote => true %>      
+    <% end %>
+  </div> 
 
   <nav class="profile_menu" id="menu_user_data">
     <div class="menu_icon">

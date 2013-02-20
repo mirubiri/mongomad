@@ -1,0 +1,28 @@
+<div class="new_thing_content container_invisible" id="edit-thing-form"> 
+  <%= form_for @thing, :url => {:action => "update", :id => @thing.id}, :html => {:method => "put" } do |form| %>
+    <div class="new_thing_title">
+      Añade un nuevo producto      
+    </div> 
+    <div class="new_thing_image">
+      <%= form.file_field :image %>
+    </div>
+    <div class="new_thing_text">
+      <%= form.text_area :name, 
+              :placeholder => "Título del producto",
+              :size => "4x1" %>
+      <%= form.text_area :description,
+                :placeholder => "Describa de forma concisa el producto",
+                :size => "24x6" %>
+    </div>
+    <div class="stock">
+      <%= form.text_area :stock, 
+            :placeholder => "Unidades del producto de las que dispone",  
+            :size => "15x2" %>
+    </div>
+    <div class="send_button">      
+      <div class="action">      
+        <%= form.submit  "submit", :id => 'edit-thing-send-button'  %>
+      </div> 
+    </div>
+  <% end %>   
+</div> 
