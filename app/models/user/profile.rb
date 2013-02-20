@@ -25,4 +25,7 @@ class User::Profile
             :birth_date,
             :image,
             presence: true
+
+  def modify(profile_params=[])
+  end
 end
