@@ -40,12 +40,12 @@ describe Negotiation do
 
   describe '.generate(offer)' do
     it 'generates a new negotiation with the given offer as current proposal' do
-      Negotiation.start_with(offer).should be_valid
+      Negotiation.generate(offer).should be_valid
     end
 
     it 'raise error if the given offer is not valid' do
       offer.stub(:valid?).and_return false
-      Negotiation.start_with(offer).should raise_error
+      Negotiation.generate(offer).should raise_error
       pending 'Choose wich exception to throw'
     end
 
@@ -114,25 +114,25 @@ describe Negotiation do
 
       it 'calls to proposal.generate with the given hash' do
         Negotiation::Proposal.should_receive(:generate).with(proposal_params)
-        negotiation.make_proposal(proposal_params)
+        negotiation.propose(proposal_params)
       end
 
       it 'adds a new proposal' do
-        expect { negotiation.make_proposal(proposal_params) }.to change { negotiation.proposals.count }.by(1)
+        expect { negotiation.propose(proposal_params) }.to change { negotiation.proposals.count }.by(1)
       end
 
-      specify { negotiation.make_proposal(proposal_params).should eq true }
+      specify { negotiation.propose(proposal_params).should eq true }
     end
 
     context 'when negotiators do not match with composer and receiver in given hash' do
       before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(false) }
 
       it 'raise error' do
-        negotiation.make_proposal(proposal_params).should raise_error
+        negotiation.propose(proposal_params).should raise_error
       end
 
       it 'does not add a new proposal' do
-        expect { negotiation.make_proposal(proposal_params) }.to_not change {negotiation.proposals.count}.by(1)
+        expect { negotiation.propose(proposal_params) }.to_not change {negotiation.proposals.count}.by(1)
       end
     end
   end
