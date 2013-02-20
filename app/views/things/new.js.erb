@@ -12,5 +12,6 @@ $('#new-thing-form').modal({
     onClose: function () {
       $.modal.close();
       $('#new-thing-form').addClass("container_invisible");
+      $('#ppal_container').masonry('reload');
     }
 });

@@ -37,7 +37,7 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
-function applyMasonry(){
+function applyMasonry(){    
     var pagina = location.pathname.split("/");
     var urlTokens = 3;
     var lugar = "home";
@@ -46,12 +46,12 @@ function applyMasonry(){
         lugar = location.pathname.split("/")[urlTokens];
     }
 
+    alert(lugar);
+    
     switch (lugar) {
         case "offers":
             $('#ppal_container').masonry({
                 itemSelector : '.offer',
-                gutterWidth: 14,
-                columnWidth : $(".offer").first().height(),
                 isAnimated: true
             });
         break;
@@ -59,8 +59,6 @@ function applyMasonry(){
         case "things":
             $('#ppal_container').masonry({
                 itemSelector : '.thing',
-                gutterWidth: 13,
-                columnWidth : $(".offer").first().height(),
                 isAnimated: true
             });
         break;
@@ -68,8 +66,6 @@ function applyMasonry(){
         case "home":
             $('#ppal_container').masonry({
                 itemSelector : '.offer',
-                gutterWidth: 14,
-                columnWidth : $(".offer").first().height(),
                 isAnimated: true
             });
         break;
