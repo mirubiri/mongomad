@@ -33,8 +33,8 @@ class Offer
   end
   
   def alter_contents(params=[])
-    composer.alter(params[:composer_things])
-    receiver.alter(params[:receiver_things])
+    composer.alter_products(params[:composer_things])
+    receiver.alter_products(params[:receiver_things])
     money.alter(params[:money])
     self.initial_message=params[:initial_message]
     true

@@ -22,24 +22,24 @@ protected
 
 #MONEY
   def eq_money?(actual,expected)
-    expected.user_id == actual.user_id &&
-    expected.quantity == actual.quantity
+    (expected.user_id == actual.user_id) &&
+    (expected.quantity == actual.quantity)
   end
 
 
 #MESSAGE
   def eq_message?(actual,expected)
-    actual.user_name = expected.user_name &&
-    actual.text = expected.text &&
-    actual.image_name = expected.image_name
+    (actual.user_name == expected.user_name) &&
+    (actual.text == expected.text) &&
+    (actual.image_name == expected.image_name)
   end
 
 #COMPOSER & RECEIVER
   ## No vale para negociaciones y deals
 
   def eq_personal_data?(actual,expected)
-    expected.name == actual.name &&
-    expected.image_name == actual.image_name
+    (expected.name == actual.name) &&
+    (expected.image_name == actual.image_name)
   end
 
   def eq_side?(actual,expected)
@@ -50,8 +50,8 @@ protected
 #OFFER & PROPOSAL
 
   def eq_offerable_participants?(actual,expected)
-    expected.user_composer_id == actual.user_composer_id &&
-    expected.user_receiver_id == actual.user_receiver_id
+    (expected.user_composer_id == actual.user_composer_id) &&
+    (expected.user_receiver_id == actual.user_receiver_id)
   end
 
   def eq_offerable?(actual,expected)
@@ -68,7 +68,7 @@ protected
   end
 
   def eq_offer?(actual,expected)
-    actual.initial_message == expected.initial_message &&
+    (actual.initial_message == expected.initial_message) &&
     eq_offerable?(actual,expected)
   end
 
@@ -77,9 +77,9 @@ protected
 #REQUEST
 
   def eq_request?(actual,expected)
-    actual.user_name == expected.user_name &&
-    actual.text == expected.text &&
-    actual.image == expected.image
+    (actual.user_name == expected.user_name) &&
+    (actual.text == expected.text) &&
+    (actual.image == expected.image)
   end
 
 =begin
@@ -139,6 +139,9 @@ end
     eq_klass?(actual,'Request') && eq_klass?(expected,'Request')
   end
 
+  def are_moneys?(actual,expected)
+    eq_klass?(actual,'Money') && eq_klass?(expected,'Money')
+  end
 
 
   def eq_array?(actual,expected)
@@ -161,9 +164,10 @@ end
     return eq_product?(actual,expected)  if are_products?(actual,expected)
     return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
 
-    return eq_message?(actual,expected)  if are_messages?(actual,expected)
+    
     return eq_request?(actual,expected)  if are_requests?(actual,expected)
-
+    return eq_money?(actual,expected)    if are_moneys?(actual,expected)
+    #return eq_message?(actual,expected)  if are_messages?(actual,expected)
     #return eq_negotiation?(actual,expected)  if are_negotiations?(actual,expected)
     #return eq_deal?(actual,expected)         if are_deals?(actual,expected)
     #return eq_agreement?(actual,expected)    if are_deals?(actual,expected)
