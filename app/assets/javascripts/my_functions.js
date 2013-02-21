@@ -1,3 +1,9 @@
+function reloadPrincipalContainersHeighs(){
+  $('#ppal_container').css({'height': 0  + 'px'});
+  $('#user-side').css({'height': 0  + 'px'});
+  $('#content-side').css({'height': 0  + 'px'});
+}
+
 function matchPrincipalContainersHeighs(){
   // El 90 debe coincidir con las alturas del footer + header
   var alturaVentana = $(document).height()-90;
@@ -249,10 +255,12 @@ $(window).load(function(){
   maximizeConversationsHeights();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
+  expandRightContainer();
 });
 
 $(window).bind('resize', function() {
+  reloadPrincipalContainersHeighs();
+  matchPrincipalContainersHeighs();
   expandRightContainer();
   maximizeConversationsHeights();
-  matchPrincipalContainersHeighs();
 });
