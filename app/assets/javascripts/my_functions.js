@@ -251,8 +251,6 @@ $(window).load(function(){
   applyMasonry();
   ajaxLinks();
   newOfferScript();
-  addProfileCommentsSeparator();
-  maximizeConversationsHeights();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
@@ -262,5 +260,4 @@ $(window).bind('resize', function() {
   reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRightContainer();
-  maximizeConversationsHeights();
 });
