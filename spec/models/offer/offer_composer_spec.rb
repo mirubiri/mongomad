@@ -31,7 +31,7 @@ describe Offer::Composer do
     end
   end
 
-  describe '#alter_products' do
+  describe '#alter_products(params)' do
     after { composer.alter_products(composer_things_params) }
 
     it 'removes the current list of products' do
@@ -47,7 +47,7 @@ describe Offer::Composer do
     end
   end
 
-  describe '#add_products' do
+  describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
       offer.composer.add_products(composer_things_params)
       offer.self_update

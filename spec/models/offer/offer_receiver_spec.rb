@@ -30,7 +30,7 @@ describe Offer::Receiver do
     end
   end
 
-  describe '#alter_products' do
+  describe '#alter_products(params)' do
     after { receiver.alter_products(receiver_things_params) }
 
     it 'removes the current list of products' do
@@ -46,7 +46,7 @@ describe Offer::Receiver do
     end
   end
 
-  describe '#add_products' do
+  describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
       offer.receiver.add_products(receiver_things_params)
       offer.self_update

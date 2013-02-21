@@ -38,7 +38,7 @@ describe Request do
     end
   end
 
-  describe '.generate(request_params=[])' do
+  describe '.generate(params)' do
     it 'generates a valid request given correct parameters' do
       Request.generate(request_params).should be_valid
     end
@@ -131,10 +131,9 @@ describe Request do
     end
   end
 
-  describe '#alter(request_params=[])' do
-    it 'call to update_attributes with given params' do
-      request.should_receive(:update_attributes).with(request_params)
-      request.alter(request_params)
+  describe '#alter' do
+    it 'alter the request with the given params' do
+      pending 'pensar'
     end
   end
 
