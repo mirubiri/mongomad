@@ -11,6 +11,6 @@ class Deal::Agreement::Proposal::Composer
   validates :proposal,
     :products,
     :name,
-    :image,
+    :image_name,
     presence: true
 end

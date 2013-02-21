@@ -19,7 +19,7 @@ describe Request do
     it { should validate_presence_of :user }
     it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
-    it { should validate_presence_of :image }
+    it { should validate_presence_of :image_name }
   end
 
   describe 'Factories' do

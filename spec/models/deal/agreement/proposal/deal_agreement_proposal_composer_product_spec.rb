@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal::Composer::Product do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should validate_presence_of :image }
+    it { should validate_presence_of :image_name }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }

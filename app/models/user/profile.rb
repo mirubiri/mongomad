@@ -23,7 +23,7 @@ class User::Profile
             :sex,
             :country,
             :birth_date,
-            :image,
+            :image_name,
             presence: true
 
   def modify(profile_params=[])

@@ -11,6 +11,6 @@ class Deal::Agreement::Proposal::Receiver
   validates :proposal,
     :products,
     :name,
-    :image,
+    :image_name,
     presence: true
 end

@@ -11,7 +11,7 @@ class Offer::Receiver
   validates :offer,
     :products,
     :name,
-    :image,
+    :image_name,
     presence: true
 
   def add_products(params=[])
