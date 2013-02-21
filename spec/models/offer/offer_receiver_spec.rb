@@ -52,6 +52,10 @@ describe Offer::Receiver do
     end
   end
 
+  describe '#update_products' do
+    xit 'update the information of all products'
+  end
+
   describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
       product_list=receiver.products.dup
@@ -60,6 +64,8 @@ describe Offer::Receiver do
       receiver.self_update
       expect(receiver.products).to be_like product_list
     end
+
+    xit 'add all products in a single operation'
   end
 
   describe '#self_update' do

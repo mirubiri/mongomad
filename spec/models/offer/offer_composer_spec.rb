@@ -54,6 +54,10 @@ describe Offer::Composer do
     end
   end
 
+  describe '#update_products' do
+    xit 'update the information of all products'
+  end
+
   describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
       product_list=composer.products.dup
@@ -62,6 +66,8 @@ describe Offer::Composer do
       composer.self_update
       expect(composer.products).to be_like product_list
     end
+
+    xit 'add all products in a single operation'
   end
 
   describe '#self_update' do
