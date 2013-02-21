@@ -15,7 +15,7 @@ class Offer::Composer::Product
     :name,
     :description,
     :quantity,
-    :image,
+    :image_name,
     presence: true
 
   validates :quantity,

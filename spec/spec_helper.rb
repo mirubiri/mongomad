@@ -19,6 +19,7 @@ RSpec.configure do |config|
     Negotiation.all.destroy
     Deal.all.destroy
   end
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

@@ -30,7 +30,8 @@ describe Offer::Money do
     end
   end
 
-  describe '#self_update' do
-    xit 'updates itself'
+  describe '#alter' do
+    xit 'cleans actual money values'
+    xit 'set current values to the given params'
   end
 end

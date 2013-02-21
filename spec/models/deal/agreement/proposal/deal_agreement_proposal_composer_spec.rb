@@ -19,7 +19,7 @@ describe Deal::Agreement::Proposal::Composer do
     it { should validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :name }
-    it { should validate_presence_of :image }
+    it { should validate_presence_of :image_name }
   end
 
   describe 'Factories' do

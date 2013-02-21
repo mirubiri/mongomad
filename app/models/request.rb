@@ -33,10 +33,6 @@ class Request
     destroy
   end
 
-  def modify(request_params=[])
-    update_attributes(request_params)
-  end
-
   def self_update
     reload if persisted?
     self.user_name = user.profile.nickname

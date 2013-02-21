@@ -11,13 +11,18 @@ class Offer::Composer
   validates :offer,
     :products,
     :name,
-    :image,
+    :image_name,
     presence: true
 
   def add_products(params=[])
     params.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
+  end
+
+  def alter_products(params=[])
+    products.destroy
+    add_products(params)
   end
 
   private

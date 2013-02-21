@@ -40,7 +40,7 @@ describe User do
     xit 'removes the user'
   end
 
-  describe '#modify(user_params=[])' do
+  describe '#alter(user_params=[])' do
     xit 'updates the user with the given params'
   end
 

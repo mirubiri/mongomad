@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Offer::Composer do
-  let(:composer) do
-    composer=Fabricate.build(:offer).composer
-  end
+  let(:offer) { Fabricate.build(:offer) }
+  let(:composer) { offer.composer }
+
+  let(:composer_things_params) { params_for_offer(offer)[:composer_things] }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -19,7 +20,7 @@ describe Offer::Composer do
     it { should validate_presence_of :offer }
     it { should validate_presence_of :products }
     it { should validate_presence_of :name }
-    it { should validate_presence_of :image }
+    it { should validate_presence_of :image_name }
   end
 
   describe 'Factories' do
@@ -30,9 +31,33 @@ describe Offer::Composer do
     end
   end
 
+  describe '#alter_products(params)' do
+    after { composer.alter_products(composer_things_params) }
+
+    it 'removes the current list of products' do
+      composer.products.should_receive(:destroy)
+    end
+    
+    it 'add the given list of products' do
+      composer.target.should_receive(:add_products).with(composer_things_params)
+    end
+
+    it 'calls to self_update' do
+      pending 'pensar si llamarlo o no'
+    end
+  end
+
+  describe '#add_products(params)' do
+    it 'creates a product for each passed product_params' do
+      offer.composer.add_products(composer_things_params)
+      offer.self_update
+      offer.composer.products.should be_like offer.composer.products 
+    end
+  end
+  
   describe 'On save' do
     it 'has an image' do
-      composer.save
+      offer.publish
       File.exist?(File.new(composer.image.path)).should eq true
     end
   end

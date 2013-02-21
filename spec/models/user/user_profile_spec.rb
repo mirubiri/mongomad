@@ -31,7 +31,7 @@ describe User::Profile do
     it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
     it { should validate_presence_of :birth_date }
-    it { should validate_presence_of :image }
+    it { should validate_presence_of :image_name }
   end
 
   describe 'Factories' do
@@ -49,7 +49,7 @@ describe User::Profile do
     end
   end
 
-  describe '#modify(profile_params=[])' do
+  describe '#alter(profile_params=[])' do
     xit 'Updates the user profile with the given params'
   end
 end

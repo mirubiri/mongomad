@@ -93,7 +93,7 @@ describe Negotiation do
     end
   end
 
-  describe '#propose(proposal_params=[])' do
+  describe '#propose(params)' do
     let(:proposal) { negotiation.proposals.first }
     let(:proposal_params) do
       {
@@ -137,7 +137,7 @@ describe Negotiation do
     end
   end
 
-  describe '#post_message(message_params=[])' do
+  describe '#post_message(params)' do
     xit 'post a new message into the negotiation'
   end
 
@@ -153,7 +153,7 @@ describe Negotiation do
     xit 'returns true if the given negotiator can seal the deal'
   end
 
-  describe '#seal' do
+  describe '#seal(negotiator)' do
     xit 'makes a deal with the current proposal as agreement'
     xit 'finish the negotiation'
   end
