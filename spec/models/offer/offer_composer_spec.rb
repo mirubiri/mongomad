@@ -49,9 +49,11 @@ describe Offer::Composer do
 
   describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
-      offer.composer.add_products(composer_things_params)
-      offer.self_update
-      offer.composer.products.should be_like offer.composer.products 
+      product_list=composer.products.dup
+      composer.products.destroy
+      composer.add_products(product_list)
+      composer.self_update
+      expect(composer.products).to be_like product_list
     end
   end
   

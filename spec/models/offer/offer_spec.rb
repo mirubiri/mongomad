@@ -161,13 +161,14 @@ describe Offer do
   end
 
   describe '#alter_contents(offer_params=[])' do
-    after { offer.alter(offer_params) }
+    after { offer.alter_contents(offer_params) }
+
     it 'calls to composer.alter_products with params[:composer_things]' do
-      offer.composer.should_receive(:alter).with(offer_params[:composer_things])
+      offer.composer.should_receive(:alter_products).with(offer_params[:composer_things])
     end
 
     it 'calls to receiver.alter_products with params[:receiver_things]' do
-      offer.receiver.should_receive(:alter).with(offer_params[:receiver_things])
+      offer.receiver.should_receive(:alter_products).with(offer_params[:receiver_things])
     end
 
     it 'calls to money.alter with params[:money]' do
@@ -178,7 +179,7 @@ describe Offer do
       offer.should_receive(:initial_message).with(offer_params[:initial_message])
     end
     
-    specify { expect(offer.alter offer_params).to eq true }
+    specify { expect(offer.alter_contents offer_params).to eq true }
   end
 
   describe '#self_update' do

@@ -48,9 +48,11 @@ describe Offer::Receiver do
 
   describe '#add_products(params)' do
     it 'creates a product for each passed product_params' do
-      offer.receiver.add_products(receiver_things_params)
-      offer.self_update
-      offer.receiver.products.should be_like offer.receiver.products 
+      product_list=receiver.products.dup
+      receiver.products.destroy
+      receiver.add_products(product_list)
+      receiver.self_update
+      expect(receiver.products).to be_like product_list
     end
   end
 

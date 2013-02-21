@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Money do
-  let(:money) do
-    Fabricate.build(:offer).money
-  end
+  let(:offer) { Fabricate.build(:offer) }
+  let(:money) { offer.money }
+  let(:money_params) { params_for_offer(offer)[:money]}
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -31,7 +31,10 @@ describe Offer::Money do
   end
 
   describe '#alter' do
-    xit 'cleans actual money values'
-    xit 'set current values to the given params'
+    it 'set current values to the given params' do
+      new_money=Fabricate.build(:offer_money)
+      new_money.alter money_params
+      expect(new_money).to be_like money
+    end
   end
 end
