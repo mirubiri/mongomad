@@ -16,7 +16,6 @@ body{
   .mainlayout{
     @include center-horizontally(96%);
     @include box-sizing(border-box);
-    overflow: auto;
-  }
-  
+    overflow: auto;     
+  }  
 }

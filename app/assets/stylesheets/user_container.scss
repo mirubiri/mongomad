@@ -3,8 +3,14 @@
 .left_container{
   @include box-sizing(border-box);
   float:left;
-  width: $userContainerWidth;
-  max-width: 300px;    
+  @media screen and (max-width: 1300px) {
+    width: 280px;
+    max-width: 280px;
+  }
+  @media screen and (min-width: 1300px) {
+    width: 350px;
+    max-width: 350px;
+  }
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
   .user_container{
