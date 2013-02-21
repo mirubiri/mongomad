@@ -29,6 +29,12 @@ describe Offer::Receiver do
       expect { receiver.save }.to change{ Offer.count }.by(1)
     end
   end
+  describe 'On save' do
+    it 'has an image' do
+      receiver.save
+      File.exist?(File.new(receiver.image.path)).should eq true
+    end
+  end
 
   describe '#alter_products(params)' do
     after { receiver.alter_products(receiver_things_params) }
@@ -53,13 +59,6 @@ describe Offer::Receiver do
       receiver.add_products(product_list)
       receiver.self_update
       expect(receiver.products).to be_like product_list
-    end
-  end
-
-  describe 'On save' do
-    it 'has an image' do
-      receiver.save
-      File.exist?(File.new(receiver.image.path)).should eq true
     end
   end
 
