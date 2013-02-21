@@ -29,7 +29,7 @@ $MCTopPadding: 10px;
 $MCCenterMargin: 15px;
 
 //user_container
-$userContainerWidth: 25%;
+$userContainerWidth: 280px;
 $width250px: 250px;
 $borde2px: 2px solid rgb(220,220,220);
 $borde2pxblack: 2px solid black;
@@ -70,9 +70,13 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 
 //Inicio mixins Contenedores*********************************
+@mixin rounded_border{
+  @include border-radius(5px, 5px);
+}
+
 @mixin border_Element_into_container{
   @include box-shadow(rgb(170,170,170) 0px 1px 3px);
-  @include border-radius(3px, 3px);
+  @include rounded_border;
   border: $borde1px;
 }
 
@@ -93,7 +97,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin container_into_PpalSide_style{
   @include center-horizontally($width90pct);
   @include border_Element_into_container;
-  @include border-radius(3px, 3px);
+  @include rounded_border;
   margin-top: 10px;
   margin-bottom: 5px;
   background-color: white;

@@ -2,8 +2,9 @@
 
 .left_container{
   @include box-sizing(border-box);
+  float:left;
   width: $userContainerWidth;
-  float:left;  
+  max-width: 300px;    
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
   .user_container{

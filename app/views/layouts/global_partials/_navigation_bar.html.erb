@@ -10,15 +10,15 @@
       <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
         <div class="nav_element">Tratos</div>
       <% end %>
-     </nav>
-        
-       <% if user_logged_id == user_visited_id %>
+     </nav>  
+     <% if controller.controller_name === "things" %>
+      <% if user_logged_id == user_visited_id %>
         <div class="main_offer_button">    
           <%= link_to "Añadir un nuevo producto",
               new_user_thing_path(current_user),
               :remote => true %>
         </div>
-       
+      <% end %>
      <% end %>
      <div class="main_container_header_search">
       <input type="search">

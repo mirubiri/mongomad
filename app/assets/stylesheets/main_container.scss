@@ -2,11 +2,10 @@
 @import 'stitch';
 @import "compass/typography/links/unstyled-link";
 
-
 .right_container{
   @include box-sizing(border-box);
-  width: $mainContainerWidth;
   float:left;
+  width: $mainContainerWidth;
   padding: $MCTopPadding $MCExtPadding 0px 0px;
 
   .main_container{

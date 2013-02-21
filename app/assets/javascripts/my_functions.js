@@ -14,6 +14,13 @@ function matchPrincipalContainersHeighs(){
   }
 }
 
+function expandRightContainer(){
+  mainWidth = $('.mainlayout').width();
+  leftWidth = $('#leftContainer').width();
+  rightWidth = mainWidth - leftWidth -20;
+  $('#rightContainer').css({'width': rightWidth + 'px'});
+}
+
 function expandRequestContainer(){
   var alturaUserSide = $('#user-side').height();
   var alturaUserReputation = $('#user_reputation_container').height();
@@ -245,6 +252,7 @@ $(window).load(function(){
 });
 
 $(window).bind('resize', function() {
+  expandRightContainer();
   maximizeConversationsHeights();
   matchPrincipalContainersHeighs();
 });
