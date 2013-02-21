@@ -160,8 +160,8 @@ describe Offer do
     end
   end
 
-  describe '#modify(offer_params=[])' do
-    xit 'modify the thing with the given params'
+  describe '#alter(offer_params=[])' do
+    xit 'alter the thing with the given params'
   end
 
   describe '#self_update' do

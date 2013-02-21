@@ -49,7 +49,7 @@ describe User::Profile do
     end
   end
 
-  describe '#modify(profile_params=[])' do
+  describe '#alter(profile_params=[])' do
     xit 'Updates the user profile with the given params'
   end
 end

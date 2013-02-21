@@ -54,7 +54,7 @@ describe User::Thing do
     xit 'removes the thing'
   end
 
-  describe '#modify(thing_params=[])' do
+  describe '#alter(thing_params=[])' do
     xit 'updates the thing with the given params'
   end
 

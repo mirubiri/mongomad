@@ -131,10 +131,10 @@ describe Request do
     end
   end
 
-  describe '#modify(request_params=[])' do
+  describe '#alter(request_params=[])' do
     it 'call to update_attributes with given params' do
       request.should_receive(:update_attributes).with(request_params)
-      request.modify(request_params)
+      request.alter(request_params)
     end
   end
 
