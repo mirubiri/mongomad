@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Receiver do
-  let(:receiver) do
-    Fabricate.build(:offer).receiver
-  end
+  let(:offer) { Fabricate.build(:offer) }
+  let(:receiver) { offer.receiver }
+  let(:receiver_things_params) { params_for_offer(offer)[:receiver_things] }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -27,6 +27,30 @@ describe Offer::Receiver do
 
     it 'creates one offer' do
       expect { receiver.save }.to change{ Offer.count }.by(1)
+    end
+  end
+
+  describe '#alter_products' do
+    after { receiver.alter_products(receiver_things_params) }
+
+    it 'removes the current list of products' do
+      receiver.products.should_receive(:destroy)
+    end
+    
+    it 'add the given list of products' do
+      receiver.target.should_receive(:add_products).with(receiver_things_params)
+    end
+
+    it 'calls to self_update' do
+      pending 'pensar si llamarlo o no'
+    end
+  end
+
+  describe '#add_products' do
+    it 'creates a product for each passed product_params' do
+      offer.receiver.add_products(receiver_things_params)
+      offer.self_update
+      offer.receiver.products.should be_like offer.receiver.products 
     end
   end
 

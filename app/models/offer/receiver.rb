@@ -20,6 +20,11 @@ class Offer::Receiver
     end
   end
 
+  def alter_products(params=[])
+    products.destroy
+    add_products(params)
+  end
+
   private
   def update_user_data
     self.name = offer.user_receiver.profile.name
