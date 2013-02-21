@@ -36,7 +36,7 @@ describe Offer::Receiver do
     it 'removes the current list of products' do
       receiver.products.should_receive(:destroy)
     end
-    
+
     it 'add the given list of products' do
       receiver.target.should_receive(:add_products).with(receiver_things_params)
     end
