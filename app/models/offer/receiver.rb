@@ -20,7 +20,7 @@ class Offer::Receiver
     end
   end
 
-  def alter_products(params=[])
+  def alter_contents(params=[])
     products.destroy
     add_products(params)
   end

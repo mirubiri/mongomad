@@ -38,8 +38,8 @@ describe Offer::Composer do
     end
   end
 
-  describe '#alter_products(params)' do
-    after { composer.alter_products(composer_things_params) }
+  describe '#alter_contents(params)' do
+    after { composer.alter_contents(composer_things_params) }
 
     it 'removes the current list of products' do
       composer.products.should_receive(:destroy)

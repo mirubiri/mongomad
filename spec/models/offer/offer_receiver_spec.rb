@@ -36,8 +36,8 @@ describe Offer::Receiver do
     end
   end
 
-  describe '#alter_products(params)' do
-    after { receiver.alter_products(receiver_things_params) }
+  describe '#alter_contents(params)' do
+    after { receiver.alter_contents(receiver_things_params) }
 
     it 'removes the current list of products' do
       receiver.products.should_receive(:destroy)
