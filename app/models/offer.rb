@@ -31,15 +31,15 @@ class Offer
                       quantity: params[:money][:quantity])
     offer.self_update
   end
-  
+
   def alter_contents(params=[])
-    composer.alter_products(params[:composer_things])
-    receiver.alter_products(params[:receiver_things])
-    money.alter(params[:money])
+    composer.alter_contents(params[:composer_things])
+    receiver.alter_contents(params[:receiver_things])
+    money.alter_contents(params[:money])
     self.initial_message=params[:initial_message]
     true
   end
-  
+
   def publish
     save
   end

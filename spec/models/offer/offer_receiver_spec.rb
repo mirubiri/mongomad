@@ -29,14 +29,20 @@ describe Offer::Receiver do
       expect { receiver.save }.to change{ Offer.count }.by(1)
     end
   end
+  describe 'On save' do
+    it 'has an image' do
+      receiver.save
+      File.exist?(File.new(receiver.image.path)).should eq true
+    end
+  end
 
-  describe '#alter_products(params)' do
-    after { receiver.alter_products(receiver_things_params) }
+  describe '#alter_contents(params)' do
+    after { receiver.alter_contents(receiver_things_params) }
 
     it 'removes the current list of products' do
       receiver.products.should_receive(:destroy)
     end
-    
+
     it 'add the given list of products' do
       receiver.target.should_receive(:add_products).with(receiver_things_params)
     end
@@ -44,6 +50,10 @@ describe Offer::Receiver do
     it 'calls to self_update' do
       pending 'pensar si llamarlo o no'
     end
+  end
+
+  describe '#update_products' do
+    xit 'update the information of all products'
   end
 
   describe '#add_products(params)' do
@@ -54,13 +64,8 @@ describe Offer::Receiver do
       receiver.self_update
       expect(receiver.products).to be_like product_list
     end
-  end
 
-  describe 'On save' do
-    it 'has an image' do
-      receiver.save
-      File.exist?(File.new(receiver.image.path)).should eq true
-    end
+    xit 'add all products in a single operation'
   end
 
   describe '#self_update' do

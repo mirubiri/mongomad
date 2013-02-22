@@ -31,13 +31,20 @@ describe Offer::Composer do
     end
   end
 
-  describe '#alter_products(params)' do
-    after { composer.alter_products(composer_things_params) }
+  describe 'On save' do
+    it 'has an image' do
+      offer.publish
+      File.exist?(File.new(composer.image.path)).should eq true
+    end
+  end
+
+  describe '#alter_contents(params)' do
+    after { composer.alter_contents(composer_things_params) }
 
     it 'removes the current list of products' do
       composer.products.should_receive(:destroy)
     end
-    
+
     it 'add the given list of products' do
       composer.target.should_receive(:add_products).with(composer_things_params)
     end
@@ -45,6 +52,10 @@ describe Offer::Composer do
     it 'calls to self_update' do
       pending 'pensar si llamarlo o no'
     end
+  end
+
+  describe '#update_products' do
+    xit 'update the information of all products'
   end
 
   describe '#add_products(params)' do
@@ -55,13 +66,8 @@ describe Offer::Composer do
       composer.self_update
       expect(composer.products).to be_like product_list
     end
-  end
-  
-  describe 'On save' do
-    it 'has an image' do
-      offer.publish
-      File.exist?(File.new(composer.image.path)).should eq true
-    end
+
+    xit 'add all products in a single operation'
   end
 
   describe '#self_update' do

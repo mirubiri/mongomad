@@ -5,8 +5,8 @@ describe Offer do
   let(:user_receiver) { Fabricate(:user_with_things) }
   let(:offer) do
     Fabricate.build(:offer,
-      user_composer:user_composer,
-      user_receiver:user_receiver )
+                    user_composer:user_composer,
+                    user_receiver:user_receiver )
   end
   let(:offer_params) { params_for_offer(offer) }
 
@@ -41,7 +41,7 @@ describe Offer do
     end
   end
 
-  describe '.generate(offer_params=[])' do
+  describe '.generate(offer)' do
     it 'generates a valid offer given correct parameters' do
       Offer.generate(offer_params).should be_valid
     end
@@ -160,25 +160,25 @@ describe Offer do
     end
   end
 
-  describe '#alter_contents(offer_params=[])' do
+  describe '#alter_contents(params)' do
     after { offer.alter_contents(offer_params) }
 
-    it 'calls to composer.alter_products with params[:composer_things]' do
-      offer.composer.should_receive(:alter_products).with(offer_params[:composer_things])
+    it 'calls to composer.alter_contents with params[:composer_things]' do
+      offer.composer.should_receive(:alter_contents).with(offer_params[:composer_things])
     end
 
-    it 'calls to receiver.alter_products with params[:receiver_things]' do
-      offer.receiver.should_receive(:alter_products).with(offer_params[:receiver_things])
+    it 'calls to receiver.alter_contents with params[:receiver_things]' do
+      offer.receiver.should_receive(:alter_contents).with(offer_params[:receiver_things])
     end
 
     it 'calls to money.alter with params[:money]' do
-      offer.money.should_receive(:alter).with(offer_params[:money])
+      offer.money.should_receive(:alter_contents).with(offer_params[:money])
     end
 
     it 'changes initial_message with value of params[:initial_message]' do
       offer.should_receive(:initial_message).with(offer_params[:initial_message])
     end
-    
+
     specify { expect(offer.alter_contents offer_params).to eq true }
   end
 

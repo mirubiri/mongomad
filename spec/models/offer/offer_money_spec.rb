@@ -30,10 +30,10 @@ describe Offer::Money do
     end
   end
 
-  describe '#alter' do
+  describe '#alter_contents' do
     it 'set current values to the given params' do
       new_money=Fabricate.build(:offer_money)
-      new_money.alter money_params
+      new_money.alter_contents money_params
       expect(new_money).to be_like money
     end
   end
