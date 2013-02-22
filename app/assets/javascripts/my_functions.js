@@ -23,7 +23,7 @@ function matchPrincipalContainersHeighs(){
 function expandRightContainer(){
   mainWidth = $('.mainlayout').width();
   leftWidth = $('#leftContainer').width();
-  rightWidth = mainWidth - leftWidth -20;
+  rightWidth = mainWidth - leftWidth -31;
   $('#rightContainer').css({'width': rightWidth + 'px'});
 }
 

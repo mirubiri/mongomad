@@ -3,7 +3,7 @@
 .new_thing_content{
   @include absolute($top:5px,$left:5px);
   @include border-radius(5px, 5px);
-  @include fixed_width(430px,430px,430px);
+  @include fixed_width(750px,750px,750px);
   overflow:auto;
   margin: 0px 0px 0px 0px;  
   border: $borde2px;    
@@ -12,58 +12,96 @@
   form{    
     width: 100%;
 
-    .new_thing_title{
+    .thing_title{
       @include proportions(100%,20px);
       float:left;      
-      margin-bottom: 10px;
+      border-bottom: $borde1px;
     }
 
-    .new_thing_image{
-      width: 100%;
-      float: inherit; 
-      margin-bottom: 10px;     
-    }
-
-    .new_thing_text{
-      width: 100%;
-      float:left;
-
-      textarea{
-        overflow: hidden;
-        width: 98%;
-        border: $borde1px;
-        background-color: transparent;
-        color: #000000;
-        font-size: 11px;
-        resize: none;
-        margin-bottom: 5px;
-      }      
-    }
-    .stock{
-      width: 100%;
+    .thing_container{
+      @include box-sizing(border-box);
       float: left;
-      margin-bottom: 10px;
+      width: 100%;
+      overflow-y: auto;
 
-      textarea{
-        overflow: hidden;
-        width: 98%;
-        border: $borde1px;
-        background-color: transparent;
-        color: #000000;
-        font-size: 11px;
-        resize: none;
-        margin-bottom: 5px;
+      .thing_image{
+        @include box-sizing(border-box);
+        width: 50%;
+        float: left;
+        padding:10px;
+        border-right: $borde1px;
+
+
+        .big_image_container{
+          @include box-sizing(border-box);
+          width: 100%;
+          float: left;
+          margin-bottom: 5px;
+          img{
+            @include high-quality-image;
+            @include proportions(180px,180px);
+            margin-top: 10px;
+          }
+        } 
+        .small_images_container{
+          @include box-sizing(border-box);
+          width: 100%;
+          float: left;
+          img{
+            @include high-quality-image;
+            @include proportions(50px,50px);
+          }
+        }     
+      }
+
+      .thing_description{
+        @include box-sizing(border-box);
+        width: 50%;
+        float: left;
+        padding:10px;
+
+        .title{
+          @include box-sizing(border-box);
+          width: 100%;
+          float: left;
+
+          textarea{
+            overflow: hidden;
+            width: 98%;
+            border: $borde1px;
+            background-color: transparent;
+            color: #000000;
+            font-size: 11px;
+            resize: none;
+            margin-bottom: 5px;
+          }
+        }
+
+        .description{
+          @include box-sizing(border-box);
+          width: 100%;
+          float: left;
+
+          textarea{
+            overflow: hidden;
+            width: 98%;
+            border: $borde1px;
+            background-color: transparent;
+            color: #000000;
+            font-size: 11px;
+            resize: none;
+            margin-bottom: 5px;
+          }
+        }
       }
     }
 
-    .send_button{
-      float:left;
-      margin-bottom:10px;
-
-      button{
-        float:inherit;
-        margin-left:30px;
-      }
-    }
-  }
+    .thing_options{
+      @include box-sizing(border-box);
+      float: left;
+      width: 100%;
+      border-top: $borde1px;
+      overflow-y: auto;
+    }    
+  }    
 }
