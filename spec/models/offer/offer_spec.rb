@@ -41,7 +41,7 @@ describe Offer do
     end
   end
 
-  describe '.generate(offer)' do
+  describe '.generate(offer_params)' do
     it 'generates a valid offer given correct parameters' do
       Offer.generate(offer_params).should be_valid
     end
