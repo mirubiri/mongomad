@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe User::Thing do
-  let(:thing) do
-    Fabricate.build(:user_with_things).things.last
-  end
+  let(:thing) { Fabricate.build(:user_with_things).things.last }
+  let(:thing_params) { params_for_thing(thing) }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
@@ -59,6 +58,7 @@ describe User::Thing do
       end
 
       it 'adds the thing to things for user' do
+        thing.user.things << thing
         thing.publish
         User.find(thing.user).things.should include(thing)
       end
@@ -72,13 +72,17 @@ describe User::Thing do
       end
 
       it 'does not add the thing to things for user' do
+        thing.user.things << thing
         thing.publish
         User.find(thing.user).things.should_not include(thing)
       end
     end
 
     context 'When thing is published' do
-      before { thing.publish }
+      before do
+        thing.user.things << thing
+        thing.publish
+      end
 
       it 'returns true' do
         thing.publish.should eq true
@@ -121,7 +125,7 @@ describe User::Thing do
     after { thing.alter_contents(thing_params) }
 
     it 'does not change user from thing' do
-      specify { expect {thing.alter_contents(thing_params)}.to_not change {thing._id} }
+      expect { thing.alter_contents(thing_params) }.to_not change {thing._id}
     end
 
     it 'changes name with value of params[:name]' do
@@ -140,7 +144,7 @@ describe User::Thing do
       thing.should_receive(:image_name).with(thing_params[:image_name])
     end
 
-    specify { expect{thing.alter_contents thing_params}.to eq true }
+    specify { expect { thing.alter_contents(thing_params) }.to eq true }
   end
 
   describe '#self_update' do

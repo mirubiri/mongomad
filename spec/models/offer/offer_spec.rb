@@ -179,7 +179,7 @@ describe Offer do
       offer.should_receive(:initial_message).with(offer_params[:initial_message])
     end
 
-    specify { expect(offer.alter_contents offer_params).to eq true }
+    specify { expect(offer.alter_contents(offer_params)).to eq true }
   end
 
   describe '#self_update' do
