@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe Negotiation do
-  let(:offer) do
-    Fabricate(:offer)
-  end
+  let(:offer) { Fabricate(:offer) }
 
-  let(:negotiation) do
-    Fabricate.build(:negotiation, offer:offer)
-  end
+  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  let(:proposal) { negotiation.proposals.last }
+  let(:proposal_params) { params_for_proposal(proposal) }
 
   describe 'Relations' do
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
@@ -49,7 +47,10 @@ describe Negotiation do
       pending 'Choose wich exception to throw'
     end
 
-    specify { new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver) }
+    it 'puts same users in given offer into negotiation as negotiators' do
+      new_negotiation=Negotiation.generate(offer)
+      new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver)
+    end
   end
 
   describe '#publish' do
@@ -94,21 +95,6 @@ describe Negotiation do
   end
 
   describe '#propose(params)' do
-    let(:proposal) { negotiation.proposals.first }
-    let(:proposal_params) do
-      {
-        user_composer_id: proposal.user_composer_id,
-        user_receiver_id: proposal.user_receiver_id,
-        composer_things:  proposal.composer.products.map do |product|
-          { thing_id: product[:thing_id], quantity: product[:quantity] }
-        end,
-        receiver_things:  proposal.receiver.products.map do |product|
-          { thing_id: product[:thing_id], quantity: product[:quantity] }
-        end,
-        money: { user_id: proposal.money.user_id, quantity: proposal.money.quantity },
-      }
-    end
-
     context 'when negotiators match with composer and receiver in given hash' do
       before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(true) }
 

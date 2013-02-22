@@ -11,11 +11,6 @@ class Negotiation
     :conversation,
     presence: true
 
-  def self.generate(offer)
-    raise error unless offer.valid?
-
-  end
-
   def kick(negotiator)
     if negotiators.count >= 2
       negotiators.delete(negotiator)
