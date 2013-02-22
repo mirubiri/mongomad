@@ -32,19 +32,12 @@ module MongomadHelpers
 
 	  def params_for_thing(thing)
 	  	{
-	  		name: thing.name
-	  		description: thing.description
-	  		stock: thing.stock
+	  		name: thing.name,
+	  		description: thing.description,
+	  		stock: thing.stock,
 	  		image: thing.image
 	  	}
 	  end
 
 	  alias_method :params_for_proposal, :params_for_offerable
 end
-
-
-
-
-
-
-
