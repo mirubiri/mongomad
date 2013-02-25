@@ -22,4 +22,12 @@ class Negotiation::Proposal::Receiver::Product
             allow_nil: false,
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
+
+  def self_update
+    thing = receiver.proposal.user_receiver.things.find(self.thing_id)
+    self.name = thing.name
+    self.description = thing.description
+    self.image_name = thing.image_name
+    self
+  end
 end
