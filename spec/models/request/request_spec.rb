@@ -13,6 +13,7 @@ describe Request do
     it { should have_field(:user_name).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should_not have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -20,6 +21,7 @@ describe Request do
     it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
     it { should validate_presence_of :image_name }
+    it { should_not validate_presence_of :image }
   end
 
   describe 'Factories' do
@@ -131,8 +133,8 @@ describe Request do
     end
   end
 
-  describe '#alter' do
-    it 'alter the request with the given params' do
+  describe '#alter_contents(params)' do
+    it 'alter the request with the given parameters' do
       pending 'pensar'
     end
   end

@@ -12,7 +12,7 @@ class Request
   validates :user,
     :user_name,
     :text,
-    :image,
+    :image_name,
     presence: true
 
   attr_protected :user_name

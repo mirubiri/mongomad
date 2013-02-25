@@ -25,4 +25,23 @@ class Negotiation::Proposal::Receiver
       self.products << new_product
     end
   end
+
+  private
+  def update_user_data
+    self.name = proposal.user_composer.profile.name
+    self.image_name = proposal.user_composer.profile.image_name
+  end
+
+  def update_products
+    products.each do |product|
+      product.self_update
+    end
+  end
+
+  public
+  def self_update
+    update_user_data
+    update_products
+    self
+  end
 end

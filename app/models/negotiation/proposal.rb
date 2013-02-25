@@ -44,4 +44,11 @@ class Negotiation::Proposal
     build_money(user_id:offer_money.user_id,
                 quantity:offer_money.quantity)
   end
+
+  def self_update
+    reload if persisted?
+    receiver.self_update
+    composer.self_update
+    self
+  end
 end
