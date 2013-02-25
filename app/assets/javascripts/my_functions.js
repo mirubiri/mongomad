@@ -236,6 +236,7 @@ $(window).load(function(){
 });
 
 $(window).bind('resize', function() {
+  reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
