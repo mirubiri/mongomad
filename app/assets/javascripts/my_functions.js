@@ -50,39 +50,18 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
-function applyMasonry(){
-  var pagina = location.pathname.split("/");
-  var urlTokens = 3;
-  var lugar = "home";
+function masonryOffer(){
+  $('#ppal_container').masonry({
+      itemSelector : '.offer',
+      isAnimated: true
+  });
+}
 
-  if (pagina.length == urlTokens + 1){
-      lugar = location.pathname.split("/")[urlTokens];
-  }
-
-  //alert(lugar); funciona correctamente
-
-  switch (lugar) {
-      case "offers":
-          $('#ppal_container').masonry({
-              itemSelector : '.offer',
-              isAnimated: true
-          });
-      break;
-
-      case "things":
-          $('#ppal_container').masonry({
-              itemSelector : '.thing',
-              isAnimated: true
-          });
-      break;
-
-      case "home":
-          $('#ppal_container').masonry({
-              itemSelector : '.offer',
-              isAnimated: true
-          });
-      break;
-  }
+function masonryThing(){
+  $('#ppal_container').masonry({
+      itemSelector : '.thing',
+      isAnimated: true
+  });
 }
 
 function ajaxLinks(){
@@ -246,9 +225,9 @@ function slideOptionsPanel(){
 }
 
 $(window).load(function(){
-  slideOptionsPanel();
+  //slideOptionsPanel();
   closeModalWindows();
-  applyMasonry();
+  masonryOffer();
   ajaxLinks();
   newOfferScript();
   matchPrincipalContainersHeighs();
@@ -257,7 +236,7 @@ $(window).load(function(){
 });
 
 $(window).bind('resize', function() {
-  reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
+  expandRequestContainer();
   expandRightContainer();
 });

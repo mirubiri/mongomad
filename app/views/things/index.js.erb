@@ -1,3 +1,6 @@
-$("#ppal_container").html("<%=j render :partial => 'things/partials/thing' %>").masonry('reload');
-
 matchPrincipalContainersHeighs();
+expandRequestContainer();
+
+$("#ppal_container").html("<%=j render :partial => 'things/partials/thing' %>").masonry('destroy');
+
+masonryThing();
