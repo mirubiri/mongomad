@@ -19,24 +19,24 @@ class Offer
     :initial_message,
     presence: true
 
-  def self.generate(params=[])
+  def self.generate(offer_params=[])
     offer = new(
-      user_composer: User.find(params[:user_composer_id]),
-      user_receiver: User.find(params[:user_receiver_id]),
-      initial_message: params[:initial_message]
+      user_composer: User.find(offer_params[:user_composer_id]),
+      user_receiver: User.find(offer_params[:user_receiver_id]),
+      initial_message: offer_params[:initial_message]
     )
-    offer.build_composer.add_products(params[:composer_things])
-    offer.build_receiver.add_products(params[:receiver_things])
-    offer.build_money(user_id: params[:money][:user_id],
-                      quantity: params[:money][:quantity])
+    offer.build_composer.add_products(offer_params[:composer_things])
+    offer.build_receiver.add_products(offer_params[:receiver_things])
+    offer.build_money(user_id: offer_params[:money][:user_id],
+                      quantity: offer_params[:money][:quantity])
     offer.self_update
   end
 
-  def alter_contents(params=[])
-    composer.alter_contents(params[:composer_things])
-    receiver.alter_contents(params[:receiver_things])
-    money.alter_contents(params[:money])
-    self.initial_message=params[:initial_message]
+  def alter_contents(offer_params=[])
+    composer.alter_contents(offer_params[:composer_things])
+    receiver.alter_contents(offer_params[:receiver_things])
+    money.alter_contents(offer_params[:money])
+    self.initial_message = offer_params[:initial_message]
     true
   end
 

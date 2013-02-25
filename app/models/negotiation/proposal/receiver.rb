@@ -13,7 +13,7 @@ class Negotiation::Proposal::Receiver
     :name,
     :image_name,
     presence: true
-
+=begin
   def add_products(products)
     products.each do |product|
       new_product = Negotiation::Proposal::Receiver::Product.new
@@ -25,11 +25,17 @@ class Negotiation::Proposal::Receiver
       self.products << new_product
     end
   end
+=end
+  def add_products(params=[])
+    params.each do |index|
+      products.build(thing_id: index[:thing_id], quantity: index[:quantity])
+    end
+  end
 
   private
   def update_user_data
-    self.name = proposal.user_composer.profile.name
-    self.image_name = proposal.user_composer.profile.image_name
+    self.name = User.find(proposal.user_receiver_id).profile.name
+    self.image_name = User.find(proposal.user_receiver_id).profile.image_name
   end
 
   def update_products

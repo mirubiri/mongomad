@@ -11,20 +11,19 @@ class Negotiation::Proposal::Receiver::Product
   mount_uploader :image, ThingImageUploader, :mount_on => :image_name
 
   validates :receiver,
-            :thing_id,
-            :name,
-            :description,
-            :quantity,
-            :image_name,
-            presence: true
+    :thing_id,
+    :name,
+    :description,
+    :quantity,
+    :image_name,
+    presence: true
 
   validates :quantity,
-            allow_nil: false,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 0 }
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def self_update
-    thing = receiver.proposal.user_receiver.things.find(self.thing_id)
+    thing = User.find(receiver.proposal.user_receiver_id).things.find(self.thing_id)
     self.name = thing.name
     self.description = thing.description
     self.image_name = thing.image_name

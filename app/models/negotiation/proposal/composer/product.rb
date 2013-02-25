@@ -23,7 +23,7 @@ class Negotiation::Proposal::Composer::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def self_update
-    thing = composer.proposal.user_composer.things.find(self.thing_id)
+    thing = User.find(composer.proposal.user_composer_id).things.find(self.thing_id)
     self.name = thing.name
     self.description = thing.description
     self.image_name = thing.image_name
