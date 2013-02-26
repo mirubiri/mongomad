@@ -3449,13 +3449,7 @@ input[type="submit"].btn.btn-mini {
   min-height: 30px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-  background-repeat: repeat-x;
+  background-color: #ffffff;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   border: 1px solid #d4d4d4;
   -webkit-border-radius: 4px;
@@ -3568,7 +3562,7 @@ input[type="submit"].btn.btn-mini {
   position: relative;
   float: left;
   margin-top: 0px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
 .navbar-search .search-query {
   margin-bottom: 0;
@@ -3580,6 +3574,7 @@ input[type="submit"].btn.btn-mini {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
+  height: 20px;
 }
 .navbar-static-top {
   position: static;
