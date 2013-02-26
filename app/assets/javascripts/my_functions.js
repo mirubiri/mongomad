@@ -226,7 +226,7 @@ function newOfferScript(){
   });
 }
 
-functio slideOptionsPanel(){
+function slideOptionsPanel(){
   $(".triangle > #options_button").live('click',function(e){
     $(this).parent().parent().parent().find('#options').slideToggle('fast');
     e.preventDefault();
