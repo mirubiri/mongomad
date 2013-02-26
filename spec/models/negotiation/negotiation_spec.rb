@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Negotiation do
   let(:offer) { Fabricate(:offer) }
-
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:proposal) { negotiation.proposals.last }
   let(:proposal_params) { params_for_proposal(proposal) }
