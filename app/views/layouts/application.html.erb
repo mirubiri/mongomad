@@ -4,12 +4,7 @@
 <%= render partial: 'layouts/global_partials/metadata' %>
 
 <body>
-	<%= render partial: 'layouts/global_partials/header' %>
-	<div class="clearfix container-fluid">
-		<div class="row-fluid">
-	  	<%= render :partial => "layouts/#{controller.sub_layout}" %> 
-	  </div>
-	</div>  
+  <%= render :partial => "layouts/#{controller.sub_layout}" %>   
 </body>
 
 </html>

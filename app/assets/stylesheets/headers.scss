@@ -2,9 +2,16 @@
 @import "compass/typography/links/unstyled-link";
 @import 'stitch';
 
-.navbar,.login_header{
+.header,.login_header{
+  float: left;
+  width: 100%;
+  min-width: 1100px;
+  padding-top: 0px;
+  height: 40px;
+  display: block;
   background-color:#004e6a;
   color: white;
+  overflow: hidden;
 
   .header_container{
     width: 1100px;
@@ -98,10 +105,6 @@
       }
     }
   }
-
-  .navbar-inner{
-  }
-
 }
 
 .login_header{
@@ -113,6 +116,12 @@
   }
 }
 
-.subnavigation{
-  background-color: white;
+.clearfix::after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden;
 }

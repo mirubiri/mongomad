@@ -1,18 +1,17 @@
 function reloadPrincipalContainersHeighs(){
+  $('#ppal_container').css({'height': 0  + 'px'});
   $('#user-side').css({'height': 0  + 'px'});
   $('#content-side').css({'height': 0  + 'px'});
 }
 
 function matchPrincipalContainersHeighs(){
   // El 90 debe coincidir con las alturas del footer + header
-  var alturaVentana = $(document).height()-100;
+  var alturaVentana = $(document).height()-90;
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
   }
   $('#user-side,#content-side').equalHeightColumns();
-  $('#ppal_container,#content-side').equalHeightColumns();
-  var alturaPpalContainer = $('#ppal_container').height();
-  $('#ppal_container').css({'height': (alturaPpalContainer - 40)  + 'px'});
+  $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});
@@ -32,8 +31,8 @@ function expandRequestContainer(){
   var alturaUserSide = $('#user-side').height();
   var alturaUserReputation = $('#user_reputation_container').height();
   var alturaUserData = $('#user_data_container').height();
-  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -30;
-  $('#user_request_list').css('height', alturaRequesContainer + 'px');
+  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -28;
+  $('#user_request_list').css('height', alturaRequesContainer);
 }
 
 function maximizeConversationsHeights(){
@@ -51,15 +50,14 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
-function masonryOffer(){      
+function masonryOffer(){
   $('#ppal_container').masonry({
       itemSelector : '.offer',
       isAnimated: true
   });
 }
 
-
-function masonryThing(){      
+function masonryThing(){
   $('#ppal_container').masonry({
       itemSelector : '.thing',
       isAnimated: true
@@ -72,7 +70,7 @@ function ajaxLinks(){
       function () {$(this).removeClass("nav_hover");}
     );
 
-    $('#navigation_bar li a').live('click',function(e){
+    $('#navigation_bar nav a').live('click',function(e){
         $.getScript(this.href);
         var url= this.href;
         history.pushState({path:url},"", url);
@@ -234,11 +232,12 @@ $(window).load(function(){
   newOfferScript();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  //expandRightContainer();
+  expandRightContainer();
 });
 
 $(window).bind('resize', function() {
   reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
+  expandRightContainer();
 });

@@ -8,8 +8,8 @@ class Negotiation
   has_and_belongs_to_many :negotiators, class_name: "User"
 
   validates :proposals,
-    :negotiators,
     :conversation,
+    :negotiators,
     presence: true
 
   def self.generate(offer)
@@ -19,9 +19,13 @@ class Negotiation
     negotiation = Negotiation.new(
       conversation: Negotiation::Conversation.new()
     )
+
     negotiation.propose(proposal_params)
     negotiation.post_message(message_params)
-    negotiation.self_update
+    negotiation.negotiators << offer.composer
+    negotiation.negotiators << offer.receiver
+    negotiation
+    #negotiation.self_update
   end
 
   def publish
@@ -32,6 +36,7 @@ class Negotiation
     destroy
   end
 
+=begin
   def self_update
     reload if persisted?
     proposals.each do |proposal|
@@ -40,6 +45,7 @@ class Negotiation
     conversation.self_update
     self
   end
+=end
 
   def kick(negotiator)
     if negotiators.count >= 2
@@ -51,15 +57,16 @@ class Negotiation
 
   def propose(proposal_params=[])
     proposal = Negotiation::Proposal.generate(proposal_params)
-    proposal.publish
     self.proposals << proposal
+    self.publish
   end
 
   def post_message(message_params=[])
-    message = Negotiation::Proposal.new(
+    message = Negotiation::Proposal.new()
       #initial_message:message_params[:initial_message]
-    )
+
     self.conversation.messages << message
+    self.publish
   end
 
   private
