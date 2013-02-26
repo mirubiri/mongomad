@@ -18,5 +18,6 @@
 //= history
 //= modernizr-2.5.3
 //= modernizr-transitions
+//= require bootstrap
 //= my_functions
 //= require_tree .

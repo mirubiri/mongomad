@@ -14,6 +14,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'stitch'
+  gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
 group :development,:test do
