@@ -31,7 +31,7 @@ function expandRequestContainer(){
   var alturaUserSide = $('#user-side').height();
   var alturaUserReputation = $('#user_reputation_container').height();
   var alturaUserData = $('#user_data_container').height();
-  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -28;
+  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -67;
   $('#user_request_list').css('height', alturaRequesContainer);
 }
 

@@ -80,7 +80,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 @mixin top_main_header_style{
-  @include proportions(100%,26px);
+  @include proportions(100%,38px);
   @include box-shadow(rgb(170,170,170) 0px 1px 3px);  
   margin-bottom:12px;
   border-bottom: $borde1px;
