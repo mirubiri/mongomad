@@ -51,22 +51,15 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
-<<<<<<< Updated upstream
-function masonryOffer(){
-=======
 function masonryOffer(){      
->>>>>>> Stashed changes
   $('#ppal_container').masonry({
       itemSelector : '.offer',
       isAnimated: true
   });
 }
 
-<<<<<<< Updated upstream
-function masonryThing(){
-=======
+
 function masonryThing(){      
->>>>>>> Stashed changes
   $('#ppal_container').masonry({
       itemSelector : '.thing',
       isAnimated: true
@@ -248,8 +241,4 @@ $(window).bind('resize', function() {
   reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-<<<<<<< Updated upstream
-  expandRightContainer();
-=======
->>>>>>> Stashed changes
 });
