@@ -36,7 +36,6 @@ class Negotiation
     destroy
   end
 
-=begin
   def self_update
     reload if persisted?
     proposals.each do |proposal|
@@ -45,7 +44,6 @@ class Negotiation
     conversation.self_update
     self
   end
-=end
 
   def kick(negotiator)
     if negotiators.count >= 2
@@ -67,24 +65,5 @@ class Negotiation
 
     self.conversation.messages << message
     self.publish
-  end
-
-  private
-  def self.proposal_params_from_offer(offer)
-    {
-      user_composer_id: offer.user_composer_id,
-      user_receiver_id: offer.user_receiver_id,
-      composer_things:  offer.composer.products.map do |product|
-        { thing_id: product[:thing_id], quantity: product[:quantity] }
-      end,
-      receiver_things:  offer.receiver.products.map do |product|
-        { thing_id: product[:thing_id], quantity: product[:quantity] }
-      end,
-      money: { user_id: offer.money.user_id, quantity: offer.money.quantity }
-    }
-  end
-
-  def self.message_params_from_offer(offer)
-    #{ initial_message: offer.initial_message }
   end
 end
