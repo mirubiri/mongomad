@@ -1,13 +1,12 @@
 class RequestsController < ApplicationController
-  # GET /requests
-  # GET /requests.json
-
   def sub_layout
-    "requests" 
+    "requests"
   end
 
+  # GET /requests
+  # GET /requests.json
   def index
-    @user = User.find(params[:user_id])    
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -29,7 +28,6 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
-    @user = User.find(params[:user_id])
     @request = Request.new
 
     respond_to do |format|
@@ -46,11 +44,13 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = User.find(params[:user_id])    
+    @user = current_user
     @request = Request.generate(params[:request])
+    @request.user = @user
+    @request.self_update
 
     respond_to do |format|
-      if @request.save
+      if @request.publish
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
         format.json { render json: @user, status: :created, location: @request }
       else
@@ -63,10 +63,13 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
-    @request = Request.find(params[:id])
+    @user = current_user
+    @request = @user.resquests.find(params[:request][:request_id])
+    @request.alter_contents(params[:request])
+    @request.self_update
 
     respond_to do |format|
-      if @request.update_attributes(params[:request])
+      if @request.publish
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
@@ -80,7 +83,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id])
-    @request.destroy
+    @request.unpublish
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }
