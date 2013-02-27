@@ -15,22 +15,22 @@ class Request
     :image_name,
     presence: true
 
-  attr_protected :user_name
-
   def self.generate(request_params=[])
-    request = new(
-      user: User.find(request_params[:user_id]),
-      text: request_params[:text]
-    )
-    request.self_update
+    request = new(text: request_params[:text])
+    request
   end
 
   def publish
-    save
+    self.save
   end
 
   def unpublish
-    destroy
+    self.destroy
+  end
+
+  def alter_contents(request_params=[])
+    self.text = request_params[:text]
+    true
   end
 
   def self_update
