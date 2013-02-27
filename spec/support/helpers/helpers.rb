@@ -51,7 +51,6 @@ module MongomadHelpers
 
   def attributes_for_thing(thing)
     {
-      user_id: thing.user_id,
       name: thing.name,
       description: thing.description,
       stock: thing.stock,
