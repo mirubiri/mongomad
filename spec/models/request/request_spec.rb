@@ -40,17 +40,13 @@ describe Request do
     end
   end
 
-  describe '.generate(params)' do
+  describe '.generate(request_params)' do
     it 'generates a valid request given correct parameters' do
       Request.generate(request_params).should be_valid
     end
 
-    describe 'Returned request' do
-      let(:new_request) { Request.generate(request_params) }
-      specify { new_request.user_id.should eql request.user_id }
-      specify { new_request.user_name.should eql request.user_name }
-      specify { new_request.text.should eql request.text }
-      specify { new_request.image_name.should eql request.image_name }
+    it 'returns a request corresponding to the given parameters' do
+      Request.generate(request_params).should be_like offer
     end
   end
 
@@ -133,10 +129,14 @@ describe Request do
     end
   end
 
-  describe '#alter_contents(params)' do
-    it 'alter the request with the given parameters' do
-      pending 'pensar'
+  describe '#alter_contents(request_params)' do
+    after { request.alter_contents(request_params) }
+
+    it 'calls to request.alter_contents with request_params[:text]' do
+      request.should_receive(:alter_contents).with(request_params[:text])
     end
+
+    specify { expect(request.alter_contents(request_params)).to eq true }
   end
 
   describe '#self_update' do
