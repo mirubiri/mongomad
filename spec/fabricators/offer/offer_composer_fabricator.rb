@@ -8,6 +8,6 @@ Fabricator(:offer_composer, class_name: "Offer::Composer") do
     end
     products
   end
-  name       { |attrs| attrs[:user].profile.name       }
+  name       { |attrs| attrs[:user].profile.name }
   image_name { |attrs| attrs[:user].profile.image_name }
 end

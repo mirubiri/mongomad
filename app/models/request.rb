@@ -33,7 +33,7 @@ class Request
     true
   end
 
-  def self_update
+  def self_update!
     reload if persisted?
     self.user_name = user.profile.nickname
     self.image_name = user.profile.image_name

@@ -80,7 +80,7 @@ describe Offer do
         offer.publish.should eq false
       end
 
-      it 'do not save the offer' do
+      it 'does not save the offer' do
         offer.publish
         Offer.all.to_a.should_not include(offer)
       end

@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  def sub_layout
+  def sub_layout22
     "requests"
   end
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Request do
-  let(:request) { Fabricate.build(:request, user:Fabricate(:user)) }
+  let(:request) { Fabricate(:request, user:Fabricate(:user)) }
   let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
@@ -42,15 +42,6 @@ describe Request do
     it 'generates a request with the correct given parameters' do
       new_request = Request.generate(request_params)
       new_request.text = request.text
-    end
-
-    xit 'generates a valid request given correct parameters' do
-      Request.generate(request_params).should be_valid
-    end
-
-    xit 'returns a request corresponding to the given parameters' do
-      Request.generate(request_params).should be_like request
-      #sobra el matcher de request :P
     end
   end
 
@@ -134,34 +125,57 @@ describe Request do
   end
 
   describe '#alter_contents(request_params)' do
-    after { request.alter_contents(request_params) }
 
     it 'calls to request.alter_contents with request_params' do
       request.should_receive(:alter_contents).with(request_params)
+      request.alter_contents(request_params)
     end
 
+    it 'returns a request with modified request_params' do
+     new_request=Fabricate.build(:request,user:request.user)
+     new_request.self_update!
+     new_request.publish
+     new_request.alter_contents(request_params)
+     new_request.save
+     new_request.should be_like request
+
+    end
     specify { expect(request.alter_contents(request_params)).to eq true }
   end
 
-  describe '#self_update' do
+  describe '#self_update!' do
+    let(:new_request) do
+      new_request = Request.generate(request_params)
+      new_request.user = request.user
+      new_request.self_update!
+    end
+
+    it 'returns a valid request after update it' do
+      new_request.should be_valid
+    end
+
+    it 'returns a request corresponding to the given parameters' do
+      new_request.should be_like request
+    end
+
     it 'calls reload if persisted' do
       request.publish
       request.should_receive(:reload)
-      request.self_update
+      request.self_update!
     end
 
     it 'does not call reload if not persisted' do
       request.should_not_receive(:reload)
-      request.self_update
+      request.self_update!
     end
 
-    it 'returns self if self_update success' do
-      request.self_update.should eq request
+    it 'returns self if self_update! success' do
+      request.self_update!.should eq request
     end
 
-    it 'raise error if self_update fails' do
-      request.stub(:self_update).and_raise("StandardError")
-      expect { request.self_update }.to raise_error
+    it 'raise error if self_update! fails' do
+      request.stub(:self_update!).and_raise("StandardError")
+      expect { request.self_update! }.to raise_error
     end
   end
 end
