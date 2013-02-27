@@ -94,7 +94,7 @@ GEM
     mongoid-grid_fs (1.7.0)
       mime-types (~> 1.19)
       mongoid (~> 3.0)
-    mongoid-rspec (1.6.0)
+    mongoid-rspec (1.7.0)
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
