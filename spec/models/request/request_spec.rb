@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Request do
-  let(:request) { Fabricate(:request, user:Fabricate(:user)) }
+  let(:user) { Fabricate(:user) }
+  let(:request) { Fabricate.build(:request, user:user) }
   let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
@@ -131,14 +132,10 @@ describe Request do
       request.alter_contents(request_params)
     end
 
-    it 'returns a request with modified request_params' do
-     new_request=Fabricate.build(:request,user:request.user)
-     new_request.self_update!
-     new_request.publish
-     new_request.alter_contents(request_params)
-     new_request.save
-     new_request.should be_like request
-
+    it 'returns a request with modified with request_params' do
+      new_request=Fabricate.build(:request,user:user)
+      new_request.alter_contents(request_params)
+      new_request.should be_like request
     end
     specify { expect(request.alter_contents(request_params)).to eq true }
   end

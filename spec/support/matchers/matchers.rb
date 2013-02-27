@@ -79,10 +79,10 @@ module MongomadMatchersHelpers
   def eq_request?(actual,expected)
     (actual.user_name == expected.user_name) &&
       (actual.text == expected.text) &&
-      (actual.image == expected.image) &&
+      (actual.image_name == expected.image_name) &&
       (actual.user_id == expected.user_id )
   end
-  
+
 
   #COMPARATOR ENGINE
 
