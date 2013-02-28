@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
       </a>
       <div class="nav-collapse collapse navbar-responsive-collapse">
-        <ul class="nav">          
+        <ul class="nav" id="navigation_bar">          
           <li class="active">
             <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
               <div class="nav_element">Ofertas</div>
@@ -23,7 +23,8 @@
               <div class="nav_element">Tratos</div>
             <% end %>
           </li>
-          <li>
+          
+          <span style="float:left;margin-top:5px;margin-left:70px">
             <% if controller.controller_name === "things" %>
               <% if user_logged_id == user_visited_id %>                   
                 <%= link_to new_user_thing_path(current_user),
@@ -33,7 +34,8 @@
                 
               <% end %>
             <% end %>
-          </li>
+          </span>
+          
         </ul>
         <form class="navbar-search pull-right" action="">
           <input type="text" class="search-query span2" placeholder="Search">

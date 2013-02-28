@@ -71,12 +71,12 @@ function masonryThing(){
 }
 
 function ajaxLinks(){
-    $('#navigation_bar nav a').hover(
+    $('#navigation_bar li a').hover(
       function () {$(this).addClass("nav_hover");},
       function () {$(this).removeClass("nav_hover");}
     );
 
-    $('#navigation_bar nav a').live('click',function(e){
+    $('#navigation_bar li a').live('click',function(e){
         $.getScript(this.href);
         var url= this.href;
         history.pushState({path:url},"", url);
