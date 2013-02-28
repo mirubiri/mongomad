@@ -1,297 +1,288 @@
 @import "variables";
 
-.new_offer_content{
-  @include absolute($top:5px,$left:5px);
-  @include border-radius(5px, 5px);
-  @include fixed_width(800px,800px,800px);
+.products_area{
+  @include fixed_width(480px,480px,480px);
   @include fixed_height(555px,555px,555px);
-  overflow:auto;
-  margin: 0px 0px 0px 0px;
-  border: $borde2pxblack;
-  background-color: white;
 
-  .products_area{
-    @include fixed_width(480px,480px,480px);
-    @include fixed_height(555px,555px,555px);
+  .title{
+    @include fixed_width(100%,100%,100%);
+    @include fixed_height(30px,30px,30px);
+    float: left;
 
-    .title{
-      @include fixed_width(100%,100%,100%);
-      @include fixed_height(30px,30px,30px);
-      float: left;
+    a{
+      .user_products_selector{
+        @include fixed_width(234px,234px,234px);
+        @include fixed_height(30px,30px,30px);
+        float: left;
+        border: $borde1px;
 
-      a{
-        .user_products_selector{
-          @include fixed_width(234px,234px,234px);
-          @include fixed_height(30px,30px,30px);
+        .user_image{
           float: left;
-          border: $borde1px;
-
-          .user_image{
-            float: left;
-            margin: 2px 0px 0px 5px;
-            img{
-              @include proportions(25px,25px);
-            }
+          margin: 2px 0px 0px 5px;
+          img{
+            @include proportions(25px,25px);
           }
-          .description{
-            margin-top: 10px;
-          }
+        }
+        .description{
+          margin-top: 10px;
         }
       }
     }
+  }
 
-    .his_products{
-      @extend .product_of_user_selected;
+  .his_products{
+    @extend .product_of_user_selected;
 
-      .money{
-        textarea{
-        }
-      }
-
-      .product_container{
-        .product{
-          .product_image{
-            img{
-            }
-          }
-          .product_title{
-            input{
-            }
-          }
-        }
+    .money{
+      textarea{
       }
     }
 
-    .my_products{
-      @extend .product_of_user_selected;
-
-      .money{
-        textarea{
-        }
-      }
-
-      .product_container{
-        .product{
-          .product_image{
-            img{
-            }
+    .product_container{
+      .product{
+        .product_image{
+          img{
           }
-          .product_title{
-            input{
-            }
+        }
+        .product_title{
+          input{
           }
         }
       }
     }
   }
 
-  .offer_summary{
-    @include fixed_width(320px,320px,320px);
-    @include fixed_height(555px,555px,555px);
-    position: absolute;
-    top: 0px;
-    left: 480px;
-    background-color: rgb(225,225,225);
+  .my_products{
+    @extend .product_of_user_selected;
 
-    .title{
-      @include proportions(100%,32px);
-      float:left;
-      margin-bottom: 5px;
-      background-color: #2B3750;
-      color:white;
-
-      .description{
-        width:100%;
-        margin-top: 7px;
-        text-align:center;
-        font-weight:bold;
+    .money{
+      textarea{
       }
     }
 
-    .summary{
-      @include proportions(290px,470px);
-      @include border-radius(5px, 5px);
-      float: left;
-      margin: 5px 0px 0px 14px;
-      border: $borde1px;
-      background-color:white;
-
-      .summary_header{
-        overflow: auto;
-        margin:0px 0px 10px 0px;
-        padding: 5px;
-        width: 100%;
-
-        .triangle {
-          @include relative($top:-5px,$right:-248px);
-          @include proportions(0,0);
-          border:{
-            top: 25px solid rgb(0,0,0);
-            right: 0px solid transparent;
-            left: 25px solid transparent;
-          }
-        }
-
-        .summary_header_image{
-          @include border-radius(5px, 5px);
-          @include proportions(46px,46px);
-          float:left;
-          margin-right:5px;
-          border: $borde1px;
-
+    .product_container{
+      .product{
+        .product_image{
           img{
-            @include high-quality-image;
-            @include proportions(43px,43px);
-            float: left;
-          }
-
-        }
-        .summary_header_text{
-          float: left;
-          margin: 1px;
-          width: 195px;
-
-          .nombre_usuario{
-            @include proportions(100%,12px);
-            float:left;
-            overflow:none;
-            margin:-5px 0px 5px 0px;
-            font:{
-              weight:bold;
-              size:10px;
-            }
-          }
-
-          textarea{
-            overflow: hidden;
-            text-align: left;
-            width: 98%;
-            border: $borde1px;
-            background-color: transparent;
-            color: #000000;
-            font-size: 11px;
-            resize: none;
           }
         }
-      }
-
-      .summary_body{
-        @include fixed_height(375px,375px,375px);
-        width: 100%;
-        overflow: auto;
-        margin:0px 0px 0px 0px;
-
-        .summary_body_products_received{
-          float: left;
-          overflow: auto;
-          margin-left: 20px;
-          width: 50%;
-
-          .money_received{
-            float: left;
-            overflow: auto;
-            margin-left: 20px;
-            width: 50%;
-            text-align: center;
-
-            a{
-              @include unstyled-link;
-              margin-left: 2px;
-              font-size:12px;
-              z-index: 10;
-            }
+        .product_title{
+          input{
           }
-
-          .product{
-            @include border-radius(5px, 5px);
-            float: left;
-            overflow: auto;
-            margin: 5px 15px 5px 5px;
-            width: 140px;
-
-
-            .product_image{
-              @include proportions(125px,125px);
-              float:left;
-
-              img{
-                @include high-quality-image;
-                @include proportions(123px,123px);
-                border: $borde1px;
-              }
-            }
-
-            .product_title{
-              float: left;
-              width: 125px;
-            }
-
-          }
-        }
-
-        .summary_body_products_given{
-          float:right;
-          margin-right: 30px;
-          overflow: auto;
-          width: 30%;
-
-          .money_given{
-            float:left;
-            overflow: auto;
-            margin-left: 20px;
-            width: 50%;
-            text-align: center;
-
-            a{
-              @include unstyled-link;
-              margin-left: 2px;
-              font-size:12px;
-              z-index: 10;
-            }
-          }
-
-          .product{
-            @include border-radius(5px, 5px);
-            float: right;
-            overflow: auto;
-            margin: 5px 0px 5px 0px;
-
-            .product_image{
-              @include proportions(62px,62px);
-              float:left;
-
-              img{
-                @include high-quality-image;
-                @include proportions(60px,60px);
-                border: $borde1px;
-              }
-            }
-
-            .product_title{
-              width: 62px;
-            }
-          }
-        }
-      }
-    }
-    .summary_footer{
-      width: 290px;
-      float: left;
-      margin: 5px 0px 0px 14px;
-
-      .actions{
-        float: left;
-        width: 100%;
-
-        input{
-          @include border-radius(5px, 5px);
-          width:100%;
-          font-size: 16px;
         }
       }
     }
   }
 }
+
+.offer_summary{
+  @include fixed_width(320px,320px,320px);
+  @include fixed_height(555px,555px,555px);
+  position: absolute;
+  top: 0px;
+  left: 480px;
+  background-color: rgb(225,225,225);
+  overflow: visible;
+
+  .title{
+    @include proportions(100%,32px);
+    float:left;
+    margin-bottom: 5px;
+    background-color: #2B3750;
+    color:white;
+
+    .description{
+      width:100%;
+      margin-top: 7px;
+      text-align:center;
+      font-weight:bold;
+    }
+  }
+
+  .summary{
+    @include proportions(290px,470px);
+    @include border-radius(5px, 5px);
+    float: left;
+    margin: 5px 0px 0px 14px;
+    border: $borde1px;
+    background-color:white;
+
+    .summary_header{
+      overflow: auto;
+      margin:0px 0px 10px 0px;
+      padding: 5px;
+      width: 100%;
+
+      .triangle {
+        @include relative($top:-5px,$right:-248px);
+        @include proportions(0,0);
+        border:{
+          top: 25px solid rgb(0,0,0);
+          right: 0px solid transparent;
+          left: 25px solid transparent;
+        }
+      }
+
+      .summary_header_image{
+        @include border-radius(5px, 5px);
+        @include proportions(46px,46px);
+        float:left;
+        margin-right:5px;
+        border: $borde1px;
+
+        img{
+          @include high-quality-image;
+          @include proportions(43px,43px);
+          float: left;
+        }
+
+      }
+      .summary_header_text{
+        float: left;
+        margin: 1px;
+        width: 195px;
+
+        .nombre_usuario{
+          @include proportions(100%,12px);
+          float:left;
+          overflow:none;
+          margin:-5px 0px 5px 0px;
+          font:{
+            weight:bold;
+            size:10px;
+          }
+        }
+
+        textarea{
+          overflow: hidden;
+          text-align: left;
+          width: 98%;
+          border: $borde1px;
+          background-color: transparent;
+          color: #000000;
+          font-size: 11px;
+          resize: none;
+        }
+      }
+    }
+
+    .summary_body{
+      @include fixed_height(375px,375px,375px);
+      width: 100%;
+      overflow: auto;
+      margin:0px 0px 0px 0px;
+
+      .summary_body_products_received{
+        float: left;
+        overflow: auto;
+        margin-left: 20px;
+        width: 50%;
+
+        .money_received{
+          float: left;
+          overflow: auto;
+          margin-left: 20px;
+          width: 50%;
+          text-align: center;
+
+          a{
+            @include unstyled-link;
+            margin-left: 2px;
+            font-size:12px;
+            z-index: 10;
+          }
+        }
+
+        .product{
+          @include border-radius(5px, 5px);
+          float: left;
+          overflow: auto;
+          margin: 5px 15px 5px 5px;
+          width: 140px;
+
+
+          .product_image{
+            @include proportions(125px,125px);
+            float:left;
+
+            img{
+              @include high-quality-image;
+              @include proportions(123px,123px);
+              border: $borde1px;
+            }
+          }
+
+          .product_title{
+            float: left;
+            width: 125px;
+          }
+
+        }
+      }
+
+      .summary_body_products_given{
+        float:right;
+        margin-right: 30px;
+        overflow: auto;
+        width: 30%;
+
+        .money_given{
+          float:left;
+          overflow: auto;
+          margin-left: 20px;
+          width: 50%;
+          text-align: center;
+
+          a{
+            @include unstyled-link;
+            margin-left: 2px;
+            font-size:12px;
+            z-index: 10;
+          }
+        }
+
+        .product{
+          @include border-radius(5px, 5px);
+          float: right;
+          overflow: auto;
+          margin: 5px 0px 5px 0px;
+
+          .product_image{
+            @include proportions(62px,62px);
+            float:left;
+
+            img{
+              @include high-quality-image;
+              @include proportions(60px,60px);
+              border: $borde1px;
+            }
+          }
+
+          .product_title{
+            width: 62px;
+          }
+        }
+      }
+    }
+  }
+  .summary_footer{
+    width: 290px;
+    float: left;
+    margin: 5px 0px 0px 14px;
+
+    .actions{
+      float: left;
+      width: 100%;
+
+      input{
+        @include border-radius(5px, 5px);
+        width:100%;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
 
 .user_selected{
   background-color: #ccff66;

@@ -141,6 +141,9 @@ module ApplicationHelper
   def thing_image(thing)
     image_tag(thing.image)
   end
+  def thing_inboard(thing)
+    image_tag(thing.image, :alt => '200x100', :width => '200', :height => '100')
+  end
 
   # REQUEST HELPERS -----------------------------------------
   def request_id(request)

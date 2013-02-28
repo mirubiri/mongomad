@@ -13,25 +13,27 @@
               <div class="nav_element">Ofertas</div>
             <% end %>
           </li>
-           <li>
-             <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
+          <li>
+            <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
               <div class="nav_element">Negociaciones</div>
             <% end %>
           </li>
-           <li>
+          <li>
             <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
               <div class="nav_element">Tratos</div>
             <% end %>
           </li>
-          <% if controller.controller_name === "things" %>
-            <% if user_logged_id == user_visited_id %>
-              <div class="main_offer_button">    
-                <%= link_to "Añadir un nuevo producto",
-                    new_user_thing_path(current_user),
-                    :remote => true %>
-              </div>
+          <li>
+            <% if controller.controller_name === "things" %>
+              <% if user_logged_id == user_visited_id %>                   
+                <%= link_to new_user_thing_path(current_user),
+                    :remote => true do %>
+                    <div class="nav_element">Añade un nuevo producto</div>
+                <% end %>
+                
+              <% end %>
             <% end %>
-          <% end %>
+          </li>
         </ul>
         <form class="navbar-search pull-right" action="">
           <input type="text" class="search-query span2" placeholder="Search">

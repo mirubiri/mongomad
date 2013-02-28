@@ -2,7 +2,25 @@
 
 .devise_content{
   @include box-sizing(border-box);
+  background-color: white;
+  background-image: url("/assets/images/socialnetwork.png");
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center; 
   float: left;
   width: 100%;
   overflow: auto;
+
+  .login_container{
+    @include border-radius(10px, 10px);
+    border: 2px solid rgb(170,170,170);
+    float: left;
+    margin-top: 50px;
+    margin-left: 20px;
+    padding: 10px;
+    width: 240px;
+    height: 300px;
+    background-color: #CC4444;
+  }
+
 }

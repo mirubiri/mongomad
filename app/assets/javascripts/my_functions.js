@@ -7,9 +7,15 @@ function reloadPrincipalContainersHeighs(){
 function matchPrincipalContainersHeighs(){
   // El 90 debe coincidir con las alturas del footer + header
   var alturaVentana = $(document).height()-90;
+
+  if ( ($('#devise_container').height()) < alturaVentana ) {
+      $('#devise_container').css({'height': alturaVentana  + 'px'});
+  }
+
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
-  }
+  }  
+  
   $('#user-side,#content-side').equalHeightColumns();
   $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
 

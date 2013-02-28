@@ -4742,6 +4742,12 @@ a.thumbnail:focus {
   background-clip: padding-box;
   outline: none;
 }
+
+.modal.modal-offer{
+  left: 40%;
+  width: 800px;
+}
+
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;

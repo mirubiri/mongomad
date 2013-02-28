@@ -1,6 +1,5 @@
-<div class="new_offer_content container_invisible" id="new-offer-form">
+<div class="modal modal-offer hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-offer-form">
   <%= form_for [current_user,@offer] do |form| %>
-
     <div class="products_area">
       <div class="title">
         <a href="#blank" id="new_offer_receiver_selector" value="<%=user_logged_id%>">
@@ -64,9 +63,6 @@
       </div>
     </div>
 
-    <div class="container_invisible" id="given_products_counter" value="-1"></div>
-    <div class="container_invisible" id="received_products_counter" value="-1"></div>
-
     <input type="hidden" name="offer[user_composer_id]" value="<%= user_logged_id%>" />
     <input type="hidden" name="offer[user_receiver_id]" value="<%= user_visited_id%>" />
     <input type="hidden" name="offer[money][user_id]" value="nil" id="usuario_id" />
@@ -103,11 +99,12 @@
         </div>
       </div>
         <div class="summary_footer">
-          <div class="actions">
-            <%= form.submit "submit", :id => 'new-offer-send-button' %>
+          <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
           </div>
         </div>
     </div>
-
   <% end %>
 </div>
+

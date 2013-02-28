@@ -1,6 +1,8 @@
 <%= render partial: 'layouts/global_partials/login_header' %>
 
-<div class="devise_content">
-  <%= yield %>
+<div class="devise_content" id="devise_container">
+  <div class="login_container">
+    <%= yield %>
+  </div>
 </div>
 <%= render partial: 'layouts/global_partials/footer' %>
