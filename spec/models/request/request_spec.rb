@@ -44,6 +44,10 @@ describe Request do
       new_request = Request.generate(request_params)
       new_request.text = request.text
     end
+
+    it 'do not persist the object' do
+      Request.generate(request_params).should_not be_persisted
+    end
   end
 
   describe '#publish' do
@@ -64,7 +68,7 @@ describe Request do
     end
 
     context 'When request is not valid' do
-      before { request.should_receive(:save).and_return(false) }
+      before { request.should_receive(:valid?).and_return(false) }
 
       it 'returns false' do
         request.publish.should eq false
@@ -95,14 +99,12 @@ describe Request do
   end
 
   describe '#unpublish' do
-    before do
-      request.publish
-      request.unpublish
-    end
+
 
     context 'When request is saved' do
-      it 'returns true' do
-        request.unpublish.should eq true
+      before do
+        request.publish
+        request.unpublish
       end
 
       it 'removes the request' do
