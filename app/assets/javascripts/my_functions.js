@@ -85,7 +85,7 @@ function ajaxLinks(){
         $(this).addClass("nav_selected");
     });
 
-    $('#menu_user_data .menu_icon a').live('click',function(e){
+    $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
         $.getScript(this.href);
         var url= this.href;
         history.pushState({path:url},"", url);
