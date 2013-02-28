@@ -51,12 +51,8 @@ describe Request do
   end
 
   describe '#publish' do
-    context 'When request is saved' do
+    context 'When request is published' do
       before { request.publish }
-
-      #it 'returns true' do
-      #  request.publish.should eq true
-      #end
 
       xit 'raise an error if publish the request'
 
@@ -65,7 +61,7 @@ describe Request do
       end
     end
 
-    context 'When request is not saved' do
+    context 'When request is not published' do
       context 'When request is valid' do
         it 'returns true' do
           request.publish.should eq true
@@ -103,7 +99,7 @@ describe Request do
   end
 
   describe '#unpublish' do
-    context 'When request is saved' do
+    context 'When request is published' do
       before do
         request.publish
         request.unpublish
@@ -122,19 +118,12 @@ describe Request do
       end
     end
 
-    context 'When request is not saved' do
-      it 'returns true' do
-        request.unpublish.should eq true
-      end
+    context 'When request is not published' do
+      xit 'raise an error if unpublish the request'
     end
   end
 
   describe '#alter_contents(request_params)' do
-    it 'calls to request.alter_contents with request_params' do
-      request.should_receive(:alter_contents).with(request_params)
-      request.alter_contents(request_params)
-    end
-
     it 'returns a request with modified with request_params' do
       new_request = Fabricate.build(:request, user:user)
       new_request.alter_contents(request_params)
@@ -144,11 +133,11 @@ describe Request do
     specify { expect(request.alter_contents(request_params)).to eq true }
 
     context 'When request is saved' do
-      xit 'saves the request calling save method'
+      xit 'persist the request'
     end
 
     context 'When request is not saved' do
-      xit 'does not save the request'
+      xit 'do not persist the request'
     end
   end
 
@@ -171,9 +160,9 @@ describe Request do
       request.self_update!.should eq request
     end
 
-    it 'raise error if self_update! fails' do
-      request.stub(:self_update!).and_raise("StandardError")
-      expect { request.self_update! }.to raise_error
+    it 'raises error if user cannot be found' do
+      new_request.user = nil
+      expect { new_request.self_update! }.to raise_error
     end
 
     context 'When request is saved' do
