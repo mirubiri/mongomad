@@ -3,11 +3,7 @@ require 'spec_helper'
 describe Offer do
   let(:user_composer) { Fabricate(:user_with_things) }
   let(:user_receiver) { Fabricate(:user_with_things) }
-  let(:offer) do
-    Fabricate.build(:offer,
-                    user_composer:user_composer,
-                    user_receiver:user_receiver )
-  end
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
@@ -42,61 +38,27 @@ describe Offer do
   end
 
   describe '.generate(offer_params)' do
-    it 'generates a valid offer given correct parameters' do
-      Offer.generate(offer_params).should be_valid
+    xit 'generates an offer with the correct given parameters' do
+      new_offer = Request.generate(offer_params)
+      new_offer.initial message = offer.initial_message
+      # comparar todos los campos!!!
     end
 
-    it 'returns an offer corresponding to the given params' do
-      Offer.generate(offer_params).should be_like offer
+    xit 'do not persist the offer' do
+      Offer.generate(offer_params).should_not be_persisted
     end
+
+    # it 'generates a valid offer given correct parameters' do
+    #   Offer.generate(offer_params).should be_valid
+    # end
+
+    # it 'returns an offer corresponding to the given params' do
+    #   Offer.generate(offer_params).should be_like offer
+    # end
   end
 
   describe '#publish' do
-    context 'When offer is valid' do
-      it 'returns true' do
-        offer.publish.should eq true
-      end
-
-      it 'saves the offer' do
-        offer.publish
-        Offer.all.to_a.should include(offer)
-      end
-
-      it 'adds the offer to sent_offers for user_composer' do
-        offer.publish
-        User.find(offer.user_composer).sent_offers.should include(offer)
-      end
-
-      it 'adds the offer to received_offers for user_receiver' do
-        offer.publish
-        User.find(offer.user_receiver).received_offers.should include(offer)
-      end
-    end
-
-    context 'When offer is not valid' do
-      before { offer.should_receive(:save).and_return(false) }
-
-      it 'returns false' do
-        offer.publish.should eq false
-      end
-
-      it 'does not save the offer' do
-        offer.publish
-        Offer.all.to_a.should_not include(offer)
-      end
-
-      it 'does not add the offer to sent_offers for user_composer' do
-        offer.publish
-        User.find(offer.user_composer).sent_offers.should_not include(offer)
-      end
-
-      it 'does not add the offer to received_offers for user_receiver' do
-        offer.publish
-        User.find(offer.user_receiver).received_offers.should_not include(offer)
-      end
-    end
-
-    context 'When offer is published' do
+    context 'When offer is saved' do
       before { offer.publish }
 
       it 'returns true' do
@@ -107,16 +69,60 @@ describe Offer do
         expect { offer.publish }.to_not change { Offer.count }
       end
     end
+
+    context 'When offer is not saved' do
+      context 'When offer is valid' do
+        it 'returns true' do
+          offer.publish.should eq true
+        end
+
+        it 'saves the offer' do
+          offer.publish
+          Offer.all.to_a.should include(offer)
+        end
+
+        it 'adds the offer to sent_offers for user_composer' do
+          offer.publish
+          User.find(offer.user_composer).sent_offers.should include(offer)
+        end
+
+        it 'adds the offer to received_offers for user_receiver' do
+          offer.publish
+          User.find(offer.user_receiver).received_offers.should include(offer)
+        end
+      end
+      context 'When offer is not valid' do
+        before { offer.should_receive(:save).and_return(false) }
+
+        it 'returns false' do
+          offer.publish.should eq false
+        end
+
+        it 'does not save the offer' do
+          offer.publish
+          Offer.all.to_a.should_not include(offer)
+        end
+
+        it 'does not add the offer to sent_offers for user_composer' do
+          offer.publish
+          User.find(offer.user_composer).sent_offers.should_not include(offer)
+        end
+
+        it 'does not add the offer to received_offers for user_receiver' do
+          offer.publish
+          User.find(offer.user_receiver).received_offers.should_not include(offer)
+        end
+      end
+    end
   end
 
   describe '#unpublish' do
-    before do
-      offer.publish
-      offer.unpublish
-    end
-
     context 'When offer is saved' do
-      it 'returns true' do
+      before do
+        offer.publish
+        offer.unpublish
+      end
+       it 'returns true' do
         offer.unpublish.should eq true
       end
 
@@ -180,6 +186,14 @@ describe Offer do
     end
 
     specify { expect(offer.alter_contents(offer_params)).to eq true }
+
+    context 'When offer is saved' do
+      xit 'saves the offer calling save method'
+    end
+
+    context 'When offer is not saved' do
+      xit 'does not save the offer'
+    end
   end
 
   describe '#self_update' do
@@ -212,6 +226,25 @@ describe Offer do
       offer.composer.stub(:self_update).and_raise("StandardError")
       offer.receiver.stub(:self_update).and_raise("StandardError")
       expect { offer.self_update }.to raise_error
+    end
+
+    context 'When offer is saved' do
+      xit 'saves the offer calling save method'
+      xit 'calls reload'
+      #it 'calls reload if persisted' do
+      #  request.publish
+      #  request.should_receive(:reload)
+      #  request.self_update!
+      #end
+    end
+
+    context 'When offer is not saved' do
+      xit 'does not save the offer'
+      xit 'does not call reload'
+      #it 'does not call reload if not persisted' do
+      #  offer.should_not_receive(:reload)
+      #  offer.self_update!
+      #end
     end
   end
 
