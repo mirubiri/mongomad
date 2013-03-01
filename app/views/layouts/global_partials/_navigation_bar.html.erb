@@ -1,4 +1,4 @@
-<div class="navbar">
+<div class="navbar" id="navigation_bar">
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -22,19 +22,18 @@
             <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
               <div class="nav_element">Tratos</div>
             <% end %>
-          </li>
-          
-          <span style="float:left;margin-top:5px;margin-left:70px">
-            <% if controller.controller_name === "things" %>
-              <% if user_logged_id == user_visited_id %>                   
+          </li>          
+         
+          <% if controller.controller_name === "things" %>
+            <% if user_logged_id == user_visited_id %>
+              <span style="float:left;margin-top:5px;margin-left:70px">    
                 <%= link_to new_user_thing_path(current_user),
                     :remote => true do %>
                     <div class="nav_element">Añade un nuevo producto</div>
                 <% end %>
-                
-              <% end %>
+              </span>
             <% end %>
-          </span>
+          <% end %>          
           
         </ul>
         <form class="navbar-search pull-right" action="">
