@@ -1,4 +1,5 @@
 class Request
+=begin
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -39,4 +40,5 @@ class Request
     self.image_name = user.profile.image_name
     self
   end
+=end
 end
