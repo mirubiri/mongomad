@@ -56,61 +56,24 @@ describe Request do
   end
 
   describe '#publish' do
-    context 'When request is published' do
-      before do
-        request.publish
-      end
-      it 'checks request is persisted' do
-        request.should be_persisted
-      end
-      it 'checks image is saved' do
-        File.exist?(File.new(request.image.path)).should eq true
-      end
-      it 'raises an error if publish the request' do
-        expect { request.publish }.to raise_error
-      end
-      it 'does not create a new request' do
-        expect { request.publish }.to_not change { Request.count }
-      end
-    end
 
     context 'When request is not published' do
-      before do
-        request.publish
-        request.unpublish
-      end
-      it 'checks request is not persisted' do
-        request.should_not be_persisted
-      end
-      it 'checks image is not saved if user does not exist' do
-        request.user.destroy
-        request.user.exist?.should eq false
-        File.exist?(File.new(request.image.path)).should eq false
-      end
-      it 'checks image is saved if user exists' do
-        request.user.exist?.should eq true
-        File.exist?(File.new(request.image.path)).should eq true
-      end
 
       context 'When request is valid' do
-        it 'checks the request is valid' do
-          request.should be_valid
-        end
         it 'returns true' do
           request.publish.should eq true
         end
-        it 'persists the request' do
-          request.should be_persisted
-        end
+
+        before { request.publish }
         it 'saves the image' do
           File.exist?(File.new(request.image.path)).should eq true
         end
-        it 'adds the request to the collection' do
-          request.publish
+
+        it 'adds the request to requests collection' do
           Request.all.to_a.should include(request)
         end
-        it 'adds the request to requests for user' do
-          request.publish
+
+        it 'adds the request to ' do
           User.find(request.user).requests.should include(request)
         end
       end
@@ -119,34 +82,36 @@ describe Request do
         before do
           request.should_receive(:valid?).and_return(false)
         end
-        it 'checks the request is not valid' do
-          request.should_not be_valid
-        end
+
         it 'returns false' do
           request.publish.should eq false
         end
-        it 'does not persist the request' do
-          request.should_not be_persisted
-        end
-        it 'does not save the image if user does not exist' do
-          request.user.destroy
-          request.user.exist?.should eq false
-          request.publish
+
+        before { request.publish }
+
+        it 'does not save any image' do
           File.exist?(File.new(request.image.path)).should eq false
         end
-        it 'checks image is saved if user exists' do
-          request.user.exist?.should eq true
-          request.publish
-          File.exist?(File.new(request.image.path)).should eq true
-        end
-        it 'does not add the request to the collection' do
-          request.publish
+
+        it 'does not add the request to the requests collection' do
           Request.all.to_a.should_not include(request)
         end
+
         it 'does not add the request to requests for user' do
-          request.publish
           User.find(request.user).requests.should_not include(request)
         end
+      end
+    end
+
+    context 'When request is published' do
+      before { request.publish }
+
+      it 'raises an exception' do
+        expect { request.publish }.to raise_error
+      end
+
+      it 'does not create a new request' do
+        expect { request.publish }.to_not change { Request.count }
       end
     end
   end
