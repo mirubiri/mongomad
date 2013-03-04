@@ -63,10 +63,10 @@ describe Request do
       it 'checks request is persisted' do
         request.should be_persisted
       end
-      it 'checks image is persisted' do
+      it 'checks image is saved' do
         File.exist?(File.new(request.image.path)).should eq true
       end
-      it 'raise an error if publish the request' do
+      it 'raises an error if publish the request' do
         expect { request.publish }.to raise_error
       end
       it 'does not create a new request' do
@@ -82,12 +82,12 @@ describe Request do
       it 'checks request is not persisted' do
         request.should_not be_persisted
       end
-      it 'checks image is not persisted if user does not exist' do
+      it 'checks image is not saved if user does not exist' do
         request.user.destroy
         request.user.exist?.should eq false
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted if user exists' do
+      it 'checks image is saved if user exists' do
         request.user.exist?.should eq true
         File.exist?(File.new(request.image.path)).should eq true
       end
@@ -102,7 +102,7 @@ describe Request do
         it 'persists the request' do
           request.should be_persisted
         end
-        it 'persists the image' do
+        it 'saves the image' do
           File.exist?(File.new(request.image.path)).should eq true
         end
         it 'adds the request to the collection' do
@@ -128,13 +128,13 @@ describe Request do
         it 'does not persist the request' do
           request.should_not be_persisted
         end
-        it 'does not persist the image if user does not exist' do
+        it 'does not save the image if user does not exist' do
           request.user.destroy
           request.user.exist?.should eq false
           request.publish
           File.exist?(File.new(request.image.path)).should eq false
         end
-        it 'checks image is persisted if user exists' do
+        it 'checks image is saved if user exists' do
           request.user.exist?.should eq true
           request.publish
           File.exist?(File.new(request.image.path)).should eq true
@@ -159,7 +159,7 @@ describe Request do
       it 'checks request is persisted' do
         request.should be_persisted
       end
-      it 'checks image is persisted' do
+      it 'checks image is saved' do
         File.exist?(File.new(request.image.path)).should eq true
       end
       it 'returns true' do
@@ -182,24 +182,23 @@ describe Request do
     context 'When request is not published' do
       before do
         request.publish
-        request.unpublish
       end
       it 'checks request is not persisted' do
         request.unpublish
         request.should_not be_persisted
       end
-      it 'checks image is not persisted if user does not exist' do
+      it 'checks image is not saved if user does not exist' do
         request.user.destroy
         request.user.exist?.should eq false
         request.unpublish
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted if user exists' do
+      it 'checks image is saved if user exists' do
         request.user.exist?.should eq true
         request.unpublish
         File.exist?(File.new(request.image.path)).should eq true
       end
-      it 'raise an error if unpublish the request' do
+      it 'raises an error if unpublish the request' do
         expect { request.unpublish }.to raise_error
       end
       it 'does not delete any request' do
@@ -210,11 +209,11 @@ describe Request do
 
   describe '#alter_contents(request_params)' do
     it 'returns true if given parameters are correct' do
-      expect(request.alter_contents(request_params)).to eq true
+      expect { request.alter_contents(request_params) }.to eq true
     end
     it 'returns false if given parameters are not correct' do
       request_params.delete(:text)
-      expect(request.alter_contents(request_params)).to eq false
+      expect { request.alter_contents(request_params) }.to eq false
     end
     it 'returns a request with modified parameters' do
       new_request = Fabricate.build(:request, user:user)
@@ -235,14 +234,14 @@ describe Request do
       it 'checks request is persisted before call alter_contents' do
         request.should be_persisted
       end
-      it 'checks image is persisted before call alter_contents' do
+      it 'checks image is saved before call alter_contents' do
         File.exist?(File.new(request.image.path)).should eq true
       end
       it 'checks request is persisted after call alter_contents' do
         request.alter_contents(request_params)
         request.should be_persisted
       end
-      it 'checks image is persisted after call alter_contents' do
+      it 'checks image is saved after call alter_contents' do
         request.alter_contents(request_params)
         File.exist?(File.new(request.image.path)).should eq true
       end
@@ -264,12 +263,12 @@ describe Request do
       it 'checks request is not persisted before call alter_contents' do
         request.should_not be_persisted
       end
-      it 'checks image is not persisted before call alter_contents if user does not exist' do
+      it 'checks image is not saved before call alter_contents if user does not exist' do
         request.user.destroy
         request.user.exist?.should eq false
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted before call alter_contents if user exists' do
+      it 'checks image is saved before call alter_contents if user exists' do
         request.user.exist?.should eq true
         File.exist?(File.new(request.image.path)).should eq true
       end
@@ -277,15 +276,15 @@ describe Request do
         request.alter_contents(request_params)
         request.should_not be_persisted
       end
-      it 'checks image is not persisted after call alter_contents if user does not exist' do
+      it 'checks image is not saved after call alter_contents if user does not exist' do
         request.user.destroy
-        request.alter_contents(request_params)
         request.user.exist?.should eq false
+        request.alter_contents(request_params)
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted after call alter_contents if user exists' do
-        request.alter_contents(request_params)
+      it 'checks image is saved after call alter_contents if user exists' do
         request.user.exist?.should eq true
+        request.alter_contents(request_params)
         File.exist?(File.new(request.image.path)).should eq true
       end
       it 'checks request is not included in the collection' do
@@ -303,41 +302,43 @@ describe Request do
     let(:new_request) do
       new_request = Request.generate(request_params)
       new_request.user = request.user
-      new_request.self_update!
     end
     it 'calls reload method' do
-      request.should_receive(:reload)
-      request.self_update!
+      new_request.should_receive(:reload)
+      new_request.self_update!
     end
     it 'returns self it self_update! success' do
-      request.self_update!.should eq request
+      new_request.self_update!.should eq request
     end
     it 'returns error if self_update! fails' do
       new_request.user = nil
       expect { new_request.self_update! }.to raise_error
     end
-    it 'returns a request with updated parameters' do
-      new_request.should be_valid
-    end
     it 'returns a valid request' do
-      new_request.should be_like request
+      new_request.self_update!.should be_like request
+    end
+    it 'returns a request with updated parameters' do
+      new_request.self_update!.should be_valid
     end
 
     context 'When request is published' do
       before do
         request.publish
+        new_request = Fabricate(:request)
+        request.alter_contents(params_for_request(new_request))
+        request.user = new_request.user
       end
       it 'checks request is persisted before call self_update!' do
         request.should be_persisted
       end
-      it 'checks image is persisted before call self_update!' do
+      it 'checks image is saved before call self_update!' do
         File.exist?(File.new(request.image.path)).should eq true
       end
       it 'checks request is persisted after call self_update!' do
         request.self_update!
         request.should be_persisted
       end
-      it 'checks image is persisted after call self_update!' do
+      it 'checks image is saved after call self_update!' do
         request.self_update!
         File.exist?(File.new(request.image.path)).should eq true
       end
@@ -355,16 +356,19 @@ describe Request do
       before do
         request.publish
         request.unpublish
+        new_request = Fabricate(:request)
+        request.alter_contents(params_for_request(new_request))
+        request.user = new_request.user
       end
       it 'checks request is not persisted before call self_update!' do
         request.should_not be_persisted
       end
-      it 'checks image is not persisted before call self_update! if user does not exist' do
+      it 'checks image is not saved before call self_update! if user does not exist' do
         request.user.destroy
         request.user.exist?.should eq false
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted before call self_update! if user exists' do
+      it 'checks image is saved before call self_update! if user exists' do
         request.user.exist?.should eq true
         File.exist?(File.new(request.image.path)).should eq true
       end
@@ -372,13 +376,13 @@ describe Request do
         request.self_update!
         request.should_not be_persisted
       end
-      it 'checks image is not persisted after call self_update! if user does not exist' do
-        request.self_update!
+      it 'checks image is not saved after call self_update! if user does not exist' do
         request.user.destroy
         request.user.exist?.should eq false
+        request.self_update!
         File.exist?(File.new(request.image.path)).should eq false
       end
-      it 'checks image is persisted after call self_update! if user exists' do
+      it 'checks image is saved after call self_update! if user exists' do
         request.user.exist?.should eq true
         request.self_update!
         File.exist?(File.new(request.image.path)).should eq true
