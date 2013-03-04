@@ -50,12 +50,12 @@
 
       .new_offer_button{
         @include center-horizontally(80%);
-        height: 20px;
+        height: 30px;
         margin-top: 10px;        
         margin-bottom: 10px;
         a{
           @include box-sizing(border-box);
-          @include proportions(100%,20px);
+          @include proportions(100%,30px);
           text-align: center;
         }
       }      
