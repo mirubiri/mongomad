@@ -62,21 +62,21 @@
 
       .profile_menu{
         @include center-horizontally(80%);
-        height: 30px;
+        height: 40px;
         margin-top: 10px;        
         margin-bottom: 10px;
 
-        .menu_icon{
-          @include box-sizing(border-box);
-          @include proportions(33.3%,20px);
-          float:left;
-          border: $borde1px;
-          overflow: hidden;
-
-          a{
-            margin-left: 3px;
+        .btn-toolbar{
+          @include center-horizontally(80%);
+          .btn-group{
+            a{
+              img{
+                @include high-quality-image;
+                @include proportions(20px,20px);
+              }
+            }
           }
-        }
+        }       
       }
     }
 
