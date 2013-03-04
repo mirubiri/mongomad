@@ -1,6 +1,14 @@
 <aside class="user_container_requests" id="user_request_list">
+
+  
+
   <aside class="requests_requestsList">
-    <% if user_logged_id == user_visited_id %> 
+    <% if user_logged_id == user_visited_id %>
+      <div class="btn-toolbar">
+        <div class="btn-group">
+          <button class="btn btn-warning" type="button">Pide algo!!</button> 
+        </div>
+      </div> 
       <%= render :partial => 
       'requests/partials/form' %>
     <% end %> 

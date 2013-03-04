@@ -83,13 +83,17 @@
     .user_container_requests{
       @include container_into_PpalSide_style;
       margin-bottom: 0px;
-      border-bottom: none;      
+      border-bottom: none;
 
-      .add_request_button{
+      .btn-toolbar{
         @include center-horizontally(80%);
-        margin-top:10px;
-        height: 20px;
-      }
+        .btn-group{
+          @include proportions(100%,30px);
+          button{
+            @include proportions(100%,30px);
+          }
+        }
+      }     
 
       .requests_requestsList{
         @include center-horizontally(98%);
