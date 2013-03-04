@@ -42,14 +42,17 @@ describe Request do
     let(:new_request) do
       new_request = Request.generate(request_params)
     end
+
     it 'generates a request with the correct given parameters' do
       new_request.text = request.text
     end
+
     it 'generates a request with nil value for not given parameters' do
       new_request.user = nil
       new_request.user_name = nil
       new_request.image_name = nil
     end
+
     it 'does not persist the request' do
       Request.generate(request_params).should_not be_persisted
     end
@@ -64,23 +67,20 @@ describe Request do
           request.publish.should eq true
         end
 
-        before { request.publish }
-        it 'saves the image' do
-          File.exist?(File.new(request.image.path)).should eq true
-        end
-
         it 'adds the request to requests collection' do
+          request.publish
           Request.all.to_a.should include(request)
         end
 
-        it 'adds the request to ' do
+        it 'adds the request to user' do
+          request.publish
           User.find(request.user).requests.should include(request)
         end
       end
 
       context 'When request is not valid' do
         before do
-          request.should_receive(:valid?).and_return(false)
+          request.stub(:valid?).and_return(false)
         end
 
         it 'returns false' do
@@ -88,10 +88,6 @@ describe Request do
         end
 
         before { request.publish }
-
-        it 'does not save any image' do
-          File.exist?(File.new(request.image.path)).should eq false
-        end
 
         it 'does not add the request to the requests collection' do
           Request.all.to_a.should_not include(request)

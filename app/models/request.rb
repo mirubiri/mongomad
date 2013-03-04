@@ -1,5 +1,4 @@
 class Request
-=begin
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -22,6 +21,7 @@ class Request
   end
 
   def publish
+    raise "the request is currently published" if self.persisted?
     self.save
   end
 
@@ -40,5 +40,4 @@ class Request
     self.image_name = user.profile.image_name
     self
   end
-=end
 end
