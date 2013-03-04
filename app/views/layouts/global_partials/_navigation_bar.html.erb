@@ -8,17 +8,17 @@
       </a>
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav" id="navigation_bar">          
-          <li class="active">
+          <li id="offers-tab">
             <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
               <div class="nav_element">Ofertas</div>
             <% end %>
           </li>
-          <li>
+          <li id="negotiations-tab">
             <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
               <div class="nav_element">Negociaciones</div>
             <% end %>
           </li>
-          <li>
+          <li id="deals-tab">
             <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
               <div class="nav_element">Tratos</div>
             <% end %>

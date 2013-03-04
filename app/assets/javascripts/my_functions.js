@@ -70,7 +70,8 @@ function masonryThing(){
   });
 }
 
-function ajaxLinks(){
+function ajaxLinks(){   
+
     $('#navigation_bar li a').hover(
       function () {$(this).addClass("nav_hover");},
       function () {$(this).removeClass("nav_hover");}
@@ -83,6 +84,7 @@ function ajaxLinks(){
         $('#ppal_container').removeClass('masonry');
         $('#navigation_bar nav a').removeClass("nav_selected");
         $(this).addClass("nav_selected");
+        $('#navigation_bar li').removeClass("active");        
     });
 
     $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
