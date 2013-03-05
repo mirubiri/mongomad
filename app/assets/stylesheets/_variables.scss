@@ -241,10 +241,22 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .description{
-      @include relative($top:-74px,$left:$commentPosition);
+      @include relative($top:-70px,$left:$commentPosition);
       @include proportions($commentWidth,$profileImageDimension);
       overflow: hidden;
       font-size: 9px;
+      line-height: normal;
+
+      .composer_name{        
+        float: left;
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .offer_message{
+        float: left;
+        width: 100%;
+      }
     }
   }
 }
