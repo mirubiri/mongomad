@@ -70,12 +70,7 @@ function masonryThing(){
   });
 }
 
-function ajaxLinks(){   
-
-    $('#navigation_bar li a').hover(
-      function () {$(this).addClass("nav_hover");},
-      function () {$(this).removeClass("nav_hover");}
-    );
+function ajaxLinks(){ 
 
     $('#navigation_bar li a').live('click',function(e){
         $.getScript(this.href);
@@ -232,6 +227,17 @@ function slideOptionsPanel(){
   });
 }
 
+function activateNegotiateButton(){
+  $('.offer').hover(
+     function () {
+       $(this).find('#negotiate_button').removeClass("disabled");
+     }, 
+     function () {
+      $(this).find('#negotiate_button').addClass("disabled");
+     }
+  );
+}
+
 $(window).load(function(){
   //slideOptionsPanel();
   closeModalWindows();
@@ -241,6 +247,7 @@ $(window).load(function(){
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
+  activateNegotiateButton();
 });
 
 $(window).bind('resize', function() {
