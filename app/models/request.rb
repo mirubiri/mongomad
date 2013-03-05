@@ -26,12 +26,13 @@ class Request
   end
 
   def unpublish
+    raise "the request is currently unpublished" unless self.persisted?
     self.destroy
   end
 
   def alter_contents(request_params=[])
     self.text = request_params[:text]
-    true
+    self.text != nil
   end
 
   def self_update!
