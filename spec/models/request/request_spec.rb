@@ -154,18 +154,19 @@ describe Request do
       request.alter_contents(request_params)
     end
 
-    it 'does not save the canges when request is not published' do
+    it 'does not save the changes when request is not published' do
       request.should_not_receive(:save)
       request.alter_contents(request_params)
     end
 
-    it 'only modifies the text of the request when given extra params' do
+    it 'only modifies the text' do
       params={text:request_params[:text],another:"another"}
       new_request.alter_contents(params).should be_like request
     end
 
     it 'returns an unmodified request when params does not include text' do
       params={another:"another"}
+      new_request=request.clone
       new_request.alter_contents(params).should be_like request
     end
   end

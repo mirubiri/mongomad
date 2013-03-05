@@ -31,8 +31,8 @@ class Request
   end
 
   def alter_contents(request_params=[])
-    self.text = request_params[:text]
-    self.text != nil
+    self.text = request_params[:text] if request_params[:text]
+    persisted? ? save : self
   end
 
   def self_update!
