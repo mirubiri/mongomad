@@ -135,6 +135,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     height: $quantityContainerProportion;
     background-color: grey;    
     color: white;
+    visibility: hidden;
   }
 }
 
@@ -155,6 +156,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     background-color: grey;
     font-size: 10px;
     color: white;
+    visibility: hidden;
   }
 }
 

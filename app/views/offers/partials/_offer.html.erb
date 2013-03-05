@@ -52,14 +52,14 @@
         <%= form_for [current_user,@negotiation] do |form| %>
         <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "negociar" %>
+            <%= form.submit "negociar", :class => "btn btn-small disabled"  %>
           </div>
         <% end %>
       <% else %>
         <%= form_for [current_user,@negotiation] do |form| %>
           <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "para mi" %>
+            <%= form.submit "para mi", :class => "btn-small disabled" %>
           </div>
         <% end %>
       <% end %>
