@@ -238,6 +238,17 @@ function activateNegotiateButton(){
   );
 }
 
+function requestMenu(){
+  $('.request').hover(
+     function () {
+      $(this).find('.options_menu').removeClass("hidden_container");
+     }, 
+     function () {
+      $(this).find('.options_menu').addClass("hidden_container");
+     }
+  );
+}
+
 $(window).load(function(){
   //slideOptionsPanel();
   closeModalWindows();
@@ -248,6 +259,7 @@ $(window).load(function(){
   expandRequestContainer();
   expandRightContainer();
   activateNegotiateButton();
+  requestMenu();
 });
 
 $(window).bind('resize', function() {
