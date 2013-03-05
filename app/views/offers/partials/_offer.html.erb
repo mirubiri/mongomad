@@ -33,17 +33,17 @@
       <div class="offer_things">
         <div class="recieved">
           <% offer_composer_products(offer).each do |product| %>
-            <div class="image_container">
-              <div class="quantity_container"><%= product_quantity(product) %></div>
+            <div class="image_container">              
               <%= product_image(product) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div>
             </div>
           <% end %>
         </div>
         <div class="given">
           <% offer_receiver_products(offer).each do |product| %>
             <div class="image_container">
-              <div class="quantity_container"><%= product_quantity(product) %></div>
               <%= product_image(product) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div> 
             </div>
           <% end %>
         </div>

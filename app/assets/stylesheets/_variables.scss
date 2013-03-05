@@ -8,6 +8,8 @@ $borde1px: 1px solid rgb(220,220,220);
 //offer_variables
 $bigImageDimension: 144px;
 $smallImageDimension: 67px;
+$bigImageQuantityPosition: $bigImageDimension - 10px;
+$smallImageQuantityPosition: $smallImageDimension - 7px;
 $productsLeftMargin: 15px;
 $productRightMargin: 8px;
 $productsTopMargin: 5px;
@@ -20,7 +22,7 @@ $commentLeftMargin: 8px;
 $commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLeftMargin;
 $commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
 $commentWidth: $offerWidth - 27px - $commentDistance;
-$quantityContainerProportion: ($offerWidth * 0.06);
+$quantityContainerProportion: ($offerWidth * 0.05);
 $quantityContainerPosition: $offerWidth - $quantityContainerProportion;
 
 //para ambos contenedores principales
@@ -117,19 +119,41 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 //Inicio mixins de Product****************************************
 
-@mixin images_style{
+@mixin big_images_style{
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
   border: $borde1px;
-  padding:2px;
+  padding:4px;
   overflow: visible;
 
   .quantity_container{
     @include border-radius(5px, 5px);
-    float: left;
+    position: relative;
+    top: -$bigImageQuantityPosition;
+    left: 0px;
+    width:$quantityContainerProportion;
+    height: $quantityContainerProportion;
+    background-color: grey;    
+    color: white;
+  }
+}
+
+@mixin small_images_style{
+  @include box-sizing(border-box);
+  @include border-radius(5px, 5px);
+  border: $borde1px;
+  padding:4px;
+  overflow: visible;
+
+  .quantity_container{
+    @include border-radius(5px, 5px);
+    position: relative;
+    top: -$smallImageQuantityPosition;
+    left: 0px;
     width:$quantityContainerProportion;
     height: $quantityContainerProportion;
     background-color: grey;
+    font-size: 10px;
     color: white;
   }
 }
@@ -172,7 +196,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       overflow: auto;
 
       .product{
-        @include images_style;
+        @include big_images_style;
         @include proportions(125px,125px);
         @include border-radius(5px, 5px);
         border: $borde1px;
@@ -226,7 +250,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .profile_image{
-      @include images_style;
+      @include big_images_style;
       @include relative($top:-20px,$left:$profileImageLeftMargin);
       @include proportions($profileImageDimension,$profileImageDimension);
 
@@ -274,7 +298,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       margin: 0px $productRightMargin 0px 0px;
 
       .image_container{
-        @include images_style;
+        @include big_images_style;
         @include proportions($bigImageDimension,$bigImageDimension);
         float:left;
         margin:0px 0px 5px 0px;
@@ -293,7 +317,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       margin: 0px $productRightMargin 0px 0px;
 
       .image_container{
-        @include images_style;
+        @include small_images_style;
         @include proportions($smallImageDimension,$smallImageDimension);
         float:left;
         margin:0px 0px 5px 0px;

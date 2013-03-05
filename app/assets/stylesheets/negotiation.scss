@@ -51,7 +51,7 @@
           width: 180px;
 
           .offered_product{
-            @include images_style;
+            @include small_images_style;
             @include proportions(132px,132px);
             float: left;
             overflow: auto;
@@ -92,7 +92,7 @@
           width: 90px;
 
           .orderer_product{
-            @include images_style;
+            @include big_images_style;
             @include proportions(90px,90px);
             float: left;
             overflow: auto;
