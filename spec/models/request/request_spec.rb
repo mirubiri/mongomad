@@ -146,85 +146,27 @@ describe Request do
   end
 
   describe '#alter_contents(request_params)' do
-    it 'returns true if given parameters are correct' do
-      expect { request.alter_contents(request_params) }.to eq true
+    let(:new_request) { Fabricate.build(:request,user:user) }
+
+    it 'save the changes when request is published' do
+      request.publish
+      request.should_receive(:save)
+      request.alter_contents(request_params)
     end
 
-    it 'returns false if given parameters are not correct' do
-      request_params.delete(:text)
-      expect { request.alter_contents(request_params) }.to eq false
+    it 'does not save the canges when request is not published' do
+      request.should_not_receive(:save)
+      request.alter_contents(request_params)
     end
 
-    it 'returns a request with modified parameters' do
-      new_request = Fabricate.build(:request, user:user)
-      new_request.should_not be_like request
-      new_request.alter_contents(request_params)
-      new_request.should be_like request
+    it 'only modifies the text of the request when given extra params' do
+      params={text:request_params[:text],another:"another"}
+      new_request.alter_contents(params).should be_like request
     end
 
-    it 'returns a valid request' do
-      new_request = Fabricate.build(:request, user:user)
-      new_request.alter_contents(request_params)
-      new_request.should be_valid
-    end
-
-    context 'When request is published' do
-      before { request.publish }
-
-      it 'checks request is saved after call alter_contents' do
-        request.alter_contents(request_params)
-        request.should be_persisted
-      end
-
-      it 'checks image is saved after call alter_contents' do
-        request.alter_contents(request_params)
-        File.exist?(File.new(request.image.path)).should eq true
-      end
-
-      it 'checks request is included in the collection' do
-        request.alter_contents(request_params)
-        Request.all.to_a.should include(request)
-      end
-
-      it 'checks request is included in the requests for user' do
-        request.alter_contents(request_params)
-        User.find(request.user).requests.should include(request)
-      end
-    end
-
-    context 'When request is not published' do
-      before do
-        request.publish
-        request.unpublish
-      end
-
-      it 'checks request is not saved after call alter_contents' do
-        request.alter_contents(request_params)
-        request.should_not be_persisted
-      end
-
-      it 'checks image is not saved after call alter_contents if user does not exist' do
-        request.user.destroy
-        request.user.persisted?.should eq false
-        request.alter_contents(request_params)
-        File.exist?(File.new(request.image.path)).should eq false
-      end
-
-      it 'checks image is saved after call alter_contents if user exists' do
-        request.user.persisted?.should eq true
-        request.alter_contents(request_params)
-        File.exist?(File.new(request.image.path)).should eq true
-      end
-
-      it 'checks request is not included in the collection' do
-        request.alter_contents(request_params)
-        Request.all.to_a.should_not include(request)
-      end
-
-      it 'checks request is not included in the requests for user' do
-        request.alter_contents(request_params)
-        User.find(request.user).requests.should_not include(request)
-      end
+    it 'returns an unmodified request when params does not include text' do
+      params={another:"another"}
+      new_request.alter_contents(params).should be_like request
     end
   end
 
