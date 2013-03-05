@@ -8,10 +8,9 @@
     </div>
     <div class="options_menu hidden_container">
       <%= link_to 'delete',
-              user_profile_path(@user),
-              :remote => true,
-              :id => "link_profile",
-              :class =>"nav_element" %>      
+              user_request_path(current_user,request_id(request)),
+              :method => :delete,
+              :confirm => "Are you sure?" %>      
     </div>    
   </div>
 <% end %>

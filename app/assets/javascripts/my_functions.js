@@ -227,6 +227,13 @@ function slideOptionsPanel(){
   });
 }
 
+function newRequestPanel(){
+  $("#new-request-button").live('click',function(e){
+    $(this).parent().find('#request-writing-box').slideToggle('fast');
+    e.preventDefault();
+  });
+}
+
 function activateNegotiateButton(){
   $('.offer').hover(
      function () {
@@ -260,6 +267,7 @@ $(window).load(function(){
   expandRightContainer();
   activateNegotiateButton();
   requestMenu();
+  newRequestPanel();
 });
 
 $(window).bind('resize', function() {

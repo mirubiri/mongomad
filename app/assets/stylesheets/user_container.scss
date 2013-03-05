@@ -87,11 +87,26 @@
 
       .btn-toolbar{
         @include center-horizontally(80%);
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         .btn-group{
           @include proportions(100%,30px);
           button{
-            @include proportions(100%,30px);
+            @include proportions(100%,30px);                       
+          }
+          .requestWritingBox{    
+            width: 100%;
+            overflow: visible;
+            background-color:#CCAAAA;
+            z-index: 1000;
+            display: none;
+            form{ 
+              padding: 10px;             
+              .request_bar{
+                @include center-horizontally(90%);
+                height: 80px;
+                margin-bottom: 0px;
+              }
+            }
           }
         }
       }     
@@ -105,8 +120,8 @@
           @include center-horizontally(96%);
           @include box-sizing(border-box);
           overflow: hidden;
-          margin-bottom: 8px;
-          border-bottom: $borde1px;
+          padding-top: 20px;
+          border-top: $borde1px;
 
           .profile_image{
             @include box-sizing(border-box);
@@ -130,11 +145,7 @@
             float: left;
             border: $borde1px;
             font-size: 9px;
-            overflow: hidden;
-
-            .request_bar{
-              @include proportions(98%,40px);
-            }
+            overflow: hidden;            
           }
 
           .options_menu{
