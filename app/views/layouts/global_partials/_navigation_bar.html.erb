@@ -7,8 +7,12 @@
         <span class="icon-bar"></span>
       </a>
       <div class="nav-collapse collapse navbar-responsive-collapse">
-        <ul class="nav" id="navigation_bar">          
-          <li id="offers-tab">
+        <ul class="nav" id="navigation_bar">
+          <% if controller.sub_layout === "users" %>
+            <li id="offers-tab" class="active">
+          <% else %>
+            <li id="offers-tab">
+          <% end %>         
             <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
               <div class="nav_element">Ofertas</div>
             <% end %>
