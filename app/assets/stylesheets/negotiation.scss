@@ -44,13 +44,14 @@
       float:right;
       overflow: hidden;
       width: 70%;
-      border-left: $borde2px;
+      border-left: 2px solid rgb(119,119,119);
 
       .dialog_head{
         @include proportions(100%,25px);
         float: left;
         margin-bottom:10px;
-        background-color:rgb(220,220,220);
+        background-color:rgb(119,119,119);
+        color: white;
 
         .dialogin{
           float:left;
