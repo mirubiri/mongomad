@@ -4,13 +4,14 @@
   @include fixed_width(430px,430px,430px);
 
   .new_petition_title{
-    @include proportions(100%,55px);
+    width: 100%;
+    overflow: auto;
     float:left; 
 
     .description{
       float: left;
       width: 100%;
-      margin: 16px 0px 10px 10px;
+      margin-bottom: 10px;
       text-align: center;
       font:{
         weight:bold;
@@ -19,16 +20,22 @@
     }  
 
     .user{
+      @include border-radius(5px, 5px);
       float:left;
       margin: 12px 5px 10px 30px;      
       border: $borde1px;
       padding: 3px;
       img{
         @include proportions(30px,30px);
-      }
-      .user_name{
+        @include high-quality-image;
+      }      
+    }
 
-      }
+    .user_name{
+      float: left;
+      padding: 8px 0px 0px 5px;
+      font-size: 12px;
+      font-weight: bold;
     }
 
   }
