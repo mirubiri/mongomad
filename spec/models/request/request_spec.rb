@@ -175,16 +175,19 @@ describe Request do
     end
   end
 
-#AQUI ME HE QUEDADO :)
   describe '#self_update!' do
     let(:new_request) do
       new_request = Request.generate(request_params)
       new_request.user = request.user
+      new_request
     end
 
     it 'returns self it self_update! success' do
+      another_request = new_request.clone
+      another_request.user_name = request.user_name
+      another_request.image_name = request.image_name
       new_request.self_update!
-      new_request.should eq request
+      new_request.should eq another_request
     end
 
     it 'returns error if self_update! fails' do
@@ -194,84 +197,43 @@ describe Request do
 
     it 'returns a valid request' do
       new_request.self_update!
-      new_request.should be_like request
+      new_request.should be_valid
     end
 
     it 'returns a request with updated parameters' do
       new_request.self_update!
-      new_request.should be_valid
+      new_request.should be_like request
     end
 
     context 'When request is published' do
       before do
         request.publish
-        new_request = Fabricate.build(:request)
-        request.alter_contents(params_for_request(new_request))
-        request.user = new_request.user
+        another_request = Fabricate.build(:request)
+        request.alter_contents(params_for_request(another_request))
+        request.user = another_request.user
       end
 
-    it 'calls reload method' do
-      new_request.should_receive(:reload)
-      new_request.self_update!
-    end
-
-      it 'checks request is saved after call self_update!' do
+      it 'calls reload method' do
+        request.should_receive(:reload)
         request.self_update!
-        request.should be_persisted
       end
 
-      it 'checks image is saved after call self_update!' do
+      it 'save the changes' do
+        request.should_receive(:save)
         request.self_update!
-        File.exist?(File.new(request.image.path)).should eq true
-      end
-
-      it 'checks request is included in the collection' do
-        request.self_update!
-        Request.all.to_a.should include(request)
-      end
-
-      it 'checks request is included in the requests for user' do
-        request.self_update!
-        User.find(request.user).requests.should include(request)
       end
     end
 
     context 'When request is not published' do
       before do
-        request.publish
-        request.unpublish
-        new_request = Fabricate(:request)
-        #request.alter_contents(params_for_request(new_request))
-         request.alter_contents(request_params)
+        new_request = Fabricate.build(:request)
+        request.alter_contents(params_for_request(new_request))
         request.user = new_request.user
       end
 
-      it 'checks request is not saved after call self_update!' do
+      it 'does not save the changes' do
+        request.should_not_receive(:save)
         request.self_update!
-        request.should_not be_persisted
-      end
-
-      it 'checks image is not saved after call self_update! if user does not exist' do
-        request.user.destroy
-        request.user.exist?.should eq false
-        request.self_update!
-        File.exist?(File.new(request.image.path)).should eq false
-      end
-
-      it 'checks image is saved after call self_update! if user exists' do
-        request.user.exist?.should eq true
-        request.self_update!
-        File.exist?(File.new(request.image.path)).should eq true
-      end
-
-      it 'checks request is not included in the collection' do
-        request.self_update!
-        Request.all.to_a.should_not include(request)
-      end
-
-      it 'checks request is not included in the requests for user' do
-        request.self_update!
-        User.find(request.user).requests.should_not include(request)
       end
     end
   end
