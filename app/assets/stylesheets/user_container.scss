@@ -88,27 +88,25 @@
       .btn-toolbar{
         @include center-horizontally(80%);
         margin-bottom: 20px;
-        .btn-group{
-          @include proportions(100%,30px);
-          button{
-            @include proportions(100%,30px);                       
-          }
-          .requestWritingBox{    
-            width: 100%;
-            overflow: visible;
-            background-color:#CCAAAA;
-            z-index: 1000;
-            display: none;
-            form{ 
-              padding: 10px;             
-              .request_bar{
-                @include center-horizontally(90%);
-                height: 80px;
-                margin-bottom: 0px;
-              }
+       
+        button{
+          @include proportions(100%,30px);                       
+        }
+        .requestWritingBox{    
+          width: 100%;
+          overflow: visible;
+          background-color:#CCAAAA;
+          z-index: 1000;
+          display: none;
+          form{ 
+            padding: 10px;             
+            .request_bar{
+              @include center-horizontally(90%);
+              height: 80px;
+              margin-bottom: 0px;
             }
           }
-        }
+        }        
       }     
 
       .requests_requestsList{
