@@ -3,28 +3,29 @@
 .negotiation {
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
-  width: 100%;
-  margin:0px 0px 20px 0px;
+  width: 98%;
+  margin:0px 0px 20px 8px;
   float: left;
 
-    .offer {
-      @include element_into_ElementList_style;      
-      @include container_options;
+    .negotiation_offer {
       @include offer_header;
       @include offer_products;
-      @include box-sizing(border-box);      
-      border: none;
+      @include box-sizing(border-box);
+      overflow: none;      
       padding: 0px;
       margin: 0px;
-      width: $offerWidth;
+      width: 30%;
       float: left;
 
       .offer_button{
+        @include box-sizing(border-box);
         width: 100%;
+        float:left;
+        padding: 0px 10px 10px 0px;
 
-        input{
+        button{
           float: right;
-          margin: 0px 10px 10px 0px;
+          margin-right: 5px;          
         }
       }
 

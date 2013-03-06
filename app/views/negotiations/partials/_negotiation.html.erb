@@ -1,7 +1,7 @@
 <% user_logged_negotiations.each do |negotiation| %>
   <div class="negotiation" id="negotiation<%= negotiation._id %>">
 
-    <div class="offer">      
+    <div class="negotiation_offer">      
       <div class="offer_header">
         <div class="triangle">            
             <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button">
@@ -39,12 +39,12 @@
           <% end %>
         </div>
       </div>     
-      
-      <button class="btn btn-small"> Negociar</button>
-      <button class="btn btn-small"> Rechazar</button>
-      
+      <div class="offer_button">
+        <button class="btn btn-small"> Negociar</button>
+        <button class="btn btn-small"> Rechazar</button>
+      </div>      
       <div class="offer_date">
-        <%= negotiation_datetime(negotiation) %>
+        <%#= negotiation_datetime(negotiation) %>
       </div>
     </div>  
 
