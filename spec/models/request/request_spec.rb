@@ -98,13 +98,13 @@ describe Request do
     end
 
     context 'When request is published' do
+      before { request.publish }
+
       it 'raises an exception' do
-        request.publish
         expect { request.publish }.to raise_error
       end
 
-      xit 'does not create a new request' do
-        request.publish
+      it 'does not create a new request' do
         expect { request.publish }.to_not change { Request.count }
       end
     end
@@ -118,19 +118,20 @@ describe Request do
         request.unpublish.should eq true
       end
 
-      it 'removes the request from the collection' do
+      it 'removes the request from the requests collection' do
         request.unpublish
         Request.all.to_a.should_not include(request)
       end
 
-      it 'removes the request from requests for user' do
+      it 'removes the request from user' do
         request.unpublish
         User.find(request.user).requests.should_not include(request)
       end
 
       it 'does not remove the image' do
+        user = request.user
         request.unpublish
-        File.exist?(File.new(request.image.path)).should eq true
+        File.exist?(File.new(user.profile.image.path)).should eq true
       end
     end
 
@@ -139,47 +140,46 @@ describe Request do
         expect { request.unpublish }.to raise_error
       end
 
-      xit 'does not delete any request' do
+      it 'does not delete any request' do
         expect { request.unpublish }.to_not change { Request.count }
       end
     end
   end
 
   describe '#alter_contents(request_params)' do
-    let(:new_request) { Fabricate.build(:request,user:user) }
-
-    it 'save the changes when request is published' do
-      request.publish
-      request.should_receive(:save)
-      request.alter_contents(request_params)
-    end
-
-    it 'does not save the changes when request is not published' do
-      request.should_not_receive(:save)
-      request.alter_contents(request_params)
-    end
+    let(:new_request) { new_request = request.clone }
 
     it 'only modifies the text' do
-      params={text:request_params[:text],another:"another"}
+      params = { text:request_params[:text], another:"another" }
       new_request.alter_contents(params).should be_like request
     end
 
     it 'returns an unmodified request when params does not include text' do
-      params={another:"another"}
-      new_request=request.clone
+      params = { another:"another" }
       new_request.alter_contents(params).should be_like request
+    end
+
+    context 'When request is published' do
+      it 'save the changes' do
+        request.publish
+        request.should_receive(:save)
+        request.alter_contents(request_params)
+      end
+    end
+
+    context 'When request is not published' do
+      it 'does not save the changes' do
+        request.should_not_receive(:save)
+        request.alter_contents(request_params)
+      end
     end
   end
 
+#AQUI ME HE QUEDADO :)
   describe '#self_update!' do
     let(:new_request) do
       new_request = Request.generate(request_params)
       new_request.user = request.user
-    end
-
-    it 'calls reload method' do
-      new_request.should_receive(:reload)
-      new_request.self_update!
     end
 
     it 'returns self it self_update! success' do
@@ -209,6 +209,11 @@ describe Request do
         request.alter_contents(params_for_request(new_request))
         request.user = new_request.user
       end
+
+    it 'calls reload method' do
+      new_request.should_receive(:reload)
+      new_request.self_update!
+    end
 
       it 'checks request is saved after call self_update!' do
         request.self_update!
