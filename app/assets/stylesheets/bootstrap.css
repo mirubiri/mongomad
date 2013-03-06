@@ -4747,11 +4747,13 @@ a.thumbnail:focus {
 .modal.modal-offer{
   left: 40%;
   width: 800px;
+  margin-top: 70px;
 }
 
 .modal.modal-request{
-  left: 50%;
+  left: 52%;
   width: 430px;
+  margin-top: 200px;
 }
 
 .modal.fade {

@@ -12,6 +12,7 @@
       float: left;
       width: 100%;
       margin-bottom: 10px;
+      padding-top: 3px;
       text-align: center;
       font:{
         weight:bold;
@@ -37,12 +38,11 @@
       font-size: 12px;
       font-weight: bold;
     }
-
   }
 
   .new_offer_text{
     float:left;
-    margin:5px 0px 10px 30px;
+    margin:0px 0px 10px 30px;
     width:85%;
 
     textarea{
