@@ -1,7 +1,10 @@
 <aside class="user_container_requests" id="user_request_list">  
   <% if user_logged_id == user_visited_id %>
     <div class="btn-toolbar">
-        <button class="btn btn-primary btn-success" type="button" id="new-request-button">Pide algo!!</button>
+        <%= link_to "Pide Algo!!",
+          new_user_request_path(current_user),
+          {:remote => true, :role => "button", :class => "btn btn-success"} 
+        %>    
         <div class="requestWritingBox" id="request-writing-box">
           <%= render :partial => 'requests/partials/form' %>
         </div> 

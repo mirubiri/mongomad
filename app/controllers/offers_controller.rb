@@ -35,7 +35,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.js # render new.js.erb }
+      format.js # render new.js.erb
     end
   end
 

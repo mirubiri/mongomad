@@ -4749,6 +4749,11 @@ a.thumbnail:focus {
   width: 800px;
 }
 
+.modal.modal-request{
+  left: 50%;
+  width: 430px;
+}
+
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;
   -moz-transition: opacity .3s linear, top .3s ease-out;

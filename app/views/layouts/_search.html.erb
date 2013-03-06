@@ -4,3 +4,7 @@
   <%= render partial: 'layouts/global_partials/main_container' %>
   <%= render partial: 'layouts/global_partials/footer' %>
 </div>
+
+<% if user_logged_id == user_visited_id %>
+  <%= render :partial => "layouts/new_request" %>
+<% end %>

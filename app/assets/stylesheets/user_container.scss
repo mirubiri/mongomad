@@ -89,8 +89,8 @@
         @include center-horizontally(80%);
         margin-bottom: 20px;
        
-        button{
-          @include proportions(100%,30px);                       
+        a{
+          @include proportions(85%,20px);                       
         }
         .requestWritingBox{    
           width: 100%;

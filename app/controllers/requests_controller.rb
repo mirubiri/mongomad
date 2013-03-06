@@ -29,12 +29,11 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
-    @user = User.find(params[:user_id])
     @request = Request.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @request }
+      format.js # render new.js.erb }
     end
   end
 
