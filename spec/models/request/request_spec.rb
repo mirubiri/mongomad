@@ -77,12 +77,19 @@ describe Request do
       request.should_receive(:destroy)
       request.unpublish
     end
+
+    it 'raise exception if request is currently unpublished' do
+      expect { request.unpublish }.to raise_error
+    end
   end
 
   describe '#alter_contents(request_params)' do
-    let(:new_request) { new_request = request.clone }
+    let(:new_request) do
+      new_request = request.clone
+    end
 
     it 'only modifies the text' do
+      new_request.text = nil
       params = { text:request_params[:text], another:"another" }
       new_request.alter_contents(params).should be_like request
     end
@@ -116,14 +123,11 @@ describe Request do
     end
 
     it 'returns self it self_update! success' do
-      another_request = new_request.clone
-      another_request.user_name = request.user_name
-      another_request.image_name = request.image_name
       new_request.self_update!
-      new_request.should eq another_request
+      new_request.should be_like request
     end
 
-    it 'returns error if self_update! fails' do
+    it 'raise error if self_update! fails' do
       new_request.user = nil
       expect { new_request.self_update! }.to raise_error
     end
@@ -133,17 +137,12 @@ describe Request do
       new_request.should be_valid
     end
 
-    it 'returns a request with updated parameters' do
-      new_request.self_update!
-      new_request.should be_like request
-    end
-
     context 'When request is published' do
       before do
         request.publish
-        another_request = Fabricate.build(:request)
-        request.alter_contents(params_for_request(another_request))
-        request.user = another_request.user
+        new_request = Fabricate.build(:request)
+        request.alter_contents(params_for_request(new_request))
+        request.user = new_request.user
       end
 
       it 'calls reload method' do
@@ -158,13 +157,10 @@ describe Request do
     end
 
     context 'When request is not published' do
-      before do
+      it 'does not save the changes' do
         new_request = Fabricate.build(:request)
         request.alter_contents(params_for_request(new_request))
         request.user = new_request.user
-      end
-
-      it 'does not save the changes' do
         request.should_not_receive(:save)
         request.self_update!
       end
