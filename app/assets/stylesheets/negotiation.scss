@@ -70,9 +70,11 @@
       }
 
       .conversation{
+        @include box-sizing(border-box);
         overflow-y: auto;
         width: 100%;
         text-align: center;
+        padding-bottom: 5px;
 
         .comment{
           float: left;
@@ -109,26 +111,36 @@
       }
 
       .writting_box{
+        @include box-sizing(border-box);
         float: left;
+        padding-left: 5px;
         overflow: auto;
         width: 100%;
+        height: 24px;
+        border:{
+          top: $borde2px;
+          left:none;
+        }
 
         form{
-          float:right;
-          width: inherit;
+          float:left;
+          width: 100%;
+          height: 22px;
+          margin: 0px;
 
           .message{
             float: left;
+            height: inherit;
             overflow: hidden;
-            width: inherit;
+            width: 100%;
 
             input{
-              float: inherit;
-              width: inherit;
-              border:{
-                top: $borde2px;
-                left:none;
-              }
+              float: left;
+              width: 100%;
+              height: inherit;
+              margin: 0px;
+              border: none; 
+              padding: 0px;             
             }
           }
         }

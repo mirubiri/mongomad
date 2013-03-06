@@ -40,8 +40,8 @@
         </div>
       </div>     
       <div class="offer_button">
-        <button class="btn btn-small"> Negociar</button>
-        <button class="btn btn-small"> Rechazar</button>
+        <button class="btn btn-small btn-success disabled"> Aceptar</button>
+        <button class="btn btn-small btn-warning disabled"> Rechazar</button>
       </div>      
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
@@ -76,11 +76,8 @@
       <div class="writting_box">
         <form action="">
           <div class="message">
-            <input type="">
-          </div>
-          <div class="sender">
-            <input type="">
-          </div>
+            <input type="text" placeholder="write here">
+          </div>          
         </form>
       </div>
     </div>

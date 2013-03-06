@@ -243,6 +243,17 @@ function activateNegotiateButton(){
       $(this).find('#negotiate_button').addClass("disabled");
      }
   );
+
+  $('.negotiation').hover(
+     function () {
+        alert("weee");
+       $(this).find('#negotiate_button').removeClass("disabled");
+     }, 
+     function () {
+      $(this).find('#negotiate_button').addClass("disabled");
+     }
+  );
+
 }
 
 function requestMenu(){
