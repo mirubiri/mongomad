@@ -234,7 +234,7 @@ function newRequestPanel(){
   });
 }
 
-function activateNegotiateButton(){
+function activateOfferButton(){
   $('.offer').hover(
      function () {
        $(this).find('#negotiate_button').removeClass("disabled");
@@ -243,17 +243,17 @@ function activateNegotiateButton(){
       $(this).find('#negotiate_button').addClass("disabled");
      }
   );
+}
 
+function activateNegotiationButtons(){ 
   $('.negotiation').hover(
-     function () {
-        alert("weee");
-       $(this).find('#negotiate_button').removeClass("disabled");
+     function () {        
+        $(this).find('.btn').removeClass("disabled");
      }, 
      function () {
-      $(this).find('#negotiate_button').addClass("disabled");
+        $(this).find('.btn').addClass("disabled");
      }
   );
-
 }
 
 function requestMenu(){
@@ -275,10 +275,11 @@ $(window).load(function(){
   newOfferScript();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  expandRightContainer();
-  activateNegotiateButton();
+  expandRightContainer();  
   requestMenu();
   newRequestPanel();
+  activateOfferButton();
+  activateNegotiationButtons();
 });
 
 $(window).bind('resize', function() {

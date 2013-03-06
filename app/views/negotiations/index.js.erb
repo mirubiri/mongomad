@@ -2,7 +2,8 @@ $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navi
 
 $("#negotiations-tab").addClass("active");
 
-$("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
+$("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>").masonry('destroy');
 
 maximizeConversationsHeights();
 matchPrincipalContainersHeighs();
+activateNegotiationButtons();
