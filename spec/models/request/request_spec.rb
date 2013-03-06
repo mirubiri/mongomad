@@ -60,89 +60,22 @@ describe Request do
   end
 
   describe '#publish' do
-    context 'When request is not published' do
-
-      context 'When request is valid' do
-        it 'returns true' do
-          request.publish.should eq true
-        end
-
-        it 'adds the request to requests collection' do
-          request.publish
-          Request.all.to_a.should include(request)
-        end
-
-        it 'adds the request to user' do
-          request.publish
-          User.find(request.user).requests.should include(request)
-        end
-      end
-
-      context 'When request is not valid' do
-        before { request.stub(:valid?).and_return(false) }
-
-        it 'returns false' do
-          request.publish.should eq false
-        end
-
-        it 'does not add the request to requests collection' do
-          request.publish
-          Request.all.to_a.should_not include(request)
-        end
-
-        it 'does not add the request to user' do
-          request.publish
-          User.find(request.user).requests.should_not include(request)
-        end
-      end
+    it 'publish a new request' do
+      request.should_receive(:save)
+      request.publish
     end
 
-    context 'When request is published' do
-      before { request.publish }
-
-      it 'raises an exception' do
-        expect { request.publish }.to raise_error
-      end
-
-      it 'does not create a new request' do
-        expect { request.publish }.to_not change { Request.count }
-      end
+    it 'raise exception if request is currently published' do
+      request.publish
+      expect { request.publish }.to raise_error
     end
   end
 
   describe '#unpublish' do
-    context 'When request is published' do
-      before { request.publish }
-
-      it 'returns true' do
-        request.unpublish.should eq true
-      end
-
-      it 'removes the request from the requests collection' do
-        request.unpublish
-        Request.all.to_a.should_not include(request)
-      end
-
-      it 'removes the request from user' do
-        request.unpublish
-        User.find(request.user).requests.should_not include(request)
-      end
-
-      it 'does not remove the image' do
-        user = request.user
-        request.unpublish
-        File.exist?(File.new(user.profile.image.path)).should eq true
-      end
-    end
-
-    context 'When request is not published' do
-      it 'raises an error if unpublish the request' do
-        expect { request.unpublish }.to raise_error
-      end
-
-      it 'does not delete any request' do
-        expect { request.unpublish }.to_not change { Request.count }
-      end
+    it 'removes a published request' do
+      request.publish
+      request.should_receive(:destroy)
+      request.unpublish
     end
   end
 
