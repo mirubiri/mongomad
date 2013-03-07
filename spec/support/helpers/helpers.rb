@@ -16,8 +16,8 @@ module MongomadHelpers
 
   public
   def params_for_offer(offer)
-    hash=params_for_offerable(offer)
-    hash[:initial_message]=offer.initial_message
+    hash = params_for_offerable(offer)
+    hash[:initial_message] = offer.initial_message
     hash
   end
 
