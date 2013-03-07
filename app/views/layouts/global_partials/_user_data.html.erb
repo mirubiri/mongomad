@@ -22,21 +22,27 @@
             user_profile_path(@user),
             :remote => true,
             :id => "link_profile",
-            :class =>"btn btn-primary" %>         
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "perfil" %>         
       </div>
       <div class="btn-group">
         <%= link_to image_tag("/assets/images/products.png"),
             user_things_path(@user),
             :remote => true,
             :id => "link_things",
-            :class =>"btn btn-primary" %>          
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "productos" %>                
       </div>
       <div class="btn-group">
         <%= link_to image_tag("/assets/images/alerts.png"),
             user_things_path(@user),
             :remote => true,
             :id => "link_things",
-            :class =>"btn btn-primary" %>         
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "alertas" %>               
       </div>
     </div>
   </nav>

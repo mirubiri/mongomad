@@ -89,8 +89,8 @@ module ApplicationHelper
   def user_visited_website
     @user.profile.website
   end
-  def user_visited_bithdate
-    @user.profile.bithdate
+  def user_visited_birthdate
+    @user.profile.birth_date
   end
   def user_visited_image
     image_tag(@user.profile.image)
