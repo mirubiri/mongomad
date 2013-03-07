@@ -45,13 +45,13 @@ describe Request do
     end
 
     it 'generates a request with the correct given parameters' do
-      new_request.text = request.text
+      new_request.text.should eq request.text
     end
 
     it 'generates a request with nil value for not given parameters' do
-      new_request.user = nil
-      new_request.user_name = nil
-      new_request.image_name = nil
+      new_request.user.should eq nil
+      new_request.user_name.should eq nil
+      new_request.image_name.should eq nil
     end
 
     it 'does not persist the request' do
