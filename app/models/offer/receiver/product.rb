@@ -1,4 +1,5 @@
 class Offer::Receiver::Product
+=begin
   include Mongoid::Document
 
   embedded_in :receiver, class_name: "Offer::Receiver"
@@ -29,4 +30,5 @@ class Offer::Receiver::Product
     self.image_name = thing.image_name
     self
   end
+=end
 end

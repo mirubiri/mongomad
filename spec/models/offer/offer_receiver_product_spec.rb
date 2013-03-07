@@ -44,6 +44,7 @@ describe Offer::Receiver::Product do
     end
   end
 
+=begin
   describe '#self_update' do
     before(:each) do
       @thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
@@ -60,4 +61,5 @@ describe Offer::Receiver::Product do
       product.image_name.should eq 'updated.png'
     end
   end
+=end
 end

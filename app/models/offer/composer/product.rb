@@ -1,4 +1,5 @@
 class Offer::Composer::Product
+=begin
   include Mongoid::Document
 
   embedded_in :composer, class_name: "Offer::Composer"
@@ -29,4 +30,5 @@ class Offer::Composer::Product
     self.image_name = thing.image_name
     self
   end
+=end
 end

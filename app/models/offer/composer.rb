@@ -1,4 +1,5 @@
 class Offer::Composer
+=begin
   include Mongoid::Document
 
   embedded_in :offer
@@ -43,4 +44,5 @@ class Offer::Composer
     update_products
     self
   end
+=end
 end

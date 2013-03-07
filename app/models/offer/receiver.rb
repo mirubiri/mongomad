@@ -1,4 +1,5 @@
 class Offer::Receiver
+=begin
   include Mongoid::Document
 
   embedded_in :offer
@@ -43,4 +44,5 @@ class Offer::Receiver
     update_products
     self
   end
+=end
 end

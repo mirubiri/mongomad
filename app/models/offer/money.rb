@@ -1,4 +1,5 @@
 class Offer::Money
+=begin
   include Mongoid::Document
 
   embedded_in :offer
@@ -18,4 +19,5 @@ class Offer::Money
     self.user_id = params[:user_id]
     self.quantity = params[:quantity]
   end
+=end
 end

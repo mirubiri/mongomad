@@ -32,7 +32,7 @@ describe Offer::Composer::Product do
   describe 'Factories' do
     specify { expect(product.valid?).to eq true }
 
-    it 'Creates one offer' do
+    it 'creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)
     end
   end
@@ -44,6 +44,7 @@ describe Offer::Composer::Product do
     end
   end
 
+=begin
   describe '#self_update' do
     before(:each) do
       thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
@@ -60,4 +61,5 @@ describe Offer::Composer::Product do
       product.image_name.should eq 'updated.png'
     end
   end
+=end
 end
