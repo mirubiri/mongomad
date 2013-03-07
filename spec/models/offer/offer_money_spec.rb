@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Offer::Money do
   let(:offer) { Fabricate.build(:offer) }
   let(:money) { offer.money }
-  let(:money_params) { params_for_offer(offer)[:money]}
+  let(:money_params) { params_for_offer(offer)[:money] }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
