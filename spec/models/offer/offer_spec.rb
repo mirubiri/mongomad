@@ -41,6 +41,7 @@ describe Offer do
     let(:new_offer) do
       new_offer = Offer.generate(offer_params)
     end
+
     it 'generates an offer with the correct given parameters' do
       new_offer.user_receiver_id.should eq offer.user_receiver_id
       ['composer', 'receiver'].each do |user|
@@ -53,13 +54,16 @@ describe Offer do
       new_offer.money.quantity.should eq offer.money.quantity
       new_offer.initial_message.should eq offer.initial_message
     end
+
     it 'generates an offer with nil value for not given parameters' do
       new_offer.user_composer_id.should eq nil
     end
+
     it 'does not persist the offer' do
       new_offer.should_not be_persisted
     end
   end
+
 =begin
   describe '#publish' do
     context 'When offer is saved' do
