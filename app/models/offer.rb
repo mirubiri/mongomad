@@ -1,5 +1,4 @@
 class Offer
-=begin
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -19,7 +18,7 @@ class Offer
     :user_receiver,
     :initial_message,
     presence: true
-
+=begin
 
   def self.generate(offer_params=[])
     offer = new(

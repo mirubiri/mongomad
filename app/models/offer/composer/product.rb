@@ -1,5 +1,4 @@
 class Offer::Composer::Product
-=begin
   include Mongoid::Document
 
   embedded_in :composer, class_name: "Offer::Composer"
@@ -22,7 +21,7 @@ class Offer::Composer::Product
   validates :quantity,
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
+=begin
   def self_update
     thing = composer.offer.user_composer.things.find(self.thing_id)
     self.name = thing.name

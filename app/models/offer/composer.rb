@@ -1,5 +1,4 @@
 class Offer::Composer
-=begin
   include Mongoid::Document
 
   embedded_in :offer
@@ -14,6 +13,7 @@ class Offer::Composer
     :name,
     :image_name,
     presence: true
+=begin
 
   def add_products(params=[])
     params.each do |index|

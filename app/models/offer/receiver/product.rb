@@ -1,5 +1,4 @@
 class Offer::Receiver::Product
-=begin
   include Mongoid::Document
 
   embedded_in :receiver, class_name: "Offer::Receiver"
@@ -22,7 +21,7 @@ class Offer::Receiver::Product
   validates :quantity,
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
+=begin
   def self_update
     thing = receiver.offer.user_receiver.things.find(self.thing_id)
     self.name = thing.name
