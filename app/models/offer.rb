@@ -19,9 +19,9 @@ class Offer
     :initial_message,
     presence: true
 
+=begin
   def self.generate(offer_params=[])
     offer = new(
-      user_composer: User.find(offer_params[:user_composer_id]),
       user_receiver: User.find(offer_params[:user_receiver_id]),
       initial_message: offer_params[:initial_message]
     )
@@ -29,8 +29,9 @@ class Offer
     offer.build_receiver.add_products(offer_params[:receiver_things])
     offer.build_money(user_id: offer_params[:money][:user_id],
                       quantity: offer_params[:money][:quantity])
-    offer.self_update
+    offer
   end
+
 
   def alter_contents(offer_params=[])
     composer.alter_contents(offer_params[:composer_things])
@@ -54,4 +55,5 @@ class Offer
     composer.self_update
     self
   end
+=end
 end
