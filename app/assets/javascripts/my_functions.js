@@ -56,6 +56,18 @@ function addProfileCommentsSeparator(){
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
+function setProfileContainersHeights(){
+  alturaPpalContainer = $('#ppal_container').height();
+  margenesEnPerfil = 10;
+  alturaDisponible = alturaPpalContainer - margenesEnPerfil;
+  alturaPerfil = (alturaDisponible * 40)/100;
+  alturaComentarios = (alturaDisponible * 60)/100;
+
+  $('.person_info').css({'height': alturaPerfil  + 'px'});
+  $('.person_info,.statistics').equalHeightColumns();
+  $('.comments_recieved').css({'height': alturaComentarios  + 'px'});  
+}
+
 function masonryOffer(){
   $('#ppal_container').masonry({
       itemSelector : '.offer',
