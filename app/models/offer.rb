@@ -18,7 +18,7 @@ class Offer
     :user_receiver,
     :initial_message,
     presence: true
-=begin
+
 
   def self.generate(offer_params=[])
     offer = new(
@@ -31,7 +31,7 @@ class Offer
                       quantity: offer_params[:money][:quantity])
     offer
   end
-
+=begin
 
   def alter_contents(offer_params=[])
     composer.alter_contents(offer_params[:composer_things])

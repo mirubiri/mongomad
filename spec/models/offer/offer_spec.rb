@@ -45,13 +45,9 @@ describe Offer do
     it 'generates an offer with the correct given parameters' do
       new_offer.user_receiver_id.should eq offer.user_receiver_id
       ['composer', 'receiver'].each do |user|
-        new_offer.send(user).products.count.should eq new_offer.send(user).products.count
-        new_offer.send(user).products.each do |product|
-          offer.send(user).products.all.to_a.should include(product)
-        end
+        new_offer.send(user).products.should be_like offer.send(user).products
       end
-      new_offer.money.user_id.should eq offer.money.user_id
-      new_offer.money.quantity.should eq offer.money.quantity
+      new_offer.money.should be_like offer.money
       new_offer.initial_message.should eq offer.initial_message
     end
 

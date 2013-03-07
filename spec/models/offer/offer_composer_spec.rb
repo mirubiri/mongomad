@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Offer::Composer do
   let(:offer) { Fabricate.build(:offer) }
   let(:composer) { offer.composer }
-  let(:composer_things_params) { params_for_offer(offer)[:composer_things] }
+  let(:products_params) { params_for_offer(offer)[:composer_things] }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -37,39 +37,40 @@ describe Offer::Composer do
     end
   end
 
-=begin
-  describe '#alter_contents(params)' do
-    after { composer.alter_contents(composer_things_params) }
-
-    it 'removes the current list of products' do
-      composer.products.should_receive(:destroy)
+  describe '#add_products(products_params)' do
+    it 'creates a product from each param passed' do
+      new_composer = composer.dup
+      new_composer.products.destroy
+      new_composer.add_products(products_params)
+      new_composer.products.should be_like composer.products
     end
 
-    it 'add the given list of products' do
-      composer.target.should_receive(:add_products).with(composer_things_params)
+    it 'does not persist the composer' do
+      composer.should_not be_persisted
+    end
+
+    it 'raise exception if any parameter is not correct' do
+
+      thing = products_params[:composer_things].first
+      products_params[:composer_things][products_params[:composer_things].length]
+            request.publish
+      expect { request.publish }.to raise_error
     end
 
     it 'calls to self_update' do
-      pending 'pensar si llamarlo o no'
+      composer.should_receive(:self_update!)
+      composer.add_products(products_params)
     end
-  end
 
-  describe '#update_products' do
-    xit 'update the information of all products'
-  end
 
-  describe '#add_products(params)' do
-    it 'creates a product for each passed product_params' do
-      product_list=composer.products.dup
-      composer.products.destroy
-      composer.add_products(product_list)
-      composer.self_update
-      expect(composer.products).to be_like product_list
-    end
 
     xit 'add all products in a single operation'
+
+
   end
 
+
+=begin
   describe '#self_update' do
     it 'calls update_user_data' do
       # Use relationship.target to access to the wrapped object
@@ -94,5 +95,30 @@ describe Offer::Composer do
       composer.image_name.should eq 'updated.png'
     end
   end
+
+
+  describe '#alter_contents(params)' do
+    after { composer.alter_contents(composer_things_params) }
+
+    it 'removes the current list of products' do
+      composer.products.should_receive(:destroy)
+    end
+
+    it 'add the given list of products' do
+      composer.target.should_receive(:add_products).with(composer_things_params)
+    end
+
+    it 'calls to self_update' do
+      pending 'pensar si llamarlo o no'
+    end
+  end
+
+  describe '#update_products' do
+    xit 'update the information of all products'
+  end
+
+
+
+
 =end
 end
