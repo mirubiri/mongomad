@@ -4748,6 +4748,7 @@ a.thumbnail:focus {
   left: 40%;
   width: 800px;
   margin-top: 70px;
+  margin-bottom:0px;
 }
 
 .modal.modal-request{

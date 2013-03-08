@@ -1,5 +1,9 @@
 @import "variables";
 
+#new_offer{//es el selector del formulario, pero no lo puedo seleccionar con form
+  margin-bottom: 0px;
+}
+
 .products_area{
   @include fixed_width(480px,480px,480px);
   @include fixed_height(555px,555px,555px);
@@ -11,7 +15,7 @@
 
     a{
       .user_products_selector{
-        @include fixed_width(234px,234px,234px);
+        @include fixed_width(238px,238px,238px);
         @include fixed_height(30px,30px,30px);
         float: left;
         border: $borde1px;
@@ -86,200 +90,72 @@
 
   .title{
     @include proportions(100%,32px);
+    @include box-sizing(border-box);
     float:left;
     margin-bottom: 5px;
     background-color: #2B3750;
-    color:white;
-
-    .description{
-      width:100%;
-      margin-top: 7px;
-      text-align:center;
-      font-weight:bold;
-    }
+    color:white; 
+    padding-top: 6px; 
+    text-align: center;  
   }
 
-  .summary{
-    @include proportions(290px,470px);
-    @include border-radius(5px, 5px);
-    float: left;
-    margin: 5px 0px 0px 14px;
-    border: $borde1px;
-    background-color:white;
+  .offer_inform {
+    @include element_into_ElementList_style;      
+    @include container_options;
+    @include offer_header;
+    @include offer_products;
+    @include center-horizontally(90%);
+    height: 500px;
 
-    .summary_header{
-      overflow: auto;
-      margin:0px 0px 10px 0px;
-      padding: 5px;
-      width: 100%;
+    .offer_header{
+      @include proportions(100%,60px);
+      overflow: hidden;
+      margin-bottom: 5px;
 
       .triangle {
-        @include relative($top:-5px,$right:-248px);
-        @include proportions(0,0);
-        border:{
-          top: 25px solid rgb(0,0,0);
-          right: 0px solid transparent;
-          left: 25px solid transparent;
-        }
+        left: 263px;        
       }
 
-      .summary_header_image{
-        @include border-radius(5px, 5px);
-        @include proportions(46px,46px);
-        float:left;
-        margin-right:5px;
-        border: $borde1px;
-
-        img{
-          @include high-quality-image;
-          @include proportions(43px,43px);
-          float: left;
-        }
-
-      }
-      .summary_header_text{
-        float: left;
-        margin: 1px;
-        width: 195px;
-
-        .nombre_usuario{
-          @include proportions(100%,12px);
-          float:left;
-          overflow:none;
-          margin:-5px 0px 5px 0px;
-          font:{
-            weight:bold;
-            size:10px;
+      .description{
+        height: 98px;
+        width: 70%;
+        .offer_message{
+          width: 100%;
+          textarea{
+            width: 90%;
+            resize: none;
           }
-        }
-
-        textarea{
-          overflow: hidden;
-          text-align: left;
-          width: 98%;
-          border: $borde1px;
-          background-color: transparent;
-          color: #000000;
-          font-size: 11px;
-          resize: none;
         }
       }
     }
 
-    .summary_body{
-      @include fixed_height(375px,375px,375px);
+    .offer_things{
+      height: 380px;
+      overflow-y: auto;
+    }
+
+    .offer_button{
       width: 100%;
-      overflow: auto;
-      margin:0px 0px 0px 0px;
+      margin-right: 10px;
 
-      .summary_body_products_received{
-        float: left;
-        overflow: auto;
-        margin-left: 20px;
-        width: 50%;
-
-        .money_received{
-          float: left;
-          overflow: auto;
-          margin-left: 20px;
-          width: 50%;
-          text-align: center;
-
-          a{
-            @include unstyled-link;
-            margin-left: 2px;
-            font-size:12px;
-            z-index: 10;
-          }
-        }
-
-        .product{
-          @include border-radius(5px, 5px);
-          float: left;
-          overflow: auto;
-          margin: 5px 15px 5px 5px;
-          width: 140px;
-
-
-          .product_image{
-            @include proportions(125px,125px);
-            float:left;
-
-            img{
-              @include high-quality-image;
-              @include proportions(123px,123px);
-              border: $borde1px;
-            }
-          }
-
-          .product_title{
-            float: left;
-            width: 125px;
-          }
-
-        }
-      }
-
-      .summary_body_products_given{
+      button{
         float:right;
-        margin-right: 30px;
-        overflow: auto;
-        width: 30%;
-
-        .money_given{
-          float:left;
-          overflow: auto;
-          margin-left: 20px;
-          width: 50%;
-          text-align: center;
-
-          a{
-            @include unstyled-link;
-            margin-left: 2px;
-            font-size:12px;
-            z-index: 10;
-          }
-        }
-
-        .product{
-          @include border-radius(5px, 5px);
-          float: right;
-          overflow: auto;
-          margin: 5px 0px 5px 0px;
-
-          .product_image{
-            @include proportions(62px,62px);
-            float:left;
-
-            img{
-              @include high-quality-image;
-              @include proportions(60px,60px);
-              border: $borde1px;
-            }
-          }
-
-          .product_title{
-            width: 62px;
-          }
-        }
       }
-    }
-  }
-  .summary_footer{
-    width: 290px;
-    float: left;
-    margin: 5px 0px 0px 14px;
-
-    .actions{
-      float: left;
-      width: 100%;
 
       input{
-        @include border-radius(5px, 5px);
-        width:100%;
-        font-size: 16px;
+        float: right;
+        margin: 0px 10px 10px 10px;
       }
     }
+
+    .offer_date{
+      float: left;
+      margin: 0px 0px 0px 5px;
+      font-size: 8px;
+      visibility: hidden;
+    }
+
+    @include box-sizing(border-box);
   }
 }
 

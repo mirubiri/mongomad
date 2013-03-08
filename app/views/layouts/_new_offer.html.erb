@@ -63,48 +63,54 @@
       </div>
     </div>
 
+
     <input type="hidden" name="offer[user_composer_id]" value="<%= user_logged_id%>" />
     <input type="hidden" name="offer[user_receiver_id]" value="<%= user_visited_id%>" />
     <input type="hidden" name="offer[money][user_id]" value="nil" id="usuario_id" />
     <input type="hidden" name="offer[money][quantity]" value="0" id="usuario_dinero" />
 
+
     <div class="offer_summary">
       <div class="title">
         <div class="description">Resumen de la oferta</div>
       </div>
-      <div class="summary">
-        <div class="summary_header">
-          <div class="summary_header_image">
+      <div class="offer_inform">      
+        <div class="offer_header">
+          <div class="triangle">            
+              <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
+          </div>
+          <div class="profile_image">
             <%= user_logged_image %>
           </div>
-          <div class="summary_header_text">
-            <div class="nombre_usuario">Sergio</div>           
-            <%= form.text_area :initial_message,
-            :placeholder => "Mensaje Inicial",
-             :size => "5x2" %>
+          <div class="description">            
+            <div class="offer_message">
+              <%= form.text_area :initial_message,
+              :placeholder => "Mensaje Inicial",
+              :rows => "2" %>
+            </div>            
           </div>
-          <div class="triangle"></div>
         </div>
-        <div class="summary_body">
-          <div class="summary_body_products_given" id="summary_offer_given_products_container">
+        <div class="offer_things">
+          <div class="recieved" id="summary_offer_received_products_container">
+              <div class="money_received" id="dineroPidesEnSumario">
+                <div class="money_composition"></div>
+              </div>
+          </div>
+          <div class="given" id="summary_offer_given_products_container">
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>
             </div>
           </div>
-          <div class="summary_body_products_received" id="summary_offer_received_products_container">
-            <div class="money_received" id="dineroPidesEnSumario">
-              <div class="money_composition"></div>
-            </div>
-          </div>
         </div>
+
+        <div class="offer_button">
+          <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+
+        </div>
+          
       </div>
-        <div class="summary_footer">
-          <div class="modal-footer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-            <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
-          </div>
-        </div>
-    </div>
+    </div>        
   <% end %>
 </div>
 
