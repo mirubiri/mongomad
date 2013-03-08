@@ -1,18 +1,18 @@
 class Offer::Composer
-  include Mongoid::Document
+  # include Mongoid::Document
 
-  embedded_in :offer
-  embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
+  # embedded_in :offer
+  # embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
 
-  field :name, type: String
+  # field :name, type: String
 
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+  # mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
-  validates :offer,
-    :products,
-    :name,
-    :image_name,
-    presence: true
+  # validates :offer,
+  #   :products,
+  #   :name,
+  #   :image_name,
+  #   presence: true
 =begin
 
   def add_products(params=[])
