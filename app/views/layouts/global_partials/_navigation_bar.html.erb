@@ -8,7 +8,7 @@
       </a>
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav" id="navigation_bar">
-          <% if controller.sub_layout === "users" %>
+          <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
             <li id="offers-tab" class="active">
           <% else %>
             <li id="offers-tab">
@@ -17,12 +17,20 @@
               <div class="nav_element">Ofertas</div>
             <% end %>
           </li>
-          <li id="negotiations-tab">
+          <% if controller.sub_layout === "negotiations" %>
+            <li id="negotiations-tab" class="active">
+          <% else %>
+            <li id="negotiations-tab">
+          <% end %>         
             <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
               <div class="nav_element">Negociaciones</div>
             <% end %>
           </li>
-          <li id="deals-tab">
+          <% if controller.sub_layout === "deals" %>
+            <li id="deals-tab" class="active">
+          <% else %>
+            <li id="deals-tab">
+          <% end %>         
             <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
               <div class="nav_element">Tratos</div>
             <% end %>

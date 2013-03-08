@@ -82,29 +82,36 @@ function masonryThing(){
   });
 }
 
-function ajaxLinks(){ 
+function ajaxLinksUrlChange(){ 
+  $('#navigation_bar li a').live('click',function(e){
+      $.getScript(this.href);
+      var url= this.href;
+      history.pushState({path:url},"", url);
+      $('#ppal_container').removeClass('masonry');              
+  });
 
-    $('#navigation_bar li a').live('click',function(e){
-        $.getScript(this.href);
-        var url= this.href;
-        history.pushState({path:url},"", url);
-        $('#ppal_container').removeClass('masonry');
-        $('#navigation_bar nav a').removeClass("nav_selected");
-        $(this).addClass("nav_selected");
-        $('#navigation_bar li').removeClass("active");        
-    });
+  $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
+      $.getScript(this.href);
+      var url= this.href;
+      history.pushState({path:url},"", url);
+      $('#ppal_container').removeClass('masonry');
+  });
 
-    $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
-        $.getScript(this.href);
-        var url= this.href;
-        history.pushState({path:url},"", url);
-        $('#ppal_container').removeClass('masonry');
-    });
-
-    $(window).bind("popstate", function() {
-      $.getScript(location.href);
-    });
+  $(window).bind("popstate", function() {
+    $.getScript(location.href);
+  });
 }
+
+function buttonsClickBackgroundChange(){
+  $('#navigation_bar li a').live('click',function(e){
+    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");             
+  });
+  $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
+    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
+    $(this).addClass('active');
+  });
+}
+
 
 function closeModalWindows(){
   $('#new-offer-send-button').live('click',function(e){
@@ -283,7 +290,7 @@ $(window).load(function(){
   //slideOptionsPanel();
   closeModalWindows();
   masonryOffer();
-  ajaxLinks();
+  ajaxLinksUrlChange();
   newOfferScript();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
@@ -292,6 +299,7 @@ $(window).load(function(){
   newRequestPanel();
   activateOfferButton();
   activateNegotiationButtons();
+  buttonsClickBackgroundChange();
 });
 
 $(window).bind('resize', function() {
@@ -299,4 +307,6 @@ $(window).bind('resize', function() {
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
+  linksClickBackgroundChange();
+  buttonsClickBackgroundChange();
 });
