@@ -58,6 +58,11 @@ describe Offer do
     it 'does not persist the offer' do
       new_offer.should_not be_persisted
     end
+
+    it 'raise exception if any parameter is not correct' do
+      offer_params[:user_receiver_id] = nil
+      expect { Offer.generate(offer_params) }.to raise_error
+    end
   end
 
 =begin
