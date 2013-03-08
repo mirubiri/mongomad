@@ -44,7 +44,68 @@ describe Offer::Composer::Product do
     end
   end
 
+  describe '#self_update' do
+    let(:new_product) do
+      new_product = product.dup
+    end
+
+    it 'returns self it self_update! success' do
+      new_product.self_update!
+      new_product.should be_like product
+    end
+
+    it 'raise error if self_update! fails' do
+      new_product.thing_id = nil
+      expect { new_product.self_update! }.to raise_error
+    end
+
+    it 'returns a valid product' do
+      new_product.self_update!
+      new_product.should be_valid
+    end
+
+    it 'updates product name with the current composer_thing name' do
+      User.find(new_product.composer.offer.user_composer).things.find(new_product.thing_id).stub(:name).and_return('updated')
+      new_product.self_update!
+      new_product.name.should eq 'updated'
+    end
+
+    it 'updates product description with the current composer_thing description' do
+      User.find(new_product.composer.offer.user_composer).things.find(new_product.thing_id).stub(:description).and_return('updated')
+      new_product.self_update!
+      new_product.description.should eq 'updated'
+    end
+
+    it 'updates product image_name with the current composer_thing image_name' do
+      User.find(new_product.composer.offer.user_composer).things.find(new_product.thing_id).stub(:image_name).and_return('updated.png')
+      new_product.self_update!
+      new_product.description.should eq 'updated.png'
+    end
+
+    context 'When product(offer) is published' do
+      before { new_product.composer.offer.publish }
+
+      it 'calls reload method' do
+        new_product.should_receive(:reload)
+        new_product.self_update!
+      end
+
+      it 'save the changes' do
+        new_product.should_receive(:save)
+        new_product.self_update!
+      end
+    end
+
+    context 'When product(offer) is not published' do
+      it 'does not save the changes' do
+        new_product.should_not_receive(:save)
+        new_product.self_update!
+      end
+    end
+  end
+
 =begin
+
   describe '#self_update' do
     before(:each) do
       thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
