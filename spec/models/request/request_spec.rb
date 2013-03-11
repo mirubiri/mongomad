@@ -136,7 +136,7 @@ describe Request do
       new_request
     end
 
-    it 'returns self it self_update! success' do
+    it 'returns self if self_update! success' do
       new_request.self_update!
       new_request.should be_like request
     end
