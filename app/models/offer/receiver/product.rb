@@ -1,26 +1,26 @@
 class Offer::Receiver::Product
-  # include Mongoid::Document
+  include Mongoid::Document
 
-  # embedded_in :receiver, class_name: "Offer::Receiver"
+  embedded_in :receiver, class_name: "Offer::Receiver"
 
-  # field :thing_id,    type: Moped::BSON::ObjectId
-  # field :name,        type: String
-  # field :description, type: String
-  # field :quantity,    type: Integer
+  field :thing_id,    type: Moped::BSON::ObjectId
+  field :name,        type: String
+  field :description, type: String
+  field :quantity,    type: Integer
 
-  # mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
-  # validates :receiver,
-  #   :thing_id,
-  #   :name,
-  #   :description,
-  #   :quantity,
-  #   :image_name,
-  #   presence: true
+  validates :receiver,
+    :thing_id,
+    :name,
+    :description,
+    :quantity,
+    :image_name,
+    presence: true
 
-  # validates :quantity,
-  #   allow_nil: false,
-  #   numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :quantity,
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 =begin
   def self_update
     thing = receiver.offer.user_receiver.things.find(self.thing_id)

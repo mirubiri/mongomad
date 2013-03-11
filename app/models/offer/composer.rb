@@ -1,26 +1,37 @@
 class Offer::Composer
-  # include Mongoid::Document
+  include Mongoid::Document
 
-  # embedded_in :offer
-  # embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
+  embedded_in :offer
+  embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
 
-  # field :name, type: String
+  field :name, type: String
 
-  # mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
-  # validates :offer,
-  #   :products,
-  #   :name,
-  #   :image_name,
-  #   presence: true
-=begin
+  validates :offer,
+    :products,
+    :name,
+    :image_name,
+    presence: true
 
-  def add_products(params=[])
-    params.each do |index|
+
+  def add_products(products_params=[])
+    composer_things = offer.user_composer.things
+    products_params.each do |index|
+      thing = composer_things.find(index[:thing_id])
+      raise "thing is not valid" if thing == nil
+      raise "quantity is not valid" if thind.quantity < index[:quantity]
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
     end
   end
 
+  def self_update!
+    update_user_data
+    update_products
+    self
+  end
+
+=begin
   def alter_contents(params=[])
     products.destroy
     add_products(params)
@@ -39,10 +50,6 @@ class Offer::Composer
   end
 
   public
-  def self_update
-    update_user_data
-    update_products
-    self
-  end
+
 =end
 end

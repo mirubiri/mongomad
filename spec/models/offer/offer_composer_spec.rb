@@ -38,7 +38,7 @@ describe Offer::Composer do
   end
 
   describe '#add_products(products_params)' do
-    it 'creates a product from each param passed' do
+    it 'add a product to composer from each param passed' do
       new_composer = composer.dup
       new_composer.products.destroy
       new_composer.add_products(products_params)
@@ -75,7 +75,7 @@ describe Offer::Composer do
       new_composer = composer.dup
     end
 
-    it 'returns self it self_update! success' do
+    it 'returns self if self_update! success' do
       new_composer.self_update!
       new_composer.should be_like composer
     end
@@ -102,7 +102,7 @@ describe Offer::Composer do
       new_composer.image_name.should eq 'updated.png'
     end
 
-    context 'When composer(offer) is published' do
+    context 'When offer is published' do
       before { new_composer.offer.publish }
 
       it 'calls reload method' do
@@ -116,7 +116,12 @@ describe Offer::Composer do
       end
     end
 
-    context 'When composer(offer) is not published' do
+    context 'When offer is not published' do
+      it 'does not call reload method' do
+        new_composer.should_not_receive(:reload)
+        new_composer.self_update!
+      end
+
       it 'does not save the changes' do
         new_composer.should_not_receive(:save)
         new_composer.self_update!
