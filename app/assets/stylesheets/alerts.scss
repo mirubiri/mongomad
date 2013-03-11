@@ -1,13 +1,14 @@
 @import "variables";
 
 .user_alert{
-  @include center-horizontally(100%);
-  @include box-sizing(border-box);
   @include border-radius(5px, 5px);
+  float: left;
+  width: $offerWidth;
   background-color: white;
   overflow: hidden;
   padding: 5px;
   margin-bottom: 15px;
+  margin-right: 15px;
   border: $borde1px;
 
   .profile_image{
@@ -35,10 +36,14 @@
   }
 
   .options_menu{
-    @include center-horizontally(15%);
+    @include center-horizontally(50%);
     height: 20px;            
     float: right;
     font-size: 9px;
+    overflow: visible;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    padding-right: 8px;
     a{
       float:right;
     }

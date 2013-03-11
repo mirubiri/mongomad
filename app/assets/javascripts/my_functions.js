@@ -247,11 +247,15 @@ function slideOptionsPanel(){
   });
 }
 
-function newRequestPanel(){
-  $("#new-request-button").live('click',function(e){
-    $(this).parent().find('#request-writing-box').slideToggle('fast');
-    e.preventDefault();
-  });
+function activateAlertButton(){
+  $('.user_alert').hover(
+     function() {
+        $(this).find('#alert_button').removeClass("hidden_container");
+     }, 
+     function() {
+        $(this).find('#alert_button').addClass("hidden_container");
+     }
+  );
 }
 
 function activateOfferButton(){
@@ -276,7 +280,7 @@ function activateNegotiationButtons(){
   );
 }
 
-function requestMenu(){
+function activateRequestButtons(){
   $('.request').hover(
      function () {
       $(this).find('.options_menu').removeClass("hidden_container");
@@ -296,8 +300,7 @@ $(window).load(function(){
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();  
-  requestMenu();
-  newRequestPanel();
+  activateRequestButtons();
   activateOfferButton();
   activateNegotiationButtons();
   buttonsClickBackgroundChange();
@@ -310,4 +313,5 @@ $(window).bind('resize', function() {
   expandRightContainer();
   linksClickBackgroundChange();
   buttonsClickBackgroundChange();
+  activateAlertButton();
 });
