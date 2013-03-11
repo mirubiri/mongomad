@@ -16,6 +16,7 @@ class Request
     presence: true
 
   def self.generate(request_params=[])
+    raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
     request = new(text: request_params[:text])
     request
   end
@@ -31,7 +32,10 @@ class Request
   end
 
   def alter_contents(request_params=[])
-    self.text = request_params[:text] if request_params[:text]
+    if request_params.has_key?(:text)
+      raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
+      self.text = request_params[:text]
+    end
     persisted? ? save : self
   end
 
