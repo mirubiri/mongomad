@@ -61,6 +61,7 @@ describe Request do
     it 'raises exception if text parameter is not correct' do
       request_params[:text] = nil
       expect { Request.generate(request_params) }.to raise_error
+
       request_params[:text] = ''
       expect { Request.generate(request_params) }.to raise_error
     end
@@ -109,6 +110,7 @@ describe Request do
     it 'raises exception if text parameter is not correct' do
       new_params = { text:nil }
       expect { new_request.alter_contents(new_params) }.to raise_error
+
       new_params = { text:'' }
       expect { new_request.alter_contents(new_params) }.to raise_error
     end
