@@ -57,6 +57,13 @@ describe Request do
     it 'does not persist the request' do
       new_request.should_not be_persisted
     end
+
+    it 'raise exception if text parameter is not correct' do
+      request_params[:text] = nil
+      expect { Request.generate(request_params) }.to raise_error
+      request_params[:text] = ''
+      expect { Request.generate(request_params) }.to raise_error
+    end
   end
 
   describe '#publish' do
@@ -88,15 +95,22 @@ describe Request do
       new_request = request.clone
     end
 
-    it 'only modifies the text' do
+    it 'only modifies text parameter when more parameters are given' do
       new_request.text = nil
-      params = { text:request_params[:text], another:"another" }
-      new_request.alter_contents(params).should be_like request
+      new_params = { text:request_params[:text], another:'another' }
+      new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'returns an unmodified request when params does not include text' do
-      params = { another:"another" }
-      new_request.alter_contents(params).should be_like request
+    it 'returns an unmodified request when the parameters does not include text' do
+      new_params = { another:'another' }
+      new_request.alter_contents(new_params).should be_like request
+    end
+
+    it 'raise exception if text parameter is not correct' do
+      new_params = { text:nil }
+      expect { new_request.alter_contents(new_params) }.to raise_error
+      new_params = { text:'' }
+      expect { new_request.alter_contents(new_params) }.to raise_error
     end
 
     context 'When request is published' do
@@ -137,6 +151,18 @@ describe Request do
       new_request.should be_valid
     end
 
+    it 'updates request user_name with the current user nickname' do
+      new_request.user.profile.stub(:nickname).and_return('updated')
+      new_request.self_update!
+      new_request.user_name.should eq 'updated'
+    end
+
+    it 'updates request image_name with the current user image_name' do
+      new_request.user.profile.stub(:image_name).and_return('updated.png')
+      new_request.self_update!
+      new_request.image_name.should eq 'updated.png'
+    end
+
     context 'When request is published' do
       before do
         request.publish
@@ -157,10 +183,18 @@ describe Request do
     end
 
     context 'When request is not published' do
-      it 'does not save the changes' do
+      before do
         new_request = Fabricate.build(:request)
         request.alter_contents(params_for_request(new_request))
         request.user = new_request.user
+      end
+
+      it 'does not call reload method' do
+        request.should_not_receive(:reload)
+        request.self_update!
+      end
+
+      it 'does not save the changes' do
         request.should_not_receive(:save)
         request.self_update!
       end
