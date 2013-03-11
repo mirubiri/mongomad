@@ -109,10 +109,10 @@ describe Request do
 
     it 'raises exception if text parameter is not correct' do
       new_params = { text:nil }
-      expect { new_request.alter_contents(new_params) }.to raise_error
+      expect { request.alter_contents(new_params) }.to raise_error
 
       new_params = { text:'' }
-      expect { new_request.alter_contents(new_params) }.to raise_error
+      expect { request.alter_contents(new_params) }.to raise_error
     end
 
     context 'When request is published' do
@@ -144,32 +144,33 @@ describe Request do
     end
 
     it 'raises error if self_update! fails' do
-      new_request.user = nil
-      expect { new_request.self_update! }.to raise_error
+      request.user = nil
+      expect { request.self_update! }.to raise_error
     end
 
     it 'returns a valid request' do
-      new_request.self_update!
-      new_request.should be_valid
+      request.self_update!
+      request.should be_valid
     end
 
     it 'updates request user_name with the current user nickname' do
-      new_request.user.profile.stub(:nickname).and_return('updated')
-      new_request.self_update!
-      new_request.user_name.should eq 'updated'
+      request.user.profile.stub(:nickname).and_return('updated')
+      request.self_update!
+      request.user_name.should eq 'updated'
     end
 
     it 'updates request image_name with the current user image_name' do
-      new_request.user.profile.stub(:image_name).and_return('updated.png')
-      new_request.self_update!
-      new_request.image_name.should eq 'updated.png'
+      request.user.profile.stub(:image_name).and_return('updated.png')
+      request.self_update!
+      request.image_name.should eq 'updated.png'
     end
 
     context 'When request is published' do
       before do
-        request.publish
         new_request = Fabricate.build(:request)
-        request.alter_contents(params_for_request(new_request))
+        new_params = params_for_request(new_request)
+        request.publish
+        request.alter_contents(new_params)
         request.user = new_request.user
       end
 
@@ -187,7 +188,8 @@ describe Request do
     context 'When request is not published' do
       before do
         new_request = Fabricate.build(:request)
-        request.alter_contents(params_for_request(new_request))
+        new_params = params_for_request(new_request)
+        request.alter_contents(new_params)
         request.user = new_request.user
       end
 
