@@ -1,13 +1,14 @@
 @import "variables";
 
-.alert{
+.user_alert{
   @include center-horizontally(100%);
   @include box-sizing(border-box);
+  @include border-radius(5px, 5px);
+  background-color: white;
   overflow: hidden;
-  padding-top: 20px;
-  margin-bottom: 5px;
-  border-top: $borde1px;
-  border-bottom: $borde1px;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: $borde1px;
 
   .profile_image{
     @include box-sizing(border-box);
@@ -27,22 +28,25 @@
   .description{
     @include box-sizing(border-box);
     @include border-radius(5px, 5px);
-    @include proportions(79%,40px);
+    @include proportions(75%,40px);
     float: left;
-    border: $borde1px;
-    font-size: 9px;
+    font-size: 10px;
     overflow: hidden;            
   }
 
   .options_menu{
-    @include center-horizontally(80%);
+    @include center-horizontally(15%);
     height: 20px;            
-    float: left;
+    float: right;
     font-size: 9px;
+    a{
+      float:right;
+    }
   }
 
   &:hover{
     border-color: #3388BB;
+    background-color: #ececfb;
   }
   
 }

@@ -1,6 +1,6 @@
 <% if (user_alerts.count != 0)%>
   <% user_alerts.each do |request| %>
-    <div class="alert">
+    <div class="user_alert">
       <div class="profile_image">
         <%= request_image(request) %>            
       </div>
@@ -8,12 +8,12 @@
         <%= request_text(request) %>
       </div>
       <div class="options_menu">
-        <%= link_to "Hazme una Oferta",
-            :controller => "users",
+        <%= link_to "Offer me!!",
+            {:controller => "users",
             :action => "show",
-            :id => request_user_id(request),
-            :class => "btn btn-primary"
-        %>    
+            :id => request_user_id(request)},
+            {:class => "btn btn-primary"}
+        %>          
       </div>
     </div>    
   <% end %>

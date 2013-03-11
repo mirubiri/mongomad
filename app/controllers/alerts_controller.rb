@@ -1,5 +1,9 @@
 class AlertsController < ApplicationController
 
+  def sub_layout
+    "alerts"
+  end
+
   def index
     @user = current_user    
 
