@@ -58,7 +58,7 @@ describe Request do
       new_request.should_not be_persisted
     end
 
-    it 'raise exception if text parameter is not correct' do
+    it 'raises exception if text parameter is not correct' do
       request_params[:text] = nil
       expect { Request.generate(request_params) }.to raise_error
       request_params[:text] = ''
@@ -72,7 +72,7 @@ describe Request do
       request.publish
     end
 
-    it 'raise exception if request is currently published' do
+    it 'raises exception if request is currently published' do
       request.publish
       expect { request.publish }.to raise_error
     end
@@ -85,7 +85,7 @@ describe Request do
       request.unpublish
     end
 
-    it 'raise exception if request is currently unpublished' do
+    it 'raises exception if request is currently unpublished' do
       expect { request.unpublish }.to raise_error
     end
   end
@@ -106,7 +106,7 @@ describe Request do
       new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'raise exception if text parameter is not correct' do
+    it 'raises exception if text parameter is not correct' do
       new_params = { text:nil }
       expect { new_request.alter_contents(new_params) }.to raise_error
       new_params = { text:'' }
@@ -141,7 +141,7 @@ describe Request do
       new_request.should be_like request
     end
 
-    it 'raise error if self_update! fails' do
+    it 'raises error if self_update! fails' do
       new_request.user = nil
       expect { new_request.self_update! }.to raise_error
     end
