@@ -17,7 +17,7 @@ class Request
 
   def self.generate(request_params=[])
     raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
-    request = new(text: request_params[:text])
+    request = Request.new(text: request_params[:text])
     request
   end
 
