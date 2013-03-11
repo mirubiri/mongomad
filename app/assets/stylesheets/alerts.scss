@@ -1,0 +1,48 @@
+@import "variables";
+
+.alert{
+  @include center-horizontally(100%);
+  @include box-sizing(border-box);
+  overflow: hidden;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  border-top: $borde1px;
+  border-bottom: $borde1px;
+
+  .profile_image{
+    @include box-sizing(border-box);
+    @include border-radius(5px, 5px);
+    @include proportions(40px,40px);
+    padding: 2px;
+    float:left;
+    margin:0px 5px 5px 0px;
+    border: $borde1px;
+
+    img{
+      @include high-quality-image;
+      @include proportions(100%,100%);
+    }
+  }
+
+  .description{
+    @include box-sizing(border-box);
+    @include border-radius(5px, 5px);
+    @include proportions(79%,40px);
+    float: left;
+    border: $borde1px;
+    font-size: 9px;
+    overflow: hidden;            
+  }
+
+  .options_menu{
+    @include center-horizontally(80%);
+    height: 20px;            
+    float: left;
+    font-size: 9px;
+  }
+
+  &:hover{
+    border-color: #3388BB;
+  }
+  
+}

@@ -379,4 +379,10 @@ module ApplicationHelper
   def agreement_updatetime(agreement)
     agreement.updated_at
   end
+
+  # ALERTS HELPERS -----------------------------------------
+  def user_alerts
+    @user.requests
+  end 
+
 end
