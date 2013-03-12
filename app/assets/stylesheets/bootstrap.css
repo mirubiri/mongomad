@@ -4756,6 +4756,12 @@ a.thumbnail:focus {
   width: 430px;
   margin-top: 200px;
 }
+.modal.modal-thing{
+  left: 55%;
+  width: 450px;
+  margin-top: 180px;
+  margin-bottom:0px;
+}
 
 .modal.fade {
   -webkit-transition: opacity .3s linear, top .3s ease-out;

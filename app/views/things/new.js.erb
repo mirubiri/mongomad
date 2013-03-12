@@ -1,17 +1,3 @@
-$('#new-thing-form').removeClass("container_invisible");
-$('#new-thing-form').modal({
-    onOpen: function (dialog) {
-      dialog.overlay.fadeIn('slow', function () {
-        dialog.container.slideDown('fast', function () {
-          dialog.data.fadeIn('fast');
-        });
-      });
-    },
-    opacity:60,
-    overlayCss: {backgroundColor:"#000000"},
-    onClose: function () {
-      $.modal.close();
-      $('#new-thing-form').addClass("container_invisible");
-      $('#ppal_container').masonry('reload');
-    }
-});
+$('#new-thing-form').modal('show').on('hidden', function () {
+  $('#thing_image_container').attr('src', ' ');
+})

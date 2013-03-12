@@ -1,28 +1,39 @@
-<div class="new_thing_content container_invisible" id="new-thing-form">
+<div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-thing-form">
   <%= form_for @thing do |form| %>
     <div class="new_thing_title">
       Añade un nuevo producto      
-    </div> 
-    <div class="new_thing_image">
-      <%= form.file_field :image %>
     </div>
-    <div class="new_thing_text">
-      <%= form.text_area :name, 
-              :placeholder => "Título del producto",
-              :size => "4x1" %>
-      <%= form.text_area :description,
-                :placeholder => "Describa de forma concisa el producto",
-                :size => "24x6" %>
+    <div class="new_thing_container">
+      <div class="new_thing_image">
+        <div class="image_container">
+          <%= form.file_field :image,
+            :id => "thing_image",
+            :onchange => "imageSelection(this);" %>
+          <img class="thing_image_container" id="thing_image_container" src="">
+        </div>
+      </div>
+      <div class="new_thing_description">
+        <div class="title">
+          <%= form.text_area :name, 
+                  :placeholder => "Título del producto",
+                  :size => "4x1" %>
+        </div>
+        <div class="description">
+          <%= form.text_area :description,
+                    :placeholder => "Describa de forma concisa el producto",
+                    :size => "10x5" %>
+        </div>
+        <div class="new_thing_stock">
+          <%= form.text_area :stock, 
+                :placeholder => "Unidades del producto de las que dispone",  
+                :size => "4x1" %>
+        </div>
+      </div>      
     </div>
-    <div class="stock">
-      <%= form.text_area :stock, 
-            :placeholder => "Unidades del producto de las que dispone",  
-            :size => "15x2" %>
-    </div>
-    <div class="send_button">      
-      <div class="action">      
-        <%= form.submit  "submit", :id => 'new-thing-send-button'  %>
-      </div> 
+    <div class="thing_options">            
+      <%= form.submit  "Add to products", 
+      :id => 'new-thing-send-button',
+      :class => "btn btn-success" %>
     </div>
   <% end %>   
 </div> 
