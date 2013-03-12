@@ -134,13 +134,9 @@ describe Request do
   end
 
   describe '#self_update!' do
-    let(:new_request) do
+    it 'returns self if self_update! success' do
       new_request = Request.generate(request_params)
       new_request.user = request.user
-      new_request
-    end
-
-    it 'returns self if self_update! success' do
       new_request.self_update!
       new_request.should be_like request
     end
