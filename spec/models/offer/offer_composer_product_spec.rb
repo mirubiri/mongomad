@@ -50,7 +50,7 @@ describe Offer::Composer::Product do
   describe '#self_update' do
     it 'returns self if self_update! success' do
       new_product = composer.products.last
-      new_product.thing_id = thing._id
+      new_product.thing_id = product.thing_id
       new_product.quantity = product.quantity
       new_product.self_update!
       new_product.should be_like product
