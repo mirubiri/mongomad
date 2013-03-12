@@ -56,17 +56,17 @@ describe Offer::Composer::Product do
       new_product.should be_like product
     end
 
-    it 'raises error if self_update! fails because product thing_id is nil' do
+    it 'raises exception if product thing_id is nil' do
       product.thing_id = nil
       expect { product.self_update! }.to raise_error
     end
 
-    it 'raises error if self_update! fails because product thing_id is not correct' do
+    it 'raises exception if product thing_id is not correct' do
       product.thing_id = user_receiver.things.last._id
       expect { product.self_update! }.to raise_error
     end
 
-    it 'raises error if self_update! fails because product quantity is not correct' do
+    it 'raises exception if product quantity is not correct' do
       product.quantity = thing.stock + 1
       expect { product.self_update! }.to raise_error
     end
