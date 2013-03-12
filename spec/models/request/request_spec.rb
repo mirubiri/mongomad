@@ -141,7 +141,7 @@ describe Request do
       new_request.should be_like request
     end
 
-    it 'raises error if self_update! fails' do
+    it 'raises exception if self_update! fails' do
       request.user = nil
       expect { request.self_update! }.to raise_error
     end
