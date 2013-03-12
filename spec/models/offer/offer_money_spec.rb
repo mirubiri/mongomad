@@ -31,6 +31,10 @@ describe Offer::Money do
   end
 
 =begin
+#comprobar los datos de money
+
+
+
   describe '#alter_contents' do
     it 'set current values to the given params' do
       new_money=Fabricate.build(:offer_money)

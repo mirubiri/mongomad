@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Request do
-  let(:user) { Fabricate(:user) }
-  let(:request) { Fabricate.build(:request, user:user) }
-  let(:request_params) { params_for_request(request) }
+  xlet(:user) { Fabricate(:user) }
+  xlet(:request) { Fabricate.build(:request, user:user) }
+  xlet(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
     it { should belong_to(:user) }
@@ -44,7 +44,7 @@ describe Request do
       new_request = Request.generate(request_params)
     end
 
-    it 'generates a request with the correct given parameters' do
+    it 'generates a request with correct value for given parameters' do
       new_request.text.should eq request.text
     end
 
@@ -58,10 +58,12 @@ describe Request do
       new_request.should_not be_persisted
     end
 
-    it 'raises exception if text parameter is not correct' do
+    it 'raises exception if text parameter is nil' do
       request_params[:text] = nil
       expect { Request.generate(request_params) }.to raise_error
+    end
 
+    it 'raises exception if text parameter is empty' do
       request_params[:text] = ''
       expect { Request.generate(request_params) }.to raise_error
     end
@@ -102,7 +104,7 @@ describe Request do
       new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'returns an unmodified request when the parameters does not include text' do
+    it 'returns an unmodified request when text parameter is not given' do
       new_params = { another:'another' }
       new_request.alter_contents(new_params).should be_like request
     end
@@ -142,7 +144,7 @@ describe Request do
     end
 
     it 'raises exception if self_update! fails' do
-      request.user = nil
+      request.stub(:self_update!).and_raise("StandardError")
       expect { request.self_update! }.to raise_error
     end
 

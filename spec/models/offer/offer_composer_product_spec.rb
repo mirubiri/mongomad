@@ -61,7 +61,7 @@ describe Offer::Composer::Product do
       expect { product.self_update! }.to raise_error
     end
 
-    it 'raises exception if product thing_id is not correct' do
+    it 'raises exception if product thing does not belong to correct user' do
       product.thing_id = user_receiver.things.last._id
       expect { product.self_update! }.to raise_error
     end

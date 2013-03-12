@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:user_composer) { Fabricate(:user_with_things) }
-  let(:user_receiver) { Fabricate(:user_with_things) }
-  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
-  let(:offer_params) { params_for_offer(offer) }
+  xlet(:user_composer) { Fabricate(:user_with_things) }
+  xlet(:user_receiver) { Fabricate(:user_with_things) }
+  xlet(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
+  xlet(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -42,7 +42,7 @@ describe Offer do
       new_offer = Offer.generate(offer_params)
     end
 
-    it 'generates an offer with the correct given parameters' do
+    it 'generates an offer with correct value for given parameters' do
       new_offer.user_receiver_id.should eq offer.user_receiver_id
       ['composer', 'receiver'].each do |user|
         new_offer.send(user).products.should be_like offer.send(user).products
@@ -59,153 +59,182 @@ describe Offer do
       new_offer.should_not be_persisted
     end
 
-    it 'raise exception if any parameter is not correct' do
+    it 'raises exception if user_receiver_id parameter is nil' do
       offer_params[:user_receiver_id] = nil
+      expect { Offer.generate(offer_params) }.to raise_error
+    end
+
+    it 'raises exception if user_receiver_id parameter is not an user id' do
+      offer_params[:user_receiver_id] = offer._id
+      expect { Offer.generate(offer_params) }.to raise_error
+    end
+
+    it 'raises exception if initial_message parameter is nil' do
+      offer_params[:initial_message] = nil
+      expect { Offer.generate(offer_params) }.to raise_error
+    end
+
+    it 'raises exception if initial_message parameter is empty' do
+      offer_params[:initial_message] = ''
       expect { Offer.generate(offer_params) }.to raise_error
     end
   end
 
-=begin
   describe '#publish' do
-    context 'When offer is saved' do
-      before { offer.publish }
-
-      it 'returns true' do
-        offer.publish.should eq true
-      end
-
-      it 'do not create a new offer' do
-        expect { offer.publish }.to_not change { Offer.count }
-      end
+    it 'publish a new offer' do
+      offer.should_receive(:save)
+      offer.publish
     end
 
-    context 'When offer is not saved' do
-      context 'When offer is valid' do
-        it 'returns true' do
-          offer.publish.should eq true
-        end
-
-        it 'saves the offer' do
-          offer.publish
-          Offer.all.to_a.should include(offer)
-        end
-
-        it 'adds the offer to sent_offers for user_composer' do
-          offer.publish
-          User.find(offer.user_composer).sent_offers.should include(offer)
-        end
-
-        it 'adds the offer to received_offers for user_receiver' do
-          offer.publish
-          User.find(offer.user_receiver).received_offers.should include(offer)
-        end
-      end
-      context 'When offer is not valid' do
-        before { offer.should_receive(:save).and_return(false) }
-
-        it 'returns false' do
-          offer.publish.should eq false
-        end
-
-        it 'does not save the offer' do
-          offer.publish
-          Offer.all.to_a.should_not include(offer)
-        end
-
-        it 'does not add the offer to sent_offers for user_composer' do
-          offer.publish
-          User.find(offer.user_composer).sent_offers.should_not include(offer)
-        end
-
-        it 'does not add the offer to received_offers for user_receiver' do
-          offer.publish
-          User.find(offer.user_receiver).received_offers.should_not include(offer)
-        end
-      end
+    it 'raises exception if offer is currently published' do
+      offer.publish
+      expect { offer.publish }.to raise_error
     end
   end
 
   describe '#unpublish' do
-    context 'When offer is saved' do
-      before do
-        offer.publish
-        offer.unpublish
-      end
-       it 'returns true' do
-        offer.unpublish.should eq true
-      end
-
-      it 'removes the offer' do
-        Offer.all.to_a.should_not include(offer)
-      end
-
-      it 'removes the offer from sent_offers for user_composer' do
-        offer.user_composer.reload.sent_offers.should_not include(offer)
-      end
-
-      it 'removes the offer from received_offers for user_receiver' do
-        offer.user_receiver.reload.received_offers.should_not include(offer)
-      end
-
-      it 'does not remove composer image' do
-        offer.composer.image.file.should be_exists
-      end
-
-      it 'does not remove receiver image' do
-        offer.receiver.image.file.should be_exists
-      end
-
-      it 'does not remove product images from receiver' do
-        offer.receiver.products.each do |product|
-          product.image.file.should be_exists
-        end
-      end
-
-      it 'does not remove product images from composer' do
-        offer.composer.products.each do |product|
-          product.image.file.should be_exists
-        end
-      end
+    it 'removes a published offer' do
+      offer.publish
+      offer.should_receive(:destroy)
+      offer.unpublish
     end
 
-    context 'When offer is not saved' do
-      it 'returns true' do
-        offer.unpublish.should eq true
-      end
+    it 'raises exception if offer is currently unpublished' do
+      expect { offer.unpublish }.to raise_error
     end
   end
 
-  describe '#alter_contents(params)' do
-    after { offer.alter_contents(offer_params) }
+  describe '#alter_contents(offer_params)' do
+    let(:new_offer) do
+      new_offer = offer.clone
+    end
 
-    it 'calls to composer.alter_contents with params[:composer_things]' do
+    it 'only modifies correct parameters when more parameters are given' do
+      new_offer.user_receiver_id = nil
+      new_offer.initial_message = nil
+      new_params = {
+        user_receiver_id:offer_params[:user_receiver_id],
+        initial_message:offer_params[:initial_message],
+        another:'another'
+      }
+      new_offer.alter_contents(new_params).should be_like offer
+    end
+
+    it 'returns an unmodified offer when no correct parameter is given' do
+      new_params = { another:'another' }
+      new_offer.alter_contents(new_params).should be_like offer
+    end
+
+    it 'calls to composer.alter_contents method with offer_params[:composer_things]' do
       offer.composer.should_receive(:alter_contents).with(offer_params[:composer_things])
+      offer.alter_contents(offer_params)
     end
 
-    it 'calls to receiver.alter_contents with params[:receiver_things]' do
+    it 'calls to receiver.alter_contents method with offer_params[:receiver_things]' do
       offer.receiver.should_receive(:alter_contents).with(offer_params[:receiver_things])
+      offer.alter_contents(offer_params)
     end
 
-    it 'calls to money.alter with params[:money]' do
+    it 'calls to money.alter_contents method with offer_params[:money]' do
       offer.money.should_receive(:alter_contents).with(offer_params[:money])
+      offer.alter_contents(offer_params)
     end
 
-    it 'changes initial_message with value of params[:initial_message]' do
-      offer.should_receive(:initial_message).with(offer_params[:initial_message])
+    it 'raises exception if user_receiver_id parameter is nil' do
+      new_params = { user_receiver_id:nil }
+      expect { offer.alter_contents(new_params) }.to raise_error
     end
 
-    specify { expect(offer.alter_contents(offer_params)).to eq true }
-
-    context 'When offer is saved' do
-      xit 'saves the offer calling save method'
+    it 'raise exception if user_receiver_id parameter is not an user id' do
+      new_params = { user_receiver_id:offer._id }
+      expect { offer.alter_contents(new_params) }.to raise_error
     end
 
-    context 'When offer is not saved' do
-      xit 'does not save the offer'
+    it 'raise exception if initial_message parameter is nil' do
+      new_params = { initial_message:nil }
+      expect { offer.alter_contents(new_params) }.to raise_error
+    end
+
+    it 'raise exception if initial_message parameter is empty' do
+      new_params = { initial_message:'' }
+      expect { offer.alter_contents(new_params) }.to raise_error
+    end
+
+    context 'When offer is published' do
+      it 'save the changes' do
+        offer.publish
+        offer.should_receive(:save)
+        offer.alter_contents(offer_params)
+      end
+    end
+
+    context 'When offer is not published' do
+      it 'does not save the changes' do
+        offer.should_not_receive(:save)
+        offer.alter_contents(offer_params)
+      end
     end
   end
 
-  describe '#self_update' do
+  describe '#self_update!' do
+    it 'returns self if self_update! success' do
+    end
+
+    it 'raises exception if self_update! fails' do
+    end
+
+    it 'returns a valid offer' do
+    end
+
+    it 'calls to composer.self_update! method' do
+    end
+
+    it 'calls to receiver.self_update! method' do
+    end
+
+
+
+    context 'When offer is published' do
+      before do
+        new_offer = Fabricate.build(:offer)
+        new_params = params_for_offer(new_offer)
+        offer.publish
+        offer.alter_contents(new_params)
+        offer.user = new_offer.user
+      end
+
+      it 'calls reload method' do
+        offer.should_receive(:reload)
+        offer.self_update!
+      end
+
+      it 'save the changes' do
+        offer.should_receive(:save)
+        offer.self_update!
+      end
+    end
+
+    context 'When offer is not published' do
+      before do
+        new_offer = Fabricate.build(:offer)
+        new_params = params_for_offer(new_offer)
+        offer.alter_contents(new_params)
+        offer.user = new_offer.user
+      end
+
+      it 'does not call reload method' do
+        offer.should_not_receive(:reload)
+        offer.self_update!
+      end
+
+      it 'does not save the changes' do
+        offer.should_not_receive(:save)
+        offer.self_update!
+      end
+    end
+
+=begin
+
     it 'calls reload if persisted' do
       offer.publish
       offer.should_receive(:reload)
@@ -217,15 +246,7 @@ describe Offer do
       offer.self_update
     end
 
-    it 'calls to offer.composer.self_update' do
-      offer.composer.should_receive(:self_update)
-      offer.self_update
-    end
 
-    it 'calls to offer.receiver.self_update' do
-      offer.receiver.should_receive(:self_update)
-      offer.self_update
-    end
 
     it 'returns self if self_update success' do
       offer.self_update.should eq offer
@@ -256,9 +277,9 @@ describe Offer do
       #end
     end
   end
-
+=end
   describe '#start_negotiation' do
     xit 'starts a negotiation froom the offer'
   end
-=end
+
 end
