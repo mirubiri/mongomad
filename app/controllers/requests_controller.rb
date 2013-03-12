@@ -40,6 +40,11 @@ class RequestsController < ApplicationController
   # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
+
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js # render edit.js.erb }
+    end
   end
 
   # POST /requests

@@ -1,0 +1,24 @@
+<div class="modal modal-request hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-request-form">  
+  <%= form_for [current_user,@request] do |form| %>
+    <div class="new_petition_content">
+      <div class="new_petition_title">
+        <div class="description">Editar Petición</div>
+        <div class="user">
+          <%= user_logged_image %>                
+        </div>
+        <div class="user_name">
+          <%= user_logged_name %>
+        </div> 
+      </div> 
+      <div class="new_offer_text">
+        <%= text_area_tag :text, request_text(@request), :rows => 8, :cols => 6 %>
+      </div>    
+      <div class="action">
+        <div class="send_button">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            <%= form.submit "Añadir", :id => 'new-request-send-button', :class =>  "btn btn-primary" %>
+        </div>         
+      </div> 
+    </div>
+  <% end %>  
+</div> 
