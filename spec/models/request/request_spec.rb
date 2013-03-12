@@ -107,12 +107,16 @@ describe Request do
       new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'raises exception if text parameter is not correct' do
-      new_params = { text:nil }
-      expect { request.alter_contents(new_params) }.to raise_error
+    context 'When parameters are not correct' do
+      it 'raises exception if text parameter is nil' do
+        new_params = { text:nil }
+        expect { request.alter_contents(new_params) }.to raise_error
+      end
 
-      new_params = { text:'' }
-      expect { request.alter_contents(new_params) }.to raise_error
+      it 'raises exception if text parameter is empty' do
+        new_params = { text:'' }
+        expect { request.alter_contents(new_params) }.to raise_error
+      end
     end
 
     context 'When request is published' do
