@@ -6,6 +6,7 @@ describe Offer::Composer::Product do
   let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:composer) { offer.composer }
   let(:product) { composer.products.last }
+  let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(product.thing_id) }
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
@@ -47,25 +48,25 @@ describe Offer::Composer::Product do
   end
 
   describe '#self_update' do
-    let(:new_product) do
-      new_product = Offer::Composer::Product.new
-      new_product.thing_id = product.thing_id
-      new_product.quantity = thing.stock
-      new_product
-    end
-
     it 'returns self if self_update! success' do
+      new_product = composer.products.last
+      new_product.thing_id = thing._id
+      new_product.quantity = product.quantity
       new_product.self_update!
       new_product.should be_like product
     end
 
-    it 'raises error if self_update! fails' do
+    it 'raises error if self_update! fails because product thing_id is nil' do
       product.thing_id = nil
       expect { product.self_update! }.to raise_error
+    end
 
+    it 'raises error if self_update! fails because product thing_id is not correct' do
       product.thing_id = user_receiver.things.last._id
       expect { product.self_update! }.to raise_error
+    end
 
+    it 'raises error if self_update! fails because product quantity is not correct' do
       product.quantity = thing.stock + 1
       expect { product.self_update! }.to raise_error
     end
@@ -75,26 +76,23 @@ describe Offer::Composer::Product do
       product.should be_valid
     end
 
+    it 'updates product name with the current thing name' do
+      product.self_update!
+      product.name.should eq thing.name
+    end
+
+    it 'updates product description with the current thing description' do
+      product.self_update!
+      product.description.should eq thing.description
+    end
+
+    it 'updates product image_name with the current thing image_name' do
+      product.self_update!
+      product.image_name.should eq thing.image_name
+    end
+
     context 'When offer is published' do
       before { offer.publish }
-
-      it 'updates product name with the current thing name' do
-        composer.offer.user_composer.things.find(product.thing_id).stub(:name).and_return('updated')
-        product.self_update!
-        product.name.should eq 'updated'
-      end
-
-      it 'updates product description with the current thing description' do
-        thing.stub(:description).and_return('updated')
-        product.self_update!
-        product.description.should eq 'updated'
-      end
-
-      it 'updates product image_name with the current thing image_name' do
-        thing.stub(:image_name).and_return('updated.png')
-        product.self_update!
-        product.image_name.should eq 'updated.png'
-      end
 
       it 'calls reload method' do
         product.should_receive(:reload)
