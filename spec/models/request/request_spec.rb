@@ -170,7 +170,9 @@ describe Request do
     end
 
     it 'raises exception if self_update! fails because user is not correct' do
-      request.user = request.id
+      user = Fabricate.build(:user)
+      request.user = user
+      user.destroy
       expect { request.self_update! }.to raise_error
     end
 
