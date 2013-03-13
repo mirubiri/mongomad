@@ -1,12 +1,14 @@
 require 'spec_helper'
 
 describe Offer::Composer::Product do
-  let(:user_composer) { Fabricate(:user_with_things) }
-  let(:user_receiver) { Fabricate(:user_with_things) }
-  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
-  let(:composer) { offer.composer }
+  let(:composer) {
+    Fabricate.build(:offer,
+      user_composer:Fabricate(:user_with_things),
+      user_receiver:Fabricate(:user_with_things)).composer
+  }
   let(:product) { composer.products.last }
   let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(product.thing_id) }
+
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
@@ -48,34 +50,6 @@ describe Offer::Composer::Product do
   end
 
   describe '#self_update' do
-    it 'returns self if self_update! success' do
-      new_product = composer.products.last
-      new_product.thing_id = product.thing_id
-      new_product.quantity = product.quantity
-      new_product.self_update!
-      new_product.should be_like product
-    end
-
-    it 'raises exception if product thing_id is nil' do
-      product.thing_id = nil
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'raises exception if product thing does not belong to correct user' do
-      product.thing_id = user_receiver.things.last._id
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'raises exception if product quantity is not correct' do
-      product.quantity = thing.stock + 1
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'returns a valid product' do
-      product.self_update!
-      product.should be_valid
-    end
-
     it 'updates product name with the current thing name' do
       product.self_update!
       product.name.should eq thing.name
@@ -91,15 +65,59 @@ describe Offer::Composer::Product do
       product.image_name.should eq thing.image_name
     end
 
+    it 'returns a valid product' do
+      product.self_update!
+      product.should be_valid
+    end
+
+    it 'returns self if self_update! success' do
+      new_product = composer.products.last
+      new_product.thing_id = product.thing_id
+      new_product.quantity = product.quantity
+      new_product.self_update!
+      new_product.should be_like product
+    end
+
+    it 'raises exception if self_update! fails' do
+      product.stub(:self_update!).and_raise("StandardError")
+      expect { product.self_update! }.to raise_error
+    end
+
+    it 'raises exception if thing_id parameter is nil' do
+      product.thing_id = nil
+      expect { product.self_update! }.to raise_error
+    end
+
+    it 'raises exception if thing_id does not belong to user_composer' do
+      user = Fabricate.build(:user_with_things)
+      product.thing_id = user.things.last._id
+      expect { product.self_update! }.to raise_error
+    end
+
+    it 'raises exception if quantity parameter is nil' do
+      product.thing_id = nil
+      expect { product.self_update! }.to raise_error
+    end
+
+    it 'raises exception if quantity parameter is negative' do
+      product.thing_id = -1
+      expect { product.self_update! }.to raise_error
+    end
+
+    it 'raises exception if quantity parameter is higher than stock' do
+      product.quantity = thing.stock + 1
+      expect { product.self_update! }.to raise_error
+    end
+
     context 'When offer is published' do
-      before { offer.publish }
+      before { product.composer.offer.publish }
 
       it 'calls reload method' do
         product.should_receive(:reload)
         product.self_update!
       end
 
-      it 'save the changes' do
+      it 'save changes' do
         product.should_receive(:save)
         product.self_update!
       end
@@ -111,30 +129,10 @@ describe Offer::Composer::Product do
         product.self_update!
       end
 
-      it 'does not save the changes' do
+      it 'does not save changes' do
         product.should_not_receive(:save)
         product.self_update!
       end
     end
   end
-
-=begin
-
-  describe '#self_update' do
-    before(:each) do
-      thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
-      product.composer.offer.user_composer.things.stub(:find).and_return(thing)
-      product.self_update
-    end
-    it 'updates name' do
-      product.name.should eq 'updated'
-    end
-    it 'updates description' do
-      product.description.should eq 'updated'
-    end
-    it 'updates image_name' do
-      product.image_name.should eq 'updated.png'
-    end
-  end
-=end
 end
