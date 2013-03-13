@@ -97,7 +97,7 @@ describe Request do
       new_request = request.clone
     end
 
-    it 'only modifies text parameter when more parameters are given' do
+    it 'modifies only text parameter when more parameters are given' do
       new_request.text = nil
       new_params = { text:request_params[:text], another:'another' }
       new_request.alter_contents(new_params).should be_like request
