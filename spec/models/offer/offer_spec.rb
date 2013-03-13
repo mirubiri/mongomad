@@ -39,8 +39,7 @@ describe Offer do
   end
 
   describe '.generate(offer_params)' do
-    let(:new_offer) do
-      new_offer = Offer.generate(offer_params)
+    let(:new_offer) { Offer.generate(offer_params) }
     end
 
     it 'generates an offer with correct value for given parameters' do
@@ -118,9 +117,7 @@ describe Offer do
   end
 
   describe '#alter_contents(offer_params)' do
-    let(:new_offer) do
-      new_offer = offer.clone
-    end
+    let(:new_offer) { offer.clone }
 
     it 'modifies only correct parameters when more parameters are given' do
       new_offer.user_receiver_id = nil
@@ -158,7 +155,7 @@ describe Offer do
       expect { offer.alter_contents(new_params) }.to raise_error
     end
 
-    it 'raise exception if user_receiver_id parameter is not an user id' do
+    it 'raise exception if user_receiver_id parameter is not correct' do
       user = Fabricate.build(:user)
       new_params = { user_receiver_id:user._id }
       user.destroy
