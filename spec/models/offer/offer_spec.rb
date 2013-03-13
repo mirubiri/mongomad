@@ -1,7 +1,10 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate.build(:offer, user_composer:Fabricate(:user_with_things), user_receiver:Fabricate(:user_with_things)) }
+  let(:offer) { Fabricate.build(:offer,
+    user_composer:Fabricate(:user_with_things),
+    user_receiver:Fabricate(:user_with_things))
+  }
   let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
@@ -119,7 +122,7 @@ describe Offer do
       new_offer = offer.clone
     end
 
-    it 'only modifies correct parameters when more parameters are given' do
+    it 'modifies only correct parameters when more parameters are given' do
       new_offer.user_receiver_id = nil
       new_offer.initial_message = nil
       new_params = {
@@ -257,6 +260,6 @@ describe Offer do
   end
 
   describe '#start_negotiation' do
-    xit 'starts a negotiation from the offer'
+    xit 'starts a negotiation from the current offer'
   end
 end
