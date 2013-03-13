@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe Offer do
-  xlet(:user_composer) { Fabricate(:user_with_things) }
-  xlet(:user_receiver) { Fabricate(:user_with_things) }
-  xlet(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
-  xlet(:offer_params) { params_for_offer(offer) }
+  let(:offer) { Fabricate.build(:offer, user_composer:Fabricate(:user_with_things), user_receiver:Fabricate(:user_with_things)) }
+  let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
     it { should embed_one(:composer).of_type(Offer::Composer) }
@@ -59,13 +57,25 @@ describe Offer do
       new_offer.should_not be_persisted
     end
 
+    it 'calls to composer.add_products method with offer_params[:composer_things]' do
+      offer.composer.should_receive(:add_products).with(offer_params[:composer_things])
+      Offer.generate(offer_params)
+    end
+
+    it 'calls to receiver.add_products method with offer_params[:receiver_things]' do
+      offer.receiver.should_receive(:add_products).with(offer_params[:receiver_things])
+      Offer.generate(offer_params)
+    end
+
     it 'raises exception if user_receiver_id parameter is nil' do
       offer_params[:user_receiver_id] = nil
       expect { Offer.generate(offer_params) }.to raise_error
     end
 
     it 'raises exception if user_receiver_id parameter is not an user id' do
-      offer_params[:user_receiver_id] = offer._id
+      user = Fabricate.build(:user)
+      offer_params[:user_receiver_id] = user.id
+      user.destroy
       expect { Offer.generate(offer_params) }.to raise_error
     end
 
@@ -146,7 +156,9 @@ describe Offer do
     end
 
     it 'raise exception if user_receiver_id parameter is not an user id' do
-      new_params = { user_receiver_id:offer._id }
+      user = Fabricate.build(:user)
+      new_params = { user_receiver_id:user._id }
+      user.destroy
       expect { offer.alter_contents(new_params) }.to raise_error
     end
 
@@ -177,22 +189,80 @@ describe Offer do
   end
 
   describe '#self_update!' do
-    it 'returns self if self_update! success' do
+    it 'updates composer.name with the current user_composer name' do
+      offer.composer.name.stub(:name).and_return('updated')
+      offer.self_update!
+      offer.composer.name.should eq 'updated'
     end
 
-    it 'raises exception if self_update! fails' do
+    it 'updates composer.image_name with the current user_composer image_name' do
+      offer.composer.image_name.stub(:image_name).and_return('updated.png')
+      offer.self_update!
+      offer.composer.image_name.should eq 'updated.png'
     end
 
-    it 'returns a valid offer' do
+    it 'updates receiver.name with the current user_receiver name' do
+      offer.receiver.name.stub(:name).and_return('updated')
+      offer.self_update!
+      offer.receiver.name.should eq 'updated'
+    end
+
+    it 'updates receiver.image_name with the current user_receiver image_name' do
+      offer.receiver.image_name.stub(:image_name).and_return('updated.png')
+      offer.self_update!
+      offer.receiver.image_name.should eq 'updated.png'
     end
 
     it 'calls to composer.self_update! method' do
+      offer.composer.should_receive(:self_update!)
+      offer.self_update!
     end
 
     it 'calls to receiver.self_update! method' do
+      offer.receiver.should_receive(:self_update!)
+      offer.self_update!
     end
 
+    it 'returns a valid offer' do
+      offer.self_update!
+      offer.should be_valid
+    end
 
+    it 'returns self if self_update! success' do
+      new_offer = Request.generate(offer_params)
+      new_offer.user = offer.user
+      new_offer.self_update!
+      new_offer.should be_like offer
+    end
+
+    it 'raises exception if self_update! fails' do
+      offer.stub(:self_update!).and_raise("StandardError")
+      expect { offer.self_update! }.to raise_error
+    end
+
+    it 'raises exception if self_update! fails because user_composer is nil' do
+      offer.user_composer = nil
+      expect { offer.self_update! }.to raise_error
+    end
+
+    it 'raises exception if self_update! fails because user_composer is not correct' do
+      user = Fabricate.build(:user)
+      offer.user_composer = user
+      user.destroy
+      expect { offer.self_update! }.to raise_error
+    end
+
+    it 'raises exception if self_update! fails because user_receiver is nil' do
+      offer.user_receiver = nil
+      expect { offer.self_update! }.to raise_error
+    end
+
+    it 'raises exception if self_update! fails because user_receiver is not correct' do
+      user = Fabricate.build(:user)
+      offer.user_receiver = user
+      user.destroy
+      expect { offer.self_update! }.to raise_error
+    end
 
     context 'When offer is published' do
       before do
@@ -208,7 +278,7 @@ describe Offer do
         offer.self_update!
       end
 
-      it 'save the changes' do
+      it 'saves changes' do
         offer.should_receive(:save)
         offer.self_update!
       end
@@ -227,59 +297,14 @@ describe Offer do
         offer.self_update!
       end
 
-      it 'does not save the changes' do
+      it 'does not save changes' do
         offer.should_not_receive(:save)
         offer.self_update!
       end
     end
-
-=begin
-
-    it 'calls reload if persisted' do
-      offer.publish
-      offer.should_receive(:reload)
-      offer.self_update
-    end
-
-    it 'does not call reload if not persisted' do
-      offer.should_not_receive(:reload)
-      offer.self_update
-    end
-
-
-
-    it 'returns self if self_update success' do
-      offer.self_update.should eq offer
-    end
-
-    it 'raise error if self_update fails' do
-      offer.composer.stub(:self_update).and_raise("StandardError")
-      offer.receiver.stub(:self_update).and_raise("StandardError")
-      expect { offer.self_update }.to raise_error
-    end
-
-    context 'When offer is saved' do
-      xit 'saves the offer calling save method'
-      xit 'calls reload'
-      #it 'calls reload if persisted' do
-      #  request.publish
-      #  request.should_receive(:reload)
-      #  request.self_update!
-      #end
-    end
-
-    context 'When offer is not saved' do
-      xit 'does not save the offer'
-      xit 'does not call reload'
-      #it 'does not call reload if not persisted' do
-      #  offer.should_not_receive(:reload)
-      #  offer.self_update!
-      #end
-    end
   end
-=end
+
   describe '#start_negotiation' do
-    xit 'starts a negotiation froom the offer'
+    xit 'starts a negotiation from the offer'
   end
-
 end
