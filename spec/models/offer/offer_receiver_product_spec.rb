@@ -43,23 +43,4 @@ describe Offer::Receiver::Product do
       File.exist?(File.new(product.image.path)).should eq true
     end
   end
-
-=begin
-  describe '#self_update' do
-    before(:each) do
-      @thing = double('thing',:name =>'updated',:description => 'updated',:image_name =>'updated.png')
-      product.receiver.offer.user_receiver.things.stub(:find).and_return(@thing)
-      product.self_update
-    end
-    it 'updates name' do
-      product.name.should eq 'updated'
-    end
-    it 'updates description' do
-      product.description.should eq 'updated'
-    end
-    it 'updates image_name' do
-      product.image_name.should eq 'updated.png'
-    end
-  end
-=end
 end
