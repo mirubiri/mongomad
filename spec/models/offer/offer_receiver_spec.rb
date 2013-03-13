@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Receiver do
-  let(:offer) { Fabricate.build(:offer) }
-  let(:receiver) { offer.receiver }
-  let(:receiver_things_params) { params_for_offer(offer)[:receiver_things] }
+  # let(:offer) { Fabricate.build(:offer) }
+  # let(:receiver) { offer.receiver }
+  # let(:receiver_things_params) { params_for_offer(offer)[:receiver_things] }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }

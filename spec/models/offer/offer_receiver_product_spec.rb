@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Receiver::Product do
-  let(:product) do
-    Fabricate.build(:offer).receiver.products.last
-  end
+  # let(:product) do
+  #   Fabricate.build(:offer).receiver.products.last
+  # end
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
