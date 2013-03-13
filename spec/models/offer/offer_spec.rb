@@ -53,10 +53,6 @@ describe Offer do
       new_offer.user_composer_id.should eq nil
     end
 
-    it 'does not persist the offer' do
-      new_offer.should_not be_persisted
-    end
-
     it 'calls to composer.add_products method with offer_params[:composer_things]' do
       offer.composer.should_receive(:add_products).with(offer_params[:composer_things])
       Offer.generate(offer_params)
@@ -65,6 +61,10 @@ describe Offer do
     it 'calls to receiver.add_products method with offer_params[:receiver_things]' do
       offer.receiver.should_receive(:add_products).with(offer_params[:receiver_things])
       Offer.generate(offer_params)
+    end
+
+    it 'does not persist the offer' do
+      new_offer.should_not be_persisted
     end
 
     it 'raises exception if user_receiver_id parameter is nil' do
@@ -189,30 +189,6 @@ describe Offer do
   end
 
   describe '#self_update!' do
-    it 'updates composer.name with the current user_composer name' do
-      offer.composer.name.stub(:name).and_return('updated')
-      offer.self_update!
-      offer.composer.name.should eq 'updated'
-    end
-
-    it 'updates composer.image_name with the current user_composer image_name' do
-      offer.composer.image_name.stub(:image_name).and_return('updated.png')
-      offer.self_update!
-      offer.composer.image_name.should eq 'updated.png'
-    end
-
-    it 'updates receiver.name with the current user_receiver name' do
-      offer.receiver.name.stub(:name).and_return('updated')
-      offer.self_update!
-      offer.receiver.name.should eq 'updated'
-    end
-
-    it 'updates receiver.image_name with the current user_receiver image_name' do
-      offer.receiver.image_name.stub(:image_name).and_return('updated.png')
-      offer.self_update!
-      offer.receiver.image_name.should eq 'updated.png'
-    end
-
     it 'calls to composer.self_update! method' do
       offer.composer.should_receive(:self_update!)
       offer.self_update!
@@ -237,30 +213,6 @@ describe Offer do
 
     it 'raises exception if self_update! fails' do
       offer.stub(:self_update!).and_raise("StandardError")
-      expect { offer.self_update! }.to raise_error
-    end
-
-    it 'raises exception if self_update! fails because user_composer is nil' do
-      offer.user_composer = nil
-      expect { offer.self_update! }.to raise_error
-    end
-
-    it 'raises exception if self_update! fails because user_composer is not correct' do
-      user = Fabricate.build(:user)
-      offer.user_composer = user
-      user.destroy
-      expect { offer.self_update! }.to raise_error
-    end
-
-    it 'raises exception if self_update! fails because user_receiver is nil' do
-      offer.user_receiver = nil
-      expect { offer.self_update! }.to raise_error
-    end
-
-    it 'raises exception if self_update! fails because user_receiver is not correct' do
-      user = Fabricate.build(:user)
-      offer.user_receiver = user
-      user.destroy
       expect { offer.self_update! }.to raise_error
     end
 
