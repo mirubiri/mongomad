@@ -11,12 +11,13 @@
         </div> 
       </div> 
       <div class="new_offer_text">
-        <%= text_area_tag :text, request_text(@request), :rows => 8, :cols => 6 %>
+        <p><%= controller.sub_layout %></p>
+        <%= text_area_tag :text, @request._id, :rows => 8, :cols => 6 %>
       </div>    
       <div class="action">
         <div class="send_button">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <%= form.submit "Añadir", :id => 'new-request-send-button', :class =>  "btn btn-primary" %>
+          <%= form.submit "Editar", :class =>  "btn btn-primary" %>
         </div>         
       </div> 
     </div>
