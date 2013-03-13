@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe Request do
-  xlet(:user) { Fabricate(:user) }
-  xlet(:request) { Fabricate.build(:request, user:user) }
-  xlet(:request_params) { params_for_request(request) }
+  let(:request) { Fabricate.build(:request, user:Fabricate(:user)) }
+  let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
     it { should belong_to(:user) }
@@ -136,6 +135,23 @@ describe Request do
   end
 
   describe '#self_update!' do
+    it 'updates request user_name with the current user nickname' do
+      request.user.profile.stub(:nickname).and_return('updated')
+      request.self_update!
+      request.user_name.should eq 'updated'
+    end
+
+    it 'updates request image_name with the current user image_name' do
+      request.user.profile.stub(:image_name).and_return('updated.png')
+      request.self_update!
+      request.image_name.should eq 'updated.png'
+    end
+
+    it 'returns a valid request' do
+      request.self_update!
+      request.should be_valid
+    end
+
     it 'returns self if self_update! success' do
       new_request = Request.generate(request_params)
       new_request.user = request.user
@@ -148,21 +164,14 @@ describe Request do
       expect { request.self_update! }.to raise_error
     end
 
-    it 'returns a valid request' do
-      request.self_update!
-      request.should be_valid
+    it 'raises exception if self_update! fails because user is nil' do
+      request.user = nil
+      expect { request.self_update! }.to raise_error
     end
 
-    it 'updates request user_name with the current user nickname' do
-      request.user.profile.stub(:nickname).and_return('updated')
-      request.self_update!
-      request.user_name.should eq 'updated'
-    end
-
-    it 'updates request image_name with the current user image_name' do
-      request.user.profile.stub(:image_name).and_return('updated.png')
-      request.self_update!
-      request.image_name.should eq 'updated.png'
+    it 'raises exception if self_update! fails because user is not correct' do
+      request.user = request.id
+      expect { request.self_update! }.to raise_error
     end
 
     context 'When request is published' do
@@ -179,7 +188,7 @@ describe Request do
         request.self_update!
       end
 
-      it 'save the changes' do
+      it 'saves changes' do
         request.should_receive(:save)
         request.self_update!
       end
@@ -198,7 +207,7 @@ describe Request do
         request.self_update!
       end
 
-      it 'does not save the changes' do
+      it 'does not save changes' do
         request.should_not_receive(:save)
         request.self_update!
       end
