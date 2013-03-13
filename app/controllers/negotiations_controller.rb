@@ -8,6 +8,7 @@ class NegotiationsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @negotiation =  @user.negotiations.last
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +42,12 @@ class NegotiationsController < ApplicationController
   # GET /negotiations/1/edit
   def edit
     @negotiation = Negotiation.find(params[:id])
+
+    respond_to do |format|
+      format.html # edit.html.erb
+      format.js # render edit.js.erb }
+    end
+    
   end
 
   # POST /negotiations

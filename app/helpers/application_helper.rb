@@ -245,6 +245,9 @@ module ApplicationHelper
   def negotiation_users(negotiation)
     negotiation.users
   end
+  def negotiation_composer(negotiation)
+    User.find(negotiation.negotiator_ids[0])
+  end
   def negotiation_composer_name(negotiation)
     negotiation.proposals.last.composer.name
   end
@@ -256,6 +259,12 @@ module ApplicationHelper
   end
   def negotiation_composer_id(negotiation)
     negotiation.proposals.last.user_composer_id
+  end
+  def negotiation_receiver(negotiation)
+    User.find(negotiation.negotiator_ids[1])
+  end
+  def negotiation_receiver_name(negotiation)
+    negotiation.proposals.last.receiver.name
   end
   def negotiation_receiver_image(negotiation)
     image_tag(negotiation.proposals.last.receiver.image)
