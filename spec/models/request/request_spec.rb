@@ -170,15 +170,13 @@ describe Request do
     end
 
     it 'raises exception if self_update! fails because user is not correct' do
-      user = Fabricate.build(:user)
-      request.user = user
-      user.destroy
+      request.user.destroy
       expect { request.self_update! }.to raise_error
     end
 
     context 'When request is published' do
       before do
-        new_request = Fabricate.build(:request)
+        new_request = Fabricate.build(:request, user:Fabricate(:user))
         new_params = params_for_request(new_request)
         request.publish
         request.alter_contents(new_params)
@@ -198,7 +196,7 @@ describe Request do
 
     context 'When request is not published' do
       before do
-        new_request = Fabricate.build(:request)
+        new_request = Fabricate.build(:request, user:Fabricate(:user))
         new_params = params_for_request(new_request)
         request.alter_contents(new_params)
         request.user = new_request.user
