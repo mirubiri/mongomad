@@ -1,4 +1,5 @@
 class Request
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -22,13 +23,13 @@ class Request
   end
 
   def publish
-    raise "the request is currently published" if self.persisted?
-    self.save
+    raise "the request is currently published" if persisted?
+    save
   end
 
   def unpublish
-    raise "the request is currently unpublished" unless self.persisted?
-    self.destroy
+    raise "the request is currently unpublished" unless persisted?
+    destroy
   end
 
   def alter_contents(request_params=[])
@@ -40,7 +41,7 @@ class Request
   end
 
   def self_update!
-    raise "user is not valid" if user == nil
+    raise "user is not valid" if (user == nil  || user.persisted? == false)
     reload if persisted?
     self.user_name = user.profile.nickname
     self.image_name = user.profile.image_name
