@@ -21,13 +21,23 @@ class Offer::Receiver::Product
   validates :quantity,
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-=begin
-  def self_update
-    thing = receiver.offer.user_receiver.things.find(self.thing_id)
+
+  def self_update!
+    users = User.where('things._id' => Moped::BSON::ObjectId(self.thing_id))
+    raise "thing is not valid" unless users.count == 1
+    user = users.first
+
+    things = user.things.where('_id' => Moped::BSON::ObjectId(self.thing_id))
+    raise "thing is not valid" unless things.count == 1
+    thing = things.first
+
+    raise "owner thing is not correct" unless receiver.offer.user_receiver._id == thing.user._id
+    raise "quantity is not correct" if (self.quantity < 0 || self.quantity > thing.stock)
+
+    reload if persisted?
     self.name = thing.name
     self.description = thing.description
     self.image_name = thing.image_name
-    self
+    persisted? ? save : self
   end
-=end
 end

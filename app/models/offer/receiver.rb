@@ -13,8 +13,9 @@ class Offer::Receiver
     :name,
     :image_name,
     presence: true
-
 =begin
+
+
   def add_products(params=[])
     params.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])

@@ -23,10 +23,17 @@ class Offer::Composer::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def self_update!
-    thing = User.where('things._id' => Moped::BSON::ObjectId(self.thing_id)).first.things.find(self.thing_id)
-    raise "thing is not valid" if thing == nil
-    raise "owner thing is not correct" if composer.offer.user_composer._id != thing.user._id
-    raise "quantity is not valid" if thing.stock < self.quantity
+    users = User.where('things._id' => Moped::BSON::ObjectId(self.thing_id))
+    raise "thing is not valid" unless users.count == 1
+    user = users.first
+
+    things = user.things.where('_id' => Moped::BSON::ObjectId(self.thing_id))
+    raise "thing is not valid" unless things.count == 1
+    thing = things.first
+
+    raise "owner thing is not correct" unless composer.offer.user_composer._id == thing.user._id
+    raise "quantity is not correct" if (self.quantity < 0 || self.quantity > thing.stock)
+
     reload if persisted?
     self.name = thing.name
     self.description = thing.description

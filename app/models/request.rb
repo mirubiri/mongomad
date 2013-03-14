@@ -1,5 +1,4 @@
 class Request
-
   include Mongoid::Document
   include Mongoid::Timestamps
 

@@ -39,9 +39,7 @@ describe Request do
   end
 
   describe '.generate(request_params)' do
-    let(:new_request) do
-      new_request = Request.generate(request_params)
-    end
+    let(:new_request) { Request.generate(request_params) }
 
     it 'generates a request with correct value for given parameters' do
       new_request.text.should eq request.text
@@ -93,9 +91,7 @@ describe Request do
   end
 
   describe '#alter_contents(request_params)' do
-    let(:new_request) do
-      new_request = request.clone
-    end
+    let(:new_request) { request.clone }
 
     it 'modifies only text parameter when more parameters are given' do
       new_request.text = nil

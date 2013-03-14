@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Offer::Composer::Product do
-  let(:composer) {
-    Fabricate.build(:offer,
-      user_composer:Fabricate(:user_with_things),
-      user_receiver:Fabricate(:user_with_things)).composer
+  let(:composer) { Fabricate.build(:offer,
+    user_composer:Fabricate(:user_with_things),
+    user_receiver:Fabricate(:user_with_things)).composer
   }
   let(:product) { composer.products.last }
   let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(product.thing_id) }
@@ -95,12 +94,12 @@ describe Offer::Composer::Product do
     end
 
     it 'raises exception if quantity parameter is nil' do
-      product.thing_id = nil
+      product.quantity = nil
       expect { product.self_update! }.to raise_error
     end
 
     it 'raises exception if quantity parameter is negative' do
-      product.thing_id = -1
+      product.quantity = -1
       expect { product.self_update! }.to raise_error
     end
 

@@ -18,8 +18,8 @@ class Offer
     :user_receiver,
     :initial_message,
     presence: true
-
 =begin
+
   def self.generate(offer_params=[])
     offer = new(
       user_receiver: User.find(offer_params[:user_receiver_id]),

@@ -40,7 +40,6 @@ describe Offer do
 
   describe '.generate(offer_params)' do
     let(:new_offer) { Offer.generate(offer_params) }
-    end
 
     it 'generates an offer with correct value for given parameters' do
       new_offer.user_receiver_id.should eq offer.user_receiver_id
@@ -74,7 +73,7 @@ describe Offer do
       expect { Offer.generate(offer_params) }.to raise_error
     end
 
-    it 'raises exception if user_receiver_id parameter is not an user id' do
+    it 'raises exception if user_receiver_id parameter is not correct' do
       user = Fabricate.build(:user)
       offer_params[:user_receiver_id] = user.id
       user.destroy

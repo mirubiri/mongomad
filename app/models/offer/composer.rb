@@ -13,6 +13,7 @@ class Offer::Composer
     :name,
     :image_name,
     presence: true
+=begin
 
   def update_user_data
     reload if persisted?
@@ -42,7 +43,7 @@ class Offer::Composer
     end
     self.self_update!
   end
-=begin
+
 
 
   def alter_contents(params=[])
@@ -53,6 +54,5 @@ class Offer::Composer
 
 
   public
-
 =end
 end
