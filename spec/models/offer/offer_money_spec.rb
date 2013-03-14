@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Offer::Money do
-  # let(:offer) { Fabricate.build(:offer) }
   let(:money) {
     Fabricate.build(:offer,
       user_composer:Fabricate(:user_with_things),
