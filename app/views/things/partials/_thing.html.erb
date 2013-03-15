@@ -1,5 +1,3 @@
-<%= flash[:message] %>
-
 <% user_visited_things.each do |thing| %>  
   <div class="thing thumbnail" id="<%= thing_id(thing) %>">
     <%= thing_inboard(thing) %>

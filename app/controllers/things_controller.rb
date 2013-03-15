@@ -20,7 +20,8 @@ class ThingsController < ApplicationController
   # GET /things/1
   # GET /things/1.json
   def show
-    @thing = Thing.find(params[:id])
+    @thing = current_user.things.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -73,11 +74,11 @@ class ThingsController < ApplicationController
   # PUT /things/1
   # PUT /things/1.json
   def update
-    @thing = current_user.things.find(params[:id])
+    @thing = current_user.things.find(params[:id])    
 
     respond_to do |format|
       if @thing.update_attributes(params[:thing])
-        format.html { redirect_to @thing, notice: 'thing was successfully updated.' }
+        format.html { redirect_to user_things_path(current_user), notice: 'thing was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
