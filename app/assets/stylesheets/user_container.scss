@@ -126,10 +126,9 @@
           .profile_image{
             @include box-sizing(border-box);
             @include border-radius(5px, 5px);
-            @include proportions(40px,40px);
+            @include proportions(20%,40px);
             padding: 2px;
             float:left;
-            margin:0px 5px 5px 0px;
             border: $borde1px;
 
             img{
@@ -141,8 +140,8 @@
           .description{
             @include box-sizing(border-box);
             @include border-radius(5px, 5px);
-            @include proportions(79%,40px);
-            float: left;
+            @include proportions(78%,40px);
+            float: right;
             border: $borde1px;
             font-size: 9px;
             overflow: hidden;            

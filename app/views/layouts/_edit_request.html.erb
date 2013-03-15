@@ -1,5 +1,5 @@
 <div class="modal modal-request hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-request-form">  
-  <%= form_for [current_user,@request] do |form| %>
+  <%= form_for [current_user,@request] do |form| %>  
     <div class="new_petition_content">
       <div class="new_petition_title">
         <div class="description">Editar Petición</div>
@@ -11,7 +11,7 @@
         </div> 
       </div> 
       <div class="new_offer_text">
-        <p><%= controller.sub_layout %></p>
+        <%= controller.sub_layout %>        
         <%= text_area_tag :text, @request._id, :rows => 8, :cols => 6 %>
       </div>    
       <div class="action">

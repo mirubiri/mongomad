@@ -32,6 +32,9 @@ class OffersController < ApplicationController
   # GET /offers/new.json
   def new
     @offer = Offer.new
+    @user = current_user
+    @user_visited = User.find(params[:user_id])
+    @user_logged = current_user
 
     respond_to do |format|
       format.html # new.html.erb

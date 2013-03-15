@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     "users" 
   end
   
-  def index
+  def index    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @offers = @user.received_offers.all
-    @request = Request.new
     @offer = Offer.new
     @negotiation = Negotiation.new
 
