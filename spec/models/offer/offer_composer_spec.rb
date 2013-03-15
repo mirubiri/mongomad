@@ -7,6 +7,7 @@ describe Offer::Composer do
   }
   let(:composer) { offer.composer }
   let(:products_params) { params_for_offer(offer)[:composer_things] }
+  let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(products_params.first[:thing_id])).first.things.find(products_params.first[:thing_id]) }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -41,55 +42,113 @@ describe Offer::Composer do
   end
 
   describe '#add_products(products_params)' do
-    it 'add a list of products from given parameters' do
+    let(:new_composer) do
       new_composer = offer.composer.clone
+      new_composer.products.destroy
+      new_composer.add_products(products_params)
+    end
+
+    it 'generates a composer with a list of products with correct value for given parameters' do
+      new_composer.products.each_with_index do |product, index|
+        product.thing_id.should eq products_params[index][:thing_id]
+        product.quantity.should eq products_params[index][:quantity]
+      end
+    end
+
+    it 'generates a composer with a list of products with nil value for not given parameters' do
+      new_composer.products.each do |product|
+        product.name.should eq nil
+        product.description.should eq nil
+        product.image_name.should eq nil
+      end
+    end
+
+    it 'does not persist the composer' do
+      new_composer.should_not be_persisted
+    end
+
+    it 'raises exception if any thing_id parameter is nil' do
+      products_params.first[:thing_id] = nil
+      expect { composer.add_products(products_params) }.to raise_error
+    end
+
+    it 'raises exception if any thing_id parameter does not belong to user_composer' do
+      user = Fabricate.build(:user_with_things)
+      products_params.first[:thing_id] = user.things.last._id
+      expect { composer.add_products(products_params) }.to raise_error
+    end
+
+    it 'raises exception if any quantity parameter is nil' do
+      products_params.first[:quantity] = nil
+      expect { composer.add_products(products_params) }.to raise_error
+    end
+
+    it 'raises exception if any quantity parameter is negative' do
+      products_params.first[:quantity] = -1
+      expect { composer.add_products(products_params) }.to raise_error
+    end
+
+    it 'raises exception if any quantity parameter is higher than stock' do
+      products_params.first[:quantity] = thing.stock + 1
+      expect { composer.add_products(products_params) }.to raise_error
+    end
+  end
+
+  describe '#alter_contents(products_params)' do
+    it 'removes current list of products' do
+      composer.products.should_receive(:destroy)
+      composer.alter_contents(products_params)
+    end
+
+    it 'add a new list of products from given parameters' do
+      composer.should_receive(:add_products).with(products_params)
+      composer.alter_contents(products_params)
+    end
+  end
+
+  describe '#self_update!' do
+    let(:new_composer) { offer.composer }
+
+    it 'returns a composer with a valid list of products' do
       new_composer.products.destroy
       new_composer.add_products(products_params)
       new_composer.products.should be_like composer.products
     end
 
-    it 'calls to self_update method' do
-      composer.should_receive(:self_update!)
-      composer.add_products(products_params)
-    end
-
-    it 'returns a valid composer' do
-      composer.add_products(products_params)
-      composer.should be_valid
-    end
-
-    it 'does not persist the composer' do
-      composer.should_not be_persisted
-    end
-
-    it 'raises exception if self_update! fails' do
-      composer.stub(:self_update!).and_raise("StandardError")
-      expect { composer.self_update! }.to raise_error
-    end
-  end
-
-  describe '#alter_contents(products_params)' do
-    it 'removes the current list of products' do
-      composer.products.should_receive(:destroy)
-      composer.alter_contents(products_params)
-    end
-
-    it 'add a new list of products from the given parameters' do
-      composer.should_receive(:add_products).with(products_params)
-    end
-  end
-
-  describe '#self_update!' do
-    it 'updates name with the current user_composer name' do
-      composer.name.stub(:name).and_return('updated')
+    it 'updates composer name with current user_composer name' do
+      composer.offer.user_composer.profile.stub(:name).and_return('updated')
       composer.self_update!
       composer.name.should eq 'updated'
     end
 
-    it 'updates image_name with the current user_composer image_name' do
-      composer.image_name.stub(:image_name).and_return('updated.png')
+    it 'updates composer image_name with current user_composer image_name' do
+      composer.offer.user_composer.profile.stub(:image_name).and_return('updated.png')
       composer.self_update!
-      composer.composer.image_name.should eq 'updated.png'
+      composer.image_name.should eq 'updated.png'
+    end
+
+    it 'updates product name for all products in the list with correct value' do
+      composer.products.each do |product|
+        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
+        composer.self_update!
+        product.name.should eq thing.name
+      end
+    end
+
+    it 'updates product description for all products in the list with correct value' do
+      composer.products.each do |product|
+        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
+        composer.self_update!
+        product.description.should eq thing.description
+      end
+    end
+
+    it 'updates product image_name for all products in the list with correct value' do
+      composer.products.each do |product|
+        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
+        composer.self_update!
+        product.image_name.should eq thing.image_name
+      end
     end
 
     it 'calls update_user_data method' do
@@ -102,8 +161,8 @@ describe Offer::Composer do
       composer.self_update!
     end
 
-    it 'calls to product.self_update! method for each product' do
-      composer.product.each do |product|
+    it 'calls self_update! method for each product' do
+      composer.products.each do |product|
         product.should_receive(:self_update!)
       end
       composer.self_update!
@@ -115,14 +174,8 @@ describe Offer::Composer do
     end
 
     it 'returns self if self_update! success' do
-      new_composer = composer.dup
       new_composer.self_update!
       new_composer.should be_like composer
-    end
-
-    it 'raises exception if self_update! fails' do
-      composer.stub(:self_update!).and_raise("StandardError")
-      expect { composer.self_update! }.to raise_error
     end
 
     it 'raises exception if user_composer is nil' do
