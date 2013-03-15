@@ -9,8 +9,7 @@
           <%= form.file_field :image,
             :id => "thing_image",
             :onchange => "imageSelection(this);" %>
-          <img class="thing_image_container" id="thing_image_container" src="<%= thing_image(@thing) %>">
-            <%= thing_id(@thing) %>
+          <img class="thing_image_container" id="thing_image_container" src="<%= @thing.image %>">
         </div>
       </div>
       <div class="new_thing_description">

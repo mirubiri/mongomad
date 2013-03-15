@@ -1,5 +1,5 @@
 <div class="modal modal-offer hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-negotiation-form">
-  <%= form_for [@user,@negotiation] do |form| %>
+  <%= form_for [current_user,@negotiation] do |form| %>
     <div class="products_area">
       <div class="title">
         <a href="#blank" id="new_offer_receiver_selector" value="<%=user_logged_id%>">

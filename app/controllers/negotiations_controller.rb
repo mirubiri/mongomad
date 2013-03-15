@@ -42,6 +42,7 @@ class NegotiationsController < ApplicationController
   # GET /negotiations/1/edit
   def edit
     @negotiation = Negotiation.find(params[:id])
+    @user = @negotiation.proposals.last.receiver
 
     respond_to do |format|
       format.html # edit.html.erb

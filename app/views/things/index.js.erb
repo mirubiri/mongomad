@@ -1,9 +1,9 @@
-matchPrincipalContainersHeighs();
-expandRequestContainer();
-
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
 $("#ppal_container").html("<%=j render :partial => 'things/partials/thing' %>").masonry('destroy');
 
-masonryThing();
 imageSelection();
+expandRequestContainer();
+matchPrincipalContainersHeighs();
+masonryThing();
+

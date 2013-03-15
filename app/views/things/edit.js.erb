@@ -1,4 +1,7 @@
+$('#edit-thing-form').remove();
+
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_thing').html_safe %>");
+
 $('#edit-thing-form').modal('show');
 
 matchPrincipalContainersHeighs();
