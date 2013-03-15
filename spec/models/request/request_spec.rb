@@ -115,7 +115,7 @@ describe Request do
     end
 
     context 'When request is published' do
-      it 'save the changes' do
+      it 'save changes' do
         request.publish
         request.should_receive(:save)
         request.alter_contents(request_params)
@@ -123,7 +123,7 @@ describe Request do
     end
 
     context 'When request is not published' do
-      it 'does not save the changes' do
+      it 'does not save changes' do
         request.should_not_receive(:save)
         request.alter_contents(request_params)
       end
@@ -131,13 +131,13 @@ describe Request do
   end
 
   describe '#self_update!' do
-    it 'updates request user_name with the current user nickname' do
+    it 'updates request user_name with current user nickname' do
       request.user.profile.stub(:nickname).and_return('updated')
       request.self_update!
       request.user_name.should eq 'updated'
     end
 
-    it 'updates request image_name with the current user image_name' do
+    it 'updates request image_name with current user image_name' do
       request.user.profile.stub(:image_name).and_return('updated.png')
       request.self_update!
       request.image_name.should eq 'updated.png'
