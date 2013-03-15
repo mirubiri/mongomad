@@ -76,17 +76,12 @@ describe Offer::Composer::Product do
       new_product.should be_like product
     end
 
-    it 'raises exception if self_update! fails' do
-      product.stub(:self_update!).and_raise("StandardError")
-      expect { product.self_update! }.to raise_error
-    end
-
     it 'raises exception if thing_id parameter is nil' do
       product.thing_id = nil
       expect { product.self_update! }.to raise_error
     end
 
-    it 'raises exception if thing_id does not belong to user_composer' do
+    it 'raises exception if thing_id parameter does not belong to user_composer' do
       user = Fabricate.build(:user_with_things)
       product.thing_id = user.things.last._id
       expect { product.self_update! }.to raise_error
