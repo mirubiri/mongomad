@@ -155,11 +155,6 @@ describe Request do
       new_request.should be_like request
     end
 
-    it 'raises exception if self_update! fails' do
-      request.stub(:self_update!).and_raise("StandardError")
-      expect { request.self_update! }.to raise_error
-    end
-
     it 'raises exception if self_update! fails because user is nil' do
       request.user = nil
       expect { request.self_update! }.to raise_error
