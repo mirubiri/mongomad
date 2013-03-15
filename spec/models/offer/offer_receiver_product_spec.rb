@@ -8,7 +8,6 @@ describe Offer::Receiver::Product do
   let(:product) { receiver.products.last }
   let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(product.thing_id) }
 
-
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
   end
@@ -49,17 +48,17 @@ describe Offer::Receiver::Product do
   end
 
   describe '#self_update' do
-    it 'updates product name with the current thing name' do
+    it 'updates product name with current thing name' do
       product.self_update!
       product.name.should eq thing.name
     end
 
-    it 'updates product description with the current thing description' do
+    it 'updates product description with current thing description' do
       product.self_update!
       product.description.should eq thing.description
     end
 
-    it 'updates product image_name with the current thing image_name' do
+    it 'updates product image_name with current thing image_name' do
       product.self_update!
       product.image_name.should eq thing.image_name
     end
