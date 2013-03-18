@@ -15,7 +15,7 @@ class Request
     :image_name,
     presence: true
 
-  def self.generate(request_params=[])
+  def self.generate(request_params)
     raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
     request = Request.new(text: request_params[:text])
     request
@@ -31,7 +31,7 @@ class Request
     destroy
   end
 
-  def alter_contents(request_params=[])
+  def alter_contents(request_params)
     if request_params.has_key?(:text)
       raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
       self.text = request_params[:text]

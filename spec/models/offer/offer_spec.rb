@@ -129,7 +129,7 @@ describe Offer do
       new_offer.alter_contents(new_params).should be_like offer
     end
 
-    it 'returns an unmodified offer when no correct parameter is given' do
+    it 'returns an unmodified offer when no correct parameters are given' do
       new_params = { another:'another' }
       new_offer.alter_contents(new_params).should be_like offer
     end

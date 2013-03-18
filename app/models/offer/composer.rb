@@ -14,30 +14,42 @@ class Offer::Composer
     :image_name,
     presence: true
 
-  def add_products(products_params=[])
+  def add_products(products_params)
     products_params.each do |params|
-      users = User.where('things._id' => Moped::BSON::ObjectId(params[:thing_id]))
-      raise "thing is not valid" unless users.count == 1
-      user = users.first
+      if params.has_key?(:thing_id) && params.has_key?(:quantity)
+        users = User.where('things._id' => Moped::BSON::ObjectId(params[:thing_id]))
+        raise "thing is not valid" unless users.count == 1
+        user = users.first
 
-      things = user.things.where('_id' => Moped::BSON::ObjectId(params[:thing_id]))
-      raise "thing is not valid" unless things.count == 1
-      thing = things.first
+        things = user.things.where('_id' => Moped::BSON::ObjectId(params[:thing_id]))
+        raise "thing is not valid" unless things.count == 1
+        thing = things.first
 
-      raise "owner thing is not correct" unless offer.user_composer._id == thing.user._id
-      raise "quantity is not correct" if (params[:quantity] < 0 || params[:quantity] > thing.stock)
+        raise "owner thing is not correct" unless offer.user_composer._id == thing.user._id
+        raise "quantity is not correct" if (params[:quantity] < 0 || params[:quantity] > thing.stock)
 
-       products.build(thing_id: params[:thing_id], quantity: params[:quantity])
+        products.build(thing_id: params[:thing_id], quantity: params[:quantity])
+      end
     end
-    self
+    self.persisted? ? self.save : self
   end
+
+  def alter_contents(products_params)
+    # products.destroy
+    # add_products(products_params)
+  end
+
+  def self_update!
+  end
+
+
 
 =begin
  NO TOCAR, el lunes lo elimino yo :)
 
 
   def update_user_data
-    # raise "user is not valid" if (offer.user_composer == nil  || offer.user_composer.persisted? == false)
+    # raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
     # reload if persisted?
     # self.name = offer.user_composer.profile.name
     # self.image_name = offer.user_composer.profile.image_name
@@ -67,10 +79,6 @@ class Offer::Composer
 
 
 
-  def alter_contents(products_params=[])
-    # products.destroy
-    # add_products(products_params)
-  end
 
 
   # users = User.where('things._id' => Moped::BSON::ObjectId(self.thing_id))
