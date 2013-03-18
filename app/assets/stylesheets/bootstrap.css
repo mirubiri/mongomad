@@ -3098,6 +3098,11 @@ input[type="submit"].btn.btn-mini {
   margin-bottom: 20px;
   list-style: none;
 }
+
+.nav > li {
+  border-right: 1px solid #EEEEEE;
+}
+
 .nav > li > a {
   display: block;
 }

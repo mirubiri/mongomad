@@ -9,27 +9,28 @@
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav" id="navigation_bar">
           <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
-            <li id="offers-tab" class="active">
+            <li id="offers-tab" class="active" style="position:relative">
           <% else %>
-            <li id="offers-tab">
+            <li id="offers-tab" style="position:relative">
           <% end %>         
             <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
               <div class="nav_element">Ofertas</div>
             <% end %>
           </li>
           <% if controller.sub_layout === "negotiations" %>
-            <li id="negotiations-tab" class="active">
+            <li id="negotiations-tab" class="active" style="position:relative">
           <% else %>
-            <li id="negotiations-tab">
+            <li id="negotiations-tab" style="position:relative">
           <% end %>         
             <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
               <div class="nav_element">Negociaciones</div>
+              <div class="noti_bubble"></div>
             <% end %>
           </li>
           <% if controller.sub_layout === "deals" %>
-            <li id="deals-tab" class="active">
+            <li id="deals-tab" class="active" style="position:relative">
           <% else %>
-            <li id="deals-tab">
+            <li id="deals-tab" style="position:relative">
           <% end %>         
             <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
               <div class="nav_element">Tratos</div>
