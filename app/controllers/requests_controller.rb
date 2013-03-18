@@ -57,7 +57,9 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
-        format.json { render json: @user, status: :created, location: @request }
+        format.js { 
+          render :partial => "offers/index", :layout => false, :status => :created 
+        }
       else
         format.html { redirect_to @user, notice: 'la peticicion no se ha creado' }
         format.json { render json: @request.errors, status: :unprocessable_entity }
