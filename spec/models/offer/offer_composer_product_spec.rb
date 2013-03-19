@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe Offer::Composer::Product do
-  let(:composer) { Fabricate.build(:offer,
-    user_composer:Fabricate(:user_with_things),
-    user_receiver:Fabricate(:user_with_things)).composer
-  }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) { Fabricate.build(:offer,user_composer:user_composer,user_receiver:user_receiver)  }
+  let(:composer) { offer.composer }
   let(:product) { composer.products.last }
-  let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(product.thing_id) }
+  let(:thing) { user_composer.things.last }
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
