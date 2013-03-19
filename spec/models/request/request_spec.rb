@@ -166,13 +166,7 @@ describe Request do
     end
 
     context 'When request is published' do
-      before do
-        new_request = Fabricate.build(:request, user:Fabricate(:user))
-        new_params = params_for_request(new_request)
-        request.publish
-        request.alter_contents(new_params)
-        request.user = new_request.user
-      end
+      before { request.publish }
 
       it 'calls reload method' do
         request.should_receive(:reload)
@@ -186,13 +180,6 @@ describe Request do
     end
 
     context 'When request is not published' do
-      before do
-        new_request = Fabricate.build(:request, user:Fabricate(:user))
-        new_params = params_for_request(new_request)
-        request.alter_contents(new_params)
-        request.user = new_request.user
-      end
-
       it 'does not call reload method' do
         request.should_not_receive(:reload)
         request.self_update!
