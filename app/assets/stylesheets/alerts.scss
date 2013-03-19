@@ -18,7 +18,7 @@
     @include proportions(40px,40px);
     padding: 2px;
     float:left;
-    margin:0px 5px 5px 0px;
+    margin:2px 5px 5px 0px;
     border: $borde1px;
 
     img{
@@ -29,12 +29,22 @@
 
   .description{
     @include box-sizing(border-box);
-    @include border-radius(5px, 5px);
-    @include proportions(75%,40px);
+    @include proportions(75%,48px);
     float: left;
     font-size: 10px;
     line-height: normal;
-    overflow: hidden;            
+
+    .name{
+      @include box-sizing(border-box);
+      float: left;
+      width: 100%;
+      font-weight: bold;
+    }
+    .text{
+      @include box-sizing(border-box);
+      float: left;
+      width: 100%;
+    }            
   }
 
   .options_menu{
