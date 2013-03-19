@@ -61,6 +61,11 @@ describe Offer::Composer do
       end
     end
 
+    it 'does not raise exception if any thing_id parameter does not exist' do
+      products_params.first.delete(:thing_id)
+      expect { composer.add_products(products_params) }.not_to raise_error
+    end
+
     it 'raises exception if any thing_id parameter is nil' do
       products_params.first[:thing_id] = nil
       expect { composer.add_products(products_params) }.to raise_error
@@ -71,8 +76,8 @@ describe Offer::Composer do
       expect { composer.add_products(products_params) }.to raise_error
     end
 
-    it 'does not raise exception if any thing_id parameter does not exist' do
-      products_params.first.delete(:thing_id)
+    it 'does not raise exception if any quantity parameter does not exist' do
+      products_params.first.delete(:quantity)
       expect { composer.add_products(products_params) }.not_to raise_error
     end
 
@@ -89,11 +94,6 @@ describe Offer::Composer do
     it 'raises exception if any quantity parameter is higher than stock' do
       products_params.first[:quantity] = thing.stock + 1
       expect { composer.add_products(products_params) }.to raise_error
-    end
-
-    it 'does not raise exception if any quantity parameter does not exist' do
-      products_params.first.delete(:quantity)
-      expect { composer.add_products(products_params) }.not_to raise_error
     end
 
     context 'When offer is published' do
@@ -114,37 +114,38 @@ describe Offer::Composer do
   end
 
   describe '#alter_contents(products_params)' do
-    xit 'modifies only correct parameters when more parameters are given' do
-      new_params = products_params
-      new_params.each do |product|
+    let(:new_composer) { composer.clone }
+
+    it 'modifies only correct parameters when more parameters are given' do
+      composer.products.each do |product|
+        product.thing_id = nil
+        product.quantity = nil
+      end
+      products_params.each do |product|
         product.merge!(another:'another')
       end
-      composer.alter_contents(new_params)
-      composer.products.each_with_index do |product, index|
-        product.thing_id.should eq new_params[index][:thing_id]
-        product.quantity.should eq new_params[index][:quantity]
-      end
+      new_composer.alter_contents(products_params)
+      new_composer.products.should be_like composer.products
     end
 
-    xit 'returns an unmodified composer when no correct parameters are given' do
+    it 'returns an unmodified composer when no correct parameters are given' do
       new_params = { another:'another' }
-      new_composer = composer.clone
       new_composer.alter_contents(new_params)
       new_composer.products.should be_like composer.products
     end
 
-    xit 'removes current list of products' do
+    it 'removes current list of products' do
       composer.products.should_receive(:destroy)
       composer.alter_contents(products_params)
     end
 
-    xit 'add a new list of products to composer from given parameters' do
+    it 'add a new list of products to composer from given parameters' do
       composer.should_receive(:add_products).with(products_params)
       composer.alter_contents(products_params)
     end
 
     context 'When offer is published' do
-      xit 'save the changes' do
+      it 'save the changes' do
         composer.offer.publish
         composer.should_receive(:save)
         composer.alter_contents(products_params)
@@ -152,7 +153,7 @@ describe Offer::Composer do
     end
 
     context 'When offer is not published' do
-      xit 'does not save the changes' do
+      it 'does not save the changes' do
         composer.should_not_receive(:save)
         composer.alter_contents(products_params)
       end
@@ -162,40 +163,16 @@ describe Offer::Composer do
   describe '#self_update!' do
     let(:new_composer) { offer.composer }
 
-    xit 'updates composer name with current user_composer name' do
+    it 'updates composer name with current user_composer name' do
       composer.offer.user_composer.profile.stub(:name).and_return('updated')
       composer.self_update!
       composer.name.should eq 'updated'
     end
 
-    xit 'updates composer image_name with current user_composer image_name' do
+    it 'updates composer image_name with current user_composer image_name' do
       composer.offer.user_composer.profile.stub(:image_name).and_return('updated.png')
       composer.self_update!
       composer.image_name.should eq 'updated.png'
-    end
-
-    xit 'updates product name for all products in the list with correct value' do
-      composer.products.each do |product|
-        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
-        composer.self_update!
-        product.name.should eq thing.name
-      end
-    end
-
-    xit 'updates product description for all products in the list with correct value' do
-      composer.products.each do |product|
-        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
-        composer.self_update!
-        product.description.should eq thing.description
-      end
-    end
-
-    xit 'updates product image_name for all products in the list with correct value' do
-      composer.products.each do |product|
-        thing = User.where('things._id' => Moped::BSON::ObjectId(product.thing_id)).first.things.find(products[:thing_id])
-        composer.self_update!
-        product.image_name.should eq thing.image_name
-      end
     end
 
     xit 'calls update_user_data method' do
@@ -208,68 +185,54 @@ describe Offer::Composer do
       composer.self_update!
     end
 
-    xit 'calls self_update! method for each product' do
+    it 'calls self_update! method for each product' do
       composer.products.each do |product|
         product.should_receive(:self_update!)
       end
       composer.self_update!
     end
 
-    xit 'returns a valid composer' do
+    it 'returns a valid composer' do
       composer.self_update!
       composer.should be_valid
     end
 
-    xit 'returns self if self_update! success' do
+    it 'returns self if self_update! success' do
       new_composer.self_update!
       new_composer.should be_like composer
     end
 
-    xit 'returns a valid list of products' do
-      composer.products.destroy
-      composer.add_products(products_params)
-      composer.products.should be_valid
-    end
-
-    xit 'returns a composer with a valid list of products' do
-      new_composer.products.destroy
-      new_composer.add_products(products_params)
-      new_composer.products.should be_like composer.products
-    end
-
-    xit 'raises exception if user_composer is nil' do
+    it 'raises exception if user_composer is nil' do
       composer.offer.user_composer = nil
       expect { composer.self_update! }.to raise_error
     end
 
-    xit 'raises exception if user_composer is not correct' do
-      user = Fabricate.build(:user)
-      composer.offer.user_composer = user
-      user.destroy
+    it 'raises exception if user_composer is not correct' do
+      composer.offer.user_composer.destroy
       expect { composer.self_update! }.to raise_error
     end
 
     context 'When offer is published' do
       before { composer.offer.publish }
 
-      xit 'calls reload method' do
+      it 'calls reload method' do
         composer.should_receive(:reload)
         composer.self_update!
       end
 
-      xit 'save changes' do
+      it 'save changes' do
         composer.should_receive(:save)
         composer.self_update!
       end
     end
 
     context 'When offer is not published' do
-      xit 'does not call reload method' do
+      it 'does not call reload method' do
         composer.should_not_receive(:reload)
         composer.self_update!
       end
 
-      xit 'does not save changes' do
+      it 'does not save changes' do
         composer.should_not_receive(:save)
         composer.self_update!
       end

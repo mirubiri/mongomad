@@ -82,7 +82,7 @@ describe Offer::Composer::Product do
       expect { product.self_update! }.to raise_error
     end
 
-    it 'raises exception if thing_id parameter does not belong to user_composer' do
+    it 'raises exception if thing_id parameter is not correct' do
       product.thing_id = Fabricate.build(:user_with_things).things.last._id
       expect { product.self_update! }.to raise_error
     end
