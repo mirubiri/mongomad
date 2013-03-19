@@ -69,7 +69,8 @@ describe Offer::Composer::Product do
     end
 
     it 'returns self if self_update! success' do
-      new_product = composer.products.last
+      new_product = Fabricate.build(:offer).composer.products.last
+      new_product.composer = product.composer
       new_product.thing_id = product.thing_id
       new_product.quantity = product.quantity
       new_product.self_update!
@@ -82,23 +83,7 @@ describe Offer::Composer::Product do
     end
 
     it 'raises exception if thing_id parameter does not belong to user_composer' do
-      user = Fabricate.build(:user_with_things)
-      product.thing_id = user.things.last._id
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'raises exception if quantity parameter is nil' do
-      product.quantity = nil
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'raises exception if quantity parameter is negative' do
-      product.quantity = -1
-      expect { product.self_update! }.to raise_error
-    end
-
-    it 'raises exception if quantity parameter is higher than stock' do
-      product.quantity = thing.stock + 1
+      product.thing_id = Fabricate.build(:user_with_things).things.last._id
       expect { product.self_update! }.to raise_error
     end
 
