@@ -32,7 +32,6 @@ class Offer::Composer::Product
     thing = things.first
 
     raise "owner thing is not correct" unless composer.offer.user_composer._id == thing.user._id
-    raise "quantity is not correct" if (self.quantity < 0 || self.quantity > thing.stock)
 
     reload if persisted?
     self.name = thing.name
