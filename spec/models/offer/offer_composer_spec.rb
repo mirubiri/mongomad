@@ -117,10 +117,10 @@ describe Offer::Composer do
     let(:new_composer) { composer.clone }
 
     it 'modifies only correct parameters when more parameters are given' do
-      composer.products.each do |product|
-        product.thing_id = nil
-        product.quantity = nil
-      end
+      # composer.products.each do |product|
+      #   product.thing_id = nil
+      #   product.quantity = nil
+      # end
       products_params.each do |product|
         product.merge!(another:'another')
       end
