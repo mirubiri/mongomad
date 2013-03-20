@@ -43,12 +43,16 @@ describe Request do
   describe '.generate(request_params)' do
     let(:new_request) { Request.generate(request_params) }
 
-    it 'generates a request with correct value for given parameters' do
+    it 'instantiates a new request' do
+      new_request.should be_new_record
+    end
+
+    it 'sets text to params[:text]' do
       new_request.text.should eq request.text
     end
 
-    it 'does not persist the request' do
-      new_request.should_not be_persisted
+    it 'sets user to params[:user]' do
+      new_request.user.should eq request.user
     end
   end
 
@@ -65,13 +69,13 @@ describe Request do
   end
 
   describe '#unpublish' do
-    it 'removes a published request' do
+    it 'destroys the request if published' do
       request.publish
       request.should_receive(:destroy)
       request.unpublish
     end
 
-    it 'raises exception if request is currently unpublished' do
+    it 'raises exception if request is not published' do
       expect { request.unpublish }.to raise_error
     end
   end
@@ -79,41 +83,37 @@ describe Request do
   describe '#alter_contents(request_params)' do
     let(:new_request) { request.clone }
 
-    it 'modifies only text parameter when more parameters are given' do
+    it 'only alters the text attribute' do
       new_request.text = nil
       new_params = { text:request_params[:text], another:'another' }
       new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'returns an unmodified request when text parameter is not given' do
+    it 'do not alter the request if text: parameter is not given' do
       new_params = { another:'another' }
       new_request.alter_contents(new_params).should be_like request
     end
 
-    context 'When request is published' do
-      it 'save changes' do
-        request.publish
-        request.should_receive(:save)
-        request.alter_contents(request_params)
-      end
+    it 'saves changes if request is published' do
+      request.publish
+      request.should_receive(:save)
+      request.alter_contents(request_params)
     end
 
-    context 'When request is not published' do
-      it 'does not save changes' do
-        request.should_not_receive(:save)
-        request.alter_contents(request_params)
-      end
+    it 'does not save changes if request is not published' do
+      request.should_not_receive(:save)
+      request.alter_contents(request_params)
     end
   end
 
   describe '#self_update!' do
-    it 'updates request user_name with current user nickname' do
+    it 'sets user_name to user nickname' do
       request.user.profile.stub(:nickname).and_return('updated')
       request.self_update!
       request.user_name.should eq 'updated'
     end
 
-    it 'updates request image_name with current user image_name' do
+    it 'sets image_name to user profile image_name' do
       request.user.profile.stub(:image_name).and_return('updated.png')
       request.self_update!
       request.image_name.should eq 'updated.png'
