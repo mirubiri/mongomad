@@ -41,7 +41,7 @@ describe Request do
   end
 
   describe '.generate(:params)' do
-    it_should_behave_like "object_generator",['text'] do
+    it_should_behave_like ".generate",['text'] do
       let(:new_instance) { Request.generate(request_params) }
       let(:params) { request_params }
     end

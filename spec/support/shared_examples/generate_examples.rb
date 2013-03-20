@@ -1,4 +1,4 @@
-shared_examples "object_generator" do |attributes|
+shared_examples ".generate" do |attributes|
   describe ".generate(params)" do
     it 'instantiates a new object' do
       new_instance.should be_new_record
