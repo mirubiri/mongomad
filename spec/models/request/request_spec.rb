@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Request do
-  let(:request) { Fabricate.build(:request, user:Fabricate(:user)) }
+  let(:user) { Fabricate(:user) }
+  let(:request) { Fabricate.build(:request, user:user }
   let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
