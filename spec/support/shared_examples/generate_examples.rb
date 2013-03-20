@@ -1,4 +1,4 @@
-shared_examples ".generate" do |attributes|
+shared_examples ".generate" do |changeable_attributes|
   describe ".generate(params)" do
     it 'instantiates a new object' do
       new_instance.should be_new_record
@@ -8,15 +8,15 @@ shared_examples ".generate" do |attributes|
       new_instance.should_not respond_to(:generate)
     end
 
-    attributes.each do |attribute|
+    changeable_attributes.each do |attribute|
       it "sets #{attribute} to params[:#{attribute}]" do
         new_instance.send(attribute).should eq params[attribute.to_sym]
       end
     end
 
-    it "can only change #{attributes}" do
-      attributes<<'_id'
-      attributes.sort.should eq new_instance.changes.keys.sort
+    it "can only change #{changeable_attributes}" do
+      changeable_attributes<<'_id'
+      changeable_attributes.sort.should eq new_instance.changes.keys.sort
     end
   end
 end
