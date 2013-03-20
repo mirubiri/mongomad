@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Offer::Composer::Product do
   let(:user_composer) { Fabricate(:user_with_things) }
   let(:user_receiver) { Fabricate(:user_with_things) }
-  let(:offer) { Fabricate.build(:offer,user_composer:user_composer,user_receiver:user_receiver)  }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:composer) { offer.composer }
   let(:product) { composer.products.last }
   let(:thing) { user_composer.things.last }
@@ -27,6 +27,8 @@ describe Offer::Composer::Product do
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
     it { should validate_presence_of :image_name }
+    it { should validate_length_of(:name).within(1..50) }
+    it { should validate_length_of(:description).within(1..160) }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }
