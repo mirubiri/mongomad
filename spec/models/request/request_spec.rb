@@ -40,19 +40,10 @@ describe Request do
     end
   end
 
-  describe '.generate(request_params)' do
-    let(:new_request) { Request.generate(request_params) }
-
-    it 'instantiates a new request' do
-      new_request.should be_new_record
-    end
-
-    it 'sets text to params[:text]' do
-      new_request.text.should eq request.text
-    end
-
-    it 'sets user to params[:user]' do
-      new_request.user.should eq request.user
+  describe '.generate(:params)' do
+    it_should_behave_like "object_generator",['user','text'] do
+      let(:new_instance) { Request.generate(request_params) }
+      let(:params) { request_params }
     end
   end
 
