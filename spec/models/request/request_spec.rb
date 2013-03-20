@@ -19,6 +19,7 @@ describe Request do
     it { should validate_presence_of :user }
     it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
+    it { should validate_length_of(:text).within(1..160) }
     it { should validate_presence_of :image_name }
   end
 
@@ -45,24 +46,8 @@ describe Request do
       new_request.text.should eq request.text
     end
 
-    it 'generates a request with nil value for not given parameters' do
-      new_request.user.should eq nil
-      new_request.user_name.should eq nil
-      new_request.image_name.should eq nil
-    end
-
     it 'does not persist the request' do
       new_request.should_not be_persisted
-    end
-
-    it 'raises exception if text parameter is nil' do
-      request_params[:text] = nil
-      expect { Request.generate(request_params) }.to raise_error
-    end
-
-    it 'raises exception if text parameter is empty' do
-      request_params[:text] = ''
-      expect { Request.generate(request_params) }.to raise_error
     end
   end
 
@@ -104,16 +89,6 @@ describe Request do
       new_request.alter_contents(new_params).should be_like request
     end
 
-    it 'raises exception if text parameter is nil' do
-      new_params = { text:nil }
-      expect { request.alter_contents(new_params) }.to raise_error
-    end
-
-    it 'raises exception if text parameter is empty' do
-      new_params = { text:'' }
-      expect { request.alter_contents(new_params) }.to raise_error
-    end
-
     context 'When request is published' do
       it 'save changes' do
         request.publish
@@ -153,16 +128,6 @@ describe Request do
       new_request.user = request.user
       new_request.self_update!
       new_request.should be_like request
-    end
-
-    it 'raises exception if user is nil' do
-      request.user = nil
-      expect { request.self_update! }.to raise_error
-    end
-
-    it 'raises exception if user is not correct' do
-      request.user.destroy
-      expect { request.self_update! }.to raise_error
     end
 
     context 'When request is published' do
