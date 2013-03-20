@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Request do
   let(:user) { Fabricate(:user) }
-  let(:request) { Fabricate.build(:request, user:user }
+  let(:request) { Fabricate.build(:request, user:user) }
   let(:request_params) { params_for_request(request) }
 
   describe 'Relations' do
@@ -20,8 +20,8 @@ describe Request do
     it { should validate_presence_of :user }
     it { should validate_presence_of :user_name }
     it { should validate_presence_of :text }
-    it { should validate_length_of(:text).within(1..160) }
     it { should validate_presence_of :image_name }
+    it { should validate_length_of(:text).within(1..160) }
   end
 
   describe 'Factories' do

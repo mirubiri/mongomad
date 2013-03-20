@@ -15,10 +15,11 @@ class Request
     :image_name,
     presence: true
 
+  validates :text,
+    length: { minimum: 1, maximum: 160 }
+
   def self.generate(request_params)
-    raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
-    request = Request.new(text: request_params[:text])
-    request
+    Request.new(text:request_params[:text])
   end
 
   def publish
@@ -33,14 +34,12 @@ class Request
 
   def alter_contents(request_params)
     if request_params.has_key?(:text)
-      raise "text is not valid" if (request_params[:text] == nil || request_params[:text] == '')
       self.text = request_params[:text]
     end
     persisted? ? save : self
   end
 
   def self_update!
-    raise "user is not valid" if (user == nil  || user.persisted? == false)
     reload if persisted?
     self.user_name = user.profile.nickname
     self.image_name = user.profile.image_name
