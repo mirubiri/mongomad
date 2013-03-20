@@ -1,6 +1,6 @@
 shared_examples "object_generator" do |attributes|
   describe ".generate(params)" do
-    it 'instantiates a new #{described_class.name}' do
+    it 'instantiates a new object' do
       new_instance.should be_new_record
     end
 
@@ -12,6 +12,11 @@ shared_examples "object_generator" do |attributes|
       it "sets #{attribute} to params[:#{attribute}]" do
         new_instance.send(attribute).should eq params[attribute.to_sym]
       end
+    end
+
+    it "can only change #{attributes}" do
+      attributes<<'_id'
+      attributes.sort.should eq new_instance.changes.keys.sort
     end
   end
 end
