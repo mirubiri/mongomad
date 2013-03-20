@@ -35,9 +35,6 @@ class Offer::Composer
   end
 
   def alter_contents(products_params)
- puts products_params
-
-
     products.destroy
     add_products(products_params)
   end
@@ -57,14 +54,14 @@ class Offer::Composer
   # end
 
   def self_update!
-      # raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
+    raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
       # reload if persisted?
-      # self.name = offer.user_composer.profile.name
-      # self.image_name = offer.user_composer.profile.image_name
+      self.name = offer.user_composer.profile.name
+      self.image_name = offer.user_composer.profile.image_name
 
-      # products.each do |product|
-      #   product.self_update!
-      # end
+      products.each do |product|
+        product.self_update!
+      end
 
     # update_user_data
     # update_products
