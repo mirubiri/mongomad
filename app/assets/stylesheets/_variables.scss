@@ -123,7 +123,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
   border: $borde1px;
-  padding:4px;
+  padding:2px;
   overflow: visible;
 
   .quantity_container{
@@ -143,7 +143,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
   border: $borde1px;
-  padding:4px;
+  padding:2px;
   overflow: visible;
 
   .quantity_container{
@@ -158,6 +158,32 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     color: white;
     visibility: hidden;
   }
+}
+
+.artistic_layer_big{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/style.png");
+  background-size: $bigImageDimension;
+  background-repeat:no-repeat;
+  opacity: 0.1;
+  z-index: 100;
+}
+
+.artistic_layer_small{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/images/style.png");
+  background-size: $smallImageDimension;
+  background-repeat:no-repeat;
+  opacity: 0.1;
+  z-index: 100;
 }
 
 .product_of_user_selected{
@@ -304,10 +330,14 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         @include proportions($bigImageDimension,$bigImageDimension);
         float:left;
         margin:0px 0px 5px 0px;
+        position: relative;
+        background-color: rgb(140,140,140);
 
         img{
+          @include border-radius(2px, 2px);
           @include high-quality-image;
           @include proportions(100%,100%);
+          background-color: white; 
         }
       }      
      }
@@ -323,11 +353,14 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         @include proportions($smallImageDimension,$smallImageDimension);
         float:left;
         margin:0px 0px 5px 0px;
+        position: relative;
+        background-color: rgb(140,140,140);
 
         img{
-          @include border-radius(5px, 5px);
+          @include border-radius(2px, 2px);
           @include high-quality-image;
-          @include proportions(100%,100%);          
+          @include proportions(100%,100%);
+          background-color: white; 
         }
       }      
     }
