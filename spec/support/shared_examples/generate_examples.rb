@@ -16,7 +16,7 @@ shared_examples ".generate" do |changeable_attributes|
 
     it "can only change #{changeable_attributes}" do
       changeable_attributes<<'_id'
-      changeable_attributes.sort.should eq new_instance.changes.keys.sort
+      new_instance.changes.keys.sort.should eq changeable_attributes.sort
     end
   end
 end
