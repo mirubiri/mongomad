@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Offer::Money do
-  let(:money) { Fabricate.build(:offer,
-    user_composer:Fabricate(:user_with_things),
-    user_receiver:Fabricate(:user_with_things)).money
-  }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
+  let(:money) { offer.money }
   let(:money_params) { params_for_offer(offer)[:money] }
 
   describe 'Relations' do
