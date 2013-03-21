@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate.build(:offer,
-    user_composer:Fabricate(:user_with_things),
-    user_receiver:Fabricate(:user_with_things))
-  }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
@@ -27,6 +26,7 @@ describe Offer do
     it { should validate_presence_of :user_composer }
     it { should validate_presence_of :user_receiver }
     it { should validate_presence_of :initial_message }
+    it { should validate_length_of(:initial_message).within(1..160) }
   end
 
   describe 'Factories' do

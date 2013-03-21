@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe Offer::Receiver do
-=begin
-  let(:offer) { Fabricate.build(:offer,
-    user_composer:Fabricate(:user_with_things),
-    user_receiver:Fabricate(:user_with_things))
-  }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:receiver) { offer.receiver }
-  let(:products_params) { params_for_offer(offer)[:receiver_things] }
+  let(:products_params) { params_for_offer(offer)[:composer_things] }
+  let(:thing) { user_receiver.things.last }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }
@@ -41,6 +40,7 @@ describe Offer::Receiver do
     end
   end
 
+=begin
   describe '#add_products(products_params)' do
     it 'add a list of products from given parameters' do
       new_receiver = offer.receiver.clone

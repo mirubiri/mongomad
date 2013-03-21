@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe Offer::Composer do
-  let(:offer) { Fabricate.build(:offer,
-    user_composer:Fabricate(:user_with_things),
-    user_receiver:Fabricate(:user_with_things))
-  }
+  let(:user_composer) { Fabricate(:user_with_things) }
+  let(:user_receiver) { Fabricate(:user_with_things) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:composer) { offer.composer }
   let(:products_params) { params_for_offer(offer)[:composer_things] }
-  let(:thing) { User.where('things._id' => Moped::BSON::ObjectId(products_params.first[:thing_id])).first.things.find(products_params.first[:thing_id]) }
+  let(:thing) { user_composer.things.last }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }

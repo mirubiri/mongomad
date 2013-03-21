@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe Negotiation::Proposal::Receiver::Product do
-  let(:product) do
-    Fabricate.build(:negotiation).proposals.last.receiver.products.last
-  end
+  let(:offer) { Fabricate(:offer) }
+  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  let(:proposal) { negotiation.proposals.last }
+  let(:receiver) { proposal.receiver }
+  let(:product) { receiver.products.last }
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Negotiation::Proposal::Receiver) }
@@ -32,7 +34,7 @@ describe Negotiation::Proposal::Receiver::Product do
   describe 'Factories' do
     specify { expect(product.valid?).to eq true }
 
-    it 'Creates one negotiation' do
+    it 'creates one negotiation' do
       expect { product.save }.to change{ Negotiation.count }.by(1)
     end
   end
