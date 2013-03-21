@@ -18,6 +18,10 @@ class Offer
     :user_receiver,
     :initial_message,
     presence: true
+
+  validates :initial_message,
+    length: { minimum: 1, maximum: 160 }
+
 =begin
 
   def self.generate(offer_params=[])
