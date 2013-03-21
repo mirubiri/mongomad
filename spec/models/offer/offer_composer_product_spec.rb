@@ -27,8 +27,6 @@ describe Offer::Composer::Product do
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
     it { should validate_presence_of :image_name }
-    it { should validate_length_of(:name).within(1..50) }
-    it { should validate_length_of(:description).within(1..160) }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }
