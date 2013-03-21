@@ -58,8 +58,7 @@ function addProfileCommentsSeparator(){
 
 function setProfileContainersHeights(){
   alturaPpalContainer = $('#ppal_container').height();
-  margenesEnPerfil = 10;
-  alturaDisponible = alturaPpalContainer - margenesEnPerfil;
+  alturaDisponible = alturaPpalContainer;
   alturaPerfil = (alturaDisponible * 40)/100;
   alturaComentarios = (alturaDisponible * 60)/100;
 

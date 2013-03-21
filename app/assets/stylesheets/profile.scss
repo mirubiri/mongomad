@@ -7,7 +7,7 @@
   margin-left:5px;  
 
   .person_info{
-    @include proportions(48%,252px);
+    @include proportions(48.5%,252px);
     @include border_Element_into_container;
     @include box-sizing(border-box);
     float: left;
@@ -32,19 +32,12 @@
       @include box-sizing(border-box);
       float:left;
       margin-bottom: 10px;
-      width:50%;
       padding-left: 10px;
-
-      .title{
-        margin: 10px 0px 10px 0px;
-        font:{
-          weight:bolder;
-          size:14px;
-          family:$verdana;
-        }
-      }
+      width:50%;
 
       .name_age{
+        float: left;
+        width:90%;
         margin: 0px 0px 8px 0px;
         font:{
           weight:bold;
@@ -56,6 +49,7 @@
       .info_element{
         float:left;
         width:90%;
+        margin-bottom: 5px;
 
         .info_element_title{
           float: left;
@@ -69,7 +63,6 @@
         }
         .info_element_description{
           float: left;
-          margin: 0px 0px 5px 0px;
           width:100%;
           font:{
             size:10px;
@@ -78,19 +71,24 @@
         }
       }
     }
+
     .image_side{
       @include box-sizing(border-box);
-      float:left;
-      overflow:auto;
-      margin-top:10px 0px 10px 0px;
       width:50%;
+      float:left;
+      margin-top:10px 0px 10px 0px;
 
       img{
         @include high-quality-image;
         @include proportions(160px,160px);
         float:left;
-        margin-top:30px 5px 0px 0px;
+        margin: 5px 5px 10px 0px;
         border:$borde1px;        
+      }
+      button{
+        float:right;
+        width: 80%;
+        margin-right: 38px;
       }
     }
   }
@@ -102,7 +100,7 @@
     float:left;
     overflow:auto;
     margin-bottom:15px;
-    width: 48%;
+    width: 48.5%;
     border:$borde1px;
     background-color: white;
 
@@ -121,18 +119,10 @@
     .result_side{
       @include box-sizing(border-box);
       float:left;
+      padding-left: 10px;
       margin-bottom: 10px;
       width:30%;
-      padding-left: 10px;
-
-      .title{
-        margin: 10px 0px 10px 0px;
-        font:{
-          weight:bolder;
-          size:14px;
-          family:$verdana;
-        }
-      }
+      
       .result_title{
         margin: 0px 0px 5px 0px;
         font-weight:bold;
@@ -151,17 +141,17 @@
         }
       }
     }
+
     .graphique_side{
       @include box-sizing(border-box);
       float:left;
       overflow:auto;
-      margin:10px 0px 10px 0px;
+      margin:5px 0px 10px 0px;
       width:70%;
 
       .graphique{
         @include proportions(220px,220px);
-        float:right;
-        margin-right:5px;        
+        @include center-horizontally(80%);
         border:$borde1px;
         img{
           @include high-quality-image;

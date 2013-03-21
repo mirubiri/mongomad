@@ -332,9 +332,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         @include proportions($bigImageDimension,$bigImageDimension);
         margin:0px 0px 5px 0px;
         position: relative;
-        background-image: url("/assets/images/pictureframe.png");
-        background-size: $bigBackgroundSize $bigBackgroundSize;
-        background-repeat:no-repeat;
+        //background-image: url("/assets/images/pictureframe.png");
+        //background-size: $bigBackgroundSize $bigBackgroundSize;
+        //background-repeat:no-repeat;
 
         img{
           @include border-radius(2px, 2px);
@@ -356,9 +356,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         @include proportions($smallImageDimension,$smallImageDimension);
         margin:0px 0px 5px 0px;
         position: relative;
-        background-image: url("/assets/images/pictureframe.png");
-        background-size: $smallBackgroundSize $smallBackgroundSize;
-        background-repeat:no-repeat;
+        //background-image: url("/assets/images/pictureframe.png");
+        //background-size: $smallBackgroundSize $smallBackgroundSize;
+        //background-repeat:no-repeat;
 
         img{
           @include border-radius(2px, 2px);
