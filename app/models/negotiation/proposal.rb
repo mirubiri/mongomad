@@ -18,7 +18,6 @@ class Negotiation::Proposal
     :user_receiver_id,
     presence: true
 
-
   def self.generate(proposal_params=[])
     user_composer = User.find(proposal_params[:user_composer_id])
     user_receiver = User.find(proposal_params[:user_receiver_id])
