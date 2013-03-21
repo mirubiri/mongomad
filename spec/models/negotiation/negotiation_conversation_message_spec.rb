@@ -4,7 +4,7 @@ describe Negotiation::Conversation::Message do
   let(:offer) { Fabricate(:offer) }
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:conversation) { negotiation.conversation }
-  let(:message) { conversation.last }
+  let(:message) { conversation.messages.last }
 
   describe 'Relations' do
     it { should be_embedded_in(:conversation).of_type(Negotiation::Conversation) }

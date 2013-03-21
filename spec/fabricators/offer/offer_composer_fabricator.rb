@@ -1,6 +1,6 @@
 Fabricator(:offer_composer, class_name: "Offer::Composer") do
-  transient :user
-  offer     nil
+  transient  :user
+  offer      nil
   products  do |attrs|
     products = []
     attrs[:user].things.each do |thing|
