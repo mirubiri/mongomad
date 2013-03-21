@@ -7,6 +7,7 @@ describe Offer::Receiver::Product do
   let(:receiver) { offer.receiver }
   let(:product) { receiver.products.last }
   let(:thing) { user_receiver.things.last }
+  let(:product_params) { params_for_offer(offer)[:composer_things].first }
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
@@ -44,6 +45,23 @@ describe Offer::Receiver::Product do
     it 'has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should eq true
+    end
+  end
+
+  describe '.generate(params)' do
+    it_should_behave_like ".generate", %w(thing_id quantity) do
+      let(:new_instance) { Offer::Composer::Product.generate(product_params) }
+      let(:params) { product_params }
+    end
+  end
+
+  describe '#alter_contents(params)' do
+    it_should_behave_like '#alter_contents', %w(quantity) do
+      let(:instance) { product }
+      let(:params) do
+        product_params[:quantity]+=1
+        product_params
+      end
     end
   end
 

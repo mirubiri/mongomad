@@ -22,6 +22,21 @@ class Offer::Receiver::Product
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def self.generate(params)
+    Offer::Receiver::Product.new(
+      thing_id:params[:thing_id],
+      quantity:params[:quantity])
+  end
+
+  def alter_contents(params)
+    if persisted?
+      self.quantity = params[:quantity]
+      save
+    else
+      false
+    end
+  end
+
   def self_update!
     users = User.where('things._id' => Moped::BSON::ObjectId(self.thing_id))
     raise "thing is not valid" unless users.count == 1

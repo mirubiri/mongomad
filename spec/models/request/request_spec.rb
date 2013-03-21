@@ -41,7 +41,7 @@ describe Request do
   end
 
   describe '.generate(:params)' do
-    it_should_behave_like ".generate",%w(text) do
+    it_should_behave_like ".generate", %w(text) do
       let(:new_instance) { Request.generate(request_params) }
       let(:params) { request_params }
     end
@@ -72,9 +72,9 @@ describe Request do
   end
 
   describe '#alter_contents(request_params)' do
-    it_should_behave_like '#alter_contents',%w(text) do
+    it_should_behave_like '#alter_contents', %w(text) do
       let(:instance) { request }
-      let(:params) { params_for_request(Fabricate(:request,user:user)) }
+      let(:params) { params_for_request(Fabricate(:request, user:user)) }
     end
   end
 

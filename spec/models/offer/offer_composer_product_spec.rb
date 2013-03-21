@@ -7,6 +7,7 @@ describe Offer::Composer::Product do
   let(:composer) { offer.composer }
   let(:product) { composer.products.last }
   let(:thing) { user_composer.things.last }
+  let(:product_params) { params_for_offer(offer)[:composer_things].first }
 
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
@@ -46,6 +47,24 @@ describe Offer::Composer::Product do
       File.exist?(File.new(product.image.path)).should eq true
     end
   end
+
+  describe '.generate(params)' do
+    it_should_behave_like ".generate", %w(thing_id quantity) do
+      let(:new_instance) { Offer::Composer::Product.generate(product_params) }
+      let(:params) { product_params }
+    end
+  end
+
+  describe '#alter_contents(params)' do
+    it_should_behave_like '#alter_contents', %w(quantity) do
+      let(:instance) { product }
+      let(:params) do
+        product_params[:quantity]+=1
+        product_params
+      end
+    end
+  end
+
 
   describe '#self_update' do
     it 'updates product name with current thing name' do
