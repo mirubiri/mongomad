@@ -38,6 +38,7 @@ shared_examples "#alter_contents" do |alterable_attributes|
 
     it "do not make any changes in #{described_class}" do
       unchanged_instance=unsaved_instance.clone
+      unsaved_instance._id=unchanged_instance._id
       unsaved_instance.alter_contents(params)
       unchanged_instance.changes.should eq unsaved_instance.changes
     end
