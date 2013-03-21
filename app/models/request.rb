@@ -33,10 +33,12 @@ class Request
   end
 
   def alter_contents(request_params)
-    if request_params.has_key?(:text)
+    if persisted?
       self.text = request_params[:text]
+      save
+    else
+      false
     end
-    persisted? ? save : self
   end
 
   def self_update!
