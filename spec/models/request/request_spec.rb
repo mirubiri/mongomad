@@ -72,28 +72,9 @@ describe Request do
   end
 
   describe '#alter_contents(request_params)' do
-    let(:new_request) { request.clone }
-
-    it 'only alters the text attribute' do
-      new_request.text = nil
-      new_params = { text:request_params[:text], another:'another' }
-      new_request.alter_contents(new_params).should be_like request
-    end
-
-    it 'do not alter the request if text: parameter is not given' do
-      new_params = { another:'another' }
-      new_request.alter_contents(new_params).should be_like request
-    end
-
-    it 'saves changes if request is published' do
-      request.publish
-      request.should_receive(:save)
-      request.alter_contents(request_params)
-    end
-
-    it 'does not save changes if request is not published' do
-      request.should_not_receive(:save)
-      request.alter_contents(request_params)
+    it_should_behave_like '#alter_contents',%w(text) do
+      let(:instance) { request }
+      let(:params) { params_for_request(Fabricate(:request,user:user)) }
     end
   end
 
