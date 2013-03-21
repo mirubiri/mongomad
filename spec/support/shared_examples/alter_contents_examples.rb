@@ -12,7 +12,7 @@ shared_examples "#alter_contents" do |alterable_attributes|
     it "can only alter #{alterable_attributes}" do
       instance.stub(:save)
       instance.alter_contents(params)
-      alterable_attributes.sort.should eq instance.changes.keys.sort
+      instance.changes.keys.sort.should eq alterable_attributes.sort
     end
 
     it "returns true if changed correctly" do
