@@ -14,6 +14,9 @@ describe Negotiation do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should accept_nested_attributes_for :proposals }
+    it { should accept_nested_attributes_for :negotiators }
+    it { should accept_nested_attributes_for :conversation }
   end
 
   describe 'Validations' do
@@ -35,34 +38,6 @@ describe Negotiation do
     end
   end
 
-  describe '.generate(offer)' do
-    it 'generates a new negotiation with the given offer as current proposal' do
-      Negotiation.generate(offer).should be_valid
-    end
-
-    it 'raise error if the given offer is not valid' do
-      offer.stub(:valid?).and_return false
-      Negotiation.generate(offer).should raise_error
-      pending 'Choose wich exception to throw'
-    end
-
-    it 'puts same users in given offer into negotiation as negotiators' do
-      new_negotiation=Negotiation.generate(offer)
-      new_negotiation.negotiators.should include(offer.user_composer,offer.user_receiver)
-    end
-  end
-
-  describe '#publish' do
-    xit 'saves the negotiation'
-  end
-
-  describe '#unpublish' do
-    xit 'removes the negotiation'
-  end
-
-  describe '#self_update' do
-    xit 'updates itself'
-  end
 
   describe '#kick(negotiator)' do
     let(:leaving_negotiator) { negotiation.negotiators.first }
@@ -94,32 +69,7 @@ describe Negotiation do
   end
 
   describe '#propose(params)' do
-    context 'when negotiators match with composer and receiver in given hash' do
-      before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(true) }
-
-      it 'calls to proposal.generate with the given hash' do
-        Negotiation::Proposal.should_receive(:generate).with(proposal_params)
-        negotiation.propose(proposal_params)
-      end
-
-      it 'adds a new proposal' do
-        expect { negotiation.propose(proposal_params) }.to change { negotiation.proposals.count }.by(1)
-      end
-
-      specify { negotiation.propose(proposal_params).should eq true }
-    end
-
-    context 'when negotiators do not match with composer and receiver in given hash' do
-      before { negotiation.should_receive(:check_negotiators).with(proposal_params).and_return(false) }
-
-      it 'raise error' do
-        negotiation.propose(proposal_params).should raise_error
-      end
-
-      it 'does not add a new proposal' do
-        expect { negotiation.propose(proposal_params) }.to_not change {negotiation.proposals.count}.by(1)
-      end
-    end
+   xit 'makes a new proposition'
   end
 
   describe '#post_message(params)' do
