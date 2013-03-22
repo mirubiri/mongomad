@@ -57,7 +57,7 @@ class Offer::Composer
   #     product.self_update!
   #   end
   # end
-
+=begin
   def self_update!
     raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
       # reload if persisted?
@@ -72,4 +72,5 @@ class Offer::Composer
     # update_products
      #persisted? ? save : self
   end
+=end
 end
