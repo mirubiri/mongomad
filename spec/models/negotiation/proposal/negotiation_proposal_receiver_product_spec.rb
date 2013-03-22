@@ -17,6 +17,7 @@ describe Negotiation::Proposal::Receiver::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should have_denormalized_fields :name,:description,:image_name }
   end
 
   describe 'Validations' do
