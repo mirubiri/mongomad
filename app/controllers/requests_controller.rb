@@ -52,13 +52,13 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @user = User.find(params[:user_id])    
-    @request = Request.generate(params[:request])
+    @request = Request.generate(params)
 
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
         format.js { 
-          render :partial => "offers/index", :layout => false, :status => :created 
+          render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created  
         }
       else
         format.html { redirect_to @user, notice: 'la peticicion no se ha creado' }

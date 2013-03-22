@@ -1,0 +1,8 @@
+$('#new-request-form').modal('hide');
+
+$('#request_list_container')
+  .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>")
+  .children().first().addClass("new_request_style")
+  .hide().delay(300).slideDown();
+
+activateRequestButtons();
