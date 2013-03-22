@@ -3,7 +3,7 @@ module Mongomad::Denormalize
   
   included do
     cattr_accessor :denormalize_definitions
-    before_save :denormalize_from
+    before_validation :denormalize_from
   end
 
   module ClassMethods
@@ -14,7 +14,7 @@ module Mongomad::Denormalize
     def denormalize(*fields)
       options = fields.pop
       (self.denormalize_definitions ||= []) << { :fields => fields, :options => options }
-      fields.each { |field_name| field "#{field_name}", :type => options[:type] || String }
+      #fields.each { |field_name| field "#{field_name}", :type => options[:type] || String }
     end
     
     def is_denormalized?
