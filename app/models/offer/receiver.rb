@@ -11,7 +11,7 @@ class Offer::Receiver
 
   accepts_nested_attributes_for :products
 
-  denormalize :name, :image_name, from:'user.profile'
+  denormalize :name, :image_name, from:'offer.user_receiver.profile'
 
   validates :offer,
     :products,

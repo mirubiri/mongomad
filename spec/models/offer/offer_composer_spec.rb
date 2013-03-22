@@ -17,7 +17,7 @@ describe Offer::Composer do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
     it { should accept_nested_attributes_for(:products) }
-    it { should have_denormalized_fields :name, :image_name }
+    it { should have_denormalized_fields(:name, :image_name).from('offer.user_composer.profile') }
   end
 
   describe 'Validations' do

@@ -11,7 +11,7 @@ class Offer::Composer
 
   accepts_nested_attributes_for :products
 
-  denormalize :name, :image_name, from:'user.profile'
+  denormalize :name, :image_name, from:'offer.user_composer.profile'
 
   validates :offer,
     :products,

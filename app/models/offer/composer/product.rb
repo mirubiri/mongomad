@@ -11,7 +11,7 @@ class Offer::Composer::Product
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
-  denormalize :name, :description, :quantity, :image_name, from:'user.thing'
+  denormalize :name, :description, :image_name, from:'thing'
 
   validates :composer,
     :thing_id,
@@ -25,6 +25,10 @@ class Offer::Composer::Product
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
+  def thing
+    User.where('things._id' => thing_id).first.things.find(self.thing_id)
+  end
+=begin
   def self.generate(params)
     Offer::Composer::Product.new(
       thing_id:params[:thing_id],
@@ -57,4 +61,5 @@ class Offer::Composer::Product
     self.image_name = thing.image_name
     persisted? ? save : self
   end
+=end
 end

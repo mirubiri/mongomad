@@ -19,7 +19,7 @@ describe Offer::Composer::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_name).of_type(Object) }
-    it { should have_denormalized_fields :name, :description, :quantity, :image_name }
+    it { should have_denormalized_fields(:name, :description, :image_name).from('thing') }
   end
 
   describe 'Validations' do
@@ -46,6 +46,12 @@ describe Offer::Composer::Product do
     it 'has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should eq true
+    end
+  end
+
+   describe '#thing' do
+    it 'returns thing corresponding to thing_id' do
+      User.where('things._id' => thing_id).first.things.find(self.thing_id).should be_instance_of(User::Thing)
     end
   end
 
