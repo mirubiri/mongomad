@@ -16,6 +16,8 @@ describe Offer::Receiver do
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should accept_nested_attributes_for(:products) }
+    it { should have_denormalized_fields :name, :image_name }
   end
 
   describe 'Validations' do
@@ -33,7 +35,7 @@ describe Offer::Receiver do
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       receiver.save
       File.exist?(File.new(receiver.image.path)).should eq true

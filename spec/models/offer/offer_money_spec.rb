@@ -32,6 +32,7 @@ describe Offer::Money do
     end
   end
 
+=begin
   describe '#alter_contents(money_params)' do
     let(:new_money) { money.clone }
 
@@ -99,4 +100,5 @@ describe Offer::Money do
       end
     end
   end
+=end
 end

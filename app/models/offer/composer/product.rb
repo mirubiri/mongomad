@@ -1,5 +1,6 @@
 class Offer::Composer::Product
   include Mongoid::Document
+  include Mongomad::Denormalize
 
   embedded_in :composer, class_name: "Offer::Composer"
 
@@ -9,6 +10,8 @@ class Offer::Composer::Product
   field :quantity,    type: Integer
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+
+  denormalize :name, :description, :quantity, :image_name, from:'user.thing'
 
   validates :composer,
     :thing_id,

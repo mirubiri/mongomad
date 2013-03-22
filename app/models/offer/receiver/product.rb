@@ -1,5 +1,6 @@
 class Offer::Receiver::Product
   include Mongoid::Document
+  include Mongomad::Denormalize
 
   embedded_in :receiver, class_name: "Offer::Receiver"
 
@@ -9,6 +10,8 @@ class Offer::Receiver::Product
   field :quantity,    type: Integer
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+
+  denormalize :name, :description, :quantity, :image_name, from:'user.thing'
 
   validates :receiver,
     :thing_id,

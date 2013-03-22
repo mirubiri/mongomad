@@ -19,6 +19,7 @@ describe Offer::Receiver::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should have_denormalized_fields :name, :description, :quantity, :image_name }
   end
 
   describe 'Validations' do
@@ -41,13 +42,14 @@ describe Offer::Receiver::Product do
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       product.save
       File.exist?(File.new(product.image.path)).should eq true
     end
   end
 
+=begin
   describe '.generate(params)' do
     it_should_behave_like ".generate", %w(thing_id quantity) do
       let(:new_instance) { Offer::Composer::Product.generate(product_params) }
@@ -151,4 +153,5 @@ describe Offer::Receiver::Product do
       end
     end
   end
+=end
 end
