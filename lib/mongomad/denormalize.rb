@@ -7,14 +7,13 @@ module Mongomad::Denormalize
   end
 
   module ClassMethods
-    # Set a field or a number of fields to denormalize. Specify the associated object using the :from option.
+    # Specify which fields to denormalize. Specify the associated object using the :from option.
     #
-    # denormalize :one_field,:two_field, from:'relation',type:String
+    # denormalize :field_one,:field_two, from:'relation'
 
     def denormalize(*fields)
       options = fields.pop
       (self.denormalize_definitions ||= []) << { :fields => fields, :options => options }
-      fields.each { |field_name| field "#{field_name}", :type => options[:type] || String }
     end
     
     def is_denormalized?
