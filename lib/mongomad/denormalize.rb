@@ -3,7 +3,7 @@ module Mongomad::Denormalize
   
   included do
     cattr_accessor :denormalize_definitions
-    before_save :denormalize_from
+    before_validation :denormalize_from
   end
 
   module ClassMethods
