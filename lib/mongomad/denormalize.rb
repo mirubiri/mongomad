@@ -3,7 +3,7 @@ module Mongomad::Denormalize
 
   included do
     cattr_accessor :denormalized_definitions
-    before_validation :denormalize_from
+    before_validation :denormalize_from, :if => :new_record?
   end
 
   module ClassMethods
@@ -33,15 +33,15 @@ module Mongomad::Denormalize
 
   private
     def denormalize_from
-      self.denormalized_definitions.each do |definition|
-        definition[:fields].each do |field|
-          relation = definition[:options][:from]
+        self.denormalized_definitions.each do |definition|
+          definition[:fields].each do |field|
+            relation = definition[:options][:from]
 
-          # force reload of association specified by :from
-          associated = self.instance_eval(relation).reload
+            # force reload of association specified by :from
+            associated = self.instance_eval(relation).reload
 
-          self.send("#{field}=", associated.try(field))
+            self.send("#{field}=", associated.try(field))
+          end
         end
-      end
     end
 end
