@@ -14,7 +14,7 @@ describe Request do
     it { should have_field(:nickname).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
-    it { should have_denormalized_fields :nickname,:image_name }
+    it { should have_denormalized_fields(:nickname,:image_name).from('user.profile') }
   end
 
   describe 'Validations' do
