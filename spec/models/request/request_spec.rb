@@ -11,14 +11,15 @@ describe Request do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:user_name).of_type(String) }
+    it { should have_field(:nickname).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should have_denormalized_fields :nickname,:image_name }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :user }
-    it { should validate_presence_of :user_name }
+    it { should validate_presence_of :nickname }
     it { should validate_presence_of :text }
     it { should validate_presence_of :image_name }
     it { should validate_length_of(:text).within(1..160) }
@@ -39,4 +40,5 @@ describe Request do
       File.exist?(File.new(request.image.path)).should eq true
     end
   end
+
 end
