@@ -45,7 +45,7 @@ describe Offer::Composer::Product do
   describe 'after_save' do
     it 'has an image' do
       product.save
-      expect(File.exist?(product.image.path)).to be_true
+      expect(File.exist? product.image.path).to be_true
     end
   end
 

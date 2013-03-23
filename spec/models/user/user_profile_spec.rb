@@ -45,7 +45,7 @@ describe User::Profile do
   describe 'On save' do
     it 'Uploads an image' do
       profile.save
-      expect(File.exist?(profile.image.path)).to eq true
+      expect(File.exist? profile.image.path).to eq true
     end
   end
 

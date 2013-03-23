@@ -26,7 +26,7 @@ describe Negotiation do
   end
 
   describe 'Factories' do
-    specify { expect(negotiation.valid?).to eq true }
+    specify { expect(negotiation.to be_valid }
     specify { expect(negotiation.save).to eq true }
 
     it 'creates one offer' do
@@ -45,13 +45,13 @@ describe Negotiation do
     context 'When negotiator is in negotiation' do
       it 'kicks a given negotiator from the negotiation' do
         negotiation.kick(leaving_negotiator)
-        negotiation.negotiators.should_not include(leaving_negotiator)
+        expect(negotiation.negotiators).to_not include(leaving_negotiator)
       end
 
       it 'removes the negotiation from the kicked negotiator' do
         negotiation.kick(leaving_negotiator)
         leaving_negotiator.reload
-        leaving_negotiator.negotiations.should_not include(negotiation)
+        expect(leaving_negotiator.negotiations).to_not include(negotiation)
       end
 
       context 'when kicked negotiator was the last negotiator into the negotiation' do
@@ -64,7 +64,7 @@ describe Negotiation do
     end
 
     context 'When given negotiator is not into the negotiation' do
-      specify{ negotiation.kick(Fabricate(:user)).should eq true }
+      specify{ expect(negotiation.kick(Fabricate(:user)).to eq true }
     end
   end
 

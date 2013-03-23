@@ -38,7 +38,7 @@ describe Offer::Receiver do
   describe 'after_save' do
     it 'has an image' do
       receiver.save
-      expect(File.exist?(receiver.image.path)).to eq true
+      expect(File.exist? receiver.image.path).to eq true
     end
   end
 

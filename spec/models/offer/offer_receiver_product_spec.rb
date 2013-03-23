@@ -45,7 +45,7 @@ describe Offer::Receiver::Product do
   describe 'after_save' do
     it 'has an image' do
       product.save
-      expect(File.exist?(product.image.path)).to eq true
+      expect(File.exist? product.image.path ).to eq true
     end
   end
 

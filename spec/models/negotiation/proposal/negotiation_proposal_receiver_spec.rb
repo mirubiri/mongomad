@@ -27,7 +27,7 @@ describe Negotiation::Proposal::Receiver do
   end
 
   describe 'Factories' do
-    specify { expect(receiver.valid?).to eq true }
+    specify { expect(receiver).to be_valid }
 
     it 'creates one negotiation' do
       expect { receiver.save }.to change{ Negotiation.count }.by(1)
@@ -37,7 +37,7 @@ describe Negotiation::Proposal::Receiver do
   describe 'On save' do
     it 'has an image' do
       receiver.save
-      File.exist?(File.new(receiver.image.path)).should eq true
+      expect(File.exist?(receiver.image.path).to eq true
     end
   end
 end

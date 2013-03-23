@@ -28,22 +28,6 @@ describe User do
     specify { expect(user.save).to eq true }
   end
 
-  describe '.generate(user_params=[])' do
-    xit 'creates an user with the given params'
-  end
-
-  describe '#publish' do
-    xit 'saves the user'
-  end
-
-  describe '#unpublish' do
-    xit 'removes the user'
-  end
-
-  describe '#alter(user_params=[])' do
-    xit 'updates the user with the given params'
-  end
-
   describe '#add_thing(thing_params=[])' do
     xit 'adds a new thing created from the given hash'
   end

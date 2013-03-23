@@ -37,7 +37,7 @@ describe Request do
   describe 'after_save' do
     it 'has an image' do
       request.save
-      expect(File.exist?(request.image.path).to be true
+      expect(File.exist? request.image.path).to be true
     end
   end
 end

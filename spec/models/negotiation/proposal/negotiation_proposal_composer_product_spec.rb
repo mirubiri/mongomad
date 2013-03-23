@@ -33,7 +33,7 @@ describe Negotiation::Proposal::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true }
+    specify { expect(product).to be_valid }
 
     it 'creates one negotiation' do
       expect { product.save }.to change{ Negotiation.count }.by(1)
@@ -43,7 +43,7 @@ describe Negotiation::Proposal::Composer::Product do
   describe 'On save' do
     it 'has an image' do
       product.save
-      File.exist?(File.new(product.image.path)).should eq true
+      expect(File.exist? product.image.path).to be true
     end
   end
 end

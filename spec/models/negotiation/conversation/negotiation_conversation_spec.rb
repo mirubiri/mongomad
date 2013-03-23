@@ -27,7 +27,7 @@ describe Negotiation::Conversation do
   end
 
   describe 'Factories' do
-    specify { expect(conversation.valid?).to eq true }
+    specify { expect(conversation).to be_valid }
 
     it 'creates one negotiation' do
       expect { conversation.save }.to change{ Negotiation.count }.by(1)
@@ -35,10 +35,10 @@ describe Negotiation::Conversation do
   end
 
   describe 'On save' do
-    xit 'has two images' do
+    it 'has two images' do
       conversation.save
-      File.exist?(File.new(conversation.starter_image.path)).should eq true
-      File.exist?(File.new(conversation.follower_image.path)).should eq true
+      expect(File.exist? conversation.starter_image.path).to eq true
+      expect(File.exist? conversation.follower_image.path).to eq true
     end
   end
 end
