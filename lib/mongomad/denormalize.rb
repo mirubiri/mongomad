@@ -3,7 +3,7 @@ module Mongomad::Denormalize
 
   included do
     cattr_accessor :denormalized_definitions
-    before_validation :denormalize_from, :if => :new_record?
+    before_validation :load_denormalized, :if => :new_record?
   end
 
   module ClassMethods
@@ -15,23 +15,29 @@ module Mongomad::Denormalize
       options = fields.pop
       (self.denormalized_definitions ||= []) << { :fields => fields, :options => options }
     end
-
-    def is_denormalized?
-      true
-    end
   end
 
-  def denormalized_valid?
-    denormalize_from
-    !self.changed?
+  def refresh
+    reload
+    load_denormalized
   end
 
-  def self_update!
-    self.save! unless denormalized_valid?
+  def refresh_denormalized
+    load_denormalized
+  end
+
+  def refresh!
+    refresh
+    save
+  end
+
+  def refresh_denormalized!
+    refresh_denormalized
+    save
   end
 
   private
-    def denormalize_from
+    def load_denormalized
         self.denormalized_definitions.each do |definition|
           definition[:fields].each do |field|
             relation = definition[:options][:from]
