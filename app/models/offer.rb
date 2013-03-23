@@ -2,20 +2,22 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers
+  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
+
   embeds_one :composer, class_name: "Offer::Composer", cascade_callbacks: true
   embeds_one :receiver, class_name: "Offer::Receiver", cascade_callbacks: true
   embeds_one :money,    class_name: "Offer::Money", cascade_callbacks: true
 
-  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers
-  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
-
   field :initial_message, type: String
 
-  validates :composer,
+  accepts_nested_attributes_for :composer, :receiver, :money
+
+  validates :user_composer,
+    :user_receiver,
+    :composer,
     :receiver,
     :money,
-    :user_composer,
-    :user_receiver,
     :initial_message,
     presence: true
 
@@ -23,7 +25,6 @@ class Offer
     length: { minimum: 1, maximum: 160 }
 
 =begin
-
   def self.generate(offer_params=[])
     offer = new(
       user_receiver: User.find(offer_params[:user_receiver_id]),

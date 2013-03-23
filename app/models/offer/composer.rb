@@ -1,5 +1,6 @@
 class Offer::Composer
   include Mongoid::Document
+  include Mongomad::Denormalize
 
   embedded_in :offer
   embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
@@ -7,6 +8,10 @@ class Offer::Composer
   field :name, type: String
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+
+  accepts_nested_attributes_for :products
+
+  denormalize :name, :image_name, from:'offer.user_composer.profile'
 
   validates :offer,
     :products,
@@ -52,7 +57,7 @@ class Offer::Composer
   #     product.self_update!
   #   end
   # end
-
+=begin
   def self_update!
     raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
       # reload if persisted?
@@ -67,4 +72,5 @@ class Offer::Composer
     # update_products
      #persisted? ? save : self
   end
+=end
 end

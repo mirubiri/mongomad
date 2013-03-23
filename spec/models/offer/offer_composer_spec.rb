@@ -16,6 +16,8 @@ describe Offer::Composer do
   describe 'Attributes' do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should accept_nested_attributes_for(:products) }
+    it { should have_denormalized_fields(:name, :image_name).from('offer.user_composer.profile') }
   end
 
   describe 'Validations' do
@@ -33,13 +35,14 @@ describe Offer::Composer do
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       composer.save
       File.exist?(File.new(composer.image.path)).should eq true
     end
   end
 
+=begin
   describe '#add_products(products_params)' do
     it 'returns a composer with a list of products with correct value for given parameters' do
       composer.products.destroy
@@ -237,4 +240,5 @@ describe Offer::Composer do
       end
     end
   end
+=end
 end
