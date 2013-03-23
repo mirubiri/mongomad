@@ -98,8 +98,8 @@ GEM
       mongoid (>= 3.0.1)
       rake
       rspec (>= 2.9)
-    moped (1.4.3)
-    multi_json (1.7.1)
+    moped (1.4.4)
+    multi_json (1.7.2)
     origin (1.0.11)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
