@@ -28,7 +28,7 @@ describe Offer::Receiver do
   end
 
   describe 'Factories' do
-    specify { expect(receiver.valid?).to eq true }
+    specify { expect(receiver).to be_valid }
 
     it 'creates one offer' do
       expect { receiver.save }.to change{ Offer.count }.by(1)
@@ -38,7 +38,7 @@ describe Offer::Receiver do
   describe 'after_save' do
     it 'has an image' do
       receiver.save
-      File.exist?(File.new(receiver.image.path)).should eq true
+      expect(File.exist?(receiver.image.path)).to eq true
     end
   end
 

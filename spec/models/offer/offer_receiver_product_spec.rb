@@ -45,13 +45,15 @@ describe Offer::Receiver::Product do
   describe 'after_save' do
     it 'has an image' do
       product.save
-      File.exist?(File.new(product.image.path)).should eq true
+      expect(File.exist?(product.image.path)).to eq true
     end
   end
 
   describe '#thing' do
-    it 'returns thing corresponding to thing_id' do
-      User.where('things._id' => thing_id).first.things.find(self.thing_id).should be_instance_of(User::Thing)
+    subject { product.thing }
+    it { should be_instance_of(User::Thing) }
+    it 'returns thing which originated this product' do
+      expect(subject.id).to eq product.thing_id
     end
   end
 

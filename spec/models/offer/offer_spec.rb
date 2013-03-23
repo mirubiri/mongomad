@@ -33,7 +33,7 @@ describe Offer do
   end
 
   describe 'Factories' do
-    specify { expect(offer.valid?).to eq true }
+    specify { expect(offer).to be_valid }
     specify { expect(offer.save).to eq true }
 
     it 'creates two different users' do

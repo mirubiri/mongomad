@@ -35,7 +35,7 @@ describe Offer::Composer::Product do
   end
 
   describe 'Factories' do
-    specify { expect(product.valid?).to eq true }
+    specify { expect(product).to be_valid }
 
     it 'creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)
@@ -45,13 +45,15 @@ describe Offer::Composer::Product do
   describe 'after_save' do
     it 'has an image' do
       product.save
-      File.exist?(File.new(product.image.path)).should eq true
+      expect(File.exist?(product.image.path)).to be_true
     end
   end
 
-   describe '#thing' do
-    it 'returns thing corresponding to thing_id' do
-      User.where('things._id' => thing_id).first.things.find(self.thing_id).should be_instance_of(User::Thing)
+  describe '#thing' do
+    subject { product.thing }
+    it { should be_instance_of(User::Thing) }
+    it 'returns thing which originated this product' do
+      expect(subject.id).to eq product.thing_id
     end
   end
 
