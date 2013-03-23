@@ -14,7 +14,6 @@ module Mongomad::Denormalize
     def denormalize(*fields)
       options = fields.pop
       (self.denormalized_definitions ||= []) << { :fields => fields, :options => options }
-      #fields.each { |field_name| field "#{field_name}", :type => options[:type] || String }
     end
 
     def is_denormalized?
