@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal::Composer do
   end
 
   describe 'Factories' do
-    specify { expect(composer.valid?).to eq true }
+    specify { expect(composer).to be_valid }
 
     it 'Creates one deal' do
       expect { composer.save }.to change{ Deal.count }.by(1)
@@ -33,7 +33,7 @@ describe Deal::Agreement::Proposal::Composer do
   describe 'On save' do
     it 'has an image' do
       composer.save
-      File.exist?(File.new(composer.image.path)).should eq true
+      expect(File.exist? composer.image.path).to eq true
     end
   end
 end

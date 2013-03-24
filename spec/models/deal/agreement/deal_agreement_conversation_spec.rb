@@ -23,7 +23,7 @@ describe Deal::Agreement::Conversation do
   end
 
   describe 'Factories' do
-    specify { expect(conversation.valid?).to eq true }
+    specify { expect(conversation).to be_valid }
 
     it 'creates one negotiation' do
       expect { conversation.save }.to change{ Negotiation.count }.by(1)
@@ -33,8 +33,8 @@ describe Deal::Agreement::Conversation do
   describe 'On save' do
     xit 'has both images' do
       conversation.save
-      File.exist?(File.new(conversation.starter_signer_image_name.path)).should eq true
-      File.exist?(File.new(conversation.follower_signer_image.path)).should eq true
+      expect(File.exist? conversation.starter_signer_image_name.path)).to eq true
+      expect(File.exist? conversation.follower_signer_image.path)).to eq true
     end
   end
 
