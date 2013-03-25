@@ -5,8 +5,8 @@ class Request
 
   belongs_to :user
 
-  field :nickname,   type: String
-  field :text,       type: String
+  field :nickname, type: String
+  field :text,     type: String
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
