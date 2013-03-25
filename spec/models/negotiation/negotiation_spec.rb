@@ -3,30 +3,28 @@ require 'spec_helper'
 describe Negotiation do
   let(:offer) { Fabricate(:offer) }
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
-  let(:proposal) { negotiation.proposals.last }
-  let(:proposal_params) { params_for_proposal(proposal) }
 
   describe 'Relations' do
-    it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
-    it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
+    it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
+    it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :proposals }
     it { should accept_nested_attributes_for :negotiators }
     it { should accept_nested_attributes_for :conversation }
+    it { should accept_nested_attributes_for :proposals }
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :proposals }
-    it { should validate_presence_of :conversation }
     it { should validate_presence_of :negotiators }
+    it { should validate_presence_of :conversation }
+    it { should validate_presence_of :proposals }
   end
 
   describe 'Factories' do
-    specify { expect(negotiation.to be_valid }
+    specify { expect(negotiation).to be_valid }
     specify { expect(negotiation.save).to eq true }
 
     it 'creates one offer' do
@@ -38,7 +36,7 @@ describe Negotiation do
     end
   end
 
-
+=begin
   describe '#kick(negotiator)' do
     let(:leaving_negotiator) { negotiation.negotiators.first }
 
@@ -64,7 +62,7 @@ describe Negotiation do
     end
 
     context 'When given negotiator is not into the negotiation' do
-      specify{ expect(negotiation.kick(Fabricate(:user)).to eq true }
+      specify { expect(negotiation.kick(Fabricate(:user))).to eq true }
     end
   end
 
@@ -92,4 +90,5 @@ describe Negotiation do
     xit 'makes a deal with the current proposal as agreement'
     xit 'finish the negotiation'
   end
+=end
 end
