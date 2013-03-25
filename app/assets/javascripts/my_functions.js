@@ -325,7 +325,6 @@ $(window).bind('resize', function() {
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
-  linksClickBackgroundChange();
   buttonsClickBackgroundChange();
   activateAlertButton();
   imageSelection();

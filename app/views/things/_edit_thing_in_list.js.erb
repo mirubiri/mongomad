@@ -2,5 +2,9 @@ $('#edit-thing-form').modal('hide');
 
 $('#edit-thing-form').on('hidden', function () {
   $('#ppal_container')
-  .html("<%= escape_javascript(render :partial => 'things/partials/thing').html_safe %>").masonry('reload');
+  .hide()
+  .html("<%= escape_javascript(render :partial => 'things/partials/thing').html_safe %>")
+  .masonry('destroy');
+  masonryThing();
+  $('#ppal_container').show();
 })
