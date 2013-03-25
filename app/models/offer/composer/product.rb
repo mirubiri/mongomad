@@ -1,6 +1,6 @@
 class Offer::Composer::Product
   include Mongoid::Document
-  include Mongomad::Denormalize
+  include Denormalized
 
   embedded_in :composer, class_name: "Offer::Composer"
 

@@ -1,7 +1,7 @@
 class Request
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongomad::Denormalize
+  include Denormalized
 
   belongs_to :user
 

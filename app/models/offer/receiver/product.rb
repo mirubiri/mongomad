@@ -1,6 +1,6 @@
 class Offer::Receiver::Product
   include Mongoid::Document
-  include Mongomad::Denormalize
+  include Denormalize
 
   embedded_in :receiver, class_name: "Offer::Receiver"
 

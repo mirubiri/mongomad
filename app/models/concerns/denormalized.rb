@@ -1,4 +1,4 @@
-module Mongomad::Denormalize
+module Denormalized
   extend ActiveSupport::Concern
 
   included do

@@ -1,6 +1,6 @@
 class Offer::Composer
   include Mongoid::Document
-  include Mongomad::Denormalize
+  include Denormalized
 
   embedded_in :offer
   embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
