@@ -11,19 +11,23 @@ describe Negotiation::Conversation do
   end
 
   describe 'Attributes' do
-    it { should have_field(:starter_negotiator_name).of_type(String) }
-    it { should have_field(:follower_negotiator_name).of_type(String) }
-    xit { should have_field(:starter_negotiator_image_name).of_type(Object) }
-    xit { should have_field(:follower_negotiator_image_name).of_type(Object) }
+    # it { should have_field(:starter_negotiator_name).of_type(String) }
+    # it { should have_field(:follower_negotiator_name).of_type(String) }
+    # it { should have_field(:starter_negotiator_image_name).of_type(Object) }
+    # it { should have_field(:follower_negotiator_image_name).of_type(Object) }
+    it { should accept_nested_attributes_for :messages }
+    # # Se tienen que llmar igual que en el modelo (:name, :image_name)
+    # it { should have_denormalized_fields(:starter_negotiator_name, :starter_negotiator_image_name).from('negotiators.first.profile') }
+    # it { should have_denormalized_fields(:follower_negotiator_name, :follower_negotiator_image_name).from('negotiators.last.profile') }
   end
 
   describe 'Validations' do
    it { should validate_presence_of :negotiation }
    it { should validate_presence_of :messages }
-   it { should validate_presence_of :starter_negotiator_name }
-   it { should validate_presence_of :follower_negotiator_name }
-   xit { should validate_presence_of :starter_negotiator_image_name }
-   xit { should validate_presence_of :follower_negotiator_image_name }
+   # it { should validate_presence_of :starter_negotiator_name }
+   # it { should validate_presence_of :follower_negotiator_name }
+   # it { should validate_presence_of :starter_negotiator_image_name }
+   # it { should validate_presence_of :follower_negotiator_image_name }
   end
 
   describe 'Factories' do
@@ -34,6 +38,7 @@ describe Negotiation::Conversation do
     end
   end
 
+=begin
   describe 'On save' do
     it 'has two images' do
       conversation.save
@@ -41,4 +46,5 @@ describe Negotiation::Conversation do
       expect(File.exist? conversation.follower_image.path).to eq true
     end
   end
+=end
 end
