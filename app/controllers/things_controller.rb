@@ -74,12 +74,13 @@ class ThingsController < ApplicationController
   # PUT /things/1
   # PUT /things/1.json
   def update
+    @user = current_user
     @thing = current_user.things.find(params[:id])    
 
     respond_to do |format|
       if @thing.update_attributes(params[:thing])
         format.html { redirect_to user_things_path(current_user), notice: 'thing was successfully updated.' }
-        format.json { head :no_content }
+        format.js { render :partial => "things/edit_thing_in_list", :layout => false }
       else
         format.html { render action: "edit" }
         format.json { render json: @thing.errors, status: :unprocessable_entity }

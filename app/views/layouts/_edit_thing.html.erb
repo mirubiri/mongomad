@@ -1,5 +1,5 @@
 <div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-thing-form">
-  <%= form_for @thing do |form| %> <!-- no hay que poner [@user,@thing] pq things son embebed -->
+  <%= form_for @thing, :remote => true do |form| %>
     <div class="new_thing_title">
       Edita este producto      
     </div>
