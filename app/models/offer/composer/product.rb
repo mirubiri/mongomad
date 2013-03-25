@@ -29,7 +29,6 @@ class Offer::Composer::Product
     User.where('things._id' => thing_id).first.things.find(self.thing_id)
   end
 
-  
 =begin
   def self.generate(params)
     Offer::Composer::Product.new(

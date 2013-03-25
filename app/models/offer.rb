@@ -45,11 +45,11 @@ class Offer
     self.initial_message = offer_params[:initial_message]
     true
   end
-=end
+
   def publish
     save
   end
-=begin
+
   def unpublish
     destroy
   end
