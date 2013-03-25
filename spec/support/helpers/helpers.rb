@@ -23,8 +23,8 @@ module MongomadHelpers
 
   def params_for_request(request)
     {
-      text:request.text,
-      user:request.user
+      user:request.user,
+      text:request.text
     }
   end
 
