@@ -1,4 +1,4 @@
-<% user_visited_requests.each do |request| %>
+<% user_visited_requests.reverse_each do |request| %>
   <div class="request">
     <div class="profile_image">      
       <%= request_image(request) %>
@@ -6,9 +6,18 @@
     <div class="description">
       <%= request_text(request) %>      
     </div>
-    <%= link_to "x", 
-                  user_request_path(current_user,request_id(request)),
-                  :method => :delete, 
-                  :confirm => "Are you sure?" %>
+    <div class="options_menu hidden_container">
+      <%= link_to 'delete',
+              user_request_path(current_user,request_id(request)),
+              :method => :delete,
+              :confirm => "Are you sure?" %>
+      <%= link_to "edit", 
+              {:controller => "requests", 
+              :action => "edit",
+              :user_id => current_user.id, 
+              :id => request.id}, 
+              {:remote => true,
+               :id => "edit_request_link"} %>              
+    </div>    
   </div>
 <% end %>

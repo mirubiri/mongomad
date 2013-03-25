@@ -20,4 +20,6 @@ class ProfilesController < ApplicationController
     end
   end
 
+  
+
 end

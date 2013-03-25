@@ -32,10 +32,11 @@ class OffersController < ApplicationController
   # GET /offers/new.json
   def new
     @offer = Offer.new
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb
-      format.js # render new.js.erb }
+      format.js # render new.js.erb
     end
   end
 

@@ -47,15 +47,28 @@
       margin-right: 120px;
 
       nav{
-        @include float-children('a',left);
         float: left;
-        margin: 4px 10px 0px 0px;
+        margin: 0px 20px 0px 0px;
 
-        a{
-          @include unstyled-link;
-          @include proportions(20px,20px);
-          margin-right:8px;
-          //border: $borde1px;
+        .btn-toolbar{
+          @include center-horizontally(100%);
+          .btn-group{
+            a{
+              img{
+                @include high-quality-image;
+                @include proportions(20px,20px);
+              }
+            }
+          }
+          &:first-child{
+            margin-right: 3px;
+            border-right: 1px solid white;
+          }
+
+          &:last-child{
+            margin-right: 3px;
+            border-right: 1px solid white;
+          }
         }
       }
 

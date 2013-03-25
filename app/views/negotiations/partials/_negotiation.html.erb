@@ -1,50 +1,57 @@
 <% user_logged_negotiations.each do |negotiation| %>
   <div class="negotiation" id="negotiation<%= negotiation._id %>">
-    <div class="proposition_container">
-      <div class="proposition">
-         <div class="proposition_header">
-          <div class="triangle"></div>
-          <div class="profile_image">
-            <%= negotiation_composer_image(negotiation) %>
-          </div>
-        </div>
-        <div class="offered_things">
-          <% negotiation_composer_products(negotiation).each do |product| %>
-            <div class="offered_product">
-              <%= product_image(product) %>
-              <div class="product-title">
-                <%= product_name(product) %>
-              </div>
-            </div>
-          <% end %>
-          <div class="orderer_money">
-            <%#= negotiation.proposals.last.money.quantity %>
-          </div>
-        </div>
 
-        <div class="orderer_things">
-          <% negotiation_receiver_products(negotiation).each do |product| %>
-            <div class="orderer_product">
+    <div class="negotiation_offer">      
+      <div class="offer_header">
+        <div class="triangle">            
+            <!--<img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
+        </div>
+        <div class="profile_image">
+          <%= link_to negotiation_composer_image(negotiation),
+            :controller => "users",
+            :action => "show",
+            :id => negotiation_composer_id(negotiation)
+          %>
+        </div>
+        <div class="description">
+          <div class="composer_name">
+            <%= negotiation_composer_name(negotiation) %>
+          </div>                      
+        </div>
+      </div>
+      <div class="offer_things">
+        <div class="recieved">
+          <% negotiation_composer_products(negotiation).each do |product| %>
+            <div class="image_container">              
               <%= product_image(product) %>
-              <div class="product-title">
-                <%= product_name(product) %>
+              <div class="quantity_container">
+                <%= product_quantity(product) %>
               </div>
             </div>
           <% end %>
-          <div class="orderer_money">
-            <%#= negotiation.proposals.last.money.quantity %>
-          </div>
         </div>
+        <div class="given">
+          <% negotiation_receiver_products(negotiation).each do |product| %>
+            <div class="image_container">
+              <%= product_image(product) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div> 
+            </div>
+          <% end %>
+        </div>
+      </div>     
+      <div class="offer_button">
+        <button class="btn btn-small disabled">Accept</button>
+        <button class="btn btn-small disabled"> 
+          <%= link_to 'edit', 
+              edit_user_negotiation_path(current_user,negotiation_id(negotiation)), 
+              :remote => true %>
+        </button>
+      </div>      
+      <div class="offer_date">
+        <%#= negotiation_datetime(negotiation) %>
       </div>
-      <div class="actions">
-        <div class="reputation">
-        </div>
-        <div class="action_buttons">
-          <button>Aceptar oferta</button>
-          <button>Cambiar Oferta</button>
-        </div>
-      </div>
-    </div>
+    </div>  
+
     <div class="dialog_container">
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
@@ -73,15 +80,10 @@
       <div class="writting_box">
         <form action="">
           <div class="message">
-            <input type="">
-          </div>
-          <div class="sender">
-            <input type="">
-          </div>
+            <input type="text" placeholder="write here">
+          </div>          
         </form>
       </div>
     </div>
   </div>
 <% end %>
-
-

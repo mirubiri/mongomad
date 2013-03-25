@@ -12,7 +12,7 @@
       </div>
       <div class="offer_header">
         <div class="triangle">            
-            <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button">
+            <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
         </div>
         <div class="profile_image">
           <%= link_to offer_composer_image(offer),
@@ -22,23 +22,30 @@
           %>
         </div>
         <div class="description">
+          <div class="composer_name">
+            <%= offer_composer_name(offer) %>
+          </div>
+          <div class="offer_message">
             <%= offer_message(offer) %>
+          </div>            
         </div>
       </div>
       <div class="offer_things">
         <div class="recieved">
           <% offer_composer_products(offer).each do |product| %>
-            <div class="image_container">
-              <div class="quantity_container"><%= product_quantity(product) %></div>
+            <div class="image_container">              
               <%= product_image(product) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div>
+              <div class="artistic_layer_big"></div>
             </div>
           <% end %>
         </div>
         <div class="given">
           <% offer_receiver_products(offer).each do |product| %>
             <div class="image_container">
-              <div class="quantity_container"><%= product_quantity(product) %></div>
               <%= product_image(product) %>
+              <div class="quantity_container"><%= product_quantity(product) %></div>
+              <div class="artistic_layer_small"></div> 
             </div>
           <% end %>
         </div>
@@ -47,14 +54,14 @@
         <%= form_for [current_user,@negotiation] do |form| %>
         <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "negociar" %>
+            <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
           </div>
         <% end %>
       <% else %>
         <%= form_for [current_user,@negotiation] do |form| %>
           <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">
-            <%= form.submit "para mi" %>
+            <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
           </div>
         <% end %>
       <% end %>
@@ -67,7 +74,4 @@
   <p>El usuario no tiene ninguna oferta actualmente</p>
 <% end %>
 
-<% if user_logged_id != user_visited_id %>
-  <%= render :partial => "layouts/new_offer" %>
-<% end %>
 

@@ -1,0 +1,62 @@
+@import "variables";
+
+.new_petition_content{
+  @include fixed_width(430px,430px,430px);
+
+  .new_petition_title{
+    width: 100%;
+    overflow: auto;
+    float:left; 
+
+    .description{
+      float: left;
+      width: 100%;
+      margin-bottom: 10px;
+      padding-top: 3px;
+      text-align: center;
+      font:{
+        weight:bold;
+        size:14px;
+      }
+    }  
+
+    .user{
+      @include border-radius(5px, 5px);
+      float:left;
+      margin: 12px 5px 10px 30px;      
+      border: $borde1px;
+      padding: 3px;
+      img{
+        @include proportions(30px,30px);
+        @include high-quality-image;
+      }      
+    }
+
+    .user_name{
+      float: left;
+      padding: 8px 0px 0px 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  .new_offer_text{
+    float:left;
+    margin:0px 0px 10px 30px;
+    width:85%;
+
+    textarea{
+      overflow: hidden;
+      width: 98%;
+      background-color: transparent;
+      color: #000000;
+      font-size: 11px;
+      resize: none;
+    }      
+  }
+  .send_button{
+    float: right;
+    margin-right: 30px;
+    margin-bottom:10px;    
+  }
+}

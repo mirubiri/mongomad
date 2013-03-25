@@ -7,23 +7,77 @@
     <%= user_visited_country %></br>
   </div> 
 
-  <% if user_logged_id != user_visited_id %> 
-    <div class="new_offer_button">     
-      <%= link_to "Hazme una nueva oferta",
-          new_user_offer_path(current_user),
-          :remote => true %> 
-    </div>      
+  <% if user_logged_id != user_visited_id %>            
+    <div class="new_offer_button">
+      <%= link_to "Hazme una oferta!!!",
+        new_user_offer_path(user_visited_id),
+        {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
+    </div>          
   <% end %>
 
-  <nav class="profile_menu" id="menu_user_data">
-    <div class="menu_icon">
-      <%= link_to 'Perfil', user_profile_path(@user), :remote => true, :id => "link_profile" %>
+  <nav class="profile_menu" id="menu_user_data"> 
+    <div class="btn-toolbar">
+      <div class="btn-group" data-toggle="buttons-checkbox">
+        <% if (controller.sub_layout === "profile") %>
+           <%= link_to image_tag("/assets/images/info.png"),
+            user_profile_path(@user),
+            :remote => true,
+            :id => "link_profile",
+            :class =>"btn btn-primary active",
+            :'data-toggle' => "tooltip",
+            :title => "perfil" %>  
+        <% else %>          
+           <%= link_to image_tag("/assets/images/info.png"),
+            user_profile_path(@user),
+            :remote => true,
+            :id => "link_profile",
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "perfil" %>
+        <% end %>
+               
+      </div>
+      <div class="btn-group">
+        <% if (controller.sub_layout === "things") %>
+          <%= link_to image_tag("/assets/images/products.png"),
+            user_things_path(@user),
+            :remote => true,
+            :id => "link_things",
+            :class =>"btn btn-primary active",
+            :'data-toggle' => "tooltip",
+            :title => "productos" %>    
+        <% else %>
+          <%= link_to image_tag("/assets/images/products.png"),
+            user_things_path(@user),
+            :remote => true,
+            :id => "link_things",
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "productos" %> 
+        <% end %>
+                       
+      </div>
+      <div class="btn-group">
+        <% if (controller.sub_layout === "alerts") %>
+          <%= link_to image_tag("/assets/images/alerts.png"),
+            user_alerts_path(@user),
+            :remote => true,
+            :id => "link_alerts",
+            :class =>"btn btn-primary active",
+            :'data-toggle' => "tooltip",
+            :title => "alertas" %> 
+        <% else %>
+          <%= link_to image_tag("/assets/images/alerts.png"),
+            user_alerts_path(@user),
+            :remote => true,
+            :id => "link_alerts",
+            :class =>"btn btn-primary",
+            :'data-toggle' => "tooltip",
+            :title => "alertas" %>
+        <% end %>
+                       
+      </div>
     </div>
-    <div class="menu_icon">
-      <%= link_to 'Prod', user_things_path(@user), :remote => true, :id => "link_things" %>
-    </div>
-    <div class="menu_icon">
-      <%= link_to 'Alertas'%>
-    </div>    
   </nav>
+
 </aside>

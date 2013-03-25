@@ -10,16 +10,11 @@
   float: left;
 
   .offer_button{
-    float: left;
-    margin-bottom: 10px;
-    overflow: auto;
     width: 100%;
 
-    button{
-      @include border-radius(5px, 5px);
+    input{
       float: right;
-      margin: 0px 10px 0px 5px;
-      font-size: 10px;
+      margin: 0px 10px 10px 0px;
     }
   }
 
@@ -27,6 +22,7 @@
     float: left;
     margin: 0px 0px 0px 5px;
     font-size: 8px;
+    visibility: hidden;
   }
 
   @include box-sizing(border-box);

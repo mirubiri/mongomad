@@ -1,7 +1,9 @@
 <div class="profile_complete">
   <div class="person_info">
+    <div class="title">
+      Personal Info
+    </div>
     <div class="info_side">
-      <div class="title">Personal Info</div>
       <div class="name_age">
         <%= user_visited_name %>, <%= user_visited_birthdate %>
       </div>
@@ -20,24 +22,24 @@
       <div class="info_element">
         <div class="info_element_title">Phones:</div>
         <div class="info_element_description">
-          <%= user_visited_phone %>655555555
+          <%= user_visited_phone_number %>No Defined
         </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Web:</div>
         <div class="info_element_description">
-          www.<%= user_visited_name %><%= user_visited_name %>.com
+          www.<%= user_visited_name %>.com
         </div>
       </div>
     </div>
     <div class="image_side">
-
         <%= user_visited_image %>
+        <button class="btn btn-warning">editar mi perfil</button>
     </div>
   </div>
   <div class="statistics">
-    <div class="result_side">
-      <div class="title">Times Table</div>
+    <div class="title">Times Table</div>
+    <div class="result_side">      
       <div class="result_title">Deals as buyer</div>
       <div class="result_number">10</div>
       <div class="result_title">Deals as seller</div>

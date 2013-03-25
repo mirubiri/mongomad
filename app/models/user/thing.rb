@@ -13,7 +13,7 @@ class User::Thing
             :name,
             :description,
             :stock,
-            :image_name,
+            #:image_name,
             presence: true
 
   validates :stock,

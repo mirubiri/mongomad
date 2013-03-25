@@ -1,0 +1,20 @@
+$('#new-request-form').modal('hide');
+
+$('#new-request-form').on('hidden', function () {
+  $('#request_list_container')
+  .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>")
+  .children()
+  .first()
+  .addClass("new_request_style")
+  .css('opacity', 0)
+  .hide()
+  .slideDown()
+  .animate(
+    { opacity: 1 },
+    { queue: false, duration: 1500 }
+  )
+  .animate({backgroundColor: '#ffffff'}, 800);
+  activateRequestButtons();
+})  
+
+

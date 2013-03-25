@@ -1,27 +1,58 @@
-<header class="main_container_header">
-  <div class="main_container_header_menu" id="navigation_bar">
-     <nav>
-      <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
-        <div class="nav_element">Ofertas</div>
-      <% end %>
-      <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
-        <div class="nav_element">Negociaciones</div>
-      <% end %>
-      <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
-        <div class="nav_element">Tratos</div>
-      <% end %>
-     </nav>  
-     <% if controller.controller_name === "things" %>
-      <% if user_logged_id == user_visited_id %>
-        <div class="main_offer_button">    
-          <%= link_to "Añadir un nuevo producto",
-              new_user_thing_path(current_user),
-              :remote => true %>
-        </div>
-      <% end %>
-     <% end %>
-     <div class="main_container_header_search">
-      <input type="search">
-     </div>
+<div class="navbar" id="navigation_bar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="nav-collapse collapse navbar-responsive-collapse">
+        <ul class="nav" id="navigation_bar">
+          <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
+            <li id="offers-tab" class="active" style="position:relative">
+          <% else %>
+            <li id="offers-tab" style="position:relative">
+          <% end %>         
+            <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
+              <div class="nav_element">Ofertas</div>
+            <% end %>
+          </li>
+          <% if controller.sub_layout === "negotiations" %>
+            <li id="negotiations-tab" class="active" style="position:relative">
+          <% else %>
+            <li id="negotiations-tab" style="position:relative">
+          <% end %>         
+            <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
+              <div class="nav_element">Negociaciones</div>
+              <div class="noti_bubble"></div>
+            <% end %>
+          </li>
+          <% if controller.sub_layout === "deals" %>
+            <li id="deals-tab" class="active" style="position:relative">
+          <% else %>
+            <li id="deals-tab" style="position:relative">
+          <% end %>         
+            <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
+              <div class="nav_element">Tratos</div>
+            <% end %>
+          </li>          
+         
+          <% if controller.controller_name === "things" %>
+            <% if user_logged_id == user_visited_id %>
+              <span style="float:left;margin-top:5px;margin-left:70px">    
+                <%= link_to new_user_thing_path(current_user),
+                    :remote => true do %>
+                    <div class="nav_element">Añade un nuevo producto</div>
+                <% end %>
+              </span>
+            <% end %>
+          <% end %>          
+          
+        </ul>
+        <form class="navbar-search pull-right" action="">
+          <input type="text" class="search-query span2" placeholder="Search">
+        </form>        
+      </div>
+    </div>
   </div>
-</header>
+</div>

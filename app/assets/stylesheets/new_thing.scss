@@ -1,107 +1,133 @@
-@import "variables";
+@import "variables";  
 
-.new_thing_content{
-  @include absolute($top:5px,$left:5px);
-  @include border-radius(5px, 5px);
-  @include fixed_width(750px,750px,750px);
-  overflow:auto;
-  margin: 0px 0px 0px 0px;  
-  border: $borde2px;    
-  background-color: white;
-
-  form{    
-    width: 100%;
-
-    .thing_title{
-      @include proportions(100%,20px);
-      float:left;      
-      border-bottom: $borde1px;
-    }
-
-    .thing_container{
-      @include box-sizing(border-box);
-      float: left;
-      width: 100%;
-      overflow-y: auto;
-
-      .thing_image{
-        @include box-sizing(border-box);
-        width: 50%;
-        float: left;
-        padding:10px;
-        border-right: $borde1px;
-
-
-        .big_image_container{
-          @include box-sizing(border-box);
-          width: 100%;
-          float: left;
-          margin-bottom: 5px;
-          img{
-            @include high-quality-image;
-            @include proportions(180px,180px);
-            margin-top: 10px;
-          }
-        } 
-        .small_images_container{
-          @include box-sizing(border-box);
-          width: 100%;
-          float: left;
-          img{
-            @include high-quality-image;
-            @include proportions(50px,50px);
-          }
-        }     
-      }
-
-      .thing_description{
-        @include box-sizing(border-box);
-        width: 50%;
-        float: left;
-        padding:10px;
-
-        .title{
-          @include box-sizing(border-box);
-          width: 100%;
-          float: left;
-
-          textarea{
-            overflow: hidden;
-            width: 98%;
-            border: $borde1px;
-            background-color: transparent;
-            color: #000000;
-            font-size: 11px;
-            resize: none;
-            margin-bottom: 5px;
-          }
-        }
-
-        .description{
-          @include box-sizing(border-box);
-          width: 100%;
-          float: left;
-
-          textarea{
-            overflow: hidden;
-            width: 98%;
-            border: $borde1px;
-            background-color: transparent;
-            color: #000000;
-            font-size: 11px;
-            resize: none;
-            margin-bottom: 5px;
-          }
-        }
-      }
-    }
-
-    .thing_options{
-      @include box-sizing(border-box);
-      float: left;
-      width: 100%;
-      border-top: $borde1px;
-      overflow-y: auto;
-    }    
-  }    
+.new_thing_title{
+  @include proportions(100%,32px);
+    @include box-sizing(border-box);
+    float:left;
+    margin-bottom: 5px;
+    background-color: #2B3750;
+    color:white; 
+    padding-top: 6px; 
+    text-align: center; 
 }
+
+
+.new_thing_container{
+  @include center-horizontally(90%);
+  @include box-sizing(border-box);
+  padding: 5px;
+  overflow: none;
+
+  .new_thing_image{
+    @include box-sizing(border-box);
+    width: 190px;
+    float: left;
+
+    .image_container{
+      @include box-sizing(border-box);
+      @include border-radius(5px, 5px);
+      background-image: url("/assets/images/fold.png" , 0.2);
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 180px;
+      height: 180px;
+      border: $borde1px;
+      margin: 5px;
+      padding: 5px;
+      float: left;
+      margin-bottom: 5px;
+
+      input[type="file"]{
+        opacity: 0;
+        width: 170px;
+        height: 170px;
+      }
+
+      img{
+        border: none;
+      }
+
+      .thing_image_container{
+        position: relative;
+        top: -170px;
+        left: 0px;
+        width: 170px;
+        height: 170px;
+        z-index: -1;  
+        border: none;      
+      }
+
+    }      
+  }
+
+  .new_thing_description{
+    @include box-sizing(border-box);
+    width: 170px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 5px;
+
+    .title{
+      @include box-sizing(border-box);
+      width: 100%;
+      float: left;
+
+      textarea{
+        overflow: hidden;
+        width: 98%;
+        border: $borde1px;
+        background-color: transparent;
+        color: #000000;
+        font-size: 11px;
+        resize: none;
+        margin-bottom: 5px;
+      }
+    }
+
+    .description{
+      @include box-sizing(border-box);
+      width: 100%;
+      float: left;
+
+      textarea{
+        overflow: hidden;
+        width: 98%;
+        border: $borde1px;
+        background-color: transparent;
+        color: #000000;
+        font-size: 11px;
+        resize: none;
+        margin-bottom: 5px;
+      }
+    }
+
+    .new_thing_stock{
+      float: left;
+      width: 100%;
+
+      textarea{
+              overflow: hidden;
+              width: 98%;
+              border: $borde1px;
+              background-color: transparent;
+              color: #000000;
+              font-size: 11px;
+              resize: none;
+              margin-bottom: 5px;
+      }
+    }
+  } 
+}
+
+.thing_options{
+  @include box-sizing(border-box);
+  width: 100%;
+  float: left;
+
+  input{
+    float: right;
+    margin: 8px 30px 10px 0px;
+  }  
+}    
+   
+

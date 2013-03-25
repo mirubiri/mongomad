@@ -1,0 +1,12 @@
+<div class="thing thumbnail" id="<%= thing_id(@thing) %>">
+  <%= thing_inboard(@thing) %>
+  <div class="caption">
+    <h5><%= thing_name(@thing) %></h5>
+    <p><%= thing_description(@thing) %></p>
+    <p>            
+      <%= link_to "editar producto",
+          edit_user_thing_path(current_user,@thing),
+          :remote => true %>             
+    </p>
+  </div>
+</div>

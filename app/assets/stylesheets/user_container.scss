@@ -50,65 +50,83 @@
 
       .new_offer_button{
         @include center-horizontally(80%);
-        height: 20px;
+        height: 30px;
         margin-top: 10px;        
         margin-bottom: 10px;
         a{
           @include box-sizing(border-box);
-          @include proportions(100%,20px);
+          @include proportions(100%,30px);
           text-align: center;
         }
       }      
 
       .profile_menu{
         @include center-horizontally(80%);
-        height: 20px;
+        height: 40px;
         margin-top: 10px;        
         margin-bottom: 10px;
 
-        .menu_icon{
-          @include box-sizing(border-box);
-          @include proportions(33.3%,20px);
-          float:left;
-          border: $borde1px;
-          overflow: hidden;
-
-          a{
-            margin-left: 3px;
+        .btn-toolbar{
+          @include center-horizontally(80%);
+          .btn-group{
+            a{
+              img{
+                @include high-quality-image;
+                @include proportions(20px,20px);
+              }
+            }
           }
-        }
+        }       
       }
     }
 
     .user_container_requests{
       @include container_into_PpalSide_style;
       margin-bottom: 0px;
-      border-bottom: none;      
+      border-bottom: none;
 
-      .add_request_button{
+      .btn-toolbar{
         @include center-horizontally(80%);
-        margin-top:10px;
-        height: 20px;
-      }
+        margin-bottom: 20px;
+       
+        a{
+          @include proportions(85%,20px);                       
+        }
+        .requestWritingBox{    
+          width: 100%;
+          overflow: visible;
+          background-color:#CCAAAA;
+          z-index: 1000;
+          display: none;
+          form{ 
+            padding: 10px;             
+            .request_bar{
+              @include center-horizontally(90%);
+              height: 80px;
+              margin-bottom: 0px;
+            }
+          }
+        }        
+      }     
 
       .requests_requestsList{
-        @include center-horizontally(98%);
+        @include center-horizontally(100%);
         overflow:auto;
         margin-top:10px;
 
         .request{
-          @include center-horizontally(96%);
+          @include center-horizontally(100%);
           @include box-sizing(border-box);
-          overflow: hidden;
-          margin-bottom: 8px;
+          overflow: hidden;          
+          padding: 10px 6px 0px 6px;
+          border-top: $borde1px;          
 
           .profile_image{
             @include box-sizing(border-box);
             @include border-radius(5px, 5px);
-            @include proportions(40px,40px);
+            @include proportions(18%,40px);
             padding: 2px;
             float:left;
-            margin:0px 5px 5px 0px;
             border: $borde1px;
 
             img{
@@ -118,28 +136,43 @@
           }
 
           .description{
-            @include box-sizing(border-box);
-            @include border-radius(5px, 5px);
-            @include proportions(79%,40px);
-            float: left;
-            border: $borde1px;
+            @include proportions(80%,40px);
+            float: right;
             font-size: 9px;
-            overflow: hidden;
+            line-height: normal;
+            overflow: hidden;            
+          }
 
-            .request_bar{
-              @include proportions(98%,40px);
+          .options_menu{
+            @include center-horizontally(90%);
+            top: -5px;
+            height: 10px;            
+            float: left;
+            font-size: 9px;
+
+            a{
+              float: right;
+              margin-top: -12px;
+              margin-left: 20px;
+              color: #3355FF;
+              font-weight: bold;
             }
           }
 
-          a{
-            @include unstyled-link;
-            margin-left: 2px;
-            font-size:12px;
-            z-index: 10;
+          &:hover{
+            background-color: #EEEEEE;
           }
+          
+        }
+
+        .request:last-child{
+          border-bottom: $borde1px;
         }
       }
     }
   }
+}
 
+.new_request_style{
+  background-color: #66AAEE;
 }

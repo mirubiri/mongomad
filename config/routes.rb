@@ -14,6 +14,7 @@ Mongomad::Application.routes.draw do
     resources :offers
     resources :negotiations
     resources :deals
+    resources :alerts
   end
 
 end

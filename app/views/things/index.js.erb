@@ -1,6 +1,20 @@
-matchPrincipalContainersHeighs();
-expandRequestContainer();
+//Primero recargo la barra de navegacion
+$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
-$("#ppal_container").html("<%=j render :partial => 'things/partials/thing' %>").masonry('destroy');
 
+//Oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
+$("#ppal_container")
+.hide()
+.html("<%=j render :partial => 'things/partials/thing' %>")
+.masonry('destroy');
+
+
+//Vuelvo a ejecutar el masonry, pongo en orden las alturas principales y dejo que todo se vea
 masonryThing();
+matchPrincipalContainersHeighs();
+$("#ppal_container").show();
+
+
+//Ahora ejecuto todo lo extra que necesito
+expandRequestContainer();
+imageSelection();

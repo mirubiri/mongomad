@@ -1,12 +1,7 @@
-$('#edit-thing-form').removeClass("container_invisible");
-$('#edit-thing-form').modal({
-    opacity:60,
-    overlayCss: {backgroundColor:"#000000"},
-    onClose: function () {
-      $.modal.close();
-      $('#edit-thing-form').addClass("container_invisible");
-      $('#ppal_container').masonry('reload');
-    }
-});
+$('#edit-thing-form').remove();
+
+$("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_thing').html_safe %>");
+
+$('#edit-thing-form').modal('show');
 
 matchPrincipalContainersHeighs();

@@ -3,173 +3,55 @@
 .negotiation {
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
-  width: 100%;
-  margin:0px 0px 20px 0px;
-  float: left;  
+  width: 98%;
+  margin:0px 0px 20px 8px;
+  float: left;
 
-    .proposition_container{
+    .negotiation_offer {
+      @include offer_header;
+      @include offer_products;
       @include box-sizing(border-box);
-      float:left;
-      overflow: hidden;
-      width: 38%;
+      overflow: none;      
+      padding: 0px;
+      margin: 0px;
+      width: 30%;
+      float: left;
 
-      .proposition{
-        float:inherit;
-        overflow:inherit;
+      .offer_button{
+        @include box-sizing(border-box);
         width: 100%;
-
-        .proposition_header{
-          @include proportions(100%,60px);
-          overflow: inherit;
-          margin-bottom: 5px;
-          border-bottom:$borde1px;
-
-          .triangle {
-            @include relative($top:0px,$right:-290px);
-            @include proportions(0,0);
-            border:{
-              top: 25px solid rgb(220,220,220);
-              right: 0px solid transparent;
-              left: 25px solid transparent;
-            }
-          }
-
-          .profile_image{
-            @include relative($top:-20px,$left:8px);
-            @include border-radius(5px, 5px);
-            @include proportions(50px,50px);
-            border: $borde1px;
-            img{
-              @include border-radius(5px, 5px);
-              @include proportions(50px,50px);
-            }
-          }
-        }
-
-        .offered_things{
-          float: left;
-          width: 180px;
-
-          .offered_product{
-            @include images_style;
-            @include proportions(132px,132px);
-            float: left;
-            overflow: auto;
-            margin: 10px 5px 0px 5px;
-            padding-left: 10px;
-
-            img{
-              @include high-quality-image;
-              @include proportions(100%,100%);             
-              float: left;
-            }
-
-            .product-title{
-              float: left;
-              width: 88%;
-              font-size: 10px;
-            }
-          }
-
-          .offered_money{
-            @include border-radius(5px, 5px);
-            @include proportions(80px,auto);
-            float: left;
-            margin: 2px 0px 0px 2px;
-            border: $borde2px;
-            text-align: center;
-            font-size: 12px;
-
-            img{
-              @include high-quality-image;
-            }
-          }
-        }
-
-        .orderer_things{
-          float:left;
-          padding:10px 0px 0px 15px;
-          width: 90px;
-
-          .orderer_product{
-            @include images_style;
-            @include proportions(90px,90px);
-            float: left;
-            overflow: auto;
-            margin: 0px 5px 0px 5px;
-
-            img{
-              @include proportions(100%,100%);
-              float:left;
-            }
-
-            .product-title{
-              float: inherit;
-              text-align: center;
-              font-size: 10px;
-            }
-
-          }
-
-          .orderer_money{
-            @include border-radius(5px, 5px);
-            @include proportions(80px,auto);
-            float: inherit;
-            margin: 2px 0px 0px 2px;
-            border: $borde2px;
-            text-align: center;
-            font-size: 12px;
-
-            img{
-              @include high-quality-image;
-            }
-          }
-        }
-
-      }
-
-
-      .actions{
         float:left;
-        overflow:auto;
-        margin-bottom:5px;
-        width:100%;
+        padding: 0px 10px 10px 0px;
 
-        .reputation{
-          float:left;
-          padding-left: 18px;
-
-          img{
-            @include high-quality-image;
-            float:left;
-          }
-        }
-        .action_buttons{
-          float:right;
-          padding-right: 60px;
-
-          button{
-            margin-top: 10px;
-            width: 80px;
-            font-size: 10px;
-          }
+        button{
+          float: right;
+          margin-right: 5px;          
         }
       }
 
-    }
+      .offer_date{
+        float: left;
+        margin: 0px 0px 0px 5px;
+        font-size: 8px;
+        visibility: hidden;
+      }
+
+      @include box-sizing(border-box);
+    }     
 
     .dialog_container{
       @include box-sizing(border-box);
       float:right;
       overflow: hidden;
-      width: 62%;
-      border-left: $borde2px;
+      width: 70%;
+      border-left: 2px solid rgb(119,119,119);
 
       .dialog_head{
         @include proportions(100%,25px);
         float: left;
         margin-bottom:10px;
-        background-color:rgb(220,220,220);
+        background-color:rgb(119,119,119);
+        color: white;
 
         .dialogin{
           float:left;
@@ -188,9 +70,11 @@
       }
 
       .conversation{
+        @include box-sizing(border-box);
         overflow-y: auto;
         width: 100%;
         text-align: center;
+        padding-bottom: 5px;
 
         .comment{
           float: left;
@@ -227,26 +111,36 @@
       }
 
       .writting_box{
+        @include box-sizing(border-box);
         float: left;
+        padding-left: 5px;
         overflow: auto;
         width: 100%;
+        height: 24px;
+        border:{
+          top: $borde2px;
+          left:none;
+        }
 
         form{
-          float:right;
-          width: inherit;
+          float:left;
+          width: 100%;
+          height: 22px;
+          margin: 0px;
 
           .message{
             float: left;
+            height: inherit;
             overflow: hidden;
-            width: inherit;
+            width: 100%;
 
             input{
-              float: inherit;
-              width: inherit;
-              border:{
-                top: $borde2px;
-                left:none;
-              }
+              float: left;
+              width: 100%;
+              height: inherit;
+              margin: 0px;
+              border: none; 
+              padding: 0px;             
             }
           }
         }

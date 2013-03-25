@@ -1,0 +1,18 @@
+$('#new-thing-form').modal('hide');
+
+$('#new-thing-form').on('hidden', function () {
+  $('#ppal_container')
+  .prepend("<%= escape_javascript(render :template => 'things/show', :locals => {:@thing => thing}).html_safe %>")
+  .masonry( 'reload' )
+  .children()
+  .first()
+  .css('opacity', 0)
+  .hide()
+  .slideDown()
+  .animate(
+    { opacity: 1 },
+    { queue: false, duration: 1500 }
+  )
+  .animate({backgroundColor: '#ffffff'}, 800)
+  activateRequestButtons();
+})

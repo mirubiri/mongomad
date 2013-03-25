@@ -1,37 +1,39 @@
-<div class="new_thing_content container_invisible" id="edit-thing-form"> 
-  <%= form_for @thing, :url => {:action => "update", :id => @thing.id}, :html => {:method => "put" } do |form| %>
-    <div class="thing_title">
-      Añade un nuevo producto      
+<div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-thing-form">
+  <%= form_for @thing, :remote => true do |form| %>
+    <div class="new_thing_title">
+      Edita este producto      
     </div>
-    <div class="thing_container">
-      <div class="thing_image">
-        <div class="big_image_container">
-          <%= form.file_field :image %>
-          <%= thing_image(@thing) %>
-        </div>          
-        <div class="small_images_container">
-          <%= thing_image(@thing) %>
-        </div>          
+    <div class="new_thing_container">
+      <div class="new_thing_image">
+        <div class="image_container">
+          <%= form.file_field :image,
+            :id => "thing_image",
+            :onchange => "imageSelection(this);" %>
+          <img class="thing_image_container" id="thing_image_container" src="<%= @thing.image %>">
+        </div>
       </div>
-      <div class="thing_description">        
+      <div class="new_thing_description">
         <div class="title">
           <%= form.text_area :name, 
-                :placeholder => "Título del producto",
-                :size => "4x1" %>
-        </div>          
+                  :placeholder => "Título del producto",
+                  :size => "4x1" %>
+        </div>
         <div class="description">
           <%= form.text_area :description,
-                  :placeholder => "Describa de forma concisa el producto",
-                  :size => "24x6" %>
-        </div>          
-      </div>
-    </div>
-    <div class="thing_options">
-      <div class="send_button">      
-        <div class="action">      
-          <%= form.submit  "submit", :id => 'edit-thing-send-button'  %>
-        </div> 
+                    :placeholder => "Describa de forma concisa el producto",
+                    :size => "10x5" %>
+        </div>
+        <div class="new_thing_stock">
+          <%= form.text_area :stock, 
+                :placeholder => "Unidades del producto de las que dispone",  
+                :size => "4x1" %>
+        </div>
       </div>      
-    </div>    
+    </div>
+    <div class="thing_options">            
+      <%= form.submit  "Save Changes", 
+      :id => 'new-thing-send-button',
+      :class => "btn btn-success" %>
+    </div>
   <% end %>   
-</div> 
+</div>  

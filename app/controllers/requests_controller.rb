@@ -1,12 +1,13 @@
 class RequestsController < ApplicationController
-  def sub_layout22
-    "requests"
-  end
-
   # GET /requests
   # GET /requests.json
+
+  def sub_layout
+    "requests" 
+  end
+
   def index
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id])    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,27 +33,33 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @request }
+      format.js # render new.js.erb }
     end
   end
 
   # GET /requests/1/edit
   def edit
-    @request = Request.find(params[:id])
+    @request = Request.find(params[:id])   
+
+    respond_to do |format|
+      format.html 
+      format.js
+    end
+    
   end
 
   # POST /requests
   # POST /requests.json
   def create
-    @user = current_user
-    @request = Request.generate(params[:request])
-    @request.user = @user
-    @request.self_update
+    @user = User.find(params[:user_id])    
+    @request = Request.generate(params)
 
     respond_to do |format|
-      if @request.publish
+      if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
-        format.json { render json: @user, status: :created, location: @request }
+        format.js { 
+          render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created  
+        }
       else
         format.html { redirect_to @user, notice: 'la peticicion no se ha creado' }
         format.json { render json: @request.errors, status: :unprocessable_entity }
@@ -63,15 +70,14 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
-    @user = current_user
-    @request = @user.resquests.find(params[:request][:request_id])
-    @request.alter_contents(params[:request])
-    @request.self_update
+    @user = User.find(params[:user_id]) 
+    @request = Request.find(params[:id])
 
     respond_to do |format|
-      if @request.publish
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
-        format.json { head :no_content }
+      if @request.update_attributes(params[:request])
+        format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
+        format.js { render :partial => "requests/edit_request_in_list", :layout => false
+        }
       else
         format.html { render action: "edit" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
@@ -83,7 +89,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id])
-    @request.unpublish
+    @request.destroy
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }

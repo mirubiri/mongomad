@@ -20,7 +20,8 @@ class ThingsController < ApplicationController
   # GET /things/1
   # GET /things/1.json
   def show
-    @thing = Thing.find(params[:id])
+    @thing = current_user.things.find(params[:id])
+    @user = current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -52,14 +53,14 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    @user = User.find(params[:user_id])
-    @thing = current_user.things.build(params[:user_thing])    
+    @thing = User::Thing.new(params[:user_thing])  
 
     respond_to do |format|
-      if @thing.save
-        flash[:message] = "woww, anda que funciona"   
+      if current_user.things << @thing
         format.html { redirect_to user_things_url, notice: 'thing was successfully created.' }
-        format.json { render json: user_things_url, status: :created}
+        format.js { 
+          render :partial => "things/reload_things_list", :layout => false, :locals => { :thing => @thing }, :status => :created
+        }
       else
         error = @thing.errors.to_a
         flash[:message] = error
@@ -73,12 +74,13 @@ class ThingsController < ApplicationController
   # PUT /things/1
   # PUT /things/1.json
   def update
-    @thing = current_user.things.find(params[:id])
+    @user = current_user
+    @thing = current_user.things.find(params[:id])    
 
     respond_to do |format|
       if @thing.update_attributes(params[:thing])
-        format.html { redirect_to @thing, notice: 'thing was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to user_things_path(current_user), notice: 'thing was successfully updated.' }
+        format.js { render :partial => "things/edit_thing_in_list", :layout => false }
       else
         format.html { render action: "edit" }
         format.json { render json: @thing.errors, status: :unprocessable_entity }

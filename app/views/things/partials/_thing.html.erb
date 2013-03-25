@@ -1,20 +1,16 @@
-<%= flash[:message] %>
-
-<% user_visited_things.each do |thing| %>
-  <div class="thing" id="<%= thing_id(thing) %>">
-    <div class="thing_image">
-      <%= thing_image(thing) %>
+<% user_visited_things.reverse_each do |thing| %>  
+  <div class="thing thumbnail" id="<%= thing_id(thing) %>">
+    <%= thing_inboard(thing) %>
+    <div class="caption">
+      <h5><%= thing_name(thing) %></h5>
+      <p><%= thing_description(thing) %></p>
+      <p>
+        <% if user_logged_id == user_visited_id %>      
+          <%= link_to "editar producto",
+              edit_user_thing_path(current_user,thing),
+              :remote => true %>        
+        <% end %>       
+      </p>
     </div>
-    <div class="thing_description"><%= thing_description(thing) %></div>
-    <% if user_logged_id == user_visited_id %>      
-      <%= link_to "editar producto",
-          edit_user_thing_path(current_user,thing),
-          :remote => true %>        
-    <% end %>    
-      
-  </div>  
+  </div>
 <% end %>
-
-<%= render :partial => "layouts/new_thing" %>
-<%= render :partial => "layouts/edit_thing" %>
-  

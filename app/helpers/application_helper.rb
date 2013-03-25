@@ -89,8 +89,8 @@ module ApplicationHelper
   def user_visited_website
     @user.profile.website
   end
-  def user_visited_bithdate
-    @user.profile.bithdate
+  def user_visited_birthdate
+    @user.profile.birth_date
   end
   def user_visited_image
     image_tag(@user.profile.image)
@@ -140,6 +140,9 @@ module ApplicationHelper
   end
   def thing_image(thing)
     image_tag(thing.image)
+  end
+  def thing_inboard(thing)
+    image_tag(thing.image, :alt => '200x100', :width => '200', :height => '100')
   end
 
   # REQUEST HELPERS -----------------------------------------
@@ -242,6 +245,12 @@ module ApplicationHelper
   def negotiation_users(negotiation)
     negotiation.users
   end
+  def negotiation_composer(negotiation)
+    User.find(negotiation.negotiator_ids[0])
+  end
+  def negotiation_composer_name(negotiation)
+    negotiation.proposals.last.composer.name
+  end
   def negotiation_composer_image(negotiation)
     image_tag(negotiation.proposals.last.composer.image)
   end
@@ -250,6 +259,12 @@ module ApplicationHelper
   end
   def negotiation_composer_id(negotiation)
     negotiation.proposals.last.user_composer_id
+  end
+  def negotiation_receiver(negotiation)
+    User.find(negotiation.negotiator_ids[1])
+  end
+  def negotiation_receiver_name(negotiation)
+    negotiation.proposals.last.receiver.name
   end
   def negotiation_receiver_image(negotiation)
     image_tag(negotiation.proposals.last.receiver.image)
@@ -373,4 +388,10 @@ module ApplicationHelper
   def agreement_updatetime(agreement)
     agreement.updated_at
   end
+
+  # ALERTS HELPERS -----------------------------------------
+  def user_alerts
+    @user.requests
+  end 
+
 end
