@@ -12,6 +12,7 @@ class Negotiation
     :negotiators,
     presence: true
 
+=begin
   def self.generate(offer)
     proposal_params = self.proposal_params_from_offer(offer)
     message_params = self.message_params_from_offer(offer)
@@ -44,6 +45,7 @@ class Negotiation
     conversation.self_update
     self
   end
+=end
 
   def kick(negotiator)
     if negotiators.count >= 2

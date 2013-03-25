@@ -15,7 +15,9 @@ class Negotiation::Conversation::Message
   validates :text,
     length: { minimum: 1, maximum: 160 }
 
+=begin
   def self_update
     self
   end
+=end
 end

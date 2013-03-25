@@ -17,7 +17,7 @@ class Negotiation::Conversation
     #:starter_negotiator_image_name,
     #:follower_negotiator_image_name,
     presence: true
-
+=begin
   def self_update
     reload if persisted?
     messages.each do |message|
@@ -25,4 +25,5 @@ class Negotiation::Conversation
     end
     self
   end
+=end
 end

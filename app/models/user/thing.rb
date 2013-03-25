@@ -21,6 +21,7 @@ class User::Thing
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 0 }
 
+=begin  
   def self.generate(thing_params=[])
     thing = new(
       name: thing_params[:name],
@@ -46,4 +47,5 @@ class User::Thing
     reload if persisted?
     self
   end
+=end
 end

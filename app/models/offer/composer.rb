@@ -19,6 +19,7 @@ class Offer::Composer
     :image_name,
     presence: true
 
+=begin
   def add_products(products_params)
     products_params.each do |params|
       if params.has_key?(:thing_id) && params.has_key?(:quantity)
@@ -57,7 +58,7 @@ class Offer::Composer
   #     product.self_update!
   #   end
   # end
-=begin
+
   def self_update!
     raise "user is not valid" if (offer.user_composer == nil || offer.user_composer.persisted? == false)
       # reload if persisted?

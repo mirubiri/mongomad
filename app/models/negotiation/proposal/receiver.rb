@@ -25,7 +25,7 @@ class Negotiation::Proposal::Receiver
       self.products << new_product
     end
   end
-=end
+
   def add_products(params=[])
     params.each do |index|
       products.build(thing_id: index[:thing_id], quantity: index[:quantity])
@@ -50,4 +50,5 @@ class Negotiation::Proposal::Receiver
     update_products
     self
   end
+=end
 end
