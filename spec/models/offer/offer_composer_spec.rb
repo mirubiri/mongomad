@@ -5,8 +5,8 @@ describe Offer::Composer do
   let(:user_receiver) { Fabricate(:user_with_things) }
   let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:composer) { offer.composer }
-  let(:products_params) { params_for_offer(offer)[:composer_things] }
-  let(:thing) { user_composer.things.last }
+  #let(:products_params) { params_for_offer(offer)[:composer_things] }
+  #let(:thing) { user_composer.things.last }
 
   describe 'Relations' do
     it { should be_embedded_in :offer }

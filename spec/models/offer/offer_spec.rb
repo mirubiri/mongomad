@@ -4,7 +4,7 @@ describe Offer do
   let(:user_composer) { Fabricate(:user_with_things) }
   let(:user_receiver) { Fabricate(:user_with_things) }
   let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
-  let(:offer_params) { params_for_offer(offer) }
+  #let(:offer_params) { params_for_offer(offer) }
 
   describe 'Relations' do
     it { should belong_to(:user_composer).of_type(User) }

@@ -6,8 +6,8 @@ describe Offer::Receiver::Product do
   let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:receiver) { offer.receiver }
   let(:product) { receiver.products.last }
-  let(:thing) { user_receiver.things.last }
-  let(:product_params) { params_for_offer(offer)[:composer_things].first }
+  #let(:thing) { user_receiver.things.last }
+  #let(:product_params) { params_for_offer(offer)[:composer_things].first }
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
@@ -45,13 +45,15 @@ describe Offer::Receiver::Product do
   describe 'after_save' do
     it 'has an image' do
       product.save
-      expect(File.exist? product.image.path ).to eq true
+      expect(File.exist? product.image.path).to eq true
     end
   end
 
   describe '#thing' do
     subject { product.thing }
+
     it { should be_instance_of(User::Thing) }
+
     it 'returns thing which originated this product' do
       expect(subject.id).to eq product.thing_id
     end
