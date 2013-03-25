@@ -38,7 +38,7 @@ GEM
     blueprint-rails (0.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    bootstrap-sass (2.3.0.1)
+    bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
     builder (3.0.4)
     carrierwave (0.8.0)
@@ -178,7 +178,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   blueprint-rails
-  bootstrap-sass (~> 2.3.0.1)
+  bootstrap-sass
   carrierwave-mongoid
   coffee-rails
   compass-rails
