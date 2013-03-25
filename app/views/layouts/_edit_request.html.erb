@@ -1,5 +1,5 @@
 <div class="modal modal-request hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-request-form">  
-  <%= form_for [current_user,@request] do |form| %>  
+  <%= form_for [current_user,@request], :remote => true do |form| %>  
     <div class="new_petition_content">
       <div class="new_petition_title">
         <div class="description">Editar Petición</div>
@@ -16,7 +16,7 @@
       <div class="action">
         <div class="send_button">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-          <%= form.submit "Editar", :class =>  "btn btn-primary" %>
+          <%= form.submit "Editar", :id => 'edit-request-send-button', :class =>  "btn btn-primary" %>
         </div>         
       </div> 
     </div>

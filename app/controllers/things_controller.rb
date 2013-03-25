@@ -53,14 +53,14 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    @user = User.find(params[:user_id])
-    @thing = current_user.things.build(params[:user_thing])    
+    @thing = User::Thing.new(params[:user_thing])  
 
     respond_to do |format|
-      if @thing.save
-        flash[:message] = "woww, anda que funciona"   
+      if current_user.things << @thing
         format.html { redirect_to user_things_url, notice: 'thing was successfully created.' }
-        format.json { render json: user_things_url, status: :created}
+        format.js { 
+          render :partial => "things/reload_things_list", :layout => false, :locals => { :thing => @thing }, :status => :created
+        }
       else
         error = @thing.errors.to_a
         flash[:message] = error

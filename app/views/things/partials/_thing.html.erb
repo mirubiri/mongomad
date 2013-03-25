@@ -1,4 +1,4 @@
-<% user_visited_things.each do |thing| %>  
+<% user_visited_things.reverse_each do |thing| %>  
   <div class="thing thumbnail" id="<%= thing_id(thing) %>">
     <%= thing_inboard(thing) %>
     <div class="caption">

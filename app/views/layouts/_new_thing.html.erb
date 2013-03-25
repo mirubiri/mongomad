@@ -1,15 +1,15 @@
 <div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-thing-form">
-  <%= form_for @thing do |form| %>
+  <%= form_for @thing, :remote => true do |form| %>
     <div class="new_thing_title">
       Añade un nuevo producto      
     </div>
     <div class="new_thing_container">
       <div class="new_thing_image">
         <div class="image_container">
-          <%= form.file_field :image_name,
+          <%#= form.file_field :image_name,
             :id => "thing_image",
             :onchange => "imageSelection(this);" %>
-          <img class="thing_image_container" id="thing_image_container" src="">
+          <!-- <img class="thing_image_container" id="thing_image_container" src=""> -->
         </div>
       </div>
       <div class="new_thing_description">

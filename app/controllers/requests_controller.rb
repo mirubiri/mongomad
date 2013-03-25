@@ -70,12 +70,14 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
+    @user = User.find(params[:user_id]) 
     @request = Request.find(params[:id])
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
         format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
-        format.json { head :no_content }
+        format.js { render :partial => "requests/edit_request_in_list", :layout => false
+        }
       else
         format.html { render action: "edit" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
