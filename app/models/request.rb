@@ -7,7 +7,6 @@ class Request
 
   field :nickname,   type: String
   field :text,       type: String
-  field :image_name, type: String
 
   mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
