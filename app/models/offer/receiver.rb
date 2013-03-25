@@ -18,36 +18,4 @@ class Offer::Receiver
     :name,
     :image_name,
     presence: true
-
-=begin
-  def add_products(params=[])
-    params.each do |index|
-      products.build(thing_id: index[:thing_id], quantity: index[:quantity])
-    end
-  end
-
-  def alter_contents(params=[])
-    products.destroy
-    add_products(params)
-  end
-
-  private
-  def update_user_data
-    self.name = offer.user_receiver.profile.name
-    self.image_name = offer.user_receiver.profile.image_name
-  end
-
-  def update_products
-    products.each do |product|
-      product.self_update
-    end
-  end
-
-  public
-  def self_update
-    update_user_data
-    update_products
-    self
-  end
-=end
 end
