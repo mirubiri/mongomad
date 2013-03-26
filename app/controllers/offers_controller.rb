@@ -48,11 +48,12 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @offer = Offer.generate(params[:offer])
     @user = User.find(params[:user_id])
+    @offer = Offer.new(params[:offer])
+    @offer.user_composer = current_user
 
     respond_to do |format|
-      if @offer.publish
+      if @offer.save
         format.html { redirect_to @user, notice: 'Offer was successfully created.' }
         format.json { render json: @offer, status: :created, location: @offer }
       else
