@@ -56,9 +56,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
-        format.js {
-          render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created
-        }
+        format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }
       else
         format.html { redirect_to @user, notice: 'Request was not created.' }
         format.json { render json: @request.errors, status: :unprocessable_entity }
@@ -71,11 +69,11 @@ class RequestsController < ApplicationController
   def update
     @user = current_user
     @request = Request.find(params[:id])
+
     respond_to do |format|
       if @request.update_attributes(params[:request])
         format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
-        format.js { render :partial => "requests/edit_request_in_list", :layout => false
-        }
+        format.js { render :partial => "requests/edit_request_in_list", :layout => false }
       else
         format.html { render action: "edit" }
         format.json { render json: @request.errors, status: :unprocessable_entity }
