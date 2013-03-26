@@ -17,7 +17,7 @@ describe Negotiation::Proposal::Receiver::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_name).of_type(Object) }
-    it { should have_denormalized_fields :name,:description,:image_name }
+    it { should have_denormalized_fields(:name, :description, :image_name).from('thing') }
   end
 
   describe 'Validations' do
@@ -40,10 +40,20 @@ describe Negotiation::Proposal::Receiver::Product do
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       product.save
       expect(File.exist? product.image.path).to eq true
+    end
+  end
+
+  describe '#thing' do
+    subject { product.thing }
+
+    it { should be_instance_of(User::Thing) }
+
+    it 'returns thing which originated this product' do
+      expect(subject.id).to eq product.thing_id
     end
   end
 end

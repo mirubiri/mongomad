@@ -15,7 +15,7 @@ describe Negotiation::Proposal::Receiver do
     it { should have_field(:nickname).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
     it { should accept_nested_attributes_for :products }
-    it { should have_denormalized_fields :nickname, :image_name }
+    it { should have_denormalized_fields(:nickname, :image_name).from('user.profile') }
   end
 
   describe 'Validations' do
@@ -37,6 +37,16 @@ describe Negotiation::Proposal::Receiver do
     it 'has an image' do
       receiver.save
       expect(File.exist? receiver.image.path).to eq true
+    end
+  end
+
+  describe '#user' do
+    subject { receiver.user }
+
+    it { should be_instance_of(User) }
+
+    it 'returns user who received current proposal' do
+      expect(subject.id).to eq receiver.proposal.user_receiver_id
     end
   end
 end

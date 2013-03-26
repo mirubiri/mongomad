@@ -11,11 +11,15 @@ class Negotiation::Proposal::Composer
 
   accepts_nested_attributes_for :products
 
-  denormalize :nickname, :image_name
+  denormalize :nickname, :image_name, from:'user.profile'
 
   validates :proposal,
     :products,
     :nickname,
     :image_name,
     presence: true
+
+  def user
+    User.find(self.proposal.user_composer_id)
+  end
 end
