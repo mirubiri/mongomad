@@ -40,7 +40,9 @@ describe Offer do
     end
   end
 
+=begin
   describe '#start_negotiation' do
     xit 'starts a negotiation from the current offer'
   end
+=end
 end
