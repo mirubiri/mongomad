@@ -11,12 +11,12 @@
         </div>
       </div>
       <div class="new_offer_text">
-        <%= form.text_area(:text, :placeholder => "Write your request here", :size => "24x6" ) %>
+        <%= form.text_area :text, :placeholder => "Write your request here", :size => "24x6" %>
       </div>
       <div class="action">
         <div class="send_button">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <%= form.submit "Añadir", :id => 'new-request-send-button', :class =>  "btn btn-primary" %>
+          <%= form.submit "Añadir", :id => 'new-request-send-button', :class =>  "btn btn-primary" %>
         </div>
       </div>
     </div>
