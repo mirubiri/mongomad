@@ -176,7 +176,7 @@ module ApplicationHelper
     offer.user_composer_id
   end
   def offer_composer_name(offer)
-    offer.composer.name
+    offer.composer.nickname
   end
   def offer_composer_image(offer)
     image_tag(offer.composer.image)
@@ -188,7 +188,7 @@ module ApplicationHelper
     offer.user_receiver_id
   end
   def offer_receiver_name(offer)
-    offer.receiver.name
+    offer.receiver.nickname
   end
   def offer_receiver_image(offer)
     image_tag(offer.receiver.image)
