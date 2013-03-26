@@ -16,9 +16,9 @@ describe Offer do
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:initial_message).of_type(String) }
-    it { should accept_nested_attributes_for(:composer) }
-    it { should accept_nested_attributes_for(:receiver) }
-    it { should accept_nested_attributes_for(:money) }
+    it { should accept_nested_attributes_for :composer }
+    it { should accept_nested_attributes_for :receiver }
+    it { should accept_nested_attributes_for :money }
   end
 
   describe 'Validations' do
