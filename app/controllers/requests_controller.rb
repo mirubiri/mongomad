@@ -52,6 +52,7 @@ class RequestsController < ApplicationController
     @user = current_user
     @request = Request.new(params[:request])
     @request.user = @user
+
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
