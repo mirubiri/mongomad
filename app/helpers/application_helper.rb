@@ -51,7 +51,7 @@ module ApplicationHelper
   end
   #TODO: Cambiar nombre a 'user_logged_received_offers'
   #def user_logged_received_offers(user = user_logged)
-  def user_logged_offers(user = user_logged) 
+  def user_logged_offers(user = user_logged)
     user.received_offers
   end
   def user_logged_negotiations(user = user_logged)
@@ -112,7 +112,7 @@ module ApplicationHelper
   end
   #TODO: Cambiar nombre a 'user_visited_received_offers'
   #def user_visited_received_offers
-  def user_visited_offers 
+  def user_visited_offers
     @user.received_offers
   end
   def user_visited_negotiations
@@ -149,24 +149,27 @@ module ApplicationHelper
   def request_id(request)
     request._id
   end
-  def request_user_id(request)
-    request.user_id
-  end
-  def request_user_name(request)
-    request.user_name
-  end
+  # def request_user_id(request)
+  #   request.user._id
+  # end
+  # def request_user_name(request)
+  #   request.user.profile.name
+  # end
+  # def request_user_nickname(request)
+  #   request.nickname
+  # end
   def request_text(request)
     request.text
   end
   def request_image(request)
     image_tag(request.image)
   end
-  def request_datetime(request)
-    request.created_at
-  end
-  def request_updatetime(request)
-    request.updated_at
-  end
+  # def request_datetime(request)
+  #   request.created_at
+  # end
+  # def request_updatetime(request)
+  #   request.updated_at
+  # end
 
   # OFFER HELPERS -----------------------------------------
   def offer_id(offer)
@@ -392,6 +395,6 @@ module ApplicationHelper
   # ALERTS HELPERS -----------------------------------------
   def user_alerts
     @user.requests
-  end 
+  end
 
 end
