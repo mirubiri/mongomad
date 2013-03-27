@@ -50,7 +50,7 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     @user = current_user   
-    @request = Request.new(params[:request][:text])
+    @request = Request.new(params[:request])
     @request.user = current_user
 
     respond_to do |format|

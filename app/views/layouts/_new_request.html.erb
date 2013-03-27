@@ -11,8 +11,7 @@
         </div>
       </div>
       <div class="new_offer_text">
-        <%= text_area_tag([:request][:text], nil, {:placeholder => "Texto de la peticion", 
-        :size => "24x6"}) %>
+        <%= form.text_area :text, :placeholder => "Texto de la peticion", :size => "24x6" %>
       </div> 
       <div class="action">
         <div class="send_button">
