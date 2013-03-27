@@ -1,5 +1,6 @@
 class Deal::Agreement::Proposal::Receiver::Product
   include Mongoid::Document
+  include Denormalized
 
   embedded_in :receiver, class_name: "Deal::Agreement::Proposal::Receiver"
 
@@ -8,7 +9,9 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :description, type: String
   field :quantity,    type: Integer
 
-  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+
+  denormalize :name, :description, :image_name, from:'thing'
 
   validates :receiver,
     :thing_id,
@@ -21,4 +24,8 @@ class Deal::Agreement::Proposal::Receiver::Product
   validates :quantity,
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def thing
+    User.where('things._id' => thing_id).first.things.find(self.thing_id)
+  end
 end

@@ -40,7 +40,7 @@ describe Negotiation::Conversation do
   end
 
 =begin
-  describe 'On save' do
+  describe 'after_save' do
     it 'has two images' do
       conversation.save
       expect(File.exist? conversation.starter_image.path).to eq true

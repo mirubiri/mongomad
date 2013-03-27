@@ -26,7 +26,7 @@ describe Negotiation::Proposal::Money do
   describe 'Factories' do
     specify { expect(money).to be_valid }
 
-    it 'Creates one negotiation' do
+    it 'creates one negotiation' do
       expect { money.save }.to change{ Negotiation.count }.by(1)
     end
   end

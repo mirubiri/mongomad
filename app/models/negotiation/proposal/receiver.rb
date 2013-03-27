@@ -7,7 +7,7 @@ class Negotiation::Proposal::Receiver
 
   field :nickname, type: String
 
-  mount_uploader :image, UserImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
 
   accepts_nested_attributes_for :products
 

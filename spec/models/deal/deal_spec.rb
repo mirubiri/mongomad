@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Deal do
-  let(:offer) { Fabricate(:offer) }
-  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  let(:negotiation) { Fabricate(:negotiation) }
   let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
 
   describe 'Relations' do

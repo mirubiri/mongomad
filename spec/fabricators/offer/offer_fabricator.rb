@@ -4,5 +4,5 @@ Fabricator(:offer) do
   composer        { |attrs| Fabricate.build(:offer_composer, user:attrs[:user_composer]) }
   receiver        { |attrs| Fabricate.build(:offer_receiver, user:attrs[:user_receiver]) }
   money           { Fabricate.build(:offer_money) }
-  initial_message { Faker::Lorem.sentence(word_count = 15) }
+  initial_message { Faker::Lorem.sentence(word_count = 10) }
 end
