@@ -11,11 +11,10 @@ function matchPrincipalContainersHeighs(){
   if ( ($('#devise_container').height()) < alturaVentana ) {
       $('#devise_container').css({'height': alturaVentana  + 'px'});
   }
-
   if ( ($('#user-side').height()) < alturaVentana ) {
       $('#user-side').css({'height': alturaVentana  + 'px'});
-  }  
-  
+  }
+
   $('#user-side,#content-side').equalHeightColumns();
   $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
 
@@ -64,7 +63,7 @@ function setProfileContainersHeights(){
 
   $('.person_info').css({'height': alturaPerfil  + 'px'});
   $('.person_info,.statistics').equalHeightColumns();
-  $('.comments_recieved').css({'height': alturaComentarios  + 'px'});  
+  $('.comments_recieved').css({'height': alturaComentarios  + 'px'});
 }
 
 function masonryOffer(){
@@ -81,12 +80,12 @@ function masonryThing(){
   });
 }
 
-function ajaxLinksUrlChange(){ 
+function ajaxLinksUrlChange(){
   $('#navigation_bar li a').live('click',function(e){
       $.getScript(this.href);
       var url= this.href;
       history.pushState({path:url},"", url);
-      $('#ppal_container').removeClass('masonry');              
+      $('#ppal_container').removeClass('masonry');
   });
 
   $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
@@ -103,15 +102,14 @@ function ajaxLinksUrlChange(){
 
 function buttonsClickBackgroundChange(){
   $('#navigation_bar li a').live('click',function(e){
-    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");             
+    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
   });
   $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
     $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
-    $('#navigation_bar li').removeClass("active"); 
+    $('#navigation_bar li').removeClass("active");
     $(this).addClass('active');
   });
 }
-
 
 function closeModalWindows(){
   $('#new-offer-send-button').live('click',function(e){
@@ -190,7 +188,7 @@ function newOfferScript(){
     $('#usuario_dinero').attr("name","offer[money][nil]").attr("value",0);
     $('#usuario_id').attr("value",0);
   }
-  //FIn funciones de ayuda para la ejecucion de los procesos de nueva oferta
+  //Fin funciones de ayuda para la ejecucion de los procesos de nueva oferta
 
   $('#new_offer_receiver_selector').live('click',function(e){
     e.preventDefault();
@@ -250,7 +248,7 @@ function activateAlertButton(){
   $('.user_alert').hover(
      function() {
         $(this).find('#alert_button').removeClass("hidden_container");
-     }, 
+     },
      function() {
         $(this).find('#alert_button').addClass("hidden_container");
      }
@@ -261,18 +259,18 @@ function activateOfferButton(){
   $('.offer').hover(
      function () {
        $(this).find('#negotiate_button').removeClass("disabled");
-     }, 
+     },
      function () {
       $(this).find('#negotiate_button').addClass("disabled");
      }
   );
 }
 
-function activateNegotiationButtons(){ 
+function activateNegotiationButtons(){
   $('.negotiation').hover(
-     function () {        
+     function () {
         $(this).find('.btn').removeClass("disabled");
-     }, 
+     },
      function () {
         $(this).find('.btn').addClass("disabled");
      }
@@ -283,7 +281,7 @@ function activateRequestButtons(){
   $('.request').hover(
      function () {
       $(this).find('.options_menu').removeClass("hidden_container");
-     }, 
+     },
      function () {
       $(this).find('.options_menu').addClass("hidden_container");
      }
@@ -293,16 +291,12 @@ function activateRequestButtons(){
 function imageSelection(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
-
     reader.onload = function (e) {
         $('#thing_image_container').attr('src', e.target.result);
-    }
-
+    };
     reader.readAsDataURL(input.files[0]);
   }
 }
-
-
 
 $(window).load(function(){
   //slideOptionsPanel();
@@ -312,7 +306,7 @@ $(window).load(function(){
   newOfferScript();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  expandRightContainer();  
+  expandRightContainer();
   activateRequestButtons();
   activateOfferButton();
   activateNegotiationButtons();
