@@ -48,9 +48,9 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @offer = Offer.new(params[:offer])
-    @offer.user_composer = current_user
+    @offer.user_composer = @user
 
     respond_to do |format|
       if @offer.save
@@ -67,6 +67,7 @@ class OffersController < ApplicationController
   # PUT /offers/1
   # PUT /offers/1.json
   def update
+    @user = current_user
     @offer = Offer.find(params[:id])
 
     respond_to do |format|
@@ -84,7 +85,7 @@ class OffersController < ApplicationController
   # DELETE /offers/1.json
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.unpublish
+    @offer.destroy
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }

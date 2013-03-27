@@ -146,10 +146,9 @@ function newOfferScript(){
         $("input[id='"+selector.attr("id")+"']").attr('value', (valr +1 ));
       }
       else{
-        // CAMBIAR NOMBRES EN EL FORMULARIO
         selector.clone().prepend('<div class="delete_button">x</div>').appendTo("#summary_offer_"+t+"_products_container").children('.quantity_container').html("1");
-        $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_things[]][thing_id]\" value=\""+ selector.attr("id") + "\" />");
-        $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_things[]][quantity]\" value=\""+ 1 + "\" id=\""+ selector.attr("id") + "\" />");
+        $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes[]][thing_id]\" value=\""+ selector.attr("id") + "\" />");
+        $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes[]][quantity]\" value=\""+ 1 + "\" id=\""+ selector.attr("id") + "\" />");
       }
       selector.children('.quantity_container').html(prdStock - 1);
       selector.attr('value',(prdStock-1));
