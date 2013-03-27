@@ -12,7 +12,6 @@ describe Negotiation do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :negotiators }
     it { should accept_nested_attributes_for :conversation }
     it { should accept_nested_attributes_for :proposals }
   end

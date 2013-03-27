@@ -1,13 +1,12 @@
 class RequestsController < ApplicationController
-  # GET /requests
-  # GET /requests.json
-
   def sub_layout
-    "requests" 
+    "requests"
   end
 
+  # GET /requests
+  # GET /requests.json
   def index
-    @user = User.find(params[:user_id])    
+    @user = current_user
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,13 +38,12 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
-    @request = Request.find(params[:id])   
+    @request = Request.find(params[:id])
 
     respond_to do |format|
-      format.html 
+      format.html
       format.js
     end
-    
   end
 
   # POST /requests
@@ -58,11 +56,9 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
-        format.js { 
-          render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created  
-        }
+        format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }
       else
-        format.html { redirect_to @user, notice: 'la peticicion no se ha creado' }
+        format.html { redirect_to @user, notice: 'Request was not created.' }
         format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
@@ -71,14 +67,13 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
-    @user = User.find(params[:user_id]) 
+    @user = current_user
     @request = Request.find(params[:id])
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
         format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
-        format.js { render :partial => "requests/edit_request_in_list", :layout => false
-        }
+        format.js { render :partial => "requests/edit_request_in_list", :layout => false }
       else
         format.html { render action: "edit" }
         format.json { render json: @request.errors, status: :unprocessable_entity }

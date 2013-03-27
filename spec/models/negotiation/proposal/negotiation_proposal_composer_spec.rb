@@ -15,7 +15,7 @@ describe Negotiation::Proposal::Composer do
     it { should have_field(:nickname).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
     it { should accept_nested_attributes_for :products }
-    it { should have_denormalized_fields :nickname,:image_name }
+    it { should have_denormalized_fields(:nickname, :image_name).from('user.profile') }
   end
 
   describe 'Validations' do
@@ -33,10 +33,20 @@ describe Negotiation::Proposal::Composer do
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       composer.save
       expect(File.exist? composer.image.path).to eq true
+    end
+  end
+
+  describe '#user' do
+    subject { composer.user }
+
+    it { should be_instance_of(User) }
+
+    it 'returns user who composed current proposal' do
+      expect(subject.id).to eq composer.proposal.user_composer_id
     end
   end
 end

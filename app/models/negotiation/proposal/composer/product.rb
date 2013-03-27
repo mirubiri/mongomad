@@ -1,5 +1,6 @@
 class Negotiation::Proposal::Composer::Product
   include Mongoid::Document
+  include Denormalized
 
   embedded_in :composer, class_name: "Negotiation::Proposal::Composer"
 
@@ -8,7 +9,9 @@ class Negotiation::Proposal::Composer::Product
   field :description, type: String
   field :quantity,    type: Integer
 
-  mount_uploader :image, ThingImageUploader, :mount_on => :image_name
+  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+
+  denormalize :name, :description, :image_name, from:'thing'
 
   validates :composer,
     :thing_id,
@@ -22,13 +25,7 @@ class Negotiation::Proposal::Composer::Product
     allow_nil: false,
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-=begin
-  def self_update
-    thing = User.find(composer.proposal.user_composer_id).things.find(self.thing_id)
-    self.name = thing.name
-    self.description = thing.description
-    self.image_name = thing.image_name
-    self
+  def thing
+    User.where('things._id' => thing_id).first.things.find(self.thing_id)
   end
-=end
 end

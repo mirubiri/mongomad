@@ -14,7 +14,7 @@ describe Offer::Receiver do
   describe 'Attributes' do
     it { should have_field(:nickname).of_type(String) }
     it { should have_field(:image_name).of_type(Object) }
-    it { should accept_nested_attributes_for(:products) }
+    it { should accept_nested_attributes_for :products }
     it { should have_denormalized_fields(:nickname, :image_name).from('offer.user_receiver.profile') }
   end
 
