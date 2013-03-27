@@ -51,8 +51,9 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = User.find(params[:user_id])    
-    @request = Request.generate(params)
+    @user = current_user   
+    @request = Request.new(params[:request][:text])
+    @request.user = current_user
 
     respond_to do |format|
       if @request.save
