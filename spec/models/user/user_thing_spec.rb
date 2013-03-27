@@ -29,13 +29,13 @@ describe User::Thing do
   describe 'Factories' do
     specify { expect(thing).to be_valid }
 
-    it 'Creates one user' do
+    it 'creates one user' do
       expect { thing.save }.to change{ User.count }.by(1)
     end
   end
 
-  describe 'On save' do
-    it 'Uploads an image' do
+  describe 'after_save' do
+    it 'uploads an image' do
       thing.save
       expect(File.exist? thing.image.path).to eq true
     end

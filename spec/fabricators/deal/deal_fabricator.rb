@@ -1,6 +1,7 @@
 Fabricator(:deal) do
-  transient          :negotiation
-  negotiation        { Fabricate(:negotiation)                                                           }
-  users              { |attrs| attrs[:negotiation].users                                                 }
-  agreement          { |attrs| Fabricate.build(:deal_agreement, negotiation:attrs[:negotiation])         }
+  transient    :negotiation
+  negotiation  { Fabricate(:negotiation) }
+  signers      { |attrs| attrs[:negotiation].negotiators }
+  conversation { |attrs| Fabricate.build(:deal_conversation, signers:attrs[:signers]) }
+  agreement    { |attrs| Fabricate.build(:deal_agreement, negotiation:attrs[:negotiation]) }
 end

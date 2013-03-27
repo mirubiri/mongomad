@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Proposal do
-  let(:proposal) do
-    Fabricate.build(:deal).agreement.proposals.last
-  end
+  let(:negotiation) { Fabricate(:negotiation) }
+  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
+  let(:agreement) { deal.agreement }
+  let(:proposal) { agreement.proposals.last }
 
   describe 'Relations' do
     it { should be_embedded_in(:agreement).of_type(Deal::Agreement) }
@@ -16,6 +17,9 @@ describe Deal::Agreement::Proposal do
     it { should be_timestamped_document }
     it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
+    it { should accept_nested_attributes_for :composer }
+    it { should accept_nested_attributes_for :receiver }
+    it { should accept_nested_attributes_for :money }
   end
 
   describe 'Validations' do
@@ -30,7 +34,7 @@ describe Deal::Agreement::Proposal do
   describe 'Factories' do
     specify { expect(proposal).to be_valid }
 
-    it 'Creates one deal' do
+    it 'creates one deal' do
       expect { proposal.save }.to change{ Deal.count }.by(1)
     end
   end

@@ -1,6 +1,6 @@
 Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Proposal::Receiver") do
-  transient :receiver
-  proposal  nil
+  transient  :receiver
+  proposal   nil
   products  do |attrs|
     products = []
     attrs[:receiver].products.each do |product|
@@ -8,6 +8,6 @@ Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Prop
     end
     products
   end
-  name      { |attrs| attrs[:receiver].name }
-  image     { |attrs| File.open(attrs[:receiver].image.path) }
+  nickname   { |attrs| attrs[:receiver].nickname }
+  image_name { |attrs| attrs[:receiver].image_name }
 end

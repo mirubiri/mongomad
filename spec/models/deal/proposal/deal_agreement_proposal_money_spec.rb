@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Money do
-  let(:money) do
-    Fabricate.build(:deal).agreement.proposals.last.money
-  end
+  let(:negotiation) { Fabricate(:negotiation) }
+  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
+  let(:agreement) { deal.agreement }
+  let(:proposal) { agreement.proposals.last }
+  let(:money) { proposal.money }
 
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }
@@ -25,7 +27,7 @@ describe Deal::Agreement::Proposal::Money do
   describe 'Factories' do
     specify { expect(money).to be_valid}
 
-    it 'Creates one deal' do
+    it 'creates one deal' do
       expect { money.save }.to change{ Deal.count }.by(1)
     end
    end

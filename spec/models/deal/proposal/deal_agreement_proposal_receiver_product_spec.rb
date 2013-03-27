@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe Deal::Agreement::Proposal::Receiver::Product do
-  let(:product) do
-    Fabricate.build(:deal).agreement.proposals.last.receiver.products.last
-  end
+  let(:negotiation) { Fabricate(:negotiation) }
+  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
+  let(:agreement) { deal.agreement }
+  let(:proposal) { agreement.proposals.last }
+  let(:receiver) { proposal.receiver }
+  let(:product) { receiver.products.last }
 
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Deal::Agreement::Proposal::Receiver) }
@@ -15,6 +18,7 @@ describe Deal::Agreement::Proposal::Receiver::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_name).of_type(Object) }
+    it { should have_denormalized_fields(:name, :description, :image_name).from('thing') }
   end
 
   describe 'Validations' do
@@ -32,15 +36,25 @@ describe Deal::Agreement::Proposal::Receiver::Product do
   describe 'Factories' do
     specify { expect(product).to be_valid }
 
-    it 'Creates one deal' do
+    it 'creates one deal' do
       expect { product.save }.to change{ Deal.count }.by(1)
     end
   end
 
-  describe 'On save' do
+  describe 'after_save' do
     it 'has an image' do
       product.save
-      expect(File.exist? product.image.path)).to eq true
+      expect(File.exist? product.image.path).to eq true
+    end
+  end
+
+  describe '#thing' do
+    subject { product.thing }
+
+    it { should be_instance_of(User::Thing) }
+
+    it 'returns thing which originated this product' do
+      expect(subject.id).to eq product.thing_id
     end
   end
 end

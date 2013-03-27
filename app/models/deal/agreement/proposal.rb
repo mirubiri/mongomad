@@ -10,6 +10,8 @@ class Deal::Agreement::Proposal
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
 
+  accepts_nested_attributes_for :composer, :receiver, :money
+
   validates :agreement,
     :composer,
     :receiver,

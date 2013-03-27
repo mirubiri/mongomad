@@ -1,9 +1,9 @@
 Fabricator(:deal_agreement_proposal_composer_product, class_name: "Deal::Agreement::Proposal::Composer::Product") do
- transient   :product
+  transient   :product
   composer    nil
   thing_id    { |attrs| attrs[:product].thing_id }
   name        { |attrs| attrs[:product].name }
   description { |attrs| attrs[:product].description }
   quantity    { |attrs| attrs[:product].quantity }
-  image       { |attrs| File.open(attrs[:product].image.path) }
+  image_name  { |attrs| attrs[:product].image_name }
 end
