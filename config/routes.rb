@@ -4,7 +4,6 @@ Mongomad::Application.routes.draw do
 
   #La ruta por defecto sera a la pantalla inicial de la plataforma
   root :to => 'users#show'
-  
 
   #Recursos del user
   resources :users do
@@ -16,5 +15,4 @@ Mongomad::Application.routes.draw do
     resources :deals
     resources :alerts
   end
-
 end
