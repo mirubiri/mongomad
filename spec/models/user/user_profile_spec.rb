@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 describe User::Profile do
-  let(:profile) do
-    Fabricate.build(:user).profile
-  end
+  let(:user) { Fabricate(:user) }
+  let(:profile) { user.profile }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
@@ -47,9 +46,5 @@ describe User::Profile do
       profile.save
       expect(File.exist? profile.image.path).to eq true
     end
-  end
-
-  describe '#alter(profile_params=[])' do
-    xit 'Updates the user profile with the given params'
   end
 end
