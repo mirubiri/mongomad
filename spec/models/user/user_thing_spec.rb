@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User::Thing do
   let(:user) { Fabricate(:user_with_things) }
-  let(:thing) { things.last }
+  let(:thing) { user.things.last }
 
   describe 'Relations' do
     it { should be_embedded_in :user }
