@@ -2,14 +2,16 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  embeds_one  :profile, class_name: "User::Profile", cascade_callbacks: true
-  embeds_many :things,  class_name: "User::Thing", cascade_callbacks: true
-
   has_many                :requests
   has_many                :sent_offers,     class_name: 'Offer', inverse_of: :user_composer
   has_many                :received_offers, class_name: 'Offer', inverse_of: :user_receiver
   has_and_belongs_to_many :negotiations
   has_and_belongs_to_many :deals
+
+  embeds_one  :profile, class_name: "User::Profile", cascade_callbacks: true
+  embeds_many :things,  class_name: "User::Thing", cascade_callbacks: true
+
+  accepts_nested_attributes_for :profile, :things
 
   validates :profile,
     presence: true
