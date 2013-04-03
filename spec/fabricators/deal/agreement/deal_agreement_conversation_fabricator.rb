@@ -8,8 +8,4 @@ Fabricator(:deal_agreement_conversation, class_name: "Deal::Agreement::Conversat
     end
     messages
   end
-  # starter_name        { |attrs| attrs[:conversation].starter_name }
-  # follower_name       { |attrs| attrs[:conversation].follower_name }
-  # starter_image_name  { |attrs| attrs[:conversation].starter_image_name }
-  # follower_image_name { |attrs| attrs[:conversation].follower_image_name }
 end
