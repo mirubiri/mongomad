@@ -9,23 +9,8 @@ Fabricator(:user_profile, class_name: "User::Profile") do
   phone_number     nil
   website          nil
   birth_date       '10-10-2000'
-  image            { File.open('app/assets/images/monkey.png') }
-  image_name       'monkey.png'
-
-  after_build do |profile|
-    profile.image.store!
-  end
-end
-
-Fabricator(:user_sergio_profile, from: "User::Profile") do
-  name       'Sergio'
-  surname    'de Torre'
-  nickname   'deTorre82'
-  sex        'man'
-  country    'Spain'
-  birth_date '12-23-1982'
-  image      { File.open('app/assets/images/sergio.jpg') }
-  image_name 'sergio.jpg'
+  image            { File.open('app/assets/images/user.png') }
+  image_name       'user.png'
 
   after_build do |profile|
     profile.image.store!
@@ -38,9 +23,24 @@ Fabricator(:user_medico_profile, from: "User::Profile") do
   nickname   'medico'
   sex        'man'
   country    'Spain'
-  birth_date '05-06-1982'
+  birth_date '06-05-1982'
   image      { File.open('app/assets/images/medico.jpg') }
   image_name 'medico.jpg'
+
+  after_build do |profile|
+    profile.image.store!
+  end
+end
+
+Fabricator(:user_sergio_profile, from: "User::Profile") do
+  name       'Sergio'
+  surname    'de Torre'
+  nickname   'deTorre82'
+  sex        'man'
+  country    'Spain'
+  birth_date '23-12-1982'
+  image      { File.open('app/assets/images/sergio.jpg') }
+  image_name 'sergio.jpg'
 
   after_build do |profile|
     profile.image.store!
