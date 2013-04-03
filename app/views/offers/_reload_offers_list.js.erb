@@ -1,7 +1,6 @@
 $('#new-offer-form').modal('hide');
 
-$('#new-offer-form').on('hidden', function () {  
-
+$('#new-offer-form').on('hidden', function () {
   $('#ppal_container')
   .masonry('destroy')
   .prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
@@ -19,3 +18,12 @@ $('#new-offer-form').on('hidden', function () {
 })
 
 masonryOffer();
+
+
+// Añadir utilizando el masonry
+
+//$('#new-offer-form').modal('hide');
+//var $newOffer = ("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
+//$('#new-offer-form').on('hidden', function () {
+  //$('#ppal_container').prepend($newOffer).masonry('prepended',$newOffer,false).masonry('reload');
+//})
