@@ -21,7 +21,8 @@ class OffersController < ApplicationController
   # GET /offers/1.json
   def show
     @offer = Offer.find(params[:id])
-
+    @negotiation = Negotiation.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @offer }
@@ -55,7 +56,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @user, notice: 'Offer was successfully created.' }
-        format.json { render json: @offer, status: :created, location: @offer }
+        format.js { render :partial => "offers/reload_offers_list", :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
         format.html { render action: "new" }
         format.json { render json: @offer.errors,

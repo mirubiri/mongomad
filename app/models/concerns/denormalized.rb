@@ -37,6 +37,7 @@ module Denormalized
   end
 
   private
+  #TODO Optimizar 
     def load_denormalized
         self.denormalized_definitions.each do |definition|
           definition[:fields].each do |field|

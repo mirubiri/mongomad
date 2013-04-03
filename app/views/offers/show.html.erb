@@ -1,0 +1,69 @@
+<div class="offer" id="<%= offer_composer_id(@offer) %>">
+  <div id="options">
+    <div class="menu">
+      <%= link_to "Eliminar Oferta",
+            user_offer_path(current_user,offer_id(@offer)),
+            :method => :delete,                
+            :confirm => "Are you sure?" %>
+      <a href="#blank">Opcion 2</a>
+    </div>
+  </div>
+  <div class="offer_header">
+    <div class="triangle">            
+        <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
+    </div>
+    <div class="profile_image">
+      <%= link_to offer_composer_image(@offer),
+        :controller => "users",
+        :action => "show",
+        :id => offer_composer_id(@offer)
+      %>
+    </div>
+    <div class="description">
+      <div class="composer_name">
+        <%= offer_composer_name(@offer) %>
+      </div>
+      <div class="offer_message">
+        <%= offer_message(@offer) %>
+      </div>            
+    </div>
+  </div>
+  <div class="offer_things">
+    <div class="recieved">
+      <% offer_composer_products(@offer).each do |product| %>
+        <div class="image_container">              
+          <%= product_image(product) %>
+          <div class="quantity_container"><%= product_quantity(product) %></div>
+          <div class="artistic_layer_big"></div>
+        </div>
+      <% end %>
+    </div>
+    <div class="given">
+      <% offer_receiver_products(@offer).each do |product| %>
+        <div class="image_container">
+          <%= product_image(product) %>
+          <div class="quantity_container"><%= product_quantity(product) %></div>
+          <div class="artistic_layer_small"></div> 
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% if user_logged_id == user_visited_id %>
+    <%= form_for [current_user,@negotiation] do |form| %>
+    <input type="hidden" name="offer_id" value="<%= offer_id(@offer)%>" />
+      <div class="offer_button">
+        <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
+      </div>
+    <% end %>
+  <% else %>
+    <%= form_for [current_user,@negotiation] do |form| %>
+      <input type="hidden" name="offer_id" value="<%= offer_id(@offer)%>" />
+      <div class="offer_button">
+        <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
+      </div>
+    <% end %>
+  <% end %>
+  <div class="offer_date">
+    <%= offer_datetime(@offer) %>
+  </div>
+</div>

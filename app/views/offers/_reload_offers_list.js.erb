@@ -1,0 +1,21 @@
+$('#new-offer-form').modal('hide');
+
+$('#new-offer-form').on('hidden', function () {  
+
+  $('#ppal_container')
+  .masonry('destroy')
+  .prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
+  .children()
+  .first()
+  .addClass("new_request_style")
+  .css('opacity', 0)
+  .hide()
+  .slideDown()
+  .animate(
+    { opacity: 1 },
+    { queue: false, duration: 1500 }
+  )
+  .animate({backgroundColor: '#ffffff'}, 800);
+})
+
+masonryOffer();
