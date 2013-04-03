@@ -15,7 +15,9 @@ class Negotiation::Conversation::Message
 
   validates :conversation,
     :user_id,
+    :nickname,
     :text,
+    :image_name,
     presence: true
 
   validates :text,
