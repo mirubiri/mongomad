@@ -44,6 +44,12 @@ class OffersController < ApplicationController
   # GET /offers/1/edit
   def edit
     @offer = Offer.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   # POST /offers
@@ -74,7 +80,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { head :no_content }
+        format.js { render :partial => "offers/edit_offer_in_list", :layout => false  }
       else
         format.html { render action: "edit" }
         format.json { render json: @offer.errors, status: :unprocessable_entity }

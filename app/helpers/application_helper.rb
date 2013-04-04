@@ -187,6 +187,9 @@ module ApplicationHelper
   def offer_composer_products(offer)
     offer.composer.products
   end
+  def offer_composer_things(offer)
+    offer.user_composer.things
+  end
   def offer_receiver_id(offer)
     offer.user_receiver_id
   end
@@ -198,6 +201,9 @@ module ApplicationHelper
   end
   def offer_receiver_products(offer)
     offer.receiver.products
+  end
+  def offer_receiver_things(offer)
+    offer.user_receiver.things
   end
   def offer_money_owner_id(offer)
     offer.money.user_id

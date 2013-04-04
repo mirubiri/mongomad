@@ -1,7 +1,14 @@
-$('#edit-request-form').modal('hide');
+//Quito la ventana modal
+$('#edit-offer-form').modal('hide');
 
-$('#edit-request-form').on('hidden', function () {
-  $('#request_list_container')
-  .html("<%= escape_javascript(render :partial => 'layouts/global_partials/requests_list').html_safe %>");  
-  activateRequestButtons();
+$('#edit-offer-form').on('hidden', function () {
+  //Cuando la modal se quita, oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
+  $('#ppal_container')
+  .hide()
+  .html("<%= escape_javascript(render :partial => 'offers/partials/offer').html_safe %>")
+  .masonry('destroy');
+
+  //REcargo el masonry y dejo que se vea todo
+  masonryOffer();
+  $('#ppal_container').show();
 })
