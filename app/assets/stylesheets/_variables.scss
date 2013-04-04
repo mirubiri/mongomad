@@ -125,7 +125,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
   border: $borde1px;
-  padding:8px 10px 8px 10px;
+  padding:2px;
   overflow: visible;
 
   .quantity_container{
@@ -145,7 +145,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
   border: $borde1px;
-  padding:3px 5px 3px 5px;
+  padding: 2px;
   overflow: visible;
 
   .quantity_container{
@@ -274,8 +274,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       }
 
       img{
-        @include proportions(12px,10px);
-        @include absolute($top:-23px,$left:-13px);   
+        @include proportions(100%,100%);
+        @include absolute($top:-23px,$left:-13px); 
       }
     }
 
@@ -289,7 +289,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
         img{
           @include high-quality-image;
-          @include proportions(100%,100%);  
+          @include proportions(100%,100%);
+          @include border-radius(3px, 3px);    
         }
       }
     }
