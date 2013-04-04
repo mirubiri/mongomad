@@ -11,7 +11,7 @@ class User
   embeds_one  :profile, class_name: "User::Profile", cascade_callbacks: true
   embeds_many :things,  class_name: "User::Thing", cascade_callbacks: true
 
-  accepts_nested_attributes_for :profile, :things
+  accepts_nested_attributes_for :profile
 
   validates :profile,
     presence: true
