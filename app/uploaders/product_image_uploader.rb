@@ -4,7 +4,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
@@ -36,6 +36,14 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+
+  process :auto_orient # this should go before all other "process" steps
+
+  def auto_orient
+    manipulate! do |image|
+      image.tap(&:auto_orient)
+    end
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do

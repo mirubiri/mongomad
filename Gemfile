@@ -15,6 +15,7 @@ group :assets do
   gem 'uglifier'
   gem 'stitch'
   gem 'bootstrap-sass'
+  gem 'mini_magick'
 end
 
 group :development,:test do
