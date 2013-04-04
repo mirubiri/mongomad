@@ -35,10 +35,12 @@
         margin: inherit;
         margin-bottom: 5px;
         border: $borde1px;
+        padding: 2px;
 
         img{
           @include high-quality-image;
-          @include center-horizontally(100%);        
+          @include center-horizontally(100%);
+          @include border-radius(3px, 3px);         
         }
       }
 

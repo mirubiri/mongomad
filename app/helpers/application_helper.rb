@@ -186,7 +186,7 @@ module ApplicationHelper
   end
   def offer_composer_products(offer)
     offer.composer.products
-  end
+  end  
   def offer_composer_things(offer)
     offer.user_composer.things
   end
