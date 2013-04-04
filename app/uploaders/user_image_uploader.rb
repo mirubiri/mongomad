@@ -61,8 +61,4 @@ class UserImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
-  def move_to_store
-    true
-  end
 end
