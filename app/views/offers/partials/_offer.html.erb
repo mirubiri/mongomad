@@ -50,21 +50,33 @@
           <% end %>
         </div>
       </div>
-      <% if user_logged_id == user_visited_id %>
-        <%= form_for [current_user,@negotiation] do |form| %>
-        <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
-          <div class="offer_button">
-            <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
-          </div>
+
+      <% if user_logged_id != offer_composer_id(offer) %>
+        <% if user_logged_id == user_visited_id %>
+          <%= form_for [current_user,@negotiation] do |form| %>
+            <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+            <div class="offer_button">
+              <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
+            </div>
+          <% end %>    
+        <% else %>
+          <%= form_for [current_user,@negotiation] do |form| %>
+            <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+            <div class="offer_button">
+              <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
+            </div>
+          <% end %>
         <% end %>
-      <% else %>
-        <%= form_for [current_user,@negotiation] do |form| %>
-          <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
-          <div class="offer_button">
-            <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
-          </div>
-        <% end %>
+      <% else %>  
+        <%= link_to "edit", 
+                {:controller => "offers", 
+                :action => "edit",
+                :user_id => current_user.id, 
+                :id => offer.id}, 
+                {:remote => true,
+                 :id => "edit_offer_link"} %>
       <% end %>
+
       <div class="offer_date">
         <%= offer_datetime(offer) %>
       </div>
