@@ -16,7 +16,6 @@ describe User do
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should accept_nested_attributes_for(:profile) }
-    it { should accept_nested_attributes_for(:things) }
   end
 
   describe 'Validations' do
