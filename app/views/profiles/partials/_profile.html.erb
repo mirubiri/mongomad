@@ -34,7 +34,12 @@
     </div>
     <div class="image_side">
         <%= user_visited_image %>
-        <button class="btn btn-warning">editar mi perfil</button>
+        <% if user_logged_id == user_visited_id %>    
+          <%= link_to "editar mi perfil",
+              edit_user_profile_path(current_user),
+              :remote => true,
+              :class => "btn btn-warning" %>        
+        <% end %> 
     </div>
   </div>
   <div class="statistics">

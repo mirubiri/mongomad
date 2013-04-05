@@ -82,7 +82,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.js { render :partial => "offers/edit_offer_in_list", :layout => false  }
+        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:offer => @offer }, :layout => false  }
       else
         format.html { render action: "edit" }
         format.json { render json: @offer.errors, status: :unprocessable_entity }

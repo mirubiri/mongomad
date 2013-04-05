@@ -298,6 +298,16 @@ function imageSelection(input) {
   }
 }
 
+function profileImageSelection(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        $('#thing_image_container').attr('src', e.target.result);
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
 $(window).load(function(){
   //slideOptionsPanel();
   closeModalWindows();
@@ -312,6 +322,7 @@ $(window).load(function(){
   activateNegotiationButtons();
   buttonsClickBackgroundChange();
   imageSelection();
+  profileImageSelection();
 });
 
 $(window).bind('resize', function() {
@@ -322,4 +333,5 @@ $(window).bind('resize', function() {
   buttonsClickBackgroundChange();
   activateAlertButton();
   imageSelection();
+  profileImageSelection();
 });

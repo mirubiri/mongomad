@@ -1,0 +1,58 @@
+<div class="modal modal-request hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-profile-form">
+  <%= form_for current_user.profile, :remote => true do |form| %>
+
+
+    <div class="profile_complete">
+      <div class="person_info">
+        <div class="title">
+          Personal Info
+        </div>
+        <div class="info_side">
+          <div class="name_age">
+            <%= form.text_area :name, :size => "1x1" %>,<%= form.text_area :birth_date, :size => "1x1" %>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">Direction:</div>
+            <div class="info_element_description">
+              <%= form.text_area :country, :size => "1x1" %>
+            </div>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">E-Mail:</div>
+            <div class="info_element_description">
+              <%#= form.text_area :email, :size => "24x6" %>
+            </div>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">Phones:</div>
+            <div class="info_element_description">
+              <%= form.text_area :phone_number, :size => "1x1" %>
+            </div>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">Web:</div>
+            <div class="info_element_description">
+              <%= form.text_area :website, :size => "1x1" %>
+            </div>
+          </div>
+        </div>
+        <div class="image_side">
+          <%= form.file_field :image,
+          :id => "thing_image",
+          :onchange => "imageSelection(this);" %>
+          <img class="profile_image_container" id="profile_image_container" src="<%= user_visited_image %>">
+        </div>
+      </div>      
+    </div>
+
+    <div class="action">
+      <div class="send_button">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        <%= form.submit "Editar", :id => 'edit-profile-send-button', :class =>  "btn btn-primary" %>
+      </div>
+    </div>
+
+
+
+  <% end %>
+</div>

@@ -1,0 +1,5 @@
+$('#edit-profile-form').remove();
+
+$("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_profile', :locals => { :offer => @offer }).html_safe %>");
+
+$('#edit-profile-form').modal('show');

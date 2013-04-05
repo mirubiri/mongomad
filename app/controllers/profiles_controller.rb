@@ -4,6 +4,16 @@ class ProfilesController < ApplicationController
     "profile"
   end
 
+  def edit
+    @user = current_user
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  end
+
   def show
     @user = User.find(params[:user_id])
     respond_to do |format|

@@ -1,6 +1,6 @@
 <% if (user_visited_offers.count != 0)%>
   <% user_visited_offers.reverse_each do |offer| %>
-    <div class="offer" id="<%= offer_composer_id(offer) %>">
+    <div class="offer" id="<%= offer_id(offer) %>">
       <div id="options">
         <div class="menu">
           <%= link_to "Eliminar Oferta",
