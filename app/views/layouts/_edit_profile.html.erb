@@ -1,7 +1,5 @@
 <div class="modal modal-request hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-profile-form">
   <%= form_for current_user.profile, :remote => true do |form| %>
-
-
     <div class="profile_complete">
       <div class="person_info">
         <div class="title">
@@ -38,9 +36,9 @@
         </div>
         <div class="image_side">
           <%= form.file_field :image,
-          :id => "thing_image",
-          :onchange => "imageSelection(this);" %>
-          <img class="profile_image_container" id="profile_image_container" src="<%= user_visited_image %>">
+          :id => "profile_image",
+          :onchange => "profileImageSelection(this);" %>
+          <img class="profile_image_container" id="profile_image_container" src="<%= @user.profile.image %>">
         </div>
       </div>      
     </div>
@@ -51,8 +49,5 @@
         <%= form.submit "Editar", :id => 'edit-profile-send-button', :class =>  "btn btn-primary" %>
       </div>
     </div>
-
-
-
   <% end %>
 </div>
