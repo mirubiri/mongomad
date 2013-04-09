@@ -5,7 +5,14 @@
 .right_container{
   @include box-sizing(border-box);
   float:left;
-  width: $mainContainerWidth;
+  @media screen and (max-width: 1300px) {
+    width: 78%;
+    max-width: 78%;
+  }
+  @media screen and (min-width: 1300px) {
+    width: 73%;
+    max-width: 73%;
+  }
   padding: $MCTopPadding $MCExtPadding 0px 0px;
 
   .main_container{

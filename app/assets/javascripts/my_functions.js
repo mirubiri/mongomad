@@ -314,7 +314,6 @@ $(window).load(function(){
   masonryOffer();
   ajaxLinksUrlChange();
   newOfferScript();
-  reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();

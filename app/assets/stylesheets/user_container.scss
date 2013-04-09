@@ -4,12 +4,12 @@
   @include box-sizing(border-box);
   float:left;
   @media screen and (max-width: 1300px) {
-    width: 280px;
-    max-width: 280px;
+    width: 22%;
+    max-width: 22%;
   }
   @media screen and (min-width: 1300px) {
-    width: 350px;
-    max-width: 350px;
+    width: 27%;
+    max-width: 27%;
   }
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
@@ -69,7 +69,7 @@
         margin-bottom: 10px;
 
         .btn-toolbar{
-          @include center-horizontally(80%);
+          @include center-horizontally(90%);
           .btn-group{
             a{
               img{
