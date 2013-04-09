@@ -89,6 +89,9 @@ module ApplicationHelper
   def user_visited_website
     @user.profile.website
   end
+  def user_visited_email
+    @user.email
+  end
   def user_visited_birthdate
     @user.profile.birth_date
   end
