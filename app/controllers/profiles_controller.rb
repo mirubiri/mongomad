@@ -36,9 +36,9 @@ class ProfilesController < ApplicationController
     @user = current_user   
 
     respond_to do |format|
-      if @user.profile.update_attributes(params[:profile])
+      if @user.profile.update_attributes(params[:user_profile])
         format.html { redirect_to user_profile_path(current_user), notice: 'thing was successfully updated.' }
-        format.js { render :partial => "profiles/reload_after_edit_profile", :layout => false }
+        format.js { render :partial => 'profiles/reload_after_edit_profile', :layout => false }
       else
         format.html { render action: "edit" }
         format.json { render json: @thing.errors, status: :unprocessable_entity }

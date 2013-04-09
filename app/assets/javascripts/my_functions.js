@@ -314,6 +314,7 @@ $(window).load(function(){
   masonryOffer();
   ajaxLinksUrlChange();
   newOfferScript();
+  reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
@@ -322,7 +323,7 @@ $(window).load(function(){
   activateNegotiationButtons();
   buttonsClickBackgroundChange();
   imageSelection();
-  profileImageSelection();
+  profileImageSelection();  
 });
 
 $(window).bind('resize', function() {
@@ -333,5 +334,5 @@ $(window).bind('resize', function() {
   buttonsClickBackgroundChange();
   activateAlertButton();
   imageSelection();
-  profileImageSelection();
+  profileImageSelection();  
 });

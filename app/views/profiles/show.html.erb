@@ -1,0 +1,96 @@
+<div class="profile_complete">
+  <div class="person_info">
+    <div class="title">
+      Personal Info
+    </div>
+    <div class="info_side">
+      <div class="name_age">
+        <%= user_visited_name %>, <%= user_visited_birthdate %>
+      </div>
+      <div class="info_element">
+        <div class="info_element_title">Direction:</div>
+        <div class="info_element_description">
+          <%= user_visited_country %>
+        </div>
+      </div>
+      <div class="info_element">
+        <div class="info_element_title">E-Mail:</div>
+        <div class="info_element_description">
+          <%= user_visited_name %>@improcex.com
+        </div>
+      </div>
+      <div class="info_element">
+        <div class="info_element_title">Phones:</div>
+        <div class="info_element_description">
+          <%= user_visited_phone_number %>
+        </div>
+      </div>
+      <div class="info_element">
+        <div class="info_element_title">Web:</div>
+        <div class="info_element_description">
+          <%= user_visited_website %>
+        </div>
+      </div>
+    </div>
+    <div class="image_side">
+        <%= user_visited_image %>
+        <% if user_logged_id == user_visited_id %>    
+          <%= link_to "editar mi perfil",
+              edit_user_profile_path(current_user),
+              :remote => true,
+              :class => "btn btn-warning" %>        
+        <% end %> 
+    </div>
+  </div>
+  <div class="statistics">
+    <div class="title">Times Table</div>
+    <div class="result_side">      
+      <div class="result_title">Deals as buyer</div>
+      <div class="result_number">10</div>
+      <div class="result_title">Deals as seller</div>
+      <div class="result_number">50</div>
+      <div class="result_title">Total use time</div>
+      <div class="result_number">500h</div>
+      <div class="result_title">Dayle use average</div>
+      <div class="result_number">2h</div>
+    </div>
+    <div class="graphique_side">
+      <div class="graphique"></div>
+    </div>
+  </div>
+  <div class="comments_recieved">
+    <div class="title">Comments</div>
+    <div id="data_list">
+      <div class="data_numbers">
+        <div class="data_element">asdgasf</div>
+        <div class="data_element">asdgasf</div>
+        <div class="data_element">asdgasf</div>
+      </div>
+    </div>
+    <div id="comment_list">
+      <div class="comment">
+        <div class="comment_header">
+          <div class="profile_image"></div>
+          <div class="description">
+            <textarea name="offer-description" id="offer-description" cols="1" rows="1"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="comment">
+        <div class="comment_header">
+          <div class="profile_image"></div>
+          <div class="description">
+            <textarea name="offer-description" id="offer-description" cols="1" rows="1"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  reloadPrincipalContainersHeighs();
+  matchPrincipalContainersHeighs();
+  setProfileContainersHeights();
+  addProfileCommentsSeparator();
+</script>

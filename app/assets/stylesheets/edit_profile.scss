@@ -1,0 +1,98 @@
+@import "variables";
+
+.profile_editor{
+  @include fixed_width(500px,500px,500px);
+  height: 420px;
+  float:left;
+  overflow:auto;
+
+  .title{
+    @include fixed_width(100%,100%,100%);
+    height: 30px;
+    background-color: #777777;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 3px;
+    margin-bottom: 10px;
+  }
+
+  .person_info{
+    @include proportions(55%,340px);
+    @include box-sizing(border-box);
+    padding: 0px 10px 0px 5px;
+    float: left;
+    overflow:visible;
+    margin:0px 0px 10px 0px;
+    background-color: white;    
+
+    .name_age{
+      float: left;
+      width:90%;
+      margin: 0px 0px 8px 0px;
+      font:{
+        weight:bold;
+        size:12px;
+        family:$verdana;
+      }
+    }
+
+    .info_element{
+      float:left;
+      width:90%;
+      margin-bottom: 5px;
+
+      .info_element_title{
+        float: left;
+        margin: 0px 5px 0px 0px;
+        width:100%;
+        font:{
+          weight:bold;
+          size:10px;
+          family:$verdana;
+        }
+      }
+      .info_element_description{
+        float: left;
+        width:100%;
+        font:{
+          size:10px;
+          family:$verdana;
+        }
+      }
+    }
+  }
+  
+
+  .image_side{
+    @include proportions(45%,340px);
+    @include box-sizing(border-box);
+    padding: 20px 20px 0px 0px;
+    float: left;
+    overflow:auto;
+    margin:0px 0px 10px 0px;
+    background-color: white; 
+
+    input[type="file"]{
+      float: right;
+      margin-left: -165px;
+      margin-top: 5px; 
+      opacity: 0;
+      width: 160px;
+      height: 160px;
+    }  
+
+    img{
+      @include high-quality-image;
+      @include proportions(160px,160px);
+      float:right;
+      margin: 5px 5px 10px 0px;
+      border:$borde1px;        
+    }
+    button{
+      float:right;
+      width: 80%;
+      margin-right: 38px;
+    }
+  }    
+}

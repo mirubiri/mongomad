@@ -1,6 +1,13 @@
 $('#edit-profile-form').modal('hide');
 
 $('#edit-profile-form').on('hidden', function () {
+  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+
   $('#ppal_container')
-  .load("<%= escape_javascript(render :template => 'profiles/show').html_safe %>")  
+  .html("<%= escape_javascript(render :template => 'profiles/show.html.erb').html_safe %>");
+  expandRequestContainer();
+  setProfileContainersHeights();
+  addProfileCommentsSeparator();
+  matchPrincipalContainersHeighs();   
 })
+

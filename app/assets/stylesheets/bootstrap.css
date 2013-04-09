@@ -4761,6 +4761,14 @@ a.thumbnail:focus {
   width: 430px;
   margin-top: 200px;
 }
+
+.modal.modal-profile{
+  left: 50%;
+  width: 500px;
+  margin-top: 70px;
+  margin-bottom:0px;
+}
+
 .modal.modal-thing{
   left: 55%;
   width: 450px;
