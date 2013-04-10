@@ -1,24 +1,24 @@
-<div class="modal modal-offer hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-negotiation-form">
-  <%= form_for [current_user,@negotiation] do |form| %>
+<div class="modal modal-offer hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-offer-form">
+  <%= form_for [current_user,@negotiation], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
-        <a href="#blank" id="new_offer_receiver_selector" value="<%=user_logged_id%>">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%= offer_receiver_id(@offer) %>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
-              <%= negotiation_receiver_image(@negotiation) %>
+              <%= offer_receiver_image(@offer) %>
             </div>
             <div class="description">
-              <%= negotiation_receiver_name(@negotiation) %>
+              <%= offer_receiver_name(@offer) %>
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%=user_visited_id%>">
+        <a href="#blank" id="new_offer_composer_selector" value="<%= offer_composer_id(@offer) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= negotiation_composer_image(@negotiation) %>
+              <%= offer_composer_image(@offer) %>
             </div>
             <div class="description">
-              <%= negotiation_composer_name(@negotiation) %>
+              <%= offer_composer_name(@offer) %>
             </div>
           </div>
         </a>
@@ -29,7 +29,7 @@
           <button id="dineroPidesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="his_product_container">
-          <% negotiation_composer(@negotiation).things.each do |thing| %>
+          <% offer_receiver_things(@offer).each do |thing| %>
             <div class="product" id="<%= thing._id%>" value="<%= thing_stock(thing) %>">
               <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
@@ -48,7 +48,7 @@
           <button id="dineroOfrecesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="my_product_container">
-          <% negotiation_receiver(@negotiation).things.each do |thing| %>
+          <% offer_composer_things(@offer).each do |thing| %>
             <div class="product" id="<%= thing._id%>" value="<%= thing_stock(thing) %>">
               <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
@@ -63,53 +63,51 @@
       </div>
     </div>
 
-
-    <input type="hidden" name="offer[user_composer_id]" value="<%= user_logged_id%>" />
-    <input type="hidden" name="offer[user_receiver_id]" value="<%= user_visited_id%>" />
-    <input type="hidden" name="offer[money][user_id]" value="nil" id="usuario_id" />
-    <input type="hidden" name="offer[money][quantity]" value="0" id="usuario_dinero" />
-
+    <input type="hidden" name="offer[user_receiver_id]" value="<%= offer_receiver_id(@offer) %>" />
+    <input type="hidden" name="offer[money_attributes][user_id]" value="nil" id="usuario_id" />
+    <input type="hidden" name="offer[money_attributes][quantity]" value="0" id="usuario_dinero" />
 
     <div class="offer_summary">
       <div class="title">
         <div class="description">Resumen de la oferta</div>
       </div>
-      <div class="offer_inform">      
+      <div class="offer_inform">
         <div class="offer_header">
-          <div class="triangle">            
+          <div class="triangle">
               <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
           </div>
           <div class="profile_image">
-            <%= negotiation_composer_image(@negotiation) %>
+            <%= offer_composer_image(@offer) %>
           </div>
-          <div class="description">            
+          <div class="description">
             <div class="offer_message">
-              <%#= form.text_area :initial_message,
-              :placeholder => "Mensaje Inicial",
-              :rows => "2" %>
-            </div>            
-          </div>
-        </div>
-        <div class="offer_things">         
-          <div class="recieved" id="summary_offer_received_products_container">
-            <% negotiation_receiver_products(@negotiation).each do |product| %>
-              <div class="product" id="<%= product._id%>" value="<%= product_quantity(product) %>">
-                <div class="quantity_container"><%= product_quantity(product) %></div>
-                <div class="product_image">
-                  <%= product_image(product) %>
-                </div>
-                <div class="product_title">
-                  <%= product_name(product) %>
-                </div>
-              </div>
-            <% end %>
-            <div class="money_received" id="dineroPidesEnSumario">
-              <div class="money_composition"></div>
+              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
             </div>
           </div>
+        </div>
+        <div class="offer_things">
+          <div class="recieved" id="summary_offer_received_products_container">
+              <% offer_composer_products(@offer).each do |product| %>
+                <div class="product" id="<%= product_id(product) %>" value="<%= product_quantity(product) %>">
+                  <div class="delete_button">x</div>
+                  <div class="quantity_container"><%= product_quantity(product) %></div>
+                  <div class="product_image">
+                    <%= product_image(product) %>
+                  </div>
+                  <div class="product_title">
+                    <%= product_name(product) %>
+                  </div>
+                </div>
+                
+              <% end %>
+              <div class="money_received" id="dineroPidesEnSumario">
+                <div class="money_composition"></div>
+              </div>
+          </div>
           <div class="given" id="summary_offer_given_products_container">
-            <% negotiation_composer_products(@negotiation).each do |product| %>
-              <div class="product" id="<%= product._id%>" value="<%= product_quantity(product) %>">
+            <% offer_receiver_products(@offer).each do |product| %>
+              <div class="product" id="<%= product_id(product) %>" value="<%= product_quantity(product) %>">
+                <div class="delete_button">x</div>
                 <div class="quantity_container"><%= product_quantity(product) %></div>
                 <div class="product_image">
                   <%= product_image(product) %>
@@ -118,6 +116,7 @@
                   <%= product_name(product) %>
                 </div>
               </div>
+              
             <% end %>
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>
@@ -129,8 +128,7 @@
           <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
           <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
-          
       </div>
-    </div>        
+    </div>
   <% end %>
 </div>

@@ -326,7 +326,6 @@ function setOffersMargin() {
         + margenOffer + " = margen calculado para cada oferta\n");*/
 }
 
-
 $(window).load(function(){
   //slideOptionsPanel();
   ajaxLinksUrlChange();
@@ -334,6 +333,7 @@ $(window).load(function(){
   expandRequestContainer();
   expandRightContainer();
   buttonsClickBackgroundChange();
+  lastElementPosition();
 });
 
 $(window).bind('resize', function() {

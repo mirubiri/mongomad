@@ -261,7 +261,7 @@ module ApplicationHelper
     User.find(negotiation.negotiator_ids[0])
   end
   def negotiation_composer_name(negotiation)
-    negotiation.proposals.last.composer.name
+    negotiation.proposals.last.composer.nickname
   end
   def negotiation_composer_image(negotiation)
     image_tag(negotiation.proposals.last.composer.image)
