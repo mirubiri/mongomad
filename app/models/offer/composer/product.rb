@@ -26,6 +26,11 @@ class Offer::Composer::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def thing
-    User.where('things._id' => thing_id).first.things.find(self.thing_id)
+    @thing ||= User.where('things._id' => thing_id).first.things.find(thing_id)
+  end
+
+  def reload
+    @thing=nil
+    super
   end
 end

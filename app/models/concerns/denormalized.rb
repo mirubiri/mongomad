@@ -37,14 +37,17 @@ module Denormalized
   end
 
   private
-  #TODO Optimizar 
+  #TODO Optimizar
     def load_denormalized
         self.denormalized_definitions.each do |definition|
+          relation = definition[:options][:from]
+          associated = self.instance_eval(relation)
+          associated.reload unless new_record?
           definition[:fields].each do |field|
-            relation = definition[:options][:from]
+
 
             # force reload of association specified by :from
-            associated = self.instance_eval(relation).reload
+
 
             self.send("#{field}=", associated.try(field))
           end

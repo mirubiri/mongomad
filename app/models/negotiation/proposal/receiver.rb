@@ -20,6 +20,11 @@ class Negotiation::Proposal::Receiver
     presence: true
 
   def user
-    User.find(self.proposal.user_receiver_id)
+    @user ||= User.find(self.proposal.user_composer_id)
+  end
+
+  def reload
+    @user=nil
+    super
   end
 end
