@@ -43,6 +43,52 @@ describe Offer do
   describe '#start_negotiation' do
     let(:negotiation) { offer.start_negotiation }
 
+    it 'returns a negotiation with only one proposal' do
+      expect(negotiation.proposals).to have(1).proposals
+    end
+
+    it 'returns a negotiation whose proposal has the values from ofiginal offer' do
+      expect(negotiation.proposals.last).to be_like offer
+    end
+
+    it 'returns a negotiation whose conversation has only one message' do
+      expect(negotiation.conversation.messages).to have(1).messages
+    end
+
+    it 'returns a negotiation whose message has the values from ofiginal offer' do
+      expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
+      expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
+    end
+
+    it 'saves negotiation' do
+    end
+
+    it 'creates one negotiation' do
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let(:negotiation) { offer.start_negotiation }
+
+
+
+
+
+
+
     it 'returns a negotiation with a proposal like offer' do
       expect(negotiation.proposals).to have(1).items
       expect(negotiation.proposals.last).to be_like offer
@@ -53,6 +99,11 @@ describe Offer do
       expect(negotiation.conversation.messages).to have(1).items
       expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
       expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
+    end
+
+    it 'saves the negotiation' do
+      negotiation.should_receive(:save)
+      expect(negotiation.save).to change{ Negotiation.count}.by(1)
     end
 
     it 'saves the negotiation' do

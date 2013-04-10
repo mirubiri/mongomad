@@ -18,13 +18,18 @@ end
 module Mongomad
   class Application < Rails::Application
 
+    #Habilita logs para la consola
+      Mongoid.logger.level = Logger::DEBUG
+      Moped.logger.level = Logger::DEBUG
+
+
     #Le digo a devise que su layout por defecto es application
     config.to_prepare do
         Devise::SessionsController.layout "application"
         Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application"   : "application" }
         Devise::ConfirmationsController.layout "application"
-        Devise::UnlocksController.layout "application"            
-        Devise::PasswordsController.layout "application"        
+        Devise::UnlocksController.layout "application"
+        Devise::PasswordsController.layout "application"
     end
 
     config.generators do |g|
