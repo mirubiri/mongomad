@@ -67,6 +67,7 @@ function setProfileContainersHeights(){
 }
 
 function masonryOffer(){
+  $('#ppal_container').masonry('destroy');
   $('#ppal_container').masonry({
       itemSelector : '.offer',
       isAnimated: true
@@ -108,21 +109,6 @@ function buttonsClickBackgroundChange(){
     $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
     $('#navigation_bar li').removeClass("active");
     $(this).addClass('active');
-  });
-}
-
-function closeModalWindows(){
-  $('#new-offer-send-button').live('click',function(e){
-    $('#new-offer-form').addClass("container_invisible");
-  });
-  $('#new-thing-send-button').live('click',function(e){
-    $('#new-thing-form').addClass("container_invisible");
-  });
-  $('#edit-thing-send-button').live('click',function(e){
-    $('#edit-thing-form').addClass("container_invisible");
-  });
-  $("form").bind("ajax:success", function(xhr, data, status){
-    $.modal.close();
   });
 }
 
@@ -309,7 +295,7 @@ function profileImageSelection(input) {
 }
 
 function setOffersMargin() {
-  var anchuraPosible = ($('#ppal_container').width());
+  var anchuraPosible = ($('#ppal_container').width()) - 16;
   var anchuraOffer = ($('.offer:first').width()) + 2;
   var disparador = anchuraOffer;
   var contador = 1;
@@ -325,32 +311,29 @@ function setOffersMargin() {
   var anchuraTotalMargen = anchuraPosible - (anchuraOffer * offersEntran);
   var margenesPorRellenar = offersEntran * 2;
   var margenOffer = anchuraTotalMargen / margenesPorRellenar;
+  margenOffer = Math.floor(margenOffer);
   var offertasHay = $('.offer').length;
 
-  if(offertasHay > 2){
-    $('.offer').css({'margin': '0px ' + margenOffer + 'px ' + '10px ' + margenOffer + 'px'});
+  if(offertasHay > (offersEntran -1)){
+    $('.offer').css({'margin': '0px ' + margenOffer + 'px 10px ' + margenOffer + 'px'});
+
   }else{
     $('.offer').css({'margin': '0px 10px 10px 0px'});
   }
 
-  alert("he funcionado");  
+  /*alert(anchuraTotalMargen + " = margen que tengo total en cada fila\n" 
+        + margenesPorRellenar + " = numero de margenes por rellena en cada fila\n"
+        + margenOffer + " = margen calculado para cada oferta\n");*/
 }
 
 
 $(window).load(function(){
   //slideOptionsPanel();
-  closeModalWindows();  
   ajaxLinksUrlChange();
-  newOfferScript();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandRightContainer();
-  activateRequestButtons();
-  activateOfferButton();
-  activateNegotiationButtons();
   buttonsClickBackgroundChange();
-  imageSelection();
-  profileImageSelection();
 });
 
 $(window).bind('resize', function() {
@@ -359,7 +342,5 @@ $(window).bind('resize', function() {
   expandRequestContainer();
   expandRightContainer();
   buttonsClickBackgroundChange();
-  activateAlertButton();
-  imageSelection();
-  profileImageSelection();  
+  activateAlertButton(); 
 });

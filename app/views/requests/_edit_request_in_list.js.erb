@@ -5,3 +5,5 @@ $('#edit-request-form').on('hidden', function () {
   .html("<%= escape_javascript(render :partial => 'layouts/global_partials/requests_list').html_safe %>");  
   activateRequestButtons();
 })
+
+$('#edit-request-form').destroy();

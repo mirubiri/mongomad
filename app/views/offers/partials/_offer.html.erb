@@ -57,6 +57,7 @@
             <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
             <div class="offer_button">
               <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
+              
             </div>
           <% end %>    
         <% else %>
@@ -87,8 +88,12 @@
 <% end %>
 
 <script>
-  setOffersMargin();//Debe ir antes del masonry
-  masonryOffer();
+  $(document).ready(function(){  
+    newOfferScript();//problemas al colocarla fuera de aqui
+    activateOfferButton();
+    setOffersMargin();
+    masonryOffer();
+  });
 </script>
 
 
