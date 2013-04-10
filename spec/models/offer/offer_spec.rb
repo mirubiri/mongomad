@@ -61,54 +61,12 @@ describe Offer do
     end
 
     it 'saves negotiation' do
+      expect(Negotiation.any_instance.should_receive(:save))
+      offer.start_negotiation
     end
 
     it 'creates one negotiation' do
-    end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    let(:negotiation) { offer.start_negotiation }
-
-
-
-
-
-
-
-    it 'returns a negotiation with a proposal like offer' do
-      expect(negotiation.proposals).to have(1).items
-      expect(negotiation.proposals.last).to be_like offer
-    end
-
-    it 'returns a negotiation with a conversation which includes a message from offer' do
-      expect(negotiation.conversation).to have(1).items
-      expect(negotiation.conversation.messages).to have(1).items
-      expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
-      expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
-    end
-
-    it 'saves the negotiation' do
-      negotiation.should_receive(:save)
-      expect(negotiation.save).to change{ Negotiation.count}.by(1)
-    end
-
-    it 'saves the negotiation' do
-      negotiation.should_receive(:save)
-      expect(negotiation.save).to change{ Negotiation.count}.by(1)
+      expect { offer.start_negotiation }.to change{ Negotiation.count }.by(1)
     end
   end
 end
