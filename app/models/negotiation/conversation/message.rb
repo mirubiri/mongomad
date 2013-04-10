@@ -24,6 +24,11 @@ class Negotiation::Conversation::Message
     length: { minimum: 1, maximum: 160 }
 
   def user
-    User.find(self.user_id)
+    @user ||= User.find(self.user_id)
+  end
+
+  def reload
+    @user=nil
+    super
   end
 end

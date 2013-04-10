@@ -155,9 +155,6 @@ module ApplicationHelper
   # def request_user_id(request)
   #   request.user._id
   # end
-  # def request_user_name(request)
-  #   request.user.profile.name
-  # end
   # def request_user_nickname(request)
   #   request.nickname
   # end
@@ -189,7 +186,7 @@ module ApplicationHelper
   end
   def offer_composer_products(offer)
     offer.composer.products
-  end  
+  end
   def offer_composer_things(offer)
     offer.user_composer.things
   end
@@ -276,7 +273,7 @@ module ApplicationHelper
     User.find(negotiation.negotiator_ids[1])
   end
   def negotiation_receiver_name(negotiation)
-    negotiation.proposals.last.receiver.name
+    negotiation.proposals.last.receiver.nickname
   end
   def negotiation_receiver_image(negotiation)
     image_tag(negotiation.proposals.last.receiver.image)
