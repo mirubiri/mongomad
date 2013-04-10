@@ -331,14 +331,15 @@ function setOffersMargin() {
     $('.offer').css({'margin': '0px ' + margenOffer + 'px ' + '10px ' + margenOffer + 'px'});
   }else{
     $('.offer').css({'margin': '0px 10px 10px 0px'});
-  }  
+  }
+
+  alert("he funcionado");  
 }
 
 
 $(window).load(function(){
   //slideOptionsPanel();
-  closeModalWindows();
-  masonryOffer();
+  closeModalWindows();  
   ajaxLinksUrlChange();
   newOfferScript();
   matchPrincipalContainersHeighs();
@@ -350,7 +351,6 @@ $(window).load(function(){
   buttonsClickBackgroundChange();
   imageSelection();
   profileImageSelection();
-  setOffersMargin();    
 });
 
 $(window).bind('resize', function() {
