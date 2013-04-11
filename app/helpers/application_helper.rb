@@ -251,6 +251,9 @@ module ApplicationHelper
   def negotiation_messages(negotiation)
     negotiation.messages
   end
+
+# Todo esto esta mal, no existe composer ni receiver en una negociacion
+=begin
   def negotiation_users(negotiation)
     negotiation.users
   end
@@ -290,7 +293,7 @@ module ApplicationHelper
   def negotiation_updatetime(negotiation)
     negotiation.updated_at
   end
-
+=end
   # PROPOSAL HELPERS -----------------------------------------
   def proposal_id(proposal)
     proposal._id

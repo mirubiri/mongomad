@@ -26,11 +26,6 @@ class Negotiation::Proposal::Composer::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def thing
-    @thing ||= User.where('things._id' => thing_id).first.things.find(thing_id)
-  end
-
-  def reload
-    @thing=nil
-    super
+    composer.proposal.user_composer.things.find(thing_id)
   end
 end

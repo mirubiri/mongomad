@@ -57,4 +57,5 @@ class Offer
     negotiation.save
     negotiation
   end
+
 end
