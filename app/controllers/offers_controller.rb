@@ -25,7 +25,6 @@ class OffersController < ApplicationController
     
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @offer }
     end
   end
 
@@ -64,9 +63,7 @@ class OffersController < ApplicationController
         format.html { redirect_to @user, notice: 'Offer was successfully created.' }
         format.js { render :partial => "offers/reload_offers_list", :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
-        format.html { render action: "new" }
-        format.json { render json: @offer.errors,
-          status: :unprocessable_entity }
+        format.html { render action: "new" }        
       end
     end
   end
@@ -85,7 +82,6 @@ class OffersController < ApplicationController
         format.js { render :partial => "offers/edit_offer_in_list", :locals => {:offer => @offer }, :layout => false  }
       else
         format.html { render action: "edit" }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -98,7 +94,6 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }
-      format.json { head :no_content }
     end
   end
 end

@@ -24,7 +24,6 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @deal }
     end
   end
 
@@ -35,7 +34,6 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @deal }
     end
   end
 
@@ -52,10 +50,8 @@ class DealsController < ApplicationController
     respond_to do |format|
       if @deal.save
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
-        format.json { render json: @deal, status: :created, location: @deal }
       else
         format.html { render action: "new" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,10 +64,8 @@ class DealsController < ApplicationController
     respond_to do |format|
       if @deal.update_attributes(params[:deal])
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -84,7 +78,6 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to deals_url }
-      format.json { head :no_content }
     end
   end
 end

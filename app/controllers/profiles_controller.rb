@@ -41,7 +41,6 @@ class ProfilesController < ApplicationController
         format.js { render :partial => 'profiles/reload_after_edit_profile', :layout => false }
       else
         format.html { render action: "edit" }
-        format.json { render json: @thing.errors, status: :unprocessable_entity }
       end
     end
   end

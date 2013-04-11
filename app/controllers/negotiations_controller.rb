@@ -13,7 +13,6 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.js # render index.js.erb
-      format.xml { render :xml => negotiations }
     end
   end
 
@@ -24,7 +23,6 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @negotiation }
     end
   end
 
@@ -35,7 +33,6 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @negotiation }
     end
   end
 
@@ -60,10 +57,8 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if offer.start_negotiation
         format.html { redirect_to @user, notice: 'Negotiation was successfully created.' }
-        format.json { render json: @negotiation, status: :created, location: @negotiation }
       else
         format.html { render action: "new" }
-        format.json { render json: @negotiation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,10 +71,8 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation.update_attributes(params[:negotiation])
         format.html { redirect_to @negotiation, notice: 'Negotiation was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @negotiation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,7 +85,6 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_negotiations_url }
-      format.json { head :no_content }
     end
   end
 end
