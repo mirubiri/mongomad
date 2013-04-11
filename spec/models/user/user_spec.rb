@@ -26,14 +26,4 @@ describe User do
     specify { expect(user).to be_valid }
     specify { expect(user.save).to eq true }
   end
-
-=begin
-  describe '#add_thing(thing_params=[])' do
-    xit 'adds a new thing created from the given hash'
-  end
-
-  describe '#remove_thing(thing_params=[])' do
-    xit 'removes the given thing from the user'
-  end
-=end
 end
