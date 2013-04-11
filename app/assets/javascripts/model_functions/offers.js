@@ -1,119 +1,4 @@
-function reloadPrincipalContainersHeighs(){
-  $('#ppal_container').css({'height': 0  + 'px'});
-  $('#user-side').css({'height': 0  + 'px'});
-  $('#content-side').css({'height': 0  + 'px'});
-}
-
-function matchPrincipalContainersHeighs(){
-  // El 90 debe coincidir con las alturas del footer + header
-  var alturaVentana = $(document).height()-80;
-
-  if ( ($('#devise_container').height()) < alturaVentana ) {
-      $('#devise_container').css({'height': alturaVentana  + 'px'});
-  }
-  if ( ($('#user-side').height()) < alturaVentana ) {
-      $('#user-side').css({'height': alturaVentana  + 'px'});
-  }
-
-  $('#user-side,#content-side').equalHeightColumns();
-  $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
-
-  if ( ($('#user-side').height()) === null ) {
-    $('#footer').css({'top': (alturaVentana +60)  + 'px'});
-  }else{
-    $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
-  }
-}
-
-function expandRightContainer(){
-  mainWidth = $('.mainlayout').width();
-  leftWidth = $('#leftContainer').width();
-  rightWidth = mainWidth - leftWidth -31;
-  $('#rightContainer').css({'width': rightWidth + 'px'});
-}
-
-function expandRequestContainer(){
-  var alturaUserSide = $('#user-side').height();
-  var alturaUserReputation = $('#user_reputation_container').height();
-  var alturaUserData = $('#user_data_container').height();
-  var alturaRequesContainer = alturaUserSide - alturaUserReputation  - alturaUserData -67;
-  $('#user_request_list').css('height', alturaRequesContainer);
-}
-
-function maximizeConversationsHeights(){
-  $("[id^=negotiation]").each(function(){
-    $(this).equalHeightColumns({children:':not(h2,p)'});
-  });
-  $("[id^=conversationofnegotiation]").each(function(){
-    $(this).css({'height':($(this).parent().height()-57)+'px'});
-  });
-}
-
-function addProfileCommentsSeparator(){
-  if ( ($('#comment_list').height()) > ($('#data_list').height()) ) {
-      $('#comment_list').css({'border-left': '1px solid rgb(220,220,220)'});
-  }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
-}
-
-function setProfileContainersHeights(){
-  alturaPpalContainer = $('#ppal_container').height();
-  alturaDisponible = alturaPpalContainer;
-  alturaPerfil = (alturaDisponible * 40)/100;
-  alturaComentarios = (alturaDisponible * 60)/100;
-
-  $('.person_info').css({'height': alturaPerfil  + 'px'});
-  $('.person_info,.statistics').equalHeightColumns();
-  $('.comments_recieved').css({'height': alturaComentarios  + 'px'});
-}
-
-function masonryOffer(){
-  $('#ppal_container').masonry('destroy');
-  $('#ppal_container').masonry({
-      itemSelector : '.offer',
-      isAnimated: true
-  });
-}
-
-function masonryThing(){
-  $('#ppal_container').masonry({
-      itemSelector : '.thing',
-      isAnimated: true
-  });
-}
-
-function ajaxLinksUrlChange(){
-  $('#navigation_bar li a').live('click',function(e){
-      $.getScript(this.href);
-      var url= this.href;
-      history.pushState({path:url},"", url);
-      $('#ppal_container').removeClass('masonry');
-  });
-
-  $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
-      $.getScript(this.href);
-      var url= this.href;
-      history.pushState({path:url},"", url);
-      $('#ppal_container').removeClass('masonry');
-  });
-
-  $(window).bind("popstate", function() {
-    $.getScript(location.href);
-  });
-}
-
-function buttonsClickBackgroundChange(){
-  $('#navigation_bar li a').live('click',function(e){
-    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
-  });
-  $('#menu_user_data .btn-toolbar .btn-group a').live('click',function(e){
-    $('#menu_user_data .btn-toolbar .btn-group a').removeClass("active");
-    $('#navigation_bar li').removeClass("active");
-    $(this).addClass('active');
-  });
-}
-
 function newOfferScript(){
-
   //Funciones de ayuda para la ejecucion de los procesos de nueva oferta
 
   function userSelection(a,b){
@@ -223,23 +108,6 @@ function newOfferScript(){
   });
 }
 
-function slideOptionsPanel(){
-  $(".triangle > #options_button").live('click',function(e){
-    $(this).parent().parent().parent().find('#options').slideToggle('fast');
-    e.preventDefault();
-  });
-}
-
-function activateAlertButton(){
-  $('.user_alert').hover(
-     function() {
-        $(this).find('#alert_button').removeClass("hidden_container");
-     },
-     function() {
-        $(this).find('#alert_button').addClass("hidden_container");
-     }
-  );
-}
 
 function activateOfferButton(){
   $('.offer').hover(
@@ -252,47 +120,6 @@ function activateOfferButton(){
   );
 }
 
-function activateNegotiationButtons(){
-  $('.negotiation').hover(
-     function () {
-        $(this).find('.btn').removeClass("disabled");
-     },
-     function () {
-        $(this).find('.btn').addClass("disabled");
-     }
-  );
-}
-
-function activateRequestButtons(){
-  $('.request').hover(
-     function () {
-      $(this).find('.options_menu').removeClass("hidden_container");
-     },
-     function () {
-      $(this).find('.options_menu').addClass("hidden_container");
-     }
-  );
-}
-
-function imageSelection(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $('#thing_image_container').attr('src', e.target.result);
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-
-function profileImageSelection(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        $('#profile_image_container').attr('src', e.target.result);
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
 
 function setOffersMargin() {
   var anchuraPosible = ($('#ppal_container').width()) - 16;
@@ -325,22 +152,3 @@ function setOffersMargin() {
         + margenesPorRellenar + " = numero de margenes por rellena en cada fila\n"
         + margenOffer + " = margen calculado para cada oferta\n");*/
 }
-
-$(window).load(function(){
-  //slideOptionsPanel();
-  ajaxLinksUrlChange();
-  matchPrincipalContainersHeighs();
-  expandRequestContainer();
-  expandRightContainer();
-  buttonsClickBackgroundChange();
-  lastElementPosition();
-});
-
-$(window).bind('resize', function() {
-  reloadPrincipalContainersHeighs();
-  matchPrincipalContainersHeighs();
-  expandRequestContainer();
-  expandRightContainer();
-  buttonsClickBackgroundChange();
-  activateAlertButton(); 
-});

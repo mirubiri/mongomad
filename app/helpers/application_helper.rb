@@ -272,6 +272,9 @@ module ApplicationHelper
   def negotiation_receiver(negotiation)
     User.find(negotiation.negotiator_ids[1])
   end
+  def negotiation_receiver_id(negotiation)
+    negotiation.proposals.last.user_receiver_id
+  end
   def negotiation_receiver_name(negotiation)
     negotiation.proposals.last.receiver.nickname
   end
