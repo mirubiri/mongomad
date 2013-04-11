@@ -2,7 +2,7 @@ require 'rspec/expectations'
 
 module MongomadMatchersHelpers
 
-  protected
+  private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
     ['name', 'description', 'image_name',].concat(yield).each do |field|
@@ -152,6 +152,7 @@ module MongomadMatchersHelpers
     false
   end
 
+public
   def equivalent?(actual,expected)
     if eq_klass?(actual,'Array') && eq_klass?(expected,'Array')
 
