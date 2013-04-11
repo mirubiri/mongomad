@@ -22,8 +22,8 @@ module MongomadMatchersHelpers
 
   #MONEY
   def eq_money?(actual,expected)
-    (expected.user_id == actual.user_id) &&
-      (expected.quantity == actual.quantity)
+    (actual.user_id == expected.user_id) &&
+      (actual.quantity == expected.quantity)
   end
 
 
@@ -38,8 +38,8 @@ module MongomadMatchersHelpers
   ## No vale para negociaciones y deals
 
   def eq_personal_data?(actual,expected)
-    (expected.nickname == actual.nickname) &&
-      (expected.image_name == actual.image_name)
+    (actual.nickname == expected.nickname) &&
+      (actual.image_name == expected.image_name)
   end
 
   def eq_side?(actual,expected)
@@ -50,8 +50,8 @@ module MongomadMatchersHelpers
   #OFFER & PROPOSAL
 
   def eq_offerable_participants?(actual,expected)
-    (expected.user_composer_id == actual.user_composer_id) &&
-      (expected.user_receiver_id == actual.user_receiver_id)
+    (actual.user_composer_id == expected.user_composer_id) &&
+      (actual.user_receiver_id == expected.user_receiver_id)
   end
 
   def eq_offerable?(actual,expected)
@@ -77,8 +77,7 @@ module MongomadMatchersHelpers
   #REQUEST
 
   def eq_request?(actual,expected)
-    (actual.user_name == expected.user_name) &&
-      (actual.text == expected.text) &&
+    (actual.text == expected.text) &&
       (actual.image_name == expected.image_name) &&
       (actual.user_id == expected.user_id )
   end
