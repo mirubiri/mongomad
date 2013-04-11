@@ -245,58 +245,25 @@ module ApplicationHelper
   def negotiation_id(negotiation)
     negotiation._id
   end
+  def negotiation_negotiators(negotiation)
+    negotiation.negotiators
+  end
   def negotiation_proposals(negotiation)
     negotiation.proposals
   end
-  def negotiation_messages(negotiation)
-    negotiation.messages
+  def negotiation_last_proposal(negotiation)
+    negotiation.proposals.last
+  end
+  def negotiation_conversation(negotiation)
+    negotiation.conversation
   end
 
-# Todo esto esta mal, no existe composer ni receiver en una negociacion
-=begin
-  def negotiation_users(negotiation)
-    negotiation.users
-  end
-  def negotiation_composer(negotiation)
-    User.find(negotiation.negotiator_ids[0])
-  end
-  def negotiation_composer_name(negotiation)
-    negotiation.proposals.last.composer.nickname
-  end
-  def negotiation_composer_image(negotiation)
-    image_tag(negotiation.proposals.last.composer.image)
-  end
-  def negotiation_composer_products(negotiation)
-    negotiation.proposals.last.composer.products
-  end
-  def negotiation_composer_id(negotiation)
-    negotiation.proposals.last.user_composer_id
-  end
-  def negotiation_receiver(negotiation)
-    User.find(negotiation.negotiator_ids[1])
-  end
-  def negotiation_receiver_id(negotiation)
-    negotiation.proposals.last.user_receiver_id
-  end
-  def negotiation_receiver_name(negotiation)
-    negotiation.proposals.last.receiver.nickname
-  end
-  def negotiation_receiver_image(negotiation)
-    image_tag(negotiation.proposals.last.receiver.image)
-  end
-  def negotiation_receiver_products(negotiation)
-    negotiation.proposals.last.receiver.products
-  end
-  def negotiation_datetime(negotiation)
-    negotiation.created_at
-  end
-  def negotiation_updatetime(negotiation)
-    negotiation.updated_at
-  end
-=end
   # PROPOSAL HELPERS -----------------------------------------
   def proposal_id(proposal)
     proposal._id
+  end
+  def proposal_composer(proposal)
+    User.find(proposal.user_composer_id)
   end
   def proposal_composer_id(proposal)
     proposal.user_composer_id
@@ -309,6 +276,9 @@ module ApplicationHelper
   end
   def proposal_composer_products(proposal)
     proposal.composer.products
+  end
+  def proposal_receiver(proposal)
+    User.find(proposal.user_receiver_id)
   end
   def proposal_receiver_id(proposal)
     proposal.user_receiver_id
