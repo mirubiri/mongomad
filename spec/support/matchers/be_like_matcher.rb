@@ -29,7 +29,7 @@ module MongomadMatchersHelpers
 
   #MESSAGE
   def eq_message?(actual,expected)
-    (actual.user_name == expected.user_name) &&
+    (actual.nickname == expected.nickname) &&
       (actual.text == expected.text) &&
       (actual.image_name == expected.image_name)
   end
@@ -38,7 +38,7 @@ module MongomadMatchersHelpers
   ## No vale para negociaciones y deals
 
   def eq_personal_data?(actual,expected)
-    (expected.name == actual.name) &&
+    (expected.nickname == actual.nickname) &&
       (expected.image_name == actual.image_name)
   end
 
