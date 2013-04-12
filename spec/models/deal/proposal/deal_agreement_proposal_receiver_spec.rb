@@ -16,7 +16,6 @@ describe Deal::Agreement::Proposal::Receiver do
     it { should have_field(:nick).of_type(String) }
     it { should have_field(:image_url).of_type(String) }
     it { should accept_nested_attributes_for :products }
-    it { should have_denormalized_fields(:nick, :image_url).from('user.profile') }
   end
 
   describe 'Validations' do
@@ -31,16 +30,6 @@ describe Deal::Agreement::Proposal::Receiver do
 
     it 'creates one deal' do
       expect { receiver.save }.to change{ Deal.count }.by(1)
-    end
-  end
-
-  describe '#user' do
-    subject { receiver.user }
-
-    it { should be_instance_of(User) }
-
-    it 'returns user who received current proposal' do
-      expect(subject.id).to eq receiver.proposal.user_receiver_id
     end
   end
 end

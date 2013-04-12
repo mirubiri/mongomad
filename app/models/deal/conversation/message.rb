@@ -23,6 +23,6 @@ class Deal::Conversation::Message
     length: { minimum: 1, maximum: 160 }
 
   def user
-    User.find(self.user_id)
+    conversation.deal.signers.find(user_id)
   end
 end

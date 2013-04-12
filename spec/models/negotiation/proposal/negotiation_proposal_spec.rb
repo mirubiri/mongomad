@@ -37,4 +37,12 @@ describe Negotiation::Proposal do
       expect { proposal.save }.to change{ Negotiation.count }.by(1)
     end
   end
+
+  describe '#user_composer' do
+    xit 'lo que sea'
+  end
+
+  describe '#user_receiver' do
+    xit 'lo que sea'
+  end
 end

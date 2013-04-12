@@ -18,7 +18,6 @@ describe Deal::Agreement::Proposal::Receiver::Product do
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
     it { should have_field(:image_url).of_type(String) }
-    it { should have_denormalized_fields(:name, :description, :image_url).from('thing') }
   end
 
   describe 'Validations' do
@@ -38,16 +37,6 @@ describe Deal::Agreement::Proposal::Receiver::Product do
 
     it 'creates one deal' do
       expect { product.save }.to change{ Deal.count }.by(1)
-    end
-  end
-
-  describe '#thing' do
-    subject { product.thing }
-
-    it { should be_instance_of(User::Thing) }
-
-    it 'returns thing which originated this product' do
-      expect(subject.id).to eq product.thing_id
     end
   end
 end

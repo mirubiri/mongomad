@@ -16,8 +16,7 @@ describe Deal::Agreement::Proposal::Composer do
     it { should have_field(:nick).of_type(String) }
     it { should have_field(:image_url).of_type(String) }
     it { should accept_nested_attributes_for :products }
-    it { should have_denormalized_fields(:nick, :image_url).from('user.profile') }
-   end
+  end
 
   describe 'Validations' do
     it { should validate_presence_of :proposal }
@@ -31,16 +30,6 @@ describe Deal::Agreement::Proposal::Composer do
 
     it 'creates one deal' do
       expect { composer.save }.to change{ Deal.count }.by(1)
-    end
-  end
-
-  describe '#user' do
-    subject { composer.user }
-
-    it { should be_instance_of(User) }
-
-    it 'returns user who composed current proposal' do
-      expect(subject.id).to eq composer.proposal.user_composer_id
     end
   end
 end

@@ -17,7 +17,6 @@ describe Deal::Agreement::Conversation::Message do
     it { should have_field(:nick).of_type(String) }
     it { should have_field(:text).of_type(String) }
     it { should have_field(:image_url).of_type(String) }
-    it { should have_denormalized_fields(:nick, :image_url).from('user.profile') }
   end
 
   describe 'Validations' do
@@ -34,16 +33,6 @@ describe Deal::Agreement::Conversation::Message do
 
     it 'creates one deal' do
       expect { message.save }.to change{ Deal.count }.by(1)
-    end
-  end
-
-  describe '#user' do
-    subject { message.user }
-
-    it { should be_instance_of(User) }
-
-    it 'returns user who posted current message' do
-      expect(subject.id).to eq message.user_id
     end
   end
 end
