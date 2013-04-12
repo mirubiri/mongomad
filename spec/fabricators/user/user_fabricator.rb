@@ -15,10 +15,10 @@ Fabricator(:user_with_things, from: :user) do
 end
 
 Fabricator(:user_medico, from: :user) do
-  profile  { Fabricate.build(:user_medico_profile) }
+  profile         { Fabricate.build(:user_medico_profile) }
   things(count:1) { Fabricate.build(:user_medico_thing_mp3) }
-  email    'medico@improcex.com'
-  password 'medico'
+  email           'medico@improcex.com'
+  password        'medico'
 
   after_build do |user|
     user.things << Fabricate.build(:user_medico_thing_cartera)
@@ -26,10 +26,10 @@ Fabricator(:user_medico, from: :user) do
 end
 
 Fabricator(:user_sergio, from: :user) do
-  profile  { Fabricate.build(:user_sergio_profile) }
+  profile         { Fabricate.build(:user_sergio_profile) }
   things(count:1) { Fabricate.build(:user_sergio_thing_mando) }
-  email    'sergio@improcex.com'
-  password 'sergio'
+  email           'sergio@improcex.com'
+  password        'sergio'
 
   after_build do |user|
     user.things << Fabricate.build(:user_sergio_thing_cartera)
