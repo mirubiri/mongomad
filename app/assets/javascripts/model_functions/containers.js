@@ -25,9 +25,34 @@ function matchPrincipalContainersHeighs(){
   }
 }
 
-function expandRightContainer(){
-  mainWidth = $('.mainlayout').width();
+function expandRightContainer(){  
+
+  // Aqui empieza el calculo de las anchuras *************************
+  mainLayout = $('.mainlayout');
+  anchuraPosible = ($('#ppal_container').width()) - 16;
+  anchuraOffer = ($('.offer:first').width()) + 2;  
+  disparador = anchuraOffer;
+  contador = 1;
+  offersEntran = 0;
+
+  while(disparador < anchuraPosible){
+     disparador = disparador + disparador;
+     contador = contador + 1;
+  }
+
+  offersEntran = contador;
+  margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);
+  //******************************************************************
+
+  anchuraMainLayout = mainLayout.width();
+  anchuraMainLayoutRecalculada = anchuraMainLayout - margenPorRepartir;
+
+  mainLayout.css({'width': anchuraMainLayoutRecalculada + 'px'});
+  anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
+
   leftWidth = $('#leftContainer').width();
-  rightWidth = mainWidth - leftWidth -31;
+  rightWidth = anchuraMainLayout - leftWidth - 20;
+
   $('#rightContainer').css({'width': rightWidth + 'px'});
+
 }

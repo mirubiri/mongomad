@@ -1,16 +1,8 @@
 @import "variables";
 
 .left_container{
-  @include box-sizing(border-box);
-  float:left;
-  @media screen and (max-width: 1300px) {
-    width: 22%;
-    max-width: 22%;
-  }
-  @media screen and (min-width: 1300px) {
-    width: 27%;
-    max-width: 27%;
-  }
+  @include fixed_width(258px,258px,258px);
+  float:left; 
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
 
   .user_container{
