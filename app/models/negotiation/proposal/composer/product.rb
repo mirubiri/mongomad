@@ -25,6 +25,6 @@ class Negotiation::Proposal::Composer::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def thing
-    composer.proposal.user_composer.things.find(thing_id)
+    composer.user.things.find(thing_id)
   end
 end
