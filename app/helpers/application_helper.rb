@@ -32,7 +32,7 @@ module ApplicationHelper
     user.profile.bithdate
   end
   def user_logged_image(user = user_logged)
-    image_tag(user.profile.image)
+    image_tag(user.profile.image_url)
   end
   def user_logged_datetime(user = user_logged)
     user.profile.created_at
@@ -96,7 +96,7 @@ module ApplicationHelper
     @user.profile.birth_date
   end
   def user_visited_image
-    image_tag(@user.profile.image)
+    image_tag(@user.profile.image_url)
   end
   def user_visited_datetime
     @user.profile.created_at
@@ -142,10 +142,10 @@ module ApplicationHelper
     thing.stock
   end
   def thing_image(thing)
-    image_tag(thing.image)
+    image_tag(thing.image_url)
   end
   def thing_inboard(thing)
-    image_tag(thing.image, :alt => '200x100', :width => '200', :height => '100')
+    image_tag(thing.image_url, :alt => '200x100', :width => '200', :height => '100')
   end
 
   # REQUEST HELPERS -----------------------------------------
@@ -162,7 +162,7 @@ module ApplicationHelper
     request.text
   end
   def request_image(request)
-    image_tag(request.image)
+    image_tag(request.image_url)
   end
   # def request_datetime(request)
   #   request.created_at
@@ -182,7 +182,7 @@ module ApplicationHelper
     offer.composer.nickname
   end
   def offer_composer_image(offer)
-    image_tag(offer.composer.image)
+    image_tag(offer.composer.image_url)
   end
   def offer_composer_products(offer)
     offer.composer.products
@@ -197,7 +197,7 @@ module ApplicationHelper
     offer.receiver.nickname
   end
   def offer_receiver_image(offer)
-    image_tag(offer.receiver.image)
+    image_tag(offer.receiver.image_url)
   end
   def offer_receiver_products(offer)
     offer.receiver.products
@@ -238,7 +238,7 @@ module ApplicationHelper
     product.quantity
   end
   def product_image(product)
-    image_tag(product.image)
+    image_tag(product.image_url)
   end
 
   # NEGOTIATION HELPERS -----------------------------------------
@@ -272,7 +272,7 @@ module ApplicationHelper
      proposal.composer.nickname
   end
   def proposal_composer_image(proposal)
-    image_tag(proposal.composer.image)
+    image_tag(proposal.composer.image_url)
   end
   def proposal_composer_products(proposal)
     proposal.composer.products
@@ -290,7 +290,7 @@ module ApplicationHelper
     proposal.receiver.nickname
   end
   def proposal_receiver_image(proposal)
-    image_tag(proposal.receiver.image)
+    image_tag(proposal.receiver.image_url)
   end
   def proposal_receiver_products(proposal)
     proposal.receiver.products
@@ -322,7 +322,7 @@ module ApplicationHelper
     message.text
   end
   def message_image(message)
-    message.image
+    message.image_url
   end
   def message_datetime(message)
     message.created_at
@@ -345,13 +345,13 @@ module ApplicationHelper
     deal.users
   end
   def deal_composer_image(deal)
-    image_tag(deal.agreement.proposals.last.composer.image)
+    image_tag(deal.agreement.proposals.last.composer.image_url)
   end
   def deal_composer_products(deal)
     deal.agreement.proposals.last.composer.products
   end
   def deal_receiver_image(deal)
-    image_tag(deal.agreement.proposals.last.receiver.image)
+    image_tag(deal.agreement.proposals.last.receiver.image_url)
   end
   def deal_receiver_products(deal)
     deal.agreement.proposals.last.receiver.products
