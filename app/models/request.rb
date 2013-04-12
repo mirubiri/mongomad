@@ -5,14 +5,14 @@ class Request
 
   belongs_to :user
 
-  field :nickname, type: String
-  field :text,     type: String
+  field :nick,      type: String
+  field :text,      type: String
   field :image_url, type: String
 
-  denormalize :nickname, :image_url, from:'user.profile'
+  denormalize :nick, :image_url, from:'user.profile'
 
   validates :user,
-    :nickname,
+    :nick,
     :text,
     :image_url,
     presence: true
