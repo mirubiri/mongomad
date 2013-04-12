@@ -4,11 +4,6 @@ Fabricator(:user_thing, class_name: "User::Thing") do
   description { Faker::Lorem.sentence(word_count = 15) }
   stock       5
   image       { File.open('app/assets/images/car.png') }
-  image_name  'car.png'
-
-  after_build do |thing|
-    thing.image.store!
-  end
 end
 
 Fabricator(:user_medico_thing_mp3, from: "User::Thing") do

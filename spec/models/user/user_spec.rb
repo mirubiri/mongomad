@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { Fabricate(:user) }
+  let(:user) { Fabricate.build(:user) }
 
   describe 'Relations' do
     it { should have_many(:requests) }
