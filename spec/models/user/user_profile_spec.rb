@@ -19,7 +19,7 @@ describe User::Profile do
     it { should have_field(:phone_number).of_type(String) }
     it { should have_field(:website).of_type(String) }
     it { should have_field(:birth_date).of_type(Date) }
-    it { should have_field(:image_name).of_type(Object) }
+    it { should_not have_field(:image_name).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -30,7 +30,8 @@ describe User::Profile do
     it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
     it { should validate_presence_of :birth_date }
-    it { should validate_presence_of :image_name }
+    it { should_not validate_presence_of :image_name }
+    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do
