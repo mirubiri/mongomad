@@ -16,7 +16,7 @@ body{
   line-height: 18px;
 
   .mainlayout{
-    @include center-horizontally(1152px);
+    @include center-horizontally(97%);
     position: relative;
     overflow: auto;     
   }  

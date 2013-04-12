@@ -42,17 +42,32 @@ function expandRightContainer(){
 
   offersEntran = contador;
   margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);
+  //alert(margenPorRepartir);
   //******************************************************************
 
   anchuraMainLayout = mainLayout.width();
-  anchuraMainLayoutRecalculada = anchuraMainLayout - margenPorRepartir;
+  //alert(anchuraMainLayout);
+  margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraMainLayout;
+  //alert(margenPorRepartirPorcentual);
 
-  mainLayout.css({'width': anchuraMainLayoutRecalculada + 'px'});
-  anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
+  anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
+  //alert(anchuraMainLayoutRecalculada);
 
-  leftWidth = $('#leftContainer').width();
-  rightWidth = anchuraMainLayout - leftWidth - 20;
+  if(anchuraOffer > 10){
+    mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
+    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
 
-  $('#rightContainer').css({'width': rightWidth + 'px'});
+    leftWidth = $('#leftContainer').width();
+    rightWidth = anchuraMainLayout - leftWidth - 20;
+
+    $('#rightContainer').css({'width': rightWidth + 'px'});
+  }
+  else{
+    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
+    leftWidth = $('#leftContainer').width();
+    rightWidth = anchuraMainLayout - leftWidth - 20;
+
+    $('#rightContainer').css({'width': rightWidth + 'px'});
+  }
 
 }
