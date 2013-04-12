@@ -9,5 +9,5 @@ Fabricator(:offer_receiver, class_name: "Offer::Receiver") do
     products
   end
   nickname   { |attrs| attrs[:user].profile.nickname }
-  image_name { |attrs| attrs[:user].profile.image_name }
+  image_url { |attrs| attrs[:user].profile.image_url }
 end

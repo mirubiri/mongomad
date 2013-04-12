@@ -6,16 +6,15 @@ class Offer::Receiver
   embeds_many :products, class_name: "Offer::Receiver::Product", cascade_callbacks: true
 
   field :nickname, type: String
-
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+  field :image_url, type: String
 
   accepts_nested_attributes_for :products
 
-  denormalize :nickname, :image_name, from:'offer.user_receiver.profile'
+  denormalize :nickname, :image_url, from:'offer.user_receiver.profile'
 
   validates :offer,
     :products,
     :nickname,
-    :image_name,
+    :image_url,
     presence: true
 end

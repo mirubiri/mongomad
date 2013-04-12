@@ -16,8 +16,9 @@ describe Offer::Receiver::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
-    it { should have_field(:image_name).of_type(Object) }
-    it { should have_denormalized_fields(:name, :description, :image_name).from('thing') }
+    it { should have_field(:image_url).of_type(String) }
+    it { should_not have_field(:image_name).of_type(Object) }
+    it { should have_denormalized_fields(:name, :description, :image_url).from('thing') }
   end
 
   describe 'Validations' do
@@ -26,7 +27,8 @@ describe Offer::Receiver::Product do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should validate_presence_of :image_name }
+    it { should_not validate_presence_of :image_name }
+    it { should validate_presence_of :image_url}
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }
@@ -37,13 +39,6 @@ describe Offer::Receiver::Product do
 
     it 'creates one offer' do
       expect { product.save }.to change{ Offer.count }.by(1)
-    end
-  end
-
-  describe 'after_save' do
-    it 'has an image' do
-      product.save
-      expect(File.exist? product.image.path).to eq true
     end
   end
 
