@@ -9,6 +9,7 @@ module MongomadMatchersHelpers
       return false unless
       actual.send(field) == expected.send(field)
     end
+    true
   end
 
   def eq_thing?(actual,expected)
@@ -56,9 +57,8 @@ module MongomadMatchersHelpers
   end
 
   def eq_offerable?(actual,expected)
-    eq_offerable_participants?(actual,expected) &&
+      eq_offerable_participants?(actual,expected) &&
       eq_money?(actual.money,expected.money) &&
-
       eq_side?(actual.composer,expected.composer) &&
       eq_side?(actual.receiver,expected.receiver)
   end
@@ -129,6 +129,7 @@ module MongomadMatchersHelpers
       return false unless
       yield(actual[index],expected[index])
     end
+    true
   end
 
   def similar?(actual,expected)
