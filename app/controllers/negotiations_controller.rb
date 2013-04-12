@@ -66,13 +66,17 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1
   # PUT /negotiations/1.json
   def update
-    @negotiation = Negotiation.find(params[:id])
+    @user = current_user
+    @negotiation = @user.negotiations.find(params[:id])
+
+    @proposal = Negotiation::Proposal.new(params[:proposal])
+    @proposal.user_composer_id = current_user._id
 
     respond_to do |format|
-      if @negotiation.update_attributes(params[:negotiation])
-        format.html { redirect_to @negotiation, notice: 'Negotiation was successfully updated.' }
+      if @negotiation.proposals << @proposal
+      format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
       else
-        format.html { render action: "edit" }
+      format.html { render action: "edit" }
       end
     end
   end
