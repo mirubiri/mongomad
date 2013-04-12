@@ -6,7 +6,7 @@ class User::Profile
 
   field :name,             type: String
   field :surname,          type: String
-  field :nickname,         type: String
+  field :nick,             type: String
   field :sex,              type: String
   field :country,          type: String
   field :delivery_address, type: String
@@ -19,7 +19,7 @@ class User::Profile
   validates :user,
             :name,
             :surname,
-            :nickname,
+            :nick,
             :sex,
             :country,
             :birth_date,
