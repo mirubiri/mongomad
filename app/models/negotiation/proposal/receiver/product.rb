@@ -25,6 +25,6 @@ class Negotiation::Proposal::Receiver::Product
     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def thing
-    receiver.proposal.user_receiver.things.find(thing_id)
+    receiver.user.things.find(thing_id)
   end
 end
