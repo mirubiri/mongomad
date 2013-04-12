@@ -100,7 +100,7 @@
 
               <input type="hidden" name="offer[receiver_attributes][products_attributes][][thing_id]" value="<%= product_id(product) %>">
 
-              <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="1" id="<%= product_quantity(product) %>">
+              <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>">
 
             <% end %>
 
@@ -108,7 +108,7 @@
               <div class="money_composition"></div>
             </div>
           </div>
-          
+
           <div class="given" id="summary_offer_given_products_container">
             <% proposal_receiver_products(negotiation_last_proposal(@negotiation)).each do |product| %>
 
@@ -124,7 +124,7 @@
 
               <input type="hidden" name="offer[composer_attributes][products_attributes][][thing_id]" value="<%= product_id(product) %>">
 
-              <input type="hidden" name="offer[composer_attributes][products_attributes][][quantity]" value="1" id="<%= product_quantity(product) %>">
+              <input type="hidden" name="offer[composer_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>">
               
             <% end %>
             <div class="money_given" id="dineroOfrecesEnSumario">
