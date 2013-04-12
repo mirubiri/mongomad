@@ -8,6 +8,6 @@ Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Prop
     end
     products
   end
-  nickname   { |attrs| attrs[:receiver].nickname }
-  image_name { |attrs| attrs[:receiver].image_name }
+  nick      { |attrs| attrs[:receiver].nick }
+  image_url { |attrs| attrs[:receiver].image_url }
 end

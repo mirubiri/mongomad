@@ -5,7 +5,7 @@ module MongomadMatchersHelpers
   private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
-    ['name', 'description', 'image_name',].concat(yield).each do |field|
+    ['name', 'description', 'image_url',].concat(yield).each do |field|
       return false unless
       actual.send(field) == expected.send(field)
     end
@@ -29,17 +29,18 @@ module MongomadMatchersHelpers
 
   #MESSAGE
   def eq_message?(actual,expected)
-    (actual.nickname == expected.nickname) &&
+    (actual.nick == expected.nick) &&
       (actual.text == expected.text) &&
-      (actual.image_name == expected.image_name)
+      (actual.image_url == expected.image_url)
   end
+
 
   #COMPOSER & RECEIVER
   ## No vale para negociaciones y deals
 
   def eq_personal_data?(actual,expected)
-    (actual.nickname == expected.nickname) &&
-      (actual.image_name == expected.image_name)
+    (actual.nick == expected.nick) &&
+      (actual.image_url == expected.image_url)
   end
 
   def eq_side?(actual,expected)
@@ -47,8 +48,8 @@ module MongomadMatchersHelpers
       equivalent?(actual.products,expected.products)
   end
 
-  #OFFER & PROPOSAL
 
+  #OFFER & PROPOSAL
   def eq_offerable_participants?(actual,expected)
     (actual.user_composer_id == expected.user_composer_id) &&
       (actual.user_receiver_id == expected.user_receiver_id)
@@ -62,7 +63,6 @@ module MongomadMatchersHelpers
       eq_side?(actual.receiver,expected.receiver)
   end
 
-
   def eq_proposal?(actual,expected)
     eq_offerable?(actual,expected)
   end
@@ -73,12 +73,10 @@ module MongomadMatchersHelpers
   end
 
 
-
   #REQUEST
-
   def eq_request?(actual,expected)
     (actual.text == expected.text) &&
-      (actual.image_name == expected.image_name) &&
+      (actual.image_url == expected.image_url) &&
       (actual.user_id == expected.user_id )
   end
 
@@ -124,7 +122,6 @@ module MongomadMatchersHelpers
     eq_klass?(actual,'Money') && eq_klass?(expected,'Money')
   end
 
-
   def eq_array?(actual,expected)
     return false unless actual.size == expected.size
 
@@ -135,8 +132,6 @@ module MongomadMatchersHelpers
   end
 
   def similar?(actual,expected)
-    # El orden es importante, no se puede cambiar
-
     return eq_offer?(actual,expected)     if are_offers?(actual,expected)
     return eq_proposal?(actual,expected)  if are_proposals?(actual,expected)
     return eq_offerable?(actual,expected) if are_offerables?(actual,expected)
@@ -154,11 +149,9 @@ module MongomadMatchersHelpers
 public
   def equivalent?(actual,expected)
     if eq_klass?(actual,'Array') && eq_klass?(expected,'Array')
-
       eq_array?(actual,expected) do |actual_element,expected_element|
         similar?(actual_element,expected_element)
       end
-
     else
       similar?(actual,expected)
     end

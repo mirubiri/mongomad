@@ -5,18 +5,17 @@ class Deal::Agreement::Proposal::Composer
   embedded_in :proposal, class_name: "Deal::Agreement::Proposal"
   embeds_many :products, class_name: "Deal::Agreement::Proposal::Composer::Product", cascade_callbacks: true
 
-  field :nickname, type: String
-
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
+  field :nick,      type: String
+  field :image_url, type: String
 
   accepts_nested_attributes_for :products
 
-  denormalize :nickname, :image_name, from:'user.profile'
+  denormalize :nick, :image_url, from:'user.profile'
 
   validates :proposal,
     :products,
-    :nickname,
-    :image_name,
+    :nick,
+    :image_url,
     presence: true
 
   def user

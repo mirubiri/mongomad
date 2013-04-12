@@ -8,17 +8,16 @@ class Negotiation::Proposal::Composer::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer
+  field :image_url,   type: String
 
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
-
-  denormalize :name, :description, :image_name, from:'thing'
+  denormalize :name, :description, :image_url, from:'thing'
 
   validates :composer,
     :thing_id,
     :name,
     :description,
     :quantity,
-    :image_name,
+    :image_url,
     presence: true
 
   validates :quantity,

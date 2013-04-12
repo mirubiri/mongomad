@@ -8,6 +8,6 @@ Fabricator(:negotiation_proposal_composer, class_name: "Negotiation::Proposal::C
     end
     products
   end
-  nickname   { |attrs| attrs[:composer].nickname }
-  image_name { |attrs| attrs[:composer].image_name }
+  nick      { |attrs| attrs[:composer].nick }
+  image_url { |attrs| attrs[:composer].image_url }
 end

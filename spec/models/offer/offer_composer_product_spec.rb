@@ -16,7 +16,6 @@ describe Offer::Composer::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
-    it { should_not have_field(:image_name).of_type(Object) }
     it { should have_field(:image_url).of_type(String) }
     it { should have_denormalized_fields(:name, :description, :image_url).from('thing') }
   end
@@ -27,7 +26,6 @@ describe Offer::Composer::Product do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should_not validate_presence_of :image_name }
     it { should validate_presence_of :image_url }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,

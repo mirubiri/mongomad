@@ -8,6 +8,6 @@ Fabricator(:offer_receiver, class_name: "Offer::Receiver") do
     end
     products
   end
-  nickname   { |attrs| attrs[:user].profile.nickname }
-  image_url { |attrs| attrs[:user].profile.image_url }
+  nick       { |attrs| attrs[:user].profile.nick }
+  image_url  { |attrs| attrs[:user].profile.image_url }
 end

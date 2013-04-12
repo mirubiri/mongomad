@@ -8,7 +8,7 @@ class Offer::Composer::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer
-  field :image_url,  type: String
+  field :image_url,   type: String
 
   denormalize :name, :description, :image_url, from:'thing'
 

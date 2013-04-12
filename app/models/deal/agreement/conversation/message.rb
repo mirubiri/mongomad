@@ -5,19 +5,18 @@ class Deal::Agreement::Conversation::Message
 
   embedded_in :conversation, class_name: "Deal::Agreement::Conversation"
 
-  field :user_id,  type: Moped::BSON::ObjectId
-  field :nickname, type: String
-  field :text,     type: String
+  field :user_id,   type: Moped::BSON::ObjectId
+  field :nick,      type: String
+  field :text,      type: String
+  field :image_url, type: String
 
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
-
-  denormalize :nickname, :image_name, from:'user.profile'
+  denormalize :nick, :image_url, from:'user.profile'
 
   validates :conversation,
     :user_id,
-    :nickname,
+    :nick,
     :text,
-    :image_name,
+    :image_url,
     presence: true
 
   validates :text,

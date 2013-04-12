@@ -3,19 +3,19 @@
     <%= user_visited_image %>
   </div>
   <div class="user_name">
-    <%= user_visited_nickname %></br>
+    <%= user_visited_nick %></br>
     <%= user_visited_country %></br>
-  </div> 
+  </div>
 
-  <% if user_logged_id != user_visited_id %>            
+  <% if user_logged_id != user_visited_id %>
     <div class="new_offer_button">
       <%= link_to "Hazme una oferta!!!",
         new_user_offer_path(user_visited_id),
         {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
-    </div>          
+    </div>
   <% end %>
 
-  <nav class="profile_menu" id="menu_user_data"> 
+  <nav class="profile_menu" id="menu_user_data">
     <div class="btn-toolbar">
       <div class="btn-group" data-toggle="buttons-checkbox">
         <% if (controller.sub_layout === "profile") %>
@@ -25,8 +25,8 @@
             :id => "link_profile",
             :class =>"btn btn-primary active",
             :'data-toggle' => "tooltip",
-            :title => "perfil" %>  
-        <% else %>          
+            :title => "perfil" %>
+        <% else %>
            <%= link_to image_tag("/assets/images/info.png"),
             user_profile_path(@user),
             :remote => true,
@@ -35,7 +35,7 @@
             :'data-toggle' => "tooltip",
             :title => "perfil" %>
         <% end %>
-               
+
       </div>
       <div class="btn-group">
         <% if (controller.sub_layout === "things") %>
@@ -45,7 +45,7 @@
             :id => "link_things",
             :class =>"btn btn-primary active",
             :'data-toggle' => "tooltip",
-            :title => "productos" %>    
+            :title => "productos" %>
         <% else %>
           <%= link_to image_tag("/assets/images/products.png"),
             user_things_path(@user),
@@ -53,9 +53,9 @@
             :id => "link_things",
             :class =>"btn btn-primary",
             :'data-toggle' => "tooltip",
-            :title => "productos" %> 
+            :title => "productos" %>
         <% end %>
-                       
+
       </div>
       <div class="btn-group">
         <% if (controller.sub_layout === "alerts") %>
@@ -65,7 +65,7 @@
             :id => "link_alerts",
             :class =>"btn btn-primary active",
             :'data-toggle' => "tooltip",
-            :title => "alertas" %> 
+            :title => "alertas" %>
         <% else %>
           <%= link_to image_tag("/assets/images/alerts.png"),
             user_alerts_path(@user),
@@ -75,7 +75,7 @@
             :'data-toggle' => "tooltip",
             :title => "alertas" %>
         <% end %>
-                       
+
       </div>
     </div>
   </nav>

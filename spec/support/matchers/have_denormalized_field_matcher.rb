@@ -1,4 +1,3 @@
-
 require 'rspec/expectations'
 
 module MongomadMatchers
@@ -42,6 +41,4 @@ module MongomadMatchers
       @instance=instance
     end
   end
-
-
 end

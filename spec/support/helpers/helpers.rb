@@ -33,7 +33,7 @@ module MongomadHelpers
       name: thing.name,
       description: thing.description,
       stock: thing.stock,
-      image_name: thing.image_name
+      image_url: thing.image_url
     }
   end
 

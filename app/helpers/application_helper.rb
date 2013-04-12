@@ -1,4 +1,6 @@
 module ApplicationHelper
+#TODO: a esto hay que hacerle una limpieza del 15!!
+
 
   # USER (USER_LOGGED) HELPERS -----------------------------------------
   def user_logged_id(user = user_logged)
@@ -10,8 +12,8 @@ module ApplicationHelper
   def user_logged_surname(user = user_logged)
     user.profile.surname
   end
-  def user_logged_nickname(user = user_logged)
-    user.profile.nickname
+  def user_logged_nick(user = user_logged)
+    user.profile.nick
   end
   def user_logged_sex(user = user_logged)
     user.profile.sex
@@ -71,8 +73,8 @@ module ApplicationHelper
   def user_visited_surname
     @user.profile.surname
   end
-  def user_visited_nickname
-    @user.profile.nickname
+  def user_visited_nick
+    @user.profile.nick
   end
   def user_visited_sex
     @user.profile.sex
@@ -155,8 +157,8 @@ module ApplicationHelper
   # def request_user_id(request)
   #   request.user._id
   # end
-  # def request_user_nickname(request)
-  #   request.nickname
+  # def request_user_nick(request)
+  #   request.nick
   # end
   def request_text(request)
     request.text
@@ -179,7 +181,7 @@ module ApplicationHelper
     offer.user_composer_id
   end
   def offer_composer_name(offer)
-    offer.composer.nickname
+    offer.composer.nick
   end
   def offer_composer_image(offer)
     image_tag(offer.composer.image_url)
@@ -194,7 +196,7 @@ module ApplicationHelper
     offer.user_receiver_id
   end
   def offer_receiver_name(offer)
-    offer.receiver.nickname
+    offer.receiver.nick
   end
   def offer_receiver_image(offer)
     image_tag(offer.receiver.image_url)
@@ -269,7 +271,7 @@ module ApplicationHelper
     proposal.user_composer_id
   end
   def proposal_composer_name(proposal)
-     proposal.composer.nickname
+     proposal.composer.nick
   end
   def proposal_composer_image(proposal)
     image_tag(proposal.composer.image_url)
@@ -287,7 +289,7 @@ module ApplicationHelper
     proposal.user_receiver_id
   end
   def proposal_receiver_name(proposal)
-    proposal.receiver.nickname
+    proposal.receiver.nick
   end
   def proposal_receiver_image(proposal)
     image_tag(proposal.receiver.image_url)

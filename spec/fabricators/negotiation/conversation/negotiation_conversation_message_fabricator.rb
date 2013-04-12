@@ -2,7 +2,7 @@ Fabricator(:negotiation_conversation_message, class_name: "Negotiation::Conversa
   transient    :user
   conversation nil
   user_id      { |attrs| attrs[:user]._id }
-  nickname     { |attrs| attrs[:user].profile.nickname }
+  nick         { |attrs| attrs[:user].profile.nick }
   text         { Faker::Lorem.sentence(word_count = 10) }
-  image_name   { |attrs| attrs[:user].profile.image_name }
+  image_url    { |attrs| attrs[:user].profile.image_url }
 end
