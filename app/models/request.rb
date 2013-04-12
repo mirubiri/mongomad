@@ -7,15 +7,14 @@ class Request
 
   field :nickname, type: String
   field :text,     type: String
+  field :image_url, type: String
 
-  mount_uploader :image, ProductImageUploader, :mount_on => :image_name
-
-  denormalize :nickname, :image_name, from:'user.profile'
+  denormalize :nickname, :image_url, from:'user.profile'
 
   validates :user,
     :nickname,
     :text,
-    :image_name,
+    :image_url,
     presence: true
 
   validates :text,
