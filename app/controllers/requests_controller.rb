@@ -10,7 +10,6 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @requests }
     end
   end
 
@@ -21,7 +20,6 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @request }
     end
   end
 
@@ -59,7 +57,6 @@ class RequestsController < ApplicationController
         format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }
       else
         format.html { redirect_to @user, notice: 'Request was not created.' }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,7 +73,6 @@ class RequestsController < ApplicationController
         format.js { render :partial => "requests/edit_request_in_list", :layout => false }
       else
         format.html { render action: "edit" }
-        format.json { render json: @request.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -89,7 +85,6 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_offers_url }
-      format.json { head :no_content }
     end
   end
 end

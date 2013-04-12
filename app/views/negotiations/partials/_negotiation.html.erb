@@ -7,21 +7,21 @@
             <!--<img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
         </div>
         <div class="profile_image">
-          <%= link_to negotiation_composer_image(negotiation),
+          <%= link_to proposal_composer_image(negotiation_last_proposal(negotiation)),
             :controller => "users",
             :action => "show",
-            :id => negotiation_composer_id(negotiation)
+            :id => proposal_composer_id(negotiation_last_proposal(negotiation))
           %>
         </div>
         <div class="description">
           <div class="composer_name">
-            <%= negotiation_composer_name(negotiation) %>
+            <%= proposal_composer_name(negotiation_last_proposal(negotiation)) %>
           </div>                      
         </div>
       </div>
       <div class="offer_things">
         <div class="recieved">
-          <% negotiation_composer_products(negotiation).each do |product| %>
+          <% proposal_composer_products(negotiation_last_proposal(negotiation)).each do |product| %>
             <div class="image_container">              
               <%= product_image(product) %>
               <div class="quantity_container">
@@ -31,7 +31,7 @@
           <% end %>
         </div>
         <div class="given">
-          <% negotiation_receiver_products(negotiation).each do |product| %>
+          <% proposal_receiver_products(negotiation_last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
               <%= product_image(product) %>
               <div class="quantity_container"><%= product_quantity(product) %></div> 
@@ -40,12 +40,11 @@
         </div>
       </div>     
       <div class="offer_button">
-        <button class="btn btn-small disabled">Accept</button>
-        <button class="btn btn-small disabled"> 
-          <%= link_to 'edit', 
-              edit_user_negotiation_path(current_user,negotiation_id(negotiation)), 
-              :remote => true %>
-        </button>
+        <button class="btn btn-small disabled">Accept</button>        
+        <%= link_to 'edit', 
+            edit_user_negotiation_path(current_user,negotiation_id(negotiation)), 
+            :remote => true,
+            :class => "btn btn-warning" %>
       </div>      
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
@@ -89,7 +88,8 @@
 <% end %>
 
 <script>
-  $(document).ready(function(){  
+  $(document).ready(function(){
+    editNegotiationScript();  
     activateNegotiationButtons();
   });
 </script>

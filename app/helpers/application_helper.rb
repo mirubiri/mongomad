@@ -269,13 +269,16 @@ module ApplicationHelper
     proposal.user_composer_id
   end
   def proposal_composer_name(proposal)
-     proposal.composer.name
+     proposal.composer.nickname
   end
   def proposal_composer_image(proposal)
     image_tag(proposal.composer.image)
   end
   def proposal_composer_products(proposal)
     proposal.composer.products
+  end
+  def proposal_composer_things(proposal)
+    User.find(proposal.user_composer_id).things
   end
   def proposal_receiver(proposal)
     User.find(proposal.user_receiver_id)
@@ -284,13 +287,16 @@ module ApplicationHelper
     proposal.user_receiver_id
   end
   def proposal_receiver_name(proposal)
-    proposal.receiver.name
+    proposal.receiver.nickname
   end
   def proposal_receiver_image(proposal)
     image_tag(proposal.receiver.image)
   end
   def proposal_receiver_products(proposal)
     proposal.receiver.products
+  end
+  def proposal_receiver_things(proposal)
+    User.find(proposal.user_receiver_id).things
   end
   def proposal_money_owner_id(proposal)
     proposal.money.user_id

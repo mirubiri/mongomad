@@ -25,7 +25,6 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @thing }
     end
   end
 
@@ -65,8 +64,6 @@ class ThingsController < ApplicationController
         error = @thing.errors.to_a
         flash[:message] = error
         format.html { render action: "index" }
-        format.json { render json: @thing.errors,
-          status: :unprocessable_entity }
       end
     end
   end
@@ -83,7 +80,6 @@ class ThingsController < ApplicationController
         format.js { render :partial => "things/edit_thing_in_list", :layout => false }
       else
         format.html { render action: "edit" }
-        format.json { render json: @thing.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -96,7 +92,6 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_things_url }
-      format.json { head :no_content }
     end
   end
 
