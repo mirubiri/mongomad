@@ -20,11 +20,6 @@ Fabricator(:user_medico_profile, from: "User::Profile") do
   country    'Spain'
   birth_date '06-05-1982'
   image      { File.open('app/assets/images/medico.jpg') }
-  image_name 'medico.jpg'
-
-  after_build do |profile|
-    profile.image.store!
-  end
 end
 
 Fabricator(:user_sergio_profile, from: "User::Profile") do
@@ -35,9 +30,4 @@ Fabricator(:user_sergio_profile, from: "User::Profile") do
   country    'Spain'
   birth_date '23-12-1982'
   image      { File.open('app/assets/images/sergio.jpg') }
-  image_name 'sergio.jpg'
-
-  after_build do |profile|
-    profile.image.store!
-  end
 end
