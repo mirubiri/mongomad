@@ -36,5 +36,4 @@ Fabricator(:user_sergio_thing_cartera, from: "User::Thing") do
   description 'Cartera de titanio reforzado para llevar gran cantidad de moneditas.'
   stock       1
   image       { File.open('app/assets/images/sergio_cartera.jpg') }
-  image_name  'sergio_cartera.jpg'
 end
