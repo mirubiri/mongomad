@@ -19,11 +19,6 @@ class Negotiation::Proposal::Composer
     presence: true
 
   def user
-    @user ||= User.find(self.proposal.user_composer_id)
-  end
-
-  def reload
-    @user = nil
-    super
+    proposal.user_composer
   end
 end
