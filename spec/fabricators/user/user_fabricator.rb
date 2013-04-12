@@ -11,7 +11,7 @@ Fabricator(:user) do
 end
 
 Fabricator(:user_with_things, from: :user) do
-  things(count:3) { Fabricate.build(:user_thing) }
+  things(count:2) { Fabricate.build(:user_thing) }
 end
 
 Fabricator(:user_medico, from: :user) do
