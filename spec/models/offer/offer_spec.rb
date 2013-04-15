@@ -69,4 +69,21 @@ describe Offer do
       expect { offer.start_negotiation }.to change{ Negotiation.count }.by(1)
     end
   end
+
+  describe 'MISPRUEBAS' do
+    puts 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww'
+    puts Negotiation.count
+    neg = Fabricate(:offer).start_negotiation
+    puts Negotiation.count
+
+   puts neg.negotiators.first._id
+   puts neg.negotiators.last._id
+puts 'uuuuu'
+   puts User.last.id
+
+   ap User.last
+
+   puts User.last.negotiation_ids
+    puts 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
+  end
 end
