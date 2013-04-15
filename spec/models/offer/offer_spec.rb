@@ -47,7 +47,7 @@ describe Offer do
       expect(negotiation.proposals).to have(1).proposals
     end
 
-    it 'returns a negotiation whose proposal has the values from ofiginal offer' do
+    it 'returns a negotiation whose proposal has the values from original offer' do
       expect(negotiation.proposals.last).to be_like offer
     end
 
@@ -55,7 +55,7 @@ describe Offer do
       expect(negotiation.conversation.messages).to have(1).messages
     end
 
-    it 'returns a negotiation whose message has the values from ofiginal offer' do
+    it 'returns a negotiation whose message has the values from original offer' do
       expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
       expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
     end
@@ -64,7 +64,7 @@ describe Offer do
       expect(negotiation).to be_persisted
     end
 
-    it 'add the negotiation for composer in offer' do
+    it 'add the negotiation to composer in offer' do
       offer.composer.reload
       offer.receiver.reload
       expect(offer.composer.negotiations.first).to eq negotiation
@@ -75,22 +75,5 @@ describe Offer do
       offer.receiver.reload
       expect(offer.receiver.negotiations.first).to eq negotiation
     end
-  end
-
-  describe 'MISPRUEBAS' do
-    puts 'wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww'
-    puts Negotiation.count
-    neg = Fabricate(:offer).start_negotiation
-    puts Negotiation.count
-
-   puts neg.negotiators.first._id
-   puts neg.negotiators.last._id
-puts 'uuuuu'
-   puts User.last.id
-
-   ap User.last
-
-   puts User.last.negotiation_ids
-    puts 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
   end
 end
