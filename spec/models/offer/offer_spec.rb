@@ -60,13 +60,20 @@ describe Offer do
       expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
     end
 
-    it 'saves negotiation' do
-      expect(Negotiation.any_instance.should_receive(:save))
-      offer.start_negotiation
+    it 'returns a saved negotiation' do
+      expect(negotiation).to be_persisted
     end
 
-    it 'creates one negotiation' do
-      expect { offer.start_negotiation }.to change{ Negotiation.count }.by(1)
+    it 'add the negotiation for composer in offer' do
+      offer.composer.reload
+      offer.receiver.reload
+      expect(offer.composer.negotiations.first).to eq negotiation
+    end
+
+    it 'add the negotiation to receiver in offer' do
+      offer.composer.reload
+      offer.receiver.reload
+      expect(offer.receiver.negotiations.first).to eq negotiation
     end
   end
 
