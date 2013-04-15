@@ -17,9 +17,10 @@ body{
 
   .mainlayout{
     @include center-horizontally(97%);
+    min-width: 800px;
     position: relative;
-    overflow: auto;     
-  }  
+    overflow: auto;
+  }
 }
 
 .hidden_container{

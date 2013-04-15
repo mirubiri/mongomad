@@ -10,12 +10,12 @@ $(window).load(function(){
 
 
 $(window).bind('resize', function() {
-  //reloadPrincipalContainersHeighs();
-  //matchPrincipalContainersHeighs();
-  //expandRequestContainer();
+  reloadPrincipalContainersHeighs();
+  matchPrincipalContainersHeighs();
+  expandRequestContainer();
   expandContainers();
-  //buttonsClickBackgroundChange();
-  //activateAlertButton();
+  buttonsClickBackgroundChange();
+  activateAlertButton();
 });
 
 

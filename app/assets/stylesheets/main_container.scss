@@ -4,7 +4,6 @@
 
 .right_container{
   width: 890px;
-  min-width: 750px;
   float: left;
   padding: $MCTopPadding $MCExtPadding 0px 0px;
 
@@ -12,10 +11,10 @@
     @include ppal_container_style;
     float: left;
     overflow: visible;
-    display:inline-block;    
+    display:inline-block;
 
     .noti_bubble {
-      position:absolute; 
+      position:absolute;
       background-image: url("/assets/images/notification.png");
       width: 15px;
       height: 15px;
@@ -24,7 +23,7 @@
       z-index: 100;
     }
 
-    .main_container_elementList{            
+    .main_container_elementList{
       @include center-horizontally(97%);
       margin-bottom: 5px;
       padding: 0px 0px 0px 0px;
