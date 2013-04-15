@@ -26,7 +26,7 @@ class Offer
 
   def start_negotiation
     negotiation_params = {
-      #negotiators: [ self.user_composer, self.user_receiver ],
+      negotiators: [ self.user_composer, self.user_receiver ],
       conversation_attributes: {
         messages_attributes: [
           { user_id:self.user_composer_id, text:self.initial_message }
@@ -34,10 +34,7 @@ class Offer
       },
       proposals_attributes:Array.new
     }
-#     puts negotiation_params
-# negotiation = Negotiation.new(negotiation_params)
-# ap negotiation
-puts '111111111111111111111111111111111111111111111111111111111111111111'
+
     proposal_hash = Hash.new
     proposal_hash[:user_composer_id] = self.user_composer_id
     proposal_hash[:user_receiver_id] = self.user_receiver_id
@@ -56,29 +53,8 @@ puts '111111111111111111111111111111111111111111111111111111111111111111'
 
     negotiation_params[:proposals_attributes][0] = proposal_hash
 
-puts proposal_hash
-puts negotiation_params
-
-
-
-
-puts '333333333333333333333333333333333333333333333333333333'
     negotiation = Negotiation.new(negotiation_params)
-puts negotiation._id
-negotiation.negotiators = [ user_composer, user_receiver ]
-#puts negotiation.negotiators
-#puts 'aaaaaaaaaaaa'
     negotiation.save
-
-    user_composer.negotiations << negotiation
-    user_composer.save
-   user_receiver.negotiations << negotiation
-       user_receiver.save
-#puts = self.user_composer
-#puts = self.user_receiver
-
-     #puts negotiation_params
-    #negotiation.save
     negotiation
   end
 end
