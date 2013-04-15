@@ -25,30 +25,44 @@ function matchPrincipalContainersHeighs(){
   }
 }
 
-function expandRightContainer(){  
+function expandContainers(){
 
   // Aqui empieza el calculo de las anchuras *************************
+
   mainLayout = $('.mainlayout');
-  anchuraPosible = ($('#ppal_container').width()) - 16;
-  anchuraOffer = ($('.offer:first').width()) + 2;  
+  anchuraTotalPagina = $(document).width();
+  anchuraTotalUtilizada = (anchuraTotalPagina * 97)/100;
+  mainLayout.css({'width': anchuraTotalUtilizada + 'px'}); // Reseteo la anchura al 97% del total del documento HTML
+  anchuraMainLayout = mainLayout.width();
+
+  leftWidth = $('#leftContainer').width();
+  rightWidth = anchuraMainLayout - leftWidth - 20;
+  $('#rightContainer').css({'width': rightWidth + 'px'});
+
+
+  anchuraPosible = ($('#ppal_container').width()) - 16; // Anchura del contenedor de la lista de elementos principales
+  javascript:console.log(anchuraPosible);
+  anchuraOffer = ($('.offer:first').width()) + 2; // Anchura de la offer(luego sera la del primer elemento)
+  //console.log(anchuraOffer);
+
   disparador = anchuraOffer;
-  contador = 1;
-  offersEntran = 0;
+  contador = 0;
 
   while(disparador < anchuraPosible){
-     disparador = disparador + disparador;
-     contador = contador + 1;
+   disparador = disparador + anchuraOffer;
+   contador = contador + 1
   }
 
-  offersEntran = contador;
-  margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);
-  //alert(margenPorRepartir);
+  offersEntran = contador; // Estas son las ofertas que entran el el contenedor principal de elementos
+  //console.log(offersEntran);
+  margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);// El margen que falta por cubrir
+  //console.log(margenPorRepartir);
+
   //******************************************************************
 
   anchuraMainLayout = mainLayout.width();
-  //alert(anchuraMainLayout);
-  margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraMainLayout;
-  //alert(margenPorRepartirPorcentual);
+  margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraTotalPagina;
+  //console.log(margenPorRepartirPorcentual);
 
   anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
   //alert(anchuraMainLayoutRecalculada);
@@ -57,13 +71,6 @@ function expandRightContainer(){
     mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
     anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
 
-    leftWidth = $('#leftContainer').width();
-    rightWidth = anchuraMainLayout - leftWidth - 20;
-
-    $('#rightContainer').css({'width': rightWidth + 'px'});
-  }
-  else{
-    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
     leftWidth = $('#leftContainer').width();
     rightWidth = anchuraMainLayout - leftWidth - 20;
 

@@ -3,19 +3,19 @@ $(window).load(function(){
   ajaxLinksUrlChange();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  expandRightContainer();
+  expandContainers();
   buttonsClickBackgroundChange();
   lastElementPosition();
 });
 
 
 $(window).bind('resize', function() {
-  reloadPrincipalContainersHeighs();
-  matchPrincipalContainersHeighs();
-  expandRequestContainer();
-  expandRightContainer();
-  buttonsClickBackgroundChange();
-  activateAlertButton(); 
+  //reloadPrincipalContainersHeighs();
+  //matchPrincipalContainersHeighs();
+  //expandRequestContainer();
+  expandContainers();
+  //buttonsClickBackgroundChange();
+  //activateAlertButton();
 });
 
 
