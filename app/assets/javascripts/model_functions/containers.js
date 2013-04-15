@@ -5,7 +5,6 @@ function reloadPrincipalContainersHeighs(){
 }
 
 function matchPrincipalContainersHeighs(){
-  // El 90 debe coincidir con las alturas del footer + header
   var alturaVentana = $(document).height()-80;
 
   if ( ($('#devise_container').height()) < alturaVentana ) {
