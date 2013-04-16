@@ -13,7 +13,7 @@ $(window).bind('resize', function() {
   reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  expandContainers();
+  expandContainers();// Tengo que llevarmelo a la ejecucion de los index de cada modelo
   buttonsClickBackgroundChange();
   activateAlertButton();
 });

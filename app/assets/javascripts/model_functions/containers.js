@@ -60,23 +60,26 @@ function expandContainers(){
   anchuraAculumada = anchuraOffer;
   contador = 0;
 
-  while(anchuraAculumada < anchuraPosible){
-   anchuraAculumada = anchuraAculumada + anchuraOffer;
-   contador = contador + 1
-  }
-
-  offersEntran = contador; // Estas son las ofertas que entran el el contenedor principal de elementos
-  console.log("ofertas que entran: "+offersEntran);
-  margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);// El margen que falta por cubrir
-  console.log("margen a repartir: "+margenPorRepartir);
-
-  margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraTotalPagina;
-  console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
-  anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
-  console.log("anchura del mainLayout porcentual recalculada: "+anchuraMainLayoutRecalculada);
-
   ofertasHay = $('.offer').length;
+
   if(ofertasHay > 0){
+    javascript:console.log("entra en el algoritmo de modificacion");
+
+    while(anchuraAculumada < anchuraPosible){
+     anchuraAculumada = anchuraAculumada + anchuraOffer;
+     contador = contador + 1
+    }
+
+    offersEntran = contador; // Estas son las ofertas que entran el el contenedor principal de elementos
+    console.log("ofertas que entran: "+offersEntran);
+    margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);// El margen que falta por cubrir
+    console.log("margen a repartir: "+margenPorRepartir);
+
+    margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraTotalPagina;
+    console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
+    anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
+    console.log("anchura del mainLayout porcentual recalculada: "+anchuraMainLayoutRecalculada);
+
     javascript:console.log("entra en el algoritmo de modificacion");
     mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
     anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
@@ -96,24 +99,6 @@ function expandContainers(){
     console.log("nueva nchura del ppal_container: "+ppalWidth);
   }
 
-  /*
-  // dividendo%divisor nos da el resto
-  ofertasHay = $('.offer').length;
-  ofertasParaCompletarLinea = offersEntran - ofertasHay;
-  javascript:console.log("ofertas que hay: "+ofertasHay);
-  javascript:console.log("ofertas que faltan para completar la linea: " +ofertasParaCompletarLinea);
-
-
-  if((ofertasHay > 0) && (margenPorRepartir > 0))  {
-    javascript:console.log("entra");
-    mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
-    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
-
-    leftWidth = $('#leftContainer').width();
-    rightWidth = anchuraMainLayout - leftWidth - 20;
-
-    $('#rightContainer').css({'width': rightWidth + 'px'});
-  }*/
 
   //$('#ppal_container').show();
 
