@@ -26,36 +26,42 @@ function matchPrincipalContainersHeighs(){
 
 function expandContainers(){
 
-  $('#ppal_container').hide();
+  //$('#ppal_container').hide();
 
-  // Aqui empieza el calculo de las anchuras *************************
+  // Pongo los contenedores a sus anchuras iniciales correctas *************************
 
   mainLayout = $('.mainlayout');
   anchuraTotalPagina = $(document).width();
   console.log("anchura del body: "+anchuraTotalPagina);
-  anchuraTotalUtilizada = (anchuraTotalPagina * 97)/100;
-  console.log("anchura del mainLayout: "+anchuraTotalUtilizada);
-  mainLayout.css({'width': anchuraTotalUtilizada + 'px'}); // Reseteo la anchura al 97% del total del documento HTML
   anchuraMainLayout = mainLayout.width();
+  console.log("anchura del mainLayout: "+anchuraMainLayout);
 
-  leftWidth = $('#leftContainer').width();
-  rightWidth = anchuraMainLayout - leftWidth - 20;
-  console.log("anchura de la parte de la derecha: "+rightWidth);
-  ppalWidth = (rightWidth * 97) / 100;
-  console.log("anchura de la ppal: "+ppalWidth);
+  leftWidth = $('#leftContainer').outerWidth( true );
+  console.log("anchura del contenedor de la izda: "+leftWidth);
+  rightWidth = anchuraMainLayout - leftWidth - 2;
   $('#rightContainer').css({'width': rightWidth + 'px'});
-  $('#ppal_container').css({'width': ppalWidth + 'px'});
+  rightWidth = $('#rightContainer').outerWidth( true );
+  console.log("anchura del contenedor de la dcha: "+rightWidth);
+  contentSideWidth = $('#content-side').outerWidth( true );
+  console.log("anchura del content-side: "+contentSideWidth);
 
-  anchuraPosible = ($('#ppal_container').width()) - 16; // Anchura del contenedor de la lista de elementos principales
-  javascript:console.log("anchura del ppal: "+anchuraPosible);
-  anchuraOffer = ($('.offer:first').width()) + 2; // Anchura de la offer(luego sera la del primer elemento)
+  ppalWidth = (contentSideWidth * 97) / 100;
+  $('#ppal_container').css({'width': ppalWidth + 'px'});
+  ppalWidth = $('#ppal_container').width();
+  console.log("anchura del ppal_container: "+ppalWidth);
+
+  // Ya tengo los contenedores con sus anchuras iniciales correctas, ahora comienzo el calculo de los margenes
+
+  anchuraPosible = ppalWidth;
+  console.log("anchura que tenemos para los elementos: "+anchuraPosible);
+  anchuraOffer = $('.offer:first').outerWidth( true ); // Anchura de la offer incluidos su unico margen(el derecho)
   console.log("anchura de una oferta: "+anchuraOffer);
 
-  disparador = anchuraOffer;
+  anchuraAculumada = anchuraOffer;
   contador = 0;
 
-  while(disparador < anchuraPosible){
-   disparador = disparador + anchuraOffer;
+  while(anchuraAculumada < anchuraPosible){
+   anchuraAculumada = anchuraAculumada + anchuraOffer;
    contador = contador + 1
   }
 
@@ -64,15 +70,33 @@ function expandContainers(){
   margenPorRepartir = anchuraPosible - (anchuraOffer*offersEntran);// El margen que falta por cubrir
   console.log("margen a repartir: "+margenPorRepartir);
 
-  //******************************************************************
-
-  anchuraMainLayout = mainLayout.width();
   margenPorRepartirPorcentual = (margenPorRepartir * 100) / anchuraTotalPagina;
   console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
-
   anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
   console.log("anchura del mainLayout porcentual recalculada: "+anchuraMainLayoutRecalculada);
 
+  ofertasHay = $('.offer').length;
+  if(ofertasHay > 0){
+    javascript:console.log("entra en el algoritmo de modificacion");
+    mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
+    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
+    console.log("nueva anchura del mainLayout: "+anchuraMainLayout);
+
+    leftWidth = $('#leftContainer').outerWidth( true );
+    console.log("nueva anchura del contenedor de la izda: "+leftWidth);
+    rightWidth = anchuraMainLayout - leftWidth - 2;
+    $('#rightContainer').css({'width': rightWidth + 'px'});
+    rightWidth = $('#rightContainer').width();
+    console.log("nueva anchura del contenedor de la dcha: "+rightWidth);
+    contentSideWidth = $('#content-side').outerWidth( true );
+    console.log("nueva anchura del content-side: "+contentSideWidth);
+    ppalWidth = (contentSideWidth * 97) / 100;
+    $('#ppal_container').css({'width': ppalWidth + 'px'});
+    ppalWidth = $('#ppal_container').width();
+    console.log("nueva nchura del ppal_container: "+ppalWidth);
+  }
+
+  /*
   // dividendo%divisor nos da el resto
   ofertasHay = $('.offer').length;
   ofertasParaCompletarLinea = offersEntran - ofertasHay;
@@ -89,8 +113,8 @@ function expandContainers(){
     rightWidth = anchuraMainLayout - leftWidth - 20;
 
     $('#rightContainer').css({'width': rightWidth + 'px'});
-  }
+  }*/
 
-  $('#ppal_container').show();
+  //$('#ppal_container').show();
 
 }
