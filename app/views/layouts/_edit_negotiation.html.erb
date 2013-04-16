@@ -30,7 +30,7 @@
         </div>
         <div class="product_container" id="his_product_container">
           <% proposal_receiver_things(negotiation_last_proposal(@negotiation)).each do |thing| %>
-            <div class="product" id="<%= thing._id%>" value="<%= thing_stock(thing) %>">
+            <div class="product" id="<%= thing.id%>" value="<%= thing_stock(thing) %>">
               <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
@@ -49,7 +49,7 @@
         </div>
         <div class="product_container" id="my_product_container">
           <% proposal_composer_things(negotiation_last_proposal(@negotiation)).each do |thing| %>
-            <div class="product" id="<%= thing._id%>" value="<%= thing_stock(thing) %>">
+            <div class="product" id="<%= thing.id%>" value="<%= thing_stock(thing) %>">
               <div class="quantity_container"><%= thing_stock(thing) %></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
@@ -87,7 +87,7 @@
         </div>
         <div class="offer_things">
           <div class="recieved" id="summary_offer_received_products_container">
-            <% proposal_composer_products(negotiation_last_proposal(@negotiation)).each do |product| %>          
+            <% proposal_composer_products(negotiation_last_proposal(@negotiation)).each do |product| %>
               <div class="product" id="<%= product_id(product) %>"><div class="delete_button">x</div>
                 <div class="quantity_container"><%= product_quantity(product) %></div>
                 <div class="product_image">
@@ -125,7 +125,7 @@
               <input type="hidden" name="offer[composer_attributes][products_attributes][][thing_id]" value="<%= product_id(product) %>">
 
               <input type="hidden" name="offer[composer_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>">
-              
+
             <% end %>
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>

@@ -45,7 +45,7 @@ class NegotiationsController < ApplicationController
       format.html # edit.html.erb
       format.js # render edit.js.erb }
     end
-    
+
   end
 
   # POST /negotiations
@@ -70,7 +70,7 @@ class NegotiationsController < ApplicationController
     @negotiation = @user.negotiations.find(params[:id])
 
     @proposal = Negotiation::Proposal.new(params[:proposal])
-    @proposal.user_composer_id = current_user._id
+    @proposal.user_composer_id = current_user.id
 
     respond_to do |format|
       if @negotiation.proposals << @proposal

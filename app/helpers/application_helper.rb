@@ -4,7 +4,7 @@ module ApplicationHelper
 
   # USER (USER_LOGGED) HELPERS -----------------------------------------
   def user_logged_id(user = user_logged)
-    user._id
+    user.id
   end
   def user_logged_name(user = user_logged)
     user.profile.name
@@ -65,7 +65,7 @@ module ApplicationHelper
 
   # USER (USER_VISITED) HELPERS -----------------------------------------
   def user_visited_id
-    @user._id
+    @user.id
   end
   def user_visited_name
     @user.profile.name
@@ -132,7 +132,7 @@ module ApplicationHelper
 
   # THING HELPERS -----------------------------------------
   def thing_id(thing)
-    thing._id
+    thing.id
   end
   def thing_name(thing)
     thing.name
@@ -152,10 +152,10 @@ module ApplicationHelper
 
   # REQUEST HELPERS -----------------------------------------
   def request_id(request)
-    request._id
+    request.id
   end
   # def request_user_id(request)
-  #   request.user._id
+  #   request.user.id
   # end
   # def request_user_nick(request)
   #   request.nick
@@ -175,7 +175,7 @@ module ApplicationHelper
 
   # OFFER HELPERS -----------------------------------------
   def offer_id(offer)
-    offer._id
+    offer.id
   end
   def offer_composer_id(offer)
     offer.user_composer_id
@@ -225,7 +225,7 @@ module ApplicationHelper
 
   # PRODUCT HELPERS -----------------------------------------
   def product_id(product)
-    product._id
+    product.id
   end
   def product_thing_id(product)
     product.thing_id
@@ -245,7 +245,7 @@ module ApplicationHelper
 
   # NEGOTIATION HELPERS -----------------------------------------
   def negotiation_id(negotiation)
-    negotiation._id
+    negotiation.id
   end
   def negotiation_negotiators(negotiation)
     negotiation.negotiators
@@ -262,7 +262,7 @@ module ApplicationHelper
 
   # PROPOSAL HELPERS -----------------------------------------
   def proposal_id(proposal)
-    proposal._id
+    proposal.id
   end
   def proposal_composer(proposal)
     User.find(proposal.user_composer_id)
@@ -315,7 +315,7 @@ module ApplicationHelper
 
   # MESSAGE HELPERS -----------------------------------------
   def message_id(message)
-    message._id
+    message.id
   end
   def message_user_name(message)
     message.user_name
@@ -335,7 +335,7 @@ module ApplicationHelper
 
   # DEAL HELPERS -----------------------------------------
   def deal_id(deal)
-    deal._id
+    deal.id
   end
   def deal_agreemen(deal)
     deal.proposals
@@ -367,7 +367,7 @@ module ApplicationHelper
 
   # AGREEMENT HELPERS -----------------------------------------
   def agreement_id(agreement)
-    agreement._id
+    agreement.id
   end
   def agreement_proposals(agreement)
     agreement.proposals

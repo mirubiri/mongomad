@@ -1,9 +1,9 @@
 <% user_logged_negotiations.each do |negotiation| %>
-  <div class="negotiation" id="negotiation<%= negotiation._id %>">
+  <div class="negotiation" id="negotiation<%= negotiation.id %>">
 
-    <div class="negotiation_offer">      
+    <div class="negotiation_offer">
       <div class="offer_header">
-        <div class="triangle">            
+        <div class="triangle">
             <!--<img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
         </div>
         <div class="profile_image">
@@ -16,13 +16,13 @@
         <div class="description">
           <div class="composer_name">
             <%= proposal_composer_name(negotiation_last_proposal(negotiation)) %>
-          </div>                      
+          </div>
         </div>
       </div>
       <div class="offer_things">
         <div class="recieved">
           <% proposal_composer_products(negotiation_last_proposal(negotiation)).each do |product| %>
-            <div class="image_container">              
+            <div class="image_container">
               <%= product_image(product) %>
               <div class="quantity_container">
                 <%= product_quantity(product) %>
@@ -34,22 +34,22 @@
           <% proposal_receiver_products(negotiation_last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
               <%= product_image(product) %>
-              <div class="quantity_container"><%= product_quantity(product) %></div> 
+              <div class="quantity_container"><%= product_quantity(product) %></div>
             </div>
           <% end %>
         </div>
-      </div>     
+      </div>
       <div class="offer_button">
-        <button class="btn btn-small disabled">Accept</button>        
-        <%= link_to 'edit', 
-            edit_user_negotiation_path(current_user,negotiation_id(negotiation)), 
+        <button class="btn btn-small disabled">Accept</button>
+        <%= link_to 'edit',
+            edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
             :remote => true,
             :class => "btn btn-warning" %>
-      </div>      
+      </div>
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
       </div>
-    </div>  
+    </div>
 
     <div class="dialog_container">
       <div class="dialog_head">
@@ -80,7 +80,7 @@
         <form action="">
           <div class="message">
             <input type="text" placeholder="write here">
-          </div>          
+          </div>
         </form>
       </div>
     </div>
@@ -89,7 +89,7 @@
 
 <script>
   $(document).ready(function(){
-    editNegotiationScript();  
+    editNegotiationScript();
     activateNegotiationButtons();
   });
 </script>
