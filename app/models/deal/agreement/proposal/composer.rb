@@ -1,8 +1,8 @@
 class Deal::Agreement::Proposal::Composer
   include Mongoid::Document
 
-  embedded_in :proposal, class_name: "Deal::Agreement::Proposal"
-  embeds_many :products, class_name: "Deal::Agreement::Proposal::Composer::Product", cascade_callbacks: true
+  embedded_in :proposal, class_name: 'Deal::Agreement::Proposal'
+  embeds_many :products, class_name: 'Deal::Agreement::Proposal::Composer::Product', cascade_callbacks: true
 
   field :nick,      type: String
   field :image_url, type: String

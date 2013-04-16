@@ -1,4 +1,4 @@
-Fabricator(:negotiation_proposal, class_name: "Negotiation::Proposal") do
+Fabricator(:negotiation_proposal, class_name: 'Negotiation::Proposal') do
   transient        :offer
   negotiation      nil
   composer         { |attrs| Fabricate.build(:negotiation_proposal_composer, composer:attrs[:offer].composer) }

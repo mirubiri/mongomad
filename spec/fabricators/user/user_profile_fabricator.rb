@@ -1,4 +1,4 @@
-Fabricator(:user_profile, class_name: "User::Profile") do
+Fabricator(:user_profile, class_name: 'User::Profile') do
   user             nil
   name             { Faker::Name.first_name }
   surname          { Faker::Name.last_name }
@@ -12,7 +12,7 @@ Fabricator(:user_profile, class_name: "User::Profile") do
   image            { File.open('app/assets/images/user.png') }
 end
 
-Fabricator(:user_medico_profile, from: "User::Profile") do
+Fabricator(:user_medico_profile, from: 'User::Profile') do
   name       'Eduardo'
   surname    'Hormilla'
   nick       'medico'
@@ -22,7 +22,7 @@ Fabricator(:user_medico_profile, from: "User::Profile") do
   image      { File.open('app/assets/images/medico.jpg') }
 end
 
-Fabricator(:user_sergio_profile, from: "User::Profile") do
+Fabricator(:user_sergio_profile, from: 'User::Profile') do
   name       'Sergio'
   surname    'de Torre'
   nick       'deTorre82'

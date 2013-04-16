@@ -1,7 +1,7 @@
 class Negotiation::Proposal::Money
   include Mongoid::Document
 
-  embedded_in :proposal, class_name: "Negotiation::Proposal"
+  embedded_in :proposal, class_name: 'Negotiation::Proposal'
 
   field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer

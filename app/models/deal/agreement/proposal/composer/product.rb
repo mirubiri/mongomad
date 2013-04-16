@@ -1,7 +1,7 @@
 class Deal::Agreement::Proposal::Composer::Product
   include Mongoid::Document
 
-  embedded_in :composer, class_name: "Deal::Agreement::Proposal::Composer"
+  embedded_in :composer, class_name: 'Deal::Agreement::Proposal::Composer'
 
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String

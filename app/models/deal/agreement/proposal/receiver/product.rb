@@ -1,7 +1,7 @@
 class Deal::Agreement::Proposal::Receiver::Product
   include Mongoid::Document
 
-  embedded_in :receiver, class_name: "Deal::Agreement::Proposal::Receiver"
+  embedded_in :receiver, class_name: 'Deal::Agreement::Proposal::Receiver'
 
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String

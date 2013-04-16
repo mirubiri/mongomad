@@ -1,4 +1,4 @@
-Fabricator(:deal_agreement_conversation, class_name: "Deal::Agreement::Conversation") do
+Fabricator(:deal_agreement_conversation, class_name: 'Deal::Agreement::Conversation') do
   transient :conversation
   agreement nil
   messages do |attrs|
