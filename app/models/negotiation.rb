@@ -9,8 +9,8 @@ class Negotiation
 
   accepts_nested_attributes_for :conversation, :proposals
 
-  validates :negotiators,
-    :conversation,
+  #validates :negotiators,
+  validates :conversation,
     :proposals,
     presence: true
 end

@@ -1,4 +1,4 @@
-Fabricator(:deal_agreement_proposal_receiver, class_name: "Deal::Agreement::Proposal::Receiver") do
+Fabricator(:deal_agreement_proposal_receiver, class_name: 'Deal::Agreement::Proposal::Receiver') do
   transient  :receiver
   proposal   nil
   products  do |attrs|

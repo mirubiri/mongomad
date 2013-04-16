@@ -8,6 +8,6 @@ Fabricator(:offer) do
 end
 
 Fabricator(:offer_improcex, from: :offer) do
-  user_composer   { Fabricate(:user_medico) }
-  user_receiver   { Fabricate(:user_sergio) }
+  user_composer { Fabricate(:user_medico) }
+  user_receiver { Fabricate(:user_sergio) }
 end

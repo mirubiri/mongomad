@@ -1,4 +1,4 @@
-Fabricator(:offer_receiver, class_name: "Offer::Receiver") do
+Fabricator(:offer_receiver, class_name: 'Offer::Receiver') do
   transient  :user
   offer      nil
   products  do |attrs|

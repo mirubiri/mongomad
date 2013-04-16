@@ -1,4 +1,4 @@
-Fabricator(:offer_composer_product, class_name: "Offer::Composer::Product") do
+Fabricator(:offer_composer_product, class_name: 'Offer::Composer::Product') do
   transient   :thing
   composer    nil
   thing_id    { |attrs| attrs[:thing]._id }
