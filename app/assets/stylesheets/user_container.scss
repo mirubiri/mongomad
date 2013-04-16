@@ -2,12 +2,12 @@
 
 .left_container{
   @include fixed_width(258px,258px,258px);
-  float:left; 
-  padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding; 
+  float:left;
+  padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding;
 
   .user_container{
     @include ppal_container_style;
-    float: right;    
+    float: right;
 
     #user_reputation_container{
       @include top_main_header_style;
@@ -32,32 +32,32 @@
         img{
           @include high-quality-image;
           @include center-horizontally(100%);
-          @include border-radius(3px, 3px);         
+          @include border-radius(3px, 3px);
         }
       }
 
       .user_name{
         @include center-horizontally(80%);
-        height:auto;        
+        height:auto;
         text-align:center;
       }
 
       .new_offer_button{
         @include center-horizontally(80%);
         height: 30px;
-        margin-top: 10px;        
+        margin-top: 10px;
         margin-bottom: 10px;
         a{
           @include box-sizing(border-box);
           @include proportions(100%,30px);
           text-align: center;
         }
-      }      
+      }
 
       .profile_menu{
         @include center-horizontally(80%);
         height: 40px;
-        margin-top: 10px;        
+        margin-top: 10px;
         margin-bottom: 10px;
 
         .btn-toolbar{
@@ -70,7 +70,7 @@
               }
             }
           }
-        }       
+        }
       }
     }
 
@@ -82,26 +82,26 @@
       .btn-toolbar{
         @include center-horizontally(80%);
         margin-bottom: 20px;
-       
+
         a{
-          @include proportions(85%,20px);                       
+          @include proportions(85%,20px);
         }
-        .requestWritingBox{    
+        .requestWritingBox{
           width: 100%;
           overflow: visible;
           background-color:#CCAAAA;
           z-index: 1000;
           display: none;
-          form{ 
-            padding: 10px;             
+          form{
+            padding: 10px;
             .request_bar{
               @include center-horizontally(90%);
               height: 80px;
               margin-bottom: 0px;
             }
           }
-        }        
-      }     
+        }
+      }
 
       .requests_requestsList{
         @include center-horizontally(100%);
@@ -111,9 +111,9 @@
         .request{
           @include center-horizontally(100%);
           @include box-sizing(border-box);
-          overflow: hidden;          
+          overflow: hidden;
           padding: 10px 6px 0px 6px;
-          border-top: $borde1px;          
+          border-top: $borde1px;
 
           .profile_image{
             @include box-sizing(border-box);
@@ -134,13 +134,13 @@
             float: right;
             font-size: 9px;
             line-height: normal;
-            overflow: hidden;            
+            overflow: hidden;
           }
 
           .options_menu{
             @include center-horizontally(90%);
             top: -5px;
-            height: 10px;            
+            height: 10px;
             float: left;
             font-size: 9px;
 
@@ -156,7 +156,7 @@
           &:hover{
             background-color: #EEEEEE;
           }
-          
+
         }
 
         .request:last-child{
