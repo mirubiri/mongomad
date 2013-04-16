@@ -17,7 +17,7 @@ describe Negotiation do
   end
 
   describe 'Validations' do
-    #it { should validate_presence_of :negotiators }
+    xit { should validate_presence_of :negotiators }
     it { should validate_presence_of :conversation }
     it { should validate_presence_of :proposals }
   end
