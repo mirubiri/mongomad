@@ -18,7 +18,7 @@ class Negotiation
     deal_params = {
       signers: self.negotiators,
       conversation_attributes: {
-        messages_attributes: [ { user_id:self.negotiators.first, text: 'Deal signed correctly' } ]
+        messages_attributes: [ { user_id: negotiators.first.id, text: 'Deal signed correctly' } ]
       },
       agreement_attributes:{
         conversation_attributes: {
@@ -82,8 +82,6 @@ class Negotiation
 
       deal_params[:agreement_attributes][:proposals_attributes] << proposal_hash
     end
-
-    puts deal_params
 
     deal = Deal.new(deal_params)
     deal.save
