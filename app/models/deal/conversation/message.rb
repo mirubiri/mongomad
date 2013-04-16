@@ -3,7 +3,7 @@ class Deal::Conversation::Message
   include Mongoid::Timestamps
   include Denormalized
 
-  embedded_in :conversation, class_name: "Deal::Conversation"
+  embedded_in :conversation, class_name: 'Deal::Conversation'
 
   field :user_id,   type: Moped::BSON::ObjectId
   field :nick,      type: String

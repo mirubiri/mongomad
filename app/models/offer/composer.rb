@@ -3,7 +3,7 @@ class Offer::Composer
   include Denormalized
 
   embedded_in :offer
-  embeds_many :products, class_name: "Offer::Composer::Product", cascade_callbacks: true
+  embeds_many :products, class_name: 'Offer::Composer::Product', cascade_callbacks: true
 
   field :nick,      type: String
   field :image_url, type: String

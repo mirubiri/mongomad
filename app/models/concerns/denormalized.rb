@@ -39,11 +39,11 @@ module Denormalized
   private
     def load_denormalized
       self.denormalized_definitions.each do |definition|
-        
+
         relation = definition[:options][:from]
-        
+
         associated = self.instance_eval(relation)
-        
+
         definition[:fields].each do |field|
           self.send("#{field}=", associated.try(field))
         end

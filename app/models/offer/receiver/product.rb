@@ -2,7 +2,7 @@ class Offer::Receiver::Product
   include Mongoid::Document
   include Denormalized
 
-  embedded_in :receiver, class_name: "Offer::Receiver"
+  embedded_in :receiver, class_name: 'Offer::Receiver'
 
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String

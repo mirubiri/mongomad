@@ -2,7 +2,7 @@ class Offer::Composer::Product
   include Mongoid::Document
   include Denormalized
 
-  embedded_in :composer, class_name: "Offer::Composer"
+  embedded_in :composer, class_name: 'Offer::Composer'
 
   field :thing_id,    type: Moped::BSON::ObjectId
   field :name,        type: String
