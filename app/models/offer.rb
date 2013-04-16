@@ -28,7 +28,7 @@ class Offer
     negotiation_params = {
       negotiators: [ self.user_composer, self.user_receiver ],
       conversation_attributes: {
-        messages_attributes: [ { user_id:self.user_composer_id, text:self.initial_message } ]
+        messages_attributes: [ { user_id: self.user_composer_id, text: self.initial_message } ]
       },
       proposals_attributes: Array.new
     }
