@@ -1,5 +1,5 @@
 Fabricator(:deal_conversation, class_name: 'Deal::Conversation') do
-  transient         :signers
+  transient         :user
   deal              nil
-  messages(count:1) { |attrs| Fabricate.build(:deal_conversation_message, user:attrs[:signers].first) }
+  messages(count:1) { |attrs| Fabricate.build(:deal_conversation_message, user:attrs[:user]) }
 end
