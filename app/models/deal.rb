@@ -9,8 +9,8 @@ class Deal
 
   accepts_nested_attributes_for :conversation, :agreement
 
-  validates :signers,
-    :conversation,
+  #validates :signers,
+  validates :conversation,
     :agreement,
     presence: true
 end
