@@ -65,15 +65,11 @@ describe Offer do
     end
 
     it 'add the negotiation to composer in offer' do
-      offer.composer.reload
-      offer.receiver.reload
-      expect(offer.composer.negotiations.first).to eq negotiation
+      expect(offer.user_composer.negotiations.first).to eq negotiation
     end
 
     it 'add the negotiation to receiver in offer' do
-      offer.composer.reload
-      offer.receiver.reload
-      expect(offer.receiver.negotiations.first).to eq negotiation
+      expect(offer.user_receiver.negotiations.first).to eq negotiation
     end
   end
 end
