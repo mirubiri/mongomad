@@ -32,7 +32,7 @@ class Offer
           { user_id:self.user_composer_id, text:self.initial_message }
         ]
       },
-      proposals_attributes:Array.new
+      proposals_attributes: Array.new
     }
 
     proposal_hash = Hash.new
