@@ -39,12 +39,12 @@ class Offer
     proposal_hash[:user_composer_id] = self.user_composer_id
     proposal_hash[:user_receiver_id] = self.user_receiver_id
 
-    proposal_hash[:composer_attributes] = { products_attributes:Array.new }
+    proposal_hash[:composer_attributes] = { products_attributes: Array.new }
     self.composer.products.each_with_index do |product, index|
       proposal_hash[:composer_attributes][:products_attributes][index] = { thing_id:product.thing_id, quantity:product.quantity }
     end
 
-    proposal_hash[:receiver_attributes] = { products_attributes:Array.new }
+    proposal_hash[:receiver_attributes] = { products_attributes: Array.new }
     self.receiver.products.each_with_index do |product, index|
       proposal_hash[:receiver_attributes][:products_attributes][index] = { thing_id:product.thing_id, quantity:product.quantity }
     end
