@@ -3,15 +3,15 @@
 .negotiation {
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
-  width: 98%;
-  margin:0px 0px 20px 8px;
+  width: 99%;
+  margin:0px 0px 20px 5px;
   float: left;
 
     .negotiation_offer {
       @include offer_header;
       @include offer_products;
       @include box-sizing(border-box);
-      overflow: none;      
+      overflow: none;
       padding: 0px;
       margin: 0px;
       width: 30%;
@@ -25,7 +25,7 @@
 
         button{
           float: right;
-          margin-right: 5px;          
+          margin-right: 5px;
         }
       }
 
@@ -37,7 +37,7 @@
       }
 
       @include box-sizing(border-box);
-    }     
+    }
 
     .dialog_container{
       @include box-sizing(border-box);
@@ -139,8 +139,8 @@
               width: 100%;
               height: inherit;
               margin: 0px;
-              border: none; 
-              padding: 0px;             
+              border: none;
+              padding: 0px;
             }
           }
         }

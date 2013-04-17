@@ -5,7 +5,7 @@ body{
   display: block;
   overflow: auto;
   width: 100%;
-  float:left;
+  float: left;
   margin: 0px;
   padding: 0px;
   background-color: #f8fcf8;
@@ -19,7 +19,8 @@ body{
     @include center-horizontally(97%);
     min-width: 800px;
     position: relative;
-    overflow: auto;
+    top: 40px;
+    overflow: visible;
   }
 }
 
