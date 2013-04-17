@@ -253,11 +253,11 @@ module ApplicationHelper
   def negotiation_proposals(negotiation)
     negotiation.proposals
   end
-  def negotiation_last_proposal(negotiation)
-    negotiation.proposals.last
-  end
   def negotiation_conversation(negotiation)
     negotiation.conversation
+  end
+  def negotiation_last_proposal(negotiation)
+    negotiation.proposals.last
   end
 
   # PROPOSAL HELPERS -----------------------------------------
@@ -265,13 +265,13 @@ module ApplicationHelper
     proposal.id
   end
   def proposal_composer(proposal)
-    User.find(proposal.user_composer_id)
+    proposal.user_composer
   end
   def proposal_composer_id(proposal)
     proposal.user_composer_id
   end
   def proposal_composer_name(proposal)
-     proposal.composer.nick
+    proposal.composer.nick
   end
   def proposal_composer_image(proposal)
     image_tag(proposal.composer.image_url)
@@ -280,10 +280,10 @@ module ApplicationHelper
     proposal.composer.products
   end
   def proposal_composer_things(proposal)
-    User.find(proposal.user_composer_id).things
+    proposal.user_composer.things
   end
   def proposal_receiver(proposal)
-    User.find(proposal.user_receiver_id)
+    proposal.user_receiver
   end
   def proposal_receiver_id(proposal)
     proposal.user_receiver_id
@@ -298,7 +298,7 @@ module ApplicationHelper
     proposal.receiver.products
   end
   def proposal_receiver_things(proposal)
-    User.find(proposal.user_receiver_id).things
+    proposal.user_receiver.things
   end
   def proposal_money_owner_id(proposal)
     proposal.money.user_id
@@ -317,8 +317,11 @@ module ApplicationHelper
   def message_id(message)
     message.id
   end
-  def message_user_name(message)
-    message.user_name
+  def message_user_id(message)
+    message.user_id
+  end
+  def message_user_nick(message)
+    message.nick
   end
   def message_text(message)
     message.text
@@ -337,27 +340,16 @@ module ApplicationHelper
   def deal_id(deal)
     deal.id
   end
-  def deal_agreemen(deal)
-    deal.proposals
+  def deal_signers(deal)
+    deal.signers
   end
-  def deal_messages(deal)
+  def deal_agreement(deal)
+    deal.agreement
+  end
+  def deal_conversation(deal)
     deal.messages
   end
-  def deal_users(deal)
-    deal.users
-  end
-  def deal_composer_image(deal)
-    image_tag(deal.agreement.proposals.last.composer.image_url)
-  end
-  def deal_composer_products(deal)
-    deal.agreement.proposals.last.composer.products
-  end
-  def deal_receiver_image(deal)
-    image_tag(deal.agreement.proposals.last.receiver.image_url)
-  end
-  def deal_receiver_products(deal)
-    deal.agreement.proposals.last.receiver.products
-  end
+  #Aqui falta mucha fiesta
   def deal_datetime(deal)
     deal.created_at
   end
@@ -372,8 +364,8 @@ module ApplicationHelper
   def agreement_proposals(agreement)
     agreement.proposals
   end
-  def agreement_messages(agreement)
-    agreement.messages
+  def agreement_conversation(agreement)
+    agreement.conversation
   end
   def agreement_datetime(agreement)
     agreement.created_at
@@ -386,5 +378,4 @@ module ApplicationHelper
   def user_alerts
     @user.requests
   end
-
 end
