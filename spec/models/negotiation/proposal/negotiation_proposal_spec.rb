@@ -41,12 +41,14 @@ describe Negotiation::Proposal do
   describe '#user_composer' do
     let(:user_composer_id) { proposal.user_composer_id }
     let(:negotiation_composer) { proposal.negotiation.negotiators.find(user_composer_id) }
-    context 'When proposal has no assigned negotiation' do
+
+    context 'When proposal has no negotiation assigned' do
       it 'returns nil' do
-        proposal.negotiation=nil
+        proposal.negotiation = nil
         expect(proposal.user_composer).to eq nil
       end
     end
+
     context 'When proposal has a negotiation assigned' do
       it 'returns the user of the negotiation who made the proposal' do
         expect(proposal.user_composer).to eq negotiation_composer
@@ -57,12 +59,14 @@ describe Negotiation::Proposal do
   describe '#user_composer' do
     let(:user_receiver_id) { proposal.user_receiver_id }
     let(:negotiation_receiver) { proposal.negotiation.negotiators.find(user_receiver_id) }
-    context 'When proposal has no assigned negotiation' do
+
+    context 'When proposal has no negotiation assigned' do
       it 'returns nil' do
-        proposal.negotiation=nil
+        proposal.negotiation = nil
         expect(proposal.user_receiver).to eq nil
       end
     end
+
     context 'When proposal has a negotiation assigned' do
       it 'returns the user of the negotiation who received the proposal' do
         expect(proposal.user_receiver).to eq negotiation_receiver
