@@ -10,14 +10,13 @@ class User::Thing
   mount_uploader :image, ThingImageUploader
 
   validates :user,
-            :name,
-            :description,
-            :stock,
-            :image,
-            presence: true
+  :name,
+  :description,
+  :stock,
+  :image,
+  presence: true
 
   validates :stock,
-            allow_nil: false,
-            numericality: { only_integer: true,
-                            greater_than_or_equal_to: 0 }
+    allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
