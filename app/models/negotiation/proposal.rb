@@ -21,10 +21,10 @@ class Negotiation::Proposal
     presence: true
 
   def user_composer
-    negotiation.negotiators.find(user_composer_id)
+    negotiation && negotiation.negotiators.find(user_composer_id)
   end
 
   def user_receiver
-    negotiation.negotiators.find(user_receiver_id)
+    negotiation && negotiation.negotiators.find(user_receiver_id)
   end
 end

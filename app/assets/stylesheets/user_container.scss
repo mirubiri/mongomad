@@ -4,6 +4,8 @@
   @include fixed_width(258px,258px,258px);
   float:left;
   padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding;
+  margin-top: -40px;
+
 
   .user_container{
     @include ppal_container_style;

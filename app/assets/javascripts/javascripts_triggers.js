@@ -1,6 +1,7 @@
 $(window).load(function(){
   //slideOptionsPanel();
   ajaxLinksUrlChange();
+  reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
   expandContainers();
@@ -13,7 +14,7 @@ $(window).bind('resize', function() {
   reloadPrincipalContainersHeighs();
   matchPrincipalContainersHeighs();
   expandRequestContainer();
-  expandContainers();// Tengo que llevarmelo a la ejecucion de los index de cada modelo
+  expandContainers();
   buttonsClickBackgroundChange();
   activateAlertButton();
 });

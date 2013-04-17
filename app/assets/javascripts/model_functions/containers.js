@@ -1,7 +1,6 @@
 function reloadPrincipalContainersHeighs(){
-  $('#ppal_container').css({'height': 0  + 'px'});
-  $('#user-side').css({'height': 0  + 'px'});
-  $('#content-side').css({'height': 0  + 'px'});
+  $('#left_container').css({'height': 0  + 'px'});
+  $('#right_container').css({'height': 0  + 'px'});
 }
 
 function matchPrincipalContainersHeighs(){
@@ -32,21 +31,19 @@ function expandContainers(){
 
   mainLayout = $('.mainlayout');
   anchuraTotalPagina = $(document).width();
-  console.log("anchura del body: "+anchuraTotalPagina);
-  anchuraMainLayout = mainLayout.width();
+
+  anchuraMainLayout = mainLayout.innerWidth();
   console.log("anchura del mainLayout: "+anchuraMainLayout);
 
   leftWidth = $('#leftContainer').outerWidth( true );
   console.log("anchura del contenedor de la izda: "+leftWidth);
-  rightWidth = anchuraMainLayout - leftWidth - 2;
+  rightWidth = anchuraMainLayout - leftWidth -2;
   $('#rightContainer').css({'width': rightWidth + 'px'});
   rightWidth = $('#rightContainer').outerWidth( true );
   console.log("anchura del contenedor de la dcha: "+rightWidth);
   contentSideWidth = $('#content-side').outerWidth( true );
   console.log("anchura del content-side: "+contentSideWidth);
 
-  ppalWidth = (contentSideWidth * 97) / 100;
-  $('#ppal_container').css({'width': ppalWidth + 'px'});
   ppalWidth = $('#ppal_container').width();
   console.log("anchura del ppal_container: "+ppalWidth);
 
@@ -54,6 +51,7 @@ function expandContainers(){
 
   anchuraPosible = ppalWidth;
   console.log("anchura que tenemos para los elementos: "+anchuraPosible);
+
   anchuraOffer = $('.offer:first').outerWidth( true ); // Anchura de la offer incluidos su unico margen(el derecho)
   console.log("anchura de una oferta: "+anchuraOffer);
 
@@ -82,12 +80,12 @@ function expandContainers(){
 
     javascript:console.log("entra en el algoritmo de modificacion");
     mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
-    anchuraMainLayout = $('.mainlayout').width();//reinicio el selector
+    anchuraMainLayout = $('.mainlayout').innerWidth();//reinicio el selector
     console.log("nueva anchura del mainLayout: "+anchuraMainLayout);
 
     leftWidth = $('#leftContainer').outerWidth( true );
     console.log("nueva anchura del contenedor de la izda: "+leftWidth);
-    rightWidth = anchuraMainLayout - leftWidth - 2;
+    rightWidth = anchuraMainLayout - leftWidth -2;
     $('#rightContainer').css({'width': rightWidth + 'px'});
     rightWidth = $('#rightContainer').width();
     console.log("nueva anchura del contenedor de la dcha: "+rightWidth);
@@ -98,7 +96,6 @@ function expandContainers(){
     ppalWidth = $('#ppal_container').width();
     console.log("nueva nchura del ppal_container: "+ppalWidth);
   }
-
 
   //$('#ppal_container').show();
 

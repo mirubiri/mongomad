@@ -3,15 +3,17 @@
 @import "compass/typography/links/unstyled-link";
 
 .right_container{
-  width: 890px;
+  width: 526px;
+  min-width: 526px;
   float: left;
   padding: $MCTopPadding $MCExtPadding 0px 0px;
+  margin-top: -40px;
+  overflow: visible;
 
   .main_container{
     @include ppal_container_style;
     float: left;
-    overflow: visible;
-    display:inline-block;
+    overflow: inherit;
 
     .noti_bubble {
       position:absolute;
@@ -24,10 +26,12 @@
     }
 
     .main_container_elementList{
-      @include center-horizontally(97%);
+      @include box-sizing(border-box);
+      width: 100%;
+      float: left;
       margin-bottom: 5px;
-      padding: 0px 0px 0px 0px;
-      overflow: visible;
+      padding: 0px 5px;
+      overflow: inherit;
     }
   }
 
