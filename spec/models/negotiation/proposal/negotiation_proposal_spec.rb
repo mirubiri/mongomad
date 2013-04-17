@@ -39,10 +39,22 @@ describe Negotiation::Proposal do
   end
 
   describe '#user_composer' do
-    xit 'lo que sea'
+    subject { proposal.user_composer }
+
+    it { should be_instance_of(User) }
+
+    it 'returns the negotiator who composed current proposal' do
+      expect(subject.id).to eq proposal.user_composer_id
+    end
   end
 
   describe '#user_receiver' do
-    xit 'lo que sea'
+    subject { proposal.user_receiver }
+
+    it { should be_instance_of(User) }
+
+    it 'returns the negotiator who received current proposal' do
+      expect(subject.id).to eq proposal.user_receiver_id
+    end
   end
 end
