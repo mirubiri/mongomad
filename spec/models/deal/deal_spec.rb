@@ -38,10 +38,4 @@ describe Deal do
       expect { deal.save }.to change{ User.count }.by(2)
     end
   end
-
-=begin
-  describe '#post_message(message_params=[])' do
-    xit 'adds to deal a new message from the given hash'
-  end
-=end
 end
