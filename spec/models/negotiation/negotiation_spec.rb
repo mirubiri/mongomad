@@ -21,7 +21,7 @@ describe Negotiation do
     it { should validate_presence_of :conversation }
     it { should validate_presence_of :proposals }
   end
-g
+
   describe 'Factories' do
     specify { expect(negotiation).to be_valid }
     specify { expect(negotiation.save).to eq true }
