@@ -27,4 +27,12 @@ describe Negotiation::Token do
       expect { token.save }.to change{ Negotiation.count }.by(1)
     end
   end
+
+  describe '#initialize_token' do
+    it 'lo que sea'
+  end
+
+  describe '#update_token' do
+    it 'lo que sea'
+  end
 end

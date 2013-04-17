@@ -68,13 +68,7 @@ describe Negotiation do
     end
   end
 
-  describe '#propose(params)' do
-   xit 'makes a new proposition'
-  end
 
-  describe '#post_message(params)' do
-    xit 'post a new message into the negotiation'
-  end
 
   describe '#can_sign?(negotiator)' do
     xit 'returns true if the given negotiator can sign the negotiation with the current proposal'
