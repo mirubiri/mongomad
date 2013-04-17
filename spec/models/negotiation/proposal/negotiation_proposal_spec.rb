@@ -39,22 +39,34 @@ describe Negotiation::Proposal do
   end
 
   describe '#user_composer' do
-    subject { proposal.user_composer }
-
-    it { should be_instance_of(User) }
-
-    it 'returns the negotiator who composed current proposal' do
-      expect(subject.id).to eq proposal.user_composer_id
+    let(:user_composer_id) { proposal.user_composer_id }
+    let(:negotiation_composer) { proposal.negotiation.negotiators.find(user_composer_id) }
+    context 'When proposal has no assigned negotiation' do
+      it 'returns nil' do
+        proposal.negotiation=nil
+        expect(proposal.user_composer).to eq nil
+      end
+    end
+    context 'When proposal has a negotiation assigned' do
+      it 'returns the user of the negotiation who made the proposal' do
+        expect(proposal.user_composer).to eq negotiation_composer
+      end
     end
   end
 
-  describe '#user_receiver' do
-    subject { proposal.user_receiver }
-
-    it { should be_instance_of(User) }
-
-    it 'returns the negotiator who received current proposal' do
-      expect(subject.id).to eq proposal.user_receiver_id
+  describe '#user_composer' do
+    let(:user_receiver_id) { proposal.user_receiver_id }
+    let(:negotiation_receiver) { proposal.negotiation.negotiators.find(user_receiver_id) }
+    context 'When proposal has no assigned negotiation' do
+      it 'returns nil' do
+        proposal.negotiation=nil
+        expect(proposal.user_receiver).to eq nil
+      end
+    end
+    context 'When proposal has a negotiation assigned' do
+      it 'returns the user of the negotiation who received the proposal' do
+        expect(proposal.user_receiver).to eq negotiation_receiver
+      end
     end
   end
 end
