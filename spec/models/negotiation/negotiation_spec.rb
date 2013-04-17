@@ -8,18 +8,21 @@ describe Negotiation do
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
     it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
+    it { should embed_one(:token).of_type(Negotiation::Token) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should accept_nested_attributes_for :conversation }
     it { should accept_nested_attributes_for :proposals }
+    it { should accept_nested_attributes_for :token }
   end
 
   describe 'Validations' do
     xit { should validate_presence_of :negotiators }
     it { should validate_presence_of :conversation }
     it { should validate_presence_of :proposals }
+    it { should validate_presence_of :token }
   end
 
   describe 'Factories' do
