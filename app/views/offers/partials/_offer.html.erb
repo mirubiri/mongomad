@@ -69,13 +69,15 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= link_to "edit",
-                {:controller => "offers",
-                :action => "edit",
-                :user_id => current_user.id,
-                :id => offer.id},
-                {:remote => true,
-                 :id => "edit_offer_link"} %>
+        <% if can? :update, offer %>
+          <%= link_to "edit",
+                  {:controller => "offers",
+                  :action => "edit",
+                  :user_id => current_user.id,
+                  :id => offer.id},
+                  {:remote => true,
+                   :id => "edit_offer_link"} %>
+        <% end %>
       <% end %>
 
       <div class="offer_date">

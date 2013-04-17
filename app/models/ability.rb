@@ -24,28 +24,14 @@ class Ability
     #REQUESTS
     can :read, Request, :user_id => user.id
     can :create, Request, :user_id => user.id
-    can :update, Request, :active => true, :user_id => user.id
-    can :delete, Request, :active => true, :user_id => user.id
+    can :update, Request, :user_id => user.id
+    can :delete, Request, :user_id => user.id
 
     #OFFERS
-    can :read, Offer, :user_id => user.id
-    can :create, Offer, :user_id => user.id
-    can :update, Offer, :user_id => user.id
-    can :delete, Offer, :user_id => user.id
-
-    #NEGOTIATIONS
-    can :read, Negotiation, :user_id => user.id
-    can :create, Negotiation, :user_id => user.id
-    can :update, Negotiation, :user_id => user.id
-    can :delete, Negotiation, :user_id => user.id
-
-    #DEALS
-    can :read, Deal, user_id => user.id
-    can :create, Deal, :user_id => user.id
-    can :update, Deal, :user_id => user.id
-    can :delete, Deal, :user_id => user.id
-
-
+    can :read, Offer, :user_composer_id => user.id
+    can :create, Offer, :user_composer_id => user.id
+    can :update, Offer, :user_composer_id => user.id
+    can :delete, Offer, :user_composer_id => user.id
 
   end
 end
