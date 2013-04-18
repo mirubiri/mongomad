@@ -16,7 +16,7 @@ describe User::Thing do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :user }
+    it { should_not validate_presence_of :user }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :stock }

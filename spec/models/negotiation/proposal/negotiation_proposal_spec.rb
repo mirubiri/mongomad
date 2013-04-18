@@ -22,7 +22,7 @@ describe Negotiation::Proposal do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :negotiation }
+    it { should_not validate_presence_of :negotiation }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :money }

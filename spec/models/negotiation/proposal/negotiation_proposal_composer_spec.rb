@@ -19,7 +19,7 @@ describe Negotiation::Proposal::Composer do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :proposal }
+    it { should_not validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :nick }
     it { should validate_presence_of :image_url }

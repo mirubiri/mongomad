@@ -21,7 +21,7 @@ describe Deal::Agreement::Proposal::Receiver::Product do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :receiver }
+    it { should_not validate_presence_of :receiver }
     it { should validate_presence_of :thing_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }

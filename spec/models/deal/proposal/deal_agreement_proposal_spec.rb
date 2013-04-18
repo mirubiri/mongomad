@@ -23,7 +23,7 @@ describe Deal::Agreement::Proposal do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :agreement }
+    it { should_not validate_presence_of :agreement }
     it { should validate_presence_of :composer }
     it { should validate_presence_of :receiver }
     it { should validate_presence_of :money }

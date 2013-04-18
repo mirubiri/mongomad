@@ -20,7 +20,7 @@ describe Deal::Agreement::Conversation::Message do
   end
 
   describe 'Validations' do
-    it { should validate_presence_of :conversation }
+    it { should_not validate_presence_of :conversation }
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :nick }
     it { should validate_presence_of :text }
