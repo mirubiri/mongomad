@@ -22,7 +22,7 @@ class OffersController < ApplicationController
   def show
     @offer = Offer.find(params[:id])
     @negotiation = Negotiation.new
-    
+
     respond_to do |format|
       format.html # show.html.erb
     end
@@ -63,7 +63,7 @@ class OffersController < ApplicationController
         format.html { redirect_to @user, notice: 'Offer was successfully created.' }
         format.js { render :partial => "offers/reload_offers_list", :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
-        format.html { render action: "new" }        
+        format.html { render action: "new" }
       end
     end
   end
@@ -71,7 +71,7 @@ class OffersController < ApplicationController
   # PUT /offers/1
   # PUT /offers/1.json
   def update
-    @user = current_user
+    @user = User.find(params[:offer][:user_receiver_id])
     @offer = Offer.find(params[:id])
     @offer.composer.products.all.destroy
     @offer.receiver.products.all.destroy
@@ -79,7 +79,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:offer => @offer }, :layout => false  }
+        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:user => @user }, :layout => false  }
       else
         format.html { render action: "edit" }
       end
