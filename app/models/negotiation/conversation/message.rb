@@ -12,8 +12,7 @@ class Negotiation::Conversation::Message
 
   denormalize :nick, :image_url, from:'user.profile'
 
-  validates :conversation,
-    :user_id,
+  validates :user_id,
     :nick,
     :text,
     :image_url,

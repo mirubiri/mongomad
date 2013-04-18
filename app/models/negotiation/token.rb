@@ -6,8 +6,7 @@ class Negotiation::Token
   field :user_id, type: Moped::BSON::ObjectId
   field :state,   type: Symbol
 
-  validates :negotiation,
-    :user_id,
+  validates :user_id,
     :state,
     presence: true
 

@@ -9,8 +9,7 @@ class Deal::Agreement::Conversation::Message
   field :text,      type: String
   field :image_url, type: String
 
-  validates :conversation,
-    :user_id,
+  validates :user_id,
     :nick,
     :text,
     :image_url,

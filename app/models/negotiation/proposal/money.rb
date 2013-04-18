@@ -6,8 +6,7 @@ class Negotiation::Proposal::Money
   field :user_id,  type: Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-  validates :proposal,
-    :quantity,
+  validates :quantity,
     presence: true
 
   validates :quantity,

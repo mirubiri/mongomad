@@ -9,8 +9,7 @@ class Deal::Agreement::Proposal::Receiver
 
   accepts_nested_attributes_for :products
 
-  validates :proposal,
-    :products,
+  validates :products,
     :nick,
     :image_url,
     presence: true

@@ -12,8 +12,7 @@ class Negotiation::Proposal::Receiver
 
   denormalize :nick, :image_url, from:'user.profile'
 
-  validates :proposal,
-    :products,
+  validates :products,
     :nick,
     :image_url,
     presence: true

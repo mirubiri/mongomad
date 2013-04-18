@@ -11,8 +11,7 @@ class Request
 
   denormalize :nick, :image_url, from:'user.profile'
 
-  validates :user,
-    :nick,
+  validates :nick,
     :text,
     :image_url,
     presence: true

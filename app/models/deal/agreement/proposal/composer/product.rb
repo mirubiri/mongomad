@@ -9,8 +9,7 @@ class Deal::Agreement::Proposal::Composer::Product
   field :quantity,    type: Integer
   field :image_url,   type: String
 
-  validates :composer,
-    :thing_id,
+  validates :thing_id,
     :name,
     :description,
     :quantity,

@@ -9,8 +9,7 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :quantity,    type: Integer
   field :image_url,   type: String
 
-  validates :receiver,
-    :thing_id,
+  validates :thing_id,
     :name,
     :description,
     :quantity,

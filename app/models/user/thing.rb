@@ -9,8 +9,7 @@ class User::Thing
 
   mount_uploader :image, ThingImageUploader
 
-  validates :user,
-  :name,
+  validates :name,
   :description,
   :stock,
   :image,

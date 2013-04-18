@@ -6,7 +6,6 @@ class Deal::Conversation
 
   accepts_nested_attributes_for :messages
 
-  validates :deal,
-    :messages,
+  validates :messages,
     presence: true
 end

@@ -12,8 +12,7 @@ class Negotiation::Proposal::Composer::Product
 
   denormalize :name, :description, :image_url, from:'thing'
 
-  validates :composer,
-    :thing_id,
+  validates :thing_id,
     :name,
     :description,
     :quantity,

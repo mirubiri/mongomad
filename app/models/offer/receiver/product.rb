@@ -12,8 +12,7 @@ class Offer::Receiver::Product
 
   denormalize :name, :description, :image_url, from:'thing'
 
-  validates :receiver,
-    :thing_id,
+  validates :thing_id,
     :name,
     :description,
     :quantity,

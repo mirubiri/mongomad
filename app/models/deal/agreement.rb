@@ -7,8 +7,7 @@ class Deal::Agreement
 
   accepts_nested_attributes_for :conversation, :proposals
 
-  validates :deal,
-    :conversation,
+  validates :conversation,
     :proposals,
     presence: true
 end

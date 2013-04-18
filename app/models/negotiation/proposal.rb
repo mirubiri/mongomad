@@ -12,8 +12,7 @@ class Negotiation::Proposal
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
-  validates :negotiation,
-    :composer,
+  validates :composer,
     :receiver,
     :money,
     :user_composer_id,

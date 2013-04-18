@@ -12,8 +12,7 @@ class Offer::Composer
 
   denormalize :nick, :image_url, from:'offer.user_composer.profile'
 
-  validates :offer,
-    :products,
+  validates :products,
     :nick,
     :image_url,
     presence: true

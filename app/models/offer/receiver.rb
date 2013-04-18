@@ -12,8 +12,7 @@ class Offer::Receiver
 
   denormalize :nick, :image_url, from:'offer.user_receiver.profile'
 
-  validates :offer,
-    :products,
+  validates :products,
     :nick,
     :image_url,
     presence: true
