@@ -52,10 +52,10 @@ class NegotiationsController < ApplicationController
   # POST /negotiations.json
   def create
     @user = current_user
-    offer = @user.received_offers.find(params[:offer_id])
+    @offer = @user.received_offers.find(params[:offer_id])
 
     respond_to do |format|
-      if offer.start_negotiation
+      if @offer.start_negotiation
         format.html { redirect_to @user, notice: 'Negotiation was successfully created.' }
       else
         format.html { render action: "new" }

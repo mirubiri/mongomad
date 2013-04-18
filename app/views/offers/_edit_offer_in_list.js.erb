@@ -8,6 +8,8 @@ $('#edit-offer-form').on('hidden', function () {
   .html("<%= escape_javascript(render :partial => 'offers/partials/offer', :locals => {:@negotiation => Negotiation.new}).html_safe %>")
   .masonry('destroy');
 
+  $('#new-offer-form').remove();
+
   //REcargo el masonry y dejo que se vea todo
   masonryOffer();
   $('#ppal_container').show();

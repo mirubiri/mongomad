@@ -26,11 +26,13 @@ class Offer
 
   def start_negotiation
     negotiation_params = {
-      negotiators: [ self.user_composer, self.user_receiver ],
+      negotiators: [ user_composer, user_receiver ],
       conversation_attributes: {
-        messages_attributes: [ { user_id: self.user_composer_id, text: self.initial_message } ]
+        messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
       },
-      proposals_attributes: Array.new
+      proposals_attributes: Array.new,
+      # TODO: Provisional
+      token_attributes: { user_id: user_composer_id, state: :propose }
     }
 
     proposal_hash = {
