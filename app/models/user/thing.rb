@@ -10,10 +10,10 @@ class User::Thing
   mount_uploader :image, ThingImageUploader
 
   validates :name,
-  :description,
-  :stock,
-  :image,
-  presence: true
+    :description,
+    :stock,
+    :image,
+    presence: true
 
   validates :stock,
     allow_nil: false,

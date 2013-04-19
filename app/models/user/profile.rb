@@ -17,11 +17,11 @@ class User::Profile
   mount_uploader :image, UserImageUploader
 
   validates :name,
-  :surname,
-  :nick,
-  :sex,
-  :country,
-  :birth_date,
-  :image,
-  presence: true
+    :surname,
+    :nick,
+    :sex,
+    :country,
+    :birth_date,
+    :image,
+    presence: true
 end

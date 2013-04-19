@@ -10,7 +10,6 @@ class Negotiation
 
   accepts_nested_attributes_for :conversation, :proposals, :token
 
-  #validates :negotiators,
   validates :conversation,
     :proposals,
     :token,
