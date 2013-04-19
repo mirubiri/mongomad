@@ -17,7 +17,7 @@ describe Deal do
   end
 
   describe 'Validations' do
-    xit { should validate_presence_of :signers }
+    xit { should_not validate_presence_of :signers }
     it { should validate_presence_of :conversation }
     it { should validate_presence_of :agreement }
   end
