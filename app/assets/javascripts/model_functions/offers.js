@@ -22,12 +22,17 @@ function newOfferScript(){
     $("input[id='"+thing.attr("id")+"']").attr('value', (valr +1 ));
   }
 
+  function summary_container_selector(containeris){
+    return "#summary_offer_"+containeris+"_products_container";
+  }
+
   function add_thing_to_summary(thing,t,u){
+    var container = summary_container_selector(t);
     var id = thing.attr("id");
-    $("#summary_offer_"+t+"_products_container input[rel='"+id+"']").remove();
-    thing.clone().prepend('<div class="delete_button">x</div>').appendTo("#summary_offer_"+t+"_products_container").children('.quantity_container').html("1");
-    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />");
-    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
+    $(""+container+" input[rel='"+id+"']").remove();
+    thing.clone().prepend('<div class="delete_button">x</div>').appendTo(""+container+"").children('.quantity_container').html("1");
+    $(""+container+"").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />");
+    $(""+container+"").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
   }
 
   function deduct_1_to_thing(thing){
