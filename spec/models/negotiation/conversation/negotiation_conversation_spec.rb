@@ -15,8 +15,8 @@ describe Negotiation::Conversation do
   end
 
   describe 'Validations' do
-   it { should_not validate_presence_of :negotiation }
-   it { should validate_presence_of :messages }
+    it { should_not validate_presence_of :negotiation }
+    it { should validate_presence_of :messages }
   end
 
   describe 'Factories' do
