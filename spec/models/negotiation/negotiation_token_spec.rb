@@ -56,10 +56,10 @@ describe Negotiation::Token do
   end
 
   describe '#update_token(user_id, state)' do
-    before { token.update_token(composer.id, :accept) }
+    before { token.update_token(receiver.id, :accept) }
 
     it 'has given user_id value' do
-      expect(token.user_id).to eq composer.id
+      expect(token.user_id).to eq receiver.id
     end
 
     it 'has given state value' do
