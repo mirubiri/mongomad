@@ -5,10 +5,10 @@ function addProfileCommentsSeparator(){
 }
 
 function setProfileContainersHeights(){
-  alturaPpalContainer = $('#ppal_container').height();
-  alturaDisponible = alturaPpalContainer;
-  alturaPerfil = (alturaDisponible * 40)/100;
-  alturaComentarios = (alturaDisponible * 60)/100;
+  var alturaPpalContainer = $('#ppal_container').height();
+  var alturaDisponible = alturaPpalContainer;
+  var alturaPerfil = (alturaDisponible * 40)/100;
+  var alturaComentarios = (alturaDisponible * 60)/100;
 
   $('.person_info').css({'height': alturaPerfil  + 'px'});
   $('.person_info,.statistics').equalHeightColumns();

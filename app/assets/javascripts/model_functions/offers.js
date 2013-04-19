@@ -17,26 +17,27 @@ function newOfferScript(){
   function thing_in_offer(thing){ if ($("input[id='"+thing.attr("id")+"']").length > 0) {return true} else{return false} }
 
   function sum_1_to_thing(thing,t){
-    valr = parseInt(($("input[id='"+thing.attr("id")+"']")).attr('value'), 10);
+    var valr = parseInt(($("input[id='"+thing.attr("id")+"']")).attr('value'), 10);
     $("#summary_offer_"+t+"_products_container div[id='"+thing.attr("id")+"'] .quantity_container").html(valr+1);
     $("input[id='"+thing.attr("id")+"']").attr('value', (valr +1 ));
   }
 
   function add_thing_to_summary(thing,t,u){
-    $("#summary_offer_"+t+"_products_container").filter(":contains('_destroy')").filter(":contains('\""+ thing.attr("id") + "\"')").remove();
+    var id = thing.attr("id");
+    $("#summary_offer_"+t+"_products_container input[rel='"+id+"']").remove();
     thing.clone().prepend('<div class="delete_button">x</div>').appendTo("#summary_offer_"+t+"_products_container").children('.quantity_container').html("1");
-    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][thing_id]\" value=\""+ thing.attr("id") + "\" />");
-    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ thing.attr("id") + "\" />");
+    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />");
+    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
   }
 
   function deduct_1_to_thing(thing){
-    prdStock = parseInt(thing.attr('value'), 10);
+    var prdStock = parseInt(thing.attr('value'), 10);
     thing.children('.quantity_container').html(prdStock - 1);
     thing.attr('value',(prdStock-1));
   }
 
   function have_stock(thing){
-    prdStock = parseInt(thing.attr('value'), 10);
+    var prdStock = parseInt(thing.attr('value'), 10);
     if (prdStock > 0) { return true; } else { return false; }
   }
 
@@ -54,7 +55,7 @@ function newOfferScript(){
 
 
   function have_more_than_one(thing){
-    prdQty = parseInt(($("input[id='"+thing.parent().attr("id")+"']")).attr('value'), 10);
+    var prdQty = parseInt(($("input[id='"+thing.parent().attr("id")+"']")).attr('value'), 10);
     if (prdQty > 1){
       return true;
     }
@@ -64,21 +65,21 @@ function newOfferScript(){
   }
 
   function deduct_1_to_product(thing,t){
+    var prdQty = parseInt(($("input[id='"+thing.parent().attr("id")+"']")).attr('value'), 10);
     $("#summary_offer_"+t+"_products_container div[id='"+thing.parent().attr("id")+"'] .quantity_container").html(prdQty-1);
     $("input[id='"+thing.parent().attr("id")+"']").attr('value',(prdQty-1));
   }
 
   function delete_from_summary(thing,t,u){
     var id = thing.parent().attr("id");
-    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
+    $("#summary_offer_"+t+"_products_container").append("<input type=\"hidden\" name=\"offer["+u+"_attributes][products_attributes][_destroy]\" value=\""+1+"\" rel=\""+id+"\"/>");
     thing.parent().remove();
     $("#summary_offer_"+t+"_products_container input[id='"+id+"']").remove();
     $("#summary_offer_"+t+"_products_container input[value='"+id+"']").remove();
-
   }
 
   function add_1_to_thing(thing,u){
-    hpQty = parseInt($("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").attr('value'),10);
+    var hpQty = parseInt($("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").attr('value'),10);
     $("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").attr('value',(hpQty + 1));
     $("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").children('.quantity_container').html(hpQty +1);
   }
@@ -111,7 +112,7 @@ function newOfferScript(){
 
 
   $('#his_product_container .product').live('click',function(e){
-    thing = $(this);
+    var thing = $(this);
 
     if ( have_stock(thing) ) {
 
@@ -126,7 +127,7 @@ function newOfferScript(){
 
 
   $('#my_product_container .product').live('click',function(e){
-    thing = $(this);
+    var thing = $(this);
 
     if ( have_stock(thing) ) {
 
@@ -194,7 +195,7 @@ function setOffersMargin() {
      contador = contador + 1;
   }
 
-  offersEntran = contador;
+  var offersEntran = contador;
 
   var anchuraTotalMargen = anchuraPosible - (anchuraOffer * offersEntran);
   var margenesPorRellenar = offersEntran * 2;

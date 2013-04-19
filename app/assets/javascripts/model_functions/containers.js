@@ -29,36 +29,36 @@ function expandContainers(){
 
   // Pongo los contenedores a sus anchuras iniciales correctas *************************
 
-  mainLayout = $('.mainlayout');
-  anchuraTotalPagina = $(document).width();
+  var mainLayout = $('.mainlayout');
+  var anchuraTotalPagina = $(document).width();
 
-  anchuraMainLayout = mainLayout.innerWidth();
+  var anchuraMainLayout = mainLayout.innerWidth();
   console.log("anchura del mainLayout: "+anchuraMainLayout);
 
-  leftWidth = $('#leftContainer').outerWidth( true );
+  var leftWidth = $('#leftContainer').outerWidth( true );
   console.log("anchura del contenedor de la izda: "+leftWidth);
-  rightWidth = anchuraMainLayout - leftWidth -2;
+  var rightWidth = anchuraMainLayout - leftWidth -2;
   $('#rightContainer').css({'width': rightWidth + 'px'});
-  rightWidth = $('#rightContainer').outerWidth( true );
+  var rightWidth = $('#rightContainer').outerWidth( true );
   console.log("anchura del contenedor de la dcha: "+rightWidth);
   contentSideWidth = $('#content-side').outerWidth( true );
   console.log("anchura del content-side: "+contentSideWidth);
 
-  ppalWidth = $('#ppal_container').width();
+  var ppalWidth = $('#ppal_container').width();
   console.log("anchura del ppal_container: "+ppalWidth);
 
   // Ya tengo los contenedores con sus anchuras iniciales correctas, ahora comienzo el calculo de los margenes
 
-  anchuraPosible = ppalWidth;
+  var anchuraPosible = ppalWidth;
   console.log("anchura que tenemos para los elementos: "+anchuraPosible);
 
-  anchuraOffer = $('.offer:first').outerWidth( true ); // Anchura de la offer incluidos su unico margen(el derecho)
+  var anchuraOffer = $('.offer:first').outerWidth( true ); // Anchura de la offer incluidos su unico margen(el derecho)
   console.log("anchura de una oferta: "+anchuraOffer);
 
-  anchuraAculumada = anchuraOffer;
-  contador = 0;
+  var anchuraAculumada = anchuraOffer;
+  var contador = 0;
 
-  ofertasHay = $('.offer').length;
+  var ofertasHay = $('.offer').length;
 
   if(ofertasHay > 0){
     javascript:console.log("entra en el algoritmo de modificacion");
