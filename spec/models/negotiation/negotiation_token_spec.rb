@@ -5,6 +5,8 @@ describe Negotiation::Token do
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:token) { negotiation.token }
   let(:proposal) { negotiation.proposals.last }
+  let(:composer) { proposal.user_composer }
+  let(:receiver) { proposal.user_receiver }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -39,21 +41,29 @@ describe Negotiation::Token do
 
     context 'when receiver offers money' do
       it 'is owned by the composer' do
-        proposal.money.user_id = proposal.user_receiver.id
+        proposal.money.user_id = receiver.id
         proposal.money.quantity = '1000'
         token.initialize_token
-        expect(token.user_id).to eq proposal.user_composer.id
+        expect(token.user_id).to eq composer.id
       end
     end
 
     context 'when receiver does not offer money' do
       it 'is owned by the receiver' do
-        expect(token.user_id).to eq proposal.user_receiver.id
+        expect(token.user_id).to eq receiver.id
       end
     end
   end
 
-  describe '#update_token' do
-    it 'lo que sea'
+  describe '#update_token(user_id, state)' do
+    before { token.update_token(composer.id, :accept) }
+
+    it 'has given user_id value' do
+      expect(token.user_id).to eq composer.id
+    end
+
+    it 'has given state value' do
+      expect(token.state).to eq :accept
+    end
   end
 end
