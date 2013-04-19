@@ -31,10 +31,19 @@ class Offer
         messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
       },
       proposals_attributes: Array.new,
-      # TODO: Provisional
-      token_attributes: { user_id: user_composer_id, state: :propose }
+      token_attributes: { user_id: nil, state: nil }
     }
 
+    negotiation_params[:proposals_attributes] << fill_proposal_hash
+
+    negotiation = Negotiation.new(negotiation_params)
+    negotiation.token.initialize_token
+
+    negotiation.save
+    negotiation
+  end
+
+  def fill_proposal_hash
     proposal_hash = {
       user_composer_id: self.user_composer_id,
       user_receiver_id: self.user_receiver_id
@@ -60,11 +69,5 @@ class Offer
       user_id: self.money.user_id,
       quantity: self.money.quantity
     }
-
-    negotiation_params[:proposals_attributes] << proposal_hash
-
-    negotiation = Negotiation.new(negotiation_params)
-    negotiation.save
-    negotiation
   end
 end
