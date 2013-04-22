@@ -173,7 +173,7 @@ function newOfferScript(){
   // ************** Funcion que añade el dinero rellenado al sumario de la oferta, y sus helpers *******************
   function addMoneySumary(a1,a2,u){
     putsQuantityWriteInOffer(a1);
-    unableMoneySentButton(a2);
+    disableMoneySentButton(a2);
     putsKindOfUserInSummary(u);
     pustUserMoneyQuantityInSummary(a1);
     resetMoneySelector(a1);
@@ -183,7 +183,7 @@ function newOfferScript(){
     $("#dinero"+user+"EnSumario").empty().append($.trim($("#dinero"+user+"").val())).append('<a href="#blank">x</a>');
   }
 
-  function unableMoneySentButton(user){
+  function disableMoneySentButton(user){
     $("#dinero"+user+"BotonAgregar").addClass("container_invisible");
   }
 
