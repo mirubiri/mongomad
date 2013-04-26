@@ -17,7 +17,7 @@ $productRightMargin: 8px;
 $productsTopMargin: 5px;
 $productsBottomMargin: 8px;
 $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (2 * $productRightMargin) + 8px;
-$trianglePosition: $offerWidth - 26px;
+$trianglePosition: $offerWidth - 25px;
 $profileImageLeftMargin: 6px;
 $profileImageDimension: 50px;
 $commentLeftMargin: 8px;
@@ -85,16 +85,16 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin top_main_header_style{
   @include proportions(100%,38px);
-  @include box-shadow(rgb(170,170,170) 0px 1px 3px);  
+  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
   margin-bottom:12px;
   border-bottom: $borde1px;
   background-color: white;
 }
 
-@mixin ppal_container_style{  
+@mixin ppal_container_style{
   width: 100%;
   background: rgba(140, 140, 140, 0.30);
-  overflow: visible;  
+  overflow: visible;
 }
 
 @mixin container_into_PpalSide_style{
@@ -104,7 +104,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   margin-top: 10px;
   margin-bottom: 5px;
   background-color: white;
-  overflow: auto; 
+  overflow: auto;
 }
 
 @mixin element_into_ElementList_style{
@@ -135,7 +135,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     left: 0px;
     width:$quantityContainerProportion;
     height: $quantityContainerProportion;
-    background-color: grey;    
+    background-color: grey;
     color: white;
     visibility: hidden;
   }
@@ -234,7 +234,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         margin:5px 0px 0px 5px;
         overflow: none;
 
-        .product_image{          
+        .product_image{
           overflow: auto;
           img{
             @include high-quality-image;
@@ -275,7 +275,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
       img{
         @include proportions(100%,100%);
-        @include absolute($top:-23px,$left:-13px); 
+        @include absolute($top:-23px,$left:-13px);
       }
     }
 
@@ -285,12 +285,12 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       @include proportions($profileImageDimension,$profileImageDimension);
 
       a{
-        @include proportions(100%,100%); 
+        @include proportions(100%,100%);
 
         img{
           @include high-quality-image;
           @include proportions(100%,100%);
-          @include border-radius(3px, 3px);    
+          @include border-radius(3px, 3px);
         }
       }
     }
@@ -302,7 +302,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       font-size: 9px;
       line-height: normal;
 
-      .composer_name{        
+      .composer_name{
         float: left;
         width: 100%;
         font-weight: bold;
@@ -341,9 +341,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
           @include border-radius(2px, 2px);
           @include high-quality-image;
           @include proportions(100%,100%);
-          background-color: white; 
+          background-color: white;
         }
-      }      
+      }
      }
 
     .given{
@@ -365,15 +365,15 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
           @include border-radius(2px, 2px);
           @include high-quality-image;
           @include proportions(100%,100%);
-          background-color: white; 
+          background-color: white;
         }
-      }      
+      }
     }
   }
 }
 
 @mixin container_options{
-  #options{    
+  #options{
     position: fixed;
     width: $offerWidth;
     overflow: visible;
@@ -390,8 +390,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       width: 100%;
       color: white;
 
-      a{ 
-        border-bottom: $borde2px;       
+      a{
+        border-bottom: $borde2px;
         @include unstyled-link;
         @include proportions(100%,20px);
       }
