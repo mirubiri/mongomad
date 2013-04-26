@@ -73,4 +73,70 @@ describe Negotiation::Proposal do
       end
     end
   end
+
+  describe '#propose' do
+    xit 'initializes token'
+  end
+
+  describe '#can_cancel?(negotiator)' do
+    #xit 'returns true if the given negotiator can cancel the current proposal'
+     
+    context 'When the given negotiator is the composer of the current proposal' do
+      it 'can cancel returns true'
+    end
+
+    context 'When the given negotiator is the receiver of the current proposal' do
+      it 'returns false'
+    end
+  end
+
+  describe '#cancel' do
+  end
+
+  describe '#can_reject?(negotiator)' do
+    #xit 'returns true if the given negotiator can reject the current proposal'
+    
+    context 'When given negotiator is the composer' do
+      it 'returns false'
+    end
+
+    context 'When given negotiator is the receiver' do
+      it 'returns true'
+    end
+  end
+  
+  describe '#reject' do
+    it 'returns true if the given negotiators can sing the current proposal'
+    it 'returns true if the given negotiators can sing the current proposal'
+    it 'returns false if the given receiver can sign the current proposal'
+    it 'returns false if the given receiver can sign the current proposals'
+  end
+
+  describe '#reject' do
+  end
+
+  describe '#can_sign?(negotiator)' do
+    #xit 'returns true if the given negotiator can sign the current proposal'
+     
+    context 'When given negotiator is the composer' do
+      it 'returns false'
+    end
+
+    context 'When given negotiator is the receiver' do
+      it 'returns true'
+    end
+  end
+ 
+  describe '#sign' do
+  end
+
+  describe '#can_confirm?(negotiator)' do
+    xit 'returns true if the given negotiator can confirm the current proposal'
+  end
+
+  describe '#confirm' do
+  end
+
+  describe '#kick(negotiator)' do
+  end
 end
