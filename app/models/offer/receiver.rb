@@ -8,7 +8,7 @@ class Offer::Receiver
   field :nick,      type: String
   field :image_url, type: String
 
-  accepts_nested_attributes_for :products
+  accepts_nested_attributes_for :products, allow_destroy:true
 
   denormalize :nick, :image_url, from:'offer.user_receiver.profile'
 
