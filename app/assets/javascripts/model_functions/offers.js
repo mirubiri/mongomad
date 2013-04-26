@@ -19,7 +19,7 @@ function newOfferScript(){
 
   // Añade la cosa al sumario, exista o no exista, y el helper que nos indica si existe la cosa en el sumario de la oferta
   function thingAddition(t, u, thing){
-    thing_in_offer(thing) ? sum_1_to_thing(thing,t) : add_thing_to_summary(thing,t,u);
+    thing_in_offer(thing) ? sum1ToThing(thing,t,u) : add_thing_to_summary(thing,t,u);
   }
 
   function thing_in_offer(thing){
@@ -33,10 +33,27 @@ function newOfferScript(){
 
   //**************** funcion que añade 1 mas al valor de la cosa elegida y sus helpers ********************************************//
 
-  function sum_1_to_thing(thing,t){
-    var value = thingQuantityValue(thing);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
-    add1toQuantityContainer(thing, t, value);
-    add1toQuantityInput(thing, value);
+  function sum1ToThing(thing,t,u){
+    var container = summary_container_selector(t);
+    var id = thing.attr("id");
+
+    if (hasDestroyInput(container,id)) {
+      deleteDestroyInput(container,id);
+      add_thing_to_summary(thing,t,u);
+    } else {
+      var value = thingQuantityValue(thing);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
+      add1toQuantityContainer(thing, t, value);
+      add1toQuantityInput(thing, value);
+    }
+  }
+
+  function hasDestroyInput(container,id){
+    var cuantos = $(""+container+" > div > input[id='"+id+"']").length;
+    if (cuantos > 0) {return true;} else{return false;}
+  }
+
+  function deleteDestroyInput(container,id){
+    $(""+container+" input[id='"+id+"']").parent().remove();
   }
 
   function thingQuantityValue(thing){
@@ -64,13 +81,8 @@ function newOfferScript(){
   function add_thing_to_summary(thing,t,u){
     var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
     var id = thing.attr("id");
-    deleteDestroyInput(container, id);
     addThingViewInSummary(thing, container);
     addThingInputAttributes(container, u, id);
-  }
-
-  function deleteDestroyInput(container, id){
-    $(""+container+" input[rel='"+id+"']").remove();//Borra el input destroy para el elemento seleccionado, si es que antes habia sido eliminado
   }
 
   function addThingViewInSummary(thing, container){
@@ -136,9 +148,9 @@ function newOfferScript(){
 
   function delete_from_summary(thing,t,u,container){
     var id = idOfThingInSummary(thing);
-    addDestroyInput(container,u,id);
     deleteThingFromSummary(thing);
     deleteThingInputAttributes(container,id);
+    addDestroyInput(container,u,id);
   }
 
   function idOfThingInSummary(thing){
@@ -155,8 +167,11 @@ function newOfferScript(){
     $(""+container+" input[value='"+id+"']").remove();
   }
 
-  function addDestroyInput(container,user,id){
-    $(""+container+"").append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][_destroy]\" value=\""+1+"\" rel=\""+id+"\"/>");
+  function addDestroyInput(container,user,id){ // hay que meter ambos dentro de un contenedor
+    $(""+container+"").append("<div>"+
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
+      "</div>");
   }
 
   function sum1ToThingStock(thing,u){
@@ -171,7 +186,7 @@ function newOfferScript(){
   }
 
   // ************** Funcion que añade el dinero rellenado al sumario de la oferta, y sus helpers *******************
-  function addMoneySumary(a1,a2,u){
+  function addMoneyToSumary(a1,a2,u){
     putsQuantityWriteInOffer(a1);
     disableMoneySentButton(a2);
     putsKindOfUserInSummary(u);
@@ -265,21 +280,21 @@ function newOfferScript(){
 
 
   $('#summary_offer_received_products_container > .product > .delete_button').live('click',function(e){
-    thingSubtraction("received","his",$(this));
+    thingSubtraction("received","receiver",$(this));
   });
 
   $('#summary_offer_given_products_container > .product > .delete_button').live('click',function(e){
-    thingSubtraction("given","my",$(this));
+    thingSubtraction("given","composer",$(this));
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
     e.preventDefault();
-    addMoneySumary("Pides","Ofreces","receiver");
+    addMoneyToSumary("Pides","Ofreces","receiver");
   });
 
   $('#dineroOfrecesBotonAgregar').live('click',function(e){
     e.preventDefault();
-    addMoneySumary("Ofreces","Pides","receiver");
+    addMoneyToSumary("Ofreces","Pides","receiver");
   });
 
   $('#dineroPidesEnSumario a').live('click',function(e){

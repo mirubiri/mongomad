@@ -73,15 +73,13 @@ class OffersController < ApplicationController
   def update
     @user = User.find(params[:offer][:user_receiver_id])
     @offer = Offer.find(params[:id])
-    @offer.composer.products.all.destroy
-    @offer.receiver.products.all.destroy
 
     respond_to do |format|
-      if @offer.update_attributes(params[:offer])
+      if @offer.update_attributes params[:offer]
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:user => @user }, :layout => false  }
+        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:user => @user }, :layout => false, notice: 'Offer was successfully updated.'  }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to @offer, notice: 'Offer wasnt updated.'}
       end
     end
   end
