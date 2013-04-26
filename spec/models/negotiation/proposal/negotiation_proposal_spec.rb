@@ -4,6 +4,8 @@ describe Negotiation::Proposal do
   let(:offer) { Fabricate(:offer) }
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:proposal) { negotiation.proposals.last }
+  let(:composer) { proposal.user_composer }
+  let(:receiver) { proposal.user_receiver }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -74,69 +76,89 @@ describe Negotiation::Proposal do
     end
   end
 
+=begin
   describe '#propose' do
     xit 'initializes token'
   end
+=end
 
   describe '#can_cancel?(negotiator)' do
-    #xit 'returns true if the given negotiator can cancel the current proposal'
-     
     context 'When the given negotiator is the composer of the current proposal' do
-      it 'can cancel returns true'
+      it 'returns true' do
+        expect(proposal.can_cancel?(composer)).should be_true
+      end
     end
 
     context 'When the given negotiator is the receiver of the current proposal' do
-      it 'returns false'
+      it 'returns false' do
+        expect(proposal.can_cancel?(receiver)).should be_false
+      end
     end
   end
 
+=begin
   describe '#cancel' do
   end
+=end
+
 
   describe '#can_reject?(negotiator)' do
-    #xit 'returns true if the given negotiator can reject the current proposal'
-    
-    context 'When given negotiator is the composer' do
-      it 'returns false'
+    context 'When given negotiator is the composer of the current proposal' do
+      it 'returns false' do
+        expect(proposal.can_reject?(composer)).should be_false
+      end
     end
 
-    context 'When given negotiator is the receiver' do
-      it 'returns true'
+    context 'When given negotiator is the receiver of the current proposal' do
+      it 'returns true' do
+        expect(proposal.can_reject?(receiver)).should be_true
+      end
     end
   end
-  
-  describe '#reject' do
-    it 'returns true if the given negotiators can sing the current proposal'
-    it 'returns true if the given negotiators can sing the current proposal'
-    it 'returns false if the given receiver can sign the current proposal'
-    it 'returns false if the given receiver can sign the current proposals'
-  end
 
+=begin
   describe '#reject' do
   end
+=end
 
   describe '#can_sign?(negotiator)' do
-    #xit 'returns true if the given negotiator can sign the current proposal'
-     
-    context 'When given negotiator is the composer' do
-      it 'returns false'
+    context 'When given negotiator is the composer of the current proposal' do
+      it 'returns false' do
+        expect(proposal.can_sign?(composer)).should be_false
+      end
     end
 
-    context 'When given negotiator is the receiver' do
-      it 'returns true'
+    context 'When given negotiator is the receiver of the current proposal' do
+      it 'returns true' do
+        expect(proposal.can_sign?(receiver)).should be_true
+      end
     end
   end
- 
+
+=begin
   describe '#sign' do
   end
+=end
 
   describe '#can_confirm?(negotiator)' do
-    xit 'returns true if the given negotiator can confirm the current proposal'
+    context 'When given negotiator is the composer of the current proposal' do
+      it 'returns false' do
+        expect(proposal.can_sign?(composer)).should be_false
+      end
+    end
+
+    context 'When given negotiator is the receiver of the current proposal' do
+      it 'returns true' do
+        expect(proposal.can_sign?(receiver)).should be_true
+      end
+    end
   end
 
+=begin
   describe '#confirm' do
   end
 
   describe '#kick(negotiator)' do
   end
+=end
 end
