@@ -69,5 +69,7 @@ class Offer
       user_id: self.money.user_id,
       quantity: self.money.quantity
     }
+
+    proposal_hash
   end
 end
