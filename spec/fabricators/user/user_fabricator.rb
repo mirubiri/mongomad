@@ -22,13 +22,13 @@ Fabricator(:user_medico, from: :user) do
 
   after_build do |user|
     user.things << Fabricate.build(:user_medico_thing_cartera)
-    user.things << Fabricate.build(:user_thing)
+    user.things << Fabricate.build(:user_medico_thing_mp3)
   end
 end
 
 Fabricator(:user_sergio, from: :user) do
   profile         { Fabricate.build(:user_sergio_profile) }
-  things(count:1) { Fabricate.build(:user_sergio_thing_mando) }
+  things(count:1) { Fabricate.build(:user_thing) }
   email           'sergio@improcex.com'
   password        'sergio'
 
