@@ -18,6 +18,7 @@ describe Negotiation::Proposal do
     it { should be_timestamped_document }
     it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:state).of_type(Symbol).with_default_value_of(:new) }
     it { should accept_nested_attributes_for :composer }
     it { should accept_nested_attributes_for :receiver }
     it { should accept_nested_attributes_for :money }
@@ -30,6 +31,8 @@ describe Negotiation::Proposal do
     it { should validate_presence_of :money }
     it { should validate_presence_of :user_composer_id }
     it { should validate_presence_of :user_receiver_id }
+    it { should validate_presence_of :state }
+    it { should validate_inclusion_of(:state).to_allow([:new, :signed_by_composer, :signed_by_receiver, :confirmed]) }
   end
 
   describe 'Factories' do
