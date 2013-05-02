@@ -25,9 +25,9 @@ class ImageManagement::ImageManager
     self.image_metadata=nil
   end
 
-  def destroy
+  def destroy(number=1)
     if image_metadata
-      decrease_image_use
+      decrease_image_use(number)
     end
     image
   end
@@ -73,9 +73,9 @@ protected
     image_metadata
   end
 
-  def decrease_image_use
+  def decrease_image_use(number)
     if image_metadata.references > 0
-      image_metadata.references-=1
+      image_metadata.references-=number
       image_metadata.save
     end
     image_metadata
