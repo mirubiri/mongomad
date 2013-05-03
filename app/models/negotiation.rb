@@ -6,13 +6,11 @@ class Negotiation
 
   embeds_one  :conversation, class_name: 'Negotiation::Conversation', cascade_callbacks: true
   embeds_many :proposals,    class_name: 'Negotiation::Proposal', cascade_callbacks: true
-  embeds_one  :token,        class_name: 'Negotiation::Token', cascade_callbacks: true
 
-  accepts_nested_attributes_for :conversation, :proposals, :token
+  accepts_nested_attributes_for :conversation, :proposals
 
   validates :conversation,
     :proposals,
-    :token,
     presence: true
 
   def seal
