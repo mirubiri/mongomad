@@ -74,6 +74,10 @@ class OffersController < ApplicationController
     @user = User.find(params[:offer][:user_receiver_id])
     @offer = Offer.find(params[:id])
 
+    #TODO: ELIMINAR ESTE APAÑO
+    @offer.composer.products.destroy
+    @offer.receiver.products.destroy
+
     respond_to do |format|
       if @offer.update_attributes params[:offer]
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
