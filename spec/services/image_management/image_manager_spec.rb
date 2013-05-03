@@ -6,7 +6,6 @@ describe ImageManagement::ImageManager do
 
   before(:each) { manager.db.destroy_all }
 
-
   describe '#store' do
 
     context 'When given an image file' do
@@ -52,7 +51,7 @@ describe ImageManagement::ImageManager do
 
         it 'returns the previously stored image metadata' do
           existing_metadata=manager.db.where(fingerprint:manager.image[:fingerprint]).first
-          
+
           expect(manager.image).to include(fingerprint:existing_metadata.fingerprint,
             url:existing_metadata.url,
             references:existing_metadata.references)
@@ -69,7 +68,7 @@ describe ImageManagement::ImageManager do
       context 'and image corresponding to fingerprint is stored' do
         before(:each) { manager.store }
         let(:fingermanager) { ImageManagement::ImageManager.new(fingerprint:manager.image[:fingerprint]) }
-        
+
         it 'increases the image references count by 1' do
 
           expect { fingermanager.store }.to change{ fingermanager.db.where(fingerprint:fingermanager.image[:fingerprint]).first.references }.by(1)
@@ -128,14 +127,15 @@ describe ImageManagement::ImageManager do
       end
 
       it 'returns the stored image metadata' do
+        manager.store
         manager.destroy
         existing_metadata=manager.db.where(fingerprint:manager.image[:fingerprint]).first
-        
-        expect(manager.image).to include(fingerprint:manager.image[:fingerprint],
-          url:manager.image[:url],
-          references:manager.image[:references])
+
+        expect(manager.image).to include(fingerprint:existing_metadata.fingerprint,
+          url:existing_metadata.url,
+          references:existing_metadata.references)
       end
-      
+
     end
 
     context 'When the image file is not stored' do
