@@ -73,8 +73,6 @@ class OffersController < ApplicationController
   def update
     @user = User.find(params[:offer][:user_receiver_id])
     @offer = Offer.find(params[:id])
-    @offer.composer.products.destroy
-    @offer.receiver.products.destroy
 
     respond_to do |format|
       if @offer.update_attributes params[:offer]

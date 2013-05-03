@@ -88,28 +88,7 @@
         <div class="offer_things">
           <div class="recieved" id="summary_offer_received_products_container">
             <% offer_receiver_products(@offer).each do |product| %>
-              <div class="product" id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
-              <div class="quantity_container"><%= product_quantity(product) %></div>
-              <div class="product_image">
-                <%= product_image(product) %>
-              </div>
-              <div class="product_title">
-                <%= product_name(product) %>
-              </div>
-            </div>
-
-            <input type="hidden" name="offer[receiver_attributes][products_attributes][][thing_id]" value="<%= product_thing_id(product) %>">
-
-            <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_thing_id(product) %>">
-
-            <% end %>
-            <div class="money_received" id="dineroPidesEnSumario">
-              <div class="money_composition"></div>
-            </div>
-          </div>
-          <div class="given" id="summary_offer_given_products_container">
-            <% offer_composer_products(@offer).each do |product| %>
-              <div class="product" id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+              <div class="product" id="<%= product_id(product) %>" value="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
                 <div class="quantity_container"><%= product_quantity(product) %></div>
                 <div class="product_image">
                   <%= product_image(product) %>
@@ -118,11 +97,30 @@
                   <%= product_name(product) %>
                 </div>
               </div>
-
-              <input type="hidden" name="offer[composer_attributes][products_attributes][][thing_id]" value="<%= product_thing_id(product) %>">
-
-              <input type="hidden" name="offer[composer_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_thing_id(product) %>">
-
+              <div input_product_thing_id="<%= product_thing_id(product) %>" product_id="<%= product_id(product) %>">
+                <input type="hidden" name="offer[receiver_attributes][products_attributes][][id]" value="<%= product_id(product) %>">
+                <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>">
+              </div>
+            <% end %>
+            <div class="money_received" id="dineroPidesEnSumario">
+              <div class="money_composition"></div>
+            </div>
+          </div>
+          <div class="given" id="summary_offer_given_products_container">
+            <% offer_composer_products(@offer).each do |product| %>
+              <div class="product" id="<%= product_id(product) %>" value="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+                <div class="quantity_container"><%= product_quantity(product) %></div>
+                <div class="product_image">
+                  <%= product_image(product) %>
+                </div>
+                <div class="product_title">
+                  <%= product_name(product) %>
+                </div>
+              </div>
+              <div input_product_thing_id="<%= product_thing_id(product) %>" product_id="<%= product_id(product) %>">
+                <input type="hidden" name="offer[receiver_attributes][products_attributes][][id]" value="<%= product_id(product) %>">
+                <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>">
+              </div>
             <% end %>
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>

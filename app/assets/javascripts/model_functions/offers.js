@@ -1,5 +1,7 @@
 function newOfferScript(){
-  //Funciones de ayuda para la ejecucion de los procesos de nueva oferta
+
+
+  //Seleccion de usuario
 
   function userSelection(a,b){
     enableUserSelected(a);
@@ -17,13 +19,16 @@ function newOfferScript(){
   }
 
 
-  // Añade la cosa al sumario, exista o no exista, y el helper que nos indica si existe la cosa en el sumario de la oferta
+
+
+
+  // Añade la thing al sumario
   function thingAddition(t, u, thing){
-    thing_in_offer(thing) ? sum1ToThing(thing,t,u) : add_thing_to_summary(thing,t,u);
+    isThingInOffer(thing) ? sum1ToThing(thing,t,u) : addThingToSummary(thing,t,u);
   }
 
-  function thing_in_offer(thing){
-    if ($("input[id='"+thing.attr("id")+"']").length > 0) {
+  function isThingInOffer(thing){
+    if ($("div[input_product_thing_id='"+thing.attr("id")+"']").length > 0) {
       return true;
     } else {
       return false
@@ -31,15 +36,16 @@ function newOfferScript(){
   }
 
 
-  //**************** funcion que añade 1 mas al valor de la cosa elegida y sus helpers ********************************************//
+  //**************** funcion que añade 1 mas al valor de la cosa elegida cuando ya estaba en la oferta y sus helpers ********************************************//
 
   function sum1ToThing(thing,t,u){
     var container = summary_container_selector(t);
     var id = thing.attr("id");
 
     if (hasDestroyInput(container,id)) {
+      alert("aqui entra");
       deleteDestroyInput(container,id);
-      add_thing_to_summary(thing,t,u);
+      addThingToSummary(thing,t,u);
     } else {
       var value = thingQuantityValue(thing);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
       add1toQuantityContainer(thing, t, value);
@@ -48,26 +54,26 @@ function newOfferScript(){
   }
 
   function hasDestroyInput(container,id){
-    var cuantos = $(""+container+" > div > input[id='"+id+"']").length;
+    var cuantos = $(""+container+" > div > div[id='"+id+"']").length;
     if (cuantos > 0) {return true;} else{return false;}
   }
 
   function deleteDestroyInput(container,id){
-    $(""+container+" input[id='"+id+"']").parent().remove();
+    $(""+container+" input[thing_id='"+id+"']").parent().remove();
   }
 
   function thingQuantityValue(thing){
-    var result = parseInt(($("input[id='"+thing.attr("id")+"']")).attr('value'), 10);
+    var result = parseInt(($("input[thing_id='"+thing.attr("id")+"']")).attr('value'), 10);
     return result;
   }
 
   function add1toQuantityContainer(thing, container,value){
     var container = summary_container_selector(container);
-    $(""+container+" div[id='"+thing.attr("id")+"'] .quantity_container").html(value+1);
+    $(""+container+" div[value='"+thing.attr("id")+"'] .quantity_container").html(value+1);
   }
 
   function add1toQuantityInput(thing, value){
-    $("input[id='"+thing.attr("id")+"']").attr('value', (value +1 ));
+    $("input[thing_id='"+thing.attr("id")+"']").attr('value', (value +1 ));
   }
 
   function summary_container_selector(containeris){
@@ -78,7 +84,7 @@ function newOfferScript(){
 
   //**************** funcion que añade la cosa elegida al sumario si no estaba y sus helpers ********************************************//
 
-  function add_thing_to_summary(thing,t,u){
+  function addThingToSummary(thing,t,u){
     var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
     var id = thing.attr("id");
     addThingViewInSummary(thing, container);
@@ -86,14 +92,14 @@ function newOfferScript(){
   }
 
   function addThingViewInSummary(thing, container){
-    thing.clone().prepend('<div class="delete_button">x</div>').appendTo(""+container+"").children('.quantity_container').html("1");
+    var value = thing.attr("id");
+    thing.clone().prepend('<div class="delete_button">x</div>').addClass("newThing").attr('value', value).appendTo(""+container+"").children('.quantity_container').html("1");
   }
 
   function addThingInputAttributes(container, user, id){
     $(""+container+"").append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />");
     $(""+container+"").append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
   }
-
 
   // Funcion que quita 1 al stock de la cosa del usuario
   function deduct_1_to_thing(thing){
@@ -115,15 +121,17 @@ function newOfferScript(){
   }
 
 
+  //**************** funcion que elimina la cosa del sumario y sus helpers ********************************************//
+
   function thingSubtraction(t,u,thing){
 
     var container = summary_container_selector(t); // Lo cojo qui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
 
     if (have_more_than_one(thing)){
-      deduct_1_to_product(thing,t,container);
+      deduct1ToProduct(thing,t,container);
     }
     else{
-      delete_from_summary(thing,t,u,container);
+      deleteFromSummary(thing,t,u,container);
     }
     sum1ToThingStock(thing,u);
   }
@@ -134,7 +142,7 @@ function newOfferScript(){
     if (prdQty > 1) {return true;} else{return false;}
   }
 
-  function deduct_1_to_product(thing,t, container){
+  function deduct1ToProduct(thing,t, container){
     var prdQty = productQuantity(thing);
     $(""+container+" div[id='"+thing.parent().attr("id")+"'] .quantity_container").html(prdQty-1);
     $("input[id='"+thing.parent().attr("id")+"']").attr('value',(prdQty-1));
@@ -146,15 +154,24 @@ function newOfferScript(){
     return result;
   }
 
-  function delete_from_summary(thing,t,u,container){
+
+  function deleteFromSummary(thing,t,u,container){
     var id = idOfThingInSummary(thing);
+    var value = valueOfThingInSummary(thing);
     deleteThingFromSummary(thing);
     deleteThingInputAttributes(container,id);
-    addDestroyInput(container,u,id);
+    if (!thing.parent().hasClass("newThing")) {
+      addDestroyInput(container,u,id,value);
+    }
   }
 
   function idOfThingInSummary(thing){
     var result = thing.parent().attr("id");
+    return result;
+  }
+
+  function valueOfThingInSummary(thing){
+    var result = thing.parent().attr("value");
     return result;
   }
 
@@ -167,21 +184,22 @@ function newOfferScript(){
     $(""+container+" input[value='"+id+"']").remove();
   }
 
-  function addDestroyInput(container,user,id){ // hay que meter ambos dentro de un contenedor
+  function addDestroyInput(container,user,id,value){ //hay que meter ambos dentro de un contenedor
     $(""+container+"").append("<div>"+
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />" +
+      "<div destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\"></div>" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_id]\" value=\""+ id + "\" />" +
       "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
       "</div>");
   }
 
   function sum1ToThingStock(thing,u){
     var hpQty = thingStockFromProductSummary(thing,u);
-    $("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").attr('value',(hpQty + 1));
-    $("#"+u+"_product_container div[id='"+thing.parent().attr("id")+"']").children('.quantity_container').html(hpQty +1);
+    $("#"+u+"_product_container div[id='"+thing.parent().attr("value")+"']").attr('value',(hpQty + 1));
+    $("#"+u+"_product_container div[id='"+thing.parent().attr("value")+"']").children('.quantity_container').html(hpQty +1);
   }
 
   function thingStockFromProductSummary(thing,user){
-    var result = parseInt($("#"+user+"_product_container div[id='"+thing.parent().attr("id")+"']").attr('value'),10);
+    var result = parseInt($("#"+user+"_product_container div[id='"+thing.parent().attr("value")+"']").attr('value'),10);
     return result;
   }
 
@@ -237,6 +255,9 @@ function newOfferScript(){
 
   //Fin funciones de ayuda para la ejecucion de los procesos de nueva oferta
 
+
+
+  // disparadores de los productos y things dentro de una oferta
 
   $('#new_offer_receiver_selector').live('click',function(e){
     e.preventDefault();
@@ -307,6 +328,8 @@ function newOfferScript(){
     deleteMoneySumary("Pides",$(this));
   });
 }
+
+
 
 
 function activateOfferButton(){
