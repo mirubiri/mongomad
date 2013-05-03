@@ -8,7 +8,7 @@ describe Negotiation do
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
     it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
     it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
-    it { should embed_one(:token).of_type(Negotiation::Token) }
+    it { should_not embed_one(:token).of_type(Negotiation::Token) }
   end
 
   describe 'Attributes' do
@@ -21,7 +21,7 @@ describe Negotiation do
     xit { should_not validate_presence_of :negotiators }
     it { should validate_presence_of :conversation }
     it { should validate_presence_of :proposals }
-    it { should validate_presence_of :token }
+    it { should_not validate_presence_of :token }
   end
 
   describe 'Factories' do
