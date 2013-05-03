@@ -4,8 +4,8 @@ describe Negotiation::Proposal do
   let(:offer) { Fabricate(:offer) }
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:proposal) { negotiation.proposals.last }
-  let(:composer) { proposal.user_composer }
-  let(:receiver) { proposal.user_receiver }
+  #let(:composer) { proposal.user_composer }
+  #let(:receiver) { proposal.user_receiver }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -44,8 +44,7 @@ describe Negotiation::Proposal do
   end
 
   describe '#user_composer' do
-    let(:user_composer_id) { proposal.user_composer_id }
-    let(:negotiation_composer) { proposal.negotiation.negotiators.find(user_composer_id) }
+    let(:negotiation_composer) { proposal.negotiation.negotiators.find(proposal.user_composer_id) }
 
     context 'When proposal has no negotiation assigned' do
       it 'returns nil' do
@@ -62,8 +61,7 @@ describe Negotiation::Proposal do
   end
 
   describe '#user_composer' do
-    let(:user_receiver_id) { proposal.user_receiver_id }
-    let(:negotiation_receiver) { proposal.negotiation.negotiators.find(user_receiver_id) }
+    let(:negotiation_receiver) { proposal.negotiation.negotiators.find(proposal.user_receiver_id) }
 
     context 'When proposal has no negotiation assigned' do
       it 'returns nil' do
