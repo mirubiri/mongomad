@@ -1,3 +1,10 @@
+function maximizeConversationWidth(){
+  var maxWidth = $("#ppal_container").width();
+  var proposalWidth = $('.negotiation_offer:first').width();
+  var conversationWidth = maxWidth - proposalWidth -2; // le quito 2 por no consultar el ancho del borde de la negociacion
+  $('.dialog_container').css({'width': conversationWidth + 'px'});
+}
+
 function maximizeConversationsHeights(){
   $("[id^=negotiation]").each(function(){
     $(this).equalHeightColumns({children:':not(h2,p)'});
@@ -6,8 +13,6 @@ function maximizeConversationsHeights(){
     $(this).css({'height':($(this).parent().height()-57)+'px'});
   });
 }
-
-
 
 
 function activateNegotiationButtons(){
