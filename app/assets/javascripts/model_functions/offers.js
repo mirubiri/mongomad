@@ -28,7 +28,7 @@ function newOfferScript(){
   }
 
   function isThingInOffer(thing){
-    if ($("div[input_product_thing_id='"+thing.attr("id")+"']").length > 0) {
+    if ($(".recieved > div[thing_id='"+thing.attr("id")+"']").length > 0) {
       return true;
     } else {
       return false
@@ -86,37 +86,42 @@ function newOfferScript(){
 
   function addThingToSummary(thing,t,u){
     var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
-    var id = thing.attr("id");
-    addThingViewInSummary(thing, container);
-    addThingInputAttributes(container, u, id);
+    var thing_id = thing.attr("thing_id");
+    addThingViewInSummary(thing, thing_id, container,u);
   }
 
-  function addThingViewInSummary(thing, container){
-    var value = thing.attr("id");
-    thing.clone().prepend('<div class="delete_button">x</div>').addClass("newThing").attr('value', value).appendTo(""+container+"").children('.quantity_container').html("1");
+
+  function addThingViewInSummary(thing, thing_id, container, user){
+    thing.clone()
+    .append("<div>"+
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ thing_id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ thing_id + "\" />" +
+      "</div>")
+    .prepend('<div class="delete_button">x</div>')
+    .addClass("newThing")
+    .attr('product_id', thing_id)
+    .appendTo(""+container+"")
+    .children('.quantity_container')
+    .html("1");
   }
 
-  function addThingInputAttributes(container, user, id){
-    $(""+container+"").append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ id + "\" />");
-    $(""+container+"").append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ id + "\" />");
-  }
 
   // Funcion que quita 1 al stock de la cosa del usuario
   function deduct_1_to_thing(thing){
     var prdStock = stockOfThing(thing);
     thing.children('.quantity_container').html(prdStock - 1);
-    thing.attr('value',(prdStock-1));
+    thing.attr('stock',(prdStock-1));
   }
 
 
   function stockOfThing(thing){
-    var result = parseInt(thing.attr('value'), 10);
+    var result = parseInt(thing.attr('stock'), 10);
     return result;
   }
 
 
   function have_stock(thing){
-    var prdStock = parseInt(thing.attr('value'), 10);
+    var prdStock = parseInt(thing.attr('stock'), 10);
     if (prdStock > 0) { return true; } else { return false; }
   }
 
