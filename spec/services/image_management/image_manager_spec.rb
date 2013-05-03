@@ -1,89 +1,91 @@
 require 'spec_helper'
 
 describe ImageManagement::ImageManager do
-  let(:manager) { ImageManagement::ImageManager }
-  let(:algorithm) { manager.class_variable_get(:@@algorithm) }
-  let(:metadata_model) { manager.class_variable_get(:@@metadata_model) }
-  let(:uploader) { manager.class_variable_get(:@@image_uploader) }
-  let(:uploader_instance) { uploader.new }
-
   let(:image_file) { File.open('app/assets/images/sergio.jpg') }
-  let(:image_hash) { algorithm.file(image_file) }
+  let(:manager) { ImageManagement::ImageManager.new(file:image_file) }
 
-  before(:each) { metadata_model.destroy_all }
+  before(:each) { manager.db.destroy_all }
 
 
-  describe '.store' do
+  describe '#store' do
 
     context 'When given an image file' do
       context 'which is not previously stored' do
 
         it 'uploads the image file' do
-          uploader.any_instance.should_receive(:store!).with(image_file)
-          manager.store(image_file:image_file)
+          manager.uploader.should_receive(:store!).with(image_file)
+          manager.store
         end
 
         it 'saves the image metadata' do
-          uploader_instance.store!(image_file)
-          params={hash:algorithm.file(image_file),url:uploader_instance.url,references:0}
-          metadata_model.should_receive(:create).with(params)
-          manager.store(image_file:image_file)
+          manager.uploader.stub(:url).and_return('url')
+          manager.algorithm.stub(:file).and_return('fingerprint')
+
+          params={fingerprint:'fingerprint',url:'url',references:1}
+          manager.db.should_receive(:create).with(params)
+          manager.store
         end
 
-        it 'returns the generated image url' do
-          uploader_instance.store!(image_file)
-          expect(manager.store(image_file:image_file)).to eq uploader_instance.url
+        it 'returns the generated image metadata ' do
+          manager.uploader.stub(:url).and_return('url')
+          manager.algorithm.stub(:file).and_return('fingerprint')
+          manager.store
+          expect(manager.image).to include(fingerprint:'fingerprint',url:'url',references:1)
         end
       end
 
       context 'which is previously stored' do
-        before(:each) { manager.store(image_file:image_file) }
+        before(:each) { manager.store }
 
         it 'do not upload the image file' do
-          uploader.any_instance.should_not_receive(:store!).with(image_file)
-          manager.store(image_file:image_file)
+          manager.uploader.should_not_receive(:store!)
+          manager.store
         end
 
         it 'do not creates a new register in image metadata database' do
-          expect { manager.store(image_file:image_file) }.to_not change { metadata_model.count }
+          expect { manager.store }.to_not change { manager.db.count }
         end
 
         it 'increases the image referenced count by 1' do
-          expect { manager.store(image_file:image_file) }.to change{ metadata_model.where(hash:image_hash).first.references }.by(1)
+          expect { manager.store }.to change{ manager.db.where(fingerprint:manager.image[:fingerprint]).first.references }.by(1)
         end
 
-        it 'returns the previously stored image url' do
-          expect(manager.store(image_file:image_file)).to eq metadata_model.where(hash:image_hash).first.url
+        it 'returns the previously stored image metadata' do
+          existing_metadata=manager.db.where(fingerprint:manager.image[:fingerprint]).first
+          
+          expect(manager.image).to include(fingerprint:existing_metadata.fingerprint,
+            url:existing_metadata.url,
+            references:existing_metadata.references)
         end
       end
     end
 
-
-
-    context 'When given a hash in :image_hash param' do
-      context 'When :image_hash is not stored' do
+    context 'When given image fingerprint' do
+      context 'and image corresponding to fingerprint is not stored' do
         it 'raise exception' do
         end
       end
 
-      context 'When :image_hash is stored' do
-        before(:each) { manager.store(image_file:image_file) }
-
+      context 'and image corresponding to fingerprint is stored' do
+        before(:each) { manager.store }
+        let(:fingermanager) { ImageManagement::ImageManager.new(fingerprint:manager.image[:fingerprint]) }
+        
         it 'increases the image references count by 1' do
-          expect { manager.store(image_hash:image_hash) }.to change{ metadata_model.where(hash:image_hash).first.references }.by(1)
+
+          expect { fingermanager.store }.to change{ fingermanager.db.where(fingerprint:fingermanager.image[:fingerprint]).first.references }.by(1)
         end
       end
     end
 
-=begin
+
     context "When given file cannot be uploaded" do
       before(:each) { uploader.any_instance.should_receive(:store!).with(image_file).and_return(nil) }
 
-      it 'do not saves the image metadata' do
+      xit 'do not saves the image metadata' do
         expect { manager.store(image_file:image_file) }.to_not change { metadata_model.count }
       end
 
-      it 'returns nil' do
+      xit 'returns nil' do
         expect(manager.store(image_file:image_file)).to eq nil
       end
     end
@@ -94,32 +96,52 @@ describe ImageManagement::ImageManager do
         metadata_model.any_instance.stub(:save).and_return(false)
       end
 
-      it 'returns nil' do
+      xit 'returns nil' do
         expect { manager.store(image_file:image_file) }.to eq nil
         expect { manager.store(image_hash:image_hash) }.to eq nil
       end
     end
   end
 
-  describe '.destroy' do
+
+  describe '#destroy' do
     context 'When the image file is stored' do
-      before(:each) { manager.store(image_file:image_file) }
-
-      it 'decreases the image references count by 1' do
-        expect { manager.destroy }.to change { metadata_model.where(hash:image_hash).first.references }.by(-1)
+      context 'and not given a number' do
+        it 'decreases the image references count by 1' do
+          manager.store
+          expect { manager.destroy }.to change { manager.db.where(fingerprint:manager.image[:fingerprint]).first.references }.by(-1)
+        end
       end
 
-      it 'returns the resultant image references count' do
-        expect(manager.destroy).to eq metadata_model.where(hash:image_hash).first.references
+      context 'and given a number' do
+        it 'decreases the image references count by number' do
+          10.times { manager.store }
+          expect { manager.destroy(5) }.to change { manager.db.where(fingerprint:manager.image[:fingerprint]).first.references }.by(-5)
+        end
       end
+
+      context 'and given a number greater than the stored references' do
+        it 'decreases the image references to 0' do
+          10.times { manager.store }
+          expect { manager.destroy(15) }.to change { manager.db.where(fingerprint:manager.image[:fingerprint]).first.references }.by(-10)
+        end
+      end
+
+      it 'returns the stored image metadata' do
+        manager.destroy
+        existing_metadata=manager.db.where(fingerprint:manager.image[:fingerprint]).first
+        
+        expect(manager.image).to include(fingerprint:manager.image[:fingerprint],
+          url:manager.image[:url],
+          references:manager.image[:references])
+      end
+      
     end
 
     context 'When the image file is not stored' do
-      it 'returns false' do
+      xit 'returns false' do
         expect(manager.destroy).to eq false
       end
     end
   end
-=end
-end
 end

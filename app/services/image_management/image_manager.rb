@@ -40,16 +40,13 @@ class ImageManagement::ImageManager
     Image
   end
 
-  def uploader_service
-    ImageManagement::ImageUploader
+  def uploader
+    @uploader ||= ImageManagement::ImageUploader.new
   end
 
 protected
   attr_accessor :image_file,:image_fingerprint,:image_metadata
-
-  def uploader
-    @uploader ||= uploader_service.new
-  end
+  attr_writer :uploader,:algorithm,:db
 
   def image_fingerprint
     @image_fingerprint ||= algorithm.file(image_file)
@@ -60,7 +57,7 @@ protected
   end
 
   def upload_new_image
-    uploader.store!(@image_file)
+    uploader.store!(image_file)
   end
 
   def create_metadata
@@ -76,6 +73,7 @@ protected
   def decrease_image_use(number)
     if image_metadata.references > 0
       image_metadata.references-=number
+      image_metadata.references=0 if image_metadata.references < 0
       image_metadata.save
     end
     image_metadata
