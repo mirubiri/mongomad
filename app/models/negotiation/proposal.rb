@@ -9,6 +9,7 @@ class Negotiation::Proposal
 
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
+  field :state,            type: Symbol, default: :new
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
@@ -17,7 +18,11 @@ class Negotiation::Proposal
     :money,
     :user_composer_id,
     :user_receiver_id,
+    :state,
     presence: true
+
+  validates :state,
+    :inclusion => { :in => [:new, :signed_by_composer, :signed_by_receiver, :confirmed] }
 
   def user_composer
     negotiation && negotiation.negotiators.find(user_composer_id)
