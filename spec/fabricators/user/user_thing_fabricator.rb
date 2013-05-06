@@ -2,7 +2,7 @@ Fabricator(:user_thing, class_name: 'User::Thing') do
   user        nil
   name        { Faker::Lorem.word }
   description { Faker::Lorem.sentence }
-  stock       1000
+  stock       2
   image       { File.open('app/assets/images/car.png') }
 end
 
