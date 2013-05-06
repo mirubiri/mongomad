@@ -1,6 +1,5 @@
 function newOfferScript(){
 
-
   //Seleccion de usuario
 
   function userSelection(a,b){
@@ -18,17 +17,15 @@ function newOfferScript(){
     $("#"+user+"_products_container").addClass("container_invisible");
   }
 
-
-
-
-
   // Añade la thing al sumario
   function thingAddition(t, u, thing){
-    isThingInOffer(thing) ? sum1ToThing(thing,t,u) : addThingToSummary(thing,t,u);
+    var container = summary_container_selector(t);
+    var id = thing.attr("thing_id"); 
+    isThingInOffer(container, id) ? sum1ToThing(thing,t,u) : addThingToSummary(thing,t,u);
   }
 
-  function isThingInOffer(thing){
-    if ($(".recieved > div[thing_id='"+thing.attr("id")+"']").length > 0) {
+  function isThingInOffer(container, id){
+    if ( ($(""+container+" > div[thing_id='"+id+"']").length > 0) || ($(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").length > 0) ) {
       return true;
     } else {
       return false
@@ -40,40 +37,38 @@ function newOfferScript(){
 
   function sum1ToThing(thing,t,u){
     var container = summary_container_selector(t);
-    var id = thing.attr("id");
+    var id = thing.attr("thing_id");
 
-    if (hasDestroyInput(container,id)) {
-      alert("aqui entra");
+    if (hasDestroyInput(container,id)){
       deleteDestroyInput(container,id);
       addThingToSummary(thing,t,u);
     } else {
-      var value = thingQuantityValue(thing);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
-      add1toQuantityContainer(thing, t, value);
-      add1toQuantityInput(thing, value);
+      var value = thingQuantityValue(container,id);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
+      add1toQuantityContainer(id, container , value);
+      add1toQuantityInput(container, id, value);
     }
   }
 
   function hasDestroyInput(container,id){
-    var cuantos = $(""+container+" > div > div[id='"+id+"']").length;
+    var cuantos = $(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").length;
     if (cuantos > 0) {return true;} else{return false;}
   }
 
   function deleteDestroyInput(container,id){
-    $(""+container+" input[thing_id='"+id+"']").parent().remove();
+    $(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").remove();
   }
 
-  function thingQuantityValue(thing){
-    var result = parseInt(($("input[thing_id='"+thing.attr("id")+"']")).attr('value'), 10);
+  function thingQuantityValue(container,id){
+    var result = parseInt(($(""+container+" > div[thing_id='"+id+"'] > .quantity_container")).html(), 10);
     return result;
   }
 
-  function add1toQuantityContainer(thing, container,value){
-    var container = summary_container_selector(container);
-    $(""+container+" div[value='"+thing.attr("id")+"'] .quantity_container").html(value+1);
+  function add1toQuantityContainer(id, container,value){
+    $(""+container+" div[thing_id='"+id+"'] .quantity_container").html(value+1);
   }
 
-  function add1toQuantityInput(thing, value){
-    $("input[thing_id='"+thing.attr("id")+"']").attr('value', (value +1 ));
+  function add1toQuantityInput(container, id, value){
+    $(""+container+" > div[thing_id='"+id+"'] > .data_input > input[thing_id='"+id+"']").attr('value', (value +1 ));
   }
 
   function summary_container_selector(containeris){
@@ -82,7 +77,7 @@ function newOfferScript(){
 
 
 
-  //**************** funcion que añade la cosa elegida al sumario si no estaba y sus helpers ********************************************//
+  //**************** funcion que añade la cosa elegida al sumario si no estaba... y sus helpers ********************************************//
 
   function addThingToSummary(thing,t,u){
     var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
@@ -128,34 +123,34 @@ function newOfferScript(){
 
   //**************** funcion que elimina la cosa del sumario y sus helpers ********************************************//
 
-  function thingSubtraction(t,u,thing){
-
+  function thingSubtraction(owner,t,u,thing){
     var container = summary_container_selector(t); // Lo cojo qui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
+    var id = thing.parent().attr("thing_id");
 
-    if (have_more_than_one(thing)){
-      deduct1ToProduct(thing,t,container);
+    if (have_more_than_one(container, id)){
+      deduct1ToProduct(container, id);
     }
     else{
       deleteFromSummary(thing,t,u,container);
     }
-    sum1ToThingStock(thing,u);
+    sum1ToThingStock(thing,owner,id);
   }
 
 
-  function have_more_than_one(thing){
-    var prdQty = productQuantity(thing);
+  function have_more_than_one(container, id){
+    var prdQty = productQuantity(container, id);
     if (prdQty > 1) {return true;} else{return false;}
   }
 
-  function deduct1ToProduct(thing,t, container){
-    var prdQty = productQuantity(thing);
-    $(""+container+" div[id='"+thing.parent().attr("id")+"'] .quantity_container").html(prdQty-1);
-    $("input[id='"+thing.parent().attr("id")+"']").attr('value',(prdQty-1));
+  function deduct1ToProduct(container, id){
+    var prdQty = productQuantity(container, id);
+    $(""+container+" > div[thing_id='"+id+"'] .quantity_container").html(prdQty-1);
+    $(""+container+" > div[thing_id='"+id+"'] > .data_input > input[thing_id='"+id+"']").attr('value',(prdQty-1));
   }
 
 
-  function productQuantity(product){
-    var result = parseInt(($("input[id='"+product.parent().attr("id")+"']")).attr('value'), 10);
+  function productQuantity(container, id){ 
+    var result = parseInt(($(""+container+" > div[thing_id='"+id+"'] > .quantity_container")).html(), 10);
     return result;
   }
 
@@ -164,47 +159,40 @@ function newOfferScript(){
     var id = idOfThingInSummary(thing);
     var value = valueOfThingInSummary(thing);
     deleteThingFromSummary(thing);
-    deleteThingInputAttributes(container,id);
+    
     if (!thing.parent().hasClass("newThing")) {
       addDestroyInput(container,u,id,value);
     }
   }
 
   function idOfThingInSummary(thing){
-    var result = thing.parent().attr("id");
+    var result = thing.parent().attr("product_id");
     return result;
   }
 
   function valueOfThingInSummary(thing){
-    var result = thing.parent().attr("value");
+    var result = thing.parent().attr("thing_id");
     return result;
   }
 
   function deleteThingFromSummary(thing){
     thing.parent().remove();
-  }
-
-  function deleteThingInputAttributes(container,id){
-    $(""+container+" input[id='"+id+"']").remove();
-    $(""+container+" input[value='"+id+"']").remove();
-  }
+  }  
 
   function addDestroyInput(container,user,id,value){ //hay que meter ambos dentro de un contenedor
-    $(""+container+"").append("<div>"+
-      "<div destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\"></div>" +
+    $(""+container+"").append("<div class='destroy_input' destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\">" +
       "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_id]\" value=\""+ id + "\" />" +
       "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
       "</div>");
   }
 
-  function sum1ToThingStock(thing,u){
-    var hpQty = thingStockFromProductSummary(thing,u);
-    $("#"+u+"_product_container div[id='"+thing.parent().attr("value")+"']").attr('value',(hpQty + 1));
-    $("#"+u+"_product_container div[id='"+thing.parent().attr("value")+"']").children('.quantity_container').html(hpQty +1);
+  function sum1ToThingStock(thing,owner, id){
+    var hpQty = thingStockFromProductList(owner, id);
+    $("#"+owner+"_product_container > div[thing_id='"+id+"']").attr('stock',(hpQty + 1));
   }
 
-  function thingStockFromProductSummary(thing,user){
-    var result = parseInt($("#"+user+"_product_container div[id='"+thing.parent().attr("value")+"']").attr('value'),10);
+  function thingStockFromProductList(user, id){
+    var result = parseInt($("#"+user+"_product_container div[thing_id='"+id+"']").attr('stock'),10);
     return result;
   }
 
@@ -306,11 +294,11 @@ function newOfferScript(){
 
 
   $('#summary_offer_received_products_container > .product > .delete_button').live('click',function(e){
-    thingSubtraction("received","receiver",$(this));
+    thingSubtraction("his","received","receiver",$(this));
   });
 
   $('#summary_offer_given_products_container > .product > .delete_button').live('click',function(e){
-    thingSubtraction("given","composer",$(this));
+    thingSubtraction("my","given","composer",$(this));
   });
 
   $('#dineroPidesBotonAgregar').live('click',function(e){
