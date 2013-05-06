@@ -31,7 +31,7 @@
         <div class="product_container" id="his_product_container">
           <% offer_receiver_things(@offer).each do |thing| %>
             <div class="product" thing_id="<%= thing.id%>" stock="<%= thing_stock(thing) %>">
-              <div class="quantity_container"><%= thing_stock(thing) %></div>
+              <div class="quantity_container"></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
@@ -50,7 +50,7 @@
         <div class="product_container" id="my_product_container">
           <% offer_composer_things(@offer).each do |thing| %>
             <div class="product" thing_id="<%= thing.id%>" stock="<%= thing_stock(thing) %>">
-              <div class="quantity_container"><%= thing_stock(thing) %></div>
+              <div class="quantity_container"></div>
               <div class="product_image">
                 <%= thing_image(thing) %>
               </div>
