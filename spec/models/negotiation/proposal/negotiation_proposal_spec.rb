@@ -6,8 +6,7 @@ describe Negotiation::Proposal do
   let(:proposal) { negotiation.proposals.last }
   let(:negotiation_composer) { proposal.negotiation.negotiators.find(proposal.user_composer_id) }
   let(:negotiation_receiver) { proposal.negotiation.negotiators.find(proposal.user_receiver_id) }
-  #let(:composer) { proposal.user_composer }
-  #let(:receiver) { proposal.user_receiver }
+  let(:negotiator) { negotiation.negotiators.last }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -34,7 +33,7 @@ describe Negotiation::Proposal do
     it { should validate_presence_of :user_composer_id }
     it { should validate_presence_of :user_receiver_id }
     it { should validate_presence_of :state }
-    it { should validate_inclusion_of(:state).to_allow([:new, :signed_by_composer, :signed_by_receiver, :confirmed]) }
+    it { should validate_inclusion_of(:state).to_allow([:not_signed, :signed_by_composer, :signed_by_receiver, :confirmed]) }
   end
 
   describe 'Factories' do
@@ -60,7 +59,7 @@ describe Negotiation::Proposal do
     end
   end
 
-  describe '#user_composer' do
+  describe '#user_receiver' do
     context 'When proposal has no negotiation assigned' do
       it 'returns nil' do
         proposal.negotiation = nil
@@ -75,142 +74,88 @@ describe Negotiation::Proposal do
     end
   end
 
+  ########################################################################################################
   describe '#can_sign?(negotiator)' do
-    it 'calls permitted_actions method' do
-      expect(proposal).should_receive(:permitted_actions).with(:negotiation_composer)
-      proposal.can_sign?(negotiation_composer)
-    end
-
-    context 'When proposal is in :new state' do
-      before { proposal.state = :new }
-
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
       context 'When receiver offers money' do
-        before { proposal.money.user_id = proposal.user_receiver_id }
-
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'returns false' do
-            proposal.stub(:permitted_actions).with(:negotiation_composer).and_return([:confirm])
-            expect(proposal.can_sign?(negotiation_composer)).to eq false
-          end
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
         end
-
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'returns true' do
-            proposal.stub(:permitted_actions).with(:negotiation_receiver).and_return([:sign])
-            expect(proposal.can_sign?(negotiation_receiver)).to eq true
-          end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
         end
       end
-
-      context 'when receiver does not offer money' do
-        before { proposal.money.user_id = proposal.user_composer_id }
-
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'returns true' do
-            proposal.stub(:permitted_actions).with(:negotiation_composer).and_return([:sign])
-            expect(proposal.can_sign?(negotiation_composer)).to eq true
-          end
-        end
-
-        context 'When given negotiator is the receiver of the current proposal' do
-           it 'returns false' do
-            proposal.stub(:permitted_actions).with(:negotiation_receiver).and_return([:confirm])
-            expect(proposal.can_sign?(negotiation_composer)).to eq false
-          end
-        end
+      context 'When there is no money in proposal' do
+        it 'si'
       end
     end
-
-    context 'When proposal is not in :new state' do
-      before { proposal.state = :signed_by_composer }
-
-      it 'returns false' do
-        proposal.stub(:permitted_actions).with(:negotiation_receiver).and_return([:confirm])
-        expect(proposal.can_sign?(negotiation_composer)).to eq false
-      end
+    context 'When proposal is not in :not_signed state' do
+      it 'no'
     end
   end
 
+  ########################################################################################################
   describe '#sign(negotiator)' do
-    context 'When proposal is in :new state' do
-      before { proposal.state = :new }
-
-      context 'When receiver offers money' do
-        before { proposal.money.user_id = proposal.user_receiver_id }
-
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'returns false' do
-            expect(proposal.sign(negotiation_composer)).to eq false
-          end
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
         end
-
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'signs the proposal' do
-            proposal.sign(negotiation_receiver)
-            expect(proposal.state).to eq :signed_by_receiver
-          end
-
-          it 'returns true' do
-            expect(proposal.sign(negotiation_receiver)).to eq true
-          end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
         end
       end
-
-      context 'when receiver does not offer money' do
-        before { proposal.money.user_id = proposal.user_composer_id }
-
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'signs the proposal' do
-            proposal.sign(negotiation_composer)
-            expect(proposal.state).to eq :signed_by_receiver
-          end
-
-          it 'returns true' do
-            expect(proposal.sign(negotiation_composer)).to eq true
-          end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
         end
-
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'returns false' do
-            expect(proposal.sign(negotiation_receiver)).to eq false
-          end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
         end
+      end
+      context 'When there is no money in proposal' do
+        it 'si'
       end
     end
-
-    context 'When proposal is not in :new state' do
-      before { proposal.state = :signed_by_composer }
-      it 'returns false' do
-        expect(proposal.sign(negotiation_composer)).to eq false
-      end
+    context 'When proposal is not in :not_signed state' do
+      it 'no'
     end
   end
 
+  ########################################################################################################
   describe '#can_unsign?(negotiator)' do
     context 'When proposal is in :signed_by_composer state' do
-      context 'When receiver offers money' do
+      context 'When composer offers money' do
         it 'no'
       end
-      context 'when receiver does not offer money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'no'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
+      context 'When composer does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
           it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
         end
       end
     end
     context 'When proposal is in :signed_by_receiver state' do
       context 'When receiver offers money' do
-        context 'When given negotiator is the composer of the current proposal' do
+        it 'no'
+      end
+      context 'When receiver does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
           it 'no'
         end
-        context 'When given negotiator is the receiver of the current proposal' do
+        context 'When given negotiator is the receiver of current proposal' do
           it 'si'
         end
-      end
-      context 'when receiver does not offer money' do
-        it 'no'
       end
     end
     context 'When proposal is not in :signed_by_composer nor :signed_by_receiver state' do
@@ -218,31 +163,32 @@ describe Negotiation::Proposal do
     end
   end
 
+  ########################################################################################################
   describe '#unsign(negotiator)' do
     context 'When proposal is in :signed_by_composer state' do
-      context 'When receiver offers money' do
+      context 'When composer offers money' do
         it 'no'
       end
-      context 'when receiver does not offer money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'no'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
+      context 'When composer does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
           it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
         end
       end
     end
     context 'When proposal is in :signed_by_receiver state' do
       context 'When receiver offers money' do
-        context 'When given negotiator is the composer of the current proposal' do
+        it 'no'
+      end
+      context 'When receiver does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
           it 'no'
         end
-        context 'When given negotiator is the receiver of the current proposal' do
+        context 'When given negotiator is the receiver of current proposal' do
           it 'si'
         end
-      end
-      context 'when receiver does not offer money' do
-        it 'no'
       end
     end
     context 'When proposal is not in :signed_by_composer nor :signed_by_receiver state' do
@@ -250,30 +196,21 @@ describe Negotiation::Proposal do
     end
   end
 
+  ########################################################################################################
   describe '#can_confirm?(negotiator)' do
     context 'When proposal is in :signed_by_composer state' do
-      context 'When receiver offers money' do
+      context 'When given negotiator is the composer of current proposal' do
         it 'no'
       end
-      context 'when receiver does not offer money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'si'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'no'
-        end
+      context 'When given negotiator is the receiver of current proposal' do
+        it 'si'
       end
     end
     context 'When proposal is in :signed_by_receiver state' do
-      context 'When receiver offers money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'si'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'no'
-        end
+      context 'When given negotiator is the composer of current proposal' do
+        it 'si'
       end
-      context 'when receiver does not offer money' do
+      context 'When given negotiator is the receiver of current proposal' do
         it 'no'
       end
     end
@@ -282,35 +219,95 @@ describe Negotiation::Proposal do
     end
   end
 
+  ########################################################################################################
   describe '#confirm(negotiator)' do
     context 'When proposal is in :signed_by_composer state' do
-      context 'When receiver offers money' do
+      context 'When given negotiator is the composer of current proposal' do
         it 'no'
       end
-      context 'when receiver does not offer money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'si'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'no'
-        end
+      context 'When given negotiator is the receiver of current proposal' do
+        it 'si'
       end
     end
     context 'When proposal is in :signed_by_receiver state' do
-      context 'When receiver offers money' do
-        context 'When given negotiator is the composer of the current proposal' do
-          it 'si'
-        end
-        context 'When given negotiator is the receiver of the current proposal' do
-          it 'no'
-        end
+      context 'When given negotiator is the composer of current proposal' do
+        it 'si'
       end
-      context 'when receiver does not offer money' do
+      context 'When given negotiator is the receiver of current proposal' do
         it 'no'
       end
     end
     context 'When proposal is not in :signed_by_composer nor :signed_by_receiver state' do
       it 'no'
+    end
+  end
+
+  ########################################################################################################
+  describe '#permitted_actions' do
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'SIGN'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'SIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'SIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'SIGN'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'CONFIRM'
+        end
+      end
+      context 'When composer does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'UNSIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'CONFIRM'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'CONFIRM'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      context 'When receiver does not offer money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'CONFIRM'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'UNSIGN'
+        end
+      end
+    end
+    context 'When proposal is in :confirmed state' do
+      it '/'
     end
   end
 end
