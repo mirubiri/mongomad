@@ -73,4 +73,429 @@ describe Negotiation::Proposal do
       end
     end
   end
+
+########################################################################################################
+  describe '#can_sign?(negotiator)' do
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      context 'When there is no money in proposal' do
+        it 'si'
+      end
+    end
+    #TODO: Se puede eliminar (When proposal is not in :not_signed state)
+    context 'When proposal is in :signed_by_composer state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      it 'no'
+    end
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+########################################################################################################
+  describe '#sign(negotiator)' do
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      context 'When there is no money in proposal' do
+        it 'si'
+      end
+    end
+    #TODO: Se puede eliminar (When proposal is not in :not_signed state)
+    context 'When proposal is in :signed_by_composer state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      it 'no'
+    end
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+########################################################################################################
+  describe '#can_unsign?(negotiator)' do
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :not_signed state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        it 'no'
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      #TODO: Se puede eliminar (When composer does not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When receiver offers money' do
+        it 'no'
+      end
+      #TODO: Se puede eliminar (When receiver does not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+    end
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+########################################################################################################
+  describe '#unsign(negotiator)' do
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :not_signed state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        it 'no'
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      #TODO: Se puede eliminar (When composer does not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When receiver offers money' do
+        it 'no'
+      end
+      #TODO: Se puede eliminar (When receiver does not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+    end
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+  ########################################################################################################
+  describe '#can_confirm?(negotiator)' do
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :not_signed state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      #TODO: Se puede eliminar (dejar solo discriminacion composer/receiver)
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      #TODO: Se puede eliminar (dejar solo discriminacion composer/receiver)
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+    end
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+ ########################################################################################################
+  describe '#confirm(negotiator)' do
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :not_signed state' do
+      it 'no'
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      #TODO: Se puede eliminar (dejar solo discriminacion composer/receiver)
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'no'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'si'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      #TODO: Se puede eliminar (dejar solo discriminacion composer/receiver)
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'si'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'no'
+        end
+      end
+    end
+    #TODO: Se puede eliminar (unir con el :confirmed y poner not signed by composer nor receiver)
+    context 'When proposal is in :confirmed state' do
+      it 'no'
+    end
+  end
+
+########################################################################################################
+  describe '#permitted_actions' do
+    context 'When proposal is in :not_signed state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'SIGN'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'SIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'SIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'SIGN'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_composer state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'CONFIRM'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'UNSIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'CONFIRM'
+        end
+      end
+      #TODO: Se puede eliminar (when composer not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'UNSIGN'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'CONFIRM'
+        end
+      end
+    end
+    context 'When proposal is in :signed_by_receiver state' do
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'CONFIRM'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'UNSIGN'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'CONFIRM'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      #TODO: Se puede eliminar (when receiver not offer money)
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it 'CONFIRM'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it 'UNSIGN'
+        end
+      end
+    end
+    context 'When proposal is in :confirmed state' do
+      #TODO: Se pueden eliminar todos (es no en todos los casos y fuera)
+      context 'When composer offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      context 'When receiver offers money' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+      context 'When there is no money in proposal' do
+        context 'When given negotiator is the composer of current proposal' do
+          it '/'
+        end
+        context 'When given negotiator is the receiver of current proposal' do
+          it '/'
+        end
+      end
+    end
+  end
 end
