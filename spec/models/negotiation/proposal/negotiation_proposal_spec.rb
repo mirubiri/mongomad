@@ -243,15 +243,17 @@ describe Negotiation::Proposal do
   end
 
   ########################################################################################################
-  describe '#permitted_actions' do
+  describe '#allowed_actions2' do
     context 'When proposal is in :not_signed state' do
       context 'When composer offers money' do
-        context 'When given negotiator is the composer of current proposal' do
-          it '/'
-        end
-        context 'When given negotiator is the receiver of current proposal' do
-          it 'SIGN'
-        end
+        # context 'When given negotiator is the composer of current proposal' do
+        #   it '/'
+        # end
+        # context 'When given negotiator is the receiver of current proposal' do
+        #   it 'SIGN'
+        # end
+
+      it 'composer [:/]  ,receiver [:sING]'
       end
       context 'When receiver offers money' do
         context 'When given negotiator is the composer of current proposal' do
@@ -262,12 +264,7 @@ describe Negotiation::Proposal do
         end
       end
       context 'When there is no money in proposal' do
-        context 'When given negotiator is the composer of current proposal' do
-          it 'SIGN'
-        end
-        context 'When given negotiator is the receiver of current proposal' do
-          it 'SIGN'
-        end
+        it 'SIGN'
       end
     end
     context 'When proposal is in :signed_by_composer state' do
@@ -308,6 +305,38 @@ describe Negotiation::Proposal do
     end
     context 'When proposal is in :confirmed state' do
       it '/'
+    end
+  end
+
+  ########################################################################################################
+  describe '#allowed_actions' do
+
+    it 'both can make a new proposal'
+
+    context 'Who offers money' do
+      it 'can never sign'
+      it 'can never unsign'
+      it 'can confirm if signed'
+
+      context 'the other' do
+        it 'can sign if not signed'
+        it 'can unsign if signed'
+        it 'can never confirm'
+      end
+    end
+
+    context 'When nobody offers money' do
+      context 'Who signs' do
+        it 'can never sign'
+        it 'can unsign'
+        it 'can never confirm'
+
+        context 'the other' do
+          it 'can never sign'
+          it 'can never unsign'
+          it 'can confirm'
+        end
+      end
     end
   end
 end
