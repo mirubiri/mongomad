@@ -1,6 +1,6 @@
 class User::Thing
   include Mongoid::Document
-  include ImageManager::ImageHolder
+  include ImageManagement::ImageHolder
 
   embedded_in :user
 
