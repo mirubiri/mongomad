@@ -1,5 +1,6 @@
 class User::Thing
   include Mongoid::Document
+  include ImageManager::ImageHolder
 
   embedded_in :user
 
@@ -7,12 +8,11 @@ class User::Thing
   field :description, type: String
   field :stock,       type: Integer
 
-  mount_uploader :image, ThingImageUploader
+  #mount_uploader :image, ThingImageUploader
 
   validates :name,
     :description,
     :stock,
-    :image,
     presence: true
 
   validates :stock,
