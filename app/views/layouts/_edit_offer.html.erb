@@ -98,6 +98,7 @@
                 </div>
                  <div class="data_input">
                   <input type="hidden" name="offer[receiver_attributes][products_attributes][][id]" value="<%= product_id(product) %>">
+                  <input type="hidden" name="offer[receiver_attributes][products_attributes][][thing_id]" value="<%= product_thing_id(product) %>">
                   <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>">
                 </div>
               </div>
@@ -117,8 +118,9 @@
                   <%= product_name(product) %>
                 </div>
                  <div class="data_input">
-                  <input type="hidden" name="offer[receiver_attributes][products_attributes][][id]" value="<%= product_id(product) %>">
-                  <input type="hidden" name="offer[receiver_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>">
+                  <input type="hidden" name="offer[composer_attributes][products_attributes][][id]" value="<%= product_id(product) %>">
+                  <input type="hidden" name="offer[composer_attributes][products_attributes][][thing_id]" value="<%= product_thing_id(product) %>">
+                  <input type="hidden" name="offer[composer_attributes][products_attributes][][quantity]" value="<%= product_quantity(product) %>" id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>">
                 </div>
               </div>
             <% end %>

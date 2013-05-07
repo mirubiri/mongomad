@@ -40,8 +40,8 @@ function newOfferScript(){
     var id = thing.attr("thing_id");
 
     if (hasDestroyInput(container,id)){
-      deleteDestroyInput(container,id);
       addThingToSummary(thing,t,u);
+      deleteDestroyInput(container,id);      
     } else {
       var value = thingQuantityValue(container,id);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
       add1toQuantityContainer(id, container , value);
@@ -54,7 +54,7 @@ function newOfferScript(){
     if (cuantos > 0) {return true;} else{return false;}
   }
 
-  function deleteDestroyInput(container,id){
+  function deleteDestroyInput(container,id){    
     $(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").remove();
   }
 
@@ -87,10 +87,12 @@ function newOfferScript(){
 
 
   function addThingViewInSummary(thing, thing_id, container, user){
+    var product_id = thing.attr("id");
+
     thing.clone()
-    .append("<div>"+
+    .append("<div class='data_input'>"+
       "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ thing_id + "\" />" +
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" id=\""+ thing_id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" thing_id=\""+ thing_id + "\" />" +
       "</div>")
     .prepend('<div class="delete_button">x</div>')
     .addClass("newThing")
@@ -98,6 +100,12 @@ function newOfferScript(){
     .appendTo(""+container+"")
     .children('.quantity_container')
     .html("1");
+
+    //si tiene destroy input, es porque habia sido eliminada antes del sumario y al volverla a poner, hay que añadirselo
+    if (hasDestroyInput(container,thing_id)) {      
+      $(""+container+" > div[thing_id='"+thing_id+"'] > .data_input")
+      .append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][id]\" value=\""+ product_id + "\" />");
+    }
   }
 
 
@@ -131,7 +139,7 @@ function newOfferScript(){
       deduct1ToProduct(container, id);
     }
     else{
-      deleteFromSummary(thing,t,u,container);
+      deleteFromSummary(thing,t,u,container,owner);
     }
     sum1ToThingStock(thing,owner,id);
   }
@@ -155,13 +163,13 @@ function newOfferScript(){
   }
 
 
-  function deleteFromSummary(thing,t,u,container){
+  function deleteFromSummary(thing,t,u,container,owner){
     var id = idOfThingInSummary(thing);
     var value = valueOfThingInSummary(thing);
     deleteThingFromSummary(thing);
     
     if (!thing.parent().hasClass("newThing")) {
-      addDestroyInput(container,u,id,value);
+      addDestroyInput(container,u,id,value,owner);
     }
   }
 
@@ -179,11 +187,18 @@ function newOfferScript(){
     thing.parent().remove();
   }  
 
-  function addDestroyInput(container,user,id,value){ //hay que meter ambos dentro de un contenedor
+  function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos dentro de un contenedor
     $(""+container+"").append("<div class='destroy_input' destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\">" +
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_id]\" value=\""+ id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][id]\" value=\""+ id + "\" />" +
       "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
       "</div>");
+
+    addProductIdToThing(container,value,id,owner);    
+  }
+
+  function addProductIdToThing(container,value,id,owner){
+    var product_id = $(""+container+" > .destroy_input[destroy_product_thing_id='"+value+"']").attr("product_id");
+    $("#"+owner+"_product_container > div[thing_id='"+value+"']").attr('id',product_id);
   }
 
   function sum1ToThingStock(thing,owner, id){
