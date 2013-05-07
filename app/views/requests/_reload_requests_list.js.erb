@@ -15,6 +15,7 @@ $('#new-request-form').on('hidden', function () {
   )
   .animate({backgroundColor: '#ffffff'}, 800);
   activateRequestButtons();
-})
 
-$('#edit-request-form').destroy();
+  //Elimino la ventana modal
+  delete $(this);
+})

@@ -44,6 +44,7 @@ function newOfferScript(){
       deleteDestroyInput(container,id);      
     } else {
       var value = thingQuantityValue(container,id);// Lo cojo aqui por optimizacion, sino deberia acceder 2 veces, una por cada funcion
+      alert(value);
       add1toQuantityContainer(id, container , value);
       add1toQuantityInput(container, id, value);
     }
@@ -64,6 +65,7 @@ function newOfferScript(){
   }
 
   function add1toQuantityContainer(id, container,value){
+    alert(value+1);
     $(""+container+" div[thing_id='"+id+"'] .quantity_container").html(value+1);
   }
 

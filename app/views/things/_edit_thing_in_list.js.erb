@@ -11,6 +11,7 @@ $('#edit-thing-form').on('hidden', function () {
   //REcargo el masonry y dejo que se vea todo
   masonryThing();
   $('#ppal_container').show();
-})
 
-$('#edit-thing-form').destroy();
+  //Elimino la ventana modal
+  delete $(this);
+})
