@@ -88,11 +88,12 @@ function newOfferScript(){
 
   function addThingViewInSummary(thing, thing_id, container, user){
     var product_id = thing.attr("id");
+    var posicion = howMuchInputsAre(container);
 
     thing.clone()
     .append("<div class='data_input'>"+
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][thing_id]\" value=\""+ thing_id + "\" />" +
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][quantity]\" value=\""+ 1 + "\" thing_id=\""+ thing_id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes]["+posicion+"][thing_id]\" value=\""+ thing_id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes]["+posicion+"][quantity]\" value=\""+ 1 + "\" thing_id=\""+ thing_id + "\" />" +
       "</div>")
     .prepend('<div class="delete_button">x</div>')
     .addClass("newThing")
@@ -104,8 +105,15 @@ function newOfferScript(){
     //si tiene destroy input, es porque habia sido eliminada antes del sumario y al volverla a poner, hay que añadirselo
     if (hasDestroyInput(container,thing_id)) {      
       $(""+container+" > div[thing_id='"+thing_id+"'] > .data_input")
-      .append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][id]\" value=\""+ product_id + "\" />");
+      .append("<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes]["+posicion+"][id]\" value=\""+ product_id + "\" />");
     }
+  }
+
+  function howMuchInputsAre(container){
+    var dataInputs = $(""+container+" > div > .data_input").length;
+    var destroyInputs = $(""+container+" > .destroy_input").length;
+    var sumDataDestroy = dataInputs + destroyInputs + 1;
+    return sumDataDestroy;
   }
 
 
@@ -188,9 +196,11 @@ function newOfferScript(){
   }  
 
   function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos dentro de un contenedor
+    var posicion = howMuchInputsAre(container);
+
     $(""+container+"").append("<div class='destroy_input' destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\">" +
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][id]\" value=\""+ id + "\" />" +
-      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes][][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes]["+posicion+"][id]\" value=\""+ id + "\" />" +
+      "<input type=\"hidden\" name=\"offer["+user+"_attributes][products_attributes]["+posicion+"][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
       "</div>");
 
     addProductIdToThing(container,value,id,owner);    
