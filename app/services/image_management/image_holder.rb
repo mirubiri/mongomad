@@ -2,12 +2,12 @@ module ImageManagement::ImageHolder
   extend ActiveSupport::Concern
 
   included do
-    
+
     field :image_url, type: String
     field :image_fingerprint, type: String
 
     before_validation :manager_store_image, :unless => :image_stored?
-    
+
     after_destroy :manager_destroy_image, :if => :image_stored?
 
     validates :image_fingerprint,
@@ -29,13 +29,13 @@ module ImageManagement::ImageHolder
 
   private
   attr_reader :image_manager
-  
+
   def image_stored?
     image_url.present? && image_fingerprint.present?
   end
 
   def manager_store_image
-    _image_manager.try(:store) &&
+    image_manager.try(:store) &&
     write_attribute(:image_url,image_manager.image[:url]) &&
     write_attribute(:image_fingerprint,image_manager.image[:fingerprint])
   end
