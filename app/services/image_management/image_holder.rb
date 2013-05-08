@@ -36,12 +36,15 @@ module ImageManagement::ImageHolder
   end
 
   def image_stored?
-    image_url.present? && image_fingerprint.present?
+    image_url.present? && image_fingerprint.present? && @image_manager.nil?
   end
 
   def manager_store_image
+    manager_destroy_image if image_url.present && image_fingerprint.present?
+
     image_manager.try(:store) &&
     write_attribute(:image_url,image_manager.image[:url]) &&
     write_attribute(:image_fingerprint,image_manager.image[:fingerprint])
+    @image_manager=nil
   end
 end
