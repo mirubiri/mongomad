@@ -6,7 +6,7 @@ class Offer::Composer
   embedded_in :offer
   embeds_many :products, class_name: 'Offer::Composer::Product', cascade_callbacks: true
 
-  field :nick,      type: String
+  field :nick, type: String
 
   accepts_nested_attributes_for :products, allow_destroy:true
 
