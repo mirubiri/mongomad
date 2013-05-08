@@ -4,6 +4,10 @@ describe User::Profile do
   let(:user) { Fabricate(:user) }
   let(:profile) { user.profile }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in :user }
   end
