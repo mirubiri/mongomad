@@ -5,9 +5,9 @@ class Deal::Agreement::Conversation::Message
 
   embedded_in :conversation, class_name: 'Deal::Agreement::Conversation'
 
-  field :user_id,   type: Moped::BSON::ObjectId
-  field :nick,      type: String
-  field :text,      type: String
+  field :user_id, type: Moped::BSON::ObjectId
+  field :nick,    type: String
+  field :text,    type: String
 
   validates :user_id,
     :nick,
