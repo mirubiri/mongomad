@@ -1,14 +1,15 @@
 //Quito la ventana modal
 $('#edit-offer-form').modal('hide');
 
-$('#edit-offer-form').on('hidden', function () {
+$('#edit-offer-form').on('hidden', function() {
   //Cuando la modal se quita, oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
   $('#ppal_container')
   .hide()
   .html("<%= escape_javascript(render :partial => 'offers/partials/offer', :locals => {:@negotiation => Negotiation.new}).html_safe %>")
   .masonry('destroy');
 
-  $('#edit-offer-form').remove();
+  //Elimino la ventana modal
+  delete $(this);
 
   //REcargo el masonry y dejo que se vea todo
   //masonryOffer();

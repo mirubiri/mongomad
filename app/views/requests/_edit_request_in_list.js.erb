@@ -4,6 +4,7 @@ $('#edit-request-form').on('hidden', function () {
   $('#request_list_container')
   .html("<%= escape_javascript(render :partial => 'layouts/global_partials/requests_list').html_safe %>");  
   activateRequestButtons();
-})
 
-$('#edit-request-form').destroy();
+  //Elimino la ventana modal
+  delete $(this);
+})

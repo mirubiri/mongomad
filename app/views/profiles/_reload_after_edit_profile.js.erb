@@ -8,8 +8,8 @@ $('#edit-profile-form').on('hidden', function () {
   expandRequestContainer();
   setProfileContainersHeights();
   addProfileCommentsSeparator();
-  matchPrincipalContainersHeighs();   
+  matchPrincipalContainersHeighs(); 
+
+  //Elimino la ventana modal
+  delete $(this);
 })
-
-$('#edit-profile-form').destroy();
-
