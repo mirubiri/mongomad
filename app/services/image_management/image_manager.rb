@@ -22,10 +22,10 @@ class ImageManagement::ImageManager
   end
 
   def reload
-    self.image_metadata=nil
+    self.image_metadata = nil
   end
 
-  def destroy(number=1)
+  def destroy(number = 1)
     if image_metadata
       decrease_image_use(number)
     end
@@ -61,19 +61,19 @@ protected
   end
 
   def create_metadata
-    self.image_metadata=db.create(fingerprint:image_fingerprint,url:uploader.url,references:1)
+    self.image_metadata = db.create(fingerprint:image_fingerprint, url:uploader.url, references:1)
   end
 
   def increase_image_use
-    image_metadata.references+=1
+    image_metadata.references += 1
     image_metadata.save
     image_metadata
   end
 
   def decrease_image_use(number)
     if image_metadata.references > 0
-      image_metadata.references-=number
-      image_metadata.references=0 if image_metadata.references < 0
+      image_metadata.references -= number
+      image_metadata.references = 0 if image_metadata.references < 0
       image_metadata.save
     end
     image_metadata
