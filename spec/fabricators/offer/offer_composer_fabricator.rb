@@ -1,6 +1,6 @@
 Fabricator(:offer_composer, class_name: 'Offer::Composer') do
-  transient  :user
-  offer      nil
+  transient :user
+  offer     nil
   products  do |attrs|
     products = []
     attrs[:user].things.each do |thing|
@@ -8,6 +8,5 @@ Fabricator(:offer_composer, class_name: 'Offer::Composer') do
     end
     products
   end
-  nick       { |attrs| attrs[:user].profile.nick }
-  image_url  { |attrs| attrs[:user].profile.image_url }
+  nick      { |attrs| attrs[:user].profile.nick }
 end
