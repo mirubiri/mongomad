@@ -6,9 +6,9 @@ class Negotiation::Conversation::Message
 
   embedded_in :conversation, class_name: 'Negotiation::Conversation'
 
-  field :user_id,   type: Moped::BSON::ObjectId
-  field :nick,      type: String
-  field :text,      type: String
+  field :user_id, type: Moped::BSON::ObjectId
+  field :nick,    type: String
+  field :text,    type: String
 
   denormalize :nick, :image_fingerprint, from:'user.profile'
 
