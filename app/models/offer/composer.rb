@@ -1,7 +1,7 @@
 class Offer::Composer
   include Mongoid::Document
-  include Denormalized
   include ImageManagement::ImageHolder
+  include Denormalized
 
   embedded_in :offer
   embeds_many :products, class_name: 'Offer::Composer::Product', cascade_callbacks: true
