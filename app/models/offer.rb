@@ -37,7 +37,6 @@ class Offer
     negotiation_params[:proposals_attributes] << fill_proposal_hash
 
     negotiation = Negotiation.new(negotiation_params)
-    negotiation.token.initialize_token
 
     negotiation.save
     negotiation
