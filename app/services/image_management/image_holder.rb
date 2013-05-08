@@ -20,7 +20,7 @@ module ImageManagement::ImageHolder
   end
 
   def image=(file)
-    @image_manager ||= ImageManagement::ImageManager.new(file:File.open(file))
+    @image_manager ||= ImageManagement::ImageManager.new(file:file)
   end
 
   def image_fingerprint=(fingerprint)

@@ -49,7 +49,7 @@ protected
   attr_writer :uploader,:algorithm,:db
 
   def image_fingerprint
-    @image_fingerprint ||= algorithm.file(image_file)
+    @image_fingerprint ||= algorithm.file(image_file.tempfile)
   end
 
   def image_metadata
