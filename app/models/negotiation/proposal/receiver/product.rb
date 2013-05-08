@@ -1,7 +1,7 @@
 class Negotiation::Proposal::Receiver::Product
   include Mongoid::Document
-  include Denormalized
   include ImageManagement::ImageHolder
+  include Denormalized
 
   embedded_in :receiver, class_name: 'Negotiation::Proposal::Receiver'
 
