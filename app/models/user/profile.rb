@@ -1,6 +1,8 @@
 class User::Profile
   include Mongoid::Document
   include Mongoid::Timestamps
+  include ImageManagement::ImageHolder
+
 
   embedded_in :user
 
@@ -14,14 +16,11 @@ class User::Profile
   field :website,          type: String
   field :birth_date,       type: Date
 
-  mount_uploader :image, UserImageUploader
-
   validates :name,
     :surname,
     :nick,
     :sex,
     :country,
     :birth_date,
-    :image,
     presence: true
 end

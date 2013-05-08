@@ -8,8 +8,6 @@ class User::Thing
   field :description, type: String
   field :stock,       type: Integer
 
-  #mount_uploader :image, ThingImageUploader
-
   validates :name,
     :description,
     :stock,
