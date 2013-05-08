@@ -310,10 +310,15 @@ function newOfferScript(){
     userSelection("composer","receiver");
   });
 
-
+  var workingHisProductClick = false;
   $('#his_product_container .product').live('click',function(e){
+    alert("he pulsado sobre uno de sus productos");
+
+    if (workingHisProductClick) { // don't do anything after first execution
+        return;
+    }
+
     var thing = $(this);
-    alert("he pulsado sobre una thing!!");
 
     if ( have_stock(thing) ) {
 
@@ -324,9 +329,21 @@ function newOfferScript(){
     else {
       alert("No hay stock");
     }
+
+    workingHisProductClick = true;
+    return false;
+
   });
 
+  var workingMyProductClick = false;
   $('#my_product_container .product').live('click',function(e){
+
+    alert("he pulsado sobre uno de mis productos");
+
+    if (workingMyProductClick) { // don't do anything after first execution
+        return;
+    }
+
     var thing = $(this);
 
     if ( have_stock(thing) ) {
@@ -338,6 +355,9 @@ function newOfferScript(){
     else {
       alert("No hay stock");
     }
+
+    workingMyProductClick = true;
+    return false;
   });
 
 
