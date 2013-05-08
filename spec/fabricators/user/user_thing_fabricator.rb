@@ -48,7 +48,7 @@ Fabricator(:user_sergio_thing_cartera, from: 'User::Thing') do
   description 'Cartera de titanio reforzado para llevar gran cantidad de moneditas.'
   stock       1000
   image  ActionDispatch::Http::UploadedFile.new({
-    :filename     => 'sergio_mando.jpg',
+    :filename     => 'sergio_cartera.jpg',
     :content_type => 'image/jpg',
-    :tempfile     => File.new('app/assets/images/sergio_mando.jpg')})
+    :tempfile     => File.new('app/assets/images/sergio_cartera.jpg')})
 end
