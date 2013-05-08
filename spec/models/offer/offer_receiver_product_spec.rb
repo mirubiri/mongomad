@@ -16,8 +16,7 @@ describe Offer::Receiver::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
-    it { should have_field(:image_url).of_type(String) }
-    it { should have_denormalized_fields(:name, :description, :image_url).from('thing') }
+    it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
   end
 
   describe 'Validations' do
@@ -26,7 +25,6 @@ describe Offer::Receiver::Product do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should validate_presence_of :image_url }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }

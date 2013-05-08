@@ -30,6 +30,11 @@ module ImageManagement::ImageHolder
   private
   attr_reader :image_manager
 
+  def manager_destroy_image
+    manager=ImageManagement::ImageManager.new(fingerprint:image_fingerprint)
+    manager.destroy
+  end
+
   def image_stored?
     image_url.present? && image_fingerprint.present?
   end

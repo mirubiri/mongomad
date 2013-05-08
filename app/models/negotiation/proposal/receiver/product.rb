@@ -1,6 +1,7 @@
 class Negotiation::Proposal::Receiver::Product
   include Mongoid::Document
   include Denormalized
+  include ImageManagement::ImageHolder
 
   embedded_in :receiver, class_name: 'Negotiation::Proposal::Receiver'
 
@@ -8,15 +9,13 @@ class Negotiation::Proposal::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer
-  field :image_url,   type: String
 
-  denormalize :name, :description, :image_url, from:'thing'
+  denormalize :name, :description, :image_fingerprint, from:'thing'
 
   validates :thing_id,
     :name,
     :description,
     :quantity,
-    :image_url,
     presence: true
 
   validates :quantity,

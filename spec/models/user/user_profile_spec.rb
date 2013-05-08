@@ -19,7 +19,6 @@ describe User::Profile do
     it { should have_field(:phone_number).of_type(String) }
     it { should have_field(:website).of_type(String) }
     it { should have_field(:birth_date).of_type(Date) }
-    it { should have_field(:image).of_type(Object) }
   end
 
   describe 'Validations' do
@@ -30,7 +29,6 @@ describe User::Profile do
     it { should validate_presence_of :sex }
     it { should validate_presence_of :country }
     it { should validate_presence_of :birth_date }
-    it { should validate_presence_of :image }
   end
 
   describe 'Factories' do
@@ -38,13 +36,6 @@ describe User::Profile do
 
     it 'creates one user' do
       expect { profile.save }.to change{ User.count }.by(1)
-    end
-  end
-
-  describe 'after_save' do
-    it 'uploads an image' do
-      profile.save
-      expect(File.exist? profile.image.path).to eq true
     end
   end
 end
