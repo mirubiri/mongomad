@@ -19,12 +19,14 @@ function newOfferScript(){
 
   // Añade la thing al sumario
   function thingAddition(t, u, thing){
+    alert("Añadir thing al sumario");
     var container = summary_container_selector(t);
     var id = thing.attr("thing_id"); 
     isThingInOffer(container, id) ? sum1ToThing(thing,t,u) : addThingToSummary(thing,t,u);
   }
 
   function isThingInOffer(container, id){
+    alert("esta la cosa en el sumario?");
     if ( ($(""+container+" > div[thing_id='"+id+"']").length > 0) || ($(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").length > 0) ) {
       return true;
     } else {
@@ -36,6 +38,8 @@ function newOfferScript(){
   //**************** funcion que añade 1 mas al valor de la cosa elegida cuando ya estaba en la oferta y sus helpers ********************************************//
 
   function sum1ToThing(thing,t,u){
+    alert("si esta, lanzando funciones de suma");
+
     var container = summary_container_selector(t);
     var id = thing.attr("thing_id");
 
@@ -51,29 +55,41 @@ function newOfferScript(){
   }
 
   function hasDestroyInput(container,id){
+    alert("tiene un input destroy?");
+
     var cuantos = $(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").length;
     if (cuantos > 0) {return true;} else{return false;}
   }
 
-  function deleteDestroyInput(container,id){    
+  function deleteDestroyInput(container,id){
+    alert("borrando el input destroy");
+
     $(""+container+" > .destroy_input[destroy_product_thing_id='"+id+"']").remove();
   }
 
   function thingQuantityValue(container,id){
+    alert("que cantidad tiene la cosa en el sumario?");
+
     var result = parseInt(($(""+container+" > div[thing_id='"+id+"'] > .quantity_container")).html(), 10);
     return result;
   }
 
   function add1toQuantityContainer(id, container,value){
+    alert("añadiendo 1 mas en el quantity container, y ahora tiene que tener...");
+
     alert(value+1);
     $(""+container+" div[thing_id='"+id+"'] .quantity_container").html(value+1);
   }
 
   function add1toQuantityInput(container, id, value){
+    alert("añadiendo 1 mas en el input");
+
     $(""+container+" > div[thing_id='"+id+"'] > .data_input > input[thing_id='"+id+"']").attr('value', (value +1 ));
   }
 
   function summary_container_selector(containeris){
+    alert("la cosa va al contenedor: "+containeris);
+
     return "#summary_offer_"+containeris+"_products_container";
   }
 
@@ -82,6 +98,8 @@ function newOfferScript(){
   //**************** funcion que añade la cosa elegida al sumario si no estaba... y sus helpers ********************************************//
 
   function addThingToSummary(thing,t,u){
+    alert("no esta, lanzando funciones para añadirla");
+
     var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
     var thing_id = thing.attr("thing_id");
     addThingViewInSummary(thing, thing_id, container,u);
@@ -89,6 +107,9 @@ function newOfferScript(){
 
 
   function addThingViewInSummary(thing, thing_id, container, user){
+    alert("añandiendola a la vista del sumario");
+
+
     var product_id = thing.attr("id");
     var posicion = howMuchInputsAre(container);
 
@@ -120,7 +141,7 @@ function newOfferScript(){
 
 
   // Funcion que quita 1 al stock de la cosa del usuario
-  function deduct_1_to_thing(thing){
+  function deduct_1_to_thing(thing){    
     var prdStock = stockOfThing(thing);
     thing.children('.quantity_container').html(prdStock - 1);
     thing.attr('stock',(prdStock-1));
@@ -292,6 +313,7 @@ function newOfferScript(){
 
   $('#his_product_container .product').live('click',function(e){
     var thing = $(this);
+    alert("he pulsado sobre una thing!!");
 
     if ( have_stock(thing) ) {
 
@@ -303,7 +325,6 @@ function newOfferScript(){
       alert("No hay stock");
     }
   });
-
 
   $('#my_product_container .product').live('click',function(e){
     var thing = $(this);
@@ -348,8 +369,6 @@ function newOfferScript(){
     deleteMoneySumary("Pides",$(this));
   });
 }
-
-
 
 
 function activateOfferButton(){
