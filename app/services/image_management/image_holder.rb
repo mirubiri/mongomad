@@ -40,7 +40,7 @@ module ImageManagement::ImageHolder
   end
 
   def manager_store_image
-    manager_destroy_image if image_url.present && image_fingerprint.present?
+    manager_destroy_image if image_url.present? && image_fingerprint.present?
 
     image_manager.try(:store) &&
     write_attribute(:image_url,image_manager.image[:url]) &&
