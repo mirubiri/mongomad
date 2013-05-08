@@ -1,7 +1,7 @@
 class Offer::Composer::Product
   include Mongoid::Document
-  include Denormalized
   include ImageManagement::ImageHolder
+  include Denormalized
 
   embedded_in :composer, class_name: 'Offer::Composer'
 
