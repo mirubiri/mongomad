@@ -1,6 +1,6 @@
 Fabricator(:deal_agreement_proposal_receiver, class_name: 'Deal::Agreement::Proposal::Receiver') do
-  transient :receiver
-  proposal  nil
+  transient         :receiver
+  proposal          nil
   products  do |attrs|
     products = []
     attrs[:receiver].products.each do |product|
@@ -8,5 +8,6 @@ Fabricator(:deal_agreement_proposal_receiver, class_name: 'Deal::Agreement::Prop
     end
     products
   end
-  nick      { |attrs| attrs[:receiver].nick }
+  nick              { |attrs| attrs[:receiver].nick }
+  image_fingerprint { |attrs| attrs[:receiver].image_fingerprint }
 end
