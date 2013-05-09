@@ -25,19 +25,23 @@ class Offer
     length: { minimum: 1, maximum: 160 }
 
   def start_negotiation
-    negotiation_params = {
-      negotiators: [ user_composer, user_receiver ],
-      conversation_attributes: {
-        messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
-      },
-      proposals_attributes: Array.new,
-    }
+    negotiation = nil
 
-    negotiation_params[:proposals_attributes] << fill_proposal_hash
+    if self.persisted?
+      negotiation_params = {
+        negotiators: [ user_composer, user_receiver ],
+        conversation_attributes: {
+          messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
+        },
+        proposals_attributes: Array.new,
+      }
 
-    negotiation = Negotiation.new(negotiation_params)
+      negotiation_params[:proposals_attributes] << fill_proposal_hash
 
-    negotiation.save
+      negotiation = Negotiation.new(negotiation_params)
+      negotiation.save
+    end
+
     negotiation
   end
 
