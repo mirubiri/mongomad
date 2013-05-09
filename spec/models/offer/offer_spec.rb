@@ -57,6 +57,7 @@ describe Offer do
     end
 
     it 'returns a negotiation whose proposal has the values from original offer' do
+      offer.save
       expect(negotiation.proposals.last).to be_like offer
     end
 
