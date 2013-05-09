@@ -31,7 +31,6 @@ class Offer
         messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
       },
       proposals_attributes: Array.new,
-      token_attributes: { user_id: nil, state: nil }
     }
 
     negotiation_params[:proposals_attributes] << fill_proposal_hash
@@ -42,6 +41,7 @@ class Offer
     negotiation
   end
 
+  private
   def fill_proposal_hash
     proposal_hash = {
       user_composer_id: self.user_composer_id,
