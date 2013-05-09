@@ -4,6 +4,10 @@ describe Request do
   let(:user) { Fabricate(:user) }
   let(:request) { Fabricate.build(:request, user:user) }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should belong_to(:user) }
   end
