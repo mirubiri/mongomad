@@ -6,6 +6,10 @@ describe Negotiation::Proposal::Composer do
   let(:proposal) { negotiation.proposals.last }
   let(:composer) { proposal.composer }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Negotiation::Proposal) }
     it { should embed_many(:products).of_type(Negotiation::Proposal::Composer::Product) }

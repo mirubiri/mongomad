@@ -7,6 +7,10 @@ describe Deal::Agreement::Proposal::Composer do
   let(:proposal) { agreement.proposals.last }
   let(:composer) { proposal.composer }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:proposal).of_type(Deal::Agreement::Proposal) }
     it { should embed_many(:products).of_type(Deal::Agreement::Proposal::Composer::Product) }
@@ -14,7 +18,6 @@ describe Deal::Agreement::Proposal::Composer do
 
   describe 'Attributes' do
     it { should have_field(:nick).of_type(String) }
-    it { should have_field(:image_url).of_type(String) }
     it { should accept_nested_attributes_for :products }
   end
 
@@ -22,7 +25,6 @@ describe Deal::Agreement::Proposal::Composer do
     it { should_not validate_presence_of :proposal }
     it { should validate_presence_of :products }
     it { should validate_presence_of :nick }
-    it { should validate_presence_of :image_url }
   end
 
   describe 'Factories' do

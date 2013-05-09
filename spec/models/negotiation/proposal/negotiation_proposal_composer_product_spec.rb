@@ -7,6 +7,10 @@ describe Negotiation::Proposal::Composer::Product do
   let(:composer) { proposal.receiver }
   let(:product) { composer.products.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Negotiation::Proposal::Composer) }
   end

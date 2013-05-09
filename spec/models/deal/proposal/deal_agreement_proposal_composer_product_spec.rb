@@ -8,6 +8,10 @@ describe Deal::Agreement::Proposal::Composer::Product do
   let(:composer) { proposal.composer }
   let(:product) { composer.products.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Deal::Agreement::Proposal::Composer) }
   end
@@ -17,7 +21,6 @@ describe Deal::Agreement::Proposal::Composer::Product do
     it { should have_field(:name).of_type(String) }
     it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
-    it { should have_field(:image_url).of_type(String) }
   end
 
   describe 'Validations' do
@@ -26,7 +29,6 @@ describe Deal::Agreement::Proposal::Composer::Product do
     it { should validate_presence_of :name }
     it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
-    it { should validate_presence_of :image_url }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
                                                              greater_than_or_equal_to: 0) }

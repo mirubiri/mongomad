@@ -30,5 +30,5 @@ describe Deal::Agreement::Proposal::Money do
     it 'creates one deal' do
       expect { money.save }.to change{ Deal.count }.by(1)
     end
-   end
+  end
 end

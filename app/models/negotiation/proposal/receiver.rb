@@ -1,7 +1,7 @@
 class Negotiation::Proposal::Receiver
   include Mongoid::Document
-  include ImageManagement::ImageHolder
   include Denormalized
+  include ImageManagement::ImageHolder
 
   embedded_in :proposal, class_name: 'Negotiation::Proposal'
   embeds_many :products, class_name: 'Negotiation::Proposal::Receiver::Product', cascade_callbacks: true

@@ -1,8 +1,8 @@
 class Deal::Conversation::Message
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ImageManagement::ImageHolder
   include Denormalized
+  include ImageManagement::ImageHolder
 
   embedded_in :conversation, class_name: 'Deal::Conversation'
 

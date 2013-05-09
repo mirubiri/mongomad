@@ -7,6 +7,10 @@ describe Offer::Composer::Product do
   let(:composer) { offer.composer }
   let(:product) { composer.products.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:composer).of_type(Offer::Composer) }
   end

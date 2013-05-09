@@ -7,6 +7,10 @@ describe Offer::Receiver::Product do
   let(:receiver) { offer.receiver }
   let(:product) { receiver.products.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:receiver).of_type(Offer::Receiver) }
   end

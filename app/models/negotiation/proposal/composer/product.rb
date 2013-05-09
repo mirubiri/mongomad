@@ -1,7 +1,7 @@
 class Negotiation::Proposal::Composer::Product
   include Mongoid::Document
-  include ImageManagement::ImageHolder
   include Denormalized
+  include ImageManagement::ImageHolder
 
   embedded_in :composer, class_name: 'Negotiation::Proposal::Composer'
 
