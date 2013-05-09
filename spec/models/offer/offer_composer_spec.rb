@@ -6,6 +6,10 @@ describe Offer::Composer do
   let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
   let(:composer) { offer.composer }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in :offer }
     it { should embed_many(:products).of_type(Offer::Composer::Product) }

@@ -3,7 +3,6 @@ class User::Profile
   include Mongoid::Timestamps
   include ImageManagement::ImageHolder
 
-
   embedded_in :user
 
   field :name,             type: String

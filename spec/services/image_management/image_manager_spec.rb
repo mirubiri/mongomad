@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe ImageManagement::ImageManager do
-  let(:image_file) { File.open('app/assets/images/sergio.jpg') }
+  let(:image_file) do
+    ActionDispatch::Http::UploadedFile.new(filename:'car.png', conent_type:'image/png',tempfile:File.open('app/assets/images/car.png'))
+  end
   let(:manager) { ImageManagement::ImageManager.new(file:image_file) }
 
   before(:each) { manager.db.destroy_all }

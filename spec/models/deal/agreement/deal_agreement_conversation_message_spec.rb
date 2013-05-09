@@ -7,6 +7,10 @@ describe Deal::Agreement::Conversation::Message do
   let(:conversation) { agreement.conversation }
   let(:message) { conversation.messages.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:conversation).of_type(Deal::Agreement::Conversation) }
   end
@@ -16,7 +20,6 @@ describe Deal::Agreement::Conversation::Message do
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
     it { should have_field(:nick).of_type(String) }
     it { should have_field(:text).of_type(String) }
-    it { should have_field(:image_url).of_type(String) }
   end
 
   describe 'Validations' do
@@ -24,7 +27,6 @@ describe Deal::Agreement::Conversation::Message do
     it { should validate_presence_of :user_id }
     it { should validate_presence_of :nick }
     it { should validate_presence_of :text }
-    it { should validate_presence_of :image_url }
     it { should validate_length_of(:text).within(1..160) }
   end
 

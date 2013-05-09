@@ -6,6 +6,10 @@ describe Negotiation::Conversation::Message do
   let(:conversation) { negotiation.conversation }
   let(:message) { conversation.messages.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in(:conversation).of_type(Negotiation::Conversation) }
   end

@@ -1,5 +1,6 @@
 class Deal::Agreement::Proposal::Receiver::Product
   include Mongoid::Document
+  include ImageManagement::ImageHolder
 
   embedded_in :receiver, class_name: 'Deal::Agreement::Proposal::Receiver'
 
@@ -7,13 +8,11 @@ class Deal::Agreement::Proposal::Receiver::Product
   field :name,        type: String
   field :description, type: String
   field :quantity,    type: Integer
-  field :image_url,   type: String
 
   validates :thing_id,
     :name,
     :description,
     :quantity,
-    :image_url,
     presence: true
 
   validates :quantity,

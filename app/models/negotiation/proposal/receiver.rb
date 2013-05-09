@@ -6,7 +6,7 @@ class Negotiation::Proposal::Receiver
   embedded_in :proposal, class_name: 'Negotiation::Proposal'
   embeds_many :products, class_name: 'Negotiation::Proposal::Receiver::Product', cascade_callbacks: true
 
-  field :nick,      type: String
+  field :nick, type: String
 
   accepts_nested_attributes_for :products
 

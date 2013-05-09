@@ -9,7 +9,11 @@ Fabricator(:user_profile, class_name: 'User::Profile') do
   phone_number     nil
   website          nil
   birth_date       '10-10-2000'
-  image            { File.open('app/assets/images/user.png') }
+  image  ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'user.png',
+    :content_type => 'image/png',
+    :tempfile     => File.new('app/assets/images/user.png')})
+
 end
 
 Fabricator(:user_medico_profile, from: 'User::Profile') do
@@ -19,7 +23,10 @@ Fabricator(:user_medico_profile, from: 'User::Profile') do
   sex        'man'
   country    'Spain'
   birth_date '06-05-1982'
-  image      { File.open('app/assets/images/medico.jpg') }
+  image  ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'medico.jpg',
+    :content_type => 'image/jpg',
+    :tempfile     => File.new('app/assets/images/medico.jpg')})
 end
 
 Fabricator(:user_sergio_profile, from: 'User::Profile') do
@@ -29,5 +36,8 @@ Fabricator(:user_sergio_profile, from: 'User::Profile') do
   sex        'man'
   country    'Spain'
   birth_date '23-12-1982'
-  image      { File.open('app/assets/images/sergio.jpg') }
+  image  ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'sergio.jpg',
+    :content_type => 'image/jpg',
+    :tempfile     => File.new('app/assets/images/sergio.jpg')})
 end

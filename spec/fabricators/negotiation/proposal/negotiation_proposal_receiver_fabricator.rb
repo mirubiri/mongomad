@@ -9,5 +9,4 @@ Fabricator(:negotiation_proposal_receiver, class_name: 'Negotiation::Proposal::R
     products
   end
   nick      { |attrs| attrs[:receiver].nick }
-  image_url { |attrs| attrs[:receiver].image_url }
 end

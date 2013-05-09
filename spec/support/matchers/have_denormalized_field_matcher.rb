@@ -4,17 +4,17 @@ module MongomadMatchers
   extend RSpec::Matchers::DSL
 
   define_method :denormalized_fields do |obj|
-    all_fields=[]
+    all_fields = []
     obj.denormalized_definitions.each do |definition|
-      all_fields+=definition[:fields]
+      all_fields += definition[:fields]
     end
     all_fields.sort
   end
 
   define_method :all_froms do |obj|
-    froms=[]
+    froms = []
     obj.denormalized_definitions.each do |definition|
-      froms<<definition[:options][:from]
+      froms << definition[:options][:from]
     end
     froms.sort
   end
@@ -38,7 +38,7 @@ module MongomadMatchers
     end
 
     chain :from do |instance|
-      @instance=instance
+      @instance = instance
     end
   end
 end

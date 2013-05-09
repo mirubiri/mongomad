@@ -4,6 +4,10 @@ describe User::Thing do
   let(:user) { Fabricate(:user_with_things) }
   let(:thing) { user.things.last }
 
+  describe 'Includes' do
+    xit 'include ImageManager::ImageHolder'
+  end
+
   describe 'Relations' do
     it { should be_embedded_in :user }
   end

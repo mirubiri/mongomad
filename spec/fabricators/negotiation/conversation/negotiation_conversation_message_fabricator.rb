@@ -4,5 +4,4 @@ Fabricator(:negotiation_conversation_message, class_name: 'Negotiation::Conversa
   user_id      { |attrs| attrs[:user].id }
   nick         { |attrs| attrs[:user].profile.nick }
   text         { Faker::Lorem.sentence }
-  image_url    { |attrs| attrs[:user].profile.image_url }
 end
