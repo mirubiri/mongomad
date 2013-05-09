@@ -1,8 +1,8 @@
 class Request
   include Mongoid::Document
   include Mongoid::Timestamps
-  include ImageManagement::ImageHolder
   include Denormalized
+  include ImageManagement::ImageHolder
 
   belongs_to :user
 
