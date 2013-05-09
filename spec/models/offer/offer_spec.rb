@@ -41,36 +41,45 @@ describe Offer do
   end
 
   describe '#start_negotiation' do
-    let!(:negotiation) { offer.start_negotiation }
+    context 'When offer is saved' do
+      before { offer.save }
 
-    it 'returns a negotiation whose conversation has only one message' do
-      expect(negotiation.conversation.messages).to have(1).messages
+      let(:negotiation) { offer.start_negotiation }
+
+      it 'returns a saved negotiation' do
+        expect(negotiation).to be_persisted
+      end
+
+      it 'add the negotiation to composer in offer' do
+        expect(negotiation).to eq offer.user_composer.negotiations.first
+      end
+
+      it 'add the negotiation to receiver in offer' do
+        expect(negotiation).to eq offer.user_receiver.negotiations.first
+      end
+
+      it 'returns a negotiation whose conversation has only one message' do
+        expect(negotiation.conversation.messages).to have(1).messages
+      end
+
+      it 'returns a negotiation whose message has the values from original offer' do
+        expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
+        expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
+      end
+
+      it 'returns a negotiation with only one proposal' do
+        expect(negotiation.proposals).to have(1).proposals
+      end
+
+      it 'returns a negotiation whose proposal has the values from original offer' do
+        expect(negotiation.proposals.last).to be_like offer
+      end
     end
 
-    it 'returns a negotiation whose message has the values from original offer' do
-      expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
-      expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
-    end
-
-    it 'returns a negotiation with only one proposal' do
-      expect(negotiation.proposals).to have(1).proposals
-    end
-
-    it 'returns a negotiation whose proposal has the values from original offer' do
-      offer.save
-      expect(negotiation.proposals.last).to be_like offer
-    end
-
-    it 'returns a saved negotiation' do
-      expect(negotiation).to be_persisted
-    end
-
-    it 'add the negotiation to composer in offer' do
-      expect(offer.user_composer.negotiations.first).to eq negotiation
-    end
-
-    it 'add the negotiation to receiver in offer' do
-      expect(offer.user_receiver.negotiations.first).to eq negotiation
+    context 'When offer is not saved' do
+      it 'returns nil' do
+        expect(offer.start_negotiation).to eq nil
+      end
     end
   end
 end
