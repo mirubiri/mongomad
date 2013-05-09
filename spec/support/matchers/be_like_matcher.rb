@@ -5,7 +5,7 @@ module MongomadMatchersHelpers
   private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
-    ['name', 'description', 'image_url',].concat(yield).each do |field|
+    ['name', 'description', 'image_url', 'image_fingerprint',].concat(yield).each do |field|
       return false unless
       actual.send(field) == expected.send(field)
     end
