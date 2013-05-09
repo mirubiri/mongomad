@@ -5,7 +5,7 @@ module MongomadMatchersHelpers
   private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
-    ['name', 'description', 'image_url', 'image_fingerprint',].concat(yield).each do |field|
+    ['name', 'description', 'image_url', 'image_fingerprint'].concat(yield).each do |field|
       return false unless
       actual.send(field) == expected.send(field)
     end
@@ -17,7 +17,7 @@ module MongomadMatchersHelpers
   end
 
   def eq_product?(actual,expected)
-    eq_vendable?(actual,expected) { ['quantity','thing_id'] }
+    eq_vendable?(actual,expected) { ['thing_id','quantity'] }
   end
 
 
@@ -30,18 +30,19 @@ module MongomadMatchersHelpers
 
   #MESSAGE
   def eq_message?(actual,expected)
-    (actual.nick == expected.nick) &&
+    (actual.user_id == expected.user_id) &&
+      (actual.nick == expected.nick) &&
       (actual.text == expected.text) &&
-      (actual.image_url == expected.image_url)
+      (actual.image_url == expected.image_url) &&
+      (actual.image_fingerprint == expected.image_fingerprint)
   end
 
 
   #COMPOSER & RECEIVER
-  ## No vale para negociaciones y deals
-
   def eq_personal_data?(actual,expected)
     (actual.nick == expected.nick) &&
-      (actual.image_url == expected.image_url)
+      (actual.image_url == expected.image_url) &&
+      (actual.image_fingerprint == expected.image_fingerprint)
   end
 
   def eq_side?(actual,expected)
@@ -141,13 +142,12 @@ module MongomadMatchersHelpers
     return eq_product?(actual,expected)  if are_products?(actual,expected)
     return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
 
-
     return eq_request?(actual,expected)  if are_requests?(actual,expected)
     return eq_money?(actual,expected)    if are_moneys?(actual,expected)
     false
   end
 
-public
+  public
   def equivalent?(actual,expected)
     if eq_klass?(actual,'Array') && eq_klass?(expected,'Array')
       eq_array?(actual,expected) do |actual_element,expected_element|
@@ -157,7 +157,6 @@ public
       similar?(actual,expected)
     end
   end
-
 end
 
 module MongomadMatchers
