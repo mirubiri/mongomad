@@ -77,7 +77,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes params[:offer]
         format.html { redirect_to @user, notice: 'Offer was successfully updated.' }
-        format.js { render :partial => "offers/edit_offer_in_list", :locals => {:user => @user }, :layout => false, notice: 'Offer was successfully updated.'  }
+        format.js { render :partial => "offers/edit_offer_in_list", :layout => false}
       else
         format.html { redirect_to @offer, notice: 'Offer wasnt updated.'}
       end

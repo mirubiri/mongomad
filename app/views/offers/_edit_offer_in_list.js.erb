@@ -4,7 +4,7 @@ $('#edit-offer-form').modal('hide');
 $('#edit-offer-form').on('hidden', function () {
   $('#ppal_container')
   .masonry('destroy')
-  .html("<%= escape_javascript(render :partial => 'offers/partials/offer', :locals => {:@negotiation => Negotiation.new}).html_safe %>");
+  .html("<%= escape_javascript(render :partial => 'offers/partials/offer').html_safe %>");
   
   //Elimino la ventana modal
   delete $(this);
