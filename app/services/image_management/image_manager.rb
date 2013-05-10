@@ -5,31 +5,16 @@ class ImageManagement::ImageManager
   end
 
   def store
-    if image_metadata.nil?
-      upload_new_image && create_metadata
+    upload_new_image && create_metadata if image.nil?
+    image
+  end
+
+  def destroy
+    unless image.nil?
+      decrease_image_use && true
     else
-      increase_image_use
+      false
     end
-    image
-  end
-
-  def image
-    {
-      url: image_metadata.try(:url),
-      fingerprint: image_metadata.try(:fingerprint),
-      references: image_metadata.try(:references)
-    }
-  end
-
-  def reload
-    self.image_metadata = nil
-  end
-
-  def destroy(number = 1)
-    if image_metadata
-      decrease_image_use(number)
-    end
-    image
   end
 
   def algorithm
@@ -44,16 +29,30 @@ class ImageManagement::ImageManager
     @uploader ||= ImageManagement::ImageUploader.new
   end
 
+  def increase_image_use
+    image.references += 1
+    image.save
+    image
+  end
+
+  def decrease_image_use
+    if image.references > 0
+      image.references -= 1
+      image.save
+    end
+    image
+  end
+
+  def image
+    @image ||= db.where(fingerprint:image_fingerprint).first
+  end
+
 protected
-  attr_accessor :image_file,:image_fingerprint,:image_metadata
-  attr_writer :uploader,:algorithm,:db
+  attr_accessor :image_file,:image_fingerprint
+  attr_writer :image
 
   def image_fingerprint
     @image_fingerprint ||= algorithm.file(image_file.tempfile)
-  end
-
-  def image_metadata
-    @image_metadata ||= db.where(fingerprint:image_fingerprint).first
   end
 
   def upload_new_image
@@ -61,21 +60,6 @@ protected
   end
 
   def create_metadata
-    self.image_metadata = db.create(fingerprint:image_fingerprint, url:uploader.url, references:1)
-  end
-
-  def increase_image_use
-    image_metadata.references += 1
-    image_metadata.save
-    image_metadata
-  end
-
-  def decrease_image_use(number)
-    if image_metadata.references > 0
-      image_metadata.references -= number
-      image_metadata.references = 0 if image_metadata.references < 0
-      image_metadata.save
-    end
-    image_metadata
+    self.image=db.create(fingerprint:image_fingerprint, url:uploader.url, references:0)
   end
 end
