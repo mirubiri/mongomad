@@ -6,7 +6,7 @@ module ImageManagement::ImageHolder
     field :image_url,         type: String
     field :image_fingerprint, type: String
 
-    before_validation :manager_store_image, :unless => :image_stored?
+    before_save :manager_increase_image_use, :if => :new_image?
 
     after_destroy :manager_destroy_image, :if => :image_stored?
 
@@ -21,30 +21,39 @@ module ImageManagement::ImageHolder
 
   def image=(file)
     @image_manager ||= ImageManagement::ImageManager.new(file:file)
+    manager_store_image
   end
 
   def image_fingerprint=(fingerprint)
     @image_manager ||= ImageManagement::ImageManager.new(fingerprint:fingerprint)
+    manager_store_image
   end
 
   private
   attr_reader :image_manager
 
   def manager_destroy_image
-    manager = ImageManagement::ImageManager.new(fingerprint:image_fingerprint)
+    manager=ImageManagement::ImageManager.new(fingerprint:image_fingerprint)
     manager.destroy
   end
 
+  def new_image?
+    @image_manager.present?
+  end
+
   def image_stored?
-    image_url.present? && image_fingerprint.present? && @image_manager.nil?
+    image_url.present? && image_fingerprint.present?
   end
 
   def manager_store_image
-    manager_destroy_image if image_url.present? && image_fingerprint.present?
-
-    image_manager.try(:store) &&
+    manager_destroy_image if image_stored?
+    image_manager.store &&
     write_attribute(:image_url,image_manager.image[:url]) &&
     write_attribute(:image_fingerprint,image_manager.image[:fingerprint])
-    @image_manager = nil
+  end
+
+  def manager_increase_image_use
+    @image_manager.increase_image_use
+    @image_manager=nil
   end
 end

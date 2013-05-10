@@ -75,6 +75,7 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation.proposals << @proposal
       format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
+      format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false}
       else
       format.html { render action: "edit" }
       end
