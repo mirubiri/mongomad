@@ -309,11 +309,20 @@ describe Negotiation::Proposal do
   end
 
   ########################################################################################################
+=end
   describe '#allowed_actions' do
+    let(:composer_allowed_actions) { negotiation.allowed_actions[:composer_actions] }
+    let(:receiver_allowed_actions) { negotiation.allowed_actions[:receiver_actions] }
 
-    it 'both can make a new proposal'
+    it 'both can make a new proposal' do
+      expect(composer_allowed_actions).to include (:new)
+    end
 
-    context 'Who offers money' do
+    [_,_].each do |negotiation|
+      user_with_money=negotiation.money.user_id
+      users=[negotiation.proposal.user_composer_id=>:composer,negotiation.proposal.user_receiver_id=>:receiver]
+      users[user_with_money]
+          context 'Who offers money' do
       it 'can never sign'
       it 'can never unsign'
       it 'can confirm if signed'
@@ -339,5 +348,4 @@ describe Negotiation::Proposal do
       end
     end
   end
-=end
 end
