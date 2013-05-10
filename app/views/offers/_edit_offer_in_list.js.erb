@@ -1,21 +1,6 @@
 $('#edit-offer-form').modal('hide');
 
 //Cargo en el contenedor principal los datos nuevos y destruyo el masonry.
-$('#edit-offer-form').on('hidden', function () {
-  $('#ppal_container')
-  .masonry('destroy')
-  .html("<%= escape_javascript(render :partial => 'offers/partials/offer').html_safe %>");
-  
-  //Elimino la ventana modal
-  delete $(this);
-})
+$('#ppal_container').html("<%= escape_javascript(render :partial => 'offers/partials/offer').html_safe %>");
 
 masonryOffer();
-
-
-
-
-
-
-
-

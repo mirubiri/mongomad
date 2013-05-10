@@ -1,7 +1,8 @@
+editOfferScript();
+
 function editOfferScript(){
 
   //Seleccion de usuario
-
   function userSelection(a,b){
     enableUserSelected(a);
     disableUserSelected(b);
@@ -108,7 +109,6 @@ function editOfferScript(){
 
   function addThingViewInSummary(thing, thing_id, container, user){
     //alert("añandiendola a la vista del sumario");
-
 
     var product_id = thing.attr("id");
     var posicion = howMuchInputsAre(container);
@@ -310,9 +310,9 @@ function editOfferScript(){
     userSelection("composer","receiver");
   });
 
-  $('#his_product_container .product').live('click',function(e){
+  $('#his_product_container > .product').live('click',function(e){
 
-    //alert("he pulsado sobre uno de sus productos");    
+    //alert("he pulsado sobre uno de sus productos"); 
 
     var thing = $(this);
 
@@ -328,10 +328,10 @@ function editOfferScript(){
 
   });  
 
-  $('#my_product_container .product').live('click',function(e){
+  $('#my_product_container > .product').live('click',function(e){
 
     //alert("he pulsado sobre uno de mis productos");
-    
+
     var thing = $(this);
 
     if ( have_stock(thing) ) {
@@ -419,3 +419,4 @@ function setOffersMargin() {
         + margenesPorRellenar + " = numero de margenes por rellena en cada fila\n"
         + margenOffer + " = margen calculado para cada oferta\n");*/
 }
+
