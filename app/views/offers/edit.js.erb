@@ -1,6 +1,6 @@
-$('#edit-offer-form').each(function() {
-    $(this).remove();
+if($('#edit-offer-form').length < 1) {
+  $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_offer', :locals => { :offer => @offer }).html_safe %>");
+}
+$('#edit-offer-form').modal('show').on('hidden', function() {
+  $(this).remove();  
 });
-
-$("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_offer', :locals => { :offer => @offer }).html_safe %>");
-$('#edit-offer-form').modal('show');

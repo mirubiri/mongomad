@@ -75,7 +75,7 @@ class ThingsController < ApplicationController
     @thing = current_user.things.find(params[:id])    
 
     respond_to do |format|
-      if @thing.update_attributes(params[:thing])
+      if @thing.update_attributes(params[:user_thing])
         format.html { redirect_to user_things_path(current_user), notice: 'thing was successfully updated.' }
         format.js { render :partial => "things/edit_thing_in_list", :layout => false }
       else
