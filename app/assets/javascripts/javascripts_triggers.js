@@ -7,6 +7,10 @@ $(window).load(function(){
   expandRequestContainer();
   buttonsClickBackgroundChange();
   lastElementPosition();
+  editProposalScript();
+  activateNegotiationButtons();
+  maximizeConversationWidth();
+  editOfferScript();
 });
 
 
