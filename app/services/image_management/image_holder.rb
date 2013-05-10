@@ -26,6 +26,7 @@ module ImageManagement::ImageHolder
 
   def image_fingerprint=(fingerprint)
     @image_manager ||= ImageManagement::ImageManager.new(fingerprint:fingerprint)
+    manager_store_image
   end
 
   private
