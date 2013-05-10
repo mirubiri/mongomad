@@ -1,4 +1,4 @@
-function newOfferScript(){
+function editOfferScript(){
 
   //Seleccion de usuario
 
