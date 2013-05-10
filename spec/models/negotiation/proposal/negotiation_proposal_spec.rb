@@ -318,7 +318,11 @@ describe Negotiation::Proposal do
       expect(composer_allowed_actions).to include (:new)
     end
 
-    context 'Who offers money' do
+    [_,_].each do |negotiation|
+      user_with_money=negotiation.money.user_id
+      users=[negotiation.proposal.user_composer_id=>:composer,negotiation.proposal.user_receiver_id=>:receiver]
+      users[user_with_money]
+          context 'Who offers money' do
       it 'can never sign'
       it 'can never unsign'
       it 'can confirm if signed'
