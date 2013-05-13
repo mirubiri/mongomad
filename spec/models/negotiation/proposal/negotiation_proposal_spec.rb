@@ -4,9 +4,8 @@ describe Negotiation::Proposal do
   let(:offer) { Fabricate(:offer) }
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:proposal) { negotiation.proposals.last }
-  let(:negotiation_composer) { proposal.negotiation.negotiators.find(proposal.user_composer_id) }
-  let(:negotiation_receiver) { proposal.negotiation.negotiators.find(proposal.user_receiver_id) }
-  let(:negotiator) { negotiation.negotiators.last }
+  let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
+  let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -308,44 +307,50 @@ describe Negotiation::Proposal do
   #   end
   # end
 
-  # ########################################################################################################
+  #########################################################################################################
+  describe 'allowed_actions' do
+    it 'let both negotiators make a new proposal'
+    context 'When some one offers money' do
+      [  Fabricate(:receiver_money_offer) ].each do |proposal|
+        let(:user_with_money) { proposal.user_composer_id == proposal.money.user_id ? :composer : :receiver }
+        let(:user_without_money) { :user_with_money == :composer ? :receiver : :composer }
+        context 'The negotiator who offers money' do
+          it 'cannot sign'
+          it 'cannot unsign'
+          context 'When proposal is signed by the other negotiator' do
+            it 'can confirm'
+          end
+          context 'When proposal is not signed by the other negotiator' do
+            it 'cannot confirm'
+          end
 
-  # describe '#allowed_actions' do
-  #   let(:composer_allowed_actions) { negotiation.allowed_actions[:composer_actions] }
-  #   let(:receiver_allowed_actions) { negotiation.allowed_actions[:receiver_actions] }
+          context 'The other negotiator' do
+            context 'When proposal is signed by the other negotiator' do
+              it 'cannot sign'
+              it 'can unsign'
+            end
+            context 'When proposal is not signed by the other negotiator' do
+              it 'can sign'
+              it 'cannot unsign'
+            end
+            it 'cannot confirm'
+          end
+        end
+      end
+    end
 
-  #   it 'both can make a new proposal' do
-  #     expect(composer_allowed_actions).to include (:new)
-  #   end
+    context 'When no one offers money' do
+      context 'The negotiator who signs first' do
+        it 'cannot sign'
+        it 'can unsign'
+        it 'cannot confirm'
 
-  #   [_,_].each do |negotiation|
-  #     user_with_money=negotiation.money.user_id
-  #     users=[negotiation.proposal.user_composer_id=>:composer,negotiation.proposal.user_receiver_id=>:receiver]
-  #     users[user_with_money]
-  #         context 'Who offers money' do
-  #     it 'can never sign'
-  #     it 'can never unsign'
-  #     it 'can confirm if signed'
-
-  #     context 'the other' do
-  #       it 'can sign if not signed'
-  #       it 'can unsign if signed'
-  #       it 'can never confirm'
-  #     end
-  #   end
-
-  #   context 'When nobody offers money' do
-  #     context 'Who signs' do
-  #       it 'can never sign'
-  #       it 'can unsign'
-  #       it 'can never confirm'
-
-  #       context 'the other' do
-  #         it 'can never sign'
-  #         it 'can never unsign'
-  #         it 'can confirm'
-  #       end
-  #     end
-  #   end
-  # end
+        context 'The other negotiator' do
+          it 'cannot sign'
+          it 'cannot unsign'
+          it 'can confirm'
+        end
+      end
+    end
+  end
 end
