@@ -2,7 +2,7 @@ Fabricator(:user_thing, class_name: 'User::Thing') do
   user        nil
   name        { Faker::Lorem.word }
   description { Faker::Lorem.sentence }
-  stock       2
+  stock       5
   image       ActionDispatch::Http::UploadedFile.new({
     :filename     => 'car.png',
     :content_type => 'image/png',
