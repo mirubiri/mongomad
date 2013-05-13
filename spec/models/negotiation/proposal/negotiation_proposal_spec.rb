@@ -309,31 +309,56 @@ describe Negotiation::Proposal do
 
   #########################################################################################################
   describe 'allowed_actions' do
-    it 'let both negotiators make a new proposal'
+    it 'let both negotiators make a new proposal' do
+      expect(proposal.allowed_actions[:composer]).to include :new
+      expect(proposal.allowed_actions[:receiver]).to include :new
+    end
     context 'When some one offers money' do
-      [  Fabricate(:receiver_money_offer) ].each do |proposal|
+      [ Fabricate(:composer_money_offer), Fabricate(:receiver_money_offer) ].each do |proposal|
         let(:user_with_money) { proposal.user_composer_id == proposal.money.user_id ? :composer : :receiver }
         let(:user_without_money) { :user_with_money == :composer ? :receiver : :composer }
         context 'The negotiator who offers money' do
-          it 'cannot sign'
-          it 'cannot unsign'
-          context 'When proposal is signed by the other negotiator' do
-            it 'can confirm'
+          it 'cannot sign' do
+            expect(proposal.allowed_actions[:user_with_money]).not_to include :sign
           end
-          context 'When proposal is not signed by the other negotiator' do
-            it 'cannot confirm'
+          it 'cannot unsign' do
+            expect(proposal.allowed_actions[:user_with_money]).not_to include :unsign
+          end
+          context 'When proposal is signed by the :user_without_money' do
+            #before { proposal.state = :signed_by_%{:user_without_money} } # TODO: REVISAR ESTO!!!!
+            it 'can confirm' do
+              expect(proposal.allowed_actions[:user_with_money]).to include :confirm
+            end
+          end
+          context 'When proposal is not signed by the :user_without_money' do
+            #before { proposal.state = :signed_by_%{:user_with_money} } # TODO: REVISAR ESTO!!!!
+            it 'cannot confirm' do
+              expect(proposal.allowed_actions[:user_with_money]).not_to include :confirm
+            end
           end
 
           context 'The other negotiator' do
-            context 'When proposal is signed by the other negotiator' do
-              it 'cannot sign'
-              it 'can unsign'
+            context 'When proposal is signed by the :user_with_money' do
+              #before { proposal.state = :signed_by_%{:user_with_money} } # TODO: REVISAR ESTO!!!!
+              it 'cannot sign' do
+                expect(proposal.allowed_actions[:user_without_money]).not_to include :sign
+              end
+              it 'can unsign' do
+                expect(proposal.allowed_actions[:user_without_money]).to include :unsign
+              end
             end
-            context 'When proposal is not signed by the other negotiator' do
-              it 'can sign'
-              it 'cannot unsign'
+            context 'When proposal is not signed by the :user_with_money' do
+              #before { proposal.state = :signed_by_%{:user_without_money} } # TODO: REVISAR ESTO!!!!
+              it 'can sign' do
+                expect(proposal.allowed_actions[:user_without_money]).to include :sign
+              end
+              it 'cannot unsign' do
+                expect(proposal.allowed_actions[:user_without_money]).not_to include :unsign
+              end
             end
-            it 'cannot confirm'
+            it 'cannot confirm' do
+              expect(proposal.allowed_actions[:user_without_money]).not_to include :confirm
+            end
           end
         end
       end
