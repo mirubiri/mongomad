@@ -11,3 +11,11 @@ Fabricator(:offer_improcex, from: :offer) do
   user_composer { Fabricate(:user_medico) }
   user_receiver { Fabricate(:user_sergio) }
 end
+
+Fabricator(:composer_money_offer, from: :offer) do
+  money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:user_composer].id, quantity:100) }
+end
+
+Fabricator(:receiver_money_offer, from: :offer) do
+  money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:user_receiver].id, quantity:200) }
+end
