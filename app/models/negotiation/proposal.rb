@@ -31,4 +31,49 @@ class Negotiation::Proposal
   def user_receiver
     negotiation && negotiation.negotiators.find(user_receiver_id)
   end
+
+  def allowed_actions
+    actions = {
+      composer: [:new],
+      receiver: [:new]
+    }
+
+    proposal_type = type_of
+    case proposal_type
+    when :composer_offers_money
+      case state
+      when :not_signed
+        actions[:receiver] << :sign
+      when :signed_by_receiver
+        actions[:composer] << :confirm
+        actions[:receiver] << :unsign
+      end
+    when :receiver_offers_money
+      case state
+      when :not_signed
+        actions[:composer] << :sign
+      when :signed_by_composer
+        actions[:receiver] << :confirm
+        actions[:composer] << :unsign
+      end
+    when :no_one_offers_money
+      case state
+      when :signed_by_composer
+        actions[:composer] << :unsign
+        actions[:receiver] << :confirm
+      end
+    end
+    actions
+  end
+
+  def type_of
+    case money.user_id
+      when user_composer_id
+        :composer_offers_money
+      when user_receiver_id
+        :receiver_offers_money
+      when nil
+        :no_one_offers_money
+    end
+  end
 end
