@@ -1,13 +1,20 @@
-//Primero pongo las alturas a 0 para que no haga cosas raras
+$("#navigation_bar")
+.html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+
+$("#ppal_container")
+.html("<%=j render :partial => 'offers/partials/offer' %>")
+.masonry('destroy');
+
+alert("se disparan los cambios en el index de offers");
+setOffersMargin();
+masonryOffer();
 reloadPrincipalContainersHeighs();
-
-$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
-
+expandContainers();
 matchPrincipalContainersHeighs();
-expandRequestContainer();
-
-$("#ppal_container").html("<%=j render :partial => 'offers/partials/offer' %>").masonry('destroy');
-
-//setOffersMargin();
-//masonryOffer();
+expandRequestContainer();    
+activateNegotiationButtons();
+maximizeConversationWidth();
+setProfileContainersHeights();
+addProfileCommentsSeparator();
 activateOfferButton();
+

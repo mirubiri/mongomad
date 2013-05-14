@@ -1,4 +1,6 @@
 function expandRequestContainer(){
+  alert("expandRequestContainer funcionando");
+
   var alturaUserSide = $('#user-side').height();
   var alturaUserReputation = $('#user_reputation_container').height();
   var alturaUserData = $('#user_data_container').height();
@@ -8,6 +10,8 @@ function expandRequestContainer(){
 
 
 function activateRequestButtons(){
+  alert("activateRequestButtons funcionando");
+
   $('.request').hover(
      function () {
       $(this).find('.options_menu').removeClass("hidden_container");

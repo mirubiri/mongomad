@@ -1,5 +1,5 @@
 //Primero pongo las alturas a 0 para que no haga cosas raras
-reloadPrincipalContainersHeighs();
+//reloadPrincipalContainersHeighs();
 
 //Primero recargo la barra de navegacion
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
@@ -14,10 +14,10 @@ $("#ppal_container")
 
 //Vuelvo a ejecutar el masonry, pongo en orden las alturas principales y dejo que todo se vea
 masonryThing();
-matchPrincipalContainersHeighs();
+//matchPrincipalContainersHeighs();
 $("#ppal_container").show();
 
 
 //Ahora ejecuto todo lo extra que necesito
-expandRequestContainer();
+//expandRequestContainer();
 imageSelection();

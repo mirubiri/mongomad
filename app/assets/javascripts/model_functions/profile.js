@@ -1,10 +1,14 @@
 function addProfileCommentsSeparator(){
+  alert("addProfileCommentsSeparator funcionando");
+
   if ( ($('#comment_list').height()) > ($('#data_list').height()) ) {
       $('#comment_list').css({'border-left': '1px solid rgb(220,220,220)'});
   }else{$('#data_list').css({'border-right': '1px solid rgb(220,220,220)'});}
 }
 
 function setProfileContainersHeights(){
+  alert("setProfileContainersHeights funcionando");
+
   var alturaPpalContainer = $('#ppal_container').height();
   var alturaDisponible = alturaPpalContainer;
   var alturaPerfil = (alturaDisponible * 40)/100;

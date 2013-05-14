@@ -20,9 +20,8 @@
 //= extra_functions.js
 //= bootstrap.js
 //= alerts.js
-//= navigation_buttons_behavior.js
-//= javascripts_triggers.js
 //= offers.js
+//= choosing_modal.js
 //= masonry_functions.js
 //= profile.js
 //= negotiations.js
@@ -30,5 +29,7 @@
 //= requests.js
 //= alert_modal.js
 //= containers.js
-//= links_behavior.js
+//= choosing_modal_triggers.js
+//= loading_triggers.js
+//= navigation_triggers.js
 //= require_tree .

@@ -1,9 +1,13 @@
 function reloadPrincipalContainersHeighs(){
+  alert("reloadPrincipalContainersHeighs funcionando");
+
   $('#left_container').css({'height': 0  + 'px'});
   $('#right_container').css({'height': 0  + 'px'});
 }
 
 function matchPrincipalContainersHeighs(){
+  alert("matchPrincipalContainersHeighs funcionando");
+  
   var alturaVentana = $(document).height()-80;
 
   if ( ($('#devise_container').height()) < alturaVentana ) {
@@ -25,10 +29,10 @@ function matchPrincipalContainersHeighs(){
 
 function expandContainers(){
 
+  alert("expandContainers funcionando");
   //$('#ppal_container').hide();
 
   // Pongo los contenedores a sus anchuras iniciales correctas *************************
-
   var mainLayout = $('.mainlayout');
   var anchuraTotalPagina = $(document).width();
 
