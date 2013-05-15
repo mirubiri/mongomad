@@ -66,6 +66,17 @@ class Negotiation::Proposal
     actions
   end
 
+  def can_sign?(negotiator)
+            puts "1-------------------"
+    rol = ( negotiator.id == user_composer_id ? :composer : :receiver )
+            puts "2-------------------"
+    puts rol
+    puts allowed_actions[rol]
+            puts "3-------------------"
+    false unless allowed_actions[rol].include?(:sign)
+  end
+
+  private
   def type_of
     case money.user_id
       when user_composer_id
