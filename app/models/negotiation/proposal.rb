@@ -9,7 +9,6 @@ class Negotiation::Proposal
 
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
-  field :state,            type: Symbol, default: :not_signed
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
@@ -18,11 +17,8 @@ class Negotiation::Proposal
     :money,
     :user_composer_id,
     :user_receiver_id,
-    :state,
     presence: true
 
-  validates :state,
-    :inclusion => { :in => [:not_signed, :signed_by_composer, :signed_by_receiver, :confirmed] }
 
   def user_composer
     negotiation && negotiation.negotiators.find(user_composer_id)
@@ -32,59 +28,45 @@ class Negotiation::Proposal
     negotiation && negotiation.negotiators.find(user_receiver_id)
   end
 
-  def allowed_actions
-    actions = {
-      composer: [:new],
-      receiver: [:new]
-    }
-
-    proposal_type = type_of
-    case proposal_type
-    when :composer_offers_money
-      case state
-      when :not_signed
-        actions[:receiver] << :sign
-      when :signed_by_receiver
-        actions[:composer] << :confirm
-        actions[:receiver] << :unsign
-      end
-    when :receiver_offers_money
-      case state
-      when :not_signed
-        actions[:composer] << :sign
-      when :signed_by_composer
-        actions[:receiver] << :confirm
-        actions[:composer] << :unsign
-      end
-    when :no_one_offers_money
-      case state
-      when :signed_by_composer
-        actions[:composer] << :unsign
-        actions[:receiver] << :confirm
-      end
+  state_machine :confirmable_state, :initial => :confirmable do
+    event :unconfirmable do
+      transition :confirmable => :unconfirmable, :unless => :confirmed?
     end
-    actions
+    event :confirmable do
+      transition :unconfirmable => :confirmable
+    end
   end
 
-  def can_sign?(negotiator)
-            puts "1-------------------"
-    rol = ( negotiator.id == user_composer_id ? :composer : :receiver )
-            puts "2-------------------"
-    puts rol
-    puts allowed_actions[rol]
-            puts "3-------------------"
-    false unless allowed_actions[rol].include?(:sign)
+  state_machine :state, :initial => :unsigned do
+    event :sign do
+      transition :unsigned => :signed
+    end
+
+    event :unsign do
+      transition :signed => :unsigned
+    end
+
+    event :confirm do
+      transition :signed => :confirmed, :if => :confirmable?
+    end
   end
 
-  private
-  def type_of
-    case money.user_id
-      when user_composer_id
-        :composer_offers_money
-      when user_receiver_id
-        :receiver_offers_money
-      when nil
-        :no_one_offers_money
-    end
+  def actions_for(user)
+    [
+      :new, :sign if can_sign(user),:unsign if can_unsign(user), :confirm if can_confirm(user)
+    ]
+  end
+
+  def signer?(user)
+    can_sign?
+
+  end
+
+  def unsigner?(user)
+    can_unsign? &&
+  end
+
+  def confirmer?(user)
+    can_confirm? &&
   end
 end
