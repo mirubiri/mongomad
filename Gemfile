@@ -30,6 +30,7 @@ group :development,:test do
   gem 'devise'
   gem 'jquery-rails'
   gem 'better_errors'
+  gem 'state_machine'
 end
 
 
