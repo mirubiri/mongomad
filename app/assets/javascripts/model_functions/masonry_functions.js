@@ -1,13 +1,16 @@
-function masonryOffer(){
-  $('#ppal_container').masonry('destroy');
-  $('#ppal_container').masonry({
+function buildOfferMosaic(){
+  $('#ppal_container')
+  .masonry('destroy')
+  .masonry({
       itemSelector : '.offer',
       isAnimated: true
   });
 }
 
-function masonryThing(){
-  $('#ppal_container').masonry({
+function buildThingMosaic(){
+  $('#ppal_container')
+  .masonry('destroy')
+  .masonry({
       itemSelector : '.thing',
       isAnimated: true
   });

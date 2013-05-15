@@ -1,5 +1,5 @@
 function maximizeConversationWidth(){
-  alert("maximizeConversationWidth funcionando");
+  //alert("maximizeConversationWidth funcionando");
 
   var maxWidth = $("#ppal_container").width();
   var proposalWidth = $('.negotiation_offer:first').width();
@@ -8,7 +8,7 @@ function maximizeConversationWidth(){
 }
 
 function maximizeConversationsHeights(){
-  alert("maximizeConversationsHeights funcionando");
+  //alert("maximizeConversationsHeights funcionando");
 
   $("[id^=negotiation]").each(function(){
     $(this).equalHeightColumns({children:':not(h2,p)'});
@@ -19,7 +19,7 @@ function maximizeConversationsHeights(){
 }
 
 function activateNegotiationButtons(){
-  alert("activateNegotiationButtons funcionando");
+  //alert("activateNegotiationButtons funcionando");
 
   $('.negotiation').hover(
      function () {

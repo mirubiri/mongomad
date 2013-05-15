@@ -27,3 +27,12 @@ body{
 .hidden_container{
   visibility: hidden;
 }
+
+.alert_container{
+  position: fixed;
+  z-index: 3000;
+  top: 30%;
+  left:30%;
+  width: 500px;
+  height: 300px;
+}

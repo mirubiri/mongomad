@@ -3,24 +3,30 @@
 
 <%= render partial: 'layouts/global_partials/metadata' %>
 
-<body>
+<body class="hidden_container">
   <div id="page">
     <% if flash[:alert] %>
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <div class="alert alert-error">
-        <%= flash[:alert] %>
+      <div class="alert_container">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-error">
+          <%= flash[:alert] %>
+        </div>
       </div>
     <% end %>
     <% if flash[:notice] %>
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
+      <div class="alert_container">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
       </div>      
     <% end %>
     <% if flash[:message] %>
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <div class="alert alert-error">
-        <%= flash[:message] %>
+      <div class="alert_container">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <div class="alert alert-error">
+          <%= flash[:message] %>
+        </div>
       </div>      
     <% end %>
   </div>

@@ -21,7 +21,7 @@ $('#his_product_container > .product').live('click',function(e){
 
   }
   else {
-    alert("No hay stock");
+    //alert("No hay stock");
   }    
 
 });  
@@ -39,7 +39,7 @@ $('#my_product_container > .product').live('click',function(e){
 
   }
   else {
-    alert("No hay stock");
+    //alert("No hay stock");
   }
   
 });

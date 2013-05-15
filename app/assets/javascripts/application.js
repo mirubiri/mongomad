@@ -30,6 +30,7 @@
 //= alert_modal.js
 //= containers.js
 //= choosing_modal_triggers.js
-//= loading_triggers.js
+//= load_trigger.js
+//= resize_trigger.js
 //= navigation_triggers.js
 //= require_tree .
