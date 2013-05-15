@@ -6,11 +6,8 @@ describe Negotiation::Proposal do
   let(:proposal) { negotiation.proposals.last }
   let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
-  let(:proposals) do
-    proposal_composer_money = Fabricate(:offer_composer_money).start_negotiation.proposals.last
-    proposal_receiver_money = Fabricate(:offer_receiver_money).start_negotiation.proposals.last
-    [ proposal_composer_money, proposal_receiver_money ]
-  end
+  let(:proposals) { [ Fabricate(:offer_composer_money).start_negotiation.proposals.last,
+    Fabricate(:offer_receiver_money).start_negotiation.proposals.last ] }
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
