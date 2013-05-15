@@ -6,6 +6,9 @@ describe Negotiation::Proposal do
   let(:proposal) { negotiation.proposals.last }
   let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
+  let(:proposals) { [ Fabricate(:offer_composer_money).start_negotiation.proposals.last,
+    Fabricate(:offer_receiver_money).start_negotiation.proposals.last ] }
+    let(:negotiator) { negotiation_composer}
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -73,8 +76,8 @@ describe Negotiation::Proposal do
     end
   end
 
-  # ########################################################################################################
-  # describe '#can_sign?(negotiator)' do
+
+
   #   context 'When proposal is in :not_signed state' do
   #     context 'When composer offers money' do
   #       context 'When given negotiator is the composer of current proposal' do
@@ -315,62 +318,74 @@ describe Negotiation::Proposal do
     end
 
     context 'When some one offers money' do
-      [ Fabricate(:composer_money_offer), Fabricate(:receiver_money_offer) ].each do |proposal|
-        let(:user_with_money) { proposal.user_composer_id == proposal.money.user_id ? :composer : :receiver }
-        let(:user_without_money) { :user_with_money == :composer ? :receiver : :composer }
+      [ Fabricate(:offer_composer_money).start_negotiation.proposals.last,
+        Fabricate(:offer_receiver_money).start_negotiation.proposals.last ].each do |proposal|
+
+        user_with_money = ( proposal.user_composer_id == proposal.money.user_id ? :composer : :receiver )
+        user_without_money = ( user_with_money == :composer ? :receiver : :composer )
 
         context 'The negotiator who offers money' do
           it 'cannot sign' do
-            expect(proposal.allowed_actions[:user_with_money]).not_to include :sign
+            expect(proposal.allowed_actions[user_with_money]).not_to include :sign
           end
 
           it 'cannot unsign' do
-            expect(proposal.allowed_actions[:user_with_money]).not_to include :unsign
+            expect(proposal.allowed_actions[user_with_money]).not_to include :unsign
           end
 
-          context 'When proposal is signed by the :user_without_money' do
-            #before { proposal.state = :signed_by_%{:user_without_money} } # TODO: REVISAR ESTO!!!!
-
+          context 'When proposal is signed by the :user_with_money' do
             it 'can confirm' do
-              expect(proposal.allowed_actions[:user_with_money]).to include :confirm
+              proposal.state = :"signed_by_#{user_with_money.to_s}"
+              expect(proposal.allowed_actions[user_with_money]).not_to include :confirm
             end
           end
 
-          context 'When proposal is not signed by the :user_without_money' do
-            #before { proposal.state = :signed_by_%{:user_with_money} } # TODO: REVISAR ESTO!!!!
-
+          context 'When proposal is signed by the :user_without_money' do
             it 'cannot confirm' do
-              expect(proposal.allowed_actions[:user_with_money]).not_to include :confirm
+              proposal.state = :"signed_by_#{user_without_money.to_s}"
+              expect(proposal.allowed_actions[user_with_money]).to include :confirm
             end
           end
 
           context 'The other negotiator' do
-            context 'When proposal is signed by the :user_with_money' do
-              #before { proposal.state = :signed_by_%{:user_with_money} } # TODO: REVISAR ESTO!!!!
-
-              it 'cannot sign' do
-                expect(proposal.allowed_actions[:user_without_money]).not_to include :sign
-              end
-
-              it 'can unsign' do
-                expect(proposal.allowed_actions[:user_without_money]).to include :unsign
-              end
-            end
-
-            context 'When proposal is not signed by the :user_with_money' do
-              #before { proposal.state = :signed_by_%{:user_without_money} } # TODO: REVISAR ESTO!!!!
+            context 'When proposal is not signed' do
+              before { proposal.state = :not_signed }
 
               it 'can sign' do
-                expect(proposal.allowed_actions[:user_without_money]).to include :sign
+                expect(proposal.allowed_actions[user_without_money]).to include :sign
               end
 
               it 'cannot unsign' do
-                expect(proposal.allowed_actions[:user_without_money]).not_to include :unsign
+                expect(proposal.allowed_actions[user_without_money]).not_to include :unsign
+              end
+            end
+
+            context 'When proposal is signed by the :user_with_money' do
+              before { proposal.state = :"signed_by_#{user_with_money.to_s}" }
+
+              it 'cannot sign' do
+                expect(proposal.allowed_actions[user_without_money]).not_to include :sign
+              end
+
+              it 'cannot unsign' do
+                expect(proposal.allowed_actions[user_without_money]).not_to include :unsign
+              end
+            end
+
+            context 'When proposal is signed by the :user_without_money' do
+              before { proposal.state = :"signed_by_#{user_without_money.to_s}" }
+
+              it 'cannot sign' do
+                expect(proposal.allowed_actions[user_without_money]).not_to include :sign
+              end
+
+              it 'can unsign' do
+                expect(proposal.allowed_actions[user_without_money]).to include :unsign
               end
             end
 
             it 'cannot confirm' do
-              expect(proposal.allowed_actions[:user_without_money]).not_to include :confirm
+              expect(proposal.allowed_actions[user_without_money]).not_to include :confirm
             end
           end
         end
@@ -378,7 +393,7 @@ describe Negotiation::Proposal do
     end
 
     context 'When no one offers money' do
-      before { proposal.state = :signed_by_composer } # TODO: REVISAR ESTO, deberia ser por defecto asi!!!!
+      before { proposal.state = :signed_by_composer } #TODO: REVISAR ESTO, deberia ser por defecto asi!!!!
 
       context 'The composer' do
         it 'cannot sign' do
@@ -409,4 +424,28 @@ describe Negotiation::Proposal do
       end
     end
   end
+
+  describe '#can_sign?(negotiator)' do
+    it 'calls allowed_actions method' do
+      expect(proposal.can_sign?(negotiator)).should_receive(:allowed_actions)
+      proposal.can_sign?(negotiator)
+    end
+
+    context 'When negotiator can sign' do
+      it 'returns true' do
+        proposal.stub(:allowed_actions).and_return({ composer:[:sign], receiver:[:sign] })
+        expect(proposal.can_sign?(negotiator)).to eq true
+      end
+    end
+
+    context 'When negotiator cannot sign' do
+      it 'returns false' do
+        #proposal.stub(:allowed_actions).and_return({ composer:[:new], receiver:[:new] })
+        puts proposal.can_sign?(negotiator)
+        puts "-------------------"
+        expect(proposal.can_sign?(negotiator)).to eq false
+      end
+    end
+  end
+
 end
