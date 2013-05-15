@@ -25,4 +25,6 @@ $(document).ajaxComplete(function(event, xhr, settings) {
   }
 
   $('body').removeClass("hidden_container");
+
+  return false;
 });
