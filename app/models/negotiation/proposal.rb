@@ -58,9 +58,9 @@ class Negotiation::Proposal
   #end
   
   def money_holder
-    return :nobody unless money?
-    return :composer if money.user.id == user_composer_id
-    return :receiver if money.user.id == user_receiver_id
+    return :nobody unless money.user_id?
+    return :composer if money.user_id == user_composer_id
+    return :receiver if money.user_id == user_receiver_id
   end
 
   def can_sign?(user,requirements={})
