@@ -51,22 +51,29 @@ class Negotiation::Proposal
     end
   end
 
-  def actions_for(user)
-    [
-      :new, :sign if can_sign(user),:unsign if can_unsign(user), :confirm if can_confirm(user)
-    ]
+  #def actions_for(user)
+  #  [
+  #    :new, :sign if can_sign?(user),:unsign if can_unsign(user), :confirm if can_confirm(user)
+  #  ]
+  #end
+  
+  def money_holder
+    return :nobody unless money.user_id?
+    return :composer if money.user_id == user_composer_id
+    return :receiver if money.user_id == user_receiver_id
   end
 
-  def signer?(user)
-    can_sign?
-
+  def can_sign?(user,requirements={})
+    super(requirements)
   end
 
-  def unsigner?(user)
-    can_unsign? &&
+  def can_unsign?(user,requirements={})
+    super(requirements)
   end
 
-  def confirmer?(user)
-    can_confirm? &&
+  def can_confirm?(user,requirements={})
+    super(requirements)
   end
+
+
 end
