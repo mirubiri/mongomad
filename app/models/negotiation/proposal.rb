@@ -9,6 +9,7 @@ class Negotiation::Proposal
 
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
+  field :signer,type:Moped::BSON::ObjectId
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
@@ -51,29 +52,26 @@ class Negotiation::Proposal
     end
   end
 
-  #def actions_for(user)
-  #  [
-  #    :new, :sign if can_sign?(user),:unsign if can_unsign(user), :confirm if can_confirm(user)
-  #  ]
-  #end
-  
-  def money_holder
-    return :nobody unless money.user_id?
-    return :composer if money.user_id == user_composer_id
-    return :receiver if money.user_id == user_receiver_id
+  def valid_user?(user_id)
+   (user_id == user_composer_id) || (user_id == user_receiver_id)
   end
 
-  def can_sign?(user,requirements={})
-    super(requirements)
+  def sign(user_id,*args)
+    if valid_user?(user_id)
+      self.signer=user_id
+    else
+      return false
+    end
+
+    super(args)
   end
 
-  def can_unsign?(user,requirements={})
-    super(requirements)
+  def unsign(user_id,*args)
+    if self.signer == user_id
+      self.signer=nil
+    else
+      return false
+    end
+    super(args)
   end
-
-  def can_confirm?(user,requirements={})
-    super(requirements)
-  end
-
-
 end
