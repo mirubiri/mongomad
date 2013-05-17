@@ -9,7 +9,7 @@ class Negotiation::Proposal
 
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
-  field :signer,type:Moped::BSON::ObjectId
+  field :signer,           type: Moped::BSON::ObjectId
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
@@ -19,7 +19,6 @@ class Negotiation::Proposal
     :user_composer_id,
     :user_receiver_id,
     presence: true
-
 
   def user_composer
     negotiation && negotiation.negotiators.find(user_composer_id)
@@ -33,6 +32,7 @@ class Negotiation::Proposal
     event :unconfirmable do
       transition :confirmable => :unconfirmable, :unless => :confirmed?
     end
+
     event :confirmable do
       transition :unconfirmable => :confirmable
     end
@@ -58,17 +58,16 @@ class Negotiation::Proposal
 
   def sign(user_id,*args)
     if valid_user?(user_id)
-      self.signer=user_id
+      self.signer = user_id
     else
       return false
     end
-
     super(args)
   end
 
   def unsign(user_id,*args)
     if self.signer == user_id
-      self.signer=nil
+      self.signer = nil
     else
       return false
     end
