@@ -4,7 +4,7 @@ function resetContainers(){
   matchPrincipalContainersHeighs();
 }
 
-function resetPrincipalContainersHeighs(){ // esta mal!!
+function resetPrincipalContainersHeighs(){
   //alert("reloadPrincipalContainersHeighs funcionando");
 
   $('#leftContainer').css({'height': 0  + 'px'});
@@ -66,9 +66,9 @@ function resetContainersWidth(){
 
 function adjustPpalElements(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;  
-  var anchuraPrincipalElement = $("#ppal_container div:first-child").width() + 2;
+  var anchuraPrincipalElement = $("#ppal_container div:first-child").width() + 7;
 
-  if( anchuraPrincipalElement < 10 ){
+  if( anchuraPrincipalElement < 220 ){
     anchuraPrincipalElement = 250;
   } 
 

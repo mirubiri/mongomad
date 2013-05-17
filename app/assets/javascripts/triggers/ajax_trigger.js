@@ -15,16 +15,24 @@ $(document).ajaxComplete(function(event, xhr, settings) {
   else if ( lugar === "things" ) {
      buildThingMosaic();
   }
+  else if ( lugar === "negotiations" ) {
+    destroyMasonry();
+    maximizeConversationWidth();
+    activateNegotiationButtons();
+  }
+  else if ( lugar === "deals" ) {
+    destroyMasonry();
+  }
   else if ( lugar === "profile" ) {
+    destroyMasonry();
     setProfileContainersHeights();
     addProfileCommentsSeparator();
   }
-  else if ( lugar === "negotiations" ) {
-    activateNegotiationButtons();
-    maximizeConversationWidth();
+  else {
+    buildOfferMosaic();
+    activateOfferButton();
   }
 
   $('body').removeClass("hidden_container");
 
-  return false;
 });
