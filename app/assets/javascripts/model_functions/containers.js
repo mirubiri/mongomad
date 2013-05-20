@@ -1,15 +1,8 @@
 function resetContainers(){
-  //resetPrincipalContainersHeighs();
   expandContainers();
   matchPrincipalContainersHeighs();
 }
 
-function resetPrincipalContainersHeighs(){
-  //alert("reloadPrincipalContainersHeighs funcionando");
-
-  $('#leftContainer').css({'height': 0  + 'px'});
-  $('#rightContainer').css({'height': 0  + 'px'});
-}
 
 function matchPrincipalContainersHeighs(){
   //alert("matchPrincipalContainersHeighs funcionando");
@@ -32,18 +25,18 @@ function matchPrincipalContainersHeighs(){
     $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
   }
 
-  //expandRequestContainer();  no nos hace falta
 }
 
 
 function expandContainers(){
   //alert("expandContainers funcionando");
-  resetContainersWidth();
+
+  setRightContainerWidth();
   adjustPpalElements();
 }
 
 
-function resetContainersWidth(){
+function setRightContainerWidth(){
 
   var anchuraMainLayout = $('.mainlayout').innerWidth();
   console.log("anchura del mainLayout: "+anchuraMainLayout);
@@ -65,52 +58,63 @@ function resetContainersWidth(){
 
 
 function adjustPpalElements(){
-  var anchuraPosible = ($('#ppal_container').width()) - 16;  
-  var anchuraPrincipalElement = $("#ppal_container div:first-child").width() + 7;
+  var anchuraPosible = ($('#ppal_container').width()) - 16;
 
-  if( anchuraPrincipalElement < 220 ){
-    anchuraPrincipalElement = 250;
+  if($("#ppal_container div:first-child").length > 0) {
+
+    var anchuraPrincipalElement = $("#ppal_container div:first-child").outerWidth( true );
+    var firstChildClass = $("#ppal_container div:first-child").attr('class').split(" ")[0];
+    var numOfChildren = $("."+firstChildClass+"").length;
+
+    if( anchuraPrincipalElement > 20 ){   
+
+      console.log("anchura del elemento principal: "+anchuraPrincipalElement);
+
+      var disparador = anchuraPrincipalElement;
+      var contador = 1;
+      var elementosEntran = 0;
+
+      while(disparador < anchuraPosible){
+         disparador = disparador + disparador;
+         contador = contador + 1;
+      }
+
+      var elementosEntran = contador;
+      console.log("¿cuantas ofertan entran?: "+elementosEntran);
+
+      if( ((numOfChildren%elementosEntran) > 0) && ( numOfChildren>elementosEntran ) ) {
+
+        var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
+        console.log("anchura que quitar: "+anchuraQueQuitar);  
+
+        if( anchuraQueQuitar > 0 ){
+          var rightContainer = $('#rightContainer');
+          var rightContainerWidth = rightContainer.width();
+          var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
+
+          $('#rightContainer').css({'width': finalRightContainerWidth  + 'px'});
+          centerAlignToContainers(anchuraQueQuitar);
+        }
+
+      }
+
+    }else{
+      console.log("anchura del elemento principal no llega al minimo pq es: "+anchuraPrincipalElement);
+    }
+
   } 
 
-  console.log("anchura del elemento principal: "+anchuraPrincipalElement);
-
-  var disparador = anchuraPrincipalElement;
-  var contador = 1;
-  var elementosEntran = 0;
-
-  while(disparador < anchuraPosible){
-     disparador = disparador + disparador;
-     contador = contador + 1;
-  }
-
-  var elementosEntran = contador;
-  console.log("¿cuantas ofertan entran?: "+elementosEntran);
-
-  var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
-  console.log("anchura que quitar: "+anchuraQueQuitar);  
-
-  if( anchuraQueQuitar > 0 ){
-    var rightContainer = $('#rightContainer');
-    var rightContainerWidth = rightContainer.width();
-    var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
-
-    $('#rightContainer').css({'width': finalRightContainerWidth  + 'px'});
-    centerAlignContainers(anchuraQueQuitar);
-  } 
 }
 
-function centerAlignContainers(anchuraQueQuitar){
-
+function centerAlignToContainers(anchuraQueQuitar){
   var anchuraTotalPagina = $(document).width();
   var mainLayout = $('.mainlayout');
-
   margenPorRepartirPorcentual = (anchuraQueQuitar * 100) / anchuraTotalPagina;
-  console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
-
   anchuraMainLayoutRecalculada = 97 - margenPorRepartirPorcentual;
+  mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});
+
+
+  console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
   console.log("anchura del mainLayout porcentual recalculada: "+anchuraMainLayoutRecalculada);
-
-  javascript:console.log("entra en el algoritmo de modificacion");
-  mainLayout.css({'width': anchuraMainLayoutRecalculada + '%'});  
-
+  console.log("entra en el algoritmo de modificacion");
 }
