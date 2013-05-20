@@ -57,20 +57,14 @@ class Negotiation::Proposal
   end
 
   def sign(user_id,*args)
-    if valid_user?(user_id)
-      self.signer = user_id
-    else
-      return false
-    end
-    super(args)
+    self.signer = user_id if valid_user?(user_id)
+    return false if signer.nil?
+    super
   end
 
   def unsign(user_id,*args)
-    if self.signer == user_id
-      self.signer = nil
-    else
-      return false
-    end
-    super(args)
+    self.signer = nil if signer == user_id
+    return false if signer?
+    super
   end
 end
