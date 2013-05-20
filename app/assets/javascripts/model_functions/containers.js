@@ -30,9 +30,8 @@ function matchPrincipalContainersHeighs(){
 
 function expandContainers(){
   //alert("expandContainers funcionando");
-
   setRightContainerWidth();
-  adjustPpalElements();
+  centerPpalContainer();
 }
 
 
@@ -57,53 +56,38 @@ function setRightContainerWidth(){
 }
 
 
-function adjustPpalElements(){
+function centerPpalContainer(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;
+  var anchuraPrincipalElement = 250;
+  var firstChildClass = $("#ppal_container div:first-child").attr('class').split(" ")[0];
+  var numOfChildren = $("."+firstChildClass+"").length;
 
-  if($("#ppal_container div:first-child").length > 0) {
 
-    var anchuraPrincipalElement = $("#ppal_container div:first-child").outerWidth( true );
-    var firstChildClass = $("#ppal_container div:first-child").attr('class').split(" ")[0];
-    var numOfChildren = $("."+firstChildClass+"").length;
+  console.log("anchura del elemento principal: "+anchuraPrincipalElement);
 
-    if( anchuraPrincipalElement > 20 ){   
+  var disparador = anchuraPrincipalElement;
+  var contador = 1;
+  var elementosEntran = 0;
 
-      console.log("anchura del elemento principal: "+anchuraPrincipalElement);
+  while(disparador < anchuraPosible){
+     disparador = disparador + disparador;
+     contador = contador + 1;
+  }
 
-      var disparador = anchuraPrincipalElement;
-      var contador = 1;
-      var elementosEntran = 0;
+  var elementosEntran = contador;
+  console.log("¿cuantas ofertan entran?: "+elementosEntran);
 
-      while(disparador < anchuraPosible){
-         disparador = disparador + disparador;
-         contador = contador + 1;
-      }
+  var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
+  console.log("anchura que quitar: "+anchuraQueQuitar);  
 
-      var elementosEntran = contador;
-      console.log("¿cuantas ofertan entran?: "+elementosEntran);
+  if( anchuraQueQuitar > 0 ){
+    var rightContainer = $('#rightContainer');
+    var rightContainerWidth = rightContainer.width();
+    var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
 
-      if( ((numOfChildren%elementosEntran) > 0) && ( numOfChildren>elementosEntran ) ) {
-
-        var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
-        console.log("anchura que quitar: "+anchuraQueQuitar);  
-
-        if( anchuraQueQuitar > 0 ){
-          var rightContainer = $('#rightContainer');
-          var rightContainerWidth = rightContainer.width();
-          var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
-
-          $('#rightContainer').css({'width': finalRightContainerWidth  + 'px'});
-          centerAlignToContainers(anchuraQueQuitar);
-        }
-
-      }
-
-    }else{
-      console.log("anchura del elemento principal no llega al minimo pq es: "+anchuraPrincipalElement);
-    }
-
-  } 
-
+    $('#rightContainer').css({'width': finalRightContainerWidth  + 'px'});
+    centerAlignToContainers(anchuraQueQuitar);
+  }  
 }
 
 function centerAlignToContainers(anchuraQueQuitar){

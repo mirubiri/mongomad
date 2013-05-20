@@ -6,7 +6,6 @@ $(document).ajaxComplete(function(event, xhr, settings) {
   var lugar = location.pathname.split("/")[ultimoPath];
 
   //alert(lugar);
-  resetContainers();
 
   if ( lugar === "offers" ) {
     buildOfferMosaic();
@@ -33,6 +32,6 @@ $(document).ajaxComplete(function(event, xhr, settings) {
     activateOfferButton();
   }
 
+  matchPrincipalContainersHeighs();
   $('body').removeClass("hidden_container");
-
 });

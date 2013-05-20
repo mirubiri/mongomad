@@ -5,7 +5,6 @@ $('#edit-profile-form').on('hidden', function () {
 
   $('#ppal_container')
   .html("<%= escape_javascript(render :template => 'profiles/show.html.erb').html_safe %>");
-  expandRequestContainer();
   setProfileContainersHeights();
   addProfileCommentsSeparator();
   matchPrincipalContainersHeighs(); 

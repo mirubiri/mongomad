@@ -33,5 +33,6 @@ $(window).one('resize', function() {
     activateOfferButton();
   }
 
+  matchPrincipalContainersHeighs();
   $('body').removeClass("hidden_container");
 });

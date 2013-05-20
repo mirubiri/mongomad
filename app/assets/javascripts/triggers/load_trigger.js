@@ -1,7 +1,9 @@
 $(window).load(function(){
 
+  resetContainers();
+
   //alert("se dispara el load");
-/*
+  /*
   var pagina = location.pathname.split("/");
   var ultimoPath = pagina.length-1;
   var lugar = location.pathname.split("/")[ultimoPath];
