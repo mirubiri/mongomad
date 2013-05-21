@@ -17,7 +17,6 @@ function loadNeededScripts(lugar){
     destroyMasonry();
   }
   else if ( lugar === "profile" ) {
-    destroyMasonry();
     setProfileContainersHeights();
     addProfileCommentsSeparator();
   }

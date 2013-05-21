@@ -67,7 +67,7 @@ function setRightContainerWidth(){
   var leftWidth = $('#leftContainer').outerWidth( true );
   console.log("anchura del contenedor de la izda: "+leftWidth); 
 
-  var rightWidth = anchuraMainLayout - leftWidth -2;
+  var rightWidth = anchuraMainLayout - leftWidth -2;// el -2 son los bordes del rightContainer
   console.log("calculo para la nueva anchura del right_container: "+rightWidth);
   $('#rightContainer').css({'width': rightWidth + 'px'});
 
@@ -82,7 +82,7 @@ function setRightContainerWidth(){
 
 function centerContentSide(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;
-  var anchuraPrincipalElement = 250;// La anchura de una oferta
+  var anchuraPrincipalElement = 260;// La anchura de una oferta
   var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);  
 
   var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
