@@ -64,8 +64,6 @@ class Negotiation::Proposal
     end
   end
 
-
-
   private
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
