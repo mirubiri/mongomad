@@ -38,7 +38,7 @@ class Negotiation::Proposal
     end
   end
 
-  after_save :set_initial_state , :if => :new_record?
+  after_save :set_initial_state, :if => :new_record?
 
   state_machine :state, :initial => nil do
 
@@ -70,7 +70,7 @@ class Negotiation::Proposal
       transition [:unsigned,:composer_signed,:receiver_signed] => :receiver_canceled
     end
   end
-  
+
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
       sign_composer
@@ -78,5 +78,4 @@ class Negotiation::Proposal
       unsign
     end
   end
-
 end
