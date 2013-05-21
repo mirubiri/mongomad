@@ -62,11 +62,11 @@ class Negotiation::Proposal
     end
 
     event :cancel_composer do
-      transition [:unsigned,:composer_signed,:receiver_signed] => :composer_canceled
+      transition [:unsigned, :composer_signed, :receiver_signed] => :composer_canceled
     end
 
     event :cancel_receiver do
-      transition [:unsigned,:composer_signed,:receiver_signed] => :receiver_canceled
+      transition [:unsigned ,:composer_signed, :receiver_signed] => :receiver_canceled
     end
   end
 
