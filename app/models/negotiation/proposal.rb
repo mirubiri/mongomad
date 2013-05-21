@@ -72,6 +72,7 @@ class Negotiation::Proposal
   end
 
   def set_initial_state
+    puts 'COSA MALA, ESTO SE LANZA DOS VECES POR EL CALLBACK'
     if money.user_id.nil? || money.user_id == user_composer_id
       sign_composer
     else
