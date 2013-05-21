@@ -24,24 +24,17 @@ class Negotiation::Proposal
   end
 
   state_machine :state, :initial => nil do
-    event :unsign do
-      transition nil => :unsigned
-    end
-
-    event :sign_composer do
-      transition nil => :composer_signed
-    end
 
     event :sign_receiver do
       transition :unsigned => :receiver_signed
     end
 
     event :confirm_composer do
-      transition :receiver_signed => :receiver_confirmed, :if => :confirmable?
+      transition :receiver_signed => :composer_confirmed, :if => :confirmable?
     end
 
     event :confirm_receiver do
-      transition :composer_signed => :composer_confirmed, :if => :confirmable?
+      transition :composer_signed => :receiver_confirmed, :if => :confirmable?
     end
 
     event :cancel_composer do
@@ -53,7 +46,7 @@ class Negotiation::Proposal
     end
   end
 
-  after_save :set_initial_state, :if => :new_record?
+  after_create :set_initial_state
 
   validates :composer,
     :receiver,
@@ -72,11 +65,10 @@ class Negotiation::Proposal
   end
 
   def set_initial_state
-    puts 'COSA MALA, ESTO SE LANZA DOS VECES POR EL CALLBACK'
     if money.user_id.nil? || money.user_id == user_composer_id
-      sign_composer
+      self.state=:composer_signed
     else
-      unsign
+      self.state=:unsigned
     end
   end
 end
