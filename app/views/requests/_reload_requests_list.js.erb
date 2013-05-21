@@ -1,6 +1,10 @@
 $('#new-request-form').modal('hide');
 
-$('#new-request-form').on('hidden', function () {
+if( ($('.request').length) === 0){
+  $('#request_list_container > .no_elements').remove();
+}
+
+$('#new-request-form').on('hidden', function(){
   $('#request_list_container')
   .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>")
   .children()
@@ -16,8 +20,8 @@ $('#new-request-form').on('hidden', function () {
   .animate({backgroundColor: '#ffffff'}, 800, function(){
     $(this).removeClass("new_request_style");
   });
-
-  activateRequestButtons();
+  
   //Elimino la ventana modal
   delete $(this);
-})
+});
+

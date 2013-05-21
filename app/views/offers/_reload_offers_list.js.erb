@@ -1,5 +1,9 @@
 $('#new-offer-form').modal('hide');
 
+if( ($('.offer').length) === 0){
+  $('#ppal_container > .no_elements').remove();
+}
+
 $('#new-offer-form').on('hidden', function () {
   $('#ppal_container')
   .masonry('destroy')
@@ -20,15 +24,4 @@ $('#new-offer-form').on('hidden', function () {
   
   //Elimino la ventana modal
   delete $(this);
-})
-
-buildOfferMosaic();
-
-
-// Añadir utilizando el masonry
-
-//$('#new-offer-form').modal('hide');
-//var $newOffer = ("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
-//$('#new-offer-form').on('hidden', function () {
-  //$('#ppal_container').prepend($newOffer).masonry('prepended',$newOffer,false).masonry('reload');
-//})
+});
