@@ -1,8 +1,11 @@
 
 function loadNeededScripts(lugar){
+
+  activateRequestButtons(); //Las peticiones siempre estan visibles
+
   if ( lugar === "offers" ) {
     buildOfferMosaic();
-    activateOfferButton();
+    activateOfferButton();    
   }
   else if ( lugar === "things" ) {
      buildThingMosaic();

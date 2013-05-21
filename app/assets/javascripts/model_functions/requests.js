@@ -12,12 +12,12 @@ function expandRequestContainer(){
 function activateRequestButtons(){
   //alert("activateRequestButtons funcionando");
 
-  $('.request').hover(
-     function () {
+  $('.request').live('mouseover mouseout', function(event) {
+    if (event.type == 'mouseover') {
       $(this).find('.options_menu').removeClass("hidden_container");
-     },
-     function () {
+    } else {
       $(this).find('.options_menu').addClass("hidden_container");
-     }
-  );
+    }
+  });
+
 }
