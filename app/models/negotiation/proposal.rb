@@ -41,7 +41,6 @@ class Negotiation::Proposal
   after_save :set_initial_state, :if => :new_record?
 
   state_machine :state, :initial => nil do
-
     event :unsign do
       transition nil => :unsigned
     end
