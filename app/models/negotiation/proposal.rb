@@ -46,7 +46,7 @@ class Negotiation::Proposal
     end
   end
 
-  after_create :set_initial_state
+  before_create :set_initial_state
 
   validates :composer,
     :receiver,
