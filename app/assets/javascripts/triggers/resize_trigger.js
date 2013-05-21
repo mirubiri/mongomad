@@ -1,38 +1,12 @@
-$(window).one('resize', function() {
+$(window).bind('resize', function(event) {
+  //alert("ha habido un resize");
 
-   //alert("algo ha pasado por ajax");
-  var pagina = location.pathname.split("/");
-  var ultimoPath = pagina.length-1;
-  var lugar = location.pathname.split("/")[ultimoPath];
-
-  //alert(lugar);
+  event.stopPropagation();  
   resetContainers();
+  
+  var lugar = locationName();
+  //alert(lugar);
 
-  if ( lugar === "offers" ) {
-    buildOfferMosaic();
-    activateOfferButton();
-  }
-  else if ( lugar === "things" ) {
-     buildThingMosaic();
-  }
-  else if ( lugar === "negotiations" ) {
-    destroyMasonry();
-    maximizeConversationWidth();
-    activateNegotiationButtons();
-  }
-  else if ( lugar === "deals" ) {
-    destroyMasonry();
-  }
-  else if ( lugar === "profile" ) {
-    destroyMasonry();
-    setProfileContainersHeights();
-    addProfileCommentsSeparator();
-  }
-  else {
-    buildOfferMosaic();
-    activateOfferButton();
-  }
-
-  matchPrincipalContainersHeighs();
+  loadNeededScripts(lugar);
   $('body').removeClass("hidden_container");
 });

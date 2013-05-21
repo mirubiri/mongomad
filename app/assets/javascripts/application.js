@@ -33,4 +33,5 @@
 //= load_trigger.js
 //= resize_trigger.js
 //= navigation_triggers.js
+//= triggers_helpers.js
 //= require_tree .

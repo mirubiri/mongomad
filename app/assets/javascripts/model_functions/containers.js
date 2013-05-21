@@ -1,37 +1,61 @@
 function resetContainers(){
-  expandContainers();
+  resetUserContainerHeight();
+  resetPpalContainerHeight();
   matchPrincipalContainersHeighs();
+  expandContainers();  
+}
+
+function resetUserContainerHeight(){
+  //alert("resetUserContainerHeight funcionando");  
+
+  var profileHeight = $("#user_data_container").outerHeight(true);
+  var requestsHeight = $("#user_request_list").outerHeight(true);
+  var totalHeight = profileHeight + requestsHeight +32; //el 32 es de la navbar
+
+  $('#user-side').css({'height': totalHeight  + 'px'});
+}
+
+
+function resetPpalContainerHeight(){
+  //alert("resetPpalContainerHeight funcionando");  
+
+  var elementListHeight = $("#ppal_container").outerHeight(true);
+  var navigatioBarHeight = $("#navigation_bar").outerHeight(true);
+  var totalHeight = elementListHeight + navigatioBarHeight;
+
+  $('#content-side').css({'height': totalHeight  + 'px'});
 }
 
 
 function matchPrincipalContainersHeighs(){
-  //alert("matchPrincipalContainersHeighs funcionando");
-  
+  //alert("matchPrincipalContainersHeighs funcionando");  
   var alturaVentana = $(document).height()-80;
 
+  // este if amplia hasta abajo la pantalla de login
   if ( ($('#devise_container').height()) < alturaVentana ) {
-      $('#devise_container').css({'height': alturaVentana  + 'px'});
-  }
-  if ( ($('#user-side').height()) < alturaVentana ) {
-      $('#user-side').css({'height': alturaVentana  + 'px'});
+    $('#devise_container').css({'height': alturaVentana  + 'px'});
   }
 
-  $('#user-side,#content-side').equalHeightColumns();
-  $('#ppal_container').css({'height': ($('#user-side').height() - 70)  + 'px'});
+  if ( (($('#user-side').height()) < alturaVentana) && (($('#content-side').height()) < alturaVentana) ) {
+    $('#user-side').css({'height': alturaVentana  + 'px'});
+    $('#content-side').css({'height': alturaVentana  + 'px'});
+  }else{
+    $('#user-side,#content-side').equalHeightColumns();
+  }  
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});
   }else{
     $('#footer').css({'top': (($('#user-side').height()) + 55) + 'px'});
   }
-
 }
 
 
 function expandContainers(){
   //alert("expandContainers funcionando");
+
   setRightContainerWidth();
-  centerPpalContainer();
+  centerContentSide();
 }
 
 
@@ -56,26 +80,10 @@ function setRightContainerWidth(){
 }
 
 
-function centerPpalContainer(){
+function centerContentSide(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;
-  var anchuraPrincipalElement = 250;
-  var firstChildClass = $("#ppal_container div:first-child").attr('class').split(" ")[0];
-  var numOfChildren = $("."+firstChildClass+"").length;
-
-
-  console.log("anchura del elemento principal: "+anchuraPrincipalElement);
-
-  var disparador = anchuraPrincipalElement;
-  var contador = 1;
-  var elementosEntran = 0;
-
-  while(disparador < anchuraPosible){
-     disparador = disparador + disparador;
-     contador = contador + 1;
-  }
-
-  var elementosEntran = contador;
-  console.log("¿cuantas ofertan entran?: "+elementosEntran);
+  var anchuraPrincipalElement = 250;// La anchura de una oferta
+  var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);  
 
   var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
   console.log("anchura que quitar: "+anchuraQueQuitar);  
@@ -84,11 +92,27 @@ function centerPpalContainer(){
     var rightContainer = $('#rightContainer');
     var rightContainerWidth = rightContainer.width();
     var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
-
-    $('#rightContainer').css({'width': finalRightContainerWidth  + 'px'});
+    rightContainer.css({'width': finalRightContainerWidth  + 'px'});
     centerAlignToContainers(anchuraQueQuitar);
   }  
 }
+
+
+function offersFit(elementWidth,totalWidth){
+  var disparador = elementWidth;
+  var contador = 1;
+  var elementosEntran = 0;
+
+  while(disparador < totalWidth){
+     disparador = disparador + disparador;
+     contador = contador + 1;
+  }
+
+  var elementosEntran = contador;
+  console.log("¿cuantas ofertan entran?: "+elementosEntran);
+  return elementosEntran;
+}
+
 
 function centerAlignToContainers(anchuraQueQuitar){
   var anchuraTotalPagina = $(document).width();
