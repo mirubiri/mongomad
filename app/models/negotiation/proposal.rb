@@ -38,39 +38,45 @@ class Negotiation::Proposal
     end
   end
 
-  state_machine :state, :initial => :unsigned do
-    event :sign do
-      transition :unsigned => :signed
-    end
+  after_save :set_initial_state , :if => :new_record?
+
+  state_machine :state, :initial => nil do
 
     event :unsign do
-      transition :signed => :unsigned
+      transition nil => :unsigned
     end
 
-    event :confirm do
-      transition :signed => :confirmed, :if => :confirmable?
+    event :sign_composer do
+      transition nil => :composer_signed
+    end
+
+    event :sign_receiver do
+      transition :unsigned => :receiver_signed
+    end
+
+    event :confirm_composer do
+      transition :receiver_signed => :receiver_confirmed, :if => :confirmable?
+    end
+
+    event :confirm_receiver do
+      transition :composer_signed => :composer_confirmed, :if => :confirmable?
+    end
+
+    event :cancel_composer do
+      transition [:unsigned,:composer_signed,:receiver_signed] => :composer_canceled
+    end
+
+    event :cancel_receiver do
+      transition [:unsigned,:composer_signed,:receiver_signed] => :receiver_canceled
     end
   end
-
-  def valid_user?(user_id)
-   (user_id == user_composer_id) || (user_id == user_receiver_id)
-  end
-
-  def sign(user_id,*args)
-    if valid_user?(user_id)
-      self.signer = user_id
+  
+  def set_initial_state
+    if money.user_id.nil? || money.user_id == user_composer_id
+      sign_composer
     else
-      return false
+      unsign
     end
-    super(args)
   end
 
-  def unsign(user_id,*args)
-    if self.signer == user_id
-      self.signer = nil
-    else
-      return false
-    end
-    super(args)
-  end
 end
