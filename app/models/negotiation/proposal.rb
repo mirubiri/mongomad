@@ -13,21 +13,6 @@ class Negotiation::Proposal
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
-  validates :composer,
-    :receiver,
-    :money,
-    :user_composer_id,
-    :user_receiver_id,
-    presence: true
-
-  def user_composer
-    negotiation && negotiation.negotiators.find(user_composer_id)
-  end
-
-  def user_receiver
-    negotiation && negotiation.negotiators.find(user_receiver_id)
-  end
-
   state_machine :confirmable_state, :initial => :confirmable do
     event :unconfirmable do
       transition :confirmable => :unconfirmable, :unless => :confirmed?
@@ -38,10 +23,7 @@ class Negotiation::Proposal
     end
   end
 
-  after_save :set_initial_state , :if => :new_record?
-
   state_machine :state, :initial => nil do
-
     event :unsign do
       transition nil => :unsigned
     end
@@ -63,14 +45,32 @@ class Negotiation::Proposal
     end
 
     event :cancel_composer do
-      transition [:unsigned,:composer_signed,:receiver_signed] => :composer_canceled
+      transition [:unsigned, :composer_signed, :receiver_signed] => :composer_canceled
     end
 
     event :cancel_receiver do
-      transition [:unsigned,:composer_signed,:receiver_signed] => :receiver_canceled
+      transition [:unsigned ,:composer_signed, :receiver_signed] => :receiver_canceled
     end
   end
-  
+
+  after_save :set_initial_state, :if => :new_record?
+
+  validates :composer,
+    :receiver,
+    :money,
+    :user_composer_id,
+    :user_receiver_id,
+    :confirmable_state,
+    presence: true
+
+  def user_composer
+    negotiation && negotiation.negotiators.find(user_composer_id)
+  end
+
+  def user_receiver
+    negotiation && negotiation.negotiators.find(user_receiver_id)
+  end
+
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
       sign_composer
@@ -78,5 +78,4 @@ class Negotiation::Proposal
       unsign
     end
   end
-
 end
