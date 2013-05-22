@@ -9,27 +9,10 @@ class Negotiation::Proposal
 
   field :user_composer_id, type: Moped::BSON::ObjectId
   field :user_receiver_id, type: Moped::BSON::ObjectId
-  field :signer,           type: Moped::BSON::ObjectId
-
-  validates :composer,
-   :receiver,
-   :money,
-   :user_composer_id,
-   :user_receiver_id,
-   :confirmable_state,
-   presence: true
-
-  before_create :set_initial_state
 
   accepts_nested_attributes_for :composer, :receiver, :money
 
-  def user_composer
-    negotiation && negotiation.negotiators.find(user_composer_id)
-  end
-
-  def user_receiver
-    negotiation && negotiation.negotiators.find(user_receiver_id)
-  end
+  before_create :set_initial_state
 
   state_machine :confirmable_state, :initial => :confirmable do
     event :unconfirmable do
@@ -42,7 +25,6 @@ class Negotiation::Proposal
   end
 
   state_machine :state, :initial => nil do
-
     event :sign_receiver do
       transition :unsigned => :receiver_signed
     end
@@ -64,12 +46,28 @@ class Negotiation::Proposal
     end
   end
 
+  validates :composer,
+   :receiver,
+   :money,
+   :user_composer_id,
+   :user_receiver_id,
+   :confirmable_state,
+   presence: true
+
+  def user_composer
+    negotiation && negotiation.negotiators.find(user_composer_id)
+  end
+
+  def user_receiver
+    negotiation && negotiation.negotiators.find(user_receiver_id)
+  end
+
   private
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
-      self.state=:composer_signed
+      self.state = :composer_signed
     else
-      self.state=:unsigned
+      self.state = :unsigned
     end
   end
 end

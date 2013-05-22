@@ -6,9 +6,6 @@ describe Negotiation::Proposal do
   let(:proposal) { negotiation.proposals.last }
   let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
-  # let(:proposals) { [ Fabricate(:offer_composer_money).start_negotiation.proposals.last,
-  #   Fabricate(:offer_receiver_money).start_negotiation.proposals.last ] }
-  #   let(:negotiator) { negotiation_composer}
 
   describe 'Relations' do
     it { should be_embedded_in :negotiation }
@@ -78,250 +75,69 @@ describe Negotiation::Proposal do
   end
 
   describe 'state_machine' do
-    context 'When composer offers money' do
-      context 'and proposal is in :nil state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+    context 'When proposal is in :unsigned state' do
+      before do
+        proposal.save
+        proposal.state = :unsigned
       end
-      context 'and proposal is in :unsigned state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :unsigned to :receiver_signed on :sign_receiver event' do
+        proposal.sign_receiver
+        expect(proposal.state).to eq :receiver_signed.to_s
       end
-      context 'and proposal is in :composer_signed state' do
-         # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :unsigned to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
       end
-      context 'and proposal is in :receiver_signed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :unsigned to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
       end
     end
-    context 'When receiver offers money' do
-      context 'and proposal is in :nil state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+    context 'When proposal is in :composer_signed state' do
+      before do
+        proposal.save
+        proposal.state = :composer_signed
       end
-      context 'and proposal is in :unsigned state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :composer_signed to :receiver_confirmed on :confirm_receiver event' do
+        proposal.confirm_receiver
+        expect(proposal.state).to eq :receiver_confirmed.to_s
       end
-      context 'and proposal is in :composer_signed state' do
-         # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :composer_signed to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
       end
-      context 'and proposal is in :receiver_signed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :composer_signed to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
       end
     end
-    context 'When there is no money' do
-      context 'and proposal is in :nil state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+    context 'When proposal is in :receiver_signed state' do
+      before do
+        proposal.save
+        proposal.state = :receiver_signed
       end
-      context 'and proposal is in :unsigned state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :receiver_signed to :composer_confirmed on :confirm_composer event' do
+        proposal.confirm_composer
+        expect(proposal.state).to eq :composer_confirmed.to_s
       end
-      context 'and proposal is in :composer_signed state' do
-         # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :receiver_signed to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
       end
-      context 'and proposal is in :receiver_signed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_confirmed state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :composer_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
-      end
-      context 'and proposal is in :receiver_canceled state' do
-        # before
-        xit 'change from :nil to : on :unsign event'
-        xit 'change from :nil to : on :sign_composer event'
-        xit 'change from :nil to : on :sign_receiver event'
-        xit 'change from :nil to : on :confirm_composer event'
-        xit 'change from :nil to : on :confirm_receiver event'
-        xit 'change from :nil to : on :cancel_composer event'
-        xit 'change from :nil to : on :cancel_receiver event'
+
+      it 'change from :receiver_signed to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
       end
     end
   end
