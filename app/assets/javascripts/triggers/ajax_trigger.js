@@ -1,6 +1,5 @@
 $(document).ajaxComplete(function(event, xhr, settings) {
   //alert("algo ha pasado por ajax");
-
   event.stopPropagation();
 
   var lugar = locationName();
