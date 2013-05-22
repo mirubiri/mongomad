@@ -1,19 +1,11 @@
-//Primero pongo las alturas a 0 para que no haga cosas raras
-//reloadPrincipalContainersHeighs();
+$("#navigation_bar")
+.html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
-//Primero recargo la barra de navegacion
-$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
-
-
-//Oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
 $("#ppal_container")
-.hide()
 .html("<%=j render :partial => 'things/partials/thing' %>")
 .masonry('destroy');
 
-//matchPrincipalContainersHeighs();
-$("#ppal_container").show();
+//alert("se disparan los cambios en el index de things");
 
-//Ahora ejecuto todo lo extra que necesito
-//expandRequestContainer();
-imageSelection();
+
+
