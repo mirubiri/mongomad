@@ -1,6 +1,4 @@
 module ApplicationHelper
-#TODO: a esto hay que hacerle una limpieza del 15!!
-
 
   # USER (USER_LOGGED) HELPERS -----------------------------------------
   def user_logged_id(user = user_logged)
@@ -311,6 +309,15 @@ module ApplicationHelper
   end
   def proposal_updatetime(proposal)
     proposal.updated_at
+  end
+  def proposal_can_sign?(proposal, user)
+    proposal.can_sign?(user)
+  end
+  def proposal_can_confirm?(proposal, user)
+    proposal.can_confirm?(user)
+  end
+  def proposal_can_cancel?(proposal, user)
+    proposal.can_cancel?(user)
   end
 
   # MESSAGE HELPERS -----------------------------------------
