@@ -45,7 +45,7 @@
             :remote => true,
             :class => "btn btn-warning" %>
       </div>
-      <% if () %>
+      <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>
         <div class="offer_button">
           <%= link_to 'firmar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
@@ -53,7 +53,7 @@
               :class => "btn btn-success" %>
         </div>
       <% end %>
-      <% if () %>
+      <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
         <div class="offer_button">
           <%= link_to 'confirmar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
@@ -61,7 +61,7 @@
               :class => "btn btn-success" %>
         </div>
       <% end %>
-      <% if () %>
+      <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
         <div class="offer_button">
           <%= link_to 'cancelar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
