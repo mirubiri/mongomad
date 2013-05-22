@@ -61,13 +61,18 @@ function expandContainers(){
 
 function setRightContainerWidth(){
 
-  var anchuraMainLayout = $('.mainlayout').innerWidth();
+  if (existScroll() === true){
+    var anchuraMainLayout = $('.mainlayout').innerWidth();
+  }else {
+    var anchuraMainLayout = $('.mainlayout').innerWidth() -15;
+  }
+
   console.log("anchura del mainLayout: "+anchuraMainLayout);
 
   var leftWidth = $('#leftContainer').outerWidth( true );
   console.log("anchura del contenedor de la izda: "+leftWidth); 
 
-  var rightWidth = anchuraMainLayout - leftWidth -2;// el -2 son los bordes del rightContainer
+  var rightWidth = anchuraMainLayout - leftWidth -2;// bordes del rightContainer mas la anchura de la scrollbar
   console.log("calculo para la nueva anchura del right_container: "+rightWidth);
   $('#rightContainer').css({'width': rightWidth + 'px'});
 
@@ -125,4 +130,12 @@ function centerAlignToContainers(anchuraQueQuitar){
   console.log("margen a repartir porcentual: "+margenPorRepartirPorcentual);
   console.log("anchura del mainLayout porcentual recalculada: "+anchuraMainLayoutRecalculada);
   console.log("entra en el algoritmo de modificacion");
+}
+
+function existScroll(){
+  if ($(document).height() > $(window).height()) {
+    return true;
+  } else {
+    return false;
+  }
 }
