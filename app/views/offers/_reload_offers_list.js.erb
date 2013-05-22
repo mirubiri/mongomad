@@ -5,9 +5,13 @@ if( ($('.offer').length) === 0){
 }
 
 $('#new-offer-form').on('hidden', function () {
-  $('#ppal_container')
-  .masonry('destroy')
-  .prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
+  $('#ppal_container')  
+  .prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
+  
+  buildOfferMosaic();
+  matchPrincipalContainersHeighs();
+
+  $('#ppal_container') 
   .children()
   .first()
   .addClass("new_request_style")
@@ -21,7 +25,9 @@ $('#new-offer-form').on('hidden', function () {
   .animate({backgroundColor: '#ffffff'}, 800, function(){
     $(this).removeClass("new_request_style");
   });
-  
+
+
   //Elimino la ventana modal
   delete $(this);
 });
+

@@ -6,7 +6,11 @@ if( ($('.request').length) === 0){
 
 $('#new-request-form').on('hidden', function(){
   $('#request_list_container')
-  .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>")
+  .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>");
+
+  matchPrincipalContainersHeighs();  
+  
+  $('#request_list_container')
   .children()
   .first()
   .addClass("new_request_style")

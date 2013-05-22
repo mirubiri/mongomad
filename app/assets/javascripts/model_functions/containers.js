@@ -36,6 +36,17 @@ function matchPrincipalContainersHeighs(){
     $('#devise_container').css({'height': alturaVentana  + 'px'});
   }
 
+  if(($('#ppal_container').height() + 42) > ($('#content-side').height())) {
+    //alert("esta pasando");
+    $('#content-side').css({'height': ($('#ppal_container').height() + 42)  + 'px'});
+  }
+
+  var alturaRequestContainerActualizada = $('#user_data_container').outerHeight(true) + $('#user_request_list').outerHeight(true) + 32;
+  
+  if(alturaRequestContainerActualizada > ($('#user-side').height())) {
+    $('#user-side').css({'height': alturaRequestContainerActualizada  + 'px'});
+  }
+
   if ( (($('#user-side').height()) < alturaVentana) && (($('#content-side').height()) < alturaVentana) ) {
     $('#user-side').css({'height': alturaVentana  + 'px'});
     $('#content-side').css({'height': alturaVentana  + 'px'});
