@@ -76,19 +76,69 @@ describe Negotiation::Proposal do
 
   describe 'state_machine' do
     context 'When proposal is in :unsigned state' do
-      xit 'change from :unsigned to :receiver_signed on :sign_receiver event'
-      xit 'change from :unsigned to :composer_canceled on :cancel_composer event'
-      xit 'change from :unsigned to :receiver_canceled on :cancel_receiver event'
+      before do
+        proposal.save
+        proposal.state = :unsigned
+      end
+
+      it 'change from :unsigned to :receiver_signed on :sign_receiver event' do
+        proposal.sign_receiver
+        expect(proposal.state).to eq :receiver_signed.to_s
+      end
+
+      it 'change from :unsigned to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
+      end
+
+      it 'change from :unsigned to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
+      end
     end
+
     context 'When proposal is in :composer_signed state' do
-      xit 'change from :composer_signed to :receiver_confirmed on :confirm_receiver event'
-      xit 'change from :composer_signed to :composer_canceled on :cancel_composer event'
-      xit 'change from :composer_signed to :receiver_canceled on :cancel_receiver event'
+      before do
+        proposal.save
+        proposal.state = :composer_signed
+      end
+
+      it 'change from :composer_signed to :receiver_confirmed on :confirm_receiver event' do
+        proposal.confirm_receiver
+        expect(proposal.state).to eq :receiver_confirmed.to_s
+      end
+
+      it 'change from :composer_signed to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
+      end
+
+      it 'change from :composer_signed to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
+      end
     end
+
     context 'When proposal is in :receiver_signed state' do
-      xit 'change from :receiver_signed to :composer_confirmed on :confirm_composer event'
-      xit 'change from :receiver_signed to :composer_canceled on :cancel_composer event'
-      xit 'change from :receiver_signed to :receiver_canceled on :cancel_receiver event'
+      before do
+        proposal.save
+        proposal.state = :receiver_signed
+      end
+
+      it 'change from :receiver_signed to :composer_confirmed on :confirm_composer event' do
+        proposal.confirm_composer
+        expect(proposal.state).to eq :composer_confirmed.to_s
+      end
+
+      it 'change from :receiver_signed to :composer_canceled on :cancel_composer event' do
+        proposal.cancel_composer
+        expect(proposal.state).to eq :composer_canceled.to_s
+      end
+
+      it 'change from :receiver_signed to :receiver_canceled on :cancel_receiver event' do
+        proposal.cancel_receiver
+        expect(proposal.state).to eq :receiver_canceled.to_s
+      end
     end
   end
 end
