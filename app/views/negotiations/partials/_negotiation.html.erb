@@ -40,12 +40,35 @@
         </div>
       </div>
       <div class="offer_button">
-        <button class="btn btn-small disabled">Accept</button>
         <%= link_to 'edit',
             edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
             :remote => true,
             :class => "btn btn-warning" %>
       </div>
+      <% if () %>
+        <div class="offer_button">
+          <%= link_to 'firmar',
+              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :remote => true,
+              :class => "btn btn-success" %>
+        </div>
+      <% end %>
+      <% if () %>
+        <div class="offer_button">
+          <%= link_to 'confirmar',
+              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :remote => true,
+              :class => "btn btn-success" %>
+        </div>
+      <% end %>
+      <% if () %>
+        <div class="offer_button">
+          <%= link_to 'cancelar',
+              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :remote => true,
+              :class => "btn btn-danger" %>
+        </div>
+      <% end %>
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
       </div>
