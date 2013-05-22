@@ -7,8 +7,7 @@ function loadNeededScripts(lugar){
     buildOfferMosaic();
     activateOfferButton();    
   }
-  else if ( lugar === "things" ) {
-     buildThingMosaic();
+  else if ( lugar === "things" ) {    
   }
   else if ( lugar === "negotiations" ) {
     destroyMasonry();
@@ -20,6 +19,7 @@ function loadNeededScripts(lugar){
     destroyMasonry();
   }
   else if ( lugar === "profile" ) {
+    destroyMasonry();
     setProfileContainersHeights();
     addProfileCommentsSeparator();
   }

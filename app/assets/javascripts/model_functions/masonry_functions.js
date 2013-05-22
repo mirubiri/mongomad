@@ -11,24 +11,6 @@ function buildOfferMosaic(){
       itemSelector : '.offer',
       isAnimated: true
   });
-
-}
-
-
-function buildThingMosaic(){
-
-  var ppalContainer = $('#ppal_container');
-  var ppalContainerFirstChild = $('#ppal_container div:first-child');
-
-  if (ppalContainerFirstChild.hasClass('masonry-brick')) {
-    ppalContainer.masonry('destroy');
-  }
-
-  ppalContainer.masonry({
-      itemSelector : '.thing',
-      isAnimated: true
-  });
-
 }
 
 function destroyMasonry(){
