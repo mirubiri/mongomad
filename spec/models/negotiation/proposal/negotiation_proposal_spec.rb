@@ -76,8 +76,8 @@ describe Negotiation::Proposal do
 
   describe '#state' do
 
-    xit 'returns :unsigned when composer has money'
-    xit 'returns :composer_signed when composer has no money'
+    xit 'initial state is :unsigned when composer has money'
+    xit 'initial state is :composer_signed when composer has no money'
 
     context 'When proposal is in :unsigned state' do
       before do
