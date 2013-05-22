@@ -1,8 +1,11 @@
 
 function loadNeededScripts(lugar){
+
+  activateRequestButtons(); //Las peticiones siempre estan visibles
+
   if ( lugar === "offers" ) {
     buildOfferMosaic();
-    activateOfferButton();
+    activateOfferButton();    
   }
   else if ( lugar === "things" ) {
      buildThingMosaic();
@@ -17,7 +20,6 @@ function loadNeededScripts(lugar){
     destroyMasonry();
   }
   else if ( lugar === "profile" ) {
-    destroyMasonry();
     setProfileContainersHeights();
     addProfileCommentsSeparator();
   }

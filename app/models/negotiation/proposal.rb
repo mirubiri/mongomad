@@ -11,7 +11,25 @@ class Negotiation::Proposal
   field :user_receiver_id, type: Moped::BSON::ObjectId
   field :signer,           type: Moped::BSON::ObjectId
 
+  validates :composer,
+   :receiver,
+   :money,
+   :user_composer_id,
+   :user_receiver_id,
+   :confirmable_state,
+   presence: true
+
+  before_create :set_initial_state
+
   accepts_nested_attributes_for :composer, :receiver, :money
+
+  def user_composer
+    negotiation && negotiation.negotiators.find(user_composer_id)
+  end
+
+  def user_receiver
+    negotiation && negotiation.negotiators.find(user_receiver_id)
+  end
 
   state_machine :confirmable_state, :initial => :confirmable do
     event :unconfirmable do
@@ -24,24 +42,17 @@ class Negotiation::Proposal
   end
 
   state_machine :state, :initial => nil do
-    event :unsign do
-      transition nil => :unsigned
-    end
-
-    event :sign_composer do
-      transition nil => :composer_signed
-    end
 
     event :sign_receiver do
       transition :unsigned => :receiver_signed
     end
 
     event :confirm_composer do
-      transition :receiver_signed => :receiver_confirmed, :if => :confirmable?
+      transition :receiver_signed => :composer_confirmed, :if => :confirmable?
     end
 
     event :confirm_receiver do
-      transition :composer_signed => :composer_confirmed, :if => :confirmable?
+      transition :composer_signed => :receiver_confirmed, :if => :confirmable?
     end
 
     event :cancel_composer do
@@ -53,29 +64,12 @@ class Negotiation::Proposal
     end
   end
 
-  after_save :set_initial_state, :if => :new_record?
-
-  validates :composer,
-    :receiver,
-    :money,
-    :user_composer_id,
-    :user_receiver_id,
-    :confirmable_state,
-    presence: true
-
-  def user_composer
-    negotiation && negotiation.negotiators.find(user_composer_id)
-  end
-
-  def user_receiver
-    negotiation && negotiation.negotiators.find(user_receiver_id)
-  end
-
+  private
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
-      sign_composer
+      self.state=:composer_signed
     else
-      unsign
+      self.state=:unsigned
     end
   end
 end

@@ -1,4 +1,3 @@
 $('#edit-offer-form').remove();// Esto la quita correctamente
-
 $('#ppal_container').append("<%= escape_javascript(render :partial => 'layouts/edit_offer', :locals => { :offer => @offer }).html_safe %>");
 $('#edit-offer-form').modal('show');
