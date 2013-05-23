@@ -22,7 +22,7 @@ function resetPpalContainerHeight(){
   var elementListHeight = $("#ppal_container").outerHeight(true);
   var navigatioBarHeight = $("#navigation_bar").outerHeight(true);
   var totalHeight = elementListHeight + navigatioBarHeight;
-  alert("total height: " + totalHeight);
+  //alert("total height: " + totalHeight);
   $('#content-side').css({'height': totalHeight  + 'px'});
 }
 
@@ -30,7 +30,7 @@ function resetPpalContainerHeight(){
 function matchPrincipalContainersHeighs(){
   //alert("matchPrincipalContainersHeighs funcionando");  
   var alturaVentana = window.innerHeight - 80;
-  alert(alturaVentana);
+  //alert(alturaVentana);
 
   // este if amplia hasta abajo la pantalla de login
   if ( ($('#devise_container').height()) < alturaVentana ) {
