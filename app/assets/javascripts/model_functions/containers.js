@@ -22,14 +22,15 @@ function resetPpalContainerHeight(){
   var elementListHeight = $("#ppal_container").outerHeight(true);
   var navigatioBarHeight = $("#navigation_bar").outerHeight(true);
   var totalHeight = elementListHeight + navigatioBarHeight;
-
+  alert("total height: " + totalHeight);
   $('#content-side').css({'height': totalHeight  + 'px'});
 }
 
 
 function matchPrincipalContainersHeighs(){
   //alert("matchPrincipalContainersHeighs funcionando");  
-  var alturaVentana = $(document).height()-80;
+  var alturaVentana = window.innerHeight - 80;
+  alert(alturaVentana);
 
   // este if amplia hasta abajo la pantalla de login
   if ( ($('#devise_container').height()) < alturaVentana ) {
@@ -150,3 +151,12 @@ function existScroll(){
     return false;
   }
 }
+
+function getDocHeight(){
+    return Math.max(
+        $(document).height(),
+        $(window).height(),
+        /* For opera: */
+        document.documentElement.clientHeight
+    );
+};

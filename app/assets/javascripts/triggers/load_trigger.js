@@ -7,6 +7,6 @@ $(window).load(function(event){
   var lugar = locationName();
   //alert(lugar);
 
-  loadNeededScripts(lugar);  
+  loadNeededScripts(lugar);
   $('body').removeClass("hidden_container");
 });

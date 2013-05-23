@@ -39,36 +39,33 @@
           <% end %>
         </div>
       </div>
-      <div class="offer_button">
+      <div class="offer_buttons">        
         <%= link_to 'edit',
             edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
             :remote => true,
-            :class => "btn btn-warning" %>
-      </div>
-      <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>
-        <div class="offer_button">
+            :class => "btn btn-warning" %> 
+                 
+        <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>        
           <%= link_to 'firmar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
               :remote => true,
-              :class => "btn btn-success" %>
-        </div>
-      <% end %>
-      <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
-        <div class="offer_button">
+              :class => "btn btn-success" %>       
+        <% end %>
+
+        <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
           <%= link_to 'confirmar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
               :remote => true,
               :class => "btn btn-success" %>
-        </div>
-      <% end %>
-      <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
-        <div class="offer_button">
+        <% end %>
+
+        <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
           <%= link_to 'cancelar',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
               :remote => true,
-              :class => "btn btn-danger" %>
-        </div>
-      <% end %>
+              :class => "btn btn-danger" %>        
+        <% end %>
+      </div>
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
       </div>

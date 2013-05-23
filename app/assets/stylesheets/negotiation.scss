@@ -17,15 +17,15 @@
       width: $offerWidth;
       float: left;
 
-      .offer_button{
+      .offer_buttons{
         @include box-sizing(border-box);
         width: 100%;
         float:left;
-        padding: 0px 10px 10px 0px;
+        padding: 4px 10px 10px 4px;
 
-        button{
-          float: right;
-          margin-right: 5px;
+        a{
+          float: left;
+          margin-right: 3px;
         }
       }
 
