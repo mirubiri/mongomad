@@ -74,10 +74,10 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       if @negotiation.proposals << @proposal
-      format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-      format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false}
+        format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
+        format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false}
       else
-      format.html { render action: "edit" }
+        format.html { render action: "edit" }
       end
     end
   end
@@ -107,12 +107,12 @@ class NegotiationsController < ApplicationController
   end
 
 
-  # Confirma la propuesta, creando el trato y eliminando la negociacion
+  # Confirma la propuesta
   def confirm
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last;
 
-    proposal_confirm(proposal,current_user);
+    proposal_confirm(proposal, current_user);
 
     respond_to do |format|
       format.js { render :template => "negotiations/index.js"}
@@ -120,16 +120,15 @@ class NegotiationsController < ApplicationController
   end
 
 
-  # Cancela la propuesta, es decir manda un mensaje al composer avisandole que no me ha gustado
+  # Cancela la propuesta
   def cancel
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last;
 
-    proposal_cancel(proposal,current_user);
+    proposal_cancel(proposal, current_user);
 
     respond_to do |format|
       format.js { render :template => "negotiations/index.js"}
     end
   end
-
 end

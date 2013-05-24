@@ -311,13 +311,14 @@ module ApplicationHelper
     proposal.updated_at
   end
   def proposal_can_sign?(proposal, user)
-    proposal.can_sign?(user)
+    proposal.user_receiver_id == user.id && proposal.state == 'unsigned'
   end
   def proposal_can_confirm?(proposal, user)
-    proposal.can_confirm?(user)
+    (proposal.user_composer_id == user.id && proposal.state == 'receiver_signed') ||
+    (proposal.user_receiver_id == user.id && proposal.state == 'composer_signed')
   end
   def proposal_can_cancel?(proposal, user)
-    proposal.can_cancel?(user)
+    proposal.state == 'unsigned' || proposal.state == 'receiver_signed' || proposal.state == 'composer_signed'
   end
   def proposal_sign(proposal)
     proposal.sign_receiver
