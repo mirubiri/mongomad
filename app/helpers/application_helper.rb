@@ -319,6 +319,15 @@ module ApplicationHelper
   def proposal_can_cancel?(proposal, user)
     proposal.can_cancel?(user)
   end
+  def proposal_sign(proposal, user)
+
+  end
+  def proposal_confirm(proposal, user)
+
+  end
+  def proposal_cancel(proposal, user)
+
+  end
 
   # MESSAGE HELPERS -----------------------------------------
   def message_id(message)
