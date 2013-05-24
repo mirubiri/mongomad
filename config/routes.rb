@@ -14,9 +14,9 @@ Mongomad::Application.routes.draw do
 
     resources :negotiations do
       member do
-        put 'sign'
-        put 'confirm'
-        put 'cancel'
+        get 'sign'
+        get 'confirm'
+        get 'cancel'
       end
     end
 

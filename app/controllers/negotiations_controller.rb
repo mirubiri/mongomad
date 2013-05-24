@@ -97,12 +97,11 @@ class NegotiationsController < ApplicationController
   # Firma la propuesta
   def sign
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last;
-
-    proposal_sign(proposal);    
+    proposal = @negotiation.proposals.last
+    proposal.sign_receiver   
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index.js"}
+      format.js { render :template => "negotiations/index", :layout => false}
     end
   end
 
@@ -110,12 +109,11 @@ class NegotiationsController < ApplicationController
   # Confirma la propuesta
   def confirm
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last;
-
-    proposal_confirm(proposal, current_user);
+    proposal = @negotiation.proposals.last
+    proposal.user_composer_id == current_user.id ? proposal.confirm_composer : proposal.confirm_receiver
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index.js"}
+      format.js { render :template => "negotiations/index", :layout => false}
     end
   end
 
@@ -123,12 +121,11 @@ class NegotiationsController < ApplicationController
   # Cancela la propuesta
   def cancel
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last;
-
-    proposal_cancel(proposal, current_user);
+    proposal = @negotiation.proposals.last
+    proposal.user_composer_id == current_user.id ? proposal.cancel_composer : proposal.cancel_receiver
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index.js"}
+      format.js { render :template => "negotiations/index", :layout => false}
     end
   end
 end
