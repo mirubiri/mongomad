@@ -7,7 +7,7 @@
   margin-left:5px;  
 
   .person_info{
-    @include proportions(50%,252px);
+    @include proportions(49%,252px);
     @include border_Element_into_container;
     @include box-sizing(border-box);
     float: left;
@@ -95,10 +95,10 @@
   
 
   .statistics{
-    @include proportions(50%,252px);
+    @include proportions(49%,252px);
     @include border_Element_into_container;
     @include box-sizing(border-box);
-    float:left;
+    float:right;
     overflow:auto;
     margin-bottom:15px;
     border:$borde1px;

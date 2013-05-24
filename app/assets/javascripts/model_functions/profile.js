@@ -7,12 +7,13 @@ function addProfileCommentsSeparator(){
 }
 
 function setProfileContainersHeights(){
-  //alert("setProfileContainersHeights funcionando");
+  //salert("setProfileContainersHeights funcionando");
 
-  var alturaPpalContainer = $('#ppal_container').height();
-  var alturaDisponible = alturaPpalContainer;
-  var alturaPerfil = (alturaDisponible * 40)/100;
-  var alturaComentarios = (alturaDisponible * 60)/100;
+  var alturaContentSide = $('#content-side').height();
+  var navBarHeight = $('#navigation_bar').height();
+  var alturaDisponible = alturaContentSide - navBarHeight -10; // margen entre barra y contenido
+  var alturaPerfil = (alturaDisponible * 38)/100;
+  var alturaComentarios = (alturaDisponible * 57)/100;
 
   $('.person_info').css({'height': alturaPerfil  + 'px'});
   $('.person_info,.statistics').equalHeightColumns();
