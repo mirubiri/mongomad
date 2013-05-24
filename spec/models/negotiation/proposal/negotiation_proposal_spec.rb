@@ -75,9 +75,16 @@ describe Negotiation::Proposal do
   end
 
   describe '#state' do
+    it 'initial state is :unsigned when composer has money' do
+      user = Fabricate(:user_with_things)
+      offer = Fabricate(:offer, user_composer:user, Fabricate(:offer_money, user_id:user.id, quantity:150))
+      proposal = offer.start_negotiation.proposals.last
+      expect(proposal.state).to eq 'composer_signed'
+    end
 
-    xit 'initial state is :unsigned when composer has money'
-    xit 'initial state is :composer_signed when composer has no money'
+    it 'initial state is :composer_signed when composer has no money' do
+      expect(proposal.state).to eq 'composer_signed'
+    end
 
     context 'When proposal is in :unsigned state' do
       before do
