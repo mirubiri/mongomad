@@ -101,7 +101,7 @@ class NegotiationsController < ApplicationController
     proposal.sign_receiver   
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index", :layout => false}
+      format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
   end
 
@@ -113,7 +113,7 @@ class NegotiationsController < ApplicationController
     proposal.user_composer_id == current_user.id ? proposal.confirm_composer : proposal.confirm_receiver
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index", :layout => false}
+      format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
   end
 
@@ -125,7 +125,7 @@ class NegotiationsController < ApplicationController
     proposal.user_composer_id == current_user.id ? proposal.cancel_composer : proposal.cancel_receiver
 
     respond_to do |format|
-      format.js { render :template => "negotiations/index", :layout => false}
+      format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
   end
 end
