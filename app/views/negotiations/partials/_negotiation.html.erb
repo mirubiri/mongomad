@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="offer_buttons">        
-        <%= link_to 'edit',
+        <%= link_to 'new proposal',
             edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
             :remote => true,
             :class => "btn btn-warning" %> 
@@ -71,6 +71,9 @@
               :remote => true,
               :class => "btn btn-danger" %>        
         <% end %>
+      </div>
+      <div style="float:left; text-align:center; color:red; width:100%">
+        <%= negotiation_last_proposal(negotiation).state %>        
       </div>
       <div class="offer_date">
         <%#= negotiation_datetime(negotiation) %>
