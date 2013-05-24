@@ -63,7 +63,7 @@ class Negotiation::Proposal
   end
 
   def can_sign?(user)
-    if (user_receiver_id == user.id) && (state == :unsigned.to_s)
+    if (user_receiver_id == user.id) && (state == 'unsigned')
       return true
     else
       return false
@@ -71,7 +71,7 @@ class Negotiation::Proposal
   end
 
   def can_confirm?(user)
-    if (user_composer_id == user.id && state == :receiver_signed.to_s) || (user_receiver_id == user.id && state == :composer_signed.to_s)
+    if (user_composer_id == user.id && state == 'receiver_signed') || (user_receiver_id == user.id && state == 'composer_signed')
       return true
     else
       return false
@@ -79,7 +79,7 @@ class Negotiation::Proposal
   end
 
   def can_cancel?(user)
-    if state == :unsigned.to_s || state == :receiver_signed.to_s || state == :composer_signed.to_s
+    if state == 'unsigned' || state == 'receiver_signed' || state == 'composer_signed'
       return true
     else
       return false
