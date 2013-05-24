@@ -62,30 +62,6 @@ class Negotiation::Proposal
     negotiation && negotiation.negotiators.find(user_receiver_id)
   end
 
-  def can_sign?(user)
-    if (user_receiver_id == user.id) && (state == :unsigned.to_s)
-      return true
-    else
-      return false
-    end
-  end
-
-  def can_confirm?(user)
-    if (user_composer_id == user.id && state == :receiver_signed.to_s) || (user_receiver_id == user.id && state == :composer_signed.to_s)
-      return true
-    else
-      return false
-    end
-  end
-
-  def can_cancel?(user)
-    if state == :unsigned.to_s || state == :receiver_signed.to_s || state == :composer_signed.to_s
-      return true
-    else
-      return false
-    end
-  end
-
   private
   def set_initial_state
     if money.user_id.nil? || money.user_id == user_composer_id
