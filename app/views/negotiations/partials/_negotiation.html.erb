@@ -47,21 +47,27 @@
                  
         <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>        
           <%= link_to 'firmar',
-              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :controller => "negotiations",
+              :action => "sign",
+              :id => negotiation_id(negotiation),
               :remote => true,
               :class => "btn btn-success" %>       
         <% end %>
 
         <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
           <%= link_to 'confirmar',
-              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :controller => "negotiations",
+              :action => "confirm",
+              :id => negotiation_id(negotiation),
               :remote => true,
               :class => "btn btn-success" %>
         <% end %>
 
         <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
           <%= link_to 'cancelar',
-              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              :controller => "negotiations",
+              :action => "cancel",
+              :id => negotiation_id(negotiation),
               :remote => true,
               :class => "btn btn-danger" %>        
         <% end %>

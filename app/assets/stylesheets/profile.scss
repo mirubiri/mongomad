@@ -1,18 +1,18 @@
 @import "variables";
 
 .profile_complete{
-  @include fixed_width(99%,825px,99%);
+  @include fixed_width(99%,99%,99%);
   float:left;
   overflow:auto;
   margin-left:5px;  
 
   .person_info{
-    @include proportions(48.5%,252px);
+    @include proportions(50%,252px);
     @include border_Element_into_container;
     @include box-sizing(border-box);
     float: left;
     overflow:auto;
-    margin:0px 8px 15px 0px;
+    margin-bottom:15px;
     border:$borde1px;
     background-color: white;
 
@@ -95,12 +95,12 @@
   
 
   .statistics{
+    @include proportions(50%,252px);
     @include border_Element_into_container;
     @include box-sizing(border-box);
     float:left;
     overflow:auto;
     margin-bottom:15px;
-    width: 48.5%;
     border:$borde1px;
     background-color: white;
 
@@ -166,7 +166,7 @@
     @include box-sizing(border-box);
     overflow:auto;
     margin-bottom:15px;
-    width: 98.3%;
+    width: 100%;
     border:$borde1px;
     background-color: white;
 

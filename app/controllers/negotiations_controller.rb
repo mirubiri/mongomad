@@ -92,4 +92,44 @@ class NegotiationsController < ApplicationController
       format.html { redirect_to user_negotiations_url }
     end
   end
+
+
+  # Firma la propuesta
+  def sign
+    @negotiation = Negotiation.find(params[:id])
+    proposal = @negotiation.proposals.last;
+
+    proposal_sign(proposal,current_user);    
+
+    respond_to do |format|
+      format.js { render :template => "negotiations/index.js"}
+    end
+  end
+
+
+  # Confirma la propuesta, creando el trato y eliminando la negociacion
+  def confirm
+    @negotiation = Negotiation.find(params[:id])
+    proposal = @negotiation.proposals.last;
+
+    proposal_confirm(proposal,current_user);
+
+    respond_to do |format|
+      format.js { render :template => "negotiations/index.js"}
+    end
+  end
+
+
+  # Cancela la propuesta, es decir manda un mensaje al composer avisandole que no me ha gustado
+  def cancel
+    @negotiation = Negotiation.find(params[:id])
+    proposal = @negotiation.proposals.last;
+
+    proposal_cancel(proposal,current_user);
+
+    respond_to do |format|
+      format.js { render :template => "negotiations/index.js"}
+    end
+  end
+
 end
