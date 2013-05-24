@@ -75,11 +75,26 @@ describe Negotiation::Proposal do
   end
 
   describe '#state' do
+    before { proposal.save }
+
     it 'initial state is :unsigned when composer has money' do
       user = Fabricate(:user_with_things)
-      offer = Fabricate(:offer, user_composer:user, Fabricate(:offer_money, user_id:user.id, quantity:'150'))
-      proposal = offer.start_negotiation.proposals.last
-      expect(proposal.state).to eq 'composer_signed'
+      offer = Fabricate(:offer, user_composer:user, money:Fabricate.build(:offer_money, user_id:user.id, quantity:'150'))
+      proposal2 = offer.start_negotiation.proposals.last
+
+      puts proposal2.user_composer_id
+      puts proposal2.user_receiver_id
+      puts proposal2.money.user_id
+      puts proposal2.money.quantity
+      puts 'aaaaaaaaaaa'
+      #proposal2.save
+
+      # puts proposal2.user_composer_id
+      # puts proposal2.user_receiver_id
+      # puts proposal2.money.user_id
+      # puts proposal2.money.quantity
+
+      expect(proposal2.state).to eq 'unsigned'
     end
 
     it 'initial state is :composer_signed when composer has no money' do
@@ -88,7 +103,6 @@ describe Negotiation::Proposal do
 
     context 'When proposal is in :unsigned state' do
       before do
-        proposal.save
         proposal.state = :unsigned
       end
 
@@ -110,7 +124,6 @@ describe Negotiation::Proposal do
 
     context 'When proposal is in :composer_signed state' do
       before do
-        proposal.save
         proposal.state = :composer_signed
       end
 
@@ -132,7 +145,6 @@ describe Negotiation::Proposal do
 
     context 'When proposal is in :receiver_signed state' do
       before do
-        proposal.save
         proposal.state = :receiver_signed
       end
 
