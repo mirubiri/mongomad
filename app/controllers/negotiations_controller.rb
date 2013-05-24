@@ -99,7 +99,7 @@ class NegotiationsController < ApplicationController
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last;
 
-    proposal_sign(proposal,current_user);    
+    proposal_sign(proposal);    
 
     respond_to do |format|
       format.js { render :template => "negotiations/index.js"}

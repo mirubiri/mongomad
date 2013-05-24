@@ -319,14 +319,14 @@ module ApplicationHelper
   def proposal_can_cancel?(proposal, user)
     proposal.can_cancel?(user)
   end
-  def proposal_sign(proposal, user)
-
+  def proposal_sign(proposal)
+    proposal.sign_receiver
   end
   def proposal_confirm(proposal, user)
-
+    proposal.user_composer_id == user.id ? proposal.confirm_composer : proposal.confirm_receiver
   end
   def proposal_cancel(proposal, user)
-
+    proposal.user_composer_id == user.id ? proposal.cancel_composer : proposal.cancel_receiver
   end
 
   # MESSAGE HELPERS -----------------------------------------
