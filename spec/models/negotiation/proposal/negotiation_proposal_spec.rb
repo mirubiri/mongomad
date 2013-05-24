@@ -81,19 +81,6 @@ describe Negotiation::Proposal do
       user = Fabricate(:user_with_things)
       offer = Fabricate(:offer, user_composer:user, money:Fabricate.build(:offer_money, user_id:user.id, quantity:'150'))
       proposal2 = offer.start_negotiation.proposals.last
-
-      puts proposal2.user_composer_id
-      puts proposal2.user_receiver_id
-      puts proposal2.money.user_id
-      puts proposal2.money.quantity
-      puts 'aaaaaaaaaaa'
-      #proposal2.save
-
-      # puts proposal2.user_composer_id
-      # puts proposal2.user_receiver_id
-      # puts proposal2.money.user_id
-      # puts proposal2.money.quantity
-
       expect(proposal2.state).to eq 'unsigned'
     end
 
