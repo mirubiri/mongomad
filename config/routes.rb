@@ -11,7 +11,15 @@ Mongomad::Application.routes.draw do
     resources :requests
     resources :things
     resources :offers
-    resources :negotiations
+
+    resources :negotiations do
+      member do
+        put 'sign'
+        put 'confirm'
+        put 'cancel'
+      end
+    end
+
     resources :deals
     resources :alerts
   end
