@@ -88,10 +88,10 @@ class Negotiation::Proposal
 
   private
   def set_initial_state
-    if money.user_id.nil? || money.user_id == user_composer_id
-      self.state = :composer_signed
-    else
+    if money.user_id == user_composer_id
       self.state = :unsigned
+    else
+      self.state = :composer_signed
     end
   end
 end
