@@ -5,7 +5,4 @@ class Deal::Conversation
   embeds_many :messages, class_name: 'Deal::Conversation::Message', cascade_callbacks: true
 
   accepts_nested_attributes_for :messages
-
-  validates :messages,
-    presence: true
 end
