@@ -82,4 +82,110 @@ class Negotiation::Proposal
       self.state = :composer_signed
     end
   end
+
+  public
+  def seal_deal
+    deal = nil
+
+    if self.negotiation.persisted?
+      deal_params = {
+        signers: self.negotiation.negotiators,
+        conversation_attributes: {
+          messages_attributes: Array.new
+        },
+        agreement_attributes: fill_agreement_hash
+      }
+
+      deal = Deal.new(deal_params)
+      deal.save
+    end
+
+    deal
+  end
+
+  private
+  def fill_agreement_hash
+    agreement_hash = {
+      conversation_attributes: fill_conversation_hash,
+      proposals_attributes: Array.new
+    }
+
+    self.negotiation.proposals.each do |proposal|
+      agreement_hash[:proposals_attributes] << fill_proposal_hash(proposal)
+    end
+
+    agreement_hash
+  end
+
+  def fill_conversation_hash
+    conversation_hash = {
+      messages_attributes: Array.new
+    }
+
+    self.negotiation.conversation.messages.each do |message|
+      conversation_hash[:messages_attributes] << fill_message_hash(message)
+    end
+
+    conversation_hash
+  end
+
+  def fill_message_hash(message)
+    message_hash = {
+      user_id: message.user_id,
+      nick: message.nick,
+      text: message.text,
+      image_fingerprint: message.image_fingerprint,
+      image_url: message.image_url
+    }
+  end
+
+  def fill_proposal_hash(proposal)
+    proposal_hash = {
+      user_composer_id: self.user_composer_id,
+      user_receiver_id: self.user_receiver_id,
+      composer_attributes: {
+        nick: user_composer.profile.nick,
+        image_fingerprint: user_composer.profile.image_fingerprint,
+        image_url: user_composer.profile.image_url,
+        products_attributes: Array.new
+      },
+      receiver_attributes: {
+        nick: user_receiver.profile.nick,
+        image_fingerprint: user_receiver.profile.image_fingerprint,
+        image_url: user_receiver.profile.image_url,
+        products_attributes: Array.new
+      },
+      money_attributes: {
+        user_id: self.money.user_id,
+        quantity: self.money.quantity
+      }
+    }
+
+    #TODO: Unir ambas inicializaciones composer/receiver
+    self.composer.products.each do |product|
+      thing = proposal.user_composer.things.find(product.thing_id)
+      proposal_hash[:composer_attributes][:products_attributes] << {
+        thing_id: product.thing_id,
+        name: thing.name,
+        description: thing.description,
+        quantity: product.quantity,
+        image_fingerprint: thing.image_fingerprint,
+        image_url: thing.image_url,
+      }
+    end
+
+    self.receiver.products.each do |product|
+      thing = proposal.user_receiver.things.find(product.thing_id)
+      proposal_hash[:receiver_attributes][:products_attributes] << {
+        thing_id: product.thing_id,
+        name: thing.name,
+        description: thing.description,
+        quantity: product.quantity,
+        image_fingerprint: thing.image_fingerprint,
+        image_url: thing.image_url,
+      }
+    end
+
+    proposal_hash
+  end
 end
