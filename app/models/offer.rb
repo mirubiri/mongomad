@@ -52,6 +52,7 @@ class Offer
       user_receiver_id: self.user_receiver_id
     }
 
+    #TODO: unir ambas inicializaciones composer/receiver
     proposal_hash[:composer_attributes] = { products_attributes: Array.new }
     self.composer.products.each do |product|
       proposal_hash[:composer_attributes][:products_attributes] << {
