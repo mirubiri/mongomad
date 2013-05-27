@@ -306,4 +306,16 @@ function resetUserAndQuantityInSummary(){
   $('#usuario_dinero').attr("name",""+tipoElemento+"[money][nil]").attr("value",0);
   $('#usuario_id').attr("value",0);
 }
+
+
+//Importantisima la funcion que me ayuda a saber si hablamos de una oferta
+
+function isOffer(){
+  if ($(".edit_negotiation")[0]){
+   return false;
+  }else{
+    return true;
+  }
+}
+
 //Fin funciones de ayuda para la ejecucion de los procesos de nueva oferta
