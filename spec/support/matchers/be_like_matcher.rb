@@ -5,7 +5,7 @@ module MongomadMatchersHelpers
   private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
-    ['name', 'description', 'image_url', 'image_fingerprint'].concat(yield).each do |field|
+    ['name','description','image_url','image_fingerprint'].concat(yield).each do |field|
       return false unless
       actual.send(field) == expected.send(field)
     end
@@ -38,6 +38,12 @@ module MongomadMatchersHelpers
   end
 
 
+  #CONVERSATION
+  def eq_conversation?(actual,expected)
+    equivalent?(actual.messages,expected.messages)
+  end
+
+
   #COMPOSER & RECEIVER
   def eq_personal_data?(actual,expected)
     (actual.nick == expected.nick) &&
@@ -58,10 +64,10 @@ module MongomadMatchersHelpers
   end
 
   def eq_offerable?(actual,expected)
-      eq_offerable_participants?(actual,expected) &&
-      eq_money?(actual.money,expected.money) &&
-      eq_side?(actual.composer,expected.composer) &&
-      eq_side?(actual.receiver,expected.receiver)
+    eq_offerable_participants?(actual,expected) &&
+    eq_money?(actual.money,expected.money) &&
+    eq_side?(actual.composer,expected.composer) &&
+    eq_side?(actual.receiver,expected.receiver)
   end
 
   def eq_proposal?(actual,expected)
@@ -76,9 +82,11 @@ module MongomadMatchersHelpers
 
   #REQUEST
   def eq_request?(actual,expected)
-    (actual.text == expected.text) &&
+    (actual.user.id == expected.user.id ) &&
+      (actual.nick == expected.nick ) &&
+      (actual.text == expected.text) &&
       (actual.image_url == expected.image_url) &&
-      (actual.user_id == expected.user_id )
+      (actual.image_fingerprint == expected.image_fingerprint)
   end
 
 
@@ -115,6 +123,14 @@ module MongomadMatchersHelpers
       (eq_klass?(expected,'Product') || eq_klass?(expected,'Thing'))
   end
 
+  def are_messages?(actual,expected)
+    eq_klass?(actual,'Message') && eq_klass?(expected,'Message')
+  end
+
+  def are_conversations?(actual,expected)
+    eq_klass?(actual,'Conversation') && eq_klass?(expected,'Conversation')
+  end
+
   def are_requests?(actual,expected)
     eq_klass?(actual,'Request') && eq_klass?(expected,'Request')
   end
@@ -142,8 +158,11 @@ module MongomadMatchersHelpers
     return eq_product?(actual,expected)  if are_products?(actual,expected)
     return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
 
-    return eq_request?(actual,expected)  if are_requests?(actual,expected)
-    return eq_money?(actual,expected)    if are_moneys?(actual,expected)
+    return eq_conversation?(actual,expected)  if are_conversations?(actual,expected)
+    return eq_message?(actual,expected)       if are_messages?(actual,expected)
+
+    return eq_request?(actual,expected) if are_requests?(actual,expected)
+    return eq_money?(actual,expected)   if are_moneys?(actual,expected)
     false
   end
 
