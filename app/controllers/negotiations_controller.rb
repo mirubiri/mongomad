@@ -68,12 +68,10 @@ class NegotiationsController < ApplicationController
   def update
     @user = current_user
     @negotiation = @user.negotiations.find(params[:id])
-
-    @proposal = Negotiation::Proposal.new(params[:proposal])
-    @proposal.user_composer_id = current_user.id
+    proposal = Negotiation::Proposal.new(params[:proposal])    
 
     respond_to do |format|
-      if @negotiation.proposals << @proposal
+      if @negotiation.proposals << proposal
         format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
         format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false}
       else

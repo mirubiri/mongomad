@@ -2,7 +2,7 @@ function buildOfferMosaic(){
   var ppalContainer = $('#ppal_container');
 
   if (ppalContainer.hasClass('masonry')) {
-    ppalContainer.masonry('reloadItems');
+    ppalContainer.masonry('reload');
   }else{
     ppalContainer.masonry({
       itemSelector : '.offer',
