@@ -73,7 +73,6 @@ class Offer
       }
     end
 
-    proposal_hash[:receiver_attributes] = { products_attributes: Array.new }
     self.receiver.products.each do |product|
       proposal_hash[:receiver_attributes][:products_attributes] << {
         thing_id: product.thing_id,
