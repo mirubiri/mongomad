@@ -80,8 +80,7 @@ describe Negotiation::Proposal do
     it 'initial state is :unsigned when composer has money' do
       user = Fabricate(:user_with_things)
       offer = Fabricate(:offer, user_composer:user, money:Fabricate.build(:offer_money, user_id:user.id, quantity:'150'))
-      proposal2 = offer.start_negotiation.proposals.last
-      expect(proposal2.state).to eq 'unsigned'
+      expect(offer.start_negotiation.proposals.last.state).to eq 'unsigned'
     end
 
     it 'initial state is :composer_signed when composer has no money' do
@@ -148,6 +147,40 @@ describe Negotiation::Proposal do
       it 'change from :receiver_signed to :receiver_canceled on :cancel_receiver event' do
         proposal.cancel_receiver
         expect(proposal.state).to eq 'receiver_canceled'
+      end
+    end
+  end
+
+  describe '#seal_deal' do
+    context 'When negotiation is saved' do
+      before { proposal.negotiation.save }
+
+      let(:deal) { proposal.seal_deal }
+
+      it 'returns a saved deal' do
+        expect(deal).to be_persisted
+      end
+
+      it 'add the deal to composer in negotiation' do
+        expect(deal).to eq proposal.user_composer.deals.first
+      end
+
+      it 'add the deal to receiver in negotiation' do
+        expect(deal).to eq proposal.user_composer.deals.first
+      end
+
+      it 'returns a deal whose conversation has no messages' do
+        expect(deal.conversation.messages).to have(0).messages
+      end
+
+      it 'returns a deal whose agreement has the values from original negotiation' do
+        expect(deal.agreement).to be_like negotiation
+      end
+    end
+
+    context 'When negotiation is not saved' do
+      it 'returns nil' do
+        expect(proposal.seal_deal).to eq nil
       end
     end
   end

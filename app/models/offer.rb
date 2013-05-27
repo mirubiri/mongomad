@@ -31,9 +31,12 @@ class Offer
       negotiation_params = {
         negotiators: [ user_composer, user_receiver ],
         conversation_attributes: {
-          messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
+          messages_attributes: [ {
+            user_id: user_composer_id,
+            text: initial_message
+          } ]
         },
-        proposals_attributes: Array.new,
+        proposals_attributes: Array.new
       }
 
       negotiation_params[:proposals_attributes] << fill_proposal_hash
@@ -49,10 +52,20 @@ class Offer
   def fill_proposal_hash
     proposal_hash = {
       user_composer_id: self.user_composer_id,
-      user_receiver_id: self.user_receiver_id
+      user_receiver_id: self.user_receiver_id,
+      composer_attributes: {
+        products_attributes: Array.new
+      },
+      receiver_attributes: {
+        products_attributes: Array.new
+      },
+      money_attributes: {
+        user_id: self.money.user_id,
+        quantity: self.money.quantity
+      }
     }
 
-    proposal_hash[:composer_attributes] = { products_attributes: Array.new }
+    #TODO: Unir ambas inicializaciones composer/receiver
     self.composer.products.each do |product|
       proposal_hash[:composer_attributes][:products_attributes] << {
         thing_id: product.thing_id,
@@ -60,18 +73,12 @@ class Offer
       }
     end
 
-    proposal_hash[:receiver_attributes] = { products_attributes: Array.new }
     self.receiver.products.each do |product|
       proposal_hash[:receiver_attributes][:products_attributes] << {
         thing_id: product.thing_id,
         quantity: product.quantity
       }
     end
-
-    proposal_hash[:money_attributes] = {
-      user_id: self.money.user_id,
-      quantity: self.money.quantity
-    }
 
     proposal_hash
   end
