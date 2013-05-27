@@ -134,8 +134,8 @@ class Negotiation::Proposal
       user_id: message.user_id,
       nick: message.nick,
       text: message.text,
-      image_fingerprint: message.image_fingerprint,
-      image_url: message.image_url
+      image_url: message.image_url,
+      image_fingerprint: message.image_fingerprint
     }
   end
 
@@ -145,14 +145,14 @@ class Negotiation::Proposal
       user_receiver_id: self.user_receiver_id,
       composer_attributes: {
         nick: user_composer.profile.nick,
-        image_fingerprint: user_composer.profile.image_fingerprint,
         image_url: user_composer.profile.image_url,
+        image_fingerprint: user_composer.profile.image_fingerprint,
         products_attributes: Array.new
       },
       receiver_attributes: {
         nick: user_receiver.profile.nick,
-        image_fingerprint: user_receiver.profile.image_fingerprint,
         image_url: user_receiver.profile.image_url,
+        image_fingerprint: user_receiver.profile.image_fingerprint,
         products_attributes: Array.new
       },
       money_attributes: {
@@ -169,8 +169,8 @@ class Negotiation::Proposal
         name: thing.name,
         description: thing.description,
         quantity: product.quantity,
-        image_fingerprint: thing.image_fingerprint,
         image_url: thing.image_url,
+        image_fingerprint: thing.image_fingerprint
       }
     end
 
@@ -181,8 +181,8 @@ class Negotiation::Proposal
         name: thing.name,
         description: thing.description,
         quantity: product.quantity,
-        image_fingerprint: thing.image_fingerprint,
         image_url: thing.image_url,
+        image_fingerprint: thing.image_fingerprint
       }
     end
 
