@@ -180,7 +180,7 @@ describe Negotiation::Proposal do
 
     context 'When negotiation is not saved' do
       it 'returns nil' do
-        expect(negotiation.start_negotiation).to eq nil
+        expect(negotiation.seal_deal).to eq nil
       end
     end
   end
