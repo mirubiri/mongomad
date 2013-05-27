@@ -155,18 +155,18 @@ describe Negotiation::Proposal do
     context 'When negotiation is saved' do
       before { proposal.negotiation.save }
 
-      let(:deal) { negotiation.seal_deal }
+      let(:deal) { proposal.seal_deal }
 
       it 'returns a saved deal' do
         expect(deal).to be_persisted
       end
 
       it 'add the deal to composer in negotiation' do
-        expect(deal).to eq negotiation.user_composer.deals.first
+        expect(deal).to eq proposal.user_composer.deals.first
       end
 
       it 'add the deal to receiver in negotiation' do
-        expect(deal).to eq negotiation.user_receiver.deals.first
+        expect(deal).to eq proposal.user_composer.deals.first
       end
 
       it 'returns a deal whose conversation has no messages' do
@@ -180,7 +180,7 @@ describe Negotiation::Proposal do
 
     context 'When negotiation is not saved' do
       it 'returns nil' do
-        expect(negotiation.seal_deal).to eq nil
+        expect(proposal.seal_deal).to eq nil
       end
     end
   end
