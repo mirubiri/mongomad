@@ -33,7 +33,7 @@ class Offer
         conversation_attributes: {
           messages_attributes: [ { user_id: user_composer_id, text: initial_message } ]
         },
-        proposals_attributes: Array.new,
+        proposals_attributes: Array.new
       }
 
       negotiation_params[:proposals_attributes] << fill_proposal_hash
