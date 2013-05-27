@@ -13,7 +13,6 @@ module MongomadHelpers
   #   }
   # end
 
-
   # public
   # def params_for_offer(offer)
   #   hash = params_for_offerable(offer)
