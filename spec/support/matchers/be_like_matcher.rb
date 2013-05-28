@@ -5,7 +5,7 @@ module MongomadMatchersHelpers
   private
   #THING & PRODUCT
   def eq_vendable?(actual,expected)
-    ['name', 'description', 'image_url', 'image_fingerprint'].concat(yield).each do |field|
+    ['name','description','image_url','image_fingerprint'].concat(yield).each do |field|
       return false unless
       actual.send(field) == expected.send(field)
     end
@@ -21,24 +21,7 @@ module MongomadMatchersHelpers
   end
 
 
-  #MONEY
-  def eq_money?(actual,expected)
-    (actual.user_id == expected.user_id) &&
-      (actual.quantity == expected.quantity)
-  end
-
-
-  #MESSAGE
-  def eq_message?(actual,expected)
-    (actual.user_id == expected.user_id) &&
-      (actual.nick == expected.nick) &&
-      (actual.text == expected.text) &&
-      (actual.image_url == expected.image_url) &&
-      (actual.image_fingerprint == expected.image_fingerprint)
-  end
-
-
-  #COMPOSER & RECEIVER
+  #COMPOSER, RECEIVER & MONEY
   def eq_personal_data?(actual,expected)
     (actual.nick == expected.nick) &&
       (actual.image_url == expected.image_url) &&
@@ -50,6 +33,11 @@ module MongomadMatchersHelpers
       equivalent?(actual.products,expected.products)
   end
 
+  def eq_money?(actual,expected)
+    (actual.user_id == expected.user_id) &&
+      (actual.quantity == expected.quantity)
+  end
+
 
   #OFFER & PROPOSAL
   def eq_offerable_participants?(actual,expected)
@@ -58,10 +46,10 @@ module MongomadMatchersHelpers
   end
 
   def eq_offerable?(actual,expected)
-      eq_offerable_participants?(actual,expected) &&
-      eq_money?(actual.money,expected.money) &&
-      eq_side?(actual.composer,expected.composer) &&
-      eq_side?(actual.receiver,expected.receiver)
+    eq_money?(actual.money,expected.money) &&
+    eq_offerable_participants?(actual,expected) &&
+    eq_side?(actual.composer,expected.composer) &&
+    eq_side?(actual.receiver,expected.receiver)
   end
 
   def eq_proposal?(actual,expected)
@@ -76,17 +64,75 @@ module MongomadMatchersHelpers
 
   #REQUEST
   def eq_request?(actual,expected)
-    (actual.text == expected.text) &&
+    (actual.user.id == expected.user.id ) &&
+      (actual.nick == expected.nick ) &&
+      (actual.text == expected.text) &&
       (actual.image_url == expected.image_url) &&
-      (actual.user_id == expected.user_id )
+      (actual.image_fingerprint == expected.image_fingerprint)
+  end
+
+
+  #CONVERSATION & MESSAGE
+  def eq_conversation?(actual,expected)
+    equivalent?(actual.messages,expected.messages)
+  end
+
+  def eq_message?(actual,expected)
+    (actual.user_id == expected.user_id) &&
+      (actual.nick == expected.nick) &&
+      (actual.text == expected.text) &&
+      (actual.image_url == expected.image_url) &&
+      (actual.image_fingerprint == expected.image_fingerprint)
+  end
+
+
+  #NEGOTIATION & AGREEMENT
+  def eq_offerable_participants?(actual,expected)
+    (actual.user_composer_id == expected.user_composer_id) &&
+      (actual.user_receiver_id == expected.user_receiver_id)
+  end
+
+  def eq_negotiable?(actual,expected)
+    equivalent?(actual.proposals,expected.proposals) &&
+      eq_conversation?(actual.conversation,expected.conversation)
+  end
+
+  def eq_agreement?(actual,expected)
+    eq_negotiable?(actual,expected)
+  end
+
+  def eq_negotiation?(actual,expected)
+    eq_negotiable?(actual,expected)
+  end
+
+
+  #DEAL
+  def eq_deal?(actual,expected)
+    eq_negotiable?(actual,expected) &&
+      eq_conversation?(actual,expected)
   end
 
 
   #COMPARATOR ENGINE
-
-  #CHECKERS
   def eq_klass?(instance,class_name)
     instance.class.name.demodulize.include?(class_name)
+  end
+
+  def are_things?(actual,expected)
+    eq_klass?(actual,'Thing') && eq_klass?(expected,'Thing')
+  end
+
+  def are_products?(actual,expected)
+    eq_klass?(actual,'Product') && eq_klass?(expected,'Product')
+  end
+
+  def are_vendables?(actual,expected)
+    (eq_klass?(actual,'Product') || eq_klass?(actual,'Thing')) &&
+      (eq_klass?(expected,'Product') || eq_klass?(expected,'Thing'))
+  end
+
+  def are_moneys?(actual,expected)
+    eq_klass?(actual,'Money') && eq_klass?(expected,'Money')
   end
 
   def are_offers?(actual,expected)
@@ -102,25 +148,29 @@ module MongomadMatchersHelpers
       (eq_klass?(expected,'Offer') || eq_klass?(expected,'Proposal'))
   end
 
-  def are_products?(actual,expected)
-    eq_klass?(actual,'Product') && eq_klass?(expected,'Product')
-  end
-
-  def are_things?(actual,expected)
-    eq_klass?(actual,'Thing') && eq_klass?(expected,'Thing')
-  end
-
-  def are_vendables?(actual,expected)
-    (eq_klass?(actual,'Product') || eq_klass?(actual,'Thing')) &&
-      (eq_klass?(expected,'Product') || eq_klass?(expected,'Thing'))
-  end
-
   def are_requests?(actual,expected)
     eq_klass?(actual,'Request') && eq_klass?(expected,'Request')
   end
 
-  def are_moneys?(actual,expected)
-    eq_klass?(actual,'Money') && eq_klass?(expected,'Money')
+  def are_conversations?(actual,expected)
+    eq_klass?(actual,'Conversation') && eq_klass?(expected,'Conversation')
+  end
+
+  def are_messages?(actual,expected)
+    eq_klass?(actual,'Message') && eq_klass?(expected,'Message')
+  end
+
+  def are_negotiations?(actual,expected)
+    eq_klass?(actual,'Negotiation') && eq_klass?(expected,'Negotiation')
+  end
+
+  def are_agreements?(actual,expected)
+    eq_klass?(actual,'Agreement') && eq_klass?(expected,'Agreement')
+  end
+
+  def are_negotiables?(actual,expected)
+    (eq_klass?(actual,'Negotiation') || eq_klass?(actual,'Agreement')) &&
+      (eq_klass?(expected,'Negotiation') || eq_klass?(expected,'Agreement'))
   end
 
   def eq_array?(actual,expected)
@@ -134,16 +184,24 @@ module MongomadMatchersHelpers
   end
 
   def similar?(actual,expected)
-    return eq_offer?(actual,expected)     if are_offers?(actual,expected)
-    return eq_proposal?(actual,expected)  if are_proposals?(actual,expected)
-    return eq_offerable?(actual,expected) if are_offerables?(actual,expected)
+    return eq_thing?(actual,expected)        if are_things?(actual,expected)
+    return eq_product?(actual,expected)      if are_products?(actual,expected)
+    return eq_vendable?(actual,expected)     if are_vendables?(actual,expected)
 
-    return eq_thing?(actual,expected)    if are_things?(actual,expected)
-    return eq_product?(actual,expected)  if are_products?(actual,expected)
-    return eq_vendable?(actual,expected) if are_vendables?(actual,expected)
+    return eq_money?(actual,expected)        if are_moneys?(actual,expected)
 
-    return eq_request?(actual,expected)  if are_requests?(actual,expected)
-    return eq_money?(actual,expected)    if are_moneys?(actual,expected)
+    return eq_offer?(actual,expected)        if are_offers?(actual,expected)
+    return eq_proposal?(actual,expected)     if are_proposals?(actual,expected)
+    return eq_offerable?(actual,expected)    if are_offerables?(actual,expected)
+
+    return eq_request?(actual,expected)      if are_requests?(actual,expected)
+
+    return eq_conversation?(actual,expected) if are_conversations?(actual,expected)
+    return eq_message?(actual,expected)      if are_messages?(actual,expected)
+
+    return eq_negotiation?(actual,expected)  if are_negotiations?(actual,expected)
+    return eq_agreement?(actual,expected)    if are_agreements?(actual,expected)
+    return eq_negotiable?(actual,expected)   if are_negotiables?(actual,expected)
     false
   end
 
