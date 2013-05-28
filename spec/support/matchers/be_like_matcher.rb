@@ -86,6 +86,33 @@ module MongomadMatchersHelpers
   end
 
 
+  #NEGOTIATION & AGREEMENT
+  def eq_offerable_participants?(actual,expected)
+    (actual.user_composer_id == expected.user_composer_id) &&
+      (actual.user_receiver_id == expected.user_receiver_id)
+  end
+
+  def eq_negotiable?(actual,expected)
+    equivalent?(actual.proposals,expected.proposals) &&
+      eq_conversation?(actual.conversation,expected.conversation)
+  end
+
+  def eq_agreement?(actual,expected)
+    eq_negotiable?(actual,expected)
+  end
+
+  def eq_negotiation?(actual,expected)
+    eq_negotiable?(actual,expected)
+  end
+
+
+  #DEAL
+  def eq_deal?(actual,expected)
+    eq_negotiable?(actual,expected) &&
+      eq_conversation?(actual,expected)
+  end
+
+
   #COMPARATOR ENGINE
   def eq_klass?(instance,class_name)
     instance.class.name.demodulize.include?(class_name)
@@ -133,6 +160,19 @@ module MongomadMatchersHelpers
     eq_klass?(actual,'Message') && eq_klass?(expected,'Message')
   end
 
+  def are_negotiations?(actual,expected)
+    eq_klass?(actual,'Negotiation') && eq_klass?(expected,'Negotiation')
+  end
+
+  def are_agreements?(actual,expected)
+    eq_klass?(actual,'Agreement') && eq_klass?(expected,'Agreement')
+  end
+
+  def are_negotiables?(actual,expected)
+    (eq_klass?(actual,'Negotiation') || eq_klass?(actual,'Agreement')) &&
+      (eq_klass?(expected,'Negotiation') || eq_klass?(expected,'Agreement'))
+  end
+
   def eq_array?(actual,expected)
     return false unless actual.size == expected.size
 
@@ -158,6 +198,10 @@ module MongomadMatchersHelpers
 
     return eq_conversation?(actual,expected) if are_conversations?(actual,expected)
     return eq_message?(actual,expected)      if are_messages?(actual,expected)
+
+    return eq_negotiation?(actual,expected)  if are_negotiations?(actual,expected)
+    return eq_agreement?(actual,expected)    if are_agreements?(actual,expected)
+    return eq_negotiable?(actual,expected)   if are_negotiables?(actual,expected)
     false
   end
 
