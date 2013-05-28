@@ -30,3 +30,10 @@ function activateNegotiationButtons(){
      }
   );
 }
+
+function reloadDialogContainerWidth(){
+  var anchuraTotal = $('.negotiation').first().width();
+  var anchuraOfferSide = $('.negotiation > .negotiation_offer').first().width();
+  var anchuraDialog = anchuraTotal - anchuraOfferSide;
+  $('.negotiation > .dialog_container').css({'width': anchuraDialog +'px'});
+}
