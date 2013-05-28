@@ -232,10 +232,12 @@ function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos 
   var posicion = howMuchInputsAre(container);
   var tipoElemento = getElementModifiedClass();
 
-  $(""+container+"").append("<div class='destroy_input' destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\">" +
-    "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][id]\" value=\""+ id + "\" />" +
-    "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
-    "</div>");
+  if(isOffer()===true){
+    $(""+container+"").append("<div class='destroy_input' destroy_product_thing_id=\""+ value + "\" product_id=\""+ id + "\">" +
+      "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][id]\" value=\""+ id + "\" />" +
+      "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][_destroy]\" value=\""+ 1 + "\" id=\""+ id + "\" />"+
+      "</div>");
+  }
 
   addProductIdToThing(container,value,id,owner);    
 }
