@@ -126,4 +126,18 @@ class NegotiationsController < ApplicationController
       format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
   end
+
+  def addComment
+    @negotiation = Negotiation.find(params[:id])
+    message = Negotiation::Conversation::Message.new({user_id:current_user.id, text:params[:text]})
+
+    respond_to do |format|
+      if @negotiation.conversation.messages << message
+        format.js { render :partial => "negotiations/reload_negotiations_list", :layout => false}
+      else
+        puts "va mal"
+      end      
+    end
+  end
+
 end
