@@ -1,3 +1,31 @@
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
 
+
+/*
+
+setInterval(function() {
+  //alert("el bucle se lanza");
+
+  var lugar = locationName();
+
+  if ( lugar === "negotiations" ) {
+    //alert("funciona el bucle dentro de " + lugar);
+    $('#ppal_container').html("<%= escape_javascript(render :partial => 'negotiations/partials/negotiation').html_safe %>");
+    reloadDialogContainerWidth();
+    maximizeConversationsHeights();
+  }else {}
+
+}, 5000);
+
+
+function locationName(){
+  var pagina = location.pathname.split("/");
+  var ultimoPath = pagina.length-1;
+  var lugar = location.pathname.split("/")[ultimoPath];
+  //alert(lugar);
+
+  return lugar;
+}
+
+*/
