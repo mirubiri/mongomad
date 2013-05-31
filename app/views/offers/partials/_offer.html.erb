@@ -1,35 +1,15 @@
 <% if (user_visited_offers.count != 0)%>
   <% user_visited_offers.reverse_each do |offer| %>
-    <div class="offer" id="<%= offer_id(offer) %>">
-      <div id="options">
-        <div class="menu">
-          <%= link_to "Eliminar Oferta",
-                user_offer_path(current_user,offer_id(offer)),
-                :method => :delete,
-                :confirm => "Are you sure?" %>
-          <a href="#blank">Opcion 2</a>
-        </div>
-      </div>
+    <div class="offer" id="<%= offer_id(offer) %>">      
+
       <div class="offer_header">
-        <div class="triangle">
-            <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
-        </div>
-        <div class="profile_image">
-          <%= link_to offer_composer_image(offer),
-            :controller => "users",
-            :action => "show",
-            :id => offer_composer_id(offer)
-          %>
-        </div>
-        <div class="description">
-          <div class="composer_name">
-            <%= offer_composer_name(offer) %>
-          </div>
-          <div class="offer_message">
-            <%= offer_message(offer) %>
-          </div>
-        </div>
+        <%= offer_composer_name(offer).capitalize %>
       </div>
+
+      <div class="offer_triangle">
+        <div class="triangle"></div>
+      </div>
+
       <div class="offer_things">
         <div class="recieved">
           <% offer_composer_products(offer).each do |product| %>
@@ -48,6 +28,24 @@
               <div class="artistic_layer_small"></div>
             </div>
           <% end %>
+        </div>
+      </div>
+      
+      <div class="offer_info">        
+        <div class="profile_image">
+          <%= link_to offer_composer_image(offer),
+            :controller => "users",
+            :action => "show",
+            :id => offer_composer_id(offer)
+          %>
+        </div>
+        <div class="description">
+          <div class="composer_name">
+            <%= offer_composer_name(offer) %>
+          </div>
+          <div class="offer_message">
+            <%= offer_message(offer) %>
+          </div>
         </div>
       </div>
 

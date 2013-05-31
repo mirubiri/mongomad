@@ -3,9 +3,11 @@
 
 .offer {
   @include element_into_ElementList_style;
-  @include container_options;
   @include offer_header;
+  @include offer_triangle;
   @include offer_products;
+  @include offer_info;
+
   width: $offerWidth;
   float: left;
   margin: 0px 10px 10px 0px;

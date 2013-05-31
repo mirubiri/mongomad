@@ -15,6 +15,7 @@ function maximizeConversationsHeights(){
   });
   $("[id^=conversationofnegotiation]").each(function(){
     $(this).css({'height':($(this).parent().height()-57)+'px'});
+    //$(this).css({'max-height':($(this).parent().height()-57)+'px'});
   });
 }
 

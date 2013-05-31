@@ -17,7 +17,7 @@ $productRightMargin: 8px;
 $productsTopMargin: 5px;
 $productsBottomMargin: 8px;
 $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (2 * $productRightMargin) + 8px;
-$trianglePosition: $offerWidth - 25px;
+$trianglePosition: $offerWidth/2;
 $profileImageLeftMargin: 6px;
 $profileImageDimension: 50px;
 $commentLeftMargin: 8px;
@@ -93,7 +93,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin ppal_container_style{
   width: 100%;
-  background: rgba(140, 140, 140, 0.30);
+  background: #D4D6D5;
   overflow: visible;
 }
 
@@ -257,70 +257,46 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 //Inicio mixins oferta**************************************
 
 @mixin offer_header{
-
   .offer_header{
-    @include proportions(100%,60px);
+    @include proportions(100%,24px);
+    float: left;
+    background-color: #bbbbbb;
     overflow: hidden;
-    margin-bottom: 5px;
+    overflow: none;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: normal; 
+    text-align: center;
+    color: white;    
+    padding-top: 5px; 
+  }
+}
+
+@mixin offer_triangle{
+  .offer_triangle{
+    @include proportions(100%,15px);
+    float: left;
 
     .triangle {
       @include relative($top:0px,$left:$trianglePosition);
       @include proportions(0px,0px);
       z-index: 1001;
       border:{
-            top: 25px solid rgb(119,119,119);
-            right: 0px solid transparent;
-            left: 25px solid transparent;
-      }
-
-      img{
-        @include proportions(100%,100%);
-        @include absolute($top:-23px,$left:-13px);
-      }
-    }
-
-    .profile_image{
-      @include big_images_style;
-      @include relative($top:-20px,$left:$profileImageLeftMargin);
-      @include proportions($profileImageDimension,$profileImageDimension);
-
-      a{
-        @include proportions(100%,100%);
-
-        img{
-          @include high-quality-image;
-          @include proportions(100%,100%);
-          @include border-radius(3px, 3px);
-        }
-      }
-    }
-
-    .description{
-      @include relative($top:-70px,$left:$commentPosition);
-      @include proportions($commentWidth,$profileImageDimension);
-      overflow: hidden;
-      font-size: 9px;
-      line-height: normal;
-
-      .composer_name{
-        float: left;
-        width: 100%;
-        font-weight: bold;
-        margin-bottom: 4px;
-      }
-      .offer_message{
-        float: left;
-        width: 100%;
-      }
+            top: 5px solid #bbbbbb;
+            right: 10px solid transparent;
+            left: 10px solid transparent;
+      }    
     }
   }
 }
+
 
 @mixin offer_products{
   .offer_things{
     float:left;
     overflow: visible;
     margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
+    padding-bottom: 35px;
 
     .recieved{
       width: $bigImageDimension;
@@ -369,6 +345,54 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         }
       }
     }
+  }
+}
+
+@mixin offer_info{
+  .offer_info{
+    float: left;
+    @include proportions(100%,60px);
+    overflow: hidden;
+    margin-bottom: 5px; 
+    background-color: #bbbbbb;
+    z-index: 4000; 
+
+    .profile_image{
+      @include big_images_style;
+      @include proportions(100%,100%);
+      position: relative;
+      top:-30px;
+      left:0px;
+      padding-left: 100px;
+
+      a{
+        @include proportions(100%,100%);
+
+        img{
+          @include high-quality-image;
+          @include proportions(50px,50px);
+          @include border-radius(25px, 25px);
+        }
+      }
+    }   
+
+    .description{
+      @include proportions($commentWidth,$profileImageDimension);
+      overflow: hidden;
+      font-size: 9px;
+      line-height: normal;
+
+      .composer_name{
+        float: left;
+        width: 100%;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .offer_message{
+        float: left;
+        width: 100%;
+      }
+    }  
   }
 }
 
