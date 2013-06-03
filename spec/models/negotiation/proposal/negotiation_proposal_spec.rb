@@ -88,9 +88,7 @@ describe Negotiation::Proposal do
     end
 
     context 'When proposal is in :unsigned state' do
-      before do
-        proposal.state = :unsigned
-      end
+      before { proposal.state = :unsigned }
 
       it 'change from :unsigned to :receiver_signed on :sign_receiver event' do
         proposal.sign_receiver
@@ -109,9 +107,7 @@ describe Negotiation::Proposal do
     end
 
     context 'When proposal is in :composer_signed state' do
-      before do
-        proposal.state = :composer_signed
-      end
+      before { proposal.state = :composer_signed }
 
       it 'change from :composer_signed to :receiver_confirmed on :confirm_receiver event' do
         proposal.confirm_receiver
@@ -130,9 +126,7 @@ describe Negotiation::Proposal do
     end
 
     context 'When proposal is in :receiver_signed state' do
-      before do
-        proposal.state = :receiver_signed
-      end
+      before { proposal.state = :receiver_signed }
 
       it 'change from :receiver_signed to :composer_confirmed on :confirm_composer event' do
         proposal.confirm_composer
