@@ -62,17 +62,17 @@ class Negotiation::Proposal
     negotiation && negotiation.negotiators.find(user_receiver_id)
   end
 
-  # def can_sign?(user)
-  #   user_receiver_id == user.id && state == 'unsigned'
-  # end
+  def can_sign?(user)
+    user_receiver_id == user.id && state == 'unsigned'
+  end
 
-  # def can_confirm?(user)
-  #   (user_composer_id == user.id && state == 'receiver_signed') || (user_receiver_id == user.id && state == 'composer_signed')
-  # end
+  def can_confirm?(user)
+    (user_composer_id == user.id && state == 'receiver_signed') || (user_receiver_id == user.id && state == 'composer_signed')
+  end
 
-  # def can_cancel?(user)
-  #   state == 'unsigned' || state == 'receiver_signed' || state == 'composer_signed'
-  # end
+  def can_cancel?(user)
+    state == 'unsigned' || state == 'receiver_signed' || state == 'composer_signed'
+  end
 
   private
   def set_initial_state
