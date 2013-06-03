@@ -16,7 +16,7 @@ group :assets do
   gem 'stitch'
   gem 'bootstrap-sass'
   gem 'mini_magick'
-  gem "cancan"
+  gem 'cancan'
 end
 
 group :development,:test do
