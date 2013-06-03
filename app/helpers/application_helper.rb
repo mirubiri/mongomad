@@ -311,14 +311,13 @@ module ApplicationHelper
     proposal.updated_at
   end
   def proposal_can_sign?(proposal, user)
-    proposal.user_receiver_id == user.id && proposal.state == 'unsigned'
+    proposal.can_sign?(user)
   end
   def proposal_can_confirm?(proposal, user)
-    (proposal.user_composer_id == user.id && proposal.state == 'receiver_signed') ||
-    (proposal.user_receiver_id == user.id && proposal.state == 'composer_signed')
+    proposal.can_confirm?(user)
   end
   def proposal_can_cancel?(proposal, user)
-    proposal.state == 'unsigned' || proposal.state == 'receiver_signed' || proposal.state == 'composer_signed'
+    proposal.can_cancel?(user)
   end
 
   # no se pueden utilizar así, habria que incluirlos en un modulo
