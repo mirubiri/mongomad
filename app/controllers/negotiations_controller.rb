@@ -67,13 +67,15 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1.json
   def update
     @negotiation = current_user.negotiations.find(params[:id])
+    proposal.user_composer_id == current_user.id ? proposal.cancel_composer : proposal.cancel_receiver
+
     proposal = Negotiation::Proposal.new(params[:proposal])
-    proposal.user_composer_id = current_user.id    
+    proposal.user_composer_id = current_user.id
 
     respond_to do |format|
       if @negotiation.proposals << proposal
         format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-        format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false}
+        format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false }
       else
         format.html { render action: "edit" }
       end
@@ -96,7 +98,7 @@ class NegotiationsController < ApplicationController
   def sign
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last
-    proposal.sign_receiver   
+    proposal.sign_receiver
 
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }
@@ -107,11 +109,13 @@ class NegotiationsController < ApplicationController
   # Confirma la propuesta
   def confirm
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last
-    proposal.user_composer_id == current_user.id ? proposal.confirm_composer : proposal.confirm_receiver
 
     respond_to do |format|
-      format.js { render :partial => "negotiations/reload_negotiations_list" }
+      if @negotiation.seal_deal
+        format.js { render :partial => "negotiations/reload_negotiations_list" }
+      else
+        format.js { render :partial => "negotiations/reload_negotiations_list" }
+      end
     end
   end
 
@@ -136,7 +140,7 @@ class NegotiationsController < ApplicationController
         format.js { render :partial => "negotiations/reload_negotiations_list", :layout => false}
       else
         puts "va mal"
-      end      
+      end
     end
   end
 
