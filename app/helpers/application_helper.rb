@@ -320,17 +320,6 @@ module ApplicationHelper
     proposal.can_cancel?(user)
   end
 
-  # no se pueden utilizar así, habria que incluirlos en un modulo
-  # def proposal_sign(proposal)
-  #   proposal.sign_receiver
-  # end
-  # def proposal_confirm(proposal, user)
-  #   proposal.user_composer_id == user.id ? proposal.confirm_composer : proposal.confirm_receiver
-  # end
-  # def proposal_cancel(proposal, user)
-  #   proposal.user_composer_id == user.id ? proposal.cancel_composer : proposal.cancel_receiver
-  # end
-
   # MESSAGE HELPERS -----------------------------------------
   def message_id(message)
     message.id
