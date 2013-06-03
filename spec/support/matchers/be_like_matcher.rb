@@ -93,16 +93,16 @@ module MongomadMatchersHelpers
         (actual.negotiators.first.id == expected.negotiators.first.id) &&
           (actual.negotiators.last.id == expected.negotiators.last.id)
       else
-        (actual.negotiators.first.id == expected.signers.first.id) &&
-          (actual.negotiators.last.id == expected.signers.last.id)
+        (actual.negotiators.first.id == expected.deal.signers.first.id) &&
+          (actual.negotiators.last.id == expected.deal.signers.last.id)
       end
     else
       if eq_klass?(expected,'Negotiation')
-        (actual.signers.first.id == expected.negotiators.first.id) &&
-          (actual.signers.last.id == expected.negotiators.last.id)
+        (actual.deal.signers.first.id == expected.negotiators.first.id) &&
+          (actual.deal.signers.last.id == expected.negotiators.last.id)
       else
-        (actual.signers.first.id == expected.signers.first.id) &&
-          (actual.signers.last.id == expected.signers.last.id)
+        (actual.deal.signers.first.id == expected.deal.signers.first.id) &&
+          (actual.deal.signers.last.id == expected.deal.signers.last.id)
       end
     end
   end
