@@ -150,38 +150,4 @@ describe Negotiation::Proposal do
       end
     end
   end
-
-  describe '#seal_deal' do
-    context 'When negotiation is saved' do
-      before { proposal.negotiation.save }
-
-      let(:deal) { proposal.seal_deal }
-
-      it 'returns a saved deal' do
-        expect(deal).to be_persisted
-      end
-
-      it 'add the deal to composer in negotiation' do
-        expect(deal).to eq proposal.user_composer.deals.first
-      end
-
-      it 'add the deal to receiver in negotiation' do
-        expect(deal).to eq proposal.user_composer.deals.first
-      end
-
-      it 'returns a deal whose conversation has no messages' do
-        expect(deal.conversation.messages).to have(0).messages
-      end
-
-      it 'returns a deal whose agreement has the values from original negotiation' do
-        expect(deal.agreement).to be_like negotiation
-      end
-    end
-
-    context 'When negotiation is not saved' do
-      it 'returns nil' do
-        expect(proposal.seal_deal).to eq nil
-      end
-    end
-  end
 end
