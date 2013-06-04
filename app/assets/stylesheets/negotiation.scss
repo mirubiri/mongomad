@@ -10,6 +10,7 @@
     .negotiation_offer {
       @include offer_header;
       @include offer_products;
+      @include offer_info;
       @include box-sizing(border-box);
       overflow: none;
       padding: 0px;
@@ -36,6 +37,8 @@
         visibility: hidden;
       }
 
+
+
       @include box-sizing(border-box);
     }
 
@@ -47,7 +50,7 @@
       border-left: 2px solid rgb(119,119,119);
 
       .dialog_head{
-        @include proportions(100%,25px);
+        @include proportions(100%,29px);
         float: left;
         margin-bottom:10px;
         background-color:rgb(119,119,119);

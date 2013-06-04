@@ -1,24 +1,15 @@
 <% user_logged_negotiations.each do |negotiation| %>
-  <div class="negotiation" id="negotiation<%= negotiation.id %>">
+  <div class="negotiation" id="negotiation<%= negotiation.id %>"> 
 
-    <div class="negotiation_offer">
+    <div class="negotiation_offer"> 
       <div class="offer_header">
-        <div class="triangle">
-            <!--<img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
-        </div>
-        <div class="profile_image">
-          <%= link_to proposal_composer_image(negotiation_last_proposal(negotiation)),
-            :controller => "users",
-            :action => "show",
-            :id => proposal_composer_id(negotiation_last_proposal(negotiation))
-          %>
-        </div>
-        <div class="description">
-          <div class="composer_name">
-            <%= proposal_composer_name(negotiation_last_proposal(negotiation)) %>
-          </div>
-        </div>
+        <%= proposal_composer_name(negotiation_last_proposal(negotiation)).upcase %>
       </div>
+
+      <div class="offer_triangle">
+        <div class="triangle"></div>
+      </div>
+
       <div class="offer_things">
         <div class="recieved">
           <% proposal_composer_products(negotiation_last_proposal(negotiation)).each do |product| %>
@@ -39,40 +30,50 @@
           <% end %>
         </div>
       </div>
-      <div class="offer_buttons">        
-        <%= link_to 'new proposal',
-            edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
-            :remote => true,
-            :class => "btn btn-warning" %> 
-                 
-        <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>        
-          <%= link_to 'firmar',
-              sign_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
-              :remote => true,
-              :class => "btn btn-success" %>       
-        <% end %>
+      
+      <div class="offer_info">        
+        <div class="profile_image">
+          <%= link_to proposal_composer_image(negotiation_last_proposal(negotiation)),
+            :controller => "users",
+            :action => "show",
+            :id => proposal_composer_id(negotiation_last_proposal(negotiation))
+          %>
+        </div>        
 
-        <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
-          <%= link_to 'confirmar',
-              confirm_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
+        <div class="offer_buttons">        
+          <%= link_to 'new proposal',
+              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
               :remote => true,
-              :class => "btn btn-success" %>
-        <% end %>
+              :class => "btn btn-small btn-warning" %> 
+                   
+          <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>        
+            <%= link_to 'firmar',
+                sign_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
+                :remote => true,
+                :class => "btn btn-small btn-success" %>       
+          <% end %>
 
-        <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
-          <%= link_to 'cancelar',
-              cancel_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
-              :remote => true,
-              :class => "btn btn-danger" %>        
-        <% end %>
-      </div>
-      <div style="float:left; text-align:center; color:red; width:100%">
-        <%= negotiation_last_proposal(negotiation).state %>        
-      </div>
-      <div class="offer_date">
-        <%#= negotiation_datetime(negotiation) %>
-      </div>
-    </div>
+          <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
+            <%= link_to 'confirmar',
+                confirm_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
+                :remote => true,
+                :class => "btn btn-small btn-success" %>
+          <% end %>
+
+          <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
+            <%= link_to 'cancelar',
+                cancel_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
+                :remote => true,
+                :class => "btn btn-small btn-danger" %>        
+          <% end %>
+        </div>
+            <!--        
+            <div class="offer_date">
+              <%#= offer_datetime(offer) %>
+            </div>
+            -->
+      </div>      
+    </div>    
 
     <div class="dialog_container">
       <div class="dialog_head">

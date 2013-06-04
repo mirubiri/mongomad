@@ -29,7 +29,6 @@
         margin: inherit;
         margin-bottom: 5px;
         border: $borde1px;
-        padding: 2px;
 
         img{
           @include high-quality-image;
@@ -41,7 +40,7 @@
       .user_name{
         @include center-horizontally(80%);
         height:auto;
-        text-align:center;
+        text-align:left;
       }
 
       .new_offer_button{

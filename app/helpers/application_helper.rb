@@ -65,8 +65,8 @@ module ApplicationHelper
   def user_visited_id
     @user.id
   end
-  def user_visited_name
-    @user.profile.name
+  def user_visited_fullname
+    @user.profile.name + " " + @user.profile.surname
   end
   def user_visited_surname
     @user.profile.surname

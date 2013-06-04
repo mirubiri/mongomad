@@ -45,7 +45,6 @@
     .header_options{
       float: left;
       min-width: 200px;
-      padding-top: 5px;
       margin-right: 50px;
 
       nav{
@@ -77,13 +76,14 @@
       input[type='search']{
         @include reset-search-field;
         float: left;
-        margin: 5px 20px 0px 0px;
+        margin: 8px 20px 0px 0px;
       }
 
       .header_user_image{
         @include proportions(26px,26px);
         float: left;
         margin: 3px 0px 0px 0px;
+        padding-top: 5px;
 
         a{
           @include proportions(24px,24px);
@@ -100,6 +100,7 @@
         @include proportions(60px,30px);
         float: left;
         margin-left:5px;
+        padding-top: 5px;
         vertical-align:text-top;
         font:{
           weight:bolder;
