@@ -274,6 +274,9 @@ module ApplicationHelper
   def proposal_composer_name(proposal)
     proposal.composer.nick
   end
+  def proposal_composer_fullname(proposal)
+    proposal.user_composer.profile.name + " " + proposal.user_composer.profile.surname
+  end
   def proposal_composer_image(proposal)
     image_tag(proposal.composer.image_url)
   end
