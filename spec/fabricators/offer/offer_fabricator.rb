@@ -15,16 +15,17 @@ Fabricator(:offer_receiver_money, from: :offer) do
   money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:user_receiver].id, quantity:200) }
 end
 
-Fabricator(:offer_improcex, from: :offer) do
+Fabricator(:offer_medico_sergio, from: :offer) do
   user_composer { Fabricate(:user_medico) }
   user_receiver { Fabricate(:user_sergio) }
 end
 
-Fabricator(:offer_improcex_slim, from: :offer_improcex) do
-  after_build do |offer|
-    offer.composer.products.first.destroy
-    offer.composer.products.last.destroy
-    offer.receiver.products.first.destroy
-    offer.receiver.products.last.destroy
-  end
+Fabricator(:offer_sergio_sofia, from: :offer) do
+  user_composer { Fabricate(:user_sergio) }
+  user_receiver { Fabricate(:user_sofia) }
+end
+
+Fabricator(:offer_sofia_medico, from: :offer) do
+  user_composer { Fabricate(:user_sofia) }
+  user_receiver { Fabricate(:user_medico) }
 end
