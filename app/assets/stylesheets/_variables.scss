@@ -15,7 +15,7 @@ $bigBackgroundSize: 143px;
 $productsLeftMargin: 15px;
 $productRightMargin: 8px;
 $productsTopMargin: 5px;
-$productsBottomMargin: 8px;
+$productsBottomMargin: 0px;
 $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (2 * $productRightMargin) + 8px;
 $trianglePosition: $offerWidth/2;
 $profileImageLeftMargin: 6px;
@@ -351,48 +351,56 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin offer_info{
   .offer_info{
     float: left;
-    @include proportions(100%,60px);
-    overflow: hidden;
-    margin-bottom: 5px; 
+    width: 100%;
+    overflow: visible;
     background-color: #bbbbbb;
-    z-index: 4000; 
 
     .profile_image{
-      @include big_images_style;
-      @include proportions(100%,100%);
+      @include center-horizontally(50px);
+      @include proportions(50px,50px);
+      background-color: #bbbbbb;
       position: relative;
-      top:-30px;
-      left:0px;
-      padding-left: 100px;
+      top:-25px;      
+      border: 1px solid #bbbbbb;
+      @include border-radius(25px, 25px);
+      z-index: 4000;
 
       a{
-        @include proportions(100%,100%);
-
         img{
           @include high-quality-image;
-          @include proportions(50px,50px);
-          @include border-radius(25px, 25px);
+          @include proportions(48px,48px);
+          @include border-radius(24px, 24px);
+          margin-left: 1px;
+          margin-top: 1px;
         }
       }
     }   
 
     .description{
-      @include proportions($commentWidth,$profileImageDimension);
+      @include center-horizontally(80%);
+      position: relative;
+      top:-20px;
+      left:0px;
       overflow: hidden;
       font-size: 9px;
       line-height: normal;
-
-      .composer_name{
-        float: left;
-        width: 100%;
-        font-weight: bold;
-        margin-bottom: 4px;
-      }
+     
       .offer_message{
         float: left;
         width: 100%;
+        color: #443f3f;
       }
-    }  
+    }
+
+    .offer_buttons{
+      @include center-horizontally(80%);
+    }
+
+    .offer_date{
+      float: left;
+      @include proportions(100%,20px);
+      font-size: 9px;      
+    }
   }
 }
 
