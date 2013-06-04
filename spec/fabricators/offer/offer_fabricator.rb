@@ -7,15 +7,24 @@ Fabricator(:offer) do
   initial_message { Faker::Lorem.sentence }
 end
 
-Fabricator(:offer_improcex, from: :offer) do
-  user_composer { Fabricate(:user_medico) }
-  user_receiver { Fabricate(:user_sergio) }
-end
-
 Fabricator(:offer_composer_money, from: :offer) do
   money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:user_composer].id, quantity:100) }
 end
 
 Fabricator(:offer_receiver_money, from: :offer) do
   money { |attrs| Fabricate.build(:offer_money, user_id:attrs[:user_receiver].id, quantity:200) }
+end
+
+Fabricator(:offer_improcex, from: :offer) do
+  user_composer { Fabricate(:user_medico) }
+  user_receiver { Fabricate(:user_sergio) }
+end
+
+Fabricator(:offer_improcex_slim, from: :offer_improcex) do
+  after_build do |offer|
+    offer.composer.products.first.destroy
+    offer.composer.products.last.destroy
+    offer.receiver.products.first.destroy
+    offer.receiver.products.last.destroy
+  end
 end
