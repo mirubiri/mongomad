@@ -1,14 +1,15 @@
 <div class="navbar" id="navigation_bar">
   <div class="navbar-inner">
     <div class="container">
+
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <ul class="nav" id="navigation_bar">
-
 
           <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
             <li id="offers-tab" class="active" style="position:relative">
@@ -19,8 +20,6 @@
               <div class="nav_element">Ofertas</div>
             <% end %>
           </li>
-
-
 
           <% if @user._id == current_user._id %>
             <% if controller.sub_layout === "negotiations" %>
@@ -35,8 +34,6 @@
             </li>
           <% end %>
 
-
-
           <% if @user._id == current_user._id %>
             <% if controller.sub_layout === "deals" %>
               <li id="deals-tab" class="active" style="position:relative">
@@ -49,8 +46,6 @@
             </li>
           <% end %>
 
-
-
           <% if controller.controller_name === "things" %>
             <% if @user._id == current_user._id %>
               <span style="float:left;margin-top:5px;margin-left:70px">
@@ -61,11 +56,31 @@
               </span>
             <% end %>
           <% end %>
-
         </ul>
-        <form class="navbar-search pull-right" action="">
-          <input type="text" class="search-query span2" placeholder="Search">
-        </form>
+        
+      </div>
+
+      <div class="nav-collapse collapse navbar-responsive-collapse" style="float:right">
+        <ul class="nav .last-nav" id="navigation_bar">
+          <% if (controller.sub_layout === "things") %>
+            <li>
+              <%= link_to "Productos",
+                user_things_path(@user),
+                :remote => true,
+                :id => "link_things",
+                :class =>"active",
+                :'data-toggle' => "tooltip" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Productos",
+                user_things_path(@user),
+                :remote => true,
+                :id => "link_things",
+                :'data-toggle' => "tooltip" %>
+            </li>
+          <% end %>
+        </ul>        
       </div>
     </div>
   </div>

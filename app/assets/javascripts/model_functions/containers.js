@@ -65,7 +65,6 @@ function matchPrincipalContainersHeighs(){
 
 function expandContainers(){
   //alert("expandContainers funcionando");
-
   setRightContainerWidth();
   centerContentSide();
 }
@@ -99,7 +98,7 @@ function setRightContainerWidth(){
 
 function centerContentSide(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;
-  var anchuraPrincipalElement = 260;// La anchura de una oferta
+  var anchuraPrincipalElement = 276;// La anchura de una oferta
   var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);  
 
   var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);

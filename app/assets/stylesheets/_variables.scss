@@ -6,18 +6,18 @@ $margen80px: 80px;
 $borde1px: 1px solid rgb(220,220,220);
 
 //offer_variables
-$bigImageDimension: 144px;
-$smallImageDimension: 67px;
+$bigImageDimension: 160px;
+$smallImageDimension: 60px;
 $bigImageQuantityPosition: $bigImageDimension - 10px;
 $smallImageQuantityPosition: $smallImageDimension - 7px;
 $smallBackgroundSize: 66px;
 $bigBackgroundSize: 143px;
-$productsLeftMargin: 15px;
-$productRightMargin: 8px;
+$productsLeftMargin: 20px;
+$productRightMargin: 14px;
 $productsTopMargin: 5px;
 $productsBottomMargin: 0px;
 $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (2 * $productRightMargin) + 8px;
-$trianglePosition: $offerWidth/2;
+$trianglePosition: $offerWidth - ($offerWidth/2) - 8px;
 $profileImageLeftMargin: 6px;
 $profileImageDimension: 50px;
 $commentLeftMargin: 8px;
@@ -78,9 +78,10 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 @mixin border_Element_into_container{
-  @include box-shadow(rgb(170,170,170) 0px 1px 3px);
+  @include box-shadow(rgb(160,160,160) 0px 2px 4px);
   @include rounded_border;
   border: $borde1px;
+  border-color: rgba(0,0,0,0.25);
 }
 
 @mixin top_main_header_style{
@@ -95,6 +96,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   width: 100%;
   background: #D4D6D5;
   overflow: visible;
+  border-top-right-radius:5px;
+  border-top-left-radius:5px;
 }
 
 @mixin container_into_PpalSide_style{
@@ -123,9 +126,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin big_images_style{
   @include box-sizing(border-box);
-  @include border-radius(5px, 5px);
+  @include border-radius(2px, 2px);
   border: $borde1px;
-  padding:2px;
+  border-color: #bbbbbb;
   overflow: visible;
 
   .quantity_container{
@@ -143,9 +146,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin small_images_style{
   @include box-sizing(border-box);
-  @include border-radius(5px, 5px);
+  @include border-radius(2px, 2px);
   border: $borde1px;
-  padding: 2px;
+  border-color: #bbbbbb;
   overflow: visible;
 
   .quantity_container{
@@ -263,7 +266,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     background-color: #bbbbbb;
     overflow: hidden;
     overflow: none;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: bold;
     line-height: normal; 
     text-align: center;
@@ -353,25 +356,26 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     float: left;
     width: 100%;
     overflow: visible;
-    background-color: #bbbbbb;
+    background-color: #f3f3f3;
 
     .profile_image{
       @include center-horizontally(50px);
-      @include proportions(50px,50px);
-      background-color: #bbbbbb;
+      @include proportions(52px,52px);
+      background-color: #f3f3f3;
       position: relative;
-      top:-25px;      
-      border: 1px solid #bbbbbb;
-      @include border-radius(25px, 25px);
+      top:-28px;      
+      border: 1px solid #f3f3f3;
+      @include border-radius(26px, 26px);
       z-index: 4000;
 
       a{
         img{
           @include high-quality-image;
-          @include proportions(48px,48px);
-          @include border-radius(24px, 24px);
-          margin-left: 1px;
-          margin-top: 1px;
+          @include proportions(46px,46px);
+          @include border-radius(23px, 23px);
+          margin-left: 3px;
+          margin-top: 3px;
+          border: 1px solid #cccccc;
         }
       }
     }   

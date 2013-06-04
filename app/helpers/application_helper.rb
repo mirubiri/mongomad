@@ -178,8 +178,11 @@ module ApplicationHelper
   def offer_composer_id(offer)
     offer.user_composer_id
   end
-  def offer_composer_name(offer)
+  def offer_composer_nick(offer)
     offer.composer.nick
+  end
+  def offer_composer_name(offer)
+    offer.user_composer.profile.name + " " + offer.user_composer.profile.surname
   end
   def offer_composer_image(offer)
     image_tag(offer.composer.image_url)

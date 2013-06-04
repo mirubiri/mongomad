@@ -36,27 +36,7 @@
             :'data-toggle' => "tooltip",
             :title => "perfil" %>
         <% end %>
-      </div>
-
-      <div class="btn-group">
-        <% if (controller.sub_layout === "things") %>
-          <%= link_to image_tag("/assets/images/products.png"),
-            user_things_path(@user),
-            :remote => true,
-            :id => "link_things",
-            :class =>"btn btn-primary active",
-            :'data-toggle' => "tooltip",
-            :title => "productos" %>
-        <% else %>
-          <%= link_to image_tag("/assets/images/products.png"),
-            user_things_path(@user),
-            :remote => true,
-            :id => "link_things",
-            :class =>"btn btn-primary",
-            :'data-toggle' => "tooltip",
-            :title => "productos" %>
-        <% end %>
-      </div>
+      </div>      
 
       <% if @user._id == current_user._id %>
         <div class="btn-group">
