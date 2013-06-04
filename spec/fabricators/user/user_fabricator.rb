@@ -41,8 +41,8 @@ end
 Fabricator(:user_sofia, from: :user) do
   profile         { Fabricate.build(:user_sofia_profile) }
   things(count:1) { Fabricate.build(:user_thing) }
-  email           'sergio@improcex.com'
-  password        'sergio'
+  email           'sofia@improcex.com'
+  password        'sofia1'
 
   after_build do |user|
     user.things << Fabricate.build(:user_sofia_thing_perro)
