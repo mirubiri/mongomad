@@ -1321,7 +1321,7 @@ input[type="reset"],
 input[type="button"],
 input[type="radio"],
 input[type="checkbox"] {
-  width: auto;
+ 
 }
 select,
 input[type="file"] {
@@ -2113,6 +2113,11 @@ legend + .control-group {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+
+.btn-wide{
+  width: 100%;
+} 
+
 .btn-large {
   padding: 11px 19px;
   font-size: 17.5px;
