@@ -52,3 +52,25 @@ Fabricator(:user_sergio_thing_cartera, from: 'User::Thing') do
     :content_type => 'image/jpg',
     :tempfile     => File.new('app/assets/images/sergio_cartera.jpg')})
 end
+
+Fabricator(:user_sofia_thing_perro, from: 'User::Thing') do
+  user        nil
+  name        'Perro'
+  description 'Mi perro que hace guau guau.'
+  stock       1000
+  image       ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'sofia_perro.jpg',
+    :content_type => 'image/jpg',
+    :tempfile     => File.new('app/assets/images/sofia_perro.jpg')})
+end
+
+Fabricator(:user_sofia_thing_choza, from: 'User::Thing') do
+  user        nil
+  name        'Choza'
+  description 'Choza veraniega ideal para pasar las vacaciones en plan tribal.'
+  stock       1000
+  image       ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'sofia_choza.jpg',
+    :content_type => 'image/jpg',
+    :tempfile     => File.new('app/assets/images/sofia_choza.jpg')})
+end

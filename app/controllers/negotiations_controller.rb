@@ -67,7 +67,7 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1.json
   def update
     @negotiation = current_user.negotiations.find(params[:id])
-    proposal.user_composer_id == current_user.id ? proposal.cancel_composer : proposal.cancel_receiver
+    @negotiation.proposals.last.user_composer_id == current_user.id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
 
     proposal = Negotiation::Proposal.new(params[:proposal])
     proposal.user_composer_id = current_user.id

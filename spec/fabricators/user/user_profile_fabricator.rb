@@ -41,3 +41,18 @@ Fabricator(:user_sergio_profile, from: 'User::Profile') do
     :content_type => 'image/jpg',
     :tempfile     => File.new('app/assets/images/sergio.jpg')})
 end
+
+Fabricator(:user_sofia_profile, from: 'User::Profile') do
+  name       'Sofia'
+  surname    'Contero'
+  nick       'sofia89'
+  sex        'woman'
+  country    'Spain'
+  birth_date '23-11-1989'
+  image       ActionDispatch::Http::UploadedFile.new({
+    :filename     => 'sofia.jpg',
+    :content_type => 'image/jpg',
+    :tempfile     => File.new('app/assets/images/sofia.jpg')})
+end
+
+

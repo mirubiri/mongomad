@@ -13,8 +13,9 @@ class User
 
   accepts_nested_attributes_for :profile
 
-  validates :profile,
-    presence: true
+  #TODO: Deshabilitado temporalmente
+  # validates :profile,
+  #   presence: true
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
