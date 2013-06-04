@@ -78,8 +78,7 @@ describe Negotiation::Proposal do
     before { proposal.save }
 
     it 'initial state is :unsigned when composer has money' do
-      user = Fabricate(:user_with_things)
-      offer = Fabricate(:offer, user_composer:user, money:Fabricate.build(:offer_money, user_id:user.id, quantity:'150'))
+      offer = Fabricate(:offer_composer_money)
       expect(offer.start_negotiation.proposals.last.state).to eq 'unsigned'
     end
 
