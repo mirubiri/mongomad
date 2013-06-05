@@ -93,16 +93,19 @@ function setRightContainerWidth(){
 
   contentSideWidth = $('#content-side').width();
   console.log("anchura del content-side: "+ contentSideWidth);
-
 }
 
 
 function centerContentSide(){
-  var anchuraPosible = ($('#ppal_container').width()) - 16;
+  var anchuraPosible = ($('#ppal_container').width());
+  console.log("anchura del ppal_container: "+ anchuraPosible);
+
   var anchuraPrincipalElement = $('#ppal_container').children(0).outerWidth(true);// La anchura de una oferta con sus margenes incluidos
   if(anchuraPrincipalElement < 100){
     anchuraPrincipalElement = 250;
   }
+
+  console.log("anchura del elemento principal: "+ anchuraPrincipalElement);
 
   var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);
   var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
@@ -121,17 +124,11 @@ function centerContentSide(){
 
 
 function offersFit(elementWidth,totalWidth){
-  var disparador = elementWidth;
-  var contador = 1;
-  var elementosEntran = 0;
+  console.log("¿cuanto espacio tengo?: "+totalWidth);
+  console.log("¿cuanto ocupa cada elemento de la lista?: "+elementWidth);
 
-  while(disparador < totalWidth){
-     disparador = disparador + disparador;
-     contador = contador + 1;
-  }
-
-  var elementosEntran = contador;
-  console.log("¿cuantas ofertan entran?: "+elementosEntran);
+  var elementosEntran = Math.floor(totalWidth/elementWidth);
+  console.log("¿cuantos elementos entran?: "+elementosEntran);
   return elementosEntran;
 }
 

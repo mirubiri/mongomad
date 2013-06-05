@@ -268,10 +268,10 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     overflow: none;
     font-size: 13px;
     font-weight: bold;
-    line-height: normal; 
+    line-height: normal;
     text-align: center;
-    color: white;    
-    padding-top: 5px; 
+    color: white;
+    padding-top: 5px;
   }
 }
 
@@ -288,7 +288,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
             top: 5px solid #bbbbbb;
             right: 10px solid transparent;
             left: 10px solid transparent;
-      }    
+      }
     }
   }
 }
@@ -363,10 +363,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       @include proportions(52px,52px);
       background-color: #f3f3f3;
       position: relative;
-      top:-28px;      
+      top:-28px;
       border: 1px solid #f3f3f3;
       @include border-radius(26px, 26px);
-      z-index: 4000;
 
       a{
         img{
@@ -378,7 +377,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
           border: 1px solid #cccccc;
         }
       }
-    }   
+    }
 
     .description{
       @include center-horizontally(80%);
@@ -388,7 +387,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       overflow: hidden;
       font-size: 9px;
       line-height: normal;
-     
+
       .offer_message{
         float: left;
         width: 100%;
@@ -403,7 +402,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     .offer_date{
       float: left;
       @include proportions(100%,20px);
-      font-size: 9px;      
+      font-size: 9px;
     }
   }
 }
