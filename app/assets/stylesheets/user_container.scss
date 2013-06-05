@@ -108,33 +108,50 @@
             text-align: center;
           }
         }
-
-        .profile_menu{
-          @include center-horizontally(80%);
-          height: 40px;
-          margin-top: 10px;
-          margin-bottom: 10px;
-
-          .btn-toolbar{
-            @include center-horizontally(90%);
-            .btn-group{
-              a{
-                img{
-                  @include high-quality-image;
-                  @include proportions(20px,20px);
-                }
-              }
-            }
-          }
-        }
       }
-
     }
 
     .user_container_requests{
       @include container_into_PpalSide_style;
       margin-bottom: 0px;
       border-bottom: none;
+
+      .request_list_title{
+        @include box-sizing(border-box);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        width: 100%;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #dddddd;
+        margin-bottom: 15px;
+
+        .text_side{
+          @include box-sizing(border-box);
+          float: left;
+          width: 80%;
+          height: 40px;
+          color: #7f8c8c;
+          background-color: #f5f5f5;
+          padding-top: 12px;
+          border-right: 1px solid #dddddd;
+          font-size: 13px;
+          text-align: center;
+        }
+
+        .add_request{
+          @include box-sizing(border-box);
+          height: 40px;
+          color: #7f8c8c;
+          background-color: #f5f5f5;
+          padding-top: 12px;
+          float: right;
+          width: 20%;
+          font-size: 13px;
+          text-align: center;
+          text-decoration: none;
+        }
+        .add_request:hover{text-decoration: none;}
+      }
 
       .btn-toolbar{
         @include center-horizontally(80%);

@@ -1,15 +1,13 @@
-<aside class="user_container_requests" id="user_request_list">  
-  <% if user_logged_id == user_visited_id %>
-    <div class="btn-toolbar">
-        <%= link_to "Pide Algo!!",
-          new_user_request_path(current_user),
-          {:remote => true, :role => "button", :class => "btn btn-success"} 
-        %>    
-        <div class="requestWritingBox" id="request-writing-box">
-          <%= render :partial => 'requests/partials/form' %>
-        </div> 
-    </div>       
-  <% end %> 
+<aside class="user_container_requests" id="user_request_list">
+
+  <div class="request_list_title">
+    <div class="text_side">PETICIONES</div>
+    <%= link_to "+",
+      new_user_request_path(current_user),
+      {:remote => true, :class => "add_request"}
+    %>
+  </div>
+
   <aside class="requests_requestsList" id="request_list_container">
     <% if (user_visited_requests.count != 0)%>
       <%= render :partial =>
@@ -17,7 +15,7 @@
     <% else %>
       <div class="no_elements">
         <p>El usuario no tiene ninguna peticion actualmente</p>
-      </div>      
-    <% end %>            
+      </div>
+    <% end %>
   </aside>
 </aside>
