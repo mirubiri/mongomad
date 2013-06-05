@@ -23,56 +23,112 @@
     .user_container_profile{
       @include container_into_PpalSide_style;
 
-      .image{
-        @include border_Element_into_container;
-        @include center-horizontally(80%);
-        margin: inherit;
-        margin-bottom: 5px;
-        border: $borde1px;
+      .image_side{
+        width: 100%;
+        height: 160px;
+        overflow: none;
 
-        img{
-          @include high-quality-image;
-          @include center-horizontally(100%);
-          @include border-radius(3px, 3px);
+        .image{
+          width: 100%;
+          height: inherit;
+          margin: inherit;
+          margin-bottom: 5px;
+
+          img{
+            @include high-quality-image;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            width: 100%;
+            height: inherit;
+          }
         }
       }
 
-      .user_name{
-        @include center-horizontally(80%);
-        height:auto;
-        text-align:left;
-      }
+      .description_side{
+        @include center-horizontally(95%);
+        height: 160px;
 
-      .new_offer_button{
-        @include center-horizontally(80%);
-        height: 30px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        a{
-          @include box-sizing(border-box);
-          @include proportions(100%,30px);
-          text-align: center;
+        .profile_image{
+          @include proportions(90px,90px);
+          background-color: #f3f3f3;
+          position: relative;
+          top:-50px;
+          left: 63px;
+          border: 1px solid #f3f3f3;
+          @include border-radius(45px, 45px);
+
+          a{
+            img{
+              @include high-quality-image;
+              @include proportions(86px,86px);
+              @include border-radius(43px, 43px);
+              margin-left: 1px;
+              margin-top: 2px;
+              border: 1px solid #cccccc;
+            }
+          }
         }
-      }
 
-      .profile_menu{
-        @include center-horizontally(80%);
-        height: 40px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        .relevan_data{
+          position: relative;
+          top: -80px;
+          width: 100%;
+          height: 30px;
 
-        .btn-toolbar{
-          @include center-horizontally(90%);
-          .btn-group{
-            a{
-              img{
-                @include high-quality-image;
-                @include proportions(20px,20px);
+          .percentage{
+            float: left;
+            padding-left: 25px;
+            text-align: left;
+          }
+
+          .numfriends{
+            float: right;
+            padding-right: 25px;
+            text-align: right;
+          }
+        }
+
+        .user_name{
+          @include center-horizontally(80%);
+          position: relative;
+          top: -70px;
+          height:auto;
+          text-align:center;
+        }
+
+        .new_offer_button{
+          @include center-horizontally(80%);
+          position: relative;
+          top: -60px;
+          height: 30px;
+          margin-top: 10px;
+          a{
+            @include box-sizing(border-box);
+            @include proportions(100%,30px);
+            text-align: center;
+          }
+        }
+
+        .profile_menu{
+          @include center-horizontally(80%);
+          height: 40px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+
+          .btn-toolbar{
+            @include center-horizontally(90%);
+            .btn-group{
+              a{
+                img{
+                  @include high-quality-image;
+                  @include proportions(20px,20px);
+                }
               }
             }
           }
         }
       }
+
     }
 
     .user_container_requests{
