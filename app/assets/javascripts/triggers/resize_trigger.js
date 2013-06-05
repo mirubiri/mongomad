@@ -1,13 +1,11 @@
 $(window).bind('resize', function(event) {
   //alert("ha habido un resize");
-  event.stopPropagation();  
-  
+  event.stopPropagation();
+
   var lugar = locationName();
   //alert(lugar);
 
   loadNeededScripts(lugar);
-  resetUserContainerHeight();
-  resetPpalContainerHeight();
-  matchPrincipalContainersHeighs();
+  resetContainers();
   $('body').removeClass("hidden_container");
 });

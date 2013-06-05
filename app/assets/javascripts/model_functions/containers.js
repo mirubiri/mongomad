@@ -2,11 +2,11 @@ function resetContainers(){
   resetUserContainerHeight();
   resetPpalContainerHeight();
   matchPrincipalContainersHeighs();
-  expandContainers();  
+  expandContainers();
 }
 
 function resetUserContainerHeight(){
-  //alert("resetUserContainerHeight funcionando");  
+  //alert("resetUserContainerHeight funcionando");
 
   var profileHeight = $("#user_data_container").outerHeight(true);
   var requestsHeight = $("#user_request_list").outerHeight(true);
@@ -17,7 +17,7 @@ function resetUserContainerHeight(){
 
 
 function resetPpalContainerHeight(){
-  //alert("resetPpalContainerHeight funcionando");  
+  //alert("resetPpalContainerHeight funcionando");
 
   var elementListHeight = $("#ppal_container").outerHeight(true);
   var navigatioBarHeight = $("#navigation_bar").outerHeight(true);
@@ -28,7 +28,7 @@ function resetPpalContainerHeight(){
 
 
 function matchPrincipalContainersHeighs(){
-  //alert("matchPrincipalContainersHeighs funcionando");  
+  //alert("matchPrincipalContainersHeighs funcionando");
   var alturaVentana = window.innerHeight - 80;
   //alert(alturaVentana);
 
@@ -43,7 +43,7 @@ function matchPrincipalContainersHeighs(){
   }
 
   var alturaRequestContainerActualizada = $('#user_data_container').outerHeight(true) + $('#user_request_list').outerHeight(true) + 32;
-  
+
   if(alturaRequestContainerActualizada > ($('#user-side').height())) {
     $('#user-side').css({'height': alturaRequestContainerActualizada  + 'px'});
   }
@@ -53,7 +53,7 @@ function matchPrincipalContainersHeighs(){
     $('#content-side').css({'height': alturaVentana  + 'px'});
   }else{
     $('#user-side,#content-side').equalHeightColumns();
-  }  
+  }
 
   if ( ($('#user-side').height()) === null ) {
     $('#footer').css({'top': (alturaVentana +60)  + 'px'});
@@ -67,6 +67,7 @@ function expandContainers(){
   //alert("expandContainers funcionando");
   setRightContainerWidth();
   centerContentSide();
+  mainLayoutFixMinWidth();
 }
 
 
@@ -81,14 +82,14 @@ function setRightContainerWidth(){
   console.log("anchura del mainLayout: "+anchuraMainLayout);
 
   var leftWidth = $('#leftContainer').outerWidth( true );
-  console.log("anchura del contenedor de la izda: "+leftWidth); 
+  console.log("anchura del contenedor de la izda: "+leftWidth);
 
   var rightWidth = anchuraMainLayout - leftWidth -2;// bordes del rightContainer mas la anchura de la scrollbar
   console.log("calculo para la nueva anchura del right_container: "+rightWidth);
   $('#rightContainer').css({'width': rightWidth + 'px'});
 
   rightWidth = $('#rightContainer').width();
-  console.log("anchura del contenedor de la dcha: "+rightWidth);  
+  console.log("anchura del contenedor de la dcha: "+rightWidth);
 
   contentSideWidth = $('#content-side').width();
   console.log("anchura del content-side: "+ contentSideWidth);
@@ -98,11 +99,14 @@ function setRightContainerWidth(){
 
 function centerContentSide(){
   var anchuraPosible = ($('#ppal_container').width()) - 16;
-  var anchuraPrincipalElement = 276;// La anchura de una oferta
-  var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);  
+  var anchuraPrincipalElement = $('#ppal_container').children(0).outerWidth(true);// La anchura de una oferta con sus margenes incluidos
+  if(anchuraPrincipalElement < 100){
+    anchuraPrincipalElement = 250;
+  }
 
+  var elementosEntran = offersFit(anchuraPrincipalElement,anchuraPosible);
   var anchuraQueQuitar = anchuraPosible - (anchuraPrincipalElement * elementosEntran);
-  console.log("anchura que quitar: "+anchuraQueQuitar);  
+  console.log("anchura que quitar: "+anchuraQueQuitar);
 
   if( anchuraQueQuitar > 0 ){
     var rightContainer = $('#rightContainer');
@@ -110,7 +114,9 @@ function centerContentSide(){
     var finalRightContainerWidth = rightContainerWidth - anchuraQueQuitar;
     rightContainer.css({'width': finalRightContainerWidth  + 'px'});
     centerAlignToContainers(anchuraQueQuitar);
-  }  
+  }
+
+  //offsetLastMargins();
 }
 
 
@@ -143,6 +149,7 @@ function centerAlignToContainers(anchuraQueQuitar){
   console.log("entra en el algoritmo de modificacion");
 }
 
+
 function existScroll(){
   if ($(document).height() > $(window).height()) {
     return true;
@@ -151,6 +158,7 @@ function existScroll(){
   }
 }
 
+
 function getDocHeight(){
     return Math.max(
         $(document).height(),
@@ -158,4 +166,25 @@ function getDocHeight(){
         /* For opera: */
         document.documentElement.clientHeight
     );
-};
+}
+
+
+function mainLayoutFixMinWidth(){
+  var mainlayout = $(".mainlayout");
+  var mainlayoutWidth = mainlayout.width();
+  mainlayout.css({'min-width': mainlayoutWidth  + 'px'});
+}
+
+/*
+function offsetLastMargins(){
+  var marginToOffset = 5;
+  var ppalContainerPaddingLeft = parseInt($('#ppal_container').css('padding-left'),10);
+  console.log("padding-left del principal: "+ppalContainerPaddingLeft);
+
+  if(ppalContainerPaddingLeft == 15){
+    var finalPadding = ppalContainerPaddingLeft + marginToOffset;
+    console.log("padding-left final: "+finalPadding);
+    $('#ppal_container').css({'padding-left': finalPadding  + 'px'});
+  }
+}
+*/
