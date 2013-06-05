@@ -4,10 +4,11 @@ function loadNeededScripts(lugar){
   activateRequestButtons(); //Las peticiones siempre estan visibles
 
   if ( lugar === "offers" ) {
+    resetPpalPadding();
     buildOfferMosaic();
-    activateOfferButton();    
+    activateOfferButton();
   }
-  else if ( lugar === "things" ) {    
+  else if ( lugar === "things" ) {
   }
   else if ( lugar === "negotiations" ) {
     destroyMasonry();
@@ -29,7 +30,7 @@ function loadNeededScripts(lugar){
   else {
     buildOfferMosaic();
     activateOfferButton();
-  }  
+  }
 }
 
 function locationName(){

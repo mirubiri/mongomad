@@ -5,6 +5,8 @@ function maximizeConversationWidth(){
   var proposalWidth = $('.negotiation_offer:first').width();
   var conversationWidth = maxWidth - proposalWidth -2; // le quito 2 por no consultar el ancho del borde de la negociacion
   $('.dialog_container').css({'width': conversationWidth + 'px'});
+  $('#ppal_container').css({'padding-left': '15px'});
+  $('#ppal_container').css({'padding-right': '15px'});
 }
 
 function maximizeConversationsHeights(){

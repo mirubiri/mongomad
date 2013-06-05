@@ -8,3 +8,8 @@ function activateOfferButton(){
      }
   );
 }
+
+function resetPpalPadding(){
+  $('#ppal_container').css({'padding-left': '20px'});
+  $('#ppal_container').css({'padding-right': '5px'});
+}
