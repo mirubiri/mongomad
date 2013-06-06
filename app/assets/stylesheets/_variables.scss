@@ -396,7 +396,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .offer_buttons{
-      @include center-horizontally(80%);
+      @include center-horizontally(95%);
+      margin-bottom: 10px;
     }
 
     .offer_date{

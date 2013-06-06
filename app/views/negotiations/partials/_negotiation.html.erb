@@ -1,7 +1,7 @@
 <% user_logged_negotiations.each do |negotiation| %>
-  <div class="negotiation" id="negotiation<%= negotiation.id %>"> 
+  <div class="negotiation" id="negotiation<%= negotiation.id %>">
 
-    <div class="negotiation_offer"> 
+    <div class="negotiation_offer">
       <div class="offer_header">
         <%= proposal_composer_fullname(negotiation_last_proposal(negotiation)).upcase %>
       </div>
@@ -30,27 +30,27 @@
           <% end %>
         </div>
       </div>
-      
-      <div class="offer_info">        
+
+      <div class="offer_info">
         <div class="profile_image">
           <%= link_to proposal_composer_image(negotiation_last_proposal(negotiation)),
             :controller => "users",
             :action => "show",
             :id => proposal_composer_id(negotiation_last_proposal(negotiation))
           %>
-        </div>        
+        </div>
 
-        <div class="offer_buttons">        
-          <%= link_to 'new proposal',
+        <div class="offer_buttons">
+          <%= link_to 'nueva',
               edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
               :remote => true,
-              :class => "btn btn-small btn-warning" %> 
-                   
-          <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>        
+              :class => "btn btn-small btn-warning" %>
+
+          <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>
             <%= link_to 'firmar',
                 sign_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
                 :remote => true,
-                :class => "btn btn-small btn-success" %>       
+                :class => "btn btn-small btn-success" %>
           <% end %>
 
           <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
@@ -61,19 +61,19 @@
           <% end %>
 
           <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
-            <%= link_to 'cancelar',
+            <%= link_to 'paso!!',
                 cancel_user_negotiation_path(current_user.id,negotiation_id(negotiation)),
                 :remote => true,
-                :class => "btn btn-small btn-danger" %>        
+                :class => "btn btn-small btn-danger" %>
           <% end %>
         </div>
-            <!--        
+            <!--
             <div class="offer_date">
               <%#= offer_datetime(offer) %>
             </div>
             -->
-      </div>      
-    </div>    
+      </div>
+    </div>
 
     <div class="dialog_container">
       <div class="dialog_head">
@@ -84,12 +84,12 @@
               :confirm => "Are you sure?"
         %>
       </div>
-      
+
       <div class="conversation" id="conversationofnegotiation">
         <%= render :partial => 'negotiations/partials/conversation', locals: { negotiation: negotiation} %>
       </div>
 
-      <div class="writting_box">        
+      <div class="writting_box">
         <%= form_for @negotiation, :url => addComment_user_negotiation_path(current_user.id, negotiation.id), :remote => true do |f| %>
           <div class="message">
             <input type="text" placeholder="write here" name="text">

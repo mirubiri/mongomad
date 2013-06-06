@@ -13,12 +13,12 @@ function maximizeConversationsHeights(){
   //alert("maximizeConversationsHeights funcionando");
 
   $("[id^=negotiation]").each(function(){
-    $(this).equalHeightColumns({children:':not(h2,p)'});
-
+    var alturaOferta = $(this).find(".negotiation_offer").outerHeight(true);
+    $(this).css({'max-height': (alturaOferta + 2) +'px'});
+    $(this).find(".dialog_container").css({'height': (alturaOferta) +'px'}).css({'max-height': (alturaOferta) +'px'});
   });
   $("[id^=conversationofnegotiation]").each(function(){
     $(this).css({'height':($(this).parent().height()-57)+'px'});
-    //$(this).css({'max-height':($(this).parent().height()-57)+'px'});
   });
 
 }

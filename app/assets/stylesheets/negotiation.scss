@@ -18,27 +18,6 @@
       width: $offerWidth;
       float: left;
 
-      .offer_buttons{
-        @include box-sizing(border-box);
-        width: 100%;
-        float:left;
-        padding: 4px 10px 10px 4px;
-
-        a{
-          float: left;
-          margin-right: 3px;
-        }
-      }
-
-      .offer_date{
-        float: left;
-        margin: 0px 0px 0px 5px;
-        font-size: 8px;
-        visibility: hidden;
-      }
-
-
-
       @include box-sizing(border-box);
     }
 
@@ -53,7 +32,7 @@
         @include proportions(100%,29px);
         float: left;
         margin-bottom:4px;
-        background-color:rgb(119,119,119);
+        background-color: rgb(119,119,119);
         color: white;
 
         .dialogin{
