@@ -72,19 +72,14 @@
         <div class="description">Resumen de la oferta</div>
       </div>
       <div class="offer_inform">
+
         <div class="offer_header">
-          <div class="triangle">
-              <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
-          </div>
-          <div class="profile_image">
-            <%= offer_composer_image(@offer) %>
-          </div>
-          <div class="description">
-            <div class="offer_message">
-              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
-            </div>
-          </div>
+          <%= offer_composer_name(@offer).upcase %>
         </div>
+        <div class="offer_triangle">
+          <div class="triangle"></div>
+        </div>
+
         <div class="offer_things">
           <div class="recieved" id="summary_offer_received_products_container">
             <% contador = 0 %>
@@ -111,7 +106,7 @@
           </div>
           <div class="given" id="summary_offer_given_products_container">
             <% contador = 0 %>
-            <% offer_composer_products(@offer).each do |product| %>              
+            <% offer_composer_products(@offer).each do |product| %>
               <div class="product" product_id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
                 <div class="quantity_container"><%= product_quantity(product) %></div>
                 <div class="product_image">
@@ -134,10 +129,21 @@
           </div>
         </div>
 
-        <div class="offer_button">
-          <%= form.submit "submit", :id => 'edit-offer-send-button', :class =>  "btn btn-primary" %>
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <div class="offer_info">
+          <div class="profile_image">
+            <%= offer_composer_image(@offer) %>
+          </div>
+          <div class="description">
+            <div class="offer_message">
+              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
+            </div>
+          </div>
+          <div class="offer_buttons">
+            <%= form.submit "submit", :id => 'edit-offer-send-button', :class =>  "btn btn-primary" %>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          </div>
         </div>
+
       </div>
     </div>
   <% end %>

@@ -73,17 +73,10 @@
       </div>
       <div class="offer_inform">
         <div class="offer_header">
-          <div class="triangle">
-              <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
-          </div>
-          <div class="profile_image">
-            <%= user_logged_image %>
-          </div>
-          <div class="description">
-            <div class="offer_message">
-              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
-            </div>
-          </div>
+          <%= user_logged_name.upcase %>
+        </div>
+        <div class="offer_triangle">
+          <div class="triangle"></div>
         </div>
         <div class="offer_things">
           <div class="recieved" id="summary_offer_received_products_container">
@@ -97,10 +90,19 @@
             </div>
           </div>
         </div>
-
-        <div class="offer_button">
-          <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <div class="offer_info">
+          <div class="profile_image">
+            <%= user_logged_image %>
+          </div>
+          <div class="description">
+            <div class="offer_message">
+              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
+            </div>
+          </div>
+          <div class="offer_buttons">
+            <%= form.submit "submit", :id => 'new-offer-send-button', :class =>  "btn btn-primary" %>
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          </div>
         </div>
       </div>
     </div>
