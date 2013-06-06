@@ -1,32 +1,65 @@
 @import "variables";
 
 .thing{
-  @include box-shadow(rgb(170,170,170) 1px 1px 3px);
+
+  @include element_into_ElementList_style;
+  @include box-sizing(border-box);
+  width: $thingWidth;
   float: left;
-  overflow:auto;
-  margin:3px 10px 10px 3px;
-  width: 195px;
-  border: $borde1px;
-  background-color: white;
+  margin-top: 0px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+
+  .offer_header{
+    @include proportions(100%,24px);
+    float: left;
+    background-color: #bbbbbb;
+    overflow: hidden;
+    overflow: none;
+    font-size: 13px;
+    font-weight: bold;
+    line-height: normal;
+    text-align: center;
+    color: white;
+    padding-top: 5px;
+  }
 
   .thing_image{
-    @include proportions(175px,175px);
-    overflow: none;
     float: left;
-    margin: 15px 0px 5px 9px;    
-    border: $borde1px;
+    width: 100%;
+    border-bottom: 1px solid #bbbbbb;
 
     img{
       @include high-quality-image;
-      @include proportions(175px,175px);
+      @include proportions($thingWidth,$thingWidth);
     }
   }
+
   .thing_description{
-    @include proportions(175px,45px);
+    @include box-sizing(border-box);
     float: left;
-    overflow: auto;
-    margin: 0px 0px 15px 9px;
-    border: $borde1px;    
+    width: 100%;
+    overflow: visible;
+    margin: 0px 0px 10px 0px;
+    padding: 3px;
+
+    .text{
+      float: left;
+      width: 100%;
+      overflow: auto;
+    }
+  }
+
+  .thing_options{
+    float: left;
+    width: 100%;
+    text-align: center;
+
+    a{
+      @include center-horizontally(80%);
+      margin-bottom: 10px;
+    }
   }
 
 }

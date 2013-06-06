@@ -1,16 +1,28 @@
-<% user_visited_things.reverse_each do |thing| %>  
-  <div class="thing thumbnail" id="<%= thing_id(thing) %>">
-    <%= thing_inboard(thing) %>
-    <div class="caption">
-      <h5><%= thing_name(thing) %></h5>
-      <p><%= thing_description(thing) %></p>
-      <p>
-        <% if user_logged_id == user_visited_id %>      
-          <%= link_to "editar producto",
-              edit_user_thing_path(current_user,thing),
-              :remote => true %>        
-        <% end %>       
-      </p>
+<% user_visited_things.reverse_each do |thing| %>
+  <div class="thing" id="<%= thing_id(thing) %>">
+
+    <div class="offer_header">
+      <%= thing_name(thing) %>
     </div>
+
+    <div class="thing_image">
+      <%= thing_image(thing) %>
+    </div>
+
+    <div class="thing_description">
+      <div class="text">
+        <%= thing_description(thing) %>
+      </div>
+    </div>
+
+    <% if user_logged_id == user_visited_id %>
+      <div class="thing_options">
+        <%= link_to "editar producto",
+          edit_user_thing_path(current_user,thing),
+          :remote => true,
+          :class => "btn btn-small disable" %>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

@@ -20,6 +20,8 @@ $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (
 $trianglePosition: $offerWidth - ($offerWidth/2) - 8px;
 $profileImageLeftMargin: 6px;
 $profileImageDimension: 50px;
+$thingWidth: $offerWidth;
+$thingHeight: $offerWidth;
 $commentLeftMargin: 8px;
 $commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLeftMargin;
 $commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
