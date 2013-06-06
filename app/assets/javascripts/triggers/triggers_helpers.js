@@ -15,6 +15,8 @@ function loadNeededScripts(lugar){
     maximizeConversationWidth();
     maximizeConversationsHeights();
     activateNegotiationButtons();
+    focusNegotiationWritebox();
+    scrollConversation();
   }
   else if ( lugar === "deals" ) {
     destroyMasonry();

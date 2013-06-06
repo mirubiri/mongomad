@@ -42,3 +42,21 @@ function reloadDialogContainerWidth(){
   var anchuraDialog = anchuraTotal - anchuraOfferSide;
   $('.negotiation > .dialog_container').css({'width': anchuraDialog +'px'});
 }
+
+
+function focusNegotiationWritebox(){
+  $(".negotiation").on('click', function() {
+    $(this).find("input").focus();
+  });
+
+  $(".negotiation").find("input").keypress(function(e){
+    if((e.keyCode || e.which) == 13) { //Enter keycode
+      //alert("pulsacion de enter");
+      $(this).focus();
+    }
+  });
+}
+
+function scrollConversation(){
+  $(".negotiation > .dialog_container > .conversation").scrollTop($(this).height());
+}
