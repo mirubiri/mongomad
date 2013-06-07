@@ -12,7 +12,7 @@ function maximizeConversationWidth(){
 function maximizeConversationsHeights(){
   //alert("maximizeConversationsHeights funcionando");
 
-  $("[id^=negotiation]").each(function(){
+  $(".negotiation").each(function(){
     var alturaOferta = $(this).find(".negotiation_offer").outerHeight(true);
     $(this).css({'max-height': (alturaOferta + 2) +'px'});
     $(this).find(".dialog_container").css({'height': (alturaOferta) +'px'}).css({'max-height': (alturaOferta) +'px'});

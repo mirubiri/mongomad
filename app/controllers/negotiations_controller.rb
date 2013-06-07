@@ -137,7 +137,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       if @negotiation.conversation.messages << message
-        format.js { render :partial => "negotiations/reload_negotiations_list", :layout => false}
+        format.js
       else
         puts "va mal"
       end
