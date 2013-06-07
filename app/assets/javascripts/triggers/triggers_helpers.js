@@ -9,6 +9,7 @@ function loadNeededScripts(lugar){
     activateOfferButton();
   }
   else if ( lugar === "things" ) {
+    resizeThings();
   }
   else if ( lugar === "negotiations" ) {
     destroyMasonry();

@@ -31,7 +31,6 @@
       .dialog_head{
         @include proportions(100%,29px);
         float: left;
-        margin-bottom:4px;
         background-color: rgb(119,119,119);
         color: white;
 
@@ -56,6 +55,7 @@
         float: left;
         overflow-y: auto;
         width: 100%;
+        padding-top: 4px;
 
         .comment{
           float: left;
