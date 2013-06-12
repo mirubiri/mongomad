@@ -13,6 +13,7 @@ Mongomad::Application.routes.draw do
     resources :offers
 
     resources :negotiations do
+
       member do
         get 'sign'
         get 'confirm'
@@ -24,4 +25,7 @@ Mongomad::Application.routes.draw do
     resources :deals
     resources :alerts
   end
+
+
+
 end

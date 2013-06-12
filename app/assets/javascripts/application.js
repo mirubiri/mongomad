@@ -35,3 +35,15 @@
 //= navigation_triggers.js
 //= triggers_helpers.js
 //= require_tree .
+
+$(function () {
+  var lugar = locationName();
+  if ( lugar === "negotiations" ) {
+    setTimeout(updateComments, 2000);
+  }
+});
+
+function updateComments() {
+  $.getScript('negotiations.js');
+  setTimeout(updateComments, 2000);
+}

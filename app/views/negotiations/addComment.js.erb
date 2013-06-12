@@ -1,5 +1,3 @@
 var negotiation_id = "<%= @negotiation.id %>"
-
 $("#"+ negotiation_id).find(".conversation").html("<%= escape_javascript(render :partial => 'negotiations/partials/conversation', :locals => { :negotiation => @negotiation }).html_safe %>");
-
-$("#"+ negotiation_id).find("input").val('');
+//$("#"+ negotiation_id).find("input").val(' ');

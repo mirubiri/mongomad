@@ -3,15 +3,22 @@ $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negoti
 
 
 /*
-
 setInterval(function() {
   //alert("el bucle se lanza");
 
   var lugar = locationName();
 
   if ( lugar === "negotiations" ) {
+
     //alert("funciona el bucle dentro de " + lugar);
-    $('#ppal_container').html("<%= escape_javascript(render :partial => 'negotiations/partials/negotiation').html_safe %>");
+
+    <% user_logged_negotiations.each do |negotiation| %>
+      var negotiation_id = "<%= negotiation.id %>"
+      //alert(negotiation_id);
+      //$("#"+ negotiation_id).find(".conversation").load('/reloadComments');
+      $.getScript('/reloadComments');
+    <% end %>
+
     reloadDialogContainerWidth();
     maximizeConversationsHeights();
   }else {}
