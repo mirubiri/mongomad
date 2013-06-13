@@ -2,37 +2,17 @@ $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navi
 $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
 
 
-/*
-setInterval(function() {
-  //alert("el bucle se lanza");
 
-  var lugar = locationName();
+listenerLoop();
 
-  if ( lugar === "negotiations" ) {
-
-    //alert("funciona el bucle dentro de " + lugar);
-
-    <% user_logged_negotiations.each do |negotiation| %>
-      var negotiation_id = "<%= negotiation.id %>"
-      //alert(negotiation_id);
-      //$("#"+ negotiation_id).find(".conversation").load('/reloadComments');
-      $.getScript('/reloadComments');
-    <% end %>
-
-    reloadDialogContainerWidth();
-    maximizeConversationsHeights();
-  }else {}
-
-}, 5000);
-
-
-function locationName(){
-  var pagina = location.pathname.split("/");
-  var ultimoPath = pagina.length-1;
-  var lugar = location.pathname.split("/")[ultimoPath];
-  //alert(lugar);
-
-  return lugar;
+function listenerLoop() {
+  if ($('.negotiation').length > 0) {
+    setTimeout(updateComments, 1000);
+  }
 }
 
-*/
+function updateComments() {
+  var scriptUrl = "<%= negotiations_updateComments_url %>";
+  $.getScript(scriptUrl);
+  setTimeout(listenerLoop, 1000);
+}

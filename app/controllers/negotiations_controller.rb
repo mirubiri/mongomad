@@ -144,4 +144,7 @@ class NegotiationsController < ApplicationController
     end
   end
 
+  def updateComments
+  end
+
 end

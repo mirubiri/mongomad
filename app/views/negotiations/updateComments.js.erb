@@ -1,0 +1,5 @@
+<% user_logged_negotiations.each do |negotiation| %>
+  var negotiation_id = "<%= negotiation.id %>"
+  //alert(negotiation_id);
+  $("#"+ negotiation_id).find(".conversation").html("<%=j render :partial => 'negotiations/partials/conversation', :locals => { :negotiation => negotiation } %>");
+<% end %>

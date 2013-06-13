@@ -26,6 +26,6 @@ Mongomad::Application.routes.draw do
     resources :alerts
   end
 
-
+  match 'negotiations/updateComments' => 'negotiations#updateComments', :via => :get
 
 end
