@@ -27,5 +27,6 @@ Mongomad::Application.routes.draw do
   end
 
   match 'negotiations/updateComments' => 'negotiations#updateComments', :via => :get
+  match 'offers/updateOffers' => 'offers#updateOffers', :via => :get
 
 end

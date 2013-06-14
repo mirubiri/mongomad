@@ -3,9 +3,11 @@ $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negoti
 
 
 
-listenerLoop();
+// Zona reservada el codigo para actualizar los comentarios de las negociaciones
 
-function listenerLoop() {
+negotiationListenerLoop();
+
+function negotiationListenerLoop() {
   if ($('.negotiation').length > 0) {
     setTimeout(updateComments, 1000);
   }
@@ -14,5 +16,5 @@ function listenerLoop() {
 function updateComments() {
   var scriptUrl = "<%= negotiations_updateComments_url %>";
   $.getScript(scriptUrl);
-  setTimeout(listenerLoop, 1000);
+  setTimeout(negotiationListenerLoop, 1000);
 }

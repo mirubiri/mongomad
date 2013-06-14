@@ -1,0 +1,3 @@
+$("#ppal_container")
+.html("<%=j render :partial => 'offers/partials/offer', :locals => { :user => @user, :@negotiation => Negotiation.new } %>")
+.masonry('destroy');

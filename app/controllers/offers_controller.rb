@@ -94,4 +94,9 @@ class OffersController < ApplicationController
       format.html { redirect_to user_offers_url }
     end
   end
+
+  def updateOffers
+     @user = current_user
+  end
+
 end
