@@ -50,3 +50,7 @@ function stopTimers(timers){
     clearTimeout(timers[i]);
   }
 }
+
+function variableNotDefined (name) {
+    return typeof this[name] === 'undefined';
+}

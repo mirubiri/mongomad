@@ -98,7 +98,7 @@ function centerContentSide(){
 
   var anchuraPrincipalElement = $('#ppal_container').children(0).outerWidth(true);// La anchura de una oferta con sus margenes incluidos
   if(anchuraPrincipalElement < 100){
-    anchuraPrincipalElement = 250;
+    anchuraPrincipalElement = 290;
   }
 
   console.log("anchura del elemento principal: "+ anchuraPrincipalElement);

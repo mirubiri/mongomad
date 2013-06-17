@@ -56,7 +56,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       if @offer.start_negotiation
-        format.html { redirect_to @user, notice: 'Negotiation was successfully created.' }
+        format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
       else
         format.html { render action: "new" }
       end
