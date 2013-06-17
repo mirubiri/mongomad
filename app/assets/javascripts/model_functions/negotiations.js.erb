@@ -48,13 +48,6 @@ function focusNegotiationWritebox(){
   $(".negotiation").on('click', function() {
     $(this).find("input").focus();
   });
-
-  $(".negotiation").find("input").keypress(function(e){
-    if((e.keyCode || e.which) == 13) { //Enter keycode
-      //alert("pulsacion de enter que mola");
-      $(this).focus();
-    }
-  });
 }
 
 function scrollConversation(){

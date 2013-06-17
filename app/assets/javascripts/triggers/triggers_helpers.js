@@ -39,7 +39,7 @@ function loadNeededScripts(lugar){
 function locationName(){
   var pagina = location.pathname.split("/");
   var ultimoPath = pagina.length-1;
-  var lugar = location.pathname.split("/")[ultimoPath];
+  var lugar = location.pathname.split("/")[ultimoPath].toString();
   //alert(lugar);
 
   return lugar;

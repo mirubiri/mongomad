@@ -8,7 +8,9 @@ $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negoti
 negotiationListenerLoop();
 
 function negotiationListenerLoop() {
-  if ($('.negotiation').length > 0) {
+  var lugar =locationName();
+
+  if (lugar == "negotiations") {
     setTimeout(updateComments, 1000);
   }
 }
@@ -16,5 +18,7 @@ function negotiationListenerLoop() {
 function updateComments() {
   var scriptUrl = "<%= negotiations_updateComments_url %>";
   $.getScript(scriptUrl);
-  setTimeout(negotiationListenerLoop, 1000);
+  var id = setTimeout(negotiationListenerLoop, 1000);
+
+  $("a").live("click", function(){ clearTimeout(id); });
 }
