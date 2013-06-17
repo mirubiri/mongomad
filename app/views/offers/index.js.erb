@@ -1,3 +1,9 @@
+//Si hay algun timer funcionando lo paro para evitar datos erroneos
+var timers = new Array();
+stopTimers(timers);
+
+
+//Modifico el contenido principal con las ofertas
 $("#navigation_bar")
 .html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
@@ -12,18 +18,15 @@ $("#ppal_container")
 offerListenerLoop();
 
 function offerListenerLoop() {
-
   var lugar =locationName();
 
   if (lugar == "offers") {
-    setTimeout(updateOffers, 2000);
+    timers.push(setTimeout(updateOffers, 2000));
   }
 }
 
 function updateOffers() {
   var scriptUrl = "<%= offers_updateOffers_url %>";
   $.getScript(scriptUrl);
-  var id = setTimeout(offerListenerLoop, 2000);
-
-  $(".nav > li").live("click", function(){ clearTimeout(id); });
+  timers.push(setTimeout(offerListenerLoop, 2000));
 }

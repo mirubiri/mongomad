@@ -44,3 +44,9 @@ function locationName(){
 
   return lugar;
 }
+
+function stopTimers(timers){
+  for (var i = 0; i < timers.length; i++){
+    clearTimeout(timers[i]);
+  }
+}

@@ -1,24 +1,26 @@
+//Si hay algun timer funcionando lo paro para evitar datos erroneos
+stopTimers(timers);
+
+
+//Modifico el contenido principal con las negociaciones
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
 
 
 
 // Zona reservada el codigo para actualizar los comentarios de las negociaciones
-
 negotiationListenerLoop();
 
 function negotiationListenerLoop() {
   var lugar =locationName();
 
   if (lugar == "negotiations") {
-    setTimeout(updateComments, 1000);
+    timers.push(setTimeout(updateComments, 1000));
   }
 }
 
 function updateComments() {
   var scriptUrl = "<%= negotiations_updateComments_url %>";
   $.getScript(scriptUrl);
-  var id = setTimeout(negotiationListenerLoop, 1000);
-
-  $("a").live("click", function(){ clearTimeout(id); });
+  timers.push(setTimeout(negotiationListenerLoop, 1000));
 }

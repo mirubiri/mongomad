@@ -1,3 +1,8 @@
+//Si hay algun timer funcionando lo paro para evitar datos erroneos
+stopTimers(timers);
+
+
+//Modifico el contenido principal con los tratos
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html("<%=j render :partial => 'deals/partials/deal' %>");
 

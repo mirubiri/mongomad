@@ -1,11 +1,11 @@
+//Si hay algun timer funcionando lo paro para evitar datos erroneos
+stopTimers(timers);
+
+
+//Modifico el contenido principal con los productos
 $("#navigation_bar")
 .html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
 $("#ppal_container")
 .html("<%=j render :partial => 'things/partials/thing' %>")
 .masonry('destroy');
-
-//alert("se disparan los cambios en el index de things");
-
-
-
