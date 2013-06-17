@@ -4,13 +4,13 @@ stopTimers(timers);
 
 
 //Modifico el contenido principal con las ofertas
+
 $("#navigation_bar")
 .html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
 $("#ppal_container")
 .html("<%=j render :partial => 'offers/partials/offer' %>")
 .masonry('destroy');
-
 
 
 // Zona reservada al codigo para actualizar las nuevas ofertas a tiempo real

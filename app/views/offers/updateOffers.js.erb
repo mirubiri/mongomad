@@ -1,3 +1,8 @@
-$("#ppal_container")
-.html("<%=j render :partial => 'offers/partials/offer', :locals => { :user => @user, :@negotiation => Negotiation.new } %>")
-.masonry('destroy');
+//Me aseguro que esto en el sitio correcto para rehacer el listado de elementos principales
+var lugar = locationName().toString();
+
+if(lugar === "offers"){
+  $("#ppal_container")
+  .html("<%=j render :partial => 'offers/partials/offer', :locals => { :user => @user, :@negotiation => Negotiation.new } %>")
+  .masonry('destroy');
+}

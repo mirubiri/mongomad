@@ -73,11 +73,7 @@ function expandContainers(){
 
 function setRightContainerWidth(){
 
-  if (existScroll() === true){
-    var anchuraMainLayout = $('.mainlayout').innerWidth();
-  }else {
-    var anchuraMainLayout = $('.mainlayout').innerWidth();
-  }
+  var anchuraMainLayout = $('.mainlayout').innerWidth();
 
   console.log("anchura del mainLayout: "+anchuraMainLayout);
 
