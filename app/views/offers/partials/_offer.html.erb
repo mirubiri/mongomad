@@ -1,13 +1,9 @@
 <% if (user_visited_offers.count != 0)%>
   <% user_visited_offers.reverse_each do |offer| %>
-    <div class="offer" id="<%= offer_id(offer) %>">      
+    <div class="offer" id="<%= offer_id(offer) %>" data-id="<%= offer_datetime(offer) %>">
 
       <div class="offer_header">
-        <%= offer_composer_name(offer).upcase %>
-      </div>
-
-      <div class="offer_triangle">
-        <div class="triangle"></div>
+        <%= offer_composer_name(offer) %>
       </div>
 
       <div class="offer_things">
@@ -30,8 +26,8 @@
           <% end %>
         </div>
       </div>
-      
-      <div class="offer_info">        
+
+      <div class="offer_info">
         <div class="profile_image">
           <%= link_to offer_composer_image(offer),
             :controller => "users",
@@ -39,7 +35,7 @@
             :id => offer_composer_id(offer)
           %>
         </div>
-        <div class="description">          
+        <div class="description">
           <div class="offer_message">
             <%= offer_message(offer) %>
           </div>
@@ -74,16 +70,16 @@
             <% end %>
           <% end %>
         </div>
-        <!--        
-        <div class="offer_date">
-          <%= offer_datetime(offer) %>
+        <!--
+        <div class="offer_date hidden">
+          <%#= offer_datetime(offer) %>
         </div>
         -->
-      </div>      
+      </div>
     </div>
   <% end %>
 <% else %>
   <div class="no_elements">
     <p>El usuario no tiene ninguna oferta actualmente</p>
-  </div>  
+  </div>
 <% end %>

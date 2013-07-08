@@ -9,7 +9,7 @@
   padding-top: 0px;
   height: 40px;
   display: block;
-  background-color:#404040;
+  background-color:transparent;
   color: white;
   overflow: hidden;
   z-index: 10000;
@@ -28,7 +28,7 @@
     overflow: hidden;
 
     .header_logo{
-      @include proportions(140px,40px);      
+      @include proportions(140px,40px);
       float: left;
       color: white;
       //border: $borde1px;

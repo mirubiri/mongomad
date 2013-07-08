@@ -80,10 +80,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 @mixin border_Element_into_container{
-  @include box-shadow(rgb(160,160,160) 0px 2px 4px);
+  @include box-shadow(rgba(0,0,0,0.25) 0px 1px 2px);
   @include rounded_border;
-  border: $borde1px;
-  border-color: rgba(0,0,0,0.25);
+
 }
 
 @mixin top_main_header_style{
@@ -96,7 +95,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin ppal_container_style{
   width: 100%;
-  background: #D4D6D5;
+  background: rgba(236,240,241,0.5);
   overflow: visible;
   border-top-right-radius:5px;
   border-top-left-radius:5px;
@@ -129,8 +128,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin big_images_style{
   @include box-sizing(border-box);
   @include border-radius(2px, 2px);
-  border: $borde1px;
-  border-color: #bbbbbb;
+  border: solid 1px #dddddd;
   overflow: visible;
 
   .quantity_container{
@@ -149,8 +147,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin small_images_style{
   @include box-sizing(border-box);
   @include border-radius(2px, 2px);
-  border: $borde1px;
-  border-color: #bbbbbb;
+  border: solid 1px #dddddd;
   overflow: visible;
 
   .quantity_container{
@@ -265,15 +262,17 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   .offer_header{
     @include proportions(100%,24px);
     float: left;
-    background-color: #bbbbbb;
+    background-color: rgb(243,243,243);
     overflow: hidden;
     overflow: none;
     font-size: 13px;
     font-weight: bold;
     line-height: normal;
     text-align: center;
-    color: white;
+    color: rgb(41,128,185);
     padding-top: 5px;
+    border-bottom: solid 1px #dddddd;
+    margin-bottom: 18px;
   }
 }
 
@@ -359,24 +358,25 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     width: 100%;
     overflow: visible;
     background-color: #f3f3f3;
+    border-top: 1px solid #dddddd;
 
     .profile_image{
       @include center-horizontally(50px);
       @include proportions(52px,52px);
+      @include border-radius(26px, 26px);
       background-color: #f3f3f3;
       position: relative;
       top:-28px;
-      border: 1px solid #f3f3f3;
-      @include border-radius(26px, 26px);
+      border: 1px solid #dddddd;
 
       a{
         img{
           @include high-quality-image;
           @include proportions(46px,46px);
           @include border-radius(23px, 23px);
-          margin-left: 3px;
-          margin-top: 3px;
-          border: 1px solid #cccccc;
+          margin-left: 2px;
+          margin-top: 2px;
+          border: 1px solid #dddddd;
         }
       }
     }
