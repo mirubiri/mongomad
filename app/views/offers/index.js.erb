@@ -5,8 +5,7 @@ stopTimers(timers);
 
 //Modifico el contenido principal con las ofertas
 
-$("#navigation_bar")
-.html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+//$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
 $("#ppal_container")
 .html("<%=j render :partial => 'offers/partials/offer' %>")
@@ -15,7 +14,7 @@ $("#ppal_container")
 
 // Zona reservada al codigo para actualizar las nuevas ofertas a tiempo real
 
-offerListenerLoop();
+//offerListenerLoop();
 
 function offerListenerLoop() {
   var lugar =locationName();

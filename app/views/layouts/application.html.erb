@@ -4,6 +4,13 @@
 <%= render partial: 'layouts/global_partials/metadata' %>
 
 <body class="hidden_container">
+
+  <div id="sergio">
+    <ul>
+      <li>sergio mola</li>
+    </ul>
+  </div>
+
   <div id="page">
     <% if flash[:alert] %>
       <div class="alert_container">
@@ -19,7 +26,7 @@
         <div class="alert alert-success">
           <%= flash[:notice] %>
         </div>
-      </div>      
+      </div>
     <% end %>
     <% if flash[:message] %>
       <div class="alert_container">
@@ -27,7 +34,7 @@
         <div class="alert alert-error">
           <%= flash[:message] %>
         </div>
-      </div>      
+      </div>
     <% end %>
   </div>
   <%= render :partial => "layouts/#{controller.sub_layout}" %>

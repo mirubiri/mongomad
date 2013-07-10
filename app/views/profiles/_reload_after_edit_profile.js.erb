@@ -1,10 +1,9 @@
 $('#edit-profile-form').modal('hide');
 
 $('#edit-profile-form').on('hidden', function () {
-  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+  //$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
-  $('#ppal_container')
-  .html("<%= escape_javascript(render :template => 'profiles/show.html.erb').html_safe %>");
+  $('#ppal_container').html("<%= escape_javascript(render :template => 'profiles/show.html.erb').html_safe %>");
 
   //Elimino la ventana modal
   delete $(this);

@@ -4,13 +4,13 @@ stopTimers(timers);
 
 
 //Modifico el contenido principal con las negociaciones
-$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+//$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
 
 
 
 // Zona reservada el codigo para actualizar los comentarios de las negociaciones
-negotiationListenerLoop();
+//negotiationListenerLoop();
 
 function negotiationListenerLoop() {
   var lugar =locationName();

@@ -96,7 +96,6 @@ class OffersController < ApplicationController
   end
 
   def updateOffers
-    @offers = current_user.received_offers.where("created_at" > Time.at(params[:after].to_i))
   end
 
 end
