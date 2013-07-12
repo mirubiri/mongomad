@@ -7,6 +7,7 @@ function loadNeededScripts(lugar){
     resetPpalPadding();
     buildOfferMosaic();
     activateOfferButton();
+    loadModalScripts();
   }
   else if ( lugar === "things" ) {
     resizeThings();
@@ -33,8 +34,10 @@ function loadNeededScripts(lugar){
   else {
     buildOfferMosaic();
     activateOfferButton();
+    loadModalScripts();
   }
 }
+
 
 function locationName(){
   var pagina = location.pathname.split("/");
@@ -45,11 +48,13 @@ function locationName(){
   return lugar;
 }
 
+
 function stopTimers(timers){
   for (var i = 0; i < timers.length; i++){
     clearTimeout(timers[i]);
   }
 }
+
 
 function variableNotDefined (name) {
     return typeof this[name] === 'undefined';

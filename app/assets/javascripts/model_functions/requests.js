@@ -10,14 +10,11 @@ function expandRequestContainer(){
 
 
 function activateRequestButtons(){
-  //alert("activateRequestButtons funcionando");
-
-  $('.request').live('mouseover mouseout', function(event) {
+  $('#request_list_container').on('mouseover mouseout','.request', function(event) {
     if (event.type == 'mouseover') {
       $(this).find('.options_menu').removeClass("hidden_container");
     } else {
       $(this).find('.options_menu').addClass("hidden_container");
     }
   });
-
 }

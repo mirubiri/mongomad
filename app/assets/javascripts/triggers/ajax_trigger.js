@@ -1,11 +1,6 @@
+//Cuando hay una carga de contenido por AJAX, resetea todas las alturas y las iguala
 $(document).ajaxComplete(function(event, xhr, settings) {
-
-  //alert("algo ha pasado por ajax");
-  //event.stopPropagation();
-
   var lugar = locationName();
-  //alert(lugar);
-
   loadNeededScripts(lugar);
   resetUserContainerHeight();
   resetPpalContainerHeight();

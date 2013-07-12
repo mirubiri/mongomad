@@ -28,6 +28,6 @@ $(function(){
 
 
 // Recoge los cambios de url
-$(window).bind("popstate", function() {
+$(window).on("popstate", function() {
     $.getScript(location.href);
 });

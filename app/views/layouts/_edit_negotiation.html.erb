@@ -1,7 +1,7 @@
 <div class="modal modal-offer hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-negotiation-form">
   <%= form_for [current_user,@negotiation], :remote => true do |form| %>
     <div class="products_area">
-      <div class="title">
+      <div class="title" id="negotiators_header">
         <a href="#blank" id="new_offer_receiver_selector" value="<%= proposal_receiver_id(negotiation_last_proposal(@negotiation)) %>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
