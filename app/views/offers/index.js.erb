@@ -1,15 +1,13 @@
-//Si hay algun timer funcionando lo paro para evitar datos erroneos
-var timers = new Array();
+//Si hay algun timer funcionando lo paro para evitar dibujar datos erroneos
+if (variableNotDefined(timers) === true){var timers = new Array();}
 stopTimers(timers);
 
 
-//Modifico el contenido principal con las ofertas
+//Contenido que debe cargar esta seccion: OFERTAS
+$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+$("#ppal_container").html("<%=j render :partial => 'offers/partials/offer' %>").masonry('destroy');
 
-//$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 
-$("#ppal_container")
-.html("<%=j render :partial => 'offers/partials/offer' %>")
-.masonry('destroy');
 
 
 // Zona reservada al codigo para actualizar las nuevas ofertas a tiempo real

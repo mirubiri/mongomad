@@ -1,6 +1,6 @@
 $(window).bind('resize', function(event) {
   //alert("ha habido un resize");
-  event.stopPropagation();
+  //event.stopPropagation();
 
   var lugar = locationName();
   //alert(lugar);

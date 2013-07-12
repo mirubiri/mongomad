@@ -1,16 +1,13 @@
 <div class="navbar" id="navigation_bar">
   <div class="navbar-inner">
     <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav" id="navigation_bar_menu">
-
+      <ul class="nav" id="navigation_bar_menu" style="width:100%">
         <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
           <li id="offers-tab" class="active" style="position:relative">
         <% else %>
           <li id="offers-tab" style="position:relative">
         <% end %>
-          <%= link_to user_offers_path(@user), :remote => true, :id => "link_offers" do %>
-            <div class="nav_element">Ofertas</div>
-          <% end %>
+          <a href="<%= user_offers_path(@user)%>" class="nav_element">Ofertas</a>
         </li>
 
         <% if @user._id == current_user._id %>
@@ -19,10 +16,7 @@
           <% else %>
             <li id="negotiations-tab" style="position:relative">
           <% end %>
-            <%= link_to user_negotiations_path(@user), :remote => true, :id => "link_negotiations" do %>
-              <div class="nav_element">Negociaciones</div>
-              <div class="noti_bubble"></div>
-            <% end %>
+            <a href="<%= user_negotiations_path(@user)%>" class="nav_element">Negociaciones</a>
           </li>
         <% end %>
 
@@ -32,47 +26,30 @@
           <% else %>
             <li id="deals-tab" style="position:relative">
           <% end %>
-            <%= link_to user_deals_path(@user), :remote => true, :id => "link_deals" do %>
-              <div class="nav_element">Tratos</div>
-            <% end %>
+            <a href="<%= user_deals_path(@user)%>" class="nav_element">Tratos</a>
           </li>
         <% end %>
 
         <% if controller.controller_name === "things" %>
           <% if @user._id == current_user._id %>
             <span style="float:left;margin-top:5px;margin-left:70px">
-              <%= link_to new_user_thing_path(current_user),
-                  :remote => true do %>
-                  <div class="nav_element">Añade un nuevo producto</div>
-              <% end %>
+              <a href="<%= new_user_thing_path(current_user)%>" class="nav_element">Añade un nuevo producto</a>
             </span>
           <% end %>
         <% end %>
-      </ul>
 
-    </div>
-
-    <div class="nav-collapse collapse navbar-responsive-collapse" style="float:right">
-      <ul class="nav .last-nav">
         <% if (controller.sub_layout === "things") %>
-          <li>
-            <%= link_to "Productos",
-              user_things_path(@user),
-              :remote => true,
-              :id => "link_things",
-              :class =>"active",
-              :'data-toggle' => "tooltip" %>
+          <li class="active" style="float:right">
+            <a href="<%= user_things_path(current_user)%>" class="active" id="link_things" data-toggle="tooltip">Productos</a>
           </li>
         <% else %>
-          <li>
-            <%= link_to "Productos",
-              user_things_path(@user),
-              :remote => true,
-              :id => "link_things",
-              :'data-toggle' => "tooltip" %>
+          <li style="float:right">
+            <a href="<%= user_things_path(current_user)%>" id="link_things" data-toggle="tooltip">Productos</a>
           </li>
         <% end %>
       </ul>
+
     </div>
+
   </div>
 </div>

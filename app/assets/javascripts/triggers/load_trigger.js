@@ -1,7 +1,6 @@
 $(window).load(function(event){
   //alert("se dispara el load");
-
-  event.stopPropagation();
+  //event.stopPropagation();
   resetContainers();
 
   var lugar = locationName();

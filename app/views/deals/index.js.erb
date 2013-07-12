@@ -3,7 +3,7 @@ if (variableNotDefined(timers) === true){var timers = new Array();}
 stopTimers(timers);
 
 
-//Modifico el contenido principal con los tratos
-//$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+//Contenido que debe cargar esta seccion: TRATOS
+$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html("<%=j render :partial => 'deals/partials/deal' %>");
 
