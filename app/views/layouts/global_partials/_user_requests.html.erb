@@ -1,21 +1,25 @@
 <aside class="user_container_requests" id="user_request_list">
 
   <div class="request_list_title">
-    <div class="text_side">PETICIONES</div>
-    <%= link_to "+",
-      new_user_request_path(current_user),
-      {:remote => true, :class => "add_request"}
-    %>
+    <% if user_logged_id === user_visited_id %>
+      <div class="text_side">PETICIONES</div>
+      <%= link_to "+",
+        new_user_request_path(current_user),
+        {:remote => true, :class => "add_request"}
+      %>
+    <% else %>
+      <div class="text_side" style="width:100%">PETICIONES</div>
+    <% end %>
   </div>
 
   <aside class="requests_requestsList" id="request_list_container">
     <% if (user_visited_requests.count != 0)%>
-      <%= render :partial =>
-      'layouts/global_partials/requests_list' %>
+      <%= render :partial => 'layouts/global_partials/requests_list' %>
     <% else %>
       <div class="no_elements">
         <p>El usuario no tiene ninguna peticion actualmente</p>
       </div>
     <% end %>
   </aside>
+
 </aside>
