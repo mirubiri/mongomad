@@ -1,4 +1,5 @@
 function buildOfferMosaic(){
+  //alert("mosaico de ofers");
   var ppalContainer = $('#ppal_container');
 
   if (ppalContainer.hasClass('masonry')) {
@@ -8,7 +9,7 @@ function buildOfferMosaic(){
       itemSelector : '.offer',
       isAnimated: true
     });
-  }  
+  }
 }
 
 function destroyMasonry(){

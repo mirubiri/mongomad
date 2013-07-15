@@ -1,3 +1,8 @@
+//Cargo en pantalla la ventana modal
 $('#new-offer-form').remove();
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/new_offer').html_safe %>");
 $('#new-offer-form').modal('show');
+
+
+//Cargo ademas la funcion que hace funcionar la modal.
+loadModalScripts();

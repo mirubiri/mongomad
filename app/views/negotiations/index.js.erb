@@ -8,6 +8,14 @@ $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navi
 $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negotiation' %>");
 
 
+//Carga sus funciones especificas de dibujado
+destroyMasonry();
+maximizeConversationWidth();
+maximizeConversationsHeights();
+activateNegotiationButtons();
+focusNegotiationWritebox();
+scrollConversation();
+
 
 // Zona reservada el codigo para actualizar los comentarios de las negociaciones
 

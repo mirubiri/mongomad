@@ -4,7 +4,11 @@ stopTimers(timers);
 
 
 //Modifico el contenido principal con la pantalla de perfil
-//$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+$('#ppal_container').html("<%= escape_javascript(render :partial => 'profiles/partials/profile').html_safe %>");
 
-$('#ppal_container')
-.html("<%= escape_javascript(render :partial => 'profiles/partials/profile').html_safe %>");
+
+//Carga sus funciones especificas de dibujado
+destroyMasonry();
+setProfileContainersHeights();
+addProfileCommentsSeparator();

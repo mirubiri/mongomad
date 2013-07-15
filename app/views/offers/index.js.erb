@@ -8,6 +8,10 @@ $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navi
 $("#ppal_container").html("<%=j render :partial => 'offers/partials/offer' %>").masonry('destroy');
 
 
+//Carga sus funciones especificas de dibujado
+resetPpalPadding();
+buildOfferMosaic();
+activateOfferButton();
 
 
 // Zona reservada al codigo para actualizar las nuevas ofertas a tiempo real

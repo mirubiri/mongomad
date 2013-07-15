@@ -7,7 +7,6 @@ function loadNeededScripts(lugar){
     resetPpalPadding();
     buildOfferMosaic();
     activateOfferButton();
-    loadModalScripts();
   }
   else if ( lugar === "things" ) {
     resizeThings();
@@ -34,7 +33,6 @@ function loadNeededScripts(lugar){
   else {
     buildOfferMosaic();
     activateOfferButton();
-    loadModalScripts();
   }
 }
 

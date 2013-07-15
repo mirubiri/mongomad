@@ -5,7 +5,7 @@
         <div class="menu">
           <%= link_to "Eliminar Oferta",
                 user_offer_path(current_user,offer_id(offer)),
-                :method => :delete,                
+                :method => :delete,
                 :confirm => "Are you sure?" %>
           <a href="#blank">Opcion 2</a>
         </div>
@@ -66,5 +66,5 @@
 <% else %>
   <div class="no_elements">
     <p>El usuario no tiene ninguna oferta actualmente</p>
-  </div>  
+  </div>
 <% end %>
