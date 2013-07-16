@@ -1,0 +1,32 @@
+//Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
+$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+$('#ppal_container')
+.html("<%= escape_javascript(render :partial => 'negotiations/partials/negotiation').html_safe %>")
+.prepend("<%= escape_javascript(render :template => 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>");
+maximizeConversationWidth();
+maximizeConversationsHeights();
+activateNegotiationButtons();
+focusNegotiationWritebox();
+scrollConversation();
+matchPrincipalContainersHeighs();
+animateNewElement();
+
+
+
+//Helper que permite animar el primer elemento
+function animateNewElement(){
+  $('#ppal_container')
+  .children()
+  .first()
+  .addClass("new_request_style")
+  .css('opacity', 0)
+  .hide()
+  .slideDown()
+  .animate(
+    { opacity: 1 },
+    { queue: false, duration: 1500 }
+  )
+  .animate({backgroundColor: '#ffffff'}, 800, function(){
+    $(this).removeClass("new_request_style");
+  });
+}

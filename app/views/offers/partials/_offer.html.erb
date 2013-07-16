@@ -41,20 +41,20 @@
           </div>
         </div>
 
-        <div class="offer_buttons">
+        <div class="offer_buttons" id="offer_buttons_navigation">
           <% if user_logged_id != offer_composer_id(offer) %>
             <% if user_logged_id == user_visited_id %>
-              <%= form_for [current_user,@negotiation] do |form| %>
+              <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
                 <div class="offer_button">
-                  <%= form.submit "negociar", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button"  %>
+                  <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "negociar", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
                 </div>
               <% end %>
             <% else %>
-              <%= form_for [current_user,@negotiation] do |form| %>
+              <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
                 <div class="offer_button">
-                  <%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %>
+                  <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
                 </div>
               <% end %>
             <% end %>
