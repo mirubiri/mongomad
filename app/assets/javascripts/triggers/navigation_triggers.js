@@ -16,7 +16,7 @@ $(function(){
 
 //Control de la navegacion de la barra del header
 $(function(){
-    $('#page_header').on('click','a',function(e){
+    $('#page_header_options').on('click','a',function(e){
         event.preventDefault();
 
         $.getScript(this.href);

@@ -1,20 +1,20 @@
 <div class="header">
-  <div class="clearfix header_container" id="page_header">
+  <div class="clearfix header_container">
+    <% if user_signed_in? %>
+      <div class="header_user_image">
+        <%= link_to user_logged_image,
+            :controller => "users",
+            :action => "show",
+            :id => user_logged_id
+        %>
+      </div>
+      <div class="header_user_description">
+        <p><%= user_logged_name %></p>
+        <p><%= user_logged_surname %></p>
+      </div>
+    <% end %>
 
-    <div class="header_options">
-      <% if user_signed_in? %>
-        <div class="header_user_image">
-          <%= link_to user_logged_image,
-              :controller => "users",
-              :action => "show",
-              :id => user_logged_id
-          %>
-        </div>
-        <div class="header_user_description">
-          <p><%= user_logged_name %></p>
-          <p><%= user_logged_surname %></p>
-        </div>
-      <% end %>
+    <div class="header_options"  id="page_header_options">
       <nav class="header_menu" >
         <div class="btn-toolbar">
           <div class="btn-group">
