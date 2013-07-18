@@ -4,28 +4,15 @@ function loadNeededScripts(lugar){
   activateRequestButtons(); //Las peticiones siempre estan visibles
 
   if ( lugar === "offers" ) {
-    resetPpalPadding();
-    buildOfferMosaic();
-    activateOfferButton();
   }
   else if ( lugar === "things" ) {
-    resizeThings();
   }
   else if ( lugar === "negotiations" ) {
-    destroyMasonry();
-    maximizeConversationWidth();
-    maximizeConversationsHeights();
-    activateNegotiationButtons();
-    focusNegotiationWritebox();
-    scrollConversation();
+
   }
   else if ( lugar === "deals" ) {
-    destroyMasonry();
   }
   else if ( lugar === "profile" ) {
-    destroyMasonry();
-    setProfileContainersHeights();
-    addProfileCommentsSeparator();
   }
   else if ( lugar === "alerts" ) {
     destroyMasonry();

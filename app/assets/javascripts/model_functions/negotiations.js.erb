@@ -1,12 +1,13 @@
 function maximizeConversationWidth(){
   //alert("maximizeConversationWidth funcionando");
-
-  var maxWidth = $("#ppal_container").width();
-  var proposalWidth = $('.negotiation_offer:first').width();
-  var conversationWidth = maxWidth - proposalWidth -2; // le quito 2 por no consultar el ancho del borde de la negociacion
-  $('.dialog_container').css({'width': conversationWidth + 'px'});
   $('#ppal_container').css({'padding-left': '15px'});
   $('#ppal_container').css({'padding-right': '15px'});
+
+  var negotiationWidth = $('.negotiation:first').width();
+  var proposalWidth = $('.negotiation_offer:first').width();
+  var conversationWidth = negotiationWidth - proposalWidth; // le quito 2 por no consultar el ancho del borde de la negociacion
+  $('.dialog_container').css({'width': conversationWidth + 'px'});
+
 }
 
 function maximizeConversationsHeights(){

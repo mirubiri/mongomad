@@ -8,8 +8,8 @@ $('#new-request-form').on('hidden', function(){
   $('#request_list_container')
   .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>");
 
-  matchPrincipalContainersHeighs();  
-  
+  matchPrincipalContainersHeighs();
+
   $('#request_list_container')
   .children()
   .first()
@@ -24,7 +24,7 @@ $('#new-request-form').on('hidden', function(){
   .animate({backgroundColor: '#ffffff'}, 800, function(){
     $(this).removeClass("new_request_style");
   });
-  
-  //Elimino la ventana modal  
+
+  //Elimino la ventana modal
   delete $(this);
 });
