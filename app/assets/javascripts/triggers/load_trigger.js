@@ -15,4 +15,5 @@ $(window).load(function(event){
     activateOfferButton();
   }
 
+  $('body').removeClass("hidden_container");//Para firefox, ya que no lanza el eventoJS al cargar
 });

@@ -37,6 +37,22 @@ function activateNegotiationButtons(){
   );
 }
 
+function disableDoubleScrolling(){
+  $('.conversation').hover(
+     function () {
+        if($(this).has_scrollbar()){
+          $("body").css("overflow", "hidden");
+        }
+     },
+     function () {
+        if($(this).has_scrollbar()){
+          $("body").css("overflow", "auto");
+        }
+     }
+  );
+}
+
+
 function reloadDialogContainerWidth(){
   var anchuraTotal = $('.negotiation').first().width();
   var anchuraOfferSide = $('.negotiation > .negotiation_offer').first().width();
@@ -54,4 +70,14 @@ function focusNegotiationWritebox(){
 function scrollConversation(){
   $(".negotiation > .dialog_container > .conversation").scrollTop($(this).height());
 }
+
+
+
+(function($) {
+    $.fn.has_scrollbar = function() {
+        var divnode = this.get(0);
+        if(divnode.scrollHeight > divnode.clientHeight)
+            return true;
+    }
+})(jQuery);
 
