@@ -11,11 +11,13 @@ class User
   embeds_one  :profile, class_name: 'User::Profile', cascade_callbacks: true
   embeds_many :things,  class_name: 'User::Thing', cascade_callbacks: true
 
+  field :name, type: String
+
   accepts_nested_attributes_for :profile
 
-  #TODO: Deshabilitado temporalmente
-  # validates :profile,
-  #   presence: true
+  validates :profile,
+  :name,
+   presence: true
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:

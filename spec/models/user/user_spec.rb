@@ -15,11 +15,12 @@ describe User do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should have_field(:name).of_type(String) }
     it { should accept_nested_attributes_for(:profile) }
   end
 
   describe 'Validations' do
-    xit { should validate_presence_of :profile }
+    it { should validate_presence_of :profile }
   end
 
   describe 'Factories' do

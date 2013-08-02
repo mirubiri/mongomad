@@ -5,21 +5,14 @@ class User::Profile
 
   embedded_in :user
 
-  field :name,             type: String
-  field :surname,          type: String
-  field :nick,             type: String
-  field :sex,              type: String
-  field :country,          type: String
-  field :delivery_address, type: String
-  field :phone_number,     type: String
-  field :website,          type: String
+  field :first_name,             type: String
+  field :last_name,          type: String
+  field :gender,              type: String
   field :birth_date,       type: Date
+  field :language,    type: String
 
-  validates :name,
-    :surname,
-    :nick,
-    :sex,
-    :country,
-    :birth_date,
+  validates :first_name,
+    :last_name,
+    :language,
     presence: true
 end
