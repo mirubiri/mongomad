@@ -6,13 +6,14 @@ class Offer::Receiver
   embedded_in :offer
   embeds_many :products, class_name: 'Offer::Receiver::Product', cascade_callbacks: true
 
-  field :nick, type: String
+  field :name, type: String
 
   accepts_nested_attributes_for :products, allow_destroy:true
 
-  denormalize :nick, :image_fingerprint, from:'offer.user_receiver.profile'
+  denormalize :image_fingerprint, from:'offer.user_receiver.profile'
+  denormalize :name, from:'offer.user_receiver'
 
   validates :products,
-    :nick,
+    :name,
     presence: true
 end

@@ -16,15 +16,16 @@ describe Negotiation::Proposal::Receiver do
   end
 
   describe 'Attributes' do
-    it { should have_field(:nick).of_type(String) }
+    it { should have_field(:name).of_type(String) }
     it { should accept_nested_attributes_for :products }
-    it { should have_denormalized_fields(:nick, :image_fingerprint).from('user.profile') }
+    it { should have_denormalized_fields(:name).from('user.profile') }
+    it { should have_denormalized_fields(:image_fingerprint).from('user') }
   end
 
   describe 'Validations' do
     it { should_not validate_presence_of :proposal }
     it { should validate_presence_of :products }
-    it { should validate_presence_of :nick }
+    it { should validate_presence_of :name }
   end
 
   describe 'Factories' do

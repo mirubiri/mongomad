@@ -8,5 +8,5 @@ Fabricator(:negotiation_proposal_composer, class_name: 'Negotiation::Proposal::C
     end
     products
   end
-  nick      { |attrs| attrs[:composer].nick }
+  name      { |attrs| attrs[:composer].name }
 end

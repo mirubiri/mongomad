@@ -8,6 +8,6 @@ Fabricator(:deal_agreement_proposal_composer, class_name: 'Deal::Agreement::Prop
     end
     products
   end
-  nick              { |attrs| attrs[:composer].nick }
+  name              { |attrs| attrs[:composer].name }
   image_fingerprint { |attrs| attrs[:composer].image_fingerprint }
 end

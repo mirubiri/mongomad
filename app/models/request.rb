@@ -6,13 +6,14 @@ class Request
 
   belongs_to :user
 
-  field :nick, type: String
+  field :name, type: String
   field :text, type: String
 
-  denormalize :nick, :image_fingerprint, from:'user.profile'
+  denormalize :image_fingerprint, from:'user.profile'
+  denormalize :name, from:'user'
 
   validates :user,
-    :nick,
+    :name,
     :text,
     presence: true
 

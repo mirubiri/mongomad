@@ -8,5 +8,5 @@ Fabricator(:negotiation_proposal_receiver, class_name: 'Negotiation::Proposal::R
     end
     products
   end
-  nick      { |attrs| attrs[:receiver].nick }
+  name      { |attrs| attrs[:receiver].name }
 end

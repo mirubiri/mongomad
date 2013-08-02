@@ -63,7 +63,7 @@ class Negotiation
   def fill_message_hash(message)
     message_hash = {
       user_id: message.user_id,
-      nick: message.nick,
+      name: message.name,
       text: message.text,
       image_url: message.image_url,
       image_fingerprint: message.image_fingerprint
@@ -76,13 +76,13 @@ class Negotiation
       user_composer_id: proposal.user_composer_id,
       user_receiver_id: proposal.user_receiver_id,
       composer_attributes: {
-        nick: proposal.user_composer.profile.nick,
+        name: proposal.user_composer.name,
         image_url: proposal.user_composer.profile.image_url,
         image_fingerprint: proposal.user_composer.profile.image_fingerprint,
         products_attributes: Array.new
       },
       receiver_attributes: {
-        nick: proposal.user_receiver.profile.nick,
+        name: proposal.user_receiver.name,
         image_url: proposal.user_receiver.profile.image_url,
         image_fingerprint: proposal.user_receiver.profile.image_fingerprint,
         products_attributes: Array.new

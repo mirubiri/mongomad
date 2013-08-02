@@ -24,7 +24,7 @@ module MongomadMatchersHelpers
   #REQUEST
   def eq_request?(actual,expected)
     (actual.user.id == expected.user.id ) &&
-      (actual.nick == expected.nick ) &&
+      (actual.name == expected.name ) &&
       (actual.text == expected.text) &&
       (actual.image_url == expected.image_url) &&
       (actual.image_fingerprint == expected.image_fingerprint)
@@ -33,7 +33,7 @@ module MongomadMatchersHelpers
 
   #COMPOSER, RECEIVER & MONEY
   def eq_personal_data?(actual,expected)
-    (actual.nick == expected.nick) &&
+    (actual.name == expected.name) &&
       (actual.image_url == expected.image_url) &&
       (actual.image_fingerprint == expected.image_fingerprint)
   end
@@ -75,7 +75,7 @@ module MongomadMatchersHelpers
   #MESSAGE & CONVERSATION
   def eq_message?(actual,expected)
     (actual.user_id == expected.user_id) &&
-      (actual.nick == expected.nick) &&
+      (actual.name == expected.name) &&
       (actual.text == expected.text) &&
       (actual.image_url == expected.image_url) &&
       (actual.image_fingerprint == expected.image_fingerprint)

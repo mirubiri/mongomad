@@ -6,13 +6,15 @@ class Offer::Composer
   embedded_in :offer
   embeds_many :products, class_name: 'Offer::Composer::Product', cascade_callbacks: true
 
-  field :nick, type: String
+  field :name, type: String
 
   accepts_nested_attributes_for :products, allow_destroy:true
 
-  denormalize :nick, :image_fingerprint, from:'offer.user_composer.profile'
+  denormalize :image_fingerprint, from:'offer.user_composer.profile'
+  denormalize :name, from:'offer.user_composer'
+
 
   validates :products,
-    :nick,
+    :name,
     presence: true
 end

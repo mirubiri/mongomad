@@ -1,5 +1,5 @@
 Fabricator(:request) do
   user { Fabricate(:user) }
-  nick { |attrs| attrs[:user].profile.nick }
+  name { |attrs| attrs[:user].name }
   text { Faker::Lorem.sentence }
 end

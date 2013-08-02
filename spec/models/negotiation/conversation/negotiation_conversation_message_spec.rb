@@ -17,15 +17,16 @@ describe Negotiation::Conversation::Message do
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:nick).of_type(String) }
+    it { should have_field(:name).of_type(String) }
     it { should have_field(:text).of_type(String) }
-    it { should have_denormalized_fields(:nick, :image_fingerprint).from('user.profile') }
+    it { should have_denormalized_fields(:image_fingerprint).from('user.profile') }
+    it { should have_denormalized_fields(:name).from('user') }
   end
 
   describe 'Validations' do
     it { should_not validate_presence_of :conversation }
     it { should validate_presence_of :user_id }
-    it { should validate_presence_of :nick }
+    it { should validate_presence_of :name }
     it { should validate_presence_of :text }
     it { should validate_length_of(:text).within(1..160) }
   end

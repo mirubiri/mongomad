@@ -2,6 +2,6 @@ Fabricator(:negotiation_conversation_message, class_name: 'Negotiation::Conversa
   transient    :user
   conversation nil
   user_id      { |attrs| attrs[:user].id }
-  nick         { |attrs| attrs[:user].profile.nick }
+  name         { |attrs| attrs[:user].name }
   text         { Faker::Lorem.sentence }
 end

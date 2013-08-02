@@ -8,5 +8,5 @@ Fabricator(:offer_composer, class_name: 'Offer::Composer') do
     end
     products
   end
-  nick      { |attrs| attrs[:user].profile.nick }
+  name      { |attrs| attrs[:user].name }
 end

@@ -5,13 +5,13 @@ module ApplicationHelper
     user.id
   end
   def user_logged_name(user = user_logged)
-    user.profile.name
+    user.name
   end
   def user_logged_surname(user = user_logged)
     user.profile.surname
   end
-  def user_logged_nick(user = user_logged)
-    user.profile.nick
+  def user_logged_name(user = user_logged)
+    user.name
   end
   def user_logged_sex(user = user_logged)
     user.profile.sex
@@ -66,13 +66,13 @@ module ApplicationHelper
     @user.id
   end
   def user_visited_fullname
-    @user.profile.name + " " + @user.profile.surname
+    @user.name + " " + @user.profile.surname
   end
   def user_visited_surname
     @user.profile.surname
   end
-  def user_visited_nick
-    @user.profile.nick
+  def user_visited_name
+    @user.name
   end
   def user_visited_sex
     @user.profile.sex
@@ -155,8 +155,8 @@ module ApplicationHelper
   # def request_user_id(request)
   #   request.user.id
   # end
-  # def request_user_nick(request)
-  #   request.nick
+  # def request_user_name(request)
+  #   request.name
   # end
   def request_text(request)
     request.text
@@ -178,11 +178,11 @@ module ApplicationHelper
   def offer_composer_id(offer)
     offer.user_composer_id
   end
-  def offer_composer_nick(offer)
-    offer.composer.nick
+  def offer_composer_name(offer)
+    offer.composer.name
   end
   def offer_composer_name(offer)
-    offer.user_composer.profile.name + " " + offer.user_composer.profile.surname
+    offer.user_composer.name + " " + offer.user_composer.profile.surname
   end
   def offer_composer_image(offer)
     image_tag(offer.composer.image_url)
@@ -197,7 +197,7 @@ module ApplicationHelper
     offer.user_receiver_id
   end
   def offer_receiver_name(offer)
-    offer.receiver.nick
+    offer.receiver.name
   end
   def offer_receiver_image(offer)
     image_tag(offer.receiver.image_url)
@@ -272,10 +272,10 @@ module ApplicationHelper
     proposal.user_composer_id
   end
   def proposal_composer_name(proposal)
-    proposal.composer.nick
+    proposal.composer.name
   end
   def proposal_composer_fullname(proposal)
-    proposal.user_composer.profile.name + " " + proposal.user_composer.profile.surname
+    proposal.user_composer.name + " " + proposal.user_composer.profile.surname
   end
   def proposal_composer_image(proposal)
     image_tag(proposal.composer.image_url)
@@ -293,7 +293,7 @@ module ApplicationHelper
     proposal.user_receiver_id
   end
   def proposal_receiver_name(proposal)
-    proposal.receiver.nick
+    proposal.receiver.name
   end
   def proposal_receiver_image(proposal)
     image_tag(proposal.receiver.image_url)
@@ -333,8 +333,8 @@ module ApplicationHelper
   def message_user_id(message)
     message.user_id
   end
-  def message_user_nick(message)
-    message.nick
+  def message_user_name(message)
+    message.name
   end
   def message_text(message)
     message.text

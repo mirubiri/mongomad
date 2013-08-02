@@ -5,11 +5,11 @@ class Deal::Agreement::Proposal::Composer
   embedded_in :proposal, class_name: 'Deal::Agreement::Proposal'
   embeds_many :products, class_name: 'Deal::Agreement::Proposal::Composer::Product', cascade_callbacks: true
 
-  field :nick, type: String
+  field :name, type: String
 
   accepts_nested_attributes_for :products
 
   validates :products,
-    :nick,
+    :name,
     presence: true
 end
