@@ -30,6 +30,7 @@ describe Profile do
     it { should validate_presence_of :gender }
     it { should validate_presence_of :latitude }
     it { should validate_presence_of :longitude }
+    it { should validate_presence_of :language }
   end
 
   describe 'Factories' do
