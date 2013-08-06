@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User::Profile do
+describe Profile do
   let(:user) { Fabricate(:user) }
   let(:profile) { user.profile }
 
@@ -16,15 +16,20 @@ describe User::Profile do
     it { should be_timestamped_document }
     it { should have_field(:first_name).of_type(String) }
     it { should have_field(:last_name).of_type(String) }
-    it { should have_field(:gender).of_type(String) }
-    xit 'guardar coordenadas de la ciudad'
     it { should have_field(:birth_date).of_type(Date) }
+    it { should have_field(:gender).of_type(String) }
+    it { should have_field(:latitude).of_type(String) }
+    it { should have_field(:longitude).of_type(String) }
     it { should have_field(:language).of_type(String) }
   end
 
   describe 'Validations' do
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :last_name }
+    it { should validate_presence_of :birth_date }
+    it { should validate_presence_of :gender }
+    it { should validate_presence_of :latitude }
+    it { should validate_presence_of :longitude }
   end
 
   describe 'Factories' do
