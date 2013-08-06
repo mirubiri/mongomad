@@ -65,7 +65,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    devise (3.0.0)
+    devise (3.0.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -104,7 +104,7 @@ GEM
       rake
       rspec (>= 2.9)
     moped (1.5.0)
-    multi_json (1.7.7)
+    multi_json (1.7.8)
     origin (1.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
