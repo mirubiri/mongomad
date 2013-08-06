@@ -9,8 +9,8 @@ describe User do
     it { should have_many(:received_offers).of_type(Offer) }
     it { should have_and_belong_to_many(:negotiations).of_type(Negotiation) }
     it { should have_and_belong_to_many(:deals).of_type(Deal) }
-    it { should embed_one(:profile).of_type(User::Profile) }
-    it { should embed_many(:things).of_type(User::Thing) }
+    it { should embed_one(:profile).of_type(Profile) }
+    it { should embed_many(:things).of_type(Thing) }
   end
 
   describe 'Attributes' do
