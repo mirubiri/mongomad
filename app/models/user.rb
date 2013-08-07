@@ -5,19 +5,19 @@ class User
   has_many                :requests
   has_many                :sent_offers,     class_name: 'Offer', inverse_of: :user_composer
   has_many                :received_offers, class_name: 'Offer', inverse_of: :user_receiver
-  has_and_belongs_to_many :negotiations,    class_name: 'Negotiation', inverse_of: :negotiators
-  has_and_belongs_to_many :deals
+  has_and_belongs_to_many :negotiations,    inverse_of: :negotiators
+  has_and_belongs_to_many :deals,           inverse_of: :signers
 
-  embeds_one  :profile, class_name: 'User::Profile', cascade_callbacks: true
-  embeds_many :things,  class_name: 'User::Thing', cascade_callbacks: true
+  embeds_one  :profile, cascade_callbacks: true
+  embeds_many :things,  cascade_callbacks: true
 
-  field :name, type: String
+  # field :name, type: String
 
-  accepts_nested_attributes_for :profile
+  # accepts_nested_attributes_for :profile
 
   validates :profile,
-  :name,
-   presence: true
+  # :name,
+    presence: true
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:

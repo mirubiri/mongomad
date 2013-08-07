@@ -1,28 +1,31 @@
-class Offer::Receiver::Product
+class Product
   include Mongoid::Document
-  include Denormalized
-  include ImageManagement::ImageHolder
+  include Mongoid::Timestamps
 
-  embedded_in :receiver, class_name: 'Offer::Receiver'
+#   include Denormalized
+#   include ImageManagement::ImageHolder
 
-  field :thing_id,    type: Moped::BSON::ObjectId
-  field :name,        type: String
-  field :description, type: String
-  field :quantity,    type: Integer
+  embedded_in :polymorphic_product, polymorphic: true
+  embeds_one :sheet
 
-  denormalize :name, :description, :image_fingerprint, from:'thing'
+#   field :thing_id,    type: Moped::BSON::ObjectId
+#   field :name,        type: String
+#   field :description, type: String
+#   field :quantity,    type: Integer
 
-  validates :thing_id,
-    :name,
-    :description,
-    :quantity,
+#   denormalize :name, :description, :image_fingerprint, from:'thing'
+
+  validates :sheet,
+#     :name,
+#     :description,
+#     :quantity,
     presence: true
 
-  validates :quantity,
-    allow_nil: false,
-    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+#   validates :quantity,
+#     allow_nil: false,
+#     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  def thing
-    receiver.offer.user_receiver.things.find(thing_id)
-  end
+#   def thing
+#     receiver.offer.user_receiver.things.find(thing_id)
+#   end
 end

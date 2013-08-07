@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Negotiation::Proposal::Receiver::Product do
+describe Product do
   # let(:offer) { Fabricate(:offer) }
   # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   # let(:proposal) { negotiation.proposals.last }
@@ -12,40 +12,40 @@ describe Negotiation::Proposal::Receiver::Product do
   # end
 
   describe 'Relations' do
-    xit { should be_embedded_in(:polymorphic_product).of_type(Product) }
+    it { should be_embedded_in :polymorphic_product }
     it { should embed_one :sheet }
   #   it { should be_embedded_in(:receiver).of_type(Negotiation::Proposal::Receiver) }
   end
 
-  # describe 'Attributes' do
+  describe 'Attributes' do
     it { should be_timestamped_document }
-  #   it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
+    it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
   #   it { should have_field(:name).of_type(String) }
   #   it { should have_field(:description).of_type(String) }
-  #   it { should have_field(:quantity).of_type(Integer) }
+    it { should have_field(:quantity).of_type(Integer) }
   #   it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
-  # end
-
-  # describe 'Validations' do
-    xit { should_not validate_presence_of :polymorphic_product }
-    it { should validate_presence_of :sheet }
-  #   it { should_not validate_presence_of :receiver }
-  #   it { should validate_presence_of :thing_id }
-  #   it { should validate_presence_of :name }
-  #   it { should validate_presence_of :description }
-  #   it { should validate_presence_of :quantity }
-  #   it { should validate_numericality_of(:quantity).to_allow(nil: false,
-  #                                                            only_integer: true,
-  #                                                            greater_than_or_equal_to: 0) }
   end
 
-  # describe 'Factories' do
+  describe 'Validations' do
+    it { should_not validate_presence_of :polymorphic_product }
+    it { should validate_presence_of :sheet }
+  #   it { should_not validate_presence_of :receiver }
+    it { should validate_presence_of :thing_id }
+  #   it { should validate_presence_of :name }
+  #   it { should validate_presence_of :description }
+    it { should validate_presence_of :quantity }
+    it { should validate_numericality_of(:quantity).to_allow(nil: false,
+                                                             only_integer: true,
+                                                             greater_than_or_equal_to: 0) }
+  end
+
+  describe 'Factories' do
   #   specify { expect(product).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { product.save }.to change{ Negotiation.count }.by(1)
   #   end
-  # end
+  end
 
   # describe '#thing' do
   #   subject { product.thing }

@@ -16,8 +16,8 @@ describe Offer do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-  #   it { should have_field(:initial_message).of_type(String) }
-  #   it { should accept_nested_attributes_for :composer }
+    it { should accept_nested_attributes_for :proposal }
+    it { should have_field(:initial_message).of_type(String) }
   #   it { should accept_nested_attributes_for :receiver }
   #   it { should accept_nested_attributes_for :money }
   end
@@ -29,18 +29,18 @@ describe Offer do
   #   it { should validate_presence_of :composer }
   #   it { should validate_presence_of :receiver }
   #   it { should validate_presence_of :money }
-  #   it { should validate_presence_of :initial_message }
-  #   it { should validate_length_of(:initial_message).within(1..160) }
+    it { should validate_presence_of :initial_message }
+    it { should validate_length_of(:initial_message).within(1..160) }
   end
 
-  # describe 'Factories' do
+  describe 'Factories' do
   #   specify { expect(offer).to be_valid }
   #   specify { expect(offer.save).to eq true }
 
   #   it 'creates two different users' do
   #     expect { offer.save }.to change{ User.count }.by(2)
   #   end
-  # end
+  end
 
   # describe '#start_negotiation' do
   #   context 'When offer is saved' do

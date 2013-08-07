@@ -10,13 +10,15 @@ describe Deal do
     it { should embed_many :messages }
   #   it { should embed_one(:conversation).of_type(Deal::Conversation) }
   #   it { should embed_one(:agreement).of_type(Deal::Agreement) }
-  # end
+  end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
+    it { should accept_nested_attributes_for :proposals }
+    it { should accept_nested_attributes_for :messages }
   #   it { should accept_nested_attributes_for :conversation }
   #   it { should accept_nested_attributes_for :agreement }
-  # end
+  end
 
   describe 'Validations' do
     xit { should_not validate_presence_of :signers }

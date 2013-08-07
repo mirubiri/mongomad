@@ -1,2 +1,2 @@
-Fabricator(:image) do
-end
+# Fabricator(:image) do
+# end

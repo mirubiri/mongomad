@@ -12,33 +12,33 @@ describe Sheet do
   # end
 
   describe 'Relations' do
-    xit { should be_embedded_in(:polymorphic_sheet).of_type(Sheet) }
+    it { should be_embedded_in :polymorphic_sheet }
   end
 
-  # describe 'Attributes' do
-  #   it { should have_field(:name).of_type(String) }
-  #   it { should have_field(:description).of_type(String) }
+  describe 'Attributes' do
+    it { should have_field(:name).of_type(String) }
+    it { should have_field(:description).of_type(String) }
   #   xit { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
-  # end
+  end
 
   describe 'Validations' do
-    xit { should_not validate_presence_of :polymorphic_sheet }
+    it { should_not validate_presence_of :polymorphic_sheet }
   #   it { should validate_presence_of :thing_id }
-  #   it { should validate_presence_of :name }
-  #   it { should validate_presence_of :description }
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :description }
   #   it { should validate_presence_of :quantity }
   #   it { should validate_numericality_of(:quantity).to_allow(nil: false,
   #                                                            only_integer: true,
   #                                                            greater_than_or_equal_to: 0) }
   end
 
-  # describe 'Factories' do
+  describe 'Factories' do
   #   specify { expect(product).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { product.save }.to change{ Negotiation.count }.by(1)
   #   end
-  # end
+  end
 
   # describe '#thing' do
   #   subject { product.thing }
