@@ -14,8 +14,8 @@ describe Request do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:name).of_type(String) }
-    it { should have_field(:text).of_type(String) }
+    it { should have_field(:name) }
+    it { should have_field(:text) }
   #   it { should have_denormalized_fields(:image_fingerprint).from('user.profile') }
   #   it { should have_denormalized_fields(:name).from('user') }
   end
