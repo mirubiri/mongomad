@@ -1,0 +1,2 @@
+Fabricator(:sheet) do
+end
