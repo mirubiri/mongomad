@@ -1,7 +1,6 @@
 class Thing
   include Mongoid::Document
   include Mongoid::Timestamps
-#   include ImageManagement::ImageHolder
 
   embedded_in :user
   embeds_one  :sheet, as: :sheet_container

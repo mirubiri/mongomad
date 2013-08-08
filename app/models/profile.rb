@@ -1,7 +1,6 @@
 class Profile
   include Mongoid::Document
   include Mongoid::Timestamps
-#   include ImageManagement::ImageHolder
 
   embedded_in :user
 
@@ -12,5 +11,4 @@ class Profile
   field :language
 
   validates_presence_of :first_name,:last_name,:language
-
 end

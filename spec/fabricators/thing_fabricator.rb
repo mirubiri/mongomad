@@ -1,13 +1,8 @@
-# Fabricator(:user_thing, class_name: 'User::Thing') do
-#   user        nil
-#   name        { Faker::Lorem.word }
-#   description { Faker::Lorem.sentence }
-#   stock       5
-#   image       ActionDispatch::Http::UploadedFile.new({
-#     :filename     => 'car.png',
-#     :content_type => 'image/png',
-#     :tempfile     => File.new('app/assets/images/car.png')})
-# end
+Fabricator(:thing) do
+  user        { Fabricate.build(:user) }
+  sheet       { Fabricate.build(:sheet) }
+  stock       5
+end
 
 # Fabricator(:user_medico_thing_mp3, from: 'User::Thing') do
 #   user        nil
