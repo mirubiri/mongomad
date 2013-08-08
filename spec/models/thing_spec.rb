@@ -12,7 +12,6 @@ describe Thing do
   it { should have_field(:stock).of_type(Integer) }
 
   # Validations
-  it { should_not validate_presence_of :user }
   it { should validate_presence_of :sheet }
   it { should validate_presence_of :stock }
   it { should validate_numericality_of(:stock).to_allow(nil: false,

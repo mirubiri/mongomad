@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Sheet do
-
   let(:sheet) { Fabricate.build(:sheet) }
 
   xit ' should have two secondary images'

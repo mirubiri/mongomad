@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Request do
-
   let(:request) { Fabricate.build(:request) }
 
   xit 'should have user profile image'
