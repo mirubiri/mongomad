@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Proposal do
@@ -25,7 +26,7 @@ describe Proposal do
     #it { should have_field(:composer_name).of_type() } foto composer
     it { should have_field(:receiver_name).of_type() }
     #it { should have_field(:receiver_name).of_type() } foto receiver
-# MONEDA (falta esto nada mas :) 
+# MONEDA (falta esto nada mas :)
 
     it { should have_field(:).of_type() }
     it { should have_field(:).of_type() }
@@ -163,3 +164,4 @@ describe Proposal do
   #   end
   # end
 end
+=end

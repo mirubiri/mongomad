@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Offer do
@@ -85,3 +86,4 @@ describe Offer do
   #   end
   # end
 end
+=end

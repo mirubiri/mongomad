@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Negotiation do
@@ -24,7 +25,7 @@ describe Negotiation do
   describe 'Validations' do
     xit { should_not validate_presence_of :negotiators }
     it { should validate_presence_of :proposals }
-    it { should validate_presence_of :messages }    
+    it { should validate_presence_of :messages }
   #   it { should validate_presence_of :conversation }
   #   it { should validate_presence_of :proposals }
   end
@@ -88,3 +89,4 @@ describe Negotiation do
   #   end
   # end
 end
+=end

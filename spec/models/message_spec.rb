@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Message do
@@ -50,3 +51,4 @@ describe Message do
   #   end
   # end
 end
+=end

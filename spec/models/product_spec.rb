@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Product do
@@ -57,3 +58,4 @@ describe Product do
   #   end
   # end
 end
+=end

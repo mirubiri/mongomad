@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Profile do
   let(:profile) { Fabricate.build(:profile) }
 
-  xit 'should have an image'
-  xit 'should have city coordenates'
+  xit 'should have an user photo'
+  xit 'should have the city name or coordinates where user live'
 
   # Relations
   it { should be_embedded_in :user }

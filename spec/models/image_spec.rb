@@ -1,3 +1,4 @@
+=begin
 require 'spec_helper'
 
 describe Image do
@@ -16,3 +17,4 @@ describe Image do
                                                                greater_than_or_equal_to: 0) }
   end
 end
+=end
