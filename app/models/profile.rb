@@ -5,14 +5,12 @@ class Profile
 
   embedded_in :user
 
-#   field :first_name,             type: String
-#   field :last_name,          type: String
-#   field :gender,              type: String
-#   field :birth_date,       type: Date
-#   field :language,    type: String
+  field :first_name
+  field :last_name
+  field :gender
+  field :birth_date, type: Date
+  field :language
 
-#   validates :first_name,
-#     :last_name,
-#     :language,
- #   presence: true
+  validates_presence_of :first_name,:last_name,:language
+
 end
