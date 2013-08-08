@@ -4,19 +4,12 @@ class Thing
 #   include ImageManagement::ImageHolder
 
   embedded_in :user
-  embeds_one  :sheet, as: :polymorphic_sheet
+  embeds_one  :sheet, as: :sheet_container
 
-#   field :name,        type: String
-#   field :description, type: String
-#   field :stock,       type: Integer
+  field :stock,type:Integer
 
-  validates :sheet,
-   #:name,
-#     :description,
-#     :stock,
-    presence: true
+  validates_presence_of :sheet,:stock
 
-#   validates :stock,
-#     allow_nil: false,
-#     numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :stock, allow_nil: false,
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

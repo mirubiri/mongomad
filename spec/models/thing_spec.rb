@@ -15,7 +15,6 @@ describe Thing do
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :sheet }
     it { should have_field(:stock).of_type(Integer) }
   end
 
