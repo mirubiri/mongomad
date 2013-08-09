@@ -3,8 +3,8 @@ require 'spec_helper'
 describe Sheet do
   let(:sheet) { Fabricate.build(:sheet) }
 
-  xit ' should have two secondary images'
-  xit ' should have one main image '
+  xit 'should have one main image & two secondary images'
+
 
   # Relations
   it { should be_embedded_in :sheet_container }
