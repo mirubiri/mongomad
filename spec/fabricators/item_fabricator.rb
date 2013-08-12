@@ -1,6 +1,6 @@
-Fabricator(:thing) do
+Fabricator(:item) do
   user        { Fabricate.build(:user) }
-  sheet       { Fabricate.build(:sheet) }
+  sheet       { Fabricate.build(:item_sheet) }
   stock       5
 end
 

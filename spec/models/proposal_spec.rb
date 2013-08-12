@@ -8,61 +8,24 @@ describe Proposal do
   # let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   # let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
-  describe 'Relations' do
-    it { should be_embedded_in :polymorphic_proposal }
-    it { should embed_many(:composer_products).of_type(Product) }
-    it { should embed_many(:receiver_products).of_type(Product) }
-  #   it { should be_embedded_in :negotiation }
-  #   it { should embed_one(:composer).of_type(Negotiation::Proposal::Composer) }
-  #   it { should embed_one(:receiver).of_type(Negotiation::Proposal::Receiver) }
-  #   it { should embed_one(:money).of_type(Negotiation::Proposal::Money) }
-  end
+  # Relations
+  it { should be_embedded_in :proposal_container }
+  it { should embed_many(:sender_products).of_type(Product) }
+  it { should embed_many(:receiver_products).of_type(Product) }
+  it { should embed_one(:money) }
 
-  describe 'Attributes' do
-    it { should be_timestamped_document }
-    it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
-  #   it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) } sobraria
-    it { should have_field(:composer_name).of_type() }
-    #it { should have_field(:composer_name).of_type() } foto composer
-    it { should have_field(:receiver_name).of_type() }
-    #it { should have_field(:receiver_name).of_type() } foto receiver
-# MONEDA (falta esto nada mas :)
+  # Attributes
 
-    it { should have_field(:).of_type() }
-    it { should have_field(:).of_type() }
-    it { should have_field(:).of_type() }
-    it { should have_field(:).of_type() }
+  # Validations
+  it { should validate_presence_of :sender_products }
+  it { should validate_presence_of :receiver_products }
 
-  #   it { should have_field(:user_composer_id).of_type(Moped::BSON::ObjectId) }
-  #   it { should have_field(:user_receiver_id).of_type(Moped::BSON::ObjectId) }
-  #   it { should have_field(:state).of_type(String) }
-  #   it { should have_field(:confirmable_state).of_type(String) }
-  #   it { should accept_nested_attributes_for :composer }
-  #   it { should accept_nested_attributes_for :receiver }
-  #   it { should accept_nested_attributes_for :money }
-  end
-
-  describe 'Validations' do
-    it { should_not validate_presence_of :polymorphic_proposal }
-    it { should validate_presence_of :composer_products }
-    it { should validate_presence_of :receiver_products }
-  #   it { should_not validate_presence_of :negotiation }
-  #   it { should validate_presence_of :composer }
-  #   it { should validate_presence_of :receiver }
-  #   it { should validate_presence_of :money }
-  #   it { should validate_presence_of :user_composer_id }
-  #   it { should validate_presence_of :user_receiver_id }
-  #   it { should_not validate_presence_of :state }
-  #   it { should validate_presence_of :confirmable_state }
-  end
-
-  describe 'Factories' do
+    # Factories
   #   specify { expect(proposal).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { proposal.save }.to change{ Negotiation.count }.by(1)
   #   end
-  end
 
   # describe '#user_composer' do
   #   context 'When proposal has no negotiation assigned' do

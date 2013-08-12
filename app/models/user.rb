@@ -9,7 +9,7 @@ class User
   has_and_belongs_to_many :deals,           inverse_of: :signers
 
   embeds_one  :profile, cascade_callbacks: true
-  embeds_many :things,  cascade_callbacks: true
+  embeds_many :items,  cascade_callbacks: true
 
   field :name
 

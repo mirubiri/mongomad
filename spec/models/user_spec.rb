@@ -10,7 +10,7 @@ describe User do
   it { should have_and_belong_to_many :negotiations }
   it { should have_and_belong_to_many :deals }
   it { should embed_one :profile }
-  it { should embed_many :things }
+  it { should embed_many :items }
 
   # Attributes
   it { should be_timestamped_document }

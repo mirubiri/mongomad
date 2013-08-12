@@ -1,4 +1,4 @@
-class Sheet
+class ItemSheet
   include Mongoid::Document
   embedded_in :sheet_container, polymorphic:true
   field :name

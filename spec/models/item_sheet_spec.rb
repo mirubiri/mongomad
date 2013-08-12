@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Sheet do
-  let(:sheet) { Fabricate.build(:sheet) }
+describe ItemSheet do
+  let(:sheet) { Fabricate.build(:item_sheet) }
 
   xit 'should have one main image & two secondary images'
 
@@ -17,5 +17,5 @@ describe Sheet do
   it { should validate_presence_of :description }
 
   # Factories
-  specify { expect( Fabricate.build(:sheet) ).to be_valid }
+  specify { expect( Fabricate.build(:item_sheet) ).to be_valid }
 end
