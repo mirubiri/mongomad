@@ -7,10 +7,6 @@ describe Product do
   # let(:receiver) { proposal.receiver }
   # let(:product) { receiver.products.last }
 
-  # describe 'Includes' do
-  #   xit 'include ImageManager::ImageHolder'
-  # end
-
   describe 'Relations' do
     it { should be_embedded_in :product_container }
     it { should embed_one(:sheet).of_type(ItemSheet) }
@@ -19,16 +15,14 @@ describe Product do
   describe 'Attributes' do
     it { should be_timestamped_document }
     it { should have_field(:quantity).of_type(Integer) }
-  #   it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
+  # it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
   end
 
   describe 'Validations' do
     it { should_not validate_presence_of :product_container }
     it { should validate_presence_of :sheet }
     it { should validate_presence_of :quantity }
-    it { should validate_numericality_of(:quantity).to_allow(nil: false,
-                                                             only_integer: true,
-                                                             greater_than_or_equal_to: 0) }
+    it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
   end
 
   describe 'Factories' do

@@ -12,7 +12,6 @@ describe Offer do
   it { should embed_one(:sender_sheet).of_type(UserSheet) }
   it { should embed_one(:receiver_sheet).of_type(UserSheet) }
 
-
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :message }
