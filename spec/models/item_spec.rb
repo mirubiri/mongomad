@@ -14,9 +14,7 @@ describe Item do
   # Validations
   it { should validate_presence_of :sheet }
   it { should validate_presence_of :stock }
-  it { should validate_numericality_of(:stock).to_allow(nil: false,
-    only_integer: true,
-    greater_than_or_equal_to: 0) }
+  it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
 
   # Factories
   specify { expect( Fabricate.build(:item) ).to be_valid }

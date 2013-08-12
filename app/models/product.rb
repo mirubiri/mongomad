@@ -22,3 +22,4 @@ class Product
 #     receiver.offer.user_receiver.things.find(thing_id)
 #   end
 end
+
