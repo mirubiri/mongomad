@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Negotiation do
@@ -10,14 +9,12 @@ describe Negotiation do
     it { should have_and_belong_to_many(:negotiators).of_type(User) }
     it { should embed_many :proposals }
     it { should embed_many :messages }
-  #   it { should embed_one(:conversation).of_type(Negotiation::Conversation) }
-  #   it { should embed_many(:proposals).of_type(Negotiation::Proposal) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :proposals }
-    it { should accept_nested_attributes_for :messages }
+  #  it { should accept_nested_attributes_for :proposals }
+  #  it { should accept_nested_attributes_for :messages }
   #   it { should accept_nested_attributes_for :conversation }
   #   it { should accept_nested_attributes_for :proposals }
   end
@@ -89,4 +86,4 @@ describe Negotiation do
   #   end
   # end
 end
-=end
+
