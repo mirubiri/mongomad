@@ -4,17 +4,16 @@ class Negotiation
 
   has_and_belongs_to_many :negotiators, class_name: 'User', inverse_of: :negotiators
 
-  embeds_many :proposals, as: :polymorphic_proposal 
-  embeds_many :messages, as: :polymorphic_message
+  embeds_many :proposals, class_name:'Proposal', as: :proposal_container
+  embeds_many :messages, class_name:'Message', as: :message_container
+
 
 #   embeds_one  :conversation, class_name: 'Negotiation::Conversation', cascade_callbacks: true
 #   embeds_many :proposals,    class_name: 'Negotiation::Proposal', cascade_callbacks: true
 
 #   accepts_nested_attributes_for :conversation, :proposals
 
-  validates :proposals,
-    :messages,
-    presence: true
+  validates_presence_of :proposals, :messages
 
 #   def seal_deal
 #     deal = nil
