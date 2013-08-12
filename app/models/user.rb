@@ -8,14 +8,13 @@ class User
   has_and_belongs_to_many :negotiations,    inverse_of: :negotiators
   has_and_belongs_to_many :deals,           inverse_of: :signers
 
-  embeds_one  :profile, cascade_callbacks: true
-  embeds_many :items,  cascade_callbacks: true
+  embeds_one :profile
+  embeds_one :sheet,class_name:'UserSheet', as: :user_sheet_container
+  embeds_many :items
 
-  field :name
+  field :nick
 
-  accepts_nested_attributes_for :profile
-
-  validates_presence_of :profile, :name
+  validates_presence_of :profile, :nick
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:

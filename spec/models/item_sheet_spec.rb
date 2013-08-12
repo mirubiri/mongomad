@@ -7,7 +7,7 @@ describe ItemSheet do
 
 
   # Relations
-  it { should be_embedded_in :sheet_container }
+  it { should be_embedded_in :item_sheet_container }
 
   # Attributes
   it { should have_fields :name,:description }
@@ -17,5 +17,6 @@ describe ItemSheet do
   it { should validate_presence_of :description }
 
   # Factories
-  specify { expect( Fabricate.build(:item_sheet) ).to be_valid }
+  specify { expect( Fabricate.build(:item_sheet,container: :item) ).to be_valid }
+  specify { expect( Fabricate.build(:item_sheet,container: :product)).to be_valid }
 end

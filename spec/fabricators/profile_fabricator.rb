@@ -1,7 +1,5 @@
 Fabricator(:profile) do
-  user             { Fabricate.build(:user,profile:nil) }
-  first_name       { Faker::Name.first_name }
-  last_name        { Faker::Name.last_name }
+  user { Fabricate.build(:user,profile:nil) }
   language 'english'
 #  image            ActionDispatch::Http::UploadedFile.new({
 #    :filename     => 'user.png',

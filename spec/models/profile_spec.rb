@@ -11,12 +11,11 @@ describe Profile do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_fields :first_name,:last_name,:gender,:language }
+  it { should have_fields :gender,:language }
   it { should have_field(:birth_date).of_type(Date) }
 
   # Validations
-  it { should validate_presence_of :first_name }
-  it { should validate_presence_of :last_name }
+
   it { should validate_presence_of :language }
 
   # Factories
