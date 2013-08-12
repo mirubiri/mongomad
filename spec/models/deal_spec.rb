@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Deal do
@@ -9,24 +8,18 @@ describe Deal do
     it { should have_and_belong_to_many(:signers).of_type(User) }
     it { should embed_many :proposals }
     it { should embed_many :messages }
-  #   it { should embed_one(:conversation).of_type(Deal::Conversation) }
-  #   it { should embed_one(:agreement).of_type(Deal::Agreement) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should accept_nested_attributes_for :proposals }
-    it { should accept_nested_attributes_for :messages }
-  #   it { should accept_nested_attributes_for :conversation }
-  #   it { should accept_nested_attributes_for :agreement }
+   # it { should accept_nested_attributes_for :proposals }
+   # it { should accept_nested_attributes_for :messages }
   end
 
   describe 'Validations' do
     xit { should_not validate_presence_of :signers }
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
-  #   it { should validate_presence_of :conversation }
-  #   it { should validate_presence_of :agreement }
   end
 
   # describe 'Factories' do
@@ -46,4 +39,3 @@ describe Deal do
   #   end
   # end
 end
-=end
