@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Product do
@@ -13,27 +12,19 @@ describe Product do
   # end
 
   describe 'Relations' do
-    it { should be_embedded_in :polymorphic_product }
-    it { should embed_one :sheet }
-  #   it { should be_embedded_in(:receiver).of_type(Negotiation::Proposal::Receiver) }
+    it { should be_embedded_in :product_container }
+    it { should embed_one(:sheet).of_type(ItemSheet) }
   end
 
   describe 'Attributes' do
     it { should be_timestamped_document }
-    it { should have_field(:thing_id).of_type(Moped::BSON::ObjectId) }
-  #   it { should have_field(:name).of_type(String) }
-  #   it { should have_field(:description).of_type(String) }
     it { should have_field(:quantity).of_type(Integer) }
   #   it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
   end
 
   describe 'Validations' do
-    it { should_not validate_presence_of :polymorphic_product }
+    it { should_not validate_presence_of :product_container }
     it { should validate_presence_of :sheet }
-  #   it { should_not validate_presence_of :receiver }
-    it { should validate_presence_of :thing_id }
-  #   it { should validate_presence_of :name }
-  #   it { should validate_presence_of :description }
     it { should validate_presence_of :quantity }
     it { should validate_numericality_of(:quantity).to_allow(nil: false,
                                                              only_integer: true,
@@ -58,4 +49,3 @@ describe Product do
   #   end
   # end
 end
-=end
