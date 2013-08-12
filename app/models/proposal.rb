@@ -1,13 +1,12 @@
 class Proposal
   include Mongoid::Document
-  include Mongoid::Timestamps
 
-    embedded_in :polymorphic_proposal, polymorphic: true
-    embeds_many :composer_products, class_name: 'Product', cascade_callbacks: true
+    embedded_in :proposal_container, polymorphic: true
+    embeds_many :sender_products, class_name: 'Product', cascade_callbacks: true
     embeds_many :receiver_products, class_name: 'Product', cascade_callbacks: true
 #   embeds_one  :money,    class_name: 'Negotiation::Proposal::Money', cascade_callbacks: true
 
-#   field :user_composer_id, type: Moped::BSON::ObjectId
+    field :sender_id, type: Moped::BSON::ObjectId
 #   field :user_receiver_id, type: Moped::BSON::ObjectId
 
 #   accepts_nested_attributes_for :composer, :receiver, :money
@@ -46,14 +45,15 @@ class Proposal
 #     end
 #   end
 
-    validates :composer_products,
-      :receiver_products,
+    validates_presence_of :sender_products, :receiver_products, :sender_id
+    # validates :composer_products,
+    #   :receiver_products,
 #    :receiver,
 #    :money,
 #    :user_composer_id,
 #    :user_receiver_id,
 #    :confirmable_state,
-      presence: true
+      # presence: true
 
 #   def user_composer
 #     negotiation && negotiation.negotiators.find(user_composer_id)
