@@ -10,7 +10,7 @@ describe Profile do
   it { should be_timestamped_document }
   it { should have_fields :gender, :language }
   it { should have_field(:birth_date).of_type(Date) }
-  xit 'should have the city name or coordinates where user live'
+  
 
   # Validations
   it { should validate_presence_of :language }
