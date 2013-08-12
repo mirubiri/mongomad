@@ -5,7 +5,7 @@ class Negotiation
   has_and_belongs_to_many :negotiators, class_name: 'User', inverse_of: :negotiators
 
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
-  embeds_many :messages, class_name:'Message', as: :message_container
+  embeds_many :messages,  class_name:'Message', as: :message_container
 
   #accepts_nested_attributes_for :conversation, :proposals
 
