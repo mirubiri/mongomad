@@ -2,29 +2,18 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers
-  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
+  belongs_to :sender,   class_name: 'User', inverse_of: :sent_offers
+  belongs_to :receiver, class_name: 'User', inverse_of: :received_offers
 
-  embeds_one :proposal, as: :polymorphic_proposal 
- #   embeds_one :composer, class_name: 'Offer::Composer', cascade_callbacks: true
-#   embeds_one :receiver, class_name: 'Offer::Receiver', cascade_callbacks: true
-#   embeds_one :money,    class_name: 'Offer::Money', cascade_callbacks: true
+  embeds_one :proposal, as: :polymorphic_proposal
+  embeds_one :sender_sheet,   class_name:'UserSheet', as: :user_sheet_container
+  embeds_one :receiver_sheet, class_name:'UserSheet', as: :user_sheet_container
 
-#   field :initial_message, type: String
+  field :message
 
-#   accepts_nested_attributes_for :composer, :receiver, :money
+  validates_presence_of :sender, :receiver, :proposal, :sender_sheet, :receiver_sheet, :message
 
-  validates :user_composer,
-    :user_receiver,
-    :proposal,
-#     :composer,
-#     :receiver,
-#     :money,
-#     :initial_message,
-    presence: true
-
-#   validates :initial_message,
-#     length: { minimum: 1, maximum: 160 }
+  validates :message, length: { minimum: 1, maximum: 160 }
 
 #   def start_negotiation
 #     negotiation = nil

@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Offer do
@@ -10,17 +9,21 @@ describe Offer do
   it { should belong_to(:sender).of_type(User) }
   it { should belong_to(:receiver).of_type(User) }
   it { should embed_one :proposal }
+  it { should embed_one(:sender_sheet).of_type(UserSheet) }
+  it { should embed_one(:receiver_sheet).of_type(UserSheet) }
 
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:message).of_type(String) }
+  it { should have_field :message }
 
   # Validations
   it { should validate_presence_of :sender }
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :proposal }
-  it { should validate_length_of(:initial_message).within(1..160) }
+  it { should validate_presence_of :sender_sheet }
+  it { should validate_presence_of :receiver_sheet }
+  it { should validate_length_of(:message).within(1..160) }
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
@@ -68,4 +71,4 @@ describe Offer do
   #   end
   # end
 end
-=end
+
