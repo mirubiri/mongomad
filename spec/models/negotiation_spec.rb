@@ -15,16 +15,12 @@ describe Negotiation do
     it { should be_timestamped_document }
   #  it { should accept_nested_attributes_for :proposals }
   #  it { should accept_nested_attributes_for :messages }
-  #   it { should accept_nested_attributes_for :conversation }
-  #   it { should accept_nested_attributes_for :proposals }
   end
 
   describe 'Validations' do
     xit { should_not validate_presence_of :negotiators }
     it { should validate_presence_of :proposals }
     it { should validate_presence_of :messages }
-  #   it { should validate_presence_of :conversation }
-  #   it { should validate_presence_of :proposals }
   end
 
   # describe 'Factories' do
