@@ -4,17 +4,10 @@ class Deal
 
   has_and_belongs_to_many :signers, class_name: 'User', inverse_of: :signers
 
-  embeds_many :proposals, as: :polymorphic_proposal 
-  embeds_many :messages, as: :polymorphic_message 
-
-#   has_and_belongs_to_many :signers, class_name: 'User'
-
-#   embeds_one :conversation, class_name: 'Deal::Conversation', cascade_callbacks: true
-#   embeds_one :agreement,    class_name: 'Deal::Agreement', cascade_callbacks: true
+  embeds_many :proposals, class_name:'Proposal', as: :proposal_container
+  embeds_many :messages,  class_name:'Message', as: :message_container
 
 #   accepts_nested_attributes_for :conversation, :agreement
 
-  validates :proposals,
-    :messages,
-    presence: true
+  validates_presence_of :proposals, :messages
 end
