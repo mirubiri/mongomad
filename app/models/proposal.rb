@@ -2,7 +2,7 @@ class Proposal
   include Mongoid::Document
 
     embedded_in :proposal_container, polymorphic: true
-    embeds_many :sender_products, class_name: 'Product', cascade_callbacks: true
+    embeds_many :sender_products,   class_name: 'Product', cascade_callbacks: true
     embeds_many :receiver_products, class_name: 'Product', cascade_callbacks: true
 #   embeds_one  :money,    class_name: 'Negotiation::Proposal::Money', cascade_callbacks: true
 
@@ -12,6 +12,8 @@ class Proposal
 #   accepts_nested_attributes_for :composer, :receiver, :money
 
 #   before_create :set_initial_state
+
+    validates_presence_of :sender_products, :receiver_products, :sender_id
 
 #   state_machine :confirmable_state, :initial => :confirmable do
 #     event :unconfirmable do
@@ -45,7 +47,7 @@ class Proposal
 #     end
 #   end
 
-    validates_presence_of :sender_products, :receiver_products, :sender_id
+
     # validates :composer_products,
     #   :receiver_products,
 #    :receiver,
