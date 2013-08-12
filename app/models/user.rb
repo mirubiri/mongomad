@@ -9,7 +9,7 @@ class User
   has_and_belongs_to_many :deals,           inverse_of: :signers
 
   embeds_one :profile
-  embeds_one :sheet,class_name:'UserSheet', as: :user_sheet_container
+  embeds_one :sheet, class_name:'UserSheet', as: :user_sheet_container
   embeds_many :items
 
   field :nick
