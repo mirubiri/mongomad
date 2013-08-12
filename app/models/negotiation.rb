@@ -7,11 +7,7 @@ class Negotiation
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
   embeds_many :messages, class_name:'Message', as: :message_container
 
-
-#   embeds_one  :conversation, class_name: 'Negotiation::Conversation', cascade_callbacks: true
-#   embeds_many :proposals,    class_name: 'Negotiation::Proposal', cascade_callbacks: true
-
-#   accepts_nested_attributes_for :conversation, :proposals
+  #accepts_nested_attributes_for :conversation, :proposals
 
   validates_presence_of :proposals, :messages
 
