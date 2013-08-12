@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Proposal do
@@ -12,16 +11,17 @@ describe Proposal do
   it { should be_embedded_in :proposal_container }
   it { should embed_many(:sender_products).of_type(Product) }
   it { should embed_many(:receiver_products).of_type(Product) }
-  it { should embed_one(:money) }
 
   # Attributes
+  it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
   it { should validate_presence_of :sender_products }
   it { should validate_presence_of :receiver_products }
+  it { should validate_presence_of :sender_id }
 
-    # Factories
-  #   specify { expect(proposal).to be_valid }
+  # Factories
+  #specify { expect(proposal).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { proposal.save }.to change{ Negotiation.count }.by(1)
@@ -127,4 +127,3 @@ describe Proposal do
   #   end
   # end
 end
-=end
