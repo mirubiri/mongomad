@@ -7,12 +7,15 @@ describe Proposal do
   # let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   # let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
+  xit 'should embed one money'
+
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many(:sender_products).of_type(Product) }
   it { should embed_many(:receiver_products).of_type(Product) }
 
   # Attributes
+  it { should be_timestamped_document }
   it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
@@ -21,7 +24,7 @@ describe Proposal do
   it { should validate_presence_of :sender_id }
 
   # Factories
-  #specify { expect(proposal).to be_valid }
+  specify { expect(proposal).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { proposal.save }.to change{ Negotiation.count }.by(1)

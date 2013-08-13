@@ -5,14 +5,13 @@ class Offer
   belongs_to :sender,   class_name: 'User', inverse_of: :sent_offers
   belongs_to :receiver, class_name: 'User', inverse_of: :received_offers
 
-  embeds_one :proposal, as: :polymorphic_proposal
+  embeds_one :proposal,       as: :polymorphic_proposal
   embeds_one :sender_sheet,   class_name:'UserSheet', as: :user_sheet_container
   embeds_one :receiver_sheet, class_name:'UserSheet', as: :user_sheet_container
 
   field :message
 
   validates_presence_of :sender, :receiver, :proposal, :sender_sheet, :receiver_sheet, :message
-
   validates :message, length: { minimum: 1, maximum: 160 }
 
 #   def start_negotiation
