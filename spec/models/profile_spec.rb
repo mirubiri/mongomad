@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Profile do
-  let(:profile) { Fabricate.build(:profile) }
-
   # Relations
   it { should be_embedded_in :user }
 
@@ -16,5 +14,5 @@ describe Profile do
   it { should validate_presence_of :language }
 
   # Factories
-  specify { expect( Fabricate.build(:profile) ).to be_valid }
+  specify { expect(Fabricate.build(:profile)).to be_valid }
 end

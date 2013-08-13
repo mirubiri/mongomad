@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { Fabricate.build(:user) }
-
   # Relations
   it { should have_many :requests }
   it { should have_many(:sent_offers).of_type(Offer) }
@@ -22,5 +20,5 @@ describe User do
   it { should validate_presence_of :nick }
 
   # Factories
-  specify { expect( Fabricate.build(:user) ).to be_valid }
+  specify { expect(Fabricate.build(:user)).to be_valid }
 end

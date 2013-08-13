@@ -1,5 +1,5 @@
 Fabricator(:profile) do
-  user { Fabricate.build(:user,profile:nil) }
+  user      { Fabricate.build(:user, profile:nil) }
   language 'english'
 #  image            ActionDispatch::Http::UploadedFile.new({
 #    :filename     => 'user.png',

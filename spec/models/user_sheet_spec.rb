@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe UserSheet do
-  let (:sheet) { Fabricate.build(:user_sheet) }
-
   xit 'should have an user photo'
   xit 'should have the city name or coordinates where user live'
 
@@ -15,10 +13,13 @@ describe UserSheet do
   it { should have_field :last_name}
 
   # Validations
+  it { should validate_presence_of :nick }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
-  it { should validate_presence_of :nick }
 
   # Factories
   specify { expect(Fabricate.build(:user_sheet, container: :user)).to be_valid }
+  specify { expect(Fabricate.build(:user_sheet, container: :offer)).to be_valid }
+  specify { expect(Fabricate.build(:user_sheet, container: :negotiation)).to be_valid }
+  specify { expect(Fabricate.build(:user_sheet, container: :dea)).to be_valid }
 end

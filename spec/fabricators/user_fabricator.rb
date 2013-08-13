@@ -4,7 +4,7 @@ Fabricator(:user) do
   password        'password'
   profile         { Fabricate.build(:profile) }
   sheet           do |attrs|
-    Fabricate.build(:user_sheet,nick:attrs[:nick])
+    Fabricate.build(:user_sheet, nick:attrs[:nick])
   end
 end
 
