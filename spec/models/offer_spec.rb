@@ -22,6 +22,7 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :sender_sheet }
   it { should validate_presence_of :receiver_sheet }
+  it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
 
   # Factories
