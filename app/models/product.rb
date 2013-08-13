@@ -12,6 +12,7 @@ class Product
   # denormalize :name, :description, :image_fingerprint, from:'thing'
 
   validates_presence_of :sheet, :quantity
+
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
 #   def thing

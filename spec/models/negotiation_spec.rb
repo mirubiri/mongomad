@@ -5,25 +5,23 @@ describe Negotiation do
   # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   # let(:proposal) { negotiation.proposals.last }
 
-  describe 'Relations' do
-    it { should have_and_belong_to_many(:negotiators).of_type(User) }
-    it { should embed_many :proposals }
-    it { should embed_many :messages }
-  end
+  # Relations
+  it { should have_and_belong_to_many(:negotiators).of_type(User) }
+  it { should embed_many :proposals }
+  it { should embed_many :messages }
 
-  describe 'Attributes' do
-    it { should be_timestamped_document }
+  # Attributes
+  it { should be_timestamped_document }
   #  it { should accept_nested_attributes_for :proposals }
   #  it { should accept_nested_attributes_for :messages }
-  end
 
-  describe 'Validations' do
-    xit { should_not validate_presence_of :negotiators }
-    it { should validate_presence_of :proposals }
-    it { should validate_presence_of :messages }
-  end
+  # Validations
+  xit { should_not validate_presence_of :negotiators }
+  it { should validate_presence_of :proposals }
+  it { should validate_presence_of :messages }
 
-  # describe 'Factories' do
+  # Factories
+
   #   specify { expect(negotiation).to be_valid }
   #   specify { expect(negotiation.save).to eq true }
 

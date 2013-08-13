@@ -7,30 +7,26 @@ describe Product do
   # let(:receiver) { proposal.receiver }
   # let(:product) { receiver.products.last }
 
-  describe 'Relations' do
-    it { should be_embedded_in :product_container }
-    it { should embed_one(:sheet).of_type(ItemSheet) }
-  end
+  # Relations
+  it { should be_embedded_in :product_container }
+  it { should embed_one(:sheet).of_type(ItemSheet) }
 
-  describe 'Attributes' do
-    it { should be_timestamped_document }
-    it { should have_field(:quantity).of_type(Integer) }
-    # it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
-  end
+  # Attributes
+  it { should be_timestamped_document }
+  it { should have_field(:quantity).of_type(Integer) }
+  # it { should have_denormalized_fields(:name, :description, :image_fingerprint).from('thing') }
 
-  describe 'Validations' do
-    it { should validate_presence_of :sheet }
-    it { should validate_presence_of :quantity }
-    it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  end
+  # Validations
+  it { should validate_presence_of :sheet }
+  it { should validate_presence_of :quantity }
+  it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
 
-  describe 'Factories' do
-    specify { expect(product).to be_valid }
+  # Factories
+  specify { expect(product).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { product.save }.to change{ Negotiation.count }.by(1)
   #   end
-  end
 
   # describe '#thing' do
   #   subject { product.thing }

@@ -9,5 +9,6 @@ class Request
   field :text
 
   validates_presence_of :user, :sheet, :text
+
   validates :text, length: { minimum: 1, maximum: 160 }
 end

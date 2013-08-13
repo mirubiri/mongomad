@@ -1,4 +1,3 @@
-=begin
 require 'spec_helper'
 
 describe Message do
@@ -7,39 +6,26 @@ describe Message do
   # let(:conversation) { negotiation.conversation }
   # let(:message) { conversation.messages.last }
 
-  # describe 'Includes' do
-  #   xit 'include ImageManager::ImageHolder'
-  # end
+  # Relations
+  it { should be_embedded_in :message_container }
+  it { should embed_one(:sheet).of_type(UserSheet) }
 
-  describe 'Relations' do
-    it { should be_embedded_in :polymorphic_message }
-  end
+  # Attributes
+  it { should be_timestamped_document }
+  it { should have_field :text }
 
-  describe 'Attributes' do
-    it { should be_timestamped_document }
-    it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-    it { should have_field(:name).of_type(String) }
-    it { should have_field(:text).of_type(String) }
-  #   it { should have_denormalized_fields(:image_fingerprint).from('user.profile') }
-  #   it { should have_denormalized_fields(:name).from('user') }
-  end
+  # Validations
+  it { should validate_presence_of :sheet }
+  it { should validate_presence_of :text }
+  it { should validate_length_of(:text).within(1..160) }
 
-  describe 'Validations' do
-    it { should_not validate_presence_of :polymorphic_message }
-  #   it { should_not validate_presence_of :conversation }
-    it { should validate_presence_of :user_id }
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :text }
-    it { should validate_length_of(:text).within(1..160) }
-  end
+  # Factories
 
-  describe 'Factories' do
   #   specify { expect(message).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { message.save }.to change{ Negotiation.count }.by(1)
   #   end
-  end
 
   # describe '#user' do
   #   subject { message.user }
@@ -51,4 +37,3 @@ describe Message do
   #   end
   # end
 end
-=end

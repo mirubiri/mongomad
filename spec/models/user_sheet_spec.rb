@@ -19,6 +19,6 @@ describe UserSheet do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :nick }
 
-  # Fabricators
+  # Factories
   specify { expect(Fabricate.build(:user_sheet, container: :user)).to be_valid }
 end

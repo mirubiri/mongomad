@@ -12,6 +12,7 @@ class Offer
   field :message
 
   validates_presence_of :sender, :receiver, :proposal, :sender_sheet, :receiver_sheet, :message
+
   validates :message, length: { minimum: 1, maximum: 160 }
 
 #   def start_negotiation

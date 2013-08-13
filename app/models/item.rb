@@ -5,7 +5,7 @@ class Item
   embedded_in :user
   embeds_one  :sheet, class_name:'ItemSheet', as: :sheet_container
 
-  field :stock,type:Integer
+  field :stock, type:Integer
 
   validates_presence_of :sheet, :stock
 

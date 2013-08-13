@@ -1,25 +1,15 @@
 class Message
   include Mongoid::Document
   include Mongoid::Timestamps
-#   include Denormalized
-#   include ImageManagement::ImageHolder
 
-  embedded_in :polymorphic_message, polymorphic: true
-#   embedded_in :conversation, class_name: 'Negotiation::Conversation'
+  embedded_in :message_container, polymorphic: true
+  embeds_one  :sheet, class_name:'UserSheet', as: :user_sheet_container
 
-#   field :user_id, type: Moped::BSON::ObjectId
-#   field :name,    type: String
-#   field :text,    type: String
+  field :text
 
-#   denormalize :image_fingerprint, from:'user.profile'
-#   denormalize :name, from:'user'
-#   validates :user_id,
-#     :name,
-#     :text,
-#     presence: true
+  validates_presence_of :sheet, :text
 
-#   validates :text,
-#     length: { minimum: 1, maximum: 160 }
+  validates :text, length: { minimum: 1, maximum: 160 }
 
 #   def user
 #     conversation.negotiation.negotiators.find(user_id)
