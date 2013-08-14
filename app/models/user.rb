@@ -60,4 +60,8 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  def sheet
+    UserSheet.new(nick:nick,first_name:profile.first_name,last_name:profile.last_name)
+  end
 end
