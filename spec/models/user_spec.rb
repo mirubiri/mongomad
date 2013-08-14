@@ -8,7 +8,6 @@ describe User do
   it { should have_and_belong_to_many :negotiations }
   it { should have_and_belong_to_many :deals }
   it { should embed_one :profile }
-  it { should embed_one(:sheet).of_type(UserSheet) }
   it { should embed_many :items }
 
   # Attributes

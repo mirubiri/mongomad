@@ -1,11 +1,8 @@
 Fabricator(:user) do
   email           { Faker::Internet.email }
-  nick            { Faker::Name.first_name }
   password        'password'
+  nick            { Faker::Name.first_name }
   profile         { Fabricate.build(:profile) }
-  sheet           do |attrs|
-    Fabricate.build(:user_sheet, nick:attrs[:nick])
-  end
 end
 
 # Fabricator(:user_with_things, from: :user) do

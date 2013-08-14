@@ -1,9 +1,15 @@
-# Fabricator(:negotiation_proposal, class_name: 'Negotiation::Proposal') do
-#   transient        :offer
-#   negotiation      nil
-#   composer         { |attrs| Fabricate.build(:negotiation_proposal_composer, composer:attrs[:offer].composer) }
-#   receiver         { |attrs| Fabricate.build(:negotiation_proposal_receiver, receiver:attrs[:offer].receiver) }
-#   money            { |attrs| Fabricate.build(:negotiation_proposal_money, money:attrs[:offer].money) }
-#   user_composer_id { |attrs| attrs[:offer].user_composer.id }
-#   user_receiver_id { |attrs| attrs[:offer].user_receiver.id }
-# end
+Fabricator(:proposal) do
+  transient :container
+  proposal_container do |attrs|
+    Fabricate.build(:offer, proposal: nil) if attrs[:container] == :offer
+    Fabricate.build(:negotiartion, proposals: nil)if attrs[:container] == :negotiation
+    Fabricate.build(:deal, proposals: nil)if attrs[:container] == :deal
+  end
+  sender_products { Fabricate.build(:product) }
+  receiver_products { Fabricate.build(:product) }
+  sender_id do |attrs|
+    attrs[:container].sender._id if attrs[:container] == :offer
+    attrs[:container].negotiators[0]._id if attrs[:container] == :negotiation
+    attrs[:container].signers[0]._id if attrs[:container] == :deal
+  end
+end

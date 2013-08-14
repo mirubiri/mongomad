@@ -22,7 +22,7 @@ describe Product do
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
 
   # Factories
-  specify { expect(product).to be_valid }
+  specify { expect(Fabricate.build(:product)).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { product.save }.to change{ Negotiation.count }.by(1)
