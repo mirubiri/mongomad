@@ -1,7 +1,7 @@
 Fabricator(:user) do
   email           { Faker::Internet.email }
   password        'password'
-  nick            { Faker::Name.first_name }
+  nick            { Faker::Internet.user_name }
   profile         { Fabricate.build(:profile) }
 end
 

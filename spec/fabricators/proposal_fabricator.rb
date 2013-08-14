@@ -2,8 +2,8 @@ Fabricator(:proposal) do
   transient :container
   proposal_container do |attrs|
     Fabricate.build(:offer, proposal: nil) if attrs[:container] == :offer
-    Fabricate.build(:negotiartion, proposals: nil)if attrs[:container] == :negotiation
-    Fabricate.build(:deal, proposals: nil)if attrs[:container] == :deal
+    Fabricate.build(:negotiation, proposals: nil) if attrs[:container] == :negotiation
+    Fabricate.build(:deal, proposals: nil) if attrs[:container] == :deal
   end
   sender_products { Fabricate.build(:product) }
   receiver_products { Fabricate.build(:product) }
