@@ -8,7 +8,7 @@ class User
   has_and_belongs_to_many :negotiations,    inverse_of: :negotiators
   has_and_belongs_to_many :deals,           inverse_of: :signers
 
-  embeds_one :profile
+  embeds_one  :profile
   embeds_many :items
 
   field :nick
@@ -62,6 +62,6 @@ class User
   # field :authentication_token, :type => String
 
   def sheet
-    UserSheet.new(nick:nick,first_name:profile.first_name,last_name:profile.last_name)
+    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name)
   end
 end
