@@ -25,12 +25,12 @@ describe User do
 
   # Methods
   describe '#sheet' do
-    specify { expect(user.sheet).to be_a_kind_of(UserSheet) }
-    specify { expect(user.sheet.first_name).to eq user.profile.first_name }
-    specify { expect(user.sheet.last_name).to eq user.profile.last_name }
-    specify { expect(user.sheet.nick).to eq user.nick }
-    specify { expect(user.sheet.user_sheet_container).to eq nil }
+    it 'returns an UserSheet filled with user id, first_name, last_name and nick' do
+      expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,last_name:user.profile.last_name,nick:user.nick)
+      user.sheet
+    end
     specify { expect(user.sheet.id).to eq user.id }
+
     xit 'expect an user photo'
     xit 'expect a location reference'
   end

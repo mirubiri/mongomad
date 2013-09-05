@@ -10,11 +10,13 @@ describe UserSheet do
 
   # Attributes
   it { should have_fields :nick,:first_name,:last_name }
+  it { should have_field(:id).with_default_value_of(nil) }
 
   # Validations
   it { should validate_presence_of :nick }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
+  it { shoukd validate_presence_of :id }
 
   # Factories
   specify { expect(Fabricate.build(:user_sheet, container: :offer)).to be_valid }
