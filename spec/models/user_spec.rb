@@ -30,6 +30,7 @@ describe User do
     specify { expect(user.sheet.last_name).to eq user.profile.last_name }
     specify { expect(user.sheet.nick).to eq user.nick }
     specify { expect(user.sheet.user_sheet_container).to eq nil }
-    xit 'should include user image url'
+    xit 'expect an user photo'
+    xit 'expect a location reference'
   end
 end

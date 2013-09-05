@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserSheet do
   xit 'should have an user photo'
-  xit 'should have the city name or coordinates where user live'
+  xit 'should have a location reference'
 
   # Relations
   it { should be_embedded_in :user_sheet_container }
