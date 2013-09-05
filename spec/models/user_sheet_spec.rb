@@ -9,9 +9,7 @@ describe UserSheet do
   it { should be_embedded_in :user_sheet_container }
 
   # Attributes
-  it { should have_field :nick }
-  it { should have_field :first_name }
-  it { should have_field :last_name}
+  it { should have_fields :nick,:first_name,:last_name }
 
   # Validations
   it { should validate_presence_of :nick }

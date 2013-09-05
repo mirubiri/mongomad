@@ -9,10 +9,7 @@ describe Profile do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field :first_name }
-  it { should have_field :last_name}
-  it { should have_field :gender }
-  it { should have_field :language }
+  it { should have_fields :first_name,:last_name,:gender,:language }
   it { should have_field(:birth_date).of_type(Date) }
 
   # Validations
