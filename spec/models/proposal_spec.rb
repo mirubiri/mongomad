@@ -19,6 +19,9 @@ describe Proposal do
   # Validations
   xit 'should validate presence of products for both sides'
 
+  #Methods
+  xit 'products_for(user_id)'
+
   # Factories
   specify { expect(proposal).to be_valid }
 

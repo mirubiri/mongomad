@@ -20,7 +20,7 @@ describe Negotiation do
   xit { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
-  xit 'should validate_presence_of two user sheets'
+  xit 'should validate_presence_of two negotiators corresponding to _users'
 
   # Factories
 
