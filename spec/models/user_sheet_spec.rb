@@ -20,5 +20,5 @@ describe UserSheet do
   # Factories
   specify { expect(Fabricate.build(:user_sheet, container: :offer)).to be_valid }
   specify { expect(Fabricate.build(:user_sheet, container: :negotiation)).to be_valid }
-  specify { expect(Fabricate.build(:user_sheet, container: :dea)).to be_valid }
+  specify { expect(Fabricate.build(:user_sheet, container: :deal)).to be_valid }
 end
