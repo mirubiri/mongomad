@@ -2,11 +2,11 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :sender,   class_name: 'User', inverse_of: :sent_offers
-  belongs_to :receiver, class_name: 'User', inverse_of: :received_offers
+  belongs_to :_sender,   class_name: 'User', inverse_of: :sent_offers
+  belongs_to :_receiver, class_name: 'User', inverse_of: :received_offers
 
   embeds_one :proposal,       as: :polymorphic_proposal
-  embeds_one :sender_sheet,   class_name:'UserSheet', as: :user_sheet_container
+  embeds_many :user_sheets
   embeds_one :receiver_sheet, class_name:'UserSheet', as: :user_sheet_container
 
   field :message
