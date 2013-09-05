@@ -3,11 +3,12 @@ class Item
   include Mongoid::Timestamps
 
   embedded_in :user
-  embeds_one  :sheet, class_name:'ItemSheet', as: :sheet_container
 
+  field :name
+  field :description
   field :stock, type:Integer
 
-  validates_presence_of :sheet, :stock
+  validates_presence_of :name, :description, :stock
 
   validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end
