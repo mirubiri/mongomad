@@ -1,6 +1,7 @@
 Fabricator(:item) do
   user        { Fabricate.build(:user) }
-  sheet       { Fabricate.build(:item_sheet, container: :item) }
+  name        'Mp3'
+  description 'Un reproductor mp3 acojonante de bueno.'
   stock       5
 end
 
