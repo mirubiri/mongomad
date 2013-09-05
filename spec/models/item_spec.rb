@@ -10,11 +10,13 @@ describe Item do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_fields :name,:description }
+  it { should have_fields :name, :description }
   it { should have_field(:stock).of_type(Integer) }
 
   # Validations
   it { should validate_presence_of :stock }
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
   it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
 
   # Factories
