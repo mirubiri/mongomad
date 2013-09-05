@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe UserSheet do
-  xit 'should have field user_id BSON'
   xit 'should have an user photo'
   xit 'should have a location reference'
 
