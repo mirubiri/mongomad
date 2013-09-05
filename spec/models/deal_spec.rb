@@ -5,9 +5,10 @@ describe Deal do
   # let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
 
   # Relations
-  it { should have_and_belong_to_many(:signers).of_type(User) }
+  it { should have_and_belong_to_many(:_users).of_type(User) }
   it { should embed_many :proposals }
   it { should embed_many :messages }
+  it { should embed_many(:signers).of_type(UserSheet) }
 
   # Attributes
   it { should be_timestamped_document }
@@ -15,9 +16,10 @@ describe Deal do
   # it { should accept_nested_attributes_for :messages }
 
   # Validations
-  xit { should_not validate_presence_of :signers }
+  xit { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
+  xit 'should validate presence of two user sheets'
 
   # Factories
 

@@ -11,17 +11,13 @@ describe Proposal do
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many(:sender_products).of_type(Product) }
-  it { should embed_many(:receiver_products).of_type(Product) }
+  it { should embed_many :products }
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:sender_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
-  it { should validate_presence_of :sender_products }
-  it { should validate_presence_of :receiver_products }
-  it { should validate_presence_of :sender_id }
+  xit 'should validate presence of products for both sides'
 
   # Factories
   specify { expect(proposal).to be_valid }

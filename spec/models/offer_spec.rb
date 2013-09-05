@@ -6,11 +6,10 @@ describe Offer do
   # let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
 
   # Relations
-  it { should belong_to(:sender).of_type(User) }
-  it { should belong_to(:receiver).of_type(User) }
+  it { should belong_to(:_sender).of_type(User) }
+  it { should belong_to(:_receiver).of_type(User) }
   it { should embed_one :proposal }
-  it { should embed_one(:sender_sheet).of_type(UserSheet) }
-  it { should embed_one(:receiver_sheet).of_type(UserSheet) }
+  it { should embed_many :user_sheets } # ¿embed_one?
 
   # Attributes
   it { should be_timestamped_document }
@@ -20,10 +19,12 @@ describe Offer do
   it { should validate_presence_of :sender }
   it { should validate_presence_of :receiver }
   it { should validate_presence_of :proposal }
-  it { should validate_presence_of :sender_sheet }
-  it { should validate_presence_of :receiver_sheet }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
+  xit 'should validate presence of two user_sheets'
+
+  #Methods
+  xit '#sender -> sender data'
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }

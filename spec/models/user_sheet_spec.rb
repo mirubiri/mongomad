@@ -8,6 +8,7 @@ describe UserSheet do
   it { should be_embedded_in :user_sheet_container }
 
   # Attributes
+  xit 'should have field user_id BSON'
   it { should have_field :nick }
   it { should have_field :first_name }
   it { should have_field :last_name}

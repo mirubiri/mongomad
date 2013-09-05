@@ -6,9 +6,10 @@ describe Negotiation do
   # let(:proposal) { negotiation.proposals.last }
 
   # Relations
-  it { should have_and_belong_to_many(:negotiators).of_type(User) }
+  it { should have_and_belong_to_many(:_users).of_type(User) }
   it { should embed_many :proposals }
   it { should embed_many :messages }
+  it { should embed_many(:negotiators).of_type(UserSheet) }
 
   # Attributes
   it { should be_timestamped_document }
@@ -16,9 +17,10 @@ describe Negotiation do
   #  it { should accept_nested_attributes_for :messages }
 
   # Validations
-  xit { should_not validate_presence_of :negotiators }
+  xit { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
+  xit 'should validate_presence_of two user sheets'
 
   # Factories
 
