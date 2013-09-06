@@ -28,10 +28,9 @@ describe User do
     it 'returns an UserSheet filled with user id, first_name, last_name and nick' do
       expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,last_name:user.profile.last_name,nick:user.nick)
       user.sheet
+      pending 'it should include the user photo url'
+      pending 'it should include the location reference'
     end
     specify { expect(user.sheet.id).to eq user.id }
-
-    xit 'expect an user photo'
-    xit 'expect a location reference'
   end
 end
