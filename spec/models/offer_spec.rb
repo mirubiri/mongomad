@@ -6,8 +6,8 @@ describe Offer do
   # let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
 
   # Relations
-  it { should belong_to(:_sender).of_type(User) }
-  it { should belong_to(:_receiver).of_type(User) }
+  it { should belong_to(:user_sender).of_type(User) }
+  it { should belong_to(:user_receiver).of_type(User) }
   it { should embed_one :proposal }
   it { should embed_many :user_sheets } # ¿embed_one?
 
@@ -21,10 +21,15 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
-  xit 'should validate presence of two user_sheets'
 
   #Methods
-  xit '#sender -> sender data'
+  describe '#sender' do
+    it 'returns the sender user sheet'
+  end
+
+  describe '#receiver' do
+    it 'returns the receiver user sheet'
+  end
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }

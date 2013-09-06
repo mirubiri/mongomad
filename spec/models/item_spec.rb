@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Item do
-  xit 'should have one main image & two secondary images'
-  xit 'should have user_id BSON'
-  xit 'should have item_id BSON'
+  it 'should have one main image & two secondary images'
 
   # Relations
   it { should be_embedded_in :user }
@@ -23,5 +21,15 @@ describe Item do
   specify { expect(Fabricate.build(:item)).to be_valid }
 
   # Methods
-  xit '#product(qty)'
+  describe '#as_product(quantity)' do
+
+    it 'returns a Product filled with item name, description and given quantity' do
+      expect(Product).to receive(:new).with(name:item.name,description:item.description,quantity:1)
+      item.as_product(quantity:1)
+      pending 'it expect to receive also item image urls when implemented'
+    end
+
+    specify { expect(product.id).to eq item.id }
+    specify { expect(product.owner).to eq item.user.id }
+  end
 end

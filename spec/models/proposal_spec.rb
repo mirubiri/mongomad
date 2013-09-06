@@ -7,20 +7,29 @@ describe Proposal do
   # let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   # let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
-  xit 'should embed one money'
+  it 'should embed one money'
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many :products }
+  it { should embed_many(:products).of_type(Product) }
+  it 'should embed_one :negotiation_state' do
+    pending 'DECIDIR SI IMPLEMENTARLO ASI O NO'
+  end
 
   # Attributes
   it { should be_timestamped_document }
 
   # Validations
-  xit 'should validate presence of products for both sides'
+  it 'should validate presence of products for both sides'
 
   #Methods
-  xit 'products_for(user_id)'
+  describe 'left(user:id)' do
+    it 'returns products for the left side'
+  end
+
+  describe 'right(user:id)' do
+    it 'return products for the right side'
+  end
 
   # Factories
   specify { expect(proposal).to be_valid }
