@@ -1,17 +1,33 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="login_user_fields">
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <div class="login_email_field">
+      <%= f.label :email, :class => "email_label" %>
+      <%= f.email_field :email %>
+    </div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <div class="login_pass_field">
+      <%= f.label :password, :class => "pass_label"  %>
+      <%= f.password_field :password %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <% if devise_mapping.rememberable? -%>
+      <div class="rememberme_selector">
+        <%= f.check_box :remember_me, :class => "remember_tic"  %>
+        <%= f.label :recordar, :class => "remember_label"  %>
+      </div>
+    <% end -%>
+
+    <div class="signin_button">
+      <%= f.submit "Sign in" %>
+    </div>
+
+  <% end %>
+
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+
+</div>
+
+<%#= render "devise/shared/links" %>

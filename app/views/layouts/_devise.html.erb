@@ -1,9 +1,20 @@
-<%= render partial: 'layouts/global_partials/login_header' %>
 
 <div class="devise_content" id="devise_container">
-  <div class="login_container">
-    <%= yield %>
+  <div class="login_container_logo">
+    logo
+  </div>
+  <div class="login_container_coverage">
+    <div class="login_container">
+      <div class="login_container_header">
+        <div class="log_header_enter">
+          <%= link_to "Entra", new_session_path(resource_name) %>
+        </div>
+        <div class="log_header_reg">
+          <%= link_to "Registrate", new_registration_path(resource_name) %>
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </div>
 </div>
 
-<%= render partial: 'layouts/global_partials/footer' %>
