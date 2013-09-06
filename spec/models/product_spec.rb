@@ -12,7 +12,7 @@ describe Product do
   it { should have_fields :name,:description }
   it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:owner).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:id).of_type(Moped::BSON:ObjectId).with_default_value_of(nil) }
+  it { should have_field(:_id).of_type(Moped::BSON::ObjectId).with_default_value_of(nil) }
 
   # Validations
   xit { should validate_presence_of :proposal }

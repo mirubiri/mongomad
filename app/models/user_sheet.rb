@@ -8,5 +8,5 @@ class UserSheet
   field :last_name
   field :nick
 
-  validates_presence_of :first_name, :last_name, :nick
+  validates_presence_of :first_name, :last_name, :nick, :_id
 end
