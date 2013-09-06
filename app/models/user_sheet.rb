@@ -7,6 +7,7 @@ class UserSheet
   field :first_name
   field :last_name
   field :nick
+  field :_id,type:Moped::BSON::ObjectId, default:nil
 
   validates_presence_of :first_name, :last_name, :nick, :_id
 end

@@ -4,12 +4,14 @@ class Product
   # include Denormalized
   # include ImageManagement::ImageHolder
 
-  embedded_in :product_container, polymorphic: true
-  embeds_one  :sheet, class_name:'ItemSheet', as: :sheet_container
-
+  embedded_in :proposal
+  field :name
+  field :description
+  field :_id,type:Moped::BSON::ObjectId,default:nil
+  field :owner,type:Moped::BSON::ObjectId
   field :quantity, type: Integer
 
-  validates_presence_of :sheet, :quantity
+  validates_presence_of :name,:description,:_id,:owner
 
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 

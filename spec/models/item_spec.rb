@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Item do
+  let(:item) { Fabricate.build(:item) }
   it 'should have one main image & two secondary images'
 
   # Relations
@@ -29,7 +30,7 @@ describe Item do
       pending 'it expect to receive also item image urls when implemented'
     end
 
-    specify { expect(product.id).to eq item.id }
-    specify { expect(product.owner).to eq item.user.id }
+    specify { expect(item.as_product(quantity:1).id).to eq item.id }
+    specify { expect(item.as_product(quantity:1).owner).to eq item.user.id }
   end
 end

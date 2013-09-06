@@ -5,8 +5,7 @@ Fabricator(:proposal) do
     Fabricate.build(:negotiation, proposals: nil) if attrs[:container] == :negotiation
     Fabricate.build(:deal, proposals: nil) if attrs[:container] == :deal
   end
-  sender_products { Fabricate.build(:product) }
-  receiver_products { Fabricate.build(:product) }
+  products { Fabricate.build(:product) }
   sender_id do |attrs|
     attrs[:container].sender._id if attrs[:container] == :offer
     attrs[:container].negotiators[0]._id if attrs[:container] == :negotiation

@@ -1,25 +1,12 @@
 Fabricator(:offer) do
-  sender   { Fabricate.build(:user) }
-  receiver   { Fabricate.build(:user) }
-  proposal { Fabricate.build(:proposal, container: :offer) }
-  sender_sheet do |attrs|
-    Fabricate.build(:user_sheet, container: :offer) if attrs[:container] == :offer
-    Fabricate.build(:user_sheet, container: :negotiation) if attrs[:container] == :negotiation
-    Fabricate.build(:user_sheet, container: :deal) if attrs[:container] == :deal
+  user_sender     { Fabricate.build(:user) }
+  user_receiver   { Fabricate.build(:user) }
+  proposal        { Fabricate.build(:proposal) }
+  user_sheets do |attrs|
+    [attrs[:user_sender].sheet,attrs[:user_receiver].sheet]
   end
-  receiver_sheet do |attrs|
-    Fabricate.build(:user_sheet, container: :offer) if attrs[:container] == :offer
-    Fabricate.build(:user_sheet, container: :negotiation) if attrs[:container] == :negotiation
-    Fabricate.build(:user_sheet, container: :deal) if attrs[:container] == :deal
-  end
-  message
 
-
-
-  composer        { |attrs| Fabricate.build(:offer_composer, user:attrs[:user_composer]) }
-  receiver        { |attrs| Fabricate.build(:offer_receiver, user:attrs[:user_receiver]) }
-  money           { Fabricate.build(:offer_money) }
-  initial_message { Faker::Lorem.sentence }
+  message { Faker::Lorem.sentence }
 end
 
 # Fabricator(:offer_composer_money, from: :offer) do

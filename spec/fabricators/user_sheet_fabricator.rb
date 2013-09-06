@@ -1,5 +1,10 @@
 Fabricator(:user_sheet) do
-  nick       { Faker::Name.name }
-  first_name { Faker::Name.first_name }
-  last_name  { Faker::Name.last_name }
+  transient :container
+  initialize_with { Fabricate.build(:user).sheet }
+
+  user_sheet_container do |attrs|
+    Fabricate.build(:offer) if attrs[:container] == :offer
+    Fabricate.build(:negotiation) if attrs[:container] == :negotiation
+    Fabricate.build(:deal) if attrs[:container] == :deal
+  end
 end
