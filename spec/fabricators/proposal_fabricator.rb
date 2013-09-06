@@ -1,10 +1,7 @@
 Fabricator(:proposal) do
-  transient :container
-  proposal_container do |attrs|
-    Fabricate.build(:offer, proposal: nil) if attrs[:container] == :offer
-    Fabricate.build(:negotiation, proposals: nil) if attrs[:container] == :negotiation
-    Fabricate.build(:deal, proposals: nil) if attrs[:container] == :deal
-  end
+  transient :container,:left,:right
+
+  proposal_container { |attrs| Fabricate.build(attrs[:container], proposal: nil) if attrs[:container] }
 
   # Buscar la forma de introducir los productos de ambos usuarios
 end
