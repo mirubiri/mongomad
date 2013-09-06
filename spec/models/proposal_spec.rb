@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Proposal do
+  let(:proposal) { Fabricate.build(:proposal) }
   # let(:offer) { Fabricate(:offer) }
   # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   # let(:proposal) { negotiation.proposals.last }
@@ -11,7 +12,7 @@ describe Proposal do
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many(:products).of_type(Product) }
+  it { should embed_many :products }
   it 'should embed_one :negotiation_state' do
     pending 'DECIDIR SI IMPLEMENTARLO ASI O NO'
   end
@@ -32,7 +33,7 @@ describe Proposal do
   end
 
   # Factories
-  specify { expect(proposal).to be_valid }
+  specify { expect(Fabricate.build(:proposal)).to be_valid }
 
   #   it 'creates one negotiation' do
   #     expect { proposal.save }.to change{ Negotiation.count }.by(1)

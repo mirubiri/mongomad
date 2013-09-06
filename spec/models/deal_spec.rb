@@ -8,7 +8,7 @@ describe Deal do
   it { should have_and_belong_to_many(:_users).of_type(User) }
   it { should embed_many :proposals }
   it { should embed_many :messages }
-  it { should embed_many(:signers).of_type(UserSheet) }
+  it { should embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }

@@ -1,6 +1,6 @@
 Fabricator(:product) do
 	initialize_with {Fabricate.build(:item).as_product(quantity:2)}
-  proposal { Fabricate.build(:proposal) }
+  proposal { Fabricate.build(:proposal,products:nil) }
 end
 
 # Fabricator(:offer_composer_product, class_name: 'Offer::Composer::Product') do

@@ -3,12 +3,8 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
-  embeds_many :sender_products,    class_name: 'Product', cascade_callbacks: true
-  embeds_many :receiver_products,  class_name: 'Product', cascade_callbacks: true
+  embeds_many :products
 
-  field :sender_id, type: Moped::BSON::ObjectId
-
-  validates_presence_of :sender_products, :receiver_products, :sender_id
 
   # before_create :set_initial_state
 
