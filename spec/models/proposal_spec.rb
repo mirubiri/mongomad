@@ -21,6 +21,7 @@ describe Proposal do
   it { should be_timestamped_document }
 
   # Validations
+  it { should_not validate_presence_of :proposal_container }
   it 'should validate presence of products for both sides'
 
   #Methods

@@ -13,6 +13,7 @@ describe Profile do
   it { should have_field(:birth_date).of_type(Date) }
 
   # Validations
+  it { should_not validate_presence_of :user }
   it { should validate_presence_of :first_name }
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :language }
