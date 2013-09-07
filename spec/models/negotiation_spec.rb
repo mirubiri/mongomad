@@ -22,6 +22,8 @@ describe Negotiation do
   it { should validate_presence_of :messages }
   xit 'should validate_presence_of two negotiators corresponding to _users'
 
+  # Methods
+
   # Factories
 
   #   specify { expect(negotiation).to be_valid }
