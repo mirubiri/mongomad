@@ -5,7 +5,7 @@ class Offer
   belongs_to :user_sender,   class_name: 'User', inverse_of: :sent_offers
   belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
 
-  embeds_one :proposal,       as: :polymorphic_proposal
+  embeds_one :proposal, as: :polymorphic_proposal
   embeds_many :user_sheets
 
   field :message
