@@ -26,13 +26,13 @@ describe Offer do
   #Methods
   describe '#sender' do
     it 'returns the sender user sheet' do
-      expect(user.sender.id).to eq user_sender.id
+      expect(offer.sender.id).to eq offer.user_sender.id
     end
   end
 
   describe '#receiver' do
     it 'returns the receiver user sheet' do
-      expect(user.sender.id).to eq user_sender.id
+      expect(offer.sender.id).to eq offer.user_sender.id
     end
   end
 
