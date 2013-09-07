@@ -5,11 +5,12 @@ class Product
   # include ImageManagement::ImageHolder
 
   embedded_in :proposal
+
   field :name
   field :description
-  field :_id,type:Moped::BSON::ObjectId,default:nil
-  field :owner,type:Moped::BSON::ObjectId
-  field :quantity, type: Integer
+  field :_id,         type:Moped::BSON::ObjectId,default:nil
+  field :owner,       type:Moped::BSON::ObjectId
+  field :quantity,    type: Integer
 
   validates_presence_of :name,:description,:_id,:owner
 

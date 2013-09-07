@@ -5,7 +5,7 @@ describe Item do
   it 'should have one main image & two secondary images'
 
   # Relations
-  it { should be_embedded_in :user }
+  it { should belong_to :user }
 
   # Attributes
   it { should be_timestamped_document }
@@ -13,7 +13,7 @@ describe Item do
   it { should have_field(:stock).of_type(Integer) }
 
   # Validations
-  it { should_not validate_presence_of :user }
+  it { should validate_presence_of :user }
   it { should validate_presence_of :stock }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }

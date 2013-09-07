@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many                :items
   has_many                :requests
   has_many                :sent_offers,     class_name: 'Offer', inverse_of: :user_composer
   has_many                :received_offers, class_name: 'Offer', inverse_of: :user_receiver
@@ -9,7 +10,6 @@ class User
   has_and_belongs_to_many :deals,           inverse_of: :signers
 
   embeds_one  :profile
-  embeds_many :items
 
   field :nick
 
