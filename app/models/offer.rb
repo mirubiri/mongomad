@@ -10,7 +10,7 @@ class Offer
 
   field :message
 
-  validates_presence_of :sender, :receiver, :proposal, :sender_sheet, :receiver_sheet, :message
+  validates_presence_of :user_sender, :user_receiver, :proposal, :message
 
   validates :message, length: { minimum: 1, maximum: 160 }
 

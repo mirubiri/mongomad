@@ -16,8 +16,8 @@ describe Offer do
   it { should have_field :message }
 
   # Validations
-  it { should validate_presence_of :sender }
-  it { should validate_presence_of :receiver }
+  it { should validate_presence_of :user_sender }
+  it { should validate_presence_of :user_receiver }
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }

@@ -6,7 +6,7 @@ describe Negotiation do
   # let(:proposal) { negotiation.proposals.last }
 
   # Relations
-  it { should have_and_belong_to_many(:_users).of_type(User) }
+  it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
   it { should embed_many :user_sheets }

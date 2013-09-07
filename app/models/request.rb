@@ -4,7 +4,7 @@ class Request
 
   belongs_to :user
 
-  embeds_one :sheet, class_name:'UserSheet', as: :user_sheet_container
+  embeds_one :user_sheet, class_name:'UserSheet', as: :user_sheet_container
 
   field :text
 
