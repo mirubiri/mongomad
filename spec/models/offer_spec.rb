@@ -37,7 +37,8 @@ describe Offer do
   end
 
   describe '#negotiate' do
-    it 'starts a negotiation with this offer as initial proposal'
+    it 'returns a new saved negotiation with this offer as initial proposal'
+    it 'returns false when offer is not saved'
   end
 
   # Factories
