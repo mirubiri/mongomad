@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Product do
 
+  let(:product) { Fabricate.build(:product) }
+  let(:item) { Item.find(product.id) }
   it 'should have one main image & two secondary images'
 
   # Relations
@@ -24,11 +26,16 @@ describe Product do
   end
 
   describe '#item' do
-    it 'return the item corresponding to product id'
+    it 'return the item corresponding to product id' do
+      expect(product.item).to eq item
+    end
   end
 
   describe '#sell' do
-    it 'sells this product calling item.sell with this product quantity'
+    it 'sells this product calling item.sell with this product quantity' do
+      expect(item).to_receive(:sell).with(product.quantity)
+      product.sell
+    end
   end
 
   # Factories
