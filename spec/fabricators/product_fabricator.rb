@@ -1,5 +1,5 @@
 Fabricator(:product) do
-	initialize_with {Fabricate.build(:item).as_product(quantity:2)}
+	initialize_with {Fabricate.build(:item).pick(2)}
   proposal { Fabricate.build(:proposal,products:nil) }
 end
 
