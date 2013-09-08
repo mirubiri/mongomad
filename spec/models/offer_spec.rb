@@ -36,6 +36,10 @@ describe Offer do
     end
   end
 
+  describe '#negotiate' do
+    it 'starts a negotiation with this offer as initial proposal'
+  end
+
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
 
