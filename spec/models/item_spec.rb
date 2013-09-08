@@ -36,12 +36,34 @@ describe Item do
   end
 
   describe '#sell(quantity)' do
-    it 'removes the given quantity of items from the stock'
-    it 'saves the change'
+    it 'removes the given quantity of items from the stock' do
+      expect {item.sell(1)}.to_change {item.stock}.by(-1)
+    end
+    it 'saves the change' do
+      item.sell(1)
+      expect(item).to be_saved
+    end
+
+    context 'When given quantity is not available' do
+      it 'returns false' do
+        expect(item.sell(100)).to eq false
+      end
+
+      it 'does not change the stock attribute' do
+        stock=item.stock
+        item.sell(100)
+        expect(item.stock).to eq stock
+      end
+    end
   end
 
   describe '#supply(quantity)' do
-    it 're-stock this item with the given quantity'
-    it 'saves the change'
+    it 're-stock this item with the given quantity' do
+      expect {item.supply(1)}.to_change {item.stock}.by(1)
+    end
+    it 'saves the change' do
+      item.supply(1)
+      expect(item.stock).to be_saved
+    end
   end
 end

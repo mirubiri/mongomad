@@ -38,6 +38,16 @@ describe Product do
     end
   end
 
+  describe '#available?' do
+    it 'returns true if item has enought stock' do
+      expect(product.available?).to eq true
+    end
+    it 'returns false if item has not enought stock' do
+      product.quantity=100
+      expect(product.available?) to eq false
+    end
+  end
+
   # Factories
   specify { expect(Fabricate.build(:product)).to be_valid }
 end
