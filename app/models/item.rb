@@ -18,4 +18,18 @@ class Item
       product.owner=user.id
   	end
   end
+
+  def sell(quantity)
+    if stock >= quantity
+      self.stock-=quantity
+      save
+    else
+      false
+    end
+  end
+
+  def supply(quantity)
+    self.stock+=quantity
+    save
+  end
 end

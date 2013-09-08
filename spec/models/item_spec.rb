@@ -37,11 +37,11 @@ describe Item do
 
   describe '#sell(quantity)' do
     it 'removes the given quantity of items from the stock' do
-      expect {item.sell(1)}.to_change {item.stock}.by(-1)
+      expect {item.sell(1)}.to change {item.stock}.by(-1)
     end
     it 'saves the change' do
       item.sell(1)
-      expect(item).to be_saved
+      expect(item).to be_persisted
     end
 
     context 'When given quantity is not available' do
@@ -59,11 +59,11 @@ describe Item do
 
   describe '#supply(quantity)' do
     it 're-stock this item with the given quantity' do
-      expect {item.supply(1)}.to_change {item.stock}.by(1)
+      expect {item.supply(1)}.to change {item.stock}.by(1)
     end
     it 'saves the change' do
       item.supply(1)
-      expect(item.stock).to be_saved
+      expect(item).to be_persisted
     end
   end
 end
