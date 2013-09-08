@@ -23,6 +23,14 @@ describe Product do
     expect(Product.new.id).to eq nil
   end
 
+  describe '#item' do
+    it 'return the item corresponding to product id'
+  end
+
+  describe '#sell' do
+    it 'sells this product calling item.sell with this product quantity'
+  end
+
   # Factories
   specify { expect(Fabricate.build(:product)).to be_valid }
 end

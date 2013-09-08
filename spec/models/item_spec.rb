@@ -23,15 +23,25 @@ describe Item do
   specify { expect(Fabricate.build(:item)).to be_valid }
 
   # Methods
-  describe '#as_product(quantity)' do
+  describe '#pick(quantity)' do
 
     it 'returns a Product filled with item name, description and given quantity' do
       expect(Product).to receive(:new).with(name:item.name,description:item.description,quantity:1)
-      item.as_product(quantity:1)
+      item.pick(1)
       pending 'it expect to receive also item image urls when implemented'
     end
 
-    specify { expect(item.as_product(quantity:1).id).to eq item.id }
-    specify { expect(item.as_product(quantity:1).owner).to eq item.user.id }
+    specify { expect(item.pick(1).id).to eq item.id }
+    specify { expect(item.pick(1).owner).to eq item.user.id }
+  end
+
+  describe '#sell(quantity)' do
+    it 'removes the given quantity of items from the stock'
+    it 'saves the change'
+  end
+
+  describe '#supply(quantity)' do
+    it 're-stock this item with the given quantity'
+    it 'saves the change'
   end
 end
