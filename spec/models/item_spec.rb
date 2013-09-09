@@ -32,7 +32,7 @@ describe Item do
     end
 
     specify { expect(item.pick(1).id).to eq item.id }
-    specify { expect(item.pick(1).owner).to eq item.user.id }
+    specify { expect(item.pick(1).owner_id).to eq item.user.id }
   end
 
   describe '#sell(quantity)' do

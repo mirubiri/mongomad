@@ -39,7 +39,7 @@ describe Offer do
 
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
-      expect(Negotiation).to_receive(:create).with(users:[offer.user_sender,offer.user_receiver],proposal: offer.proposal )
+      expect(Negotiation).to receive(:create).with(users:[offer.user_sender,offer.user_receiver],proposal: offer.proposal )
       offer=Fabricate(:offer) # Esta asi por que la fabrica de ofertas no guarda los items con .save si no se usa Fabricate() en el let()
       offer.negotiate
     end

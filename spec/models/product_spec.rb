@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Product do
 
-  let(:product) { Fabricate.build(:product) }
-  let(:item) { Item.find(product.id) }
+  let(:item) { Fabricate(:item) }
+  let(:product) { Fabricate.build(:product,item:item) }
+
   it 'should have one main image & two secondary images'
 
   # Relations
@@ -33,7 +34,7 @@ describe Product do
 
   describe '#sell' do
     it 'sells this product calling item.sell with this product quantity' do
-      expect(item).to_receive(:sell).with(product.quantity)
+      expect(item).to receive(:sell).with(product.quantity)
       product.sell
     end
   end

@@ -13,7 +13,7 @@ describe Request do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should validate_presence_of :sheet }
+  it { should validate_presence_of :user_sheet }
   it { should validate_presence_of :text }
   it { should validate_length_of(:text).within(1..160) }
 

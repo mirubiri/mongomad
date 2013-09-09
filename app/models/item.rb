@@ -15,7 +15,7 @@ class Item
   def pick(quantity)
   	Product.new(name:name,description:description,quantity:quantity) do |product|
       product.id=id
-      product.owner=user.id
+      product.owner_id=user.id
   	end
   end
 
