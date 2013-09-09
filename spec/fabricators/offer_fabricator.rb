@@ -1,10 +1,8 @@
 Fabricator(:offer) do
   user_sender     { Fabricate(:user_with_items) }
   user_receiver   { Fabricate(:user_with_items) }
-  proposal        { |attrs| Fabricate.build(:proposal,sender:attrs[:user_sender],receiver:attrs[:user_receiver])}
-  user_sheets do |attrs|
-    [attrs[:user_sender].sheet,attrs[:user_receiver].sheet]
-  end
+  proposal        { |attrs| Fabricate.build(:proposal,sender:attrs[:user_sender],receiver:attrs[:user_receiver]) }
+  user_sheets     { |attrs| [ Fabricate.build(:user_sheet,user:attrs[:user_sender]), Fabricate.build(:user_sheet,user:attrs[:user_sender]) ] }
 
   message { Faker::Lorem.sentence }
 end
