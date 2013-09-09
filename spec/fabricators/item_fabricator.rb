@@ -1,5 +1,5 @@
 Fabricator(:item) do
-  user        { Fabricate.build(:user) }
+  user
   name        'Mp3'
   description 'Un reproductor mp3 acojonante de bueno.'
   stock       5

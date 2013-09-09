@@ -1,7 +1,7 @@
 Fabricator(:proposal) do
   transient :sender,:receiver
-  sender { Fabricate.build(:user_with_items) }
-  receiver { Fabricate.build(:user_with_items) }
+  sender { Fabricate(:user_with_items) }
+  receiver { Fabricate(:user_with_items) }
 
   products do |attrs|
     sender_item=attrs[:sender].items.sample

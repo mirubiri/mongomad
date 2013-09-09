@@ -1,6 +1,6 @@
 Fabricator(:product) do
   transient :item
-  item { Fabricate.build(:item) }
+  item { Fabricate(:item) }
 
   _id         { |attrs| attrs[:item].id }
   owner_id    { |attrs| attrs[:item].user.id }
