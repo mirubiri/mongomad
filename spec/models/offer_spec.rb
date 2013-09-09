@@ -43,6 +43,11 @@ describe Offer do
       offer=Fabricate(:offer) # Esta asi por que la fabrica de ofertas no guarda los items con .save si no se usa Fabricate() en el let()
       offer.negotiate
     end
+
+    it 'returns a negotiation' do
+      pending 'pensar si devolver true o la negociacion creada'
+    end
+
     it 'returns false when offer is not saved' do
       expect(offer.negotiate).to eq false
     end
