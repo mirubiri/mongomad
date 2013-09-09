@@ -3,6 +3,7 @@ Fabricator(:proposal) do
   sender { Fabricate(:user_with_items) }
   receiver { Fabricate(:user_with_items) }
 
+  proposal_container { |attrs| Fabricate.build(:offer,proposal:nil,user_sender:attrs[:sender],user_receiver:attrs[:receiver]) }
 
   products do |attrs|
     sender_item=attrs[:sender].items.sample
