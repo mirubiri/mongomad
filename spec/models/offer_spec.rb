@@ -22,6 +22,7 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
+  it 'should validate presence of user_sheets for both users'
 
   #Methods
   describe '#sender' do
@@ -37,55 +38,21 @@ describe Offer do
   end
 
   describe '#negotiate' do
-    it 'starts a negotiation with this offer as initial proposal'
-    it 'returns false when offer is not saved'
-    it 'returns false when a product is not available'
+    it 'starts a negotiation with this offer as initial proposal' do
+      expect(Negotiation).to_receive(:create).with(users:[offer.user_sender,offer.user_receiver],proposal: offer.proposal )
+      offer=Fabricate(:offer) # Esta asi por que la fabrica de ofertas no guarda los items con .save si no se usa Fabricate() en el let()
+      offer.negotiate
+    end
+    it 'returns false when offer is not saved' do
+      expect(offer.negotiate).to eq false
+    end
+
+    it 'returns false when a product is not available' do
+     pending 'Este para cuando se solucione el asunto de los items que no se guardan'
+    end
   end
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
-
-  # describe '#start_negotiation' do
-  #   context 'When offer is saved' do
-  #     before { offer.save }
-
-  #     let(:negotiation) { offer.start_negotiation }
-
-  #     it 'returns a saved negotiation' do
-  #       expect(negotiation).to be_persisted
-  #     end
-
-  #     it 'add the negotiation to composer in offer' do
-  #       expect(negotiation).to eq offer.user_composer.negotiations.first
-  #     end
-
-  #     it 'add the negotiation to receiver in offer' do
-  #       expect(negotiation).to eq offer.user_receiver.negotiations.first
-  #     end
-
-  #     it 'returns a negotiation whose conversation has only one message' do
-  #       expect(negotiation.conversation.messages).to have(1).messages
-  #     end
-
-  #     it 'returns a negotiation whose message has the values from original offer' do
-  #       expect(negotiation.conversation.messages.last.user_id).to eq offer.user_composer_id
-  #       expect(negotiation.conversation.messages.last.text).to eq offer.initial_message
-  #     end
-
-  #     it 'returns a negotiation with only one proposal' do
-  #       expect(negotiation.proposals).to have(1).proposals
-  #     end
-
-  #     it 'returns a negotiation whose proposal has the values from original offer' do
-  #       expect(negotiation.proposals.last).to be_like offer
-  #     end
-  #   end
-
-  #   context 'When offer is not saved' do
-  #     it 'returns nil' do
-  #       expect(offer.start_negotiation).to eq nil
-  #     end
-  #   end
-  # end
 end
 

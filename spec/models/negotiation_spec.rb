@@ -23,6 +23,14 @@ describe Negotiation do
   xit 'should validate_presence_of two negotiators corresponding to _users'
 
   # Methods
+  describe '#proposal' do
+    it 'returns the current proposal'
+  end
+
+  describe '#proposal=new_proposal' do
+    it 'adds the new_proposal to proposals list'
+    it 'makes #proposal to return new_proposal'
+  end
 
   # Factories
 
