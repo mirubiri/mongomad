@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe Negotiation do
-  # let(:offer) { Fabricate(:offer) }
-  # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
-  # let(:proposal) { negotiation.proposals.last }
+
+  let(:negotiation) { Fabricate.build(:negotiation) }
+
 
   # Relations
   it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
-  it { should embed_many :messages }
+  xit { should embed_many :messages }
   it { should embed_many :user_sheets }
 
   # Attributes
@@ -17,9 +17,9 @@ describe Negotiation do
   #  it { should accept_nested_attributes_for :messages }
 
   # Validations
-  xit { should_not validate_presence_of :_users }
+  it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
-  it { should validate_presence_of :messages }
+  xit { should validate_presence_of :messages }
   xit 'should validate_presence_of two negotiators corresponding to _users'
 
   # Methods
@@ -33,9 +33,8 @@ describe Negotiation do
   end
 
   # Factories
+  specify { expect(negotiation).to be_valid }
 
-  #   specify { expect(negotiation).to be_valid }
-  #   specify { expect(negotiation.save).to eq true }
 
   #   it 'creates one offer' do
   #     expect { negotiation.save }.to change{ Offer.count }.by(1)
