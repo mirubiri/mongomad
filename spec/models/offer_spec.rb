@@ -52,7 +52,7 @@ describe Offer do
       expect(offer.negotiate).to eq false
     end
 
-    it 'returns false when a product is not available' do
+    it 'returns false when a item is not available' do
      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
     end
   end
