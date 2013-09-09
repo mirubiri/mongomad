@@ -21,4 +21,8 @@ class Offer
   def receiver
     user_sheets.find(user_receiver_id)
   end
+
+  def negotiate
+    Negotiation.create(_users:[user_sender, user_receiver], proposals:[proposal], user_sheets:user_sheets)
+  end
 end
