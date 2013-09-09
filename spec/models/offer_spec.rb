@@ -39,7 +39,7 @@ describe Offer do
 
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
-      offer=Fabricate(:offer) # Esta asi por que la fabrica de ofertas no guarda los items con .save si no se usa Fabricate() en el let()
+      offer.save
       expect(Negotiation).to receive(:create).with(_users:[offer.user_sender,offer.user_receiver],proposals: [offer.proposal],user_sheets: offer.user_sheets )
       offer.negotiate
     end
@@ -49,10 +49,7 @@ describe Offer do
     end
 
     it 'returns false when offer is not saved' do
-      new_offer=Fabricate(:offer)
-      new_offer.proposal=nil
-      #expect(new_offer.negotiate).to eq false
-      expect(new_offer.negotiate.persisted?).to eq false # no consigo devolver falso porque devuelve una negotiation por el create
+      expect(new_offer.negotiate).to eq false
     end
 
     it 'returns false when a item is not available' do
