@@ -32,6 +32,7 @@ class ThingsController < ApplicationController
   # GET /things/new.json
   def new
     @thing = User::Thing.new
+    @user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,12 +53,12 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    @thing = User::Thing.new(params[:user_thing])  
+    @thing = User::Thing.new(params[:user_thing])
 
     respond_to do |format|
       if current_user.things << @thing
         format.html { redirect_to user_things_url, notice: 'thing was successfully created.' }
-        format.js { 
+        format.js {
           render :partial => "things/reload_things_list", :layout => false, :locals => { :thing => @thing }, :status => :created
         }
       else
@@ -72,7 +73,7 @@ class ThingsController < ApplicationController
   # PUT /things/1.json
   def update
     @user = current_user
-    @thing = current_user.things.find(params[:id])    
+    @thing = current_user.things.find(params[:id])
 
     respond_to do |format|
       if @thing.update_attributes(params[:user_thing])
