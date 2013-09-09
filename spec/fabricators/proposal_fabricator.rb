@@ -1,7 +1,12 @@
 Fabricator(:proposal) do
-  transient :container,:left,:right
+  transient :sender,:receiver
+  sender { Fabricate.build(:user_with_items) }
+  receiver { Fabricate.build(:user_with_items) }
 
-  proposal_container { |attrs| Fabricate.build(attrs[:container], proposal: nil) if attrs[:container] }
+  products do |attrs|
+    sender_item=attrs[:sender].items.sample
+    receiver_item=attrs[:receiver].items.sample
 
-  # Buscar la forma de introducir los productos de ambos usuarios
+    [Fabricate.build(:product,item:sender_item),Fabricate.build(:product,item:receiver_item)]
+  end
 end

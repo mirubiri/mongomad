@@ -9,10 +9,10 @@ class Product
   field :name
   field :description
   field :_id,         type:Moped::BSON::ObjectId,default:nil
-  field :owner,       type:Moped::BSON::ObjectId
+  field :owner_id,       type:Moped::BSON::ObjectId
   field :quantity,    type: Integer
 
-  validates_presence_of :name,:description,:_id,:owner
+  validates_presence_of :name,:description,:_id,:owner_id
 
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 

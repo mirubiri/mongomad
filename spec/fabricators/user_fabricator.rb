@@ -5,6 +5,16 @@ Fabricator(:user) do
   profile         { Fabricate.build(:profile) }
 end
 
+Fabricator(:user_with_items, from: :user) do
+  items { 3.times.map { Fabricate.build(:item) } }
+end
+
+Fabricator(:user_sent_offers,from: :user_with_items) do
+  after_build do |user|
+    user.sent_offers << Fabricate.build(:offer,user_sender: user)
+  end
+end
+
 # Fabricator(:user_with_things, from: :user) do
 #   things(count:2) { Fabricate.build(:user_thing) }
 # end

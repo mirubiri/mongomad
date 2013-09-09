@@ -13,7 +13,7 @@ describe Product do
   it { should be_timestamped_document }
   it { should have_fields :name,:description }
   it { should have_field(:quantity).of_type(Integer) }
-  it { should have_field(:owner).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
@@ -44,7 +44,7 @@ describe Product do
     end
     it 'returns false if item has not enought stock' do
       product.quantity=100
-      expect(product.available?) to eq false
+      expect(product.available?).to eq false
     end
   end
 
