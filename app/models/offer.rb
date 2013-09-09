@@ -14,6 +14,14 @@ class Offer
 
   validates :message, length: { minimum: 1, maximum: 160 }
 
+  def sender
+    user_sheets.find(user_sender_id)
+  end
+
+  def receiver
+    user_sheets.find(user_receiver_id)
+  end
+
 #   def start_negotiation
 #     negotiation = nil
 
