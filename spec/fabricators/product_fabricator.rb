@@ -8,7 +8,7 @@ Fabricator(:product) do
   description { |attrs| attrs[:item].description }
   quantity    3
 
-  proposal { Fabricate.build(:proposal,products:nil) }
+  proposal { |attrs| Fabricate(:proposal,sender:attrs[:item].user) }
 
 end
 
