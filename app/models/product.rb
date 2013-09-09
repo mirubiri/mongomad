@@ -20,5 +20,9 @@ class Product
 #   def thing
 #     receiver.offer.user_receiver.things.find(thing_id)
 #   end
+
+  def available?
+    return self.quantity <= Item.find(self._id).stock
+  end
 end
 
