@@ -5,8 +5,8 @@ describe User do
 
   # Relations
   it { should have_many :requests }
-  it { should have_many(:sent_offers).of_type(Offer) }
-  it { should have_many(:received_offers).of_type(Offer) }
+  it { should have_many(:sent_offers).of_type(Offer).as_inverse_of(:user_sender) }
+  it { should have_many(:received_offers).of_type(Offer).as_inverse_of(:user_receiver) }
   it { should have_and_belong_to_many :negotiations }
   it { should have_and_belong_to_many :deals }
   it { should embed_one :profile }

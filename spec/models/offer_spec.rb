@@ -7,8 +7,8 @@ describe Offer do
   let(:offer) { Fabricate.build(:offer) }
 
   # Relations
-  it { should belong_to(:user_sender).of_type(User) }
-  it { should belong_to(:user_receiver).of_type(User) }
+  it { should belong_to(:user_sender).of_type(User).as_inverse_of(:sent_offers) }
+  it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
   it { should embed_one :proposal }
   it { should embed_many :user_sheets } # ¿embed_one?
 
