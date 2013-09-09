@@ -49,7 +49,7 @@ describe Offer do
     end
 
     it 'returns false when offer is not saved' do
-      expect(new_offer.negotiate).to eq false
+      expect(offer.negotiate).to eq false
     end
 
     it 'returns false when a item is not available' do
