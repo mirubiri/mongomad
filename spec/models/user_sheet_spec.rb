@@ -23,5 +23,5 @@ describe UserSheet do
   end
 
   # Factories
-  specify { expect(Fabricate.build(:user_sheet).to be_valid }
+  specify { expect(Fabricate.build(:user_sheet)).to be_valid }
 end
