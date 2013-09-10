@@ -30,7 +30,7 @@ class Product
   end
 
   def available?
-    return self.quantity <= Item.find(self._id).stock
+    return self.quantity <= self.item.stock
   end
 end
 
