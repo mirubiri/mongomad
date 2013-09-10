@@ -26,11 +26,19 @@ describe Proposal do
 
   #Methods
   describe 'left(user:id)' do
-    it 'returns products for the left side'
+    it 'returns products for the left side' do
+      owner = proposal.products.first.owner_id
+      expect(proposal.products).to receive(:where).with(owner_id:owner)
+      proposal.left(owner)
+    end
   end
 
   describe 'right(user:id)' do
-    it 'return products for the right side'
+    it 'return products for the right side' do
+      owner = proposal.products.first.owner_id
+      expect(proposal.products).to receive(:where).with(:owner_id.ne => owner)
+      proposal.right(owner)
+    end
   end
 
   # Factories
