@@ -13,8 +13,6 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  #  it { should accept_nested_attributes_for :proposals }
-  #  it { should accept_nested_attributes_for :messages }
 
   # Validations
   it { should_not validate_presence_of :_users }
@@ -31,6 +29,14 @@ describe Negotiation do
     it 'make a proposal with the given products'
     it 'adds the new proposal to proposals list'
     it 'returns the new proposal'
+  end
+
+  describe '#send_message()' do
+    it 'writes a new message for given user and text'
+    it 'returns true if written'
+    it 'returns false if given user is not participating'
+
+    pending 'Como hay que repetirlo para deal, pensar en hacer un shared_example'
   end
 
   # Factories
