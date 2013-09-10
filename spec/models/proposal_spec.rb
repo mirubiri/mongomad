@@ -36,7 +36,7 @@ describe Proposal do
   describe 'right(user:id)' do
     it 'return products for the right side' do
       owner_id = proposal.products.first.owner_id
-      expect(proposal.products).to receive(:where).with(owner_id:owner_id)
+      expect(proposal.products).to receive(:where).with(:owner_id.ne =>owner_id)
       proposal.right(owner_id)
     end
   end
