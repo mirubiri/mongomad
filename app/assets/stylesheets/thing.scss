@@ -10,29 +10,16 @@
   margin-right: 10px;
   margin-bottom: 10px;
   margin-left: 0px;
-
-  .offer_header{
-    @include proportions(100%,24px);
-    float: left;
-    background-color: #bbbbbb;
-    overflow: hidden;
-    overflow: none;
-    font-size: 13px;
-    font-weight: bold;
-    line-height: normal;
-    text-align: center;
-    color: white;
-    padding-top: 5px;
-  }
+  padding: 5px;
 
   .thing_image{
     float: left;
     width: 100%;
-    border-bottom: 1px solid #bbbbbb;
 
     img{
       @include high-quality-image;
       @include proportions($thingWidth,$thingWidth);
+      border: 1px solid #BBBBBB;
     }
   }
 
@@ -40,9 +27,9 @@
     @include box-sizing(border-box);
     float: left;
     width: 100%;
-    overflow: visible;
-    margin: 0px 0px 10px 0px;
-    padding: 3px;
+    overflow: none;
+    margin: 0px 0px 0px 0px;
+    padding: 8px;
 
     .text{
       float: left;
