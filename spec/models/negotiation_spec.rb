@@ -27,9 +27,10 @@ describe Negotiation do
     it 'returns the current proposal'
   end
 
-  describe '#proposal=new_proposal' do
-    it 'adds the new_proposal to proposals list'
-    it 'makes #proposal to return new_proposal'
+  describe '#make_proposal(products)' do
+    it 'make a proposal with the given products'
+    it 'adds the new proposal to proposals list'
+    it 'returns the new proposal'
   end
 
   # Factories
