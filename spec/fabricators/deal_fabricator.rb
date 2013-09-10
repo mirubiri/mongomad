@@ -1,9 +1,7 @@
-=begin
 Fabricator(:deal) do
    transient    :negotiation
    negotiation  { Fabricate(:negotiation) }
-   signers      { |attrs| attrs[:negotiation].negotiators }
-   conversation { |attrs| Fabricate.build(:deal_conversation, user:attrs[:signers].first) }
-   agreement    { |attrs| Fabricate.build(:deal_agreement, negotiation:attrs[:negotiation]) }
+   _users       { |attrs| attrs[:negotiation]._users }
+   proposals    { |attrs| attrs[:negotiation].proposals }
+   user_sheets  { |attrs| attrs[:negotiation].user_sheets }
 end
-=end
