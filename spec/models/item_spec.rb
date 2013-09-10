@@ -69,17 +69,17 @@ describe Item do
 
   describe '#available?(quantity)' do
     it 'true if item has enough asked stock' do
-      asked=item.quantity-1
+      asked=item.stock-1
       expect(item.available?(asked)).to eq true
     end
 
     it 'false if item has not enough asked stock' do
-      asked=item.quantity+1
+      asked=item.stock+1
       expect(item.available?(asked)).to eq false
     end
 
     it 'false if stock is nil' do
-      item.quantity=nil
+      item.stock=nil
       expect(item.available?(1)).to eq false
     end
 
