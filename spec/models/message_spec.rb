@@ -9,9 +9,11 @@ describe Message do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :text }
+  it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
   it { should validate_presence_of :text }
+  it { should validate_presence_of }
   it { should validate_length_of(:text).within(1..160) }
 
   # Factories
