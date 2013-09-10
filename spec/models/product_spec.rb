@@ -45,13 +45,14 @@ describe Product do
   end
 
   describe '#available?' do
-    it 'returns true if item has enough stock' do
-      expect(product.available?).to eq true
+    it 'calls to product.item' do
+      expect(product).to receive(:item).and_call_original
+      product.available?
     end
 
-    it 'returns false if item has not enough stock' do
-      product.quantity=100
-      expect(product.available?).to eq false
+    it 'calls to item.available? with product.quantity' do
+      expect_any_instance_of(Item).to receive(:available?).with(product.quantity)
+      product.available?
     end
   end
 
