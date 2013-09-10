@@ -1,39 +1,45 @@
 <div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-thing-form">
   <%= form_for @thing, :remote => true do |form| %>
-    <div class="new_thing_title">
-      Añade un nuevo producto      
-    </div>
-    <div class="new_thing_container">
-      <div class="new_thing_image">
-        <div class="image_container">
-          <%= form.file_field :image,
-            :id => "thing_image",
-            :onchange => "imageSelection(this);" %>
-          <img class="thing_image_container" id="thing_image_container" src="">
+    <div class="new_thing_modal">
+      <div class="new_thing_title">
+        NUEVO PRODUCTO
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="new_thing_container">
+        <div class="new_thing_image">
+          <div class="image_container">
+            <img id="thing_image_container" src="">
+            <div class="input_container">
+              <div class="input_text">ADJUNTAR FOTO</div>
+              <%= form.file_field :image,
+                :id => "thing_image",
+                :onchange => "imageSelection(this);" %>
+            </div>
+          </div>
+        </div>
+        <div class="new_thing_description">
+          <div class="title">
+            <%= form.text_area :name,
+                    :placeholder => "Título",
+                    :size => "4x1" %>
+          </div>
+          <div class="description">
+            <%= form.text_area :description,
+                      :placeholder => "Descripcion...",
+                      :size => "10x5" %>
+          </div>
+          <div class="new_thing_stock">
+            <%= form.text_area :stock,
+                  :placeholder => "Cantidad disponible",
+                  :size => "4x1" %>
+          </div>
+        </div>
+        <div class="thing_options">
+          <%= form.submit  "Add",
+          :id => 'new-thing-send-button',
+          :class => "btn btn-mini" %>
         </div>
       </div>
-      <div class="new_thing_description">
-        <div class="title">
-          <%= form.text_area :name, 
-                  :placeholder => "Título del producto",
-                  :size => "4x1" %>
-        </div>
-        <div class="description">
-          <%= form.text_area :description,
-                    :placeholder => "Describa de forma concisa el producto",
-                    :size => "10x5" %>
-        </div>
-        <div class="new_thing_stock">
-          <%= form.text_area :stock, 
-                :placeholder => "Unidades del producto de las que dispone",  
-                :size => "4x1" %>
-        </div>
-      </div>      
     </div>
-    <div class="thing_options">            
-      <%= form.submit  "Add to products", 
-      :id => 'new-thing-send-button',
-      :class => "btn btn-success" %>
-    </div>
-  <% end %>   
-</div> 
+  <% end %>
+</div>

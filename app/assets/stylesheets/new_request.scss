@@ -2,61 +2,87 @@
 
 .new_petition_content{
   @include fixed_width(430px,430px,430px);
+  overflow: auto;
 
-  .new_petition_title{
+  .petition_text_side{
+    @include box-sizing(border-box);
+    background-color: rgba(172, 174, 180, 0.56);
+    float: left;
     width: 100%;
-    overflow: auto;
-    float:left; 
+    margin: 0px;
+    padding: 20px 15px;
 
-    .description{
+    .petition_text{
       float: left;
       width: 100%;
-      margin-bottom: 10px;
-      padding-top: 3px;
-      text-align: center;
-      font:{
-        weight:bold;
-        size:14px;
+
+      textarea{
+        width: 385px;
       }
-    }  
-
-    .user{
-      @include border-radius(5px, 5px);
-      float:left;
-      margin: 12px 5px 10px 30px;      
-      border: $borde1px;
-      padding: 3px;
-      img{
-        @include proportions(30px,30px);
-        @include high-quality-image;
-      }      
     }
 
-    .user_name{
+    .petitions_buttons_side{
       float: left;
-      padding: 8px 0px 0px 5px;
-      font-size: 12px;
-      font-weight: bold;
+      width: 100%;
+
+      .send_button{
+        float: right;
+        width: 100%;
+
+        .characters_left{
+          float: right;
+          text-align: right;
+          margin-right: 3px;
+          font-size: 9px;
+          font-style:italic
+        }
+
+        button{
+          float: right;
+        }
+        input{
+          float: right;
+          width: 25%;
+          margin-right: 5px;
+        }
+      }
     }
   }
 
-  .new_offer_text{
-    float:left;
-    margin:0px 0px 10px 30px;
-    width:85%;
 
-    textarea{
-      overflow: hidden;
-      width: 98%;
-      background-color: transparent;
-      color: #000000;
-      font-size: 11px;
-      resize: none;
-    }      
+  .petition_user_side{
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
+    margin: 0px;
+
+    .petition_user_image{
+      @include proportions(50px,50px);
+      background-color: #f3f3f3;
+      position: relative;
+      top:-20px;
+      left: 188px;
+      border: 1px solid #f3f3f3;
+      @include border-radius(25px, 25px);
+
+      img{
+        @include high-quality-image;
+        @include proportions(46px,46px);
+        @include border-radius(23px, 23px);
+        margin-left: 1px;
+        margin-top: 2px;
+        border: 1px solid #cccccc;
+      }
+
+    }
+
+    .petition_title{
+      text-align: center;
+      font-size: 9px;
+      font-style:italic
+    }
+
   }
-  .send_button{
-    float: right;
-    margin-right: 30px;
-    margin-bottom:10px;    
-  }
+
+
 }

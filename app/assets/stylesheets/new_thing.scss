@@ -1,133 +1,157 @@
-@import "variables";  
+@import "variables";
 
-.new_thing_title{
-  @include proportions(100%,32px);
-    @include box-sizing(border-box);
-    float:left;
-    margin-bottom: 5px;
-    background-color: #2B3750;
-    color:white; 
-    padding-top: 6px; 
-    text-align: center; 
-}
-
-
-.new_thing_container{
-  @include center-horizontally(90%);
-  @include box-sizing(border-box);
-  padding: 5px;
+.new_thing_modal{
+  background-color: rgba(172, 174, 180, 0.56);
   overflow: none;
-
-  .new_thing_image{
-    @include box-sizing(border-box);
-    width: 190px;
-    float: left;
-
-    .image_container{
-      @include box-sizing(border-box);
-      @include border-radius(5px, 5px);
-      background-image: url("/assets/images/fold.png" , 0.2);
-      background-repeat: no-repeat;
-      background-position: center;
-      width: 180px;
-      height: 180px;
-      border: $borde1px;
-      margin: 5px;
-      padding: 5px;
-      float: left;
-      margin-bottom: 5px;
-
-      input[type="file"]{
-        opacity: 0;
-        width: 170px;
-        height: 170px;
-      }
-
-      img{
-        border: none;
-      }
-
-      .thing_image_container{
-        position: relative;
-        top: -170px;
-        left: 0px;
-        width: 170px;
-        height: 170px;
-        z-index: -1;  
-        border: none;      
-      }
-
-    }      
-  }
-
-  .new_thing_description{
-    @include box-sizing(border-box);
-    width: 170px;
-    float: right;
-    margin-right: 15px;
-    margin-top: 5px;
-
-    .title{
-      @include box-sizing(border-box);
-      width: 100%;
-      float: left;
-
-      textarea{
-        overflow: hidden;
-        width: 98%;
-        border: $borde1px;
-        background-color: transparent;
-        color: #000000;
-        font-size: 11px;
-        resize: none;
-        margin-bottom: 5px;
-      }
-    }
-
-    .description{
-      @include box-sizing(border-box);
-      width: 100%;
-      float: left;
-
-      textarea{
-        overflow: hidden;
-        width: 98%;
-        border: $borde1px;
-        background-color: transparent;
-        color: #000000;
-        font-size: 11px;
-        resize: none;
-        margin-bottom: 5px;
-      }
-    }
-
-    .new_thing_stock{
-      float: left;
-      width: 100%;
-
-      textarea{
-              overflow: hidden;
-              width: 98%;
-              border: $borde1px;
-              background-color: transparent;
-              color: #000000;
-              font-size: 11px;
-              resize: none;
-              margin-bottom: 5px;
-      }
-    }
-  } 
-}
-
-.thing_options{
-  @include box-sizing(border-box);
-  width: 100%;
   float: left;
 
-  input{
-    float: right;
-    margin: 8px 30px 10px 0px;
-  }  
-}    
-   
+  .new_thing_title{
+    @include proportions(100%,32px);
+    @include box-sizing(border-box);
+    float: left;
+    margin-bottom: 5px;
+    background-color: #bbbbbb;
+    color: #003377;
+    padding: 6px 5px 0px 5px;
+    text-align: center;
+  }
+
+
+  .new_thing_container{
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
+    padding: 5px;
+    overflow: none;
+
+    .new_thing_image{
+      @include box-sizing(border-box);
+      width: 180px;
+      margin-left: 10px;
+      float: left;
+
+      .image_container{
+        @include box-sizing(border-box);
+        @include border-radius(5px, 5px);
+        float: left;
+        width: 180px;
+        height: 180px;
+        background-color: white;
+
+        img{
+          @include border-radius(5px, 5px);
+          float: left;
+          width: 180px;
+          height: 180px;
+        }
+
+        .input_container{
+          @include border-radius(3px, 3px);
+          position: relative;
+          top: 157px;
+          left: 20px;
+          width: 134px;
+          border: $borde1px;
+          border-color: #bbbbbb;
+          height: 16px;
+
+          .input_text{
+            position: relative;
+            top: -180px;
+            width: 134px;
+            height: 17px;
+            text-align: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #888888;
+          }
+
+          input[type="file"]{
+            position: relative;
+            top: -172px;
+            opacity: 0;
+            width: 124px;
+            height: 17px;
+            background-color: transparent;
+            z-index: 2000;
+          }
+        }
+
+      }
+    }
+
+    .new_thing_description{
+      @include box-sizing(border-box);
+      width: 225px;
+      float: left;
+      margin-left: 5px;
+
+      .title{
+        @include box-sizing(border-box);
+        width: 100%;
+        float: left;
+
+        textarea{
+          overflow: hidden;
+          width: 98%;
+          border: $borde1px;
+          background-color: white;
+          color: #000000;
+          font-size: 10px;
+          font-style: italic;
+          resize: none;
+          margin-bottom: 5px;
+        }
+      }
+
+      .description{
+        @include box-sizing(border-box);
+        width: 100%;
+        float: left;
+
+        textarea{
+          overflow: hidden;
+          width: 98%;
+          border: $borde1px;
+          background-color: white;
+          color: #000000;
+          font-size: 10px;
+          font-style: italic;
+          resize: none;
+          margin-bottom: 5px;
+        }
+      }
+
+      .new_thing_stock{
+        float: left;
+        width: 100%;
+
+        textarea{
+          overflow: hidden;
+          width: 98%;
+          border: $borde1px;
+          background-color: white;
+          color: #000000;
+          font-size: 10px;
+          font-style: italic;
+          resize: none;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .thing_options{
+      @include box-sizing(border-box);
+      width: 100%;
+      float: left;
+
+      input{
+        float: right;
+        margin: 8px 10px 10px 0px;
+        width: 20%;
+      }
+    }
+  }
+}
+
 

@@ -1,7 +1,6 @@
 @import "variables";
 
 .thing{
-
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
   width: $thingWidth;
@@ -10,29 +9,41 @@
   margin-right: 10px;
   margin-bottom: 10px;
   margin-left: 0px;
+  padding: 5px;
 
-  .offer_header{
-    @include proportions(100%,24px);
-    float: left;
-    background-color: #bbbbbb;
-    overflow: hidden;
-    overflow: none;
-    font-size: 13px;
-    font-weight: bold;
-    line-height: normal;
-    text-align: center;
-    color: white;
-    padding-top: 5px;
+  .thing_quantity{
+    @include border-radius(4px, 2px);
+    position: relative;
+    border: 1px solid #BBBBBB;
+    background-color: white;
+    padding: 1px;
+    top: 10px;
+    left: 10px;
+    width: 23px;
+    height: 23px;
+
+    .quantity_number{
+      position: absolute;
+      width: 18px;
+      height: 21px;
+      text-align: left;
+      padding-left: 5px;
+      padding-top: 2px;
+      background-color: #cccccc;
+      color: #6498ad;
+      font-size: 18px;
+      font-weight: 600;
+    }
   }
 
   .thing_image{
     float: left;
     width: 100%;
-    border-bottom: 1px solid #bbbbbb;
 
     img{
       @include high-quality-image;
       @include proportions($thingWidth,$thingWidth);
+      border: 1px solid #BBBBBB;
     }
   }
 
@@ -40,26 +51,17 @@
     @include box-sizing(border-box);
     float: left;
     width: 100%;
-    overflow: visible;
-    margin: 0px 0px 10px 0px;
-    padding: 3px;
+    max-height: 40px;
+    overflow: none;
+    margin: 0px 0px 0px 0px;
+    padding: 8px;
 
     .text{
       float: left;
       width: 100%;
-      overflow: auto;
+      font-size: 11px;
+      text-align: center;
+      overflow: none;
     }
   }
-
-  .thing_options{
-    float: left;
-    width: 100%;
-    text-align: center;
-
-    a{
-      @include center-horizontally(80%);
-      margin-bottom: 10px;
-    }
-  }
-
 }
