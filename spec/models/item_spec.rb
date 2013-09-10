@@ -66,4 +66,25 @@ describe Item do
       expect(item).to be_persisted
     end
   end
+
+  describe '#available?(quantity)' do
+    it 'true if item has enough asked stock' do
+      asked=item.quantity-1
+      expect(item.available?(asked)).to eq true
+    end
+
+    it 'false if item has not enough asked stock' do
+      asked=item.quantity+1
+      expect(item.available?(asked)).to eq false
+    end
+
+    it 'false if stock is nil' do
+      item.quantity=nil
+      expect(item.available?(1)).to eq false
+    end
+
+    it 'false if asked stock is 0' do
+      expect(item.available?(0)).to eq false
+    end
+  end
 end
