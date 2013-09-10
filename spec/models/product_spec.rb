@@ -48,7 +48,8 @@ describe Product do
     it 'returns true if item has enough stock' do
       expect(product.available?).to eq true
     end
-    it 'returns false if item has not enought stock' do
+
+    it 'returns false if item has not enough stock' do
       product.quantity=100
       expect(product.available?).to eq false
     end
