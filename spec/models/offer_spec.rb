@@ -45,7 +45,8 @@ describe Offer do
     end
 
     it 'returns a negotiation' do
-      pending 'pensar si devolver true o la negociacion creada'
+      offer.save
+      expect(offer.negotiate).to be_an_instance_of(Negotiation)
     end
 
     it 'returns false when offer is not saved' do
@@ -53,7 +54,7 @@ describe Offer do
     end
 
     it 'returns false when a item is not available' do
-     pending 'Este para cuando se solucione el asunto de los items que no se guardan'
+      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
     end
   end
 
