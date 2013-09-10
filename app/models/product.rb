@@ -22,11 +22,11 @@ class Product
 #   end
 
   def item
-    Item.find(self._id)
+    Item.find(id)
   end
 
   def sell
-    Item.find(self._id).sell(self.quantity)
+    item.sell(quantity)
   end
 
   def available?
