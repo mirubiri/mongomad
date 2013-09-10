@@ -34,7 +34,10 @@ class Item
   end
 
   def available?(quantity)
-    return false if (self.stock == nil) || (quantity==0)
-    return quantity <= self.stock
+    if (self.stock == nil) || (quantity==0)
+      false
+    else
+      quantity <= self.stock
+    end
   end
 end

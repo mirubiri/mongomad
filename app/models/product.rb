@@ -26,11 +26,11 @@ class Product
   end
 
   def sell
-    item.sell(quantity)
+    self.item.sell(quantity)
   end
 
   def available?
-    return self.quantity <= self.item.stock
+    self.item.available?(self.quantity)
   end
 end
 

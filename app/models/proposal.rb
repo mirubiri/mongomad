@@ -5,6 +5,13 @@ class Proposal
   embedded_in :proposal_container, polymorphic: true
   embeds_many :products
 
+  def left(owner_id)
+    self.products.where(owner_id:owner_id)
+  end
+
+  def right(owner_id)
+    self.products.where(owner_id:owner_id)
+  end
 
   # before_create :set_initial_state
 
