@@ -18,7 +18,7 @@ describe Negotiation do
   it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
-  xit 'should validate_presence_of two negotiators corresponding to _users'
+  xit 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
   describe '#proposal' do
