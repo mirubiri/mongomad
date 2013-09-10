@@ -1,12 +1,12 @@
 <% user_visited_things.reverse_each do |thing| %>
   <div class="thing" id="<%= thing_id(thing) %>">
 
-    <div class="offer_header">
-      <%= thing_name(thing) %>
-    </div>
-
     <div class="thing_image">
       <%= thing_image(thing) %>
+    </div>
+
+    <div class="thing_quantity">
+      <div class="quantity_number">2</div>
     </div>
 
     <div class="thing_description">
@@ -15,14 +15,14 @@
       </div>
     </div>
 
-    <% if user_logged_id == user_visited_id %>
-      <div class="thing_options">
-        <%= link_to "editar producto",
+    <%# if user_logged_id == user_visited_id %>
+      <!-- <div class="thing_options">
+        <%#= link_to "editar producto",
           edit_user_thing_path(current_user,thing),
           :remote => true,
           :class => "btn btn-small disable" %>
-      </div>
-    <% end %>
+      </div> -->
+    <%# end %>
 
   </div>
 <% end %>
