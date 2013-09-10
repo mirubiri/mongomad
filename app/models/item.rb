@@ -32,4 +32,9 @@ class Item
     self.stock+=quantity
     save
   end
+
+  def available?(quantity)
+    return false if (self.stock == nil) || (quantity==0)
+    return quantity <= self.stock
+  end
 end
