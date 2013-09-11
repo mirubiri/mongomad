@@ -15,7 +15,7 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:performer).of_type(Moped::BSON:ObjectId)}
+  it { should have_field(:performer).of_type(Moped::BSON::ObjectId)}
   it { should have_field :state }
 
   # Validations
