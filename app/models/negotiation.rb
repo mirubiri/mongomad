@@ -13,6 +13,24 @@ class Negotiation
 
   validates_presence_of :proposals, :messages,:performer,:state
 
+  def initial_state
+  end
+
+  def new
+  end
+
+  def end
+  end
+
+  def sign 
+  end
+
+  def confirm
+  end
+
+  def cancel
+  end
+
   #accepts_nested_attributes_for :conversation, :proposals
 
 #   def seal_deal

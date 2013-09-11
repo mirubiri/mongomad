@@ -5,12 +5,17 @@ class Proposal
   embedded_in :proposal_container, polymorphic: true
   embeds_many :products
 
+  field :composer_id
+  field :receiver_id
+
+  validates_presence_of :composer_id, :receiver_id
+
   def left(owner_id)
     self.products.where(owner_id:owner_id)
   end
 
   def right(owner_id)
-    self.products.where(owner_id:owner_id)
+    self.products.where(:owner_id.ne =>owner_id)
   end
 
   # before_create :set_initial_state
