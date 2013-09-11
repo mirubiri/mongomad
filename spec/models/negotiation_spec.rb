@@ -121,6 +121,14 @@ describe Negotiation do
     end
   end
 
+  describe '#initial_state' do
+    context 'Money present' do
+    end
+
+    context 'No money present' do
+    end
+  end
+
   describe '#actions_for(user)' do
     it 'returns an array with the allowed actions for user'
     it 'returns an empty array if not allowed actions for user'
