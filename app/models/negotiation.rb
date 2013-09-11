@@ -11,7 +11,7 @@ class Negotiation
   field :performer, type:Moped::BSON::ObjectId
   field :state
 
-  validates_presence_of :proposals, :messages,:performer,:status
+  validates_presence_of :proposals, :messages,:performer,:state
 
   #accepts_nested_attributes_for :conversation, :proposals
 
