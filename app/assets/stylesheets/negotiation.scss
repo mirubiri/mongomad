@@ -8,6 +8,56 @@
   float: left;
 
     .negotiation_offer {
+
+      .oponent_info{
+        float: left;
+        width: 100%;
+        background-color: rgb(243,243,243);
+        overflow: none;
+        padding-top: 5px;
+        margin-bottom: 8px;
+
+        .oponent_image{
+          @include box-sizing(border-box);
+          float: left;
+          width: 35%;
+          text-align: center;
+          img{
+            @include high-quality-image;
+            @include proportions(60px,60px);
+            @include border-radius(30px, 30px);
+            margin-left: 1px;
+            margin-top: 2px;
+            border: 1px solid #cccccc;
+          }
+        }
+
+        .oponent_description{
+          @include box-sizing(border-box);
+          float: left;
+          width: 65%;
+          padding-top: 8px;
+
+          .oponent_name{
+            float: left;
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: normal;
+            color: black;
+          }
+          .oponent_address{
+            float: left;
+            width: 100%;
+            text-align: left;
+            font-size: 12px;
+            font-style: italic;
+            color: #bbbbbb;
+          }
+        }
+      }
+
       @include offer_header;
       @include offer_products;
       @include offer_info;
@@ -56,6 +106,7 @@
         overflow-y: auto;
         width: 100%;
         padding-top: 4px;
+        background-color: rgb(243,243,243);
 
         .comment{
           float: left;
@@ -95,18 +146,18 @@
         @include box-sizing(border-box);
         float: left;
         width: 100%;
-        height: 30px;
+        height: 36px;
         padding-left: 5px;
         overflow: auto;
         border:{
-          top: $borde2px;
+          top: $borde1px;
           left:none;
         }
 
         form{
           float:left;
           width: 100%;
-          height: 22px;
+          height: 28px;
           margin: 0px;
 
           .message{
@@ -114,6 +165,7 @@
             height: inherit;
             overflow: hidden;
             width: 100%;
+            padding-top: 5px;
 
             input{
               float: left;
