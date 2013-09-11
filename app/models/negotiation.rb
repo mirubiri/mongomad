@@ -9,7 +9,7 @@ class Negotiation
   embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
   field :performer, type:Moped::BSON::ObjectId
-  field :status
+  field :state
 
   validates_presence_of :proposals, :messages,:performer,:status
 
