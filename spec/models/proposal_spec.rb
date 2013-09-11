@@ -19,9 +19,13 @@ describe Proposal do
 
   # Attributes
   it { should be_timestamped_document }
+  it { should have_field :composer_id }
+  it { should have_field :receiver_id }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
+  it { should validate_presence_of :composer_id }
+  it { should validate_presence_of :receiver_id }
   it 'should validate presence of products for both sides'
 
   #Methods
