@@ -56,12 +56,18 @@ describe Negotiation do
         expect(negotiation.send(action,user)).to eq false
       end
 
-      it 'does not set performer to user' do
+      it 'does change performer if user is not present in negotiation' do
         expect { negotiation.send(action,Fabricate.build(:user)) }.not_to change { negotiation.performer }
       end
     end
   end
 
+  describe '#new(user)' do
+    it 'returns false if user is not present in the negotiation'
+    it 'sets negotiation state to new'
+    it 'sets last action performer to user'
+    it 'saves the negotiation'
+  end
 
   describe '#sign(user)' do
     context 'negotiation is new' do
@@ -90,18 +96,29 @@ describe Negotiation do
     end
   end
 
-  describe '#new(user)' do
-    it 'returns false if user is not present in the negotiation'
-    it 'sets negotiation state to new'
-    it 'sets last action performer to user'
-    it 'saves the negotiation'
-  end
-
   describe '#cancel(user)' do
     it 'returns false if user is not present in the negotiation'
     it 'sets negotiation in canceled state'
     it 'sets last action performer to user'
     it 'saves the negotiation'
+  end
+
+  describe 'end(user)' do
+    context 'user present' do
+      it 'removes the user form the negotiation'
+      it 'sets negotiation to ended state'
+      it 'sets last action performer to user'
+      it 'returns true'
+    end
+
+    context 'user not present' do
+      it 'returns false'
+      it 'does not change the negotiation status'
+    end
+
+    context 'user is alone' do
+      it 'destroys the negotiation'
+    end
   end
 
   describe '#actions_for(user)' do
@@ -129,23 +146,7 @@ describe Negotiation do
     it 'returns false when money not exists'
   end
 
-  describe 'end(user)' do
-    context 'user present' do
-      it 'removes the user form the negotiation'
-      it 'sets negotiation to ended state'
-      it 'sets last action performer to user'
-      it 'returns true'
-    end
 
-    context 'user not present' do
-      it 'returns false'
-      it 'does not change the negotiation status'
-    end
-
-    context 'user is alone' do
-      it 'destroys the negotiation'
-    end
-  end
 
   # Factories
   specify { expect(negotiation).to be_valid }
