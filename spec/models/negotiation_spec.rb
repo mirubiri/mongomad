@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Negotiation do
 
   let(:negotiation) { Fabricate.build(:negotiation) }
-  let(:user) { negotiation._users.first}
+  let(:first_user)  { negotiation._users.first }
+  let(:second_user) { negotiation._users.last }
 
 
   # Relations
@@ -21,6 +22,8 @@ describe Negotiation do
   it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
+  it { should validate_presence_of :performer }
+  it { should validate_presence_of :state }
   xit 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
@@ -28,13 +31,13 @@ describe Negotiation do
     it 'returns the current proposal'
   end
 
-  describe '#make_proposal(products)' do
+  describe '#make_proposal(user,products)' do
+
     it 'make a proposal with the given products'
     it 'adds the new proposal to proposals list'
-    it 'returns the new proposal'
   end
 
-  describe '#send_message()' do
+  describe '#send_message(user,message)' do
     it 'writes a new message for given user and text'
     it 'returns true if written'
     it 'returns false if given user is not participating'
@@ -48,20 +51,22 @@ describe Negotiation do
         expect(negotiation.send(action,Fabricate.build(:user))).to eq false
       end
 
-      it 'returns false if there is only a user in negotiation' do
-        user = negotiation._users.first
-        negotiation._users.first.delete
-        expect(negotiation.send(action,user)).to es false
+      it 'returns false if negotiation ended' do
+        negotiation.end(first_user)
+        expect(negotiation.send(action,user)).to eq false
+      end
+
+      it 'does not set performer to user' do
+        expect { negotiation.send(action,Fabricate.build(:user)) }.not_to change { negotiation.performer }
       end
     end
   end
 
 
   describe '#sign(user)' do
+    before(:each) { negotiation.state = 'new' }
     context 'negotiation is new' do
-      it 'sets the negotiation state to signed' do
-
-      end
+      it 'sets the negotiation state to signed'
       it 'sets last action performer to user'
       it 'saves the negotiation'
       it 'returns true'
@@ -73,6 +78,7 @@ describe Negotiation do
   end
 
   describe '#confirm(user)' do
+    before(:each) { negotiation.state='signed'}
     context 'negotiation is signed by other user' do
       it 'sets negotiation state to confirmed'
       it 'sets last action performed to user'
@@ -125,7 +131,22 @@ describe Negotiation do
     it 'returns false when money not exists'
   end
 
-  describe 'part(user)' do
+  describe 'end(user)' do
+    context 'user present' do
+      it 'removes the user form the negotiation'
+      it 'sets negotiation to ended state'
+      it 'sets last action performer to user'
+      it 'returns true'
+    end
+
+    context 'user not present' do
+      it 'returns false'
+      it 'does not change the negotiation status'
+    end
+
+    context 'user is alone' do
+      it 'destroys the negotiation'
+    end
   end
 
   # Factories
