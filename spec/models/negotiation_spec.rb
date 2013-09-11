@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Negotiation do
 
   let(:negotiation) { Fabricate.build(:negotiation) }
+  let(:user) { negotiation._users.first}
 
 
   # Relations
@@ -13,6 +14,8 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
+  it { should have_field(:performer).of_type(Moped::BSON:ObjectId)}
+  it { should have_field :state }
 
   # Validations
   it { should_not validate_presence_of :_users }
@@ -37,6 +40,92 @@ describe Negotiation do
     it 'returns false if given user is not participating'
 
     pending 'Como hay que repetirlo para deal, pensar en hacer un shared_example'
+  end
+
+  ['sign', 'confirm','cancel','new'].each do |action|
+    describe "##{action}" do
+      it 'returns false if given user is not present in negotiation' do
+        expect(negotiation.send(action,Fabricate.build(:user))).to eq false
+      end
+
+      it 'returns false if there is only a user in negotiation' do
+        user = negotiation._users.first
+        negotiation._users.first.delete
+        expect(negotiation.send(action,user)).to es false
+      end
+    end
+  end
+
+
+  describe '#sign(user)' do
+    context 'negotiation is new' do
+      it 'sets the negotiation state to signed' do
+
+      end
+      it 'sets last action performer to user'
+      it 'saves the negotiation'
+      it 'returns true'
+    end
+
+    context 'negotiation is not new' do
+      it 'returns false'
+    end
+  end
+
+  describe '#confirm(user)' do
+    context 'negotiation is signed by other user' do
+      it 'sets negotiation state to confirmed'
+      it 'sets last action performed to user'
+      it 'generates a deal'
+      it 'removes the negotiation if deal is generated'
+      it 'returns true'
+    end
+
+    context 'negotiation is not signed by second user' do
+      it 'returns false'
+    end
+  end
+
+  describe '#new(user)' do
+    it 'returns false if user is not present in the negotiation'
+    it 'sets negotiation state to new'
+    it 'sets last action performer to user'
+    it 'saves the negotiation'
+  end
+
+  describe '#cancel(user)' do
+    it 'returns false if user is not present in the negotiation'
+    it 'sets negotiation in canceled state'
+    it 'sets last action performer to user'
+    it 'saves the negotiation'
+  end
+
+  describe '#actions_for(user)' do
+    it 'returns an array with the allowed actions for user'
+    it 'returns an empty array if not allowed actions for user'
+  end
+
+  describe 'present?(user)' do
+    it 'returns true if user is present in the negotiation'
+    it 'returns false if user is not present in the negotiation'
+  end
+
+  describe 'performed?(user)' do
+    it 'returns true if user was who executed the last action'
+    it 'returns false if user did not executed the las action'
+  end
+
+  describe 'money_owner' do
+    it 'returns the id of user whose has money'
+    it 'returns nil if nobody has money'
+  end
+
+  describe 'money?' do
+    it 'returns true when money exists'
+    it 'returns false when money not exists'
+  end
+
+  describe 'part(user)' do
   end
 
   # Factories
