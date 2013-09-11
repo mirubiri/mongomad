@@ -64,7 +64,6 @@ describe Negotiation do
 
 
   describe '#sign(user)' do
-    before(:each) { negotiation.state = 'new' }
     context 'negotiation is new' do
       it 'sets the negotiation state to signed'
       it 'sets last action performer to user'
@@ -78,7 +77,6 @@ describe Negotiation do
   end
 
   describe '#confirm(user)' do
-    before(:each) { negotiation.state='signed'}
     context 'negotiation is signed by other user' do
       it 'sets negotiation state to confirmed'
       it 'sets last action performed to user'
