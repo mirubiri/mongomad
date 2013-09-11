@@ -22,7 +22,7 @@ class Negotiation
   def end
   end
 
-  def sign 
+  def sign
   end
 
   def confirm

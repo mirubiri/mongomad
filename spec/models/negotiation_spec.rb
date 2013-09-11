@@ -15,7 +15,7 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:performer).of_type(Moped::BSON::ObjectId)}
+  it { should have_field(:performer).of_type(Moped::BSON:ObjectId)}
   it { should have_field :state }
 
   # Validations
@@ -24,7 +24,7 @@ describe Negotiation do
   it { should validate_presence_of :messages }
   it { should validate_presence_of :performer }
   it { should validate_presence_of :state }
-  xit 'should validate_presence_of two user_sheets corresponding to _users'
+  it 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
   describe '#proposal' do
@@ -60,6 +60,23 @@ describe Negotiation do
         expect { negotiation.send(action,Fabricate.build(:user)) }.not_to change { negotiation.performer }
       end
     end
+  end
+
+  describe ':states' do
+    context 'when money present' do
+      it 'has initial state set to :new if composer holds the money'
+      it 'has initial state set to :composer_signed if receiver holds the money'
+    end
+
+    context 'when money not present' do
+      it 'has initial_state set to :composer_signed'
+    end
+
+    it 'changes state from :composer_signed to :receiver_confirmed on :receiver_confirm'
+    it 'changes state from :new to :receiver_signed on :receiver_sign'
+    it 'changes state from :receiver_signed to :composer_confirmed on :composer_confirm'
+    it 'changes state from :all to :canceled on :cancel'
+    it 'changes state from :all to :ended on :end'
   end
 
   describe '#new(user)' do
