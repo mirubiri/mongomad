@@ -128,7 +128,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin big_images_style{
   @include box-sizing(border-box);
   @include border-radius(2px, 2px);
-  border: solid 1px #dddddd;
+  border: solid 1px rgb(210,210,210);
   overflow: visible;
 
   .quantity_container{
@@ -263,7 +263,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     @include proportions(100%,24px);
     float: left;
     background-color: rgb(243,243,243);
-    overflow: hidden;
     overflow: none;
     font-size: 13px;
     font-weight: bold;
@@ -305,23 +304,32 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     .recieved{
       width: $bigImageDimension;
       float:left;
-      overflow: hidden;
+      overflow: auto;
       margin: 0px $productRightMargin 0px 0px;
 
       .image_container{
         @include big_images_style;
-        @include proportions($bigImageDimension,$bigImageDimension);
         margin:0px 0px 5px 0px;
-        position: relative;
-        //background-image: url("/assets/images/pictureframe.png");
-        //background-size: $bigBackgroundSize $bigBackgroundSize;
-        //background-repeat:no-repeat;
+        overflow: auto;
 
         img{
+          @include proportions($bigImageDimension,$bigImageDimension);
           @include border-radius(2px, 2px);
           @include high-quality-image;
           @include proportions(100%,100%);
           background-color: white;
+        }
+
+        .description{
+          @include box-sizing(border-box);
+          float: left;
+          width: 100%;
+          height: 30px;
+          border-top: 1px solid rgb(210,210,210);
+          padding: 2px;
+          text-align: center;
+          font-size: 14px;
+          font-weight: 600;
         }
       }
      }
@@ -382,7 +390,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .description{
-      @include center-horizontally(80%);
+      @include center-horizontally(90%);
       position: relative;
       top:-20px;
       left:0px;
@@ -398,8 +406,10 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .offer_buttons{
-      @include center-horizontally(95%);
+      @include center-horizontally(90%);
       margin-bottom: 10px;
+
+      form{margin-bottom: 0px;}
     }
 
     .offer_date{

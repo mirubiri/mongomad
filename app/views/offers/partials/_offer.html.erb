@@ -11,8 +11,10 @@
           <% offer_composer_products(offer).each do |product| %>
             <div class="image_container">
               <%= product_image(product) %>
-              <div class="quantity_container"><%= product_quantity(product) %></div>
               <div class="artistic_layer_big"></div>
+              <div class="description">
+                <%= product_name(product) %>
+              </div>
             </div>
           <% end %>
         </div>
