@@ -8,7 +8,10 @@ class Negotiation
   embeds_many :messages,  class_name:'Message', as: :message_container
   embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
-  validates_presence_of :proposals, :messages
+  field :performer, type:Moped::BSON::ObjectId
+  field :status
+
+  validates_presence_of :proposals, :messages,:performer,:status
 
   #accepts_nested_attributes_for :conversation, :proposals
 
