@@ -7,7 +7,7 @@ describe Offer do
   let(:offer) { Fabricate.build(:offer) }
 
   # Relations
-  it { should belong_to(:user_sender).of_type(User).as_inverse_of(:sent_offers) }
+  it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
   it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
   it { should embed_one :proposal }
   it { should embed_many :user_sheets } # ¿embed_one?
@@ -17,7 +17,7 @@ describe Offer do
   it { should have_field :message }
 
   # Validations
-  it { should validate_presence_of :user_sender }
+  it { should validate_presence_of :user_composer }
   it { should validate_presence_of :user_receiver }
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
@@ -25,9 +25,9 @@ describe Offer do
   it 'should validate presence of user_sheets for both users'
 
   #Methods
-  describe '#sender' do
-    it 'returns the sender user sheet' do
-      expect(offer.sender).to eq offer.user_sheets.find(offer.user_sender_id)
+  describe '#composer' do
+    it 'returns the composer user sheet' do
+      expect(offer.composer).to eq offer.user_sheets.find(offer.user_composer_id)
     end
   end
 
@@ -40,7 +40,7 @@ describe Offer do
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
       offer.save
-      expect(Negotiation).to receive(:create).with(_users:[offer.user_sender,offer.user_receiver],proposals: [offer.proposal],user_sheets: offer.user_sheets )
+      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver],proposals: [offer.proposal],user_sheets: offer.user_sheets )
       offer.negotiate
     end
 

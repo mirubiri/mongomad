@@ -14,8 +14,8 @@ describe Proposal do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:composer_id).of_type(Moped::BSON::ObjectID) }
-  it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectID) }
+  it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
@@ -26,16 +26,16 @@ describe Proposal do
   #Methods
   describe 'left(user:id)' do
     it 'returns products for the left side' do
-      owner_id = proposal.products.first.owner_id
-      expect(proposal.products).to receive(:where).with(owner_id:owner_id)
+      owner_id = proposal.assets.first.owner_id
+      expect(proposal.assets).to receive(:where).with(owner_id:owner_id)
       proposal.left(owner_id)
     end
   end
 
   describe 'right(user:id)' do
     it 'return products for the right side' do
-      owner_id = proposal.products.first.owner_id
-      expect(proposal.products).to receive(:where).with(:owner_id.ne =>owner_id)
+      owner_id = proposal.assets.first.owner_id
+      expect(proposal.assets).to receive(:where).with(:owner_id.ne =>owner_id)
       proposal.right(owner_id)
     end
   end

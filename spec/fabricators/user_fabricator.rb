@@ -13,7 +13,7 @@ end
 
 Fabricator(:user_sent_offers,from: :user_with_items) do
   after_build do |user|
-    user.sent_offers << Fabricate(:offer,user_sender: user)
+    user.sent_offers << Fabricate(:offer,user_composer: user)
   end
 end
 

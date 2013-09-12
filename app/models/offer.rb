@@ -2,7 +2,7 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user_sender,   class_name: 'User', inverse_of: :sent_offers
+  belongs_to :user_composer,   class_name: 'User', inverse_of: :sent_offers
   belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
 
   embeds_one :proposal, as: :proposal_container
@@ -10,12 +10,12 @@ class Offer
 
   field :message
 
-  validates_presence_of :user_sender, :user_receiver, :proposal, :message
+  validates_presence_of :user_composer, :user_receiver, :proposal, :message
 
   validates :message, length: { minimum: 1, maximum: 160 }
 
-  def sender
-    user_sheets.find(user_sender_id)
+  def composer
+    user_sheets.find(user_composer_id)
   end
 
   def receiver
@@ -23,6 +23,6 @@ class Offer
   end
 
   def negotiate
-    persisted? && Negotiation.create(_users:[user_sender, user_receiver], proposals:[proposal], user_sheets:user_sheets)
+    persisted? && Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal], user_sheets:user_sheets)
   end
 end
