@@ -8,5 +8,5 @@ describe Bucks do
 
   # Fields
 
-  it { should have_field(:amount).of_type(Money)}
+  it { should have_field(:_money).of_type(Money)}
 end

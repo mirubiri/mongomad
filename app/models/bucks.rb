@@ -1,3 +1,3 @@
 class Bucks < Asset
-  field :amount, type:Money
+  field :_money, type:Money
 end
