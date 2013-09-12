@@ -40,6 +40,22 @@ describe Proposal do
     end
   end
 
+  describe '#bucks?' do
+    it 'calls assets.type(Bucks) with any' do
+      expect(proposal.assets.type(Bucks)).to receive(:any?)
+      proposal.bucks?
+    end
+
+    it 'returns true if bucks in proposal' do
+      proposal.assets.build({},Bucks)
+      expect(proposal.bucks?).to eq true
+    end
+
+    it 'returns false if no bucks in proposal' do
+      expect(proposal.bucks?).to eq false
+    end
+  end
+
   # Factories
   specify { expect(Fabricate.build(:proposal)).to be_valid }
 
