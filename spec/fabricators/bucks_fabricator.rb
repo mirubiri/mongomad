@@ -1,0 +1,2 @@
+Fabricator(:bucks) do
+end

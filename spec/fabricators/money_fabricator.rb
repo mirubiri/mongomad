@@ -1,2 +1,0 @@
-Fabricator(:money) do
-end

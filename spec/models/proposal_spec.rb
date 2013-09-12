@@ -8,8 +8,6 @@ describe Proposal do
   # let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
   # let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
-  it 'should embed one money'
-
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many :assets }
