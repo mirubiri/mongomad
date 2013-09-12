@@ -13,14 +13,11 @@ describe Proposal do
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many :products }
-  it 'should embed_one :negotiation_state' do
-    pending 'DECIDIR SI IMPLEMENTARLO ASI O NO'
-  end
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field :composer_id }
-  it { should have_field :receiver_id }
+  it { should have_field(:composer_id).of_type(Moped::BSON::ObjectID) }
+  it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectID) }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
