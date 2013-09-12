@@ -18,6 +18,12 @@ class Proposal
     goods.where(:owner_id.ne =>owner_id)
   end
 
+  def bucks?
+    goods do |good|
+      return true if good.klass == "Buck" 
+    end
+    false
+  end
   # before_create :set_initial_state
 
   # state_machine :confirmable_state, :initial => :confirmable do
