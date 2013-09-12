@@ -9,7 +9,7 @@ describe Product do
 
   # Relations
   it { should be_embedded_in :proposal }
-  specify { Product.should < Asset }
+  specify { Product.should < Good }
 
   # Attributes
   it { should be_timestamped_document }

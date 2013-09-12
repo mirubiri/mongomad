@@ -1,4 +1,4 @@
-class Product < Asset
+class Product < Good
   include Mongoid::Timestamps
   # include Denormalized
   # include ImageManagement::ImageHolder

@@ -3,7 +3,7 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
-  embeds_many :assets
+  embeds_many :goods
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
@@ -11,11 +11,11 @@ class Proposal
   validates_presence_of :composer_id, :receiver_id
 
   def left(owner_id)
-    assets.where(owner_id:owner_id)
+    goods.where(owner_id:owner_id)
   end
 
   def right(owner_id)
-    assets.where(:owner_id.ne =>owner_id)
+    goods.where(:owner_id.ne =>owner_id)
   end
 
   # before_create :set_initial_state

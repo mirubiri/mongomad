@@ -10,7 +10,7 @@ describe Proposal do
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many :assets }
+  it { should embed_many :goods }
 
   # Attributes
   it { should be_timestamped_document }
@@ -26,28 +26,28 @@ describe Proposal do
   #Methods
   describe 'left(user:id)' do
     it 'returns products for the left side' do
-      owner_id = proposal.assets.first.owner_id
-      expect(proposal.assets).to receive(:where).with(owner_id:owner_id)
+      owner_id = proposal.goods.first.owner_id
+      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
       proposal.left(owner_id)
     end
   end
 
   describe 'right(user:id)' do
     it 'return products for the right side' do
-      owner_id = proposal.assets.first.owner_id
-      expect(proposal.assets).to receive(:where).with(:owner_id.ne =>owner_id)
+      owner_id = proposal.goods.first.owner_id
+      expect(proposal.goods).to receive(:where).with(:owner_id.ne =>owner_id)
       proposal.right(owner_id)
     end
   end
 
   describe '#bucks?' do
     it 'calls assets.type(Bucks) with any' do
-      expect(proposal.assets.type(Bucks)).to receive(:any?)
+      expect(proposal.goods.type(Bucks)).to receive(:any?)
       proposal.bucks?
     end
 
     it 'returns true if bucks in proposal' do
-      proposal.assets.build({},Bucks)
+      proposal.goods.build({},Bucks)
       expect(proposal.bucks?).to eq true
     end
 
