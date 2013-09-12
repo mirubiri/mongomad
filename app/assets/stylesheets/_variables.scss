@@ -316,7 +316,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
           @include proportions($bigImageDimension,$bigImageDimension);
           @include border-radius(2px, 2px);
           @include high-quality-image;
-          @include proportions(100%,100%);
           background-color: white;
         }
 
@@ -407,8 +406,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
     .offer_buttons{
       @include center-horizontally(90%);
-      margin-bottom: 10px;
-
+      padding: 5px;
+      text-align: center;
       form{margin-bottom: 0px;}
     }
 

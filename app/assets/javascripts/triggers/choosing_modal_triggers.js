@@ -1,6 +1,6 @@
 function loadModalScripts(){
 
-  alert("carga el script de la modal");
+  //alert("carga el script de la modal");
 
   $('#new_offer_receiver_selector').on('click',function(e){
     e.preventDefault();

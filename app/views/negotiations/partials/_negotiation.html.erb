@@ -2,8 +2,19 @@
   <div class="negotiation" id="<%= negotiation.id %>">
 
     <div class="negotiation_offer">
-      <div class="offer_header">
-        <%= proposal_composer_fullname(negotiation_last_proposal(negotiation)).upcase %>
+
+      <div class="oponent_info">
+        <div class="oponent_image">
+          <%= proposal_composer_image(negotiation_last_proposal(negotiation)) %>
+        </div>
+        <div class="oponent_description">
+          <div class="oponent_name">
+            <%= proposal_composer_name(negotiation_last_proposal(negotiation)) %>
+          </div>
+          <div class="oponent_address">
+            <%= proposal_composer_fullname(negotiation_last_proposal(negotiation)) %>
+          </div>
+        </div>
       </div>
 
       <div class="offer_triangle">
@@ -17,6 +28,9 @@
               <%= product_image(product) %>
               <div class="quantity_container">
                 <%= product_quantity(product) %>
+              </div>
+              <div class="description">
+                <%= product_name(product) %>
               </div>
             </div>
           <% end %>
@@ -32,13 +46,6 @@
       </div>
 
       <div class="offer_info">
-        <div class="profile_image">
-          <%= link_to proposal_composer_image(negotiation_last_proposal(negotiation)),
-            :controller => "users",
-            :action => "show",
-            :id => proposal_composer_id(negotiation_last_proposal(negotiation))
-          %>
-        </div>
 
         <div class="offer_buttons">
           <%= link_to 'nueva',
@@ -76,14 +83,16 @@
     </div>
 
     <div class="dialog_container">
+      <!--
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
-        <%= link_to "x",
+        <%#= link_to "x",
               user_negotiation_path(current_user,negotiation.id),
               :method => :delete,
               :confirm => "Are you sure?"
         %>
       </div>
+    -->
 
       <div class="conversation" id="conversationofnegotiation">
         <%= render :partial => 'negotiations/partials/conversation', locals: { negotiation: negotiation} %>
@@ -95,6 +104,12 @@
             <input type="text" placeholder="write here" name="text">
           </div>
         <% end %>
+      </div>
+      <div class="dialog_head">
+        <div class="option_icons">
+          <div class="icon">op1</div>
+          <div class="icon">op2</div>
+        </div>
       </div>
     </div>
   </div>
