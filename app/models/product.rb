@@ -3,8 +3,6 @@ class Product < Asset
   # include Denormalized
   # include ImageManagement::ImageHolder
 
-  embedded_in :proposal
-
   field :name
   field :description
   field :_id,         type:Moped::BSON::ObjectId,default:nil

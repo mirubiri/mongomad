@@ -3,7 +3,7 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
-  embeds_many :products
+  embeds_many :assets
 
   field :composer_id
   field :receiver_id
