@@ -27,6 +27,8 @@ describe Negotiation do
   it 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
+
+=begin
   describe '#proposal' do
     it 'returns the current proposal'
   end
@@ -61,6 +63,7 @@ describe Negotiation do
       end
     end
   end
+
 
   describe ':states' do
     context 'when money present' do
@@ -171,65 +174,8 @@ describe Negotiation do
     it 'returns false when money not exists'
   end
 
-
-
   # Factories
   specify { expect(negotiation).to be_valid }
-
-
-  #   it 'creates one offer' do
-  #     expect { negotiation.save }.to change{ Offer.count }.by(1)
-  #   end
-
-  #   it 'creates two different users' do
-  #     expect { negotiation.save }.to change{ User.count }.by(2)
-  #   end
-  # end
-
-  # describe '#seal_deal' do
-  #   context 'When negotiation is saved' do
-  #     before { negotiation.save }
-
-  #     context 'When last proposal is signed' do
-  #       before { proposal.state = :composer_signed }
-
-  #       let(:deal) { negotiation.seal_deal }
-
-  #       it 'returns a saved deal' do
-  #         expect(deal).to be_persisted
-  #       end
-
-  #       it 'add the deal to composer in negotiation' do
-  #         expect(deal).to eq proposal.user_composer.deals.first
-  #       end
-
-  #       it 'add the deal to receiver in negotiation' do
-  #         expect(deal).to eq proposal.user_composer.deals.first
-  #       end
-
-  #       it 'returns a deal whose conversation has no messages' do
-  #         expect(deal.conversation.messages).to have(0).messages
-  #       end
-
-  #       it 'returns a deal whose agreement has the values from original negotiation' do
-  #         expect(deal.agreement).to be_like negotiation
-  #       end
-  #     end
-
-  #     context 'When last proposal is not signed' do
-  #       before { proposal.state = :composer_canceled }
-
-  #       it 'returns nil' do
-  #         expect(negotiation.seal_deal).to eq nil
-  #       end
-  #     end
-  #   end
-
-  #   context 'When negotiation is not saved' do
-  #     it 'returns nil' do
-  #       expect(negotiation.seal_deal).to eq nil
-  #     end
-  #   end
-  # end
+=end
 end
 
