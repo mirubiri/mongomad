@@ -5,7 +5,7 @@ Fabricator(:proposal) do
 
   proposal_container { |attrs| Fabricate.build(:offer,proposal:nil,user_sender:attrs[:sender],user_receiver:attrs[:receiver]) }
 
-  products do |attrs|
+  assets do |attrs|
     sender_item=attrs[:sender].items.sample
     receiver_item=attrs[:receiver].items.sample
 

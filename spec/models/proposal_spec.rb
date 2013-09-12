@@ -12,7 +12,7 @@ describe Proposal do
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many :products }
+  it { should embed_many :assets }
 
   # Attributes
   it { should be_timestamped_document }

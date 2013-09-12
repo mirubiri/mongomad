@@ -8,7 +8,8 @@ describe Product do
   it 'should have one main image & two secondary images'
 
   # Relations
-  it { should be_embedded_in :proposal }
+  it { should_not be_embedded_in :proposal }
+  specify { Product.should < Asset }
 
   # Attributes
   it { should be_timestamped_document }

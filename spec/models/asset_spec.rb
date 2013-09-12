@@ -1,5 +1,5 @@
 require 'spec_helper'
 
 describe Asset do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should be_embedded_in :proposal }
 end

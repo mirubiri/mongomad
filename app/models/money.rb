@@ -1,3 +1,2 @@
-class Money
-  include Mongoid::Document
+class Money < Asset
 end
