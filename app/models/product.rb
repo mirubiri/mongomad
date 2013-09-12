@@ -1,4 +1,4 @@
-class Product << Asset
+class Product < Asset
   include Mongoid::Timestamps
   # include Denormalized
   # include ImageManagement::ImageHolder
