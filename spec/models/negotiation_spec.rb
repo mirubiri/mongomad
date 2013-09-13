@@ -28,6 +28,16 @@ describe Negotiation do
 
   # Methods
 
+  describe '#cash?' do
+    it 'returns true if current proposal has money'
+    it 'returns false if current proposal has not money'
+  end
+
+  describe '#cash_owner' do
+    it 'returns the user who holds the cash'
+    it 'returns nil if nobody hold the cash'
+  end
+
 =begin
   describe '#proposal' do
     it 'returns the current proposal'

@@ -1,0 +1,2 @@
+Fabricator(:cash) do
+end

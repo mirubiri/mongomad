@@ -18,9 +18,9 @@ class Proposal
     goods.where(:owner_id.ne =>owner_id)
   end
 
-  def bucks?
+  def cash?
     goods do |good|
-      return true if good.klass == "Buck" 
+      return true if good.klass == "Buck"
     end
     false
   end

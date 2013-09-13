@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Bucks do
-  specify { Bucks.should < Good }
+describe Cash do
+  specify { Cash.should < Good }
 
   # Relations
   it { should be_embedded_in :proposal}

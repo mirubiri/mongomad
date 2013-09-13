@@ -1,2 +1,0 @@
-Fabricator(:bucks) do
-end

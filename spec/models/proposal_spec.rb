@@ -40,19 +40,19 @@ describe Proposal do
     end
   end
 
-  describe '#bucks?' do
-    it 'calls assets.type(Bucks) with any' do
-      expect(proposal.goods.type(Bucks)).to receive(:any?)
-      proposal.bucks?
+  describe '#cash?' do
+    it 'calls assets.type(Cash) with any' do
+      expect(proposal.goods.type(Cash)).to receive(:any?)
+      proposal.cash?
     end
 
-    it 'returns true if bucks in proposal' do
-      proposal.goods.build({},Bucks)
-      expect(proposal.bucks?).to eq true
+    it 'returns true if cash in proposal' do
+      proposal.goods.build({},Cash)
+      expect(proposal.cash?).to eq true
     end
 
-    it 'returns false if no bucks in proposal' do
-      expect(proposal.bucks?).to eq false
+    it 'returns false if no cash in proposal' do
+      expect(proposal.cash?).to eq false
     end
   end
 
