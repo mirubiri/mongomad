@@ -19,10 +19,7 @@ class Proposal
   end
 
   def cash?
-    goods do |good|
-      return true if good.klass == "Buck"
-    end
-    false
+    goods.type(Cash).exists?
   end
   # before_create :set_initial_state
 
