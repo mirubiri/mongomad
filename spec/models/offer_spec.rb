@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-  # let(:user_composer) { Fabricate(:user_with_things) }
-  # let(:user_receiver) { Fabricate(:user_with_things) }
-  # let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
+
   let(:offer) { Fabricate.build(:offer) }
 
   # Relations
