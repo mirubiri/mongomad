@@ -10,11 +10,13 @@
   <div class="description_side">
 
     <div class="profile_image">
-      <%= link_to user_visited_image,
-        :controller => "users",
-        :action => "show",
-        :id => user_visited_id
-      %>
+      <div class="image_wrapper">
+        <%= link_to user_visited_image,
+          :controller => "users",
+          :action => "show",
+          :id => user_visited_id
+        %>
+      </div>
     </div>
 
     <div class="relevan_data">
@@ -23,8 +25,8 @@
     </div>
 
     <div class="user_name">
-      <%= user_visited_fullname.upcase %></br>
-      <%= user_visited_country.capitalize %></br>
+      <div class="name"><%= user_visited_fullname.upcase %></div>
+      <div class="address"><%= user_visited_country.capitalize %></div>
     </div>
 
     <% if user_logged_id != user_visited_id %>

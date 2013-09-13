@@ -24,6 +24,7 @@
       @include container_into_PpalSide_style;
 
       .image_side{
+        float: left;
         width: 100%;
         height: 160px;
         overflow: none;
@@ -45,64 +46,97 @@
       }
 
       .description_side{
-        @include center-horizontally(95%);
-        height: 160px;
+        float: left;
+        width: 100%;
 
         .profile_image{
-          @include proportions(90px,90px);
+          float: left;
+          @include proportions(90px,40px);
           background-color: #f3f3f3;
-          position: relative;
-          top:-50px;
-          left: 63px;
+          //position: relative;
+          //top:-50px;
+          //left: 63px;
           border: 1px solid #f3f3f3;
           @include border-radius(45px, 45px);
+          padding-left: 30%;
 
-          a{
-            img{
-              @include high-quality-image;
-              @include proportions(86px,86px);
-              @include border-radius(43px, 43px);
-              margin-left: 1px;
-              margin-top: 2px;
-              border: 1px solid #cccccc;
+          .image_wrapper{
+            position: relative;
+            top: -50px;
+            @include proportions(90px,90px);
+            @include border-radius(45px, 45px);
+            background-color: white;
+
+            a{
+              img{
+                @include high-quality-image;
+                @include proportions(80px,80px);
+                @include border-radius(40px, 40px);
+                position: relative;
+                top: 0px;
+                margin-left: 4px;
+                margin-top: 4px;
+                border: 1px solid #cccccc;
+              }
             }
           }
         }
 
         .relevan_data{
-          position: relative;
-          top: -80px;
+          float: left;
           width: 100%;
-          height: 30px;
+          //position: relative;
+          //top: -80px;
+          height: 20px;
 
           .percentage{
-            float: left;
+            position: relative;
+            top: -20px;
             padding-left: 25px;
             text-align: left;
           }
 
           .numfriends{
-            float: right;
+            position: relative;
+            top: -38px;
             padding-right: 25px;
             text-align: right;
           }
         }
 
         .user_name{
-          @include center-horizontally(80%);
-          position: relative;
-          top: -70px;
-          height:auto;
-          text-align:center;
+          float: left;
+          width: 100%;
+          //@include center-horizontally(80%);
+          //position: relative;
+          //top: -70px;
+          height: auto;
+
+          .name{
+            float: left;
+            width: 100%;
+            text-align: center;
+          }
+          .address{
+            float: left;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 200;
+            font-style: italic;
+          }
         }
 
         .new_offer_button{
-          @include center-horizontally(80%);
-          position: relative;
-          top: -60px;
+          float: left;
+          width: 100%;
+          //position: relative;
+          //top: -60px;
           height: 30px;
           margin-top: 10px;
           a{
+            @include center-horizontally(80%);
             @include box-sizing(border-box);
             @include proportions(100%,30px);
             text-align: center;
