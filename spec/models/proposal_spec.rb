@@ -2,11 +2,6 @@ require 'spec_helper'
 
 describe Proposal do
   let(:proposal) { Fabricate.build(:proposal) }
-  # let(:offer) { Fabricate(:offer) }
-  # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
-  # let(:proposal) { negotiation.proposals.last }
-  # let(:negotiation_composer) { negotiation.negotiators.find(proposal.user_composer_id) }
-  # let(:negotiation_receiver) { negotiation.negotiators.find(proposal.user_receiver_id) }
 
   # Relations
   it { should be_embedded_in :proposal_container }
@@ -23,10 +18,40 @@ describe Proposal do
   it { should validate_presence_of :receiver_id }
   it 'should validate presence of products for both sides'
 
+
+  it 'is invalid when there is not a good for composer' do
+    composer_id=proposal.composer_id
+    proposal.goods.delete_all(composer_id:composer_id)
+    expect(proposal).to_not be_valid
+  end
+
+  it 'is invalid when there is not a good for receiver' do
+    receiver_id=proposal.receiver_id
+    proposal.goods.delete_all(receiver_id:receiver_id)
+    expect(proposal).to_not be_valid
+  end
+
+  it 'is invalid when is more than a cash in goods' do
+    2.times { proposal.goods.build({},Cash) }
+    expect(proposal).to_not be_valid
+  end
+
+  it 'is invalid if a good is not owned by composer or receiver' do
+    proposal.goods.sample.owner_id=Faker::Number.number(26)
+    expect(proposal).to_not be_valid
+  end
+
+  it 'is invalid if a good is duplicated' do
+    good=proposal.goods.sample
+    proposal.goods << good
+    expect(proposal).to_not be_valid
+  end
+
+
   #Methods
   describe 'left(user:id)' do
     it 'returns products for the left side' do
-      owner_id = proposal.goods.first.owner_id
+      owner_id = proposal.goods.sample.owner_id
       expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
       proposal.left(owner_id)
     end
@@ -34,7 +59,7 @@ describe Proposal do
 
   describe 'right(user:id)' do
     it 'return products for the right side' do
-      owner_id = proposal.goods.first.owner_id
+      owner_id = proposal.goods.sample.owner_id
       expect(proposal.goods).to receive(:where).with(:owner_id.ne =>owner_id)
       proposal.right(owner_id)
     end
