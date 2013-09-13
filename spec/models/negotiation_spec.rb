@@ -45,13 +45,13 @@ describe Negotiation do
   describe '#proposal' do
     it 'returns the last proposal' do
       negotiation.proposals.build
-      expect(Negotiation.proposal).to eq negotiation.proposals.last
+      expect(negotiation.proposal).to eq negotiation.proposals.last
     end
   end
 
   describe '#composer' do
     it 'calls proposal.composer_id' do
-      expect(negotiaiton.proposal).to receive(:composer_id)
+      expect(negotiation.proposal).to receive(:composer_id)
       negotiation.composer
     end
   end

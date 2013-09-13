@@ -66,7 +66,7 @@ describe Proposal do
   end
 
   describe '#cash?' do
-    it 'calls assets.type(Cash) with any' do
+    it 'calls goods.type(Cash) with any' do
       expect(proposal.goods.type(Cash)).to receive(:exists?)
       proposal.cash?
     end

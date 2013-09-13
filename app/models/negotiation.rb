@@ -12,4 +12,24 @@ class Negotiation
   field :state
 
   validates_presence_of :proposals, :messages,:performer,:state
+
+  def cash?
+    proposal.cash?
+  end
+
+  def cash_owner
+    proposal.cash_owner
+  end
+
+  def proposal
+    proposals.last
+  end
+
+  def composer
+    proposal.composer_id
+  end
+
+  def receiver
+    proposal.receiver_id
+  end
 end
