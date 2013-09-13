@@ -20,11 +20,10 @@ class Item
   end
 
   def sell(quantity)
-    if stock >= quantity
+    quantity <= stock && 
+    begin
       self.stock-=quantity
       save
-    else
-      false
     end
   end
 
@@ -34,10 +33,6 @@ class Item
   end
 
   def available?(quantity)
-    if (self.stock == nil) || (quantity==0)
-      false
-    else
-      quantity <= self.stock
-    end
+    stock != nil && quantity != 0 && quantity <= stock
   end
 end
