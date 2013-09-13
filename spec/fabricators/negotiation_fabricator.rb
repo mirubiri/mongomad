@@ -7,7 +7,4 @@ Fabricator(:negotiation) do
    messages     { |attrs| [ Fabricate.build(:message,text:attrs[:offer].message) ] }
    performer    { |attrs| attrs[:offer].user_composer.id }
    # Faltan los mensajes
-
-   after_build { |negotiation| negotiation.initial_state }
 end
-
