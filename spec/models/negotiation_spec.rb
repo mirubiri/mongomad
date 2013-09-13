@@ -29,14 +29,43 @@ describe Negotiation do
   # Methods
 
   describe '#cash?' do
-    it 'returns true if current proposal has money'
-    it 'returns false if current proposal has not money'
+    it 'calls proposal.cash?' do
+      expect(negotiation.proposal).to receive(:cash?)
+      negotiation.cash?
+    end
   end
 
   describe '#cash_owner' do
-    it 'returns the user who holds the cash'
-    it 'returns nil if nobody hold the cash'
+    it 'calls proposal.cash_owner' do
+      expect(negotiation.proposal).to receive(:cash_owner)
+      negotiation.cash_owner
+    end
   end
+
+  describe '#proposal' do
+    it 'returns the last proposal' do
+      negotiation.proposals.build
+      expect(Negotiation.proposal).to eq negotiation.proposals.last
+    end
+  end
+
+  describe '#composer' do
+    it 'calls proposal.composer_id' do
+      expect(negotiaiton.proposal).to receive(:composer_id)
+      negotiation.composer
+    end
+  end
+
+  describe '#receiver' do
+    it 'calls proposal.receiver_id' do
+      expect(negotiation.proposal).to receive(:receiver_id)
+      negotiation.receiver
+    end
+  end
+
+  it 'has a method to sign'
+  it 'has a method to seal the deal'
+
 
 =begin
   describe '#proposal' do
