@@ -12,4 +12,6 @@ class Negotiation
   field :state
 
   validates_presence_of :proposals, :messages,:performer,:state
+
+  delegate :cash?, to: proposals.last
 end
