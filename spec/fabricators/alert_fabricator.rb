@@ -1,0 +1,2 @@
+Fabricator(:alert) do
+end
