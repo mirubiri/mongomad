@@ -12,14 +12,14 @@ RSpec.configure do |config|
   config.include MongomadHelpers
   config.include MongomadMatchers
 
-  config.after(:each) do
-    Image.all.destroy
-    User.all.destroy
-    Request.all.destroy
-    Offer.all.destroy
-    Negotiation.all.destroy
-    Deal.all.destroy
-  end
+  # config.after(:each) do
+  #   Image.all.destroy
+  #   User.all.destroy
+  #   Request.all.destroy
+  #   Offer.all.destroy
+  #   Negotiation.all.destroy
+  #   Deal.all.destroy
+  # end
 
   # ## Mock Framework
   #

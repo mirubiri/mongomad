@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe UsersController do
   describe "routing" do
-    let(:user_name) { Fabricate(:user).profile.name }
+    let(:user_name) { Fabricate(:user).name }
 
     it "not routes to #index" do
       get("/users").should_not route_to("users#index")

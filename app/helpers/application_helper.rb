@@ -5,19 +5,19 @@ module ApplicationHelper
     user.id
   end
   def user_logged_name(user = user_logged)
-    user.profile.name
+    user.nick
   end
   def user_logged_surname(user = user_logged)
-    user.profile.surname
+    user.profile.last_name
   end
-  def user_logged_nick(user = user_logged)
-    user.profile.nick
+  def user_logged_name(user = user_logged)
+    user.nick
   end
   def user_logged_sex(user = user_logged)
-    user.profile.sex
+    user.profile.gender
   end
   def user_logged_country(user = user_logged)
-    user.profile.country
+    'spain'
   end
   def user_logged_delivery_adress(user = user_logged)
     user.profile.delivery_adress
@@ -32,7 +32,7 @@ module ApplicationHelper
     user.profile.bithdate
   end
   def user_logged_image(user = user_logged)
-    image_tag(user.profile.image_url)
+    image_tag('/uploads/sergio.jpg')
   end
   def user_logged_datetime(user = user_logged)
     user.profile.created_at
@@ -66,19 +66,19 @@ module ApplicationHelper
     @user.id
   end
   def user_visited_fullname
-    @user.profile.name + " " + @user.profile.surname
+    @user.nick + " " + @user.profile.last_name
   end
   def user_visited_surname
-    @user.profile.surname
+    @user.profile.last_name
   end
-  def user_visited_nick
-    @user.profile.nick
+  def user_visited_name
+    @user.nick
   end
   def user_visited_sex
-    @user.profile.sex
+    @user.profile.gender
   end
   def user_visited_country
-    @user.profile.country
+    'spain'
   end
   def user_visited_delivery_adress
     @user.profile.delivery_adress
@@ -96,7 +96,7 @@ module ApplicationHelper
     @user.profile.birth_date
   end
   def user_visited_image
-    image_tag(@user.profile.image_url)
+    image_tag('/uploads/sergio.jpg')
   end
   def user_visited_datetime
     @user.profile.created_at
@@ -142,10 +142,10 @@ module ApplicationHelper
     thing.stock
   end
   def thing_image(thing)
-    image_tag(thing.image_url)
+    image_tag('/uploads/choza.jpg')
   end
   def thing_inboard(thing)
-    image_tag(thing.image_url, :alt => '200x100', :width => '200', :height => '100')
+    image_tag('/uploads/choza.jpg', :alt => '200x100', :width => '200', :height => '100')
   end
 
   # REQUEST HELPERS -----------------------------------------
@@ -155,14 +155,14 @@ module ApplicationHelper
   # def request_user_id(request)
   #   request.user.id
   # end
-  # def request_user_nick(request)
-  #   request.nick
+  # def request_user_name(request)
+  #   request.name
   # end
   def request_text(request)
     request.text
   end
   def request_image(request)
-    image_tag(request.image_url)
+    image_tag('/uploads/sergio.jpg')
   end
   # def request_datetime(request)
   #   request.created_at
@@ -178,14 +178,14 @@ module ApplicationHelper
   def offer_composer_id(offer)
     offer.user_composer_id
   end
-  def offer_composer_nick(offer)
-    offer.composer.nick
+  def offer_composer_name(offer)
+    offer.composer.name
   end
   def offer_composer_name(offer)
-    offer.user_composer.profile.name + " " + offer.user_composer.profile.surname
+    offer.user_composer.name + " " + offer.user_composer.profile.surname
   end
   def offer_composer_image(offer)
-    image_tag(offer.composer.image_url)
+    image_tag('/uploads/sergio.jpg')
   end
   def offer_composer_products(offer)
     offer.composer.products
@@ -197,10 +197,10 @@ module ApplicationHelper
     offer.user_receiver_id
   end
   def offer_receiver_name(offer)
-    offer.receiver.nick
+    offer.receiver.name
   end
   def offer_receiver_image(offer)
-    image_tag(offer.receiver.image_url)
+    image_tag('/uploads/medico.jpg')
   end
   def offer_receiver_products(offer)
     offer.receiver.products
@@ -241,7 +241,7 @@ module ApplicationHelper
     product.quantity
   end
   def product_image(product)
-    image_tag(product.image_url)
+    image_tag('/uploads/coche.jpg')
   end
 
   # NEGOTIATION HELPERS -----------------------------------------
@@ -272,13 +272,13 @@ module ApplicationHelper
     proposal.user_composer_id
   end
   def proposal_composer_name(proposal)
-    proposal.composer.nick
+    proposal.composer.name
   end
   def proposal_composer_fullname(proposal)
-    proposal.user_composer.profile.name + " " + proposal.user_composer.profile.surname
+    proposal.user_composer.name + " " + proposal.user_composer.profile.surname
   end
   def proposal_composer_image(proposal)
-    image_tag(proposal.composer.image_url)
+    image_tag('/uploads/sergio.jpg')
   end
   def proposal_composer_products(proposal)
     proposal.composer.products
@@ -293,10 +293,10 @@ module ApplicationHelper
     proposal.user_receiver_id
   end
   def proposal_receiver_name(proposal)
-    proposal.receiver.nick
+    proposal.receiver.name
   end
   def proposal_receiver_image(proposal)
-    image_tag(proposal.receiver.image_url)
+    image_tag('/uploads/medico.jpg')
   end
   def proposal_receiver_products(proposal)
     proposal.receiver.products
@@ -333,8 +333,8 @@ module ApplicationHelper
   def message_user_id(message)
     message.user_id
   end
-  def message_user_nick(message)
-    message.nick
+  def message_user_name(message)
+    message.name
   end
   def message_text(message)
     message.text
