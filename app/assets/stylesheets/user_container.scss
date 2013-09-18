@@ -134,13 +134,18 @@
           //position: relative;
           //top: -60px;
           height: 30px;
-          margin-top: 10px;
-          a{
+          margin-bottom: 10px;
+
+          .button_wrapper{
             @include center-horizontally(80%);
-            @include box-sizing(border-box);
-            @include proportions(100%,30px);
-            text-align: center;
+            a{
+              width: 100%;
+              @include box-sizing(border-box);
+              @include proportions(100%,30px);
+              text-align: center;
+            }
           }
+
         }
       }
     }

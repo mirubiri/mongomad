@@ -31,9 +31,11 @@
 
     <% if user_logged_id != user_visited_id %>
       <div class="new_offer_button">
-        <%= link_to "Hazme una oferta!!!",
-          new_user_offer_path(user_visited_id),
-          {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
+        <div class="button_wrapper">
+          <%= link_to "Hazme una oferta!!!",
+            new_user_offer_path(user_visited_id),
+            {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
+        </div>
       </div>
     <% end %>
 

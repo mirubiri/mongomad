@@ -5,20 +5,26 @@
 }
 
 .products_area{
-  @include fixed_width(480px,480px,480px);
-  @include fixed_height(555px,555px,555px);
+  @include box-sizing(border-box);
+  @include fixed_width(70%,70%,70%);
+  @include fixed_height(100%,100%,100%);
+  float: left;
 
   .title{
     @include fixed_width(100%,100%,100%);
-    @include fixed_height(30px,30px,30px);
+    @include fixed_height(50px,50px,50px);
     float: left;
+    margin-bottom: 10px;
 
     a{
+      @include box-sizing(border-box);
+      float: left;
+      width: 33.3%;
+
       .user_products_selector{
-        @include fixed_width(238px,238px,238px);
-        @include fixed_height(30px,30px,30px);
+        @include fixed_width(100%,100%,100%);
+        @include fixed_height(100%,100%,100%);
         float: left;
-        border: $borde1px;
 
         .user_image{
           float: left;
@@ -30,6 +36,35 @@
         .description{
           margin-top: 10px;
         }
+      }
+    }
+  }
+
+  .product_container{
+    @include fixed_width(100%,100%,100%);
+    @include fixed_height(100%,100%,100%);
+    float: left;
+    overflow: visible;
+
+    .product{
+      @include big_images_style;
+      @include proportions(125px,125px);
+      @include border-radius(5px, 5px);
+      border: $borde1px;
+      float: left;
+      margin:5px 0px 0px 5px;
+      overflow: none;
+
+      .product_image{
+        overflow: auto;
+        img{
+          @include high-quality-image;
+          @include proportions(123px,123px);
+        }
+      }
+      .product_title{
+        @include center-horizontally(126px);
+        text-align: center;
       }
     }
   }
@@ -80,11 +115,10 @@
 }
 
 .offer_summary{
-  @include fixed_width(320px,320px,320px);
-  @include fixed_height(555px,555px,555px);
-  position: absolute;
-  top: 0px;
-  left: 480px;
+  @include box-sizing(border-box);
+  @include fixed_width(30%,30%,30%);
+  @include fixed_height(100%,100%,100%);
+  float: left;
   background-color: rgb(225,225,225);
   overflow: visible;
 
@@ -94,13 +128,13 @@
     float:left;
     margin-bottom: 5px;
     background-color: #2B3750;
-    color:white; 
-    padding-top: 6px; 
-    text-align: center;  
+    color:white;
+    padding-top: 6px;
+    text-align: center;
   }
 
   .offer_inform {
-    @include element_into_ElementList_style;      
+    @include element_into_ElementList_style;
     @include container_options;
     @include offer_header;
     @include offer_products;
@@ -113,7 +147,7 @@
       margin-bottom: 5px;
 
       .triangle {
-        left: 263px;        
+        left: 263px;
       }
 
       .description{

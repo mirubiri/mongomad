@@ -191,8 +191,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .product_of_user_selected{
-    @include fixed_width(480px,480px,480px);
-    @include fixed_height(520px,520px,520px);
+    @include fixed_width(100%,100%,100%);
+    @include fixed_height(100%,100%,100%);
     position: absolute;
     top: 35px;
     left: 0px;
