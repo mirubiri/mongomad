@@ -2,20 +2,18 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_many                :items
   has_many                :requests
   has_many                :sent_offers,     class_name: 'Offer', inverse_of: :user_composer
   has_many                :received_offers, class_name: 'Offer', inverse_of: :user_receiver
-  has_and_belongs_to_many :negotiations,    class_name: 'Negotiation', inverse_of: :negotiators
-  has_and_belongs_to_many :deals
+  has_and_belongs_to_many :negotiations,    inverse_of: :negotiators
+  has_and_belongs_to_many :deals,           inverse_of: :signers
 
-  embeds_one  :profile, class_name: 'User::Profile', cascade_callbacks: true
-  embeds_many :things,  class_name: 'User::Thing', cascade_callbacks: true
+  embeds_one  :profile
 
-  accepts_nested_attributes_for :profile
+  field :nick
 
-  #TODO: Deshabilitado temporalmente
-  # validates :profile,
-  #   presence: true
+  validates_presence_of :profile, :nick
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
@@ -62,4 +60,10 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  def sheet
+    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name) do |sheet|
+      sheet.id=id
+    end
+  end
 end

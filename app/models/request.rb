@@ -1,21 +1,14 @@
 class Request
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Denormalized
-  include ImageManagement::ImageHolder
 
   belongs_to :user
 
-  field :nick, type: String
-  field :text, type: String
+  embeds_one :user_sheet, class_name:'UserSheet', as: :user_sheet_container
 
-  denormalize :nick, :image_fingerprint, from:'user.profile'
+  field :text
 
-  validates :user,
-    :nick,
-    :text,
-    presence: true
+  validates_presence_of :user, :user_sheet, :text
 
-  validates :text,
-    length: { minimum: 1, maximum: 160 }
+  validates :text, length: { minimum: 1, maximum: 160 }
 end

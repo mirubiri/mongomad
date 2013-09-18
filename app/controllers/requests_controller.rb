@@ -47,16 +47,17 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    @user = current_user
     @request = Request.new(params[:request])
-    @request.user = @user
+    @request.user = current_user
 
     respond_to do |format|
+      @request.user_sheet=current_user.sheet
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
         format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }
       else
         format.html { redirect_to @user, notice: 'Request was not created.' }
+        format.js { render  :partial => "requests/reload_requests_list", notice: 'Puta' }
       end
     end
   end

@@ -31,6 +31,7 @@ group :development,:test do
   gem 'jquery-rails'
   gem 'better_errors'
   gem 'state_machine'
+  gem 'money-rails'
 end
 
 
