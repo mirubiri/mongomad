@@ -11,7 +11,7 @@ class Negotiation
   field :performer, type:Moped::BSON::ObjectId
   field :state
 
-  validates_presence_of :proposals, :messages,:performer,:state
+  #validates_presence_of :proposals, :messages,:performer,:state
 
   def cash?
     proposal.cash?

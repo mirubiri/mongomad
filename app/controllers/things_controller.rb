@@ -7,9 +7,9 @@ class ThingsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:user_id])
-    @things = @user.things.to_a
-    @thing = User::Thing.new
+    @user = current_user
+    @things = @user.items.to_a
+    @thing = Item.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,7 +31,7 @@ class ThingsController < ApplicationController
   # GET /things/new
   # GET /things/new.json
   def new
-    @thing = User::Thing.new
+    @thing = Item.new
     @user = current_user
 
     respond_to do |format|
@@ -53,7 +53,7 @@ class ThingsController < ApplicationController
   # POST /things
   # POST /things.json
   def create
-    @thing = User::Thing.new(params[:user_thing])
+    @thing = Item.new(params[:user_thing])
 
     respond_to do |format|
       if current_user.things << @thing
@@ -88,7 +88,7 @@ class ThingsController < ApplicationController
   # DELETE /things/1
   # DELETE /things/1.json
   def destroy
-    @thing = Thing.find(params[:id])
+    @thing = Item.find(params[:id])
     @thing.destroy
 
     respond_to do |format|

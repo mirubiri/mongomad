@@ -1,5 +1,5 @@
 <% user_logged_negotiations.each do |negotiation| %>
-  <div class="negotiation" id="<%= negotiation.id %>">
+  <div class="negotiation" id="<%= negotiation_id(negotiation) %>">
 
     <div class="negotiation_offer">
 
@@ -87,7 +87,7 @@
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
         <%#= link_to "x",
-              user_negotiation_path(current_user,negotiation.id),
+              user_negotiation_path(current_user,negotiation_id),
               :method => :delete,
               :confirm => "Are you sure?"
         %>
@@ -99,7 +99,7 @@
       </div>
 
       <div class="writting_box">
-        <%= form_for @negotiation, :url => addComment_user_negotiation_path(current_user.id, negotiation.id), :remote => true do |f| %>
+        <%= form_for @negotiation, :url => addComment_user_negotiation_path(current_user.id, negotiation_id(negotiation)), :remote => true do |f| %>
           <div class="message">
             <input type="text" placeholder="write here" name="text">
           </div>

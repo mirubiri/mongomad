@@ -25,14 +25,14 @@
       </div>
 
       <div class="product_container">
-        <% user_visited_things.each do |thing| %>
-            <div class="product" thing_id="<%= thing.id%>" stock="<%= thing_stock(thing) %>">
-              <div class="quantity_container"><%= thing_stock(thing) %></div>
+        <% user_visited_items.each do |item| %>
+            <div class="product" thing_id="<%= item_id(item) %>" stock="<%= item_stock(item) %>">
+              <div class="quantity_container"><%= item_stock(item) %></div>
               <div class="product_image">
-                <%= thing_image(thing) %>
+                <%= item_image(item) %>
               </div>
               <div class="product_title">
-                <%= thing_name(thing) %>
+                <%= item_name(item) %>
               </div>
             </div>
           <% end %>
@@ -74,7 +74,7 @@
           </div>
           <div class="description">
             <div class="offer_message">
-              <%= form.text_area :initial_message, :placeholder => "Mensaje Inicial", :rows => "2" %>
+              <%= form.text_area :message, :placeholder => "Mensaje Inicial", :rows => "2" %>
             </div>
           </div>
           <div class="offer_buttons">

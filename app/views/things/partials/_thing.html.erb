@@ -1,17 +1,17 @@
-<% user_visited_things.reverse_each do |thing| %>
-  <div class="thing" id="<%= thing_id(thing) %>">
+<% user_visited_items.reverse_each do |item| %>
+  <div class="thing" id="<%= item_id(item) %>">
 
     <div class="thing_image">
-      <%= thing_image(thing) %>
+      <%= item_image(item) %>
     </div>
 
     <div class="thing_quantity">
-      <div class="quantity_number">2</div>
+      <div class="quantity_number"><%= item_stock(item) %></div>
     </div>
 
     <div class="thing_description">
       <div class="text">
-        <%= thing_description(thing) %>
+        <%= item_description(item) %>
       </div>
     </div>
 

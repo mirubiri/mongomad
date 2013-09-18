@@ -3,12 +3,12 @@
     <div class="offer" id="<%= offer_id(offer) %>" data-id="<%= offer_datetime(offer) %>">
 
       <div class="offer_header">
-        <%= offer_composer_name(offer) %>
+        <%= proposal_composer_name(offer.proposal) %>
       </div>
 
       <div class="offer_things">
         <div class="recieved">
-          <% offer_composer_products(offer).each do |product| %>
+          <% proposal_composer_products(offer.proposal).each do |product| %>
             <div class="image_container">
               <%= product_image(product) %>
               <div class="description">
@@ -18,7 +18,7 @@
           <% end %>
         </div>
         <div class="given">
-          <% offer_receiver_products(offer).each do |product| %>
+          <% proposal_receiver_products(offer.proposal).each do |product| %>
             <div class="image_container">
               <%= product_image(product) %>
               <div class="quantity_container"><%= product_quantity(product) %></div>
@@ -29,10 +29,10 @@
 
       <div class="offer_info">
         <div class="profile_image">
-          <%= link_to offer_composer_image(offer),
+          <%= link_to proposal_composer_image(offer.proposal),
             :controller => "users",
             :action => "show",
-            :id => offer_composer_id(offer)
+            :id => proposal_composer_id(offer.proposal)
           %>
         </div>
         <div class="description">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="offer_buttons" id="offer_buttons_navigation">
-          <% if user_logged_id != offer_composer_id(offer) %>
+          <% if user_logged_id != proposal_composer_id(offer.proposal) %>
             <% if user_logged_id == user_visited_id %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />

@@ -49,9 +49,9 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
     @request.user = current_user
+    @request.user_sheet=current_user.sheet
 
     respond_to do |format|
-      @request.user_sheet=current_user.sheet
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
         format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }

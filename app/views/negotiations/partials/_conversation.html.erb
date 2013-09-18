@@ -1,4 +1,4 @@
-<% negotiation.conversation.messages.each do |message| %>
+<% negotiation_messages(negotiation).each do |message| %>
   <div class="comment">
     <div class="comment_user_image">
       <%= image_tag(message_image(message)) %>
