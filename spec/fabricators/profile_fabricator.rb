@@ -13,18 +13,18 @@ Fabricator(:user_medico_profile, from: :profile) do
   first_name 'Eduardo'
   last_name  'Hormilla'
   language   'spanish'
-  image       ActionDispatch::Http::UploadedFile.new({
-    :filename     => 'medico.jpg',
-    :content_type => 'image/jpg',
-    :tempfile     => File.new('app/assets/images/medico.jpg')})
+  # image       ActionDispatch::Http::UploadedFile.new({
+  #   :filename     => 'medico.jpg',
+  #   :content_type => 'image/jpg',
+  #   :tempfile     => File.new('app/assets/images/medico.jpg')})
 end
 
 Fabricator(:user_sergio_profile, from: :profile) do
   first_name 'Sergio'
   last_name  'de Torre'
   language 'english'
-  image       ActionDispatch::Http::UploadedFile.new({
-    :filename     => 'sergio.jpg',
-    :content_type => 'image/jpg',
-    :tempfile     => File.new('app/assets/images/sergio.jpg')})
+  # image       ActionDispatch::Http::UploadedFile.new({
+  #   :filename     => 'sergio.jpg',
+  #   :content_type => 'image/jpg',
+  #   :tempfile     => File.new('app/assets/images/sergio.jpg')})
 end
