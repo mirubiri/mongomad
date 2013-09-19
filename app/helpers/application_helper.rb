@@ -229,16 +229,6 @@
 #   def deal_id(deal)
 #     deal.id
 #   end
-#   def deal_signers(deal)
-#     deal.signers
-#   end
-#   def deal_agreement(deal)
-#     deal.agreement
-#   end
-#   def deal_conversation(deal)
-#     deal.messages
-#   end
-#   #Aqui falta mucha fiesta
 #   def deal_datetime(deal)
 #     deal.created_at
 #   end
