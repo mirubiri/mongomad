@@ -84,12 +84,12 @@
   def user_visited_requests
     @user.requests
   end
-#   def user_visited_sent_offers
-#     @user.sent_offers
-#   end
-#   def user_visited_received_offers
-#     @user.received_offers
-#   end
+  def user_visited_sent_offers
+    @user.sent_offers
+  end
+  def user_visited_received_offers
+    @user.received_offers
+  end
 #   def user_visited_negotiations
 #     @user.negotiations
 #   end

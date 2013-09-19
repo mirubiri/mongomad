@@ -30,4 +30,13 @@
 
 </div>
 
+
+<% if (User.count > 0)%>
+  <% User.all.to_a.last(2).each do |user| %>
+    <div class="usuarios_registrados" style="float:left; width:100%">
+      <div>email: <%= user.email %> </div>
+    </div>
+  <% end %>
+<% end %>
+
 <%#= render "devise/shared/links" %>
