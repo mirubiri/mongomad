@@ -10,10 +10,10 @@
   def user_email(user)
     user.email
   end
-  def user_name(user)
+  def user_first_name(user)
     user.profile.first_name
   end
-  def user_surname(user)
+  def user_last_name(user)
     user.profile.last_name
   end
   def user_visited_fullname(user)
