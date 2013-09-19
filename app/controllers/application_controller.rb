@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
-  helper_method :user_visited, :user_logged
+ # helper_method :user_visited, :user_logged
 
   before_filter :authenticate_user!, :set_request_variable
   helper :all
@@ -14,17 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def user_logged
-    current_user
-  end
-
-  def user_visited
-    @user = User.find(params[:id])
-  end
-
   def set_request_variable
     @request = Request.new
   end  
-
 end
