@@ -67,7 +67,7 @@
     item.stock
   end
   def item_image(item)
-    image_tag('/assets/images/coche.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
 
   # REQUEST HELPERS -----------------------------------------
@@ -78,7 +78,7 @@
     request.text
   end
   def request_image(request)
-    image_tag('/uploads/sergio.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
 
   # OFFER HELPERS -----------------------------------------
@@ -106,7 +106,7 @@
     product.quantity
   end
   def product_image(product) # FIX helper!!!!!
-    image_tag('/uploads/coche.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
 
   # NEGOTIATION HELPERS -----------------------------------------
@@ -131,7 +131,7 @@
     'sergio de torre'
   end
   def proposal_composer_image(proposal) # FIX helper!!!!!
-    image_tag('/uploads/sergio.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
   def proposal_composer_products(proposal) # FIX helper!!!!!
     proposal.left(proposal.composer_id)
@@ -143,7 +143,7 @@
     proposal.receiver.name
   end
   def proposal_receiver_image(proposal) # FIX helper!!!!!
-    image_tag('/uploads/medico.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
   def proposal_receiver_products(proposal) # FIX helper!!!!!
     proposal.right(proposal.receiver_id)
@@ -166,7 +166,7 @@
     message.text
   end
   def message_image(message) # FIX helper!!!!!
-    image_tag('/uploads/sergio.jpg')
+    image_tag('/assets/images/sergio.jpg')
   end
   def message_datetime(message)
     message.created_at
