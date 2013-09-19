@@ -1,9 +1,9 @@
 @import "variables";
 
-.thing{
+.item{
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
-  width: $thingWidth;
+  width: $itemWidth;
   float: left;
   margin-top: 0px;
   margin-right: 10px;
@@ -11,7 +11,7 @@
   margin-left: 0px;
   padding: 5px;
 
-  .thing_quantity{
+  .item_quantity{
     @include border-radius(4px, 2px);
     position: relative;
     border: 1px solid #BBBBBB;
@@ -36,18 +36,18 @@
     }
   }
 
-  .thing_image{
+  .item_image{
     float: left;
     width: 100%;
 
     img{
       @include high-quality-image;
-      @include proportions($thingWidth,$thingWidth);
+      @include proportions($itemWidth,$itemWidth);
       border: 1px solid #BBBBBB;
     }
   }
 
-  .thing_description{
+  .item_description{
     @include box-sizing(border-box);
     float: left;
     width: 100%;

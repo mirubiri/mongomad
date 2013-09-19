@@ -1,0 +1,3 @@
+$('#edit-item-form').remove();
+$("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_item').html_safe %>");
+$('#edit-item-form').modal('show');

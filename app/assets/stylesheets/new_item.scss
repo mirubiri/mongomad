@@ -1,11 +1,11 @@
 @import "variables";
 
-.new_thing_modal{
+.new_item_modal{
   background-color: rgba(172, 174, 180, 0.56);
   overflow: none;
   float: left;
 
-  .new_thing_title{
+  .new_item_title{
     @include proportions(100%,32px);
     @include box-sizing(border-box);
     float: left;
@@ -17,14 +17,14 @@
   }
 
 
-  .new_thing_container{
+  .new_item_container{
     @include box-sizing(border-box);
     float: left;
     width: 100%;
     padding: 5px;
     overflow: none;
 
-    .new_thing_image{
+    .new_item_image{
       @include box-sizing(border-box);
       width: 180px;
       margin-left: 10px;
@@ -80,7 +80,7 @@
       }
     }
 
-    .new_thing_description{
+    .new_item_description{
       @include box-sizing(border-box);
       width: 225px;
       float: left;
@@ -122,7 +122,7 @@
         }
       }
 
-      .new_thing_stock{
+      .new_item_stock{
         float: left;
         width: 100%;
 
@@ -140,7 +140,7 @@
       }
     }
 
-    .thing_options{
+    .item_options{
       @include box-sizing(border-box);
       width: 100%;
       float: left;

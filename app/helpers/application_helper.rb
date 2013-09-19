@@ -40,8 +40,8 @@
 #   def user_logged_updatetime(user = user_logged)
 #     user.profile.updated_at
 #   end
-#   def user_logged_things(user = user_logged)
-#     user.things
+#   def user_logged_items(user = user_logged)
+#     user.items
 #   end
 #   def user_logged_requests(user = user_logged)
 #     user.requests
@@ -184,8 +184,8 @@
 #   def offer_composer_products(offer)
 #     offer.composer.products
 #   end
-#   def offer_composer_things(offer)
-#     offer.user_composer.things
+#   def offer_composer_items(offer)
+#     offer.user_composer.items
 #   end
 #   def offer_receiver_id(offer)
 #     offer.user_receiver_id
@@ -196,8 +196,8 @@
 #   def offer_receiver_products(offer)
 #     offer.receiver.products
 #   end
-#   def offer_receiver_things(offer)
-#     offer.user_receiver.things
+#   def offer_receiver_items(offer)
+#     offer.user_receiver.items
 #   end
 #   def offer_money_owner_id(offer)
 #     offer.money.user_id
@@ -277,8 +277,8 @@
   def proposal_composer_products(proposal)
     proposal.left(proposal.composer_id)
   end
-#   def proposal_composer_things(proposal)
-#     proposal.user_composer.things
+#   def proposal_composer_items(proposal)
+#     proposal.user_composer.items
 #   end
 #   def proposal_receiver(proposal)
 #     proposal.user_receiver
@@ -295,8 +295,8 @@
   def proposal_receiver_products(proposal)
     proposal.right(proposal.receiver_id)
   end
-#   def proposal_receiver_things(proposal)
-#     proposal.user_receiver.things
+#   def proposal_receiver_items(proposal)
+#     proposal.user_receiver.items
 #   end
 #   def proposal_money_owner_id(proposal)
 #     proposal.money.user_id

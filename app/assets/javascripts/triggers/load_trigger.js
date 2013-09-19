@@ -6,7 +6,7 @@ $(window).load(function(event){
   var lugar = locationName();
 
   if ( lugar === "offers" ) {}
-  else if ( lugar === "things" ) {}
+  else if ( lugar === "items" ) {}
   else if ( lugar === "deals" ) {}
   else if ( lugar === "profile" ) {}
   else if ( lugar === "alerts" ) {}

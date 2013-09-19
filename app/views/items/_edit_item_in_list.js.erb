@@ -1,15 +1,15 @@
 //Quito la ventana modal
-$('#edit-thing-form').modal('hide');
+$('#edit-item-form').modal('hide');
 
-$('#edit-thing-form').on('hidden', function () {
+$('#edit-item-form').on('hidden', function () {
   //Cuando la modal se quita, oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
   $('#ppal_container')
   .hide()
-  .html("<%= escape_javascript(render :partial => 'things/partials/thing').html_safe %>")
+  .html("<%= escape_javascript(render :partial => 'items/partials/item').html_safe %>")
   .masonry('destroy');
 
   //REcargo el masonry y dejo que se vea todo
-  buildThingMosaic();
+  builditemMosaic();
   $('#ppal_container').show();
 
   //Elimino la ventana modal
