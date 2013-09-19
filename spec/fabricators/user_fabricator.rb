@@ -42,7 +42,7 @@ Fabricator(:user_sergio, from: :user) do
   profile         { Fabricate.build(:user_sergio_profile) }
 
   after_build do |user|
-    user.things << Fabricate.build(:user_sergio_item_cartera)
-    user.things << Fabricate.build(:user_sergio_item_mando)
+    user.items << Fabricate.build(:user_sergio_item_cartera)
+    user.items << Fabricate.build(:user_sergio_item_mando)
   end
 end
