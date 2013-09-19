@@ -16,7 +16,7 @@
   def user_last_name(user)
     user.profile.last_name
   end
-  def user_visited_fullname(user)
+  def user_fullname(user)
     user.profile.first_name + " " + user.profile.last_name
   end
   def user_gender(user)

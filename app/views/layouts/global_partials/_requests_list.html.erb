@@ -1,4 +1,4 @@
-<% user_visited_requests.reverse_each do |request| %>
+<% user_requests(@user).reverse_each do |request| %>
   <div class="request">
     <div class="profile_image">
       <%= request_image(request) %>

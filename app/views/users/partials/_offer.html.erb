@@ -1,4 +1,4 @@
-<% if (user_visited_offers.count != 0)%>
+<% if (user_offers(@user).count != 0)%>
   <% @offers.each do |offer| %>
     <div class="offer" id="<%= offer_composer_id(offer) %>">
       <div id="options">
@@ -43,7 +43,7 @@
           <% end %>
         </div>
       </div>
-      <% if user_logged_id == user_visited_id %>
+      <% if user_id(@user) == current_user.id %>
         <%= form_for [current_user,@negotiation] do |form| %>
         <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
           <div class="offer_button">

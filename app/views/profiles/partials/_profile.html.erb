@@ -7,38 +7,38 @@
       <div class="info_element">
         <div class="info_element_title">Name & Birthdate:</div>
         <div class="info_element_description">
-          <%= user_visited_fullname %>,
-          <%= user_visited_birthdate %>
+          <%= user_fullname(@user) %>,
+          <%= user_birthdate(@user) %>
         </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Direction:</div>
         <div class="info_element_description">
-          <%= user_visited_country %>
+          <%= user_country(@user) %>
         </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">E-Mail:</div>
         <div class="info_element_description">
-          <%= user_visited_email %>
+          <%= user_email(@user) %>
         </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Phones:</div>
         <div class="info_element_description">
-          <%#= user_visited_phone_number %>
+          <%#= user_phone_number(@user) %>
         </div>
       </div>
       <div class="info_element">
         <div class="info_element_title">Web:</div>
         <div class="info_element_description">
-          <%#= user_visited_website %>
+          <%#= user_website(@user) %>
         </div>
       </div>
     </div>
     <div class="image_side">
-        <%= user_visited_image %>
-        <% if user_logged_id == user_visited_id %>
+        <%= user_image(@user) %>
+        <% if user_id(@user) == current_user.id %>
           <%= link_to "editar mi perfil",
               edit_user_profile_path(current_user),
               :remote => true,

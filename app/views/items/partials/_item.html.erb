@@ -1,4 +1,4 @@
-<% user_visited_items.reverse_each do |item| %>
+<% user_items(@user).reverse_each do |item| %>
   <div class="item" id="<%= item_id(item) %>">
 
     <div class="item_image">
@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <%# if user_logged_id == user_visited_id %>
+    <%# if user_id(@user) == current_user.id %>
       <!-- <div class="item_options">
         <%#= link_to "editar producto",
           edit_user_item_path(current_user,item),

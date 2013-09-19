@@ -11,10 +11,10 @@
 
     <div class="profile_image">
       <div class="image_wrapper">
-        <%= link_to user_visited_image,
+        <%= link_to user_image(@user),
           :controller => "users",
           :action => "show",
-          :id => user_visited_id
+          :id => user_id(@user)
         %>
       </div>
     </div>
@@ -25,15 +25,15 @@
     </div>
 
     <div class="user_name">
-      <div class="name"><%= user_visited_fullname.upcase %></div>
-      <div class="address"><%= user_visited_country.capitalize %></div>
+      <div class="name"><%= user_fullname(@user).upcase %></div>
+      <div class="address"><%= user_country(@user).capitalize %></div>
     </div>
 
-    <% if user_logged_id != user_visited_id %>
+    <% if user_id(@user) != current_user.id %>
       <div class="new_offer_button">
         <div class="button_wrapper">
           <%= link_to "Hazme una oferta!!!",
-            new_user_offer_path(user_visited_id),
+            new_user_offer_path(user_id(@user)),
             {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
         </div>
       </div>

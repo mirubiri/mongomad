@@ -1,4 +1,4 @@
-<% user_logged_negotiations.each do |negotiation| %>
+<% user_negotiations(@user).each do |negotiation| %>
   <div class="negotiation" id="<%= negotiation_id(negotiation) %>">
 
     <div class="negotiation_offer">

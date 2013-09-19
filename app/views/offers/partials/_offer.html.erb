@@ -1,5 +1,5 @@
-<% if (user_visited_received_offers.count != 0)%>
-  <% user_visited_received_offers.reverse_each do |offer| %>
+<% if (user_received_offers(@user).count != 0)%>
+  <% user_received_offers(@user).reverse_each do |offer| %>
     <div class="offer" id="<%= offer_id(offer) %>" data-id="<%= offer_datetime(offer) %>">
 
       <div class="offer_header">
@@ -42,8 +42,8 @@
         </div>
 
         <div class="offer_buttons" id="offer_buttons_navigation">
-          <% if user_logged_id != proposal_composer_id(offer.proposal) %>
-            <% if user_logged_id == user_visited_id %>
+          <% if user_id(@user) != proposal_composer_id(offer.proposal) %>
+            <% if user_id(@user) == current_user.id %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
                 <div class="offer_button">

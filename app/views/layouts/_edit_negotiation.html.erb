@@ -80,7 +80,7 @@
       </div>
       <div class="offer_inform">
         <div class="offer_header">
-          <%= user_logged_name.upcase %>
+          <%= user_name(@user).upcase %>
         </div>
         <div class="offer_triangle">
           <div class="triangle"></div>
@@ -186,7 +186,7 @@
 
         <div class="offer_info">
           <div class="profile_image">
-            <%= user_logged_image %>
+            <%= user_image(@user) %>
           </div>
           <div class="offer_buttons">
             <%= form.submit "submit", :id => 'edit-offer-send-button', :class =>  "btn btn-primary" %>

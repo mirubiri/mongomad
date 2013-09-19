@@ -2,15 +2,15 @@
   <div class="clearfix header_container">
     <% if user_signed_in? %>
       <div class="header_user_image">
-        <%= link_to user_logged_image,
+        <%= link_to user_image(@user),
             :controller => "users",
             :action => "show",
-            :id => user_logged_id
+            :id => user_id(@user)
         %>
       </div>
       <div class="header_user_description">
-        <p><%= user_logged_name %></p>
-        <p><%= user_logged_surname %></p>
+        <p><%= user_first_name(@user) %></p>
+        <p><%= user_last_name(@user) %></p>
       </div>
     <% end %>
 
