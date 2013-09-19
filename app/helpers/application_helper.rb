@@ -1,104 +1,57 @@
  module ApplicationHelper
 
-  # USER (USER_LOGGED) HELPERS -----------------------------------------
-  def user_logged_id(user = user_logged)
+  # USER HELPERS -----------------------------------------
+  def user_id(user)
     current_user.id
   end
-  def user_logged_name(user = user_logged)
+  def user_nick(user)
+    user.nick
+  end
+  def user_email(user)
+    user.email
+  end
+  def user_first_name(user)
     user.profile.first_name
   end
-  def user_logged_surname(user = user_logged)
+  def user_last_name(user)
     user.profile.last_name
   end
-#   def user_logged_nick(user = user_logged)
-#     user.nick
-#   end
-#   def user_logged_gender(user = user_logged)
-#     user.profile.gender
-#   end
-#   def user_logged_language(user = user_logged)
-#     user.profile.language
-#   end
-#   def user_logged_bithdate(user = user_logged)
-#     user.profile.bith_date
-#   end
-  def user_logged_image(user = user_logged)
+  def user_visited_fullname(user)
+    user.profile.first_name + " " + user.profile.last_name
+  end
+  def user_gender(user)
+    user.profile.gender
+  end
+  def user_country(user)
+    'apatrida'
+  end
+  def user_language(user)
+    user.profile.language
+  end
+  def user_bithdate(user)
+    user.profile.bith_date
+  end
+  def user_image(user)
     image_tag('/assets/images/sergio.jpg')
   end
-#   def user_logged_items(user = user_logged)
-#     user.items
-#   end
-#   def user_logged_requests(user = user_logged)
-#     user.requests
-#   end
-#   def user_logged_sent_offers(user = user_logged)
-#     user.sent_offers
-#   end
-#   def user_logged_received_offers(user = user_logged)
-#     user.received_offers
-#   end
-  def user_logged_negotiations(user = user_logged)
+  def user_items(user)
+    user.items
+  end
+  def user_requests(user)
+    user.requests
+  end
+  def user_sent_offers(user)
+    user.sent_offers
+  end
+  def user_received_offers(user)
+    user.received_offers
+  end
+  def user_negotiations(user)
     user.negotiations
   end
-#   def user_logged_deals(user = user_logged)
-#     user.deals
-#   end
-
-  # USER (USER_VISITED) HELPERS -----------------------------------------
-  def user_visited_id
-    @user.id
+  def user_deals(user)
+    user.deals
   end
-  # def user_visited_name
-  #   @user.profile.first_name
-  # end
-  # def user_visited_surname
-  #   @user.profile.last_name
-  # end
-  def user_visited_fullname
-    @user.profile.first_name + " " + @user.profile.last_name
-  end
-#   def user_visited_surname
-#     @user.profile.last_name
-#   end
-#   def user_visited_nick
-#     @user.nick
-#   end
-#   def user_visited_sex
-#     @user.profile.gender
-#   end
-  def user_visited_country
-    'spain'
-  end
-  def user_visited_email
-    @user.email
-  end
-  def user_visited_birthdate
-    @user.profile.birth_date
-  end
-  def user_visited_image
-    image_tag('/assets/images/medico.jpg')
-  end
-  def user_visited_items
-    @user.items
-  end
-  def user_visited_requests
-    @user.requests
-  end
-  def user_visited_sent_offers
-    @user.sent_offers
-  end
-  def user_visited_received_offers
-    @user.received_offers
-  end
-#   def user_visited_negotiations
-#     @user.negotiations
-#   end
-#   def user_visited_deals
-#     @user.deals
-#   end
-#   def user_requests
-#     @user.requests
-#   end
 
   # ITEM HELPERS -----------------------------------------
   def item_id(item)
