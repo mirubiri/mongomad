@@ -35,7 +35,7 @@ Fabricator(:user_medico, from: :user) do
   end
 end
 
-Fabricator(:user_medico, from: :user) do
+Fabricator(:user_sergio, from: :user) do
   email           'sergio@improcex.com'
   password        'sergio'
   nick            'detorre'
