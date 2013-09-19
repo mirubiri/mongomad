@@ -2,7 +2,7 @@
 
   # USER HELPERS -----------------------------------------
   def user_id(user)
-    current_user.id
+    user.id
   end
   def user_nick(user)
     user.nick

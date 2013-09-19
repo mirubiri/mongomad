@@ -5,12 +5,12 @@
         <%= link_to user_image(@user),
             :controller => "users",
             :action => "show",
-            :id => user_id(@user)
+            :id => current_user.id
         %>
       </div>
       <div class="header_user_description">
-        <p><%= user_first_name(@user) %></p>
-        <p><%= user_last_name(@user) %></p>
+        <p><%= user_first_name(current_user) %></p>
+        <p><%= user_last_name(current_user) %></p>
       </div>
     <% end %>
 
