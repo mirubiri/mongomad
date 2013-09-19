@@ -1,23 +1,23 @@
-<div class="modal modal-thing hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-thing-form">
-  <%= form_for @thing, :remote => true do |form| %>
-    <div class="new_thing_modal">
-      <div class="new_thing_title">
+<div class="modal modal-item hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-item-form">
+  <%= form_for @item, :remote => true do |form| %>
+    <div class="new_item_modal">
+      <div class="new_item_title">
         NUEVO PRODUCTO
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       </div>
-      <div class="new_thing_container">
-        <div class="new_thing_image">
+      <div class="new_item_container">
+        <div class="new_item_image">
           <div class="image_container">
-            <img id="thing_image_container" src="">
+            <img id="item_image_container" src="">
             <div class="input_container">
               <div class="input_text">ADJUNTAR FOTO</div>
               <%= form.file_field :image,
-                :id => "thing_image",
+                :id => "item_image",
                 :onchange => "imageSelection(this);" %>
             </div>
           </div>
         </div>
-        <div class="new_thing_description">
+        <div class="new_item_description">
           <div class="title">
             <%= form.text_area :name,
                     :placeholder => "Título",
@@ -28,15 +28,15 @@
                       :placeholder => "Descripcion...",
                       :size => "10x5" %>
           </div>
-          <div class="new_thing_stock">
+          <div class="new_item_stock">
             <%= form.text_area :stock,
                   :placeholder => "Cantidad disponible",
                   :size => "4x1" %>
           </div>
         </div>
-        <div class="thing_options">
+        <div class="item_options">
           <%= form.submit  "Add",
-          :id => 'new-thing-send-button',
+          :id => 'new-item-send-button',
           :class => "btn btn-mini" %>
         </div>
       </div>

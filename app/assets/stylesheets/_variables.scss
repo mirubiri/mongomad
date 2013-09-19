@@ -20,8 +20,8 @@ $offerWidth: $bigImageDimension + $smallImageDimension + $productsLeftMargin + (
 $trianglePosition: $offerWidth - ($offerWidth/2) - 8px;
 $profileImageLeftMargin: 6px;
 $profileImageDimension: 50px;
-$thingWidth: $offerWidth;
-$thingHeight: $offerWidth;
+$itemWidth: $offerWidth;
+$itemHeight: $offerWidth;
 $commentLeftMargin: 8px;
 $commentPosition: $profileImageLeftMargin + $profileImageDimension + $commentLeftMargin;
 $commentDistance: $profileImageLeftMargin + $profileImageDimension +$commentLeftMargin;
@@ -295,7 +295,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 
 @mixin offer_products{
-  .offer_things{
+  .offer_items{
     float:left;
     overflow: visible;
     margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;

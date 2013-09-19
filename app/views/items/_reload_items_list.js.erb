@@ -1,8 +1,8 @@
-$('#new-thing-form').modal('hide');
+$('#new-item-form').modal('hide');
 
-$('#new-thing-form').on('hidden', function () {
+$('#new-item-form').on('hidden', function () {
   $('#ppal_container')
-  .prepend("<%= escape_javascript(render :template => 'things/show', :locals => {:@thing => thing}).html_safe %>")
+  .prepend("<%= escape_javascript(render :template => 'items/show', :locals => {:@item => item}).html_safe %>")
   .masonry( 'reload' )
   .children()
   .first()

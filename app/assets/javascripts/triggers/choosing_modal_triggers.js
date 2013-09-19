@@ -14,12 +14,12 @@ function loadModalScripts(){
 
 
   $('#his_product_container').on('click','.product',function(e){
-    var thing = $(this);
+    var item = $(this);
 
-    if ( have_stock(thing) ) {
+    if ( have_stock(item) ) {
 
-      thingAddition("received","receiver",thing);
-      deduct_1_to_thing(thing);
+      itemAddition("received","receiver",item);
+      deduct_1_to_item(item);
 
     }
     else {
@@ -30,12 +30,12 @@ function loadModalScripts(){
 
 
   $('#my_product_container').on('click','.product',function(e){
-    var thing = $(this);
+    var item = $(this);
 
-    if ( have_stock(thing) ) {
+    if ( have_stock(item) ) {
 
-      thingAddition("given","composer",thing);
-      deduct_1_to_thing(thing);
+      itemAddition("given","composer",item);
+      deduct_1_to_item(item);
 
     }
     else {
@@ -46,11 +46,11 @@ function loadModalScripts(){
 
 
   $('#summary_offer_received_products_container').on('click','.delete_button',function(e){
-    thingSubtraction("his","received","receiver",$(this));
+    itemSubtraction("his","received","receiver",$(this));
   });
 
   $('#summary_offer_given_products_container').on('click','.delete_button',function(e){
-    thingSubtraction("my","given","composer",$(this));
+    itemSubtraction("my","given","composer",$(this));
   });
 
   $('#dineroPidesBotonAgregar').on('click',function(e){

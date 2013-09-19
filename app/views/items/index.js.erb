@@ -5,8 +5,8 @@ stopTimers(timers);
 
 //Contenido que debe cargar esta seccion: PRODUCTOS
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
-$("#ppal_container").html("<%=j render :partial => 'things/partials/thing' %>").masonry('destroy');
+$("#ppal_container").html("<%=j render :partial => 'items/partials/item' %>").masonry('destroy');
 
 
 //Carga sus funciones especificas de dibujado
-resizeThings();
+resizeItems();

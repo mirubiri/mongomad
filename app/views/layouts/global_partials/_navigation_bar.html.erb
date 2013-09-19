@@ -30,21 +30,21 @@
           </li>
         <% end %>
 
-        <% if controller.controller_name === "things" %>
+        <% if controller.controller_name === "items" %>
           <% if @user._id == current_user._id %>
             <span style="float:left;margin-top:5px;margin-left:70px">
-              <a href="<%= new_user_thing_path(current_user)%>" class="nav_element">Añade un nuevo producto</a>
+              <a href="<%= new_user_item_path(current_user)%>" class="nav_element">Añade un nuevo producto</a>
             </span>
           <% end %>
         <% end %>
 
-        <% if (controller.sub_layout === "things") %>
+        <% if (controller.sub_layout === "items") %>
           <li class="active" style="float:right">
-            <a href="<%= user_things_path(current_user)%>" class="active" id="link_things" data-toggle="tooltip">Productos</a>
+            <a href="<%= user_items_path(current_user)%>" class="active" id="link_items" data-toggle="tooltip">Productos</a>
           </li>
         <% else %>
           <li style="float:right">
-            <a href="<%= user_things_path(current_user)%>" id="link_things" data-toggle="tooltip">Productos</a>
+            <a href="<%= user_items_path(current_user)%>" id="link_items" data-toggle="tooltip">Productos</a>
           </li>
         <% end %>
       </ul>

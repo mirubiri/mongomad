@@ -9,7 +9,7 @@ Mongomad::Application.routes.draw do
   resources :users do
     resource :profile
     resources :requests
-    resources :things
+    resources :items
     resources :offers
 
     resources :negotiations do

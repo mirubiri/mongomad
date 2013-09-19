@@ -29,14 +29,14 @@
           <button id="dineroPidesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="his_product_container">
-          <% proposal_receiver_things(negotiation_last_proposal(@negotiation)).each do |thing| %>
-            <div class="product" thing_id="<%= thing.id%>" stock="<%= thing_stock(thing) %>">
+          <% proposal_receiver_items(negotiation_last_proposal(@negotiation)).each do |item| %>
+            <div class="product" item_id="<%= item.id%>" stock="<%= item_stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= thing_image(thing) %>
+                <%= item_image(item) %>
               </div>
               <div class="product_title">
-                <%= thing_name(thing) %>
+                <%= item_name(item) %>
               </div>
             </div>
           <% end %>
@@ -48,14 +48,14 @@
           <button id="dineroOfrecesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="my_product_container">
-          <% proposal_composer_things(negotiation_last_proposal(@negotiation)).each do |thing| %>
-            <div class="product" thing_id="<%= thing.id%>" stock="<%= thing_stock(thing) %>">
+          <% proposal_composer_items(negotiation_last_proposal(@negotiation)).each do |item| %>
+            <div class="product" item_id="<%= item.id%>" stock="<%= item_stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= thing_image(thing) %>
+                <%= item_image(item) %>
               </div>
               <div class="product_title">
-                <%= thing_name(thing) %>
+                <%= item_name(item) %>
               </div>
             </div>
           <% end %>
@@ -86,11 +86,11 @@
           <div class="triangle"></div>
         </div>
         <% if(usuario == "composer") %>
-          <div class="offer_things">
+          <div class="offer_items">
             <div class="recieved" id="summary_offer_received_products_container">
               <% contador = 0 %>
               <% proposal_receiver_products(negotiation_last_proposal(@negotiation)).each do |product| %>
-                <div class="product" product_id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+                <div class="product" product_id="<%= product_id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= product_quantity(product) %></div>
                   <div class="product_image">
                     <%= product_image(product) %>
@@ -99,8 +99,8 @@
                     <%= product_name(product) %>
                   </div>
                    <div class="data_input">
-                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][thing_id]" value="<%= product_thing_id(product) %>">
-                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" thing_id="<%= product_thing_id(product) %>">
+                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][item_id]" value="<%= product_item_id(product) %>">
+                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" item_id="<%= product_item_id(product) %>">
                   </div>
                 </div>
                 <% contador = contador + 1 %>
@@ -112,7 +112,7 @@
             <div class="given" id="summary_offer_given_products_container">
               <% contador = 0 %>
               <% proposal_composer_products(negotiation_last_proposal(@negotiation)).each do |product| %>
-                <div class="product" product_id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+                <div class="product" product_id="<%= product_id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= product_quantity(product) %></div>
                   <div class="product_image">
                     <%= product_image(product) %>
@@ -121,8 +121,8 @@
                     <%= product_name(product) %>
                   </div>
                    <div class="data_input">
-                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][thing_id]" value="<%= product_thing_id(product) %>">
-                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" thing_id="<%= product_thing_id(product) %>">
+                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][item_id]" value="<%= product_item_id(product) %>">
+                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" item_id="<%= product_item_id(product) %>">
                   </div>
                 </div>
                 <% contador = contador + 1 %>
@@ -135,11 +135,11 @@
 
         <% else %>
 
-          <div class="offer_things">
+          <div class="offer_items">
             <div class="given" id="summary_offer_received_products_container">
               <% contador = 0 %>
               <% proposal_receiver_products(negotiation_last_proposal(@negotiation)).each do |product| %>
-                <div class="product" product_id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+                <div class="product" product_id="<%= product_id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= product_quantity(product) %></div>
                   <div class="product_image">
                     <%= product_image(product) %>
@@ -148,8 +148,8 @@
                     <%= product_name(product) %>
                   </div>
                    <div class="data_input">
-                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][thing_id]" value="<%= product_thing_id(product) %>">
-                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" thing_id="<%= product_thing_id(product) %>">
+                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][item_id]" value="<%= product_item_id(product) %>">
+                    <input type="hidden" name="proposal[composer_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" item_id="<%= product_item_id(product) %>">
                   </div>
                 </div>
                 <% contador = contador + 1 %>
@@ -161,7 +161,7 @@
             <div class="recieved" id="summary_offer_given_products_container">
               <% contador = 0 %>
               <% proposal_composer_products(negotiation_last_proposal(@negotiation)).each do |product| %>
-                <div class="product" product_id="<%= product_id(product) %>" thing_id="<%= product_thing_id(product) %>"><div class="delete_button">x</div>
+                <div class="product" product_id="<%= product_id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= product_quantity(product) %></div>
                   <div class="product_image">
                     <%= product_image(product) %>
@@ -170,8 +170,8 @@
                     <%= product_name(product) %>
                   </div>
                    <div class="data_input">
-                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][thing_id]" value="<%= product_thing_id(product) %>">
-                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" thing_id="<%= product_thing_id(product) %>">
+                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][item_id]" value="<%= product_item_id(product) %>">
+                    <input type="hidden" name="proposal[receiver_attributes][products_attributes][<%= contador %>][quantity]" value="<%= product_quantity(product) %>" item_id="<%= product_item_id(product) %>">
                   </div>
                 </div>
                 <% contador = contador + 1 %>

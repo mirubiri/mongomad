@@ -5,7 +5,7 @@ function loadNeededScripts(lugar){
 
   if ( lugar === "offers" ) {
   }
-  else if ( lugar === "things" ) {
+  else if ( lugar === "items" ) {
   }
   else if ( lugar === "negotiations" ) {
 
