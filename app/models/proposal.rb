@@ -10,7 +10,7 @@ class Proposal
 
   validates_presence_of :composer_id, :receiver_id
 
-  validate :check_goods_for_composer
+  # validate :check_goods_for_composer
 
   def left(owner_id)
     goods.where(owner_id:owner_id)
@@ -24,15 +24,15 @@ class Proposal
     goods.type(Cash).exists?
   end
 
-  private
-  def check_goods_for_composer
-    puts "comprobando"  # Experimentos horribles!!!
-    puts left(composer_id)
-    if left(composer_id) == 0 
-      puts "adderror"
-      errors.add(:goods, "Composer should have at least one good")
-    end
-  end
+  # private
+  # def check_goods_for_composer
+  #   puts "comprobando"  # Experimentos horribles!!!
+  #   puts left(composer_id)
+  #   if left(composer_id) == 0 
+  #     puts "adderror"
+  #     errors.add(:goods, "Composer should have at least one good")
+  #   end
+  # end
 
 
   # before_create :set_initial_state

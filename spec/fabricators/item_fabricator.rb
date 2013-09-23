@@ -26,7 +26,6 @@ Fabricator(:user_medico_item_cartera, from: :item) do
 end
 
 Fabricator(:user_sergio_item_mando, from: :item) do
-  user        nil
   name        'Mando'
   description 'El mando de mi bicicleta mercedes.'
   stock       100
@@ -37,7 +36,6 @@ Fabricator(:user_sergio_item_mando, from: :item) do
 end
 
 Fabricator(:user_sergio_item_cartera, from: :item) do
-  user        nil
   name        'Cartera'
   description 'Cartera de titanio reforzado para llevar gran cantidad de moneditas.'
   stock       100
