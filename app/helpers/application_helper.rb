@@ -25,8 +25,8 @@
   def user_language(user)
     user.profile.language
   end
-  def user_bithdate(user)
-    user.profile.bith_date
+  def user_birthdate(user)
+    user.profile.birth_date
   end
   def user_country(user)   #Does not exist in the model at the moment!!!
     'apatrida'
@@ -124,7 +124,7 @@
   def proposal_composer_id(proposal)
     proposal.composer_id
   end
-  def proposal_composer_first_name(proposal) 
+  def proposal_composer_first_name(proposal)
     proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last.first_name
   end
   def proposal_composer_fullname(proposal)
@@ -140,7 +140,7 @@
   def proposal_receiver_id(proposal)
     proposal.receiver_id
   end
-  def proposal_composer_first_name(proposal) 
+  def proposal_composer_first_name(proposal)
     proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
   end
   def proposal_receiver_image(proposal) # FIX helper!!!!!

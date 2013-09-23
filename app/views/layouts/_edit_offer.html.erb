@@ -18,7 +18,7 @@
               <%= proposal_composer_image(@offer.proposal) %>
             </div>
             <div class="description">
-              <%= proposal_composer_name(@offer.proposal) %>
+              <%= proposal_composer_first_name(@offer.proposal) %>
             </div>
           </div>
         </a>
@@ -74,7 +74,7 @@
       <div class="offer_inform">
 
         <div class="offer_header">
-          <%= proposal_composer_name(@offer.proposal).upcase %>
+          <%= proposal_composer_first_name(@offer.proposal).upcase %>
         </div>
         <div class="offer_triangle">
           <div class="triangle"></div>
