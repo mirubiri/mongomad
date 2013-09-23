@@ -7,14 +7,16 @@
 .products_area{
   @include box-sizing(border-box);
   @include fixed_width(70%,70%,70%);
-  @include fixed_height(100%,100%,100%);
+  @include fixed_height(700px,700px,700px);
   float: left;
+  padding: 10px 10px 0px 10px;
+  background-color: transparent;
 
   .title{
     @include fixed_width(100%,100%,100%);
-    @include fixed_height(50px,50px,50px);
+    @include fixed_height(40px,40px,40px);
     float: left;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 
     a{
       @include box-sizing(border-box);
@@ -25,12 +27,16 @@
         @include fixed_width(100%,100%,100%);
         @include fixed_height(100%,100%,100%);
         float: left;
+        text-align: center;
 
         .user_image{
-          float: left;
-          margin: 2px 0px 0px 5px;
+          @include fixed_width(100%,100%,100%);
+          @include fixed_height(100%,100%,100%);
+          @include center-horizontally(50%);
+
           img{
-            @include proportions(25px,25px);
+            @include proportions(36px,36px);
+            @include border-radius(18px, 18px);
           }
         }
         .description{
@@ -41,10 +47,14 @@
   }
 
   .product_container{
+    @include box-sizing(border-box);
     @include fixed_width(100%,100%,100%);
-    @include fixed_height(100%,100%,100%);
+    @include fixed_height(630px,630px,630px);
+    background-color: white;
     float: left;
     overflow: visible;
+    border: 1px solid #D4D6D5;
+    padding: 10px;
 
     .product{
       @include big_images_style;
@@ -117,21 +127,11 @@
 .offer_summary{
   @include box-sizing(border-box);
   @include fixed_width(30%,30%,30%);
-  @include fixed_height(100%,100%,100%);
+  @include fixed_height(700px,700px,700px);
   float: left;
-  background-color: rgb(225,225,225);
+  background-color: transparent;
   overflow: visible;
-
-  .title{
-    @include proportions(100%,32px);
-    @include box-sizing(border-box);
-    float:left;
-    margin-bottom: 5px;
-    background-color: #2B3750;
-    color:white;
-    padding-top: 6px;
-    text-align: center;
-  }
+  padding-top: 30px;
 
   .offer_inform {
     @include element_into_ElementList_style;
@@ -139,28 +139,15 @@
     @include offer_header;
     @include offer_products;
     @include center-horizontally(90%);
-    height: 500px;
+    height: 670px;
 
     .offer_header{
-      @include proportions(100%,60px);
+      @include proportions(100%,20px);
       overflow: hidden;
       margin-bottom: 5px;
-
-      .triangle {
-        left: 263px;
-      }
-
-      .description{
-        height: 98px;
-        width: 70%;
-        .offer_message{
-          width: 100%;
-          textarea{
-            width: 90%;
-            resize: none;
-          }
-        }
-      }
+      text-align: center;
+      font-size: 12px;
+      color: grey;
     }
 
     .offer_items{
@@ -196,7 +183,7 @@
 
 
 .user_selected{
-  background-color: #ccff66;
+  background-color: grey;
 }
 
 .container_invisible{

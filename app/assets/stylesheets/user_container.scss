@@ -52,18 +52,17 @@
         .profile_image{
           float: left;
           @include proportions(90px,40px);
-          background-color: #f3f3f3;
+          background-color: transparent;
           //position: relative;
           //top:-50px;
           //left: 63px;
-          border: 1px solid #f3f3f3;
           @include border-radius(45px, 45px);
-          padding-left: 30%;
+          padding-left: 32%;
 
           .image_wrapper{
             position: relative;
-            top: -50px;
-            @include proportions(90px,90px);
+            top: -45px;
+            @include proportions(82px,82px);
             @include border-radius(45px, 45px);
             background-color: white;
 
@@ -74,8 +73,6 @@
                 @include border-radius(40px, 40px);
                 position: relative;
                 top: 0px;
-                margin-left: 4px;
-                margin-top: 4px;
                 border: 1px solid #cccccc;
               }
             }

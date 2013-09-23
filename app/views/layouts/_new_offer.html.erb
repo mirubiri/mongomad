@@ -7,9 +7,6 @@
             <div class="user_image">
               <%= user_image(@user) %>
             </div>
-            <div class="description">
-              <%= user_fullname(@user) %>
-            </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= user_id(@user) %>">
@@ -17,8 +14,12 @@
             <div class="user_image">
               <%= user_image(@user) %>
             </div>
-            <div class="description">
-              <%= user_name(@user) %>
+          </div>
+        </a>
+        <a href="#blank" id="new_offer_composer_selector" value="<%= user_id(@user) %>">
+          <div class="user_products_selector" id="composer_selector_area">
+            <div class="user_image">
+              <%= user_image(@user) %>
             </div>
           </div>
         </a>
@@ -44,15 +45,9 @@
     <input type="hidden" name="offer[money_attributes][quantity]" value="0" id="usuario_dinero" />
 
     <div class="offer_summary">
-      <div class="title">
-        <div class="description">Resumen de la oferta</div>
-      </div>
       <div class="offer_inform">
         <div class="offer_header">
-          <%= user_name(@user).upcase %>
-        </div>
-        <div class="offer_triangle">
-          <div class="triangle"></div>
+          <%= user_nick(@user).capitalize %>
         </div>
         <div class="offer_items">
           <div class="recieved" id="summary_offer_received_products_container">

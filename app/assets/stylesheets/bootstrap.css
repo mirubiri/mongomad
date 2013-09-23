@@ -4755,6 +4755,7 @@ a.thumbnail:focus {
   height: 700px;
   margin-top: 0px;
   margin-bottom:0px;
+  background-color: #e1e1e1;
 }
 
 .modal.modal-request{
