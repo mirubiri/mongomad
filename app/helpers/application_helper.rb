@@ -22,14 +22,14 @@
   def user_gender(user)
     user.profile.gender
   end
-  def user_country(user)   #Does not exist in the model at the moment!!!
-    'apatrida'
-  end
   def user_language(user)
     user.profile.language
   end
   def user_bithdate(user)
     user.profile.bith_date
+  end
+  def user_country(user)   #Does not exist in the model at the moment!!!
+    'apatrida'
   end
   def user_image(user) # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
@@ -66,7 +66,7 @@
   def item_stock(item)
     item.stock
   end
-  def item_image(item)
+  def item_image(item) # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
   end
 
@@ -77,7 +77,7 @@
   def request_text(request)
     request.text
   end
-  def request_image(request)
+  def request_image(request)  # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
   end
 
@@ -124,29 +124,30 @@
   def proposal_composer_id(proposal)
     proposal.composer_id
   end
-  def proposal_composer_name(proposal) # FIX helper!!!!!
-    'sergioelwapo'
+  def proposal_composer_first_name(proposal) 
+    proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last.first_name
   end
-  def proposal_composer_fullname(proposal) # FIX helper!!!!!
-    'sergio de torre'
+  def proposal_composer_fullname(proposal)
+    sheet = proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last
+    sheet.first_name + " " + sheet.last_name
   end
   def proposal_composer_image(proposal) # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
   end
-  def proposal_composer_products(proposal) # FIX helper!!!!!
-    proposal.left(proposal.composer_id)
+  def proposal_composer_products(proposal)
+    proposal.right(proposal.composer_id)
   end
   def proposal_receiver_id(proposal)
     proposal.receiver_id
   end
-  def proposal_receiver_name(proposal) # FIX helper!!!!!
-    proposal.receiver.name
+  def proposal_composer_first_name(proposal) 
+    proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
   end
   def proposal_receiver_image(proposal) # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
   end
   def proposal_receiver_products(proposal) # FIX helper!!!!!
-    proposal.right(proposal.receiver_id)
+    proposal.left(proposal.receiver_id)
   end
   def proposal_can_sign?(proposal, user) # FIX helper!!!!!
     #proposal.can_sign?(user)
@@ -171,9 +172,4 @@
   def message_datetime(message)
     message.created_at
   end
-
-  # DEAL HELPERS -----------------------------------------
-#   def deal_id(deal)
-#     deal.id
-#   end
  end
