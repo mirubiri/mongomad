@@ -19,18 +19,18 @@
   def user_fullname(user)
     user.profile.first_name + " " + user.profile.last_name
   end
-  def user_gender(user)
-    user.profile.gender
-  end
-  def user_language(user)
-    user.profile.language
-  end
+  # def user_gender(user) #not used
+  #   user.profile.gender
+  # end
+  # def user_language(user) #not used
+  #   user.profile.language
+  # end
   def user_birthdate(user)
     user.profile.birth_date
   end
-  def user_country(user)   #Does not exist in the model at the moment!!!
-    'apatrida'
-  end
+  # def user_country(user)   #Does not exist in the model at the moment!!!
+  #   'apatrida'
+  # end
   def user_image(user) # FIX helper!!!!!
     image_tag('/assets/images/sergio.jpg')
   end
@@ -40,9 +40,9 @@
   def user_requests(user)
     user.requests
   end
-  def user_sent_offers(user)
-    user.sent_offers
-  end
+  # def user_sent_offers(user)  #not used
+  #   user.sent_offers
+  # end
   def user_received_offers(user)
     user.received_offers
   end
@@ -93,9 +93,9 @@
   end
 
   # PRODUCT HELPERS -----------------------------------------
-  def product_id(product)
-    product.id
-  end
+  # def product_id(product)
+  #   product.id
+  # end
   def product_name(product)
     product.name
   end
@@ -137,15 +137,15 @@
   def proposal_composer_products(proposal)
     proposal.right(proposal.composer_id)
   end
-  def proposal_receiver_id(proposal)
-    proposal.receiver_id
-  end
-  def proposal_composer_first_name(proposal)
-    proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
-  end
-  def proposal_receiver_image(proposal) # FIX helper!!!!!
-    image_tag('/assets/images/sergio.jpg')
-  end
+  # def proposal_receiver_id(proposal)
+  #   proposal.receiver_id
+  # end
+  # def proposal_receiver_first_name(proposal) 
+  #   proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
+  # end
+  # def proposal_receiver_image(proposal) # FIX helper!!!!!
+  #   image_tag('/assets/images/sergio.jpg')
+  # end
   def proposal_receiver_products(proposal) # FIX helper!!!!!
     proposal.left(proposal.receiver_id)
   end
