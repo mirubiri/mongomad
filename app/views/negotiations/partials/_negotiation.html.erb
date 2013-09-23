@@ -9,7 +9,7 @@
         </div>
         <div class="oponent_description">
           <div class="oponent_name">
-            <%= proposal_composer_name(negotiation_last_proposal(negotiation)) %>
+            <%= proposal_composer_first_name(negotiation_last_proposal(negotiation)) %>
           </div>
           <div class="oponent_address">
             <%= proposal_composer_fullname(negotiation_last_proposal(negotiation)) %>
@@ -87,7 +87,7 @@
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
         <%#= link_to "x",
-              user_negotiation_path(current_user,negotiation_id),
+              user_negotiation_path(current_user,negotiation_id(negotiation)),
               :method => :delete,
               :confirm => "Are you sure?"
         %>

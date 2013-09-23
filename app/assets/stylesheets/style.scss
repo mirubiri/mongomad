@@ -1,6 +1,7 @@
 @import "variables";
 @import 'stitch';
 
+
 body{
   display: block;
   overflow: auto;
@@ -36,3 +37,6 @@ body{
   width: 500px;
   height: 300px;
 }
+
+// Me permitira tener capas del 100% de altura
+html, body { height: 100%; }

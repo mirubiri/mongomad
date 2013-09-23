@@ -55,7 +55,7 @@ class NegotiationsController < ApplicationController
     @offer = @user.received_offers.find(params[:offer_id])
 
     respond_to do |format|
-      if @negotiation = @offer.start_negotiation
+      if @negotiation = @offer.negotiate
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js {render :partial => "negotiations/load_new_negotiation", :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else

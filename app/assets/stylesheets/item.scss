@@ -41,6 +41,7 @@
     width: 100%;
 
     img{
+      @include box-sizing(border-box);
       @include high-quality-image;
       @include proportions($itemWidth,$itemWidth);
       border: 1px solid #BBBBBB;
