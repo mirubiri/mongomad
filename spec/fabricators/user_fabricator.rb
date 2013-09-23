@@ -39,7 +39,7 @@ Fabricator(:user_sergio, from: :user) do
   email           'sergio@improcex.com'
   password        'sergio'
   nick            'detorre'
-  profile         { Fabricate(:user_sergio_profile) }
+  profile         { Fabricate.build(:user_sergio_profile) }
 
   after_build do |user|
     user.items << Fabricate(:user_sergio_item_cartera)
