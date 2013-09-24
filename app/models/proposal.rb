@@ -42,7 +42,7 @@ class Proposal
   end
 
   def check_multiple_cash
-   # errors.add(:goods, "Proposal should not have more than one cash") unless goods.type(Cash).size == 1 
+    errors.add(:goods, "Proposal should have only one cash") if goods.type(Cash).size > 1 
   end
 
   # before_create :set_initial_state
