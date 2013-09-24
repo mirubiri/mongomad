@@ -9,4 +9,8 @@ class Deal
   embeds_many :user_sheets
 
   validates_presence_of :proposals, :messages
+
+  def agreement
+    proposals.last
+  end
 end
