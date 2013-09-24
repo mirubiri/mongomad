@@ -21,27 +21,34 @@ describe Proposal do
 
   it 'is invalid when there is not a good for composer' do
     composer_id=proposal.composer_id
-    proposal.goods.delete_all(composer_id:composer_id)
+    #proposal.goods.delete_all(composer_id:composer_id) #no elimina los goods
+    proposal.goods.delete_all(:owner_id => composer_id)
     expect(proposal).to_not be_valid
   end
 
   it 'is invalid when there is not a good for receiver' do
     receiver_id=proposal.receiver_id
-    proposal.goods.delete_all(receiver_id:receiver_id)
+    #proposal.goods.delete_all(receiver_id:receiver_id) #no elimina los goods
+    proposal.goods.delete_all(:owner_id => receiver_id)
     expect(proposal).to_not be_valid
   end
 
-  it 'is invalid when is more than a cash in goods' do
+  it 'is invalid when is more than one cash in goods' do
     2.times { proposal.goods.build({},Cash) }
     expect(proposal).to_not be_valid
   end
 
   it 'is invalid if a good is not owned by composer or receiver' do
+    puts "******************************************"
+        puts proposal.goods.count
     proposal.goods.sample.owner_id=Faker::Number.number(26)
+    puts proposal.goods.count
+        puts "******************************************"
+
     expect(proposal).to_not be_valid
   end
 
-  it 'is invalid if a good is duplicated' do
+  it 'is invalid if a good is duplicated' do #no falla?
     good=proposal.goods.sample
     proposal.goods << good
     expect(proposal).to_not be_valid
