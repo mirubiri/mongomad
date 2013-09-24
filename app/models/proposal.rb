@@ -10,7 +10,7 @@ class Proposal
 
   validates_presence_of :composer_id, :receiver_id
 
-  validate :check_composer_goods, :check_receiver_goods, :check_goods_owner, :check_multiple_cash
+  validate :check_composer_goods, :check_receiver_goods, :check_goods_owner, :check_duplicate_goods, :check_multiple_cash
 
   def left(owner_id)
     goods.where(owner_id:owner_id)
@@ -34,15 +34,15 @@ class Proposal
   end
 
   def check_goods_owner    
-    puts "----------------------------------------------------------------------------------------"
-    puts goods.where(owner_id: composer_id).count
-    puts goods.where(owner_id: receiver_id).count
-    puts "----------------------------------------------------------------------------------------"
-    errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.where(:owner_id.ne => composer_id, :owner_id.ne => receiver_id).count == 0 
+    errors.add(:goods, "All goods should be owned by composer or receiver") if goods.nor(owner_id:composer_id, owner_id:receiver_id).count != 0 
+  end
+
+  def check_duplicate_goods
+    errors.add(:goods, "Proposal should not have duplicated good") unless goods.distinct(:id).size == goods.size 
   end
 
   def check_multiple_cash
-
+   # errors.add(:goods, "Proposal should not have more than one cash") unless goods.type(Cash).size == 1 
   end
 
   # before_create :set_initial_state
