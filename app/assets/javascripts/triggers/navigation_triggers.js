@@ -29,12 +29,12 @@ $(function(){
 
 //Control de la redireccion url cuando negociamos una oferta
 $(function(){
-    $(".offer_buttons").on('click','a', function(event){
+    $("#negotiate_button").on("click", function(event){
+        alert("esto funciona");
         event.preventDefault();
 
-        var url= this.href;
+        var url= this.url;
         history.pushState({path:url},"", url);
-
     });
 });
 

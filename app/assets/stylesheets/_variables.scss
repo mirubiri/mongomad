@@ -429,14 +429,19 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       @include center-horizontally(90%);
       @include box-sizing(border-box);
       margin-bottom: 10px;
+      overflow: auto;
 
-      form{margin-bottom: 0px;}
+      .new_negotiation{
+        margin-bottom: 0px;
+        input{width: 100%;}
+      }
 
       input{
         @include box-sizing(border-box);
         float: left;
         width: 65%;
       }
+
       button{
         @include box-sizing(border-box);
         float: right;
