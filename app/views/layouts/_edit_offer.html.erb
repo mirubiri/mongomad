@@ -30,10 +30,10 @@
         </div>
         <div class="product_container" id="his_product_container">
           <% proposal_receiver_products(@offer.proposal).each do |product| %>
-            <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= item_stock(product.item) %>">
+            <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= stock(product.item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_image(product.item) %>
+                <%= image(product.item) %>
               </div>
               <div class="product_title">
                 <%= name(product.item) %>
@@ -49,10 +49,10 @@
         </div>
         <div class="product_container" id="my_product_container">
           <% proposal_composer_products(@offer.proposal).each do |product| %>
-            <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= item_stock(product.item) %>">
+            <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= stock(product.item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_image(product.item) %>
+                <%= image(product.item) %>
               </div>
               <div class="product_title">
                 <%= name(product.item) %>

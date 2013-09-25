@@ -27,10 +27,10 @@
 
       <div class="product_container">
         <% items(@user).each do |item| %>
-            <div class="product" item_id="<%= item_id(item) %>" stock="<%= item_stock(item) %>">
-              <div class="quantity_container"><%= item_stock(item) %></div>
+            <div class="product" item_id="<%= item_id(item) %>" stock="<%= stock(item) %>">
+              <div class="quantity_container"><%= stock(item) %></div>
               <div class="product_image">
-                <%= item_image(item) %>
+                <%= image(item) %>
               </div>
               <div class="product_title">
                 <%= name(item) %>
