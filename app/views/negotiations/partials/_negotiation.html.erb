@@ -5,14 +5,14 @@
 
       <div class="oponent_info">
         <div class="oponent_image">
-          <%= proposal_composer_image(negotiation_last_proposal(negotiation)) %>
+          <%= proposal_composer_image(last_proposal(negotiation)) %>
         </div>
         <div class="oponent_description">
           <div class="oponent_name">
-            <%= proposal_composer_first_name(negotiation_last_proposal(negotiation)) %>
+            <%= proposal_composer_first_name(last_proposal(negotiation)) %>
           </div>
           <div class="oponent_address">
-            <%= proposal_composer_fullname(negotiation_last_proposal(negotiation)) %>
+            <%= proposal_composer_fullname(last_proposal(negotiation)) %>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
 
       <div class="offer_items">
         <div class="recieved">
-          <% proposal_composer_products(negotiation_last_proposal(negotiation)).each do |product| %>
+          <% proposal_composer_products(last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
               <%= image(product) %>
               <div class="quantity_container">
@@ -36,7 +36,7 @@
           <% end %>
         </div>
         <div class="given">
-          <% proposal_receiver_products(negotiation_last_proposal(negotiation)).each do |product| %>
+          <% proposal_receiver_products(last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
               <%= image(product) %>
               <div class="quantity_container"><%= quantity(product) %></div>
@@ -53,21 +53,21 @@
               :remote => true,
               :class => "btn btn-small btn-warning" %>
 
-          <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>
+          <% if (proposal_can_sign?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'firmar',
                 sign_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
+          <% if (proposal_can_confirm?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'confirmar',
                 confirm_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
+          <% if (proposal_can_cancel?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'cancel',
                 cancel_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
