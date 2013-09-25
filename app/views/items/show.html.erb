@@ -2,7 +2,7 @@
   <%#= item_inboard(@item) %>
   <div class="caption">
     <h5><%= name(@item) %></h5>
-    <p><%= item_description(@item) %></p>
+    <p><%= description(@item) %></p>
     <p>
       <%= link_to "editar producto",
           edit_user_item_path(current_user,@item),
