@@ -1,5 +1,5 @@
-<% if (user_received_offers(@user).count != 0)%>
-  <% user_received_offers(@user).reverse_each do |offer| %>
+<% if (received_offers(@user).count != 0)%>
+  <% received_offers(@user).reverse_each do |offer| %>
     <div class="offer" id="<%= offer_id(offer) %>" data-id="<%= offer_datetime(offer) %>">
 
       <div class="offer_header">
