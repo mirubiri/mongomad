@@ -25,7 +25,7 @@
         <div class="recieved">
           <% proposal_composer_products(negotiation_last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
-              <%= product_image(product) %>
+              <%= image(product) %>
               <div class="quantity_container">
                 <%= quantity(product) %>
               </div>
@@ -38,7 +38,7 @@
         <div class="given">
           <% proposal_receiver_products(negotiation_last_proposal(negotiation)).each do |product| %>
             <div class="image_container">
-              <%= product_image(product) %>
+              <%= image(product) %>
               <div class="quantity_container"><%= quantity(product) %></div>
             </div>
           <% end %>

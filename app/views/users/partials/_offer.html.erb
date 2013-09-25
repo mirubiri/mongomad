@@ -30,7 +30,7 @@
           <% offer_composer_products(offer).each do |product| %>
             <div class="image_container">
               <div class="quantity_container"><%= quantity(product) %></div>
-              <%= product_image(product) %>
+              <%= image(product) %>
             </div>
           <% end %>
         </div>
@@ -38,7 +38,7 @@
           <% offer_receiver_products(offer).each do |product| %>
             <div class="image_container">
               <div class="quantity_container"><%= quantity(product) %></div>
-              <%= product_image(product) %>
+              <%= image(product) %>
             </div>
           <% end %>
         </div>
