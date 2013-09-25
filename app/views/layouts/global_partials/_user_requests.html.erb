@@ -1,7 +1,7 @@
 <aside class="user_container_requests" id="user_request_list">
 
   <div class="request_list_title">
-    <% if user_id(@user) === current_user.id %>
+    <% if id(@user) === current_user.id %>
       <div class="text_side">PETICIONES</div>
       <%= link_to "+",
         new_user_request_path(current_user),

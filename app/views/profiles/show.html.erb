@@ -38,7 +38,7 @@
     </div>
     <div class="image_side">
         <%= user_image(@user) %>
-        <% if user_id(@user) == current_user.id %>
+        <% if id(@user) == current_user.id %>
           <%= link_to "editar mi perfil",
               edit_user_profile_path(current_user),
               :remote => true,

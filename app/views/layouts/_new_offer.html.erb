@@ -2,21 +2,21 @@
   <%= form_for [current_user,@offer], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
-        <a href="#blank" id="new_offer_receiver_selector" value="<%= user_id(@user) %>">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
               <%= user_image(@user) %>
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%= user_id(@user) %>">
+        <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
               <%= user_image(@user) %>
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%= user_id(@user) %>">
+        <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
               <%= user_image(@user) %>
@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <input type="hidden" name="offer[user_receiver_id]" value="<%= user_id(@user) %>" />
+    <input type="hidden" name="offer[user_receiver_id]" value="<%= id(@user) %>" />
     <input type="hidden" name="offer[money_attributes][user_id]" value="nil" id="usuario_id" />
     <input type="hidden" name="offer[money_attributes][quantity]" value="0" id="usuario_dinero" />
 

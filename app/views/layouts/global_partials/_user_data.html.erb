@@ -14,7 +14,7 @@
         <%= link_to user_image(@user),
           :controller => "users",
           :action => "show",
-          :id => user_id(@user)
+          :id => id(@user)
         %>
       </div>
     </div>
@@ -29,11 +29,11 @@
   <!--     <div class="address"><%#= user_country(@user).capitalize %></div> -->
     </div>
 
-    <% if user_id(@user) != current_user.id %>
+    <% if id(@user) != current_user.id %>
       <div class="new_offer_button">
         <div class="button_wrapper">
           <%= link_to "Hazme una oferta!!!",
-            new_user_offer_path(user_id(@user)),
+            new_user_offer_path(id(@user)),
             {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
         </div>
       </div>

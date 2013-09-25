@@ -4,5 +4,5 @@
    :placeholder => "Texto de su nueva peticion",
    :maxlength => 135 %>      
       
-  <input type="hidden" name="request[user_id]" value="<%= user_id(@user) %>" />  
+  <input type="hidden" name="request[user_id]" value="<%= id(@user) %>" />  
 <% end %>
