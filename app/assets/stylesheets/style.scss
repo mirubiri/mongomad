@@ -10,6 +10,8 @@ body{
   margin: 0px;
   padding: 0px;
   background-color: rgb(100,152,173);
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
   font:{
     size: 13px;
     family: $verdana;
@@ -39,4 +41,5 @@ body{
 }
 
 // Me permitira tener capas del 100% de altura
-html, body { height: 100%; }
+html, body {height: 100%;}
+
