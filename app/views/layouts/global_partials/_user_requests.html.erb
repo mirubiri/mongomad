@@ -13,7 +13,7 @@
   </div>
 
   <aside class="requests_requestsList" id="request_list_container">
-    <% if (user_requests(@user).count != 0)%>
+    <% if (requests(@user).count != 0)%>
       <%= render :partial => 'layouts/global_partials/requests_list' %>
     <% else %>
       <div class="no_elements">
