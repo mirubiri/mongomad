@@ -2,7 +2,7 @@
   <div class="clearfix header_container">
     <% if user_signed_in? %>
       <div class="header_user_image">
-        <%= link_to user_image(@user),
+        <%= link_to image(@user),
             :controller => "users",
             :action => "show",
             :id => id(current_user)
