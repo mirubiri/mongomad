@@ -3,7 +3,7 @@ var lugar = locationName().toString();
 
 if(lugar === "negotiations"){
   <% negotiations(@user).each do |negotiation| %>
-    var negotiation_id = "<%= negotiation_id(negotiation) %>"
+    var negotiation_id = "<%= id(negotiation) %>"
     //alert(negotiation_id);
     $("#"+ negotiation_id).find(".conversation").html("<%=j render :partial => 'negotiations/partials/conversation', :locals => { :negotiation => negotiation } %>");
   <% end %>

@@ -1,5 +1,5 @@
 <% negotiations(@user).each do |negotiation| %>
-  <div class="negotiation" id="<%= negotiation_id(negotiation) %>">
+  <div class="negotiation" id="<%= id(negotiation) %>">
 
     <div class="negotiation_offer">
 
@@ -49,27 +49,27 @@
 
         <div class="offer_buttons">
           <%= link_to 'nueva',
-              edit_user_negotiation_path(current_user,negotiation_id(negotiation)),
+              edit_user_negotiation_path(current_user,id(negotiation)),
               :remote => true,
               :class => "btn btn-small btn-warning" %>
 
           <% if (proposal_can_sign?(negotiation_last_proposal(negotiation),current_user)) %>
             <%= link_to 'firmar',
-                sign_user_negotiation_path(id(current_user),negotiation_id(negotiation)),
+                sign_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
           <% if (proposal_can_confirm?(negotiation_last_proposal(negotiation),current_user)) %>
             <%= link_to 'confirmar',
-                confirm_user_negotiation_path(id(current_user),negotiation_id(negotiation)),
+                confirm_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
           <% if (proposal_can_cancel?(negotiation_last_proposal(negotiation),current_user)) %>
             <%= link_to 'cancel',
-                cancel_user_negotiation_path(id(current_user),negotiation_id(negotiation)),
+                cancel_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-danger" %>
           <% end %>
@@ -87,7 +87,7 @@
       <div class="dialog_head">
         <div class="dialogin">Conversation...</div>
         <%#= link_to "x",
-              user_negotiation_path(current_user,negotiation_id(negotiation)),
+              user_negotiation_path(current_user,id(negotiation)),
               :method => :delete,
               :confirm => "Are you sure?"
         %>
@@ -99,7 +99,7 @@
       </div>
 
       <div class="writting_box">
-        <%= form_for @negotiation, :url => addComment_user_negotiation_path(id(current_user), negotiation_id(negotiation)), :remote => true do |f| %>
+        <%= form_for @negotiation, :url => addComment_user_negotiation_path(id(current_user), id(negotiation)), :remote => true do |f| %>
           <div class="message">
             <input type="text" placeholder="write here" name="text">
           </div>
