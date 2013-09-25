@@ -4,7 +4,7 @@
       <div id="options">
         <div class="menu">
           <%= link_to "Eliminar Oferta",
-                user_offer_path(current_user,offer_id(offer)),
+                user_offer_path(current_user,id(offer)),
                 :method => :delete,
                 :confirm => "Are you sure?" %>
           <a href="#blank">Opcion 2</a>
@@ -45,14 +45,14 @@
       </div>
       <% if id(@user) == id(current_user) %>
         <%= form_for [current_user,@negotiation] do |form| %>
-        <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+        <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
           <div class="offer_button">
             <%= form.submit "negociar" %>
           </div>
         <% end %>
       <% else %>
         <%= form_for [current_user,@negotiation] do |form| %>
-          <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+          <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
           <div class="offer_button">
             <%= form.submit "para mi" %>
           </div>

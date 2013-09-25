@@ -1,6 +1,6 @@
 <% if (received_offers(@user).count != 0)%>
   <% received_offers(@user).reverse_each do |offer| %>
-    <div class="offer" id="<%= offer_id(offer) %>" data-id="<%= offer_datetime(offer) %>">
+    <div class="offer" id="<%= id(offer) %>" data-id="<%= offer_datetime(offer) %>">
 
       <div class="offer_header">
         <%= proposal_composer_first_name(offer.proposal) %>
@@ -45,14 +45,14 @@
           <% if id(@user) != proposal_composer_id(offer.proposal) %>
             <% if id(@user) == id(current_user) %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
-                <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+                <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
                 <div class="offer_button">
                   <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "negociar", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
                 </div>
               <% end %>
             <% else %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
-                <input type="hidden" name="offer_id" value="<%= offer_id(offer)%>" />
+                <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
                 <div class="offer_button">
                   <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
                 </div>
