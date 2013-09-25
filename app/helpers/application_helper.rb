@@ -102,7 +102,7 @@
     sheet = proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last
     sheet.first_name + " " + sheet.last_name
   end
-  def composer_products(proposal)
+  def composer_products(proposal) # FIX helper!!!!!
     proposal.left(proposal.composer_id)
   end
   # def receiver_id(proposal) #FIX: Not used
@@ -124,7 +124,7 @@
   end
   def can_confirm?(proposal, user) # FIX helper!!!!!
     #proposal.can_confirm?(user)
-    true
+    false
   end
   def can_cancel?(proposal, user) # FIX helper!!!!!
     #proposal.can_cancel?(user)
