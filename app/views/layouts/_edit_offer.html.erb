@@ -106,7 +106,7 @@
           </div>
           <div class="given" id="summary_offer_given_products_container">
             <% contador = 0 %>
-            <% offer_composer_products(@offer).each do |product| %>
+            <% composer_products(@offer).each do |product| %>
               <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                 <div class="quantity_container"><%= quantity(product) %></div>
                 <div class="product_image">

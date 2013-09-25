@@ -27,7 +27,7 @@
       </div>
       <div class="offer_items">
         <div class="recieved">
-          <% offer_composer_products(offer).each do |product| %>
+          <% composer_products(offer).each do |product| %>
             <div class="image_container">
               <div class="quantity_container"><%= quantity(product) %></div>
               <%= image(product) %>
