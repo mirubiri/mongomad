@@ -13,7 +13,7 @@
         <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
     </div>
     <div class="profile_image">
-      <%= link_to proposal_composer_image(@offer.proposal),
+      <%= link_to composer_image(@offer.proposal),
         :controller => "users",
         :action => "show",
         :id => composer_id(@offer.proposal)

@@ -32,7 +32,7 @@
 
     <div class="offer_info">
       <div class="profile_image">
-        <%= link_to proposal_composer_image(last_proposal(negotiation)),
+        <%= link_to composer_image(last_proposal(negotiation)),
           :controller => "users",
           :action => "show",
           :id => composer_id(last_proposal(negotiation))
