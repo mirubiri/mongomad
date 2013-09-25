@@ -50,7 +50,7 @@
   </div>
 
   <% if id(@user) =! proposal_composer_id(@offer.proposal) %>
-    <% if id(@user) == current_user.id %>
+    <% if id(@user) == id(current_user) %>
       <%= form_for [current_user,@negotiation] do |form| %>
         <input type="hidden" name="offer_id" value="<%= offer_id(@offer)%>" />
         <div class="offer_button">
@@ -69,7 +69,7 @@
     <%= link_to "edit",
             {:controller => "offers",
             :action => "edit",
-            :user_id => current_user.id,
+            :user_id => id(current_user),
             :id => @offer.id},
             {:remote => true,
              :id => "edit_offer_link"} %>

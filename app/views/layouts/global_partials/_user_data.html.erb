@@ -29,7 +29,7 @@
   <!--     <div class="address"><%#= user_country(@user).capitalize %></div> -->
     </div>
 
-    <% if id(@user) != current_user.id %>
+    <% if id(@user) != id(current_user) %>
       <div class="new_offer_button">
         <div class="button_wrapper">
           <%= link_to "Hazme una oferta!!!",

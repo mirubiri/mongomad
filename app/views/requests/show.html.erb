@@ -13,7 +13,7 @@
     <%= link_to "edit", 
             {:controller => "requests", 
             :action => "edit",
-            :user_id => current_user.id, 
+            :user_id => id(current_user), 
             :id => @request.id}, 
             {:remote => true,
              :id => "edit_request_link"} %>              

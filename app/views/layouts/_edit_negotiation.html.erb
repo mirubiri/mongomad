@@ -63,7 +63,7 @@
       </div>
     </div>
 
-    <% current_user.id == negotiation_last_proposal(@negotiation).user_composer_id ? usuario = "composer" : usuario = "receiver" %>
+    <% id(current_user) == negotiation_last_proposal(@negotiation).user_composer_id ? usuario = "composer" : usuario = "receiver" %>
 
     <% if(usuario == "composer") %>
       <input type="hidden" name="proposal[user_receiver_id]" value="<%= proposal_receiver_id(negotiation_last_proposal(@negotiation)) %>" />
