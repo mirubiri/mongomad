@@ -53,21 +53,21 @@
               :remote => true,
               :class => "btn btn-small btn-warning" %>
 
-          <% if (proposal_can_sign?(last_proposal(negotiation),current_user)) %>
+          <% if (can_sign?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'firmar',
                 sign_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (proposal_can_confirm?(last_proposal(negotiation),current_user)) %>
+          <% if (can_confirm?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'confirmar',
                 confirm_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (proposal_can_cancel?(last_proposal(negotiation),current_user)) %>
+          <% if (can_cancel?(last_proposal(negotiation),current_user)) %>
             <%= link_to 'cancel',
                 cancel_user_negotiation_path(id(current_user),id(negotiation)),
                 :remote => true,
