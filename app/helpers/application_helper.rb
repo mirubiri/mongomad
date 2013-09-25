@@ -17,7 +17,7 @@
     #image_tag(object.image)
     image_tag('/assets/images/sergio.jpg')
   end
-  def datetime(object)
+  def date_time(object)
     object.created_at
   end
 
