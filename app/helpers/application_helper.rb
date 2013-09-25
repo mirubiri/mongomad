@@ -74,7 +74,7 @@
   end
 
   # OFFER HELPERS 
-  def  message(offer)
+  def message(offer)
     offer.message
   end
 
