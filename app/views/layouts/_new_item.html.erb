@@ -1,5 +1,5 @@
 <div class="modal modal-item hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="new-item-form">
-  <%= form_for @item, :remote => true do |form| %>
+  <%= form_for [current_user,@item], :remote => true do |form| %>
     <div class="new_item_modal">
       <div class="new_item_title">
         NUEVO PRODUCTO

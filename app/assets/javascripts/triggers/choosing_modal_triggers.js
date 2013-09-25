@@ -1,15 +1,21 @@
 function loadModalScripts(){
 
   //alert("carga el script de la modal");
+  firstUserSelected();
 
   $('#new_offer_receiver_selector').on('click',function(e){
     e.preventDefault();
-    userSelection("receiver","composer");
+    userSelection("receiver","composer","message");
   });
 
   $('#new_offer_composer_selector').on('click',function(e){
     e.preventDefault();
-    userSelection("composer","receiver");
+    userSelection("composer","receiver","message");
+  });
+
+  $('#new_message_selector').on('click',function(e){
+    e.preventDefault();
+    userSelection("message","composer","receiver");
   });
 
 

@@ -1,16 +1,22 @@
 //Seleccion de usuario
-function userSelection(a,b){
+
+function firstUserSelected(){
+  $(".user_image").first().children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
+}
+
+function userSelection(a,b,c){
   enableUserSelected(a);
   disableUserSelected(b);
+  disableUserSelected(c);
 }
 
 function enableUserSelected(user){
-  $("#"+user+"_selector_area").addClass("user_selected");
+  $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
   $("#"+user+"_products_container").removeClass("container_invisible");
 }
 
 function disableUserSelected(user){
-  $("#"+user+"_selector_area").removeClass("user_selected");
+  $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px #888, 0px -3px 5px #888');
   $("#"+user+"_products_container").addClass("container_invisible");
 }
 
@@ -23,6 +29,10 @@ function getElementModifiedClass(){
   else{
     return "offer";
   }
+}
+
+function paint_overmoused_image(id){
+  //$("#overview_image").load(<%=  %>);
 }
 
 // Añade la item al sumario
@@ -38,7 +48,7 @@ function isitemInOffer(container, id){
   if ( ($(""+container+" > div[item_id='"+id+"']").length > 0) || ($(""+container+" > .destroy_input[destroy_product_item_id='"+id+"']").length > 0) ) {
     return true;
   } else {
-    return false
+    return false;
   }
 }
 

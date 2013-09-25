@@ -37,97 +37,88 @@
           img{
             @include proportions(36px,36px);
             @include border-radius(18px, 18px);
+            box-shadow: 0px 3px 5px #888, 0px -3px 5px #888;
           }
         }
+
         .description{
           margin-top: 10px;
         }
       }
+
     }
   }
 
-  .product_container{
+  .products_container{
     @include box-sizing(border-box);
     @include fixed_width(100%,100%,100%);
-    @include fixed_height(630px,630px,630px);
+    @include fixed_height(635px,635px,635px);
     background-color: white;
     float: left;
     overflow: visible;
     border: 1px solid #D4D6D5;
-    padding: 10px;
 
-    .product{
-      @include big_images_style;
-      @include proportions(125px,125px);
-      @include border-radius(5px, 5px);
-      border: $borde1px;
+    .products_list{
       float: left;
-      margin:5px 0px 0px 5px;
-      overflow: none;
+      @include box-sizing(border-box);
+      @include fixed_width(100%,100%,100%);
+      @include fixed_height(480px,480px,480px);
+      padding: 10px;
+      overflow: auto;
 
-      .product_image{
-        overflow: auto;
-        img{
-          @include high-quality-image;
-          @include proportions(123px,123px);
-        }
-      }
-      .product_title{
-        @include center-horizontally(126px);
-        text-align: center;
-      }
-    }
-  }
-
-  .his_products{
-    @extend .product_of_user_selected;
-
-    .money{
-      textarea{
-      }
-    }
-
-    .product_container{
-      .product{
-        .product_image{
+     .item{
+      width: 150px;
+      .item_image{
           img{
-          }
-        }
-        .product_title{
-          input{
+            @include proportions(148px,148px);
           }
         }
       }
     }
-  }
 
-  .my_products{
-    @extend .product_of_user_selected;
+    .product_overview{
+      @include fixed_height(150px,150px,150px);
+      float: left;
+      width: 100%;
+      border-top: 1px solid #dddddd;
+      padding: 10px;
 
-    .money{
-      textarea{
+      .overview_image{
+        @include box-sizing(border-box);
+        float: left;
+        @include proportions(130px,130px);
+        border: 1px solid #dddddd;
       }
+      .overview_description{
+        @include box-sizing(border-box);
+        float: left;
+        margin-left: 5px;
+        @include proportions(350px,130px);
+        border-top: 1px solid #dddddd;
+
+        .overview_description_title{
+          float: left;
+          width: 100%;
+          height: 30px;
+          margin-bottom: 5px;
+          border: 1px solid #dddddd;
+        }
+        .overview_description_text{
+          float: left;
+          width: 100%;
+          height: 90px;
+          border: 1px solid #dddddd;
+        }
+      }
+
     }
 
-    .product_container{
-      .product{
-        .product_image{
-          img{
-          }
-        }
-        .product_title{
-          input{
-          }
-        }
-      }
-    }
   }
 }
 
 .offer_summary{
   @include box-sizing(border-box);
   @include fixed_width(30%,30%,30%);
-  @include fixed_height(700px,700px,700px);
   float: left;
   background-color: transparent;
   overflow: visible;
@@ -138,21 +129,22 @@
     @include container_options;
     @include offer_header;
     @include offer_products;
-    @include center-horizontally(90%);
-    height: 670px;
+    @include offer_info;
+    @include box-sizing(border-box);
+    float: left;
 
     .offer_header{
       @include proportions(100%,20px);
-      overflow: hidden;
+      float: left;
       margin-bottom: 5px;
       text-align: center;
       font-size: 12px;
       color: grey;
     }
 
-    .offer_items{
-      width: 270px;
-      height: 380px;
+    .offer_products{
+      @include proportions(100%,475px);
+      float: left;
       overflow-y: auto;
     }
 
@@ -179,11 +171,6 @@
 
     @include box-sizing(border-box);
   }
-}
-
-
-.user_selected{
-  background-color: grey;
 }
 
 .container_invisible{
