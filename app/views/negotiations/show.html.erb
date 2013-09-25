@@ -11,7 +11,7 @@
 
     <div class="offer_items">
       <div class="recieved">
-        <% proposal_composer_products(last_proposal(negotiation)).each do |product| %>
+        <% composer_products(last_proposal(negotiation)).each do |product| %>
           <div class="image_container">
             <%= image(product) %>
             <div class="quantity_container">

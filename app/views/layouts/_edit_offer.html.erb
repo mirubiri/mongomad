@@ -48,7 +48,7 @@
           <button id="dineroOfrecesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="my_product_container">
-          <% proposal_composer_products(@offer.proposal).each do |product| %>
+          <% composer_products(@offer.proposal).each do |product| %>
             <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= stock(product.item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">

@@ -111,7 +111,7 @@
             </div>
             <div class="given" id="summary_offer_given_products_container">
               <% contador = 0 %>
-              <% proposal_composer_products(last_proposal(@negotiation)).each do |product| %>
+              <% composer_products(last_proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
@@ -160,7 +160,7 @@
             </div>
             <div class="recieved" id="summary_offer_given_products_container">
               <% contador = 0 %>
-              <% proposal_composer_products(last_proposal(@negotiation)).each do |product| %>
+              <% composer_products(last_proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
