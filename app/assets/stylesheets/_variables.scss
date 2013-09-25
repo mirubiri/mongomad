@@ -366,6 +366,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     overflow: visible;
     background-color: #f3f3f3;
     border-top: 1px solid #dddddd;
+    padding-bottom: 10px;
 
     .profile_image{
       @include center-horizontally(50px);
@@ -375,6 +376,15 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       position: relative;
       top:-28px;
       border: 1px solid #dddddd;
+
+      img{
+        @include high-quality-image;
+        @include proportions(46px,46px);
+        @include border-radius(23px, 23px);
+        margin-left: 2px;
+        margin-top: 2px;
+        border: 1px solid #dddddd;
+      }
 
       a{
         img{
@@ -389,7 +399,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     }
 
     .description{
-      @include center-horizontally(90%);
+      @include center-horizontally(100%);
       position: relative;
       top:-20px;
       left:0px;
@@ -398,17 +408,45 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       line-height: normal;
 
       .offer_message{
+        @include box-sizing(border-box);
         float: left;
         width: 100%;
         color: #443f3f;
+        padding: 0px 20px;
+
+        textarea{
+          @include box-sizing(border-box);
+          border-style: none;
+          border-color: transparent;
+          background-color: transparent;
+          width: 100%;
+          resize: none;
+        }
       }
     }
 
     .offer_buttons{
       @include center-horizontally(90%);
-      padding: 5px;
-      text-align: center;
-      form{margin-bottom: 0px;}
+      @include box-sizing(border-box);
+      margin-bottom: 10px;
+      overflow: auto;
+
+      .new_negotiation{
+        margin-bottom: 0px;
+        input{width: 100%;}
+      }
+
+      input{
+        @include box-sizing(border-box);
+        float: left;
+        width: 65%;
+      }
+
+      button{
+        @include box-sizing(border-box);
+        float: right;
+        width: 30%;
+      }
     }
 
     .offer_date{

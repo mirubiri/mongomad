@@ -46,16 +46,12 @@
             <% if id(@user) == id(current_user) %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
-                <div class="offer_button">
-                  <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "negociar", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
-                </div>
+                <%= form.submit "negociar", :url => user_negotiations_path(@user), :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %>
               <% end %>
             <% else %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
-                <div class="offer_button">
-                  <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
-                </div>
+                <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
               <% end %>
             <% end %>
           <% else %>

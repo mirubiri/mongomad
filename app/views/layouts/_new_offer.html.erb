@@ -3,7 +3,7 @@
     <div class="products_area">
       <div class="title">
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
-          <div class="user_products_selector user_selected" id="receiver_selector_area">
+          <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
               <%= image(@user) %>
             </div>
@@ -16,27 +16,39 @@
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
-          <div class="user_products_selector" id="composer_selector_area">
+        <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
+          <div class="user_products_selector" id="message_selector_area">
             <div class="user_image">
               <%= image(@user) %>
             </div>
           </div>
         </a>
       </div>
-
-      <div class="product_container">
-        <% items(@user).each do |item| %>
-            <div class="product" item_id="<%= id(item) %>" stock="<%= stock(item) %>">
-              <div class="quantity_container"><%= stock(item) %></div>
-              <div class="product_image">
+      <div class="products_container">
+        <div class="products_list">
+          <% items(@user).each do |item| %>
+            <div class="item" id="<%= id(item) %>">
+              <div class="item_image">
                 <%= image(item) %>
               </div>
-              <div class="product_title">
-                <%= name(item) %>
+              <div class="item_quantity">
+                <div class="quantity_number"><%= stock(item) %></div>
+              </div>
+              <div class="item_description">
+                <div class="text">
+                  <%= description(item) %>
+                </div>
               </div>
             </div>
           <% end %>
+        </div>
+        <div class="product_overview">
+          <div class="overview_image" id="overview_image">Imagen</div>
+          <div class="overview_description">
+            <div class="overview_description_title" id="overview_description_title">Titulo del producto</div>
+            <div class="overview_description_text" id="overview_description_text">Descripcion del producto</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -49,7 +61,7 @@
         <div class="offer_header">
           <%= nick(@user).capitalize %>
         </div>
-        <div class="offer_items">
+        <div class="offer_products">
           <div class="recieved" id="summary_offer_received_products_container">
               <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
