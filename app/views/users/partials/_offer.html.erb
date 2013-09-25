@@ -35,7 +35,7 @@
           <% end %>
         </div>
         <div class="given">
-          <% offer_receiver_products(offer).each do |product| %>
+          <% receiver_products(offer).each do |product| %>
             <div class="image_container">
               <div class="quantity_container"><%= quantity(product) %></div>
               <%= image(product) %>
