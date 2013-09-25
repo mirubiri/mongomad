@@ -26,7 +26,7 @@
       </div>
 
       <div class="product_container">
-        <% user_items(@user).each do |item| %>
+        <% items(@user).each do |item| %>
             <div class="product" item_id="<%= item_id(item) %>" stock="<%= item_stock(item) %>">
               <div class="quantity_container"><%= item_stock(item) %></div>
               <div class="product_image">
