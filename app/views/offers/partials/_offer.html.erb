@@ -1,6 +1,6 @@
 <% if (received_offers(@user).count != 0)%>
   <% received_offers(@user).reverse_each do |offer| %>
-    <div class="offer" id="<%= id(offer) %>" data-id="<%= offer_datetime(offer) %>">
+    <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
 
       <div class="offer_header">
         <%= proposal_composer_first_name(offer.proposal) %>
@@ -75,7 +75,7 @@
         </div>
         <!--
         <div class="offer_date hidden">
-          <%#= offer_datetime(offer) %>
+          <%#= date_time(offer) %>
         </div>
         -->
       </div>
