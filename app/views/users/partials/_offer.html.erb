@@ -1,6 +1,6 @@
 <% if (user_offers(@user).count != 0)%>
   <% @offers.each do |offer| %>
-    <div class="offer" id="<%= offer_composer_id(offer) %>">
+    <div class="offer" id="<%= composer_id(offer) %>">
       <div id="options">
         <div class="menu">
           <%= link_to "Eliminar Oferta",
@@ -18,7 +18,7 @@
           <%= link_to offer_composer_image(offer),
             :controller => "users",
             :action => "show",
-            :id => offer_composer_id(offer)
+            :id => composer_id(offer)
           %>
         </div>
         <div class="description">
