@@ -89,7 +89,7 @@
           <div class="offer_items">
             <div class="recieved" id="summary_offer_received_products_container">
               <% contador = 0 %>
-              <% proposal_receiver_products(last_proposal(@negotiation)).each do |product| %>
+              <% receiver_products(last_proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
@@ -138,7 +138,7 @@
           <div class="offer_items">
             <div class="given" id="summary_offer_received_products_container">
               <% contador = 0 %>
-              <% proposal_receiver_products(last_proposal(@negotiation)).each do |product| %>
+              <% receiver_products(last_proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= product_item_id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">

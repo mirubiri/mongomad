@@ -29,7 +29,7 @@
           <button id="dineroPidesBotonAgregar">add</button>
         </div>
         <div class="product_container" id="his_product_container">
-          <% proposal_receiver_products(@offer.proposal).each do |product| %>
+          <% receiver_products(@offer.proposal).each do |product| %>
             <div class="product" item_id="<%= item_id(product.item) %>" stock="<%= stock(product.item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
@@ -83,7 +83,7 @@
         <div class="offer_items">
           <div class="recieved" id="summary_offer_received_products_container">
             <% contador = 0 %>
-            <% proposal_receiver_products(@offer.proposal).each do |product| %>
+            <% receiver_products(@offer.proposal).each do |product| %>
               <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                 <div class="quantity_container"><%= quantity(product) %></div>
                 <div class="product_image">

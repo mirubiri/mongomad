@@ -21,7 +21,7 @@
         <% end %>
       </div>
       <div class="given">
-        <% proposal_receiver_products(last_proposal(negotiation)).each do |product| %>
+        <% receiver_products(last_proposal(negotiation)).each do |product| %>
           <div class="image_container">
             <%= image(product) %>
             <div class="quantity_container"><%= quantity(product) %></div>
