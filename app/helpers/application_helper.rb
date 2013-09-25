@@ -111,6 +111,10 @@
   # def receiver_first_name(proposal) #FIX: Not used
   #   proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
   # end
+  # def receiver_full_name(proposal)
+  #   sheet = proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last
+  #   sheet.first_name + " " + sheet.last_name
+  # end
   def receiver_products(proposal) # FIX helper!!!!!
     proposal.right(proposal.receiver_id)
   end
