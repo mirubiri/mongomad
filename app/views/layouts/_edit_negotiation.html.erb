@@ -2,7 +2,7 @@
   <%= form_for [current_user,@negotiation], :remote => true do |form| %>
     <div class="products_area">
       <div class="title" id="negotiators_header">
-        <a href="#blank" id="new_offer_receiver_selector" value="<%= proposal_receiver_id(last_proposal(@negotiation)) %>">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%= receiver_id(last_proposal(@negotiation)) %>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
               <%= proposal_receiver_image(last_proposal(@negotiation)) %>
@@ -12,7 +12,7 @@
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%= proposal_composer_id(last_proposal(@negotiation)) %>">
+        <a href="#blank" id="new_offer_composer_selector" value="<%= composer_id(last_proposal(@negotiation)) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
               <%= proposal_composer_image(last_proposal(@negotiation)) %>
@@ -66,9 +66,9 @@
     <% id(current_user) == last_proposal(@negotiation).user_composer_id ? usuario = "composer" : usuario = "receiver" %>
 
     <% if(usuario == "composer") %>
-      <input type="hidden" name="proposal[user_receiver_id]" value="<%= proposal_receiver_id(last_proposal(@negotiation)) %>" />
+      <input type="hidden" name="proposal[user_receiver_id]" value="<%= receiver_id(last_proposal(@negotiation)) %>" />
     <% else %>
-      <input type="hidden" name="proposal[user_receiver_id]" value="<%= proposal_composer_id(last_proposal(@negotiation)) %>" />
+      <input type="hidden" name="proposal[user_receiver_id]" value="<%= composer_id(last_proposal(@negotiation)) %>" />
     <% end %>
 
     <input type="hidden" name="proposal[money_attributes][user_id]" value="nil" id="usuario_id" />

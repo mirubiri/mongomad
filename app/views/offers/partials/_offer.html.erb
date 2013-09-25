@@ -32,7 +32,7 @@
           <%= link_to proposal_composer_image(offer.proposal),
             :controller => "users",
             :action => "show",
-            :id => proposal_composer_id(offer.proposal)
+            :id => composer_id(offer.proposal)
           %>
         </div>
         <div class="description">
@@ -42,7 +42,7 @@
         </div>
 
         <div class="offer_buttons" id="offer_buttons_navigation">
-          <% if id(@user) != proposal_composer_id(offer.proposal) %>
+          <% if id(@user) != composer_id(offer.proposal) %>
             <% if id(@user) == id(current_user) %>
               <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                 <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
