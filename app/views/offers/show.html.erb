@@ -33,7 +33,7 @@
       <% proposal_composer_products(@offer.proposal).each do |product| %>
         <div class="image_container">
           <%= product_image(product) %>
-          <div class="quantity_container"><%= product_quantity(product) %></div>
+          <div class="quantity_container"><%= quantity(product) %></div>
           <div class="artistic_layer_big"></div>
         </div>
       <% end %>
@@ -42,7 +42,7 @@
       <% proposal_receiver_products(@offer.proposal).each do |product| %>
         <div class="image_container">
           <%= product_image(product) %>
-          <div class="quantity_container"><%= product_quantity(product) %></div>
+          <div class="quantity_container"><%= quantity(product) %></div>
           <div class="artistic_layer_small"></div>
         </div>
       <% end %>
