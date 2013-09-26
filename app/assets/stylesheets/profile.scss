@@ -4,165 +4,188 @@
   @include fixed_width(99%,99%,99%);
   float:left;
   overflow:auto;
-  margin-left:5px;  
+  margin-left:5px;
 
-  .person_info{
-    @include proportions(49%,252px);
-    @include border_Element_into_container;
+  .personal_data{
+    @include proportions(100%,400px);
     @include box-sizing(border-box);
     float: left;
-    overflow:auto;
+    overflow: auto;
     margin-bottom:15px;
     border:$borde1px;
     background-color: white;
 
-    .title{
+    .person_info{
+      @include proportions(50%,252px);
+      @include border_Element_into_container;
+      @include box-sizing(border-box);
+      border-radius: 0px;
+      border: none;
       float: left;
-      width: 100%;
-      height: 30px;
-      background-color: #777777;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      padding-top: 3px;
-      margin-bottom: 10px;
-    }
-
-    .info_side{
-      @include box-sizing(border-box);
-      float:left;
-      margin-bottom: 10px;
-      padding-left: 10px;
-      width:50%;
-
-      .name_age{
-        float: left;
-        width:90%;
-        margin: 0px 0px 8px 0px;
-        font:{
-          weight:bold;
-          size:12px;
-          family:$verdana;
-        }
-      }
-
-      .info_element{
-        float:left;
-        width:90%;
-        margin-bottom: 5px;
-
-        .info_element_title{
-          float: left;
-          margin: 0px 5px 0px 0px;
-          width:100%;
-          font:{
-            weight:bold;
-            size:10px;
-            family:$verdana;
-          }
-        }
-        .info_element_description{
-          float: left;
-          width:100%;
-          font:{
-            size:10px;
-            family:$verdana;
-          }
-        }
-      }
-    }
-
-    .image_side{
-      @include box-sizing(border-box);
-      width:50%;
-      float:left;
-      margin-top:10px 0px 10px 0px;
-
-      img{
-        @include high-quality-image;
-        @include proportions(160px,160px);
-        float:left;
-        margin: 5px 5px 10px 0px;
-        border:$borde1px;        
-      }
-      button{
-        float:right;
-        width: 80%;
-        margin-right: 38px;
-      }
-    }
-  }
-  
-
-  .statistics{
-    @include proportions(49%,252px);
-    @include border_Element_into_container;
-    @include box-sizing(border-box);
-    float:right;
-    overflow:auto;
-    margin-bottom:15px;
-    border:$borde1px;
-    background-color: white;
-
-    .title{
-      float: left;
-      width: 100%;
-      height: 30px;
-      background-color: #777777;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      padding-top: 3px;
-      margin-bottom: 10px;
-    }
-
-    .result_side{
-      @include box-sizing(border-box);
-      float:left;
-      padding-left: 10px;
-      margin-bottom: 10px;
-      width:30%;
-      
-      .result_title{
-        margin: 0px 0px 5px 0px;
-        font-weight:bold;
-        font:{
-            weight:italic;
-            size:10px;
-            family:$verdana;
-        }
-      }
-      .result_number{
-        margin: 0px 0px 10px 0px;
-        font:{
-            weight:bold;
-            size:18px;
-            family:$verdana;
-        }
-      }
-    }
-
-    .graphique_side{
-      @include box-sizing(border-box);
-      float:left;
       overflow:auto;
-      margin:5px 0px 10px 0px;
-      width:70%;
+      background-color: white;
 
-      .graphique{
-        @include proportions(220px,220px);
-        @include center-horizontally(80%);
-        border:$borde1px;
+      .title{
+        @include box-sizing(border-box);
+        float: left;
+        width: 100%;
+        height: 30px;
+        background-color: #dddddd;
+        color: #2980b9;
+        font-weight: bold;
+        padding: 3px 10px 0px 10px;
+        text-align: left;
+      }
+
+      .image_side{
+        @include box-sizing(border-box);
+        padding: 10px 10px 0px 10px;
+        width:100%;
+        float:left;
+
         img{
           @include high-quality-image;
-          @include proportions(inherit,inherit);
+          @include proportions(120px,120px);
+          @include border-radius(10px);
+          float:left;
+          margin: 5px 5px 10px 0px;
+          border:$borde1px;
+        }
+
+        .name_address{
+          float: left;
+          width: 250px;
+          margin: 0px 0px 0px 5px;
+          font:{
+            weight:bold;
+            size:10px;
+            family:$verdana;
+          }
+        }
+
+
+      }
+
+      .info_side{
+        @include box-sizing(border-box);
+        float:left;
+        width: 100%;
+        padding: 10px;
+
+        .info_element{
+          float:left;
+          width:100%;
+          margin-bottom: 5px;
+
+          .info_element_title{
+            float: left;
+            margin: 0px 5px 0px 0px;
+            font:{
+              weight:bold;
+              size:10px;
+              family:$verdana;
+            }
+          }
+          .info_element_description{
+            float: left;
+            font:{
+              size:10px;
+              family:$verdana;
+            }
+          }
+        }
+
+        a{
+          float:left;
+          margin-top: 20px;
+        }
+
+      }
+    }
+
+
+    .statistics{
+      @include proportions(50%,252px);
+      @include box-sizing(border-box);
+      float: left;
+      border-radius: 0px;
+      border: none;
+      overflow:auto;
+      background-color: white;
+
+      .title{
+        @include box-sizing(border-box);
+        float: left;
+        width: 100%;
+        height: 30px;
+        background-color: #dddddd;
+        color: #2980b9;
+        font-weight: bold;
+        padding: 3px 10px 0px 10px;
+        text-align: right;
+      }
+
+      .result_side{
+        @include box-sizing(border-box);
+        float:left;
+        padding: 10px;
+        margin-bottom: 10px;
+        width:100%;
+
+        .result_block{
+          @include box-sizing(border-box);
+          float:left;
+          width: 50%;
+
+          .result_title{
+            @include box-sizing(border-box);
+            float:left;
+            width: 100%;
+            font-weight:bold;
+            font:{
+                weight:italic;
+                size:10px;
+                family:$verdana;
+            }
+          }
+          .result_number{
+            @include box-sizing(border-box);
+            float:left;
+            width: 100%;
+            color: #2980b9;
+            font:{
+                weight:bold;
+                size:10px;
+                family:$verdana;
+            }
+          }
+        }
+
+
+
+      }
+
+      .graphique_side{
+        @include box-sizing(border-box);
+        float:left;
+        width:80%;
+        padding: 10px;
+
+        .graphique{
+          float: left;
+          width: 350px;
+          height: 160px;
+          border:$borde1px;
+
+          img{
+            @include high-quality-image;
+          }
         }
       }
-    }            
+    }
   }
 
   .comments_recieved{
-    @include border_Element_into_container;
     @include box-sizing(border-box);
     overflow:auto;
     margin-bottom:15px;
@@ -174,40 +197,19 @@
       float: left;
       width: 100%;
       height: 30px;
-      background-color: #777777;
-      color: white;
+      background-color: #dddddd;
+      color: #2980b9;
       font-weight: bold;
       text-align: center;
       padding-top: 3px;
       margin-bottom: 10px;
     }
 
-
-    #data_list{
+    #comment_list{
       @include box-sizing(border-box);
       float: left;
-      margin: 0px 0px 10px 0px;
-      width:30%;
-      padding-left: 10px;
-      border-right:none;
-      font:{
-        weight:bolder;
-        size:14px;
-        family:$verdana;
-      }
-
-      .data_numbers{
-        .data_element{
-        }
-      }
-    }            
-    #comment_list{ 
-      @include box-sizing(border-box);             
-      float: left;
-      margin: 0px 0px 10px 0px;
-      padding-left:15px;
-      width:70%;
-      border-left:none;
+      width: 100%;
+      padding: 10px;
       font:{
         weight:bolder;
         size:14px;
@@ -222,18 +224,18 @@
         .comment_header{
           @include proportions(100%,60px);
           overflow: hidden;
-          margin-bottom: 5px;                           
+          margin-bottom: 5px;
 
           .profile_image{
             @include relative($top:0px,$left:8px);
             @include border-radius(5px, 5px);
-            @include proportions(50px,50px);           
+            @include proportions(50px,50px);
             border: $borde1px;
           }
 
           .description{
             @include relative($top:-52px,$left:67px);
-            @include proportions(400px,50px);            
+            @include proportions(400px,50px);
             border: $borde1px;
 
             textarea{
