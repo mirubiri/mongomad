@@ -1,22 +1,23 @@
 <div class="modal modal-profile hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="edit-profile-form">
-  <%= form_for current_user.profile, :remote => true do |form| %>
+  <%= form_for current_user, :remote => true do |form| %>
     <div class="profile_editor">
-          
+
       <div class="title">
         Profile Editor
       </div>
 
-      <div class="person_info">       
+      <%= form.fields_for :profile do |profile| %>
+      <div class="person_info">
         <div class="name_age">
           <div class="info_element_title">Nombre:</div>
-          <%= form.text_area :name, :size => "1x1" %>
+          <%= form.text_area :nick, :size => "1x1" %>
           <div class="info_element_title">Birthdate:</div>
-          <%= form.text_area :birth_date, :size => "1x1" %>
+          <%= profile.text_area :birth_date, :size => "1x1" %>
         </div>
         <div class="info_element">
           <div class="info_element_title">Direction:</div>
           <div class="info_element_description">
-            <%= form.text_area :country, :size => "1x1" %>
+            <%#= form.text_area :country, :size => "1x1" %>
           </div>
         </div>
         <div class="info_element">
@@ -28,24 +29,27 @@
         <div class="info_element">
           <div class="info_element_title">Phones:</div>
           <div class="info_element_description">
-            <%= form.text_area :phone_number, :size => "1x1" %>
+            <%#= form.text_area :phone_number, :size => "1x1" %>
           </div>
         </div>
         <div class="info_element">
           <div class="info_element_title">Web:</div>
           <div class="info_element_description">
-            <%= form.text_area :website, :size => "1x1" %>
+            <%#= form.text_area :website, :size => "1x1" %>
           </div>
-        </div>        
+        </div>
       </div>
 
       <div class="image_side">
-        <%= form.file_field :image,
+        <%#= profile.file_field :image,
         :id => "profile_image",
         :onchange => "profileImageSelection(this);" %>
-        <img class="profile_image_container" id="profile_image_container" src="<%= @user.profile.image %>">
+        <div class="profile_image_container" id="profile_image_container"><%= image(@user.profile) %></div>
       </div>
-            
+
+      <% end %>
+
+
     </div>
 
     <div class="action">

@@ -29,7 +29,7 @@ $(function(){
 
 //Control de la redireccion url cuando negociamos una oferta
 $(function(){
-    $("#negotiate_button").on("click", function(event){
+    $("#offer_buttons_navigation form").on("click",'input', function(event){
         alert("esto funciona");
         event.preventDefault();
 
