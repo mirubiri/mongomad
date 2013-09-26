@@ -2,10 +2,10 @@
   <%= form_for [current_user,@offer], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
-        <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%= id(current_user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= image(@user) %>
+              <%= image(current_user) %>
             </div>
           </div>
         </a>
@@ -26,21 +26,43 @@
       </div>
       <div class="products_container">
         <div class="products_list">
-          <% items(@user).each do |item| %>
-            <div class="item" id="<%= id(item) %>">
-              <div class="item_image">
-                <%= image(item) %>
-              </div>
-              <div class="item_quantity">
-                <div class="quantity_number"><%= stock(item) %></div>
-              </div>
-              <div class="item_description">
-                <div class="text">
-                  <%= description(item) %>
+          <div id="receiver_content_area">
+            <% items(@user).each do |item| %>
+              <div class="item" id="<%= id(item) %>">
+                <div class="item_image">
+                  <%= image(item) %>
+                </div>
+                <div class="item_quantity">
+                  <div class="quantity_number"><%= stock(item) %></div>
+                </div>
+                <div class="item_description">
+                  <div class="text">
+                    <%= description(item) %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+          <div id="composer_content_area" class="hidden_container">
+            <% items(current_user).each do |item| %>
+              <div class="item" id="<%= id(item) %>">
+                <div class="item_image">
+                  <%= image(item) %>
+                </div>
+                <div class="item_quantity">
+                  <div class="quantity_number"><%= stock(item) %></div>
+                </div>
+                <div class="item_description">
+                  <div class="text">
+                    <%= description(item) %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div id="message_content_area" class="hidden_container">
+            Aqui vendra el text area de la oferta
+          </div>
         </div>
         <div class="product_overview">
           <div class="overview_image" id="overview_image">Imagen</div>

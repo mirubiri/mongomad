@@ -5,6 +5,8 @@ function firstUserSelected(){
 }
 
 function userSelection(a,b,c){
+  $("#composer_content_area").removeClass('hidden_container');
+  $("#message_content_area").removeClass('hidden_container');
   enableUserSelected(a);
   disableUserSelected(b);
   disableUserSelected(c);
@@ -13,11 +15,13 @@ function userSelection(a,b,c){
 function enableUserSelected(user){
   $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
   $("#"+user+"_products_container").removeClass("container_invisible");
+  $("#"+user+"_content_area").show();
 }
 
 function disableUserSelected(user){
   $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px #888, 0px -3px 5px #888');
   $("#"+user+"_products_container").addClass("container_invisible");
+  $("#"+user+"_content_area").hide();
 }
 
 function getElementModifiedClass(){

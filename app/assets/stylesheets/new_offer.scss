@@ -66,6 +66,14 @@
       padding: 10px;
       overflow: auto;
 
+      #composer_content_area{
+        overflow: auto;
+      }
+
+      #receiver_content_area{
+        overflow: auto;
+      }
+
      .item{
       width: 150px;
       .item_image{
