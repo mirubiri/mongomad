@@ -43,8 +43,9 @@
   # def language(user) #FIX: Not used
   #   user.profile.language
   # end
-  def birth_date(user)
-    user.profile.birth_date
+  def birth_date(user) # FIX helper!!!!!
+    '12/12/2012'
+    #user.profile.birth_date
   end
   # def country(user) #FIX: Does not exist in the model (at the moment)!!!
   #   'apatrida'
