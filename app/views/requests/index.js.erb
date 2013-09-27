@@ -4,6 +4,9 @@ stopTimers(timers);
 
 
 //Contenido que debe cargar esta seccion: PETICIONES
+if ($("#user_alerts_list").length){
+  $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
+}
 $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 $("#ppal_container").html('<%= escape_javascript(render @requests) %>');
 
