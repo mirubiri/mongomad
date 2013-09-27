@@ -7,8 +7,8 @@
   margin-left:5px;
 
   .personal_data{
-    @include proportions(100%,400px);
     @include box-sizing(border-box);
+    width: 100%;
     float: left;
     overflow: auto;
     margin-bottom:15px;
@@ -16,9 +16,8 @@
     background-color: white;
 
     .person_info{
-      @include proportions(50%,252px);
-      @include border_Element_into_container;
       @include box-sizing(border-box);
+      width: 50%;
       border-radius: 0px;
       border: none;
       float: left;
@@ -30,11 +29,15 @@
         float: left;
         width: 100%;
         height: 30px;
-        background-color: #dddddd;
+        background-color: #eeeeee;
         color: #2980b9;
-        font-weight: bold;
-        padding: 3px 10px 0px 10px;
+        padding: 5px 10px 0px 10px;
         text-align: left;
+        font:{
+          weight:bold;
+          size:14px;
+          family:$verdana;
+        }
       }
 
       .image_side{
@@ -105,8 +108,8 @@
 
 
     .statistics{
-      @include proportions(50%,252px);
       @include box-sizing(border-box);
+      width: 50%;
       float: left;
       border-radius: 0px;
       border: none;
@@ -118,11 +121,15 @@
         float: left;
         width: 100%;
         height: 30px;
-        background-color: #dddddd;
+        background-color: #eeeeee;
         color: #2980b9;
-        font-weight: bold;
-        padding: 3px 10px 0px 10px;
+        padding: 5px 10px 0px 10px;
         text-align: right;
+        font:{
+          weight:bold;
+          size:14px;
+          family:$verdana;
+        }
       }
 
       .result_side{
@@ -197,12 +204,16 @@
       float: left;
       width: 100%;
       height: 30px;
-      background-color: #dddddd;
+      background-color: #eeeeee;
       color: #2980b9;
-      font-weight: bold;
       text-align: center;
-      padding-top: 3px;
+      padding-top: 8px;
       margin-bottom: 10px;
+      font:{
+        weight:bold;
+        size:14px;
+        family:$verdana;
+      }
     }
 
     #comment_list{
@@ -217,9 +228,11 @@
       }
 
       .comment{
+        @include box-sizing(border-box);
         float:left;
+        padding: 5px;
         margin-bottom:15px;
-        width:520px;
+        width:50%;
 
         .comment_header{
           @include proportions(100%,60px);
@@ -227,25 +240,66 @@
           margin-bottom: 5px;
 
           .profile_image{
-            @include relative($top:0px,$left:8px);
-            @include border-radius(5px, 5px);
+            @include box-sizing(border-box);
+            @include border-radius(25px, 25px);
             @include proportions(50px,50px);
+            float: left;
             border: $borde1px;
+            img{
+              @include border-radius(25px, 25px);
+              @include proportions(50px,50px);
+            }
           }
 
           .description{
-            @include relative($top:-52px,$left:67px);
-            @include proportions(400px,50px);
-            border: $borde1px;
+            @include box-sizing(border-box);
+            @include proportions(80%,30px);
+            padding-left: 10px;
+            float: left;
 
-            textarea{
+            .username_and_valuation{
+              @include box-sizing(border-box);
+              float: left;
+              width: 100%;
+
+              .user_name{
+                @include box-sizing(border-box);
+                float: left;
+                width: 60%;
+                font:{
+                  weight:bold;
+                  size:10px;
+                  family:$verdana;
+                }
+              }
+
+              .user_valuation{
+                @include box-sizing(border-box);
+                float: left;
+                width: 40%;
+                text-align: left;
+                padding: 0px 5px;
+
+                font:{
+                  weight: bold;
+                  size:8px;
+                  family:$verdana;
+                }
+              }
+
+            }
+
+            .comment_user_text{
               float:left;
-              overflow: hidden;
-              width: 50%;
-              border:none;
-              font-size: 11px;
-              resize: none;
-              maxlenght: 135;
+              width: 100%;
+              height: 30px;
+              border: $borde1px;
+              text-align: left;
+              font:{
+                weight: normal;
+                size:9px;
+                family:$verdana;
+              }
             }
           }
         }
