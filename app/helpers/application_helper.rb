@@ -1,6 +1,6 @@
  module ApplicationHelper
 
-  # COMMON HELPERS 
+  # COMMON HELPERS
   def id(object)
     object.id
   end
@@ -21,7 +21,7 @@
     object.created_at
   end
 
-  # USER HELPERS 
+  # USER HELPERS
   def nick(user)
     user.nick
   end
@@ -69,22 +69,27 @@
     user.deals
   end
 
-  # ITEM HELPERS 
+  # ALERT HELPERS
+  def alerts(user)
+    4
+  end
+
+  # ITEM HELPERS
   def stock(item)
     item.stock
   end
 
-  # OFFER HELPERS 
+  # OFFER HELPERS
   def message(offer)
     offer.message
   end
 
-  # PRODUCT HELPERS 
+  # PRODUCT HELPERS
   def quantity(product)
     product.quantity
   end
 
-  # NEGOTIATION HELPERS 
+  # NEGOTIATION HELPERS
   def messages(negotiation)
     negotiation.messages
   end
@@ -92,7 +97,7 @@
     negotiation.proposals.last
   end
 
-  # PROPOSAL HELPERS 
+  # PROPOSAL HELPERS
   def composer_id(proposal)
     proposal.composer_id
   end
@@ -130,5 +135,5 @@
   def can_cancel?(proposal, user) # FIX helper!!!!!
     #proposal.can_cancel?(user)
     true
-  end  
+  end
  end

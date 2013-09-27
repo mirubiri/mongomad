@@ -217,63 +217,22 @@
         @include center-horizontally(100%);
         overflow:auto;
         margin-top:10px;
-
-        .request{
-          @include center-horizontally(100%);
-          @include box-sizing(border-box);
-          overflow: hidden;
-          padding: 10px 6px 0px 6px;
-          border-top: $borde1px;
-
-          .profile_image{
-            @include box-sizing(border-box);
-            @include border-radius(5px, 5px);
-            @include proportions(18%,40px);
-            padding: 2px;
-            float:left;
-            border: $borde1px;
-
-            img{
-              @include high-quality-image;
-              @include proportions(100%,100%);
-            }
-          }
-
-          .description{
-            @include proportions(80%,40px);
-            float: right;
-            font-size: 9px;
-            line-height: normal;
-            overflow: hidden;
-          }
-
-          .options_menu{
-            @include center-horizontally(90%);
-            top: -5px;
-            height: 10px;
-            float: left;
-            font-size: 9px;
-
-            a{
-              float: right;
-              margin-top: -12px;
-              margin-left: 20px;
-              color: #3355FF;
-              font-weight: bold;
-            }
-          }
-
-          &:hover{
-            background-color: #EEEEEE;
-          }
-
-        }
+        @include request;
 
         .request:last-child{
           border-bottom: $borde1px;
         }
       }
     }
+
+    .user_container_alerts{
+      @include box-sizing(border-box);
+      float: left;
+      width: 100%;
+      padding: 0px 5px;
+      overflow: auto;
+    }
+
   }
 }
 
