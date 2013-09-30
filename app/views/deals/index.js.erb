@@ -6,8 +6,11 @@ stopTimers(timers);
 //Contenido que debe cargar esta seccion: TRATOS
 if ($("#user_alerts_list").length){
   $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
+  $("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
+}else{
+  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
 }
-$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+
 $("#ppal_container").html("<%=j render :partial => 'deals/partials/deal' %>");
 
 

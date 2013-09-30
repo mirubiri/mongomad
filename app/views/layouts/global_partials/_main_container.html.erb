@@ -1,8 +1,17 @@
 <div class="right_container" id="rightContainer">
+
   <section class="main_container" id="content-side">
-    <%= render :partial => 'layouts/global_partials/navigation_bar' %>
+
+    <% if (controller.sub_layout === "alerts") %>
+      <%= render :partial => 'layouts/global_partials/search_bar' %>
+    <% else %>
+      <%= render :partial => 'layouts/global_partials/navigation_bar' %>
+    <% end %>
+
     <aside class="main_container_elementList" id="ppal_container">
       <%= yield %>
     </aside>
-  </section>  
+
+  </section>
+
 </div>

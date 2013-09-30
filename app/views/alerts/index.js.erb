@@ -5,7 +5,7 @@ stopTimers(timers);
 
 //Contenido que debe cargar esta seccion: ALERTAS
 $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
-$("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+$("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
 $("#ppal_container").html("<%=j render :partial => 'alerts/partials/alert' %>").masonry('destroy');
 
 
