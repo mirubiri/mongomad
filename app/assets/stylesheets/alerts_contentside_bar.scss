@@ -1,0 +1,30 @@
+.contentside_search_alert_bar{
+  @include box-sizing(border-box);
+  height: 60px;
+  text-align: center;
+  padding-top: 20px;
+
+  .new_petitions_find_number{
+    @include box-sizing(border-box);
+    float: left;
+    width: 40%;
+    padding-right: 5px;
+    text-align: right;
+    color: red;
+    font:{
+      weight: bold;
+      size: 16px;
+    }
+  }
+  .new-petitions_find_title{
+    @include box-sizing(border-box);
+    float: left;
+    width: 60%;
+    text-align: left;
+    color: #2980b9;
+    font:{
+      weight: bold;
+      size: 16px;
+    }
+  }
+}

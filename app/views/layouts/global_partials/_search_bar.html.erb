@@ -1,21 +1,10 @@
 <div class="navbar" id="navigation_bar">
   <div class="navbar-inner">
     <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav" id="navigation_bar_menu" style="width:100%">
-
-        <% if @user._id == current_user._id %>
-          <% if controller.sub_layout === "negotiations" %>
-            <li id="negotiations-tab" class="active" style="position:relative">
-          <% else %>
-            <li id="negotiations-tab" style="position:relative">
-          <% end %>
-            <a href="<%= user_negotiations_path(@user)%>" class="nav_element">Busqueda</a>
-          </li>
-        <% end %>
-
-      </ul>
-
+      <div class="contentside_search_alert_bar">
+        <div class="new_petitions_find_number">9</div>
+        <div class="new-petitions_find_title">Peticiones Nuevas Encontradas</div>
+      </div>
     </div>
-
   </div>
 </div>
