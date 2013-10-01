@@ -1,1 +1,54 @@
-<%= deals(current_user).count %>   
+<% deals(current_user).each do |deal| %>
+
+  <div class="deal">
+
+    <div class="deal_header">
+      <div class="deal_users">
+        <div class="user_left">
+
+        </div>
+        <div class="deal_image">
+
+        </div>
+        <div class="user_right">
+
+        </div>
+      </div>
+      <div class="deal_options">
+        <div class="option_left"></div>
+        <div class="option_central"></div>
+        <div class="option_right"></div>
+      </div>
+    </div>
+
+    <div class="dialog_container">
+
+      <div class="conversation" id="conversationofdeal">
+        <% messages(deal).each do |message| %>
+          <div class="comment">
+            <div class="comment_user_image">
+              <%= image(message) %>
+            </div>
+            <div class="comment_text">
+              <%= text(message) %>
+            </div>
+            <div class="comment_datetime">
+              <%= date_time(message) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="writting_box">
+        <%#= form_for @negotiation, :url => addComment_user_negotiation_path(id(current_user), id(negotiation)), :remote => true do |f| %>
+          <div class="message">
+            <input type="text" placeholder="write here" name="text">
+          </div>
+        <%# end %>
+      </div>
+
+    </div>
+
+
+  </div>
+<% end %>
