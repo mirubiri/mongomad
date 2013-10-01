@@ -17,6 +17,9 @@
     #image_tag(object.image)
     image_tag('/assets/images/sergio.jpg')
   end
+  def messages(object)
+    object.messages
+  end
   def date_time(object)
     object.created_at
   end
@@ -90,9 +93,6 @@
   end
 
   # NEGOTIATION HELPERS
-  def messages(negotiation)
-    negotiation.messages
-  end
   def last_proposal(negotiation)
     negotiation.proposals.last
   end
