@@ -7,27 +7,35 @@
   background-color: #eeeeee;
 
   .deal_header{
+    @include box-sizing(border-box);
     float: left;
     width: 100%;
-    height: 90px;
-    border-bottom: 2px solid #dddddd;
+    height: 110px;
+    margin-bottom: 10px;
 
     .deal_users{
       float: left;
       width: 100%;
-      height: 60px;
+      height: 80px;
 
-      .user_left{
+      .deal_user{
+        @include box-sizing(border-box);
         float: left;
         width: 33.3%;
-      }
-      .deal_image{
-        float: left;
-        width: 33.3%;
-      }
-      .user_right{
-        float: left;
-        width: 33.3%;
+        height: 100%;
+        padding: 10px 0px 0px 0px;
+        text-align: center;
+        img{
+          @include border-radius(5px);
+          width: 50px;
+          height: 50px;
+        }
+        .deal_user_name{
+          float: left;
+          width: 100%;
+          height: 20px;
+          text-align: center;
+        }
       }
     }
 
@@ -36,17 +44,18 @@
       width: 100%;
       height: 30px;
 
-      .option_left{
+      .deal_option{
+        @include box-sizing(border-box);
         float: left;
         width: 33.3%;
-      }
-      .option_central{
-        float: left;
-        width: 33.3%;
-      }
-      .option_right{
-        float: left;
-        width: 33.3%;
+        text-align: center;
+        padding: 8px;
+
+        .deal_button{
+          @include border-radius(4px);
+          border: 1px solid grey;
+          background-color: #ffffff;
+        }
       }
     }
   }
@@ -54,6 +63,7 @@
 
   .dialog_container{
     @include box-sizing(border-box);
+    border-top: 2px solid #dddddd;
     float:left;
     overflow: hidden;
     width: 100%;
@@ -63,7 +73,7 @@
       float: left;
       width: 100%;
       overflow-y: auto;
-      padding-top: 4px;
+      padding: 8px 0px 6px 0px;
       background-color: rgb(243,243,243);
 
       .comment{
@@ -110,18 +120,31 @@
       @include box-sizing(border-box);
       float: left;
       width: 100%;
-      height: 50px;
-      padding: 5px 0px 5px 5px;
+      height: 42px;
       overflow: auto;
       border:{
         top: $borde1px;
         left:none;
       }
 
+      .user_writing{
+        @include box-sizing(border-box);
+        float:left;
+        width: 15%;
+        height: 40px;
+        margin: 0px;
+        padding: 5px 0px 0px 10px;
+        img{
+          @include border-radius(15px, 15px);
+            @include proportions(30px,30px);
+            @include high-quality-image;
+        }
+      }
+
       form{
         float:left;
-        width: 100%;
-        height: 35px;
+        width: 85%;
+        height: 40px;
         margin: 0px;
 
         .message{
@@ -129,15 +152,15 @@
           height: 100%;
           overflow: hidden;
           width: 100%;
-          padding-top: 5px;
 
           input{
             float: left;
-            width: 100%;
+            width: 98%;
             height: 100%;
             margin: 0px;
             border: none;
             padding: 0px;
+            background-color: transparent;
           }
         }
       }

@@ -71,6 +71,10 @@
   def deals(user)
     user.deals
   end
+  def deal_image(deal) #FIX helper!!!!!
+    #image_tag(object.image)
+    image_tag('/assets/images/productos2.png')
+  end
 
   # ALERT HELPERS
   def alerts(user)
