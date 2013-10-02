@@ -4,20 +4,28 @@
 
     <div class="deal_header">
       <div class="deal_users">
-        <div class="user_left">
-
+        <div class="deal_user">
+          <%= image(deal) %>
+          <div class="deal_user_name">Sergio</div>
         </div>
-        <div class="deal_image">
-
+        <div class="deal_user">
+          <%= deal_image(deal) %>
         </div>
-        <div class="user_right">
-
+        <div class="deal_user">
+          <%= image(deal) %>
+          <div class="deal_user_name">Sergio</div>
         </div>
       </div>
       <div class="deal_options">
-        <div class="option_left"></div>
-        <div class="option_central"></div>
-        <div class="option_right"></div>
+        <div class="deal_option">
+          <div class="deal_button">PDF</div>
+        </div>
+        <div class="deal_option">
+          <div class="deal_button">Validar Trato</div>
+        </div>
+        <div class="deal_option">
+          <div class="deal_button">Cancelar</div>
+        </div>
       </div>
     </div>
 
@@ -40,11 +48,14 @@
       </div>
 
       <div class="writting_box">
-        <%#= form_for @negotiation, :url => addComment_user_negotiation_path(id(current_user), id(negotiation)), :remote => true do |f| %>
+        <div class="user_writing">
+          <%= image(deal) %>
+        </div>
+        <form>
           <div class="message">
             <input type="text" placeholder="write here" name="text">
           </div>
-        <%# end %>
+        </form>
       </div>
 
     </div>
