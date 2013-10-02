@@ -25,7 +25,7 @@ describe User do
 
   # Methods
   describe '#sheet' do
-    it 'returns an UserSheet filled with user id, first_name, last_name and nick' do
+    it 'returns an UserSheet filled with user id, first_name, last_name, nick and location coords' do
       expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,
         last_name:user.profile.last_name,
         nick:user.nick,
