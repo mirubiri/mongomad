@@ -7,5 +7,5 @@ describe Alert do
 
   # Attributes
   it { should have_field :text }
-  it { should have_field :location }
+  it { should have_field(:location).of_type(Array) }
 end
