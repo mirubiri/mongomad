@@ -16,8 +16,6 @@ describe Proposal do
   it { should_not validate_presence_of :proposal_container }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it 'should validate presence of products for both sides'
-
 
   it 'is invalid when there is not a good for composer' do
     composer_id=proposal.composer_id
