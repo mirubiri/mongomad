@@ -26,7 +26,6 @@ group :development,:test do
   gem 'faker'
   gem 'awesome_print'
   gem 'mongoid'
-  gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
   gem 'devise'
   gem 'jquery-rails'
   gem 'better_errors'
