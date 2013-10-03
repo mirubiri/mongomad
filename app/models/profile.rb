@@ -9,6 +9,7 @@ class Profile
   field :gender
   field :language
   field :birth_date, type: Date
+  field :location, type: Array
 
-  validates_presence_of :first_name, :last_name, :language
+  validates_presence_of :first_name, :last_name, :language, :location
 end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Alert do
   xit 'should include a way of tracking new search results'
- # Relations
+  # Relations
   it { should belong_to :user }
 
   # Attributes

@@ -5,6 +5,7 @@ Fabricator(:user_sheet) do
   first_name { |attrs| attrs[:user].profile.first_name }
   last_name  { |attrs| attrs[:user].profile.last_name }
   nick       { |attrs| attrs[:user].nick }
+  location   { |attrs| attrs[:user].profile.location }
 end
 
 # Faltan los diferentes contenedores para user_sheet

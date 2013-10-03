@@ -7,8 +7,9 @@ class Request
   embeds_one :user_sheet, class_name:'UserSheet', as: :user_sheet_container
 
   field :text
+  field :location, type:Array
 
-  validates_presence_of :user, :user_sheet, :text
+  validates_presence_of :user, :user_sheet, :text, :location
 
   validates :text, length: { minimum: 1, maximum: 160 }
 end
