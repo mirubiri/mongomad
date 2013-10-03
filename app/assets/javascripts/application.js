@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require_tree ./external_plugins
 //= require_tree ./model_functions
 //= require_tree ./triggers

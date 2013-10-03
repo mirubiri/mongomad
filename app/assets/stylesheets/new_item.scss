@@ -33,51 +33,55 @@
       .image_container{
         @include box-sizing(border-box);
         @include border-radius(5px, 5px);
-        float: left;
+        position:relative;
+        overflow:hidden;
+        cursor: move;
         width: 180px;
         height: 180px;
         background-color: white;
 
         img{
-          @include border-radius(5px, 5px);
-          float: left;
-          width: 180px;
-          height: 180px;
+          max-width: none;
+          width: 500px;
+          height: 500px;
         }
-
-        .input_container{
-          @include border-radius(3px, 3px);
-          position: relative;
-          top: 157px;
-          left: 20px;
-          width: 134px;
-          border: $borde1px;
-          border-color: #bbbbbb;
-          height: 16px;
-
-          .input_text{
-            position: relative;
-            top: -180px;
-            width: 134px;
-            height: 17px;
-            text-align: center;
-            font-size: 10px;
-            font-weight: bold;
-            color: #888888;
-          }
-
-          input[type="file"]{
-            position: relative;
-            top: -172px;
-            opacity: 0;
-            width: 124px;
-            height: 17px;
-            background-color: transparent;
-            z-index: 2000;
-          }
-        }
-
       }
+
+
+      .input_container{
+        @include border-radius(3px, 3px);
+        position: relative;
+        top: -20px;
+        left: 20px;
+        width: 134px;
+        border: $borde1px;
+        border-color: #bbbbbb;
+        height: 16px;
+        cursor: auto;
+        background-color: white;
+
+        .input_text{
+          position: relative;
+          top: 0px;
+          width: 134px;
+          height: 17px;
+          text-align: center;
+          font-size: 10px;
+          font-weight: bold;
+          color: #888888;
+        }
+
+        input[type="file"]{
+          position: relative;
+          top: -20px;
+          opacity: 0;
+          width: 135px;
+          height: 17px;
+          background-color: transparent;
+          z-index: 2000;
+        }
+      }
+
     }
 
     .new_item_description{

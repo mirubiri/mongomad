@@ -54,6 +54,8 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:user_item])
+    #Cloudinary::Uploader.upload(params[:image])
+
 
     respond_to do |format|
       if current_user.items << @item
