@@ -30,8 +30,10 @@ group :development,:test do
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'better_errors'
-  gem 'state_machine'
+  gem 'micromachine'
+  gem 'pundit'
   gem 'money-rails'
+  gem 'cloudinary'
 end
 
 
