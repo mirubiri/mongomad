@@ -7,7 +7,7 @@ describe Negotiation do
   let(:second_user) { negotiation._users.last }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
-  let(:_state) { negotiation.negotiation_state }
+  let(:_state) { negotiation._state }
 
 
   # Relations
