@@ -34,7 +34,7 @@ class Proposal
   end
 
   def check_goods_owner    
-    errors.add(:goods, "All goods should be owned by composer or receiver") if goods.nor(owner_id:composer_id, owner_id:receiver_id).count != 0 
+    errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size 
   end
 
   def check_duplicate_goods
