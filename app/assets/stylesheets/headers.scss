@@ -3,8 +3,18 @@
 @import 'stitch';
 
 .header,.login_header{
+  @include box-sizing(border-box);
   float: left;
-  width: 100%;
+  padding: 0px 20px;
+
+  @media screen and (max-width: 1500px) {
+    width: 1200px;
+  }
+
+  @media screen and (min-width: 1500px) {
+    width: 1480px;
+  }
+
   min-width: 800px;
   padding-top: 0px;
   height: 40px;
@@ -15,114 +25,135 @@
   z-index: 10000;
 
   .header_container{
-    width: 1100px;
-
-    @media screen and (max-width: 1500px) {
-      @include center-horizontally(1180px);
-    }
-
-    @media screen and (min-width: 1500px) {
-      @include center-horizontally(1480px);
-    }
-
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
     overflow: hidden;
 
-    .header_user_image{
-      @include proportions(26px,26px);
+    .header_user_data{
+      @include box-sizing(border-box);
       float: left;
-      margin: 3px 0px 0px 0px;
-      padding-top: 5px;
+      width: 20%;
+      height: 40px;
 
-      a{
-        @include proportions(24px,24px);
-        margin: 0px;
-        img{
-          @include high-quality-image;
-          @include proportions(24px,24px);
-          @include border-radius(12px,12px);
+      .header_user_description{
+        @include box-sizing(border-box);
+        float: left;
+        height: 40px;
+        width: 50px;
+        padding-top: 5px;
+
+        .header_description_element{
+          @include box-sizing(border-box);
+          float: left;
+          width: 100%;
+          height: 15px;
+          margin:0px;
+          font:{
+            weight:bold;
+            size:9px;
+          }
         }
       }
-    }
 
-    .header_user_description{
-      @include proportions(60px,30px);
-      float: left;
-      margin-left:5px;
-      padding-top: 5px;
-      vertical-align:text-top;
-      font:{
-        weight:bolder;
-        size:8px;
-      }
-
-      p{
-        @include proportions(100%,10px);
+      .header_user_image{
+        @include box-sizing(border-box);
         float: left;
-        margin:0px 0px 2px 0px;
-        font-size:9px;
+        height: 40px;
+        padding-top: 5px;
+        margin: 0px;
+
+        .header_user-image_container{
+          @include box-sizing(border-box);
+          @include proportions(34px,34px);
+          @include border-radius(15px,15px);
+          background-color: white;
+          padding: 2px 0px 0px 2px;
+
+          a{
+            overflow: auto;
+
+            img{
+              @include high-quality-image;
+              @include proportions(30px,30px);
+              @include border-radius(15px,15px);
+            }
+          }
+        }
       }
+
     }
 
-    .header_logo{
-      @include proportions(140px,40px);
+    .header_navigation_icons{
+      @include box-sizing(border-box);
       float: left;
-      color: white;
-      //border: $borde1px;
-      background:{
-        image: image-url('http://localhost:3000/images/logo.png');
-        repeat:no-repeat;
+      width: 45%;
+      height: 40px;
+      padding: 0px 0px 0px 160px;
+
+      .header_menu{
+        @include box-sizing(border-box);
+        float: left;
+        width:100%;
+        height: 40px;
+
+        .header_menu_icon{
+          @include box-sizing(border-box);
+          float: left;
+          width: 40px;
+          height: 40px;
+          margin-right: 15px;
+
+          a{
+            float: left;
+            margin-top: 7px;
+            width: 100%;
+            height: 100%;
+
+            img{
+              @include high-quality-image;
+              @include proportions(26px,26px);
+            }
+          }
+        }
       }
-      margin:{
-        top: 6px;
-        left: 100px;
-      }
+
     }
 
     .header_options{
+      @include box-sizing(border-box);
       float: left;
-      min-width: 200px;
-      margin-right: 50px;
+      width: 35%;
+      height: 40px;
 
-      nav{
-        float: left;
-        margin: 0px 20px 0px 0px;
+      .header_options_search{
+        @include box-sizing(border-box);
+        float: right;
+        height: 40px;
 
-        .btn-toolbar{
-          @include center-horizontally(100%);
-          .btn-group{
-            a{
-              img{
-                @include high-quality-image;
-                @include proportions(20px,20px);
-              }
-            }
-          }
-          &:first-child{
-            margin-right: 3px;
-            border-right: 1px solid white;
-          }
+        input[type='search']{
+          @include reset-search-field;
+          float: right;
+          margin: 8px 20px 0px 0px;
+        }
 
-          &:last-child{
-            margin-right: 3px;
-            border-right: 1px solid white;
-          }
+      }
+
+      .header_options_logout{
+        @include box-sizing(border-box);
+        float: right;
+        height: 40px;
+
+        a{
+          float: right;
+          height: 40px;
+          @include unstyled-link;
+          margin-left: 10px;
         }
       }
 
-      input[type='search']{
-        @include reset-search-field;
-        float: left;
-        margin: 8px 20px 0px 0px;
-      }
-
-
-
-      a{
-        @include unstyled-link;
-        float: left;
-        margin-left: 10px;
-      }
     }
+
   }
 }
 
