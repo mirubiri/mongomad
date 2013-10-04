@@ -33,8 +33,8 @@ class Negotiation
     proposal.receiver_id
   end
 
-  def negotiation_state
-    @state ||= begin
+  def _state
+    @_state ||= begin
       fsm = MicroMachine.new(state || initial_state )
 
       composer_new=[composer,'new']
@@ -56,7 +56,7 @@ class Negotiation
       fsm.on(:any) do
         self.previous_state=state
         fsm.when([:restock], nostock => previous_state )
-        self.state = negotiation_state.state
+        self.state = _state.state
       end
 
       fsm

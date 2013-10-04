@@ -7,7 +7,7 @@ describe Negotiation do
   let(:second_user) { negotiation._users.last }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
-  let(:negotiation_state) { negotiation.negotiation_state }
+  let(:_state) { negotiation.negotiation_state }
 
 
   # Relations
@@ -81,44 +81,44 @@ describe Negotiation do
   end
 
   describe '#sign' do
-    it 'calls to state.trigger(user_id,:sign)' do
-      expect(negotiation_state).to receive(:trigger).with([composer_id,:sign])
+    it 'calls to _state.trigger(user_id,:sign)' do
+      expect(_state).to receive(:trigger).with([composer_id,:sign])
       negotiation.sign(composer_id)
     end
   end
 
   describe '#confirm' do
-    it 'calls to state.trigger(user_id,:confirm)' do
-      expect(negotiation_state).to receive(:trigger).with([composer_id,:confirm])
+    it 'calls to _state.trigger(user_id,:confirm)' do
+      expect(_state).to receive(:trigger).with([composer_id,:confirm])
       negotiation.confirm(composer_id)
     end
   end
 
   describe '#reject' do
-    it 'calls to state.trigger(user_id,:reject)' do
-      expect(negotiation_state).to receive(:trigger).with([composer_id,:reject])
+    it 'calls to _state.trigger(user_id,:reject)' do
+      expect(_state).to receive(:trigger).with([composer_id,:reject])
       negotiation.reject(composer_id)
     end
   end
 
   describe '#nostock' do
-    it 'calls to state.trigger(:nostock)' do
-      expect(negotiation_state).to receive(:trigger).with(['nostock'])
+    it 'calls to _state.trigger(:nostock)' do
+      expect(_state).to receive(:trigger).with(['nostock'])
       negotiation.nostock
     end
   end
 
   describe '#restock' do
-    it 'calls to state.trigger(:restock)' do
-      expect(negotiation_state).to receive(:trigger).with(['restock'])
+    it 'calls to _state.trigger(:restock)' do
+      expect(_state).to receive(:trigger).with(['restock'])
       negotiation.restock
     end
   end
 
- describe '#negotiation_state' do
+ describe '#_state' do
   it 'is pending'
  end
- 
+
   # Factories
   specify { expect(negotiation).to be_valid }
 end
