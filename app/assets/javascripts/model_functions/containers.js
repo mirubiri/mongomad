@@ -1,3 +1,81 @@
+
+(function ($)
+{
+  $.fn.setMargins = function (){
+
+    var ppalContainer = $(this).find('#ppal_container');
+    var ppalContainerPadding = (ppalContainer.css('padding-left').replace("px",""))*2;
+    var espacioUtil = ppalContainer.width() - ppalContainerPadding;
+    var offerWidth = ppalContainer.attr('offerWidth');
+    //alert(offerWidth);
+    var offersInRow = Math.floor(espacioUtil / offerWidth);
+    //alert(offersInRow);
+
+    var offersRowWidht = (offersInRow * offerWidth);
+    //alert(offersRowWidht);
+    var totalMargin = espacioUtil - offersRowWidht;
+    var lateralMargin = totalMargin / 2;
+    //alert(lateralMargin);
+
+    $(this).css('padding-left', lateralMargin);
+    $(this).css('padding-right', lateralMargin);
+
+    return $(this);
+  };
+
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.maximizeResizableChildren = function (){
+
+    var fixedElementWidth = $(this).children('#leftContainer').outerWidth();
+    var padding = $(this).css('padding-left').replace("px","");
+    //alert(padding * 2);
+
+    var maxWidth = $(this).innerWidth() - (padding * 2);
+    //alert(maxWidth);
+    var elementToDistribute = $(this).children('#rightContainer');
+    var elementToDistributeWidth = maxWidth - fixedElementWidth;
+
+    elementToDistribute.width(elementToDistributeWidth);
+    //alert(elementToDistributeWidth);
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.expandToBodyWidth = function (){
+
+    var bodyWidth = $(document.body).width();
+    $(this).width(bodyWidth);
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.refresh = function() {
+    var elems = $(this.selector);
+    this.splice(0, this.length);
+    this.push.apply( this, elems );
+    return this;
+};
+
+})(jQuery);
+
+
+
+
 function resetContainers(){
   resetUserContainerHeight();
   resetPpalContainerHeight();

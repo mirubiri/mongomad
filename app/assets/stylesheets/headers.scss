@@ -6,6 +6,7 @@
   @include box-sizing(border-box);
   float: left;
   padding: 0px 20px;
+  margin-bottom: 10px;
 
   @media screen and (max-width: 1500px) {
     width: 1200px;

@@ -1,6 +1,12 @@
 // Carga los scripts minimos si el usuario recarga la pagina en cualquier punto de navegacion
 $(window).load(function(event){
-  resetContainers();
+
+  $('#mainLayout').expandToBodyWidth();
+  $('#mainLayout').maximizeResizableChildren();
+  $('#mainLayout').setMargins();
+  $('#mainLayout').maximizeResizableChildren();
+  $('.header').setHeaderPadding();
+
   activateRequestButtons(); //Las peticiones siempre estan visibles
 
   var lugar = locationName();

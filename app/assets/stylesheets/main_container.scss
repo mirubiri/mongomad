@@ -6,8 +6,6 @@
   width: 526px;
   min-width: 526px;
   float: left;
-  padding: $MCTopPadding $MCExtPadding 0px 0px;
-  margin-top: -40px;
   overflow: visible;
 
   .main_container{
@@ -30,10 +28,7 @@
       width: 100%;
       float: left;
       margin-bottom: 5px;
-      padding-top: 0px;
-      padding-right: 10px;
-      padding-bottom: 0px;
-      padding-left: 20px;
+      padding: 0px 15px;
       overflow: inherit;
 
       @include request;

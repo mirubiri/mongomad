@@ -1,11 +1,9 @@
 @import "variables";
 
 .left_container{
-  @include fixed_width(258px,258px,258px);
   float:left;
-  padding: $MCTopPadding $MCCenterMargin 0px $MCExtPadding;
-  margin-top: -40px;
-
+  @include fixed_width(258px,258px,258px);
+  padding: 0px $MCCenterMargin 0px 0px;
 
   .user_container{
     @include ppal_container_style;

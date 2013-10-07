@@ -19,10 +19,9 @@ body{
   line-height: 18px;
 
   .mainlayout{
-    @include center-horizontally(97%);
+    @include box-sizing(border-box);
+    float: left;
     min-width: 800px;
-    position: relative;
-    top: 40px;
     overflow: visible;
   }
 }
