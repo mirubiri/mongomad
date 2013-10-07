@@ -9,9 +9,9 @@ class Negotiation
   embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
   field :previous_state,type:Array
-  field :state,type:Array
+  field :_state,type:Array
 
- # validates_presence_of :proposals, :messages ,:performer, :state
+  validates_presence_of :proposals, :messages, :_state
 
   def cash?
     proposal.cash?
@@ -33,7 +33,7 @@ class Negotiation
     proposal.receiver_id
   end
 
-  def _state
+  def _statemachine
     @_state ||= begin
       fsm = MicroMachine.new(state || initial_state )
 
@@ -54,9 +54,9 @@ class Negotiation
       fsm.when([:restock], nostock => previous_state )
 
       fsm.on(:any) do
-        self.previous_state=state
+        self.previous_state=_state
         fsm.when([:restock], nostock => previous_state )
-        self.state = _state.state
+        self._state = _statemachine.state
       end
 
       fsm
