@@ -33,11 +33,15 @@ class Negotiation
     proposal.receiver_id
   end
 
+  def initial_state
+    [composer,'signed']
+  end
+
   def _statemachine
     @_state ||= begin
-      fsm = MicroMachine.new(state || initial_state )
+      fsm = MicroMachine.new(_state || initial_state )
 
-      composer_new=[composer,'new']
+      unsigned=['unsigned']
       composer_signed=[composer,'signed']
       receiver_signed=[receiver,'signed']
       composer_confirmed=[composer,'confirmed']
@@ -45,18 +49,17 @@ class Negotiation
       receiver_rejected=[receiver,'rejected']
       nostock = ['nostock']
 
-      fsm.when([composer,:sign], composer_new => composer_signed   )
-      fsm.when([receiver,:sign], composer_new => receiver_signed   )
+      fsm.when([receiver,:sign], unsigned => receiver_signed   )
       fsm.when([composer,:confirm], receiver_signed => composer_confirmed )
       fsm.when([receiver,:confirm], composer_signed => receiver_confirmed )
-      fsm.when([receiver,:reject], composer_new => receiver_rejected )
-      fsm.when([:nostock], composer_new => nostock, composer_signed => nostock, receiver_signed => nostock )
+      fsm.when([receiver,:reject], unsigned => receiver_rejected )
+      fsm.when([:nostock], unsigned => nostock, composer_signed => nostock, receiver_signed => nostock )
       fsm.when([:restock], nostock => previous_state )
 
       fsm.on(:any) do
         self.previous_state=_state
-        fsm.when([:restock], nostock => previous_state )
         self._state = _statemachine.state
+        fsm.when([:restock], nostock => previous_state )
       end
 
       fsm
