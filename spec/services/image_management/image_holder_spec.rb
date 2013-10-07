@@ -6,7 +6,6 @@ describe 'ImageHolder' do
   	Struct.new(nil) do
   		include Mongoid::Document
   		include ImageManagement::ImageHolder
-      embeds_many :images,class_name: "ImageManagement::File", as: :file_container
   	end
   end
 
