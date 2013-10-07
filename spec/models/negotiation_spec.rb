@@ -9,6 +9,15 @@ describe Negotiation do
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
   let(:_state) { negotiation._state }
 
+  let(:unsigned) {['unsigned']}
+  let(:composer_signed) {[composer_id,'signed']}
+  let(:receiver_signed) {[receiver_id,'signed']}
+  let(:composer_confirmed) {[composer_id,'confirmed']}
+  let(:receiver_confirmed) {[receiver_id,'confirmed']}
+  let(:receiver_rejected) {[receiver_id,'rejected']}
+  let(:nostock) { ['nostock']}
+  let(:cash_negotiation) { negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:composer_id)}
+
 
   # Relations
   it { should have_and_belong_to_many :_users }
@@ -66,16 +75,16 @@ describe Negotiation do
   end
 
   describe '#initial_state' do
-    it 'sets state to [composer_id,new] if composer has cash' do
+    it 'sets state to unsigned if composer has cash' do
       negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:composer_id)
-      expect(negotiation.initial_state).to eq [composer_id,'new']
+      expect(negotiation.initial_state).to eq unsigned
     end
-    it 'sets state to [composer_id,signed] if receiver has cash' do
+    it 'sets state to composer signed if receiver has cash' do
       negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:receiver_id)
-      expect(negotiation.initial_state).to eq [composer_id,'signed']
+      expect(negotiation.initial_state).to eq composer_signed
     end
-    it 'sets state to [composer_id,signed] if no cash' do
-      expect(negotiation.initial_state).to eq [composer_id,'signed']
+    it 'sets state to composer signed if no cash' do
+      expect(negotiation.initial_state).to eq composer_signed
     end
   end
 
@@ -115,24 +124,15 @@ describe Negotiation do
   end
 
   describe '#state' do
-    let(:composer_new) {[composer_id,'new']}
-    let(:composer_signed) {[composer_id,'signed']}
-    let(:receiver_signed) {[receiver_id,'signed']}
-    let(:composer_confirmed) {[composer_id,'confirmed']}
-    let(:receiver_confirmed) {[receiver_id,'confirmed']}
-    let(:receiver_rejected) {[receiver_id,'rejected']}
-    let(:nostock) { ['nostock']}
-    let(:cash_negotiation) { negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:composer_id)}
-
     context 'composer has cash' do
-      it 'has initial state set to composer_new on #initial_state' do
-        expect {cash_negotiation.initial_state}.to change {cash_negotiation.state}.to(composer_new)
+      it 'has initial state set to unsigned on #initial_state' do
+        expect {cash_negotiation.initial_state}.to change {cash_negotiation.state}.to(unsigned)
       end
 
       it 'changes to receiver_signed on #sign(receiver_id)' do
         cash_negotiation.initial_state
         cash_negotiation.sign(receiver_id)
-        expect{cash_negotiation.sign(receiver_id)}.to change {cash_negotiation.state}.from(composer_new).to(receiver_signed)
+        expect{cash_negotiation.sign(receiver_id)}.to change {cash_negotiation.state}.from(unsigned).to(receiver_signed)
       end
 
       it 'changes to composer_confirmed on #confirm(composer_id)' do

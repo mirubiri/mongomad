@@ -34,11 +34,11 @@ class Negotiation
   end
 
   def initial_state
-    [composer,'signed']
+    self._state=[composer,'signed']
   end
 
   def _statemachine
-    @_state ||= begin
+    @_statemachine ||= begin
       fsm = MicroMachine.new(_state || initial_state )
 
       unsigned=['unsigned']
