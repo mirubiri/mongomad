@@ -6,14 +6,11 @@ describe 'ImageHolder' do
   	Struct.new(nil) do
   		include Mongoid::Document
   		include ImageManagement::ImageHolder
+      embeds_many :images,class_name: "ImageManagement::File", as: :file_container
   	end
   end
 
   subject(:image_holder) { test_class.new(attachments:{main_image:'one', images:['one','two','three'], deleted_images:['four'] }) }
-
-
-# Attributes
-  it { should have_field(:attachments).of_type(Hash) }
 
 
 # Methods
