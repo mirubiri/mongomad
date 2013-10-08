@@ -5,7 +5,7 @@ describe 'ImageHolder' do
   let (:test_class) do
   	Struct.new(nil) do
   		include Mongoid::Document
-  		include ImageManagement::ImageHolder
+  		include ImageHolder
   	end
   end
 
