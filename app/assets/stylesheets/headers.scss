@@ -3,27 +3,25 @@
 @import 'stitch';
 
 .header,.login_header{
+  // @media screen and (max-width: 1500px) {
+  //   width: 1200px;
+  // }
+
+  // @media screen and (min-width: 1500px) {
+  //   width: 1480px;
+  // }
   @include box-sizing(border-box);
   float: left;
-  padding: 0px 20px;
   margin-bottom: 10px;
-
-  @media screen and (max-width: 1500px) {
-    width: 1200px;
-  }
-
-  @media screen and (min-width: 1500px) {
-    width: 1480px;
-  }
-
+  width: 100%;
   min-width: 800px;
-  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
   height: 40px;
   display: block;
   background-color:transparent;
   color: white;
   overflow: hidden;
-  z-index: 10000;
 
   .header_container{
     @include box-sizing(border-box);

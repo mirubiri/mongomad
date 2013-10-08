@@ -6,6 +6,7 @@
     var ppalContainer = $(this).find('#ppal_container');
     var ppalContainerPadding = (ppalContainer.css('padding-left').replace("px",""))*2;
     var espacioUtil = ppalContainer.width() - ppalContainerPadding;
+    //alert(espacioUtil);
     var offerWidth = ppalContainer.attr('offerWidth');
     //alert(offerWidth);
     var offersInRow = Math.floor(espacioUtil / offerWidth);
