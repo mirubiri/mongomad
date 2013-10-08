@@ -20,7 +20,7 @@ class Item
   end
 
   def sell(quantity)
-    quantity <= stock && 
+    quantity <= stock &&
     begin
       self.stock-=quantity
       save

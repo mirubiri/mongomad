@@ -9,9 +9,9 @@ class Negotiation
   embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
   field :previous_state,type:Array
-  field :state,type:Array
+  field :_state,type:Array
 
- # validates_presence_of :proposals, :messages ,:performer, :state
+  validates_presence_of :proposals, :messages, :_state
 
   def cash?
     proposal.cash?
@@ -33,11 +33,15 @@ class Negotiation
     proposal.receiver_id
   end
 
-  def _state
-    @_state ||= begin
-      fsm = MicroMachine.new(state || initial_state )
+  def initial_state
+    self._state=[composer,'signed']
+  end
 
-      composer_new=[composer,'new']
+  def _statemachine
+    @_statemachine ||= begin
+      fsm = MicroMachine.new(_state || initial_state )
+
+      unsigned=['unsigned']
       composer_signed=[composer,'signed']
       receiver_signed=[receiver,'signed']
       composer_confirmed=[composer,'confirmed']
@@ -45,18 +49,17 @@ class Negotiation
       receiver_rejected=[receiver,'rejected']
       nostock = ['nostock']
 
-      fsm.when([composer,:sign], composer_new => composer_signed   )
-      fsm.when([receiver,:sign], composer_new => receiver_signed   )
+      fsm.when([receiver,:sign], unsigned => receiver_signed   )
       fsm.when([composer,:confirm], receiver_signed => composer_confirmed )
       fsm.when([receiver,:confirm], composer_signed => receiver_confirmed )
-      fsm.when([receiver,:reject], composer_new => receiver_rejected )
-      fsm.when([:nostock], composer_new => nostock, composer_signed => nostock, receiver_signed => nostock )
+      fsm.when([receiver,:reject], unsigned => receiver_rejected )
+      fsm.when([:nostock], unsigned => nostock, composer_signed => nostock, receiver_signed => nostock )
       fsm.when([:restock], nostock => previous_state )
 
       fsm.on(:any) do
-        self.previous_state=state
+        self.previous_state=_state
+        self._state = _statemachine.state
         fsm.when([:restock], nostock => previous_state )
-        self.state = _state.state
       end
 
       fsm

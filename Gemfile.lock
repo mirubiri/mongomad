@@ -43,7 +43,6 @@ GEM
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.0.4)
-    cancan (1.6.10)
     chunky_png (1.2.8)
     cloudinary (1.0.63)
       aws_cf_signer
@@ -107,7 +106,7 @@ GEM
       rake
       rspec (>= 2.14)
     moped (1.5.1)
-    multi_json (1.8.0)
+    multi_json (1.8.1)
     origin (1.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
@@ -155,7 +154,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    sass (3.2.11)
+    sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -192,7 +191,6 @@ DEPENDENCIES
   better_errors
   blueprint-rails
   bootstrap-sass
-  cancan
   cloudinary
   coffee-rails
   compass-rails
