@@ -8,7 +8,7 @@ describe Offer do
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
   it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
   it { should embed_one :proposal }
-  it { should embed_many :user_sheets } # ¿embed_one?
+  it { should_not embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }

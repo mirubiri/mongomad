@@ -21,7 +21,7 @@ describe Negotiation do
   it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
-  it { should embed_many :user_sheets }
+  it { should_not embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
@@ -33,7 +33,6 @@ describe Negotiation do
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
   it { should validate_presence_of :state }
-  it 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
   describe '#proposal' do
