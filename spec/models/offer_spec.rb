@@ -21,20 +21,7 @@ describe Offer do
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
 
-  it 'is invalid when there is not a sheet for composer' do
-    offer.composer.destroy
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
 
-  it 'is invalid when there is not a sheet for receiver' do
-    offer.receiver.destroy
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
-
-  it 'is invalid if there are more than two user sheets' do
-    offer.user_sheets << offer.user_sheets.first
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
 
   #Methods
   describe '#composer' do

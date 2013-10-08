@@ -6,6 +6,7 @@ describe Proposal do
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many :goods }
+  it { should embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
@@ -43,6 +44,22 @@ describe Proposal do
     good=proposal.goods.sample
     proposal.goods << good
     expect(proposal).to have(1).error_on(:goods)
+  end
+
+
+  it 'is invalid when there is not a sheet for composer_id' do
+    offer.composer_id=nil
+    expect(proposal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid when there is not a sheet for receiver_id' do
+    offer.receiver_id=nil
+    expect(proposal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there are more than two user sheets' do
+    proposal.user_sheets << offer.user_sheets.first
+    expect(proposal).to have(1).error_on(:user_sheets)
   end
 
 
