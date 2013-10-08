@@ -3,11 +3,10 @@ require 'spec_helper'
 describe Negotiation do
 
   let(:negotiation) { Fabricate.build(:negotiation) }
-  let(:first_user)  { negotiation._users.first }
-  let(:second_user) { negotiation._users.last }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
-  let(:_state) { negotiation._state }
+  let(:negotiation_state) { negotiation.state }
+  let(:negotiation_previous_state) { negotiation.previous_state }
 
   let(:unsigned) {['unsigned']}
   let(:composer_signed) {[composer_id,'signed']}
@@ -15,9 +14,8 @@ describe Negotiation do
   let(:composer_confirmed) {[composer_id,'confirmed']}
   let(:receiver_confirmed) {[receiver_id,'confirmed']}
   let(:receiver_rejected) {[receiver_id,'rejected']}
+  let(:composer_rejected) {[composer_id,'rejected']}
   let(:nostock) { ['nostock']}
-  let(:cash_negotiation) { negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:composer_id)}
-
 
   # Relations
   it { should have_and_belong_to_many :_users }
@@ -27,14 +25,14 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:_previous_state).of_type(Array)}
-  it { should have_field(:_state).of_type(Array) }
+  it { should have_field(:previous_state).of_type(Array)}
+  it { should have_field(:state).of_type(Array) }
 
   # Validations
   it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
-  it { should validate_presence_of :_state }
+  it { should validate_presence_of :state }
   it 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
@@ -79,80 +77,85 @@ describe Negotiation do
       negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:composer_id)
       expect(negotiation.initial_state).to eq unsigned
     end
+
     it 'sets state to composer signed if receiver has cash' do
       negotiation.proposals.first.goods<<Fabricate.build(:cash,owner_id:receiver_id)
       expect(negotiation.initial_state).to eq composer_signed
     end
+
     it 'sets state to composer signed if no cash' do
       expect(negotiation.initial_state).to eq composer_signed
     end
   end
 
-  describe '#sign' do
-    it 'calls to _state.trigger(user_id,:sign)' do
-      expect(_state).to receive(:trigger).with([composer_id,:sign])
-      negotiation.sign(composer_id)
+  describe 'state' do
+    # Signs
+    it 'changes from unsigned to receiver_signed on sign(receiver_id)' do
+      negotiation_state=unsigned
+      expect{ negotiation.sign(receiver_id) }.to change { negotiation_state }.to(receiver_signed)
     end
+
+    # Confirmations
+    it 'changes from receiver_signed to composer_confirmed on confirm(composer_id)' do
+      negotiation_state=receiver_signed
+      expect{ negotiation.confirm(composer_id) }.to change{ negotiation_state }.to(composer_confirmed)
+    end
+
+    it 'changes from composer_signed to receiver_confirmed on confirm(receiver_id)' do
+      negotiation_state=composer_signed
+      expect{ negotiation.confirm(receiver_id) }.to change{ negotiation_state }.to(receiver_confirmed)
+    end
+
+    # Rejects
+    it 'changes from unsigned to receiver_rejected on reject(receiver_id)' do
+      negotiation_state=unsigned
+      expect{ negotiation.reject(receiver_id) }.to change{ negotiation_state }.to(receiver_rejected)
+    end
+
+    it 'changes from composer_signed to receiver_rejected on reject(receiver_id)' do
+      negotiation_state=composer_signed
+      expect{ negotiation.reject(receiver_id) }.to change { negotiation_state }.to(receiver_rejected)
+    end
+
+    it 'changes from receiver_signed to composer_rejected on reject(composer:id)' do
+      negotiation_state=receiver_signed
+      expect{ negotiation.reject(composer_id) }.to change { negotiation_state }.to(composer_rejected)
+    end
+
+    # No stock
+    it 'changes from unsigned to nostock on nostock' do
+      negotiation_state=unsigned
+      expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
+    end
+
+    it 'changes from receiver_signed to nostock on nostock' do
+      negotiation_state=receiver_signed
+      expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
+    end
+
+    it 'changes from composer_signed to nostock on nostock' do
+      negotiation_state=composer_signed
+      expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
+    end
+
+    # Restock
+    before(:each) { negotiation_state=nostock }
+    it 'changes from nostock to previous receiver_signed state on restock' do
+      negotiation_previous_state=receiver_signed
+      expect{ negotiation.restock }.to change{ negotiation_state }.to( receiver_signed )
+    end
+
+    it 'changes from nostock to previous composer_signed state on restock' do
+      negotiation_previous_state=composer_signed
+      expect{ negotiation.restock }.to change{ negotiation_state }.to( composer_signed )
+    end
+
+    it 'changes from nostock to previous unsigned on restock' do
+      negotiation_previous_state=unsigned
+      expect{ negotiation.restock }.to change{ negotiation_state }.to( unsigned )
+    end
+
   end
-
-  describe '#confirm' do
-    it 'calls to _state.trigger(user_id,:confirm)' do
-      expect(_state).to receive(:trigger).with([composer_id,:confirm])
-      negotiation.confirm(composer_id)
-    end
-  end
-
-  describe '#reject' do
-    it 'calls to _state.trigger(user_id,:reject)' do
-      expect(_state).to receive(:trigger).with([composer_id,:reject])
-      negotiation.reject(composer_id)
-    end
-  end
-
-  describe '#nostock' do
-    it 'calls to _state.trigger(:nostock)' do
-      expect(_state).to receive(:trigger).with(['nostock'])
-      negotiation.nostock
-    end
-  end
-
-  describe '#restock' do
-    it 'calls to _state.trigger(:restock)' do
-      expect(_state).to receive(:trigger).with(['restock'])
-      negotiation.restock
-    end
-  end
-
-  describe '#state' do
-    context 'composer has cash' do
-      it 'has initial state set to unsigned on #initial_state' do
-        expect {cash_negotiation.initial_state}.to change {cash_negotiation.state}.to(unsigned)
-      end
-
-      it 'changes to receiver_signed on #sign(receiver_id)' do
-        cash_negotiation.initial_state
-        cash_negotiation.sign(receiver_id)
-        expect{cash_negotiation.sign(receiver_id)}.to change {cash_negotiation.state}.from(unsigned).to(receiver_signed)
-      end
-
-      it 'changes to composer_confirmed on #confirm(composer_id)' do
-        cash_negotiation.initial_state
-        cash_negotiation.sign(receiver_id)
-        expect {cash_negotiation.confirm(composer_id)}.to change {cash_negotiation.state}.from(receiver_signed).to(composer_confirmed)
-      end
-    end
-
-    context 'composer has no cash' do
-      it 'has initial_state set to composer_signed on #initial_state' do
-        expect{cash_negotiation.initial_state }.to change{cash_negotiation.state}.from(nil).to(composer_signed)
-      end
-
-      it 'changes to receiver_confirmed on #confirm(receiver_id)' do
-        cash_negotiation.initial_state
-        expect{cash_negotiation.confirm(receiver_id)}.to change{cash_negotiation.state}.from(composer_signed).to(receiver_confirmed)
-      end
-    end
- end
 
   # Factories
   specify { expect(negotiation).to be_valid }
