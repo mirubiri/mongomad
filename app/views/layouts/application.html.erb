@@ -5,32 +5,34 @@
 
 <body class="hidden_container">
 
+  <!--
   <div id="page">
-    <% if flash[:alert] %>
+    <%# if flash[:alert] %>
       <div class="alert_container">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <div class="alert alert-error">
           <%= flash[:alert] %>
         </div>
       </div>
-    <% end %>
-    <% if flash[:notice] %>
+    <%# end %>
+    <%# if flash[:notice] %>
       <div class="alert_container">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <div class="alert alert-success">
           <%= flash[:notice] %>
         </div>
       </div>
-    <% end %>
-    <% if flash[:message] %>
+    <%# end %>
+    <%# if flash[:message] %>
       <div class="alert_container">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <div class="alert alert-error">
           <%= flash[:message] %>
         </div>
       </div>
-    <% end %>
+    <%# end %>
   </div>
+  -->
   <%= render :partial => "layouts/#{controller.sub_layout}" %>
 </body>
 
