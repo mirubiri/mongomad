@@ -36,21 +36,6 @@ describe Negotiation do
   it 'should validate_presence_of two user_sheets corresponding to _users'
 
   # Methods
-
-  describe '#cash?' do
-    it 'calls proposal.cash?' do
-      expect(negotiation.proposal).to receive(:cash?)
-      negotiation.cash?
-    end
-  end
-
-  describe '#cash_owner' do
-    it 'calls proposal.cash_owner' do
-      expect(negotiation.proposal).to receive(:cash_owner)
-      negotiation.cash_owner
-    end
-  end
-
   describe '#proposal' do
     it 'returns the last proposal' do
       negotiation.proposals.build
@@ -88,7 +73,7 @@ describe Negotiation do
     end
   end
 
-  describe 'state' do
+  describe '#state' do
     # Signs
     it 'changes from unsigned to receiver_signed on sign(receiver_id)' do
       negotiation_state=unsigned
