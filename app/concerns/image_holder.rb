@@ -1,4 +1,4 @@
-module ImageManagement::ImageHolder
+module ImageHolder
   extend ActiveSupport::Concern
 
   included do
