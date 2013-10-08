@@ -10,7 +10,7 @@ describe Request do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :text }
-  it { should have_field(:location).of_type(Array) }
+  it { should_not have_field(:location).of_type(Array) }
 
   # Validations
   it { should validate_presence_of :user }
