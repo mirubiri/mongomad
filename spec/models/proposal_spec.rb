@@ -48,17 +48,17 @@ describe Proposal do
 
 
   it 'is invalid when there is not a sheet for composer_id' do
-    offer.composer_id=nil
+    proposal.composer_id=nil
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is not a sheet for receiver_id' do
-    offer.receiver_id=nil
+    proposal.receiver_id=nil
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid if there are more than two user sheets' do
-    proposal.user_sheets << offer.user_sheets.first
+    proposal.user_sheets << proposal.user_sheets.first
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
