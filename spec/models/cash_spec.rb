@@ -9,7 +9,6 @@ describe Cash do
   it { should be_embedded_in :proposal}
 
   # Validations
-
   it { should validate_presence_of :_money }
   it { should validate_presence_of :owner_id }
 

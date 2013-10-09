@@ -20,8 +20,7 @@ describe Attachment::Images do
     test.images<<image_three
   end
 
-# Methods
-
+  # Methods
   describe '#main_image' do
   	it 'returns the main image' do
   		expect(image_holder.main_image).to eq image_one

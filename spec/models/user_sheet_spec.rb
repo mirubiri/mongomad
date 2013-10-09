@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe UserSheet do
   it 'should have an user photo'
-  
-  # Modules
 
-  it { should }
   # Relations
   it { should be_embedded_in :user_sheet_container }
 

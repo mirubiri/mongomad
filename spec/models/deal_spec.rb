@@ -22,7 +22,6 @@ describe Deal do
   specify { expect(deal).to be_valid }
 
   # Methods
-
   describe '#agreement' do
     it 'returns the last proposal' do
       expect(deal.agreement).to eq deal.proposals.last
