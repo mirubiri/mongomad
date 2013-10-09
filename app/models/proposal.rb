@@ -11,7 +11,7 @@ class Proposal
 
   validates_presence_of :composer_id, :receiver_id
 
-  validate :check_composer_have_goods, 
+  validate :check_composer_have_goods,
            :check_receiver_have_goods,
            :check_goods_owner,
            :check_duplicated_goods,
