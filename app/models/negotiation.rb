@@ -11,7 +11,7 @@ class Negotiation
   field :previous_state,type:Array
   field :state,type:Array
 
-  validates_presence_of :proposals, :messages, :_state
+  validates_presence_of :proposals, :messages, :state
 
   def cash?
     proposal.cash?
@@ -34,11 +34,11 @@ class Negotiation
   end
 
   def initial_state
-    self._state=[composer,'signed']
+    self.state=[composer,'signed']
   end
 
   def _statemachine
-    @_statemachine ||= begin
+    @statemachine ||= begin
       fsm = MicroMachine.new(_state || initial_state )
 
       unsigned=['unsigned']
@@ -57,8 +57,8 @@ class Negotiation
       fsm.when([:restock], nostock => previous_state )
 
       fsm.on(:any) do
-        self.previous_state=_state
-        self._state = _statemachine.state
+        self.previous_state=state
+        self.state = @statemachine.state
         fsm.when([:restock], nostock => previous_state )
       end
 
