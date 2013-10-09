@@ -11,16 +11,11 @@ describe Cash do
   # Validations
 
   it { should validate_presence_of :_money }
-  it { should_not validate_presence_of :owner_id }
+  it { should validate_presence_of :owner_id }
 
   # Fields
   it { should have_field(:_money).of_type(Money) }
-  it { should_not have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
-
-  # Methods
-  specify '.new' do
-    expect(Cash.new.id).to eq nil
-  end
+  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
 
   # Fabricator
   specify { expect(Fabricate.build(:cash)).to be_valid }
