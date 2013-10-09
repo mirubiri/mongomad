@@ -81,10 +81,6 @@ describe Proposal do
   end
 
   describe '#cash?' do
-    it 'calls goods.type(Cash) with any' do
-      expect(proposal.goods.type(Cash)).to receive(:exists?)
-      proposal.cash?
-    end
 
     it 'returns true if cash in proposal' do
       proposal.goods.build({},Cash)
