@@ -10,6 +10,7 @@
   float: left;
   width: 100%;
   overflow: auto;
+  visibility: visible;
 
   .login_container_logo{
     @include center-horizontally(50%);

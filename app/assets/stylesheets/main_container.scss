@@ -27,9 +27,8 @@
       @include box-sizing(border-box);
       width: 100%;
       float: left;
-      margin-bottom: 5px;
-      padding: 0px 15px;
-      overflow: inherit;
+      padding-left: 10px;
+      overflow: hidden;
 
       @include request;
       .request{

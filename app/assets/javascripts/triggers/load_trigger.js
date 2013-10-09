@@ -1,11 +1,19 @@
 // Carga los scripts minimos si el usuario recarga la pagina en cualquier punto de navegacion
 $(window).load(function(event){
 
+  //Expando el contenedor principal y reseteo sus margenes para ajustarlos a los elementos de la lista
   $('#mainLayout').expandToBodyWidth();
   $('#mainLayout').maximizeResizableChildren();
   $('#mainLayout').setMargins();
   $('#mainLayout').maximizeResizableChildren();
   $('.header').setHeaderPadding();
+
+
+  //Reseteo las alturas de los contenedores principales y las igualo
+  $("#user-side").resetContainerHeight();
+  $("#content-side").resetContainerHeight();
+  $('#mainLayout').matchPrincipalContainersHeighs();
+
 
   activateRequestButtons(); //Las peticiones siempre estan visibles
 

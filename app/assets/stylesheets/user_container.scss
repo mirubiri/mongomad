@@ -20,6 +20,7 @@
 
     .user_container_profile{
       @include container_into_PpalSide_style;
+      @include center-horizontally(93%);
 
       .image_side{
         float: left;

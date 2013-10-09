@@ -3,6 +3,13 @@ $(function(){
     $('#page_header_options').on('click','a',function(e){
         event.preventDefault();
 
+        alert("he pulsado la navegacion principal");
+
+        //Reseteo las alturas de los contenedores principales y las igualo
+        $("#user-side").resetContainerHeight();
+        $("#content-side").resetContainerHeight();
+        $('#mainLayout').matchPrincipalContainersHeighs();
+
         $.getScript(this.href);
 
         var url= this.href;
@@ -15,6 +22,13 @@ $(function(){
 $(function(){
     $("#navigation_bar").on('click','a', function(event){
         event.preventDefault();
+
+        alert("he pulsado la navegacion alternativa");
+
+        //Reseteo las alturas de los contenedores principales y las igualo
+        $("#user-side").resetContainerHeight();
+        $("#content-side").resetContainerHeight();
+        $('#mainLayout').matchPrincipalContainersHeighs();
 
         $("#navigation_bar_menu").children('li').removeClass('active');
         $(this).parent().addClass('active');
