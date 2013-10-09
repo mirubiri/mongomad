@@ -30,11 +30,6 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid when is more than one cash in goods' do
-    2.times { proposal.goods.build({},Cash) }
-    expect(proposal).to have(1).error_on(:goods)
-  end
-
   it 'is invalid if a good is not owned by composer or receiver' do
     proposal.goods.sample.owner_id=Faker::Number.number(26)
     expect(proposal).to have(1).error_on(:goods)
@@ -46,6 +41,10 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:goods)
   end
 
+  it 'is invalid when is more than one cash in goods' do
+    2.times { proposal.goods.build({},Cash) }
+    expect(proposal).to have(1).error_on(:goods)
+  end
 
   it 'is invalid when there is not a sheet for composer_id' do
     proposal.composer_id=nil
