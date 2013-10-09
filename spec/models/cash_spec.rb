@@ -11,11 +11,11 @@ describe Cash do
   # Validations
 
   it { should validate_presence_of :_money }
-  it { should validate_presence_of :owner_id }
+  it { should_not validate_presence_of :owner_id }
 
   # Fields
   it { should have_field(:_money).of_type(Money) }
-  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
+  it { should_not have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
 
   # Methods
   specify '.new' do
