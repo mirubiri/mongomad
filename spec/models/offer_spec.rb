@@ -8,7 +8,7 @@ describe Offer do
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
   it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
   it { should embed_one :proposal }
-  it { should embed_many :user_sheets } # ¿embed_one?
+  it { should_not embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
@@ -21,20 +21,7 @@ describe Offer do
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
 
-  it 'is invalid when there is not a sheet for composer' do
-    offer.composer.destroy
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
 
-  it 'is invalid when there is not a sheet for receiver' do
-    offer.receiver.destroy
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
-
-  it 'is invalid if there are more than two user sheets' do
-    offer.user_sheets << offer.user_sheets.first
-    expect(offer).to have(1).error_on(:user_sheets)
-  end
 
   #Methods
   describe '#composer' do

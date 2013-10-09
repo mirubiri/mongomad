@@ -1,2 +1,4 @@
-# Fabricator(:image) do
-# end
+Fabricator(:image,from: :"attachment/image") do
+  id 'one'
+  main false
+end

@@ -6,6 +6,7 @@ describe Proposal do
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many :goods }
+  it { should embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
@@ -29,11 +30,6 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid when is more than one cash in goods' do
-    2.times { proposal.goods.build({},Cash) }
-    expect(proposal).to have(1).error_on(:goods)
-  end
-
   it 'is invalid if a good is not owned by composer or receiver' do
     proposal.goods.sample.owner_id=Faker::Number.number(26)
     expect(proposal).to have(1).error_on(:goods)
@@ -43,6 +39,26 @@ describe Proposal do
     good=proposal.goods.sample
     proposal.goods << good
     expect(proposal).to have(1).error_on(:goods)
+  end
+
+  it 'is invalid when is more than one cash in goods' do
+    2.times { proposal.goods.build({},Cash) }
+    expect(proposal).to have(1).error_on(:goods)
+  end
+
+  it 'is invalid when there is not a sheet for composer_id' do
+    proposal.composer_id=nil
+    expect(proposal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid when there is not a sheet for receiver_id' do
+    proposal.receiver_id=nil
+    expect(proposal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there are more than two user sheets' do
+    proposal.user_sheets << proposal.user_sheets.first
+    expect(proposal).to have(1).error_on(:user_sheets)
   end
 
 
@@ -81,108 +97,4 @@ describe Proposal do
 
   # Factories
   specify { expect(Fabricate.build(:proposal)).to be_valid }
-
-  #   it 'creates one negotiation' do
-  #     expect { proposal.save }.to change{ Negotiation.count }.by(1)
-  #   end
-
-  # describe '#user_composer' do
-  #   context 'When proposal has no negotiation assigned' do
-  #     it 'returns nil' do
-  #       proposal.negotiation = nil
-  #       expect(proposal.user_composer).to eq nil
-  #     end
-  #   end
-
-  #   context 'When proposal has a negotiation assigned' do
-  #     it 'returns the user of the negotiation who made the proposal' do
-  #       expect(proposal.user_composer).to eq negotiation_composer
-  #     end
-  #   end
-  # end
-
-  # describe '#user_receiver' do
-  #   context 'When proposal has no negotiation assigned' do
-  #     it 'returns nil' do
-  #       proposal.negotiation = nil
-  #       expect(proposal.user_receiver).to eq nil
-  #     end
-  #   end
-
-  #   context 'When proposal has a negotiation assigned' do
-  #     it 'returns the user of the negotiation who received the proposal' do
-  #       expect(proposal.user_receiver).to eq negotiation_receiver
-  #     end
-  #   end
-  # end
-
-  # describe '#state' do
-  #   before { proposal.save }
-
-  #   it 'initial state is :unsigned when composer has money' do
-  #     offer = Fabricate(:offer_composer_money)
-  #     expect(offer.start_negotiation.proposals.last.state).to eq 'unsigned'
-  #   end
-
-  #   it 'initial state is :composer_signed when composer has no money' do
-  #     expect(proposal.state).to eq 'composer_signed'
-  #   end
-
-  #   context 'When proposal is in :unsigned state' do
-  #     before { proposal.state = :unsigned }
-
-  #     it 'change from :unsigned to :receiver_signed on :sign_receiver event' do
-  #       proposal.sign_receiver
-  #       expect(proposal.state).to eq 'receiver_signed'
-  #     end
-
-  #     it 'change from :unsigned to :composer_canceled on :cancel_composer event' do
-  #       proposal.cancel_composer
-  #       expect(proposal.state).to eq 'composer_canceled'
-  #     end
-
-  #     it 'change from :unsigned to :receiver_canceled on :cancel_receiver event' do
-  #       proposal.cancel_receiver
-  #       expect(proposal.state).to eq 'receiver_canceled'
-  #     end
-  #   end
-
-  #   context 'When proposal is in :composer_signed state' do
-  #     before { proposal.state = :composer_signed }
-
-  #     it 'change from :composer_signed to :receiver_confirmed on :confirm_receiver event' do
-  #       proposal.confirm_receiver
-  #       expect(proposal.state).to eq 'receiver_confirmed'
-  #     end
-
-  #     it 'change from :composer_signed to :composer_canceled on :cancel_composer event' do
-  #       proposal.cancel_composer
-  #       expect(proposal.state).to eq 'composer_canceled'
-  #     end
-
-  #     it 'change from :composer_signed to :receiver_canceled on :cancel_receiver event' do
-  #       proposal.cancel_receiver
-  #       expect(proposal.state).to eq 'receiver_canceled'
-  #     end
-  #   end
-
-  #   context 'When proposal is in :receiver_signed state' do
-  #     before { proposal.state = :receiver_signed }
-
-  #     it 'change from :receiver_signed to :composer_confirmed on :confirm_composer event' do
-  #       proposal.confirm_composer
-  #       expect(proposal.state).to eq 'composer_confirmed'
-  #     end
-
-  #     it 'change from :receiver_signed to :composer_canceled on :cancel_composer event' do
-  #       proposal.cancel_composer
-  #       expect(proposal.state).to eq 'composer_canceled'
-  #     end
-
-  #     it 'change from :receiver_signed to :receiver_canceled on :cancel_receiver event' do
-  #       proposal.cancel_receiver
-  #       expect(proposal.state).to eq 'receiver_canceled'
-  #     end
-  #   end
-  # end
 end

@@ -9,7 +9,7 @@ class Negotiation
   embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
   field :previous_state,type:Array
-  field :_state,type:Array
+  field :state,type:Array
 
   validates_presence_of :proposals, :messages, :_state
 

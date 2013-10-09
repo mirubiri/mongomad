@@ -13,11 +13,6 @@ class Product < Good
 
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
-  # denormalize :name, :description, :image_fingerprint, from:'item'
-#   def item
-#     receiver.offer.user_receiver.items.find(item_id)
-#   end
-
   def item
     Item.find(id)
   end

@@ -4,13 +4,21 @@ class Proposal
 
   embedded_in :proposal_container, polymorphic: true
   embeds_many :goods
+  embeds_many :user_sheets
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
 
   validates_presence_of :composer_id, :receiver_id
 
-  validate :check_composer_goods, :check_receiver_goods, :check_goods_owner, :check_duplicate_goods, :check_multiple_cash
+  validate :check_composer_have_goods, 
+           :check_receiver_have_goods,
+           :check_goods_owner,
+           :check_duplicated_goods,
+           :check_multiple_cash,
+           :check_composer_sheet,
+           :check_receiver_sheet,
+           :check_sheets_number
 
   def left(owner_id)
     goods.where(owner_id:owner_id)
@@ -25,11 +33,11 @@ class Proposal
   end
 
   private
-  def check_composer_goods
+  def check_composer_have_goods
     errors.add(:goods, "Composer should have at least one good") unless left(composer_id).count > 0
   end
 
-  def check_receiver_goods
+  def check_receiver_have_goods
     errors.add(:goods, "Receiver should have at least one good") unless left(receiver_id).count > 0
   end
 
@@ -37,7 +45,7 @@ class Proposal
     errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size
   end
 
-  def check_duplicate_goods
+  def check_duplicated_goods
     errors.add(:goods, "Proposal should not have duplicated good") unless goods.distinct(:id).size == goods.size
   end
 
@@ -45,66 +53,15 @@ class Proposal
     errors.add(:goods, "Proposal should have only one cash") if goods.type(Cash).size > 1
   end
 
-  # before_create :set_initial_state
+  def check_composer_sheet
+    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:composer_id).size == 1
+  end
 
-  # state_machine :confirmable_state, :initial => :confirmable do
-  #   event :unconfirmable do
-  #     transition :confirmable => :unconfirmable, :unless => :confirmed?
-  #   end
+  def check_receiver_sheet
+    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:receiver_id).size == 1
+  end
 
-  #   event :confirmable do
-  #     transition :unconfirmable => :confirmable
-  #   end
-  # end
-
-  # state_machine :state, :initial => nil do
-  #   event :sign_receiver do
-  #     transition :unsigned => :receiver_signed
-  #   end
-
-  #   event :confirm_composer do
-  #     transition :receiver_signed => :composer_confirmed, :if => :confirmable?
-  #   end
-
-  #   event :confirm_receiver do
-  #     transition :composer_signed => :receiver_confirmed, :if => :confirmable?
-  #   end
-
-  #   event :cancel_composer do
-  #     transition [:unsigned, :composer_signed, :receiver_signed] => :composer_canceled
-  #   end
-
-  #   event :cancel_receiver do
-  #     transition [:unsigned ,:composer_signed, :receiver_signed] => :receiver_canceled
-  #   end
-  # end
-
-  # def user_composer
-  #   negotiation && negotiation.negotiators.find(user_composer_id)
-  # end
-
-  # def user_receiver
-  #   negotiation && negotiation.negotiators.find(user_receiver_id)
-  # end
-
-  # def can_sign?(user)
-  #   user_receiver_id == user.id && state == 'unsigned'
-  # end
-
-  # def can_confirm?(user)
-  #   (user_composer_id == user.id && state == 'receiver_signed') || (user_receiver_id == user.id && state == 'composer_signed')
-  # end
-
-  # def can_cancel?(user)
-  #   state == 'unsigned' || state == 'receiver_signed' || state == 'composer_signed'
-  # end
-
-  # private
-  # def set_initial_state
-  #   if money.user_id == user_composer_id
-  #     self.state = :unsigned
-  #   else
-  #     self.state = :composer_signed
-  #   end
-  # end
+  def check_sheets_number
+    errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
+  end
 end
