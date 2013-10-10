@@ -81,7 +81,6 @@ describe Proposal do
   end
 
   describe '#cash?' do
-
     it 'returns true if cash in proposal' do
       proposal.goods.build({},Cash)
       expect(proposal.cash?).to eq true
