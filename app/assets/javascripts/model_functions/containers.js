@@ -2,6 +2,7 @@
 (function ($)
 {
   $.fn.setMargins = function (){
+    //alert("entra en funcionamiento el setMargins");
     var ppalContainer = $(this).find('#ppal_container');
     var espacioUtil = ppalContainer.width();
     var offerWidth = ppalContainer.attr('offerWidth');
@@ -23,8 +24,6 @@
 
 
 })(jQuery);
-
-
 
 
 
@@ -55,25 +54,26 @@
 
 
 
-
-
-
 (function ($)
 {
   $.fn.expandToBodyWidth = function (){
 
+    //Cojo la anchura del body
     var bodyWidth = $(document.body).width();
     //alert("anchura del body:" + bodyWidth);
-    $(this).css('width','800px');
-    //alert("anchura del main reducida:" + $(this).css('width'));
-    $(this).css('width', bodyWidth + "px");
+
+    //Paddings a 0px para no cometer errores en los calculos
+    $(this).css('padding-left', "0px");
+    $(this).css('padding-right', "0px");
+
+    //Le pongo al Objeto la anchura total del body
+    $(this).width(bodyWidth);
     //alert("anchura del main ajustada:" + $(this).css('width'));
 
     return $(this);
   };
 
 })(jQuery);
-
 
 
 
@@ -106,7 +106,7 @@
         totalHeight += $(this).outerHeight(true);
     });
 
-    $(this).css({'height': totalHeight  + 'px'});
+    $(this).height(totalHeight);
 
   };
 
@@ -124,12 +124,13 @@
 
     //alert("matchPrincipalContainersHeighs funcionando");
     var alturaVentana = window.innerHeight - 80;
-    //alert(alturaVentana);
+
 
     // este if amplia hasta abajo la pantalla de login
     if ( ($('#devise_container').height()) < alturaVentana ) {
       $('#devise_container').css({'height': alturaVentana  + 'px'});
     }
+
 
     if(($('#ppal_container').height() + 42) > ($('#content-side').height())) {
       //alert("esta pasando");
