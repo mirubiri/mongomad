@@ -31,7 +31,7 @@ describe Proposal do
   end
 
   it 'is invalid if a good is not owned by composer or receiver' do
-    proposal.goods.sample.owner_id=Faker::Number.number(26)
+    proposal.goods<<Fabricate.build(:product)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -42,7 +42,8 @@ describe Proposal do
   end
 
   it 'is invalid when is more than one cash in goods' do
-    2.times { proposal.goods.build({},Cash) }
+    proposal.goods<<Fabricate.build(:cash,owner_id:proposal.composer_id)
+    proposal.goods<<Fabricate.build(:cash,owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -57,7 +58,7 @@ describe Proposal do
   end
 
   it 'is invalid if there are more than two user sheets' do
-    proposal.user_sheets << proposal.user_sheets.first
+    proposal.user_sheets << Fabricate.build(:user_sheet)
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
@@ -80,10 +81,6 @@ describe Proposal do
   end
 
   describe '#cash?' do
-    it 'calls goods.type(Cash) with any' do
-      expect(proposal.goods.type(Cash)).to receive(:exists?)
-      proposal.cash?
-    end
 
     it 'returns true if cash in proposal' do
       proposal.goods.build({},Cash)

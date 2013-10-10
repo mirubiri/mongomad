@@ -9,7 +9,6 @@ describe Attachment::Image do
 	it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
 
 	# Validations
-
 	specify '.new' do
     expect(Attachment::Image.new.id).to eq nil
   end

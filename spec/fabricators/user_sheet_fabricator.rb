@@ -7,5 +7,3 @@ Fabricator(:user_sheet) do
   nick       { |attrs| attrs[:user].nick }
   location   { |attrs| attrs[:user].profile.location }
 end
-
-# Faltan los diferentes contenedores para user_sheet
