@@ -8,12 +8,13 @@ $(window).load(function(event){
   $('#mainLayout').maximizeResizableChildren();
   $('.header').setHeaderPadding();
 
+  //Si se pintan items rehago su tamaño
+  $('.item').setItemWidth();
 
   //Reseteo las alturas de los contenedores principales y las igualo
   $("#user-side").resetContainerHeight();
   $("#content-side").resetContainerHeight();
   $('#mainLayout').matchPrincipalContainersHeighs();
-
 
   activateRequestButtons(); //Las peticiones siempre estan visibles
 

@@ -20,3 +20,46 @@ function resizeItems(){
   $(".item").css({'width': anchuraProducto +'px'});
   $(".item > .item_image > img").css({'height': anchuraProducto +'px'});
 }
+
+
+
+
+(function ($)
+{
+  $.fn.setItemWidth = function (){
+
+    //alert("entra en funcionamiento el setItemWidth");
+
+    //Pongo los tamaños de los items todos a 0
+    $(this).width(0);
+    $(this).find('.item_image').width(0);
+    $(this).find('.item_image').height(0);
+
+    //Compruebo la anchura que tengo
+    var ppalContainer = $('#ppal_container');
+    var espacioUtil = ppalContainer.width();
+    //alert(espacioUtil);
+
+    //Variables que miden el intervalo de tamaño para los productos
+    var minWidth = 150;
+    var maxWidth = 200;
+
+    //Numero de elementos que entran en los extremos del intervalo
+    var elementsInMinWidth = Math.floor(espacioUtil / minWidth);
+    var elementsInMaxWidth = Math.floor(espacioUtil / maxWidth);
+    //alert(elementsInMinWidth);
+
+
+    //Anchura resultante para el extremo inferior del margen
+    var anchuraItem = (espacioUtil/elementsInMinWidth) -20; // el 20 son 10 de margen de cada item + 5 de padding a cada lado
+    //alert(anchuraItem);
+    $(this).width(anchuraItem);
+    $(this).find('.item_image').width(anchuraItem);
+    $(this).find('.item_image').height(anchuraItem);
+
+
+    return $(this);
+  };
+
+
+})(jQuery);

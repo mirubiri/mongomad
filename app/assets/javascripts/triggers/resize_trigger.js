@@ -11,6 +11,8 @@ $(window).resize(function () {
       $('#mainLayout').maximizeResizableChildren();
       $('.header').setHeaderPadding();
 
+      //Si se pintan items rehago su tamaño
+      $('.item').setItemWidth();
 
       //Reseteo las alturas de los contenedores principales y las igualo
       $("#user-side").resetContainerHeight();

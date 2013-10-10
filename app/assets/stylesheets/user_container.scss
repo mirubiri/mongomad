@@ -148,6 +148,7 @@
 
     .user_container_requests{
       @include container_into_PpalSide_style;
+      @include center-horizontally(93%);
       margin-bottom: 0px;
       border-bottom: none;
 
