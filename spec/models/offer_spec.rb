@@ -22,7 +22,6 @@ describe Offer do
   it { should validate_length_of(:message).within(1..160) }
 
 
-
   #Methods
   describe '#composer' do
     it 'returns the composer user sheet' do
