@@ -20,7 +20,7 @@ module Mongomad
 
     #Habilita logs para la consola
     #Mongoid.logger.level = Logger::DEBUG
-    Moped.logger.level = Logger::DEBUG
+    #Moped.logger.level = Logger::DEBUG
 
 
     #Le digo a devise que su layout por defecto es application
