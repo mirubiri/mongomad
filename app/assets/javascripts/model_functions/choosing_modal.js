@@ -1,43 +1,96 @@
 //Seleccion de usuario
 
-function firstUserSelected(){
-  $(".user_image").first().children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
-}
 
-function userSelection(a,b,c){
-  $("#composer_content_area").removeClass('hidden_container');
-  $("#message_content_area").removeClass('hidden_container');
-  enableUserSelected(a);
-  disableUserSelected(b);
-  disableUserSelected(c);
-}
+(function ($)
+{
+  $.fn.firstUserSelected = function(){
 
-function enableUserSelected(user){
-  $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
-  $("#"+user+"_products_container").removeClass("container_invisible");
-  $("#"+user+"_content_area").show();
-}
+    $(this).find('.user_image').first().children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
 
-function disableUserSelected(user){
-  $("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px #888, 0px -3px 5px #888');
-  $("#"+user+"_products_container").addClass("container_invisible");
-  $("#"+user+"_content_area").hide();
-}
+    return $(this);
+  };
 
-function getElementModifiedClass(){
-  var clase = $('#ppal_container').children('div:first').attr('class');
+})(jQuery);
 
-  if (clase === "negotiation"){
-    return "proposal";
-  }
-  else{
-    return "offer";
-  }
-}
 
-function paint_overmoused_image(id){
-  //$("#overview_image").load(<%=  %>);
-}
+
+(function ($)
+{
+  $.fn.userSelection = function(user1,user2,message){
+
+    $(this).find("#composer_content_area").removeClass('hidden_container');
+    $(this).find("#message_content_area").removeClass('hidden_container');
+
+    $(this).enableUserSelected(user1);
+    $(this).disableUserSelected(user2);
+    $(this).disableUserSelected(message);
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+
+(function ($)
+{
+  $.fn.enableUserSelected = function(user){
+
+    $(this).find("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
+    $(this).find("#"+user+"_products_container").removeClass("container_invisible");
+    $(this).find("#"+user+"_content_area").show();
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+
+(function ($)
+{
+  $.fn.disableUserSelected = function(user){
+
+    $(this).find("#"+user+"_selector_area").children(":first").children(":first").css('box-shadow','0px 3px 5px #888, 0px -3px 5px #888');
+    $(this).find("#"+user+"_products_container").addClass("container_invisible");
+    $(this).find("#"+user+"_content_area").hide();
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+
+
+(function ($)
+{
+  $.fn.getElementModifiedClass = function(){
+
+    var clase = $(this).children('div:first').attr('class');
+
+    if (clase === "negotiation"){
+      return "proposal";
+    }
+    else{
+      return "offer";
+    }
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
 
 // Añade la item al sumario
 function itemAddition(t, u, item){
@@ -46,6 +99,9 @@ function itemAddition(t, u, item){
   var id = item.attr("item_id");
   isitemInOffer(container, id) ? sum1Toitem(item,t,u) : additemToSummary(item,t,u);
 }
+
+
+
 
 function isitemInOffer(container, id){
   //alert("esta la cosa en el sumario?");
@@ -133,7 +189,7 @@ function additemViewInSummary(item, item_id, container, user){
 
   var product_id = item.attr("id");
   var posicion = howMuchInputsAre(container);
-  var tipoElemento = getElementModifiedClass();
+  var tipoElemento = $('#ppal_container').getElementModifiedClass();
 
   //alert(tipoElemento);
 
@@ -244,7 +300,7 @@ function deleteitemFromSummary(item){
 
 function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos dentro de un contenedor
   var posicion = howMuchInputsAre(container);
-  var tipoElemento = getElementModifiedClass();
+  var tipoElemento = $('#ppal_container').getElementModifiedClass();
 
   if(isOffer()===true){
     $(""+container+"").append("<div class='destroy_input' destroy_product_item_id=\""+ value + "\" product_id=\""+ id + "\">" +
@@ -317,7 +373,7 @@ function enableUserMoneySelector(user){
 }
 
 function resetUserAndQuantityInSummary(){
-  var tipoElemento = getElementModifiedClass();
+  var tipoElemento = $('#ppal_container').getElementModifiedClass();
 
   $('#usuario_dinero').attr("name",""+tipoElemento+"[money][nil]").attr("value",0);
   $('#usuario_id').attr("value",0);
