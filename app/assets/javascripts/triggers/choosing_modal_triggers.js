@@ -1,25 +1,31 @@
+
 function loadModalScripts(){
 
   //alert("carga el script de la modal");
-  firstUserSelected();
+  $('#new-offer-form').firstUserSelected();
+
 
   $('#new_offer_receiver_selector').on('click',function(e){
     e.preventDefault();
-    userSelection("receiver","composer","message");
+    $('#new-offer-form').userSelection("receiver","composer","message");
   });
 
   $('#new_offer_composer_selector').on('click',function(e){
     e.preventDefault();
-    userSelection("composer","receiver","message");
+    $('#new-offer-form').userSelection("composer","receiver","message");
   });
 
   $('#new_message_selector').on('click',function(e){
     e.preventDefault();
-    userSelection("message","composer","receiver");
+    $('#new-offer-form').userSelection("message","composer","receiver");
   });
 
 
-  $('#his_product_container').on('click','.product',function(e){
+
+  $('#receiver_content_area').on('click','.item',function(e){
+
+    $(this).addToOffer("#summary_offer_received_products_container");
+
     var item = $(this);
 
     if ( have_stock(item) ) {
@@ -35,7 +41,11 @@ function loadModalScripts(){
   });
 
 
-  $('#my_product_container').on('click','.product',function(e){
+
+
+
+  $('#composer_content_area').on('click','.item',function(e){
+
     var item = $(this);
 
     if ( have_stock(item) ) {
@@ -49,6 +59,10 @@ function loadModalScripts(){
     }
 
   });
+
+
+
+
 
 
   $('#summary_offer_received_products_container').on('click','.delete_button',function(e){

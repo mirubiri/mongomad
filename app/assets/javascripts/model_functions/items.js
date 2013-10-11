@@ -61,5 +61,4 @@ function resizeItems(){
     return $(this);
   };
 
-
 })(jQuery);
