@@ -45,9 +45,9 @@ class Negotiation
     end
   end
 
-  def _statemachine
+  def statemachine
     @statemachine ||= begin
-      fsm = MicroMachine.new(_state || initial_state )
+      fsm = MicroMachine.new(state || initial_state )
 
       unsigned=['unsigned']
       composer_signed=[composer,'signed']
@@ -95,10 +95,12 @@ class Negotiation
     errors.add(:state, "State should be equal to initial_state before persisted") unless !persisted? && state == initial_state
   end
   def check_state_after_persisted
-    errors.add(:state, "State should be different to initial_state after persisted") unless persisted? && (state != initial_state)
+    errors.add(:state, "State should be different to initial_state after persisted") unless persisted? && state != initial_state
   end
   def check_state_multiple_values
-    true
+    errors.add(:state, "State should have only one value") if state.length > 2
+    errors.add(:state, "State should have only one value") if state.length == 1 && state.length[0].class == 'Array'
+    errors.add(:state, "State should have only one value") if state.length == 1 && state.length[0].class == 'Array' && state.length[1].class == 'Array'
   end
   def check_state_has_valid_value
     true

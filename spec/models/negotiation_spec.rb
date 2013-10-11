@@ -42,11 +42,20 @@ describe Negotiation do
   it 'is valid if state is different of initial_state after persisted' do
     allow(negotiation).to receive(:persisted?).and_return(true)
     negotiation.state=composer_confirmed
+        #puts negotiation.state
+    puts negotiation.state[0].class
+    puts "----------------------"
+    puts negotiation.state[1].class
+
     expect(negotiation).to_not have(1).error_on(:state)
   end
 
   it 'is not valid if state has more than 1 value' do
     negotiation.state=[unsigned,composer_signed]
+            #puts negotiation.state
+    puts negotiation.state[0].class
+    puts "----------------------"
+    puts negotiation.state[1].class
     expect(negotiation).to have(1).error_on(:state)
   end
 
