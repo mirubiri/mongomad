@@ -22,24 +22,23 @@ describe Offer do
   it { should validate_length_of(:message).within(1..160) }
 
 
-
   #Methods
   describe '#composer' do
     it 'returns the composer user sheet' do
-      expect(offer.composer).to eq offer.user_sheets.find(offer.user_composer_id)
+      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
     end
   end
 
   describe '#receiver' do
     it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq offer.user_sheets.find(offer.user_receiver_id)
+      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
     end
   end
 
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
       offer.save
-      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver],proposals: [offer.proposal],user_sheets: offer.user_sheets )
+      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver],proposals: [offer.proposal],user_sheets: offer.proposal.user_sheets )
       offer.negotiate
     end
 
