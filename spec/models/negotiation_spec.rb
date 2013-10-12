@@ -34,37 +34,6 @@ describe Negotiation do
   it { should validate_presence_of :messages }
   it { should validate_presence_of :state }
 
-  it 'is not valid if state is different of initial_state before persisted' do
-    negotiation.state=composer_confirmed
-    expect(negotiation).to have(1).error_on(:state)
-  end
-
-  it 'is valid if state is different of initial_state after persisted' do
-    allow(negotiation).to receive(:persisted?).and_return(true)
-    negotiation.state=composer_confirmed
-        #puts negotiation.state
-    puts negotiation.state[0].class
-    puts "----------------------"
-    puts negotiation.state[1].class
-
-    expect(negotiation).to_not have(1).error_on(:state)
-  end
-
-  it 'is not valid if state has more than 1 value' do
-    negotiation.state=[unsigned,composer_signed]
-            #puts negotiation.state
-    puts negotiation.state[0].class
-    puts "----------------------"
-    puts negotiation.state[1].class
-    expect(negotiation).to have(1).error_on(:state)
-  end
-
-  it 'is invalid if state is not included in allowed states list' do
-    allow(negotiation).to receive(:persisted?).and_return(true)
-    negotiation.state=['other']
-    expect(negotiation).to have(1).error_on(:state)
-  end
-
   # Methods
   describe '#proposal' do
     it 'returns the last proposal' do
