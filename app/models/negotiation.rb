@@ -6,19 +6,23 @@ class Negotiation
 
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
   embeds_many :messages,  class_name:'Message', as: :message_container
-  embeds_many :user_sheets, class_name:'UserSheet', as: :sheet_container
 
-  field :previous_state,type:Array
-  field :state,type:Array
+  field :previous_state, type:Array
+  field :state, type:Array
 
   validates_presence_of :proposals, :messages, :state
+
+  validate :check_state_before_persisted,
+           :check_state_after_persisted,
+           :check_state_multiple_values,
+           :check_state_has_valid_value
 
   def cash?
     proposal.cash?
   end
 
   def cash_owner
-    proposal.cash_owner
+    proposal.goods.type(Cash).first.owner_id
   end
 
   def proposal
@@ -34,12 +38,16 @@ class Negotiation
   end
 
   def initial_state
-    self.state=[composer,'signed']
+    if cash? && cash_owner == composer then
+      self.state = ['unsigned']      
+    else 
+      self.state=[composer,'signed']
+    end
   end
 
-  def _statemachine
+  def statemachine
     @statemachine ||= begin
-      fsm = MicroMachine.new(_state || initial_state )
+      fsm = MicroMachine.new(state || initial_state )
 
       unsigned=['unsigned']
       composer_signed=[composer,'signed']
@@ -64,5 +72,37 @@ class Negotiation
 
       fsm
     end
+  end
+
+  def sign
+    _statemachine
+  end
+
+  def confirm
+  end
+
+  def reject 
+  end
+
+  def nostock
+  end
+
+  def restock
+  end
+
+  private
+  def check_state_before_persisted
+    errors.add(:state, "State should be equal to initial_state before persisted") unless !persisted? && state == initial_state
+  end
+  def check_state_after_persisted
+    errors.add(:state, "State should be different to initial_state after persisted") unless persisted? && state != initial_state
+  end
+  def check_state_multiple_values
+    errors.add(:state, "State should have only one value") if state.length > 2
+    errors.add(:state, "State should have only one value") if state.length == 1 && state.length[0].class == 'Array'
+    errors.add(:state, "State should have only one value") if state.length == 1 && state.length[0].class == 'Array' && state.length[1].class == 'Array'
+  end
+  def check_state_has_valid_value
+    true
   end
 end
