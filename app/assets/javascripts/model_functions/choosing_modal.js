@@ -87,11 +87,6 @@
 
 
 
-
-
-
-
-
 // Añade la item al sumario
 function itemAddition(t, u, item){
   //alert("Añadir item al sumario");

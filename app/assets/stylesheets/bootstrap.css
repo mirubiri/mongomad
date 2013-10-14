@@ -4772,9 +4772,8 @@ a.thumbnail:focus {
 }
 
 .modal.modal-item{
-  left: 55%;
-  width: 450px;
-  margin-top: 180px;
+  left: 50%;
+  margin-top: 100px;
   margin-bottom:0px;
 }
 
