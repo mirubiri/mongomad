@@ -34,8 +34,8 @@ class Negotiation
 
   def initial_state
     if cash? && cash_owner == composer then
-      self.state = ['unsigned']      
-    else 
+      self.state = ['unsigned']
+    else
       self.state=[composer,'signed']
     end
   end
@@ -58,11 +58,11 @@ class Negotiation
       fsm.when([composer,:confirm], receiver_signed => composer_confirmed )
       fsm.when([receiver,:confirm], composer_signed => receiver_confirmed )
 
-      fsm.when([receiver,:reject], composer_signed => receiver_rejected, 
+      fsm.when([receiver,:reject], composer_signed => receiver_rejected,
                                    unsigned => receiver_rejected  )
       fsm.when([composer,:reject], receiver_signed => composer_rejected )
 
-      fsm.when([:nostock], unsigned => nostock, 
+      fsm.when([:nostock], unsigned => nostock,
                            composer_signed => nostock,
                            receiver_signed => nostock )
       fsm.when([:restock], nostock => previous_state )
@@ -94,5 +94,5 @@ class Negotiation
 
   def restock
     statemachine.trigger([:restock])
-  end  
+  end
 end
