@@ -106,10 +106,10 @@
     proposal.composer_id
   end
   def composer_first_name(proposal)
-    proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last.first_name
+    proposal.user_sheets.where(id:proposal.composer_id).last.first_name
   end
   def composer_full_name(proposal)
-    sheet = proposal.proposal_container.user_sheets.where(id:proposal.composer_id).last
+    sheet = proposal.user_sheets.where(id:proposal.composer_id).last
     sheet.first_name + " " + sheet.last_name
   end
   def composer_products(proposal) # FIX helper!!!!!
