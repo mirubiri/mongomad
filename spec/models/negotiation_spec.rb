@@ -5,8 +5,6 @@ describe Negotiation do
   let(:negotiation) { Fabricate.build(:negotiation) }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
-  #let(:negotiation_state) { negotiation.state }
-  #let(:negotiation_previous_state) { negotiation.previous_state }
 
   let(:unsigned) {['unsigned']}
   let(:composer_signed) {[composer_id,'signed']}
@@ -83,91 +81,66 @@ describe Negotiation do
   describe '#state' do
     # Signs
     it 'changes from unsigned to receiver_signed on sign(receiver_id)' do
-      # negotiation_state=unsigned
-      # expect{ negotiation.sign(receiver_id) }.to change { negotiation_state }.to(receiver_signed)
       negotiation.state=unsigned
       expect{ negotiation.sign(receiver_id) }.to change { negotiation.state }.to(receiver_signed)
     end
 
     # Confirmations
     it 'changes from receiver_signed to composer_confirmed on confirm(composer_id)' do
-      # negotiation_state=receiver_signed
-      # expect{ negotiation.confirm(composer_id) }.to change{ negotiation_state }.to(composer_confirmed)
       negotiation.state=receiver_signed
       expect{ negotiation.confirm(composer_id) }.to change{ negotiation.state }.to(composer_confirmed)
     end
 
     it 'changes from composer_signed to receiver_confirmed on confirm(receiver_id)' do
-      # negotiation_state=composer_signed
-      # expect{ negotiation.confirm(receiver_id) }.to change{ negotiation_state }.to(receiver_confirmed)
       negotiation.state=composer_signed
       expect{ negotiation.confirm(receiver_id) }.to change{ negotiation.state }.to(receiver_confirmed)
     end
 
     # Rejects
     it 'changes from unsigned to receiver_rejected on reject(receiver_id)' do
-      # negotiation_state=unsigned
-      # expect{ negotiation.reject(receiver_id) }.to change{ negotiation_state }.to(receiver_rejected)
       negotiation.state=unsigned
       expect{ negotiation.reject(receiver_id) }.to change{ negotiation.state }.to(receiver_rejected)
     end
 
     it 'changes from composer_signed to receiver_rejected on reject(receiver_id)' do
-      # negotiation_state=composer_signed
-      # expect{ negotiation.reject(receiver_id) }.to change { negotiation_state }.to(receiver_rejected)
       negotiation.state=composer_signed
       expect{ negotiation.reject(receiver_id) }.to change { negotiation.state }.to(receiver_rejected)
     end
 
     it 'changes from receiver_signed to composer_rejected on reject(composer:id)' do
-      # negotiation_state=receiver_signed
-      # expect{ negotiation.reject(composer_id) }.to change { negotiation_state }.to(composer_rejected)
       negotiation.state=receiver_signed
       expect{ negotiation.reject(composer_id) }.to change { negotiation.state }.to(composer_rejected)
     end
 
     # No stock
     it 'changes from unsigned to nostock on nostock' do
-      # negotiation_state=unsigned
-      # expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
       negotiation.state=unsigned
       expect{ negotiation.nostock }.to change{ negotiation.state }.to(nostock)
     end
 
     it 'changes from receiver_signed to nostock on nostock' do
-      # negotiation_state=receiver_signed
-      # expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
       negotiation.state=receiver_signed
       expect{ negotiation.nostock }.to change{ negotiation.state }.to(nostock)
     end
 
     it 'changes from composer_signed to nostock on nostock' do
-      # negotiation_state=composer_signed
-      # expect{ negotiation.nostock }.to change{ negotiation_state }.to(nostock)
       negotiation.state=composer_signed
       expect{ negotiation.nostock }.to change{ negotiation.state }.to(nostock)
     end
 
     # Restock
-    #before(:each) { negotiation_state=nostock }
     before(:each) { negotiation.state=nostock }
     it 'changes from nostock to previous receiver_signed state on restock' do
-      # negotiation_previous_state=receiver_signed
-      # expect{ negotiation.restock }.to change{ negotiation_state }.to( receiver_signed )
       negotiation.previous_state=receiver_signed
       expect{ negotiation.restock }.to change{ negotiation.state }.to(receiver_signed)
     end
 
     it 'changes from nostock to previous composer_signed state on restock' do
-      # negotiation_previous_state=composer_signed
-      # expect{ negotiation.restock }.to change{ negotiation_state }.to( composer_signed )
       negotiation.previous_state=composer_signed
       expect{ negotiation.restock }.to change{ negotiation.state }.to(composer_signed)
     end
 
     it 'changes from nostock to previous unsigned on restock' do
-      # negotiation_previous_state=unsigned
-      # expect{ negotiation.restock }.to change{ negotiation_state }.to( unsigned )
       negotiation.previous_state=unsigned
       expect{ negotiation.restock }.to change{ negotiation.state }.to(unsigned)
     end
