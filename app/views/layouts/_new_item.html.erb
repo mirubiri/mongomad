@@ -47,27 +47,27 @@
 
 <script type="text/javascript">
 
-  $("#item_image_container").draggable({
+  // $("#item_image_container").draggable({
 
-    stop: function(ev, ui) {
-        var hel = ui.helper, pos = ui.position;
-        //horizontal
-        var h = -(hel.outerHeight() - $(hel).parent().outerHeight());
-        if (pos.top >= 0) {
-            hel.animate({ top: 0 });
-        } else if (pos.top <= h) {
-            hel.animate({ top: h });
-        }
-        // vertical
-        var v = -(hel.outerWidth() - $(hel).parent().outerWidth());
-        if (pos.left >= 0) {
-            hel.animate({ left: 0 });
-        } else if (pos.left <= v) {
-            hel.animate({ left: v });
-        }
-    }
+  //   stop: function(ev, ui) {
+  //       var hel = ui.helper, pos = ui.position;
+  //       //horizontal
+  //       var h = -(hel.outerHeight() - $(hel).parent().outerHeight());
+  //       if (pos.top >= 0) {
+  //           hel.animate({ top: 0 });
+  //       } else if (pos.top <= h) {
+  //           hel.animate({ top: h });
+  //       }
+  //       // vertical
+  //       var v = -(hel.outerWidth() - $(hel).parent().outerWidth());
+  //       if (pos.left >= 0) {
+  //           hel.animate({ left: 0 });
+  //       } else if (pos.left <= v) {
+  //           hel.animate({ left: v });
+  //       }
+  //   }
 
-  });
+  // });
 
   $("#item_image_container").on('load', function (event) {
       $(this).wheelzoom();

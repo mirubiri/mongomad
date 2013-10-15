@@ -1,10 +1,21 @@
 function imageSelection(input) {
   if (input.files && input.files[0]) {
+
     var reader = new FileReader();
+
     reader.onload = function (e) {
-        $('#item_image_container').attr('src', e.target.result);
+
+        var image = new Image();
+        image.src = e.target.result;
+
+        image.onload = function(event) {
+          $('#item_image_container').attr('src', this.src);
+          $('.image_container').height($('#item_image_container').height());
+        };
     };
+
     reader.readAsDataURL(input.files[0]);
+
   }
 }
 
