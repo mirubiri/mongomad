@@ -1,6 +1,7 @@
 class Item
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Attachment::Images
 
   belongs_to :user
 
@@ -13,7 +14,7 @@ class Item
   validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def pick(quantity)
-  	Product.new(name:name,description:description,quantity:quantity) do |product|
+  	Product.new(name:name,description:description,imagenes:imagenes,quantity:quantity) do |product|
       product.id=id
       product.owner_id=user.id
   	end
