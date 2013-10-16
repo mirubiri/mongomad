@@ -27,10 +27,9 @@ describe Item do
   # Methods
   describe '#pick(quantity)' do
 
-    it 'returns a Product filled with item name, description and given quantity' do
-      expect(Product).to receive(:new).with(name:item.name,description:item.description,quantity:1)
+    it 'returns a Product filled with item name, description,images and given quantity' do
+      expect(Product).to receive(:new).with(name:item.name,description:item.description,images:item.images,quantity:1)
       item.pick(1)
-      pending 'it expect to receive also item image urls when implemented'
     end
 
     specify { expect(item.pick(1).id).to eq item.id }
