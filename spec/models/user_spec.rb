@@ -29,7 +29,7 @@ describe User do
       expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,
         last_name:user.profile.last_name,
         nick:user.nick,
-        location:user.profile.location
+        location:user.profile.location,
         images:user.profile.images )
       user.sheet
     end
