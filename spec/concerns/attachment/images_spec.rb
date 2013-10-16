@@ -18,6 +18,21 @@ describe Attachment::Images do
     test.images<<image_one
     test.images<<image_two
     test.images<<image_three
+    test
+  end
+
+  # Validations
+  subject { test_class}
+  it { should embed_many :images }
+
+  it 'is invalid when no main image' do
+    image_holder.images.update_all(main:false)
+    expect(image_holder.errors_on(:images)).to include ('There is no main image')
+  end
+
+  it 'is invalid when more than one main image' do
+    image_holder.images.update_all(main:true)
+    expect(image_holder.errors_on(:images)).to include('Cannot have more than one main image')
   end
 
   # Methods
@@ -30,9 +45,16 @@ describe Attachment::Images do
   describe '#set_main_image' do
 
   	context 'given an existent image id' do
-  	  it 'changes the main image to the given one' do
+
+      it 'unsets the current main image' do
+        previous_main=image_holder.main_image
         image_holder.set_main_image(image_two.id)
-        expect (image_holder.main_image).to eq image_two
+        expect(previous_main.main).to eq false
+      end
+
+  	  it 'sets the given image to main' do
+        image_holder.set_main_image(image_two.id)
+        expect(image_holder.main_image).to eq image_two
   	  end
 
   	  it 'returns true' do
@@ -41,57 +63,15 @@ describe Attachment::Images do
     end
 
     context 'given an inexistent image' do
+      let (:inexistent_image) { Fabricate.build(:image,id:'inexistent') }
+
 	  	it 'do not change the main image to the given one' do
-        expect { image_holder.main_image('four') }.to_not change { image_holder.main_image }
+        expect { image_holder.set_main_image(inexistent_image.id) }.to_not change { image_holder.main_image }
 	  	end
 
 	  	it 'returns false' do
-	  		expect (image_holder.set_main_image('four')).to eq false
+	  		expect (image_holder.set_main_image(inexistent_image.id)).to eq false
 	  	end
 	  end
-
-    context 'given a deleted image' do
-      it 'do not change the main image to the given one' do
-        image_holder.delete_images( %w(two) )
-        expect { image_holder.set_main_image('two') }.to_not change { image_holder.main_image }
-      end
-
-      it 'returns false' do
-        image_holder.delete_images( %w(two) )
-        expect(image_holder.set_main_image( %(two))).to eq false
-      end
-    end
-  end
-
-  describe '#delete_images' do
-      xit 'mark as deleted the existing given images' do
-  	  	expect { image_holder.delete_images( %w(one two six) )}.to change { image_holder.images }.from([image_one,image_two,image_three]).to( [image_three] )
-  	  end
-
-  	  xit 'returns true' do
-  	  	expect (image_holder.delete_images( %w(one two six) )).to eq true
-  	  end
-  end
-
-  describe '#add_images' do
-  	it 'adds given images to the image list' do
-      image_ten = Fabricate.build(:image,id:'ten')
-  		expect { image_holder.add_image(image_ten)}.to change{image_holder.images}.from( [image_one,image_two,image_three] ).to( [image_one,image_two,image_three,image_ten] )
-  	end
-
-  	it 'returns true' do
-  		expect(image_holder.add_image( %w(five six) )).to eq true
-  	end
-  end
-
-  describe '#images' do
-  	it 'returns all images' do
-  		expect(image_holder.images).to eq image_holder.images
-  	end
-
-    xit 'do not return deleted images' do
-      image_holder.delete_images(image_two)
-      expect(image_holder.images).to eq [image_one,image_three]
-    end
   end
 end
