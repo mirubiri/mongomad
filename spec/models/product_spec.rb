@@ -5,8 +5,6 @@ describe Product do
   let(:item) { Fabricate(:item) }
   let(:product) { Fabricate.build(:product,item:item) }
 
-  it 'should have one main image & two secondary images'
-
   # Relations
   it { should be_embedded_in :proposal }
   specify { Product.should < Good }

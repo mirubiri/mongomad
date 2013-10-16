@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe Item do
   let(:item) { Fabricate.build(:item) }
-  it 'should have one main image & two secondary images'
+
+  # Modules
+  it { should include_module Attachment::Images }
 
   # Relations
   it { should belong_to :user }

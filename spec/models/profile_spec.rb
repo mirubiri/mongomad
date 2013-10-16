@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe Profile do
-  xit 'should have an user photo'
   xit 'should have the city name'
+
+  # Modules
+  it { should include_module Attachment::Images }
 
   # Relations
   it { should be_embedded_in :user }
