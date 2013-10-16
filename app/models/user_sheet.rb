@@ -1,6 +1,7 @@
 class UserSheet
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Attachment::Images
 
   embedded_in :user_sheet_container, polymorphic:true
 
