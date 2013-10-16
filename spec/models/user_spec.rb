@@ -25,13 +25,13 @@ describe User do
 
   # Methods
   describe '#sheet' do
-    it 'returns an UserSheet filled with user id, first_name, last_name, nick and location coords' do
+    it 'returns an UserSheet filled with user id, first_name, last_name, images, nick and location coords' do
       expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,
         last_name:user.profile.last_name,
         nick:user.nick,
-        location:user.profile.location )
+        location:user.profile.location
+        images:user.profile.images )
       user.sheet
-      pending 'it should include the user photo url'
     end
     specify { expect(user.sheet.id).to eq user.id }
   end
