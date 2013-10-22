@@ -13,9 +13,12 @@
   def text(object)
     object.text
   end
-  def image(object,width,height)
-    cl_image_tag(object.images.where(main:true).first.id,width:width,height:height)
+  def image(object)
+    cl_image_tag(object.images.where(main:true).first.id)
   end
+  # def image(object,width,height)
+  #   cl_image_tag(object.images.where(main:true).first.id,width:width,height:height)
+  # end
   def messages(object)
     object.messages
   end
