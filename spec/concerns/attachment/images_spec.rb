@@ -28,11 +28,13 @@ describe Attachment::Images do
   it 'is invalid when no main image' do
     image_holder.images.update_all(main:false)
     expect(image_holder.errors_on(:images)).to include ('There is no main image')
+    expect(image_holder).to have(1).errors_on(:images)
   end
 
   it 'is invalid when more than one main image' do
     image_holder.images.update_all(main:true)
     expect(image_holder.errors_on(:images)).to include('Cannot have more than one main image')
+    expect(image_holder).to have(1).errors_on(:images)
   end
 
   # Methods
@@ -58,7 +60,7 @@ describe Attachment::Images do
   	  end
 
   	  it 'returns true' do
-  	    expect (image_holder.set_main_image(image_two.id)).to eq true
+  	    expect(image_holder.set_main_image(image_two.id)).to eq true
   	  end
     end
 
@@ -70,7 +72,7 @@ describe Attachment::Images do
 	  	end
 
 	  	it 'returns false' do
-	  		expect (image_holder.set_main_image(inexistent_image.id)).to eq false
+	  		expect(image_holder.set_main_image(inexistent_image.id)).to eq false
 	  	end
 	  end
   end

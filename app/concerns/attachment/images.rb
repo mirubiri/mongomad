@@ -4,7 +4,7 @@ module Attachment
 
     included do
       embeds_many :images,class_name: "Attachment::Image",as: :attachable
-    
+
       validate :check_main_image_exist, :check_multiple_main_image
     end
 
@@ -13,18 +13,23 @@ module Attachment
     end
 
     def set_main_image(image_id)
-      main_image.main = false
-      images.find(image_id).main = true
-      true
+      image=images.where(id:image_id).first
+      if image
+        main_image.main=false
+        image.main=true
+        true
+      else
+        false
+      end
     end
 
     private
     def check_main_image_exist
-      errors.add(:images, "There is no main image") unless images.count == 1
+      errors.add(:images, "There is no main image") unless images.where(main:true).exists?
     end
 
     def check_multiple_main_image
-      errors.add(:images, "Cannot have more than one main image") unless images.where(main:true).count == 1
+      errors.add(:images, "Cannot have more than one main image") if images.where(main:true).size > 1
     end
   end
 end
