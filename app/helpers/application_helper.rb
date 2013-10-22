@@ -13,9 +13,8 @@
   def text(object)
     object.text
   end
-  def image(object) #FIX helper!!!!!
-    #image_tag(object.image)
-    image_tag('/assets/images/sergio.jpg')
+  def image(object,width,height)
+    cl_image_tag(object.images.where(main:true).first.id,width:width,height:height)
   end
   def messages(object)
     object.messages
@@ -46,9 +45,8 @@
   # def language(user) #FIX: Not used
   #   user.profile.language
   # end
-  def birth_date(user) # FIX helper!!!!!
-    '12/12/2012'
-    #user.profile.birth_date
+  def birth_date(user)
+    user.profile.birth_date
   end
   # def country(user) #FIX: Does not exist in the model (at the moment)!!!
   #   'apatrida'
