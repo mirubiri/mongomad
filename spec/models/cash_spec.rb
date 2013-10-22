@@ -4,8 +4,6 @@ describe Cash do
   specify { Cash.should < Good }
   let(:cash) { Fabricate.build(:cash) }
 
-  it 'should have an static image representing money an divise'
-
   # Relations
   it { should be_embedded_in :proposal}
 

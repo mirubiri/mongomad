@@ -6,6 +6,7 @@ Fabricator(:product) do
   owner_id    { |attrs| attrs[:item].user.id }
   name        { |attrs| attrs[:item].name }
   description { |attrs| attrs[:item].description }
+  images      { |attrs| attrs[:item].images }
   quantity    3
 
   proposal { |attrs| Fabricate(:proposal,composer:attrs[:item].user) }

@@ -9,9 +9,9 @@ describe Attachment::Images do
   	end
   end
 
-  let(:image_one) { Fabricate.build(:image,id:'one',main: true) }
-  let(:image_two) { Fabricate.build(:image,id:'two') }
-  let(:image_three) { Fabricate.build(:image,id:'three') }
+  let(:image_one) { Fabricate.build(:image_product,id:'one',main: true) }
+  let(:image_two) { Fabricate.build(:image_product,id:'two') }
+  let(:image_three) { Fabricate.build(:image_product,id:'three') }
 
   let(:image_holder) do
     test=test_class.new
@@ -65,7 +65,7 @@ describe Attachment::Images do
     end
 
     context 'given an inexistent image' do
-      let (:inexistent_image) { Fabricate.build(:image,id:'inexistent') }
+      let (:inexistent_image) { Fabricate.build(:image_product,id:'inexistent') }
 
 	  	it 'do not change the main image to the given one' do
         expect { image_holder.set_main_image(inexistent_image.id) }.to_not change { image_holder.main_image }

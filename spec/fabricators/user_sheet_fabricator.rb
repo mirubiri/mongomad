@@ -6,4 +6,5 @@ Fabricator(:user_sheet) do
   last_name  { |attrs| attrs[:user].profile.last_name }
   nick       { |attrs| attrs[:user].nick }
   location   { |attrs| attrs[:user].profile.location }
+  images     { |attrs| attrs[:user].profile.images }
 end
