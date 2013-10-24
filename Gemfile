@@ -19,6 +19,8 @@ group :assets do
 end
 
 group :development,:test do
+  gem 'sendgrid'
+  #gem 'geocoder'
 	gem 'rspec-rails'
 	gem 'fabrication'
 	gem 'mongoid-rspec'
