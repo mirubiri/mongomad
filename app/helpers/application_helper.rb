@@ -14,7 +14,7 @@
     object.text
   end
   def image(object)
-    cl_image_tag(object.images.where(main:true).first.id)
+    cl_image_tag(object.images.where(main:true).first.id+".jpg")
   end
   # def image(object,width,height)
   #   cl_image_tag(object.images.where(main:true).first.id,width:width,height:height)

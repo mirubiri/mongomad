@@ -5,21 +5,21 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(current_user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= image(current_user) %>
+              <%= image(current_user.profile) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= image(@user) %>
+              <%= image(@user.profile) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="message_selector_area">
             <div class="user_image">
-              <%= image(@user) %>
+              <%= image(@user.profile) %>
             </div>
           </div>
         </a>
@@ -97,7 +97,7 @@
         </div>
         <div class="offer_info">
           <div class="profile_image">
-            <%= image(@user) %>
+            <%= image(@user.profile) %>
           </div>
           <div class="description">
             <div class="offer_message">

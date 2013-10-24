@@ -10,7 +10,7 @@
         </div>
         <div class="header_user_image">
           <div class="header_user-image_container">
-            <%= link_to image(@user),
+            <%= link_to image(@user.profile),
                 :controller => "users",
                 :action => "show",
                 :id => id(current_user)

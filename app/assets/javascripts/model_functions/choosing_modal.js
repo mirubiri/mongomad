@@ -1,6 +1,3 @@
-//Seleccion de usuario
-
-
 (function ($)
 {
   $.fn.firstUserSelected = function(){
