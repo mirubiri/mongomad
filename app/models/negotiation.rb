@@ -4,13 +4,13 @@ class Negotiation
 
   has_and_belongs_to_many :_users
 
-  embeds_many :proposals, class_name:'Proposal', as: :proposal_container
+  embeds_many :proposals, after_add: :initial_state, class_name:'Proposal', as: :proposal_container
   embeds_many :messages,  class_name:'Message', as: :message_container
 
   field :previous_state, type:Array
   field :state, type:Array
 
-  validates_presence_of :proposals, :messages, :state
+  validates_presence_of :proposals, :state
 
   def cash?
     proposal.cash?
@@ -32,7 +32,7 @@ class Negotiation
     proposal.receiver_id
   end
 
-  def initial_state
+  def initial_state(proposal=nil)
     if cash? && cash_owner == composer then
       self.state = ['unsigned']
     else
@@ -42,7 +42,7 @@ class Negotiation
 
   def statemachine
     @statemachine ||= begin
-      fsm = MicroMachine.new(state || initial_state )
+      fsm = MicroMachine.new(state)
 
       unsigned=['unsigned']
       composer_signed=[composer,'signed']
