@@ -47,6 +47,11 @@ describe Offer do
       expect(offer.negotiate).to be_an_instance_of(Negotiation)
     end
 
+    it 'returns a valid negotiation' do
+      offer.save
+      expect(offer.negotiate).to be_valid
+    end
+
     it 'returns false when offer is not saved' do
       expect(offer.negotiate).to eq false
     end
