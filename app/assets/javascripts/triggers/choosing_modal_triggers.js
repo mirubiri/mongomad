@@ -63,8 +63,6 @@ function loadModalScripts(){
 
 
 
-
-
   $('#summary_offer_received_products_container').on('click','.delete_button',function(e){
     itemSubtraction("his","received","receiver",$(this));
   });
