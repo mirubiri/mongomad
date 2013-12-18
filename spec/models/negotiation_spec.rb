@@ -62,10 +62,35 @@ describe Negotiation do
   end
 
   describe '#actions_for' do
-    it 'returns an array containing the actions a given user can perform' do
+
+    it 'returns an array containing :sign if given user can sign' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:sign]).and_return(true)
+      expect(negotiation.actions_for(composer_id)).to include(:sign)
     end
 
-    it 'returns a nil array if a given user cannot perform any action' do
+    it 'returns an array containing :confirm if given user can confirm' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:confirm]).and_return(true)
+      expect(negotiation.actions_for(composer_id)).to include(:confirm)
+    end
+    
+    it 'returns an array containing :reject if given user can reject' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:reject]).and_return(true)
+      expect(negotiation.actions_for(composer_id)).to include(:reject)
+    end
+
+    it 'returns an array not containing :sign if given user cannot sign' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:sign]).and_return(false)
+      expect(negotiation.actions_for(composer_id)).to_not include(:sign)
+    end
+
+    it 'returns an array not containing :confirm if given user cannot confirm' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:confirm]).and_return(false)
+      expect(negotiation.actions_for(composer_id)).to_not include(:confirm)
+    end
+    
+    it 'returns an array not containing :reject if given user cannot reject' do
+      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:reject]).and_return(false)
+      expect(negotiation.actions_for(composer_id)).to_not include(:reject)
     end
   end
 
