@@ -15,6 +15,13 @@ describe Negotiation do
   let(:composer_rejected) {[composer_id,'rejected']}
   let(:nostock) { ['nostock']}
 
+  let(:composer_sign) {[composer_id,:sign]}
+  let(:receiver_sign) {[receiver_id,:sign]}
+  let(:composer_confirm) {[composer_id,:confirm]}
+  let(:receiver_confirm) {[receiver_id,:confirm]}
+  let(:composer_reject) {[composer_id,:reject]}
+  let(:receiver_reject) {[receiver_id,:reject]}
+
   # Relations
   it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
