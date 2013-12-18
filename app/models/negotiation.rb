@@ -95,4 +95,18 @@ class Negotiation
   def restock
     statemachine.trigger([:restock])
   end
+
+  def actions_for(user_id)
+    actions = Array.new
+    if statemachine.trigger?([user_id,:sign])
+      actions << :sign
+    end
+    if statemachine.trigger?([user_id,:confirm])
+      actions << :confirm
+    end
+    if statemachine.trigger?([user_id,:reject])
+      actions << :reject
+    end
+    actions
+  end
 end

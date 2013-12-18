@@ -64,7 +64,7 @@ describe Negotiation do
   describe '#actions_for' do
 
     it 'returns an array containing :sign if given user can sign' do
-      expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:sign]).and_return(true)
+      negotiation.statemachine.should_receive(:trigger?).with([composer_id,:sign]).and_return(true)
       expect(negotiation.actions_for(composer_id)).to include(:sign)
     end
 
