@@ -62,36 +62,49 @@ describe Negotiation do
   end
 
   describe '#actions_for' do
-    before(:each) { negotiation.statemachine.stub(:trigger?).and_return(false) }
 
     it 'returns an array containing :sign if given user can sign' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:sign]).and_return(true)
       expect(negotiation.actions_for(composer_id)).to include(:sign)
     end
 
     it 'returns an array containing :confirm if given user can confirm' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:confirm]).and_return(true)
       expect(negotiation.actions_for(composer_id)).to include(:confirm)
     end
 
     it 'returns an array containing :reject if given user can reject' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:reject]).and_return(true)
       expect(negotiation.actions_for(composer_id)).to include(:reject)
     end
 
     it 'returns an array not containing :sign if given user cannot sign' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:sign]).and_return(false)
       expect(negotiation.actions_for(composer_id)).to_not include(:sign)
     end
 
     it 'returns an array not containing :confirm if given user cannot confirm' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:confirm]).and_return(false)
       expect(negotiation.actions_for(composer_id)).to_not include(:confirm)
     end
 
     it 'returns an array not containing :reject if given user cannot reject' do
+      negotiation.statemachine.stub(:trigger?).and_return(false)
       expect(negotiation.statemachine).to receive(:trigger?).with([composer_id,:reject]).and_return(false)
       expect(negotiation.actions_for(composer_id)).to_not include(:reject)
+    end
+
+    it 'do not raise exceptions given composer' do
+      expect(negotiation.actions_for(composer_id)).to_not raise_exception
+    end
+
+    it 'do not raise exceptions given receiver' do
+      expect(negotiation.actions_for(receiver_id)).to_not raise_exception
     end
   end
 
