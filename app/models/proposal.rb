@@ -23,7 +23,8 @@ class Proposal
   def state_machine(machine=nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new('unsigned')
-
+      machine.when(:sign,'unsigned'=>'signed')
+      machine.when(:confirm,'signed'=>'confirmed')
       machine.on(:any) do
         self.state=@state_machine.state
       end

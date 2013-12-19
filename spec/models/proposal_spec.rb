@@ -93,18 +93,18 @@ describe Proposal do
     end
   end
 
-  describe '#state_machine' do
-    subject(:machine) { MicroMachine.new('unsigned') }
-    after(:each) { proposal.state_machine(machine) }
-    it { should_receive(:when).with(:sign, 'unsigned'=>'signed') }
-    it { should_receive(:when).with(:confirm,'signed'=>'confirmed') }
-    it { should_receive(:when).with(:reset,'suspended'=>'unsigned') }
-    it { should_receive(:when).with(:reset,'signed'=>'unsigned') }
-    it { should_receive(:when).with(:suspend,'unsigned'=>'suspended') }
-    it { should_receive(:when).with(:suspend,'signed'=>'suspended') }
-    it { should_receive(:when).with(:discard,'unsigned'=>'discarded') }
-    it { should_receive(:when).with(:discard,'signed'=>'discarded') }
-    it { should_receive(:when).with(:discard,'suspended'=>'discarded') }
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+    before(:each) { proposal.state_machine(machine) }
+    it { should have_received(:when).with(:sign, 'unsigned'=>'signed') }
+    it { should have_received(:when).with(:confirm,'signed'=>'confirmed') }
+    it { should have_received(:when).with(:reset,'suspended'=>'unsigned') }
+    it { should have_received(:when).with(:reset,'signed'=>'unsigned') }
+    it { should have_received(:when).with(:suspend,'unsigned'=>'suspended') }
+    it { should have_received(:when).with(:suspend,'signed'=>'suspended') }
+    it { should have_received(:when).with(:discard,'unsigned'=>'discarded') }
+    it { should have_received(:when).with(:discard,'signed'=>'discarded') }
+    it { should have_received(:when).with(:discard,'suspended'=>'discarded') }
   end
 
   # Factories
