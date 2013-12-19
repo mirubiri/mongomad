@@ -12,11 +12,13 @@ describe Proposal do
   it { should be_timestamped_document }
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:state).with_default_value_of('unsigned') }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
+  it { should validate_inclusion_of(:state).to_allow('unsigned','signed','confirmed','suspended','discarded')}
 
   it 'is invalid when there is not a good for composer' do
     composer_id=proposal.composer_id
@@ -89,6 +91,20 @@ describe Proposal do
     it 'returns false if no cash in proposal' do
       expect(proposal.cash?).to eq false
     end
+  end
+
+  describe '#state_machine' do
+    subject(:machine) { MicroMachine.new('unsigned') }
+    after(:each) { proposal.state_machine(machine) }
+    it { should_receive(:when).with(:sign, 'unsigned'=>'signed') }
+    it { should_receive(:when).with(:confirm,'signed'=>'confirmed') }
+    it { should_receive(:when).with(:reset,'suspended'=>'unsigned') }
+    it { should_receive(:when).with(:reset,'signed'=>'unsigned') }
+    it { should_receive(:when).with(:suspend,'unsigned'=>'suspended') }
+    it { should_receive(:when).with(:suspend,'signed'=>'suspended') }
+    it { should_receive(:when).with(:discard,'unsigned'=>'discarded') }
+    it { should_receive(:when).with(:discard,'signed'=>'discarded') }
+    it { should_receive(:when).with(:discard,'suspended'=>'discarded') }
   end
 
   # Factories
