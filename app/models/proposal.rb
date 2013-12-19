@@ -8,8 +8,11 @@ class Proposal
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
+  field :state, default:'unsigned'
 
   validates_presence_of :composer_id, :receiver_id
+
+  validates_inclusion_of :state, in: [ 'unsigned','signed','confirmed','suspended','discarded' ]
 
   validate :check_composer_have_goods,
            :check_receiver_have_goods,
@@ -25,6 +28,13 @@ class Proposal
       machine ||= MicroMachine.new('unsigned')
       machine.when(:sign,'unsigned'=>'signed')
       machine.when(:confirm,'signed'=>'confirmed')
+      machine.when(:reset,'suspended'=>'unsigned')
+      machine.when(:reset,'signed'=>'unsigned')
+      machine.when(:suspend,'unsigned'=>'suspended')
+      machine.when(:suspend,'signed'=>'suspended')
+      machine.when(:discard,'unsigned'=>'discarded')
+      machine.when(:discard,'signed'=>'discarded')
+      machine.when(:discard,'suspended'=>'discarded')
       machine.on(:any) do
         self.state=@state_machine.state
       end

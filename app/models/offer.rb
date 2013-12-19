@@ -22,6 +22,6 @@ class Offer
   end
 
   def negotiate
-    persisted? && Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal])
+    persisted? && Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal], state:'in progress')
   end
 end
