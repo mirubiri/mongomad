@@ -98,7 +98,7 @@ class Negotiation
 
   def actions_for(user_id)
     actions = Array.new
-    if statemachine.trigger?([user_id,:sign])
+    if composer != user_id && statemachine.trigger?([user_id,:sign])
       actions << :sign
     end
     if statemachine.trigger?([user_id,:confirm])
