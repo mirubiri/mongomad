@@ -81,14 +81,11 @@
 
 
 
-
-
-
 // Añade la item al sumario
 function itemAddition(t, u, item){
   //alert("Añadir item al sumario");
   var container = summary_container_selector(t);
-  var id = item.attr("item_id");
+  var id = item.attr("id");
   isitemInOffer(container, id) ? sum1Toitem(item,t,u) : additemToSummary(item,t,u);
 }
 
@@ -97,9 +94,13 @@ function itemAddition(t, u, item){
 
 function isitemInOffer(container, id){
   //alert("esta la cosa en el sumario?");
-  if ( ($(""+container+" > div[item_id='"+id+"']").length > 0) || ($(""+container+" > .destroy_input[destroy_product_item_id='"+id+"']").length > 0) ) {
+  //alert(container);
+  //alert(id);
+  if ( ($(""+container+" > div[id='"+id+"']").length > 0) || ($(""+container+" > .destroy_input[destroy_product_item_id='"+id+"']").length > 0) ) {
+    //alert("si esta");
     return true;
   } else {
+    //alert("no está");
     return false;
   }
 }
@@ -111,7 +112,7 @@ function sum1Toitem(item,t,u){
   //alert("si esta, lanzando funciones de suma");
 
   var container = summary_container_selector(t);
-  var id = item.attr("item_id");
+  var id = item.attr("id");
 
   if (hasDestroyInput(container,id)){
     additemToSummary(item,t,u);
@@ -140,7 +141,7 @@ function deleteDestroyInput(container,id){
 function itemQuantityValue(container,id){
   //alert("que cantidad tiene la cosa en el sumario?");
 
-  var result = parseInt(($(""+container+" > div[item_id='"+id+"'] > .quantity_container")).html(), 10);
+  var result = parseInt(($(""+container+" > div[id='"+id+"'] > .item_quantity > .quantity_number")).html(), 10);
   return result;
 }
 
@@ -148,13 +149,13 @@ function add1toQuantityContainer(id, container,value){
   //alert("añadiendo 1 mas en el quantity container, y ahora tiene que tener...");
 
   //alert(value+1);
-  $(""+container+" div[item_id='"+id+"'] .quantity_container").html(value+1);
+  $(""+container+" > div[id='"+id+"'] > .item_quantity > .quantity_number").html(value+1);
 }
 
 function add1toQuantityInput(container, id, value){
   //alert("añadiendo 1 mas en el input");
 
-  $(""+container+" > div[item_id='"+id+"'] > .data_input > input[item_id='"+id+"']").attr('value', (value +1 ));
+  $(""+container+" > div[id='"+id+"'] > .data_input > input[item_id='"+id+"']").attr('value', (value +1 ));
 }
 
 function summary_container_selector(containeris){
@@ -171,7 +172,7 @@ function additemToSummary(item,t,u){
   //alert("no esta, lanzando funciones para añadirla");
 
   var container = summary_container_selector(t);// Cojo ambas aqui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
-  var item_id = item.attr("item_id");
+  var item_id = item.attr("id");
   additemViewInSummary(item, item_id, container,u);
 }
 
@@ -185,7 +186,7 @@ function additemViewInSummary(item, item_id, container, user){
 
   //alert(tipoElemento);
 
-  item.clone()
+  item.clone(false)
   .append("<div class='data_input'>"+
     "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][item_id]\" value=\""+ item_id + "\" />" +
     "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][quantity]\" value=\""+ 1 + "\" item_id=\""+ item_id + "\" />" +
@@ -193,13 +194,18 @@ function additemViewInSummary(item, item_id, container, user){
   .prepend('<div class="delete_button">x</div>')
   .addClass("newitem")
   .attr('product_id', item_id)
-  .appendTo(""+container+"")
-  .children('.quantity_container')
+  .removeAttr('style')
+  .children('.item_image')
+  .removeAttr('style')
+  .parent()
+  .appendTo(""+container+"")  
+  .children('.item_quantity')
+  .children('.quantity_number')
   .html("1");
 
   //si tiene destroy input, es porque habia sido eliminada antes del sumario y al volverla a poner, hay que añadirselo
   if (hasDestroyInput(container,item_id)) {
-    $(""+container+" > div[item_id='"+item_id+"'] > .data_input")
+    $(""+container+" > div[id='"+item_id+"'] > .data_input")
     .append("<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][id]\" value=\""+ product_id + "\" />");
   }
 }
@@ -215,7 +221,7 @@ function howMuchInputsAre(container){
 // Funcion que quita 1 al stock de la cosa del usuario
 function deduct_1_to_item(item){
   var prdStock = stockOfitem(item);
-  item.children('.quantity_container').html(prdStock - 1);
+  item.children('.item_quantity').children('.quantity_number').html(prdStock - 1);
   item.attr('stock',(prdStock-1));
 }
 
@@ -236,7 +242,7 @@ function have_stock(item){
 
 function itemSubtraction(owner,t,u,item){
   var container = summary_container_selector(t); // Lo cojo qui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
-  var id = item.parent().attr("item_id");
+  var id = item.parent().attr("id");
 
   if (have_more_than_one(container, id)){
     deduct1ToProduct(container, id);
@@ -244,7 +250,7 @@ function itemSubtraction(owner,t,u,item){
   else{
     deleteFromSummary(item,t,u,container,owner);
   }
-  sum1ToitemStock(item,owner,id);
+  sum1ToitemStock(item,u,id);
 }
 
 
@@ -255,13 +261,13 @@ function have_more_than_one(container, id){
 
 function deduct1ToProduct(container, id){
   var prdQty = productQuantity(container, id);
-  $(""+container+" > div[item_id='"+id+"'] .quantity_container").html(prdQty-1);
-  $(""+container+" > div[item_id='"+id+"'] > .data_input > input[item_id='"+id+"']").attr('value',(prdQty-1));
+  $(""+container+" > div[id='"+id+"'] > .item_quantity > .quantity_number").html(prdQty-1);
+  $(""+container+" > div[id='"+id+"'] > .data_input > input[item_id='"+id+"']").attr('value',(prdQty-1));
 }
 
 
 function productQuantity(container, id){
-  var result = parseInt(($(""+container+" > div[item_id='"+id+"'] > .quantity_container")).html(), 10);
+  var result = parseInt(($(""+container+" > div[id='"+id+"'] > .item_quantity > .quantity_number")).html(), 10);
   return result;
 }
 
@@ -277,12 +283,12 @@ function deleteFromSummary(item,t,u,container,owner){
 }
 
 function idOfitemInSummary(item){
-  var result = item.parent().attr("product_id");
+  var result = item.attr("id");
   return result;
 }
 
 function valueOfitemInSummary(item){
-  var result = item.parent().attr("item_id");
+  var result = item.attr("id");
   return result;
 }
 
@@ -306,16 +312,19 @@ function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos 
 
 function addProductIdToitem(container,value,id,owner){
   var product_id = $(""+container+" > .destroy_input[destroy_product_item_id='"+value+"']").attr("product_id");
-  $("#"+owner+"_product_container > div[item_id='"+value+"']").attr('id',product_id);
+  $("#"+owner+"_product_container > div[id='"+value+"']").attr('id',product_id);
 }
 
 function sum1ToitemStock(item,owner, id){
   var hpQty = itemStockFromProductList(owner, id);
-  $("#"+owner+"_product_container > div[item_id='"+id+"']").attr('stock',(hpQty + 1));
+  //alert(hpQty);
+  $("#"+owner+"_content_area > div[id='"+id+"']").attr('stock',(hpQty + 1));
+  $("#"+owner+"_content_area > div[id='"+id+"'] > .item_quantity > .quantity_number").html(hpQty+1);
 }
 
 function itemStockFromProductList(user, id){
-  var result = parseInt($("#"+user+"_product_container div[item_id='"+id+"']").attr('stock'),10);
+  //alert(user);
+  var result = parseInt($("#"+user+"_content_area > div[id='"+id+"']").attr('stock'),10);
   return result;
 }
 

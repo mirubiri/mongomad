@@ -154,6 +154,101 @@
       @include proportions(100%,475px);
       float: left;
       overflow-y: auto;
+
+      .recieved{
+        width: $bigImageDimension+14;
+        float:left;
+        overflow: auto;
+        margin: 0px 0px 0px 5px;
+
+        .item{
+          width: $bigImageDimension+12;
+          margin:0px 0px 0px 0px;
+          overflow: auto;
+          box-shadow: none;
+          
+
+          .item_image{
+            @include proportions($bigImageDimension,$bigImageDimension);
+            @include border-radius(2px, 2px);
+            @include high-quality-image;
+            background-color: white;
+          }
+                  
+          .item_quantity{ 
+            .quantity_number{}
+          }
+
+          .item_description {
+            @include box-sizing(border-box);
+            float: left;
+            width: 100%;
+            height: auto;
+            border-top: 1px solid rgb(210,210,210);
+            padding: 2px;
+            text-align: center;
+
+            .text{
+              @include box-sizing(border-box);
+              font-size: 12px;
+              font-weight: 600;
+            }
+          }           
+        }
+       }
+
+      .given{
+        width: $smallImageDimension +14;
+        float: right;
+        overflow: hidden;
+        margin: 0px $productRightMargin 0px 0px;
+
+         .item{
+          width: $smallImageDimension+12;
+          margin:0px 0px 0px 0px;
+          overflow: auto;
+          box-shadow: none;
+
+
+          .item_image{
+            @include proportions($smallImageDimension,$smallImageDimension);
+            @include border-radius(2px, 2px);
+            @include high-quality-image;
+            background-color: white;
+          }
+                  
+          .item_quantity{ 
+            @include box-sizing(border-box);
+            width: 18px;
+            height: 18px;
+            top: 5px;
+            left: 5px;
+
+            .quantity_number{
+              padding: 0px;
+              width: 14px;
+              height: 14px;
+              font-size: 10px;
+              text-align: center;
+            }
+          }
+
+          .item_description {
+            @include box-sizing(border-box);
+            float: left;
+            width: 100%;
+            height: auto;
+            border-top: 1px solid rgb(210,210,210);
+            padding: 2px;
+            text-align: center;
+
+            .text{
+              @include box-sizing(border-box);
+              font-size: 7px;
+            }
+          }           
+        }
+      }
     }
 
     .offer_button{

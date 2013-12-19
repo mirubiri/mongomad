@@ -24,7 +24,7 @@ function loadModalScripts(){
 
   $('#receiver_content_area').on('click','.item',function(e){
 
-    $(this).addToOffer("#summary_offer_received_products_container");
+    //$(this).addToOffer("#summary_offer_received_products_container");
 
     var item = $(this);
 
