@@ -20,6 +20,18 @@ class Proposal
            :check_receiver_sheet,
            :check_sheets_number
 
+  def state_machine(machine=nil)
+    @state_machine ||= begin
+      machine ||= MicroMachine.new('unsigned')
+      machine.when(:sign,'unsigned'=>'signed')
+      machine.when(:confirm,'signed'=>'confirmed')
+      machine.on(:any) do
+        self.state=@state_machine.state
+      end
+      machine
+    end
+  end
+
   def left(owner_id)
     goods.where(owner_id:owner_id)
   end
