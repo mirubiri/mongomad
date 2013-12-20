@@ -14,7 +14,7 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:state) }
+  it { should have_field(:state).with_default_value('open') }
 
   # Validations
   it { should_not validate_presence_of :_users }
@@ -43,9 +43,50 @@ describe Negotiation do
       negotiation.receiver
     end
   end
-  
-  describe '#statemachine' do
+
+shared_examples 'an state machine event' do |action,initial_state,final_state|
+    before(:each) { negotiation.state= initial_state }
+    it "calls state_machine.trigger(#{action})" do
+      expect(proposal.state_machine).to receive(:trigger).with(action)
+      negotiation.send(action)
+    end
+
+    it "changes proposal state from #{initial_state} to #{final_state}" do
+      expect {negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
+    end
+
+    it 'do not saves the proposal' do
+      negotiation.send(action)
+      expect(negotiation).to_not be_persisted
+    end
   end
+
+  describe '#success' do
+    it_should_behave_like 'an state machine event', :sucess,'trading','successful'
+  end
+
+  describe '#fail' do
+    it_should_behave_like 'an state machine event', :fail,'trading','failed'
+  end
+
+  describe '#close' do
+    it_should_behave_like 'an state machine event', :close,'failed','closed'
+  end
+
+  describe '#trade' do
+    it_should_behave_like 'an state machine event', :trade,'closed','trading'
+  end
+  
+  
+  describe '#state_machine' do
+    subject(:machine) { double().as_null_object }
+    before(:each) { negotiation.state_machine(machine) }
+    it { should have_received(:when).with(:success,'trading'=>'successful') }
+    it { should have_received(:when).with(:fail,'trading'=>'failed') }
+    it { should have_received(:when).with(:close,'failed'=>'closed' }
+    it { should have_received(:when).with(:trade,'closed'=>'trading') }
+  end
+
   # Factories
   specify { expect(negotiation).to be_valid }
 end
