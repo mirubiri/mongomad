@@ -12,7 +12,7 @@ class Proposal
 
   validates_presence_of :composer_id, :receiver_id
 
-  validates_inclusion_of :state, in: [ 'unsigned','signed','confirmed','suspended','discarded' ]
+  validates_inclusion_of :state, in: ['unsigned','signed','confirmed','suspended','discarded']
 
   validate :check_composer_have_goods,
            :check_receiver_have_goods,
@@ -25,16 +25,16 @@ class Proposal
 
   def state_machine(machine=nil)
     @state_machine ||= begin
-      machine ||= MicroMachine.new('unsigned')
+      machine ||= MicroMachine.new(state)
       machine.when(:sign,'unsigned'=>'signed')
       machine.when(:confirm,'signed'=>'confirmed')
-      machine.when(:reset,'suspended'=>'unsigned')
-      machine.when(:reset,'signed'=>'unsigned')
-      machine.when(:suspend,'unsigned'=>'suspended')
-      machine.when(:suspend,'signed'=>'suspended')
-      machine.when(:discard,'unsigned'=>'discarded')
-      machine.when(:discard,'signed'=>'discarded')
-      machine.when(:discard,'suspended'=>'discarded')
+      machine.when(:reset,'suspended'=>'unsigned',
+                          'signed'=>'unsigned')
+      machine.when(:suspend,'unsigned'=>'suspended',
+                            'signed'=>'suspended')
+      machine.when(:discard,'unsigned'=>'discarded',
+                            'signed'=>'discarded',
+                            'suspended'=>'discarded')
       machine.on(:any) do
         self.state=@state_machine.state
       end
@@ -52,6 +52,26 @@ class Proposal
 
   def cash?
     goods.type(Cash).exists?
+  end
+
+  def sign
+    state_machine.trigger(:sign)
+  end
+
+  def confirm
+    state_machine.trigger(:confirm)
+  end
+
+  def reset
+    state_machine.trigger(:reset)
+  end
+
+  def suspend
+    state_machine.trigger(:suspend)
+  end
+
+  def discard
+    state_machine.trigger(:discard)
   end
 
   private
