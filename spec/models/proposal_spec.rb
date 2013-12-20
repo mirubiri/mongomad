@@ -64,7 +64,6 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
-
   #Methods
   describe 'left(user:id)' do
     it 'returns products for the left side' do
@@ -135,13 +134,13 @@ describe Proposal do
     before(:each) { proposal.state_machine(machine) }
     it { should have_received(:when).with(:sign, 'unsigned'=>'signed') }
     it { should have_received(:when).with(:confirm,'signed'=>'confirmed') }
-    it { should have_received(:when).with(:reset,'suspended'=>'unsigned') }
-    it { should have_received(:when).with(:reset,'signed'=>'unsigned') }
-    it { should have_received(:when).with(:suspend,'unsigned'=>'suspended') }
-    it { should have_received(:when).with(:suspend,'signed'=>'suspended') }
-    it { should have_received(:when).with(:discard,'unsigned'=>'discarded') }
-    it { should have_received(:when).with(:discard,'signed'=>'discarded') }
-    it { should have_received(:when).with(:discard,'suspended'=>'discarded') }
+    it { should have_received(:when).with(:reset,'suspended'=>'unsigned',
+                                                 'signed'=>'unsigned') }
+    it { should have_received(:when).with(:suspend,'unsigned'=>'suspended',
+                                                    'signed'=>'suspended') }
+    it { should have_received(:when).with(:discard,'unsigned'=>'discarded',
+                                                   'signed'=>'discarded',
+                                                   'suspended'=>'discarded') }   
   end
 
   # Factories
