@@ -19,6 +19,8 @@ RSpec.configure do |config|
   #   Deal.all.destroy
   # end
 
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:

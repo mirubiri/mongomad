@@ -93,6 +93,43 @@ describe Proposal do
     end
   end
 
+  shared_examples 'an state machine event' do |action,initial_state,final_state|
+    before(:each) { proposal.state= initial_state }
+    it "calls state_machine.trigger(#{action})" do
+      expect(proposal.state_machine).to receive(:trigger).with(action)
+      proposal.send(action)
+    end
+
+    it "changes proposal state from #{initial_state} to #{final_state}" do
+      expect {proposal.send(action)}.to change {proposal.state}.from(initial_state).to(final_state)
+    end
+
+    it 'do not saves the proposal' do
+      proposal.send(action)
+      expect(proposal).to_not be_persisted
+    end
+  end
+
+  describe '#sign' do
+    it_should_behave_like 'an state machine event', :sign,'unsigned','signed'
+  end
+
+  describe '#confirm' do
+    it_should_behave_like 'an state machine event', :confirm,'signed','confirmed'
+  end
+
+  describe '#reset' do
+    it_should_behave_like 'an state machine event', :reset,'suspended','unsigned'
+  end
+
+  describe '#suspend' do
+    it_should_behave_like 'an state machine event', :suspend,'unsigned','suspended'
+  end
+
+  describe '#discard' do
+    it_should_behave_like 'an state machine event', :discard,'unsigned','discarded'
+  end
+
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { proposal.state_machine(machine) }
