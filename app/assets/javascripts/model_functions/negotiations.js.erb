@@ -1,74 +1,126 @@
-function maximizeConversationWidth(){
-  //alert("maximizeConversationWidth funcionando");
-  var negotiationWidth = $('.negotiation:first').width();
-  var proposalWidth = $('.negotiation_offer:first').width();
-  var conversationWidth = negotiationWidth - proposalWidth; // le quito 2 por no consultar el ancho del borde de la negociacion
-  $('.dialog_container').css({'width': conversationWidth + 'px'});
 
-}
+(function ($)
+{
+  $.fn.regulateWidth = function(){
+    var elementWidth = $(this).width();
+    var regulateWidth = elementWidth - 10;
+    $(this).css({'width': regulateWidth + 'px'});
 
-function maximizeConversationsHeights(){
-  //alert("maximizeConversationsHeights funcionando");
+    return $(this);
+  };
 
-  $(".negotiation").each(function(){
+})(jQuery);
+
+
+
+(function ($)
+{
+  $.fn.maximizeConversationWidth = function(){
+
+    var negotiationWidth = $(this).width();
+    var proposalOfNegotiationWith = $(this).find('.negotiation_offer').width();
+    var conversationWidth = negotiationWidth - proposalOfNegotiationWith;
+
+    $(this).find('.dialog_container').css({'width': conversationWidth + 'px'});
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.maximizeConversationsHeights = function(){
+
     var alturaOferta = $(this).find(".negotiation_offer").outerHeight(true);
+    var alturaNegociacion = $(this).height()-37;
     $(this).css({'max-height': (alturaOferta + 2) +'px'});
     $(this).find(".dialog_container").css({'height': (alturaOferta) +'px'}).css({'max-height': (alturaOferta) +'px'});
-  });
-  $("[id^=conversationofnegotiation]").each(function(){
-    $(this).css({'height':($(this).parent().height()-37)+'px'});
-  });
 
-}
+    $(this).find('.conversation').css({'height':alturaNegociacion + 'px'});
 
-function activateNegotiationButtons(){
-  //alert("activateNegotiationButtons funcionando");
+    return $(this);
+  };
 
-  $('.negotiation').hover(
-     function () {
-        $(this).find('.btn').removeClass("disabled");
-     },
-     function () {
-        $(this).find('.btn').addClass("disabled");
-     }
-  );
-}
-
-function disableDoubleScrolling(){
-  $('.conversation').hover(
-     function () {
-        if($(this).has_scrollbar()){
-          $("body").css("overflow", "hidden");
-        }
-     },
-     function () {
-        if($(this).has_scrollbar()){
-          $("body").css("overflow", "auto");
-        }
-     }
-  );
-}
+})(jQuery);
 
 
+(function ($)
+{
+  $.fn.activateNegotiationButtons = function(){
+
+    $(this).hover(
+       function () {
+          $(this).find('.btn').removeClass("disabled");
+       },
+       function () {
+          $(this).find('.btn').addClass("disabled");
+       }
+    );
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.disableDoubleScrolling = function(){
+
+    $(this).find('.conversation').hover(
+       function () {
+          if($(this).has_scrollbar()){
+            $("body").css("overflow", "hidden");
+          }
+       },
+       function () {
+          if($(this).has_scrollbar()){
+            $("body").css("overflow", "auto");
+          }
+       }
+    );
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.focusNegotiationWritebox = function(){
+
+    $(this).on('click', function() {
+      $(this).find("input").focus();
+    });
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
+  $.fn.scrollConversation = function(){
+
+    $(this).find(".conversation").scrollTop($(this).height());
+
+    return $(this);
+  };
+
+})(jQuery);
+
+/*
 function reloadDialogContainerWidth(){
   var anchuraTotal = $('.negotiation').first().width();
   var anchuraOfferSide = $('.negotiation > .negotiation_offer').first().width();
   var anchuraDialog = anchuraTotal - anchuraOfferSide;
   $('.negotiation > .dialog_container').css({'width': anchuraDialog +'px'});
 }
-
-
-function focusNegotiationWritebox(){
-  $(".negotiation").on('click', function() {
-    $(this).find("input").focus();
-  });
-}
-
-function scrollConversation(){
-  $(".negotiation > .dialog_container > .conversation").scrollTop($(this).height());
-}
-
-
+*/
 
 (function($) {
     $.fn.has_scrollbar = function() {

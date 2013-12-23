@@ -16,12 +16,13 @@ $("#ppal_container").html("<%=j render :partial => 'negotiations/partials/negoti
 
 //Carga sus funciones especificas de dibujado
 destroyMasonry();
-maximizeConversationWidth();
-maximizeConversationsHeights();
-activateNegotiationButtons();
-disableDoubleScrolling();
-focusNegotiationWritebox();
-scrollConversation();
+$('.negotiation').regulateWidth();
+$('.negotiation').maximizeConversationWidth();
+$('.negotiation').maximizeConversationsHeights();
+$('.negotiation').activateNegotiationButtons();
+$('.negotiation').disableDoubleScrolling();
+$('.negotiation').focusNegotiationWritebox();
+$('.negotiation').scrollConversation();
 
 
 // Zona reservada el codigo para actualizar los comentarios de las negociaciones
