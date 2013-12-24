@@ -4,6 +4,10 @@
   margin-bottom: 0px;
 }
 
+.new_offer{
+  width: 1100px;
+}
+
 .products_area{
   @include box-sizing(border-box);
   @include fixed_width(70%,70%,70%);
@@ -33,6 +37,7 @@
           @include fixed_width(100%,100%,100%);
           @include fixed_height(100%,100%,100%);
           @include center-horizontally(50%);
+          border: none;
 
           img{
             @include proportions(36px,36px);

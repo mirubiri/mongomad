@@ -1,8 +1,18 @@
-//Cargo en pantalla la ventana modal
 $('#new-offer-form').remove();
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/new_offer').html_safe %>");
-$('#new-offer-form').modal('show');
+$('#new-offer-form').dialog({ 
+	appendTo: "#body",
+	modal: true,
+	title: "",
+	closeText: "hide",
+	height: "auto",
+	width: "auto" 
+});
 
+$(".ui-dialog-titlebar").hide();// quita la barra de la modal
+$(".ui-widget-overlay").css( "opacity", ".80" ); // hacen el fondo mas oscuro
+$(".ui-widget-overlay").css( "background-color", "rgb(0, 0, 0) 50% 50% repeat-x !important" ); // hacen el fondo mas oscuro
+$(".ui-widget-overlay").css("background-image", "none"); // quita la franja
 
 //Cargo ademas la funcion que hace funcionar la modal.
 loadModalScripts();

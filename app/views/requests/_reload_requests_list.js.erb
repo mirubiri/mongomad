@@ -1,10 +1,10 @@
-$('#new-request-form').modal('hide');
+$('#new-request-form').dialog('close');
 
 if( ($('.request').length) === 0){
   $('#request_list_container > .no_elements').remove();
 }
 
-$('#new-request-form').on('hidden', function(){
+//$('.new-request-form').on( "dialogclose", function( event, ui ) {
   $('#request_list_container')
   .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>");
 
@@ -26,5 +26,5 @@ $('#new-request-form').on('hidden', function(){
   });
 
   //Elimino la ventana modal
-  delete $(this);
-});
+  //delete $(this);
+//});

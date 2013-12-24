@@ -1,5 +1,5 @@
 //Lo primero es ocultar la modal, porque ya se va a generar lo que queremos
-$('#new-offer-form').modal('hide');
+$('#new-offer-form').dialog('close');
 
 
 //Si estabamos mostrando el contenido de que no hay ofertas, lo eliminamos
@@ -9,7 +9,7 @@ if( ($('.offer').length) === 0){
 
 
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
-$('#new-offer-form').on('hidden', function () {
+//$('#new-offer-form').on('hidden', function () {
 
   $('#ppal_container').prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
   buildOfferMosaic();
@@ -17,8 +17,8 @@ $('#new-offer-form').on('hidden', function () {
   animateNewElement();
 
   //Elimino la ventana modal de forma definitiva, si no lo hago y abro una nueva, pese a que esté hide, los procesos se lanzaran para cada una
-  delete $(this);
-});
+  //delete $(this);
+//});
 
 
 
