@@ -14,7 +14,6 @@ describe Negotiation do
     negotiation.proposal.goods<<Fabricate.build(:cash,owner_id:receiver_id)
   end
  
-
   # Relations
   it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
@@ -29,7 +28,8 @@ describe Negotiation do
   it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should_not validate_presence_of :messages }
-  it { should validate_presence_of :state }
+  it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
+
 
   # Methods
   describe '#proposal' do
@@ -71,30 +71,31 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
   end
 
   describe '#success' do
-    it_should_behave_like 'an state machine event', :success,'trading','successful'
+    it_should_behave_like 'an state machine event', :success,'open','successful'
   end
 
-  describe '#fail' do
-    it_should_behave_like 'an state machine event', :fail,'trading','failed'
+  describe '#ghost' do
+    it_should_behave_like 'an state machine event', :ghost,'open','ghosted'
   end
-
+ 
   describe '#close' do
-    it_should_behave_like 'an state machine event', :close,'failed','closed'
+    it_should_behave_like 'an state machine event', :discard,'ghosted','closed'
   end
 
-  describe '#trade' do
-    it_should_behave_like 'an state machine event', :trade,'closed','trading'
+  describe '#reset' do
+    it_should_behave_like 'an state machine event', :reset,'ghosted','open'
+  end
+
+  describe '#reopen' do
+    it_should_behave_like 'an state machine event', :reset,'closed','open'
   end
 
   describe '#gatekeeper(action,user)' do
-
     context 'negotiation is not being traded' do
-      before { negotiation.state='failed'}
-      
+      before { negotiation.state='ghosted'}      
       it 'returns false' do
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
       end
-
     end
 
     context 'negotiation is being traded' do
@@ -130,7 +131,6 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
           expect(negotiation.gatekeeper('0',:sign)).to eq false
         end
       end
-
     end
   end
   
@@ -155,7 +155,7 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
     context 'gatekeeper agree' do
       before(:each) { negotiation.stub(:gatekeeper) { true } }
     end
-    include_examples 'gatekeeper check',:confirm_proposal
+    include_examples 'gatekeeper check',:sign_proposal
   end
 
   describe '#confirm_proposal(user)' do
@@ -164,7 +164,7 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
   end
 
   describe '#reject_proposal(user)' do
-    before(:each) {negotiation.proposal.state='signed'}
+    before(:each) { negotiation.proposal.state='signed'}
     include_examples 'gatekeeper check',:reject_proposal
   end
 
