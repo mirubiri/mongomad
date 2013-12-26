@@ -12,13 +12,13 @@ describe Proposal do
   it { should be_timestamped_document }
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:state).with_default_value_of('unsigned') }
+  it { should have_field(:state).with_default_value_of('new') }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it { should validate_inclusion_of(:state).to_allow('unsigned','signed','confirmed','suspended','discarded')}
+  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   it 'is invalid when there is not a good for composer' do
     composer_id=proposal.composer_id
@@ -110,37 +110,42 @@ describe Proposal do
   end
 
   describe '#sign' do
-    it_should_behave_like 'an state machine event', :sign,'unsigned','signed'
+    it_should_behave_like 'an state machine event', :sign,'new','signed'
   end
 
   describe '#confirm' do
     it_should_behave_like 'an state machine event', :confirm,'signed','confirmed'
   end
 
+  describe '#broke' do
+    it_should_behave_like 'an state machine event', :broke,'new','broken'
+  end
+
   describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset,'suspended','unsigned'
+    it_should_behave_like 'an state machine event', :reset,'broken','new'
   end
 
-  describe '#suspend' do
-    it_should_behave_like 'an state machine event', :suspend,'unsigned','suspended'
+  describe '#ghost' do
+    it_should_behave_like 'an state machine event', :ghost,'signed','ghosted'
   end
-
+ 
   describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard,'unsigned','discarded'
+    it_should_behave_like 'an state machine event', :discard,'ghosted','discarded'
   end
 
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { proposal.state_machine(machine) }
-    it { should have_received(:when).with(:sign, 'unsigned'=>'signed') }
+    it { should have_received(:when).with(:sign, 'new'=>'signed') }
     it { should have_received(:when).with(:confirm,'signed'=>'confirmed') }
-    it { should have_received(:when).with(:reset,'suspended'=>'unsigned',
-                                                 'signed'=>'unsigned') }
-    it { should have_received(:when).with(:suspend,'unsigned'=>'suspended',
-                                                    'signed'=>'suspended') }
-    it { should have_received(:when).with(:discard,'unsigned'=>'discarded',
-                                                   'signed'=>'discarded',
-                                                   'suspended'=>'discarded') }   
+    it { should have_received(:when).with(:broke,'new'=>'broken',
+                                                 'signed'=>'broken') }
+    it { should have_received(:when).with(:reset,'signed'=>'new',
+                                                 'broken'=>'new') }
+    it { should have_received(:when).with(:ghost,'new'=>'ghosted',
+                                                 'signed'=>'ghosted',
+                                                 'broken'=>'ghosted') }   
+    it { should have_received(:when).with(:discard, 'ghosted'=>'discarded') }
   end
 
   # Factories
