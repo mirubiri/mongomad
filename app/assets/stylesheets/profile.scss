@@ -1,10 +1,9 @@
 @import "variables";
 
 .profile_complete{
-  @include fixed_width(99%,99%,99%);
+  width: 100%;
   float:left;
   overflow:auto;
-  margin-left:5px;
 
   .personal_data{
     @include box-sizing(border-box);

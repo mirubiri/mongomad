@@ -1,6 +1,19 @@
 
 (function ($)
 {
+  $.fn.regulateWidth = function(){
+    var elementWidth = $(this).width();
+    var regulateWidth = elementWidth - 10;
+    $(this).css({'width': regulateWidth + 'px'});
+
+    return $(this);
+  };
+
+})(jQuery);
+
+
+(function ($)
+{
   $.fn.setMargins = function (){
     //alert("entra en funcionamiento el setMargins");
     var ppalContainer = $(this).find('#ppal_container');
