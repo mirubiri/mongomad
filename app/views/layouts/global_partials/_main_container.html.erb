@@ -5,7 +5,9 @@
     <% if (controller.sub_layout === "alerts") %>
       <%= render :partial => 'layouts/global_partials/search_bar' %>
     <% else %>
-      <%= render :partial => 'layouts/global_partials/navigation_bar' %>
+      <nav class="nav_bar" id="navigation_bar">
+        <%= render :partial => 'layouts/global_partials/navigation_bar' %>
+      </nav>
     <% end %>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">

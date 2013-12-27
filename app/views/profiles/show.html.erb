@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="image_side">
-        <%= image(@user) %>
+        <%= image(@user.profile) %>
         <% if id(@user) == id(current_user) %>
           <%= link_to "editar mi perfil",
               edit_user_profile_path(current_user),

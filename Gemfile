@@ -10,11 +10,9 @@ gem 'rails'
 group :assets do
   gem 'sass-rails'
   gem 'compass-rails'
-  gem 'blueprint-rails'
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'stitch'
-  gem 'bootstrap-sass'
   gem 'mini_magick'
 end
 

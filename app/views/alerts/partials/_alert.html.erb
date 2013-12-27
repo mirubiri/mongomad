@@ -2,7 +2,7 @@
   <% alerts(@user).times do |request| %>
     <div class="request">
       <div class="profile_image">
-        <% image(request) %>
+        <% image(@user.profile) %>
       </div>
       <div class="description">
         Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.

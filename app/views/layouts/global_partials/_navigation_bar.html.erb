@@ -1,47 +1,39 @@
-<div class="navbar" id="navigation_bar">
-  <div class="navbar-inner">
-    <div class="nav-collapse collapse navbar-responsive-collapse">
-      <ul class="nav" id="navigation_bar_menu" style="width:100%">
-        <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
-          <li id="offers-tab" class="active" style="position:relative">
-        <% else %>
-          <li id="offers-tab" style="position:relative">
-        <% end %>
-          <a href="<%= user_offers_path(@user)%>" class="nav_element">Ofertas</a>
-        </li>
+<ul class="nav" id="navigation_bar_menu">
+  <% if (controller.sub_layout === "users") or (controller.sub_layout === "offers") %>
+    <li id="offers-tab">
+  <% else %>
+    <li id="offers-tab">
+  <% end %>
+    <a href="<%= user_offers_path(@user)%>" class="nav_element">Ofertas</a>
+  </li>
 
-        <% if @user._id == current_user._id %>
-          <% if controller.sub_layout === "negotiations" %>
-            <li id="negotiations-tab" class="active" style="position:relative">
-          <% else %>
-            <li id="negotiations-tab" style="position:relative">
-          <% end %>
-            <a href="<%= user_negotiations_path(@user)%>" class="nav_element">Negociaciones</a>
-          </li>
-        <% end %>
+  <% if @user._id == current_user._id %>
+    <% if controller.sub_layout === "negotiations" %>
+      <li id="negotiations-tab">
+    <% else %>
+      <li id="negotiations-tab">
+    <% end %>
+      <a href="<%= user_negotiations_path(@user)%>" class="nav_element">Negociaciones</a>
+    </li>
+  <% end %>
 
-        <% if @user._id == current_user._id %>
-          <% if controller.sub_layout === "deals" %>
-            <li id="deals-tab" class="active" style="position:relative">
-          <% else %>
-            <li id="deals-tab" style="position:relative">
-          <% end %>
-            <a href="<%= user_deals_path(@user)%>" class="nav_element">Tratos</a>
-          </li>
-        <% end %>
+  <% if @user._id == current_user._id %>
+    <% if controller.sub_layout === "deals" %>
+      <li id="deals-tab">
+    <% else %>
+      <li id="deals-tab">
+    <% end %>
+      <a href="<%= user_deals_path(@user)%>" class="nav_element">Tratos</a>
+    </li>
+  <% end %>
 
-        <% if (controller.sub_layout === "items") %>
-          <li class="active" style="float:right">
-            <a href="<%= user_items_path(@user)%>" class="active" id="link_items" data-toggle="tooltip">Productos</a>
-          </li>
-        <% else %>
-          <li style="float:right;border-right:none">
-            <a href="<%= user_items_path(@user)%>" id="link_items" data-toggle="tooltip">Productos</a>
-          </li>
-        <% end %>
-      </ul>
-
-    </div>
-
-  </div>
-</div>
+  <% if (controller.sub_layout === "items") %>
+    <li style="float:right">
+      <a href="<%= user_items_path(@user)%>" id="link_items" data-toggle="tooltip">Productos</a>
+    </li>
+  <% else %>
+    <li style="float:right;border-right:none">
+      <a href="<%= user_items_path(@user)%>" id="link_items" data-toggle="tooltip">Productos</a>
+    </li>
+  <% end %>
+</ul>
