@@ -7,18 +7,17 @@ describe Negotiation do
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
   
   let(:negotiation_composer_cash) do
-    negotiation.proposal.goods<<Fabricate.build(:cash,owner_id:composer_id)
+    negotiation.proposal.goods << Fabricate.build(:cash,owner_id:composer_id)
   end
   
   let(:negotiation_receiver_cash) do
-    negotiation.proposal.goods<<Fabricate.build(:cash,owner_id:receiver_id)
+    negotiation.proposal.goods << Fabricate.build(:cash,owner_id:receiver_id)
   end
  
   # Relations
   it { should have_and_belong_to_many :_users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
-  it { should_not embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
@@ -27,9 +26,7 @@ describe Negotiation do
   # Validations
   it { should_not validate_presence_of :_users }
   it { should validate_presence_of :proposals }
-  it { should_not validate_presence_of :messages }
-  it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
-
+  it { should validate_inclusion_of(:state).to_allow('open', 'successful', 'ghosted', 'closed') }
 
   # Methods
   describe '#proposal' do
@@ -53,8 +50,9 @@ describe Negotiation do
     end
   end
 
-shared_examples 'an state machine event' do |action,initial_state,final_state|
-    before(:each) { negotiation.state= initial_state }
+  shared_examples 'an state machine event' do |action, initial_state, final_state|
+    before(:each) { negotiation.state = initial_state }
+
     it "calls state_machine.trigger(#{action})" do
       expect(negotiation.proposal.state_machine).to receive(:trigger).with(action)
       negotiation.send(action)
@@ -71,28 +69,43 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
   end
 
   describe '#success' do
-    it_should_behave_like 'an state machine event', :success,'open','successful'
+    it_should_behave_like 'an state machine event', :success, 'open', 'successful'
   end
 
   describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost,'open','ghosted'
+    it_should_behave_like 'an state machine event', :ghost, 'open', 'ghosted'
   end
  
   describe '#close' do
-    it_should_behave_like 'an state machine event', :discard,'ghosted','closed'
+    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'closed'
   end
 
   describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset,'ghosted','open'
+    it_should_behave_like 'an state machine event', :reset, 'ghosted', 'open'
   end
 
   describe '#reopen' do
-    it_should_behave_like 'an state machine event', :reset,'closed','open'
+    it_should_behave_like 'an state machine event', :reset, 'closed', 'open'
+  end
+
+  describe '#state_machine' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { negotiation.state_machine(machine) }
+
+    it { should have_received(:when).with(:success, 'open' => 'successful') }
+
+    it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
+
+    it { should have_received(:when).with(:reset, 'ghosted' => 'open' )}
+
+    it { should have_received(:when).with(:close, 'ghosted' => 'closed') }
   end
 
   describe '#gatekeeper(action,user)' do
     context 'negotiation is not being traded' do
-      before { negotiation.state='ghosted'}      
+      before { negotiation.state = 'ghosted'} 
+
       it 'returns false' do
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
       end
@@ -104,6 +117,7 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
           it 'returns false if user has money' do
             expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
           end
+
           it 'returns true if user has no money' do
             expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
           end
@@ -141,52 +155,48 @@ shared_examples 'an state machine event' do |action,initial_state,final_state|
     end
   end
 
-  shared_examples 'is a wrapper' do |method,wrapped_method|
+  shared_examples 'is a wrapper' do |method, wrapped_method|
     it "calls negotiation.proposal.#{wrapped_method}" do
       expect(negotiation.proposal).to receive(wrapped_method)
       negotiation.send(method)
     end
+
     it "returns negotiation.proposal.#{wrapped_method} result" do
       expect(negotiation.send(method)).to eq negotiation.proposal.send(wrapped_method) 
     end
   end
 
+  #TODO: REVISAR ESTA PARTE (ALEJANDRO)
   describe '#sign_proposal(user)' do
     context 'gatekeeper agree' do
       before(:each) { negotiation.stub(:gatekeeper) { true } }
     end
-    include_examples 'gatekeeper check',:sign_proposal
+    include_examples 'gatekeeper check', :sign_proposal
+    include_examples 'is a wrapper',:sign_proposal, :sign
   end
 
   describe '#confirm_proposal(user)' do
-    before(:each) { negotiation.proposal.state='signed'}
-    include_examples 'gatekeeper check',:confirm_proposal
+    before(:each) { negotiation.proposal.state = 'signed' }
+    include_examples 'gatekeeper check', :confirm_proposal
+    include_examples 'is a wrapper',:confirm_proposal, :confirm
   end
 
-  describe '#reject_proposal(user)' do
-    before(:each) { negotiation.proposal.state='signed'}
-    include_examples 'gatekeeper check',:reject_proposal
+  describe '#broke_proposal' do
+    before(:each) { negotiation.proposal.state = 'signed' }
+    include_examples 'gatekeeper check', :confirm_proposal
+    include_examples 'is a wrapper',:broke_proposal, :broke
   end
 
   describe '#reset_proposal' do
-    include_examples 'is a wrapper',:reset_proposal,:reset
+    include_examples 'is a wrapper',:reset_proposal, :reset
   end
 
   describe '#suspend_proposal' do
-    include_examples 'is a wrapper',:suspend_proposal,:suspend
+    include_examples 'is a wrapper',:suspend_proposal, :suspend
   end
 
   describe '#discard_proposal' do
-    include_examples 'is a wrapper',:discard_proposal,:discard
-  end
-
-  describe '#state_machine' do
-    subject(:machine) { double().as_null_object }
-    before(:each) { negotiation.state_machine(machine) }
-    it { should have_received(:when).with(:success,'trading'=>'successful') }
-    it { should have_received(:when).with(:fail,'trading'=>'failed') }
-    it { should have_received(:when).with(:close,'failed'=>'closed' )}
-    it { should have_received(:when).with(:trade,'closed'=>'trading') }
+    include_examples 'is a wrapper',:discard_proposal, :discard
   end
 
   # Factories
