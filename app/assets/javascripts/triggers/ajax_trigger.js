@@ -2,17 +2,7 @@
 $(document).ajaxComplete(function(event, xhr, settings) {
 
   //alert("algo se ha cargado por JS");
-
-  //Si se pintan items rehago su tamaño
-  $('.item').setItemWidth();
-
-  //Reseteo las alturas de los contenedores principales y las igualo
-  $("#user-side").resetContainerHeight();
-  $("#content-side").resetContainerHeight();
-  $('#mainLayout').matchPrincipalContainersHeighs();
-
-
-
-  //Hago visible el body
-  $('body').removeClass("hidden_container");
+  
+  // Expando toda la web a su tamaño maximo
+  expandWeb();
 });

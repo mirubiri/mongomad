@@ -58,6 +58,8 @@
 {
   $.fn.expandToBodyWidth = function (){
 
+    //alert("se lanza el expandToBodyWidth")
+
     //Cojo la anchura del body
     var bodyWidth = $(document.body).width();
     //alert("anchura del body:" + bodyWidth);
@@ -114,10 +116,6 @@
 
 
 
-
-
-
-
 (function ($)
 {
   $.fn.matchPrincipalContainersHeighs = function() {
@@ -159,3 +157,40 @@
   };
 
 })(jQuery);
+
+
+
+//Hago esta funcion porque todas estas llamadas juntas expanden nuestra web completa, y las uso todas a la vez en 2 sitios, en el load y cuando algo se carga por AJAX
+function expandWeb(){
+
+  //Expando el contenedor principal y reseteo sus margenes para ajustarlos a los elementos de la lista
+  $('#mainLayout').expandToBodyWidth();
+  $('#mainLayout').maximizeResizableChildren();
+  $('#mainLayout').setMargins();
+  $('#mainLayout').maximizeResizableChildren();
+  $('.header').setHeaderPadding();  
+
+  //Reseteo las alturas de los contenedores principales y las igualo
+  $("#user-side").resetContainerHeight();
+  $("#content-side").resetContainerHeight();
+  $('#mainLayout').matchPrincipalContainersHeighs();
+
+  //Si se pintan items rehago su tamaño
+  $('.item').setItemWidth();
+
+  activateRequestButtons(); //Las peticiones siempre estan visibles
+
+  var lugar = locationName();
+
+  if ( lugar === "offers" ) {}
+  else if ( lugar === "items" ) {}
+  else if ( lugar === "deals" ) {}
+  else if ( lugar === "profile" ) {}
+  else if ( lugar === "alerts" ) {}
+  else {
+    buildOfferMosaic();
+    activateOfferButton();
+  }
+
+  $('body').removeClass("hidden_container");//Para firefox, ya que no lanza el eventoJS al cargar
+}

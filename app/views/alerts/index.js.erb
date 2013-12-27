@@ -6,6 +6,7 @@ stopTimers(timers);
 //Contenido que debe cargar esta seccion: ALERTAS
 $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
 $("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
+
 $("#ppal_container").html("<%=j render :partial => 'alerts/partials/alert' %>");
 
 //Carga sus funciones especificas de dibujado
