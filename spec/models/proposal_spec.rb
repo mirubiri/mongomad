@@ -5,8 +5,8 @@ describe Proposal do
 
   # Relations
   it { should be_embedded_in :proposal_container }
-  it { should embed_many :goods }
   it { should embed_many :user_sheets }
+  it { should embed_many :goods }
 
   # Attributes
   it { should be_timestamped_document }
@@ -21,19 +21,19 @@ describe Proposal do
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   it 'is invalid when there is not a good for composer' do
-    composer_id=proposal.composer_id
+    composer_id = proposal.composer_id
     proposal.goods.delete_all(owner_id:composer_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
   it 'is invalid when there is not a good for receiver' do
-    receiver_id=proposal.receiver_id
+    receiver_id = proposal.receiver_id
     proposal.goods.delete_all(owner_id:receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
   it 'is invalid if a good is not owned by composer or receiver' do
-    proposal.goods<<Fabricate.build(:product)
+    proposal.goods << Fabricate.build(:product)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -44,18 +44,18 @@ describe Proposal do
   end
 
   it 'is invalid when is more than one cash in goods' do
-    proposal.goods<<Fabricate.build(:cash,owner_id:proposal.composer_id)
-    proposal.goods<<Fabricate.build(:cash,owner_id:proposal.receiver_id)
+    proposal.goods << Fabricate.build(:cash,owner_id:proposal.composer_id)
+    proposal.goods << Fabricate.build(:cash,owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
   it 'is invalid when there is not a sheet for composer_id' do
-    proposal.composer_id=nil
+    proposal.composer_id = nil
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is not a sheet for receiver_id' do
-    proposal.receiver_id=nil
+    proposal.receiver_id = nil
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
@@ -76,7 +76,7 @@ describe Proposal do
   describe 'right(user:id)' do
     it 'return products for the right side' do
       owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(:owner_id.ne =>owner_id)
+      expect(proposal.goods).to receive(:where).with(:owner_id.ne => owner_id)
       proposal.right(owner_id)
     end
   end
@@ -92,8 +92,8 @@ describe Proposal do
     end
   end
 
-  shared_examples 'an state machine event' do |action,initial_state,final_state|
-    before(:each) { proposal.state= initial_state }
+  shared_examples 'an state machine event' do |action, initial_state, final_state|
+    before(:each) { proposal.state = initial_state }
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
       proposal.send(action)
@@ -110,42 +110,49 @@ describe Proposal do
   end
 
   describe '#sign' do
-    it_should_behave_like 'an state machine event', :sign,'new','signed'
+    it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
   end
 
   describe '#confirm' do
-    it_should_behave_like 'an state machine event', :confirm,'signed','confirmed'
+    it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
   end
 
   describe '#broke' do
-    it_should_behave_like 'an state machine event', :broke,'new','broken'
+    it_should_behave_like 'an state machine event', :broke, 'new', 'broken'
   end
 
   describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset,'broken','new'
+    it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
   end
 
   describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost,'signed','ghosted'
+    it_should_behave_like 'an state machine event', :ghost, 'broken', 'ghosted'
   end
  
   describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard,'ghosted','discarded'
+    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
+
     before(:each) { proposal.state_machine(machine) }
-    it { should have_received(:when).with(:sign, 'new'=>'signed') }
-    it { should have_received(:when).with(:confirm,'signed'=>'confirmed') }
-    it { should have_received(:when).with(:broke,'new'=>'broken',
-                                                 'signed'=>'broken') }
-    it { should have_received(:when).with(:reset,'signed'=>'new',
-                                                 'broken'=>'new') }
-    it { should have_received(:when).with(:ghost,'new'=>'ghosted',
-                                                 'signed'=>'ghosted',
-                                                 'broken'=>'ghosted') }   
-    it { should have_received(:when).with(:discard, 'ghosted'=>'discarded') }
+
+    it { should have_received(:when).with(:sign, 'new' => 'signed') }
+
+    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
+
+    it { should have_received(:when).with(:broke, 'new' => 'broken',
+                                                  'signed' => 'broken') }
+
+    it { should have_received(:when).with(:reset, 'signed' => 'new',
+                                                  'broken' => 'new') }
+
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
+                                                  'signed' => 'ghosted',
+                                                  'broken' => 'ghosted') } 
+                                                    
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   # Factories

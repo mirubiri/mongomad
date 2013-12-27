@@ -3,8 +3,8 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
-  embeds_many :goods
   embeds_many :user_sheets
+  embeds_many :goods
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
