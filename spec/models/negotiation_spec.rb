@@ -8,10 +8,12 @@ describe Negotiation do
   
   let(:negotiation_composer_cash) do
     negotiation.proposal.goods << Fabricate.build(:cash,owner_id:composer_id)
+    negotiation
   end
   
   let(:negotiation_receiver_cash) do
     negotiation.proposal.goods << Fabricate.build(:cash,owner_id:receiver_id)
+    negotiation
   end
  
   # Relations
@@ -21,7 +23,7 @@ describe Negotiation do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:state).with_default_value('open') }
+  it { should have_field(:state).with_default_value_of('open') }
 
   # Validations
   it { should_not validate_presence_of :_users }
@@ -54,7 +56,7 @@ describe Negotiation do
     before(:each) { negotiation.state = initial_state }
 
     it "calls state_machine.trigger(#{action})" do
-      expect(negotiation.proposal.state_machine).to receive(:trigger).with(action)
+      expect(negotiation.state_machine).to receive(:trigger).with(action)
       negotiation.send(action)
     end
 
@@ -77,7 +79,7 @@ describe Negotiation do
   end
  
   describe '#close' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'closed'
+    it_should_behave_like 'an state machine event', :close, 'ghosted', 'closed'
   end
 
   describe '#reset' do
@@ -85,7 +87,7 @@ describe Negotiation do
   end
 
   describe '#reopen' do
-    it_should_behave_like 'an state machine event', :reset, 'closed', 'open'
+    it_should_behave_like 'an state machine event', :reopen, 'closed', 'open'
   end
 
   describe '#state_machine' do
@@ -97,13 +99,15 @@ describe Negotiation do
 
     it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
 
-    it { should have_received(:when).with(:reset, 'ghosted' => 'open' )}
+    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
 
-    it { should have_received(:when).with(:close, 'ghosted' => 'closed') }
+    it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
+
+    it { should have_received(:when).with(:reopen, 'closed' => 'open') }
   end
 
-  describe '#gatekeeper(action,user)' do
-    context 'negotiation is not being traded' do
+  describe '#gatekeeper(user_id, action)' do
+    context 'negotiation is not open' do
       before { negotiation.state = 'ghosted'} 
 
       it 'returns false' do
@@ -111,7 +115,7 @@ describe Negotiation do
       end
     end
 
-    context 'negotiation is being traded' do
+    context 'negotiation is open' do
       context 'user belongs to negotiation' do
         context 'action is :sign' do
           it 'returns false if user has money' do
@@ -148,6 +152,7 @@ describe Negotiation do
     end
   end
   
+  #TODO: REVISAR ESTA PARTE (ALEJANDRO) ################################
   shared_examples 'gatekeeper check' do |method|
     it 'returns false if gatekeeper disagree' do
       negotiation.stub(:gatekeeper).and_return(false)
@@ -166,8 +171,7 @@ describe Negotiation do
     end
   end
 
-  #TODO: REVISAR ESTA PARTE (ALEJANDRO)
-  describe '#sign_proposal(user)' do
+  describe '#sign_proposal(user_id)' do
     context 'gatekeeper agree' do
       before(:each) { negotiation.stub(:gatekeeper) { true } }
     end
@@ -175,7 +179,7 @@ describe Negotiation do
     include_examples 'is a wrapper',:sign_proposal, :sign
   end
 
-  describe '#confirm_proposal(user)' do
+  describe '#confirm_proposal(user_id)' do
     before(:each) { negotiation.proposal.state = 'signed' }
     include_examples 'gatekeeper check', :confirm_proposal
     include_examples 'is a wrapper',:confirm_proposal, :confirm
@@ -191,8 +195,8 @@ describe Negotiation do
     include_examples 'is a wrapper',:reset_proposal, :reset
   end
 
-  describe '#suspend_proposal' do
-    include_examples 'is a wrapper',:suspend_proposal, :suspend
+  describe '#ghost_proposal' do
+    include_examples 'is a wrapper',:ghost_proposal, :ghost
   end
 
   describe '#discard_proposal' do
