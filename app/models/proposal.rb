@@ -8,11 +8,11 @@ class Proposal
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
-  field :state, default:'unsigned'
+  field :state, default:'new'
 
   validates_presence_of :composer_id, :receiver_id
 
-  validates_inclusion_of :state, in: ['unsigned','signed','confirmed','suspended','discarded']
+  validates_inclusion_of :state, in: ['new', 'signed', 'confirmed', 'broken', 'ghosted', 'discarded']
 
   validate :check_composer_have_goods,
            :check_receiver_have_goods,
@@ -23,58 +23,6 @@ class Proposal
            :check_receiver_sheet,
            :check_sheets_number
 
-  def state_machine(machine=nil)
-    @state_machine ||= begin
-      machine ||= MicroMachine.new(state)
-      machine.when(:sign,'unsigned'=>'signed')
-      machine.when(:confirm,'signed'=>'confirmed')
-      machine.when(:reset,'suspended'=>'unsigned',
-                          'signed'=>'unsigned')
-      machine.when(:suspend,'unsigned'=>'suspended',
-                            'signed'=>'suspended')
-      machine.when(:discard,'unsigned'=>'discarded',
-                            'signed'=>'discarded',
-                            'suspended'=>'discarded')
-      machine.on(:any) do
-        self.state=@state_machine.state
-      end
-      machine
-    end
-  end
-
-  def left(owner_id)
-    goods.where(owner_id:owner_id)
-  end
-
-  def right(owner_id)
-    goods.where(:owner_id.ne => owner_id)
-  end
-
-  def cash?
-    goods.type(Cash).exists?
-  end
-
-  def sign
-    state_machine.trigger(:sign)
-  end
-
-  def confirm
-    state_machine.trigger(:confirm)
-  end
-
-  def reset
-    state_machine.trigger(:reset)
-  end
-
-  def suspend
-    state_machine.trigger(:suspend)
-  end
-
-  def discard
-    state_machine.trigger(:discard)
-  end
-
-  private
   def check_composer_have_goods
     errors.add(:goods, "Composer should have at least one good") unless left(composer_id).count > 0
   end
@@ -105,5 +53,68 @@ class Proposal
 
   def check_sheets_number
     errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
+  end
+
+  def state_machine(machine=nil)
+    @state_machine ||= begin
+      machine ||= MicroMachine.new(state)
+      machine.when(:sign, 'new' => 'signed')
+
+      machine.when(:confirm, 'signed' => 'confirmed') 
+
+      machine.when(:broke, 'new' => 'broken',
+                           'signed' => 'broken')
+
+      machine.when(:reset, 'signed' => 'new',
+                           'broken' => 'new')
+
+
+      machine.when(:ghost, 'new' => 'ghosted',
+                           'signed' => 'ghosted',
+                           'broken' => 'ghosted')
+
+      machine.when(:discard, 'ghosted' => 'discarded')
+
+      machine.on(:any) do
+        self.state = @state_machine.state
+      end
+      machine
+    end
+  end
+
+  def left(owner_id)
+    goods.where(owner_id:owner_id)
+  end
+
+  def right(owner_id)
+    goods.where(:owner_id.ne => owner_id)
+  end
+
+  def cash?
+    goods.type(Cash).exists?
+  end
+
+  def sign
+    state_machine.trigger(:sign)
+  end
+
+  def confirm
+    state_machine.trigger(:confirm)
+  end
+
+  def broke
+    state_machine.trigger(:broke)
+  end
+
+  def reset
+    state_machine.trigger(:reset)
+  end
+
+  def ghost
+    state_machine.trigger(:ghost)
+  end
+
+  def discard
+    state_machine.trigger(:discard)
   end
 end
