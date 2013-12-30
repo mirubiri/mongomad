@@ -60,11 +60,11 @@ describe Negotiation do
       negotiation.send(action)
     end
 
-    it "changes proposal state from #{initial_state} to #{final_state}" do
+    it "changes negotiation state from #{initial_state} to #{final_state}" do
       expect{negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the proposal' do
+    it 'do not saves the negotiation' do
       negotiation.send(action)
       expect(negotiation).to_not be_persisted
     end
