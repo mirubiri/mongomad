@@ -204,24 +204,28 @@ describe Negotiation do
 
   describe '#break_proposal' do
     it 'returns the result of triggering proposal.break' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:break).and_return('test')
       expect(negotiation.break_proposal).to eq negotiation.proposal.break
     end
   end
 
   describe '#reset_proposal' do
     it 'returns the result of triggering proposal.reset' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:reset).and_return('test')
       expect(negotiation.reset_proposal).to eq negotiation.proposal.reset
     end
   end
 
   describe '#ghost_proposal' do
     it 'returns the result of triggering proposal.ghost' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:ghost).and_return('test')
       expect(negotiation.ghost_proposal).to eq negotiation.proposal.ghost
     end
   end
 
   describe '#discard_proposal' do
     it 'returns the result of triggering proposal.discard' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:discard).and_return('test')
       expect(negotiation.discard_proposal).to eq negotiation.proposal.discard
     end
   end
