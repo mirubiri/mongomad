@@ -33,12 +33,13 @@ describe User do
         images:user.profile.images )
       user.sheet
     end
+
     specify { expect(user.sheet.id).to eq user.id }
   end
 
   describe '#enable' do
     context 'when user is active' do
-      before{user.state='active'}
+      before{ user.state = 'active' }
 
       it 'does not change user state' do
         expect{user.enable}.to_not change{user.state}
@@ -50,7 +51,7 @@ describe User do
     end
 
     context 'when user is inactive' do
-      before {user.state='inactive'}
+      before{ user.state = 'inactive' }
 
       it 'change user state to active' do
         expect{user.enable}.to change{user.state}.from('inactive').to('active')
@@ -63,9 +64,9 @@ describe User do
   end
 
   describe '#disable' do
-    before{user.state='active'}
-
     context 'when user is active' do
+      before{ user.state = 'active' }
+
       it 'change user state to inactive' do
         expect{user.disable}.to change{user.state}.from('active').to('inactive')
       end
@@ -76,7 +77,8 @@ describe User do
     end
 
     context 'when user is inactive' do
-      before{user.state='inactive'}
+      before{ user.state = 'inactive' }
+
       it 'does not change user state' do
         expect{user.disable}.to_not change{user.state}
       end
