@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  # Variables
   let (:user) { Fabricate.build(:user) }
 
   # Relations
@@ -20,9 +21,6 @@ describe User do
   it { should validate_presence_of :profile }
   it { should validate_presence_of :nick }
 
-  # Factories
-  specify { expect(Fabricate.build(:user)).to be_valid }
-
   # Methods
   describe '#sheet' do
     it 'returns an UserSheet filled with user id, first_name, last_name, images, nick and location coords' do
@@ -35,4 +33,7 @@ describe User do
     end
     specify { expect(user.sheet.id).to eq user.id }
   end
+
+  # Factories
+  specify { expect(Fabricate.build(:user)).to be_valid }
 end

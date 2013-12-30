@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe Product do
-
+  # Variables
   let(:item) { Fabricate(:item) }
   let(:product) { Fabricate.build(:product,item:item) }
 
   # Relations
-  it { should be_embedded_in :proposal }
   specify { Product.should < Good }
+  it { should be_embedded_in :proposal }
 
   # Attributes
   it { should be_timestamped_document }
@@ -23,7 +23,7 @@ describe Product do
   it { should validate_inclusion_of(:state).to_allow('available', 'unavailable', 'ghosted', 'discarded') }
 
   # Methods
- shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
     
     it "calls state_machine.trigger(#{action})" do
@@ -35,13 +35,12 @@ describe Product do
       expect {item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the item' do
+    it 'does not save the product' do
       item.send(action)
       expect(item).to_not be_persisted
     end
   end
 
-  #TODO: REVISAR LOS NOMBRES (available, unavailable)
   describe '#available' do
     it_should_behave_like 'an state machine event', :available, 'available', 'unavailable'
   end

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Proposal do
+  # Variables
   let(:proposal) { Fabricate.build(:proposal) }
 
   # Relations
@@ -64,7 +65,7 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:user_sheets)
   end
 
-  #Methods
+  # Methods
   describe 'left(user:id)' do
     it 'returns products for the left side' do
       owner_id = proposal.goods.sample.owner_id
@@ -104,7 +105,7 @@ describe Proposal do
       expect {proposal.send(action)}.to change {proposal.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the proposal' do
+    it 'does not save the proposal' do
       proposal.send(action)
       expect(proposal).to_not be_persisted
     end
@@ -118,8 +119,8 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
   end
 
-  describe '#broke' do
-    it_should_behave_like 'an state machine event', :broke, 'new', 'broken'
+  describe '#break' do
+    it_should_behave_like 'an state machine event', :break, 'new', 'broken'
   end
 
   describe '#reset' do
@@ -143,7 +144,7 @@ describe Proposal do
 
     it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
 
-    it { should have_received(:when).with(:broke, 'new' => 'broken',
+    it { should have_received(:when).with(:break, 'new' => 'broken',
                                                   'signed' => 'broken') }
 
     it { should have_received(:when).with(:reset, 'signed' => 'new',

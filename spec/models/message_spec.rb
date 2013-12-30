@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Message do
+  # Variables
   let(:message) { Fabricate.build(:message) }
 
   # Relations

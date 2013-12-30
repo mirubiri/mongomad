@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Offer do
-
+  # Variables
   let(:offer) { Fabricate.build(:offer) }
 
   # Relations
@@ -47,14 +47,14 @@ describe Offer do
       expect{offer.send(action)}.to change {offer.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the offer' do
+    it 'does not save the offer' do
       offer.send(action)
       expect(offer).to_not be_persisted
     end
   end
 
-  describe '#negotiating' do
-    it_should_behave_like 'an state machine event', :negotiating, 'new', 'negotiating'
+  describe '#negotiate' do
+    it_should_behave_like 'an state machine event', :negotiate, 'new', 'negotiating'
   end
 
   describe '#negotiated' do
@@ -73,10 +73,9 @@ describe Offer do
     subject(:machine) { double().as_null_object }
 
     before(:each) { offer.state_machine(machine) }
-
-    #TODO: REVISAR LOS NOMBRES (negotiating, negotiated, negotiate)
-    it { should have_received(:when).with(:negotiating, 'new' => 'negotiating',
-                                                        'negotiated' => 'negotiating') }
+    
+    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
+                                                      'negotiated' => 'negotiating') }
 
     it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
 

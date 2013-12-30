@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Negotiation do
-
+  # Variables
   let(:negotiation) { Fabricate.build(:negotiation) }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
@@ -64,7 +64,7 @@ describe Negotiation do
       expect{negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the negotiation' do
+    it 'does not save the negotiation' do
       negotiation.send(action)
       expect(negotiation).to_not be_persisted
     end
@@ -153,19 +153,22 @@ describe Negotiation do
   end
 
   describe '#sign_proposal(user_id)' do
-    context 'When user can sign' do
+    context 'when user can sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
+
       it 'triggers proposal sign event' do
         expect(negotiation.proposal).to receive :sign
         negotiation.sign_proposal(composer_id)
       end
+
       it 'returns true' do
         expect(negotiation.sign_proposal(composer_id)).to eq true
       end
     end
 
-    context 'When user cannot sign' do
+    context 'when user cannot sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(false) }
+
       it 'returns false' do
         expect(negotiation.sign_proposal(composer_id)).to eq false
       end
@@ -174,22 +177,25 @@ describe Negotiation do
 
 
   describe '#confirm_proposal(user_id)' do
-    context 'When user can confirm' do
+    context 'when user can confirm' do
       before(:each) do 
-        negotiation.proposal.state='signed'
+        negotiation.proposal.state = 'signed'
         negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(true)
       end
+
       it 'triggers proposal confirm event' do
         expect(negotiation.proposal).to receive :confirm
         negotiation.confirm_proposal(composer_id)
       end
+
       it 'returns true' do
         expect(negotiation.confirm_proposal(composer_id)).to eq true
       end
     end
 
-    context 'When user cannot confirm' do
+    context 'when user cannot confirm' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(false) }
+
       it 'returns false' do
         expect(negotiation.confirm_proposal(composer_id)).to eq false
       end
