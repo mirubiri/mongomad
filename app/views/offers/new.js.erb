@@ -2,11 +2,16 @@ $('#new-offer-form').remove();
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/new_offer').html_safe %>");
 $('#new-offer-form').dialog({ 
 	appendTo: "#body",
-	modal: true,
-	title: "",
+    modal: true,
+    title: "",
 	closeText: "hide",
 	height: "auto",
-	width: "auto" 
+	width: "auto",
+    open: function(){
+        jQuery('.ui-widget-overlay').bind('click',function(){
+            jQuery('#new-offer-form').dialog('close');
+        })
+    }	 
 });
 
 $(".ui-dialog-titlebar").hide();// quita la barra de la modal
