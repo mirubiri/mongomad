@@ -16,10 +16,12 @@ describe User do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field(:nick) }
+  it { should have_field(:state).with_default_value_of('active') }
 
   # Validations
   it { should validate_presence_of :profile }
   it { should validate_presence_of :nick }
+  it { should validate_inclusion_of(:state).to_allow('active', 'inactive') }
 
   # Methods
   describe '#sheet' do
@@ -32,6 +34,57 @@ describe User do
       user.sheet
     end
     specify { expect(user.sheet.id).to eq user.id }
+  end
+
+  describe '#enable' do
+    context 'when user is active' do
+      before{user.state='active'}
+
+      it 'does not change user state' do
+        expect{user.enable}.to_not change{user.state}
+      end
+
+      it 'returns false' do
+        expect(user.enable).to eq false
+      end
+    end
+
+    context 'when user is inactive' do
+      before {user.state='inactive'}
+
+      it 'change user state to active' do
+        expect{user.enable}.to change{user.state}.from('inactive').to('active')
+      end
+
+      it 'returns true' do
+        expect(user.enable).to eq true
+      end
+    end    
+  end
+
+  describe '#disable' do
+    before{user.state='active'}
+
+    context 'when user is active' do
+      it 'change user state to inactive' do
+        expect{user.disable}.to change{user.state}.from('active').to('inactive')
+      end
+
+      it 'returns true' do
+        expect(user.disable).to eq true
+      end
+    end
+
+    context 'when user is inactive' do
+      before{user.state='inactive'}
+      it 'does not change user state' do
+        expect{user.disable}.to_not change{user.state}
+      end
+
+      it 'returns false' do
+        expect(user.disable).to eq false
+      end
+    end    
   end
 
   # Factories
