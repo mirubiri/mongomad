@@ -69,7 +69,6 @@ class Proposal
       machine.when(:reset, 'signed' => 'new',
                            'broken' => 'new')
 
-
       machine.when(:ghost, 'new' => 'ghosted',
                            'signed' => 'ghosted',
                            'broken' => 'ghosted')
