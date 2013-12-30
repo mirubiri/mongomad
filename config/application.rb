@@ -20,8 +20,8 @@ module Mongomad
 
     #Habilita logs para la consola
     #Mongoid.logger.level = Logger::DEBUG
-    Moped.logger.level = Logger::DEBUG
-
+    #Moped.logger.level = Logger::DEBUG
+    config.i18n.enforce_available_locales = true
 
     #Le digo a devise que su layout por defecto es application
     config.to_prepare do
