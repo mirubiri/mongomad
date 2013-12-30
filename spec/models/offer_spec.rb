@@ -53,8 +53,8 @@ describe Offer do
     end
   end
 
-  describe '#negotiate' do
-    it_should_behave_like 'an state machine event', :negotiate, 'new', 'negotiating'
+  describe '#negotiating' do
+    it_should_behave_like 'an state machine event', :negotiating, 'new', 'negotiating'
   end
 
   describe '#negotiated' do
@@ -74,8 +74,9 @@ describe Offer do
 
     before(:each) { offer.state_machine(machine) }
 
-    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
-                                                      'negotiated' => 'negotiating') }
+    #TODO: REVISAR LOS NOMBRES (negotiating, negotiated, negotiate)
+    it { should have_received(:when).with(:negotiating, 'new' => 'negotiating',
+                                                        'negotiated' => 'negotiating') }
 
     it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
 
