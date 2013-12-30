@@ -24,20 +24,20 @@ describe Product do
 
   # Methods
   shared_examples 'an state machine event' do |action, initial_state, final_state|
-    before(:each) { item.state = initial_state }
+    before(:each) { product.state = initial_state }
     
     it "calls state_machine.trigger(#{action})" do
-      expect(item.state_machine).to receive(:trigger).with(action)
-      item.send(action)
+      expect(product.state_machine).to receive(:trigger).with(action)
+      product.send(action)
     end
 
-    it "changes item state from #{initial_state} to #{final_state}" do
-      expect {item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
+    it "changes product state from #{initial_state} to #{final_state}" do
+      expect {product.send(action)}.to change {product.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the product' do
-      item.send(action)
-      expect(item).to_not be_persisted
+      product.send(action)
+      expect(product).to_not be_persisted
     end
   end
 
@@ -60,7 +60,7 @@ describe Product do
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
 
-    before(:each) { proposal.state_machine(machine) }
+    before(:each) { product.state_machine(machine) }
 
     it { should have_received(:when).with(:available, 'available' => 'unavailable') }
 
