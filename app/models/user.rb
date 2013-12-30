@@ -12,8 +12,12 @@ class User
   embeds_one  :profile
 
   field :nick
+  field :state, default:'active'
 
   validates_presence_of :profile, :nick
+
+  validates_inclusion_of :state, in: [ 'active', 'inactive' ]
+
 
   # -------------- DEVISE GENERATED----------------------------
   # Include default devise modules. Others available are:
@@ -64,6 +68,24 @@ class User
   def sheet
     UserSheet.new(first_name:profile.first_name, last_name:profile.last_name, nick:nick, location:profile.location, images:profile.images) do |sheet|
       sheet.id=id
+    end
+  end
+
+  def enable
+    if state == 'inactive'
+      state = 'active'
+      return true
+    else
+      return false
+    end
+  end
+
+  def disable
+    if state == 'active'
+      state = 'inactive'
+      return true
+    else
+      return false
     end
   end
 end
