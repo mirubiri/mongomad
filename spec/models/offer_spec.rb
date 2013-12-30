@@ -38,7 +38,7 @@ describe Offer do
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
       offer.save
-      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver],proposals: [offer.proposal], state:'in progress')
+      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver], proposals:[offer.proposal])
       offer.negotiate
     end
 
