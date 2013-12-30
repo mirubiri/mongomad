@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
 
   def sub_layout
-    "alerts"
+    "complete_layout"
   end
 
   def index

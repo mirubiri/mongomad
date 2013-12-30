@@ -5,7 +5,15 @@
 
 <body class="hidden_container" id="body">
 
-  <!--
+  <%= render :partial => "layouts/#{controller.sub_layout}" %>
+  
+</body>
+
+</html>
+
+
+
+<!-- Mensajes de respuesta de la plataforma que pueden ir dentro del body
   <div id="page">
     <%# if flash[:alert] %>
       <div class="alert_container">
@@ -32,8 +40,4 @@
       </div>
     <%# end %>
   </div>
-  -->
-  <%= render :partial => "layouts/#{controller.sub_layout}" %>
-</body>
-
-</html>
+-->

@@ -1,9 +1,7 @@
-$('#edit-request-form').modal('hide');
+$('#edit-request-form').dialog('close');
 
-$('#edit-request-form').on('hidden', function () {
-  $('#request_list_container')
-  .html("<%= escape_javascript(render :partial => 'layouts/global_partials/requests_list').html_safe %>");  
+$('#request_list_container')
+.html("<%= escape_javascript(render :partial => 'layouts/global_partials/requests_list').html_safe %>");  
 
-  //Elimino la ventana modal
-  delete $(this);
-})
+//Elimino la ventana modal
+delete $('#edit-request-form');

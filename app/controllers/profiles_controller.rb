@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def sub_layout
-    "profile"
+    "complete_layout"
   end
 
   def edit

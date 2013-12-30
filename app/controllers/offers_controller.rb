@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
 
   def sub_layout
-    "offers"
+    "complete_layout"
   end
 
   def index

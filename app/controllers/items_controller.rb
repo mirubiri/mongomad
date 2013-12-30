@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
 
   def sub_layout
-    "items"
+    "complete_layout"
   end
 
   def index

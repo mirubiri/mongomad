@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   def sub_layout
-    "requests"
+    "complete_layout"
   end
 
   # GET /requests
