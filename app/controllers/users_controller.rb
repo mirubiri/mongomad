@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users.json
 
   def sub_layout
-    "users" 
+    "complete_layout" 
   end
   
   def index    

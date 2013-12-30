@@ -1,20 +1,18 @@
-$('#new-item-form').modal('hide');
+$('#new-item-form').dialog('close');
 
-$('#new-item-form').on('hidden', function () {
-  $('#ppal_container')
-  .prepend("<%= escape_javascript(render :template => 'items/show', :locals => {:@item => item}).html_safe %>")
-  .masonry( 'reload' )
-  .children()
-  .first()
-  .css('opacity', 0)
-  .hide()
-  .slideDown()
-  .animate(
-    { opacity: 1 },
-    { queue: false, duration: 1500 }
-  )
-  .animate({backgroundColor: '#ffffff'}, 800)
+$('#ppal_container')
+.prepend("<%= escape_javascript(render :template => 'items/show', :locals => {:@item => item}).html_safe %>")
+.masonry( 'reload' )
+.children()
+.first()
+.css('opacity', 0)
+.hide()
+.slideDown()
+.animate(
+  { opacity: 1 },
+  { queue: false, duration: 1500 }
+)
+.animate({backgroundColor: '#ffffff'}, 800)
 
-  //Elimino la ventana modal
-  delete $(this);
-})
+//Elimino la ventana modal
+delete $('#new-item-form');

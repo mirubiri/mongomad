@@ -4,27 +4,19 @@ if( ($('.request').length) === 0){
   $('#request_list_container > .no_elements').remove();
 }
 
-//$('.new-request-form').on( "dialogclose", function( event, ui ) {
-  $('#request_list_container')
-  .prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>");
+$('#request_list_container').prepend("<%= escape_javascript(render :template => 'requests/show', :locals => {:@request => request}).html_safe %>");
 
-  matchPrincipalContainersHeighs();
+$('#request_list_container')
+.children()
+.first()
+.hide()
+.addClass("new_request_style")
+.delay(500)
+.show( "slide", 1000, function(){ $('#mainLayout').matchPrincipalContainersHeighs(); })
+.animate({backgroundColor: '#ffffff'}, 5000, function(){
+  $(this).removeClass("new_request_style");
+});
 
-  $('#request_list_container')
-  .children()
-  .first()
-  .addClass("new_request_style")
-  .css('opacity', 0)
-  .hide()
-  .slideDown()
-  .animate(
-    { opacity: 1 },
-    { queue: false, duration: 1500 }
-  )
-  .animate({backgroundColor: '#ffffff'}, 800, function(){
-    $(this).removeClass("new_request_style");
-  });
 
-  //Elimino la ventana modal
-  //delete $(this);
-//});
+//Elimino la ventana modal
+delete $('#new-request-form');
