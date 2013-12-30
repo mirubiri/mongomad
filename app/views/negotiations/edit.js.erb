@@ -1,3 +1,3 @@
 $('#edit-negotiation-form').remove();
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_negotiation').html_safe %>");
-$('#edit-negotiation-form').modal('show');
+$('#edit-negotiation-form').toModal();

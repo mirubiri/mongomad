@@ -1,3 +1,3 @@
 $('#edit-request-form').remove();
 $("#ppal_container").append("<%= escape_javascript(render :partial => 'layouts/edit_request').html_safe %>");
-$('#edit-request-form').modal('show');
+$('#edit-request-form').toModal();
