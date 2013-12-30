@@ -86,6 +86,7 @@ describe Offer do
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
+  #TODO: REVISAR CON OJO
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
       offer.save
