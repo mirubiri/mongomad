@@ -63,7 +63,7 @@ class Proposal
 
       machine.when(:confirm, 'signed' => 'confirmed') 
 
-      machine.when(:broke, 'new' => 'broken',
+      machine.when(:break, 'new' => 'broken',
                            'signed' => 'broken')
 
       machine.when(:reset, 'signed' => 'new',
@@ -102,8 +102,8 @@ class Proposal
     state_machine.trigger(:confirm)
   end
 
-  def broke
-    state_machine.trigger(:broke)
+  def break
+    state_machine.trigger(:break)
   end
 
   def reset
