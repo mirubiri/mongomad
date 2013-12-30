@@ -65,7 +65,7 @@ describe Item do
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
 
-    before(:each) { proposal.state_machine(machine) }
+    before(:each) { item.state_machine(machine) }
 
     it { should have_received(:when).with(:available, 'available' => 'unavailable') }
 
