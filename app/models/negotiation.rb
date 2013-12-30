@@ -99,41 +99,36 @@ class Negotiation
   def sign_proposal(user_id)
     if gatekeeper(user_id, :sign)
       proposal.sign
+    else
+      false
     end
   end
 
   def confirm_proposal(user_id)
-    if gatekeeper(user_id, :sign)
+    if gatekeeper(user_id, :confirm)
       proposal.confirm
+    else 
+      false
     end
   end
 
-  #TODO: USER_ID CUAL?
-  def broke_proposal
-    if gatekeeper(composer, :broke)
-      proposal.broke
-    end
+  def break_proposal
+    proposal.break
   end
 
   def reset_proposal
-    if gatekeeper(composer, :broke)
-      proposal.broke
-    end
+    proposal.reset
   end
   
   def ghost_proposal
-    if gatekeeper(composer, :ghost)
-      proposal.broke
-    end
+    proposal.ghost
   end
   
   def discard_proposal
-    if gatekeeper(composer, :discard)
-      proposal.broke
-    end 
+    proposal.discard
   end
 
-  #TODO: METODOS SIN TESTEAR
+  #TODO: METODO SIN TESTEAR
   def money_owner(user_id)
     # puts proposal.goods.type(Cash).last.owner_id 
     # puts user_id

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Negotiation do
-
+  # Variables
   let(:negotiation) { Fabricate.build(:negotiation) }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
@@ -64,7 +64,7 @@ describe Negotiation do
       expect{negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
     end
 
-    it 'do not saves the negotiation' do
+    it 'does not save the negotiation' do
       negotiation.send(action)
       expect(negotiation).to_not be_persisted
     end
@@ -151,56 +151,83 @@ describe Negotiation do
       end
     end
   end
-  
-  #TODO: REVISAR ESTA PARTE (ALEJANDRO) ################################
-  shared_examples 'gatekeeper check' do |method|
-    it 'returns false if gatekeeper disagree' do
-      negotiation.stub(:gatekeeper).and_return(false)
-      expect(negotiation.send(method,composer_id)).to eq false
-    end
-  end
-
-  shared_examples 'is a wrapper' do |method, wrapped_method|
-    it "calls negotiation.proposal.#{wrapped_method}" do
-      expect(negotiation.proposal).to receive(wrapped_method)
-      negotiation.send(method)
-    end
-
-    it "returns negotiation.proposal.#{wrapped_method} result" do
-      expect(negotiation.send(method)).to eq negotiation.proposal.send(wrapped_method) 
-    end
-  end
 
   describe '#sign_proposal(user_id)' do
-    context 'gatekeeper agree' do
-      before(:each) { negotiation.stub(:gatekeeper) { true } }
+    context 'when user can sign' do
+      before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
+
+      it 'triggers proposal sign event' do
+        expect(negotiation.proposal).to receive :sign
+        negotiation.sign_proposal(composer_id)
+      end
+
+      it 'returns true' do
+        expect(negotiation.sign_proposal(composer_id)).to eq true
+      end
     end
-    include_examples 'gatekeeper check', :sign_proposal
-    include_examples 'is a wrapper',:sign_proposal, :sign
+
+    context 'when user cannot sign' do
+      before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(false) }
+
+      it 'returns false' do
+        expect(negotiation.sign_proposal(composer_id)).to eq false
+      end
+    end
   end
+
 
   describe '#confirm_proposal(user_id)' do
-    before(:each) { negotiation.proposal.state = 'signed' }
-    include_examples 'gatekeeper check', :confirm_proposal
-    include_examples 'is a wrapper',:confirm_proposal, :confirm
+    context 'when user can confirm' do
+      before(:each) do 
+        negotiation.proposal.state = 'signed'
+        negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(true)
+      end
+
+      it 'triggers proposal confirm event' do
+        expect(negotiation.proposal).to receive :confirm
+        negotiation.confirm_proposal(composer_id)
+      end
+
+      it 'returns true' do
+        expect(negotiation.confirm_proposal(composer_id)).to eq true
+      end
+    end
+
+    context 'when user cannot confirm' do
+      before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(false) }
+
+      it 'returns false' do
+        expect(negotiation.confirm_proposal(composer_id)).to eq false
+      end
+    end
   end
 
-  describe '#broke_proposal' do
-    before(:each) { negotiation.proposal.state = 'signed' }
-    include_examples 'gatekeeper check', :confirm_proposal
-    include_examples 'is a wrapper',:broke_proposal, :broke
+  describe '#break_proposal' do
+    it 'returns the result of triggering proposal.break' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:break).and_return('test')
+      expect(negotiation.break_proposal).to eq negotiation.proposal.break
+    end
   end
 
   describe '#reset_proposal' do
-    include_examples 'is a wrapper',:reset_proposal, :reset
+    it 'returns the result of triggering proposal.reset' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:reset).and_return('test')
+      expect(negotiation.reset_proposal).to eq negotiation.proposal.reset
+    end
   end
 
   describe '#ghost_proposal' do
-    include_examples 'is a wrapper',:ghost_proposal, :ghost
+    it 'returns the result of triggering proposal.ghost' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:ghost).and_return('test')
+      expect(negotiation.ghost_proposal).to eq negotiation.proposal.ghost
+    end
   end
 
   describe '#discard_proposal' do
-    include_examples 'is a wrapper',:discard_proposal, :discard
+    it 'returns the result of triggering proposal.discard' do
+      negotiation.proposal.state_machine.stub(:trigger).with(:discard).and_return('test')
+      expect(negotiation.discard_proposal).to eq negotiation.proposal.discard
+    end
   end
 
   # Factories

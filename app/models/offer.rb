@@ -28,7 +28,7 @@ class Offer
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
-      machine.when(:negotiating, 'new' => 'negotiating',
+      machine.when(:negotiate, 'new' => 'negotiating',
                                'negotiated' => 'negotiating')
 
       machine.when(:negotiated, 'negotiating' => 'negotiated')
@@ -45,13 +45,17 @@ class Offer
       machine
     end
   end
-
+  
+  #TODO: REVISAR CON OJO
   def negotiate
-    persisted? && Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal])
-  end
-
-  def negotiating
-    state_machine.trigger(:negotiating)
+    if persisted?
+      negotiation = Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal])
+      state_machine.trigger(:negotiate)      
+      return negotiation
+    else
+      state_machine.trigger(:negotiate)      
+      return false
+    end 
   end
 
   def negotiated

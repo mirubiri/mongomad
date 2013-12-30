@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe UserSheet do
-
   # Modules
   it { should include_module Attachment::Images }
 
