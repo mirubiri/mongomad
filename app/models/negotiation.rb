@@ -3,27 +3,13 @@ class Negotiation
   include Mongoid::Timestamps
 
   has_and_belongs_to_many :_users
-
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
-  embeds_many :messages,  class_name:'Message', as: :message_container
+  embeds_many :messages,  class_name:'Message',  as: :message_container
 
   field :state, default:'open'
 
-  validates_presence_of :proposals
-
-  validates_inclusion_of :state, in: [ 'open', 'successful', 'ghosted', 'closed' ]
-
-  def proposal
-    proposals.last
-  end
-
-  def composer
-    proposal.composer_id
-  end
-
-  def receiver
-    proposal.receiver_id
-  end
+  validates_presence_of :proposals, :state
+  validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
   def state_machine(machine=nil)
     @state_machine ||= begin
@@ -43,36 +29,6 @@ class Negotiation
         self.state = @state_machine.state
       end
       machine
-    end
-  end
-
-  def gatekeeper(user_id, action)
-    if state == 'open'
-      if user_id == composer || user_id == receiver
-        if action == :sign 
-          if money_owner(user_id)
-            return false
-          else
-            return true
-          end
-        end
-
-        if action == :confirm
-          if money_owner(user_id)
-            return true
-          else
-            return false
-          end
-        end
-
-        if action != :sign && action != :confirm
-          return true
-        end
-      else
-        return false
-      end
-    else
-      return false
     end
   end
 
@@ -128,10 +84,53 @@ class Negotiation
     proposal.discard
   end
 
-  #TODO: METODO SIN TESTEAR
+  def gatekeeper(user_id, action)
+    if state == 'open'
+      if user_id == composer || user_id == receiver
+        if action == :sign 
+          if money_owner(user_id)
+            return false
+          else
+            return true
+          end
+        end
+
+        if action == :confirm
+          if money_owner(user_id)
+            return true
+          else
+            return false
+          end
+        end
+
+        if action != :sign && action != :confirm
+          return true
+        end
+      else
+        return false
+      end
+    else
+      return false
+    end
+  end
+
+  def proposal
+    proposals.last
+  end
+
+  def composer
+    proposal.composer_id
+  end
+
+  def receiver
+    proposal.receiver_id
+  end
+
   def money_owner(user_id)
-    # puts proposal.goods.type(Cash).last.owner_id 
-    # puts user_id
-    proposal.goods.type(Cash).last.owner_id == user_id
+    if proposal.cash?
+      proposal.goods.type(Cash).last.owner_id == user_id
+    else
+      return false
+    end
   end
 end

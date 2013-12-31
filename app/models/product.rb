@@ -1,20 +1,16 @@
 class Product < Good
   include Mongoid::Timestamps
-  # include Denormalized
-  # include ImageManagement::ImageHolder
 
+  field :_id,        type:Moped::BSON::ObjectId,default:nil
   field :name
   field :description
-  field :_id,         type:Moped::BSON::ObjectId,default:nil
-  field :owner_id,    type:Moped::BSON::ObjectId
-  field :quantity,    type: Integer
-  field :state,       default:'available'
+  field :owner_id,   type:Moped::BSON::ObjectId
+  field :quantity,   type:Integer
+  field :state,      default:'available'
 
-  validates_presence_of :name,:description,:_id,:owner_id
-
+  validates_presence_of :_id, :name, :description, :owner_id, :quantity, :state
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
-  validates_inclusion_of :state, in: [ 'available', 'unavailable', 'ghosted', 'discarded' ]
+  validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
 
   def state_machine(machine=nil)
     @state_machine ||= begin
@@ -36,18 +32,6 @@ class Product < Good
     end
   end
 
-  def item
-    Item.find(id)
-  end
-
-  def sell
-    self.item.sell(quantity)
-  end
-
-  def available?
-    self.item.available?(self.quantity)
-  end
-  
   def available
     state_machine.trigger(:available)
   end
@@ -62,5 +46,17 @@ class Product < Good
 
   def discard
     state_machine.trigger(:discard)
+  end
+
+  def item
+    Item.find(id)
+  end
+
+  def sell
+    self.item.sell(quantity)
+  end
+
+  def available?
+    self.item.available?(self.quantity)
   end
 end

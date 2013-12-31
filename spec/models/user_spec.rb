@@ -8,38 +8,26 @@ describe User do
   it { should have_many :requests }
   it { should have_many(:sent_offers).of_type(Offer).as_inverse_of(:user_composer) }
   it { should have_many(:received_offers).of_type(Offer).as_inverse_of(:user_receiver) }
-  it { should have_and_belong_to_many :negotiations }
-  it { should have_and_belong_to_many :deals }
-  it { should embed_one :profile }
+  it { should have_and_belong_to_many(:negotiations).as_inverse_of(:negotiators) }
+  it { should have_and_belong_to_many(:deals).as_inverse_of(:signers) }
   it { should have_many :items }
+  it { should embed_one :profile }
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:nick) }
+  it { should have_field :nick }
   it { should have_field(:state).with_default_value_of('active') }
 
   # Validations
   it { should validate_presence_of :profile }
   it { should validate_presence_of :nick }
-  it { should validate_inclusion_of(:state).to_allow('active', 'inactive') }
+  it { should validate_presence_of :state }
+  it { should validate_inclusion_of(:state).to_allow('active','inactive') }
 
   # Methods
-  describe '#sheet' do
-    it 'returns an UserSheet filled with user id, first_name, last_name, images, nick and location coords' do
-      expect(UserSheet).to receive(:new).with(first_name:user.profile.first_name,
-        last_name:user.profile.last_name,
-        nick:user.nick,
-        location:user.profile.location,
-        images:user.profile.images )
-      user.sheet
-    end
-
-    specify { expect(user.sheet.id).to eq user.id }
-  end
-
   describe '#enable' do
     context 'when user is active' do
-      before{ user.state = 'active' }
+      before(:each) { user.state = 'active' }
 
       it 'does not change user state' do
         expect{user.enable}.to_not change{user.state}
@@ -51,7 +39,7 @@ describe User do
     end
 
     context 'when user is inactive' do
-      before{ user.state = 'inactive' }
+      before(:each) { user.state = 'inactive' }
 
       it 'change user state to active' do
         expect{user.enable}.to change{user.state}.from('inactive').to('active')
@@ -87,6 +75,19 @@ describe User do
         expect(user.disable).to eq false
       end
     end    
+  end
+
+  describe '#sheet' do
+    it 'returns an UserSheet filled with user id, nick, first_name, last_name, images and location coords' do
+      expect(UserSheet).to receive(:new).with(nick:user.nick,
+        first_name:user.profile.first_name,
+        last_name:user.profile.last_name,
+        images:user.profile.images,
+        location:user.profile.location)
+      user.sheet
+    end
+
+    specify { expect(user.sheet.id).to eq user.id }
   end
 
   # Factories

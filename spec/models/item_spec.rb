@@ -18,14 +18,12 @@ describe Item do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should validate_presence_of :stock }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
+  it { should validate_presence_of :stock }
   it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available', 'unavailable', 'ghosted', 'discarded') }
-
-  # Factories
-  specify { expect(Fabricate.build(:item)).to be_valid }
+  it { should validate_presence_of :state }
+  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -78,7 +76,6 @@ describe Item do
   end
 
   describe '#pick(quantity)' do
-
     it 'returns a Product filled with item name, description,images and given quantity' do
       expect(Product).to receive(:new).with(name:item.name, description:item.description, images:item.images, quantity:1)
       item.pick(1)
@@ -143,4 +140,7 @@ describe Item do
       expect(item.available?(0)).to eq false
     end
   end
+
+  # Factories
+  specify { expect(Fabricate.build(:item)).to be_valid }
 end

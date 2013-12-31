@@ -7,14 +7,12 @@ class Item
 
   field :name
   field :description
-  field :stock, type:Integer
-  field :state, default:'available'
+  field :stock,      type:Integer
+  field :state,      default:'available'
 
-  validates_presence_of :name, :description, :stock, :user
-
+  validates_presence_of :user, :name, :description, :stock, :state
   validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-
-  validates_inclusion_of :state, in: [ 'available', 'unavailable', 'ghosted', 'discarded' ]
+  validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded' ]
 
   def state_machine(machine=nil)
     @state_machine ||= begin
@@ -34,6 +32,22 @@ class Item
       end
       machine
     end
+  end
+
+  def available
+    state_machine.trigger(:available)
+  end
+
+  def unavailable
+    state_machine.trigger(:unavailable)
+  end
+
+  def ghost
+    state_machine.trigger(:ghost)
+  end
+
+  def discard
+    state_machine.trigger(:discard)
   end
 
   def pick(quantity)
@@ -58,21 +72,5 @@ class Item
 
   def available?(quantity)
     stock != nil && quantity != 0 && quantity <= stock
-  end
-
-  def available
-    state_machine.trigger(:available)
-  end
-
-  def unavailable
-    state_machine.trigger(:unavailable)
-  end
-
-  def ghost
-    state_machine.trigger(:ghost)
-  end
-
-  def discard
-    state_machine.trigger(:discard)
   end
 end

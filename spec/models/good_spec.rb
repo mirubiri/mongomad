@@ -6,4 +6,7 @@ describe Good do
 
   # Relations
   it { should be_embedded_in :proposal }
+
+  # Validations
+  it { should_not validate_presence_of :proposal }
 end

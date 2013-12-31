@@ -3,24 +3,28 @@ require 'spec_helper'
 describe Product do
   # Variables
   let(:item) { Fabricate(:item) }
-  let(:product) { Fabricate.build(:product,item:item) }
+  let(:product) { Fabricate.build(:product, item:item) }
 
   # Relations
   specify { Product.should < Good }
-  it { should be_embedded_in :proposal }
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_fields :name,:description }
-  it { should have_field(:quantity).of_type(Integer) }
-  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_fields :name, :description }
+  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
 
   # Validations
-  it { should_not validate_presence_of :proposal }
+  it { should validate_presence_of :_id }
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :owner_id }
+  it { should validate_presence_of :quantity }
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available', 'unavailable', 'ghosted', 'discarded') }
+  it { should validate_presence_of :state }
+  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -66,7 +70,7 @@ describe Product do
 
     it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
 
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                              
                                                   'unavailable' => 'ghosted') } 
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }

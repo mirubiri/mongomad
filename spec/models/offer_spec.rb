@@ -20,21 +20,10 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
-  it { should validate_inclusion_of(:state).to_allow('new', 'negotiating', 'negotiated', 'ghosted', 'discarded') }
+  it { should validate_presence_of :state }
+  it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
   #Methods
-  describe '#composer' do
-    it 'returns the composer user sheet' do
-      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
-    end
-  end
-
-  describe '#receiver' do
-    it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
-    end
-  end
-
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { offer.state = initial_state }
 
@@ -86,6 +75,18 @@ describe Offer do
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
+  describe '#composer' do
+    it 'returns the composer user sheet' do
+      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
+    end
+  end
+
+  describe '#receiver' do
+    it 'returns the receiver user sheet' do
+      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
+    end
+  end
+
   #TODO: REVISAR CON OJO
   describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
@@ -116,4 +117,3 @@ describe Offer do
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
 end
-
