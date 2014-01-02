@@ -8,7 +8,7 @@ describe UserSheet do
   it { should be_embedded_in :user_sheet_container }
 
   # Attributes
-  it { should have_field(:_id).of_type(Moped::BSON::ObjectId).with_default_value_of(nil) }
+  it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
   it { should have_fields :nick, :first_name, :last_name }
   it { should have_field(:location).of_type(Array) }
 
