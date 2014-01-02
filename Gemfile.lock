@@ -43,9 +43,9 @@ GEM
       aws_cf_signer
       rest-client
     coderay (1.1.0)
-    coffee-rails (3.2.1)
+    coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
-      railties (~> 3.2.0.beta)
+      railties (~> 3.2.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -85,11 +85,11 @@ GEM
     mime-types (1.25.1)
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
-    money (5.1.1)
-      i18n (~> 0.6.0)
-    money-rails (0.8.1)
+    money (6.0.0)
+      i18n (~> 0.6.4)
+    money-rails (0.9.0)
       activesupport (>= 3.0)
-      money (~> 5.1.0)
+      money (~> 6.0.0)
       railties (>= 3.0)
     mongoid (3.1.6)
       activemodel (~> 3.2)
