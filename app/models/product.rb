@@ -1,7 +1,7 @@
 class Product < Good
   include Mongoid::Timestamps
 
-  field :_id,        type:Moped::BSON::ObjectId,default:nil
+  field :_id,        type:Moped::BSON::ObjectId, default:nil
   field :name
   field :description
   field :owner_id,   type:Moped::BSON::ObjectId

@@ -89,28 +89,28 @@ class Negotiation
       if user_id == composer || user_id == receiver
         if action == :sign 
           if money_owner(user_id)
-            return false
+            false
           else
-            return true
+            true
           end
         end
 
         if action == :confirm
           if money_owner(user_id)
-            return true
+            true
           else
-            return false
+            false
           end
         end
 
         if action != :sign && action != :confirm
-          return true
+          true
         end
       else
-        return false
+        false
       end
     else
-      return false
+      false
     end
   end
 

@@ -40,10 +40,10 @@ class Offer
     if persisted?
       negotiation = Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal])
       state_machine.trigger(:negotiate)      
-      return negotiation
+      negotiation
     else
       state_machine.trigger(:negotiate)      
-      return false
+      false
     end 
   end
 
