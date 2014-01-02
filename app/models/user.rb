@@ -64,19 +64,19 @@ class User
 
   def enable
     if state == 'inactive'
-      state = 'active'
-      return true
+      self.state = 'active'
+      true
     else
-      return false
+      false
     end
   end
 
   def disable
     if state == 'active'
-      state = 'inactive'
-      return true
+      self.state = 'inactive'
+      true
     else
-      return false
+      false
     end
   end
 
