@@ -7,6 +7,7 @@ describe Request do
   # Relations
   it { should belong_to :user }
   it { should embed_one(:user_sheet).of_type(UserSheet) }
+  it { should_not have_autosave_on(:user) }
 
   # Attributes
   it { should be_timestamped_document }

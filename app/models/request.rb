@@ -2,7 +2,7 @@ class Request
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user
+  belongs_to :user,autosave:false
   embeds_one :user_sheet, class_name:'UserSheet', as: :user_sheet_container
 
   field :text
