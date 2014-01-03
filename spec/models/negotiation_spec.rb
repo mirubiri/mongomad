@@ -70,7 +70,7 @@ describe Negotiation do
     it_should_behave_like 'an state machine event', :reopen, 'closed', 'open'
   end
 
-  describe '#state_machine' do
+  describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
 
     before(:each) { negotiation.state_machine(machine) }
