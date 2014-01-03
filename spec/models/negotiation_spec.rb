@@ -230,20 +230,20 @@ describe Negotiation do
     end
   end
 
-  describe '#money_owner' do
+  describe '#money_owner?' do
     context 'when last proposal has money' do
       it 'returns true if user owns the money' do
-        expect(negotiation_composer_cash.money_owner(composer_id)).to eq true
+        expect(negotiation_composer_cash.money_owner?(composer_id)).to eq true
       end
 
       it 'returns false if user does not own the money' do
-        expect(negotiation_composer_cash.money_owner(receiver_id)).to eq false
+        expect(negotiation_composer_cash.money_owner?(receiver_id)).to eq false
       end
     end
 
     context 'when last proposal does not have money' do
       it 'returns false' do
-        expect(negotiation.money_owner(composer_id)).to eq false
+        expect(negotiation.money_owner?(composer_id)).to eq false
       end
     end
   end
