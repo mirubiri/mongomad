@@ -21,7 +21,7 @@ describe User do
   # Validations
   it { should validate_presence_of :profile }
   it { should validate_presence_of :nick }
-  it { should validate_presence_of :state }
+  it { should_not validate_presence_of :state }
   it { should validate_inclusion_of(:state).to_allow('active','inactive') }
 
   # Methods

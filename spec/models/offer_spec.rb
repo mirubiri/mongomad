@@ -20,7 +20,7 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
-  it { should validate_presence_of :state }
+  it { should_not validate_presence_of :state }
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
   #Methods

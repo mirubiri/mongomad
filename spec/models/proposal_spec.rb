@@ -21,7 +21,7 @@ describe Proposal do
   it { should validate_presence_of :goods }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it { should validate_presence_of :state }
+  it { should_not validate_presence_of :state }
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   it 'is invalid when there is any good for composer' do

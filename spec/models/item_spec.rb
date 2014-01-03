@@ -22,7 +22,7 @@ describe Item do
   it { should validate_presence_of :description }
   it { should validate_presence_of :stock }
   it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_presence_of :state }
+  it { should_not validate_presence_of :state }
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
