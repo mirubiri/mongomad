@@ -89,17 +89,17 @@ class Negotiation
       if user_id == composer || user_id == receiver
         if action == :sign 
           if money_owner(user_id)
-            false
+            return false
           else
-            true
+            return true
           end
         end
 
         if action == :confirm
           if money_owner(user_id)
-            true
+            return true
           else
-            false
+            return false
           end
         end
 
@@ -130,7 +130,7 @@ class Negotiation
     if proposal.cash?
       proposal.goods.type(Cash).last.owner_id == user_id
     else
-      return false
+      false
     end
   end
 end
