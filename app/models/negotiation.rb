@@ -85,33 +85,13 @@ class Negotiation
   end
 
   def gatekeeper(user_id, action)
-    if state == 'open'
-      if user_id == composer || user_id == receiver
-        if action == :sign 
-          if money_owner(user_id)
-            return false
-          else
-            return true
-          end
-        end
-
-        if action == :confirm
-          if money_owner(user_id)
-            return true
-          else
-            return false
-          end
-        end
-
-        if action != :sign && action != :confirm
-          true
-        end
-      else
-        false
-      end
-    else
-      false
-    end
+    return false if state != 'open'
+    return false if ![composer,receiver].include? user_id
+    
+    return false if money_owner?(user_id) && action == :sign
+    return false if !money_owner?(user_id) && action == :confirm
+    
+    true
   end
 
   def proposal
@@ -126,7 +106,7 @@ class Negotiation
     proposal.receiver_id
   end
 
-  def money_owner(user_id)
+  def money_owner?(user_id)
     if proposal.cash?
       proposal.goods.type(Cash).last.owner_id == user_id
     else
