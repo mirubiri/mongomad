@@ -8,6 +8,7 @@ describe Cash do
   specify { Cash.should < Good }
 
   # Attributes
+  it { should_not be_timestamped_document }
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:money).of_type(Money) }
 
