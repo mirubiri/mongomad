@@ -32,6 +32,22 @@ describe Negotiation do
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
   # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { negotiation.state_machine(machine) }
+
+    it { should have_received(:when).with(:success, 'open' => 'successful') }
+
+    it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
+
+    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
+
+    it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
+
+    it { should have_received(:when).with(:reopen, 'closed' => 'open') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { negotiation.state = initial_state }
 
@@ -68,22 +84,6 @@ describe Negotiation do
 
   describe '#reopen' do
     it_should_behave_like 'an state machine event', :reopen, 'closed', 'open'
-  end
-
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { negotiation.state_machine(machine) }
-
-    it { should have_received(:when).with(:success, 'open' => 'successful') }
-
-    it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
-
-    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
-
-    it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
-
-    it { should have_received(:when).with(:reopen, 'closed' => 'open') }
   end
 
   describe '#sign_proposal(user_id)' do

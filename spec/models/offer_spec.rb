@@ -26,6 +26,23 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
   #Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { offer.state_machine(machine) }
+    
+    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
+                                                      'negotiated' => 'negotiating') }
+
+    it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
+
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
+                                                  'negotiating' => 'ghosted',
+                                                  'negotiated' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { offer.state = initial_state }
 
@@ -59,23 +76,6 @@ describe Offer do
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end 
- 
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { offer.state_machine(machine) }
-    
-    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
-                                                      'negotiated' => 'negotiating') }
-
-    it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'negotiating' => 'ghosted',
-                                                  'negotiated' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
-  end
 
   describe '#composer' do
     it 'returns the composer user sheet' do

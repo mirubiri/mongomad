@@ -27,6 +27,21 @@ describe Item do
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { item.state_machine(machine) }
+
+    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
+
+    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
+
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
+                                                  'unavailable' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
     
@@ -59,21 +74,6 @@ describe Item do
  
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end
-
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { item.state_machine(machine) }
-
-    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-
-    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
-
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
-                                                  'unavailable' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   describe '#pick(quantity)' do

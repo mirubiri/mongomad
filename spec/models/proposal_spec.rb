@@ -69,6 +69,29 @@ describe Proposal do
   end
 
   # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { proposal.state_machine(machine) }
+
+    it { should have_received(:when).with(:sign, 'new' => 'signed') }
+
+
+    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
+
+    it { should have_received(:when).with(:break, 'new' => 'broken',
+                                                  'signed' => 'broken') }
+
+    it { should have_received(:when).with(:reset, 'signed' => 'new',
+                                                  'broken' => 'new') }
+
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
+                                                  'signed' => 'ghosted',
+                                                  'broken' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
     
@@ -109,29 +132,6 @@ describe Proposal do
  
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end
-
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { proposal.state_machine(machine) }
-
-    it { should have_received(:when).with(:sign, 'new' => 'signed') }
-
-
-    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-
-    it { should have_received(:when).with(:break, 'new' => 'broken',
-                                                  'signed' => 'broken') }
-
-    it { should have_received(:when).with(:reset, 'signed' => 'new',
-                                                  'broken' => 'new') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'signed' => 'ghosted',
-                                                  'broken' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   describe 'left(user:id)' do
