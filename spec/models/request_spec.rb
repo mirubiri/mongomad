@@ -7,7 +7,6 @@ describe Request do
   # Relations
   it { should belong_to :user }
   it { should embed_one(:user_sheet).of_type(UserSheet) }
-  it { should_not have_autosave_on(:user) }
 
   # Attributes
   it { should be_timestamped_document }
@@ -15,6 +14,7 @@ describe Request do
   
   # Validations
   it { should validate_presence_of :user }
+  it { should_not have_autosave_on(:user) }
   it { should validate_presence_of :user_sheet }
   it { should_not validate_presence_of :text }
   it { should validate_length_of(:text).within(1..160) }

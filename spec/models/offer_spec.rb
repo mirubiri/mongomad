@@ -16,7 +16,9 @@ describe Offer do
 
   # Validations
   it { should validate_presence_of :user_composer }
+  it { should_not have_autosave_on(:user_composer) }
   it { should validate_presence_of :user_receiver }
+  it { should_not have_autosave_on(:user_receiver) }
   it { should validate_presence_of :proposal }
   it { should_not validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }

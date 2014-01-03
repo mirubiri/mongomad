@@ -18,6 +18,7 @@ describe Item do
 
   # Validations
   it { should validate_presence_of :user }
+  it { should_not have_autosave_on(:user) }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_presence_of :stock }
