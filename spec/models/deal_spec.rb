@@ -25,5 +25,5 @@ describe Deal do
   end
 
   # Factories
-  specify { expect(deal).to be_valid }
+  specify { expect(Fabricate.build(:deal)).to be_valid }
 end

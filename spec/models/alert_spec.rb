@@ -15,4 +15,7 @@ describe Alert do
   it { should_not validate_presence_of :text }
   it { should validate_length_of(:text).within(1..160) }
   it { should validate_presence_of :location }
+
+  # Factories
+  specify { expect(Fabricate.build(:alert)).to be_valid }
 end

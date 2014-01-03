@@ -19,5 +19,5 @@ describe Message do
   it { should validate_length_of(:text).within(1..160) }
 
   # Factories
-  specify { expect(message).to be_valid }
+  specify { expect(Fabricate.build(:message)).to be_valid }
 end

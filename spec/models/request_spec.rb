@@ -20,5 +20,5 @@ describe Request do
   it { should validate_length_of(:text).within(1..160) }
 
   # Factories
-  specify { expect( Fabricate.build(:request) ).to be_valid }
+  specify { expect(Fabricate.build(:request)).to be_valid }
 end

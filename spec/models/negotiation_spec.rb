@@ -249,5 +249,5 @@ describe Negotiation do
   end
 
   # Factories
-  specify { expect(negotiation).to be_valid }
+  specify { expect(Fabricate.build(:negotiation)).to be_valid }
 end
