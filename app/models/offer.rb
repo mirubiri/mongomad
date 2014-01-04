@@ -26,8 +26,8 @@ class Offer
                            'negotiating' => 'ghosted',
                            'negotiated' => 'ghosted')
 
-      machine.when(:discard, 'ghosted' => 'discarded') 
-    
+      machine.when(:discard, 'ghosted' => 'discarded')
+
       machine.on(:any) do
         self.state = @state_machine.state
       end
@@ -39,12 +39,12 @@ class Offer
   def negotiate
     if persisted?
       negotiation = Negotiation.create(_users:[user_composer, user_receiver], proposals:[proposal])
-      state_machine.trigger(:negotiate)      
+      state_machine.trigger(:negotiate)
       negotiation
     else
-      state_machine.trigger(:negotiate)      
+      state_machine.trigger(:negotiate)
       false
-    end 
+    end
   end
 
   def negotiated

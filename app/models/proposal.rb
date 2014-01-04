@@ -58,10 +58,10 @@ class Proposal
   def state_machine(machine=nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
-      
+
       machine.when(:sign, 'new' => 'signed')
 
-      machine.when(:confirm, 'signed' => 'confirmed') 
+      machine.when(:confirm, 'signed' => 'confirmed')
 
       machine.when(:break, 'new' => 'broken',
                            'signed' => 'broken')

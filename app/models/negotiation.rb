@@ -17,13 +17,13 @@ class Negotiation
 
       machine.when(:success, 'open' => 'successful')
 
-      machine.when(:ghost, 'open' => 'ghosted') 
+      machine.when(:ghost, 'open' => 'ghosted')
 
-      machine.when(:close, 'ghosted' => 'closed') 
-      
-      machine.when(:reset, 'ghosted' => 'open') 
+      machine.when(:close, 'ghosted' => 'closed')
 
-      machine.when(:reopen, 'closed' => 'open') 
+      machine.when(:reset, 'ghosted' => 'open')
+
+      machine.when(:reopen, 'closed' => 'open')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -50,7 +50,7 @@ class Negotiation
 
   def reopen
     state_machine.trigger(:reopen)
-  end 
+  end
 
   def sign_proposal(user_id)
     if gatekeeper(user_id, :sign)
@@ -63,7 +63,7 @@ class Negotiation
   def confirm_proposal(user_id)
     if gatekeeper(user_id, :confirm)
       proposal.confirm
-    else 
+    else
       false
     end
   end
@@ -75,11 +75,11 @@ class Negotiation
   def reset_proposal
     proposal.reset
   end
-  
+
   def ghost_proposal
     proposal.ghost
   end
-  
+
   def discard_proposal
     proposal.discard
   end
@@ -87,10 +87,10 @@ class Negotiation
   def gatekeeper(user_id, action)
     return false if state != 'open'
     return false if ![composer,receiver].include? user_id
-    
+
     return false if money_owner?(user_id) && action == :sign
     return false if !money_owner?(user_id) && action == :confirm
-    
+
     true
   end
 
