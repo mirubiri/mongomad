@@ -13,7 +13,7 @@ describe Deal do
   it { should be_timestamped_document }
 
   # Validations
-  it { should_not validate_presence_of :_users }
+  it { should validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
 
