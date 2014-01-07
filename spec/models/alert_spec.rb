@@ -14,7 +14,6 @@ describe Alert do
   # Validations
   it { should validate_presence_of :user }
   it { should_not have_autosave_on(:user) }
-  it { should_not validate_presence_of :text }
   it { should validate_length_of(:text).within(1..160) }
   it { should validate_presence_of :location }
 

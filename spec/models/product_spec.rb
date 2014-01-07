@@ -20,9 +20,7 @@ describe Product do
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_presence_of :owner_id }
-  it { should_not validate_presence_of :quantity }
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should_not validate_presence_of :state }
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods

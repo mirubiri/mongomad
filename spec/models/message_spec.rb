@@ -15,7 +15,6 @@ describe Message do
   # Validations
   it { should_not validate_presence_of :message_container }
   it { should validate_presence_of :user_id }
-  it { should_not validate_presence_of :text }
   it { should validate_length_of(:text).within(1..160) }
 
   # Factories
