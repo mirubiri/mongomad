@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Attachment::Images do
-
   let (:test_class) do
   	Struct.new(nil) do
   		include Mongoid::Document
@@ -14,15 +13,16 @@ describe Attachment::Images do
   let(:image_three) { Fabricate.build(:image_product,id:'three') }
 
   let(:image_holder) do
-    test=test_class.new
-    test.images<<image_one
-    test.images<<image_two
-    test.images<<image_three
+    test = test_class.new
+    test.images << image_one
+    test.images << image_two
+    test.images << image_three
     test
   end
 
   # Validations
   subject { test_class}
+
   it { should embed_many :images }
 
   it 'is invalid when no main image' do
@@ -45,11 +45,10 @@ describe Attachment::Images do
   end
 
   describe '#set_main_image' do
-
   	context 'given an existent image id' do
 
       it 'unsets the current main image' do
-        previous_main=image_holder.main_image
+        previous_main = image_holder.main_image
         image_holder.set_main_image(image_two.id)
         expect(previous_main.main).to eq false
       end
@@ -65,10 +64,10 @@ describe Attachment::Images do
     end
 
     context 'given an inexistent image' do
-      let (:inexistent_image) { Fabricate.build(:image_product,id:'inexistent') }
+      let(:inexistent_image) { Fabricate.build(:image_product,id:'inexistent') }
 
 	  	it 'do not change the main image to the given one' do
-        expect { image_holder.set_main_image(inexistent_image.id) }.to_not change { image_holder.main_image }
+        expect{image_holder.set_main_image(inexistent_image.id)}.to_not change { image_holder.main_image }
 	  	end
 
 	  	it 'returns false' do

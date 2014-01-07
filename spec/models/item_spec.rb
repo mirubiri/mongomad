@@ -49,7 +49,7 @@ describe Item do
     end
 
     it "changes item state from #{initial_state} to #{final_state}" do
-      expect {item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
+      expect{item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the item' do
@@ -87,7 +87,7 @@ describe Item do
 
   describe '#sell(quantity)' do
     it 'removes the given quantity of items from the stock' do
-      expect {item.sell(1)}.to change {item.stock}.by(-1)
+      expect{item.sell(1)}.to change {item.stock}.by(-1)
     end
 
     it 'saves the change' do
@@ -110,7 +110,7 @@ describe Item do
 
   describe '#supply(quantity)' do
     it 're-stock this item with the given quantity' do
-      expect {item.supply(1)}.to change {item.stock}.by(1)
+      expect{item.supply(1)}.to change {item.stock}.by(1)
     end
 
     it 'saves the change' do
