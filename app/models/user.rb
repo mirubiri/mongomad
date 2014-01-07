@@ -8,6 +8,7 @@ class User
   has_and_belongs_to_many :negotiations,    inverse_of: :negotiators
   has_and_belongs_to_many :deals,           inverse_of: :signers
   has_many                :items
+  has_many                :alerts
   embeds_one              :profile
 
   field :nick

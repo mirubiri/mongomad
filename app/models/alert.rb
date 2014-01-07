@@ -2,7 +2,7 @@ class Alert
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user
+  belongs_to :user, autosave:false
 
   field :text
   field :location, type: Array
