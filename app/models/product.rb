@@ -1,6 +1,4 @@
 class Product < Good
-  include Mongoid::Timestamps
-
   field :_id,        type:Moped::BSON::ObjectId, default:nil
   field :name
   field :description
@@ -8,7 +6,7 @@ class Product < Good
   field :quantity,   type:Integer
   field :state,      default:'available'
 
-  validates_presence_of :_id, :name, :description, :owner_id, :quantity, :state
+  validates_presence_of :_id, :name, :description, :owner_id
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
 
