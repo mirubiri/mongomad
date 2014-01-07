@@ -1,11 +1,12 @@
 class Alert
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   belongs_to :user
 
   field :text
   field :location, type: Array
 
-  validates_presence_of :user, :text, :location
+  validates_presence_of :user, :location
   validates :text, length: { minimum: 1, maximum: 160 }
 end
