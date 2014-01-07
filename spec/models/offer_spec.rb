@@ -90,6 +90,10 @@ describe Offer do
 
   #TODO: REVISAR CON OJO
   describe '#negotiate' do
+    it 'returns false when a item is not available' do
+      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
+    end
+
     context 'when offer is not saved' do
       it 'returns false' do
         expect(offer.negotiate).to eq false
@@ -106,59 +110,44 @@ describe Offer do
 
       context 'when negotiation has been successfully created' do
         before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(negotiation) }
-        xit 'returns a negotiation'
-        xit 'returns a valid negotiation'
+        
+        it 'returns a negotiation' do
+          expect(offer.negotiate).to be_an_instance_of(Negotiation)
+        end        
+      
+        it 'returns a valid negotiation' do
+          expect(offer.negotiate).to be_valid
+        end
+
         xit 'returns a negotiation with only one proposal'
         xit 'returns a negotiation whose proposal matches the offer one'
-        xit 'saves negotiation'
-        xit 'changes state of the offer to sucessfull'
+
+        it 'saves negotiation' do
+          negotiation = offer.negotiate
+          expect(negotiation).to be_persisted
+        end
+
+        it 'changes state of the offer to sucessfull' do
+          expect{ offer.negotiate }.to change { offer.state }.from('open').to('sucessfull')
+        end
       end
+
       context 'when negotiation has not been successfully created' do
         before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(false) }
-          it 'returns false' do
-            expect(offer.negotiate).to eq false
-          end
-          it 'does not save negotiation' do 
-            expect(Negotiation.count).to_not change(Negotiation.count)
-          end
-          it 'does not change state of offer' do
-            expect()
-          end
+
+        it 'returns false' do
+          expect(offer.negotiate).to eq false
+        end
+
+        it 'does not save negotiation' do 
+          negotiation = offer.negotiate
+          expect(negotiation).to_not be_persisted
+        end
+
+        it 'does not change offer state' do
+          expect{ offer.negotiate }.to_not change { offer.state }
+        end
       end
-    end
-
-
-
-
-
-    
-
-    xit 'starts a negotiation with current offer as first proposal'
-  end
-
-
-
-  describe '#negotiate' do
-    it 'starts a negotiation with this offer as initial proposal' do
-  
-    end
-
-    it 'returns a negotiation' do
-      offer.save
-      expect(offer.negotiate).to be_an_instance_of(Negotiation)
-    end
-
-    it 'returns a valid negotiation' do
-      offer.save
-      expect(offer.negotiate).to be_valid
-    end
-
-    it 'returns false when offer is not saved' do
-      expect(offer.negotiate).to eq false
-    end
-
-    it 'returns false when a item is not available' do
-      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
     end
   end
 

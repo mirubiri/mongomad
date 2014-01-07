@@ -37,14 +37,14 @@ class Offer
 
   #TODO: REVISAR CON OJO
   def negotiate
-    if persisted?
-      negotiation = Negotiation.create(users:[user_composer, user_receiver], proposals:[proposal])
-      state_machine.trigger(:negotiate)
-      negotiation
-    else
-      state_machine.trigger(:negotiate)
-      false
-    end
+    # if persisted?
+    #   negotiation = Negotiation.create(users:[user_composer, user_receiver], proposals:[proposal])
+    #   state_machine.trigger(:negotiate)
+    #   negotiation
+    # else
+    #   state_machine.trigger(:negotiate)
+    #   false
+    # end
   end
 
   def negotiated
