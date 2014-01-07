@@ -30,7 +30,7 @@ describe User do
       before(:each) { user.state = 'active' }
 
       it 'does not change user state' do
-        expect{ user.enable}.to_not change{user.state}
+        expect{ user.enable }.to_not change{ user.state }
       end
 
       it 'returns false' do
@@ -42,7 +42,7 @@ describe User do
       before(:each) { user.state = 'inactive' }
 
       it 'change user state to active' do
-        expect{ user.enable }.to change{user.state}.from('inactive').to('active')
+        expect{ user.enable }.to change{ user.state }.from('inactive').to('active')
       end
 
       it 'returns true' do
@@ -56,7 +56,7 @@ describe User do
       before(:each) { user.state = 'active' }
 
       it 'change user state to inactive' do
-        expect{ user.disable }.to change{user.state}.from('active').to('inactive')
+        expect{ user.disable }.to change{ user.state }.from('active').to('inactive')
       end
 
       it 'returns true' do
@@ -68,7 +68,7 @@ describe User do
       before(:each) { user.state = 'inactive' }
 
       it 'does not change user state' do
-        expect{ user.disable}.to_not change{user.state}
+        expect{ user.disable }.to_not change{ user.state }
       end
 
       it 'returns false' do
