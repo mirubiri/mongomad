@@ -1,8 +1,8 @@
 Fabricator(:user) do
-  email           { Faker::Internet.email }
-  password        'password'
-  nick            { Faker::Internet.user_name }
-  profile         { Fabricate.build(:profile) }
+  email    { Faker::Internet.email }
+  password 'password'
+  nick     { Faker::Internet.user_name }
+  profile  { Fabricate.build(:profile) }
 end
 
 Fabricator(:user_with_items, from: :user) do
@@ -13,12 +13,12 @@ end
 
 Fabricator(:user_with_sent_offers,from: :user_with_items) do
   after_build do |user|
-    user.sent_offers << Fabricate(:offer,user_composer: user)
+    user.sent_offers << Fabricate(:offer, user_composer: user)
   end
 end
 
 Fabricator(:user_with_received_offers,from: :user_with_items) do
   after_build do |user|
-    user.received_offers << Fabricate(:offer,user_receiver: user)
+    user.received_offers << Fabricate(:offer, user_receiver: user)
   end
 end
