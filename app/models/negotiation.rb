@@ -8,7 +8,7 @@ class Negotiation
 
   field :state, default:'open'
 
-  validates_presence_of :proposals
+  validates_presence_of :_users, :proposals
   validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
   def state_machine(machine=nil)
