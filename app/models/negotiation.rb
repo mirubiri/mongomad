@@ -2,13 +2,13 @@ class Negotiation
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_and_belongs_to_many :_users
+  has_and_belongs_to_many :users
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
   embeds_many :messages,  class_name:'Message',  as: :message_container
 
   field :state, default:'open'
 
-  validates_presence_of :_users, :proposals
+  validates_presence_of :users, :proposals
   validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
   def state_machine(machine=nil)
