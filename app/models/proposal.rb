@@ -10,8 +10,7 @@ class Proposal
   field :receiver_id, type:Moped::BSON::ObjectId
   field :state,       default:'new'
 
-  validates_presence_of :user_sheets, :goods, :composer_id, :receiver_id, :state
-
+  validates_presence_of :user_sheets, :goods, :composer_id, :receiver_id
   validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
 
   validate :check_composer_has_goods,
