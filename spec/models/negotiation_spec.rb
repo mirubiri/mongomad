@@ -17,7 +17,7 @@ describe Negotiation do
   end
  
   # Relations
-  it { should have_and_belong_to_many :_users }
+  it { should have_and_belong_to_many :users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
 
@@ -26,7 +26,7 @@ describe Negotiation do
   it { should have_field(:state).with_default_value_of('open') }
 
   # Validations
-  it { should validate_presence_of :_users }
+  it { should validate_presence_of :users }
   it { should validate_presence_of :proposals }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 

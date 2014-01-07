@@ -5,7 +5,7 @@ describe Deal do
   let(:deal) { Fabricate.build(:deal) }
 
   # Relations
-  it { should have_and_belong_to_many :_users }
+  it { should have_and_belong_to_many :users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
  
@@ -13,7 +13,7 @@ describe Deal do
   it { should be_timestamped_document }
 
   # Validations
-  it { should validate_presence_of :_users }
+  it { should validate_presence_of :users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
 
