@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Offer do
   # Variables
   let(:offer) { Fabricate.build(:offer) }
+  let(:negotiation) { Negotiation.create(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]) }
 
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
@@ -89,10 +90,57 @@ describe Offer do
 
   #TODO: REVISAR CON OJO
   describe '#negotiate' do
+    context 'when offer is not saved' do
+      it 'returns false' do
+        expect(offer.negotiate).to eq false
+      end
+    end
+
+    context 'when offer is saved' do
+      before(:each) { offer.save }
+
+      it 'calls create method with params from the offer' do
+        expect(Negotiation).to receive(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal])
+        offer.negotiate
+      end
+
+      context 'when negotiation has been successfully created' do
+        before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(negotiation) }
+        xit 'returns a negotiation'
+        xit 'returns a valid negotiation'
+        xit 'returns a negotiation with only one proposal'
+        xit 'returns a negotiation whose proposal matches the offer one'
+        xit 'saves negotiation'
+        xit 'changes state of the offer to sucessfull'
+      end
+      context 'when negotiation has not been successfully created' do
+        before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(false) }
+          it 'returns false' do
+            expect(offer.negotiate).to eq false
+          end
+          it 'does not save negotiation' do 
+            expect(Negotiation.count).to_not change(Negotiation.count)
+          end
+          it 'does not change state of offer' do
+            expect()
+          end
+      end
+    end
+
+
+
+
+
+    
+
+    xit 'starts a negotiation with current offer as first proposal'
+  end
+
+
+
+  describe '#negotiate' do
     it 'starts a negotiation with this offer as initial proposal' do
-      offer.save
-      expect(Negotiation).to receive(:create).with(users:[offer.user_composer,offer.user_receiver], proposals:[offer.proposal])
-      offer.negotiate
+  
     end
 
     it 'returns a negotiation' do
