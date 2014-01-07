@@ -26,7 +26,7 @@ describe Negotiation do
   it { should have_field(:state).with_default_value_of('open') }
 
   # Validations
-  it { should_not validate_presence_of :_users }
+  it { should validate_presence_of :_users }
   it { should validate_presence_of :proposals }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
