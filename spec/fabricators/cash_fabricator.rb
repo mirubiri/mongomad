@@ -1,8 +1,6 @@
 Fabricator(:cash) do
-	transient :owner
-	owner     { :composer_id }
-	proposal
-  owner_id  { |attrs| attrs[:proposal].send(attrs[:owner]) }
+  proposal
   money     { Money.new(100) }
+  owner_id  { |attrs| attrs[:proposal].composer_id }
   images    { [ Fabricate.build(:image_money) ] }
 end
