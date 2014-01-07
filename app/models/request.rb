@@ -7,6 +7,6 @@ class Request
 
   field :text
 
-  validates_presence_of :user, :user_sheet, :text
+  validates_presence_of :user, :user_sheet
   validates :text, length: { minimum: 1, maximum: 160 }
 end
