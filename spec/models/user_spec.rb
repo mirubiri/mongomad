@@ -11,6 +11,7 @@ describe User do
   it { should have_and_belong_to_many(:negotiations).as_inverse_of(:negotiators) }
   it { should have_and_belong_to_many(:deals).as_inverse_of(:signers) }
   it { should have_many :items }
+  it { should have_many :alerts }
   it { should embed_one :profile }
 
   # Attributes
