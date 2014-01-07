@@ -8,8 +8,8 @@ describe User do
   it { should have_many :requests }
   it { should have_many(:sent_offers).of_type(Offer).as_inverse_of(:user_composer) }
   it { should have_many(:received_offers).of_type(Offer).as_inverse_of(:user_receiver) }
-  it { should have_and_belong_to_many(:negotiations).as_inverse_of(:negotiators) }
-  it { should have_and_belong_to_many(:deals).as_inverse_of(:signers) }
+  it { should have_and_belong_to_many :negotiations }
+  it { should have_and_belong_to_many :deals }
   it { should have_many :items }
   it { should have_many :alerts }
   it { should embed_one :profile }
