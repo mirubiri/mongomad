@@ -9,7 +9,6 @@ describe Product do
   specify { Product.should < Good }
 
   # Attributes
-  it { should_not be_timestamped_document }
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
   it { should have_fields :name, :description }
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
