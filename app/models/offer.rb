@@ -2,14 +2,14 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers
-  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers
+  belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers, autosave:false
+  belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers, autosave:false
   embeds_one :proposal, as: :proposal_container
 
   field :message
-  field :state, default:'new'
+  field :state,  default:'new'
 
-  validates_presence_of :user_composer, :user_receiver, :proposal, :message, :state
+  validates_presence_of :user_composer, :user_receiver, :proposal
   validates :message, length: { minimum: 1, maximum: 160 }
   validates_inclusion_of :state, in: ['new','negotiating','negotiated','ghosted','discarded']
 
