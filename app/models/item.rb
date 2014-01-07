@@ -3,14 +3,14 @@ class Item
   include Mongoid::Timestamps
   include Attachment::Images
 
-  belongs_to :user
+  belongs_to :user, autosave:false
 
   field :name
   field :description
   field :stock,      type:Integer
   field :state,      default:'available'
 
-  validates_presence_of :user, :name, :description, :stock, :state
+  validates_presence_of :user, :name, :description
   validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded' ]
 
@@ -51,22 +51,22 @@ class Item
   end
 
   def pick(quantity)
-  	Product.new(name:name,description:description,images:images,quantity:quantity) do |product|
-      product.id=id
-      product.owner_id=user.id
+  	Product.new(name:name, description:description, images:images, quantity:quantity) do |product|
+      product.id = id
+      product.owner_id = user.id
   	end
   end
 
   def sell(quantity)
     quantity <= stock &&
     begin
-      self.stock-=quantity
+      self.stock -= quantity
       save
     end
   end
 
   def supply(quantity)
-    self.stock+=quantity
+    self.stock += quantity
     save
   end
 
