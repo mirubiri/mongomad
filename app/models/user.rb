@@ -13,7 +13,7 @@ class User
   field :nick
   field :state, default:'active'
 
-  validates_presence_of :profile, :nick, :state
+  validates_presence_of :profile, :nick
   validates_inclusion_of :state, in: ['active','inactive']
 
   # -------------- DEVISE GENERATED----------------------------
