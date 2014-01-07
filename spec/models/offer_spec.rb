@@ -51,7 +51,7 @@ describe Offer do
     end
 
     it "changes offer state from #{initial_state} to #{final_state}" do
-      expect{offer.send(action)}.to change {offer.state}.from(initial_state).to(final_state)
+      expect{ offer.send(action) }.to change {offer.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the offer' do

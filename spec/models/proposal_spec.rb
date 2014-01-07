@@ -100,7 +100,7 @@ describe Proposal do
     end
 
     it "changes proposal state from #{initial_state} to #{final_state}" do
-      expect{proposal.send(action)}.to change {proposal.state}.from(initial_state).to(final_state)
+      expect{ proposal.send(action) }.to change {proposal.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the proposal' do

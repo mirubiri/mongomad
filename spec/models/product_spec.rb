@@ -48,7 +48,7 @@ describe Product do
     end
 
     it "changes product state from #{initial_state} to #{final_state}" do
-      expect{product.send(action)}.to change {product.state}.from(initial_state).to(final_state)
+      expect{ product.send(action) }.to change {product.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the product' do

@@ -67,7 +67,7 @@ describe Attachment::Images do
       let(:inexistent_image) { Fabricate.build(:image_product,id:'inexistent') }
 
 	  	it 'do not change the main image to the given one' do
-        expect{image_holder.set_main_image(inexistent_image.id)}.to_not change { image_holder.main_image }
+        expect{ image_holder.set_main_image(inexistent_image.id)}.to_not change { image_holder.main_image }
 	  	end
 
 	  	it 'returns false' do

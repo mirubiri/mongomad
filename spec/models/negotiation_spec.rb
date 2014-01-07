@@ -56,7 +56,7 @@ describe Negotiation do
     end
 
     it "changes negotiation state from #{initial_state} to #{final_state}" do
-      expect{negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
+      expect{ negotiation.send(action) }.to change {negotiation.state}.from(initial_state).to(final_state)
     end
 
     it 'does not save the negotiation' do
