@@ -24,7 +24,7 @@ describe Offer do
   it { should validate_length_of(:message).within(1..160) }
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
-  #Methods
+  # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
 
@@ -86,70 +86,7 @@ describe Offer do
     it 'returns the receiver user sheet' do
       expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
     end
-  end
-
-  #TODO: REVISAR CON OJO
-  describe '#negotiate' do
-    it 'returns false when a item is not available' do
-      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
-    end
-
-    context 'when offer is not saved' do
-      it 'returns false' do
-        expect(offer.negotiate).to eq false
-      end
-    end
-
-    context 'when offer is saved' do
-      before(:each) { offer.save }
-
-      it 'calls create method with params from the offer' do
-        expect(Negotiation).to receive(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal])
-        offer.negotiate
-      end
-
-      context 'when negotiation has been successfully created' do
-        before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(negotiation) }
-        
-        it 'returns a negotiation' do
-          expect(offer.negotiate).to be_an_instance_of(Negotiation)
-        end        
-      
-        it 'returns a valid negotiation' do
-          expect(offer.negotiate).to be_valid
-        end
-
-        xit 'returns a negotiation with only one proposal'
-        xit 'returns a negotiation whose proposal matches the offer one'
-
-        it 'saves negotiation' do
-          negotiation = offer.negotiate
-          expect(negotiation).to be_persisted
-        end
-
-        it 'changes state of the offer to sucessfull' do
-          expect{ offer.negotiate }.to change { offer.state }.from('open').to('sucessfull')
-        end
-      end
-
-      context 'when negotiation has not been successfully created' do
-        before(:each) { Negotiation.stub(:create).with(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]).and_return(false) }
-
-        it 'returns false' do
-          expect(offer.negotiate).to eq false
-        end
-
-        it 'does not save negotiation' do 
-          negotiation = offer.negotiate
-          expect(negotiation).to_not be_persisted
-        end
-
-        it 'does not change offer state' do
-          expect{ offer.negotiate }.to_not change { offer.state }
-        end
-      end
-    end
-  end
+  end  
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }

@@ -1,5 +1,4 @@
 class Cash < Good
-
   field :owner_id, type:Moped::BSON::ObjectId
   field :money,    type:Money
 
