@@ -17,7 +17,7 @@ describe Negotiation do
   end
  
   # Relations
-  it { should have_and_belong_to_many :_users }
+  it { should have_and_belong_to_many :users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
 
@@ -26,30 +26,25 @@ describe Negotiation do
   it { should have_field(:state).with_default_value_of('open') }
 
   # Validations
-  it { should_not validate_presence_of :_users }
+  it { should validate_presence_of :users }
   it { should validate_presence_of :proposals }
-  it { should validate_inclusion_of(:state).to_allow('open', 'successful', 'ghosted', 'closed') }
+  it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
   # Methods
-  describe '#proposal' do
-    it 'returns the last proposal' do
-      negotiation.proposals.build
-      expect(negotiation.proposal).to eq negotiation.proposals.last
-    end
-  end
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
 
-  describe '#composer' do
-    it 'calls proposal.composer_id' do
-      expect(negotiation.proposal).to receive(:composer_id)
-      negotiation.composer
-    end
-  end
+    before(:each) { negotiation.state_machine(machine) }
 
-  describe '#receiver' do
-    it 'calls proposal.receiver_id' do
-      expect(negotiation.proposal).to receive(:receiver_id)
-      negotiation.receiver
-    end
+    it { should have_received(:when).with(:success, 'open' => 'successful') }
+
+    it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
+
+    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
+
+    it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
+
+    it { should have_received(:when).with(:reopen, 'closed' => 'open') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -61,7 +56,7 @@ describe Negotiation do
     end
 
     it "changes negotiation state from #{initial_state} to #{final_state}" do
-      expect{negotiation.send(action)}.to change {negotiation.state}.from(initial_state).to(final_state)
+      expect{ negotiation.send(action) }.to change { negotiation.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the negotiation' do
@@ -90,68 +85,6 @@ describe Negotiation do
     it_should_behave_like 'an state machine event', :reopen, 'closed', 'open'
   end
 
-  describe '#state_machine' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { negotiation.state_machine(machine) }
-
-    it { should have_received(:when).with(:success, 'open' => 'successful') }
-
-    it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
-
-    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
-
-    it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
-
-    it { should have_received(:when).with(:reopen, 'closed' => 'open') }
-  end
-
-  describe '#gatekeeper(user_id, action)' do
-    context 'negotiation is not open' do
-      before { negotiation.state = 'ghosted'} 
-
-      it 'returns false' do
-        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
-      end
-    end
-
-    context 'negotiation is open' do
-      context 'user belongs to negotiation' do
-        context 'action is :sign' do
-          it 'returns false if user has money' do
-            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
-          end
-
-          it 'returns true if user has no money' do
-            expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
-          end
-        end
-
-        context 'action is :confirm' do
-          it 'returns true if user has money' do
-            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
-          end
-          
-          it 'returns false if user has no money' do
-            expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
-          end
-        end
-
-        context 'action is not :sign or :confirm' do
-          it 'returns true' do
-            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
-          end
-        end
-      end
-
-      context 'user does not belong to negotiation' do
-        it 'returns false' do
-          expect(negotiation.gatekeeper('0',:sign)).to eq false
-        end
-      end
-    end
-  end
-
   describe '#sign_proposal(user_id)' do
     context 'when user can sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
@@ -174,7 +107,6 @@ describe Negotiation do
       end
     end
   end
-
 
   describe '#confirm_proposal(user_id)' do
     context 'when user can confirm' do
@@ -230,6 +162,91 @@ describe Negotiation do
     end
   end
 
+  describe '#gatekeeper(user_id, action)' do
+    context 'negotiation is not open' do
+      before { negotiation.state = 'ghosted'} 
+
+      it 'returns false' do
+        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
+      end
+    end
+
+    context 'negotiation is open' do
+      context 'user belongs to negotiation' do
+        context 'action is :sign' do
+          it 'returns false if user has money' do
+            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
+          end
+
+          it 'returns true if user has no money' do
+            expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
+          end
+        end
+
+        context 'action is :confirm' do
+          it 'returns true if user has money' do
+            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
+          end
+          
+          it 'returns false if user has no money' do
+            expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
+          end
+        end
+
+        context 'action is not :sign or :confirm' do
+          it 'returns true' do
+            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
+          end
+        end
+      end
+
+      context 'user does not belong to negotiation' do
+        it 'returns false' do
+          expect(negotiation.gatekeeper('0',:sign)).to eq false
+        end
+      end
+    end
+  end
+
+  describe '#proposal' do
+    it 'returns the last proposal' do
+      negotiation.proposals.build
+      expect(negotiation.proposal).to eq negotiation.proposals.last
+    end
+  end
+
+  describe '#composer' do
+    it 'calls proposal.composer_id' do
+      expect(negotiation.proposal).to receive(:composer_id)
+      negotiation.composer
+    end
+  end
+
+  describe '#receiver' do
+    it 'calls proposal.receiver_id' do
+      expect(negotiation.proposal).to receive(:receiver_id)
+      negotiation.receiver
+    end
+  end
+
+  describe '#money_owner?' do
+    context 'when last proposal has money' do
+      it 'returns true if user owns the money' do
+        expect(negotiation_composer_cash.money_owner?(composer_id)).to eq true
+      end
+
+      it 'returns false if user does not own the money' do
+        expect(negotiation_composer_cash.money_owner?(receiver_id)).to eq false
+      end
+    end
+
+    context 'when last proposal does not have money' do
+      it 'returns false' do
+        expect(negotiation.money_owner?(composer_id)).to eq false
+      end
+    end
+  end
+
   # Factories
-  specify { expect(negotiation).to be_valid }
+  specify { expect(Fabricate.build(:negotiation)).to be_valid }
 end

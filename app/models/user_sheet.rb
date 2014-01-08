@@ -5,11 +5,11 @@ class UserSheet
 
   embedded_in :user_sheet_container, polymorphic:true
 
+  field :_id,       type:Moped::BSON::ObjectId, default:nil
+  field :nick
   field :first_name
   field :last_name
-  field :nick
-  field :_id,type:Moped::BSON::ObjectId, default:nil
-  field :location, type: Array
+  field :location,  type: Array
 
-  validates_presence_of :first_name, :last_name, :nick, :_id, :location
+  validates_presence_of :_id, :nick, :first_name, :last_name, :location
 end

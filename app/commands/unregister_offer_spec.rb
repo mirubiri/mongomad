@@ -1,0 +1,2 @@
+class UnregisterOffer
+end

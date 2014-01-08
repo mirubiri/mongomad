@@ -1,13 +1,11 @@
 Fabricator(:product) do
-  transient :item
-  item { Fabricate(:item) }
-
+  transient   :item
+  item        { Fabricate(:item) }
+  proposal    { |attrs| Fabricate(:proposal, composer:attrs[:item].user) }
   _id         { |attrs| attrs[:item].id }
-  owner_id    { |attrs| attrs[:item].user.id }
   name        { |attrs| attrs[:item].name }
   description { |attrs| attrs[:item].description }
-  images      { |attrs| attrs[:item].images }
+  owner_id    { |attrs| attrs[:item].user.id }
   quantity    3
-
-  proposal { |attrs| Fabricate(:proposal,composer:attrs[:item].user) }
+  images      { |attrs| attrs[:item].images }
 end

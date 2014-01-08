@@ -1,0 +1,2 @@
+class UpdateItem
+end

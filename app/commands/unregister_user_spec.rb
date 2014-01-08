@@ -1,0 +1,2 @@
+class UnregisterUser
+end

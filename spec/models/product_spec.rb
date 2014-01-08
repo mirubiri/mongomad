@@ -3,41 +3,57 @@ require 'spec_helper'
 describe Product do
   # Variables
   let(:item) { Fabricate(:item) }
-  let(:product) { Fabricate.build(:product,item:item) }
+  let(:product) { Fabricate.build(:product, item:item) }
 
   # Relations
   specify { Product.should < Good }
-  it { should be_embedded_in :proposal }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_fields :name,:description }
-  it { should have_field(:quantity).of_type(Integer) }
-  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_fields :name, :description }
+  it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
 
   # Validations
-  it { should_not validate_presence_of :proposal }
+  it { should validate_presence_of :_id }
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :owner_id }
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available', 'unavailable', 'ghosted', 'discarded') }
+  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { product.state_machine(machine) }
+
+    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
+
+    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
+
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                              
+                                                  'unavailable' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
-    before(:each) { item.state = initial_state }
+    before(:each) { product.state = initial_state }
     
     it "calls state_machine.trigger(#{action})" do
-      expect(item.state_machine).to receive(:trigger).with(action)
-      item.send(action)
+      expect(product.state_machine).to receive(:trigger).with(action)
+      product.send(action)
     end
 
-    it "changes item state from #{initial_state} to #{final_state}" do
-      expect {item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
+    it "changes product state from #{initial_state} to #{final_state}" do
+      expect{ product.send(action) }.to change { product.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the product' do
-      item.send(action)
-      expect(item).to_not be_persisted
+      product.send(action)
+      expect(product).to_not be_persisted
     end
   end
 
@@ -55,21 +71,6 @@ describe Product do
  
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end
-
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { proposal.state_machine(machine) }
-
-    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-
-    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
-
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
-                                                  'unavailable' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
   
   specify '.new' do

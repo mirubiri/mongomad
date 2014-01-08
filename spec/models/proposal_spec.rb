@@ -17,9 +17,11 @@ describe Proposal do
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
+  it { should validate_presence_of :user_sheets }
+  it { should validate_presence_of :goods }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it { should validate_inclusion_of(:state).to_allow('new', 'signed', 'confirmed', 'broken', 'ghosted', 'discarded') }
+  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   it 'is invalid when there is any good for composer' do
     composer_id = proposal.composer_id
@@ -33,13 +35,13 @@ describe Proposal do
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid if a good is not owned by composer nor receiver' do
+  it 'is invalid if any good is not owned by composer or receiver' do
     proposal.goods << Fabricate.build(:product)
     expect(proposal).to have(1).error_on(:goods)
   end
 
   it 'is invalid if a good is duplicated' do
-    good=proposal.goods.sample
+    good = proposal.goods.sample
     proposal.goods << good
     expect(proposal).to have(1).error_on(:goods)
   end
@@ -66,31 +68,27 @@ describe Proposal do
   end
 
   # Methods
-  describe 'left(user:id)' do
-    it 'returns products for the left side' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
-      proposal.left(owner_id)
-    end
-  end
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
 
-  describe 'right(user:id)' do
-    it 'return products for the right side' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(:owner_id.ne => owner_id)
-      proposal.right(owner_id)
-    end
-  end
+    before(:each) { proposal.state_machine(machine) }
 
-  describe '#cash?' do
-    it 'returns true if cash in proposal' do
-      proposal.goods.build({},Cash)
-      expect(proposal.cash?).to eq true
-    end
+    it { should have_received(:when).with(:sign, 'new' => 'signed') }
 
-    it 'returns false if no cash in proposal' do
-      expect(proposal.cash?).to eq false
-    end
+
+    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
+
+    it { should have_received(:when).with(:break, 'new' => 'broken',
+                                                  'signed' => 'broken') }
+
+    it { should have_received(:when).with(:reset, 'signed' => 'new',
+                                                  'broken' => 'new') }
+
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
+                                                  'signed' => 'ghosted',
+                                                  'broken' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -102,7 +100,7 @@ describe Proposal do
     end
 
     it "changes proposal state from #{initial_state} to #{final_state}" do
-      expect {proposal.send(action)}.to change {proposal.state}.from(initial_state).to(final_state)
+      expect{ proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the proposal' do
@@ -135,26 +133,31 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
+  describe 'left(user:id)' do
+    it 'returns products for the left side for given user' do
+      owner_id = proposal.goods.sample.owner_id
+      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
+      proposal.left(owner_id)
+    end
+  end
 
-    before(:each) { proposal.state_machine(machine) }
+  describe 'right(user:id)' do
+    it 'return products for the right side for given user' do
+      owner_id = proposal.goods.sample.owner_id
+      expect(proposal.goods).to receive(:where).with(:owner_id.ne => owner_id)
+      proposal.right(owner_id)
+    end
+  end
 
-    it { should have_received(:when).with(:sign, 'new' => 'signed') }
+  describe '#cash?' do
+    it 'returns true if there is cash in proposal' do
+      proposal.goods.build({},Cash)
+      expect(proposal.cash?).to eq true
+    end
 
-    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-
-    it { should have_received(:when).with(:break, 'new' => 'broken',
-                                                  'signed' => 'broken') }
-
-    it { should have_received(:when).with(:reset, 'signed' => 'new',
-                                                  'broken' => 'new') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'signed' => 'ghosted',
-                                                  'broken' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+    it 'returns false if there is no cash in proposal' do
+      expect(proposal.cash?).to eq false
+    end
   end
 
   # Factories

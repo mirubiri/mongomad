@@ -8,34 +8,33 @@ class Proposal
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
-  field :state, default:'new'
+  field :state,       default:'new'
 
-  validates_presence_of :composer_id, :receiver_id
+  validates_presence_of :user_sheets, :goods, :composer_id, :receiver_id
+  validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
 
-  validates_inclusion_of :state, in: ['new', 'signed', 'confirmed', 'broken', 'ghosted', 'discarded']
-
-  validate :check_composer_have_goods,
-           :check_receiver_have_goods,
-           :check_goods_owner,
-           :check_duplicated_goods,
+  validate :check_composer_has_goods,
+           :check_receiver_has_goods,
+           :check_good_owner,
+           :check_duplicated_good,
            :check_multiple_cash,
            :check_composer_sheet,
            :check_receiver_sheet,
            :check_sheets_number
 
-  def check_composer_have_goods
+  def check_composer_has_goods
     errors.add(:goods, "Composer should have at least one good") unless left(composer_id).count > 0
   end
 
-  def check_receiver_have_goods
+  def check_receiver_has_goods
     errors.add(:goods, "Receiver should have at least one good") unless left(receiver_id).count > 0
   end
 
-  def check_goods_owner
+  def check_good_owner
     errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size
   end
 
-  def check_duplicated_goods
+  def check_duplicated_good
     errors.add(:goods, "Proposal should not have duplicated good") unless goods.distinct(:id).size == goods.size
   end
 
@@ -58,10 +57,10 @@ class Proposal
   def state_machine(machine=nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
-      
+
       machine.when(:sign, 'new' => 'signed')
 
-      machine.when(:confirm, 'signed' => 'confirmed') 
+      machine.when(:confirm, 'signed' => 'confirmed')
 
       machine.when(:break, 'new' => 'broken',
                            'signed' => 'broken')
@@ -80,18 +79,6 @@ class Proposal
       end
       machine
     end
-  end
-
-  def left(owner_id)
-    goods.where(owner_id:owner_id)
-  end
-
-  def right(owner_id)
-    goods.where(:owner_id.ne => owner_id)
-  end
-
-  def cash?
-    goods.type(Cash).exists?
   end
 
   def sign
@@ -116,5 +103,17 @@ class Proposal
 
   def discard
     state_machine.trigger(:discard)
+  end
+
+  def left(owner_id)
+    goods.where(owner_id:owner_id)
+  end
+
+  def right(owner_id)
+    goods.where(:owner_id.ne => owner_id)
+  end
+
+  def cash?
+    goods.type(Cash).exists?
   end
 end

@@ -5,16 +5,15 @@ describe Deal do
   let(:deal) { Fabricate.build(:deal) }
 
   # Relations
-  it { should have_and_belong_to_many :_users }
+  it { should have_and_belong_to_many :users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
-  it { should_not embed_many :user_sheets }
-
+ 
   # Attributes
   it { should be_timestamped_document }
 
   # Validations
-  it { should_not validate_presence_of :_users }
+  it { should validate_presence_of :users }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
 
@@ -26,5 +25,5 @@ describe Deal do
   end
 
   # Factories
-  specify { expect(deal).to be_valid }
+  specify { expect(Fabricate.build(:deal)).to be_valid }
 end

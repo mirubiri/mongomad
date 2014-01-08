@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Offer do
   # Variables
   let(:offer) { Fabricate.build(:offer) }
+  let(:negotiation) { Negotiation.create(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]) }
 
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
@@ -16,23 +17,29 @@ describe Offer do
 
   # Validations
   it { should validate_presence_of :user_composer }
+  it { should_not have_autosave_on(:user_composer) }
   it { should validate_presence_of :user_receiver }
+  it { should_not have_autosave_on(:user_receiver) }
   it { should validate_presence_of :proposal }
-  it { should validate_presence_of :message }
   it { should validate_length_of(:message).within(1..160) }
-  it { should validate_inclusion_of(:state).to_allow('new', 'negotiating', 'negotiated', 'ghosted', 'discarded') }
+  it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
-  #Methods
-  describe '#composer' do
-    it 'returns the composer user sheet' do
-      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
-    end
-  end
+  # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
 
-  describe '#receiver' do
-    it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
-    end
+    before(:each) { offer.state_machine(machine) }
+    
+    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
+                                                      'negotiated' => 'negotiating') }
+
+    it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
+
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
+                                                  'negotiating' => 'ghosted',
+                                                  'negotiated' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -44,7 +51,7 @@ describe Offer do
     end
 
     it "changes offer state from #{initial_state} to #{final_state}" do
-      expect{offer.send(action)}.to change {offer.state}.from(initial_state).to(final_state)
+      expect{ offer.send(action) }.to change { offer.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the offer' do
@@ -68,52 +75,19 @@ describe Offer do
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end 
- 
-  describe '#state_machine' do
-    subject(:machine) { double().as_null_object }
 
-    before(:each) { offer.state_machine(machine) }
-    
-    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
-                                                      'negotiated' => 'negotiating') }
-
-    it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'negotiating' => 'ghosted',
-                                                  'negotiated' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
-  end
-
-  #TODO: REVISAR CON OJO
-  describe '#negotiate' do
-    it 'starts a negotiation with this offer as initial proposal' do
-      offer.save
-      expect(Negotiation).to receive(:create).with(_users:[offer.user_composer,offer.user_receiver], proposals:[offer.proposal])
-      offer.negotiate
-    end
-
-    it 'returns a negotiation' do
-      offer.save
-      expect(offer.negotiate).to be_an_instance_of(Negotiation)
-    end
-
-    it 'returns a valid negotiation' do
-      offer.save
-      expect(offer.negotiate).to be_valid
-    end
-
-    it 'returns false when offer is not saved' do
-      expect(offer.negotiate).to eq false
-    end
-
-    it 'returns false when a item is not available' do
-      pending 'Este para cuando se solucione el asunto de los items que no se guardan'
+  describe '#composer' do
+    it 'returns the composer user sheet' do
+      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
     end
   end
+
+  describe '#receiver' do
+    it 'returns the receiver user sheet' do
+      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
+    end
+  end  
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
 end
-

@@ -18,16 +18,28 @@ describe Item do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should validate_presence_of :stock }
+  it { should_not have_autosave_on(:user) }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available', 'unavailable', 'ghosted', 'discarded') }
-
-  # Factories
-  specify { expect(Fabricate.build(:item)).to be_valid }
+  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+
+    before(:each) { item.state_machine(machine) }
+
+    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
+
+    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
+
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
+                                                  'unavailable' => 'ghosted') } 
+
+    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+  end
+
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
     
@@ -37,7 +49,7 @@ describe Item do
     end
 
     it "changes item state from #{initial_state} to #{final_state}" do
-      expect {item.send(action)}.to change {item.state}.from(initial_state).to(final_state)
+      expect{ item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the item' do
@@ -62,23 +74,7 @@ describe Item do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-
-    before(:each) { proposal.state_machine(machine) }
-
-    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-
-    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
-
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
-                                                  'unavailable' => 'ghosted') } 
-
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
-  end
-
   describe '#pick(quantity)' do
-
     it 'returns a Product filled with item name, description,images and given quantity' do
       expect(Product).to receive(:new).with(name:item.name, description:item.description, images:item.images, quantity:1)
       item.pick(1)
@@ -91,7 +87,7 @@ describe Item do
 
   describe '#sell(quantity)' do
     it 'removes the given quantity of items from the stock' do
-      expect {item.sell(1)}.to change {item.stock}.by(-1)
+      expect{ item.sell(1) }.to change { item.stock }.by(-1)
     end
 
     it 'saves the change' do
@@ -114,7 +110,7 @@ describe Item do
 
   describe '#supply(quantity)' do
     it 're-stock this item with the given quantity' do
-      expect {item.supply(1)}.to change {item.stock}.by(1)
+      expect{ item.supply(1) }.to change { item.stock }.by(1)
     end
 
     it 'saves the change' do
@@ -143,4 +139,7 @@ describe Item do
       expect(item.available?(0)).to eq false
     end
   end
+
+  # Factories
+  specify { expect(Fabricate.build(:item)).to be_valid }
 end
