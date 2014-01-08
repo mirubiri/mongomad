@@ -4,7 +4,7 @@ class Message
 
   embedded_in :message_container, polymorphic: true
 
-  field :user_id,type:Moped::BSON::ObjectId
+  field :user_id, type:Moped::BSON::ObjectId
   field :text
 
   validates_presence_of :user_id
