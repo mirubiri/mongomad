@@ -18,7 +18,6 @@ Mongomad::Application.routes.draw do
         get 'sign'
         get 'confirm'
         get 'cancel'
-        put 'addComment'
       end
     end
 

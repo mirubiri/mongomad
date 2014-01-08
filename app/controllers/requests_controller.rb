@@ -1,8 +1,5 @@
 class RequestsController < ApplicationController
-  def sub_layout
-    "complete_layout"
-  end
-
+  
   # GET /requests
   # GET /requests.json
   def index
@@ -54,10 +51,10 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         format.html { redirect_to @user, notice: 'Request was successfully created.' }
-        format.js { render :partial => "requests/reload_requests_list", :layout => false, :locals => { :request => @request }, :status => :created }
+        format.js { render 'add_request_in_list', :layout => false, :locals => { :request => @request }, :status => :created }
       else
         format.html { redirect_to @user, notice: 'Request was not created.' }
-        format.js { render  :partial => "requests/reload_requests_list", notice: 'Puta' }
+        format.js { render 'add_request_in_list', notice: 'wowww' }
       end
     end
   end
@@ -71,7 +68,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.update_attributes(params[:request])
         format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
-        format.js { render :partial => "requests/edit_request_in_list", :layout => false }
+        format.js { render 'reload_requests', :layout => false }
       else
         format.html { render action: "edit" }
       end

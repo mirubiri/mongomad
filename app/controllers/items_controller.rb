@@ -2,10 +2,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
 
-  def sub_layout
-    "complete_layout"
-  end
-
   def index
     @user = current_user
     @items = @user.items.to_a
@@ -60,9 +56,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if current_user.items << @item
         format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
-        format.js {
-          render :partial => "items/reload_items_list", :layout => false, :locals => { :item => @item }, :status => :created
-        }
+        format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
         error = @item.errors.to_a
         flash[:message] = error
@@ -80,7 +74,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.update_attributes(params[:user_item])
         format.html { redirect_to user_items_path(current_user), notice: 'item was successfully updated.' }
-        format.js { render :partial => "items/edit_item_in_list", :layout => false }
+        format.js { render 'reload_items', :layout => false }
       else
         format.html { render action: "edit" }
       end

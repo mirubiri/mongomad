@@ -1,2 +1,116 @@
-<%= render :partial => 'deals/partials/deal' %>
+<% content_for :header do %>
+  <%= render :partial => 'application/header' %>
+<% end %>
+
+
+<% content_for :user_side do %>
+  <%= render :partial => 'application/user_container' %>
+<% end %>
+
+
+<% content_for :content_side do %>
+
+<div class="right_container" id="rightContainer">
+
+  <section class="main_container" id="content-side">
+   
+    <nav class="nav_bar" id="navigation_bar">
+      <%= render :partial => 'application/navigation_bar' %>
+    </nav>
+
+    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+      <% deals(current_user).each do |deal| %>
+      
+        <div class="deal">
+
+          <div class="deal_header">
+            <div class="deal_users">
+              <div class="deal_user">
+                <%= image(deal) %>
+                <div class="deal_user_name">Sergio</div>
+              </div>
+              <div class="deal_user">
+                <%= deal_image(deal) %>
+              </div>
+              <div class="deal_user">
+                <%= image(deal) %>
+                <div class="deal_user_name">Sergio</div>
+              </div>
+            </div>
+            <div class="deal_options">
+              <div class="deal_option">
+                <div class="deal_button">PDF</div>
+              </div>
+              <div class="deal_option">
+                <div class="deal_button">Validar Trato</div>
+              </div>
+              <div class="deal_option">
+                <div class="deal_button">Cancelar</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dialog_container">
+
+            <div class="conversation" id="conversationofdeal">
+              <% messages(deal).each do |message| %>
+                <div class="comment">
+                  <div class="comment_user_image">
+                    <%= image(message) %>
+                  </div>
+                  <div class="comment_text">
+                    <%= text(message) %>
+                  </div>
+                  <div class="comment_datetime">
+                    <%= date_time(message) %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="writting_box">
+              <div class="user_writing">
+                <%= image(deal) %>
+              </div>
+              <form>
+                <div class="message">
+                  <input type="text" placeholder="write here" name="text">
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="friend">
+          <div class="friend_description">
+            <div class="friend_image"><%= image(deal) %></div>
+            <div class="friend_data">
+              <div class="friend_completename">Sergio de Torre</div>
+              <div class="friend_address">Logroño, España</div>
+            </div>
+          </div>
+          <div class="friend_notifications">
+            <div class="friend_notify_area">1</div>
+            <div class="friend_notify_area">2</div>
+            <div class="friend_notify_area">3</div>
+          </div>
+        </div>
+
+      <% end %>
+
+    </aside>
+
+  </section>
+
+</div>
+  
+
+<% end %>
+
+
+
+
+
 

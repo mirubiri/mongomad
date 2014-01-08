@@ -1,0 +1,84 @@
+<% if (received_offers(@user).count != 0)%>
+    <% received_offers(@user).reverse_each do |offer| %>
+      <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
+
+        <div class="offer_header">
+          <%= composer_first_name(offer.proposal) %>
+        </div>
+
+        <div class="offer_items">
+          <div class="recieved">
+            <% composer_products(offer.proposal).each do |product| %>
+              <div class="image_container">
+                <%= image(product) %>
+                <div class="description">
+                  <%= name(product) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          <div class="given">
+            <% receiver_products(offer.proposal).each do |product| %>
+              <div class="image_container">
+                <%= image(product) %>
+                <div class="quantity_container"><%= quantity(product) %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="offer_info">
+          <div class="profile_image">
+            <%= link_to image(offer.composer),
+              :controller => "users",
+              :action => "show",
+              :id => composer_id(offer.proposal)
+            %>
+          </div>
+          <div class="description">
+            <div class="offer_message">
+              <%= message(offer) %>
+            </div>
+          </div>
+
+          <div class="offer_buttons" id="offer_buttons_navigation">
+            <% if id(@user) != composer_id(offer.proposal) %>
+              <% if id(@user) == id(current_user) %>
+                <%= form_for [current_user,@negotiation], :remote => true do |form| %>
+                  <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+                  <%= form.submit "negociar", :url => user_negotiations_path(@user), :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %>
+                <% end %>
+              <% else %>
+                <%= form_for [current_user,@negotiation], :remote => true do |form| %>
+                  <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+                  <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
+                <% end %>
+              <% end %>
+            <% else %>
+              <% if can? :update, offer %>
+                <div class="offer_button">
+                  <%= link_to "edit",
+                          {:controller => "offers",
+                          :action => "edit",
+                          :user_id => id(current_user),
+                          :id => offer.id},
+                          {:remote => true,
+                           :class => "btn btn-small",
+                           :id => "edit_offer_link"} %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <!--
+          <div class="offer_date hidden">
+            <%#= date_time(offer) %>
+          </div>
+          -->
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="no_elements">
+      <p>El usuario no tiene ninguna oferta actualmente</p>
+    </div>
+<% end %>

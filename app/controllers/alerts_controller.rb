@@ -1,9 +1,5 @@
 class AlertsController < ApplicationController
 
-  def sub_layout
-    "complete_layout"
-  end
-
   def index
     @user = current_user    
 

@@ -3,11 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!, :set_request_variable
   helper :all
-  
-  def sub_layout
-    "devise" 
-  end
-
+ 
   def after_sign_in_path_for(resource)
     user_url(current_user)
   end

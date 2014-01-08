@@ -7,7 +7,7 @@ if(lugar === "offers"){
 
   <% @offers.each do |offer| %>
     ppal_container
-    .prepend("<%= escape_javascript(render :template => 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
+    .prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
 
     buildOfferMosaic();
     matchPrincipalContainersHeighs();

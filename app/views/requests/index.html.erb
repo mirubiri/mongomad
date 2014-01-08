@@ -1,1 +1,63 @@
-<%= render :partial => 'requests/partials/request' %>
+<% content_for :header do %>
+  <%= render :partial => 'application/header' %>
+<% end %>
+
+
+<% content_for :user_side do %>
+  <%= render :partial => 'application/user_container' %>
+<% end %>
+
+
+<% content_for :content_side do %>
+
+<div class="right_container" id="rightContainer">
+
+  <section class="main_container" id="content-side">
+   
+    <nav class="nav_bar" id="navigation_bar">
+      <%= render :partial => 'application/navigation_bar' %>
+    </nav>
+
+    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+    	<% requests(@user).reverse_each do |request| %>
+		  <div class="request">
+		    <div class="profile_image">
+		      <%= image(request.user_sheet) %>
+		    </div>
+		    <div class="description">
+		      <%= text(request) %>
+		    </div>
+		    <% if id(current_user) == request.user_id %>
+		      <div class="options_menu hidden_container">
+		        <%= link_to 'delete',
+		                user_request_path(current_user,id(request)),
+		                :method => :delete,
+		                :confirm => "Are you sure?" %>
+		        <%= link_to "edit",
+		                {:controller => "requests",
+		                :action => "edit",
+		                :user_id => id(current_user),
+		                :id => request.id},
+		                {:remote => true,
+		                 :id => "edit_request_link"} %>
+		      </div>
+		    <% end %>
+		  </div>
+		<% end %>
+
+		<script>
+		  activateRequestButtons();
+		</script>
+	</aside>
+
+  </section>
+
+</div>
+  
+
+<% end %>
+
+
+
+
+

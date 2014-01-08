@@ -2,7 +2,7 @@
 @import "compass/typography/links/unstyled-link";
 @import 'stitch';
 
-.header,.login_header{
+.header{
   // @media screen and (max-width: 1500px) {
   //   width: 1200px;
   // }
@@ -156,14 +156,6 @@
   }
 }
 
-.login_header{
-  .header_container{
-    width: 880px;
-    .header_options{
-      margin-right: 60px;
-    }
-  }
-}
 
 .clearfix::after {
   clear: both;

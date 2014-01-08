@@ -92,9 +92,6 @@
 
 
 
-
-
-
 (function ($)
 {
   $.fn.refresh = function() {
@@ -105,9 +102,6 @@
   };
 
 })(jQuery);
-
-
-
 
 
 

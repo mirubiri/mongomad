@@ -1,0 +1,92 @@
+<div class="left_container" id="leftContainer">
+
+   <% if (controller.controller_name === "alerts") %>
+
+    <section class="user_container" id="user-side">
+
+      <%= render partial: 'alerts/alert_list' %>
+
+    </section>
+
+   <% else %>
+
+    <section class="user_container" id="user-side">
+      
+      <nav class="nav_bar"></nav>
+
+      <!-- El area de informacion del usuario -->
+      <aside class="user_container_profile" id="user_data_container">
+
+        <div class="image_side">
+          <div class="image">
+            <%= image_tag "/assets/images/playa.jpg" %>
+          </div>
+        </div>
+
+        <div class="description_side">
+          <div class="profile_image">
+            <div class="image_wrapper">
+              <%= link_to image(@user.profile),
+                :controller => "users",
+                :action => "show",
+                :id => id(@user)
+              %>
+            </div>
+          </div>
+
+          <div class="relevan_data">
+            <div class="percentage">75%</div>
+            <div class="numfriends">350</div>
+          </div>
+
+          <div class="user_name">
+            <div class="name"><%= full_name(@user).upcase %></div>
+          </div>
+
+          <% if id(@user) != id(current_user) %>
+            <div class="new_offer_button">
+              <div class="button_wrapper">
+                <%= link_to "Hazme una oferta!!!",
+                  new_user_offer_path(id(@user)),
+                  {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
+              </div>
+            </div>
+          <% end %> 
+        </div>
+
+      </aside>
+
+      <!-- Area de peticiones del usuario -->
+
+      <aside class="user_container_requests" id="user_request_list">
+
+        <div class="request_list_title">
+          <% if id(@user) === id(current_user) %>
+            <div class="text_side">PETICIONES</div>
+            <%= link_to "+",
+              new_user_request_path(current_user),
+              {:remote => true, :class => "add_request"}
+            %>
+          <% else %>
+            <div class="text_side" style="width:100%">PETICIONES</div>
+          <% end %>
+        </div>
+
+        <aside class="requests_requestsList" id="request_list_container">
+          <% if (requests(@user).count != 0)%>
+            <%= render :partial => 'application/request_list' %>
+          <% else %>
+            <div class="no_elements">
+              <p>El usuario no tiene ninguna peticion actualmente</p>
+            </div>
+          <% end %>
+        </aside>
+
+      </aside>
+
+
+    </section>
+
+   <% end %>
+
+</div>

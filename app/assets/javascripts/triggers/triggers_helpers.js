@@ -34,13 +34,6 @@ function locationName(){
 }
 
 
-function stopTimers(timers){
-  for (var i = 0; i < timers.length; i++){
-    clearTimeout(timers[i]);
-  }
-}
-
-
 function variableNotDefined (name) {
     return typeof this[name] === 'undefined';
 }

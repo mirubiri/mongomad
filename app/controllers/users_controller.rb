@@ -2,10 +2,6 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
 
-  def sub_layout
-    "complete_layout" 
-  end
-  
   def index    
     respond_to do |format|
       format.html # index.html.erb

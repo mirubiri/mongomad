@@ -1,15 +1,6 @@
-//Si hay algun timer funcionando lo paro para evitar datos erroneos
-if (variableNotDefined(timers) === true){var timers = new Array();}
-stopTimers(timers);
+//Contenido que debe cargar esta seccion: OFERTAS
+$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
+$("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
 
-
-//Contenido que debe cargar esta seccion: PETICIONES
-if ($("#user_alerts_list").length){
-  $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
-  $("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
-}else{
-  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
-}
-
-$("#ppal_container").html('<%= escape_javascript(render @requests) %>');
+$("#ppal_container").html("<%=j 'application/request_list' %>");
 

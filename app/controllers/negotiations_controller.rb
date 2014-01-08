@@ -2,10 +2,6 @@ class NegotiationsController < ApplicationController
   # GET /negotiations
   # GET /negotiations.json
 
-  def sub_layout
-    "complete_layout"
-  end
-
   def index
     @user = User.find(params[:user_id])
     @negotiation =  @user.negotiations.last
@@ -57,7 +53,7 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation = @offer.negotiate
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
-        format.js {render :partial => "negotiations/load_new_negotiation", :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
+        format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else
         format.html { render action: "new" }
       end
@@ -76,7 +72,7 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation.proposals << proposal
         format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-        format.js { render :partial => "negotiations/edit_proposal_in_negotiation", :layout => false }
+        format.js { render 'reload_negotiations', :layout => false }
       else
         format.html { render action: "edit" }
       end
@@ -130,22 +126,6 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
-  end
-
-  def addComment
-    @negotiation = Negotiation.find(params[:id])
-    message = Negotiation::Conversation::Message.new({user_id:current_user.id, text:params[:text]})
-
-    respond_to do |format|
-      if @negotiation.conversation.messages << message
-        format.js
-      else
-        puts "va mal"
-      end
-    end
-  end
-
-  def updateComments
-  end
+  end 
 
 end

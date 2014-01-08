@@ -1,40 +1,12 @@
-//Si hay algun timer funcionando lo paro para evitar dibujar datos erroneos
-if (variableNotDefined(timers) === true){var timers = new Array();}
-stopTimers(timers);
-
-
 //Contenido que debe cargar esta seccion: OFERTAS
-if ($("#user_alerts_list").length){
-  $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
-  $("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
-}else{
-  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
-}
+$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
+$("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
 
-$("#ppal_container").html("<%=j render :partial => 'offers/partials/offer' %>").masonry('destroy');
+
+$("#ppal_container").html("<%=j render 'offer_list' %>");
 
 
 //Carga sus funciones especificas de dibujado
+destroyMasonry();
 buildOfferMosaic();
 activateOfferButton();
-
-
-// Zona reservada al codigo para actualizar las nuevas ofertas a tiempo real
-
-//offerListenerLoop();
-
-function offerListenerLoop() {
-  var lugar =locationName();
-
-  if (lugar == "offers") {
-    timers.push(setTimeout(updateOffers, 2000));
-  }
-}
-
-function updateOffers() {
-  var after = $('#ppal_container > .offer:first').attr('data-id');
-  var scriptUrl = "<%= offers_updateOffers_url %>";
-  //alert(scriptUrl+"?after="+ after);
-  $.getScript(scriptUrl+"?after="+ after);
-  timers.push(setTimeout(offerListenerLoop, 2000));
-}

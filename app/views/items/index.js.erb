@@ -1,18 +1,14 @@
-//Si hay algun timer funcionando lo paro para evitar datos erroneos
-if (variableNotDefined(timers) === true){var timers = new Array();}
-stopTimers(timers);
-
-
 //Contenido que debe cargar esta seccion: PRODUCTOS
 if ($("#user_alerts_list").length){
-  $("#leftContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/user_container' %>");
-  $("#rightContainer").replaceWith("<%=j render :partial => 'layouts/global_partials/main_container' %>");
+  $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
+  $(".nav_bar").replaceWith("<%=j render :partial => 'application/navigation_bar' %>");
 }else{
-  $("#navigation_bar").html("<%=j render :partial => 'layouts/global_partials/navigation_bar' %>");
+  $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
 }
 
-$("#ppal_container").html("<%=j render :partial => 'items/partials/item' %>").masonry('destroy');
+$("#ppal_container").html("<%=j render 'item_list' %>");
 
 
 //Carga sus funciones especificas de dibujado
+destroyMasonry();
 resizeItems();

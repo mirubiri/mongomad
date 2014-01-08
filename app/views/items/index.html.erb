@@ -1,1 +1,95 @@
-<%= render :partial => 'items/partials/item' %>
+<% content_for :header do %>
+  <%= render :partial => 'application/header' %>
+<% end %>
+
+
+<% content_for :user_side do %>
+  <%= render :partial => 'application/user_container' %>
+<% end %>
+
+
+<% content_for :content_side do %>
+
+<div class="right_container" id="rightContainer">
+
+  <section class="main_container" id="content-side">
+   
+    <nav class="nav_bar" id="navigation_bar">
+      <%= render :partial => 'application/navigation_bar' %>
+    </nav>
+
+    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+       
+       <div class="item">
+        <div class="item_image">
+          <% if controller.controller_name === "items" %>
+            <% if @user._id == current_user._id %>
+
+              <%= link_to "Añadir producto",
+                new_user_item_path(@user),
+                {:remote => true, :role => "button", :class => "btn btn-success"}  %>
+
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="item_description">
+          <div class="text">
+          </div>
+        </div>
+
+        <%# if id(@user) == id(current_user) %>
+          <!-- <div class="item_options">
+            <%#= link_to "editar producto",
+              edit_user_item_path(current_user,item),
+              :remote => true,
+              :class => "btn btn-small disable" %>
+          </div> -->
+        <%# end %>
+      </div>
+
+
+      <% items(@user).reverse_each do |item| %>
+        <div class="item" id="<%= id(item) %>">
+
+          <div class="item_image">
+            <%= image(item) %>
+          </div>
+
+          <div class="item_quantity">
+            <div class="quantity_number"><%= stock(item) %></div>
+          </div>
+
+          <div class="item_description">
+            <div class="text">
+              <%= description(item) %>
+            </div>
+          </div>
+
+          <%# if id(@user) == id(current_user) %>
+            <!-- <div class="item_options">
+              <%#= link_to "editar producto",
+                edit_user_item_path(current_user,item),
+                :remote => true,
+                :class => "btn btn-small disable" %>
+            </div> -->
+          <%# end %>
+
+        </div>
+      <% end %>
+
+    </aside>
+
+  </section>
+
+</div>
+  
+
+<% end %>
+
+
+
+
+
+
+ 

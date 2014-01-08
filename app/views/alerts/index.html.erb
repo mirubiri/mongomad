@@ -1,1 +1,51 @@
-<%= render :partial => 'alerts/partials/alert' %>
+<% content_for :header do %>
+  <%= render :partial => 'application/header' %>
+<% end %>
+
+
+<% content_for :user_side do %>
+  <%= render :partial => 'application/user_container' %>
+<% end %>
+
+
+<% content_for :content_side do %>
+
+<div class="right_container" id="rightContainer">
+
+  <section class="main_container" id="content-side">
+   
+    <nav class="nav_bar" id="navigation_bar">
+      <%= render :partial => 'application/navigation_bar' %>
+    </nav>
+
+    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+      <% if (alerts(@user) != 0)%>
+        <% alerts(@user).times do |request| %>
+          <div class="request">
+            <div class="profile_image">
+              <% image(@user.profile) %>
+            </div>
+            <div class="description">
+              Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.
+              <%# text(request) %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="no_elements">
+          <p>El usuario no tiene ninguna alerta actualmente</p>
+        </div>
+      <% end %>
+    </aside>
+
+  </section>
+
+</div>
+  
+
+<% end %>
+
+
+
+
+

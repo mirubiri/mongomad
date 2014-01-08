@@ -1,8 +1,0 @@
-<%= form_for [current_user,@request] do |form| %>         
-  <%= form.text_field :text,
-   :class => "request_bar",
-   :placeholder => "Texto de su nueva peticion",
-   :maxlength => 135 %>      
-      
-  <input type="hidden" name="request[user_id]" value="<%= id(@user) %>" />  
-<% end %>

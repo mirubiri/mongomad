@@ -1,10 +1,6 @@
 class OffersController < ApplicationController
 
-  def sub_layout
-    "complete_layout"
-  end
-
-  def index
+ def index
     @user = User.find(params[:user_id])
     @offers = @user.received_offers.all.to_a
     @requests = @user.requests.all.to_a
@@ -61,7 +57,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @user, notice: 'Offer was successfully created.' }
-        format.js { render :partial => "offers/reload_offers_list", :layout => false, :locals => { :offer => @offer }, :status => :created }
+        format.js { render 'add_offer_in_list', :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
         format.html { render action: "new" }
       end
@@ -77,7 +73,7 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes params[:offer]
         format.html { redirect_to @user, notice: 'Offer was successfully updated.' }
-        format.js { render :partial => "offers/edit_offer_in_list", :layout => false}
+        format.js { render 'reload_offer_list', :layout => false}
       else
         format.html { redirect_to @offer, notice: 'Offer wasnt updated.'}
       end

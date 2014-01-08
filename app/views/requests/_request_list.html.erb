@@ -1,0 +1,29 @@
+<% requests(@user).reverse_each do |request| %>
+  <div class="request">
+    <div class="profile_image">
+      <%= image(request.user_sheet) %>
+    </div>
+    <div class="description">
+      <%= text(request) %>
+    </div>
+    <% if id(current_user) == request.user_id %>
+      <div class="options_menu hidden_container">
+        <%= link_to 'delete',
+                user_request_path(current_user,id(request)),
+                :method => :delete,
+                :confirm => "Are you sure?" %>
+        <%= link_to "edit",
+                {:controller => "requests",
+                :action => "edit",
+                :user_id => id(current_user),
+                :id => request.id},
+                {:remote => true,
+                 :id => "edit_request_link"} %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  activateRequestButtons();
+</script>

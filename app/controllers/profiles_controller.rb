@@ -1,9 +1,5 @@
 class ProfilesController < ApplicationController
 
-  def sub_layout
-    "complete_layout"
-  end
-
   def edit
     @user = current_user
 
@@ -38,7 +34,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @user.profile.update_attributes(params[:user_profile])
         format.html { redirect_to user_profile_path(current_user), notice: 'item was successfully updated.' }
-        format.js { render :partial => 'profiles/reload_after_edit_profile', :layout => false }
+        format.js { render 'reload_after_edit_profile', :layout => false }
       else
         format.html { render action: "edit" }
       end

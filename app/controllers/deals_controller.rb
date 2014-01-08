@@ -2,10 +2,6 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
 
-  def sub_layout
-    "complete_layout"
-  end
-
   def index
     @user = User.find(params[:user_id])
     @requests = @user.requests.all.to_a

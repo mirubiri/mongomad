@@ -1,93 +1,154 @@
-<div class="profile_complete">
-  <div class="person_info">
-    <div class="title">
-      Personal Info
-    </div>
-    <div class="info_side">
-      <div class="info_element">
-        <div class="info_element_title">Name & Birthdate:</div>
-        <div class="info_element_description">
-          <%= full_name(@user) %>,
-          <%= birth_date(@user) %>
+<% content_for :header do %>
+  <%= render :partial => 'application/header' %>
+<% end %>
+
+
+<% content_for :user_side do %>
+  <%= render :partial => 'application/user_container' %>
+<% end %>
+
+
+<% content_for :content_side do %>
+
+<div class="right_container" id="rightContainer">
+
+  <section class="main_container" id="content-side">
+   
+    <nav class="nav_bar" id="navigation_bar">
+      <%= render :partial => 'application/navigation_bar' %>
+    </nav>
+
+    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+      <div class="profile_complete">
+        <div class="personal_data">
+          <div class="person_info">
+            <div class="title">INFORMACION PERSONAL</div>
+            <div class="image_side">
+                <%= image(@user.profile) %>
+                <div class="name_address"><%= full_name(@user) %></div>
+                <div class="name_address">address</div>
+            </div>
+            <div class="info_side">
+              <div class="info_element">
+                <div class="info_element_title">E-Mail:</div>
+                <div class="info_element_description">
+                  <%= email(@user) %>
+                </div>
+              </div>
+              <div class="info_element">
+                <div class="info_element_title">Phones:</div>
+                <div class="info_element_description">
+                  941128057
+                </div>
+              </div>
+              <div class="info_element">
+                <div class="info_element_title">Cumpleaños:</div>
+                <div class="info_element_description">
+                  <%= birth_date(@user) %>
+                </div>
+              </div>
+
+              <% if id(@user) == id(current_user) %>
+                <%= link_to "editar mi perfil",
+                    edit_user_profile_path(current_user),
+                    :remote => true,
+                    :class => "btn btn-small" %>
+              <% end %>
+            </div>
+
+          </div>
+          <div class="statistics">
+            <div class="title">DATOS DE USO</div>
+            <div class="result_side">
+              <div class="result_block">
+                <div class="result_title">Deals as buyer</div>
+                <div class="result_number">10</div>
+              </div>
+              <div class="result_block">
+                <div class="result_title">Deals as seller</div>
+                <div class="result_number">50</div>
+              </div>
+              <div class="result_block">
+                <div class="result_title">Total use time</div>
+                <div class="result_number">500h</div>
+              </div>
+              <div class="result_block">
+                <div class="result_title">Dayle use average</div>
+                <div class="result_number">2h</div>
+              </div>
+            </div>
+            <div class="graphique_side">
+              <div class="graphique"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="info_element">
-        <div class="info_element_title">Direction:</div>
-        <div class="info_element_description">
-          <%#= country(@user) %>
-        </div>
-      </div>
-      <div class="info_element">
-        <div class="info_element_title">E-Mail:</div>
-        <div class="info_element_description">
-          <%= email(@user) %>
-        </div>
-      </div>
-      <div class="info_element">
-        <div class="info_element_title">Phones:</div>
-        <div class="info_element_description">
-          <%#= user_phone_number(@user) %>
-        </div>
-      </div>
-      <div class="info_element">
-        <div class="info_element_title">Web:</div>
-        <div class="info_element_description">
-          <%#= user_website(@user) %>
-        </div>
-      </div>
-    </div>
-    <div class="image_side">
-        <%= image(@user.profile) %>
-        <% if id(@user) == id(current_user) %>
-          <%= link_to "editar mi perfil",
-              edit_user_profile_path(current_user),
-              :remote => true,
-              :class => "btn btn-warning" %>
-        <% end %>
-    </div>
-  </div>
-  <div class="statistics">
-    <div class="title">Times Table</div>
-    <div class="result_side">
-      <div class="result_title">Deals as buyer</div>
-      <div class="result_number">10</div>
-      <div class="result_title">Deals as seller</div>
-      <div class="result_number">50</div>
-      <div class="result_title">Total use time</div>
-      <div class="result_number">500h</div>
-      <div class="result_title">Dayle use average</div>
-      <div class="result_number">2h</div>
-    </div>
-    <div class="graphique_side">
-      <div class="graphique"></div>
-    </div>
-  </div>
-  <div class="comments_recieved">
-    <div class="title">Comments</div>
-    <div id="data_list">
-      <div class="data_numbers">
-        <div class="data_element">asdgasf</div>
-        <div class="data_element">asdgasf</div>
-        <div class="data_element">asdgasf</div>
-      </div>
-    </div>
-    <div id="comment_list">
-      <div class="comment">
-        <div class="comment_header">
-          <div class="profile_image"></div>
-          <div class="description">
-            <textarea name="offer-description" id="offer-description" cols="1" rows="1"></textarea>
+        <div class="comments_recieved">
+          <div class="title">COMENTARIOS</div>
+          <div id="comment_list">
+            <div class="comment">
+              <div class="comment_header">
+                <div class="profile_image"></div>
+                <div class="description">
+                  <div class="username_and_valuation">
+                    <div class="user_name">Nombre Usuario</div>
+                    <div class="user_valuation">Valoracion</div>
+                  </div>
+                  <div class="comment_user_text">Texto del comentario</div>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="comment_header">
+                <div class="profile_image"></div>
+                <div class="description">
+                  <div class="username_and_valuation">
+                    <div class="user_name">Nombre Usuario</div>
+                    <div class="user_valuation">Valoracion</div>
+                  </div>
+                  <div class="comment_user_text">Texto del comentario</div>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="comment_header">
+                <div class="profile_image"></div>
+                <div class="description">
+                  <div class="username_and_valuation">
+                    <div class="user_name">Nombre Usuario</div>
+                    <div class="user_valuation">Valoracion</div>
+                  </div>
+                  <div class="comment_user_text">Texto del comentario</div>
+                </div>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="comment_header">
+                <div class="profile_image"></div>
+                <div class="description">
+                  <div class="username_and_valuation">
+                    <div class="user_name">Nombre Usuario</div>
+                    <div class="user_valuation">Valoracion</div>
+                  </div>
+                  <div class="comment_user_text">Texto del comentario</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="comment">
-        <div class="comment_header">
-          <div class="profile_image"></div>
-          <div class="description">
-            <textarea name="offer-description" id="offer-description" cols="1" rows="1"></textarea>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
+    </aside>
+
+  </section>
+
 </div>
+  
+
+<% end %>
+
+
+
+
+
+
