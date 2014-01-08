@@ -1,0 +1,2 @@
+class SellItem
+end
