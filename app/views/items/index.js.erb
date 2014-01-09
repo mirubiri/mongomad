@@ -1,11 +1,6 @@
 //Contenido que debe cargar esta seccion: PRODUCTOS
-if ($("#user_alerts_list").length){
-  $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
-  $(".nav_bar").replaceWith("<%=j render :partial => 'application/navigation_bar' %>");
-}else{
-  $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
-}
-
+$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");  
+$("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
 $("#ppal_container").html("<%=j render 'item_list' %>");
 
 

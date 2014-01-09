@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   # GET /items.json
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @items = @user.items.to_a
     @item = Item.new
 

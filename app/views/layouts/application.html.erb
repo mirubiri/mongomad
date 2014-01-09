@@ -15,9 +15,10 @@
 <!-- Nada de render, aqui ira content_for :metadata y así la carga de los JS será dinamica -->
 <%= render partial: 'application/metadata' %>
 
-<body class="hidden_container" id="body">  
+<body class="hidden_container" id="body">
 
   <% if (controller.controller_name === "sessions") %>
+    <%= yield :devise %>
   <% else %>
     <%= yield :header %> <!-- uso yield, pq no todas las vistas tienen el mismo header -->
   <% end %>

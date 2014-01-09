@@ -1,27 +1,48 @@
+<% content_for :content_side do %>
 
-<div class="registration_user_fields">
+<div class="devise_content" id="devise_container">
+  <div class="login_container_logo">
+    logo
+  </div>
+  <div class="login_container_coverage">
+    <div class="login_container">
+      <div class="login_container_header">
+        <div class="log_header_enter">
+          <%= link_to "Entra", new_session_path(resource_name) %>
+        </div>
+        <div class="log_header_reg">
+          <%= link_to "Registrate", new_registration_path(resource_name) %>
+        </div>
+      </div>
+      <div class="registration_user_fields">
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+          <%= devise_error_messages! %>
 
-    <div class="registration_email_field">
-      <%= f.label :email, :class => "email_label" %>
-      <%= f.email_field :email %>
+          <div class="registration_email_field">
+            <%= f.label :email, :class => "email_label" %>
+            <%= f.email_field :email %>
+          </div>
+
+          <div class="registration_pass_field">
+            <%= f.label :password, :class => "pass_label" %>
+            <%= f.password_field :password %>
+          </div>
+
+          <div class="registration_confirm_pass_field">
+            <%= f.label :password_confirmation, :class => "pass_label" %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+
+          <div><%= f.submit "Sign up", :class => "signup_button" %></div>
+        <% end %>
+
+      </div>
     </div>
-
-    <div class="registration_pass_field">
-      <%= f.label :password, :class => "pass_label" %>
-      <%= f.password_field :password %>
-    </div>
-
-    <div class="registration_confirm_pass_field">
-      <%= f.label :password_confirmation, :class => "pass_label" %>
-      <%= f.password_field :password_confirmation %>
-    </div>
-
-    <div><%= f.submit "Sign up", :class => "signup_button" %></div>
-  <% end %>
-
+  </div>
 </div>
 
+
 <%#= render "devise/shared/links" %>
+
+<% end %>

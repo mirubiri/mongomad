@@ -17,40 +17,40 @@
   <!-- Barra de navegacion general -->
   <ul class="nav" id="navigation_bar_menu">
     <% if (controller.controller_name === "users") or (controller.controller_name === "offers") %>
-      <li id="offers-tab">
+      <li id="offers-tab" class="active">
     <% else %>
       <li id="offers-tab">
     <% end %>
-      <a href="<%= user_offers_path(@user)%>" class="nav_element">Ofertas</a>
+      <%= link_to "Ofertas", user_offers_path(@user), remote: true %>
     </li>
 
     <% if @user._id == current_user._id %>
       <% if controller.controller_name === "negotiations" %>
-        <li id="negotiations-tab">
+        <li id="negotiations-tab" class="active">
       <% else %>
         <li id="negotiations-tab">
       <% end %>
-        <a href="<%= user_negotiations_path(@user)%>" class="nav_element">Negociaciones</a>
+        <%= link_to "Negociaciones", user_negotiations_path(@user), remote: true %>
       </li>
     <% end %>
 
     <% if @user._id == current_user._id %>
       <% if controller.controller_name === "deals" %>
-        <li id="deals-tab">
+        <li id="deals-tab" class="active">
       <% else %>
         <li id="deals-tab">
       <% end %>
-        <a href="<%= user_deals_path(@user)%>" class="nav_element">Tratos</a>
+        <%= link_to "Tratos", user_deals_path(@user), remote: true %>
       </li>
     <% end %>
 
     <% if (controller.controller_name === "items") %>
-      <li style="float:right">
-        <a href="<%= user_items_path(@user)%>" id="link_items" data-toggle="tooltip">Productos</a>
+      <li style="float:right" class="active">
+        <%= link_to "Productos", user_items_path(@user), remote: true %>
       </li>
     <% else %>
       <li style="float:right;border-right:none">
-        <a href="<%= user_items_path(@user)%>" id="link_items" data-toggle="tooltip">Productos</a>
+        <%= link_to "Productos", user_items_path(@user), remote: true %>
       </li>
     <% end %>
   </ul>

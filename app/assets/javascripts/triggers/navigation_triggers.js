@@ -2,9 +2,6 @@
 $(function(){
     $('#page_header_options').on('click','a',function(e){
         event.preventDefault();
-
-        $.getScript(this.href);
-
         var url= this.href;
         history.pushState({path:url},"", url);
     });
@@ -15,12 +12,6 @@ $(function(){
 $(function(){
     $("#navigation_bar").on('click','a', function(event){
         event.preventDefault();
-
-        $("#navigation_bar_menu").children('li').removeClass('active');
-        $(this).parent().addClass('active');
-
-        $.getScript(this.href); // Todos los index.js
-
         var url= this.href;
         history.pushState({path:url},"", url);
     });
