@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe RegisterUser do
+describe OfferRegister do
 end

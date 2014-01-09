@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe RegisterItem do
+describe DealMaker do
 end

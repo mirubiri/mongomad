@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe UpdateOffer do
+describe ProductMaker do
 end

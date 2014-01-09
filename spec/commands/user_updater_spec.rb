@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe MakeDeal do
+describe UserUpdater do
 end

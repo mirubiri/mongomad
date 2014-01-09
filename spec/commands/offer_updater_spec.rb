@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe UpdateItem do
+describe OfferUpdater do
 end
