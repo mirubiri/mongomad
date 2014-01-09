@@ -1,0 +1,2 @@
+class OfferNegotiator
+end

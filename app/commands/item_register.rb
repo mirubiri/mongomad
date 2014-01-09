@@ -1,0 +1,2 @@
+class ItemRegister
+end

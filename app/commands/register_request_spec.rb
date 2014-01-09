@@ -1,2 +1,0 @@
-class RegisterRequest
-end

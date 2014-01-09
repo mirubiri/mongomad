@@ -1,0 +1,2 @@
+class OfferRegister
+end

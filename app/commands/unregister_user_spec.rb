@@ -1,2 +1,0 @@
-class UnregisterUser
-end

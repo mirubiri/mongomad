@@ -1,0 +1,2 @@
+class DealMaker
+end
