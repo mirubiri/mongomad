@@ -28,6 +28,7 @@ describe Negotiation do
 
   # Validations
   it { should validate_presence_of :users }
+  it { should_not validate_presence_of :negotiation }
   it { should validate_presence_of :proposals }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
