@@ -8,7 +8,7 @@ describe Offer do
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
   it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
-  it { should belong_to(:negotiation) }
+  it { should belong_to :negotiation }
   it { should embed_one :proposal }
 
   # Attributes
@@ -18,9 +18,10 @@ describe Offer do
 
   # Validations
   it { should validate_presence_of :user_composer }
-  it { should_not have_autosave_on(:user_composer) }
+  it { should_not have_autosave_on :user_composer }
   it { should validate_presence_of :user_receiver }
-  it { should_not have_autosave_on(:user_receiver) }
+  it { should_not have_autosave_on :user_receiver }
+  it { should_not validate_presence_of :negotiation }
   it { should validate_presence_of :proposal }
   it { should validate_length_of(:message).within(1..160) }
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }

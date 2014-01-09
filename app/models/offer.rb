@@ -4,6 +4,7 @@ class Offer
 
   belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers, autosave:false
   belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers, autosave:false
+  belongs_to :negotiation
   embeds_one :proposal, as: :proposal_container
 
   field :message
