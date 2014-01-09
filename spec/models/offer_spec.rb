@@ -8,6 +8,7 @@ describe Offer do
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
   it { should belong_to(:user_receiver).of_type(User).as_inverse_of(:received_offers) }
+  it { should belong_to(:negotiation) }
   it { should embed_one :proposal }
 
   # Attributes
@@ -29,7 +30,7 @@ describe Offer do
     subject(:machine) { double().as_null_object }
 
     before(:each) { offer.state_machine(machine) }
-    
+
     it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
                                                       'negotiated' => 'negotiating') }
 
@@ -37,7 +38,7 @@ describe Offer do
 
     it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
                                                   'negotiating' => 'ghosted',
-                                                  'negotiated' => 'ghosted') } 
+                                                  'negotiated' => 'ghosted') }
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
@@ -71,10 +72,10 @@ describe Offer do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'negotiating', 'ghosted'
   end
- 
+
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end 
+  end
 
   describe '#composer' do
     it 'returns the composer user sheet' do
@@ -86,7 +87,7 @@ describe Offer do
     it 'returns the receiver user sheet' do
       expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
     end
-  end  
+  end
 
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
