@@ -1,0 +1,2 @@
+class ProposalUpdater
+end

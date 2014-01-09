@@ -5,19 +5,20 @@ describe Negotiation do
   let(:negotiation) { Fabricate.build(:negotiation) }
   let(:composer_id) { negotiation.proposals.last.composer_id }
   let(:receiver_id) { negotiation.proposals.last.receiver_id }
-  
+
   let(:negotiation_composer_cash) do
     negotiation.proposal.goods << Fabricate.build(:cash,owner_id:composer_id)
     negotiation
   end
-  
+
   let(:negotiation_receiver_cash) do
     negotiation.proposal.goods << Fabricate.build(:cash,owner_id:receiver_id)
     negotiation
   end
- 
+
   # Relations
   it { should have_and_belong_to_many :users }
+  it { should have_one :offer }
   it { should embed_many :proposals }
   it { should embed_many :messages }
 
@@ -27,6 +28,7 @@ describe Negotiation do
 
   # Validations
   it { should validate_presence_of :users }
+  it { should_not validate_presence_of :negotiation }
   it { should validate_presence_of :proposals }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
@@ -72,7 +74,7 @@ describe Negotiation do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'open', 'ghosted'
   end
- 
+
   describe '#close' do
     it_should_behave_like 'an state machine event', :close, 'ghosted', 'closed'
   end
@@ -110,7 +112,7 @@ describe Negotiation do
 
   describe '#confirm_proposal(user_id)' do
     context 'when user can confirm' do
-      before(:each) do 
+      before(:each) do
         negotiation.proposal.state = 'signed'
         negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(true)
       end
@@ -164,7 +166,7 @@ describe Negotiation do
 
   describe '#gatekeeper(user_id, action)' do
     context 'negotiation is not open' do
-      before { negotiation.state = 'ghosted'} 
+      before { negotiation.state = 'ghosted'}
 
       it 'returns false' do
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
@@ -187,7 +189,7 @@ describe Negotiation do
           it 'returns true if user has money' do
             expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
           end
-          
+
           it 'returns false if user has no money' do
             expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
           end
