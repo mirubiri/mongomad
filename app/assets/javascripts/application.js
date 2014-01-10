@@ -13,6 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require history_jquery_html5.min
+//= require masonry/jquery.masonry
+//= require modernizr
+//= require jquery.equal-height-columns
+//= require jquery.wheelzoom
 //= require_tree ./external_plugins
 //= require_tree ./model_functions
 //= require_tree ./triggers
