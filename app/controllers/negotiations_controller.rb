@@ -1,4 +1,5 @@
 class NegotiationsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /negotiations
   # GET /negotiations.json
 
@@ -126,6 +127,6 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
-  end 
+  end
 
 end

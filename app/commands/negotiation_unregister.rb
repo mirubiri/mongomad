@@ -1,0 +1,2 @@
+class NegotiationUnregister
+end

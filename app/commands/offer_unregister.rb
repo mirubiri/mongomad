@@ -1,0 +1,2 @@
+class OfferUnregister
+end

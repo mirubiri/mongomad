@@ -3,6 +3,7 @@ class Negotiation
   include Mongoid::Timestamps
 
   has_and_belongs_to_many :users
+  has_one :offer
   embeds_many :proposals, class_name:'Proposal', as: :proposal_container
   embeds_many :messages,  class_name:'Message',  as: :message_container
 

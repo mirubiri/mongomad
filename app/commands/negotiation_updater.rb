@@ -1,0 +1,3 @@
+class NegotiationUpdater
+
+end

@@ -1,0 +1,2 @@
+class RequestRegister
+end

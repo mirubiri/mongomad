@@ -18,7 +18,7 @@ describe Item do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should_not have_autosave_on(:user) }
+  it { should_not have_autosave_on :user }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
