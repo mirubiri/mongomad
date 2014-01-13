@@ -24,7 +24,7 @@
       <%= link_to "Ofertas", user_offers_path(@user), remote: true %>
     </li>
 
-    <% if @user._id == current_user._id %>
+    <% if @user._id == current_user._id %>  <!-- Filtro por usuario de Sergio -->
       <% if controller.controller_name === "negotiations" %>
         <li id="negotiations-tab" class="active">
       <% else %>
@@ -34,7 +34,7 @@
       </li>
     <% end %>
 
-    <% if @user._id == current_user._id %>
+    <% if @user._id == current_user._id %>  <!-- Filtro por usuario de Sergio -->
       <% if controller.controller_name === "deals" %>
         <li id="deals-tab" class="active">
       <% else %>

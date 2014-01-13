@@ -1,7 +1,7 @@
 <div class="item">
   <div class="item_image">
     <% if controller.controller_name === "items" %>
-      <% if @user._id == current_user._id %>
+      <% if @user._id == current_user._id %>  <!-- Filtro por usuario de Sergio -->
 
         <%= link_to "Añadir producto",
           new_user_item_path(@user),

@@ -6,7 +6,7 @@
     <div class="description">
       <%= text(request) %>
     </div>
-    <% if id(current_user) == request.user_id %>
+    <% if id(current_user) == request.user_id %> <!-- Filtro por usuario de Sergio -->
       <div class="options_menu hidden_container">
         <%= link_to 'delete',
                 user_request_path(current_user,id(request)),

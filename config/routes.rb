@@ -1,6 +1,6 @@
 Mongomad::Application.routes.draw do
   #Devise gestiona a los usuarios y sus sesiones
-  devise_for :users
+  #devise_for :users
 
   #La ruta por defecto sera a la pantalla inicial de la plataforma
   root :to => 'home#show'

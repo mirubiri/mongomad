@@ -5,7 +5,6 @@ class NegotiationsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @negotiation =  @user.negotiations.last
 
     respond_to do |format|
       format.html # index.html.erb

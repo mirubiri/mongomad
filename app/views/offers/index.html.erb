@@ -63,7 +63,7 @@
               </div>
 
               <div class="offer_buttons" id="offer_buttons_navigation">
-                <% if id(@user) != composer_id(offer.proposal) %>
+                <% if id(@user) != composer_id(offer.proposal) %> <!-- Filtro por usuario de Sergio -->
                   <% if id(@user) == id(current_user) %>
                     <%= form_for [current_user,@negotiation], :remote => true do |form| %>
                       <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
