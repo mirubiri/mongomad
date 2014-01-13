@@ -2,23 +2,23 @@
 
   <div class="clearfix header_container">
 
-    <% if user_signed_in? %>
-      <div class="header_user_data">
-        <div class="header_user_description">
-          <div class="header_description_element"><%= first_name(current_user) %></div>
-          <div class="header_description_element"><%= last_name(current_user) %></div>
-        </div>
-        <div class="header_user_image">
-          <div class="header_user-image_container">
-            <%= link_to image(current_user.profile),
-                :controller => "users",
-                :action => "show",
-                :id => id(current_user)
-            %>
-          </div>
+    
+    <div class="header_user_data">
+      <div class="header_user_description">
+        <div class="header_description_element"><%= first_name(@user) %></div>
+        <div class="header_description_element"><%= last_name(@user) %></div>
+      </div>
+      <div class="header_user_image">
+        <div class="header_user-image_container">
+          <%= link_to image(@user.profile),
+              :controller => "users",
+              :action => "show",
+              :id => id(@user)
+          %>
         </div>
       </div>
-    <% end %>
+    </div>
+    
 
     <div class="header_navigation_icons"  id="page_header_options">
       <nav class="header_menu">

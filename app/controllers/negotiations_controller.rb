@@ -47,7 +47,7 @@ class NegotiationsController < ApplicationController
   # POST /negotiations
   # POST /negotiations.json
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @offer = @user.received_offers.find(params[:offer_id])
 
     respond_to do |format|
@@ -63,11 +63,12 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1
   # PUT /negotiations/1.json
   def update
-    @negotiation = current_user.negotiations.find(params[:id])
-    @negotiation.proposals.last.user_composer_id == current_user.id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
+    @user = User.find(params[:user_id])
+    @negotiation = @user.negotiations.find(params[:id])
+    @negotiation.proposals.last.user_composer_id == @user.id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
 
     proposal = Negotiation::Proposal.new(params[:proposal])
-    proposal.user_composer_id = current_user.id
+    proposal.user_composer_id = @user.id
 
     respond_to do |format|
       if @negotiation.proposals << proposal
@@ -119,9 +120,10 @@ class NegotiationsController < ApplicationController
 
   # Cancela la propuesta
   def cancel
+    @user = User.find(params[:user_id])
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last
-    proposal.user_composer_id == current_user.id ? proposal.cancel_composer : proposal.cancel_receiver
+    proposal.user_composer_id == @user.id ? proposal.cancel_composer : proposal.cancel_receiver
 
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }

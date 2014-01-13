@@ -16,6 +16,7 @@
   def image(object)
     cl_image_tag(object.images.where(main:true).first.id+".jpg")
   end
+
   # def image(object,width,height)
   #   cl_image_tag(object.images.where(main:true).first.id,width:width,height:height)
   # end
@@ -141,4 +142,6 @@
     #proposal.can_cancel?(user)
     true
   end
+
+
  end

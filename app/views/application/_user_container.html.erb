@@ -43,15 +43,15 @@
             <div class="name"><%= full_name(@user).upcase %></div>
           </div>
 
-          <% if id(@user) != id(current_user) %>
-            <div class="new_offer_button">
-              <div class="button_wrapper">
-                <%= link_to "Hazme una oferta!!!",
-                  new_user_offer_path(id(@user)),
-                  {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
-              </div>
+          
+          <div class="new_offer_button">
+            <div class="button_wrapper">
+              <%= link_to "Hazme una oferta!!!",
+                new_user_offer_path(id(@user)),
+                {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
             </div>
-          <% end %> 
+          </div>
+          
         </div>
 
       </aside>
@@ -61,15 +61,15 @@
       <aside class="user_container_requests" id="user_request_list">
 
         <div class="request_list_title">
-          <% if id(@user) === id(current_user) %>
-            <div class="text_side">PETICIONES</div>
-            <%= link_to "+",
-              new_user_request_path(current_user),
-              {:remote => true, :class => "add_request"}
-            %>
-          <% else %>
-            <div class="text_side" style="width:100%">PETICIONES</div>
-          <% end %>
+          
+        <div class="text_side">PETICIONES</div>
+        <%= link_to "+",
+          new_user_request_path(@user),
+          {:remote => true, :class => "add_request"}
+        %>
+      
+        <div class="text_side" style="width:100%">PETICIONES</div>
+          
         </div>
 
         <aside class="requests_requestsList" id="request_list_container">

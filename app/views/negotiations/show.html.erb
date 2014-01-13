@@ -48,27 +48,27 @@
 
         <div class="offer_buttons">
           <%= link_to 'nueva',
-              edit_user_negotiation_path(current_user,id(negotiation)),
+              edit_user_negotiation_path(@user,id(negotiation)),
               :remote => true,
               :class => "btn btn-small btn-warning" %>
 
-          <% if (can_sign?(last_proposal(negotiation),current_user)) %>
+          <% if (can_sign?(last_proposal(negotiation),@user)) %>
             <%= link_to 'firmar',
-                sign_user_negotiation_path(id(current_user),id(negotiation)),
+                sign_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (can_confirm?(last_proposal(negotiation),current_user)) %>
+          <% if (can_confirm?(last_proposal(negotiation),@user)) %>
             <%= link_to 'confirmar',
-                confirm_user_negotiation_path(id(current_user),id(negotiation)),
+                confirm_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-success" %>
           <% end %>
 
-          <% if (can_cancel?(last_proposal(negotiation),current_user)) %>
+          <% if (can_cancel?(last_proposal(negotiation),@user)) %>
             <%= link_to 'cancel',
-                cancel_user_negotiation_path(id(current_user),id(negotiation)),
+                cancel_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true,
                 :class => "btn btn-small btn-danger" %>
           <% end %>

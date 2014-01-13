@@ -1,11 +1,11 @@
 <div class="new-offer-form" id="new-offer-form">
-  <%= form_for [current_user,@offer], :remote => true do |form| %>
+  <%= form_for [@user,@offer], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
-        <a href="#blank" id="new_offer_receiver_selector" value="<%= id(current_user) %>">
+        <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= image(current_user.profile) %>
+              <%= image(@user.profile) %>
             </div>
           </div>
         </a>
@@ -44,7 +44,7 @@
             <% end %>
           </div>
           <div id="composer_content_area" class="hidden_container">
-            <% items(current_user).each do |item| %>
+            <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
                 <div class="item_image">
                   <%= image(item) %>

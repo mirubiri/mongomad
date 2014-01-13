@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def edit
-    @user = current_user
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html
@@ -29,11 +29,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       if @user.profile.update_attributes(params[:user_profile])
-        format.html { redirect_to user_profile_path(current_user), notice: 'item was successfully updated.' }
+        format.html { redirect_to user_profile_path(@user), notice: 'item was successfully updated.' }
         format.js { render 'reload_after_edit_profile', :layout => false }
       else
         format.html { render action: "edit" }

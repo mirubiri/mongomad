@@ -50,7 +50,7 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    @user = current_user
+    @user = User.find(params[:user_id])
     @offer = Offer.new(params[:offer])
     @offer.user_composer = @user
 

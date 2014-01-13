@@ -1,29 +1,19 @@
 <div class="item">
   <div class="item_image">
-    <% if controller.controller_name === "items" %>
-      <% if @user._id == current_user._id %>  <!-- Filtro por usuario de Sergio -->
+    <% if controller.controller_name === "items" %>      
 
-        <%= link_to "Añadir producto",
-          new_user_item_path(@user),
-          {:remote => true, :role => "button", :class => "btn btn-success"}  %>
-
-      <% end %>
+      <%= link_to "Añadir producto",
+        new_user_item_path(@user),
+        {:remote => true, :role => "button", :class => "btn btn-success"}  %>
+      
     <% end %>
   </div>
 
   <div class="item_description">
     <div class="text">
     </div>
-  </div>
+  </div>   
 
-  <%# if id(@user) == id(current_user) %>
-    <!-- <div class="item_options">
-      <%#= link_to "editar producto",
-        edit_user_item_path(current_user,item),
-        :remote => true,
-        :class => "btn btn-small disable" %>
-    </div> -->
-  <%# end %>
 </div>
 
 
@@ -44,14 +34,12 @@
       </div>
     </div>
 
-    <%# if id(@user) == id(current_user) %>
-      <!-- <div class="item_options">
-        <%#= link_to "editar producto",
-          edit_user_item_path(current_user,item),
-          :remote => true,
-          :class => "btn btn-small disable" %>
-      </div> -->
-    <%# end %>
+    <div class="item_options">
+      <%= link_to "editar producto",
+        edit_user_item_path(@user,item),
+        :remote => true,
+        :class => "btn btn-small disable" %>
+    </div>
 
   </div>
 <% end %>

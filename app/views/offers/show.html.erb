@@ -2,16 +2,13 @@
   <div id="options">
     <div class="menu">
       <%= link_to "Eliminar Oferta",
-            user_offer_path(current_user,id(@offer)),
+            user_offer_path(@user,id(@offer)),
             :method => :delete,
             :confirm => "Are you sure?" %>
       <a href="#blank">Opcion 2</a>
     </div>
   </div>
-  <div class="offer_header">
-    <div class="triangle">
-        <!-- <img src="http://localhost:3000/images/optionsicon.png" alt="options" id="options_button"> -->
-    </div>
+  <div class="offer_header">    
     <div class="profile_image">
       <%= link_to image(@offer.proposal),
         :controller => "users",
@@ -49,31 +46,30 @@
     </div>
   </div>
 
-  <% if id(@user) =! composer_id(@offer.proposal) %>  <!-- Filtro por usuario de Sergio -->
-    <% if id(@user) == id(current_user) %>
-      <%= form_for [current_user,@negotiation] do |form| %>
-        <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
-        <div class="offer_button">
-          <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
-        </div>
-      <% end %>
-    <% else %>
-      <%= form_for [current_user,@negotiation] do |form| %>
-        <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
-        <div class="offer_button">
-          <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
-        </div>
-      <% end %>
+ 
+    <%= form_for [@user,@negotiation] do |form| %>
+      <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
+      <div class="offer_button">
+        <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
+      </div>
     <% end %>
-  <% else %>
+  
+    <%= form_for [@user,@negotiation] do |form| %>
+      <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
+      <div class="offer_button">
+        <%= form.submit "para mi", :class => "btn-small disabled", :id => "negotiate_button" %>
+      </div>
+    <% end %>
+    
+  
     <%= link_to "edit",
             {:controller => "offers",
             :action => "edit",
-            :user_id => id(current_user),
+            :user_id => id(@user),
             :id => @offer.id},
             {:remote => true,
              :id => "edit_offer_link"} %>
-  <% end %>
+  
 
   <div class="offer_date">
     <%= date_time(@offer) %>

@@ -7,13 +7,13 @@
   </div>
   <div class="options_menu hidden_container">
     <%= link_to 'delete',
-            user_request_path(current_user,id(@request)),
+            user_request_path(@user,id(@request)),
             :method => :delete,
             :confirm => "Are you sure?" %>
     <%= link_to "edit", 
             {:controller => "requests", 
             :action => "edit",
-            :user_id => id(current_user), 
+            :user_id => id(@user), 
             :id => @request.id}, 
             {:remote => true,
              :id => "edit_request_link"} %>              

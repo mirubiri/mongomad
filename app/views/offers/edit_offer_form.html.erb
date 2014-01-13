@@ -1,5 +1,5 @@
 <div class="edit-offer-form" id="edit-offer-form">
-  <%= form_for [current_user,@offer], :remote => true do |form| %>
+  <%= form_for [@user,@offer], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
         <a href="#blank" id="new_offer_receiver_selector" value="<%= receiver_id(@offer.proposal) %>">

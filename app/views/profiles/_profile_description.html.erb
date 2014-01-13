@@ -27,12 +27,12 @@
           </div>
         </div>
 
-        <% if id(@user) == id(current_user) %> <!-- Filtro por usuario de Sergio -->
-          <%= link_to "editar mi perfil",
-              edit_user_profile_path(current_user),
-              :remote => true,
-              :class => "btn btn-small" %>
-        <% end %>
+        
+        <%= link_to "editar mi perfil",
+            edit_user_profile_path(@user),
+            :remote => true,
+            :class => "btn btn-small" %>
+        
       </div>
 
     </div>

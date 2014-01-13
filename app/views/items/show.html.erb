@@ -5,7 +5,7 @@
     <p><%= description(@item) %></p>
     <p>
       <%= link_to "editar producto",
-          edit_user_item_path(current_user,@item),
+          edit_user_item_path(@user,@item),
           :remote => true %>
     </p>
   </div>

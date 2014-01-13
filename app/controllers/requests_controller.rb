@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,9 +44,10 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
+    @user = User.find(params[:user_id])
     @request = Request.new(params[:request])
-    @request.user = current_user
-    @request.user_sheet=current_user.sheet
+    @request.user = @user
+    @request.user_sheet = @user.sheet
 
     respond_to do |format|
       if @request.save
@@ -62,12 +63,12 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
-    @user = current_user
+    @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
-        format.html { redirect_to user_path(current_user), notice: 'Request was successfully updated.' }
+        format.html { redirect_to user_path(@user), notice: 'Request was successfully updated.' }
         format.js { render 'reload_requests', :layout => false }
       else
         format.html { render action: "edit" }

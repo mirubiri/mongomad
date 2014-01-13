@@ -16,8 +16,9 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = current_user.items.find(params[:id])
-    @user = current_user
+
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +29,7 @@ class ItemsController < ApplicationController
   # GET /items/new.json
   def new
     @item = Item.new
-    @user = current_user
+    @user = User.find(params[:user_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,7 +39,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = current_user.items.find(params[:id])
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
 
     respond_to do |format|
       format.html # edit.html.erb
@@ -49,12 +51,13 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    @user = User.find(params[:user_id])
     @item = Item.new(params[:user_item])
     #Cloudinary::Uploader.upload(params[:image])
 
 
     respond_to do |format|
-      if current_user.items << @item
+      if @user.items << @item
         format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
@@ -68,12 +71,12 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.json
   def update
-    @user = current_user
-    @item = current_user.items.find(params[:id])
+    @user = User.find(params[:user_id])
+    @item = @user.items.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:user_item])
-        format.html { redirect_to user_items_path(current_user), notice: 'item was successfully updated.' }
+        format.html { redirect_to user_items_path(@user), notice: 'item was successfully updated.' }
         format.js { render 'reload_items', :layout => false }
       else
         format.html { render action: "edit" }

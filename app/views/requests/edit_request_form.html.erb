@@ -1,5 +1,5 @@
 <div class="edit-request-form" id="edit-request-form">
-  <%= form_for [current_user, @request], :remote => true do |form| %>
+  <%= form_for [@user, @request], :remote => true do |form| %>
     <div class="new_petition_content">
 
       <div class="petition_text_side">
@@ -17,7 +17,7 @@
 
       <div class="petition_user_side">
         <div class="petition_user_image">
-          <%= image(current_user.profile) %>
+          <%= image(@user.profile) %>
         </div>
         <div class="petition_title">¿Cuál es tu petición?</div>
       </div>
