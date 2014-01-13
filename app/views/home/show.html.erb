@@ -2,18 +2,15 @@
 <% content_for :content_side do %>
 
   <!-- Session Filter Sergio -->
-  <span style="float:left; width: 100%; text-align: center"><p>Aqui vendra el inicio de sesion que pongamos, para seguir trabajando dejo paso a un usuario cualquiera</p></span>
+  <span style="float:left; width: 100%; text-align: center"><p>Aqui vendra el inicio de sesion que pongamos, para seguir trabajando dejo paso a un usuario cualquiera. Por el momento pongo el listado de usuarios registrados y su acceso directo</p></span>  
 
-  <span style="float:left; width: 100%; text-align: center;margin-bottom: 50px"><%= link_to "Entrar Sin Registrarse", user_offers_url(User.last) %></span>
+  <% User.each do |user| %>
 
-<% end %>
+    <span style="float:left; width: 100%; text-align: center;margin-bottom: 10px"><%= link_to user.nick, user_offers_url(user) %></span>
 
+  <% end %>
 
-<!-- 
-
-<%# content_for :content_side do %>
-
-  <div class="loger_content" id="loger_container">
+  <div class="logger_content" id="logger_container">
     <div class="login_container_logo">
       logo
     </div>
@@ -70,9 +67,6 @@
     </div>    
   </div>
 
-  <%#= render "devise/shared/links" %>
 
 
-<%# end %>
-
--->
+<% end %>

@@ -129,11 +129,11 @@
 
     //alert("matchPrincipalContainersHeighs funcionando");
     var alturaVentana = window.innerHeight - 80;
+    
 
-
-    // este if amplia hasta abajo la pantalla de login
-    if ( ($('#loger_container').height()) < alturaVentana ) {
-      $('#loger_container').css({'height': alturaVentana  + 'px'});
+    // este if amplia hasta abajo la pantalla de login   
+    if ($("#logger_container").length > 0){
+      $('#logger_container').css({'height': (alturaVentana - 200)  + 'px'});
     }
 
 
