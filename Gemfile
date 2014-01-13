@@ -28,7 +28,6 @@ group :development,:test do
   gem 'faker'
   gem 'awesome_print'
   gem 'mongoid'
-  gem 'devise'
   gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'better_errors'

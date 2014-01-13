@@ -132,8 +132,8 @@
 
 
     // este if amplia hasta abajo la pantalla de login
-    if ( ($('#devise_container').height()) < alturaVentana ) {
-      $('#devise_container').css({'height': alturaVentana  + 'px'});
+    if ( ($('#loger_container').height()) < alturaVentana ) {
+      $('#loger_container').css({'height': alturaVentana  + 'px'});
     }
 
 
