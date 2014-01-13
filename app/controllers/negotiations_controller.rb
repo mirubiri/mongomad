@@ -1,5 +1,5 @@
 class NegotiationsController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   # GET /negotiations
   # GET /negotiations.json
 

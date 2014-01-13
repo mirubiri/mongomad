@@ -23,6 +23,7 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
+    @user = User.find(params[:user_id])
     @request = Request.new
 
     respond_to do |format|
@@ -33,6 +34,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
+    @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
     respond_to do |format|

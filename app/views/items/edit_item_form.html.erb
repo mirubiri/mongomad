@@ -1,5 +1,5 @@
 <div class="edit-item-form" id="edit-item-form">
-  <%= form_for @item, :remote => true do |form| %>
+  <%= form_for [@user,@item], :remote => true do |form| %>
     <div class="new_item_title">
       Edita este producto
     </div>
@@ -9,7 +9,7 @@
           <%= form.file_field :image,
             :id => "item_image",
             :onchange => "imageSelection(this);" %>
-          <img class="item_image_container" id="item_image_container" src="<%= @item.image %>">
+          <img class="item_image_container" id="item_image_container" src="<%= image(@item) %>">
         </div>
       </div>
       <div class="new_item_description">
