@@ -1,6 +1,6 @@
 //Contenido que debe cargar esta seccion: OFERTAS
 $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
-$("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
+$("#navigation_bar").html("<%=j ppal_navigation_for_user(@user) %>");
 $("#ppal_container").html("<%=j render 'alerts_result' %>");
 
 
