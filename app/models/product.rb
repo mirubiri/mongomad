@@ -1,4 +1,6 @@
 class Product < Good
+  include DelayedUpdate
+
   field :_id,        type:Moped::BSON::ObjectId, default:nil
   field :name
   field :description
@@ -9,6 +11,8 @@ class Product < Good
   validates_presence_of :_id, :name, :description, :owner_id
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
+
+  update_on_find :name,:description,:images,from: :item
 
   def state_machine(machine=nil)
     @state_machine ||= begin
