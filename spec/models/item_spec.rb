@@ -34,15 +34,15 @@ describe Item do
 
     it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
 
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                                               
-                                                  'unavailable' => 'ghosted') } 
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',
+                                                  'unavailable' => 'ghosted') }
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
-    
+
     it "calls state_machine.trigger(#{action})" do
       expect(item.state_machine).to receive(:trigger).with(action)
       item.send(action)
@@ -69,7 +69,7 @@ describe Item do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'available', 'ghosted'
   end
- 
+
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
@@ -82,7 +82,7 @@ describe Item do
 
     specify { expect(item.pick(1).id).to eq item.id }
 
-    specify { expect(item.pick(1).owner_id).to eq item.user.id }
+    specify { expect(item.pick(1).owner_id).to eq item.user_id }
   end
 
   describe '#sell(quantity)' do
