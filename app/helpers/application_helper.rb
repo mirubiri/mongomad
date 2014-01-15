@@ -26,20 +26,6 @@
   def date_time(object)
     object.created_at
   end
-  def header_navigation_for_user(user)
-    if signed?(user)
-      render(partial: 'application/headers/signed_header_navigation')
-    elsif 
-      render(partial: 'application/headers/unsigned_header_navigation')
-    end      
-  end 
-  def ppal_navigation_for_user(user)
-    if signed?(user)
-      render(partial: 'application/navigations/signed_ppal_navigation')
-    elsif 
-      render(partial: 'application/navigations/unsigned_ppal_navigation')
-    end      
-  end 
 
   # USER HELPERS
   def nick(user)
@@ -90,9 +76,6 @@
   def deal_image(deal) #FIX helper!!!!!
     #image_tag(object.image)
     image_tag('/assets/images/productos2.png')
-  end  
-  def signed?(user)
-    true
   end
 
   # ALERT HELPERS

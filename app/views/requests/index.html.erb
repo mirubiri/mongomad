@@ -1,5 +1,5 @@
 <% content_for :header do %>
-   <%= header_navigation_for_user(@user) %>
+  <%= render :partial => 'application/header' %>
 <% end %>
 
 
@@ -15,7 +15,7 @@
   <section class="main_container" id="content-side">
    
     <nav class="nav_bar" id="navigation_bar">
-      <%= ppal_navigation_for_user(@user) %>
+      <%= render :partial => 'application/navigation_bar' %>
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
