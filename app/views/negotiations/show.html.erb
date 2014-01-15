@@ -73,26 +73,12 @@
                 :class => "btn btn-small btn-danger" %>
           <% end %>
         </div>
-            <!--
-            <div class="offer_date">
-              <%#= date_time(offer) %>
-            </div>
-            -->
+
       </div>
     </div>
 
     <div class="dialog_container">
-      <!--
-      <div class="dialog_head">
-        <div class="dialogin">Conversation...</div>
-        <%#= link_to "x",
-              user_negotiation_path(current_user,id(negotiation)),
-              :method => :delete,
-              :confirm => "Are you sure?"
-        %>
-      </div>
-    -->
-
+      
       <div class="conversation" id="conversationofnegotiation">
         <% messages(negotiation).each do |message| %>
           <div class="comment">

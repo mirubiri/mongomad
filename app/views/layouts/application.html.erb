@@ -3,11 +3,8 @@
 <!-- Si existe lo usa, sino busca en el controlador si tiene asignado un layout -->
 <!-- Si lo tiene lo usa, sino utiliza en ultima instancia el application layout -->
 
-
-
 <!-- Nuestro application layout define la estructura mas general de nuestra aplicacion -->
 <!-- es decir el contenedor principal con header y footer -->
-
 
 <!DOCTYPE html>
 <html>
@@ -32,58 +29,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-TAL Y COMO ESTABAN LOS LAYOUTS ANTES
-
-<%#= render partial: 'application/header' %>
-
-<div class="clearfix mainlayout" id="mainLayout">
-  <%#= render partial: 'application/user_container' %>
-  <%#= render partial: 'application/main_container' %>
-  <%#= render partial: 'application/footer' %>
-</div>
-
--->
-
-
-
-<!-- Mensajes de respuesta de la plataforma que pueden ir dentro del body
-  <div id="page">
-    <%# if flash[:alert] %>
-      <div class="alert_container">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div class="alert alert-error">
-          <%#= flash[:alert] %>
-        </div>
-      </div>
-    <%# end %>
-    <%# if flash[:notice] %>
-      <div class="alert_container">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div class="alert alert-success">
-          <%#= flash[:notice] %>
-        </div>
-      </div>
-    <%# end %>
-    <%# if flash[:message] %>
-      <div class="alert_container">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div class="alert alert-error">
-          <%#= flash[:message] %>
-        </div>
-      </div>
-    <%# end %>
-  </div>
--->
