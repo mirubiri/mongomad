@@ -115,7 +115,7 @@
     sheet.first_name + " " + sheet.last_name
   end
   def composer_products(proposal) # FIX helper!!!!!
-    proposal.left(proposal.composer_id)
+    proposal.products(proposal.composer_id)
   end
   # def receiver_id(proposal) #FIX: Not used
   #   proposal.receiver_id
@@ -128,7 +128,7 @@
   #   sheet.first_name + " " + sheet.last_name
   # end
   def receiver_products(proposal) # FIX helper!!!!!
-    proposal.right(proposal.receiver_id)
+    proposal.products(proposal.receiver_id)
   end
   def can_sign?(proposal, user) # FIX helper!!!!!
     #proposal.can_sign?(user)
