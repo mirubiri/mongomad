@@ -47,8 +47,8 @@ describe Proposal do
   end
 
   it 'is invalid when there is more than one cash in goods' do
-    proposal.goods << Fabricate.build(:cash,owner_id:proposal.composer_id)
-    proposal.goods << Fabricate.build(:cash,owner_id:proposal.receiver_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -151,7 +151,7 @@ describe Proposal do
 
   describe '#cash?' do
     it 'returns true if there is cash in proposal' do
-      proposal.goods.build({},Cash)
+      proposal.goods.build({}, Cash)
       expect(proposal.cash?).to eq true
     end
 
