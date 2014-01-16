@@ -113,14 +113,6 @@ class Proposal
     user_sheets.find(receiver_id)
   end
 
-  def left(owner_id)
-    goods.where(owner_id:owner_id)
-  end
-
-  def right(owner_id)
-    goods.where(:owner_id.ne => owner_id)
-  end
-
   def cash?
     goods.type(Cash).exists?
   end
