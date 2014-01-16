@@ -5,7 +5,7 @@ class Offer
   belongs_to :user_composer, class_name: 'User', inverse_of: :sent_offers, autosave:false
   belongs_to :user_receiver, class_name: 'User', inverse_of: :received_offers, autosave:false
   belongs_to :negotiation
-  embeds_one :proposal, as: :proposal_container
+  embeds_one :proposal,      as: :proposal_container
 
   field :message
   field :state,  default:'new'
@@ -14,7 +14,7 @@ class Offer
   validates :message, length: { minimum: 1, maximum: 160 }
   validates_inclusion_of :state, in: ['new','negotiating','negotiated','ghosted','discarded']
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
@@ -37,7 +37,7 @@ class Offer
   end
 
   def negotiate
-    state_machine.trigger(:negotiate)   
+    state_machine.trigger(:negotiate)
   end
 
   def negotiated

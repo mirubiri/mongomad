@@ -54,7 +54,7 @@ class Proposal
     errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
   end
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 

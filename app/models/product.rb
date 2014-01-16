@@ -12,9 +12,9 @@ class Product < Good
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
 
-  update_on_find :name,:description,:images,from: :item
+  update_on_find :name, :description, :images, from: :item
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 

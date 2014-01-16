@@ -3,16 +3,16 @@ class Negotiation
   include Mongoid::Timestamps
 
   has_and_belongs_to_many :users
-  has_one :offer
-  embeds_many :proposals, class_name:'Proposal', as: :proposal_container
-  embeds_many :messages,  class_name:'Message',  as: :message_container
+  has_one                 :offer
+  embeds_many             :proposals, class_name:'Proposal', as: :proposal_container
+  embeds_many             :messages,  class_name:'Message',  as: :message_container
 
   field :state, default:'open'
 
   validates_presence_of :users, :proposals
   validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
