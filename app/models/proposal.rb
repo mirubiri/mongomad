@@ -23,11 +23,11 @@ class Proposal
            :check_sheets_number
 
   def check_composer_has_goods
-    errors.add(:goods, "Composer should have at least one good") unless left(composer_id).count > 0
+    errors.add(:goods, "Composer should have at least one good") unless products(composer_id).count > 0
   end
 
   def check_receiver_has_goods
-    errors.add(:goods, "Receiver should have at least one good") unless left(receiver_id).count > 0
+    errors.add(:goods, "Receiver should have at least one good") unless products(receiver_id).count > 0
   end
 
   def check_good_owner
@@ -111,6 +111,10 @@ class Proposal
 
   def receiver
     user_sheets.find(receiver_id)
+  end
+
+  def products(owner_id)
+    goods.where(owner_id:owner_id)
   end
 
   def cash?
