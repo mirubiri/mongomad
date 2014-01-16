@@ -145,22 +145,6 @@ describe Proposal do
     end
   end
 
-  describe 'left(user:id)' do
-    it 'returns products for the left side for given user' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
-      proposal.left(owner_id)
-    end
-  end
-
-  describe 'right(user:id)' do
-    it 'return products for the right side for given user' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(:owner_id.ne => owner_id)
-      proposal.right(owner_id)
-    end
-  end
-
   describe '#cash?' do
     it 'returns true if there is cash in proposal' do
       proposal.goods.build({}, Cash)
