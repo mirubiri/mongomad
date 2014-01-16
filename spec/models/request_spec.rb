@@ -11,7 +11,7 @@ describe Request do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :text }
-  
+
   # Validations
   it { should validate_presence_of :user }
   it { should_not have_autosave_on(:user) }

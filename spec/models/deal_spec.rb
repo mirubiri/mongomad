@@ -8,7 +8,7 @@ describe Deal do
   it { should have_and_belong_to_many :users }
   it { should embed_many :proposals }
   it { should embed_many :messages }
- 
+
   # Attributes
   it { should be_timestamped_document }
 

@@ -86,14 +86,14 @@ describe Proposal do
 
     it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
                                                   'signed' => 'ghosted',
-                                                  'broken' => 'ghosted') } 
+                                                  'broken' => 'ghosted') }
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
-    
+
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
       proposal.send(action)
@@ -128,7 +128,7 @@ describe Proposal do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'broken', 'ghosted'
   end
- 
+
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end

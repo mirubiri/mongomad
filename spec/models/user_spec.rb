@@ -48,7 +48,7 @@ describe User do
       it 'returns true' do
         expect(user.enable).to eq true
       end
-    end    
+    end
   end
 
   describe '#disable' do
@@ -74,7 +74,7 @@ describe User do
       it 'returns false' do
         expect(user.disable).to eq false
       end
-    end    
+    end
   end
 
   describe '#sheet' do
