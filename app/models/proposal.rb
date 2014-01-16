@@ -105,6 +105,14 @@ class Proposal
     state_machine.trigger(:discard)
   end
 
+  def composer
+    user_sheets.find(composer_id)
+  end
+
+  def receiver
+    user_sheets.find(receiver_id)
+  end
+
   def left(owner_id)
     goods.where(owner_id:owner_id)
   end
