@@ -47,8 +47,8 @@ describe Proposal do
   end
 
   it 'is invalid when there is more than one cash in goods' do
-    proposal.goods << Fabricate.build(:cash,owner_id:proposal.composer_id)
-    proposal.goods << Fabricate.build(:cash,owner_id:proposal.receiver_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -86,14 +86,14 @@ describe Proposal do
 
     it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
                                                   'signed' => 'ghosted',
-                                                  'broken' => 'ghosted') } 
+                                                  'broken' => 'ghosted') }
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
-    
+
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
       proposal.send(action)
@@ -128,30 +128,34 @@ describe Proposal do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'broken', 'ghosted'
   end
- 
+
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
-  describe 'left(user:id)' do
-    it 'returns products for the left side for given user' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
-      proposal.left(owner_id)
+  describe '#composer' do
+    it 'returns the composer user sheet' do
+      expect(proposal.composer).to eq proposal.user_sheets.find(proposal.composer_id)
     end
   end
 
-  describe 'right(user:id)' do
-    it 'return products for the right side for given user' do
+  describe '#receiver' do
+    it 'returns the receiver user sheet' do
+      expect(proposal.receiver).to eq proposal.user_sheets.find(proposal.receiver_id)
+    end
+  end
+
+  describe 'products(owner_id)' do
+    it 'returns products for given user' do
       owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(:owner_id.ne => owner_id)
-      proposal.right(owner_id)
+      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
+      proposal.products(owner_id)
     end
   end
 
   describe '#cash?' do
     it 'returns true if there is cash in proposal' do
-      proposal.goods.build({},Cash)
+      proposal.goods.build({}, Cash)
       expect(proposal.cash?).to eq true
     end
 

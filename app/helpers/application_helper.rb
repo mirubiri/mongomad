@@ -119,7 +119,7 @@
     image_tag('/assets/images/medico.jpg')
   end
   def composer_products(proposal) # FIX helper!!!!!
-    proposal.left(proposal.composer_id)
+    proposal.products(proposal.composer_id)
   end
   def receiver_id(proposal)
     proposal.receiver_id
@@ -137,7 +137,7 @@
     image_tag('/assets/images/sergio.jpg')
   end
   def receiver_products(proposal) # FIX helper!!!!!
-    proposal.right(proposal.receiver_id)
+    proposal.products(proposal.receiver_id)
   end
   def can_sign?(proposal, user) # FIX helper!!!!!
     #proposal.can_sign?(user)

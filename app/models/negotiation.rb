@@ -3,16 +3,16 @@ class Negotiation
   include Mongoid::Timestamps
 
   has_and_belongs_to_many :users
-  has_one :offer
-  embeds_many :proposals, class_name:'Proposal', as: :proposal_container
-  embeds_many :messages,  class_name:'Message',  as: :message_container
+  has_one                 :offer
+  embeds_many             :proposals, class_name:'Proposal', as: :proposal_container
+  embeds_many             :messages,  class_name:'Message',  as: :message_container
 
   field :state, default:'open'
 
   validates_presence_of :users, :proposals
   validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
@@ -87,7 +87,7 @@ class Negotiation
 
   def gatekeeper(user_id, action)
     return false if state != 'open'
-    return false if ![composer,receiver].include? user_id
+    return false if ![proposal.composer_id, proposal.receiver_id].include? user_id
 
     return false if money_owner?(user_id) && action == :sign
     return false if !money_owner?(user_id) && action == :confirm
@@ -97,14 +97,6 @@ class Negotiation
 
   def proposal
     proposals.last
-  end
-
-  def composer
-    proposal.composer_id
-  end
-
-  def receiver
-    proposal.receiver_id
   end
 
   def money_owner?(user_id)
