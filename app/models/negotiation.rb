@@ -99,14 +99,6 @@ class Negotiation
     proposals.last
   end
 
-  def composer
-    proposal.composer_id
-  end
-
-  def receiver
-    proposal.receiver_id
-  end
-
   def money_owner?(user_id)
     if proposal.cash?
       proposal.goods.type(Cash).last.owner_id == user_id
