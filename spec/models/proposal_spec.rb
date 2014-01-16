@@ -133,6 +133,18 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
+  describe '#composer' do
+    it 'returns the composer user sheet' do
+      expect(proposal.composer).to eq proposal.user_sheets.find(proposal.composer_id)
+    end
+  end
+
+  describe '#receiver' do
+    it 'returns the receiver user sheet' do
+      expect(proposal.receiver).to eq proposal.user_sheets.find(proposal.receiver_id)
+    end
+  end
+
   describe 'left(user:id)' do
     it 'returns products for the left side for given user' do
       owner_id = proposal.goods.sample.owner_id
