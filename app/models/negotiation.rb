@@ -87,7 +87,7 @@ class Negotiation
 
   def gatekeeper(user_id, action)
     return false if state != 'open'
-    return false if ![composer,receiver].include? user_id
+    return false if ![proposal.composer_id, proposal.receiver_id].include? user_id
 
     return false if money_owner?(user_id) && action == :sign
     return false if !money_owner?(user_id) && action == :confirm
