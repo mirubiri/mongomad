@@ -145,6 +145,14 @@ describe Proposal do
     end
   end
 
+  describe 'products(owner_id)' do
+    it 'returns products for given user' do
+      owner_id = proposal.goods.sample.owner_id
+      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
+      proposal.products(owner_id)
+    end
+  end
+
   describe '#cash?' do
     it 'returns true if there is cash in proposal' do
       proposal.goods.build({}, Cash)
