@@ -217,20 +217,6 @@ describe Negotiation do
     end
   end
 
-  describe '#composer' do
-    it 'calls proposal.composer_id' do
-      expect(negotiation.proposal).to receive(:composer_id)
-      negotiation.composer
-    end
-  end
-
-  describe '#receiver' do
-    it 'calls proposal.receiver_id' do
-      expect(negotiation.proposal).to receive(:receiver_id)
-      negotiation.receiver
-    end
-  end
-
   describe '#money_owner?' do
     context 'when last proposal has money' do
       it 'returns true if user owns the money' do
