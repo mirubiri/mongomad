@@ -44,12 +44,9 @@
           </div>
 
           
-          <div class="new_offer_button">
-            <div class="button_wrapper">
-              <%= link_to "Hazme una oferta!!!",
-                new_user_offer_path(id(@user)),
-                {:remote => true, :role => "button", :class => "btn btn-danger"}  %>
-            </div>
+          <div class="new_offer_button">            
+              <%= link_to "HAZME UNA OFERTA",
+                new_user_offer_path(id(@user)), :remote => true, class: "button_wrapper"  %>            
           </div>
           
         </div>
