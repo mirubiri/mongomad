@@ -38,6 +38,7 @@ class OffersController < ApplicationController
 
   # GET /offers/1/edit
   def edit
+    @user = User.find(params[:user_id])
     @offer = Offer.find(params[:id])
 
     respond_to do |format|

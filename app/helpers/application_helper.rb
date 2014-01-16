@@ -114,19 +114,28 @@
     sheet = proposal.user_sheets.where(id:proposal.composer_id).last
     sheet.first_name + " " + sheet.last_name
   end
+  def composer_image(proposal)
+    #proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.image
+    image_tag('/assets/images/medico.jpg')
+  end
   def composer_products(proposal) # FIX helper!!!!!
     proposal.products(proposal.composer_id)
   end
-  # def receiver_id(proposal) #FIX: Not used
-  #   proposal.receiver_id
-  # end
-  # def receiver_first_name(proposal) #FIX: Not used
-  #   proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
-  # end
-  # def receiver_full_name(proposal)
-  #   sheet = proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last
-  #   sheet.first_name + " " + sheet.last_name
-  # end
+  def receiver_id(proposal)
+    proposal.receiver_id
+  end
+  def receiver_first_name(proposal) #FIX: Not used
+    'Sergio' #proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.first_name
+  end
+  def receiver_full_name(proposal)
+    #sheet = proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last
+    #sheet.first_name + " " + sheet.last_name
+    'Sergio de Torre'
+  end
+  def receiver_image(proposal)
+    #proposal.proposal_container.user_sheets.where(id:proposal.receiver_id).last.image
+    image_tag('/assets/images/sergio.jpg')
+  end
   def receiver_products(proposal) # FIX helper!!!!!
     proposal.products(proposal.receiver_id)
   end
