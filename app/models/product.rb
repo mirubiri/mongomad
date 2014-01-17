@@ -1,5 +1,5 @@
 class Product < Good
-  include DelayedUpdate
+  include AutoUpdate
 
   field :_id,        type:Moped::BSON::ObjectId, default:nil
   field :name
@@ -12,7 +12,7 @@ class Product < Good
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
 
-  update_on_find :name,:description,:images,from: :item
+  auto_update :name,:description,:images, using: :item
 
   def state_machine(machine=nil)
     @state_machine ||= begin
@@ -51,7 +51,7 @@ class Product < Good
   end
 
   def item
-    Item.find(id)
+    Item.find(_id)
   end
 
   def sell
