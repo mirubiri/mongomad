@@ -1,5 +1,4 @@
-module Attachment
-  module Images
+module Attachment::Images
     extend ActiveSupport::Concern
 
     included do
@@ -31,5 +30,4 @@ module Attachment
     def check_multiple_main_image
       errors.add(:images, "Cannot have more than one main image") if images.where(main:true).size > 1
     end
-  end
 end
