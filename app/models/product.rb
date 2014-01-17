@@ -12,7 +12,7 @@ class Product < Good
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
 
-  auto_update :name,:description,:images, using: :item
+  auto_update :name, :description, :images, using: :item
 
   def state_machine(machine = nil)
     @state_machine ||= begin
