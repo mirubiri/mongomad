@@ -1,7 +1,7 @@
 <% requests(@user).reverse_each do |request| %>
   <div class="request">
     <div class="profile_image">
-      <%= image(request.user_sheet) %>
+      <%= main_image(request) %>
     </div>
     <div class="description">
       <%= text(request) %>

@@ -11,6 +11,18 @@
     object.composer
   end
 
+  def composer_products(object)
+    products(object, object.composer)
+  end
+
+  def date_time(object)
+    object.created_at
+  end
+
+  def deals(object)
+    object.deals
+  end
+
   def description(object)
     object.description
   end
@@ -38,8 +50,10 @@
   def images(object)
     if object.class == User
       object.profile.images
+    elsif object.class == Request
+       object.user_sheet.images
     else
-      object.images
+       object.images
     end
   end
 
@@ -69,9 +83,11 @@
 
   def main_image(object)
     if object.class == User
-      object.profile.main_image
+      cl_image_tag(object.profile.main_image._id + ".jpg")
+    elsif object.class == Request
+      cl_image_tag(object.user_sheet.main_image._id + ".jpg")
     else
-      object.main_image
+      cl_image_tag(object.main_image._id + ".jpg")
     end
   end
 
@@ -91,24 +107,19 @@
     object.name
   end
 
+  def negotiations(object)
+    object.negotiations
+  end
+
   def nick(object)
-      object.nick
-    end
-  end
-
-  def products_composer(object)
-    products(object, object.composer)
-  end
-
-  def products_receiver(object)
-    products(object, object.receiver)
-  end
+    object.nick    
+  end  
 
   def products(object, user)
     if object.class == Offer
        object.proposal.products(user._id)
      else
-       object.products(user_id)
+       object.products(user.id)
      end
   end
 
@@ -124,8 +135,24 @@
     object.quantity
   end
 
+  def received_offers(object)
+    object.received_offers
+  end
+
   def receiver(object)
     object.receiver
+  end
+
+  def receiver_products(object)
+    products(object, object.receiver)
+  end
+
+  def requests(object)
+    object.requests
+  end
+
+  def sent_offers(object)
+    object.sent_offers
   end
 
   def state(object)
@@ -139,4 +166,4 @@
   def text(object)
     object.text
   end
- end
+end

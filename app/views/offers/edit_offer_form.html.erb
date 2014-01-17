@@ -6,21 +6,21 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= image(@user.profile) %>
+              <%= main_image(@user) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= image(@user.profile) %>
+              <%= main_image(@user) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="message_selector_area">
             <div class="user_image">
-              <%= image(@user.profile) %>
+              <%= main_image(@user) %>
             </div>
           </div>
         </a>
@@ -31,7 +31,7 @@
             <% items(@offer.composer).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
                 <div class="item_image">
-                  <%= image(item) %>
+                  <%= main_image(item) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -47,8 +47,8 @@
           <div id="composer_content_area" class="hidden_container">
             <% items(@offer.receiver).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
-                <div class="item_image">
-                  <%= image(item) %>
+                <div class="item_main_image">
+                  <%= main_image(item) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -85,15 +85,13 @@
           <%= nick(@user).capitalize %>
         </div>
         <div class="offer_products">
-
-
           <div class="recieved" id="summary_offer_received_products_container">
             <% contador = 0 %>
-            <% receiver_products(@offer.proposal).each do |product| %>
+            <% receiver_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>" side="left" product_id="<%= id(product) %>" >
                 <div class="delete_button">x</div>
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
-                  <%= image(product) %>
+                  <%= main_image(product) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -109,7 +107,7 @@
                   <input type="hidden" name="offer[receiver_attributes][products_attributes][<%= contador %>][quantity]" value="<%= quantity(product) %>" id="<%= id(product) %>" item_id="<%= id(product) %>">
                 </div>
               </div>
-                <% contador = contador + 1 %>
+                <% contador += 1 %>
               <% end %>
               <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
@@ -119,12 +117,12 @@
 
           <div class="given" id="summary_offer_given_products_container">
             <% contador = 0 %>
-            <% composer_products(@offer.proposal).each do |product| %>
+            <% composer_products(@offer).each do |product| %>
 
               <div class="item newitem" id="<%= id(product) %>" side="right" product_id="<%= id(product) %>">
                 <div class="delete_button">x</div>
                 <div class="item_image">
-                  <%= image(product) %>
+                  <%= main_image(product) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -140,21 +138,17 @@
                   <input type="hidden" name="offer[composer_attributes][products_attributes][<%= contador %>][quantity]" value="<%= quantity(product) %>" id="<%= id(product) %>" item_id="<%= id(product) %>">
                 </div>
               </div>
-              <% contador = contador + 1 %>
+              <% contador += 1 %>
             <% end %>
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>
             </div>
           </div>
-
-
         </div>
-
-
 
         <div class="offer_info">
           <div class="profile_image">
-            <%= image(@user.profile) %>
+            <%= main_image(@user) %>
           </div>
           <div class="description">
             <div class="offer_message">
@@ -162,7 +156,7 @@
             </div>
           </div>
           <div class="offer_buttons">
-            <%= form.submit "submit", :id => 'edit-offer-send-button', :class =>  "btn btn-primary" %>
+            <%= form.submit "submit", :id => 'edit-offer-send-button' %>
             <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
           </div>
         </div>

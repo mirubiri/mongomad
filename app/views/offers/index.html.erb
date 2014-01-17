@@ -24,14 +24,14 @@
           <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
 
             <div class="offer_header">
-              <%= composer_first_name(offer.proposal) %>
+              <%= first_name(offer.composer) %>
             </div>
 
             <div class="offer_items">
               <div class="recieved">
-                <% composer_products(offer.proposal).each do |product| %>
+                <% composer_products(offer).each do |product| %>
                   <div class="image_container">
-                    <%= image(product) %>
+                    <%= main_image(product) %>
                     <div class="description">
                       <%= name(product) %>
                     </div>
@@ -39,9 +39,9 @@
                 <% end %>
               </div>
               <div class="given">
-                <% receiver_products(offer.proposal).each do |product| %>
+                <% receiver_products(offer).each do |product| %>
                   <div class="image_container">
-                    <%= image(product) %>
+                    <%= main_image(product) %>
                     <div class="quantity_container"><%= quantity(product) %></div>
                   </div>
                 <% end %>
@@ -50,10 +50,10 @@
 
             <div class="offer_info">
               <div class="profile_image">
-                <%= link_to image(offer.composer),
+                <%= link_to main_image(offer.composer),
                   :controller => "users",
                   :action => "show",
-                  :id => composer_id(offer.proposal)
+                  :id => id(offer.composer)
                 %>
               </div>
               <div class="description">

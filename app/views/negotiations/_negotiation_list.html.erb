@@ -5,14 +5,14 @@
 
 	    <div class="oponent_info">
 	      <div class="oponent_image">
-	        <%= image(last_proposal(negotiation).user_sheets.first) %>
+	        <%= main_image(composer(proposal(negotiation))) %>
 	      </div>
 	      <div class="oponent_description">
 	        <div class="oponent_name">
-	          <%= composer_first_name(last_proposal(negotiation)) %>
+	          <%= first_name(composer(proposal(negotiation))) %>
 	        </div>
 	        <div class="oponent_address">
-	          <%= composer_full_name(last_proposal(negotiation)) %>
+	          <%= full_name(composer(proposal(negotiation))) %>
 	        </div>
 	      </div>
 	    </div>
@@ -23,9 +23,9 @@
 
 	    <div class="offer_items">
 	      <div class="recieved">
-	        <% composer_products(last_proposal(negotiation)).each do |product| %>
+	        <% composer_products(proposal(negotiation)).each do |product| %>
 	          <div class="image_container">
-	            <%= image(product) %>
+	            <%= main_image(product) %>
 	            <div class="quantity_container">
 	              <%= quantity(product) %>
 	            </div>
@@ -36,9 +36,9 @@
 	        <% end %>
 	      </div>
 	      <div class="given">
-	        <% receiver_products(last_proposal(negotiation)).each do |product| %>
+	        <% receiver_products(proposal(negotiation)).each do |product| %>
 	          <div class="image_container">
-	            <%= image(product) %>
+	            <%= main_image(product) %>
 	            <div class="quantity_container"><%= quantity(product) %></div>
 	          </div>
 	        <% end %>
@@ -50,29 +50,25 @@
 	      <div class="offer_buttons">
 	        <%= link_to 'nueva',
 	            edit_user_negotiation_path(@user,id(negotiation)),
-	            :remote => true,
-	            :class => "btn btn-small btn-warning" %>
+	            :remote => true %>
 
-	        <% if (can_sign?(last_proposal(negotiation),@user)) %>
+	        <%# if (can_sign?(proposal(negotiation),@user)) %>
 	          <%= link_to 'firmar',
 	              sign_user_negotiation_path(id(@user),id(negotiation)),
-	              :remote => true,
-	              :class => "btn btn-small btn-success" %>
-	        <% end %>
+	              :remote => true %>
+	        <%# end %>
 
-	        <% if (can_confirm?(last_proposal(negotiation),@user)) %>
+	        <%# if (can_confirm?(proposal(negotiation),@user)) %>
 	          <%= link_to 'confirmar',
 	              confirm_user_negotiation_path(id(@user),id(negotiation)),
-	              :remote => true,
-	              :class => "btn btn-small btn-success" %>
-	        <% end %>
+	              :remote => true %>
+	        <%# end %>
 
-	        <% if (can_cancel?(last_proposal(negotiation),@user)) %>
+	        <%# if (can_cancel?(proposal(negotiation),@user)) %>
 	          <%= link_to 'cancel',
 	              cancel_user_negotiation_path(id(@user),id(negotiation)),
-	              :remote => true,
-	              :class => "btn btn-small btn-danger" %>
-	        <% end %>
+	              :remote => true %>
+	        <%# end %>
 	      </div>
 
 	    </div>
@@ -84,7 +80,7 @@
 	      <% messages(negotiation).each do |message| %>
 	        <div class="comment">
 	          <div class="comment_user_image">
-	            <%= image(message) %>
+	            <%= main_image(message) %>
 	          </div>
 	          <div class="comment_text">
 	            <%= text(message) %>
