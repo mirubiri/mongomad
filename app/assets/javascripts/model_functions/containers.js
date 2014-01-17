@@ -129,9 +129,9 @@
 
     //alert("matchPrincipalContainersHeighs funcionando");
     var alturaVentana = window.innerHeight - 80;
-    
 
-    // este if amplia hasta abajo la pantalla de login   
+
+    // este if amplia hasta abajo la pantalla de login
     if ($("#logger_container").length > 0){
       $('#logger_container').css({'height': (alturaVentana - 200)  + 'px'});
     }
@@ -175,7 +175,7 @@ function expandWeb(){
   $('#mainLayout').maximizeResizableChildren();
   $('#mainLayout').setMargins();
   $('#mainLayout').maximizeResizableChildren();
-  $('.header').setHeaderPadding();  
+  $('.header').setHeaderPadding();
 
   //Reseteo las alturas de los contenedores principales y las igualo
   $("#user-side").resetContainerHeight();

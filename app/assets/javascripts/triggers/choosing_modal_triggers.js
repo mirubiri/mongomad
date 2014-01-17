@@ -2,7 +2,7 @@
 function loadOfferModalScripts(){
 
   if ($('#new-offer-form').length){
-    alert("carga el script de la modal de new");
+    //alert("carga el script de la modal de new");
     $('#new-offer-form').firstUserSelected();
 
 
@@ -24,7 +24,7 @@ function loadOfferModalScripts(){
 
 
   if ($('#edit-offer-form').length){
-    alert("carga el script de la modal de edit");
+    //alert("carga el script de la modal de edit");
     $('#edit-offer-form').firstUserSelected();
 
 
