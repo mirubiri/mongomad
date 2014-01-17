@@ -4,10 +4,10 @@ describe Attachment::Image do
   # Relations
   it { should be_embedded_in :attachable }
 
-	# Fields
+	# Attributes
 	it { should have_field(:main).of_type(Boolean) }
 
-  # Fabricator
+  # Factories
   specify { expect(Fabricate.build(:image_face)).to be_valid }
   specify { expect(Fabricate.build(:image_product)).to be_valid }
 end

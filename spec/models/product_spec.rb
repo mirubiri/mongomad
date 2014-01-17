@@ -33,15 +33,15 @@ describe Product do
 
     it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
 
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',                              
-                                                  'unavailable' => 'ghosted') } 
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',
+                                                  'unavailable' => 'ghosted') }
 
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
     before(:each) { product.state = initial_state }
-    
+
     it "calls state_machine.trigger(#{action})" do
       expect(product.state_machine).to receive(:trigger).with(action)
       product.send(action)
@@ -68,11 +68,11 @@ describe Product do
   describe '#ghost' do
     it_should_behave_like 'an state machine event', :ghost, 'available', 'ghosted'
   end
- 
+
   describe '#discard' do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
-  
+
   specify '.new' do
     expect(Product.new.id).to eq nil
   end

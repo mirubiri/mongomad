@@ -26,9 +26,9 @@ describe ItemUnregister do
 
     context 'when item belongs to any offer' do
       let(:offer) { Fabricate.build(:offer) }
-      let(:proposal) { offer.proposal }      
-      let(:product) { proposal.goods.first }   
-     
+      let(:proposal) { offer.proposal }
+      let(:product) { proposal.goods.first }
+
       # Product
       context 'when product is avaliable or unavaliable' do
         before(:each) { product.state = 'available' }
@@ -80,14 +80,14 @@ describe ItemUnregister do
 
         it 'changes offer state to ghosted' do
           expect{ item_register.execute }.to change { offer.state }.from(offer.state).to('ghosted')
-        end     
+        end
       end
     end
 
     context 'when item belongs to any negotiation' do
       let(:negotiation) { Fabricate.build(:negotiation) }
-      let(:proposal) { negotiation.proposal }      
-      let(:product) { proposal.goods.first }   
+      let(:proposal) { negotiation.proposal }
+      let(:product) { proposal.goods.first }
 
       # Product
       context 'when product is avaliable or unavaliable' do

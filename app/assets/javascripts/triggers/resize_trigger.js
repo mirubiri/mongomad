@@ -1,5 +1,4 @@
 //Carga los scripts necesarios y hace un reset de las alturas
-
 $(window).resize(function () {
     whenEventFinish(function(){
       //alert('Resize...');

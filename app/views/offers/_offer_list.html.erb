@@ -50,7 +50,7 @@
           
             <%= form_for [@user,@negotiation], :remote => true do |form| %>
               <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
-              <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %></a>
+              <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "", :id => "negotiate_button" %></a>
             <% end %>
           
         

@@ -14,7 +14,7 @@ class Item
   validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded' ]
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
@@ -51,10 +51,10 @@ class Item
   end
 
   def pick(quantity)
-  	Product.new(name:name, description:description, images:images, quantity:quantity) do |product|
+    Product.new(name:name, description:description, images:images, quantity:quantity) do |product|
       product.id = id
       product.owner_id = user_id
-  	end
+    end
   end
 
   def sell(quantity)

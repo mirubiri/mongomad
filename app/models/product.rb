@@ -14,7 +14,7 @@ class Product < Good
 
   auto_update :name,:description,:images, using: :item
 
-  def state_machine(machine=nil)
+  def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 

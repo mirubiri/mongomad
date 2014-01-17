@@ -101,9 +101,7 @@ describe Item do
       end
 
       it 'does not change the stock attribute' do
-        stock = item.stock
-        item.sell(100)
-        expect(item.stock).to eq stock
+        expect{ item.sell(100) }.to_not change { item.stock }
       end
     end
   end
@@ -120,22 +118,22 @@ describe Item do
   end
 
   describe '#available?(quantity)' do
-    it 'true if item has enough asked stock' do
+    it 'returns true if item has enough asked stock' do
       asked = item.stock-1
       expect(item.available?(asked)).to eq true
     end
 
-    it 'false if item has not enough asked stock' do
+    it 'returns false if item has not enough asked stock' do
       asked = item.stock+1
       expect(item.available?(asked)).to eq false
     end
 
-    it 'false if stock is nil' do
+    it 'returns false if stock is nil' do
       item.stock = nil
       expect(item.available?(1)).to eq false
     end
 
-    it 'false if asked stock is 0' do
+    it 'returns false if asked stock is 0' do
       expect(item.available?(0)).to eq false
     end
   end

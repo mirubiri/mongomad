@@ -3,16 +3,16 @@ require 'spec_helper'
 describe Negotiation do
   # Variables
   let(:negotiation) { Fabricate.build(:negotiation) }
-  let(:composer_id) { negotiation.proposals.last.composer_id }
-  let(:receiver_id) { negotiation.proposals.last.receiver_id }
+  let(:composer_id) { negotiation.proposal.composer_id }
+  let(:receiver_id) { negotiation.proposal.receiver_id }
 
   let(:negotiation_composer_cash) do
-    negotiation.proposal.goods << Fabricate.build(:cash,owner_id:composer_id)
+    negotiation.proposal.goods << Fabricate.build(:cash, owner_id:composer_id)
     negotiation
   end
 
   let(:negotiation_receiver_cash) do
-    negotiation.proposal.goods << Fabricate.build(:cash,owner_id:receiver_id)
+    negotiation.proposal.goods << Fabricate.build(:cash, owner_id:receiver_id)
     negotiation
   end
 
@@ -214,20 +214,6 @@ describe Negotiation do
     it 'returns the last proposal' do
       negotiation.proposals.build
       expect(negotiation.proposal).to eq negotiation.proposals.last
-    end
-  end
-
-  describe '#composer' do
-    it 'calls proposal.composer_id' do
-      expect(negotiation.proposal).to receive(:composer_id)
-      negotiation.composer
-    end
-  end
-
-  describe '#receiver' do
-    it 'calls proposal.receiver_id' do
-      expect(negotiation.proposal).to receive(:receiver_id)
-      negotiation.receiver
     end
   end
 
