@@ -96,11 +96,11 @@
     end
   end
 
-  def product_composer(object)
+  def products_composer(object)
     products(object, object.composer)
   end
 
-  def product_receiver(object)
+  def products_receiver(object)
     products(object, object.receiver)
   end
 
