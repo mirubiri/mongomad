@@ -31,16 +31,9 @@ module AlertsHelper
     objetc.profile.gender
   end
 
-  # def id(object)
-  #   # directo o de usersheet
-  # end
-  # def image(object)
-  #   if object.class == User
-  #     object.profile.images.last
-  #   else
-  #     object.images
-  #   end
-  # end
+  def id(object)
+    object._id
+  end
 
   def images(object)
     if object.class == User
@@ -70,9 +63,13 @@ module AlertsHelper
     end
   end
 
-  # def main_image(object)
-  #   # directo o de usersheet
-  # end
+  def main_image(object)
+    if object.class == User
+      object.profile.main_image
+    else
+      object.main_image
+    end
+  end
 
   def message(object)
     if object.class == Offer
@@ -95,16 +92,13 @@ module AlertsHelper
     end
   end
 
-  # def products(object)
-
-
-  #   if object.class == Offer
-  #     object.message
-  #   else
-  #     object.messages.last
-  #   end
-
-  # end
+  def products(object, user)
+    if object.class == Offer
+       object.proposal.products(user._id)
+     else
+       object.products(user_id)
+     end
+  end
 
   def proposal(object)
     object.proposal
