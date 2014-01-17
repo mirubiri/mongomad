@@ -8,6 +8,9 @@
   width: 1100px;
 }
 
+.edit_offer{
+  width: 1100px;
+}
 
 .products_area{
   @include box-sizing(border-box);
@@ -172,7 +175,7 @@
           margin:0px 0px 0px 0px;
           overflow: auto;
           box-shadow: none;
-          
+
 
           .item_image{
             @include proportions($bigImageDimension,$bigImageDimension);
@@ -180,8 +183,8 @@
             @include high-quality-image;
             background-color: white;
           }
-                  
-          .item_quantity{ 
+
+          .item_quantity{
             .quantity_number{}
           }
 
@@ -199,7 +202,7 @@
               font-size: 12px;
               font-weight: 600;
             }
-          }           
+          }
         }
        }
 
@@ -222,8 +225,8 @@
             @include high-quality-image;
             background-color: white;
           }
-                  
-          .item_quantity{ 
+
+          .item_quantity{
             @include box-sizing(border-box);
             width: 18px;
             height: 18px;
@@ -252,7 +255,7 @@
               @include box-sizing(border-box);
               font-size: 7px;
             }
-          }           
+          }
         }
       }
     }

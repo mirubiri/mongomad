@@ -2,9 +2,9 @@
 {
   $.fn.toModal = function(){
 
-  	id = $(this).attr("id"); 
-    
-    $("#" + id).dialog({ 
+  	id = $(this).attr("id");
+
+    $("#" + id).dialog({
 		appendTo: "#body",
 	    modal: true,
 	    title: "",
@@ -13,9 +13,9 @@
 		width: "auto",
 	    open: function(){
 	        jQuery('.ui-widget-overlay').bind('click',function(){
-	            jQuery("#" + id).dialog('close');
+	            jQuery("#" + id).dialog('destroy').remove();
 	        })
-	    }	 
+	    }
 	});
 
 	$(".ui-dialog-titlebar").hide();// quita la barra de la modal

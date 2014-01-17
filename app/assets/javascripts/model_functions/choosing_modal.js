@@ -1,9 +1,8 @@
 (function ($)
 {
   $.fn.firstUserSelected = function(){
-
+    //alert("se carga el js");
     $(this).find('.user_image').first().children(":first").css('box-shadow','0px 3px 5px red, 0px -3px 5px red');
-
     return $(this);
   };
 
@@ -198,7 +197,7 @@ function additemViewInSummary(item, item_id, container, user){
   .children('.item_image')
   .removeAttr('style')
   .parent()
-  .appendTo(""+container+"")  
+  .appendTo(""+container+"")
   .children('.item_quantity')
   .children('.quantity_number')
   .html("1");

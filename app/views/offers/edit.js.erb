@@ -1,3 +1,6 @@
 $('#edit-offer-form').remove();// Esto la quita correctamente
 $('#ppal_container').append("<%= escape_javascript(render template: 'offers/edit_offer_form', :locals => { :offer => @offer }).html_safe %>");
 $('#edit-offer-form').toModal();
+
+//Cargo ademas la funcion que hace funcionar la modal.
+loadOfferModalScripts();
