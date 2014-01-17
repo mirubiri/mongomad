@@ -112,8 +112,8 @@
   end
 
   def nick(object)
-    object.nick    
-  end  
+    object.nick
+  end
 
   def products(object, user)
     if object.class == Offer
