@@ -1,10 +1,10 @@
 module AlertsHelper
   def agreement(object)
-    objetc.agreement
+    object.agreement
   end
 
   def birth_date(object)
-    objetc.profile.birth_date
+    object.profile.birth_date
   end
 
   def composer(object)
@@ -28,7 +28,7 @@ module AlertsHelper
   end
 
   def gender(object)
-    objetc.profile.gender
+    object.profile.gender
   end
 
   def id(object)
@@ -43,8 +43,12 @@ module AlertsHelper
     end
   end
 
+  def items(object)
+    User.find(object._id).items
+  end
+
   def language(object)
-    objetc.profile.language
+    object.profile.language
   end
 
   def last_name(object)
@@ -90,6 +94,14 @@ module AlertsHelper
   def nick(object)
       object.nick
     end
+  end
+
+  def product_composer(object)
+    products(object, object.composer)
+  end
+
+  def product_receiver(object)
+    products(object, object.receiver)
   end
 
   def products(object, user)
