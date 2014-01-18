@@ -36,7 +36,7 @@ describe AutoUpdate do
     before { copy.update_attributes(outdated:true) }
 
     it 'calls auto_update after finding' do
-      expect(copy).to receive(:update_attributes).and_call_original
+      expect(copy).to receive(:assign_attributes).and_call_original
       copy.reload
     end
   end

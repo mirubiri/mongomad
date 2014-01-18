@@ -29,7 +29,7 @@ module AutoUpdate
     end
 
     updated_values[:outdated] = false
-    update_attributes!(updated_values)
+    assign_attributes(updated_values)
   end
 
   def outdate
