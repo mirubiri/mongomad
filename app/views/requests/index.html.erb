@@ -13,47 +13,47 @@
 <div class="right_container" id="rightContainer">
 
   <section class="main_container" id="content-side">
-   
+
     <nav class="nav_bar" id="navigation_bar">
       <%= render :partial => 'application/navigation_bar' %>
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-    	<% requests(@user).reverse_each do |request| %>
-		  <div class="request">
-		    <div class="profile_image">
-		      <%= image(request.user_sheet) %>
-		    </div>
-		    <div class="description">
-		      <%= text(request) %>
-		    </div>
-		    
-	      <div class="options_menu hidden_container">
-	        <%= link_to 'delete',
-	                user_request_path(@user,id(request)),
-	                :method => :delete,
-	                :confirm => "Are you sure?" %>
-	        <%= link_to "edit",
-	                {:controller => "requests",
-	                :action => "edit",
-	                :user_id => id(@user),
-	                :id => request.id},
-	                {:remote => true,
-	                 :id => "edit_request_link"} %>
-	      </div>
-		    
-		  </div>
-		<% end %>
+      <% requests(@user).reverse_each do |request| %>
+      <div class="request">
+        <div class="profile_image">
+          <%= image(request.user_sheet) %>
+        </div>
+        <div class="description">
+          <%= text(request) %>
+        </div>
 
-		<script>
-		  activateRequestButtons();
-		</script>
-	</aside>
+        <div class="options_menu hidden_container">
+          <%= link_to 'delete',
+                  user_request_path(@user,id(request)),
+                  :method => :delete,
+                  :confirm => "Are you sure?" %>
+          <%= link_to "edit",
+                  {:controller => "requests",
+                  :action => "edit",
+                  :user_id => id(@user),
+                  :id => request.id},
+                  {:remote => true,
+                   :id => "edit_request_link"} %>
+        </div>
+
+      </div>
+    <% end %>
+
+    <script>
+      activateRequestButtons();
+    </script>
+  </aside>
 
   </section>
 
 </div>
-  
+
 
 <% end %>
 

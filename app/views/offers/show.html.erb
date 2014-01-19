@@ -8,7 +8,7 @@
       <a href="#blank">Opcion 2</a>
     </div>
   </div>
-  <div class="offer_header">    
+  <div class="offer_header">
     <div class="profile_image">
       <%= link_to image(@offer.proposal),
         :controller => "users",
@@ -46,22 +46,22 @@
     </div>
   </div>
 
- 
+
     <%= form_for [@user,@negotiation] do |form| %>
       <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
       <div class="offer_button">
         <%= form.submit "negociar", :class => "btn btn-small disabled", :id => "negotiate_button"  %>
       </div>
     <% end %>
-  
+
     <%= form_for [@user,@negotiation] do |form| %>
       <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
       <div class="offer_button">
         <%= form.submit "para mi", :class => "", :id => "negotiate_button" %>
       </div>
     <% end %>
-    
-  
+
+
     <%= link_to "edit",
             {:controller => "offers",
             :action => "edit",
@@ -69,7 +69,7 @@
             :id => @offer.id},
             {:remote => true,
              :id => "edit_offer_link"} %>
-  
+
 
   <div class="offer_date">
     <%= date_time(@offer) %>

@@ -1,17 +1,17 @@
 <% if (alerts(@user) != 0)%>
-	<% alerts(@user).times do |request| %>
-	  <div class="request">
-	    <div class="profile_image">
-	      <% image(@user.profile) %>
-	    </div>
-	    <div class="description">
-	      Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.
-	      <%# text(request) %>
-	    </div>
-	  </div>
-	<% end %>
+  <% alerts(@user).times do |request| %>
+    <div class="request">
+      <div class="profile_image">
+        <% image(@user.profile) %>
+      </div>
+      <div class="description">
+        Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.
+        <%# text(request) %>
+      </div>
+    </div>
+  <% end %>
 <% else %>
-	<div class="no_elements">
-	  <p>El usuario no tiene ninguna alerta actualmente</p>
-	</div>
+  <div class="no_elements">
+    <p>El usuario no tiene ninguna alerta actualmente</p>
+  </div>
 <% end %>

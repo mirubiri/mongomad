@@ -11,7 +11,7 @@
    <% else %>
 
     <section class="user_container" id="user-side">
-      
+
       <nav class="nav_bar"></nav>
 
       <!-- El area de informacion del usuario -->
@@ -43,12 +43,12 @@
             <div class="name"><%= full_name(@user).upcase %></div>
           </div>
 
-          
-          <div class="new_offer_button">            
+
+          <div class="new_offer_button">
               <%= link_to "HAZME UNA OFERTA",
-                new_user_offer_path(id(@user)), :remote => true, class: "button_wrapper"  %>            
+                new_user_offer_path(id(@user)), :remote => true, class: "button_wrapper"  %>
           </div>
-          
+
         </div>
 
       </aside>
@@ -58,15 +58,15 @@
       <aside class="user_container_requests" id="user_request_list">
 
         <div class="request_list_title">
-          
+
         <div class="text_side">PETICIONES</div>
         <%= link_to "+",
           new_user_request_path(@user),
           {:remote => true, :class => "add_request"}
         %>
-      
+
         <div class="text_side" style="width:100%">PETICIONES</div>
-          
+
         </div>
 
         <aside class="requests_requestsList" id="request_list_container">

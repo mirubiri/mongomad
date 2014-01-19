@@ -6,7 +6,7 @@
     <div class="description">
       <%= text(request) %>
     </div>
-    
+
     <div class="options_menu hidden_container">
       <%= link_to 'delete',
               user_request_path(@user,id(request)),
@@ -20,7 +20,7 @@
               {:remote => true,
                :id => "edit_request_link"} %>
     </div>
-    
+
   </div>
 <% end %>
 

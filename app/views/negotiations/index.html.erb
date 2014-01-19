@@ -9,11 +9,11 @@
 
 
 <% content_for :content_side do %>
-  
+
 <div class="right_container" id="rightContainer">
 
   <section class="main_container" id="content-side">
-   
+
     <nav class="nav_bar" id="navigation_bar">
       <%= render :partial => 'application/navigation_bar' %>
     </nav>
@@ -91,11 +91,11 @@
                       :remote => true %>
                 <%# end %>
               </div>
-                  
+
             </div>
           </div>
 
-          <div class="dialog_container">            
+          <div class="dialog_container">
 
             <div class="conversation" id="conversationofnegotiation">
               <% messages(negotiation).each do |message| %>
@@ -132,7 +132,7 @@
   </section>
 
 </div>
-  
+
 
 <% end %>
 

@@ -13,14 +13,14 @@
 <div class="right_container" id="rightContainer">
 
   <section class="main_container" id="content-side">
-   
+
     <nav class="nav_bar" id="navigation_bar">
       <%= render :partial => 'application/navigation_bar' %>
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
       <% deals(@user).each do |deal| %>
-      
+
         <div class="deal">
 
           <div class="deal_header">
@@ -105,7 +105,7 @@
   </section>
 
 </div>
-  
+
 
 <% end %>
 

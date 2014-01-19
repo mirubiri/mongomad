@@ -13,23 +13,23 @@
 <div class="right_container" id="rightContainer">
 
   <section class="main_container" id="content-side">
-   
+
     <nav class="nav_bar" id="navigation_bar">
       <%= render :partial => 'application/navigation_bar' %>
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-       
+
        <div class="item">
         <div class="item_image">
           <% if controller.controller_name === "items" %>
-            
+
 
             <%= link_to "Añadir producto",
               new_user_item_path(@user),
               {:remote => true, :role => "button", :class => "btn btn-success"}  %>
 
-            
+
           <% end %>
         </div>
 
@@ -37,7 +37,7 @@
           <div class="text">
           </div>
         </div>
-        
+
       </div>
 
 
@@ -73,7 +73,7 @@
   </section>
 
 </div>
-  
+
 
 <% end %>
 
@@ -82,4 +82,4 @@
 
 
 
- 
+

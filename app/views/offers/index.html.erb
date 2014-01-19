@@ -13,7 +13,7 @@
 <div class="right_container" id="rightContainer">
 
   <section class="main_container" id="content-side">
-   
+
     <nav class="nav_bar" id="navigation_bar">
       <%= render :partial => 'application/navigation_bar' %>
     </nav>
@@ -62,20 +62,20 @@
                 </div>
               </div>
 
-              <div class="offer_buttons" id="offer_buttons_navigation">                
-                  
+              <div class="offer_buttons" id="offer_buttons_navigation">
+
                 <%= form_for [@user,@negotiation], :remote => true do |form| %>
                   <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
                   <%= form.submit "negociar", :url => user_negotiations_path(@user), :class => "btn btn-small btn-wide disabled", :id => "negotiate_button" %>
                 <% end %>
-              
+
                 <%= form_for [@user,@negotiation], :remote => true do |form| %>
                   <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
                   <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "", :id => "negotiate_button" %></a>
                 <% end %>
-              
-            
-              
+
+
+
                 <div class="offer_button">
                   <%= link_to "edit",
                           {:controller => "offers",
@@ -87,7 +87,7 @@
                            :id => "edit_offer_link"} %>
                 </div>
               </div>
-              
+
             </div>
           </div>
         <% end %>
@@ -101,6 +101,6 @@
   </section>
 
 </div>
-  
+
 
 <% end %>
