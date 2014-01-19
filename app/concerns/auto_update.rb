@@ -10,7 +10,7 @@ module AutoUpdate
   module ClassMethods
     # Specify which fields to update. Specify the associated object using the :from option.
     #
-    # delayed_update :field_one, :field_two, from:'relation'
+    # auto_update :field_one, :field_two, using:'relation'
 
     def auto_update(*fields)
       options = fields.pop
