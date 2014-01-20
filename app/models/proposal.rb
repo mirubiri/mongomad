@@ -3,24 +3,21 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
-  embeds_many :user_sheets
   embeds_many :goods
 
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
   field :state,       default:'new'
 
-  validates_presence_of :user_sheets, :goods, :composer_id, :receiver_id
+  validates_presence_of :goods, :composer_id, :receiver_id
   validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
 
   validate :check_composer_has_goods,
            :check_receiver_has_goods,
            :check_good_owner,
            :check_duplicated_good,
-           :check_multiple_cash,
-           :check_composer_sheet,
-           :check_receiver_sheet,
-           :check_sheets_number
+           :check_multiple_cash
+
 
   def check_composer_has_goods
     errors.add(:goods, "Composer should have at least one good") unless products(composer_id).count > 0
@@ -40,18 +37,6 @@ class Proposal
 
   def check_multiple_cash
     errors.add(:goods, "Proposal should have only one cash") if goods.type(Cash).size > 1
-  end
-
-  def check_composer_sheet
-    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:composer_id).size == 1
-  end
-
-  def check_receiver_sheet
-    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:receiver_id).size == 1
-  end
-
-  def check_sheets_number
-    errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
   end
 
   def state_machine(machine = nil)
