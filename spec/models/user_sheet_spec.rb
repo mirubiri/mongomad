@@ -26,6 +26,16 @@ describe UserSheet do
     expect(UserSheet.new.id).to eq nil
   end
 
+  describe '#current_sheet' do
+    let(:user) { Fabricate.build(:user) }
+    let(:outdated_sheet) { user.sheet }
+    before { User.stub(:find).and_return(user) }
+
+    it 'returns the current version of this sheet' do
+      expect(outdated_sheet.current_sheet).to eq user.sheet
+    end
+  end
+
   # Factories
   specify { expect(Fabricate.build(:user_sheet)).to be_valid }
 end
