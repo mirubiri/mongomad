@@ -56,6 +56,8 @@
       object.profile.images
     elsif object.class == Request
        object.user_sheet.images
+    elsif object.class == Message
+       object.user.images
     else
        object.images
     end
@@ -90,6 +92,8 @@
       cl_image_tag(object.profile.main_image._id + ".jpg")
     elsif object.class == Request
       cl_image_tag(object.user_sheet.main_image._id + ".jpg")
+    elsif object.class == Message
+      cl_image_tag(object.user.main_image._id + ".jpg")
     else
       cl_image_tag(object.main_image._id + ".jpg")
     end
@@ -100,6 +104,8 @@
       cl_image_path(object.profile.main_image._id + ".jpg")
     elsif object.class == Request
       cl_image_path(object.user_sheet.main_image._id + ".jpg")
+    elsif object.class == Message
+      cl_image_path(object.user.main_image._id + ".jpg")
     else
       cl_image_path(object.main_image._id + ".jpg")
     end
