@@ -1,5 +1,4 @@
  module ApplicationHelper
-
   def alerts(object)
     object.alerts
   end
