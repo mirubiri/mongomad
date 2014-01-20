@@ -9,7 +9,7 @@
           <%= form.file_field :image,
             :id => "item_image",
             :onchange => "imageSelection(this);" %>
-          <img class="item_image_container" id="item_image_container" src="<%= image(@item) %>">
+          <img class="item_image_container" id="item_image_container" src="<%= main_image_path(item) %>">
         </div>
       </div>
       <div class="new_item_description">
@@ -32,8 +32,7 @@
     </div>
     <div class="item_options">
       <%= form.submit  "Save Changes",
-      :id => 'new-item-send-button',
-      :class => "btn btn-success" %>
+      :id => 'new-item-send-button' %>
     </div>
   <% end %>
 </div>

@@ -1,4 +1,9 @@
  module ApplicationHelper
+
+  def alerts(object)
+    object.alerts
+  end
+
   def agreement(object)
     object.agreement
   end
@@ -88,6 +93,16 @@
       cl_image_tag(object.user_sheet.main_image._id + ".jpg")
     else
       cl_image_tag(object.main_image._id + ".jpg")
+    end
+  end
+
+  def main_image_path(object)
+    if object.class == User
+      cl_image_path(object.profile.main_image._id + ".jpg")
+    elsif object.class == Request
+      cl_image_path(object.user_sheet.main_image._id + ".jpg")
+    else
+      cl_image_path(object.main_image._id + ".jpg")
     end
   end
 

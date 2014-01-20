@@ -20,10 +20,10 @@
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
       <% if (alerts(@user) != 0)%>
-        <% alerts(@user).times do |request| %>
+        <% alerts(@user).count.times do |request| %>
           <div class="request">
             <div class="profile_image">
-              <% image(@user.profile) %>
+              <% main_image(@user) %>
             </div>
             <div class="description">
               Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.

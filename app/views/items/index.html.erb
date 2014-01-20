@@ -27,7 +27,7 @@
 
             <%= link_to "Añadir producto",
               new_user_item_path(@user),
-              {:remote => true, :role => "button", :class => "btn btn-success"}  %>
+              {:remote => true, :role => "button"}  %>
 
 
           <% end %>
@@ -45,7 +45,7 @@
         <div class="item" id="<%= id(item) %>">
 
           <div class="item_image">
-            <%= image(item) %>
+            <%= main_image(item) %>
           </div>
 
           <div class="item_quantity">
@@ -61,8 +61,7 @@
           <div class="item_options">
             <%= link_to "editar producto",
               edit_user_item_path(@user,item),
-              :remote => true,
-              :class => "btn btn-small disable" %>
+              :remote => true %>
           </div>
 
         </div>
