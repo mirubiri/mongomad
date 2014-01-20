@@ -36,6 +36,7 @@ describe Offer do
     offer.user_sheets.find(offer.user_receiver_id)._id = nil
     expect(offer).to have(1).error_on(:user_sheets)
   end
+
   it 'is invalid if there are more than two user sheets' do
     offer.user_sheets << Fabricate.build(:user_sheet)
     expect(offer).to have(1).error_on(:user_sheets)
@@ -95,13 +96,13 @@ describe Offer do
 
   describe '#composer' do
     it 'returns the composer user sheet' do
-      expect(offer.composer).to eq offer.proposal.user_sheets.find(offer.user_composer_id)
+      expect(offer.composer).to eq offer.user_sheets.find(offer.user_composer_id)
     end
   end
 
   describe '#receiver' do
     it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq offer.proposal.user_sheets.find(offer.user_receiver_id)
+      expect(offer.receiver).to eq offer.user_sheets.find(offer.user_receiver_id)
     end
   end
 
