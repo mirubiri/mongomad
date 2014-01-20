@@ -77,8 +77,9 @@ describe AutoUpdate do
         expect{ copy.auto_update }.to change{ copy.outdated }.from(true).to(false)
       end
 
-      it 'saves the changes' do
-        expect(copy.changes).to be_empty
+      it 'does not save the changes' do
+        copy.auto_update
+        expect(copy.changes).to_not be_empty
       end
     end
   end
@@ -97,6 +98,11 @@ describe AutoUpdate do
 
       it 'outdates the object' do
         expect{copy.outdate}.to change{copy.outdated}.from(false).to(true)
+      end
+
+      it 'does not save changes' do
+        copy.outdate
+        expect(copy.changes).to_not be_empty
       end
     end
   end

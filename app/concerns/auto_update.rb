@@ -33,6 +33,7 @@ module AutoUpdate
   end
 
   def outdate
-    update_attributes!(outdated:true)
+    assign_attributes(outdated:true)
+    true
   end
 end
