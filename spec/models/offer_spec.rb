@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Offer do
   # Variables
   let(:offer) { Fabricate.build(:offer) }
-  let(:negotiation) { Negotiation.create(users:[offer.user_composer, offer.user_receiver], proposals:[offer.proposal]) }
 
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
@@ -29,15 +28,14 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
   it 'is invalid when there is no sheet for user_composer' do
-    offer.user_sheets.where(_id:offer.user_composer_id) = nil
+    offer.user_sheets.find(offer.user_composer_id)._id = nil
     expect(offer).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is no sheet for user_receiver' do
-    offer.user_sheets.where(_id:offer.user_receiver_id) = nil
+    offer.user_sheets.find(offer.user_receiver_id)._id = nil
     expect(offer).to have(1).error_on(:user_sheets)
   end
-
   it 'is invalid if there are more than two user sheets' do
     offer.user_sheets << Fabricate.build(:user_sheet)
     expect(offer).to have(1).error_on(:user_sheets)
