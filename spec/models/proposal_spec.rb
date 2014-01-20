@@ -135,7 +135,8 @@ describe Proposal do
 
     it 'returns the receiver user sheet' do
       expect(proposal.receiver).to eq proposal.proposal_container.user_sheets.find(proposal.receiver_id)
-    end  end
+    end
+  end
 
   describe 'products(owner_id)' do
     it 'returns products for given user' do
