@@ -22,7 +22,7 @@
       <% requests(@user).reverse_each do |request| %>
       <div class="request">
         <div class="profile_image">
-          <%= image(request.user_sheet) %>
+          <%= main_image(request) %>
         </div>
         <div class="description">
           <%= text(request) %>
@@ -37,7 +37,7 @@
                   {:controller => "requests",
                   :action => "edit",
                   :user_id => id(@user),
-                  :id => request.id},
+                  :id => id(request)},
                   {:remote => true,
                    :id => "edit_request_link"} %>
         </div>

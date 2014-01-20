@@ -28,7 +28,7 @@
       <div class="products_container">
         <div class="products_list">
           <div id="receiver_content_area">
-            <% items(@offer.composer).each do |item| %>
+            <% items(composer(@offer)).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
                 <div class="item_image">
                   <%= main_image(item) %>
@@ -45,7 +45,7 @@
             <% end %>
           </div>
           <div id="composer_content_area" class="hidden_container">
-            <% items(@offer.receiver).each do |item| %>
+            <% items(receiver(@offer).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
                 <div class="item_main_image">
                   <%= main_image(item) %>
