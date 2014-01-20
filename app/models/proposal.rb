@@ -91,11 +91,11 @@ class Proposal
   end
 
   def composer
-    user_sheets.find(composer_id)
+    proposal_container.user_sheets.find(composer_id)
   end
 
   def receiver
-    user_sheets.find(receiver_id)
+    proposal_container.user_sheets.find(receiver_id)
   end
 
   def products(owner_id)

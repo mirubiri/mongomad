@@ -13,8 +13,4 @@ Fabricator(:proposal) do
     receiver_item = attrs[:receiver].items.sample
     [ Fabricate.build(:product, item:composer_item, proposal:nil), Fabricate.build(:product, item:receiver_item, proposal:nil) ]
   end
-
-  user_sheets { |attrs| [ Fabricate.build(:user_sheet, user:attrs[:composer]), Fabricate.build(:user_sheet, user:attrs[:receiver]) ] }
-end
-
-
+ end
