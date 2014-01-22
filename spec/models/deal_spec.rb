@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Deal do
   # Variables
   let(:deal) { Fabricate.build(:deal) }
-  let(:first_user_id) { deal.users.first._id }
-  let(:second_user_id) { deal.users.last._id }
 
   # Relations
   it { should have_and_belong_to_many :users }
@@ -22,12 +20,12 @@ describe Deal do
   it { should validate_presence_of :messages }
 
   it 'is invalid when there is no sheet for first user' do
-    deal.user_sheets.find(first_user_id)._id = nil
+    deal.users.first._id = nil
     expect(deal).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is no sheet for second user' do
-    deal.user_sheets.find(second_user_id)._id = nil
+    deal.users.last._id = nil
     expect(deal).to have(1).error_on(:user_sheets)
   end
 
