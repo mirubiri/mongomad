@@ -22,14 +22,12 @@ describe Proposal do
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   it 'is invalid when there is any good for composer' do
-    composer_id = proposal.composer_id
-    proposal.goods.delete_all(owner_id:composer_id)
+    proposal.goods.delete_all(owner_id:proposal.composer_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
   it 'is invalid when there is any good for receiver' do
-    receiver_id = proposal.receiver_id
-    proposal.goods.delete_all(owner_id:receiver_id)
+    proposal.goods.delete_all(owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
@@ -118,7 +116,7 @@ describe Proposal do
 
   describe '#composer' do
     it 'calls to proposal_container.user_sheets.find with composer_id' do
-      expect(proposal.proposal_container.user_sheets).to receive(:find).with(composer_id)
+      expect(proposal.proposal_container.user_sheets).to receive(:find).with(proposal.composer_id)
       proposal.composer
     end
 
@@ -129,7 +127,7 @@ describe Proposal do
 
   describe '#receiver' do
     it 'calls to proposal_container.user_sheets.find with receiver_id' do
-      expect(proposal.proposal_container.user_sheets).to receive(:find).with(receiver_id)
+      expect(proposal.proposal_container.user_sheets).to receive(:find).with(proposal.receiver_id)
       proposal.receiver
     end
 
