@@ -9,6 +9,22 @@ class Deal
 
   validates_presence_of :users, :user_sheets, :proposals, :messages
 
+  validate :check_composer_sheet,
+           :check_receiver_sheet,
+           :check_sheets_number
+
+  def check_composer_sheet
+    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.find(_id:user_composer_id).size == 1
+  end
+
+  def check_receiver_sheet
+    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.find(_id:user_receiver_id).size == 1
+  end
+
+  def check_sheets_number
+    errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
+  end
+
   def agreement
     proposals.last
   end
