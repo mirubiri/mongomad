@@ -1,5 +1,6 @@
 Fabricator(:proposal) do
   transient :composer, :receiver
+
   composer { Fabricate(:user_with_items) }
   receiver { Fabricate(:user_with_items) }
 
@@ -13,4 +14,4 @@ Fabricator(:proposal) do
     receiver_item = attrs[:receiver].items.sample
     [ Fabricate.build(:product, item:composer_item, proposal:nil), Fabricate.build(:product, item:receiver_item, proposal:nil) ]
   end
- end
+end
