@@ -10,7 +10,7 @@ class Message
   validates_presence_of :user_id
   validates :text, length: { minimum: 1, maximum: 160 }
 
-  def receiver
-    message_container.user_sheets.find(receiver_id)
+  def user
+    message_container.user_sheets.find(user_id)
   end
 end
