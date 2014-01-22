@@ -35,7 +35,7 @@
     if object.class == User
       object.profile.first_name
     else
-      object.first_name
+      user_sheet(object).first_name
     end
   end
 
@@ -54,12 +54,8 @@
   def images(object)
     if object.class == User
       object.profile.images
-    elsif object.class == Request
-       object.user_sheet.images
-    elsif object.class == Message
-       object.user.images
     else
-       object.images
+      user_sheet(object).images
     end
   end
 
@@ -75,7 +71,7 @@
     if object.class == User
       object.profile.last_name
     else
-      object.last_name
+      user_sheet(object).last_name
     end
   end
 
@@ -83,31 +79,23 @@
     if object.class == User
       object.profile.location
     else
-      object.location
+      user_sheet(object).location
     end
   end
 
   def main_image(object)
     if object.class == User
       cl_image_tag(object.profile.main_image._id + ".jpg")
-    elsif object.class == Request
-      cl_image_tag(object.user_sheet.main_image._id + ".jpg")
-    elsif object.class == Message
-      cl_image_tag(object.user.main_image._id + ".jpg")
     else
-      cl_image_tag(object.main_image._id + ".jpg")
+      cl_image_tag(user_sheet(object).main_image._id + ".jpg")
     end
   end
 
   def main_image_path(object)
     if object.class == User
       cl_image_path(object.profile.main_image._id + ".jpg")
-    elsif object.class == Request
-      cl_image_path(object.user_sheet.main_image._id + ".jpg")
-    elsif object.class == Message
-      cl_image_path(object.user.main_image._id + ".jpg")
     else
-      cl_image_path(object.main_image._id + ".jpg")
+      cl_image_path(user_sheet(object).main_image._id + ".jpg")
     end
   end
 
@@ -132,15 +120,19 @@
   end
 
   def nick(object)
-    object.nick
+    if object.class == User
+      object.nick
+    else
+      user_sheet(object).nick
+    end
   end
 
   def products(object, user)
     if object.class == Offer
-       object.proposal.products(user._id)
-     else
-       object.products(user.id)
-     end
+      object.proposal.products(user._id)
+    else
+      object.products(user._id)
+    end
   end
 
   def proposal(object)
@@ -185,5 +177,19 @@
 
   def text(object)
     object.text
+  end
+
+  def user(object)
+    object.user
+  end
+
+  def user_sheet(object)
+    if object.class == Request
+      object.user_sheet
+    elsif object.class == Message
+      object.user
+    else # class == UserSheet
+      object
+    end
   end
 end
