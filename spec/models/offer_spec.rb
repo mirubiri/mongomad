@@ -28,12 +28,12 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
   it 'is invalid when there is no sheet for user_composer' do
-    offer.user_sheets.find(offer.user_composer_id)._id = nil
+    offer.user_composer_id = nil
     expect(offer).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is no sheet for user_receiver' do
-    offer.user_sheets.find(offer.user_receiver_id)._id = nil
+    offer.user_receiver_id = nil
     expect(offer).to have(1).error_on(:user_sheets)
   end
 
