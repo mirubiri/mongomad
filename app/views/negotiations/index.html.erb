@@ -116,7 +116,7 @@
             <div class="writting_box">
               <div class="message">
                 <input type="text" placeholder="write here" name="text">
-                <%= button_to "Send", action: "pusher_message" %>
+                <%= button_to "Send", action: "pusher_message", remote: true %>
               </div>
             </div>
             <div class="dialog_head">

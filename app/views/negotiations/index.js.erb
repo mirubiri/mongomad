@@ -29,7 +29,5 @@ Pusher.log = function(message) {
 var pusher = new Pusher('f34baa838c2708acbd0f');
 var channel = pusher.subscribe('my_channel');
 channel.bind('my_event', function(data) {
-  alert('An event was triggered with message: ' + data.message);
+  alert(data.message);
 });
-
-
