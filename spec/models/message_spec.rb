@@ -20,7 +20,7 @@ describe Message do
   # Methods
   describe '#user' do
     it 'calls to message_container.user_sheets.find with user_id' do
-      expect(message.message_container.user_sheets).to receive(:find).with(user_id)
+      expect(message.message_container.user_sheets).to receive(:find).with(message.user_id)
       message.user
     end
 
