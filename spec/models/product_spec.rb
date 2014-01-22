@@ -74,7 +74,7 @@ describe Product do
   end
 
   specify '.new' do
-    expect(Product.new.id).to eq nil
+    expect(Product.new._id).to eq nil
   end
 
   describe '#item' do

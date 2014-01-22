@@ -87,7 +87,7 @@ describe User do
       user.sheet
     end
 
-    specify { expect(user.sheet.id).to eq user.id }
+    specify { expect(user.sheet._id).to eq user._id }
   end
 
   # Factories

@@ -80,7 +80,7 @@ describe Item do
       item.pick(1)
     end
 
-    specify { expect(item.pick(1).id).to eq item.id }
+    specify { expect(item.pick(1)._id).to eq item._id }
 
     specify { expect(item.pick(1).owner_id).to eq item.user_id }
   end

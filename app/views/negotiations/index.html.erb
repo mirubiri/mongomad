@@ -101,7 +101,7 @@
               <% messages(negotiation).each do |message| %>
                 <div class="comment">
                   <div class="comment_user_image">
-                    <%#= image(message) %>
+                    <%= main_image(message) %>
                   </div>
                   <div class="comment_text">
                     <%= text(message) %>
