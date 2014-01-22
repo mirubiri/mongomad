@@ -132,12 +132,7 @@ class NegotiationsController < ApplicationController
 
   # Prueba el canal de Pusher
   def pusher_message
-
     Pusher.trigger('my_channel', 'my_event', {message: 'message sendded'})
-
-    respond_to do |format|
-      #format.js { render :partial => "negotiations/reload_negotiations_list" }
-    end
-
+    redirect_to user_negotiations_path
   end
 end
