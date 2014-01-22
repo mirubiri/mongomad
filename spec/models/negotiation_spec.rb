@@ -3,8 +3,6 @@ require 'spec_helper'
 describe Negotiation do
   # Variables
   let(:negotiation) { Fabricate.build(:negotiation) }
-  let(:first_user_id) { negotiation.users.first._id }
-  let(:second_user_id) { negotiation.users.last._id }
   let(:composer_id) { negotiation.proposal.composer_id }
   let(:receiver_id) { negotiation.proposal.receiver_id }
 
@@ -37,12 +35,12 @@ describe Negotiation do
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
   it 'is invalid when there is no sheet for first user' do
-    negotiation.user_sheets.find(first_user_id)._id = nil
+    negotiation.users.first._id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
   end
 
   it 'is invalid when there is no sheet for second user' do
-    negotiation.user_sheets.find(second_user_id)._id = nil
+    negotiation.users.last._id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
   end
 
