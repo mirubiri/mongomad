@@ -23,7 +23,6 @@ Mongomad::Application.routes.draw do
     resources :alerts
   end
 
-  match 'negotiations/updateComments' => 'negotiations#updateComments', :via => :get
-  match 'offers/updateOffers' => 'offers#updateOffers', :via => :get
+  match 'negotiations/pusher_message' => 'negotiations#pusher_message', :as => 'pusher_message'
 
 end

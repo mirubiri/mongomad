@@ -16,7 +16,8 @@ group :assets do
   gem 'mini_magick'
   gem 'modernizr-rails'
   gem 'masonry-rails'
-  gem "historyjs-rails"
+  gem 'historyjs-rails'
+  gem 'pusher'
 end
 
 group :development,:test do

@@ -117,3 +117,29 @@ function reloadDialogContainerWidth(){
     }
 })(jQuery);
 
+
+// (function($) {
+//     $.fn.conectToObjectPusherChannel = function() {
+
+//       var +$(this).attr("id")+ = pusher.subscribe("object_channel_" + $(this).attr("id"));
+
+//       var eventName = 'comment-in-negotiation';
+
+//       var callback = function(data) {
+//         $(this).find('conversationofnegotiation').append(
+//           "<div class='comment'>
+//             <div class='comment_user_image'>
+//               <%#= image(message) %>
+//             </div>
+//             <div class='comment_text'>
+//               "+ data.message +"
+//             </div>
+//             <div class='comment_datetime'>
+//               <%#= date_time(message) %>
+//             </div>
+//           </div>");
+//       };
+
+//       pusher.bind(eventName, callback);
+//     }
+// })(jQuery);

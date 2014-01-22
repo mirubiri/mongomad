@@ -13,3 +13,23 @@ $('.negotiation').activateNegotiationButtons();
 $('.negotiation').disableDoubleScrolling();
 $('.negotiation').focusNegotiationWritebox();
 $('.negotiation').scrollConversation();
+
+//$('.negotiation').conectToObjectPusherChannel();
+
+
+//Inicio sesion en pusher para el tema de los mensajes,
+//Esto luego ira en un script en application.html para usar pusher para las notificaciones
+// Enable pusher logging - don't include this in production
+Pusher.log = function(message) {
+  if (window.console && window.console.log) {
+    window.console.log(message);
+  }
+};
+
+var pusher = new Pusher('f34baa838c2708acbd0f');
+var channel = pusher.subscribe('my_channel');
+channel.bind('my_event', function(data) {
+  alert('An event was triggered with message: ' + data.message);
+});
+
+

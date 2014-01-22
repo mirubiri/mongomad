@@ -130,4 +130,8 @@ class NegotiationsController < ApplicationController
     end
   end
 
+  # Prueba el canal de Pusher
+  def pusher_message
+    Pusher.trigger('my_channel', 'my_event', { message: 'message sendded' })
+  end
 end
