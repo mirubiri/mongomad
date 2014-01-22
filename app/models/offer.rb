@@ -20,11 +20,11 @@ class Offer
            :check_sheets_number
 
   def check_composer_sheet
-    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.find(_id:user_composer_id).size == 1
+    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:user_composer_id).size == 1
   end
 
   def check_receiver_sheet
-    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.find(_id:user_receiver_id).size == 1
+    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:user_receiver_id).size == 1
   end
 
   def check_sheets_number
