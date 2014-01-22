@@ -7,7 +7,7 @@ Fabricator(:proposal) do
   composer_id { |attrs| attrs[:composer]._id }
   receiver_id { |attrs| attrs[:receiver]._id }
 
-  proposal_container { |attrs| Fabricate.build(:offer, proposal:nil, user_composer:attrs[:composer], user_receiver:attrs[:receiver]) }
+  proposal_container { |attrs| Fabricate.build(:offer, user_composer:attrs[:composer], user_receiver:attrs[:receiver], proposal:nil) }
 
   goods do |attrs|
     composer_item = attrs[:composer].items.sample
