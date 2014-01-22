@@ -17,7 +17,6 @@ group :assets do
   gem 'modernizr-rails'
   gem 'masonry-rails'
   gem 'historyjs-rails'
-  gem 'pusher'
 end
 
 group :development,:test do
