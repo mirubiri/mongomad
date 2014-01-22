@@ -4,8 +4,8 @@ Fabricator(:proposal) do
   composer { Fabricate(:user_with_items) }
   receiver { Fabricate(:user_with_items) }
 
-  composer_id { |attrs| attrs[:composer].id }
-  receiver_id { |attrs| attrs[:receiver].id }
+  composer_id { |attrs| attrs[:composer]._id }
+  receiver_id { |attrs| attrs[:receiver]._id }
 
   proposal_container { |attrs| Fabricate.build(:offer, proposal:nil, user_composer:attrs[:composer], user_receiver:attrs[:receiver]) }
 

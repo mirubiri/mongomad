@@ -65,10 +65,10 @@ class NegotiationsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @negotiation = @user.negotiations.find(params[:id])
-    @negotiation.proposals.last.user_composer_id == @user.id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
+    @negotiation.proposals.last.user_composer_id == @user._id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
 
     proposal = Negotiation::Proposal.new(params[:proposal])
-    proposal.user_composer_id = @user.id
+    proposal.user_composer_id = @user._id
 
     respond_to do |format|
       if @negotiation.proposals << proposal
@@ -123,7 +123,7 @@ class NegotiationsController < ApplicationController
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.find(params[:id])
     proposal = @negotiation.proposals.last
-    proposal.user_composer_id == @user.id ? proposal.cancel_composer : proposal.cancel_receiver
+    proposal.user_composer_id == @user._id ? proposal.cancel_composer : proposal.cancel_receiver
 
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }

@@ -52,7 +52,7 @@ class Item
 
   def pick(quantity)
     Product.new(name:name, description:description, images:images, quantity:quantity) do |product|
-      product.id = id
+      product._id = id
       product.owner_id = user_id
     end
   end

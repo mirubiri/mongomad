@@ -23,7 +23,7 @@ describe UserSheet do
 
   # Methods
   specify '.new' do
-    expect(UserSheet.new.id).to eq nil
+    expect(UserSheet.new._id).to eq nil
   end
 
   describe '#current_sheet' do
