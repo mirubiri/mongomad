@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe Cash do
-  # Variables
-  let(:cash) { Fabricate.build(:cash) }
-
   # Relations
   specify { Cash.should < Good }
 
