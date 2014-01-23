@@ -32,7 +32,17 @@ describe Negotiation do
   it { should_not validate_presence_of :offer }
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposals }
+  it { should validate_presence_of :messages }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
+
+  # Checks
+  pending("2 users")
+  pending("2 users diefentes")
+  pending("2xusersheet")
+  pending("1 user sheet para el primer negotiator")
+  pending("1 user sheet for 2nd negotiator")
+  pending("todas propuestas de negotiator 1 y negotiator 2")
+  pending("todos los mensages de negotiator 1 o negotiator2")
 
   it 'is invalid when there is no sheet for first user' do
     negotiation.users.first._id = nil

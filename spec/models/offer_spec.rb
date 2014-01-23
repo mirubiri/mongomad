@@ -27,6 +27,12 @@ describe Offer do
   it { should validate_length_of(:message).within(1..160) }
   it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
 
+  # Checks
+  pending("2xusersheet")
+  pending("1 user sheet para el primer dealer")
+  pending("1 user sheet for 2nd dealer")
+  pending("propuesta de composer y receiver")
+
   it 'is invalid when there is no sheet for user_composer' do
     offer.user_composer_id = nil
     expect(offer).to have(1).error_on(:user_sheets)

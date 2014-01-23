@@ -19,6 +19,15 @@ describe Deal do
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
 
+  # Checks
+  pending("2 users")
+  pending("users diferentes")
+  pending("2xusersheet")
+  pending("1 user sheet para el primer dealer")
+  pending("1 user sheet for 2nd dealer")
+  pending("todas propuestas de dealer 1 y dealer 2")
+  pending("todos los mensages de dealer 1 o dealer2")
+
   it 'is invalid when there is no sheet for first user' do
     deal.users.first._id = nil
     expect(deal).to have(1).error_on(:user_sheets)
