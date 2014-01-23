@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Alert do
-  xit 'should include a way of tracking new search results'
+  pending 'should include a way of tracking new search results'
 
   # Relations
   it { should belong_to :user }
@@ -13,7 +13,7 @@ describe Alert do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should_not have_autosave_on(:user) }
+  it { should_not have_autosave_on :user }
   it { should validate_length_of(:text).within(1..160) }
   it { should validate_presence_of :location }
 
