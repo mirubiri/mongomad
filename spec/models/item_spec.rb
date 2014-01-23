@@ -75,7 +75,7 @@ describe Item do
   end
 
   describe '#pick(quantity)' do
-    it 'returns a Product filled with item name, description,images and given quantity' do
+    it 'returns a Product filled with item name, description, images and given quantity' do
       expect(Product).to receive(:new).with(name:item.name, description:item.description, images:item.images, quantity:1)
       item.pick(1)
     end
@@ -119,12 +119,12 @@ describe Item do
 
   describe '#available?(quantity)' do
     it 'returns true if item has enough asked stock' do
-      asked = item.stock-1
+      asked = item.stock - 1
       expect(item.available?(asked)).to eq true
     end
 
     it 'returns false if item has not enough asked stock' do
-      asked = item.stock+1
+      asked = item.stock + 1
       expect(item.available?(asked)).to eq false
     end
 
