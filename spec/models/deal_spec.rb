@@ -45,12 +45,12 @@ describe Deal do
     expect(deal).to have(1).error_on(:user_sheets)
   end
 
-  it 'is invalid if there is any proposal not owned by both users simultaneously' do
+  it 'is invalid if there is any proposal not owned by both users' do
     deal.proposals << Fabricate.build(:proposal, composer:deal.users.first)
     expect(deal).to have(1).error_on(:proposals)
   end
 
-  it 'is invalid if there is any message not owned by one of both users' do
+  it 'is invalid if there is any message not owned by any of the users' do
     deal.messages << Fabricate.build(:message)
     expect(deal).to have(1).error_on(:messages)
   end

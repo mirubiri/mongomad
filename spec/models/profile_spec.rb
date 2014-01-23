@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Profile do
-  xit 'should have the city name'
+  pending 'should have the city name'
 
   # Modules
   it { should include_module Attachment::Images }

@@ -48,7 +48,7 @@ describe Offer do
     expect(offer).to have(1).error_on(:user_sheets)
   end
 
-  it 'is invalid if proposal is not owned by both users simultaneously' do
+  it 'is invalid if proposal is not owned by both users' do
     offer.proposal.composer_id = nil
     expect(offer).to have(1).error_on(:proposals)
   end

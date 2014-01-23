@@ -61,12 +61,12 @@ describe Negotiation do
     expect(negotiation).to have(1).error_on(:user_sheets)
   end
 
-  it 'is invalid if there is any proposal not owned by both users simultaneously' do
+  it 'is invalid if there is any proposal not owned by both users' do
     negotiation.proposals << Fabricate.build(:proposal, composer:negotiation.users.first)
     expect(negotiation).to have(1).error_on(:proposals)
   end
 
-  it 'is invalid if there is any message not owned by one of both users' do
+  it 'is invalid if there is any message not owned by any of the users' do
     negotiation.messages << Fabricate.build(:message)
     expect(negotiation).to have(1).error_on(:messages)
   end

@@ -22,35 +22,32 @@ describe Proposal do
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
   # Checks
-  pending("goods for composer")
-  pending("goods for receiver")
-  pending("all goods del composer o del receiver")
-  pending("no goods duplicados")
-  pending("only one cash")
-  pending("composer distinto de receiver")
+  it 'is invalid if composer and receiver are the same' do
+    proposal.receiver_id = proposal.composer_id
+    expect(proposal).to have(1).error_on(:users)
+  end
 
-  it 'is invalid when there is any good for composer' do
+  it 'is invalid if composer has no goods' do
     proposal.goods.delete_all(owner_id:proposal.composer_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid when there is any good for receiver' do
+  it 'is invalid if receiver has no goods' do
     proposal.goods.delete_all(owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid if any good is not owned by composer or receiver' do
+  it 'is invalid if there is any good not owned by one of the users' do
     proposal.goods << Fabricate.build(:product)
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid if a good is duplicated' do
-    good = proposal.goods.sample
-    proposal.goods << good
+  it 'is invalid if there is any duplicated good' do
+    proposal.goods << proposal.goods.sample
     expect(proposal).to have(1).error_on(:goods)
   end
 
-  it 'is invalid when there is more than one cash in goods' do
+  it 'is invalid if there are more than one cash' do
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
