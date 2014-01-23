@@ -22,40 +22,24 @@ class Offer
            :check_orphan_proposal
 
   def check_user_equality
-
+    errors.add(:users, "Composer and receiver should not be equal.") unless user_composer_id != user_receiver_id
   end
 
   def check_number_of_sheets
-
+    errors.add(:user_sheets, "Offer should have only two user_sheets.") unless user_sheets.size == 2
   end
 
   def check_composer_sheet
-
+    errors.add(:user_sheets, "Offer should have one user_sheet for composer.") unless user_sheets.where(_id:user_composer_id).size == 1
   end
 
   def check_receiver_sheet
-
+    errors.add(:user_sheets, "Offer should have one user_sheet for receiver.") unless user_sheets.where(_id:user_receiver_id).size == 1
   end
 
   def check_orphan_proposal
-
+    errors.add(:proposals, "Proposal should be owned by both users.") unless (user_composer_id == proposal.composer_id) && (user_receiver_id == proposal.receiver_id)
   end
-
-  # validate :check_composer_sheet,
-  #          :check_receiver_sheet,
-  #          :check_sheets_number
-
-  # def check_composer_sheet
-  #   errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:user_composer_id).size == 1
-  # end
-
-  # def check_receiver_sheet
-  #   errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:user_receiver_id).size == 1
-  # end
-
-  # def check_sheets_number
-  #   errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
-  # end
 
   def state_machine(machine = nil)
     @state_machine ||= begin
