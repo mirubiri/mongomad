@@ -20,7 +20,7 @@ describe Request do
 
   # Checks
   it 'is invalid if there is no sheet for user' do
-    reques.user_id = nil
+    request.user_id = nil
     expect(request).to have(1).error_on(:user_sheets)
   end
 
