@@ -95,7 +95,7 @@ describe Item do
       expect(item).to be_persisted
     end
 
-    context 'When given quantity is not available' do
+    context 'when given quantity is not available' do
       it 'returns false' do
         expect(item.sell(100)).to eq false
       end

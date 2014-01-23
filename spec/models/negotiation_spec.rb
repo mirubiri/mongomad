@@ -36,27 +36,39 @@ describe Negotiation do
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
   # Checks
-  pending("2 users")
-  pending("2 users diefentes")
-  pending("2xusersheet")
-  pending("1 user sheet para el primer negotiator")
-  pending("1 user sheet for 2nd negotiator")
-  pending("todas propuestas de negotiator 1 y negotiator 2")
-  pending("todos los mensages de negotiator 1 o negotiator2")
-
-  it 'is invalid when there is no sheet for first user' do
-    negotiation.users.first._id = nil
-    expect(negotiation).to have(1).error_on(:user_sheets)
+  it 'is invalid if there are more than two users' do
+    negotiation.users << Fabricate.build(:user)
+    expect(negotiation).to have(1).error_on(:users)
   end
 
-  it 'is invalid when there is no sheet for second user' do
-    negotiation.users.last._id = nil
-    expect(negotiation).to have(1).error_on(:user_sheets)
+  it 'is invalid if both users are the same' do
+    negotiation.users[1] = negotiation.users[0]
+    expect(negotiation).to have(1).error_on(:users)
   end
 
   it 'is invalid if there are more than two user sheets' do
     negotiation.user_sheets << Fabricate.build(:user_sheet)
     expect(negotiation).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is no sheet for first user' do
+    negotiation.users[0]._id = nil
+    expect(negotiation).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is no sheet for second user' do
+    negotiation.users[1]._id = nil
+    expect(negotiation).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is any proposal not owned by both users simultaneously' do
+    negotiation.proposals << Fabricate.build(:proposal, composer:negotiation.users.first)
+    expect(negotiation).to have(1).error_on(:proposals)
+  end
+
+  it 'is invalid if there is any message not owned by one of both users' do
+    negotiation.messages << Fabricate.build(:message)
+    expect(negotiation).to have(1).error_on(:messages)
   end
 
   # Methods

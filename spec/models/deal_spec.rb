@@ -50,7 +50,7 @@ describe Deal do
     expect(deal).to have(1).error_on(:proposals)
   end
 
-  it 'is invalid if there is any message not owned by one user' do
+  it 'is invalid if there is any message not owned by one of both users' do
     deal.messages << Fabricate.build(:message)
     expect(deal).to have(1).error_on(:messages)
   end
