@@ -32,6 +32,7 @@ describe Negotiation do
   it { should_not validate_presence_of :offer }
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposals }
+  it { should validate_presence_of :messages }
   it { should validate_inclusion_of(:state).to_allow('open','successful','ghosted','closed') }
 
   it 'is invalid when there is no sheet for first user' do
