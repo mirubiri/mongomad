@@ -32,7 +32,7 @@ class Proposal
   end
 
   def check_orphan_goods
-    errors.add(:goods, "All goods should be owned by composer or receiver.") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size
+    errors.add(:goods, "All goods should be owned by composer or receiver.") unless goods.or({ owner_id:composer_id }, { owner_id:receiver_id }).size == goods.size
   end
 
   def check_duplicated_goods
@@ -40,7 +40,7 @@ class Proposal
   end
 
   def check_multiple_cash
-    errors.add(:goods, "Proposal should have only one cash.") if goods.type(Cash).size > 1
+    errors.add(:goods, "Proposal should not have more than one cash.") if goods.type(Cash).size > 1
   end
 
   def state_machine(machine = nil)
