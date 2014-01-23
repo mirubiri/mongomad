@@ -42,7 +42,7 @@ describe Negotiation do
   end
 
   it 'is invalid if both users are the same' do
-    negotiation.users[1] = negotiation.users[0]
+    negotiation.users[1]._id = negotiation.users[0]._id
     expect(negotiation).to have(1).error_on(:users)
   end
 
