@@ -26,7 +26,7 @@ describe Deal do
   end
 
   it 'is invalid if both users are the same' do
-    deal.users[1] = deal.users[0]
+    deal.users[1]._id = deal.users[0]._id
     expect(deal).to have(1).error_on(:users)
   end
 
