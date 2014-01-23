@@ -20,27 +20,39 @@ describe Deal do
   it { should validate_presence_of :messages }
 
   # Checks
-  pending("2 users")
-  pending("users diferentes")
-  pending("2xusersheet")
-  pending("1 user sheet para el primer dealer")
-  pending("1 user sheet for 2nd dealer")
-  pending("todas propuestas de dealer 1 y dealer 2")
-  pending("todos los mensages de dealer 1 o dealer2")
-
-  it 'is invalid when there is no sheet for first user' do
-    deal.users.first._id = nil
-    expect(deal).to have(1).error_on(:user_sheets)
+  it 'is invalid if there are more than two users' do
+    deal.users << Fabricate.build(:user)
+    expect(deal).to have(1).error_on(:users)
   end
 
-  it 'is invalid when there is no sheet for second user' do
-    deal.users.last._id = nil
-    expect(deal).to have(1).error_on(:user_sheets)
+  it 'is invalid if both users are the same' do
+    deal.users[1] = deal.users[0]
+    expect(deal).to have(1).error_on(:users)
   end
 
   it 'is invalid if there are more than two user sheets' do
     deal.user_sheets << Fabricate.build(:user_sheet)
     expect(deal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is no sheet for first dealer' do
+    deal.users[0]._id = nil
+    expect(deal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is no sheet for second dealer' do
+    deal.users[1]._id = nil
+    expect(deal).to have(1).error_on(:user_sheets)
+  end
+
+  it 'is invalid if there is any proposal not owned by both users simultaneously' do
+    deal.proposals << Fabricate.build(:proposal, composer:deal.users.first)
+    expect(deal).to have(1).error_on(:proposals)
+  end
+
+  it 'is invalid if there is any message not owned by one dealer' do
+    deal.messages << Fabricate.build(:message)
+    expect(deal).to have(1).error_on(:messages)
   end
 
   # Methods
