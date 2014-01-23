@@ -49,8 +49,8 @@ describe Offer do
   end
 
   it 'is invalid if proposal is not owned by both users' do
-    offer.proposal.composer_id = nil
-    expect(offer).to have(1).error_on(:proposals)
+    offer.proposal = Fabricate.build(:proposal)
+    expect(offer).to have(1).error_on(:proposal)
   end
 
   # Methods
