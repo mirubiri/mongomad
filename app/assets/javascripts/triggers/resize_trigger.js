@@ -18,12 +18,8 @@ $(window).resize(function () {
       $("#content-side").resetContainerHeight();
       $('#mainLayout').matchPrincipalContainersHeighs();
 
-
-
       var lugar = locationName();
       loadNeededScripts(lugar);
-      //resetContainers();
-
 
     });
 

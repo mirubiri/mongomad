@@ -11,18 +11,16 @@ Mongomad::Application.routes.draw do
     resources :offers
 
     resources :negotiations do
-
       member do
         get 'sign'
         get 'confirm'
         get 'cancel'
+        get 'pusher_message'
       end
     end
 
     resources :deals
     resources :alerts
   end
-
-  match 'negotiations/pusher_message' => 'negotiations#pusher_message', :as => 'pusher_message'
 
 end

@@ -116,8 +116,11 @@
             <div class="writting_box">
               <div class="message">
                 <input type="text" placeholder="write here" name="text">
-                <%= button_to "Send", action: "pusher_message", remote: true %>
               </div>
+              <%= link_to "Send",
+                pusher_message_user_negotiation_path(@user,:negotiation),
+                {:remote => true}
+              %>
             </div>
             <div class="dialog_head">
               <div class="option_icons">
@@ -134,10 +137,4 @@
 
 </div>
 
-
 <% end %>
-
-
-
-
-
