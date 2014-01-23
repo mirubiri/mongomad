@@ -18,31 +18,31 @@ class Deal
            :check_orphan_messages
 
   def check_number_of_users
-
+     errors.add(:users, "Deal should have only two user_sheets.") unless users.size == 2
   end
 
   def check_user_equality
-
+    errors.add(:users, "Negotiation users should not be equal.") unless users[0]._id != users[1]._id
   end
 
   def check_number_of_sheets
-
+    errors.add(:user_sheets, "Deal should have only two user_sheets.") unless user_sheets.size == 2
   end
 
   def check_first_user_sheet
-
+    errors.add(:user_sheets, "Deal should have one user_sheet for first user.") unless user_sheets.where(_id:users[0]._id).size == 1
   end
 
   def check_second_user_sheet
-
+    errors.add(:user_sheets, "Deal should have one user_sheet for second user.") unless user_sheets.where(_id:users[1]._id).size == 1
   end
 
   def check_orphan_proposals
-
+    # errors.add(:proposals, "All proposals should be owned by both users.") unless (user_composer_id == proposal.composer_id) && (user_receiver_id == proposal.receiver_id)
   end
 
   def check_orphan_messages
-
+    # errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { owner_id:users[1]._id }).size == messages.size
   end
 
   # def check_composer_sheet

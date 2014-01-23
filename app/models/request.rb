@@ -13,6 +13,6 @@ class Request
   validate :check_user_sheet
 
   def check_user_sheet
-    errors.add(:user_sheets, "Request should have one user_sheet.") unless user_id == user_sheet._id
+    errors.add(:user_sheets, "Request should have one user_sheet for user.") unless user_id == user_sheet._id
   end
 end

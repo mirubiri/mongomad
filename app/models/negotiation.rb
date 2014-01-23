@@ -10,7 +10,7 @@ class Negotiation
 
   field :state, default:'open'
 
-  validates_presence_of :users, :user_sheets, :proposals
+  validates_presence_of :users, :user_sheets, :proposals, :messages
   validates_inclusion_of :state, in: ['open','successful','ghosted','closed']
 
   validate :check_number_of_users,
@@ -22,33 +22,33 @@ class Negotiation
            :check_orphan_messages
 
   def check_number_of_users
-
+    errors.add(:users, "Negotiation should have only two user_sheets.") unless users.size == 2
   end
 
   def check_user_equality
-
+    errors.add(:users, "Negotiation users should not be equal.") unless users[0]._id != users[1]._id
   end
 
   def check_number_of_sheets
-
+    errors.add(:user_sheets, "Negotiation should have only two user_sheets.") unless user_sheets.size == 2
   end
 
   def check_first_user_sheet
-
+    errors.add(:user_sheets, "Negotiation should have one user_sheet for first user.") unless user_sheets.where(_id:users[0]._id).size == 1
   end
 
   def check_second_user_sheet
-
+    errors.add(:user_sheets, "Negotiation should have one user_sheet for second user.") unless user_sheets.where(_id:users[1]._id).size == 1
   end
 
   def check_orphan_proposals
-
+    #errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.or({ composer_id:users.first._id },{ receiver_id:users.last._id }).size  == proposals.size
+    #errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.or({ proposals.and({ composer_id:users.first._id },{ receiver_id:users.last._id }) }, { proposals.and({ composer_id:users.last._id }, { receiver_id:users.first._id })}).size == proposals.size
   end
 
   def check_orphan_messages
-
+    # errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
   end
-
 
   # validate :check_composer_sheet,
   #          :check_receiver_sheet,
