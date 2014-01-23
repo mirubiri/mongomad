@@ -24,11 +24,11 @@ class Proposal
   end
 
   def check_composer_goods
-    errors.add(:goods, "Composer should have at least one good.") unless products(composer_id).count > 0
+    errors.add(:goods, "Composer should have at least one good.") unless products(composer_id).size > 0
   end
 
   def check_receiver_goods
-    errors.add(:goods, "Receiver should have at least one good.") unless products(receiver_id).count > 0
+    errors.add(:goods, "Receiver should have at least one good.") unless products(receiver_id).size > 0
   end
 
   def check_orphan_goods
