@@ -35,12 +35,12 @@ describe Deal do
     expect(deal).to have(1).error_on(:user_sheets)
   end
 
-  it 'is invalid if there is no sheet for first dealer' do
+  it 'is invalid if there is no sheet for first user' do
     deal.users[0]._id = nil
     expect(deal).to have(1).error_on(:user_sheets)
   end
 
-  it 'is invalid if there is no sheet for second dealer' do
+  it 'is invalid if there is no sheet for second user' do
     deal.users[1]._id = nil
     expect(deal).to have(1).error_on(:user_sheets)
   end
@@ -50,7 +50,7 @@ describe Deal do
     expect(deal).to have(1).error_on(:proposals)
   end
 
-  it 'is invalid if there is any message not owned by one dealer' do
+  it 'is invalid if there is any message not owned by one user' do
     deal.messages << Fabricate.build(:message)
     expect(deal).to have(1).error_on(:messages)
   end
