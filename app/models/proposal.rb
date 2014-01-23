@@ -12,32 +12,63 @@ class Proposal
   validates_presence_of :goods, :composer_id, :receiver_id
   validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
 
-  validate :check_composer_has_goods,
-           :check_receiver_has_goods,
-           :check_good_owner,
-           :check_duplicated_good,
+  validate :check_user_equality,
+           :check_composer_goods,
+           :check_receiver_goods,
+           :check_orphan_goods,
+           :check_duplicated_goods,
            :check_multiple_cash
 
+  def check_user_equality
 
-  def check_composer_has_goods
-    errors.add(:goods, "Composer should have at least one good") unless products(composer_id).count > 0
   end
 
-  def check_receiver_has_goods
-    errors.add(:goods, "Receiver should have at least one good") unless products(receiver_id).count > 0
+  def check_composer_goods
+
   end
 
-  def check_good_owner
-    errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size
+  def check_receiver_goods
+
   end
 
-  def check_duplicated_good
-    errors.add(:goods, "Proposal should not have duplicated good") unless goods.distinct(:id).size == goods.size
+  def check_orphan_goods
+
+  end
+
+  def check_duplicated_goods
+
   end
 
   def check_multiple_cash
-    errors.add(:goods, "Proposal should have only one cash") if goods.type(Cash).size > 1
+
   end
+
+  # validate :check_composer_has_goods,
+  #          :check_receiver_has_goods,
+  #          :check_good_owner,
+  #          :check_duplicated_good,
+  #          :check_multiple_cash
+
+
+  # def check_composer_has_goods
+  #   errors.add(:goods, "Composer should have at least one good") unless products(composer_id).count > 0
+  # end
+
+  # def check_receiver_has_goods
+  #   errors.add(:goods, "Receiver should have at least one good") unless products(receiver_id).count > 0
+  # end
+
+  # def check_good_owner
+  #   errors.add(:goods, "All goods should be owned by composer or receiver") unless goods.or({owner_id:composer_id}, {owner_id:receiver_id}).size == goods.size
+  # end
+
+  # def check_duplicated_good
+  #   errors.add(:goods, "Proposal should not have duplicated good") unless goods.distinct(:id).size == goods.size
+  # end
+
+  # def check_multiple_cash
+  #   errors.add(:goods, "Proposal should have only one cash") if goods.type(Cash).size > 1
+  # end
 
   def state_machine(machine = nil)
     @state_machine ||= begin

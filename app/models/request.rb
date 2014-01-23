@@ -9,4 +9,10 @@ class Request
 
   validates_presence_of :user, :user_sheet
   validates :text, length: { minimum: 1, maximum: 160 }
+
+  validate :check_user_sheet
+
+  def check_user_sheet
+
+  end
 end

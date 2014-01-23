@@ -27,7 +27,7 @@ describe Product do
   pending("id coincide con el del item")
   pending("name coincide con el del item a menos que este outdated")
   pending("description coincide con el del item a menos que este outdated")
-  pending("quantity menos igual stock a menos que outdated")
+  pending("quantity menos igual stock a menos que este outdated")
 
   # Methods
   describe '#state_machine(machine)' do

@@ -15,21 +15,47 @@ class Offer
   validates :message, length: { minimum: 1, maximum: 160 }
   validates_inclusion_of :state, in: ['new','negotiating','negotiated','ghosted','discarded']
 
-  validate :check_composer_sheet,
+  validate :check_user_equality,
+           :check_number_of_sheets,
+           :check_composer_sheet,
            :check_receiver_sheet,
-           :check_sheets_number
+           :check_orphan_proposal
+
+  def check_user_equality
+
+  end
+
+  def check_number_of_sheets
+
+  end
 
   def check_composer_sheet
-    errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:user_composer_id).size == 1
+
   end
 
   def check_receiver_sheet
-    errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:user_receiver_id).size == 1
+
   end
 
-  def check_sheets_number
-    errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
+  def check_orphan_proposal
+
   end
+
+  # validate :check_composer_sheet,
+  #          :check_receiver_sheet,
+  #          :check_sheets_number
+
+  # def check_composer_sheet
+  #   errors.add(:user_sheets, "Composer should have one user_sheet") unless user_sheets.where(_id:user_composer_id).size == 1
+  # end
+
+  # def check_receiver_sheet
+  #   errors.add(:user_sheets, "Receiver should have one user_sheet") unless user_sheets.where(_id:user_receiver_id).size == 1
+  # end
+
+  # def check_sheets_number
+  #   errors.add(:user_sheets, "Proposal should have only two user_sheets") unless user_sheets.size == 2
+  # end
 
   def state_machine(machine = nil)
     @state_machine ||= begin
