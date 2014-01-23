@@ -18,6 +18,9 @@ describe Request do
   it { should validate_presence_of :user_sheet }
   it { should validate_length_of(:text).within(1..160) }
 
+  # Checks
+  pending("1 user sheet para el usuario")
+
   # Factories
   specify { expect(Fabricate.build(:request)).to be_valid }
 end

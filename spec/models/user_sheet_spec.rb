@@ -21,6 +21,12 @@ describe UserSheet do
   it { should validate_presence_of :last_name }
   it { should validate_presence_of :location }
 
+  # Checks
+  pending("nick coincide con el de user a menos que este outdated")
+  pending("first_name coincide con el de user a menos que este outdated")
+  pending("last_name coincide con el de user a menos que este outdated")
+  pending("location coincide con el de user a menos que este outdated")
+
   # Methods
   specify '.new' do
     expect(UserSheet.new._id).to eq nil

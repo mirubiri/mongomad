@@ -23,6 +23,12 @@ describe Product do
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
+  # Checks
+  pending("id coincide con el del item")
+  pending("name coincide con el del item a menos que este outdated")
+  pending("description coincide con el del item a menos que este outdated")
+  pending("quantity menos igual stock a menos que outdated")
+
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }

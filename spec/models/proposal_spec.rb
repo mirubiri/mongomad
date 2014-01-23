@@ -21,6 +21,14 @@ describe Proposal do
   it { should validate_presence_of :receiver_id }
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
 
+  # Checks
+  pending("goods for composer")
+  pending("goods for receiver")
+  pending("all goods del composer o del receiver")
+  pending("no goods duplicados")
+  pending("only one cash")
+  pending("composer distinto de receiver")
+
   it 'is invalid when there is any good for composer' do
     proposal.goods.delete_all(owner_id:proposal.composer_id)
     expect(proposal).to have(1).error_on(:goods)
