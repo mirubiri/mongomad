@@ -5,7 +5,6 @@ $("#ppal_container").html("<%=j render 'negotiation_list' %>");
 
 
 //Carga sus funciones especificas de dibujado
-destroyMasonry();
 $('.negotiation').regulateWidth();
 $('.negotiation').maximizeConversationWidth();
 $('.negotiation').maximizeConversationsHeights();
@@ -15,6 +14,8 @@ $('.negotiation').focusNegotiationWritebox();
 $('.negotiation').scrollConversation();
 
 //$('.negotiation').conectToObjectPusherChannel();
+destroyMasonry();
+
 
 
 //Inicio sesion en pusher para el tema de los mensajes,
@@ -28,6 +29,7 @@ Pusher.log = function(message) {
 
 var pusher = new Pusher('f34baa838c2708acbd0f');
 var channel = pusher.subscribe('my_channel');
+
 channel.bind('my_event', function(data) {
-  alert(data.message);
+	$('.negotiation').find('#conversationofnegotiation').append("<p>mensaje con pusher</p>");
 });

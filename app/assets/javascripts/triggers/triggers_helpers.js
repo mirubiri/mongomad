@@ -8,7 +8,6 @@ function loadNeededScripts(lugar){
   else if ( lugar === "items" ) {
   }
   else if ( lugar === "negotiations" ) {
-
   }
   else if ( lugar === "deals" ) {
   }
