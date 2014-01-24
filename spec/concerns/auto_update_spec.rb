@@ -42,7 +42,7 @@ describe AutoUpdate do
   end
 
   describe '#auto_update' do
-    context 'When is updated' do
+    context 'when is updated' do
       before { copy.update_attributes(outdated:false) }
 
       it 'do not retrieve original object' do
@@ -64,7 +64,7 @@ describe AutoUpdate do
       end
     end
 
-    context 'When is outdated' do
+    context 'when is outdated' do
       before { copy.update_attributes(outdated:true) }
 
       it 'updates all attributes' do
@@ -85,7 +85,7 @@ describe AutoUpdate do
   end
 
   describe '#outdate' do
-    context 'When is outdated' do
+    context 'when is outdated' do
       before { copy.update_attributes(outdated:true) }
 
       it 'returns true' do
@@ -93,7 +93,7 @@ describe AutoUpdate do
       end
     end
 
-    context 'When is updated' do
+    context 'when is updated' do
       before { copy.update_attributes(outdated:false) }
 
       it 'outdates the object' do
