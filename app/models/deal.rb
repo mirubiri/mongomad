@@ -17,6 +17,7 @@ class Deal
            :check_orphan_proposals,
            :check_orphan_messages
 
+  private
   def check_number_of_users
      errors.add(:users, "Deal should have only two user_sheets.") unless users.size == 2
   end
@@ -46,6 +47,7 @@ class Deal
     errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
   end
 
+  public
   def agreement
     proposals.last
   end
