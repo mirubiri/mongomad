@@ -38,11 +38,12 @@ class Deal
   end
 
   def check_orphan_proposals
-    # errors.add(:proposals, "All proposals should be owned by both users.") unless (user_composer_id == proposal.composer_id) && (user_receiver_id == proposal.receiver_id)
+    #TODO: Fusionar las dos consultas AND+AND en una OR(AND,AND)
+    errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.and({ composer_id:users[0]._id }, { receiver_id:users[1].id }).size + proposals.and({ composer_id:users[1]._id }, { receiver_id:users[0].id }).size == proposals.size
   end
 
   def check_orphan_messages
-    # errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { owner_id:users[1]._id }).size == messages.size
+    errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
   end
 
   # def check_composer_sheet
