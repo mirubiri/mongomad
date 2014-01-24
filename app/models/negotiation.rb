@@ -42,12 +42,12 @@ class Negotiation
   end
 
   def check_orphan_proposals
-    #errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.or({ composer_id:users.first._id },{ receiver_id:users.last._id }).size  == proposals.size
-    #errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.or({ proposals.and({ composer_id:users.first._id },{ receiver_id:users.last._id }) }, { proposals.and({ composer_id:users.last._id }, { receiver_id:users.first._id })}).size == proposals.size
+    #TODO: Fusionar las dos consultas AND+AND en una OR(AND,AND)
+    errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.and({ composer_id:users[0]._id }, { receiver_id:users[1].id }).size + proposals.and({ composer_id:users[1]._id }, { receiver_id:users[0].id }).size == proposals.size
   end
 
   def check_orphan_messages
-    # errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
+    errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
   end
 
   # validate :check_composer_sheet,
