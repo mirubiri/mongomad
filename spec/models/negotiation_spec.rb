@@ -39,36 +39,43 @@ describe Negotiation do
   it 'is invalid if there are more than two users' do
     negotiation.users << Fabricate.build(:user)
     expect(negotiation).to have(1).error_on(:users)
+    expect(negotiation.errors_on(:users)).to include('Negotiation should have only two users.')
   end
 
   it 'is invalid if both users are the same' do
     negotiation.users[1]._id = negotiation.users[0]._id
     expect(negotiation).to have(1).error_on(:users)
+    expect(negotiation.errors_on(:users)).to include('Negotiation users should not be equal.')
   end
 
   it 'is invalid if there are more than two user sheets' do
     negotiation.user_sheets << Fabricate.build(:user_sheet)
     expect(negotiation).to have(1).error_on(:user_sheets)
+    expect(negotiation.errors_on(:user_sheets)).to include('Negotiation should have only two user_sheets.')
   end
 
   it 'is invalid if there is no sheet for first user' do
     negotiation.users[0]._id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
+    expect(negotiation.errors_on(:user_sheets)).to include('Negotiation should have one user_sheet for first user.')
   end
 
   it 'is invalid if there is no sheet for second user' do
     negotiation.users[1]._id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
+    expect(negotiation.errors_on(:user_sheets)).to include('Negotiation should have one user_sheet for second user.')
   end
 
   it 'is invalid if there is any proposal not owned by both users' do
     negotiation.proposals << Fabricate.build(:proposal, composer:negotiation.users.first)
     expect(negotiation).to have(1).error_on(:proposals)
+    expect(negotiation.errors_on(:proposals)).to include('All proposals should be owned by both users.')
   end
 
   it 'is invalid if there is any message not owned by any of the users' do
     negotiation.messages << Fabricate.build(:message)
     expect(negotiation).to have(1).error_on(:messages)
+    expect(negotiation.errors_on(:messages)).to include('All messages should be owned by one of the users.')
   end
 
   # Methods
