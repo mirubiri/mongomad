@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UserSheet do
   # Modules
   it { should include_module Attachment::Images }
+  pending("test autoupdate")
 
   # Relations
   it { should be_embedded_in :user_sheet_container }
@@ -12,6 +13,7 @@ describe UserSheet do
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
   it { should have_fields :nick, :first_name, :last_name }
   it { should have_field(:location).of_type(Array) }
+  pending("test autoupdate fields")
 
   # Validations
   it { should_not validate_presence_of :user_sheet_container }
