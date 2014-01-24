@@ -38,7 +38,7 @@ class Offer
   end
 
   def check_orphan_proposal
-    # errors.add(:proposal, "Proposal should be owned by both users.") unless (user_composer_id == proposal.composer_id) && (user_receiver_id == proposal.receiver_id)
+    errors.add(:proposal, "Proposal should be owned by both users.") unless (proposal.composer_id == user_composer_id) && (proposal.receiver_id == user_receiver_id)
   end
 
   def state_machine(machine = nil)
