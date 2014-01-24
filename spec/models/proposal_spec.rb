@@ -25,32 +25,38 @@ describe Proposal do
   it 'is invalid if composer and receiver are the same' do
     proposal.receiver_id = proposal.composer_id
     expect(proposal).to have(1).error_on(:users)
+    expect(proposal.errors_on(:users)).to include('Composer and receiver should not be equal.')
   end
 
   it 'is invalid if composer has no goods' do
     proposal.goods.delete_all(owner_id:proposal.composer_id)
     expect(proposal).to have(1).error_on(:goods)
+    expect(proposal.errors_on(:goods)).to include('Composer should have at least one good.')
   end
 
   it 'is invalid if receiver has no goods' do
     proposal.goods.delete_all(owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
+    expect(proposal.errors_on(:goods)).to include('Receiver should have at least one good.')
   end
 
   it 'is invalid if there is any good not owned by one of the users' do
     proposal.goods << Fabricate.build(:product)
     expect(proposal).to have(1).error_on(:goods)
+    expect(proposal.errors_on(:goods)).to include('All goods should be owned by composer or receiver.')
   end
 
   it 'is invalid if there is any duplicated good' do
     proposal.goods << proposal.goods.sample
     expect(proposal).to have(1).error_on(:goods)
+    expect(proposal.errors_on(:goods)).to include('Proposal should not have any duplicated good.')
   end
 
   it 'is invalid if there are more than one cash' do
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
+    expect(proposal.errors_on(:goods)).to include('Proposal should not have more than one cash.')
   end
 
   # Methods
