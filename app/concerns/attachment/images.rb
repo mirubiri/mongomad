@@ -9,11 +9,11 @@ module Attachment::Images
 
   private
   def check_main_image_exist
-    errors.add(:images, "There is no main image") unless images.where(main:true).exists?
+    errors.add(:images, "There is no main image.") unless images.where(main:true).exists?
   end
 
   def check_multiple_main_image
-    errors.add(:images, "Cannot have more than one main image") if images.where(main:true).size > 1
+    errors.add(:images, "Cannot have more than one main image.") if images.where(main:true).size > 1
   end
 
   public
