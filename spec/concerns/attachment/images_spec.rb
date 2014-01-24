@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Attachment::Images do
+  # Variables
   let (:test_class) do
     Struct.new(nil) do
       include Mongoid::Document
@@ -8,7 +9,7 @@ describe Attachment::Images do
     end
   end
 
-  let(:image_one) { Fabricate.build(:image_product, id:'one',main: true) }
+  let(:image_one) { Fabricate.build(:image_product, id:'one', main: true) }
   let(:image_two) { Fabricate.build(:image_product, id:'two') }
   let(:image_three) { Fabricate.build(:image_product, id:'three') }
 
@@ -20,21 +21,22 @@ describe Attachment::Images do
     test
   end
 
-  # Validations
   subject { test_class }
 
+  # Relations
   it { should embed_many :images }
 
+  # Checks
   it 'is invalid when no main image' do
     image_holder.images.update_all(main:false)
-    expect(image_holder.errors_on(:images)).to include('There is no main image')
     expect(image_holder).to have(1).errors_on(:images)
+    expect(image_holder.errors_on(:images)).to include('There is no main image')
   end
 
   it 'is invalid when more than one main image' do
     image_holder.images.update_all(main:true)
-    expect(image_holder.errors_on(:images)).to include('Cannot have more than one main image')
     expect(image_holder).to have(1).errors_on(:images)
+    expect(image_holder.errors_on(:images)).to include('Cannot have more than one main image')
   end
 
   # Methods

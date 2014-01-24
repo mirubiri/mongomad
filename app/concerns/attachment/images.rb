@@ -7,6 +7,16 @@ module Attachment::Images
     validate :check_main_image_exist, :check_multiple_main_image
   end
 
+  private
+  def check_main_image_exist
+    errors.add(:images, "There is no main image") unless images.where(main:true).exists?
+  end
+
+  def check_multiple_main_image
+    errors.add(:images, "Cannot have more than one main image") if images.where(main:true).size > 1
+  end
+
+  public
   def main_image
     images.where(main:true).first
   end
@@ -20,14 +30,5 @@ module Attachment::Images
     else
       false
     end
-  end
-
-  private
-  def check_main_image_exist
-    errors.add(:images, "There is no main image") unless images.where(main:true).exists?
-  end
-
-  def check_multiple_main_image
-    errors.add(:images, "Cannot have more than one main image") if images.where(main:true).size > 1
   end
 end

@@ -9,5 +9,6 @@ describe Attachment::Image do
 
   # Factories
   specify { expect(Fabricate.build(:image_face)).to be_valid }
+
   specify { expect(Fabricate.build(:image_product)).to be_valid }
 end
