@@ -31,26 +31,31 @@ describe Offer do
   it 'is invalid if both users are the same' do
     offer.user_receiver = offer.user_composer
     expect(offer).to have(1).error_on(:users)
+    expect(offer.errors_on(:users)).to include('Composer and receiver should not be equal.')
   end
 
   it 'is invalid if there are more than two user sheets' do
     offer.user_sheets << Fabricate.build(:user_sheet)
     expect(offer).to have(1).error_on(:user_sheets)
+    expect(offer.errors_on(:user_sheets)).to include('Offer should have only two user_sheets.')
   end
 
   it 'is invalid if there is no sheet for composer' do
     offer.user_composer_id = nil
     expect(offer).to have(1).error_on(:user_sheets)
+    expect(offer.errors_on(:user_sheets)).to include('Offer should have one user_sheet for composer.')
   end
 
   it 'is invalid if there is no sheet for receiver' do
     offer.user_receiver_id = nil
     expect(offer).to have(1).error_on(:user_sheets)
+    expect(offer.errors_on(:user_sheets)).to include('Offer should have one user_sheet for receiver.')
   end
 
   it 'is invalid if proposal is not owned by both users' do
     offer.proposal = Fabricate.build(:proposal)
     expect(offer).to have(1).error_on(:proposal)
+    expect(offer.errors_on(:proposal)).to include('Proposal should be owned by both users.')
   end
 
   # Methods
