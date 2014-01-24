@@ -21,6 +21,7 @@ class Offer
            :check_receiver_sheet,
            :check_orphan_proposal
 
+  private
   def check_user_equality
     errors.add(:users, "Composer and receiver should not be equal.") unless user_composer_id != user_receiver_id
   end
@@ -41,6 +42,7 @@ class Offer
     errors.add(:proposal, "Proposal should be owned by both users.") unless (proposal.composer_id == user_composer_id) && (proposal.receiver_id == user_receiver_id)
   end
 
+  public
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
