@@ -8,11 +8,11 @@ class Product < Good
   field :quantity,   type:Integer
   field :state,      default:'available'
 
+  auto_update :name, :description, :images, using: :item
+
   validates_presence_of :_id, :name, :description, :owner_id
   validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
-
-  auto_update :name, :description, :images, using: :item
 
   def state_machine(machine = nil)
     @state_machine ||= begin
