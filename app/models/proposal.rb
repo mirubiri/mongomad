@@ -20,27 +20,27 @@ class Proposal
            :check_multiple_cash
 
   def check_user_equality
-    # errors.add(:users, "Composer and receiver should not be equal.") unless composer_id != receiver_id
+    errors.add(:users, "Composer and receiver should not be equal.") unless composer_id != receiver_id
   end
 
   def check_composer_goods
-    # errors.add(:goods, "Composer should have at least one good.") unless products(composer_id).size > 0
+    errors.add(:goods, "Composer should have at least one good.") unless products(composer_id).size > 0
   end
 
   def check_receiver_goods
-    # errors.add(:goods, "Receiver should have at least one good.") unless products(receiver_id).size > 0
+    errors.add(:goods, "Receiver should have at least one good.") unless products(receiver_id).size > 0
   end
 
   def check_orphan_goods
-    # errors.add(:goods, "All goods should be owned by composer or receiver.") unless goods.or({ owner_id:composer_id }, { owner_id:receiver_id }).size == goods.size
+    errors.add(:goods, "All goods should be owned by composer or receiver.") unless goods.or({ owner_id:composer_id }, { owner_id:receiver_id }).size == goods.size
   end
 
   def check_duplicated_goods
-    # errors.add(:goods, "Proposal should not have any duplicated good.") unless goods.distinct(:id).size == goods.size
+    errors.add(:goods, "Proposal should not have any duplicated good.") unless goods.distinct(:id).size == goods.size
   end
 
   def check_multiple_cash
-    # errors.add(:goods, "Proposal should not have more than one cash.") if goods.type(Cash).size > 1
+    errors.add(:goods, "Proposal should not have more than one cash.") if goods.type(Cash).size > 1
   end
 
   def state_machine(machine = nil)
