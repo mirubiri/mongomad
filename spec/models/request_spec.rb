@@ -22,6 +22,7 @@ describe Request do
   it 'is invalid if there is no sheet for user' do
     request.user_id = nil
     expect(request).to have(1).error_on(:user_sheets)
+    expect(request.errors_on(:user_sheets)).to include('Request should have one user_sheet for user.')
   end
 
   # Factories
