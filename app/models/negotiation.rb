@@ -21,8 +21,9 @@ class Negotiation
            :check_orphan_proposals,
            :check_orphan_messages
 
+  private
   def check_number_of_users
-    errors.add(:users, "Negotiation should have only two user_sheets.") unless users.size == 2
+    errors.add(:users, "Negotiation should have only two users.") unless users.size == 2
   end
 
   def check_user_equality
@@ -50,6 +51,7 @@ class Negotiation
     errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
   end
 
+  private
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
