@@ -8,7 +8,7 @@ module AutoUpdate
   end
 
   module ClassMethods
-    # Specify which fields to update. Specify the associated object using the :from option.
+    # Specify which fields to update. Specify the associated object using the :using option.
     #
     # auto_update :field_one, :field_two, using:'relation'
 
