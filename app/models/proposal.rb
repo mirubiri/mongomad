@@ -19,6 +19,7 @@ class Proposal
            :check_duplicated_goods,
            :check_multiple_cash
 
+  private
   def check_user_equality
     errors.add(:users, "Composer and receiver should not be equal.") unless composer_id != receiver_id
   end
@@ -43,6 +44,7 @@ class Proposal
     errors.add(:goods, "Proposal should not have more than one cash.") if goods.type(Cash).size > 1
   end
 
+  public
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
