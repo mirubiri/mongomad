@@ -5,6 +5,9 @@ describe Product do
   let(:item) { Fabricate(:item) }
   let(:product) { Fabricate.build(:product, item:item) }
 
+  # Modules
+  pending("test autoupdate")
+
   # Relations
   specify { Product.should < Good }
 
@@ -14,6 +17,7 @@ describe Product do
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
+  pending("test autoupdate fields")
 
   # Validations
   it { should validate_presence_of :_id }
