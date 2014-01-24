@@ -19,7 +19,7 @@ class Deal
 
   private
   def check_number_of_users
-     errors.add(:users, "Deal should have only two user_sheets.") unless users.size == 2
+    errors.add(:users, "Deal should have only two user_sheets.") unless users.size == 2
   end
 
   def check_user_equality
