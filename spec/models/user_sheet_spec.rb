@@ -13,6 +13,7 @@ describe UserSheet do
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
   it { should have_fields :nick, :first_name, :last_name }
   it { should have_field(:location).of_type(Array) }
+  it { should auto_update(:nick, :first_name, :last_name, :location, :images).using :current_sheet }
 
   # Validations
   it { should_not validate_presence_of :user_sheet_container }
