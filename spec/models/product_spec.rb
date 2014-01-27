@@ -5,9 +5,6 @@ describe Product do
   let(:item) { Fabricate(:item) }
   let(:product) { Fabricate.build(:product, item:item) }
 
-  # Modules
-  pending("test autoupdate")
-
   # Relations
   specify { Product.should < Good }
 
@@ -17,7 +14,6 @@ describe Product do
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
-  pending("test autoupdate fields")
 
   # Validations
   it { should validate_presence_of :_id }
@@ -26,12 +22,6 @@ describe Product do
   it { should validate_presence_of :owner_id }
   it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
-
-  # Checks
-  pending("id coincide con el del item")
-  pending("name coincide con el del item a menos que este outdated")
-  pending("description coincide con el del item a menos que este outdated")
-  pending("quantity menos igual stock a menos que este outdated")
 
   # Methods
   describe '#state_machine(machine)' do
