@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Offer do
-  # Variables
   let(:offer) { Fabricate.build(:offer) }
 
   # Relations

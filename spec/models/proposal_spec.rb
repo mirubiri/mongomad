@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Proposal do
-  # Variables
   let(:proposal) { Fabricate.build(:proposal) }
 
   # Relations

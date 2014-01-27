@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Deal do
-  # Variables
   let(:deal) { Fabricate.build(:deal) }
 
   # Relations

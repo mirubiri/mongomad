@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Negotiation do
-  # Variables
   let(:negotiation) { Fabricate.build(:negotiation) }
   let(:composer_id) { negotiation.proposal.composer_id }
   let(:receiver_id) { negotiation.proposal.receiver_id }

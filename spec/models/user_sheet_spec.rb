@@ -3,6 +3,7 @@ require 'spec_helper'
 describe UserSheet do
   # Modules
   it { should include_module Attachment::Images }
+  it { should include_module AutoUpdate }
 
   # Relations
   it { should be_embedded_in :user_sheet_container }
