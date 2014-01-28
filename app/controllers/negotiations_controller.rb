@@ -1,8 +1,10 @@
 class NegotiationsController < ApplicationController
+
+  include ApplicationHelper
+
   #before_filter :authenticate_user!
   # GET /negotiations
   # GET /negotiations.json
-
   def index
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
@@ -136,7 +138,7 @@ class NegotiationsController < ApplicationController
     @user = User.find(params[:user_id])
     @negotiation = params[:negotiation_id]
     @message = params[:message]
-    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation})
+    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation, user: @user})
     respond_to do |format|
       format.js
     end
