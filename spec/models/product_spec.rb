@@ -16,7 +16,7 @@ describe Product do
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:quantity).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
-  it { should auto_update(:name,:description,:images).using :item }
+  it { should auto_update(:name, :description, :images).using :item }
 
   # Validations
   it { should validate_presence_of :_id }

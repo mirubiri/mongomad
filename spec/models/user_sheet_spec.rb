@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe UserSheet do
+  let(:user) { Fabricate.build(:user) }
+
   # Modules
   it { should include_module Attachment::Images }
   it { should include_module AutoUpdate }
@@ -29,7 +31,6 @@ describe UserSheet do
   end
 
   describe '#current_sheet' do
-    let(:user) { Fabricate.build(:user) }
     let(:outdated_sheet) { user.sheet }
 
     before { User.stub(:find).and_return(user) }
