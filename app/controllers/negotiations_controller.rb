@@ -5,6 +5,7 @@ class NegotiationsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
+    @negotiation = Negotiation.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -133,7 +134,9 @@ class NegotiationsController < ApplicationController
   # Prueba el canal de Pusher
   def pusher_message
     @user = User.find(params[:user_id])
-    Pusher.trigger('my_channel', 'my_event', {message: 'message sendded'})
+    @negotiation = params[:negotiation_id]
+    @message = params[:message]
+    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation})
     respond_to do |format|
       format.js
     end

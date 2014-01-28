@@ -3,5 +3,5 @@ $(window).load(function(event){
 
   // Expando toda la web a su tamaño maximo
   expandWeb();
-  
+
 });

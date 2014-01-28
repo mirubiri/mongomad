@@ -1,17 +1,17 @@
-function buildOfferMosaic(){
-  //alert("mosaico de ofers");
-  var ppalContainer = $('#ppal_container');
+function activateMasonry(){
+  // //alert("mosaico de ofers");
+  // var ppalContainer = $('#ppal_container');
 
-  if (ppalContainer.hasClass('masonry')) {
-    ppalContainer.masonry('reload');
-  }else{
-    ppalContainer.masonry({
-      itemSelector : '.offer',
-      isAnimated: true
-    });
-  }
+  // if (ppalContainer.hasClass('masonry')) {
+  //   ppalContainer.masonry('reload');
+  // }else{
+  //   ppalContainer.masonry({
+  //     itemSelector : '.offer',
+  //     isAnimated: true
+  //   });
+  // }
 }
 
 function destroyMasonry(){
-  $('#ppal_container').masonry('destroy');
+  //$('#ppal_container').masonry('destroy');
 }

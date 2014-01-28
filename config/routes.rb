@@ -15,7 +15,9 @@ Mongomad::Application.routes.draw do
         get 'sign'
         get 'confirm'
         get 'cancel'
-        get 'pusher_message'
+      end
+      collection do
+        post 'pusher_message'
       end
     end
 

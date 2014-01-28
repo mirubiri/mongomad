@@ -193,7 +193,7 @@ function expandWeb(){
   else if ( lugar === "profile" ) {}
   else if ( lugar === "alerts" ) {}
   else {
-    buildOfferMosaic();
+    activateMasonry();
     activateOfferButton();
   }
 

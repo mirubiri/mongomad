@@ -9,7 +9,7 @@ if(lugar === "offers"){
     ppal_container
     .prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
 
-    buildOfferMosaic();
+    activateMasonry();
     matchPrincipalContainersHeighs();
 
     ppal_container
