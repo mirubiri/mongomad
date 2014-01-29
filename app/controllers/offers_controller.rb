@@ -2,8 +2,6 @@ class OffersController < ApplicationController
 
  def index
     @user = User.find(params[:user_id])
-    @offers = @user.received_offers.all.to_a
-    @requests = @user.requests.all.to_a
     @offer = Offer.new
     @negotiation = Negotiation.new
 
@@ -45,12 +43,12 @@ class OffersController < ApplicationController
       format.html
       format.js
     end
-
   end
 
   # POST /offers
   # POST /offers.json
   def create
+  #TODO: revisar
     @user = User.find(params[:user_id])
     @offer = Offer.new(params[:offer])
     @offer.user_composer = @user
@@ -91,8 +89,4 @@ class OffersController < ApplicationController
       format.html { redirect_to user_offers_url }
     end
   end
-
-  def updateOffers
-  end
-
 end

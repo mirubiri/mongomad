@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
-
   def index
     @user = User.find(params[:user_id])
-    @items = @user.items.to_a
     @item = Item.new
 
     respond_to do |format|
@@ -16,7 +14,6 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
 
@@ -28,8 +25,8 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-    @item = Item.new
     @user = User.find(params[:user_id])
+    @item = Item.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -53,16 +50,13 @@ class ItemsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @item = Item.new(params[:user_item])
-    #Cloudinary::Uploader.upload(params[:image])
-
 
     respond_to do |format|
       if @user.items << @item
         format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
-        error = @item.errors.to_a
-        flash[:message] = error
+        flash[:message] = @item.errors.to_a
         format.html { render action: "index" }
       end
     end
@@ -94,6 +88,4 @@ class ItemsController < ApplicationController
       format.html { redirect_to user_items_url }
     end
   end
-
-
 end
