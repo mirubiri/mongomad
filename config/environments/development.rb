@@ -26,5 +26,8 @@ Mongomad::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
+
+  # See everything in the log (default is :info)
+  config.log_level = :error
 end
