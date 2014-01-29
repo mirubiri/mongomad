@@ -15,3 +15,12 @@ $('.negotiation').disableDoubleScrolling();
 $('.negotiation').focusNegotiationWritebox();
 $('.negotiation').scrollConversation();
 
+
+//Si le doy al enter en cualquier conversacion, envia el texto si el textarea esta activado claro
+$('.txt_area_writer').keypress(function(event) {
+  if (event.which == 13) {
+  	//alert("enter key pressed");
+    event.preventDefault();
+    $(this).closest("form").submit();
+  }
+});

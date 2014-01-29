@@ -135,7 +135,7 @@ class NegotiationsController < ApplicationController
     @user = User.find(params[:user_id])
     @negotiation = params[:negotiation_id]
     @message = params[:message]
-    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation, user: @user})
+    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation})
     respond_to do |format|
       format.js
     end
