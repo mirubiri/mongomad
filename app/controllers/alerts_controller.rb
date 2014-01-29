@@ -1,5 +1,5 @@
 class AlertsController < ApplicationController
-	#before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   def index
     @user = User.find(params[:user_id])
@@ -9,5 +9,4 @@ class AlertsController < ApplicationController
       format.js # render index.js.erb
     end
   end
-
 end
