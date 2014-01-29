@@ -21,7 +21,8 @@
   $.fn.maximizeConversationsHeights = function(){
 
     var alturaOferta = $(this).find(".negotiation_offer").outerHeight(true);
-    var alturaNegociacion = $(this).height()-37;
+    var alturaWritingBox = $(this).find(".writting_box").outerHeight(true);
+    var alturaNegociacion = $(this).height() - alturaWritingBox;
     $(this).css({'max-height': (alturaOferta + 2) +'px'});
     $(this).find(".dialog_container").css({'height': (alturaOferta) +'px'}).css({'max-height': (alturaOferta) +'px'});
 
