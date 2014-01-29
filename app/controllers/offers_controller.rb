@@ -43,7 +43,6 @@ class OffersController < ApplicationController
       format.html
       format.js
     end
-
   end
 
   # POST /offers

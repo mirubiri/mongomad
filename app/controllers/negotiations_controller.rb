@@ -42,7 +42,6 @@ class NegotiationsController < ApplicationController
       format.html # edit.html.erb
       format.js # render edit.js.erb }
     end
-
   end
 
   # POST /negotiations

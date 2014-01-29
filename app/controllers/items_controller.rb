@@ -56,8 +56,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
-        error = @item.errors.to_a
-        flash[:message] = error
+        flash[:message] = @item.errors.to_a
         format.html { render action: "index" }
       end
     end
