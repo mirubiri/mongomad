@@ -16,7 +16,11 @@
   end
 
   def composer_products(object)
-    products(object, object.composer)
+    if object.class == Offer
+      products(proposal(object), composer(object))
+    else
+      products(object, composer(object))
+    end
   end
 
   def date_time(object)
@@ -48,11 +52,7 @@
   end
 
   def images(object)
-    if ['User','Request','Message'].include?(object.class)
-      user_sheet(object).images
-    else
-      object.images
-    end
+    user_sheet(object).images
   end
 
   def items(object)
@@ -72,19 +72,11 @@
   end
 
   def main_image(object)
-    if ['User','Request','Message'].include?(object.class)
-      cl_image_tag(user_sheet(object).main_image._id + ".jpg")
-    else
-      cl_image_tag(object.main_image._id + ".jpg")
-    end
+    cl_image_tag(user_sheet(object).main_image._id + ".jpg")
   end
 
   def main_image_path(object)
-    if ['User','Request','Message'].include?(object.class)
-      cl_image_path(user_sheet(object).main_image._id + ".jpg")
-    else
-      cl_image_path(object.main_image._id + ".jpg")
-    end
+    cl_image_path(user_sheet(object).main_image._id + ".jpg")
   end
 
   def message(object)
@@ -112,11 +104,7 @@
   end
 
   def products(object, user)
-    if object.class == Offer
-      object.proposal.products(user._id)
-    else
-      object.products(user._id)
-    end
+    object.products(user._id)
   end
 
   def proposal(object)
@@ -140,7 +128,11 @@
   end
 
   def receiver_products(object)
-    products(object, object.receiver)
+    if object.class == Offer
+      products(proposal(object), receiver(object))
+    else
+      products(object, receiver(object))
+    end
   end
 
   def requests(object)
@@ -174,7 +166,7 @@
       object.user_sheet
     elsif object.class == Message
       object.user
-    else # class == UserSheet
+    else
       object
     end
   end
