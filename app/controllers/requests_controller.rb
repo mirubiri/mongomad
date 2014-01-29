@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-  
   # GET /requests
   # GET /requests.json
   def index
@@ -46,6 +45,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
+    #TODO:revisar
     @user = User.find(params[:user_id])
     @request = Request.new(params[:request])
     @request.user = @user

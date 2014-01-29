@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
       format.html
       format.js
     end
-
   end
 
   def show
@@ -40,5 +39,4 @@ class ProfilesController < ApplicationController
       end
     end
   end
-
 end
