@@ -1,8 +1,6 @@
 class NegotiationsController < ApplicationController
-
-
-
   #before_filter :authenticate_user!
+
   # GET /negotiations
   # GET /negotiations.json
   def index
@@ -38,7 +36,7 @@ class NegotiationsController < ApplicationController
   # GET /negotiations/1/edit
   def edit
     @negotiation = Negotiation.find(params[:id])
-    @user = @negotiation.proposals.last.receiver
+    @user = receiver(proposal(@negotiation))
 
     respond_to do |format|
       format.html # edit.html.erb
@@ -51,7 +49,7 @@ class NegotiationsController < ApplicationController
   # POST /negotiations.json
   def create
     @user = User.find(params[:user_id])
-    @offer = @user.received_offers.find(params[:offer_id])
+    @offer = received_offers(@user).find(params[:offer_id])
 
     respond_to do |format|
       if @negotiation = @offer.negotiate
@@ -67,11 +65,11 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1.json
   def update
     @user = User.find(params[:user_id])
-    @negotiation = @user.negotiations.find(params[:id])
-    @negotiation.proposals.last.user_composer_id == @user._id ? @negotiation.proposals.last.cancel_composer : @negotiation.proposals.last.cancel_receiver
+    @negotiation = negotiations(@user).find(params[:id])
+    id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
 
     proposal = Negotiation::Proposal.new(params[:proposal])
-    proposal.user_composer_id = @user._id
+    proposal.composer_id = id(@user)
 
     respond_to do |format|
       if @negotiation.proposals << proposal
@@ -96,10 +94,10 @@ class NegotiationsController < ApplicationController
 
 
   # Firma la propuesta
+  #TODO: REVISAR
   def sign
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last
-    proposal.sign_receiver
+    proposal(@negotiation).sign_receiver
 
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }
@@ -108,11 +106,12 @@ class NegotiationsController < ApplicationController
 
 
   # Confirma la propuesta
+  #TODO: REVISAR
   def confirm
     @negotiation = Negotiation.find(params[:id])
 
     respond_to do |format|
-      if @negotiation.seal_deal
+      if proposal(@negotiation).sign_receiver
         format.js { render :partial => "negotiations/reload_negotiations_list" }
       else
         format.js { render :partial => "negotiations/reload_negotiations_list" }
@@ -122,11 +121,12 @@ class NegotiationsController < ApplicationController
 
 
   # Cancela la propuesta
+  #TODO: REVISAR
   def cancel
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.find(params[:id])
-    proposal = @negotiation.proposals.last
-    proposal.user_composer_id == @user._id ? proposal.cancel_composer : proposal.cancel_receiver
+
+    id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
 
     respond_to do |format|
       format.js { render :partial => "negotiations/reload_negotiations_list" }
@@ -143,5 +143,4 @@ class NegotiationsController < ApplicationController
       format.js
     end
   end
-
 end
