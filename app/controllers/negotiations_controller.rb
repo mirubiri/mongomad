@@ -1,6 +1,6 @@
 class NegotiationsController < ApplicationController
 
-  include ApplicationHelper
+
 
   #before_filter :authenticate_user!
   # GET /negotiations
