@@ -29,27 +29,30 @@
 </body>
 
 
+<% if (controller.controller_name != "home") %>
 
+  <script type="text/javascript">
 
-<script type="text/javascript">
+    //Inicio sesion en pusher para el sistema de notificaciones y mensajes en tiempo real,
+    // Esto me enseña en la consola de JavaScript si conecta o no, pero en produccion hay que quitarlo
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
 
-  //Inicio sesion en pusher para el sistema de notificaciones y mensajes en tiempo real,
-  // Esto me enseña en la consola de JavaScript si conecta o no, pero en produccion hay que quitarlo
-  Pusher.log = function(message) {
-    if (window.console && window.console.log) {
-      window.console.log(message);
-    }
-  };
+    var pusher = new Pusher('f34baa838c2708acbd0f');
+    var channel = pusher.subscribe('my_channel');
 
-  var pusher = new Pusher('f34baa838c2708acbd0f');
-  var channel = pusher.subscribe('my_channel');
+    channel.bind('my_event', function(data) {
+      var negotiation_id = data.negotiation_id;
+      $("#"+negotiation_id).find('#conversationofnegotiation').append('<div class="comment"><div class="comment_user_image"><%= main_image(@user) %></div><div class="comment_text">'+data.message+'</div><div class="comment_datetime">22/01/2014 11:05am</div></div>');
+      $("#"+negotiation_id).find("#message_writer").val('');
+    });
 
-  channel.bind('my_event', function(data) {
-    var negotiation_id = data.negotiation_id;
-    $("#"+negotiation_id).find('#conversationofnegotiation').append('<div class="comment"><div class="comment_user_image"><%= main_image(@user) %></div><div class="comment_text">'+data.message+'</div><div class="comment_datetime">22/01/2014 11:05am</div></div>');
-    $("#"+negotiation_id).find("#message_writer").val('');
-  });
+  </script>
 
-</script>
+<% end %>
+
 
 </html>
