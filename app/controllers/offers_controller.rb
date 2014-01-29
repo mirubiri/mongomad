@@ -2,8 +2,6 @@ class OffersController < ApplicationController
 
  def index
     @user = User.find(params[:user_id])
-    #@offers = @user.received_offers.all.to_a
-    #@requests = @user.requests.all.to_a
     @offer = Offer.new
     @negotiation = Negotiation.new
 
@@ -51,11 +49,10 @@ class OffersController < ApplicationController
   # POST /offers
   # POST /offers.json
   def create
-    #TODO: REVISAR
+  #TODO: revisar
     @user = User.find(params[:user_id])
     @offer = Offer.new(params[:offer])
-    offer.user_composer = @user
-    composer(@offer) = @user.sheet
+    @offer.user_composer = @user
 
     respond_to do |format|
       if @offer.save

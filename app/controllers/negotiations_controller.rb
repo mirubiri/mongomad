@@ -92,7 +92,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-
   # Firma la propuesta
   #TODO: REVISAR
   def sign
@@ -103,7 +102,6 @@ class NegotiationsController < ApplicationController
       format.js { render :partial => "negotiations/reload_negotiations_list" }
     end
   end
-
 
   # Confirma la propuesta
   #TODO: REVISAR
@@ -118,7 +116,6 @@ class NegotiationsController < ApplicationController
       end
     end
   end
-
 
   # Cancela la propuesta
   #TODO: REVISAR

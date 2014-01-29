@@ -5,8 +5,6 @@ class DealsController < ApplicationController
   # GET /deals.json
   def index
     @user = User.find(params[:user_id])
-    #@requests = @user.requests.all.to_a
-    #@deals = Deal.all.to_a
 
     respond_to do |format|
       format.html # index.html.erb

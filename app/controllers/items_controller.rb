@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @user = User.find(params[:user_id])
-    #@items = @user.items.to_a
     @item = Item.new
 
     respond_to do |format|
@@ -51,7 +50,6 @@ class ItemsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @item = Item.new(params[:user_item])
-    #Cloudinary::Uploader.upload(params[:image])
 
     respond_to do |format|
       if @user.items << @item
