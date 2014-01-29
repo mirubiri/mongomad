@@ -32,11 +32,7 @@
   end
 
   def first_name(object)
-    if object.class == User
-      object.profile.first_name
-    else
-      user_sheet(object).first_name
-    end
+    user_sheet(object).first_name
   end
 
   def full_name(object)
@@ -52,10 +48,10 @@
   end
 
   def images(object)
-    if object.class == User
-      object.profile.images
-    else
+    if ['User','Request','Message'].include?(object.class)
       user_sheet(object).images
+    else
+      object.images
     end
   end
 
@@ -68,34 +64,26 @@
   end
 
   def last_name(object)
-    if object.class == User
-      object.profile.last_name
-    else
-      user_sheet(object).last_name
-    end
+    user_sheet(object).last_name
   end
 
   def location(object)
-    if object.class == User
-      object.profile.location
-    else
-      user_sheet(object).location
-    end
+    user_sheet(object).location
   end
 
   def main_image(object)
-    if object.class == User
-      cl_image_tag(object.profile.main_image._id + ".jpg")
-    else
+    if ['User','Request','Message'].include?(object.class)
       cl_image_tag(user_sheet(object).main_image._id + ".jpg")
+    else
+      cl_image_tag(object.main_image._id + ".jpg")
     end
   end
 
   def main_image_path(object)
-    if object.class == User
-      cl_image_path(object.profile.main_image._id + ".jpg")
-    else
+    if ['User','Request','Message'].include?(object.class)
       cl_image_path(user_sheet(object).main_image._id + ".jpg")
+    else
+      cl_image_path(object.main_image._id + ".jpg")
     end
   end
 
@@ -103,7 +91,7 @@
     if object.class == Offer
       object.message
     else
-      object.messages.last
+      messages(object).last
     end
   end
 
@@ -120,11 +108,7 @@
   end
 
   def nick(object)
-    if object.class == User
-      object.nick
-    else
-      user_sheet(object).nick
-    end
+    user_sheet(object).nick
   end
 
   def products(object, user)
@@ -184,7 +168,9 @@
   end
 
   def user_sheet(object)
-    if object.class == Request
+    if object.class == User
+      object.sheet
+    elsif object.class == Request
       object.user_sheet
     elsif object.class == Message
       object.user
