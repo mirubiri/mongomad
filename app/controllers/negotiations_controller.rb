@@ -132,9 +132,7 @@ class NegotiationsController < ApplicationController
   # Prueba el canal de Pusher
   def pusher_message
     @user = User.find(params[:user_id])
-    @negotiation = params[:negotiation_id]
-    @message = params[:message]
-    Pusher.trigger('my_channel', 'my_event', {message: @message, negotiation_id: @negotiation})
+    Pusher.trigger('my_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
     respond_to do |format|
       format.js
     end

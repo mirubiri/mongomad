@@ -98,6 +98,7 @@
            <%= form_for [@user,@negotiation], url: {action: "pusher_message"}, :remote => true do |form| %>
             <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
             <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>" />
+            <input type="hidden" name="sender_image_tag" value="<%= escape_javascript(cloudinary_tag(main_image(@user))).html_safe %>" />
             <%= form.submit "Enviar", :id => "send_message_button" %>
            <% end %>
           </div>
