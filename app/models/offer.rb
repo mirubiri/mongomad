@@ -47,15 +47,9 @@ class Offer
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
-      machine.when(:negotiate, 'new' => 'negotiating',
-                               'negotiated' => 'negotiating')
-
+      machine.when(:negotiate, 'new' => 'negotiating', 'negotiated' => 'negotiating')
       machine.when(:negotiated, 'negotiating' => 'negotiated')
-
-      machine.when(:ghost, 'new' => 'ghosted',
-                           'negotiating' => 'ghosted',
-                           'negotiated' => 'ghosted')
-
+      machine.when(:ghost, 'new' => 'ghosted', 'negotiating' => 'ghosted', 'negotiated' => 'ghosted')
       machine.when(:discard, 'ghosted' => 'discarded')
 
       machine.on(:any) do

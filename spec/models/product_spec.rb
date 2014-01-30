@@ -29,16 +29,11 @@ describe Product do
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
-
     before(:each) { product.state_machine(machine) }
 
     it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-
     it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
-
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',
-                                                  'unavailable' => 'ghosted') }
-
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted') }
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 

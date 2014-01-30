@@ -60,18 +60,11 @@ describe Offer do
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
-
     before(:each) { offer.state_machine(machine) }
 
-    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating',
-                                                      'negotiated' => 'negotiating') }
-
+    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating', 'negotiated' => 'negotiating') }
     it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'negotiating' => 'ghosted',
-                                                  'negotiated' => 'ghosted') }
-
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted', 'negotiating' => 'ghosted', 'negotiated' => 'ghosted') }
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 

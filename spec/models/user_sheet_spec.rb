@@ -32,7 +32,6 @@ describe UserSheet do
 
   describe '#current_sheet' do
     let(:outdated_sheet) { user.sheet }
-
     before { User.stub(:find).and_return(user) }
 
     it 'returns the current version of this sheet' do

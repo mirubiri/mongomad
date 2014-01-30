@@ -11,6 +11,14 @@
     object.profile.birth_date
   end
 
+  def cloudinary_tag(object)
+    cl_image_tag(object._id + ".jpg")
+  end
+
+  def cloudinary_path(object)
+    cl_image_path(object._id + ".jpg")
+  end
+
   def composer(object)
     object.composer
   end
@@ -72,11 +80,7 @@
   end
 
   def main_image(object)
-    cl_image_tag(user_sheet(object).main_image._id + ".jpg")
-  end
-
-  def main_image_path(object)
-    cl_image_path(user_sheet(object).main_image._id + ".jpg")
+    user_sheet(object).main_image
   end
 
   def message(object)

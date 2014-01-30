@@ -26,16 +26,11 @@ describe Item do
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
-
     before(:each) { item.state_machine(machine) }
 
     it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-
     it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
-
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted',
-                                                  'unavailable' => 'ghosted') }
-
+    it { should have_received(:when).with(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted') }
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
@@ -80,7 +75,6 @@ describe Item do
     end
 
     specify { expect(item.pick(1)._id).to eq item._id }
-
     specify { expect(item.pick(1).owner_id).to eq item.user_id }
   end
 
