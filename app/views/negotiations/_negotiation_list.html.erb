@@ -97,8 +97,8 @@
           <div class="message">
            <%= form_for [@user,@negotiation], url: {action: "pusher_message"}, :remote => true do |form| %>
             <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
-            <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>" />
-            <input type="hidden" name="sender_image_tag" value="<%= escape_javascript(cloudinary_tag(main_image(@user))).html_safe %>" />
+            <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>">
+            <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0">
             <%= form.submit "Enviar", :id => "send_message_button" %>
            <% end %>
           </div>
@@ -113,3 +113,10 @@
     </div>
   <% end %>
 </aside>
+
+
+
+<script type="text/javascript">
+  var cl_image_path = '<%= cloudinary_tag(main_image(@user)) %>';
+  $("#sender_image_tag").attr('value', cl_image_path);
+</script>
