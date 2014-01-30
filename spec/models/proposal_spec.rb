@@ -165,6 +165,93 @@ describe Proposal do
     end
   end
 
+
+  describe '#update_status' do
+
+    shared_examples 'active status' do
+      let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
+
+      context 'ghosted products in goods' do
+        before { proposal.goods.first.ghost }
+        it 'returns #ghost result' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_status).to eq proposal.ghost
+        end
+      end
+
+      context 'unavailable products in goods' do
+        before { proposal.goods.first.unavailable }
+        it 'returns #break result' do
+          proposal.stub(:break) { test_code }
+          expect(proposal.update_status).to eq proposal.break
+        end
+      end
+
+      context 'unavailable and ghosted products in goods' do
+        before do
+          proposal.goods.first.ghost
+          proposal.goods.last.unavailable
+        end
+        it 'returns #ghost result' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_status).to eq proposal.ghost
+        end
+      end
+
+      context 'all products available in goods' do
+        it 'returns reset method result' do
+          proposal.stub(:reset) { test_code }
+          expect(proposal.update_status).to eq proposal.reset
+        end
+      end
+    end
+
+    shared_examples 'inactive status' do
+      it 'returns false' do
+        expect(proposal.update_status).to eq false
+      end
+
+      it 'do not change state' do
+        expect {proposal.update_status}.to_not change{ proposal.state }
+      end
+    end
+
+    context 'status is new' do
+      include_examples 'active status'
+    end
+
+    context 'status is signed' do
+      before { proposal.sign }
+      include_examples 'active status'
+    end
+
+    context 'status is confirmed' do
+      before do
+        proposal.sign
+        proposal.confirm
+      end
+      include_examples 'inactive status'
+    end
+
+    context 'status is broken' do
+      before { proposal.break }
+      include_examples 'active status'
+    end
+
+    context 'status is ghosted' do
+      before { proposal.ghost }
+      include_examples 'inactive status'
+    end
+
+    context 'status is discarded' do
+      before do
+        proposal.ghost
+        proposal.discard
+      end
+      include_examples 'inactive status'
+    end
+  end
+
   # Factories
   specify { expect(Fabricate.build(:proposal)).to be_valid }
 end
