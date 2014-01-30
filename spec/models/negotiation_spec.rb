@@ -80,17 +80,12 @@ describe Negotiation do
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
-
     before(:each) { negotiation.state_machine(machine) }
 
     it { should have_received(:when).with(:success, 'open' => 'successful') }
-
     it { should have_received(:when).with(:ghost, 'open' => 'ghosted') }
-
-    it { should have_received(:when).with(:close, 'ghosted' => 'closed' )}
-
+    it { should have_received(:when).with(:close, 'ghosted' => 'closed') }
     it { should have_received(:when).with(:reset, 'ghosted' => 'open') }
-
     it { should have_received(:when).with(:reopen, 'closed' => 'open') }
   end
 

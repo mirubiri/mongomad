@@ -61,24 +61,13 @@ describe Proposal do
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
-
     before(:each) { proposal.state_machine(machine) }
 
     it { should have_received(:when).with(:sign, 'new' => 'signed') }
-
-
     it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-
-    it { should have_received(:when).with(:break, 'new' => 'broken',
-                                                  'signed' => 'broken') }
-
-    it { should have_received(:when).with(:reset, 'signed' => 'new',
-                                                  'broken' => 'new') }
-
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted',
-                                                  'signed' => 'ghosted',
-                                                  'broken' => 'ghosted') }
-
+    it { should have_received(:when).with(:break, 'new' => 'broken', 'signed' => 'broken') }
+    it { should have_received(:when).with(:reset, 'signed' => 'new', 'broken' => 'new') }
+    it { should have_received(:when).with(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted') }
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
@@ -124,6 +113,94 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
+  describe '#update_status' do
+    shared_examples 'active status' do
+      let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
+
+      context 'when proposal contains a ghosted product' do
+        before { proposal.goods.first.ghost }
+
+        it 'returns the result of calling #ghost' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_status).to eq proposal.ghost
+        end
+      end
+
+      context 'when proposal contains an unavailable product' do
+        before { proposal.goods.first.unavailable }
+
+        it 'returns the result of calling #break' do
+          proposal.stub(:break) { test_code }
+          expect(proposal.update_status).to eq proposal.break
+        end
+      end
+
+      context 'when proposal contains unavailable and ghosted products' do
+        before do
+          proposal.goods.first.ghost
+          proposal.goods.last.unavailable
+        end
+
+        it 'returns the result of calling #ghost' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_status).to eq proposal.ghost
+        end
+      end
+
+      context 'when proposal contains only available products' do
+        it 'returns the result of calling #reset' do
+          proposal.stub(:reset) { test_code }
+          expect(proposal.update_status).to eq proposal.reset
+        end
+      end
+    end
+
+    shared_examples 'inactive status' do
+      it 'returns false' do
+        expect(proposal.update_status).to eq false
+      end
+
+      it 'does not change proposal state' do
+        expect{ proposal.update_status }.to_not change{ proposal.state }
+      end
+    end
+
+    context 'when state is new' do
+      include_examples 'active status'
+    end
+
+    context 'when state is signed' do
+      before { proposal.sign }
+      include_examples 'active status'
+    end
+
+    context 'when state is confirmed' do
+      before do
+        proposal.sign
+        proposal.confirm
+      end
+      include_examples 'inactive status'
+    end
+
+    context 'when state is broken' do
+      before { proposal.break }
+      include_examples 'active status'
+    end
+
+    context 'when state is ghosted' do
+      before { proposal.ghost }
+      include_examples 'inactive status'
+    end
+
+    context 'when state is discarded' do
+      before do
+        proposal.ghost
+        proposal.discard
+      end
+      include_examples 'inactive status'
+    end
+  end
+
   describe '#composer' do
     it 'calls to proposal_container.user_sheets.find with composer_id' do
       expect(proposal.proposal_container.user_sheets).to receive(:find).with(proposal.composer_id)
@@ -162,93 +239,6 @@ describe Proposal do
 
     it 'returns false if there is no cash in proposal' do
       expect(proposal.cash?).to eq false
-    end
-  end
-
-
-  describe '#update_status' do
-
-    shared_examples 'active status' do
-      let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
-
-      context 'when proposal contains a ghosted product' do
-        before { proposal.goods.first.ghost }
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_status).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains an unavailable product' do
-        before { proposal.goods.first.unavailable }
-        it 'returns the result of calling #break' do
-          proposal.stub(:break) { test_code }
-          expect(proposal.update_status).to eq proposal.break
-        end
-      end
-
-      context 'when proposal contains unavailable and ghosted products' do
-        before do
-          proposal.goods.first.ghost
-          proposal.goods.last.unavailable
-        end
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_status).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains only available products' do
-        it 'returns the result of calling #reset' do
-          proposal.stub(:reset) { test_code }
-          expect(proposal.update_status).to eq proposal.reset
-        end
-      end
-    end
-
-    shared_examples 'inactive status' do
-      it 'returns false' do
-        expect(proposal.update_status).to eq false
-      end
-
-      it 'does not change proposal state' do
-        expect {proposal.update_status}.to_not change{ proposal.state }
-      end
-    end
-
-    context 'when state is new' do
-      include_examples 'active status'
-    end
-
-    context 'when state is signed' do
-      before { proposal.sign }
-      include_examples 'active status'
-    end
-
-    context 'when state is confirmed' do
-      before do
-        proposal.sign
-        proposal.confirm
-      end
-      include_examples 'inactive status'
-    end
-
-    context 'when state is broken' do
-      before { proposal.break }
-      include_examples 'active status'
-    end
-
-    context 'when state is ghosted' do
-      before { proposal.ghost }
-      include_examples 'inactive status'
-    end
-
-    context 'when state is discarded' do
-      before do
-        proposal.ghost
-        proposal.discard
-      end
-      include_examples 'inactive status'
     end
   end
 
