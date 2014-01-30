@@ -172,7 +172,7 @@
   end
 
   #TODO: EVITAR USAR!
-  def image_from_user_id(user_id)
+  def image_tag_from_user_id(user_id)
     main_image(User.find(user_id))
   end
 end
