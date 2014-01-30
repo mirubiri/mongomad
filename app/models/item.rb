@@ -19,12 +19,8 @@ class Item
       machine ||= MicroMachine.new(state)
 
       machine.when(:available, 'available' => 'unavailable')
-
       machine.when(:unavailable, 'unavailable' => 'available')
-
-      machine.when(:ghost, 'available' => 'ghosted',
-                           'unavailable' => 'ghosted')
-
+      machine.when(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted')
       machine.when(:discard, 'ghosted' => 'discarded')
 
       machine.on(:any) do

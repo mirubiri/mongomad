@@ -50,19 +50,10 @@ class Proposal
       machine ||= MicroMachine.new(state)
 
       machine.when(:sign, 'new' => 'signed')
-
       machine.when(:confirm, 'signed' => 'confirmed')
-
-      machine.when(:break, 'new' => 'broken',
-                           'signed' => 'broken')
-
-      machine.when(:reset, 'signed' => 'new',
-                           'broken' => 'new')
-
-      machine.when(:ghost, 'new' => 'ghosted',
-                           'signed' => 'ghosted',
-                           'broken' => 'ghosted')
-
+      machine.when(:break, 'new' => 'broken', 'signed' => 'broken')
+      machine.when(:reset, 'signed' => 'new', 'broken' => 'new')
+      machine.when(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted')
       machine.when(:discard, 'ghosted' => 'discarded')
 
       machine.on(:any) do

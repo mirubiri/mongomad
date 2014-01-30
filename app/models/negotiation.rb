@@ -57,13 +57,9 @@ class Negotiation
       machine ||= MicroMachine.new(state)
 
       machine.when(:success, 'open' => 'successful')
-
       machine.when(:ghost, 'open' => 'ghosted')
-
       machine.when(:close, 'ghosted' => 'closed')
-
       machine.when(:reset, 'ghosted' => 'open')
-
       machine.when(:reopen, 'closed' => 'open')
 
       machine.on(:any) do
