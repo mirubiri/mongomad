@@ -1,7 +1,7 @@
 <% requests(@user).reverse_each do |request| %>
   <div class="request">
     <div class="profile_image">
-      <%= main_image(request) %>
+      <%= cloudinary_tag(main_image(request)) %>
     </div>
     <div class="description">
       <%= text(request) %>

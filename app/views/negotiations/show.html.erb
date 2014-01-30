@@ -4,7 +4,7 @@
 
       <div class="oponent_info">
         <div class="oponent_image">
-          <%= main_image(composer(proposal(negotiation))) %>
+          <%= cloudinary_tag(main_image(composer(proposal(negotiation)))) %>
         </div>
         <div class="oponent_description">
           <div class="oponent_name">
@@ -24,7 +24,7 @@
         <div class="recieved">
           <% composer_products(proposal(negotiation))).each do |product| %>
             <div class="image_container">
-              <%= main_image(@product) %>
+              <%= cloudinary_tag(main_image(@product)) %>
               <div class="quantity_container">
                 <%= quantity(product) %>
               </div>
@@ -37,7 +37,7 @@
         <div class="given">
           <% receiver_products(proposal(negotiation))).each do |product| %>
             <div class="image_container">
-              <%= main_image(@product) %>
+              <%= cloudinary_tag(main_image(@product)) %>
               <div class="quantity_container"><%= quantity(product) %></div>
             </div>
           <% end %>
@@ -79,7 +79,7 @@
         <% messages(negotiation).each do |message| %>
           <div class="comment">
             <div class="comment_user_image">
-              <%= main_image(message) %>
+              <%= cloudinary_tag(main_image(message)) %>
             </div>
             <div class="comment_text">
               <%= text(message) %>

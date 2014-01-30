@@ -26,14 +26,14 @@
           <div class="deal_header">
             <div class="deal_users">
               <div class="deal_user">
-                <%= main_image(composer(agreement(deal))) %>
+                <%= cloudinary_tag(main_image(composer(agreement(deal)))) %>
                 <div class="deal_user_name">Sergio</div>
               </div>
               <div class="deal_user">
-                <%= main_image(composer(agreement(deal))) %>
+                <%= cloudinary_tag(main_image(composer(agreement(deal)))) %>
               </div>
               <div class="deal_user">
-                <%= main_image(composer(agreement(deal))) %>
+                <%= cloudinary_tag(main_image(composer(agreement(deal)))) %>
                 <div class="deal_user_name">Sergio</div>
               </div>
             </div>
@@ -56,7 +56,7 @@
               <% messages(deal).each do |message| %>
                 <div class="comment">
                   <div class="comment_user_image">
-                    <%= main_image(message) %>
+                    <%= cloudinary_tag(main_image(message)) %>
                   </div>
                   <div class="comment_text">
                     <%= text(message) %>
@@ -70,7 +70,7 @@
 
             <div class="writting_box">
               <div class="user_writing">
-                <%= main_image(composer(agreement(deal))) %>
+                <%= cloudinary_tag(main_image(composer(agreement(deal)))) %>
               </div>
               <form>
                 <div class="message">
@@ -85,7 +85,7 @@
 
         <div class="friend">
           <div class="friend_description">
-            <div class="friend_image"><%= main_image(composer(agreement(deal))) %></div>
+            <div class="friend_image"><%= cloudinary_tag(main_image(composer(agreement(deal)))) %></div>
             <div class="friend_data">
               <div class="friend_completename">Sergio de Torre</div>
               <div class="friend_address">Logroño, España</div>

@@ -10,7 +10,7 @@
       </div>
       <div class="header_user_image">
         <div class="header_user-image_container">
-          <%= link_to main_image(@user),
+          <%= link_to cloudinary_tag(main_image(@user)),
               :controller => "users",
               :action => "show",
               :id => id(@user)

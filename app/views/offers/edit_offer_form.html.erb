@@ -6,21 +6,21 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= main_image(@user) %>
+              <%= cloudinary_tag(main_image(@user)) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= main_image(@user) %>
+              <%= cloudinary_tag(main_image(@user)) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="message_selector_area">
             <div class="user_image">
-              <%= main_image(@user) %>
+              <%= cloudinary_tag(main_image(@user)) %>
             </div>
           </div>
         </a>
@@ -31,7 +31,7 @@
             <% items(composer(@offer)).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
                 <div class="item_image">
-                  <%= main_image(item) %>
+                  <%= cloudinary_tag(main_image(item)) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -48,7 +48,7 @@
             <% items(receiver(@offer).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
                 <div class="item_main_image">
-                  <%= main_image(item) %>
+                  <%= cloudinary_tag(main_image(item)) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -91,7 +91,7 @@
               <div class="item newitem" id="<%= id(product) %>" side="left" product_id="<%= id(product) %>" >
                 <div class="delete_button">x</div>
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
-                  <%= main_image(product) %>
+                  <%= cloudinary_tag(main_image(product)) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -122,7 +122,7 @@
               <div class="item newitem" id="<%= id(product) %>" side="right" product_id="<%= id(product) %>">
                 <div class="delete_button">x</div>
                 <div class="item_image">
-                  <%= main_image(product) %>
+                  <%= cloudinary_tag(main_image(product)) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -148,7 +148,7 @@
 
         <div class="offer_info">
           <div class="profile_image">
-            <%= main_image(@user) %>
+            <%= cloudinary_tag(main_image(@user)) %>
           </div>
           <div class="description">
             <div class="offer_message">

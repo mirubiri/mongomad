@@ -29,7 +29,7 @@
     <div class="recieved">
       <% composer_products(proposal(@offer)).each do |product| %>
         <div class="image_container">
-          <%= main_image(@product) %>
+          <%= cloudinary_tag(main_image(@product)) %>
           <div class="quantity_container"><%= quantity(product) %></div>
           <div class="artistic_layer_big"></div>
         </div>
@@ -38,7 +38,7 @@
     <div class="given">
       <% receiver_products(proposal(@offer)).each do |product| %>
         <div class="image_container">
-          <%= main_image(@product) %>
+          <%= cloudinary_tag(main_image(@product)) %>
           <div class="quantity_container"><%= quantity(product) %></div>
           <div class="artistic_layer_small"></div>
         </div>
