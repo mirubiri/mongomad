@@ -113,8 +113,8 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
   end
 
-  describe '#update_status' do
-    shared_examples 'active status' do
+  describe '#update_state' do
+    shared_examples 'active state' do
       let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
       context 'when proposal contains a ghosted product' do
@@ -122,7 +122,7 @@ describe Proposal do
 
         it 'returns the result of calling #ghost' do
           proposal.stub(:ghost) { test_code }
-          expect(proposal.update_status).to eq proposal.ghost
+          expect(proposal.update_state).to eq proposal.ghost
         end
       end
 
@@ -131,7 +131,7 @@ describe Proposal do
 
         it 'returns the result of calling #break' do
           proposal.stub(:break) { test_code }
-          expect(proposal.update_status).to eq proposal.break
+          expect(proposal.update_state).to eq proposal.break
         end
       end
 
@@ -143,35 +143,35 @@ describe Proposal do
 
         it 'returns the result of calling #ghost' do
           proposal.stub(:ghost) { test_code }
-          expect(proposal.update_status).to eq proposal.ghost
+          expect(proposal.update_state).to eq proposal.ghost
         end
       end
 
       context 'when proposal contains only available products' do
         it 'returns the result of calling #reset' do
           proposal.stub(:reset) { test_code }
-          expect(proposal.update_status).to eq proposal.reset
+          expect(proposal.update_state).to eq proposal.reset
         end
       end
     end
 
-    shared_examples 'inactive status' do
+    shared_examples 'inactive state' do
       it 'returns false' do
-        expect(proposal.update_status).to eq false
+        expect(proposal.update_state).to eq false
       end
 
       it 'does not change proposal state' do
-        expect{ proposal.update_status }.to_not change{ proposal.state }
+        expect{ proposal.update_state }.to_not change{ proposal.state }
       end
     end
 
     context 'when state is new' do
-      include_examples 'active status'
+      include_examples 'active state'
     end
 
     context 'when state is signed' do
       before { proposal.sign }
-      include_examples 'active status'
+      include_examples 'active state'
     end
 
     context 'when state is confirmed' do
@@ -179,17 +179,17 @@ describe Proposal do
         proposal.sign
         proposal.confirm
       end
-      include_examples 'inactive status'
+      include_examples 'inactive state'
     end
 
     context 'when state is broken' do
       before { proposal.break }
-      include_examples 'active status'
+      include_examples 'active state'
     end
 
     context 'when state is ghosted' do
       before { proposal.ghost }
-      include_examples 'inactive status'
+      include_examples 'inactive state'
     end
 
     context 'when state is discarded' do
@@ -197,7 +197,7 @@ describe Proposal do
         proposal.ghost
         proposal.discard
       end
-      include_examples 'inactive status'
+      include_examples 'inactive state'
     end
   end
 
