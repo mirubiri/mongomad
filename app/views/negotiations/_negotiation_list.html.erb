@@ -6,7 +6,7 @@
 
         <div class="oponent_info">
           <div class="oponent_image">
-            <%= cloudinary_tag(main_image(composer(proposal(negotiation)))) %>
+            <%= image_service_tag(main_image(composer(proposal(negotiation)))) %>
           </div>
           <div class="oponent_description">
             <div class="oponent_name">
@@ -26,7 +26,7 @@
           <div class="recieved">
             <% composer_products(proposal(negotiation)).each do |product| %>
               <div class="image_container">
-                <%= cloudinary_tag(main_image(product)) %>
+                <%= image_service_tag(main_image(product)) %>
                 <div class="quantity_container">
                   <%= quantity(product) %>
                 </div>
@@ -39,7 +39,7 @@
           <div class="given">
             <% receiver_products(proposal(negotiation)).each do |product| %>
               <div class="image_container">
-                <%= cloudinary_tag(main_image(product)) %>
+                <%= image_service_tag(main_image(product)) %>
                 <div class="quantity_container"><%= quantity(product) %></div>
               </div>
             <% end %>
@@ -81,7 +81,7 @@
           <% messages(negotiation).each do |message| %>
             <div class="comment">
               <div class="comment_user_image">
-                <%= cloudinary_tag(main_image(message)) %>
+                <%= image_service_tag(main_image(message)) %>
               </div>
               <div class="comment_text">
                 <%= text(message) %>
@@ -117,6 +117,6 @@
 
 
 <script type="text/javascript">
-  var cl_image_path = '<%= cloudinary_tag(main_image(@user)) %>';
+  var cl_image_path = '<%= image_service_tag(main_image(@user)) %>';
   $("#sender_image_tag").attr('value', cl_image_path);
 </script>

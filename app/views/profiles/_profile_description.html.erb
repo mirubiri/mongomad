@@ -3,7 +3,7 @@
     <div class="person_info">
       <div class="title">INFORMACION PERSONAL</div>
       <div class="image_side">
-          <%= cloudinary_tag(main_image(@user)) %>
+          <%= image_service_tag(main_image(@user)) %>
           <div class="name_address"><%= full_name(@user) %></div>
           <div class="name_address">address</div>
       </div>
