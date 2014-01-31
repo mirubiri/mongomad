@@ -31,8 +31,8 @@ describe Product do
     subject(:machine) { double().as_null_object }
     before(:each) { product.state_machine(machine) }
 
-    it { should have_received(:when).with(:available, 'available' => 'unavailable') }
-    it { should have_received(:when).with(:unavailable, 'unavailable' => 'available') }
+    it { should have_received(:when).with(:available, 'unavailable' => 'available') }
+    it { should have_received(:when).with(:unavailable, 'available' => 'unavailable') }
     it { should have_received(:when).with(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted') }
     it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
@@ -56,11 +56,11 @@ describe Product do
   end
 
   describe '#available' do
-    it_should_behave_like 'an state machine event', :available, 'available', 'unavailable'
+    it_should_behave_like 'an state machine event', :available, 'unavailable', 'available'
   end
 
   describe '#unavailable' do
-    it_should_behave_like 'an state machine event', :unavailable, 'unavailable', 'available'
+    it_should_behave_like 'an state machine event', :unavailable, 'available', 'unavailable'
   end
 
   describe '#ghost' do
