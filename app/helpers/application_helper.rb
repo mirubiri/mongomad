@@ -11,7 +11,7 @@
     object.profile.birth_date
   end
 
-  def cloudinary_tag(object)
+  def image_service_tag(object)
     cl_image_tag(object._id + ".jpg")
   end
 

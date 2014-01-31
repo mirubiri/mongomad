@@ -31,7 +31,7 @@
               <div class="recieved">
                 <% composer_products(offer).each do |product| %>
                   <div class="image_container">
-                    <%= cloudinary_tag(main_image(product)) %>
+                    <%= image_service_tag(main_image(product)) %>
                     <div class="description">
                       <%= name(product) %>
                     </div>
@@ -41,7 +41,7 @@
               <div class="given">
                 <% receiver_products(offer).each do |product| %>
                   <div class="image_container">
-                    <%= cloudinary_tag(main_image(product)) %>
+                    <%= image_service_tag(main_image(product)) %>
                     <div class="quantity_container"><%= quantity(product) %></div>
                   </div>
                 <% end %>
@@ -50,7 +50,7 @@
 
             <div class="offer_info">
               <div class="profile_image">
-                <%= link_to cloudinary_tag(main_image(composer(offer))),
+                <%= link_to image_service_tag(main_image(composer(offer))),
                   :controller => "users",
                   :action => "show",
                   :id => id(composer(offer))
