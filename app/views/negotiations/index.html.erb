@@ -71,23 +71,27 @@
               <div class="offer_buttons">
                 <%= link_to 'nueva',
                     edit_user_negotiation_path(@user,id(negotiation)),
+                    class: "new_deal_button_style",
                     :remote => true %>
 
                 <%# if (can_sign?(proposal(negotiation),@user)) %>
                   <%= link_to 'firmar',
                       sign_user_negotiation_path(id(@user),id(negotiation)),
+                      class: "sign_deal_button_style",
                       :remote => true %>
                 <%# end %>
 
                 <%# if (can_confirm?(proposal(negotiation),@user)) %>
                   <%= link_to 'confirmar',
                       confirm_user_negotiation_path(id(@user),id(negotiation)),
+                      class: "sign_deal_button_style",
                       :remote => true %>
                 <%# end %>
 
                 <%# if (can_cancel?(proposal(negotiation),@user)) %>
                   <%= link_to 'cancel',
                       cancel_user_negotiation_path(id(@user),id(negotiation)),
+                      class: "cancel_deal_button_style",
                       :remote => true %>
                 <%# end %>
               </div>
@@ -96,6 +100,13 @@
           </div>
 
           <div class="dialog_container">
+
+            <div class="dialog_head">
+              <div class="option_icons">
+                <div class="icon">op1</div>
+                <div class="icon">op2</div>
+              </div>
+            </div>
 
             <div class="conversation" id="conversationofnegotiation">
               <% messages(negotiation).each do |message| %>
@@ -123,12 +134,7 @@
                <% end %>
               </div>
             </div>
-            <div class="dialog_head">
-              <div class="option_icons">
-                <div class="icon">op1</div>
-                <div class="icon">op2</div>
-              </div>
-            </div>
+
           </div>
         </div>
       <% end %>

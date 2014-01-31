@@ -23,10 +23,11 @@
     var alturaOferta = $(this).find(".negotiation_offer").outerHeight(true);
     var alturaWritingBox = $(this).find(".writting_box").outerHeight(true);
     var alturaNegociacion = $(this).height() - alturaWritingBox;
+    var alturaCabeceraNegociacion = $(this).find(".dialog_head").outerHeight(true);
     $(this).css({'max-height': (alturaOferta + 2) +'px'});
     $(this).find(".dialog_container").css({'height': (alturaOferta) +'px'}).css({'max-height': (alturaOferta) +'px'});
 
-    $(this).find('.conversation').css({'height':alturaNegociacion + 'px'});
+    $(this).find('.conversation').css({'height':(alturaNegociacion-alturaCabeceraNegociacion) + 'px'});
 
     return $(this);
   };
