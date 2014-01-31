@@ -140,6 +140,7 @@ describe Proposal do
       context 'when proposal contains unavailable and discarded products' do
         before do
           proposal.goods.first.unavailable
+          proposal.goods.last.ghost
           proposal.goods.last.discard
         end
 
@@ -169,7 +170,10 @@ describe Proposal do
 
       #TODO: Remove if discarded state for product is removed
       context 'when proposal contains a discarded product' do
-        before { proposal.goods.first.discard }
+        before do
+          proposal.goods.first.ghost
+          proposal.goods.first.discard
+        end
 
         it 'returns the result of calling #ghost' do
           proposal.stub(:ghost) { test_code }
