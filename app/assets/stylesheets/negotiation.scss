@@ -112,13 +112,17 @@
         background-color: rgb(243,243,243);
 
         .comment{
+          @include box-sizing(border-box);
           float: left;
-          margin:3px 0px 6px 3px;
-          width:85%;
+          margin:3px 0px 6px 0px;
+          width:100%;
 
           .comment_user_image{
+            @include box-sizing(border-box);
             float: left;
-            margin: 1px 8px 0px 5px;
+            width: 10%;
+            padding-left: 3px;
+            margin: 1px 0px 0px 0px;
 
             img{
               @include border-radius(5px, 5px);
@@ -128,9 +132,10 @@
           }
 
           .comment_text{
-            width: 430px;
-            margin-top: -2px;
+            @include box-sizing(border-box);
             float: left;
+            width: 85%;
+            margin-top: -2px;
             color: #000000;
             text-align: left;
             font-size: 12px;
