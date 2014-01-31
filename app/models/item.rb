@@ -18,8 +18,8 @@ class Item
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
-      machine.when(:available, 'available' => 'unavailable')
-      machine.when(:unavailable, 'unavailable' => 'available')
+      machine.when(:available, 'unavailable' => 'available')
+      machine.when(:unavailable, 'available' => 'unavailable')
       machine.when(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted')
       machine.when(:discard, 'ghosted' => 'discarded')
 

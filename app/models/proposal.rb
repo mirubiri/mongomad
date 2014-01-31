@@ -87,6 +87,20 @@ class Proposal
     state_machine.trigger(:discard)
   end
 
+  def update_state
+    if ['new', 'signed', 'broken'].include?(state)
+      if goods.where(state:'available').size == goods.size
+        reset
+      elsif (goods.where(state:'unavailable').size > 0) && (goods.or({ state:'ghosted' }, { state:'discarded' }).size == 0)
+        self.break
+      else
+        ghost
+      end
+    else
+      false
+    end
+  end
+
   def composer
     proposal_container.user_sheets.find(composer_id)
   end
