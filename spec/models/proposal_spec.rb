@@ -117,6 +117,47 @@ describe Proposal do
     shared_examples 'active state' do
       let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
+      context 'when proposal contains only available products' do
+        it 'returns the result of calling #reset' do
+          proposal.stub(:reset) { test_code }
+          expect(proposal.update_state).to eq proposal.reset
+        end
+      end
+
+      context 'when proposal contains unavailable and ghosted products' do
+        before do
+          proposal.goods.first.unavailable
+          proposal.goods.last.ghost
+        end
+
+        it 'returns the result of calling #ghost' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_state).to eq proposal.ghost
+        end
+      end
+
+      #TODO: Remove if discarded state for product is removed
+      context 'when proposal contains unavailable and discarded products' do
+        before do
+          proposal.goods.first.unavailable
+          proposal.goods.last.discard
+        end
+
+        it 'returns the result of calling #ghost' do
+          proposal.stub(:ghost) { test_code }
+          expect(proposal.update_state).to eq proposal.ghost
+        end
+      end
+
+      context 'when proposal contains unavailable products and no ghosted or discarded ones' do
+        before { proposal.goods.first.unavailable }
+
+        it 'returns the result of calling #break' do
+          proposal.stub(:break) { test_code }
+          expect(proposal.update_state).to eq proposal.break
+        end
+      end
+
       context 'when proposal contains a ghosted product' do
         before { proposal.goods.first.ghost }
 
@@ -126,31 +167,13 @@ describe Proposal do
         end
       end
 
-      context 'when proposal contains an unavailable product' do
-        before { proposal.goods.first.unavailable }
-
-        it 'returns the result of calling #break' do
-          proposal.stub(:break) { test_code }
-          expect(proposal.update_state).to eq proposal.break
-        end
-      end
-
-      context 'when proposal contains unavailable and ghosted products' do
-        before do
-          proposal.goods.first.ghost
-          proposal.goods.last.unavailable
-        end
+      #TODO: Remove if discarded state for product is removed
+      context 'when proposal contains a discarded product' do
+        before { proposal.goods.first.discard }
 
         it 'returns the result of calling #ghost' do
           proposal.stub(:ghost) { test_code }
           expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains only available products' do
-        it 'returns the result of calling #reset' do
-          proposal.stub(:reset) { test_code }
-          expect(proposal.update_state).to eq proposal.reset
         end
       end
     end
