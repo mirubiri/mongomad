@@ -89,7 +89,7 @@ class Proposal
 
   def update_state
     if ['new', 'signed', 'broken'].include?(state)
-      if goods.where(state:'available').size == goods.size
+      if goods.where(state:'available').size + goods.type(Cash).size == goods.size
         reset
       elsif (goods.where(state:'unavailable').size > 0) && (goods.or({ state:'ghosted' }, { state:'discarded' }).size == 0)
         self.break
