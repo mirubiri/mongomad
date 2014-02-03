@@ -129,7 +129,7 @@ describe Proposal do
       context 'when proposal contains unavailable and ghosted products' do
         before do
           proposal.goods.first.unavailable
-          proposal.goods.last.ghost
+          proposal.goods.second.ghost
         end
 
         it 'returns the result of calling #ghost' do
@@ -142,8 +142,8 @@ describe Proposal do
       context 'when proposal contains unavailable and discarded products' do
         before do
           proposal.goods.first.unavailable
-          proposal.goods.last.ghost
-          proposal.goods.last.discard
+          proposal.goods.second.ghost
+          proposal.goods.second.discard
         end
 
         it 'returns the result of calling #ghost' do
