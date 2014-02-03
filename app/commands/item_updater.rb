@@ -1,2 +1,0 @@
-class ItemUpdater
-end

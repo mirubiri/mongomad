@@ -1,2 +1,0 @@
-class ProposalUpdater
-end

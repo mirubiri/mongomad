@@ -1,2 +1,0 @@
-class RequestUnregister
-end
