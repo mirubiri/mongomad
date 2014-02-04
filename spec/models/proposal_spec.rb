@@ -114,6 +114,8 @@ describe Proposal do
   end
 
   describe '#update_state' do
+    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id) }
+
     shared_examples 'active state' do
       let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
@@ -127,7 +129,7 @@ describe Proposal do
       context 'when proposal contains unavailable and ghosted products' do
         before do
           proposal.goods.first.unavailable
-          proposal.goods.last.ghost
+          proposal.goods.second.ghost
         end
 
         it 'returns the result of calling #ghost' do
@@ -140,8 +142,8 @@ describe Proposal do
       context 'when proposal contains unavailable and discarded products' do
         before do
           proposal.goods.first.unavailable
-          proposal.goods.last.ghost
-          proposal.goods.last.discard
+          proposal.goods.second.ghost
+          proposal.goods.second.discard
         end
 
         it 'returns the result of calling #ghost' do

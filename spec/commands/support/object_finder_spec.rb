@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe ProductMaker do
+describe ObjectFinder do
 end
