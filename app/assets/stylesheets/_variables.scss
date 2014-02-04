@@ -501,7 +501,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       @include box-sizing(border-box);
       @include border-radius(5px, 5px);
       @include proportions(18%,40px);
-      padding: 2px;
+      @include border_Element_into_container;
+
       float:left;
       border: $borde1px;
 
@@ -513,10 +514,13 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
     .description{
       @include proportions(80%,40px);
+      @include box-sizing(border-box);
       float: right;
-      font-size: 9px;
+      padding-left: 5px;
+      font-size: 11px;
       line-height: normal;
       overflow: hidden;
+      color: rgb(114,114,114);
     }
 
     .options_menu{
