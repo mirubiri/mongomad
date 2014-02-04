@@ -48,7 +48,7 @@
   end
 
   def full_name(object)
-    first_name(object) + last_name(object)
+    first_name(object) +" "+ last_name(object)
   end
 
   def gender(object)

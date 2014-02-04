@@ -35,12 +35,23 @@
           </div>
 
           <div class="relevan_data">
-            <div class="percentage">75%</div>
-            <div class="numfriends">350</div>
+            <div class="percentage">
+              <div class="percentage_icon">
+                <%= image_tag("/assets/images/estrella.png") %>
+              </div>
+              <div class="percentage_num">75%</div>
+            </div>
+            <div class="numfriends">
+              <div class="numfriends_icon">
+                <%= image_tag("/assets/images/amigos.png") %>
+              </div>
+              <div class="numfriends_num">350</div>
+            </div>
           </div>
 
           <div class="user_name">
             <div class="name"><%= full_name(@user).upcase %></div>
+            <div class="address">Logroño, La Rioja</div>
           </div>
 
 
@@ -64,8 +75,6 @@
           new_user_request_path(@user),
           {:remote => true, :class => "add_request"}
         %>
-
-        <div class="text_side" style="width:100%">PETICIONES</div>
 
         </div>
 

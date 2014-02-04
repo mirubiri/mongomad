@@ -62,16 +62,17 @@
             position: relative;
             top: -45px;
             @include proportions(82px,82px);
-            @include border-radius(45px, 45px);
+            @include border-radius(41px, 41px);
             background-color: white;
 
             a{
               img{
                 @include high-quality-image;
-                @include proportions(80px,80px);
-                @include border-radius(40px, 40px);
+                @include proportions(66px,66px);
+                @include border-radius(33px, 33px);
                 position: relative;
-                top: 0px;
+                top: 7px;
+                left: 7px;
                 border: 1px solid #cccccc;
               }
             }
@@ -87,16 +88,35 @@
 
           .percentage{
             position: relative;
-            top: -20px;
-            padding-left: 25px;
+            width: 50px;
+            top: -30px;
             text-align: left;
+
+            .percentage_icon{
+              width: 100%;
+              text-align: center;
+            }
+            .percentage_num{
+              width: 100%;
+              text-align: center;
+            }
           }
 
           .numfriends{
             position: relative;
-            top: -38px;
-            padding-right: 25px;
+            width: 50px;
+            top: -75px;
+            left: 185px;
             text-align: right;
+
+            .numfriends_icon{
+              width: 100%;
+              text-align: center;
+            }
+            .numfriends_num{
+              width: 100%;
+              text-align: center;
+            }
           }
         }
 
@@ -112,6 +132,7 @@
             float: left;
             width: 100%;
             text-align: center;
+            font-weight: 800;
           }
           .address{
             float: left;
@@ -119,8 +140,9 @@
             margin-bottom: 10px;
             text-align: center;
             font-size: 11px;
-            font-weight: 200;
             font-style: italic;
+            font-size: 13px;
+            color: rgb(130,130,130);
           }
         }
 

@@ -37,6 +37,7 @@
 
       .header_user_description{
         @include box-sizing(border-box);
+        overflow: auto;
         float: left;
         height: 40px;
         width: 50px;
@@ -50,7 +51,7 @@
           margin:0px;
           font:{
             weight:bold;
-            size:9px;
+            size:11px;
           }
         }
       }
@@ -65,7 +66,7 @@
         .header_user-image_container{
           @include box-sizing(border-box);
           @include proportions(34px,34px);
-          @include border-radius(15px,15px);
+          @include border-radius(17px,17px);
           background-color: white;
           padding: 2px 0px 0px 2px;
 
