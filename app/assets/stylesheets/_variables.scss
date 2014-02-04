@@ -271,6 +271,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     color: rgb(41,128,185);
     padding-top: 5px;
     border-bottom: solid 1px #dddddd;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     margin-bottom: 18px;
   }
 }
@@ -366,23 +368,25 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     overflow: visible;
     background-color: #f3f3f3;
     border-top: 1px solid #dddddd;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     padding-bottom: 10px;
 
     .profile_image{
       @include center-horizontally(50px);
-      @include proportions(52px,52px);
-      @include border-radius(26px, 26px);
+      @include proportions(62px,62px);
+      @include border-radius(31px, 31px);
       background-color: #f3f3f3;
       position: relative;
       top:-28px;
-      border: 1px solid #dddddd;
+      border-top: 1px solid #dddddd;
 
       img{
         @include high-quality-image;
         @include proportions(46px,46px);
         @include border-radius(23px, 23px);
-        margin-left: 2px;
-        margin-top: 2px;
+        margin-left: 5px;
+        margin-top: 5px;
         border: 1px solid #dddddd;
       }
 
@@ -391,8 +395,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
           @include high-quality-image;
           @include proportions(46px,46px);
           @include border-radius(23px, 23px);
-          margin-left: 2px;
-          margin-top: 2px;
+          margin-left: 7px;
+          margin-top: 7px;
           border: 1px solid #dddddd;
         }
       }
@@ -404,7 +408,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       top:-20px;
       left:0px;
       overflow: hidden;
-      font-size: 9px;
+      font-size: 11px;
       line-height: normal;
 
       .offer_message{

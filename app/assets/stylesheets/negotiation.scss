@@ -8,6 +8,15 @@
   float: left;
 
     .negotiation_offer {
+      @include offer_header;
+      @include offer_products;
+      @include offer_info;
+      @include box-sizing(border-box);
+      overflow: none;
+      padding: 0px;
+      margin: 0px;
+      width: $offerWidth;
+      float: left;
 
       .oponent_info{
         float: left;
@@ -57,18 +66,6 @@
           }
         }
       }
-
-      @include offer_header;
-      @include offer_products;
-      @include offer_info;
-      @include box-sizing(border-box);
-      overflow: none;
-      padding: 0px;
-      margin: 0px;
-      width: $offerWidth;
-      float: left;
-
-      @include box-sizing(border-box);
     }
 
     .dialog_container{
