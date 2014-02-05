@@ -16,7 +16,7 @@ describe UserUpdater do
   end
 
   # Methods
-  describe '#execute' do
+  describe '#execute(user)' do
     context 'when user exists' do
       before(:each) { user.save }
 
