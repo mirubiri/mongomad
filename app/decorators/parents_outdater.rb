@@ -1,4 +1,4 @@
-class ObjectOutdaterDecorator
+class ParentsOutdater
   # añade el metodo outdate_objects al onbjeto devuelto
   # devuelve un objeto (array) decorado
 
