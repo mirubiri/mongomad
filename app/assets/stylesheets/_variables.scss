@@ -165,16 +165,21 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .artistic_layer_big{
+  @include box-sizing(border-box);
   position: absolute;
-  top: 0px;
+  bottom: 0px;
   left: 0px;
   width: 100%;
-  height: 100%;
-  background-color: transparent;
+  height: auto;
+  background-color: black;
   background-size: $bigImageDimension;
   background-repeat:no-repeat;
-  opacity: 0.05;
+  opacity: 0.70;
   z-index: 100;
+  color: white;
+  font-weight: bold;
+  padding: 3px 3px;
+  text-align: center;
 }
 
 .artistic_layer_small{
@@ -311,8 +316,10 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
       .image_container{
         @include big_images_style;
+        position: relative;
         width: $bigImageDimension;
         margin:0px 0px 5px 0px;
+        height: auto;
 
         img{
           @include border-radius(2px, 2px);

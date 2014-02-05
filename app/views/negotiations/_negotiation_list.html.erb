@@ -30,7 +30,7 @@
                 <div class="quantity_container">
                   <%= quantity(product) %>
                 </div>
-                <div class="description">
+                <div class="artistic_layer_big">
                   <%= name(product) %>
                 </div>
               </div>
@@ -83,8 +83,7 @@
 
         <div class="dialog_head">
           <div class="option_icons">
-            <div class="icon">op1</div>
-            <div class="icon">op2</div>
+            <div class="icon"><%= image_tag("/assets/images/close.png") %></div>
           </div>
         </div>
 
@@ -102,6 +101,10 @@
               </div>
             </div>
           <% end %>
+          <div class="option_buttons">
+            <div class="icon"><%= image_tag("/assets/images/microfono.png") %></div>
+            <div class="icon"><%= image_tag("/assets/images/camara.png") %></div>
+          </div>
         </div>
 
         <div class="writting_box">
