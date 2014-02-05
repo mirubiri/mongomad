@@ -45,25 +45,22 @@
 
             <%= form_for [@user,@negotiation], :remote => true do |form| %>
               <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
-              <%= form.submit "negociar", :url => user_negotiations_path(@user), :id => "negotiate_button" %>
+              <%= form.submit "NEGOTIATE", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
             <% end %>
 
             <%= form_for [@user,@negotiation], :remote => true do |form| %>
               <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
-              <a href="<%= user_negotiations_path(@user)%>"><%= form.submit "para mi", :class => "", :id => "negotiate_button" %></a>
+              <%= form.submit "THAT'S FOR ME", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
             <% end %>
 
-
-
-            <div class="offer_button">
-              <%= link_to "edit",
-                      {:controller => "offers",
-                      :action => "edit",
-                      :user_id => id(@user),
-                      :id => id(offer)},
-                      {:remote => true,
-                       :id => "edit_offer_link"} %>
-            </div>
+            <%= link_to "EDIT",
+                    {:controller => "offers",
+                    :action => "edit",
+                    :user_id => id(@user),
+                    :id => id(offer)},
+                    {:remote => true,
+                     :class => 'offer_buttons_style',
+                     :id => "edit_offer_link"} %>
 
           </div>
 

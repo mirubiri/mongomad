@@ -118,3 +118,19 @@ function reloadDialogContainerWidth(){
             return true;
     }
 })(jQuery);
+
+
+(function ($)
+{
+  $.fn.hideTitle = function(){
+
+    $(this).mouseover(function() {
+        $(this).find(".artistic_layer_big").hide();
+    }).mouseout(function() {
+        $(this).find(".artistic_layer_big").show();
+    });
+
+    return $(this);
+  };
+
+})(jQuery);

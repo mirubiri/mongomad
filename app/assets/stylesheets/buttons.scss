@@ -60,3 +60,11 @@
   text-decoration:none;
   font-weight: bold;
 }
+
+.offer_buttons_style{
+  @include border-radius(4px, 4px);
+  height: 30px;
+  background-color: white;
+  border: 1px solid #dddddd;
+  color: #7f8c8c;
+}
