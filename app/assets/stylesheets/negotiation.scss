@@ -18,6 +18,15 @@
       width: $offerWidth;
       float: left;
 
+      .offer_info{
+        .offer_buttons{
+          input,a{
+            width: 25%;
+            padding-top: 4px;
+          }
+        }
+      }
+
       .oponent_info{
         float: left;
         width: 100%;

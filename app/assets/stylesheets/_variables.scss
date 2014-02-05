@@ -260,11 +260,11 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
 @mixin offer_header{
   .offer_header{
-    @include proportions(100%,24px);
+    @include proportions(100%,20px);
     float: left;
     background-color: rgb(243,243,243);
     overflow: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: bold;
     line-height: normal;
     text-align: center;
@@ -417,6 +417,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         width: 100%;
         color: #443f3f;
         padding: 0px 20px;
+        font-size: 12px;
 
         textarea{
           @include box-sizing(border-box);
@@ -440,10 +441,17 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         input{width: 100%;}
       }
 
-      input{
+      input,a{
         @include box-sizing(border-box);
         float: left;
-        width: 65%;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 3px;
+      }
+
+      a{
+        text-decoration: none;
+        padding-top: 6px;
       }
 
       button{
