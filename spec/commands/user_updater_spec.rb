@@ -17,7 +17,7 @@ describe UserUpdater do
 
   # Methods
 
-  #TODO: Se podria poner un initialice para eliminar el parametro user del metodo execute.
+  #TODO: Se podria poner un initialize para eliminar el parametro user del metodo execute.
 
   describe '#execute(user)' do
     context 'when user exists' do
