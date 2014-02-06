@@ -2,24 +2,27 @@
   <%= form_for [@user, @request], :remote => true do |form| %>
     <div class="new_petition_content">
 
+      <div class="petition_transparent_side">
+        <div class="petition_user_image">
+          <%= image_service_tag(main_image(@user)) %>
+        </div>
+      </div>
+
+      <div class="petition_user_side">
+        <div class="petition_title">¿Cuál es tu petición?</div>
+      </div>
+
       <div class="petition_text_side">
         <div class="petition_text">
           <%= form.text_area :text, :placeholder => "Texto de la peticion", :size => "24x6" %>
         </div>
         <div class="petitions_buttons_side">
           <div class="send_button">
-            <button>X</button>
-            <%= form.submit "Añadir", :id => 'new-request-send-button' %>
-            <div class="characters_left">89</div>
+            <button class="offer_buttons_style">X</button>
+            <%= form.submit "Añadir", :class => 'offer_buttons_style', :id => 'new-request-send-button' %>
+            <div class="characters_left">89/150</div>
           </div>
         </div>
-      </div>
-
-      <div class="petition_user_side">
-        <div class="petition_user_image">
-          <%= image_service_tag(main_image(@user)) %>
-        </div>
-        <div class="petition_title">¿Cuál es tu petición?</div>
       </div>
 
     </div>

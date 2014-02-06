@@ -18,6 +18,7 @@
 	    }
 	});
 
+  $(".ui-dialog").css( "padding", "0" ); // Modales sin padding gracias
 	$(".ui-dialog-titlebar").hide();// quita la barra de la modal
 	$(".ui-widget-overlay").css( "opacity", ".80" ); // hacen el fondo mas oscuro
 	$(".ui-widget-overlay").css( "background-color", "rgb(0, 0, 0) 50% 50% repeat-x !important" ); // hacen el fondo mas oscuro
