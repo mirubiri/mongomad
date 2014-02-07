@@ -3,23 +3,42 @@ require 'spec_helper'
 describe UserUpdater do
   # Variables
   let(:user) { Fabricate.build(:user_with_items) }
-  let(:request) { Fabricate.build(:request, user:user) }
-  let(:offer) { Fabricate.build(:offer, user_composer:user) }
-  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
-  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
-  let(:updated_user) do
-    user.nick = 'new_nick'
-    user.profile.first_name = 'new_first_name'
-    user.profile.images << Fabricate.build(:image_face, main:false)
-    user.profile.set_main_image(user.profile.images.last._id)
-    user
-  end
+  # let(:request) { Fabricate.build(:request, user:user) }
+  # let(:offer) { Fabricate.build(:offer, user_composer:user) }
+  # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  # let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
+  # let(:updated_user) do
+  #   user.nick = 'new_nick'
+  #   user.profile.first_name = 'new_first_name'
+  #   user.profile.images << Fabricate.build(:image_face, main:false)
+  #   user.profile.set_main_image(user.profile.images.last._id)
+  #   user
+  # end
 
   # Methods
+  describe '#initialize(user)' do
+    context 'when user is not nil' do
+      let(:user_updater) { UserUpdater.new(user) }
 
-  #TODO: Se podria poner un initialize para eliminar el parametro user del metodo execute.
+      it 'uses that user' do
+        expect(user_updater.user).to eq user
+      end
 
-  describe '#execute(user)' do
+      it 'returns an instance of UserUpdater' do
+        expect(user_updater).to be_instance_of UserUpdater
+      end
+    end
+
+    context 'when user is nil' do
+      let(:user_updater) { UserUpdater.new(nil) }
+
+      it 'returns nil' do
+        expect(user_updater).to eq nil
+      end
+    end
+  end
+
+  describe '#execute()' do
     context 'when user exists' do
       before(:each) { user.save }
 
