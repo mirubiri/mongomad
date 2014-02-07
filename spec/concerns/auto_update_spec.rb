@@ -97,7 +97,7 @@ describe AutoUpdate do
       before { copy.update_attributes(outdated:false) }
 
       it 'outdates the object' do
-        expect{copy.outdate}.to change{copy.outdated}.from(false).to(true)
+        expect{ copy.outdate }.to change{ copy.outdated }.from(false).to(true)
       end
 
       it 'does not save changes' do

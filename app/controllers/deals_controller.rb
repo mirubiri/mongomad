@@ -1,6 +1,4 @@
 class DealsController < ApplicationController
-  #before_filter :authenticate_user!
-
   # GET /deals
   # GET /deals.json
   def index
