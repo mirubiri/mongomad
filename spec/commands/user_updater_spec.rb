@@ -2,34 +2,34 @@ require 'spec_helper'
 
 describe UserUpdater do
   # Variables
-  let(:user) { Fabricate.build(:user_with_items) }
-  # let(:request) { Fabricate.build(:request, user:user) }
-  # let(:offer) { Fabricate.build(:offer, user_composer:user) }
-  # let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
-  # let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
-  # let(:updated_user) do
-  #   user.nick = 'new_nick'
-  #   user.profile.first_name = 'new_first_name'
-  #   user.profile.images << Fabricate.build(:image_face, main:false)
-  #   user.profile.set_main_image(user.profile.images.last._id)
-  #   user
-  # end
+  let(:original_user) { Fabricate.build(:user_with_items) }
+  let(:request) { Fabricate.build(:request, user:original_user) }
+  let(:offer) { Fabricate.build(:offer, user_composer:original_user) }
+  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
+  let(:updated_user) do
+    original_user.nick = 'new_nick'
+    original_user.profile.first_name = 'new_first_name'
+    original_user.profile.images << Fabricate.build(:image_face, main:false)
+    original_user.profile.set_main_image(original_user.profile.images.last._id)
+    original_user
+  end
 
   # Methods
-  describe '#initialize(user)' do
-    context 'when user is not nil' do
-      let(:user_updater) { UserUpdater.new(user) }
+  describe '#initialize(updated_user)' do
+    context 'when updated_user is not nil' do
+      let(:user_updater) { UserUpdater.new(updated_user) }
 
-      it 'uses that user' do
-        expect(user_updater.user).to eq user
+      it 'uses given updated_user' do
+        expect(user_updater.user).to eq updated_user
       end
 
-      it 'returns an instance of UserUpdater' do
+      it 'creates an instance of UserUpdater' do
         expect(user_updater).to be_instance_of UserUpdater
       end
     end
 
-    context 'when user is nil' do
+    context 'when updated_user is nil' do
       let(:user_updater) { UserUpdater.new(nil) }
 
       it 'returns nil' do
@@ -39,26 +39,33 @@ describe UserUpdater do
   end
 
   describe '#execute()' do
-    context 'when user exists' do
-      before(:each) { user.save }
+    let(:user_updater) { UserUpdater.new(updated_user) }
+
+    context 'when original_user exists' do
+      before(:each) { original_user.save }
 
       it 'returns true' do
-        expect(execute(updated_user)).to eq true
+        expect(user_updater.execute()).to eq true
       end
 
-      it 'updates user data' do
-        execute(updated_user)
-        expect(User.find(user._id)).to eq updated_user
+      it 'saves updated_user' do
+        expect(user_updater.user).to receive(:save)
+        user_updater.execute()
       end
 
-      it 'calls save method' do
-        expect(user).to receive(:save)
-        execute(updated_user)
+      it 'updates original_user data' do
+        user_updater.execute()
+        expect(User.find(original_user._id)).to eq updated_user
+      end
+
+      it 'creates an ObjectFinder instance with user' do
+        expect(ObjectFinder).to receive(:new).with(user_updater.user)
+        user_updater.execute()
       end
 
       it 'calls ObjectFinder.execute method with user' do
-        expect(ObjectFinder).to receive(:execute).with(user)
-        execute(updated_user)
+        expect_any_instance_of(ObjectFinder).to receive(:execute).with(user)
+        user_updater.execute()
       end
 
       context 'when there are documents related to user' do
@@ -69,119 +76,77 @@ describe UserUpdater do
           deal.save
         end
 
-        #TODO: Usar stubs declarando las variables devueltas (darle una vuelta)
-        let(:related_documents) { ObjectFinder.execute(user) }
-        let(:outdated_documents) { ObjectOutdater.new(related_documents) }
-        let(:outdated_parents) { ParentsOutdater.new(outdated_documents) }
-
-        it 'calls ObjectOutdater.new method with related_documents' do
-          expect(ObjectOutdater).to receive(:new).with(related_documents)
-          execute(updated_user)
+        let(:related_documents) do
+          related_documents = Array.new
+          related_documents << request
+          related_documents << offer
+          related_documents << negotiation
+          related_documents << deal
+          related_documents
         end
 
-        it 'calls outdate_objects method with user' do
-          expect_any_instance_of(ObjectOutdater).to receive(:outdate_objects).with(user)
-          execute(updated_user)
+        it 'outdates usersheet for every related document' do
+          user_updater.execute()
+
+          related_documents.each do |document|
+            if document.class == Request
+              expect(document.user_sheet.outdated).to eq true
+            elsif document.user_sheets.first == updated.user._id
+              expect(document.user_sheets.first.outdated).to eq true
+              #TODO: ¿necesario probar que no cambia la otra user sheet?
+              #expect{ user_updater.execute() }.to_not change { document.user_sheets.last.outdated }
+            else
+              expect(document.user_sheets.last.outdated).to eq true
+              #TODO: ¿necesario probar que no cambia la otra user sheet?
+              #expect{ user_updater.execute() }.to_not change { document.user_sheets.first.outdated }
+            end
+          end
         end
 
-        it 'calls ParentsOutdater.new method with outdate_objects' do
-          expect(ParentsOutdater).to receive(:new).with(outdate_objects)
-          execute(updated_user)
+        it 'outdates every related document' do
+          user_updater.execute()
+
+          related_documents.each do |document|
+            expect(document.outdate).to eq true
+          end
         end
 
-        it 'calls outdate_parents method with user' do
-          expect_any_instance_of(ParentsOutdater).to receive(:outdate_parents).with(user)
-          execute(updated_user)
-        end
+        it 'save every related document' do
+          related_documents.each do |document|
+            expect(document).to receive(:save)
+          end
 
-        it 'calls ArraySaver.new method with outdate_objects' do
-          expect(ArraySaver).to receive(:new).with(outdate_parents)
-          execute(updated_user)
-        end
-
-        it 'calls save_all method' do
-          expect_any_instance_of(ArraySaver).to receive(:save_all)
-          execute(updated_user)
+          user_updater.execute()
         end
       end
 
       context 'when there are not documents related to user' do
-        it 'does not call ObjectOutdater.new method' do
-          expect(ObjectOutdater).to_not receive(:new)
-          execute(updated_user)
-        end
-
-        it 'does not call outdate_objects method' do
-          expect_any_instance_of(ObjectOutdater).to_not receive(:outdate_objects)
-          execute(updated_user)
-        end
-
-        it 'does not call ParentsOutdater.new method' do
-          expect(ParentsOutdater).to receive(:new)
-          execute(updated_user)
-        end
-
-        it 'does not call outdate_parents method' do
-          expect_any_instance_of(ParentsOutdater).to receive(:outdate_parents)
-          execute(updated_user)
-        end
-
-        it 'does not call ArraySaver.new method' do
-          expect(ArraySaver).to receive(:new)
-          execute(updated_user)
-        end
-
-        it 'does not call save_all method' do
-          expect_any_instance_of(ArraySaver).to receive(:save_all)
-          execute(updated_user)
-        end
+        #TODO: ¿comprobar que no hace lo de arriba?
       end
     end
 
-    context 'when user does not exist' do
+    context 'when original_user does not exist' do
       it 'returns false' do
-        expect(execute(updated_user)).to eq false
+        expect(user_updater.execute()).to eq false
       end
 
       it 'does not call save method' do
         expect_any_instance_of(User).to_not receive(:save)
-        execute(updated_user)
+        user_updater.execute()
+      end
+
+      #TODO: Podrian eliminarse si no importa asegurarnos de que no hace llamadas que no deba
+      it 'does not create an ObjectFinder instance' do
+        expect(ObjectFinder).to_not receive(:new)
+        user_updater.execute()
       end
 
       it 'does not call ObjectFinder.execute method' do
-        expect(ObjectFinder).to_not receive(:execute)
-        execute(updated_user)
+        expect_any_instance_of(ObjectFinder).to_not receive(:execute)
+        user_updater.execute()
       end
 
-      it 'does not call ObjectOutdater.new method' do
-        expect(ObjectOutdater).to_not receive(:new)
-        execute(updated_user)
-      end
-
-      it 'does not call outdate_objects method' do
-        expect_any_instance_of(ObjectOutdater).to_not receive(:outdate_objects)
-        execute(updated_user)
-      end
-
-      it 'does not call ParentsOutdater.new method' do
-        expect(ParentsOutdater).to receive(:new)
-        execute(updated_user)
-      end
-
-      it 'does not call outdate_parents method' do
-        expect_any_instance_of(ParentsOutdater).to receive(:outdate_parents)
-        execute(updated_user)
-      end
-
-      it 'does not call ArraySaver.new method' do
-        expect(ArraySaver).to receive(:new)
-        execute(updated_user)
-      end
-
-      it 'does not call save_all method' do
-        expect_any_instance_of(ArraySaver).to receive(:save_all)
-        execute(updated_user)
-      end
+      #TODO: comprobar que no hace lo de arriba (outdatear, salvar y eso)?
     end
   end
 end
