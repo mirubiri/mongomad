@@ -26,8 +26,8 @@ describe ObjectFinder do
     end
   end
 
-  describe '#execute(object)' do
-    context 'when object is an user' do
+  describe '#execute()' do
+    context 'when object to find is a user' do
       pending 'calls request where with user'
       pending 'calls offer where with user'
       pending 'calls negotiation where with user'
@@ -39,7 +39,7 @@ describe ObjectFinder do
         pending 'return nil (or an empty array)'
       end
     end
-    context 'when object is an item' do
+    context 'when object to find is an item' do
       pending 'calls offer where with item'
       pending 'calls negotiation where with item'
       pending 'calls deal where with item'
