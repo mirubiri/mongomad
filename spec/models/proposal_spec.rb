@@ -138,7 +138,6 @@ describe Proposal do
         end
       end
 
-      #TODO: Remove if discarded state for product is removed
       context 'when proposal contains unavailable and discarded products' do
         before do
           proposal.goods.first.unavailable
@@ -170,7 +169,6 @@ describe Proposal do
         end
       end
 
-      #TODO: Remove if discarded state for product is removed
       context 'when proposal contains a discarded product' do
         before do
           proposal.goods.first.ghost
