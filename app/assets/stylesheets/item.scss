@@ -8,7 +8,7 @@
   margin-right: 10px;
   margin-bottom: 10px;
   margin-left: 0px;
-  padding: 5px;
+  padding: 3px 3px 0px 3px;
 
   .item_quantity{
     @include border-radius(4px, 2px);
@@ -65,5 +65,12 @@
       text-align: center;
       overflow: none;
     }
+  }
+
+  .item_options{
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
+    margin-top: 10px;
   }
 }

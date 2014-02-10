@@ -41,11 +41,11 @@
     </li>
 
     <% if (controller.controller_name === "items") %>
-      <li style="float:right" class="active">
+      <li id="items-tab" class="active">
         <%= link_to "Productos", user_items_path(@user), remote: true %>
       </li>
     <% else %>
-      <li style="float:right">
+      <li id="items-tab">
         <%= link_to "Productos", user_items_path(@user), remote: true %>
       </li>
     <% end %>

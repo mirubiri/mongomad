@@ -20,22 +20,21 @@
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
 
-       <div class="item">
-        <div class="item_image">
-          <% if controller.controller_name === "items" %>
+      <div class="item">
 
-
-            <%= link_to "Añadir producto",
-              new_user_item_path(@user),
-              {:remote => true, :role => "button"}  %>
-
-
-          <% end %>
-        </div>
+        <div class="item_image"><%= image_tag("/assets/images/nuevo_item.png") %></div>
 
         <div class="item_description">
-          <div class="text">
+          <div class="text">Añade un nuevo producto a tu listado
           </div>
+        </div>
+
+        <div class="item_options">
+          <% if controller.controller_name === "items" %>
+            <%= link_to "AÑADIR PRODUCTO",
+              new_user_item_path(@user),
+              {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
+          <% end %>
         </div>
 
       </div>
@@ -61,6 +60,7 @@
           <div class="item_options">
             <%= link_to "editar producto",
               edit_user_item_path(@user,item),
+              :class => "item_buttons_style",
               :remote => true %>
           </div>
 
