@@ -81,6 +81,7 @@ describe UserUpdater do
           deal.save
         end
 
+        #TODO: se podria usar un stub que devuelva directamente los related_documents. de momento lo voy a dejar asi
         let(:related_documents) do
           related_documents = Array.new
           related_documents << request
