@@ -18,7 +18,7 @@ describe UserUpdater do
   # Methods
   describe '#initialize(updated_user)' do
     context 'when updated_user is not nil' do
-      let!(:user_updater) { UserUpdater.new(updated_user) }
+      let(:user_updater) { UserUpdater.new(updated_user) }
 
       it 'creates an instance of UserUpdater' do
         expect(user_updater).to be_instance_of UserUpdater
@@ -30,7 +30,7 @@ describe UserUpdater do
     end
 
     context 'when updated_user is nil' do
-      let!(:user_updater) { UserUpdater.new(nil) }
+      let(:user_updater) { UserUpdater.new(nil) }
 
       it 'returns nil' do
         expect(user_updater).to eq nil
@@ -39,7 +39,7 @@ describe UserUpdater do
   end
 
   describe '#execute()' do
-    let!(:user_updater) { UserUpdater.new(updated_user) }
+    let(:user_updater) { UserUpdater.new(updated_user) }
 
     context 'when original_user exists' do
       before(:each) { original_user.save }
