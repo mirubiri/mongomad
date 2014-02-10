@@ -63,8 +63,24 @@
 
 .offer_buttons_style{
   @include border-radius(4px, 4px);
+  @include box-sizing(border-box);
   height: 30px;
   background-color: white;
   border: 1px solid #dddddd;
   color: #7f8c8c;
+}
+
+.item_buttons_style{
+  @include border-radius(4px, 4px);
+  @include box-sizing(border-box);
+  float: left;
+  padding-top: 5px;
+  height: 30px;
+  width: 100%;
+  background-color: #f3f3f3;
+  border: 1px solid #dddddd;
+  color: #7f8c8c;
+  text-align: center;
+  text-decoration:none;
+  font-weight: bold;
 }

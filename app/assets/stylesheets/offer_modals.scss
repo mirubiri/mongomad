@@ -260,15 +260,20 @@
       }
     }
 
+    .offer_info{
+      .profile_image{
+        img{
+          margin-top: 5px;
+          margin-left: 8px;
+        }
+      }
+    }
+
     .offer_button{
       width: 100%;
       margin-right: 10px;
 
-      button{
-        float:right;
-      }
-
-      input{
+      input,a{
         float: right;
         margin: 0px 10px 10px 10px;
       }
