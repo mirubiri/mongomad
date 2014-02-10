@@ -463,8 +463,8 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
       button{
         @include box-sizing(border-box);
-        float: right;
-        width: 30%;
+        float: left;
+        width: 100%;
       }
     }
 
