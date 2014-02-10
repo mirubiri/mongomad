@@ -18,19 +18,19 @@ describe UserUpdater do
   # Methods
   describe '#initialize(updated_user)' do
     context 'when updated_user is not nil' do
-      let(:user_updater) { UserUpdater.new(updated_user) }
-
-      it 'uses given updated_user' do
-        expect(user_updater.user).to eq updated_user
-      end
+      let!(:user_updater) { UserUpdater.new(updated_user) }
 
       it 'creates an instance of UserUpdater' do
         expect(user_updater).to be_instance_of UserUpdater
       end
+
+      it 'uses given updated_user' do
+        expect(user_updater.user).to eq updated_user
+      end
     end
 
     context 'when updated_user is nil' do
-      let(:user_updater) { UserUpdater.new(nil) }
+      let!(:user_updater) { UserUpdater.new(nil) }
 
       it 'returns nil' do
         expect(user_updater).to eq nil
@@ -39,7 +39,7 @@ describe UserUpdater do
   end
 
   describe '#execute()' do
-    let(:user_updater) { UserUpdater.new(updated_user) }
+    let!(:user_updater) { UserUpdater.new(updated_user) }
 
     context 'when original_user exists' do
       before(:each) { original_user.save }
@@ -48,14 +48,19 @@ describe UserUpdater do
         expect(user_updater.execute()).to eq true
       end
 
-      it 'saves updated_user' do
+      it 'updates original_user data' do
+        user_updater.execute()
+        expect(User.find(original_user._id)).to eq updated_user
+      end
+
+      it 'calls save method for user' do
         expect(user_updater.user).to receive(:save)
         user_updater.execute()
       end
 
-      it 'updates original_user data' do
+      it 'saves user' do
         user_updater.execute()
-        expect(User.find(original_user._id)).to eq updated_user
+        expect(user_updater.user).to be_persisted
       end
 
       it 'creates an ObjectFinder instance with user' do
@@ -64,7 +69,7 @@ describe UserUpdater do
       end
 
       it 'calls ObjectFinder.execute method with user' do
-        expect_any_instance_of(ObjectFinder).to receive(:execute).with(user)
+        expect_any_instance_of(ObjectFinder).to receive(:execute).with(user_updater.user)
         user_updater.execute()
       end
 
@@ -87,7 +92,6 @@ describe UserUpdater do
 
         it 'outdates usersheet for every related document' do
           user_updater.execute()
-
           related_documents.each do |document|
             if document.class == Request
               expect(document.user_sheet.outdated).to eq true
@@ -105,18 +109,23 @@ describe UserUpdater do
 
         it 'outdates every related document' do
           user_updater.execute()
-
           related_documents.each do |document|
             expect(document.outdate).to eq true
           end
         end
 
-        it 'save every related document' do
+        it 'calls save method for every related document' do
           related_documents.each do |document|
             expect(document).to receive(:save)
           end
-
           user_updater.execute()
+        end
+
+        it 'saves every related document' do
+          user_updater.execute()
+          related_documents.each do |document|
+            expect(document).to be_persisted
+          end
         end
       end
 
@@ -130,9 +139,14 @@ describe UserUpdater do
         expect(user_updater.execute()).to eq false
       end
 
-      it 'does not call save method' do
-        expect_any_instance_of(User).to_not receive(:save)
+      it 'does not call save method for user' do
+        expect(user_updater.user).to_not receive(:save)
         user_updater.execute()
+      end
+
+      it 'does not save user' do
+        user_updater.execute()
+        expect(user_updater.user).to_not be_persisted
       end
 
       #TODO: Podrian eliminarse si no importa asegurarnos de que no hace llamadas que no deba
