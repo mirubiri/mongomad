@@ -63,6 +63,15 @@ describe ObjectFinder do
           deal.save
         end
 
+        let(:related_documents) do
+          related_documents = Array.new
+          related_documents << request
+          related_documents << offer
+          related_documents << negotiation
+          related_documents << deal
+          related_documents
+        end
+
         it 'returns an array' do
           expect(object_finder.execute()).to be_instance_of Array
         end
