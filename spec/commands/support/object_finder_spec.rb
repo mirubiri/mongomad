@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe ObjectFinder do
   # Variables
+  let(:user) { Fabricate.build(:user_with_items) }
+  let(:request) { Fabricate.build(:request, user:user) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user) }
+  let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
+  let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
 
   # Methods
   describe '#initialize(pattern_object)' do
@@ -28,26 +33,97 @@ describe ObjectFinder do
 
   describe '#execute()' do
     context 'when object to find is a user' do
-      pending 'calls request where with user'
-      pending 'calls offer where with user'
-      pending 'calls negotiation where with user'
-      pending 'calls deal where with user'
-      context 'when user has related documents' do
-        pending 'returns array of documents'
+      let(:object_finder) { ObjectFinder.new(user) }
+
+      it 'searches user in Request collection' do
+        expect(Request).to receive(:where).with(user)
+        object_finder.execute()
       end
+
+      it 'searches user in Offer collection' do
+        expect(Offer).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      it 'searches user in Negotiation collection' do
+        expect(Negotiation).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      it 'searches user in Deal collection' do
+        expect(Deal).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      context 'when user has related documents' do
+        before(:each) do
+          request.save
+          offer.save
+          negotiation.save
+          deal.save
+        end
+
+        it 'returns an array' do
+          expect(object_finder.execute()).to be_instance_of Array
+        end
+
+        it 'returns related documents' do
+          expect(object_finder.execute()).to eq related_documents
+        end
+      end
+
       context 'when user does not have any related documents' do
-        pending 'return nil (or an empty array)'
+        it 'returns nil' do
+          expect(object_finder.execute()).to eq nil
+        end
       end
     end
-    context 'when object to find is an item' do
-      pending 'calls offer where with item'
-      pending 'calls negotiation where with item'
-      pending 'calls deal where with item'
-      context 'when item has related documents' do
-        pending 'returns array of documents'
+
+    context 'when object to find is a user' do
+      let(:object_finder) { ObjectFinder.new(user) }
+
+      it 'searches user in Request collection' do
+        expect(Request).to receive(:where).with(user)
+        object_finder.execute()
       end
-      context 'when item does not have any related documents' do
-        pending 'return nil (or an empty array)'
+
+      #TODO: Meter todo esto en un shared_example
+      it 'searches user in Offer collection' do
+        expect(Offer).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      it 'searches user in Negotiation collection' do
+        expect(Negotiation).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      it 'searches user in Deal collection' do
+        expect(Deal).to receive(:where).with(user)
+        object_finder.execute()
+      end
+
+      context 'when user has related documents' do
+        before(:each) do
+          request.save
+          offer.save
+          negotiation.save
+          deal.save
+        end
+
+        it 'returns an array' do
+          expect(object_finder.execute()).to be_instance_of Array
+        end
+
+        it 'returns related documents' do
+          expect(object_finder.execute()).to eq related_documents
+        end
+      end
+
+      context 'when user does not have any related documents' do
+        it 'returns nil' do
+          expect(object_finder.execute()).to eq nil
+        end
       end
     end
   end
