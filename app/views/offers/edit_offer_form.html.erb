@@ -1,4 +1,3 @@
-
 <div class="edit-offer-form" id="edit-offer-form">
   <%= form_for [@user,@offer], :remote => true do |form| %>
     <div class="products_area">
@@ -41,7 +40,7 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
+              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item) %>" side="left">
                 <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
                 </div>
@@ -70,7 +69,7 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
+              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>"  name="<%= name(item) %>" description="<%= description(item) %>" side="right">
                 <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
                 </div>
@@ -90,6 +89,8 @@
           </div>
         </div>
         <div class="product_overview">
+          <div class="overview_image" id="overview_image">Imagen</div>
+          <div class="overview_image" id="overview_image">Imagen</div>
           <div class="overview_image" id="overview_image">Imagen</div>
           <div class="overview_description">
             <div class="overview_description_title" id="overview_description_title">Titulo del producto</div>

@@ -40,7 +40,7 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
+              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item)%>"  side="left">
                 <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
                 </div>
@@ -69,7 +69,7 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
+              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item)%>"  side="right">
                 <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
                 </div>
@@ -90,6 +90,9 @@
         </div>
         <div class="product_overview">
           <div class="overview_image" id="overview_image">Imagen</div>
+          <div class="overview_image" id="overview_image">Imagen</div>
+          <div class="overview_image" id="overview_image">Imagen</div>
+
           <div class="overview_description">
             <div class="overview_description_title" id="overview_description_title">Titulo del producto</div>
             <div class="overview_description_text" id="overview_description_text">Descripcion del producto</div>
@@ -130,7 +133,7 @@
           </div>
           <div class="offer_buttons">
             <%= form.submit "Submit", :class => 'offer_buttons_style', :id => 'new-offer-send-button' %>
-            <button class="offer_buttons_style">C</button>
+            <button class="offer_buttons_style">Cancel</button>
           </div>
         </div>
       </div>
