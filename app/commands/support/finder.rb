@@ -1,4 +1,4 @@
-class ObjectFinder
+class Finder
 
   # busca el objeto
       # si es user en request, offer , negotiation y deal
