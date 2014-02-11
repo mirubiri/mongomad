@@ -20,7 +20,7 @@
         <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="message_selector_area">
             <div class="user_image">
-              <%= image_service_tag(main_image(@user)) %>
+              <%= image_tag("/assets/images/message_icon.png") %>
             </div>
           </div>
         </a>
@@ -28,7 +28,19 @@
       <div class="products_container">
         <div class="products_list">
           <div id="receiver_content_area">
-            <% items(composer(@offer)).each do |item| %>
+
+            <div class="item" id="receiver_money" stock="1" quantity="0" side="left">
+              <div class="item_image">
+                <%= image_tag("/assets/images/offer_money.png") %>
+              </div>
+              <div class="item_description">
+                <div class="text">
+                  <textarea style="float:left; width: 95%; resize:none; border:none; text-align: center; color: red; font-size: 16px" rows="1" placeholder="dinero"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="left">
                 <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
@@ -45,9 +57,21 @@
             <% end %>
           </div>
           <div id="composer_content_area" class="hidden_container">
-            <% items(receiver(@offer).each do |item| %>
+
+            <div class="item" id="composer_money" stock="1" quantity="0" side="left">
+              <div class="item_image">
+                <%= image_tag("/assets/images/offer_money.png") %>
+              </div>
+              <div class="item_description">
+                <div class="text">
+                  <textarea style="float:left; width: 95%; resize:none; border:none; text-align: center; color: red; font-size: 10px" rows="1" placeholder="dinero"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" side="right">
-                <div class="item_main_image">
+                <div class="item_image">
                   <%= image_service_tag(main_image(item)) %>
                 </div>
                 <div class="item_quantity">
@@ -145,7 +169,6 @@
             </div>
           </div>
         </div>
-
         <div class="offer_info">
           <div class="profile_image">
             <%= image_service_tag(main_image(@user)) %>
@@ -156,14 +179,11 @@
             </div>
           </div>
           <div class="offer_buttons">
-            <%= form.submit "submit", :id => 'edit-offer-send-button' %>
-            <button>Close</button>
+            <%= form.submit "Submit", :class => 'offer_buttons_style', :id => 'new-offer-send-button' %>
+            <button class="offer_buttons_style">Cancel</button>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
-
-
