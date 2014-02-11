@@ -19,6 +19,13 @@ describe Outdater do
       it 'returns an array' do
         expect(Outdater.outdate(array_to_outdate)).to be_instance_of Array
       end
+
+      it 'returns an array with all members outdated' do
+        Outdater.outdate(array_to_outdate)
+        array_to_outdate.each do |member|
+          expect(member.outdated).to eq true
+        end
+      end
     end
 
     context 'when given array is empty' do
