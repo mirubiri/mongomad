@@ -71,6 +71,7 @@
       @include box-sizing(border-box);
       @include fixed_width(100%,100%,100%);
       @include fixed_height(480px,480px,480px);
+      border-bottom: 1px solid #dddddd;
       padding: 10px;
       overflow: auto;
 
@@ -97,7 +98,6 @@
       @include fixed_height(150px,150px,150px);
       float: left;
       width: 100%;
-      border-top: 1px solid #dddddd;
       padding: 10px 10px 0px 10px;
 
       .overview_image{
@@ -105,26 +105,27 @@
         float: left;
         @include proportions(130px,130px);
         border: 1px solid #dddddd;
+        margin-right: 5px;
       }
       .overview_description{
         @include box-sizing(border-box);
         float: left;
         margin-left: 5px;
-        @include proportions(590px,130px);
-        border-top: 1px solid #dddddd;
+        @include proportions(300px,130px);
+        // border-top: 1px solid #dddddd;
 
         .overview_description_title{
           float: left;
           width: 100%;
           height: 30px;
           margin-bottom: 5px;
-          border: 1px solid #dddddd;
+          // border: 1px solid #dddddd;
         }
         .overview_description_text{
           float: left;
           width: 100%;
           height: 90px;
-          border: 1px solid #dddddd;
+          // border: 1px solid #dddddd;
         }
       }
 
