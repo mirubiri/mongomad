@@ -201,6 +201,9 @@
               @include box-sizing(border-box);
               font-size: 12px;
               font-weight: 600;
+              textarea{
+                resize: none;
+              }
             }
           }
         }
@@ -254,6 +257,9 @@
             .text{
               @include box-sizing(border-box);
               font-size: 7px;
+              textarea{
+                resize: none;
+              }
             }
           }
         }
@@ -261,22 +267,26 @@
     }
 
     .offer_info{
+      padding-bottom: 0px;
+      height: 152px;
+
       .profile_image{
         img{
           margin-top: 5px;
           margin-left: 8px;
         }
       }
-    }
 
-    .offer_button{
-      width: 100%;
-      margin-right: 10px;
-
-      input,a{
-        float: right;
-        margin: 0px 10px 10px 10px;
+      .description{
+        top: -30px;
       }
+
+      .offer_buttons{
+        position: relative;
+        top: -25px;
+        padding-bottom: 0px;
+      }
+
     }
 
     .offer_date{
