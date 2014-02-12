@@ -16,15 +16,13 @@ describe Outdater do
         Outdater.outdate(array_to_outdate)
       end
 
-      it 'returns an array' do
-        expect(Outdater.outdate(array_to_outdate)).to be_instance_of Array
+      it 'returns true if all members are outdated' do
+        expect(Outdater.outdate(array_to_outdate)).to eq true
       end
 
-      it 'returns an array with all members outdated' do
-        Outdater.outdate(array_to_outdate)
-        array_to_outdate.each do |member|
-          expect(member.outdated).to eq true
-        end
+      it 'returns false if any member is not outdated' do
+        array_to_outdate.last.stub(:outdate).and_return(:true)
+        expect(Outdater.outdate(array_to_outdate)).to eq false
       end
     end
 
