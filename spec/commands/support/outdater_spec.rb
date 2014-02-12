@@ -28,13 +28,13 @@ describe Outdater do
 
     context 'when given array is empty' do
       it 'raises an error' do
-        expect{ Outdater.outdate(Array.new) }.to raise_error(StandardError, "given array is empty")
+        expect{ Outdater.outdate(Array.new) }.to raise_error(StandardError, "given array is empty.")
       end
     end
 
     context 'when given array is nil' do
       it 'raises an error' do
-        expect{ Outdater.outdate(nil) }.to raise_error(StandardError, "given array is nil")
+        expect{ Outdater.outdate(nil) }.to raise_error(StandardError, "given array is nil.")
       end
     end
   end
