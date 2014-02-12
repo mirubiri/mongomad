@@ -22,9 +22,9 @@ function activateOfferButton(){
         //$(".product_overview").show();
       } else {
         //$(".product_overview").hide();
-        $(".products_container").find('#overview_image').html("<p>Imagen</p>");
-        $(".products_container").find('#overview_description_title').html("<p>Titulo del Producto</p>");
-        $(".products_container").find('#overview_description_text').html("<p>Descripcion del Producto</p>");
+        //$(".products_container").find('#overview_image').html("<p>Imagen</p>");
+        //$(".products_container").find('#overview_description_title').html("<p>Titulo del Producto</p>");
+        //$(".products_container").find('#overview_description_text').html("<p>Descripcion del Producto</p>");
       }
     });
 

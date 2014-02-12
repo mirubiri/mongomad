@@ -83,11 +83,11 @@ function loadOfferModalScripts(){
 
 
 
-  $('#summary_offer_received_products_container').on('click','.delete_button',function(e){
+  $('#summary_offer_received_products_container').on('click','.item',function(e){
     itemSubtraction("his","received","receiver",$(this));
   });
 
-  $('#summary_offer_given_products_container').on('click','.delete_button',function(e){
+  $('#summary_offer_given_products_container').on('click','.item',function(e){
     itemSubtraction("my","given","composer",$(this));
   });
 
