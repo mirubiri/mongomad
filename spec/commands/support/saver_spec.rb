@@ -16,27 +16,30 @@ describe Saver do
         Saver.save(array_to_save)
       end
 
-      it 'returns an array' do
-        expect(Saver.save(array_to_save)).to be_instance_of Array
+      it 'returns true if all members are saved' do
+         expect(Saver.save(array_to_save)).to eq true
       end
 
-      it 'returns an array with all members persisted' do
-        Saver.save(array_to_save)
-        array_to_save.each do |member|
-          expect(member).to be_persisted
-        end
+      it 'returns false if any member is not saved' do
+        array_to_save.last.stub(:save).and_return(:false)
+        expect(Saver.save(array_to_save)).to eq false
+      end
+
+      it 'raises an error if any member is not valid' do
+        array_to_save.last.quantity = nil
+        expect{ Saver.save(array_to_save) }.to raise_error(StandardError, "given array contains a no valid member.")
       end
     end
 
     context 'when given array is empty' do
       it 'raises an error' do
-        expect{ Saver.save(Array.new) }.to raise_error(StandardError, "given array is empty")
+        expect{ Saver.save(Array.new) }.to raise_error(StandardError, "given array is empty.")
       end
     end
 
     context 'when given array is nil' do
       it 'raises an error' do
-        expect{ Saver.save(nil) }.to raise_error(StandardError, "given array is nil")
+        expect{ Saver.save(nil) }.to raise_error(StandardError, "given array is nil.")
       end
     end
   end
