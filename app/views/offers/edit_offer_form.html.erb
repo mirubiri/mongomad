@@ -49,7 +49,7 @@
                 </div>
                 <div class="item_description">
                   <div class="text">
-                    <%= description(item) %>
+                    <%= name(item) %>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,6 @@
             <% contador = 0 %>
             <% receiver_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>" side="left" product_id="<%= id(product) %>" >
-                <div class="delete_button">x</div>
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
                   <%= image_service_tag(main_image(product)) %>
                 </div>
@@ -143,9 +142,7 @@
           <div class="given" id="summary_offer_given_products_container">
             <% contador = 0 %>
             <% composer_products(@offer).each do |product| %>
-
               <div class="item newitem" id="<%= id(product) %>" side="right" product_id="<%= id(product) %>">
-                <div class="delete_button">x</div>
                 <div class="item_image">
                   <%= image_service_tag(main_image(product)) %>
                 </div>

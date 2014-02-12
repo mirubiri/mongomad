@@ -190,7 +190,6 @@ function additemViewInSummary(item, item_id, container, user){
     "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][item_id]\" value=\""+ item_id + "\" />" +
     "<input type=\"hidden\" name=\""+tipoElemento+"["+user+"_attributes][products_attributes]["+posicion+"][quantity]\" value=\""+ 1 + "\" item_id=\""+ item_id + "\" />" +
     "</div>")
-  .prepend('<div class="delete_button">x</div>')
   .addClass("newitem")
   .attr('product_id', item_id)
   .removeAttr('style')
@@ -241,7 +240,7 @@ function have_stock(item){
 
 function itemSubtraction(owner,t,u,item){
   var container = summary_container_selector(t); // Lo cojo qui por optimizacion, sino deberia acceder al DOM 2 veces, una por cada una de las funciones.
-  var id = item.parent().attr("id");
+  var id = item.attr("id");
 
   if (have_more_than_one(container, id)){
     deduct1ToProduct(container, id);
@@ -292,7 +291,7 @@ function valueOfitemInSummary(item){
 }
 
 function deleteitemFromSummary(item){
-  item.parent().remove();
+  item.remove();
 }
 
 function addDestroyInput(container,user,id,value, owner){ //hay que meter ambos dentro de un contenedor
