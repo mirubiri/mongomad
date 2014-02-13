@@ -46,10 +46,11 @@ class NegotiationsController < ApplicationController
   # POST /negotiations.json
   def create
     @user = User.find(params[:user_id])
-    @offer = received_offers(@user).find(params[:offer_id])
+    #@offer = received_offers(@user).find(params[:offer_id])
+    @negotiation = Fabricate.build(:negotiation, offer:Offer.find(params[:offer_id]))
 
     respond_to do |format|
-      if @negotiation = @offer.negotiate
+      if @negotiation = @offer.save
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else
