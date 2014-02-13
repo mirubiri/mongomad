@@ -1,14 +1,16 @@
 require 'spec_helper'
 
 describe Outdater do
+  # Variables
+  let(:array_to_outdate) do
+    array_to_outdate = Array.new
+    3.times { array_to_outdate << Fabricate.build(:product) }
+    array_to_outdate
+  end
+
+  # Methods
   describe 'self.outdate(to_outdate[])' do
     context 'when given array is not empty' do
-      let(:array_to_outdate) do
-        array_to_outdate = Array.new
-        3.times { array_to_outdate << Fabricate.build(:product) }
-        array_to_outdate
-      end
-
       it 'calls outdate method for every member' do
         array_to_outdate.each do |member|
           expect(member).to receive(:outdate)
@@ -29,12 +31,6 @@ describe Outdater do
     context 'when given array is empty' do
       it 'returns true' do
         expect(Outdater.outdate(Array.new)).to eq true
-      end
-    end
-
-    context 'when given array is nil' do
-      it 'raises an error' do
-        expect{ Outdater.outdate(nil) }.to raise_error(StandardError, "given array is nil.")
       end
     end
   end
