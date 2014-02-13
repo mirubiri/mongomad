@@ -50,7 +50,7 @@ class NegotiationsController < ApplicationController
     @negotiation = Fabricate.build(:negotiation, offer:Offer.find(params[:offer_id]))
 
     respond_to do |format|
-      if @negotiation = @offer.save
+      if @negotiation.save
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else
