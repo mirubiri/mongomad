@@ -8,7 +8,7 @@ describe Finder do
   let(:negotiation) { Fabricate.build(:negotiation, offer:offer) }
   let(:deal) { Fabricate.build(:deal, negotiation:negotiation) }
   let(:object) { user.sheet }
-  let(:collections) { ['Request','Offer','Negotiation','Deal'] }
+  let(:collections) { [Request,Offer,Negotiation,Deal] }
   let(:related_documents) do
     related_documents = Array.new
     related_documents << request.user_sheet
