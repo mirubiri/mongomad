@@ -19,7 +19,7 @@ describe Saver do
       end
 
       it 'returns true if all members are saved' do
-         expect(Saver.save(array_to_save)).to eq true
+        expect(Saver.save(array_to_save)).to eq true
       end
 
       it 'returns false if any member is not saved' do
