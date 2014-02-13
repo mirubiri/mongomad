@@ -20,7 +20,7 @@ describe Finder do
 
   # Methods
   describe 'self.find(object, collections[])' do
-    context 'when object is not nil and every collection in array exists' do
+    context 'when object and collections array are not empty' do
       it 'calls where method with object for every member' do
         collections.each do |member|
           expect(member).to receive(:where).with(object)
@@ -31,10 +31,9 @@ describe Finder do
       context 'when object has related documents' do
         it 'returns related documents' do
           user.save
-          request.save
-          offer.save
-          negotiation.save
-          deal.save
+          related_documents.each do |document|
+            document.save
+          end
           expect(Finder.find(object, collections)).to eq related_documents
         end
       end
@@ -46,28 +45,9 @@ describe Finder do
       end
     end
 
-    context 'when object is nil' do
-      it 'raises an error' do
-        expect{ Finder.find(nil, collections) }.to raise_error(StandardError, "given object is nil.")
-      end
-    end
-
-    context 'when collections array contains a non existent collection' do
-      it 'raises an error' do
-        collections << 'Collection'
-        expect{ Finder.find(object, collections) }.to raise_error(StandardError, "collections array contains a non existent collection.")
-      end
-    end
-
     context 'when collections array is empty' do
-      it 'raises an error' do
-        expect{ Finder.find(object, Array.new) }.to raise_error(StandardError, "collections array is empty.")
-      end
-    end
-
-    context 'when collections array is nil' do
-      it 'raises an error' do
-        expect{ Finder.find(object, nil) }.to raise_error(StandardError, "collections array is nil.")
+      it 'returns an empty array' do
+        expect(Finder.find(object, Array.new)).to eq Array.new
       end
     end
   end
