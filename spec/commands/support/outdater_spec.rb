@@ -27,8 +27,8 @@ describe Outdater do
     end
 
     context 'when given array is empty' do
-      it 'raises an error' do
-        expect{ Outdater.outdate(Array.new) }.to raise_error(StandardError, "given array is empty.")
+      it 'returns true' do
+        expect(Outdater.outdate(Array.new)).to eq true
       end
     end
 
