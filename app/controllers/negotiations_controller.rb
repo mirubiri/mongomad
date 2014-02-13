@@ -45,17 +45,26 @@ class NegotiationsController < ApplicationController
   # POST /negotiations
   # POST /negotiations.json
   def create
-    #@user = User.find(params[:user_id])
-    #@offer = received_offers(@user).find(params[:offer_id])
-    #@negotiation = Fabricate.build(:negotiation, offer:Offer.find(params[:offer_id]))
-
+    @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
-    @negotiation = Negotiation.new(
-      offer:offer,
-      users:[ offer.user_composer, offer.user_receiver ]
-      user_sheets:offer.user_sheets
-      proposals: [ offer.proposal ]
-      messages: [ offer.message ])
+    puts "*********************************"
+    puts @offer
+    puts @offer.valid?
+    puts "*********************************"
+    @negotiation = Fabricate.build(:negotiation, offer:@offer)
+    puts @negotiation
+    puts @negotiation.valid?
+    puts @negotiation.errors
+    puts "*********************************"
+
+
+    # @offer = Offer.find(params[:offer_id])
+    # @negotiation = Negotiation.new(
+    #   offer:@offer,
+    #   users:[ @offer.user_composer, @offer.user_receiver ],
+    #   user_sheets:@offer.user_sheets,
+    #   proposals: [ @offer.proposal ],
+    #   messages: [ Message.new(@offer.user_composer._id, @offer.message) ])
 
     respond_to do |format|
       if @negotiation.save
