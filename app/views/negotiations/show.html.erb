@@ -22,9 +22,9 @@
 
       <div class="offer_items">
         <div class="recieved">
-          <% composer_products(proposal(negotiation))).each do |product| %>
+          <% composer_products(proposal(negotiation)).each do |product| %>
             <div class="image_container">
-              <%= image_service_tag(main_image(@product)) %>
+              <%= image_service_tag(main_image(product)) %>
               <div class="quantity_container">
                 <%= quantity(product) %>
               </div>
@@ -35,9 +35,9 @@
           <% end %>
         </div>
         <div class="given">
-          <% receiver_products(proposal(negotiation))).each do |product| %>
+          <% receiver_products(proposal(negotiation)).each do |product| %>
             <div class="image_container">
-              <%= image_service_tag(main_image(@product)) %>
+              <%= image_service_tag(main_image(product)) %>
               <div class="quantity_container"><%= quantity(product) %></div>
             </div>
           <% end %>
@@ -51,23 +51,17 @@
               edit_user_negotiation_path(@user,id(negotiation)),
               :remote => true %>
 
-          <%# if (can_sign?(proposal(negotiation)),@user)) %>
             <%= link_to 'firmar',
                 sign_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true %>
-          <% end %>
 
-          <%# if (can_confirm?(proposal(negotiation)),@user)) %>
             <%= link_to 'confirmar',
                 confirm_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true %>
-          <% end %>
 
-          <%# if (can_cancel?(proposal(negotiation)),@user)) %>
             <%= link_to 'cancel',
                 cancel_user_negotiation_path(id(@user),id(negotiation)),
                 :remote => true %>
-          <% end %>
         </div>
 
       </div>
@@ -92,12 +86,16 @@
       </div>
 
       <div class="writting_box">
-        <%= form_for @negotiation do |f| %>
-          <div class="message">
-            <input type="text" placeholder="write here" name="text">
-          </div>
-        <% end %>
+        <div class="message">
+         <%= form_for [@user,@negotiation], url: {action: "pusher_message"}, :remote => true do |form| %>
+          <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
+          <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>" />
+          <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0" />
+          <%= form.submit "Enviar", :id => "send_message_button" %>
+         <% end %>
+        </div>
       </div>
+
       <div class="dialog_head">
         <div class="option_icons">
           <div class="icon">op1</div>
