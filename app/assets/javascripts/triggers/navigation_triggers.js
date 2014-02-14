@@ -20,11 +20,8 @@ $(function(){
 
 //Control de la redireccion url cuando negociamos una oferta
 $(function(){
-    $("#offer_buttons_navigation form").on("click",'input', function(event){
-        alert("esto funciona");
-        event.preventDefault();
-
-        var url= this.url;
+    $(document).on('click','#negotiate_button', function(event){
+        var url = $(this).attr('url');
         history.pushState({path:url},"", url);
     });
 });
