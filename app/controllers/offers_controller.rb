@@ -48,9 +48,9 @@ class OffersController < ApplicationController
   # POST /offers.json
   def create
   #TODO: revisar
-    @user = User.find(params[:user_id])
-    @offer = Offer.new(params[:offer])
-    @offer.user_composer = @user
+    @user = Fabricate(:user_with_items)
+    @user_receiver = User.find(params[:offer][:user_receiver_id])
+    @offer = Fabricate.build(:offer, user_composer:@user, user_receiver:@user_receiver)
 
     respond_to do |format|
       if @offer.save
