@@ -24,11 +24,17 @@
   end
 
   def composer_products(object)
-    if object.class == Offer
-      products(proposal(object), composer(object))
-    else
-      products(object, composer(object))
-    end
+    puts object
+    puts object.class
+    object.proposal.products(object.composer._id)
+    # products(object.proposal, composer(object))
+    # if object.class == Offer
+    #   puts "eres un putilla22"
+    #   products(proposal(object), composer(object))
+    # else
+    #   puts "eres un putilla"
+    #   products(object, composer(object))
+    # end
   end
 
   def date_time(object)
@@ -84,11 +90,12 @@
   end
 
   def message(object)
-    if object.class == Offer
-      object.message
-    else
-      messages(object).last
-    end
+    object.message
+    # if object.class == Offer
+    #   object.message
+    # else
+    #   messages(object).last
+    # end
   end
 
   def messages(object)
@@ -107,9 +114,9 @@
     user_sheet(object).nick
   end
 
-  def products(object, user)
-    object.products(user._id)
-  end
+  # def products(object, user)
+  #   object.products(user._id)
+  # end
 
   def proposal(object)
     object.proposal
@@ -132,11 +139,13 @@
   end
 
   def receiver_products(object)
-    if object.class == Offer
-      products(proposal(object), receiver(object))
-    else
-      products(object, receiver(object))
-    end
+        object.proposal.products(object.receiver._id)
+
+    # if object.class == Offer
+    #   products(proposal(object), receiver(object))
+    # else
+    #   products(object, receiver(object))
+    # end
   end
 
   def requests(object)

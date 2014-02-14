@@ -11,7 +11,7 @@ if( ($('.offer').length) === 0){
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 //$('#new-offer-form').on('hidden', function () {
 
-  $('#ppal_container').prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:@offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
+  $('#ppal_container').prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:offer => offer, :@negotiation => Negotiation.new}).html_safe %>");
   activateMasonry();
   matchPrincipalContainersHeighs();
   animateNewElement();

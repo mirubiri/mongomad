@@ -1,77 +1,66 @@
-<div class="offer" id="<%= id(composer(@offer)) %>">
-  <div id="options">
-    <div class="menu">
-      <%= link_to "Eliminar Oferta",
-            user_offer_path(@user,id(@offer)),
-            :method => :delete,
-            :confirm => "Are you sure?" %>
-      <a href="#blank">Opcion 2</a>
-    </div>
-  </div>
+<div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
+
   <div class="offer_header">
-    <div class="profile_image">
-      <%= link_to image(proposal(@offer)),
-        :controller => "users",
-        :action => "show",
-        :id => id(composer(@offer)
-      %>
-    </div>
-    <div class="description">
-      <div class="composer_name">
-        <%= first_name(composer(proposal(@offer) %>
-      </div>
-      <div class="offer_message">
-        <%= message(@offer) %>
-      </div>
-    </div>
+    <%= first_name(composer(offer)) %>
   </div>
+
   <div class="offer_items">
     <div class="recieved">
-      <% composer_products(proposal(@offer)).each do |product| %>
+      <% composer_products(offer).each do |product| %>
         <div class="image_container">
-          <%= image_service_tag(main_image(@product)) %>
-          <div class="quantity_container"><%= quantity(product) %></div>
-          <div class="artistic_layer_big"></div>
+          <%= image_service_tag(main_image(product)) %>
+          <div class="description">
+            <%= name(product) %>
+          </div>
         </div>
       <% end %>
     </div>
     <div class="given">
-      <% receiver_products(proposal(@offer)).each do |product| %>
+      <% receiver_products(offer).each do |product| %>
         <div class="image_container">
-          <%= image_service_tag(main_image(@product)) %>
+          <%= image_service_tag(main_image(product)) %>
           <div class="quantity_container"><%= quantity(product) %></div>
-          <div class="artistic_layer_small"></div>
         </div>
       <% end %>
     </div>
   </div>
 
-
-    <%= form_for [@user,@negotiation] do |form| %>
-      <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
-      <div class="offer_button">
-        <%= form.submit "negociar", :id => "negotiate_button"  %>
+  <div class="offer_info">
+    <div class="profile_image">
+      <%= link_to image_service_tag(main_image(composer(offer))),
+        :controller => "users",
+        :action => "show",
+        :id => id(composer(offer))
+      %>
+    </div>
+    <div class="description">
+      <div class="offer_message">
+        <%= message(offer) %>
       </div>
-    <% end %>
+    </div>
 
-    <%= form_for [@user,@negotiation] do |form| %>
-      <input type="hidden" name="offer_id" value="<%= id(@offer)%>" />
-      <div class="offer_button">
-        <%= form.submit "para mi", :class => "", :id => "negotiate_button" %>
-      </div>
-    <% end %>
+    <div class="offer_buttons" id="offer_buttons_navigation">
 
+      <%= form_for [@user,@negotiation], :remote => true do |form| %>
+        <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+        <%= form.submit "NEGOTIATE", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
+      <% end %>
 
-    <%= link_to "edit",
-            {:controller => "offers",
-            :action => "edit",
-            :user_id => id(@user),
-            :id => id(@offer)},
-            {:remote => true,
-             :id => "edit_offer_link"} %>
+      <%= form_for [@user,@negotiation], :remote => true do |form| %>
+        <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+        <%= form.submit "THAT'S FOR ME", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
+      <% end %>
 
+      <%= link_to "EDIT",
+              {:controller => "offers",
+              :action => "edit",
+              :user_id => id(@user),
+              :id => id(offer)},
+              {:remote => true,
+               :class => 'offer_buttons_style',
+               :id => "edit_offer_link"} %>
 
-  <div class="offer_date">
-    <%= date_time(@offer) %>
+    </div>
+
   </div>
 </div>
