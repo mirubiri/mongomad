@@ -18,7 +18,7 @@ describe Message do
 
   # Methods
   describe '#user' do
-    it 'returns the owner user sheet' do
+    it 'returns the owner user_sheet' do
       expect(message.user).to eq message.message_container.user_sheets.find(message.user_id)
     end
   end
