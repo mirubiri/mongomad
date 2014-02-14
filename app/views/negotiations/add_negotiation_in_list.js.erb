@@ -1,31 +1,45 @@
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
-$('#ppal_container')
-.html("<%= escape_javascript(render template: 'negotiations/index').html_safe %>")
-.prepend("<%= escape_javascript(render template: 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>");
-maximizeConversationWidth();
-maximizeConversationsHeights();
-activateNegotiationButtons();
-//disableDoubleScrolling();
-focusNegotiationWritebox();
-scrollConversation();
-matchPrincipalContainersHeighs();
-animateNewElement();
 
-//Helper que permite animar el primer elemento
-function animateNewElement(){
-  $('#ppal_container')
-  .children()
-  .first()
-  .addClass("new_request_style")
-  .css('opacity', 0)
-  .hide()
-  .slideDown()
-  .animate(
-    { opacity: 1 },
-    { queue: false, duration: 1500 }
-  )
-  .animate({backgroundColor: '#ffffff'}, 800, function(){
-    $(this).removeClass("new_request_style");
-  });
-}
+$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
+
+$("#ppal_container").replaceWith("<%=j render 'negotiation_list' %>");
+
+$("#ppal_container")
+.prepend("<%= escape_javascript(render template: 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>")
+.children()
+.first()
+.addClass("new_request_style")
+.css('opacity', 0)
+.hide()
+.slideDown()
+.animate(
+  { opacity: 1 },
+  { queue: false, duration: 1500 }
+)
+.animate({backgroundColor: '#ffffff'}, 800, function(){
+  $(this).removeClass("new_request_style");
+});
+
+
+//Carga sus funciones especificas de dibujado
+$('.negotiation').regulateWidth();
+$('.negotiation').maximizeConversationWidth();
+$('.negotiation').maximizeConversationsHeights();
+$('.negotiation').activateNegotiationButtons();
+//$('.negotiation').disableDoubleScrolling();
+$('.negotiation').focusNegotiationWritebox();
+$('.negotiation').scrollConversation();
+
+//Controlo el evento de ponerse encima de un item
+$('.image_container').hideTitle();
+
+
+//Si le doy al enter en cualquier conversacion, envia el texto si el textarea esta activado claro
+$('.txt_area_writer').keypress(function(event) {
+  if (event.which == 13) {
+    //alert("enter key pressed");
+    event.preventDefault();
+    $(this).closest("form").submit();
+  }
+});
