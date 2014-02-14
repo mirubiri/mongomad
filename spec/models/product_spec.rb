@@ -76,7 +76,7 @@ describe Product do
   end
 
   describe '#item' do
-    it 'return the item corresponding to product id' do
+    it 'returns the item corresponding to product._id' do
       expect(product.item).to eq item
     end
   end
