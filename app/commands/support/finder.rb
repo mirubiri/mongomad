@@ -1,37 +1,35 @@
 class Finder
   def self.find(object, collections=[])
-    collections.each do |collection|
-      collection.where(_id:object._id)
+    matched_objects = Array.new
+    if object.class == UserSheet
+      collections.each do |collection|
+        if collection.class == Request
+          documents = collection.where("user_sheet._id" => object._id)
+          documents.each do |document|
+            matched_objects << document.user_sheet
+          end
+        else # collection.class != Request
+          documents = collection.where("user_sheets._id" => object._id)
+          documents.each do |document|
+            matched_objects << document.user_sheets.where(_id:object._id).first
+          end
+        end
+      end
+    else # object.class != UserSheet
+      collections.each do |collection|
+        if collection.class == Deal
+          documents = collection.where("agreement.goods._id" => object._id)
+          documents.each do |document|
+            matched_objects << document.agreement.goods.where(_id:object._id).first
+          end
+        else # collection.class != Deal
+          documents = collection.where("proposal.goods._id" => object._id)
+          documents.each do |document|
+            matched_objects << document.proposal.goods.where(_id:object._id).first
+          end
+        end
+      end
     end
-
-    # result = true
-    # to_save.each do |member|
-    #   member.save
-    #   result &&= member.persisted?
-    # end
-    # result
+    matched_objects
   end
-  # busca el objeto
-      # si es user en request, offer , negotiation y deal
-      # si es item en user,negotiation, deal
-  # devuelve un array con todos los objetos encontrados
 end
-
-
-# class Finder
-#     raise StandardError, "given object is nil." unless object != nil
-#     # raise StandardError, "collections array contains a non existent collection." unless to_outdate != []
-#     raise StandardError, "collections array is empty." unless collections != []
-#     raise StandardError, "collections array is nil." unless collections != nil
-#     # raise StandardError, "given array is nil." unless to_outdate != nil
-
-#   end
-
-#   # busca el objeto
-#       # si es user en request, offer , negotiation y deal
-#       # si es item en user,negotiation, deal
-#   # devuelve un array con todos los objetos encontrados
-# end
-# class Saver
-
-# end
