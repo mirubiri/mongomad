@@ -57,15 +57,6 @@ class NegotiationsController < ApplicationController
     puts @negotiation.errors
     puts "*********************************"
 
-
-    # @offer = Offer.find(params[:offer_id])
-    # @negotiation = Negotiation.new(
-    #   offer:@offer,
-    #   users:[ @offer.user_composer, @offer.user_receiver ],
-    #   user_sheets:@offer.user_sheets,
-    #   proposals: [ @offer.proposal ],
-    #   messages: [ Message.new(@offer.user_composer._id, @offer.message) ])
-
     respond_to do |format|
       if @negotiation.save
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
