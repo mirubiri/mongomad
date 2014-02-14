@@ -229,22 +229,12 @@ describe Proposal do
   end
 
   describe '#composer' do
-    it 'calls to proposal_container.user_sheets.find with composer_id' do
-      expect(proposal.proposal_container.user_sheets).to receive(:find).with(proposal.composer_id)
-      proposal.composer
-    end
-
     it 'returns the composer user sheet' do
       expect(proposal.composer).to eq proposal.proposal_container.user_sheets.find(proposal.composer_id)
     end
   end
 
   describe '#receiver' do
-    it 'calls to proposal_container.user_sheets.find with receiver_id' do
-      expect(proposal.proposal_container.user_sheets).to receive(:find).with(proposal.receiver_id)
-      proposal.receiver
-    end
-
     it 'returns the receiver user sheet' do
       expect(proposal.receiver).to eq proposal.proposal_container.user_sheets.find(proposal.receiver_id)
     end

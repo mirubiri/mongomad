@@ -31,7 +31,7 @@ describe Finder do
         end
 
         it 'returns an array with matched objects' do
-           expect(Finder.find(object, collections)).to eq matched_objets
+          expect(Finder.find(object, collections)).to eq matched_objets
         end
       end
 

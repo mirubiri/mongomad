@@ -18,12 +18,7 @@ describe Message do
 
   # Methods
   describe '#user' do
-    it 'calls to message_container.user_sheets.find with user_id' do
-      expect(message.message_container.user_sheets).to receive(:find).with(message.user_id)
-      message.user
-    end
-
-    it 'returns the owner user sheet' do
+    it 'returns the owner user_sheet' do
       expect(message.user).to eq message.message_container.user_sheets.find(message.user_id)
     end
   end
