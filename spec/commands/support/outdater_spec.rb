@@ -10,28 +10,20 @@ describe Outdater do
 
   # Methods
   describe 'self.outdate(to_outdate[])' do
-    context 'when given array is not empty' do
-      it 'calls outdate method for every member' do
-        array_to_outdate.each do |member|
-          expect(member).to receive(:outdate)
-        end
-        Outdater.outdate(array_to_outdate)
+    it 'calls outdate method for every member' do
+      array_to_outdate.each do |member|
+        expect(member).to receive(:outdate)
       end
-
-      it 'returns true if all members are outdated' do
-        expect(Outdater.outdate(array_to_outdate)).to eq true
-      end
-
-      it 'returns false if any member is not outdated' do
-        array_to_outdate.last.stub(:outdate).and_return(:true)
-        expect(Outdater.outdate(array_to_outdate)).to eq false
-      end
+      Outdater.outdate(array_to_outdate)
     end
 
-    context 'when given array is empty' do
-      it 'returns true' do
-        expect(Outdater.outdate(Array.new)).to eq true
-      end
+    it 'returns true if all members are outdated' do
+      expect(Outdater.outdate(array_to_outdate)).to eq true
+    end
+
+    it 'returns false if any member is not outdated' do
+      array_to_outdate.last.stub(:outdate).and_return(:true)
+      expect(Outdater.outdate(array_to_outdate)).to eq false
     end
   end
 end
