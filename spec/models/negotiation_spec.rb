@@ -132,7 +132,7 @@ describe Negotiation do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
 
       it 'triggers proposal sign event' do
-        expect(negotiation.proposal).to receive :sign
+        expect(negotiation.proposal).to receive(:sign)
         negotiation.sign_proposal(composer_id)
       end
 
@@ -158,7 +158,7 @@ describe Negotiation do
       end
 
       it 'triggers proposal confirm event' do
-        expect(negotiation.proposal).to receive :confirm
+        expect(negotiation.proposal).to receive(:confirm)
         negotiation.confirm_proposal(composer_id)
       end
 
@@ -259,12 +259,15 @@ describe Negotiation do
 
   describe '#money_owner?' do
     context 'when last proposal has money' do
-      it 'returns true if user owns the money' do
-        expect(negotiation_composer_cash.money_owner?(composer_id)).to eq true
+      context 'when user owns the money' do
+        it 'returns true' do
+          expect(negotiation_composer_cash.money_owner?(composer_id)).to eq true
+        end
       end
-
-      it 'returns false if user does not own the money' do
-        expect(negotiation_composer_cash.money_owner?(receiver_id)).to eq false
+      context 'when user does not own the money' do
+        it 'returns false' do
+          expect(negotiation_composer_cash.money_owner?(receiver_id)).to eq false
+        end
       end
     end
 
