@@ -47,15 +47,7 @@ class NegotiationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
-    puts "*********************************"
-    puts @offer
-    puts @offer.valid?
-    puts "*********************************"
     @negotiation = Fabricate.build(:negotiation, offer:@offer)
-    puts @negotiation
-    puts @negotiation.valid?
-    puts @negotiation.errors
-    puts "*********************************"
 
     respond_to do |format|
       if @negotiation.save

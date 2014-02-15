@@ -51,10 +51,6 @@ class OffersController < ApplicationController
     @user = Fabricate(:user_with_items)
     @user_receiver = User.find(params[:offer][:user_receiver_id])
     @offer = Fabricate.build(:offer, user_composer:@user, user_receiver:@user_receiver)
-  puts "*********************************************************************"
-  puts @offer.valid?
-  puts "*********************************************************************"
-
 
     respond_to do |format|
       if @offer.save

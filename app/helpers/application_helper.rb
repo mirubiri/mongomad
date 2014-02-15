@@ -24,15 +24,11 @@
   end
 
   def composer_products(object)
-    puts object
-    puts object.class
     object.proposal.products(object.composer._id)
     # products(object.proposal, composer(object))
     # if object.class == Offer
-    #   puts "eres un putilla22"
     #   products(proposal(object), composer(object))
     # else
-    #   puts "eres un putilla"
     #   products(object, composer(object))
     # end
   end
