@@ -32,15 +32,6 @@ describe AutoUpdate do
 
   it { should have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
 
-  describe '.find' do
-    before { copy.update_attributes(outdated:true) }
-
-    it 'calls auto_update after finding' do
-      expect(copy).to receive(:assign_attributes).and_call_original
-      copy.reload
-    end
-  end
-
   describe '#auto_update' do
     context 'when is updated' do
       before { copy.update_attributes(outdated:false) }
