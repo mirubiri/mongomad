@@ -27,6 +27,15 @@ $(function(){
 });
 
 
+//Control de la redireccion url cuando negociamos una oferta
+$(function(){
+    $(document).on('click','#new-offer-send-button', function(event){
+        var url = $(this).attr('url');
+        history.pushState({path:url},"", url);
+    });
+});
+
+
 // Recoge los cambios de url
 $(window).on("popstate", function() {
     $.getScript(location.href);

@@ -132,7 +132,7 @@
             </div>
           </div>
           <div class="offer_buttons">
-            <%= form.submit "Submit", :class => 'offer_buttons_style', :id => 'new-offer-send-button' %>
+            <%= form.submit "Submit", :url => user_offers_path(@user), :class => 'offer_buttons_style', :id => 'new-offer-send-button' %>
             <button class="offer_buttons_style">Cancel</button>
           </div>
         </div>

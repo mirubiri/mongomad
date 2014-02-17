@@ -1,14 +1,17 @@
 //Lo primero es ocultar la modal, porque ya se va a generar lo que queremos
 $('#new-offer-form').dialog('close');
 
+//Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
+$("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
+$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
+$("#ppal_container").html("<%=j render :partial => 'offers/offer_list' %>");
+
 //Si estabamos mostrando el contenido de que no hay ofertas, lo eliminamos
 if( ($('.offer').length) === 0){
   $('#ppal_container > .no_elements').remove();
 }
 
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
-//$('#new-offer-form').on('hidden', function () {
-
 $('#ppal_container')
 .prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
 .children()
