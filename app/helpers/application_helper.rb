@@ -135,7 +135,7 @@
   end
 
   def receiver_products(object)
-        object.proposal.products(object.receiver._id)
+    object.proposal.products(object.receiver._id)
 
     # if object.class == Offer
     #   products(proposal(object), receiver(object))

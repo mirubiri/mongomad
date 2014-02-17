@@ -29,5 +29,5 @@ Mongomad::Application.configure do
   config.assets.debug = false
 
   # See everything in the log (default is :info)
-  config.log_level = :error
+  config.log_level = :debug
 end
