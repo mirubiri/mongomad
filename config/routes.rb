@@ -21,7 +21,11 @@ Mongomad::Application.routes.draw do
       end
     end
 
-    resources :deals
+    resources :deals do
+      collection do
+        post 'pusher_message'
+      end
+    end
     resources :alerts
   end
 

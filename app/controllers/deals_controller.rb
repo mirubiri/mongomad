@@ -3,6 +3,7 @@ class DealsController < ApplicationController
   # GET /deals.json
   def index
     @user = User.find(params[:user_id])
+    @deal = Deal.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -73,4 +74,14 @@ class DealsController < ApplicationController
       format.html { redirect_to deals_url }
     end
   end
+
+  # Prueba el canal de Pusher
+  def pusher_message
+    @user = User.find(params[:user_id])
+    Pusher.trigger('my_deals_channel', 'my_event', {message: params[:message], deal_id: params[:deal_id], sender_image_tag: params[:sender_image_tag] })
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
