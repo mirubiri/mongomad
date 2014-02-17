@@ -19,9 +19,7 @@
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-
       <div class="item">
-
         <div class="item_image"><%= image_tag("/assets/images/nuevo_item.png") %></div>
 
         <div class="item_description">
@@ -39,7 +37,6 @@
 
       </div>
 
-
       <% items(@user).reverse_each do |item| %>
         <div class="item" id="<%= id(item) %>">
 
@@ -53,12 +50,12 @@
 
           <div class="item_description">
             <div class="text">
-              <%= description(item) %>
+              <%= name(item) %>
             </div>
           </div>
 
           <div class="item_options">
-            <%= link_to "editar producto",
+            <%= link_to "EDITAR PRODUCTO",
               edit_user_item_path(@user,item),
               :class => "item_buttons_style",
               :remote => true %>

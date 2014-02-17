@@ -9,7 +9,21 @@ if( ($('.offer').length) === 0){
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 //$('#new-offer-form').on('hidden', function () {
 
-
+$('#ppal_container')
+.prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
+.children()
+.first()
+.addClass("new_request_style")
+.css('opacity', 0)
+.hide()
+.slideDown()
+.animate(
+  { opacity: 1 },
+  { queue: false, duration: 1500 }
+)
+.animate({backgroundColor: '#ffffff'}, 800, function(){
+  $(this).removeClass("new_request_style");
+});
 
 activateMasonry();
 matchPrincipalContainersHeighs();
