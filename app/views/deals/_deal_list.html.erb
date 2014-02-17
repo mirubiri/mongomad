@@ -1,41 +1,72 @@
 <% deals(@user).each do |deal| %>
 
-    <div class="deal">
+    <div class="deal" id="<%= id(deal) %>">
 
-      <div class="deal_header">
-        <div class="deal_users">
-          <div class="deal_user">
-            <%= image_service_tag(main_image(composer(agreement(deal)))) %>
-            <div class="deal_user_name">Sergio</div>
-          </div>
-          <div class="deal_user">
+      <div class="negotiation_offer">
+
+        <div class="oponent_info">
+          <div class="oponent_image">
             <%= image_service_tag(main_image(composer(agreement(deal)))) %>
           </div>
-          <div class="deal_user">
-            <%= image_service_tag(main_image(composer(agreement(deal)))) %>
-            <div class="deal_user_name">Sergio</div>
+          <div class="oponent_description">
+            <div class="oponent_name">
+              <%= first_name(composer(agreement(deal))) %>
+            </div>
+            <div class="oponent_address">
+              <%= full_name(composer(agreement(deal))) %>
+            </div>
           </div>
         </div>
-        <div class="deal_options">
-          <div class="deal_option">
-            <div class="deal_button">PDF</div>
+
+        <div class="offer_triangle">
+          <div class="triangle"></div>
+        </div>
+
+        <div class="offer_items">
+          <div class="recieved">
+            <% composer_products(agreement(deal)).each do |product| %>
+              <div class="image_container">
+                <%= image_service_tag(main_image(product)) %>
+                <div class="quantity_container">
+                  <%= quantity(product) %>
+                </div>
+                <div class="artistic_layer_big">
+                  <%= name(product) %>
+                </div>
+              </div>
+            <% end %>
           </div>
-          <div class="deal_option">
-            <div class="deal_button">Validar Trato</div>
-          </div>
-          <div class="deal_option">
-            <div class="deal_button">Cancelar</div>
+          <div class="given">
+            <% receiver_products(agreement(deal)).each do |product| %>
+              <div class="image_container">
+                <%= image_service_tag(main_image(product)) %>
+                <div class="quantity_container"><%= quantity(product) %></div>
+              </div>
+            <% end %>
           </div>
         </div>
+
+        <!-- <div class="offer_info">
+
+          <div class="offer_buttons">
+          </div>
+
+        </div> -->
       </div>
 
       <div class="dialog_container">
 
-        <div class="conversation" id="conversationofdeal">
+        <div class="dialog_head">
+          <div class="option_icons">
+            <div class="icon"><%= image_tag("/assets/images/close.png") %></div>
+          </div>
+        </div>
+
+        <div class="conversation" id="conversationofnegotiation">
           <% messages(deal).each do |message| %>
             <div class="comment">
               <div class="comment_user_image">
-                <%= image_service_tag(main_image(message)) %>
+                <%#= image_service_tag(main_image(message)) %>
               </div>
               <div class="comment_text">
                 <%= text(message) %>
@@ -45,35 +76,23 @@
               </div>
             </div>
           <% end %>
+          <div class="option_buttons">
+            <div class="icon"><%= image_tag("/assets/images/microfono.png") %></div>
+            <div class="icon"><%= image_tag("/assets/images/camara.png") %></div>
+          </div>
         </div>
 
         <div class="writting_box">
-          <div class="user_writing">
-            <%= image_service_tag(main_image(composer(agreement(deal)))) %>
+          <div class="message">
+           <!-- <%#= form_for [@user,@negotiation], url: {action: "pusher_message"}, :remote => true do |form| %>
+            <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
+            <input type="hidden" name="negotiation_id" value="<%#= id(negotiation)%>">
+            <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0">
+            <%#= form.submit "Enviar", :id => "send_message_button" %>
+           <%# end %> -->
           </div>
-          <form>
-            <div class="message">
-              <input type="text" placeholder="write here" name="text">
-            </div>
-          </form>
         </div>
 
-      </div>
-    </div>
-
-
-    <div class="friend">
-      <div class="friend_description">
-        <div class="friend_image"><%= image_service_tag(main_image(composer(agreement(deal)))) %></div>
-        <div class="friend_data">
-          <div class="friend_completename">Sergio de Torre</div>
-          <div class="friend_address">Logroño, España</div>
-        </div>
-      </div>
-      <div class="friend_notifications">
-        <div class="friend_notify_area">1</div>
-        <div class="friend_notify_area">2</div>
-        <div class="friend_notify_area">3</div>
       </div>
     </div>
 

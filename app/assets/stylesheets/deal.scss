@@ -1,7 +1,7 @@
 .deal{
   @include border-radius(5px);
   float: left;
-  width: 350px;
+  width: 100%;
   margin-right: 10px;
   overflow: auto;
   border: $borde1px;

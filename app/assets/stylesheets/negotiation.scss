@@ -1,6 +1,6 @@
 @import "variables";
 
-.negotiation {
+.negotiation, .deal {
   @include element_into_ElementList_style;
   @include box-sizing(border-box);
   width: 100%;

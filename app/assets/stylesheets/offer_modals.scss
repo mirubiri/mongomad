@@ -224,7 +224,7 @@
 
 
           .item_image{
-            @include proportions(100%,100%);
+            @include proportions($smallImageDimension,$smallImageDimension);
             @include border-radius(2px, 2px);
             @include high-quality-image;
             background-color: white;
