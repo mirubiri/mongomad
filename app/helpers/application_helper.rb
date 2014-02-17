@@ -24,19 +24,11 @@
   end
 
   def composer_products(object)
-    products(proposal(object), composer(object))
-    # if object.is_a?(Offer)
-    #   puts "***************************"
-    #   puts "rama offer"
-    #   puts "***************************"
-
-    #   products(proposal(object), composer(object))
-    # else
-    #   puts "***************************"
-    #   puts "rama no offer"
-    #   puts "***************************"
-    #   products(object, composer(object))
-    # end
+    if object.class == Offer
+      products(proposal(object), composer(object))
+    else
+      products(object, composer(object))
+    end
   end
 
   def date_time(object)
@@ -92,12 +84,11 @@
   end
 
   def message(object)
+    if object.class == Offer
       object.message
-    # if object.class == Offer
-    #   object.message
-    # else
-    #   messages(object).last
-    # end
+    else
+      messages(object).last
+    end
   end
 
   def messages(object)
@@ -141,12 +132,11 @@
   end
 
   def receiver_products(object)
+    if object.class == Offer
       products(proposal(object), receiver(object))
-    # if object.class == Offer
-    #   products(proposal(object), receiver(object))
-    # else
-    #   products(object, receiver(object))
-    # end
+    else
+      products(object, receiver(object))
+    end
   end
 
   def requests(object)
@@ -175,28 +165,12 @@
 
   def user_sheet(object)
     if object.class == User
-      puts "------------------------------------------------------------------------------------"
-      puts "clase user"
-      puts object.class
-      puts "------------------------------------------------------------------------------------"
       object.sheet
     elsif object.class == Request
-            puts "------------------------------------------------------------------------------------"
-      puts "clase requests"
-      puts object.class
-      puts "------------------------------------------------------------------------------------"
       object.user_sheet
     elsif object.class == Message
-            puts "------------------------------------------------------------------------------------"
-      puts "clase message"
-      puts object.class
-      puts "------------------------------------------------------------------------------------"
       object.user
     else
-            puts "------------------------------------------------------------------------------------"
-      puts "clase user_sheet"
-      puts object.class
-      puts "------------------------------------------------------------------------------------"
       object
     end
   end
