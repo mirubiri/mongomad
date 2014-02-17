@@ -24,17 +24,9 @@
   end
 
   def composer_products(object)
-    # object.proposal.products(object.composer._id)
-    # products(object.proposal, composer(object))
     if object.class == Offer
-      puts "************************************"
-      puts "entra en la rama offer"
-      puts "************************************"
       products(proposal(object), composer(object))
     else
-      puts "************************************"
-      puts "entra en la rama para las no offers"
-      puts "************************************"
       products(object, composer(object))
     end
   end
@@ -56,7 +48,7 @@
   end
 
   def full_name(object)
-    first_name(object) +" "+ last_name(object)
+    first_name(object) + " " + last_name(object)
   end
 
   def gender(object)
@@ -92,12 +84,11 @@
   end
 
   def message(object)
-    object.message
-    # if object.class == Offer
-    #   object.message
-    # else
-    #   messages(object).last
-    # end
+    if object.class == Offer
+      object.message
+    else
+      messages(object).last
+    end
   end
 
   def messages(object)
@@ -141,7 +132,6 @@
   end
 
   def receiver_products(object)
-    # object.proposal.products(object.receiver._id)
     if object.class == Offer
       products(proposal(object), receiver(object))
     else
