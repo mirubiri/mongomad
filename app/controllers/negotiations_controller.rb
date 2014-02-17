@@ -47,13 +47,26 @@ class NegotiationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
+    # @offer = Fabricate.build(:offer)
+
+    # puts "************************************"
+    @offer.valid?
+    # puts "************************************"
+
     @negotiation = Fabricate.build(:negotiation, offer:@offer)
 
     respond_to do |format|
       if @negotiation.save
+         # puts "************************************"
+          # puts "guarda la negociacion"
+          # puts "************************************"
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else
+        # puts "************************************"
+          # puts "no guarda la negociacion"
+          #puts @negotiation.errors.message
+          # puts "************************************"
         format.html { render action: "new" }
       end
     end

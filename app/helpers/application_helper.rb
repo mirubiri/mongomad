@@ -24,13 +24,19 @@
   end
 
   def composer_products(object)
-    object.proposal.products(object.composer._id)
+    # object.proposal.products(object.composer._id)
     # products(object.proposal, composer(object))
-    # if object.class == Offer
-    #   products(proposal(object), composer(object))
-    # else
-    #   products(object, composer(object))
-    # end
+    if object.class == Offer
+      puts "************************************"
+      puts "entra en la rama offer"
+      puts "************************************"
+      products(proposal(object), composer(object))
+    else
+      puts "************************************"
+      puts "entra en la rama para las no offers"
+      puts "************************************"
+      products(object, composer(object))
+    end
   end
 
   def date_time(object)
@@ -110,9 +116,9 @@
     user_sheet(object).nick
   end
 
-  # def products(object, user)
-  #   object.products(user._id)
-  # end
+  def products(object, user)
+    object.products(user._id)
+  end
 
   def proposal(object)
     object.proposal
@@ -135,13 +141,12 @@
   end
 
   def receiver_products(object)
-    object.proposal.products(object.receiver._id)
-
-    # if object.class == Offer
-    #   products(proposal(object), receiver(object))
-    # else
-    #   products(object, receiver(object))
-    # end
+    # object.proposal.products(object.receiver._id)
+    if object.class == Offer
+      products(proposal(object), receiver(object))
+    else
+      products(object, receiver(object))
+    end
   end
 
   def requests(object)
