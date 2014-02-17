@@ -75,10 +75,6 @@
     user_sheet(object).last_name
   end
 
-  def location(object)
-    user_sheet(object).location
-  end
-
   def main_image(object)
     user_sheet(object).main_image
   end
