@@ -3,7 +3,6 @@ module AutoUpdate
 
   included do
     cattr_accessor :auto_update_definitions
-    after_find :auto_update, if: :outdated?
     field :outdated, type:Boolean, default:false
   end
 
