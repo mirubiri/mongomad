@@ -4,7 +4,11 @@
     <div class="empty_icon"><%= image_tag "/assets/images/empty-icon.png" %></div>
     <div class="empty_text">
       <div class="text_explanation">Incluye aqui los productos que desees vender, intercambiar, comerciar...</div>
-      <div class="button_empty"><button>AÑADE UN PRODUCTO</button></div>
+      <div class="button_empty">
+        <%= link_to "AÑADIR PRODUCTO",
+          new_user_item_path(@user),
+          {:remote => true, :role => "button", :class => "empty_button_style"}  %>
+        </div>
     </div>
   </div>
 

@@ -12,6 +12,7 @@
     @include ppal_container_style;
     float: left;
     overflow: inherit;
+    position: relative;
 
     .noti_bubble {
       position:absolute;

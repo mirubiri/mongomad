@@ -84,3 +84,23 @@
   text-decoration:none;
   font-weight: bold;
 }
+
+.empty_button_style{
+  @include border-radius(5px, 5px);
+  background-color: rgb(41,140,200);
+  color: white;
+  font-weight: bolder;
+  font-size: 15px;
+  border: solid 1px rgb(210,210,210);
+  padding: 10px;
+}
+
+.new_request_invitation_button_style{
+  @include border-radius(5px, 5px);
+  background-color: #f3f3f3;
+  color: #7f8c8c;
+  font-weight: bolder;
+  font-size: 15px;
+  border: solid 1px rgb(210,210,210);
+  padding: 10px;
+}
