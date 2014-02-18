@@ -83,7 +83,7 @@
             <%= render :partial => 'application/request_list' %>
           <% else %>
             <div class="no_elements">
-              <p>El usuario no tiene ninguna peticion actualmente</p>
+              <%= image_tag("/assets/images/peticion-vacia.png") %>
             </div>
           <% end %>
         </aside>

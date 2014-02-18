@@ -1,45 +1,59 @@
-<div class="item">
+<% if (items(@user).count == 0)%>
 
-  <div class="item_image"><%= image_tag("/assets/images/nuevo_item.png") %></div>
-
-  <div class="item_description">
-    <div class="text">Añade un nuevo producto a tu listado
+  <div class="no_elements_in_ppal">
+    <div class="empty_icon"><%= image_tag "/assets/images/empty-icon.png" %></div>
+    <div class="empty_text">
+      <div class="text_explanation">Incluye aqui los productos que desees vender, intercambiar, comerciar...</div>
+      <div class="button_empty"><button>AÑADE UN PRODUCTO</button></div>
     </div>
   </div>
 
-  <div class="item_options">
-    <% if controller.controller_name === "items" %>
-      <%= link_to "AÑADIR PRODUCTO",
-        new_user_item_path(@user),
-        {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
-    <% end %>
-  </div>
+<% else %>
 
-</div>
+  <div class="item">
 
-<% items(@user).reverse_each do |item| %>
-  <div class="item" id="<%= id(item) %>">
-
-    <div class="item_image">
-      <%= image_service_tag(main_image(item)) %>
-    </div>
-
-    <div class="item_quantity">
-      <div class="quantity_number"><%= stock(item) %></div>
-    </div>
+    <div class="item_image"><%= image_tag("/assets/images/nuevo_item.png") %></div>
 
     <div class="item_description">
-      <div class="text">
-        <%= name(item) %>
+      <div class="text">Añade un nuevo producto a tu listado
       </div>
     </div>
 
     <div class="item_options">
-      <%= link_to "EDITAR PRODUCTO",
-        edit_user_item_path(@user,item),
-        :class => "item_buttons_style",
-        :remote => true %>
+      <% if controller.controller_name === "items" %>
+        <%= link_to "AÑADIR PRODUCTO",
+          new_user_item_path(@user),
+          {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
+      <% end %>
     </div>
 
   </div>
+
+  <% items(@user).reverse_each do |item| %>
+    <div class="item" id="<%= id(item) %>">
+
+      <div class="item_image">
+        <%= image_service_tag(main_image(item)) %>
+      </div>
+
+      <div class="item_quantity">
+        <div class="quantity_number"><%= stock(item) %></div>
+      </div>
+
+      <div class="item_description">
+        <div class="text">
+          <%= name(item) %>
+        </div>
+      </div>
+
+      <div class="item_options">
+        <%= link_to "EDITAR PRODUCTO",
+          edit_user_item_path(@user,item),
+          :class => "item_buttons_style",
+          :remote => true %>
+      </div>
+
+    </div>
+  <% end %>
+
 <% end %>
