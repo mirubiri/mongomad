@@ -102,7 +102,7 @@ GEM
     moped (1.5.2)
     multi_json (1.8.4)
     origin (1.1.0)
-    polyglot (0.3.3)
+    polyglot (0.3.4)
     pundit (0.2.2)
       activesupport (>= 3.0.0)
     pusher (0.12.0)
