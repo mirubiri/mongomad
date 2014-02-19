@@ -1,12 +1,19 @@
-<div class="item thumbnail" id="<%= id(@item) %>">
-  <%#= item_inboard(@item) %>
-  <div class="caption">
-    <h5><%= name(@item) %></h5>
-    <p><%= description(@item) %></p>
-    <p>
-      <%= link_to "editar producto",
-          edit_user_item_path(@user,@item),
-          :remote => true %>
-    </p>
+
+<div class="item_overview" id="show-item-modal">
+
+  <div class="overview_image" id="overview_image"><%= image_service_tag(main_image(item)) %></div>
+
+  <div class="overview_description">
+    <div class="overview_description_title" id="overview_description_title">
+      <%= name(item) %>
+    </div>
+    <div class="overview_description_text" id="overview_description_text">
+      <%= description(item) %>
+    </div>
   </div>
+  <p>
+    <%= link_to "editar producto",
+        edit_user_item_path(@user,item),
+        :remote => true %>
+  </p>
 </div>

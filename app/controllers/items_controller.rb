@@ -16,9 +16,13 @@ class ItemsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
+    puts "*****************************"
+    puts @item
+    puts "*****************************"
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js { render 'show', :layout => false, :locals => { :item => @item } }
     end
   end
 

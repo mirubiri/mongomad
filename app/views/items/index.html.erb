@@ -30,21 +30,26 @@
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+
       <div class="item">
-        <div class="item_image"><%= image_tag("/assets/images/nuevo_item.png") %></div>
+        <div class="item_image">
+          <%= link_to image_tag("/assets/images/nuevo_item.png"),
+              new_user_item_path(@user),
+              {:remote => true}
+          %>
+        </div>
 
         <div class="item_description">
-          <div class="text">Añade un nuevo producto a tu listado
-          </div>
+          <div class="text">Añadir Producto</div>
         </div>
 
-        <div class="item_options">
-          <% if controller.controller_name === "items" %>
-            <%= link_to "AÑADIR PRODUCTO",
+        <!-- <div class="item_options">
+          <%# if controller.controller_name === "items" %>
+            <%#= link_to "AÑADIR PRODUCTO",
               new_user_item_path(@user),
               {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
-          <% end %>
-        </div>
+          <%# end %>
+        </div> -->
 
       </div>
 
@@ -52,12 +57,17 @@
         <div class="item" id="<%= id(item) %>">
 
           <div class="item_image">
-            <%= image_service_tag(main_image(item)) %>
+
+            <%= link_to image_service_tag(main_image(item)),
+              user_item_path(@user,item),
+              {:remote => true}
+            %>
+
           </div>
 
-          <div class="item_quantity">
-            <div class="quantity_number"><%= stock(item) %></div>
-          </div>
+          <!-- <div class="item_quantity">
+            <div class="quantity_number"><%#= stock(item) %></div>
+          </div> -->
 
           <div class="item_description">
             <div class="text">
@@ -65,12 +75,12 @@
             </div>
           </div>
 
-          <div class="item_options">
-            <%= link_to "EDITAR PRODUCTO",
+          <!-- <div class="item_options">
+            <%#= link_to "EDITAR PRODUCTO",
               edit_user_item_path(@user,item),
               :class => "item_buttons_style",
               :remote => true %>
-          </div>
+          </div> -->
 
         </div>
       <% end %>
