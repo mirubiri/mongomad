@@ -16,9 +16,6 @@ class ItemsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
-    puts "*****************************"
-    puts @item
-    puts "*****************************"
 
     respond_to do |format|
       format.html # show.html.erb
@@ -53,7 +50,9 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @user = User.find(params[:user_id])
-    @item = Item.new(params[:user_item])
+    hash_uploaded_image = Cloudinary::Uploader.upload(params[:item][:image])
+    @item = Item.new(name:params[:item][:name], description:params[:item][:description], stock:params[:item][:stock])
+    @item.images << Fabricate.build(:image_face, id:hash_uploaded_image["public_id"])
 
     respond_to do |format|
       if @user.items << @item
