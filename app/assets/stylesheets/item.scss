@@ -8,7 +8,7 @@
   margin-right: 10px;
   margin-bottom: 10px;
   margin-left: 0px;
-  padding: 6px;
+  padding: 5px 5px 0px 5px;
 
   .item_quantity{
     @include border-radius(4px, 2px);
@@ -41,13 +41,16 @@
     width: $itemWidth;
     height: $itemWidth;
     margin-bottom: 2px;
-
-    img{
-      @include box-sizing(border-box);
-      @include high-quality-image;
-      @include proportions(100%,100%);
+    a{
+      img{
+          @include box-sizing(border-box);
+          @include border-radius(5px, 5px);
+          @include high-quality-image;
+          @include proportions(100%,100%);
+        }
+      }
     }
-  }
+
 
   .item_description{
     @include box-sizing(border-box);

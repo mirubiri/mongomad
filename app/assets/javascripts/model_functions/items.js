@@ -19,22 +19,6 @@ function imageSelection(input) {
   }
 }
 
-function resizeItems(){
-  var anchuraTotal = $("#ppal_container").width();
-  var ofertasEntran = offersFit(286,anchuraTotal);
-  var aumentoPorcentual = ofertasEntran * 1.25;
-  var productosEntran = Math.round(aumentoPorcentual);
-  var margenOcupanitems = productosEntran * 10;
-  var anchuraDisponible = anchuraTotal - margenOcupanitems;
-  var anchuraProducto = anchuraDisponible/productosEntran;
-
-  $(".item").css({'width': anchuraProducto +'px'});
-  $(".item > .item_image > img").css({'height': anchuraProducto +'px'});
-}
-
-
-
-
 (function ($)
 {
   $.fn.setItemWidth = function (){
