@@ -59,10 +59,7 @@
                 <% composer_products(agreement(deal)).each do |product| %>
                   <div class="image_container">
                     <%= image_service_tag(main_image(product)) %>
-                    <div class="quantity_container">
-                      <%= quantity(product) %>
-                    </div>
-                    <div class="artistic_layer_big">
+                    <div class="description">
                       <%= name(product) %>
                     </div>
                   </div>
@@ -72,7 +69,9 @@
                 <% receiver_products(agreement(deal)).each do |product| %>
                   <div class="image_container">
                     <%= image_service_tag(main_image(product)) %>
-                    <div class="quantity_container"><%= quantity(product) %></div>
+                    <div class="description">
+                      <%= name(product) %>
+                    </div>
                   </div>
                 <% end %>
               </div>

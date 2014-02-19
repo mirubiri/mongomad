@@ -49,18 +49,11 @@
               </div>
             </div>
 
-            <div class="offer_triangle">
-              <div class="triangle"></div>
-            </div>
-
             <div class="offer_items">
               <div class="recieved">
                 <% composer_products(proposal(negotiation)).each do |product| %>
                   <div class="image_container">
                     <%= image_service_tag(main_image(product)) %>
-                    <div class="quantity_container">
-                      <%= quantity(product) %>
-                    </div>
                     <div class="artistic_layer_big">
                       <%= name(product) %>
                     </div>
@@ -71,7 +64,6 @@
                 <% receiver_products(proposal(negotiation)).each do |product| %>
                   <div class="image_container">
                     <%= image_service_tag(main_image(product)) %>
-                    <div class="quantity_container"><%= quantity(product) %></div>
                   </div>
                 <% end %>
               </div>
