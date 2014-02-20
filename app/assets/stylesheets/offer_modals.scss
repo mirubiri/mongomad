@@ -68,6 +68,7 @@
 
     .products_list{
       float: left;
+      position: relative;
       @include box-sizing(border-box);
       @include fixed_width(100%,100%,100%);
       @include fixed_height(480px,480px,480px);
@@ -76,10 +77,14 @@
       overflow: auto;
 
       #composer_content_area{
+        position: absolute;
+        top: 0px;
         overflow: auto;
       }
 
       #receiver_content_area{
+        position: absolute;
+        top: 0px;
         overflow: auto;
       }
 
