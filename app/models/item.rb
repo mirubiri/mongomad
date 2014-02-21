@@ -36,20 +36,16 @@ class Item
   end
 
   def discard
-    if discarded == false
+    discarded ? false : begin
       self.discarded = true
       true
-    else
-      false
     end
   end
 
   def undiscard
-    if discarded == true
+    !discarded ? false : begin
       self.discarded = false
       true
-    else
-      false
     end
   end
 end
