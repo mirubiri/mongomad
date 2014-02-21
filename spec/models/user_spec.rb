@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   let(:user) { Fabricate.build(:user) }
+  let(:user_sheet) { Fabricate.build(:user_sheet, user:user) }
 
   # Relations
   it { should have_many :requests }
@@ -77,13 +78,8 @@ describe User do
   end
 
   describe '#sheet' do
-    it 'returns an UserSheet filled with user id, nick, first_name, last_name, images and location coords' do
-      expect(UserSheet).to receive(:new).with(nick:user.nick,
-        first_name:user.profile.first_name,
-        last_name:user.profile.last_name,
-        images:user.profile.images,
-        location:user.profile.location)
-      user.sheet
+    it 'returns a UserSheet filled with user data' do
+      expect(user.sheet).to eq user_sheet
     end
 
     specify { expect(user.sheet._id).to eq user._id }
