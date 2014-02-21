@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe UserSheet do
   let(:user) { Fabricate.build(:user) }
+  let(:user_sheet) { user.sheet }
 
   # Modules
   it { should include_module Attachment::Images }
@@ -31,7 +32,6 @@ describe UserSheet do
   end
 
   describe '#current_sheet' do
-    let(:user_sheet) { user.sheet }
     before do
       user.save
       user_sheet.nick = 'outdated'
