@@ -189,6 +189,10 @@
             @include border-radius(2px, 2px);
             @include high-quality-image;
             background-color: white;
+            img{
+              @include high-quality-image;
+              @include proportions(100%,100%);
+            }
           }
 
           .item_quantity{
@@ -240,6 +244,10 @@
             @include border-radius(2px, 2px);
             @include high-quality-image;
             background-color: white;
+            img{
+              @include high-quality-image;
+              @include proportions(100%,100%);
+            }
           }
 
           .item_quantity{
