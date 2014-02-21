@@ -8,8 +8,9 @@ class Item
   field :name
   field :description
   field :state, default:'on_sale'
+  field :discarded, type:Boolean, default:false
 
-  validates_presence_of :user, :name, :description
+  validates_presence_of :user, :name, :description, :discarded
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
   def state_machine(machine = nil)
@@ -32,5 +33,23 @@ class Item
 
   def sell
     state_machine.trigger(:sell)
+  end
+
+  def discard
+    if discarded == false
+      self.discarded = true
+      true
+    else
+      false
+    end
+  end
+
+  def undiscard
+    if discarded == true
+      self.discarded = false
+      true
+    else
+      false
+    end
   end
 end
