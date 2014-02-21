@@ -6,6 +6,5 @@ Fabricator(:product) do
   name        { |attrs| attrs[:item].name }
   description { |attrs| attrs[:item].description }
   owner_id    { |attrs| attrs[:item].user._id }
-  quantity    3
   images      { |attrs| attrs[:item].images }
 end
