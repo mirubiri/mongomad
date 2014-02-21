@@ -13,6 +13,7 @@ describe Item do
   it { should be_timestamped_document }
   it { should have_fields :name, :description }
   it { should have_field(:state).with_default_value_of('on_sale') }
+  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :user }
@@ -20,6 +21,7 @@ describe Item do
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
+  it { should validate_presence_of :discarded }
 
   # Methods
   describe '#state_machine(machine)' do
@@ -54,6 +56,58 @@ describe Item do
 
   describe '#sell' do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
+  end
+
+  describe '#discard' do
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+
+      it 'does not change item discarded field' do
+        expect{ item.discard }.to_not change{ item.discarded }
+      end
+
+      it 'returns false' do
+        expect(item.discard).to eq false
+      end
+    end
+
+    context 'when item is undiscarded' do
+      before(:each) { item.discarded = false }
+
+      it 'changes item discarded field to true' do
+        expect{ item.discard }.to change{ item.discarded }.from(false).to(true)
+      end
+
+      it 'returns true' do
+        expect(item.discard).to eq true
+      end
+    end
+  end
+
+  describe '#undiscard' do
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+
+      it 'changes item discarded field to false' do
+        expect{ item.undiscard }.to change{ item.discarded }.from(true).to(false)
+      end
+
+      it 'returns true' do
+        expect(item.undiscard).to eq true
+      end
+    end
+
+    context 'when item is undiscarded' do
+      before(:each) { item.discarded = false }
+
+      it 'does not change item discarded field' do
+        expect{ item.undiscard }.to_not change{ item.discarded }
+      end
+
+      it 'returns false' do
+        expect(item.undiscard).to eq false
+      end
+    end
   end
 
   # Factories
