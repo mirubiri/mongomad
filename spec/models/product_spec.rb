@@ -14,8 +14,7 @@ describe Product do
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
   it { should have_fields :name, :description }
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:quantity).of_type(Integer) }
-  it { should have_field(:state).with_default_value_of('available') }
+  it { should have_field(:state).with_default_value_of('on_sale') }
   it { should auto_update(:name, :description, :images).using :item }
 
   # Validations
@@ -23,18 +22,15 @@ describe Product do
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_presence_of :owner_id }
-  it { should validate_numericality_of(:quantity).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
+  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
 
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { product.state_machine(machine) }
 
-    it { should have_received(:when).with(:available, 'unavailable' => 'available') }
-    it { should have_received(:when).with(:unavailable, 'available' => 'unavailable') }
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted') }
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+    it { should have_received(:when).with(:withdraw, 'on_sale' => 'withdrawn') }
+    it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -55,20 +51,12 @@ describe Product do
     end
   end
 
-  describe '#available' do
-    it_should_behave_like 'an state machine event', :available, 'unavailable', 'available'
+  describe '#withdraw' do
+    it_should_behave_like 'an state machine event', :withdraw, 'on_sale', 'withdrawn'
   end
 
-  describe '#unavailable' do
-    it_should_behave_like 'an state machine event', :unavailable, 'available', 'unavailable'
-  end
-
-  describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost, 'available', 'ghosted'
-  end
-
-  describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
+  describe '#sell' do
+    it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
   end
 
   specify '.new' do
@@ -78,30 +66,6 @@ describe Product do
   describe '#item' do
     it 'returns the item corresponding to product._id' do
       expect(product.item).to eq item
-    end
-  end
-
-  describe '#sell' do
-    it 'calls to product.item' do
-      expect(product).to receive(:item).and_call_original
-      product.sell
-    end
-
-    it 'calls to item.sell with product.quantity' do
-      expect_any_instance_of(Item).to receive(:sell).with(product.quantity)
-      product.sell
-    end
-  end
-
-  describe '#available?' do
-    it 'calls to product.item' do
-      expect(product).to receive(:item).and_call_original
-      product.available?
-    end
-
-    it 'calls to item.available? with product.quantity' do
-      expect_any_instance_of(Item).to receive(:available?).with(product.quantity)
-      product.available?
     end
   end
 
