@@ -7,8 +7,8 @@ class Item
 
   field :name
   field :description
-  field :state, default:'on_sale'
-  field :discarded, type:Boolean, default:false
+  field :state,      default:'on_sale'
+  field :discarded,  type:Boolean, default:false
 
   validates_presence_of :user, :name, :description, :discarded
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
