@@ -32,7 +32,7 @@ describe UserSheet do
   end
 
   describe '#current_sheet' do
-    before do
+    before(:each) do
       user.save
       user_sheet.nick = 'outdated'
     end
