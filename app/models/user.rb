@@ -12,26 +12,21 @@ class User
   embeds_one              :profile
 
   field :nick
-  field :state, default:'active'
+  field :disabled, type:Boolean, default:false
 
-  validates_presence_of :profile, :nick
-  validates_inclusion_of :state, in: ['active','inactive']
+  validates_presence_of :profile, :nick, :disabled
 
   def enable
-    if state == 'inactive'
-      self.state = 'active'
+    !disabled ? false : begin
+      self.disabled = false
       true
-    else
-      false
     end
   end
 
   def disable
-    if state == 'active'
-      self.state = 'inactive'
+    disabled ? false : begin
+      self.disabled = true
       true
-    else
-      false
     end
   end
 
