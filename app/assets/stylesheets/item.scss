@@ -67,6 +67,16 @@
       font-size: 15px;
       text-align: center;
       overflow: none;
+      textarea{
+        float:left;
+        width: 95%;
+        resize:none;
+        border:none;
+        text-align:center;
+        color: red;
+        font-size: 12px;
+        font-weight: bold;
+      }
     }
   }
 

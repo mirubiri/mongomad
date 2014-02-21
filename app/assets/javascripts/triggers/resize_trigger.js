@@ -11,7 +11,7 @@ $(window).resize(function () {
       $('.header').setHeaderPadding();
 
       //Si se pintan items rehago su tamaño
-      $('.item').setItemWidth();
+      $('#ppal_container .item').setItemWidth();
 
       //Reseteo las alturas de los contenedores principales y las igualo
       $("#user-side").resetContainerHeight();

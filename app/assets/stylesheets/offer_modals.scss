@@ -209,7 +209,14 @@
               font-size: 12px;
               font-weight: 600;
               textarea{
-                resize: none;
+                float:left;
+                width: 95%;
+                resize:none;
+                border:none;
+                text-align:center;
+                color: red;
+                font-size: 12px;
+                font-weight: bold;
               }
             }
           }
@@ -264,7 +271,14 @@
               @include box-sizing(border-box);
               font-size: 7px;
               textarea{
-                resize: none;
+                float:left;
+                width: 95%;
+                resize:none;
+                border:none;
+                text-align:center;
+                color: red;
+                font-size: 12px;
+                font-weight: bold;
               }
             }
           }

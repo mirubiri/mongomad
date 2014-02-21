@@ -181,7 +181,7 @@ function expandWeb(){
   $('#mainLayout').matchPrincipalContainersHeighs();
 
   //Si se pintan items rehago su tamaño
-  $('.item').setItemWidth();
+  $('#ppal_container .item').setItemWidth();
 
   activateRequestButtons(); //Las peticiones siempre estan visibles
 

@@ -25,15 +25,21 @@ function imageSelection(input) {
 
     //alert("entra en funcionamiento el setItemWidth");
 
+    //Compruebo la anchura que tengo
+    var parent = $(this).parent();
+
+    if (parent.hasClass('main_container_elementList')) {
+        var espacioUtil = parent.width();
+    }else{
+        var espacioUtil = parent.width() + 15;//EN la modal siempre aparece la scrollbar al cargar ambos contenedores, y debo contar con su anchura
+    }
+
+    //alert(espacioUtil);
+
     //Pongo los tamaños de los items todos a 0
     $(this).width(0);
     $(this).find('.item_image').width(0);
     $(this).find('.item_image').height(0);
-
-    //Compruebo la anchura que tengo
-    var ppalContainer = $('#ppal_container');
-    var espacioUtil = ppalContainer.width();
-    //alert(espacioUtil);
 
     //Variables que miden el intervalo de tamaño para los productos
     var minWidth = 150;
