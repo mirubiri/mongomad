@@ -18,8 +18,11 @@ describe Message do
 
   # Methods
   describe '#user' do
+    before(:each) { message.save }
+    let(:user_sheet) { User.find(message.user_id).sheet }
+
     it 'returns the owner user_sheet' do
-      expect(message.user).to eq message.message_container.user_sheets.find(message.user_id)
+      expect(message.user).to eq user_sheet
     end
   end
 
