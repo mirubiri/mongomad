@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Alert do
-  pending 'should include a way of tracking new search results'
-
   # Relations
   it { should belong_to :user }
 
