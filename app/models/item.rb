@@ -41,11 +41,4 @@ class Item
       true
     end
   end
-
-  def undiscard
-    !discarded ? false : begin
-      self.discarded = false
-      true
-    end
-  end
 end
