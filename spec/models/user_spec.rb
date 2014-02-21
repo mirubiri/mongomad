@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  let (:user) { Fabricate.build(:user) }
+  let(:user) { Fabricate.build(:user) }
 
   # Relations
   it { should have_many :requests }
@@ -16,20 +16,20 @@ describe User do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :nick }
-  it { should have_field(:state).with_default_value_of('active') }
+  it { should have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :profile }
   it { should validate_presence_of :nick }
-  it { should validate_inclusion_of(:state).to_allow('active','inactive') }
+  it { should validate_presence_of :disabled }
 
   # Methods
   describe '#enable' do
     context 'when user is active' do
-      before(:each) { user.state = 'active' }
+      before(:each) { user.disabled = false }
 
-      it 'does not change user state' do
-        expect{ user.enable }.to_not change{ user.state }
+      it 'does not change user disabled field' do
+        expect{ user.enable }.to_not change{ user.disabled }
       end
 
       it 'returns false' do
@@ -38,10 +38,10 @@ describe User do
     end
 
     context 'when user is inactive' do
-      before(:each) { user.state = 'inactive' }
+      before(:each) { user.disabled = true }
 
-      it 'changes user state to active' do
-        expect{ user.enable }.to change{ user.state }.from('inactive').to('active')
+      it 'changes user disabled field to false' do
+        expect{ user.enable }.to change{ user.disabled }.from(true).to(false)
       end
 
       it 'returns true' do
@@ -52,10 +52,10 @@ describe User do
 
   describe '#disable' do
     context 'when user is active' do
-      before(:each) { user.state = 'active' }
+      before(:each) { user.disabled = false }
 
-      it 'changes user state to inactive' do
-        expect{ user.disable }.to change{ user.state }.from('active').to('inactive')
+      it 'changes user disabled field to true' do
+        expect{ user.disable }.to change{ user.disabled }.from(false).to(true)
       end
 
       it 'returns true' do
@@ -64,10 +64,10 @@ describe User do
     end
 
     context 'when user is inactive' do
-      before(:each) { user.state = 'inactive' }
+      before(:each) { user.disabled = true }
 
-      it 'does not change user state' do
-        expect{ user.disable }.to_not change{ user.state }
+      it 'does not change user disabled field' do
+        expect{ user.disable }.to_not change{ user.disabled }
       end
 
       it 'returns false' do
