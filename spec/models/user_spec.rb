@@ -40,7 +40,7 @@ describe User do
     context 'when user is inactive' do
       before(:each) { user.state = 'inactive' }
 
-      it 'change user state to active' do
+      it 'changes user state to active' do
         expect{ user.enable }.to change{ user.state }.from('inactive').to('active')
       end
 
@@ -54,7 +54,7 @@ describe User do
     context 'when user is active' do
       before(:each) { user.state = 'active' }
 
-      it 'change user state to inactive' do
+      it 'changes user state to inactive' do
         expect{ user.disable }.to change{ user.state }.from('active').to('inactive')
       end
 
