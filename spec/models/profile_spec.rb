@@ -12,7 +12,6 @@ describe Profile do
   it { should have_fields :first_name, :last_name, :gender, :language }
   it { should have_field(:birth_date).of_type(Date) }
   it { should have_field(:location).of_type(Array) }
-  pending 'should have the city name'
 
   # Validations
   it { should_not validate_presence_of :user }
