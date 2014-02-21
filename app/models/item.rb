@@ -7,11 +7,9 @@ class Item
 
   field :name
   field :description
-  field :stock,      type:Integer
   field :state,      default:'available'
 
   validates_presence_of :user, :name, :description
-  validates :stock, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded' ]
 
   def state_machine(machine = nil)

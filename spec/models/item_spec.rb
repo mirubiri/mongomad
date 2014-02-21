@@ -12,7 +12,6 @@ describe Item do
   # Attributes
   it { should be_timestamped_document }
   it { should have_fields :name, :description }
-  it { should have_field(:stock).of_type(Integer) }
   it { should have_field(:state).with_default_value_of('available') }
 
   # Validations
@@ -20,7 +19,6 @@ describe Item do
   it { should_not have_autosave_on :user }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
-  it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
   it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
 
   # Methods
