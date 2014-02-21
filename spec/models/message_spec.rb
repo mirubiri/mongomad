@@ -17,12 +17,12 @@ describe Message do
   it { should validate_length_of(:text).within(1..160) }
 
   # Methods
-  describe '#user' do
+  describe '#user_sheet' do
     before(:each) { message.save }
     let(:user_sheet) { User.find(message.user_id).sheet }
 
     it 'returns the owner user_sheet' do
-      expect(message.user).to eq user_sheet
+      expect(message.user_sheet).to eq user_sheet
     end
   end
 
