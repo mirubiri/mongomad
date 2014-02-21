@@ -84,32 +84,6 @@ describe Item do
     end
   end
 
-  describe '#undiscard' do
-    context 'when item is discarded' do
-      before(:each) { item.discarded = true }
-
-      it 'changes item discarded field to false' do
-        expect{ item.undiscard }.to change{ item.discarded }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(item.undiscard).to eq true
-      end
-    end
-
-    context 'when item is undiscarded' do
-      before(:each) { item.discarded = false }
-
-      it 'does not change item discarded field' do
-        expect{ item.undiscard }.to_not change{ item.discarded }
-      end
-
-      it 'returns false' do
-        expect(item.undiscard).to eq false
-      end
-    end
-  end
-
   # Factories
   specify { expect(Fabricate.build(:item)).to be_valid }
 end
