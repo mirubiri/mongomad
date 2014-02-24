@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Proposal do
-  let(:proposal) { Fabricate.build(:proposal) }
+  let(:user_composer) { Fabricate.build(:user_with_items) }
+  let(:user_receiver) { Fabricate.build(:user_with_items) }
+  let(:proposal) { Fabricate.build(:proposal, composer:user_composer, receiver:user_receiver) }
 
   # Relations
   it { should be_embedded_in :proposal_container }
@@ -18,7 +20,7 @@ describe Proposal do
   it { should validate_presence_of :goods }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
+  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed') }
 
   # Checks
   it 'is invalid if composer and receiver are the same' do
@@ -65,10 +67,6 @@ describe Proposal do
 
     it { should have_received(:when).with(:sign, 'new' => 'signed') }
     it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-    it { should have_received(:when).with(:break, 'new' => 'broken', 'signed' => 'broken') }
-    it { should have_received(:when).with(:reset, 'signed' => 'new', 'broken' => 'new') }
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted') }
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -97,146 +95,21 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
   end
 
-  describe '#break' do
-    it_should_behave_like 'an state machine event', :break, 'new', 'broken'
-  end
-
-  describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
-  end
-
-  describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost, 'broken', 'ghosted'
-  end
-
-  describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end
-
-  describe '#update_state' do
-    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id) }
-
-    shared_examples 'active state' do
-      let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
-
-      context 'when proposal contains only available products' do
-        it 'returns the result of calling #reset' do
-          proposal.stub(:reset) { test_code }
-          expect(proposal.update_state).to eq proposal.reset
-        end
-      end
-
-      context 'when proposal contains unavailable and ghosted products' do
-        before do
-          proposal.goods.first.unavailable
-          proposal.goods.second.ghost
-        end
-
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains unavailable and discarded products' do
-        before do
-          proposal.goods.first.unavailable
-          proposal.goods.second.ghost
-          proposal.goods.second.discard
-        end
-
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains unavailable products and no ghosted or discarded ones' do
-        before { proposal.goods.first.unavailable }
-
-        it 'returns the result of calling #break' do
-          proposal.stub(:break) { test_code }
-          expect(proposal.update_state).to eq proposal.break
-        end
-      end
-
-      context 'when proposal contains a ghosted product' do
-        before { proposal.goods.first.ghost }
-
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains a discarded product' do
-        before do
-          proposal.goods.first.ghost
-          proposal.goods.first.discard
-        end
-
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-    end
-
-    shared_examples 'inactive state' do
-      it 'returns false' do
-        expect(proposal.update_state).to eq false
-      end
-
-      it 'does not change proposal state' do
-        expect{ proposal.update_state }.to_not change{ proposal.state }
-      end
-    end
-
-    context 'when state is new' do
-      include_examples 'active state'
-    end
-
-    context 'when state is signed' do
-      before { proposal.sign }
-      include_examples 'active state'
-    end
-
-    context 'when state is confirmed' do
-      before do
-        proposal.sign
-        proposal.confirm
-      end
-      include_examples 'inactive state'
-    end
-
-    context 'when state is broken' do
-      before { proposal.break }
-      include_examples 'active state'
-    end
-
-    context 'when state is ghosted' do
-      before { proposal.ghost }
-      include_examples 'inactive state'
-    end
-
-    context 'when state is discarded' do
-      before do
-        proposal.ghost
-        proposal.discard
-      end
-      include_examples 'inactive state'
-    end
-  end
-
   describe '#composer' do
+    before(:each) { user_composer.save }
+    let(:user_sheet) { User.find(proposal.composer_id).sheet }
+
     it 'returns the composer user sheet' do
-      expect(proposal.composer).to eq proposal.proposal_container.user_sheets.find(proposal.composer_id)
+      expect(proposal.composer).to eq user_sheet
     end
   end
 
   describe '#receiver' do
+    before(:each) { user_receiver.save }
+    let(:user_sheet) { User.find(proposal.receiver_id).sheet }
+
     it 'returns the receiver user sheet' do
-      expect(proposal.receiver).to eq proposal.proposal_container.user_sheets.find(proposal.receiver_id)
+      expect(proposal.receiver).to eq user_sheet
     end
   end
 
@@ -249,13 +122,17 @@ describe Proposal do
   end
 
   describe '#cash?' do
-    it 'returns true if there is cash in proposal' do
-      proposal.goods.build({}, Cash)
-      expect(proposal.cash?).to eq true
+    context 'when there is cash in proposal' do
+      it 'returns true' do
+        proposal.goods.build({}, Cash)
+        expect(proposal.cash?).to eq true
+      end
     end
 
-    it 'returns false if there is no cash in proposal' do
-      expect(proposal.cash?).to eq false
+    context 'when there is no cash in proposal' do
+      it 'returns false' do
+        expect(proposal.cash?).to eq false
+      end
     end
   end
 
