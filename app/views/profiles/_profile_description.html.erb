@@ -1,6 +1,6 @@
 <div class="profile_complete">
   <div class="personal_data">
-    <div class="person_info">
+    <div class="person_info" id="person_info">
       <div class="title">INFORMACION PERSONAL</div>
       <div class="image_side">
           <%= image_service_tag(main_image(@user)) %>
@@ -26,8 +26,6 @@
             <%#= birth_date(@user) %>23/12/1982
           </div>
         </div>
-
-        <button id="edit-profile-button">editar mi perfil</button>
 
         <%= link_to "editar mi perfil",
             edit_user_profile_path(@user),

@@ -1,47 +1,50 @@
-<div class="edit-profile-form" id="edit-profile-form">
-  <%= form_for @user, :remote => true do |form| %>
-    <div class="profile_editor">
+<%= form_for @user, :remote => true do |form| %>
 
-      <div class="title">
-        Profile Editor
-      </div>
-
-      <%= form.fields_for :profile do |profile| %>
+    <%= form.fields_for :profile do |profile| %>
       <div class="person_info">
-        <div class="name_age">
-          <div class="info_element_title">Nombre:</div>
-          <%= form.text_area :nick, :size => "1x1" %>
-          <div class="info_element_title">Birthdate:</div>
-          <%= profile.text_area :birth_date, :size => "1x1" %>
+
+        <div class="title">INFORMACION PERSONAL</div>
+
+        <div class="image_side">
+          <%= image_service_tag(main_image(@user)) %>
+          <div class="name"><%= form.text_area :nick %></div>
+          <div class="address"><textarea readonly="readonly">Logroño,España</textarea></div>
         </div>
-        <div class="info_element">
-          <div class="info_element_title">Direction:</div>
-          <div class="info_element_description"></div>
+
+
+        <div class="info_side">
+          <div class="info_element">
+            <div class="info_element_title">E-Mail: </div>
+            <div class="info_element_description">
+              <%#= email(@user) %>respectopatronum@potter.hw
+            </div>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">Phones:</div>
+            <div class="info_element_description">
+              941128057/639629586
+            </div>
+          </div>
+          <div class="info_element">
+            <div class="info_element_title">Cumpleaños:</div>
+            <div class="info_element_description">
+              <%#= birth_date(@user) %>23/12/1982
+            </div>
+          </div>
+
+          <div class="action">
+            <div class="send_button">
+              <button>Cancelar</button>
+              <%= form.submit "Guardar", :id => 'edit-profile-send-button' %>
+            </div>
+          </div>
         </div>
-        <div class="info_element"></div>
-        <div class="info_element">
-          <div class="info_element_title">Phones:</div>
-          <div class="info_element_description"></div>
-        </div>
-        <div class="info_element">
-          <div class="info_element_title">Web:</div>
-          <div class="info_element_description"></div>
-        </div>
+
       </div>
 
-      <div class="image_side">
-        <div class="profile_image_container" id="profile_image_container"><%= image_service_tag(main_image(@user)) %></div>
-      </div>
+    <% end %>
 
-      <% end %>
+<% end %>
 
-    </div>
 
-    <div class="action">
-      <div class="send_button">
-        <button>Cancelar</button>
-        <%= form.submit "Editar", :id => 'edit-profile-send-button' %>
-      </div>
-    </div>
-  <% end %>
-</div>
+
