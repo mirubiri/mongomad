@@ -10,7 +10,7 @@ class Proposal
   field :state,       default:'new'
 
   validates_presence_of :goods, :composer_id, :receiver_id
-  validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
+  validates_inclusion_of :state, in: ['new','signed','confirmed']
 
   validate :check_user_equality,
            :check_composer_goods,
@@ -51,10 +51,6 @@ class Proposal
 
       machine.when(:sign, 'new' => 'signed')
       machine.when(:confirm, 'signed' => 'confirmed')
-      machine.when(:break, 'new' => 'broken', 'signed' => 'broken')
-      machine.when(:reset, 'signed' => 'new', 'broken' => 'new')
-      machine.when(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted')
-      machine.when(:discard, 'ghosted' => 'discarded')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -69,36 +65,6 @@ class Proposal
 
   def confirm
     state_machine.trigger(:confirm)
-  end
-
-  def break
-    state_machine.trigger(:break)
-  end
-
-  def reset
-    state_machine.trigger(:reset)
-  end
-
-  def ghost
-    state_machine.trigger(:ghost)
-  end
-
-  def discard
-    state_machine.trigger(:discard)
-  end
-
-  def update_state
-    if ['new', 'signed', 'broken'].include?(state)
-      if goods.where(state:'available').size + goods.type(Cash).size == goods.size
-        reset
-      elsif (goods.where(state:'unavailable').size > 0) && (goods.or({ state:'ghosted' }, { state:'discarded' }).size == 0)
-        self.break
-      else
-        ghost
-      end
-    else
-      false
-    end
   end
 
   def composer
