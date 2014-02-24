@@ -8,8 +8,9 @@ class Proposal
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
   field :state,       default:'new'
+  field :actionable,  type:Boolean, default:true
 
-  validates_presence_of :goods, :composer_id, :receiver_id
+  validates_presence_of :goods, :composer_id, :receiver_id, :actionable
   validates_inclusion_of :state, in: ['new','signed','confirmed']
 
   validate :check_user_equality,
@@ -65,6 +66,13 @@ class Proposal
 
   def confirm
     state_machine.trigger(:confirm)
+  end
+
+  def deactivate
+    !actionable ? false : begin
+      self.actionable = false
+      true
+    end
   end
 
   def composer
