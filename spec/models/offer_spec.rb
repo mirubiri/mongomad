@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Offer do
-  let(:offer) { Fabricate.build(:offer) }
+  let(:user_composer) { Fabricate.build(:user_with_items) }
+  let(:user_receiver) { Fabricate.build(:user_with_items) }
+  let(:offer) { Fabricate.build(:offer, user_composer:user_composer, user_receiver:user_receiver) }
 
   # Relations
   it { should belong_to(:user_composer).of_type(User).as_inverse_of(:sent_offers) }
@@ -13,7 +15,10 @@ describe Offer do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field :message }
-  it { should have_field(:state).with_default_value_of('new') }
+  it { should have_field(:state).with_default_value_of('on_sale') }
+  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
+  it { should have_field(:negotiating).of_type(Boolean).with_default_value_of(false) }
+  it { should have_field(:negotiated).of_type(Integer).with_default_value_of(0) }
 
   # Validations
   it { should validate_presence_of :user_composer }
@@ -24,7 +29,10 @@ describe Offer do
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposal }
   it { should validate_length_of(:message).within(1..160) }
-  it { should validate_inclusion_of(:state).to_allow('new','negotiating','negotiated','ghosted','discarded') }
+  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
+  it { should validate_presence_of :discarded }
+  it { should validate_presence_of :negotiating }
+  it { should validate_presence_of :negotiated }
 
   # Checks
   it 'is invalid if both users are the same' do
@@ -62,10 +70,8 @@ describe Offer do
     subject(:machine) { double().as_null_object }
     before(:each) { offer.state_machine(machine) }
 
-    it { should have_received(:when).with(:negotiate, 'new' => 'negotiating', 'negotiated' => 'negotiating') }
-    it { should have_received(:when).with(:negotiated, 'negotiating' => 'negotiated') }
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted', 'negotiating' => 'ghosted', 'negotiated' => 'ghosted') }
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+    it { should have_received(:when).with(:withdraw, 'on_sale' => 'withdrawn') }
+    it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -86,20 +92,30 @@ describe Offer do
     end
   end
 
-  describe '#negotiate' do
-    it_should_behave_like 'an state machine event', :negotiate, 'new', 'negotiating'
+  describe '#withdraw' do
+    it_should_behave_like 'an state machine event', :withdraw, 'on_sale', 'withdrawn'
   end
 
-  describe '#negotiated' do
-    it_should_behave_like 'an state machine event', :negotiated, 'negotiating', 'negotiated'
+  describe '#sell' do
+    it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
   end
 
-  describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost, 'negotiating', 'ghosted'
+  describe '#composer' do
+    before(:each) { user_composer.save }
+    let(:user_sheet) { User.find(offer.user_composer_id).sheet }
+
+    it 'returns the composer user sheet' do
+      expect(offer.composer).to eq user_sheet
+    end
   end
 
-  describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
+  describe '#receiver' do
+    before(:each) { user_receiver.save }
+    let(:user_sheet) { User.find(offer.user_receiver_id).sheet }
+
+    it 'returns the receiver user sheet' do
+      expect(offer.receiver).to eq user_sheet
+    end
   end
 
   describe '#composer' do
