@@ -14,6 +14,7 @@ describe Proposal do
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
+  it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
@@ -21,6 +22,7 @@ describe Proposal do
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed') }
+  it { should validate_presence_of :actionable }
 
   # Checks
   it 'is invalid if composer and receiver are the same' do
@@ -94,6 +96,33 @@ describe Proposal do
   describe '#confirm' do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
   end
+
+  describe '#deactivate' do
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it 'changes proposal actionable field to false' do
+        expect{ proposal.deactivate }.to change{ proposal.actionable }.from(true).to(false)
+      end
+
+      it 'returns true' do
+        expect(proposal.deactivate).to eq true
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.deactivate }.to_not change{ proposal.actionable }
+      end
+
+      it 'returns false' do
+        expect(proposal.deactivate).to eq false
+      end
+    end
+  end
+
 
   describe '#composer' do
     before(:each) { user_composer.save }
