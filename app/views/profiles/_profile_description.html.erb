@@ -4,29 +4,30 @@
       <div class="title">INFORMACION PERSONAL</div>
       <div class="image_side">
           <%= image_service_tag(main_image(@user)) %>
-          <div class="name_address"><%= full_name(@user) %></div>
-          <div class="name_address">address</div>
+          <div class="name"><textarea readonly="readonly"><%= full_name(@user) %></textarea></div>
+          <div class="address"><textarea readonly="readonly">Logroño,España</textarea></div>
       </div>
       <div class="info_side">
         <div class="info_element">
-          <div class="info_element_title">E-Mail:</div>
+          <div class="info_element_title">E-Mail: </div>
           <div class="info_element_description">
-            <%#= email(@user) %>
+            <%#= email(@user) %>respectopatronum@potter.hw
           </div>
         </div>
         <div class="info_element">
           <div class="info_element_title">Phones:</div>
           <div class="info_element_description">
-            941128057
+            941128057/639629586
           </div>
         </div>
         <div class="info_element">
           <div class="info_element_title">Cumpleaños:</div>
           <div class="info_element_description">
-            <%= birth_date(@user) %>
+            <%#= birth_date(@user) %>23/12/1982
           </div>
         </div>
 
+        <button id="edit-profile-button">editar mi perfil</button>
 
         <%= link_to "editar mi perfil",
             edit_user_profile_path(@user),

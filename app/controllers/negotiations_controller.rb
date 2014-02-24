@@ -76,21 +76,29 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1.json
   def update
     @user = User.find(params[:user_id])
-    @negotiation = negotiations(@user).find(params[:id])
-    id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
+    @negotiation = negotiations(@user).find(params[:negotiation_id])
+    # id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
 
-    proposal = Negotiation::Proposal.new(params[:proposal])
-    proposal.composer_id = id(@user)
+    # proposal = Negotiation::Proposal.new(params[:proposal])
+    # proposal.composer_id = id(@user)
+
+    # respond_to do |format|
+    #   if @negotiation.proposals << proposal
+    #     format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
+    #     format.js { render 'reload_negotiations', :layout => false }
+    #   else
+    #     format.html { render action: "edit" }
+    #   end
+    # end
 
     respond_to do |format|
-      if @negotiation.proposals << proposal
-        format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-        format.js { render 'reload_negotiations', :layout => false }
-      else
-        format.html { render action: "edit" }
-      end
+      format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
+      format.js { render 'reload_negotiations', :layout => false }
     end
+
+
   end
+
 
   # DELETE /negotiations/1
   # DELETE /negotiations/1.json

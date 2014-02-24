@@ -44,6 +44,7 @@
         padding: 10px 10px 0px 10px;
         width:100%;
         float:left;
+        position: relative;
 
         img{
           @include high-quality-image;
@@ -54,17 +55,43 @@
           border:$borde1px;
         }
 
-        .name_address{
-          float: left;
+        .name{
+          position:absolute;
+          left:150px;
+          bottom:50px;
           width: 250px;
-          margin: 0px 0px 0px 5px;
-          font:{
-            weight:bold;
-            size:10px;
-            family:$verdana;
+          height: 16px;
+          margin: 0px 0px 3px 5px;
+          textarea{
+            width: 100%;
+            resize: none;
+            border: none;
+            font:{
+              weight:bold;
+              size:14px;
+              family:$verdana;
+            }
           }
         }
 
+        .address{
+          position:absolute;
+          left:150px;
+          bottom:10px;
+          width: 250px;
+          margin: 0px 0px 0px 5px;
+          textarea{
+            width: 100%;
+            resize: none;
+            border: none;
+            color: grey;
+            font:{
+              size:14px;
+              family:$verdana;
+              style: italic;
+            }
+          }
+        }
 
       }
 
@@ -77,27 +104,28 @@
         .info_element{
           float:left;
           width:100%;
-          margin-bottom: 5px;
+          margin-bottom: 8px;
 
           .info_element_title{
             float: left;
             margin: 0px 5px 0px 0px;
             font:{
-              weight:bold;
-              size:10px;
+              weight:800;
+              size:12px;
               family:$verdana;
             }
           }
           .info_element_description{
             float: left;
+            color: grey;
             font:{
-              size:10px;
+              size:12px;
               family:$verdana;
             }
           }
         }
 
-        a{
+        button,a{
           float:left;
           margin-top: 20px;
         }
@@ -150,7 +178,7 @@
             font-weight:bold;
             font:{
                 weight:italic;
-                size:10px;
+                size:12px;
                 family:$verdana;
             }
           }
@@ -161,7 +189,7 @@
             color: #2980b9;
             font:{
                 weight:bold;
-                size:10px;
+                size:12px;
                 family:$verdana;
             }
           }
