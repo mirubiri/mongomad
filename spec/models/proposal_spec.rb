@@ -123,7 +123,6 @@ describe Proposal do
     end
   end
 
-
   describe '#composer' do
     before(:each) { user_composer.save }
     let(:user_sheet) { User.find(proposal.composer_id).sheet }
