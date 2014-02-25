@@ -75,6 +75,9 @@ class NegotiationsController < ApplicationController
   # PUT /negotiations/1
   # PUT /negotiations/1.json
   def update
+puts "*******************************************************************************"
+puts "viene por el update"
+puts "*******************************************************************************"
     @user = User.find(params[:user_id])
     @negotiation = negotiations(@user).find(params[:negotiation_id])
     # id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
