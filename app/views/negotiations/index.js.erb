@@ -5,15 +5,8 @@ $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_conta
 $("#navigation_bar").html("<%=j render 'application/navigation_bar' %>");
 $("#ppal_container").replaceWith("<%=j render 'negotiation_list' %>");
 
-
 //Carga sus funciones especificas de dibujado
-$('.negotiation').regulateWidth();
-$('.negotiation').maximizeConversationWidth();
-$('.negotiation').maximizeConversationsHeights();
-$('.negotiation').activateNegotiationButtons();
-//$('.negotiation').disableDoubleScrolling();
-$('.negotiation').focusNegotiationWritebox();
-$('.negotiation').scrollConversation();
+$('.negotiation').regulateAsNegotiation();
 
 //Controlo el evento de ponerse encima de un item
 $('.image_container').hideTitle();

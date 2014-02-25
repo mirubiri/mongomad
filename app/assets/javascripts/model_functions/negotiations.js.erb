@@ -133,3 +133,12 @@ function reloadDialogContainerWidth(){
   };
 
 })(jQuery);
+
+
+(function ($)
+{
+  $.fn.regulateAsNegotiation = function(){
+    $(this).regulateWidth().maximizeConversationWidth().maximizeConversationsHeights().activateNegotiationButtons().focusNegotiationWritebox().scrollConversation();
+    return $(this);
+  };
+})(jQuery);

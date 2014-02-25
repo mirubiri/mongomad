@@ -3,47 +3,40 @@ $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' 
 $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
 $("#ppal_container").replaceWith("<%=j render 'negotiation_list' %>");
 
-$('.negotiation').find('form').removeAttr('id');
-$('.negotiation').find('form').removeAttr('class');
+$('.negotiation').regulateAsNegotiation();
+
+$("#ppal_container")
+.prepend("<%= escape_javascript(render template: 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>")
+.children()
+.first()
+.regulateAsNegotiation()
+.scrollConversation()
+.addClass("new_request_style")
+.css('opacity', 0)
+.hide()
+.slideDown()
+.animate(
+  { opacity: 1 },
+  { queue: false, duration: 1500 }
+)
+.animate({backgroundColor: '#ffffff'}, 800, function(){
+  $(this).removeClass("new_request_style");
+});
 
 
-// $("#ppal_container")
-// .prepend("<%= escape_javascript(render template: 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>")
-// .children()
-// .first()
-// .addClass("new_request_style")
-// .css('opacity', 0)
-// .hide()
-// .slideDown()
-// .animate(
-//   { opacity: 1 },
-//   { queue: false, duration: 1500 }
-// )
-// .animate({backgroundColor: '#ffffff'}, 800, function(){
-//   $(this).removeClass("new_request_style");
-// });
+//Elimino los id's de las negociaciones y su attr class generados por el helper de form
+$('.negotiation').find('form').removeAttr('id').removeAttr('class');
 
+//Controlo el evento de ponerse encima de un item
+$('.image_container').hideTitle();
 
-// //Carga sus funciones especificas de dibujado
-// $('.negotiation').regulateWidth();
-// $('.negotiation').maximizeConversationWidth();
-// $('.negotiation').maximizeConversationsHeights();
-// $('.negotiation').activateNegotiationButtons();
-// //$('.negotiation').disableDoubleScrolling();
-// $('.negotiation').focusNegotiationWritebox();
-// $('.negotiation').scrollConversation();
-
-// //Controlo el evento de ponerse encima de un item
-// $('.image_container').hideTitle();
-
-
-// //Si le doy al enter en cualquier conversacion, envia el texto si el textarea esta activado claro
-// $('.txt_area_writer').keypress(function(event) {
-//   if (event.which == 13) {
-//     //alert("enter key pressed");
-//     event.preventDefault();
-//     $(this).closest("form").submit();
-//   }
-// });
+//Si le doy al enter en cualquier conversacion, envia el texto si el textarea esta activado claro
+$('.txt_area_writer').keypress(function(event) {
+  if (event.which == 13) {
+    //alert("enter key pressed");
+    event.preventDefault();
+    $(this).closest("form").submit();
+  }
+});
 
 
