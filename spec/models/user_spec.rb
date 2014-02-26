@@ -25,6 +25,18 @@ describe User do
   it { should validate_presence_of :disabled }
 
   # Methods
+  describe '#sheet' do
+    specify { expect(user.sheet._id).to eq user._id }
+
+    it 'returns a UserSheet filled with user data' do
+      expect(user.sheet).to eq user_sheet
+    end
+  end
+
+  describe '#disabled?' do
+    pending "#disabled?"
+  end
+
   describe '#enable' do
     context 'when user is active' do
       before(:each) { user.disabled = false }
@@ -74,14 +86,6 @@ describe User do
       it 'returns false' do
         expect(user.disable).to eq false
       end
-    end
-  end
-
-  describe '#sheet' do
-    specify { expect(user.sheet._id).to eq user._id }
-
-    it 'returns a UserSheet filled with user data' do
-      expect(user.sheet).to eq user_sheet
     end
   end
 
