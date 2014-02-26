@@ -35,6 +35,9 @@ class Item
     state_machine.trigger(:sell)
   end
 
+  def discarded?
+  end
+
   def discard
     discarded ? false : begin
       self.discarded = true
