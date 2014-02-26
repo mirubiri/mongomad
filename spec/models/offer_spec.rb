@@ -18,7 +18,7 @@ describe Offer do
   it { should have_field(:state).with_default_value_of('on_sale') }
   it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
   it { should have_field(:negotiating).of_type(Boolean).with_default_value_of(false) }
-  it { should have_field(:negotiated).of_type(Integer).with_default_value_of(0) }
+  it { should have_field(:times_negotiated).of_type(Integer).with_default_value_of(0) }
 
   # Validations
   it { should validate_presence_of :user_composer }
@@ -32,7 +32,7 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
   it { should validate_presence_of :discarded }
   it { should validate_presence_of :negotiating }
-  it { should validate_presence_of :negotiated }
+  it { should validate_presence_of :times_negotiated }
 
   # Checks
   it 'is invalid if both users are the same' do
@@ -66,6 +66,24 @@ describe Offer do
   end
 
   # Methods
+  describe '#composer' do
+    before(:each) { user_composer.save }
+    let(:user_sheet) { User.find(offer.user_composer_id).sheet }
+
+    it 'returns the composer user sheet' do
+      expect(offer.composer).to eq user_sheet
+    end
+  end
+
+  describe '#receiver' do
+    before(:each) { user_receiver.save }
+    let(:user_sheet) { User.find(offer.user_receiver_id).sheet }
+
+    it 'returns the receiver user sheet' do
+      expect(offer.receiver).to eq user_sheet
+    end
+  end
+
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { offer.state_machine(machine) }
@@ -100,34 +118,43 @@ describe Offer do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
   end
 
-  describe '#composer' do
-    before(:each) { user_composer.save }
-    let(:user_sheet) { User.find(offer.user_composer_id).sheet }
+  describe '#discarded?' do
+    pending "#discarded?"
+  end
 
-    it 'returns the composer user sheet' do
-      expect(offer.composer).to eq user_sheet
+  describe '#discard' do
+    pending "revisar"
+    context 'when offer is discarded' do
+      before(:each) { offer.discarded = true }
+
+      it 'does not change offer discarded field' do
+        expect{ offer.discard }.to_not change{ offer.discarded }
+      end
+
+      it 'returns false' do
+        expect(offer.discard).to eq false
+      end
+    end
+
+    context 'when offer is undiscarded' do
+      before(:each) { offer.discarded = false }
+
+      it 'changes offer discarded field to true' do
+        expect{ offer.discard }.to change{ offer.discarded }.from(false).to(true)
+      end
+
+      it 'returns true' do
+        expect(offer.discard).to eq true
+      end
     end
   end
 
-  describe '#receiver' do
-    before(:each) { user_receiver.save }
-    let(:user_sheet) { User.find(offer.user_receiver_id).sheet }
-
-    it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq user_sheet
-    end
+  describe '#negotiating?' do
+    pending "#negotiating?"
   end
 
-  describe '#composer' do
-    it 'returns the composer user sheet' do
-      expect(offer.composer).to eq offer.user_sheets.find(offer.user_composer_id)
-    end
-  end
-
-  describe '#receiver' do
-    it 'returns the receiver user sheet' do
-      expect(offer.receiver).to eq offer.user_sheets.find(offer.user_receiver_id)
-    end
+  describe '#negotiate' do
+    pending "#negotiate"
   end
 
   # Factories
