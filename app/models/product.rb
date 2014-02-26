@@ -12,6 +12,10 @@ class Product < Good
   validates_presence_of :_id, :name, :description, :owner_id
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
+  def item
+    Item.find(_id)
+  end
+
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
@@ -32,9 +36,5 @@ class Product < Good
 
   def sell
     state_machine.trigger(:sell)
-  end
-
-  def item
-    Item.find(_id)
   end
 end
