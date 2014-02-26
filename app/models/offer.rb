@@ -46,6 +46,14 @@ class Offer
   end
 
   public
+  def composer
+    user_sheets.find(user_composer_id)
+  end
+
+  def receiver
+    user_sheets.find(user_receiver_id)
+  end
+
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
@@ -68,11 +76,15 @@ class Offer
     state_machine.trigger(:sell)
   end
 
-  def composer
-    user_sheets.find(user_composer_id)
+  def discarded?
   end
 
-  def receiver
-    user_sheets.find(user_receiver_id)
+  def discard
+  end
+
+  def negotiating
+  end
+
+  def negotiate
   end
 end
