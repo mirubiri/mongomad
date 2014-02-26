@@ -61,7 +61,7 @@
 
 // Esto ya es un mixin bastante mas complicado para hacer una imagen hexagonal
 
-@mixin hexagon($size: 50px, $background: none, $shadow: 0 0 20px rgba(0,0,0,0.8), $borderWidth: 3px){
+@mixin hexagon($size: 60px, $background: transparent, $shadow: 0 0 20px rgba(0,0,0,0.8), $borderWidth: 3px){
   $scaleFactor: tan(30deg); /*this smushes a square into a 60deg/120deg rhombus*/
   $inverseScale: 1/$scaleFactor;
   $sideLength: $size/sqrt(3);
@@ -73,7 +73,7 @@
 
   @include box-sizing(border-box);
   position: relative;
-  top: -32px;
+  top: -38px;
   left: 200px;
   width: $size;
   height: $sideLength;
@@ -109,7 +109,6 @@
       height: $size/sqrt(2);
       top: 0;
       background: inherit;
-
       @include transform(rotate(45deg) scaleY(#{$inverseScale}));
     }
   }
