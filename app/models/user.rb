@@ -16,6 +16,19 @@ class User
 
   validates_presence_of :profile, :nick, :disabled
 
+  def sheet
+    UserSheet.new(nick:nick,
+      first_name:profile.first_name,
+      last_name:profile.last_name,
+      images:profile.images,
+      location:profile.location) do |sheet|
+        sheet._id = id
+      end
+  end
+
+  def disabled?
+  end
+
   def enable
     !disabled ? false : begin
       self.disabled = false
@@ -28,15 +41,5 @@ class User
       self.disabled = true
       true
     end
-  end
-
-  def sheet
-    UserSheet.new(nick:nick,
-      first_name:profile.first_name,
-      last_name:profile.last_name,
-      images:profile.images,
-      location:profile.location) do |sheet|
-        sheet._id = id
-      end
   end
 end
