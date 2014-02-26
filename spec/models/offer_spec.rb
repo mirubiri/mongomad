@@ -18,7 +18,7 @@ describe Offer do
   it { should have_field(:state).with_default_value_of('on_sale') }
   it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
   it { should have_field(:negotiating).of_type(Boolean).with_default_value_of(false) }
-  it { should have_field(:times_negotiated).of_type(Integer).with_default_value_of(0) }
+  it { should have_field(:negotiated_times).of_type(Integer).with_default_value_of(0) }
 
   # Validations
   it { should validate_presence_of :user_composer }
@@ -32,7 +32,7 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
   it { should validate_presence_of :discarded }
   it { should validate_presence_of :negotiating }
-  it { should validate_presence_of :times_negotiated }
+  it { should validate_presence_of :negotiated_times }
 
   # Checks
   it 'is invalid if both users are the same' do
