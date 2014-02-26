@@ -78,6 +78,81 @@ describe Negotiation do
   end
 
   # Methods
+  describe '#proposal' do
+    it 'returns the last proposal' do
+      expect(negotiation.proposal).to eq negotiation.proposals.last
+    end
+  end
+
+  describe '#cash_owner(user_id)?' do
+    context 'when last proposal has cash' do
+      context 'when user owns the cash' do
+        it 'returns true' do
+          expect(negotiation_composer_cash.cash_owner?(composer_id)).to eq true
+        end
+      end
+
+      context 'when user does not own the cash' do
+        it 'returns false' do
+          expect(negotiation_composer_cash.cash_owner?(receiver_id)).to eq false
+        end
+      end
+    end
+
+    context 'when last proposal does not have cash' do
+      it 'returns false' do
+        expect(negotiation.cash_owner?(composer_id)).to eq false
+      end
+    end
+  end
+
+  describe '#gatekeeper(user_id, action)' do
+    pending "revisar"
+    context 'negotiation is not open' do
+      before { negotiation.state = 'ghosted'}
+
+      it 'returns false' do
+        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
+      end
+    end
+
+    context 'negotiation is open' do
+      context 'user belongs to negotiation' do
+        context 'action is :sign' do
+          it 'returns false if user has cash' do
+            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
+          end
+
+          it 'returns true if user has no cash' do
+            expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
+          end
+        end
+
+        context 'action is :confirm' do
+          it 'returns true if user has cash' do
+            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
+          end
+
+          it 'returns false if user has no cash' do
+            expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
+          end
+        end
+
+        context 'action is not :sign or :confirm' do
+          it 'returns true' do
+            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
+          end
+        end
+      end
+
+      context 'user does not belong to negotiation' do
+        it 'returns false' do
+          expect(negotiation.gatekeeper('0',:sign)).to eq false
+        end
+      end
+    end
+  end
+
   describe '#sign_proposal(user_id)' do
     context 'when user can sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
@@ -133,81 +208,6 @@ describe Negotiation do
 
       it 'returns false' do
         expect(negotiation.confirm_proposal(composer_id)).to eq false
-      end
-    end
-  end
-
-  # describe '#gatekeeper(user_id, action)' do
-  #   context 'negotiation is not open' do
-  #     before { negotiation.state = 'ghosted'}
-
-  #     it 'returns false' do
-  #       expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
-  #     end
-  #   end
-
-  #   context 'negotiation is open' do
-  #     context 'user belongs to negotiation' do
-  #       context 'action is :sign' do
-  #         it 'returns false if user has cash' do
-  #           expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
-  #         end
-
-  #         it 'returns true if user has no cash' do
-  #           expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
-  #         end
-  #       end
-
-  #       context 'action is :confirm' do
-  #         it 'returns true if user has cash' do
-  #           expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
-  #         end
-
-  #         it 'returns false if user has no cash' do
-  #           expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
-  #         end
-  #       end
-
-  #       context 'action is not :sign or :confirm' do
-  #         it 'returns true' do
-  #           expect(negotiation.gatekeeper(composer_id,:action)).to eq true
-  #         end
-  #       end
-  #     end
-
-  #     context 'user does not belong to negotiation' do
-  #       it 'returns false' do
-  #         expect(negotiation.gatekeeper('0',:sign)).to eq false
-  #       end
-  #     end
-  #   end
-  # end
-
-  describe '#proposal' do
-    it 'returns the last proposal' do
-      #negotiation.proposals.build
-      expect(negotiation.proposal).to eq negotiation.proposals.last
-    end
-  end
-
-  describe '#cash_owner(user_id)?' do
-    context 'when last proposal has cash' do
-      context 'when user owns the cash' do
-        it 'returns true' do
-          expect(negotiation_composer_cash.cash_owner?(composer_id)).to eq true
-        end
-      end
-
-      context 'when user does not own the cash' do
-        it 'returns false' do
-          expect(negotiation_composer_cash.cash_owner?(receiver_id)).to eq false
-        end
-      end
-    end
-
-    context 'when last proposal does not have cash' do
-      it 'returns false' do
-        expect(negotiation.cash_owner?(composer_id)).to eq false
       end
     end
   end
