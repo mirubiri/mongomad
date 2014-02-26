@@ -32,7 +32,7 @@ describe Offer do
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
   it { should validate_presence_of :discarded }
   it { should validate_presence_of :negotiating }
-  it { should validate_presence_of :negotiated_times }
+  it { should validate_numericality_of(:negotiated_times).greater_than_or_equal_to(0) }
 
   # Checks
   it 'is invalid if both users are the same' do
@@ -67,8 +67,7 @@ describe Offer do
 
   # Methods
   describe '#composer' do
-    before(:each) { user_composer.save }
-    let(:user_sheet) { User.find(offer.user_composer_id).sheet }
+    let(:user_sheet) { user_composer.sheet }
 
     it 'returns the composer user sheet' do
       expect(offer.composer).to eq user_sheet
@@ -76,8 +75,7 @@ describe Offer do
   end
 
   describe '#receiver' do
-    before(:each) { user_receiver.save }
-    let(:user_sheet) { User.find(offer.user_receiver_id).sheet }
+    let(:user_sheet) { user_receiver.sheet }
 
     it 'returns the receiver user sheet' do
       expect(offer.receiver).to eq user_sheet
@@ -119,11 +117,24 @@ describe Offer do
   end
 
   describe '#discarded?' do
-    pending "#discarded?"
+    context 'when offer is discarded' do
+      before(:each) { offer.discarded = true }
+
+      it 'returns true' do
+        expect(offer.discarded?).to eq true
+      end
+    end
+
+    context 'when offer is undiscarded' do
+      before(:each) { offer.discarded = false }
+
+      it 'returns false' do
+        expect(offer.discarded?).to eq false
+      end
+    end
   end
 
   describe '#discard' do
-    pending "revisar"
     context 'when offer is discarded' do
       before(:each) { offer.discarded = true }
 
@@ -150,11 +161,38 @@ describe Offer do
   end
 
   describe '#negotiating?' do
-    pending "#negotiating?"
+    context 'when offer is being negotiated' do
+      before(:each) { offer.negotiating = true }
+
+      it 'returns true' do
+        expect(offer.negotiating?).to eq true
+      end
+    end
+
+    context 'when offer is not being negotiated' do
+      before(:each) { offer.negotiating = false }
+
+      it 'returns false' do
+        expect(offer.negotiating?).to eq false
+      end
+    end
   end
 
   describe '#negotiate' do
-    pending "#negotiate"
+    context 'when offer is being negotiated' do
+      pending 'dont create a new negotiation'
+      pending 'dont change assotiation/check assotiation'
+      pending 'dont change negotiating'
+      pending 'dont change negotiated times'
+      pending 'returns true'
+    end
+    context 'when offer is not being negotiated' do
+      pending 'create a new negotiation'
+      pending 'assotiate offer and negotiation'
+      pending 'set negotiating to true'
+      pending 'add 1 to negotiated times'
+      pending 'returns true'
+    end
   end
 
   # Factories
