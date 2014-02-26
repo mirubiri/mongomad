@@ -64,8 +64,7 @@ describe Proposal do
 
   # Methods
   describe '#composer' do
-    before(:each) { user_composer.save }
-    let(:user_sheet) { User.find(proposal.composer_id).sheet }
+    let(:user_sheet) { user_composer.sheet }
 
     it 'returns the composer user sheet' do
       expect(proposal.composer).to eq user_sheet
@@ -73,8 +72,7 @@ describe Proposal do
   end
 
   describe '#receiver' do
-    before(:each) { user_receiver.save }
-    let(:user_sheet) { User.find(proposal.receiver_id).sheet }
+    let(:user_sheet) { user_receiver.sheet }
 
     it 'returns the receiver user sheet' do
       expect(proposal.receiver).to eq user_sheet
@@ -139,11 +137,56 @@ describe Proposal do
   end
 
   describe '#update_state' do
+
+  context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     pending "#update_state"
   end
 
   describe '#actionable?' do
-    pending "#actionable?"
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it 'returns true' do
+        expect(proposal.actionable?).to eq true
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'returns false' do
+        expect(proposal.actionable?).to eq false
+      end
+    end
   end
 
   describe '#deactivate' do
