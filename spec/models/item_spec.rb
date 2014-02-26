@@ -58,6 +58,10 @@ describe Item do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
   end
 
+  describe '#discarded?' do
+    pending "#discarded?"
+  end
+
   describe '#discard' do
     context 'when item is discarded' do
       before(:each) { item.discarded = true }
