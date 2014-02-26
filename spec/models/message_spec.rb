@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Message do
   let(:user) { Fabricate.build(:user_with_items) }
   let(:message) { Fabricate.build(:message, user:user) }
-  let(:user_sheet) { user.sheet }
 
   # Relations
   it { should be_embedded_in :message_container }
@@ -20,6 +19,8 @@ describe Message do
 
   # Methods
   describe '#user_sheet' do
+    let(:user_sheet) { user.sheet }
+
     it 'returns the owner user_sheet' do
       expect(message.user_sheet).to eq user_sheet
     end
