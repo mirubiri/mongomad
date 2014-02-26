@@ -51,29 +51,29 @@ class Negotiation
   end
 
   public
-  def sign_proposal(user_id)
-    gatekeeper(user_id, :sign) ? proposal.sign : false
-  end
-
-  def confirm_proposal(user_id)
-    gatekeeper(user_id, :confirm) ? proposal.confirm : false
-  end
-
-  # def gatekeeper(user_id, action)
-  #   return false if state != 'open'
-  #   return false if ![proposal.composer_id, proposal.receiver_id].include? user_id
-
-  #   return false if money_owner?(user_id) && action == :sign
-  #   return false if !money_owner?(user_id) && action == :confirm
-
-  #   true
-  # end
-
   def proposal
     proposals.last
   end
 
   def cash_owner?(user_id)
     proposal.cash? ? proposal.goods.type(Cash).last.owner_id == user_id : false
+  end
+
+  def gatekeeper(user_id, action)
+    return false if state != 'open'
+    return false if ![proposal.composer_id, proposal.receiver_id].include? user_id
+
+    return false if money_owner?(user_id) && action == :sign
+    return false if !money_owner?(user_id) && action == :confirm
+
+    true
+  end
+
+  def sign_proposal(user_id)
+    gatekeeper(user_id, :sign) ? proposal.sign : false
+  end
+
+  def confirm_proposal(user_id)
+    gatekeeper(user_id, :confirm) ? proposal.confirm : false
   end
 end
