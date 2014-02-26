@@ -25,6 +25,10 @@ describe Product do
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
 
   # Methods
+  specify '.new' do
+    expect(Product.new._id).to eq nil
+  end
+
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { product.state_machine(machine) }
@@ -57,10 +61,6 @@ describe Product do
 
   describe '#sell' do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
-  end
-
-  specify '.new' do
-    expect(Product.new._id).to eq nil
   end
 
   describe '#item' do

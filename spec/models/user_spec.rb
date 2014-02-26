@@ -78,11 +78,11 @@ describe User do
   end
 
   describe '#sheet' do
+    specify { expect(user.sheet._id).to eq user._id }
+
     it 'returns a UserSheet filled with user data' do
       expect(user.sheet).to eq user_sheet
     end
-
-    specify { expect(user.sheet._id).to eq user._id }
   end
 
   # Factories
