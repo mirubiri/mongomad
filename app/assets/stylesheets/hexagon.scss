@@ -82,9 +82,10 @@
   background: $background;
   background-size: $totalHeight auto;
   background-position: center center;
-  box-shadow: $boxShadow;
+  // box-shadow: $boxShadow;
   border-left: $border;
   border-right: $border;
+  border-color:#dddddd;
 
   .hex1,
   .hex2 {
@@ -95,7 +96,7 @@
     height: $size/sqrt(2);
     left: $sideLength/4 - $borderWidth + 1px; /*for some reason this 1px correction is needed */
     background: inherit;
-    box-shadow: $boxShadow;
+    // box-shadow: $boxShadow;
     @include transform(scaleY(#{$scaleFactor}) rotate(-45deg));
 
     &:after {
@@ -117,6 +118,7 @@
     top: - $size/sqrt(2)/2;
     border-top: $scaledBorder;
     border-right: $scaledBorder;
+    border-color:#dddddd;
 
     &:after {
       background-position: center 17%;
@@ -128,6 +130,7 @@
     bottom: -$size/sqrt(2)/2;
     border-left: $scaledBorder;
     border-bottom: $scaledBorder;
+    border-color:#dddddd;
 
     &:after {
       background-position: center 83%;
