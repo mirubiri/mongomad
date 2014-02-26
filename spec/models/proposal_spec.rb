@@ -63,66 +63,6 @@ describe Proposal do
   end
 
   # Methods
-  describe '#state_machine(machine)' do
-    subject(:machine) { double().as_null_object }
-    before(:each) { proposal.state_machine(machine) }
-
-    it { should have_received(:when).with(:sign, 'new' => 'signed') }
-    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-  end
-
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
-    before(:each) { proposal.state = initial_state }
-
-    it "calls state_machine.trigger(#{action})" do
-      expect(proposal.state_machine).to receive(:trigger).with(action)
-      proposal.send(action)
-    end
-
-    it "changes proposal state from #{initial_state} to #{final_state}" do
-      expect{ proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
-    end
-
-    it 'does not save the proposal' do
-      proposal.send(action)
-      expect(proposal).to_not be_persisted
-    end
-  end
-
-  describe '#sign' do
-    it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
-  end
-
-  describe '#confirm' do
-    it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
-  end
-
-  describe '#deactivate' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      it 'changes proposal actionable field to false' do
-        expect{ proposal.deactivate }.to change{ proposal.actionable }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(proposal.deactivate).to eq true
-      end
-    end
-
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
-      it 'does not change proposal actionable field' do
-        expect{ proposal.deactivate }.to_not change{ proposal.actionable }
-      end
-
-      it 'returns false' do
-        expect(proposal.deactivate).to eq false
-      end
-    end
-  end
-
   describe '#composer' do
     before(:each) { user_composer.save }
     let(:user_sheet) { User.find(proposal.composer_id).sheet }
@@ -160,6 +100,74 @@ describe Proposal do
     context 'when there is no cash in proposal' do
       it 'returns false' do
         expect(proposal.cash?).to eq false
+      end
+    end
+  end
+
+  describe '#state_machine(machine)' do
+    subject(:machine) { double().as_null_object }
+    before(:each) { proposal.state_machine(machine) }
+
+    it { should have_received(:when).with(:sign, 'new' => 'signed') }
+    it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
+  end
+
+  shared_examples 'an state machine event' do |action, initial_state, final_state|
+    before(:each) { proposal.state = initial_state }
+
+    it "calls state_machine.trigger(#{action})" do
+      expect(proposal.state_machine).to receive(:trigger).with(action)
+      proposal.send(action)
+    end
+
+    it "changes proposal state from #{initial_state} to #{final_state}" do
+      expect{ proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
+    end
+
+    it 'does not save the proposal' do
+      proposal.send(action)
+      expect(proposal).to_not be_persisted
+    end
+  end
+
+  describe '#sign' do
+    it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
+  end
+
+  describe '#confirm' do
+    it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
+  end
+
+  describe '#update_state' do
+    pending "#update_state"
+  end
+
+  describe '#actionable?' do
+    pending "#actionable?"
+  end
+
+  describe '#deactivate' do
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it 'changes proposal actionable field to false' do
+        expect{ proposal.deactivate }.to change{ proposal.actionable }.from(true).to(false)
+      end
+
+      it 'returns true' do
+        expect(proposal.deactivate).to eq true
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.deactivate }.to_not change{ proposal.actionable }
+      end
+
+      it 'returns false' do
+        expect(proposal.deactivate).to eq false
       end
     end
   end
