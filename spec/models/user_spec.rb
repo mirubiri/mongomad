@@ -34,11 +34,25 @@ describe User do
   end
 
   describe '#disabled?' do
-    pending "#disabled?"
+    context 'when user is enabled' do
+      before(:each) { user.disabled = false }
+
+      it 'returns false' do
+        expect(user.disabled?).to eq false
+      end
+    end
+
+    context 'when user is disabled' do
+      before(:each) { user.disabled = true }
+
+      it 'returns true' do
+        expect(user.disabled?).to eq true
+      end
+    end
   end
 
   describe '#enable' do
-    context 'when user is active' do
+    context 'when user is enabled' do
       before(:each) { user.disabled = false }
 
       it 'does not change user disabled field' do
@@ -50,7 +64,7 @@ describe User do
       end
     end
 
-    context 'when user is inactive' do
+    context 'when user is disabled' do
       before(:each) { user.disabled = true }
 
       it 'changes user disabled field to false' do
@@ -64,7 +78,7 @@ describe User do
   end
 
   describe '#disable' do
-    context 'when user is active' do
+    context 'when user is enabled' do
       before(:each) { user.disabled = false }
 
       it 'changes user disabled field to true' do
@@ -76,7 +90,7 @@ describe User do
       end
     end
 
-    context 'when user is inactive' do
+    context 'when user is disabled' do
       before(:each) { user.disabled = true }
 
       it 'does not change user disabled field' do
