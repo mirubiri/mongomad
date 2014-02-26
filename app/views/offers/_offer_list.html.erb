@@ -30,13 +30,19 @@
         </div>
 
         <div class="offer_info">
-          <div class="profile_image">
-            <%= link_to image_service_tag(main_image(composer(offer))),
+
+          <div class="hexagon" image="<%= image_service_path(main_image(composer(offer))) %>">
+            <div class="hex1"></div>
+            <div class="hex2"></div>
+          </div>
+
+          <!-- <div class="profile_image">
+            <%#= link_to image_service_tag(main_image(composer(offer))),
               :controller => "users",
               :action => "show",
               :id => id(composer(offer))
             %>
-          </div>
+          </div> -->
           <div class="description">
             <div class="offer_message">
               <%= message(offer) %>
@@ -74,3 +80,13 @@
       <%= image_tag("/assets/images/oferta-vacia.png") %>
     </div>
 <% end %>
+
+
+<script type="text/javascript">
+
+  $('.hexagon').each(function(){
+    var image = 'url('+$(this).attr('image')+')';
+    $(this).css('background-image',image);
+  });
+
+</script>
