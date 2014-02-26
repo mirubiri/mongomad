@@ -29,6 +29,12 @@ describe Product do
     expect(Product.new._id).to eq nil
   end
 
+  describe '#item' do
+    it 'returns the item corresponding to product._id' do
+      expect(product.item).to eq item
+    end
+  end
+
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { product.state_machine(machine) }
@@ -61,12 +67,6 @@ describe Product do
 
   describe '#sell' do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
-  end
-
-  describe '#item' do
-    it 'returns the item corresponding to product._id' do
-      expect(product.item).to eq item
-    end
   end
 
   # Factories
