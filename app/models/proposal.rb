@@ -46,6 +46,22 @@ class Proposal
   end
 
   public
+  def composer
+    proposal_container.user_sheets.find(composer_id)
+  end
+
+  def receiver
+    proposal_container.user_sheets.find(receiver_id)
+  end
+
+  def products(owner_id)
+    goods.where(owner_id:owner_id)
+  end
+
+  def cash?
+    goods.type(Cash).exists?
+  end
+
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
@@ -68,26 +84,16 @@ class Proposal
     state_machine.trigger(:confirm)
   end
 
+  def update_state
+  end
+
+  def actionable?
+  end
+
   def deactivate
     !actionable ? false : begin
       self.actionable = false
       true
     end
-  end
-
-  def composer
-    proposal_container.user_sheets.find(composer_id)
-  end
-
-  def receiver
-    proposal_container.user_sheets.find(receiver_id)
-  end
-
-  def products(owner_id)
-    goods.where(owner_id:owner_id)
-  end
-
-  def cash?
-    goods.type(Cash).exists?
   end
 end
