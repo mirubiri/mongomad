@@ -27,6 +27,7 @@ class User
   end
 
   def disabled?
+    disabled
   end
 
   def enable
