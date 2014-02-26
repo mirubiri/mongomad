@@ -59,7 +59,21 @@ describe Item do
   end
 
   describe '#discarded?' do
-    pending "#discarded?"
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+
+      it 'returns true' do
+        expect(item.discarded?).to eq true
+      end
+    end
+
+    context 'when item is undiscarded' do
+      before(:each) { item.discarded = false }
+
+      it 'returns false' do
+        expect(item.discarded?).to eq false
+      end
+    end
   end
 
   describe '#discard' do
