@@ -36,6 +36,7 @@ class Item
   end
 
   def discarded?
+    discarded
   end
 
   def discard
