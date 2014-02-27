@@ -1,7 +1,7 @@
 <div class="edit-item-form" id="edit-item-form">
   <%= form_for [@user,@item], :remote => true do |form| %>
     <div class="new_item_title">
-      Edita este producto
+      Edit this Product
     </div>
     <div class="new_item_container">
       <div class="new_item_image">
@@ -15,17 +15,17 @@
       <div class="new_item_description">
         <div class="title">
           <%= form.text_area :name,
-                  :placeholder => "Título del producto",
+                  :placeholder => "Product Title",
                   :size => "4x1" %>
         </div>
         <div class="description">
           <%= form.text_area :description,
-                    :placeholder => "Describa de forma concisa el producto",
+                    :placeholder => "Describe the product",
                     :size => "10x5" %>
         </div>
         <div class="new_item_stock">
           <%= form.text_area :stock,
-                :placeholder => "Unidades del producto de las que dispone",
+                :placeholder => "Stock of product",
                 :size => "4x1" %>
         </div>
       </div>

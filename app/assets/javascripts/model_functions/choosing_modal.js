@@ -389,4 +389,4 @@ function isOffer(){
   }
 }
 
-//Fin funciones de ayuda para la ejecucion de los procesos de nueva oferta
+//Fin funciones de ayuda para la ejecucion de los procesos de new oferta

@@ -6,7 +6,7 @@
       <div class="nav-collapse collapse navbar-responsive-collapse">
         <div class="contentside_search_alert_bar">
           <div class="new_petitions_find_number">9</div>
-          <div class="new-petitions_find_title">Peticiones Nuevas Encontradas</div>
+          <div class="new-petitions_find_title">Requests Finded</div>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
     <% else %>
       <li id="offers-tab">
     <% end %>
-      <%= link_to "Ofertas", user_offers_path(@user), remote: true %>
+      <%= link_to "Offers", user_offers_path(@user), remote: true %>
     </li>
 
     <% if controller.controller_name === "negotiations" %>
@@ -29,7 +29,7 @@
     <% else %>
       <li id="negotiations-tab">
     <% end %>
-      <%= link_to "Negociaciones", user_negotiations_path(@user), remote: true %>
+      <%= link_to "Negotiations", user_negotiations_path(@user), remote: true %>
     </li>
 
     <% if controller.controller_name === "deals" %>
@@ -37,16 +37,16 @@
     <% else %>
       <li id="deals-tab">
     <% end %>
-      <%= link_to "Tratos", user_deals_path(@user), remote: true %>
+      <%= link_to "Deals", user_deals_path(@user), remote: true %>
     </li>
 
     <% if (controller.controller_name === "items") %>
       <li id="items-tab" class="active">
-        <%= link_to "Productos", user_items_path(@user), remote: true %>
+        <%= link_to "Products", user_items_path(@user), remote: true %>
       </li>
     <% else %>
       <li id="items-tab">
-        <%= link_to "Productos", user_items_path(@user), remote: true %>
+        <%= link_to "Products", user_items_path(@user), remote: true %>
       </li>
     <% end %>
   </ul>

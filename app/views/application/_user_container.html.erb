@@ -56,7 +56,7 @@
 
 
           <div class="new_offer_button">
-              <%= link_to "HAZME UNA OFERTA",
+              <%= link_to "MAKE ME AN OFFER!",
                 new_user_offer_path(id(@user)), :remote => true, class: "new_offer_button_style"  %>
           </div>
 
@@ -70,7 +70,7 @@
 
         <div class="request_list_title">
 
-        <div class="text_side">PETICIONES</div>
+        <div class="text_side">REQUESTS</div>
         <%= link_to "+",
           new_user_request_path(@user),
           {:remote => true, :class => "add_request"}

@@ -16,9 +16,9 @@
 
     <div class="add_request_invitation hidden_container" id="add_request_invitation">
       <div class="arrow-left"></div>
-      <div class="invitation_text">¿QUIERES RECIBIR OFERTAS?</div>
+      <div class="invitation_text">WANT RECIBE OFFERS??</div>
       <div class="invitation_button">
-        <%= link_to "ENTONCES PIDE ALGO",
+        <%= link_to "THEN REQUEST SOMETHING",
           new_user_request_path(@user),
           {:remote => true, :class => "new_request_invitation_button_style"}
         %>
@@ -72,27 +72,27 @@
             <div class="offer_info">
 
               <div class="offer_buttons">
-                <%= link_to 'nueva',
+                <%= link_to 'NEW',
                     edit_user_negotiation_path(@user,id(negotiation)),
                     class: "new_deal_button_style",
                     :remote => true %>
 
                 <%# if (can_sign?(proposal(negotiation),@user)) %>
-                  <%= link_to 'firmar',
+                  <%= link_to 'SIGN',
                       sign_user_negotiation_path(id(@user),id(negotiation)),
                       class: "sign_deal_button_style",
                       :remote => true %>
                 <%# end %>
 
                 <%# if (can_confirm?(proposal(negotiation),@user)) %>
-                  <%= link_to 'confirmar',
+                  <%= link_to 'CONFIRM',
                       confirm_user_negotiation_path(id(@user),id(negotiation)),
                       class: "sign_deal_button_style",
                       :remote => true %>
                 <%# end %>
 
                 <%# if (can_cancel?(proposal(negotiation),@user)) %>
-                  <%= link_to 'cancel',
+                  <%= link_to 'CANCEL',
                       cancel_user_negotiation_path(id(@user),id(negotiation)),
                       class: "cancel_deal_button_style",
                       :remote => true %>
@@ -137,7 +137,7 @@
                   <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
                   <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>" />
                   <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0" />
-                  <%= form.submit "Enviar", :id => "send_message_button" %>
+                  <%= form.submit "Send", :id => "send_message_button" %>
                 <% end %>
               </div>
             </div>

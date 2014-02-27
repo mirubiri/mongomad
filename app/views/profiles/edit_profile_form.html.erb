@@ -3,7 +3,7 @@
     <%= form.fields_for :profile do |profile| %>
       <div class="person_info">
 
-        <div class="title">INFORMACION PERSONAL</div>
+        <div class="title">PERSONAL INFO</div>
 
         <div class="image_side">
           <%= image_service_tag(main_image(@user)) %>
@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="info_element">
-            <div class="info_element_title">Cumpleaños:</div>
+            <div class="info_element_title">Birthdate:</div>
             <div class="info_element_description">
               <%#= birth_date(@user) %>23/12/1982
             </div>

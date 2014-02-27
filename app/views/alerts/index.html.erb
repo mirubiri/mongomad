@@ -16,9 +16,9 @@
 
     <div class="add_request_invitation hidden_container" id="add_request_invitation">
       <div class="arrow-left"></div>
-      <div class="invitation_text">¿QUIERES RECIBIR OFERTAS?</div>
+      <div class="invitation_text">WANT RECIBE OFFERS??</div>
       <div class="invitation_button">
-        <%= link_to "ENTONCES PIDE ALGO",
+        <%= link_to "THEN REQUEST SOMETHING",
           new_user_request_path(@user),
           {:remote => true, :class => "new_request_invitation_button_style"}
         %>
@@ -37,14 +37,14 @@
               <% image_service_tag(main_image(@user)) %>
             </div>
             <div class="description">
-              Aqui viene el texto de la peticion encontrada y que sera a lo que responderemos.
+              Petition text.
               <%# text(request) %>
             </div>
           </div>
         <% end %>
       <% else %>
         <div class="no_elements">
-          <p>El usuario no tiene ninguna alerta actualmente</p>
+          <p>You haven't got any alert yet</p>
         </div>
       <% end %>
     </aside>
