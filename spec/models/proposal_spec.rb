@@ -135,6 +135,7 @@ describe Proposal do
 
   describe '#confirm' do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
+    pending "set actionable a false"
   end
 
   describe '#reset' do
