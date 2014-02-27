@@ -109,7 +109,25 @@ describe Negotiation do
   end
 
   describe '#gatekeeper(user_id, action)' do
-    pending "implement"
+    context 'when negotiation is discarded' do
+      before(:each) { negotiation.discarded = true }
+
+      it 'returns false' do
+        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
+      end
+    end
+
+    context 'when negotiation is not discarded' do
+      before(:each) { negotiation.discarded = false }
+
+      context 'when a user is absent' do
+        # usuario ausente
+      end
+
+      context 'when no user is absent' do
+        #ambos usuarios en la negotiation
+      end
+    end
   end
 
   describe '#sign_proposal(user_id)' do
