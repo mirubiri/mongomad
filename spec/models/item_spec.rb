@@ -72,7 +72,9 @@ describe Item do
       expect{ item.send(action) }.to_not change{ item.discarded }
     end
 
-    pending "return false"
+    it 'returns false' do
+      expect(item.send(action)).to eq false
+    end
   end
 
   describe '#withdraw' do
