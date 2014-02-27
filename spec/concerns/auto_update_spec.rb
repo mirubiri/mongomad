@@ -11,8 +11,8 @@ class Test::Copy
   include Mongoid::Document
   include AutoUpdate
 
-  field :one, type:String, default:"outdated!"
-  field :two, type:String, default:"outdated!"
+  field :one, type:String, default:'outdated!'
+  field :two, type:String, default:'outdated!'
 
   auto_update :one, :two, using: :original
 
@@ -34,9 +34,18 @@ describe AutoUpdate do
 
   describe '#auto_update' do
     context 'when is updated' do
-      before { copy.update_attributes(outdated:false) }
+      before(:each) { copy.update_attributes(outdated:false) }
 
-      it 'do not retrieve original object' do
+      it 'does not change any attribute' do
+        expect{ copy.auto_update }.to_not change{ copy.one }
+        expect{ copy.auto_update }.to_not change{ copy.two }
+      end
+
+      it 'does not change any outdated value' do
+        expect{ copy.auto_update }.to_not change{ copy.outdated }
+      end
+
+      it 'does not retrieve original object' do
         expect(copy).to_not receive(:original)
         copy.auto_update
       end
@@ -44,19 +53,10 @@ describe AutoUpdate do
       it 'returns true' do
         expect(copy.auto_update).to eq true
       end
-
-      it 'does not change any attribute' do
-        expect{ copy.auto_update }.to_not change{ copy.one }
-        expect{ copy.auto_update }.to_not change{ copy.two }
-      end
-
-      it 'do not change outdated value' do
-        expect{ copy.auto_update }.to_not change{ copy.outdated }
-      end
     end
 
     context 'when is outdated' do
-      before { copy.update_attributes(outdated:true) }
+      before(:each) { copy.update_attributes(outdated:true) }
 
       it 'updates all attributes' do
         copy.auto_update
@@ -76,16 +76,8 @@ describe AutoUpdate do
   end
 
   describe '#outdate' do
-    context 'when is outdated' do
-      before { copy.update_attributes(outdated:true) }
-
-      it 'returns true' do
-        expect(copy.outdate).to eq true
-      end
-    end
-
     context 'when is updated' do
-      before { copy.update_attributes(outdated:false) }
+      before(:each) { copy.update_attributes(outdated:false) }
 
       it 'outdates the object' do
         expect{ copy.outdate }.to change{ copy.outdated }.from(false).to(true)
@@ -94,6 +86,14 @@ describe AutoUpdate do
       it 'does not save changes' do
         copy.outdate
         expect(copy.changes).to_not be_empty
+      end
+    end
+
+    context 'when is outdated' do
+      before(:each) { copy.update_attributes(outdated:true) }
+
+      it 'returns true' do
+        expect(copy.outdate).to eq true
       end
     end
   end
