@@ -32,7 +32,7 @@ describe Item do
     it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
 
     it "calls state_machine.trigger(#{action})" do
@@ -44,22 +44,59 @@ describe Item do
       expect{ item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
     end
 
+    it 'changes item discarded field to true' do
+      expect{ item.send(action) }.to change{ item.discarded }.from(false).to(true)
+    end
+
     it 'does not save the item' do
       item.send(action)
       expect(item).to_not be_persisted
     end
+
+    pending "return the result of calling..."
+  end
+
+  shared_examples 'invalid state machine event' do |action, initial_state, final_state|
+    before(:each) { item.state = initial_state }
+
+    it "does not call state_machine.trigger(#{action})" do
+      expect(item.state_machine).to_not receive(:trigger).with(action)
+      item.send(action)
+    end
+
+    it "does not change item state" do
+      expect{ item.send(action) }.to_not change { item.state }
+    end
+
+    it 'does not change item discarded field' do
+      expect{ item.send(action) }.to_not change{ item.discarded }
+    end
+
+    pending "return false"
   end
 
   describe '#withdraw' do
-    it_should_behave_like 'an state machine event', :withdraw, 'on_sale', 'withdrawn'
-    pending "mirar lo del campo discarded"
-    pending "set discarded a true"
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+      it_should_behave_like 'invalid state machine event', :withdraw, 'on_sale', 'withdrawn'
+    end
+
+    context 'when item is not discarded' do
+      before(:each) { item.discarded = false }
+      it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
+    end
   end
 
   describe '#sell' do
-    it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
-    pending "mirar lo del campo discarded"
-    pending "set discarded a true"
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+      it_should_behave_like 'invalid state machine event', :sell, 'on_sale', 'sold'
+    end
+
+    context 'when item is not discarded' do
+      before(:each) { item.discarded = false }
+      it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
+    end
   end
 
   describe '#discarded?' do
