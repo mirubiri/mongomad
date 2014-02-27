@@ -43,7 +43,7 @@ describe Product do
     it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { product.state = initial_state }
 
     it "calls state_machine.trigger(#{action})" do
@@ -59,14 +59,16 @@ describe Product do
       product.send(action)
       expect(product).to_not be_persisted
     end
+
+    pending "return the result of calling..."
   end
 
   describe '#withdraw' do
-    it_should_behave_like 'an state machine event', :withdraw, 'on_sale', 'withdrawn'
+    it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
   end
 
   describe '#sell' do
-    it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
+    it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
   end
 
   # Factories
