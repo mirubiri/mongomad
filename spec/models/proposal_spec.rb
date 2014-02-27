@@ -108,6 +108,7 @@ describe Proposal do
 
     it { should have_received(:when).with(:sign, 'new' => 'signed') }
     it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
+    it { should have_received(:when).with(:reset, 'signed' => 'new') }
   end
 
   shared_examples 'an state machine event' do |action, initial_state, final_state|
@@ -136,39 +137,86 @@ describe Proposal do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
   end
 
+  describe '#reset' do
+    it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
+  end
+
+  shared_examples 'actionable state' do
+    context 'when all products are on sale' do
+      before(:each) do
+        proposal.goods.type(Product).each do |product|
+          product.state = 'on_sale'
+        end
+      end
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.update_state }.to_not change{ proposal.actionable }
+      end
+
+      it 'returns the result of calling #reset' do
+        test_code = Faker::Number.number(8)
+        proposal.stub(:reset) { "random_test_code:#{test_code}" }
+        expect(proposal.update_state).to eq proposal.reset
+      end
+    end
+
+    context 'when any product is not on sale' do
+      before(:each) { proposal.goods.type(Product).first.state = 'sold' }
+
+      it 'does not change proposal state' do
+        expect{ proposal.update_state }.to_not change{ proposal.state }
+      end
+
+      it 'changes proposal actionable field from true to false' do
+        expect{ proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
+      end
+
+      it 'returns true' do
+        expect(proposal.update_state).to eq true
+      end
+    end
+  end
+
+  shared_examples 'unactionable state' do
+    it 'does not change proposal state' do
+      expect{ proposal.update_state }.to_not change{ proposal.state }
+    end
+
+    it 'does not change proposal actionable field' do
+      expect{ proposal.update_state }.to_not change{ proposal.actionable }
+    end
+
+    it 'returns false' do
+      expect(proposal.update_state).to eq false
+    end
+  end
+
   describe '#update_state' do
+    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
 
-  context
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
 
+      context 'when proposal state is new' do
+        before(:each) { proposal.state = 'new' }
+        include_examples 'actionable state'
+      end
 
+      context 'when proposal state is signed' do
+        before(:each) { proposal.state = 'signed' }
+        include_examples 'actionable state'
+      end
 
+      context 'when state is confirmed' do
+        before(:each) { proposal.state = 'confirmed' }
+        include_examples 'unactionable state'
+      end
+    end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    pending "#update_state"
+    context 'when proposal is unactionable' do
+      before(:each) { proposal.actionable = false }
+      include_examples 'unactionable state'
+    end
   end
 
   describe '#actionable?' do
