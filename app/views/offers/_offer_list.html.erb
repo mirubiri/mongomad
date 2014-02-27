@@ -31,9 +31,10 @@
 
         <div class="offer_info">
 
-          <div class="hexagon" image="<%= cu_image_service_path(main_image(composer(offer))) %>">
-            <div class="hex1"></div>
-            <div class="hex2"></div>
+          <div class="hexagon hexagon-horizontal" image="<%= cu_image_service_path(main_image(composer(offer))) %>">
+            <div class="hexagon-in1">
+              <div class="hexagon-in2"></div>
+            </div>
           </div>
 
           <!-- <div class="profile_image">
@@ -86,7 +87,7 @@
 
   $('.hexagon').each(function(){
     var image = 'url('+$(this).attr('image')+')';
-    $(this).css('background-image',image);
+    $(this).find('.hexagon-in2').css('background-image',image);
   });
 
 </script>
