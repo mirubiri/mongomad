@@ -101,6 +101,7 @@ class Proposal
   end
 
   def deactivate
+    #TODO: revisar si se usa
     !actionable ? false : begin
       self.actionable = false
       true

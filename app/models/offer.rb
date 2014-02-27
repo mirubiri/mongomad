@@ -82,6 +82,7 @@ class Offer
   end
 
   def discard
+    #TODO: revisar si se usa
     discarded ? false : begin
       self.discarded = true
       true
