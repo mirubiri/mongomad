@@ -25,6 +25,7 @@ describe Negotiation do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field(:absent_user).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :users }
@@ -33,6 +34,7 @@ describe Negotiation do
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
   it { should_not validate_presence_of :adsent_user }
+  it { should validate_presence_of :discarded }
 
   # Checks
   it 'is invalid if there are more than two users' do
@@ -107,7 +109,7 @@ describe Negotiation do
   end
 
   describe '#gatekeeper(user_id, action)' do
-
+    pending "implement"
   end
 
   describe '#sign_proposal(user_id)' do
@@ -165,6 +167,50 @@ describe Negotiation do
 
       it 'returns false' do
         expect(negotiation.confirm_proposal(composer_id)).to eq false
+      end
+    end
+  end
+
+  describe '#discarded?' do
+    context 'when negotiation is discarded' do
+      before(:each) { negotiation.discarded = true }
+
+      it 'returns true' do
+        expect(negotiation.discarded?).to eq true
+      end
+    end
+
+    context 'when negotiation is undiscarded' do
+      before(:each) { negotiation.discarded = false }
+
+      it 'returns false' do
+        expect(negotiation.discarded?).to eq false
+      end
+    end
+  end
+
+  describe '#discard' do
+    context 'when negotiation is discarded' do
+      before(:each) { negotiation.discarded = true }
+
+      it 'does not change negotiation discarded field' do
+        expect{ negotiation.discard }.to_not change{ negotiation.discarded }
+      end
+
+      it 'returns false' do
+        expect(negotiation.discard).to eq false
+      end
+    end
+
+    context 'when negotiation is undiscarded' do
+      before(:each) { negotiation.discarded = false }
+
+      it 'changes negotiation discarded field to true' do
+        expect{ negotiation.discard }.to change{ negotiation.discarded }.from(false).to(true)
+      end
+
+      it 'returns true' do
+        expect(negotiation.discard).to eq true
       end
     end
   end
