@@ -78,14 +78,21 @@ class Proposal
   end
 
   def sign
-    state_machine.trigger(:sign)
+      puts actionable
+    actionable? ? state_machine.trigger(:sign) : false
   end
 
   def confirm
-    state_machine.trigger(:confirm)
+      puts actionable
+    !actionable? ? false : begin
+      deactivate
+      state_machine.trigger(:confirm)
+    end
   end
 
   def reset
+    #TODO: esto no deberia funcionar, por lo que sea no esta pillando el actionable a false. revisar mañana
+    puts actionable
     state_machine.trigger(:reset)
   end
 
@@ -101,7 +108,6 @@ class Proposal
   end
 
   def deactivate
-    #TODO: revisar si se usa
     !actionable ? false : begin
       self.actionable = false
       true
