@@ -90,10 +90,10 @@ class Proposal
   end
 
   def update_state
-    return false unless actionable
-    return false if state == 'confirmed'
+    # return false unless actionable
+    # return false if state == 'confirmed'
 
-    goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size ? reset : deactivate
+    # goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size ? reset : deactivate
   end
 
   def actionable?
