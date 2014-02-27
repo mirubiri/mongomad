@@ -110,10 +110,12 @@ describe Offer do
 
   describe '#withdraw' do
     it_should_behave_like 'an state machine event', :withdraw, 'on_sale', 'withdrawn'
+    pending "set discarded a true"
   end
 
   describe '#sell' do
     it_should_behave_like 'an state machine event', :sell, 'on_sale', 'sold'
+    pending "set discarded a true"
   end
 
   describe '#discarded?' do
