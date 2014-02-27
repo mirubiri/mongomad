@@ -28,11 +28,17 @@ class Item
   end
 
   def withdraw
-    state_machine.trigger(:withdraw)
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:withdraw)
+    end
   end
 
   def sell
-    state_machine.trigger(:sell)
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:sell)
+    end
   end
 
   def discarded?
@@ -40,7 +46,6 @@ class Item
   end
 
   def discard
-    #TODO: revisar si se usa
     discarded ? false : begin
       self.discarded = true
       true
