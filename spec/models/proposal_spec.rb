@@ -111,7 +111,7 @@ describe Proposal do
     it { should have_received(:when).with(:reset, 'signed' => 'new') }
   end
 
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
 
     it "calls state_machine.trigger(#{action})" do
@@ -127,22 +127,78 @@ describe Proposal do
       proposal.send(action)
       expect(proposal).to_not be_persisted
     end
+
+    pending "return the result of calling..."
+  end
+
+  shared_examples 'invalid state machine event' do |action, initial_state, final_state|
+    before(:each) { proposal.state = initial_state }
+
+    it "does not call state_machine.trigger(#{action})" do
+      expect(proposal.state_machine).to_not receive(:trigger).with(action)
+      proposal.send(action)
+    end
+
+    it "does not change proposal state" do
+      expect{ proposal.send(action) }.to_not change { proposal.state }
+    end
+
+    it 'does not change proposal discarded field' do
+      expect{ proposal.send(action) }.to_not change{ proposal.discarded }
+    end
+
+    pending "return false"
   end
 
   describe '#sign' do
-    it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
-    pending "mirar lo del campo actionable"
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+    end
   end
 
   describe '#confirm' do
-    it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
-    pending "mirar lo del campo actionable"
-    pending "set actionable a false"
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
+
+      it 'changes proposal actionable field to false' do
+        expect{ proposal.send(action) }.to change { proposal.actionable }.from(true).to(false)
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
+    end
   end
 
   describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
-    pending "mirar lo del campo actionable"
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+    end
   end
 
   shared_examples 'actionable state' do
@@ -153,14 +209,20 @@ describe Proposal do
         end
       end
 
+      it 'calls reset method' do
+        expect(proposal.update_state).to receive(:reset)
+        proposal.update_state
+      end
+
       it 'does not change proposal actionable field' do
         expect{ proposal.update_state }.to_not change{ proposal.actionable }
       end
 
-      it 'returns the result of calling #reset' do
-        test_code = Faker::Number.number(8)
-        proposal.stub(:reset) { "random_test_code:#{test_code}" }
-        expect(proposal.update_state).to eq proposal.reset
+      it 'returns the result of calling reset method' do
+        pending "implement"
+        # test_code = Faker::Number.number(8)
+        # proposal.send.stub(:reset) { "random_test_code:#{test_code}" }
+        # expect(proposal.update_state).to eq proposal.reset
       end
     end
 
@@ -199,22 +261,12 @@ describe Proposal do
     before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
 
     context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      context 'when proposal state is new' do
-        before(:each) { proposal.state = 'new' }
-        include_examples 'actionable state'
+      before(:each) do
+        proposal.actionable = true
+        proposal.state = 'new'
       end
 
-      context 'when proposal state is signed' do
-        before(:each) { proposal.state = 'signed' }
-        include_examples 'actionable state'
-      end
-
-      context 'when state is confirmed' do
-        before(:each) { proposal.state = 'confirmed' }
-        include_examples 'unactionable state'
-      end
+      include_examples 'actionable state'
     end
 
     context 'when proposal is unactionable' do
