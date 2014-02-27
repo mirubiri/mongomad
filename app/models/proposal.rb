@@ -68,6 +68,7 @@ class Proposal
 
       machine.when(:sign, 'new' => 'signed')
       machine.when(:confirm, 'signed' => 'confirmed')
+      machine.when(:reset, 'signed' => 'new')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -84,10 +85,19 @@ class Proposal
     state_machine.trigger(:confirm)
   end
 
+  def reset
+    state_machine.trigger(:reset)
+  end
+
   def update_state
+    return false unless actionable
+    return false if state == 'confirmed'
+
+    goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size ? reset : deactivate
   end
 
   def actionable?
+    actionable
   end
 
   def deactivate
