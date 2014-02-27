@@ -143,8 +143,8 @@ describe Proposal do
       expect{ proposal.send(action) }.to_not change { proposal.state }
     end
 
-    it 'does not change proposal discarded field' do
-      expect{ proposal.send(action) }.to_not change{ proposal.discarded }
+    it 'does not change proposal actionable field' do
+      expect{ proposal.send(action) }.to_not change{ proposal.actionable }
     end
 
     it 'returns false' do
@@ -155,10 +155,11 @@ describe Proposal do
   describe '#sign' do
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
+
       it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
 
       it 'does not change proposal actionable field' do
-        expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+        expect{ proposal.sign }.to_not change{ proposal.actionable }
       end
     end
 
@@ -171,10 +172,11 @@ describe Proposal do
   describe '#confirm' do
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
+
       it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
 
       it 'changes proposal actionable field to false' do
-        expect{ proposal.send(action) }.to change { proposal.actionable }.from(true).to(false)
+        expect{ proposal.confirm }.to change { proposal.actionable }.from(true).to(false)
       end
     end
 
@@ -187,10 +189,11 @@ describe Proposal do
   describe '#reset' do
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
+
       it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
 
       it 'does not change proposal actionable field' do
-        expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+        expect{ proposal.reset }.to_not change{ proposal.actionable }
       end
     end
 
