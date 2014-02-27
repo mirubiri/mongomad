@@ -131,15 +131,18 @@ describe Proposal do
 
   describe '#sign' do
     it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
+    pending "mirar lo del campo actionable"
   end
 
   describe '#confirm' do
     it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
+    pending "mirar lo del campo actionable"
     pending "set actionable a false"
   end
 
   describe '#reset' do
     it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
+    pending "mirar lo del campo actionable"
   end
 
   shared_examples 'actionable state' do
