@@ -200,77 +200,64 @@ describe Proposal do
     end
   end
 
-  shared_examples 'actionable state' do
-    context 'when all products are on sale' do
-      before(:each) do
-        proposal.goods.type(Product).each do |product|
-          product.state = 'on_sale'
+  describe '#update_state' do
+    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
+
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      context 'when all products are on sale' do
+        before(:each) do
+          proposal.goods.type(Product).each do |product|
+            product.state = 'on_sale'
+          end
         end
+
+        it 'calls reset method' do
+          expect(proposal.update_state).to receive(:reset)
+          proposal.update_state
+        end
+
+        pending "change state to new"
+
+        it 'does not change proposal actionable field' do
+          expect{ proposal.update_state }.to_not change{ proposal.actionable }
+        end
+
+        pending 'returns the result of calling reset method'
       end
 
-      it 'calls reset method' do
-        expect(proposal.update_state).to receive(:reset)
-        proposal.update_state
+      context 'when any product is not on sale' do
+        before(:each) { proposal.goods.type(Product).first.state = 'sold' }
+
+        it 'does not change proposal state' do
+          expect{ proposal.update_state }.to_not change{ proposal.state }
+        end
+
+        it 'changes proposal actionable field from true to false' do
+          expect{ proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
+        end
+
+        it 'returns true' do
+          expect(proposal.update_state).to eq true
+        end
+      end
+    end
+
+    context 'when proposal is unactionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'does not change proposal state' do
+        expect{ proposal.update_state }.to_not change{ proposal.state }
       end
 
       it 'does not change proposal actionable field' do
         expect{ proposal.update_state }.to_not change{ proposal.actionable }
       end
 
-      it 'returns the result of calling reset method' do
-        pending "implement"
-        # test_code = Faker::Number.number(8)
-        # proposal.send.stub(:reset) { "random_test_code:#{test_code}" }
-        # expect(proposal.update_state).to eq proposal.reset
+      it 'returns false' do
+        expect(proposal.update_state).to eq false
       end
-    end
-
-    context 'when any product is not on sale' do
-      before(:each) { proposal.goods.type(Product).first.state = 'sold' }
-
-      it 'does not change proposal state' do
-        expect{ proposal.update_state }.to_not change{ proposal.state }
-      end
-
-      it 'changes proposal actionable field from true to false' do
-        expect{ proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(proposal.update_state).to eq true
-      end
-    end
-  end
-
-  shared_examples 'unactionable state' do
-    it 'does not change proposal state' do
-      expect{ proposal.update_state }.to_not change{ proposal.state }
-    end
-
-    it 'does not change proposal actionable field' do
-      expect{ proposal.update_state }.to_not change{ proposal.actionable }
-    end
-
-    it 'returns false' do
-      expect(proposal.update_state).to eq false
-    end
-  end
-
-  describe '#update_state' do
-    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
-
-    context 'when proposal is actionable' do
-      before(:each) do
-        proposal.actionable = true
-        proposal.state = 'new'
-      end
-
-      include_examples 'actionable state'
-    end
-
-    context 'when proposal is unactionable' do
-      before(:each) { proposal.actionable = false }
-      include_examples 'unactionable state'
     end
   end
 
