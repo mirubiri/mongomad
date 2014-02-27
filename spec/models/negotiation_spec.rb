@@ -107,50 +107,7 @@ describe Negotiation do
   end
 
   describe '#gatekeeper(user_id, action)' do
-    pending "revisar"
-    context 'negotiation is not open' do
-      before { negotiation.state = 'ghosted'}
 
-      it 'returns false' do
-        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
-      end
-    end
-
-    context 'negotiation is open' do
-      context 'user belongs to negotiation' do
-        context 'action is :sign' do
-          it 'returns false if user has cash' do
-            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:sign)).to eq false
-          end
-
-          it 'returns true if user has no cash' do
-            expect(negotiation_receiver_cash.gatekeeper(composer_id,:sign)).to eq true
-          end
-        end
-
-        context 'action is :confirm' do
-          it 'returns true if user has cash' do
-            expect(negotiation_receiver_cash.gatekeeper(receiver_id,:confirm)).to eq true
-          end
-
-          it 'returns false if user has no cash' do
-            expect(negotiation_receiver_cash.gatekeeper(composer_id,:confirm)).to eq false
-          end
-        end
-
-        context 'action is not :sign or :confirm' do
-          it 'returns true' do
-            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
-          end
-        end
-      end
-
-      context 'user does not belong to negotiation' do
-        it 'returns false' do
-          expect(negotiation.gatekeeper('0',:sign)).to eq false
-        end
-      end
-    end
   end
 
   describe '#sign_proposal(user_id)' do
@@ -211,6 +168,8 @@ describe Negotiation do
       end
     end
   end
+
+  pending "add methods to let user leave negotiation"
 
   # Factories
   specify { expect(Fabricate.build(:negotiation)).to be_valid }
