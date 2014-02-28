@@ -1,3 +1,14 @@
+# hash_offer
+#   id o offer_id (para el editar / borrar)
+#   user_id
+    # offer
+    #   goods
+    #     [ type: cash/Product,
+    #       _id: id del product/item
+    #       quantity: en el caso de ser cash
+    #     ]
+#     initial_message : valor
+
 class OffersController < ApplicationController
  def index
     @user = User.find(params[:user_id])

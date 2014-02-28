@@ -1,3 +1,9 @@
+# hash_request
+#   id o request_id (para el editar / borrar)
+#   user_id
+#   request
+#     text : valor
+
 class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json

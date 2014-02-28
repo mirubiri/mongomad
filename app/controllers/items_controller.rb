@@ -1,3 +1,10 @@
+# hash_item
+#   id o item_id (para el editar / borrar)
+#   user_id
+#   item
+#     name : valor
+#     description : valor
+
 class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
