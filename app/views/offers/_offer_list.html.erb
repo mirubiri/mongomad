@@ -31,11 +31,9 @@
 
         <div class="offer_info">
 
-          <div class="hexagon_container">
-            <img src="<%= cu_image_service_path(main_image(composer(offer))) %>">
-            <div class="hexagon hexagon-rotate">
-              <div class="hex1"></div>
-              <div class="hex2"></div>
+          <div class="honeycombs">
+            <div class="comb">
+              <img src="<%= cu_image_service_path(main_image(composer(offer))) %>" />
             </div>
           </div>
 
@@ -46,6 +44,7 @@
               :id => id(composer(offer))
             %>
           </div> -->
+
           <div class="description">
             <div class="offer_message">
               <%= message(offer) %>
@@ -86,10 +85,7 @@
 
 
 <script type="text/javascript">
-
-  $('.hexagon').each(function(){
-    var image = 'url('+$(this).attr('image')+')';
-    $(this).find('.hexagon-in2').css('background-image',image);
-  });
-
+    $(document).ready(function() {
+        $('.honeycombs').honeycombs();
+    });
 </script>
