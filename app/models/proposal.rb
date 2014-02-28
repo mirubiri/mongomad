@@ -78,12 +78,10 @@ class Proposal
   end
 
   def sign
-      puts actionable
     actionable? ? state_machine.trigger(:sign) : false
   end
 
   def confirm
-      puts actionable
     !actionable? ? false : begin
       deactivate
       state_machine.trigger(:confirm)
@@ -91,16 +89,16 @@ class Proposal
   end
 
   def reset
-    #TODO: esto no deberia funcionar, por lo que sea no esta pillando el actionable a false. revisar mañana
-    puts actionable
-    state_machine.trigger(:reset)
+    actionable? ? state_machine.trigger(:reset) : false
   end
 
   def update_state
-    # return false unless actionable
-    # return false if state == 'confirmed'
-
-    # goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size ? reset : deactivate
+    return false unless actionable
+    if goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size
+      state == 'new' ? true : reset
+    else
+      deactivate
+    end
   end
 
   def actionable?
