@@ -5,13 +5,8 @@ describe Negotiation do
   let(:composer_id) { negotiation.proposal.composer_id }
   let(:receiver_id) { negotiation.proposal.receiver_id }
 
-  let(:negotiation_composer_cash) do
+  let(:negotiation_with_cash) do
     negotiation.proposal.goods << Fabricate.build(:cash, owner_id:composer_id)
-    negotiation
-  end
-
-  let(:negotiation_receiver_cash) do
-    negotiation.proposal.goods << Fabricate.build(:cash, owner_id:receiver_id)
     negotiation
   end
 
@@ -33,7 +28,6 @@ describe Negotiation do
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
-  it { should_not validate_presence_of :adsent_user }
   it { should validate_presence_of :discarded }
 
   # Checks
@@ -90,13 +84,13 @@ describe Negotiation do
     context 'when last proposal has cash' do
       context 'when user owns the cash' do
         it 'returns true' do
-          expect(negotiation_composer_cash.cash_owner?(composer_id)).to eq true
+          expect(negotiation_with_cash.cash_owner?(composer_id)).to eq true
         end
       end
 
       context 'when user does not own the cash' do
         it 'returns false' do
-          expect(negotiation_composer_cash.cash_owner?(receiver_id)).to eq false
+          expect(negotiation_with_cash.cash_owner?(receiver_id)).to eq false
         end
       end
     end
@@ -120,21 +114,59 @@ describe Negotiation do
     context 'when negotiation is not discarded' do
       before(:each) { negotiation.discarded = false }
 
-      context 'when a user is absent' do
-        # usuario ausente
+      context 'when user belongs to negotiation' do
+        context 'when action is :sign' do
+          context 'when user has cash' do
+            it 'returns false' do
+              expect(negotiation_with_cash.gatekeeper(composer_id,:sign)).to eq false
+            end
+          end
+
+          context 'when user does not have cash' do
+            it 'returns true' do
+              expect(negotiation_with_cash.gatekeeper(receiver_id,:sign)).to eq true
+            end
+          end
+        end
+
+        context 'when action is :confirm' do
+          context 'when user has cash' do
+            it 'returns true' do
+              expect(negotiation_with_cash.gatekeeper(composer_id,:confirm)).to eq true
+            end
+          end
+
+          context 'when user does not have cash' do
+            it 'returns false' do
+              expect(negotiation_with_cash.gatekeeper(receiver_id,:confirm)).to eq false
+            end
+          end
+        end
+
+        context 'action is not :sign or :confirm' do
+          it 'returns true' do
+            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
+          end
+        end
       end
 
-      context 'when no user is absent' do
-        #ambos usuarios en la negotiation
+      context 'user does not belong to negotiation' do
+        it 'returns false' do
+          expect(negotiation.gatekeeper('0',:sign)).to eq false
+        end
       end
     end
   end
 
   describe '#sign_proposal(user_id)' do
+    it 'does not change negotiation discarded field' do
+      expect{ negotiation.sign_proposal(composer_id) }.to_not change{ negotiation.discarded }
+    end
+
     context 'when user can sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
 
-      it 'triggers proposal sign event' do
+      it 'calls sign method' do
         expect(negotiation.proposal).to receive(:sign)
         negotiation.sign_proposal(composer_id)
       end
@@ -147,7 +179,7 @@ describe Negotiation do
     context 'when user cannot sign' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(false) }
 
-      it 'does not trigger proposal sign event' do
+      it 'does not call sign method' do
         expect(negotiation.proposal).to_not receive(:sign)
         negotiation.sign_proposal(composer_id)
       end
@@ -165,9 +197,13 @@ describe Negotiation do
         negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(true)
       end
 
-      it 'triggers proposal confirm event' do
+      it 'calls confirm method' do
         expect(negotiation.proposal).to receive(:confirm)
         negotiation.confirm_proposal(composer_id)
+      end
+
+      it 'changes negotiation discarded field to true' do
+        expect{ negotiation.confirm_proposal(composer_id) }.to change { negotiation.discarded }.from(false).to(true)
       end
 
       it 'returns true' do
@@ -178,9 +214,13 @@ describe Negotiation do
     context 'when user cannot confirm' do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(false) }
 
-      it 'does not trigger proposal confirm event' do
+      it 'does not call confirm method' do
         expect(negotiation.proposal).to_not receive(:confirm)
         negotiation.confirm_proposal(composer_id)
+      end
+
+      it 'does not change negotiation discarded field' do
+        expect{ negotiation.confirm_proposal(composer_id) }.to_not change{ negotiation.discarded }
       end
 
       it 'returns false' do
@@ -233,7 +273,10 @@ describe Negotiation do
     end
   end
 
-  pending "add methods to let user leave negotiation"
+  describe '#kick(user_id)' do
+    pending "add methods to let user leave negotiation"
+    pending "when user leaves negotiation, discards negotiation"
+  end
 
   # Factories
   specify { expect(Fabricate.build(:negotiation)).to be_valid }
