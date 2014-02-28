@@ -113,6 +113,7 @@ describe Proposal do
 
   shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
+    let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
@@ -128,7 +129,10 @@ describe Proposal do
       expect(proposal).to_not be_persisted
     end
 
-    pending "return the result of calling..."
+    it "returns the result of calling state_machine.trigger(#{action})" do
+      proposal.state_machine.stub(:trigger).with(action) { test_code }
+      expect(proposal.send(action)).to eq test_code
+    end
   end
 
   shared_examples 'invalid state machine event' do |action, initial_state, final_state|
@@ -190,7 +194,7 @@ describe Proposal do
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
 
-      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+      it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
 
       it 'does not change proposal actionable field' do
         expect{ proposal.reset }.to_not change{ proposal.actionable }
@@ -199,7 +203,7 @@ describe Proposal do
 
     context 'when proposal is not actionable' do
       before(:each) { proposal.actionable = false }
-      it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+      it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
     end
   end
 
@@ -216,22 +220,54 @@ describe Proposal do
           end
         end
 
-        it 'calls reset method' do
-          expect(proposal.update_state).to receive(:reset)
-          proposal.update_state
-        end
-
-        pending "change state to new"
-
         it 'does not change proposal actionable field' do
           expect{ proposal.update_state }.to_not change{ proposal.actionable }
         end
 
-        pending 'returns the result of calling reset method'
+        context 'when proposal is in new state' do
+          before(:each) { proposal.state = 'new' }
+
+          it 'does not call reset method' do
+            expect(proposal).to_not receive(:reset)
+            proposal.update_state
+          end
+
+          it 'does not change proposal state' do
+            expect{ proposal.update_state }.to_not change{ proposal.state }
+          end
+
+          it 'returns true' do
+            expect(proposal.update_state).to eq true
+          end
+        end
+
+        context 'when proposal is in signed state' do
+          before(:each) { proposal.state = 'signed' }
+          let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
+
+          it 'calls reset method' do
+            expect(proposal).to receive(:reset)
+            proposal.update_state
+          end
+
+          it 'changes proposal state from signed to new' do
+            expect{ proposal.update_state }.to change { proposal.state }.from('signed').to('new')
+          end
+
+          it 'returns the result of calling reset' do
+            proposal.stub(:reset) { test_code }
+            expect(proposal.update_state).to eq test_code
+          end
+        end
       end
 
       context 'when any product is not on sale' do
         before(:each) { proposal.goods.type(Product).first.state = 'sold' }
+
+        it 'does not call reset method' do
+          expect(proposal).to_not receive(:reset)
+          proposal.update_state
+        end
 
         it 'does not change proposal state' do
           expect{ proposal.update_state }.to_not change{ proposal.state }
@@ -249,6 +285,11 @@ describe Proposal do
 
     context 'when proposal is unactionable' do
       before(:each) { proposal.actionable = false }
+
+      it 'does not call reset method' do
+        expect(proposal).to_not receive(:reset)
+        proposal.update_state
+      end
 
       it 'does not change proposal state' do
         expect{ proposal.update_state }.to_not change{ proposal.state }
