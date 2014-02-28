@@ -70,11 +70,17 @@ class Offer
   end
 
   def withdraw
-    state_machine.trigger(:withdraw)
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:withdraw)
+    end
   end
 
   def sell
-    state_machine.trigger(:sell)
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:sell)
+    end
   end
 
   def discarded?
@@ -82,11 +88,7 @@ class Offer
   end
 
   def discard
-    #TODO: revisar si se usa
-    discarded ? false : begin
-      self.discarded = true
-      true
-    end
+    discarded ? false : self.discarded = true
   end
 
   def negotiating?
