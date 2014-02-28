@@ -45,6 +45,7 @@ describe Product do
 
   shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { product.state = initial_state }
+    let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(product.state_machine).to receive(:trigger).with(action)
@@ -60,7 +61,10 @@ describe Product do
       expect(product).to_not be_persisted
     end
 
-    pending "return the result of calling..."
+    it "returns the result of calling state_machine.trigger(#{action})" do
+      product.state_machine.stub(:trigger).with(action) { test_code }
+      expect(product.send(action)).to eq test_code
+    end
   end
 
   describe '#withdraw' do
