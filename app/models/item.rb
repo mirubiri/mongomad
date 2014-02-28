@@ -46,9 +46,6 @@ class Item
   end
 
   def discard
-    discarded ? false : begin
-      self.discarded = true
-      true
-    end
+    discarded ? false : self.discarded = true
   end
 end
