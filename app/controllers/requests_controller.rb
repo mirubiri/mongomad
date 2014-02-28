@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
+    # user  (user_id)
     @user = User.find(params[:user_id])
 
     respond_to do |format|
@@ -18,6 +19,7 @@ class RequestsController < ApplicationController
   # GET /requests/1
   # GET /requests/1.json
   def show
+    # request (id)
     @request = Request.find(params[:id])
 
     respond_to do |format|
@@ -28,6 +30,8 @@ class RequestsController < ApplicationController
   # GET /requests/new
   # GET /requests/new.json
   def new
+    # user  (user_id)
+    # request nil
     @user = User.find(params[:user_id])
     @request = Request.new
 
@@ -39,6 +43,8 @@ class RequestsController < ApplicationController
 
   # GET /requests/1/edit
   def edit
+    # user  (user_id)
+    # request (id)
     @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
@@ -51,7 +57,7 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    #TODO:revisar
+    # request (id)
     @user = User.find(params[:user_id])
     @request = Request.new(params[:request])
     @request.user = @user
@@ -71,6 +77,7 @@ class RequestsController < ApplicationController
   # PUT /requests/1
   # PUT /requests/1.json
   def update
+    # request (id)
     @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
@@ -87,6 +94,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1
   # DELETE /requests/1.json
   def destroy
+    # request (id)
     @request = Request.find(params[:id])
     @request.destroy
 
