@@ -92,6 +92,7 @@ describe Offer do
 
   shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { offer.state = initial_state }
+    let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(offer.state_machine).to receive(:trigger).with(action)
@@ -111,7 +112,10 @@ describe Offer do
       expect(offer).to_not be_persisted
     end
 
-    pending "return the result of calling..."
+    it "returns the result of calling state_machine.trigger(#{action})" do
+      offer.state_machine.stub(:trigger).with(action) { test_code }
+      expect(offer.send(action)).to eq test_code
+    end
   end
 
   shared_examples 'invalid state machine event' do |action, initial_state, final_state|
