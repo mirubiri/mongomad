@@ -1,7 +1,5 @@
 <div class="header">
-
   <div class="clearfix header_container">
-
 
     <div class="header_user_data">
       <div class="header_user_description">
@@ -20,29 +18,28 @@
       </div>
     </div>
 
-
     <div class="header_navigation_icons"  id="page_header_options">
       <nav class="header_menu">
           <div class="header_menu_icon">
-            <%= link_to image_tag("/assets/images/friends.png"),
+            <%= link_to friends_menu_icon_image,
                 user_profile_path(@user),
                 :remote => true,
                 :id => "link_profile"%>
           </div>
           <div class="header_menu_icon">
-            <%= link_to image_tag("/assets/images/products.png"),
+            <%= link_to products_menu_icon_image,
                 user_items_path(@user),
                 :remote => true,
                 :id => "link_items"%>
           </div>
           <div class="header_menu_icon">
-            <%= link_to image_tag("/assets/images/negotiations.png"),
+            <%= link_to negotiations_menu_icon_image,
                 user_alerts_path(@user),
                 :remote => true,
                 :id => "link_items"%>
           </div>
           <div class="header_menu_icon">
-            <%= link_to image_tag("/assets/images/deals.png"),
+            <%= link_to deals_menu_icon_image,
                 user_deals_path(@user),
                 :remote => true,
                 :id => "link_items"%>
@@ -51,15 +48,13 @@
     </div>
 
     <div class="header_options">
-
       <div class="header_options_logout">
-        <%= image_tag("/assets/images/turnoff.png") %>
+        <%= logout_menu_icon_image %>
       </div>
 
       <div class="header_options_search">
         <input type="search" name="busqueda" />
       </div>
-
     </div>
 
   </div>
