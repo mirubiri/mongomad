@@ -226,39 +226,39 @@
 
   #Dynamic images
   def header_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 68, :height => 68, :crop => :fill, :radius => :max)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 68, :height => 68, :crop => :fill, :radius => :max)
   end
 
   def user_logged_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 30, :height => 30, :crop => :fill, :radius => :max)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :fill, :radius => :max)
   end
 
   def profile_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 122, :height => 122, :crop => :fill)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :fill)
   end
 
   def message_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 30, :height => 30, :crop => :fill)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :fill)
   end
 
   def request_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 39, :height => 39, :crop => :fill)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :fill)
   end
 
   def offer_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 48, :height => 48, :crop => :fill, :radius => :max)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :fill, :radius => :max)
   end
 
   def negotiation_user_face_image(object)
-    cl_image_tag(object._id + ".jpg", :width => 64, :height => 64, :crop => :fill, :radius => :max)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 64, :height => 64, :crop => :fill, :radius => :max)
   end
 
   def item_image_big(object)
-    cl_image_tag(object._id + ".jpg", :width => 152, :height => 152, :crop => :fill)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 152, :height => 152, :crop => :fit)
   end
 
   def item_image_small(object)
-    cl_image_tag(object._id + ".jpg", :width => 60, :height => 60, :crop => :fill)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :fill)
   end
 
   #---- otros
