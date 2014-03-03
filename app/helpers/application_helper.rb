@@ -256,4 +256,9 @@
   def item_image_small(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
   end
+
+  #TODO: Revisar
+  def cu_image_service_path(object)
+    cl_image_path(object._id + ".jpg", :width => 60, :height => 60, :crop => :fill)
+  end
 end
