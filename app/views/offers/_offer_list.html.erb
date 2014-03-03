@@ -10,7 +10,7 @@
           <div class="recieved">
             <% composer_products(offer).each do |product| %>
               <div class="image_container">
-                <%= image_service_tag(main_image(product)) %>
+                <%= item_image_big(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -20,7 +20,7 @@
           <div class="given">
             <% receiver_products(offer).each do |product| %>
               <div class="image_container">
-                <%= image_service_tag(main_image(product)) %>
+                <%= item_image_small(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -86,7 +86,7 @@
     <% end %>
   <% else %>
     <div class="no_elements">
-      <%= image_tag("/assets/images/oferta-vacia.png") %>
+      <%= no_offers_image %>
     </div>
 <% end %>
 

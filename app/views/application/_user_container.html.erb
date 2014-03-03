@@ -19,7 +19,7 @@
 
         <div class="image_side">
           <div class="image">
-            <%= image_tag "/assets/images/playa.jpg" %>
+            <%= user_header_image %>
           </div>
         </div>
 
@@ -37,13 +37,13 @@
           <div class="relevan_data">
             <div class="percentage">
               <div class="percentage_icon">
-                <%= image_tag("/assets/images/estrella.png") %>
+                <%= star_icon_image %>
               </div>
               <div class="percentage_num">75%</div>
             </div>
             <div class="numfriends">
               <div class="numfriends_icon">
-                <%= image_tag("/assets/images/amigos.png") %>
+                <%= friends_icon_image %>
               </div>
               <div class="numfriends_num">350</div>
             </div>
@@ -83,7 +83,7 @@
             <%= render :partial => 'application/request_list' %>
           <% else %>
             <div class="no_elements">
-              <%= image_tag("/assets/images/peticion-vacia.png") %>
+              <%= no_requests_image %>
             </div>
           <% end %>
         </aside>
