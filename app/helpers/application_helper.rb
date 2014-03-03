@@ -51,13 +51,13 @@
     object._id
   end
 
-  def image_service_path(object)
-    cl_image_path(object._id + ".jpg")
-  end
+  # def image_service_path(object)
+  #   cl_image_path(object._id + ".jpg")
+  # end
 
-  def image_service_tag(object)
-    cl_image_tag(object._id + ".jpg")
-  end
+  # def image_service_tag(object)
+  #   cl_image_tag(object._id + ".jpg")
+  # end
 
   def images(object)
     user_sheet(object).images
