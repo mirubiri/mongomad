@@ -157,7 +157,7 @@
     elsif object.class == Request
       object.user_sheet
     elsif object.class == Message
-      object.user
+      object.user_sheet
     else
       object
     end

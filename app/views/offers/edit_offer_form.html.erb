@@ -5,14 +5,14 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= image_service_tag(main_image(@user)) %>
+              <%= profile_user_image(@user) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= image_service_tag(main_image(@user)) %>
+              <%= profile_user_image(@user) %>
             </div>
           </div>
         </a>
@@ -42,7 +42,7 @@
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item) %>" side="left">
                 <div class="item_image">
-                  <%= image_service_tag(main_image(item)) %>
+                  <%= item_image_big(item) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -71,7 +71,7 @@
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>"  name="<%= name(item) %>" description="<%= description(item) %>" side="right">
                 <div class="item_image">
-                  <%= image_service_tag(main_image(item)) %>
+                  <%= item_image_big(item) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= stock(item) %></div>
@@ -115,7 +115,7 @@
             <% receiver_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>" side="left" product_id="<%= id(product) %>" >
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
-                  <%= image_service_tag(main_image(product)) %>
+                  <%= item_image_big(product) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -144,7 +144,7 @@
             <% composer_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>" side="right" product_id="<%= id(product) %>">
                 <div class="item_image">
-                  <%= image_service_tag(main_image(product)) %>
+                  <%= item_image_small(product) %>
                 </div>
                 <div class="item_quantity">
                   <div class="quantity_number"><%= quantity(product) %></div>
@@ -169,7 +169,7 @@
         </div>
         <div class="offer_info">
           <div class="profile_image">
-            <%= image_service_tag(main_image(@user)) %>
+            <%= offer_user_face_image(@user) %>
           </div>
           <div class="description">
             <div class="offer_message">

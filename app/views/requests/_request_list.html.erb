@@ -1,7 +1,7 @@
 <% requests(@user).reverse_each do |request| %>
   <div class="request">
     <div class="profile_image">
-      <%= image_service_tag(main_image(request)) %>
+      <%= request_user_face_image(request) %>
     </div>
     <div class="description">
       <%= text(request) %>

@@ -17,7 +17,7 @@
   <div class="item">
 
     <div class="item_image">
-      <%= link_to new_item_image,
+      <%= link_to add_item_image,
           new_user_item_path(@user),
           {:remote => true}
       %>
@@ -42,7 +42,7 @@
 
       <div class="item_image">
 
-        <%= link_to image_service_tag(main_image(item)),
+        <%= link_to item_image_big(item),
           user_item_path(@user,item),
           {:remote => true}
         %>

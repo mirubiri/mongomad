@@ -3,7 +3,7 @@
     <div class="person_info" id="person_info">
       <div class="title">PERSONAL INFO</div>
       <div class="image_side">
-          <%= image_service_tag(main_image(@user)) %>
+          <%= profile_user_face_image(@user) %>
           <div class="name"><textarea readonly="readonly"><%= full_name(@user) %></textarea></div>
           <div class="address"><textarea readonly="readonly">Logroño,España</textarea></div>
       </div>
