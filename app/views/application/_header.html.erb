@@ -9,7 +9,7 @@
       </div>
       <div class="header_user_image">
         <div class="header_user-image_container">
-          <%= link_to image_service_tag(main_image(@user)),
+          <%= link_to header_user_face_image(@user),
               :controller => "users",
               :action => "show",
               :id => id(@user)
