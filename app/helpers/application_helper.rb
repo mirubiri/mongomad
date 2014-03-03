@@ -177,51 +177,51 @@
   end
 
   def no_requests_image
-    cl_image_tag(".jpg", :width => 218, :height => 200, :crop => :fill)
+    cl_image_tag(".png", :width => 218, :height => 200, :crop => :fill)
   end
 
   def no_offers_image
-    cl_image_tag(".jpg", :width => 269, :height => 358, :crop => :fill)
+    cl_image_tag(".png", :width => 269, :height => 358, :crop => :fill)
   end
 
-  def add_item_image
-    cl_image_tag(".jpg", :width => 152, :height => 152, :crop => :fill)
+  def new_item_image
+    cl_image_tag(".png", :width => 152, :height => 152, :crop => :fill)
   end
 
   def star_icon_image
-    cl_image_tag(".jpg", :width => 25, :height => 23, :crop => :fill)
+    cl_image_tag(".png", :width => 25, :height => 23, :crop => :fill)
   end
 
   def friends_icon_image
-    cl_image_tag(".jpg", :width => 34, :height => 20, :crop => :fill)
+    cl_image_tag(".png", :width => 34, :height => 20, :crop => :fill)
   end
 
   def sound_icon_image
-    cl_image_tag(".jpg", :width => 11, :height => 14, :crop => :fill)
+    cl_image_tag(".png", :width => 11, :height => 14, :crop => :fill)
   end
 
   def video_icon_image
-    cl_image_tag(".jpg", :width => 20, :height => 10, :crop => :fill)
+    cl_image_tag(".png", :width => 20, :height => 10, :crop => :fill)
   end
 
   def friends_menu_icon_image
-    cl_image_tag(".jpg", :width => 26, :height => 26, :crop => :fill)
+    cl_image_tag(".png", :width => 26, :height => 26, :crop => :fill)
   end
 
   def products_menu_icon_image
-    cl_image_tag(".jpg", :width => 26, :height => 26, :crop => :fill)
+    cl_image_tag(".png", :width => 26, :height => 26, :crop => :fill)
   end
 
   def negotiations_menu_icon_image
-    cl_image_tag(".jpg", :width => 26, :height => 26, :crop => :fill)
+    cl_image_tag(".png", :width => 26, :height => 26, :crop => :fill)
   end
 
   def deals_menu_icon_image
-    cl_image_tag(".jpg", :width => 26, :height => 26, :crop => :fill)
+    cl_image_tag(".png", :width => 26, :height => 26, :crop => :fill)
   end
 
   def logout_menu_icon_image
-    cl_image_tag(".jpg", :width => 19, :height => 21, :crop => :fill)
+    cl_image_tag(".png", :width => 19, :height => 21, :crop => :fill)
   end
 
   #Dynamic images
