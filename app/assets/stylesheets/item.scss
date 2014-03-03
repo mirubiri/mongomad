@@ -43,13 +43,19 @@
     margin-bottom: 2px;
     a{
       img{
-          @include box-sizing(border-box);
-          @include border-radius(5px, 5px);
-          @include high-quality-image;
-          @include proportions(100%,100%);
-        }
+        @include box-sizing(border-box);
+        @include border-radius(5px, 5px);
+        @include high-quality-image;
+        @include proportions(100%,100%);
       }
     }
+    img{
+      @include box-sizing(border-box);
+      @include border-radius(5px, 5px);
+      @include high-quality-image;
+      @include proportions(100%,100%);
+    }
+  }
 
 
   .item_description{

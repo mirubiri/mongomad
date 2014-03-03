@@ -14,7 +14,7 @@
 
 .products_area{
   @include box-sizing(border-box);
-  @include fixed_width(70%,70%,70%);
+  @include fixed_width(67%,67%,67%);
   @include fixed_height(700px,700px,700px);
   float: left;
   padding: 10px 10px 0px 10px;
@@ -65,6 +65,7 @@
     float: left;
     overflow: visible;
     border: 1px solid #D4D6D5;
+    padding: 10px 0px 10px 10px;
 
     .products_list{
       float: left;
@@ -73,7 +74,6 @@
       @include fixed_width(100%,100%,100%);
       @include fixed_height(480px,480px,480px);
       border-bottom: 1px solid #dddddd;
-      padding: 10px;
       overflow: auto;
 
       #composer_content_area{
@@ -86,15 +86,6 @@
         position: absolute;
         top: 0px;
         overflow: auto;
-      }
-
-     .item{
-      width: 150px;
-      .item_image{
-          img{
-            @include proportions(148px,148px);
-          }
-        }
       }
     }
 
@@ -116,7 +107,7 @@
         @include box-sizing(border-box);
         float: left;
         margin-left: 5px;
-        @include proportions(300px,130px);
+        @include proportions(260px,130px);
         // border-top: 1px solid #dddddd;
 
         .overview_description_title{
