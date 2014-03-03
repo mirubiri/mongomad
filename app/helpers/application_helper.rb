@@ -180,10 +180,6 @@
     cl_image_tag("static/add_item.png", :width => 152, :height => 152, :crop => :scale)
   end
 
-  def add_request_image
-    cl_image_tag("static/icons/add_request.png", :width => 152, :height => 152, :crop => :scale)
-  end
-
   def star_icon_image
     cl_image_tag("static/icons/star.png", :width => 25, :height => 23, :crop => :scale)
   end
