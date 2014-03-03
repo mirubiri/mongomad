@@ -172,7 +172,7 @@
   end
 
   def cu_image_service_path(object)
-    cl_image_path(object._id + ".jpg", :width => 70, :height => 70, :crop => :fill)
+    cl_image_path(object._id + ".jpg", :width => 60, :height => 60, :crop => :fill)
   end
 
 end

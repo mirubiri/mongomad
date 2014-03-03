@@ -78,3 +78,18 @@
 	cursor: pointer;
 
 }
+
+.hexagon_container{
+	position: relative;
+	top: -30px;
+	left: 190px;
+	width: 60px;
+	height: 60px;
+	img{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 60px;
+		height: 60px;
+	}
+}

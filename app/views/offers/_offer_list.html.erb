@@ -31,19 +31,26 @@
 
         <div class="offer_info">
 
-          <div class="honeycombs">
+          <!-- <div class="honeycombs">
             <div class="comb">
               <img src="<%= cu_image_service_path(main_image(composer(offer))) %>" />
             </div>
-          </div>
+          </div> -->
 
-          <!-- <div class="profile_image">
-            <%#= link_to image_service_tag(main_image(composer(offer))),
+
+         <!--  <div class="hexagon_container">
+            <%= image_service_tag(main_image(composer(offer))) %>
+            <%#= image_tag("/assets/images/hexagon.png") %>
+          </div> -->
+
+
+          <div class="profile_image">
+            <%= link_to image_service_tag(main_image(composer(offer))),
               :controller => "users",
               :action => "show",
               :id => id(composer(offer))
             %>
-          </div> -->
+          </div>
 
           <div class="description">
             <div class="offer_message">
