@@ -13,7 +13,7 @@ describe Request do
 
   # Validations
   it { should validate_presence_of :user }
-  it { should_not have_autosave_on(:user) }
+  it { should_not have_autosave_on :user }
   it { should validate_presence_of :user_sheet }
   it { should validate_length_of(:text).within(1..160) }
 

@@ -8,9 +8,9 @@ class Message
   field :text
 
   validates_presence_of :user_id
-  validates :text, length: { minimum: 1, maximum: 160 }
+  validates_length_of :text, minimum: 1, maximum: 160
 
-  def user
+  def user_sheet
     message_container.user_sheets.find(user_id)
   end
 end

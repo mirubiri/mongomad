@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe Proposal do
-  let(:proposal) { Fabricate.build(:proposal) }
+  let(:user_composer) { Fabricate.build(:user_with_items) }
+  let(:user_receiver) { Fabricate.build(:user_with_items) }
+  let(:proposal) { Fabricate.build(:proposal, composer:user_composer, receiver:user_receiver) }
 
   # Relations
   it { should be_embedded_in :proposal_container }
@@ -12,13 +14,15 @@ describe Proposal do
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
+  it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
   it { should validate_presence_of :goods }
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
-  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed','broken','ghosted','discarded') }
+  it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed') }
+  it { should validate_presence_of :actionable }
 
   # Checks
   it 'is invalid if composer and receiver are the same' do
@@ -59,20 +63,57 @@ describe Proposal do
   end
 
   # Methods
+  describe '#composer' do
+    let(:user_sheet) { user_composer.sheet }
+
+    it 'returns the composer user sheet' do
+      expect(proposal.composer).to eq user_sheet
+    end
+  end
+
+  describe '#receiver' do
+    let(:user_sheet) { user_receiver.sheet }
+
+    it 'returns the receiver user sheet' do
+      expect(proposal.receiver).to eq user_sheet
+    end
+  end
+
+  describe 'products(owner_id)' do
+    it 'returns products for given user' do
+      owner_id = proposal.goods.sample.owner_id
+      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
+      proposal.products(owner_id)
+    end
+  end
+
+  describe '#cash?' do
+    context 'when there is cash in proposal' do
+      it 'returns true' do
+        proposal.goods.build({}, Cash)
+        expect(proposal.cash?).to eq true
+      end
+    end
+
+    context 'when there is no cash in proposal' do
+      it 'returns false' do
+        expect(proposal.cash?).to eq false
+      end
+    end
+  end
+
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { proposal.state_machine(machine) }
 
     it { should have_received(:when).with(:sign, 'new' => 'signed') }
     it { should have_received(:when).with(:confirm, 'signed' => 'confirmed') }
-    it { should have_received(:when).with(:break, 'new' => 'broken', 'signed' => 'broken') }
-    it { should have_received(:when).with(:reset, 'signed' => 'new', 'broken' => 'new') }
-    it { should have_received(:when).with(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted') }
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+    it { should have_received(:when).with(:reset, 'signed' => 'new') }
   end
 
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
+    let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
@@ -87,175 +128,224 @@ describe Proposal do
       proposal.send(action)
       expect(proposal).to_not be_persisted
     end
+
+    it "returns the result of calling state_machine.trigger(#{action})" do
+      proposal.state_machine.stub(:trigger).with(action) { test_code }
+      expect(proposal.send(action)).to eq test_code
+    end
+  end
+
+  shared_examples 'invalid state machine event' do |action, initial_state, final_state|
+    before(:each) { proposal.state = initial_state }
+
+    it "does not call state_machine.trigger(#{action})" do
+      expect(proposal.state_machine).to_not receive(:trigger).with(action)
+      proposal.send(action)
+    end
+
+    it "does not change proposal state" do
+      expect{ proposal.send(action) }.to_not change { proposal.state }
+    end
+
+    it 'does not change proposal actionable field' do
+      expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+    end
+
+    it 'returns false' do
+      expect(proposal.send(action)).to eq false
+    end
   end
 
   describe '#sign' do
-    it_should_behave_like 'an state machine event', :sign, 'new', 'signed'
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.sign }.to_not change{ proposal.actionable }
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+    end
   end
 
   describe '#confirm' do
-    it_should_behave_like 'an state machine event', :confirm, 'signed', 'confirmed'
-  end
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
 
-  describe '#break' do
-    it_should_behave_like 'an state machine event', :break, 'new', 'broken'
+      it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
+
+      it 'changes proposal actionable field to false' do
+        expect{ proposal.confirm }.to change { proposal.actionable }.from(true).to(false)
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
+    end
   end
 
   describe '#reset' do
-    it_should_behave_like 'an state machine event', :reset, 'signed', 'new'
-  end
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
 
-  describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost, 'broken', 'ghosted'
-  end
+      it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
 
-  describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
+      it 'does not change proposal actionable field' do
+        expect{ proposal.reset }.to_not change{ proposal.actionable }
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+      it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
+    end
   end
 
   describe '#update_state' do
-    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id) }
+    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
 
-    shared_examples 'active state' do
-      let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
 
-      context 'when proposal contains only available products' do
-        it 'returns the result of calling #reset' do
-          proposal.stub(:reset) { test_code }
-          expect(proposal.update_state).to eq proposal.reset
+      context 'when all products are on sale' do
+        before(:each) do
+          proposal.goods.type(Product).each do |product|
+            product.state = 'on_sale'
+          end
+        end
+
+        it 'does not change proposal actionable field' do
+          expect{ proposal.update_state }.to_not change{ proposal.actionable }
+        end
+
+        context 'when proposal is in new state' do
+          before(:each) { proposal.state = 'new' }
+
+          it 'does not call reset method' do
+            expect(proposal).to_not receive(:reset)
+            proposal.update_state
+          end
+
+          it 'does not change proposal state' do
+            expect{ proposal.update_state }.to_not change{ proposal.state }
+          end
+
+          it 'returns true' do
+            expect(proposal.update_state).to eq true
+          end
+        end
+
+        context 'when proposal is in signed state' do
+          before(:each) { proposal.state = 'signed' }
+          let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
+
+          it 'calls reset method' do
+            expect(proposal).to receive(:reset)
+            proposal.update_state
+          end
+
+          it 'changes proposal state from signed to new' do
+            expect{ proposal.update_state }.to change { proposal.state }.from('signed').to('new')
+          end
+
+          it 'returns the result of calling reset' do
+            proposal.stub(:reset) { test_code }
+            expect(proposal.update_state).to eq test_code
+          end
         end
       end
 
-      context 'when proposal contains unavailable and ghosted products' do
-        before do
-          proposal.goods.first.unavailable
-          proposal.goods.second.ghost
+      context 'when any product is not on sale' do
+        before(:each) { proposal.goods.type(Product).first.state = 'sold' }
+
+        it 'does not call reset method' do
+          expect(proposal).to_not receive(:reset)
+          proposal.update_state
         end
 
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains unavailable and discarded products' do
-        before do
-          proposal.goods.first.unavailable
-          proposal.goods.second.ghost
-          proposal.goods.second.discard
+        it 'does not change proposal state' do
+          expect{ proposal.update_state }.to_not change{ proposal.state }
         end
 
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains unavailable products and no ghosted or discarded ones' do
-        before { proposal.goods.first.unavailable }
-
-        it 'returns the result of calling #break' do
-          proposal.stub(:break) { test_code }
-          expect(proposal.update_state).to eq proposal.break
-        end
-      end
-
-      context 'when proposal contains a ghosted product' do
-        before { proposal.goods.first.ghost }
-
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
-        end
-      end
-
-      context 'when proposal contains a discarded product' do
-        before do
-          proposal.goods.first.ghost
-          proposal.goods.first.discard
+        it 'changes proposal actionable field from true to false' do
+          expect{ proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
         end
 
-        it 'returns the result of calling #ghost' do
-          proposal.stub(:ghost) { test_code }
-          expect(proposal.update_state).to eq proposal.ghost
+        it 'returns true' do
+          expect(proposal.update_state).to eq true
         end
       end
     end
 
-    shared_examples 'inactive state' do
-      it 'returns false' do
-        expect(proposal.update_state).to eq false
+    context 'when proposal is unactionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'does not call reset method' do
+        expect(proposal).to_not receive(:reset)
+        proposal.update_state
       end
 
       it 'does not change proposal state' do
         expect{ proposal.update_state }.to_not change{ proposal.state }
       end
-    end
 
-    context 'when state is new' do
-      include_examples 'active state'
-    end
-
-    context 'when state is signed' do
-      before { proposal.sign }
-      include_examples 'active state'
-    end
-
-    context 'when state is confirmed' do
-      before do
-        proposal.sign
-        proposal.confirm
+      it 'does not change proposal actionable field' do
+        expect{ proposal.update_state }.to_not change{ proposal.actionable }
       end
-      include_examples 'inactive state'
-    end
 
-    context 'when state is broken' do
-      before { proposal.break }
-      include_examples 'active state'
-    end
-
-    context 'when state is ghosted' do
-      before { proposal.ghost }
-      include_examples 'inactive state'
-    end
-
-    context 'when state is discarded' do
-      before do
-        proposal.ghost
-        proposal.discard
+      it 'returns false' do
+        expect(proposal.update_state).to eq false
       end
-      include_examples 'inactive state'
     end
   end
 
-  describe '#composer' do
-    it 'returns the composer user sheet' do
-      expect(proposal.composer).to eq proposal.proposal_container.user_sheets.find(proposal.composer_id)
+  describe '#actionable?' do
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
+
+      it 'returns true' do
+        expect(proposal.actionable?).to eq true
+      end
+    end
+
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'returns false' do
+        expect(proposal.actionable?).to eq false
+      end
     end
   end
 
-  describe '#receiver' do
-    it 'returns the receiver user sheet' do
-      expect(proposal.receiver).to eq proposal.proposal_container.user_sheets.find(proposal.receiver_id)
-    end
-  end
+  describe '#deactivate' do
+    context 'when proposal is actionable' do
+      before(:each) { proposal.actionable = true }
 
-  describe 'products(owner_id)' do
-    it 'returns products for given user' do
-      owner_id = proposal.goods.sample.owner_id
-      expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
-      proposal.products(owner_id)
-    end
-  end
+      it 'changes proposal actionable field to false' do
+        expect{ proposal.deactivate }.to change{ proposal.actionable }.from(true).to(false)
+      end
 
-  describe '#cash?' do
-    it 'returns true if there is cash in proposal' do
-      proposal.goods.build({}, Cash)
-      expect(proposal.cash?).to eq true
+      it 'returns true' do
+        expect(proposal.deactivate).to eq true
+      end
     end
 
-    it 'returns false if there is no cash in proposal' do
-      expect(proposal.cash?).to eq false
+    context 'when proposal is not actionable' do
+      before(:each) { proposal.actionable = false }
+
+      it 'does not change proposal actionable field' do
+        expect{ proposal.deactivate }.to_not change{ proposal.actionable }
+      end
+
+      it 'returns false' do
+        expect(proposal.deactivate).to eq false
+      end
     end
   end
 

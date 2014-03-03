@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe UserSheet do
   let(:user) { Fabricate.build(:user) }
+  let(:user_sheet) { user.sheet }
 
   # Modules
   it { should include_module Attachment::Images }
@@ -31,11 +32,13 @@ describe UserSheet do
   end
 
   describe '#current_sheet' do
-    let(:outdated_sheet) { user.sheet }
-    before { User.stub(:find).and_return(user) }
+    before(:each) do
+      user.save
+      user_sheet.nick = 'outdated'
+    end
 
     it 'returns the current version of this sheet' do
-      expect(outdated_sheet.current_sheet).to eq user.sheet
+      expect(user_sheet.current_sheet).to eq user.sheet
     end
   end
 

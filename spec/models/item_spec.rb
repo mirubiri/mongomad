@@ -12,30 +12,29 @@ describe Item do
   # Attributes
   it { should be_timestamped_document }
   it { should have_fields :name, :description }
-  it { should have_field(:stock).of_type(Integer) }
-  it { should have_field(:state).with_default_value_of('available') }
+  it { should have_field(:state).with_default_value_of('on_sale') }
+  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :user }
   it { should_not have_autosave_on :user }
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
-  it { should validate_numericality_of(:stock).to_allow(nil: false, only_integer: true, greater_than_or_equal_to: 0) }
-  it { should validate_inclusion_of(:state).to_allow('available','unavailable','ghosted','discarded') }
+  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
+  it { should validate_presence_of :discarded }
 
   # Methods
   describe '#state_machine(machine)' do
     subject(:machine) { double().as_null_object }
     before(:each) { item.state_machine(machine) }
 
-    it { should have_received(:when).with(:available, 'unavailable' => 'available') }
-    it { should have_received(:when).with(:unavailable, 'available' => 'unavailable') }
-    it { should have_received(:when).with(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted') }
-    it { should have_received(:when).with(:discard, 'ghosted' => 'discarded') }
+    it { should have_received(:when).with(:withdraw, 'on_sale' => 'withdrawn') }
+    it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
-  shared_examples 'an state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, initial_state, final_state|
     before(:each) { item.state = initial_state }
+    let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(item.state_machine).to receive(:trigger).with(action)
@@ -46,88 +45,107 @@ describe Item do
       expect{ item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
     end
 
+    it 'changes item discarded field to true' do
+      expect{ item.send(action) }.to change{ item.discarded }.from(false).to(true)
+    end
+
     it 'does not save the item' do
       item.send(action)
       expect(item).to_not be_persisted
     end
+
+    it "returns the result of calling state_machine.trigger(#{action})" do
+      item.state_machine.stub(:trigger).with(action) { test_code }
+      expect(item.send(action)).to eq test_code
+    end
   end
 
-  describe '#available' do
-    it_should_behave_like 'an state machine event', :available, 'unavailable', 'available'
+  shared_examples 'invalid state machine event' do |action, initial_state, final_state|
+    before(:each) { item.state = initial_state }
+
+    it "does not call state_machine.trigger(#{action})" do
+      expect(item.state_machine).to_not receive(:trigger).with(action)
+      item.send(action)
+    end
+
+    it "does not change item state" do
+      expect{ item.send(action) }.to_not change { item.state }
+    end
+
+    it 'does not change item discarded field' do
+      expect{ item.send(action) }.to_not change{ item.discarded }
+    end
+
+    it 'returns false' do
+      expect(item.send(action)).to eq false
+    end
   end
 
-  describe '#unavailable' do
-    it_should_behave_like 'an state machine event', :unavailable, 'available', 'unavailable'
+  describe '#withdraw' do
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+      it_should_behave_like 'invalid state machine event', :withdraw, 'on_sale', 'withdrawn'
+    end
+
+    context 'when item is not discarded' do
+      before(:each) { item.discarded = false }
+      it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
+    end
   end
 
-  describe '#ghost' do
-    it_should_behave_like 'an state machine event', :ghost, 'available', 'ghosted'
+  describe '#sell' do
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+      it_should_behave_like 'invalid state machine event', :sell, 'on_sale', 'sold'
+    end
+
+    context 'when item is not discarded' do
+      before(:each) { item.discarded = false }
+      it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
+    end
+  end
+
+  describe '#discarded?' do
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
+
+      it 'returns true' do
+        expect(item.discarded?).to eq true
+      end
+    end
+
+    context 'when item is undiscarded' do
+      before(:each) { item.discarded = false }
+
+      it 'returns false' do
+        expect(item.discarded?).to eq false
+      end
+    end
   end
 
   describe '#discard' do
-    it_should_behave_like 'an state machine event', :discard, 'ghosted', 'discarded'
-  end
+    context 'when item is discarded' do
+      before(:each) { item.discarded = true }
 
-  describe '#pick(quantity)' do
-    it 'returns a Product filled with item name, description, images and given quantity' do
-      expect(Product).to receive(:new).with(name:item.name, description:item.description, images:item.images, quantity:1)
-      item.pick(1)
-    end
+      it 'does not change item discarded field' do
+        expect{ item.discard }.to_not change{ item.discarded }
+      end
 
-    specify { expect(item.pick(1)._id).to eq item._id }
-    specify { expect(item.pick(1).owner_id).to eq item.user_id }
-  end
-
-  describe '#sell(quantity)' do
-    it 'removes the given quantity of items from the stock' do
-      expect{ item.sell(1) }.to change { item.stock }.by(-1)
-    end
-
-    it 'saves the change' do
-      item.sell(1)
-      expect(item).to be_persisted
-    end
-
-    context 'when given quantity is not available' do
       it 'returns false' do
-        expect(item.sell(100)).to eq false
-      end
-
-      it 'does not change the stock attribute' do
-        expect{ item.sell(100) }.to_not change { item.stock }
+        expect(item.discard).to eq false
       end
     end
-  end
 
-  describe '#supply(quantity)' do
-    it 're-stock this item with the given quantity' do
-      expect{ item.supply(1) }.to change { item.stock }.by(1)
-    end
+    context 'when item is undiscarded' do
+      before(:each) { item.discarded = false }
 
-    it 'saves the change' do
-      item.supply(1)
-      expect(item).to be_persisted
-    end
-  end
+      it 'changes item discarded field to true' do
+        expect{ item.discard }.to change{ item.discarded }.from(false).to(true)
+      end
 
-  describe '#available?(quantity)' do
-    it 'returns true if item has enough asked stock' do
-      asked = item.stock - 1
-      expect(item.available?(asked)).to eq true
-    end
-
-    it 'returns false if item has not enough asked stock' do
-      asked = item.stock + 1
-      expect(item.available?(asked)).to eq false
-    end
-
-    it 'returns false if stock is nil' do
-      item.stock = nil
-      expect(item.available?(1)).to eq false
-    end
-
-    it 'returns false if asked stock is 0' do
-      expect(item.available?(0)).to eq false
+      it 'returns true' do
+        expect(item.discard).to eq true
+      end
     end
   end
 

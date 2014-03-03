@@ -12,6 +12,6 @@ describe Cash do
   it { should validate_presence_of :owner_id }
   it { should validate_presence_of :money }
 
-  # Fabricator
+  # Factories
   specify { expect(Fabricate.build(:cash)).to be_valid }
 end

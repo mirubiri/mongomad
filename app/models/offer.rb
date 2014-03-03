@@ -9,11 +9,15 @@ class Offer
   embeds_one  :proposal,      as: :proposal_container
 
   field :message
-  field :state,  default:'new'
+  field :state,            default:'on_sale'
+  field :discarded,        type:Boolean, default:false
+  field :negotiating,      type:Boolean, default:false
+  field :negotiated_times, type:Integer, default:0
 
-  validates_presence_of :user_composer, :user_receiver, :user_sheets, :proposal
-  validates :message, length: { minimum: 1, maximum: 160 }
-  validates_inclusion_of :state, in: ['new','negotiating','negotiated','ghosted','discarded']
+  validates_presence_of :user_composer, :user_receiver, :user_sheets, :proposal, :discarded, :negotiating, :negotiated_times
+  validates_length_of :message, minimum: 1, maximum: 160
+  validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
+  validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
 
   validate :check_user_equality,
            :check_number_of_sheets,
@@ -43,14 +47,20 @@ class Offer
   end
 
   public
+  def composer
+    user_sheets.find(user_composer_id)
+  end
+
+  def receiver
+    user_sheets.find(user_receiver_id)
+  end
+
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
-      machine.when(:negotiate, 'new' => 'negotiating', 'negotiated' => 'negotiating')
-      machine.when(:negotiated, 'negotiating' => 'negotiated')
-      machine.when(:ghost, 'new' => 'ghosted', 'negotiating' => 'ghosted', 'negotiated' => 'ghosted')
-      machine.when(:discard, 'ghosted' => 'discarded')
+      machine.when(:withdraw, 'on_sale' => 'withdrawn')
+      machine.when(:sell, 'on_sale' => 'sold')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -59,27 +69,29 @@ class Offer
     end
   end
 
-  def negotiate
-    state_machine.trigger(:negotiate)
+  def withdraw
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:withdraw)
+    end
   end
 
-  def negotiated
-    state_machine.trigger(:negotiated)
+  def sell
+    discarded? ? false : begin
+      discard
+      state_machine.trigger(:sell)
+    end
   end
 
-  def ghost
-    state_machine.trigger(:ghost)
+  def discarded?
+    discarded
   end
 
   def discard
-    state_machine.trigger(:discard)
+    discarded ? false : self.discarded = true
   end
 
-  def composer
-    user_sheets.find(user_composer_id)
-  end
-
-  def receiver
-    user_sheets.find(user_receiver_id)
+  def negotiating?
+    negotiating
   end
 end

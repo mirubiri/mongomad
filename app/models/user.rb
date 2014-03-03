@@ -12,28 +12,9 @@ class User
   embeds_one              :profile
 
   field :nick
-  field :state, default:'active'
+  field :disabled, type:Boolean, default:false
 
-  validates_presence_of :profile, :nick
-  validates_inclusion_of :state, in: ['active','inactive']
-
-  def enable
-    if state == 'inactive'
-      self.state = 'active'
-      true
-    else
-      false
-    end
-  end
-
-  def disable
-    if state == 'active'
-      self.state = 'inactive'
-      true
-    else
-      false
-    end
-  end
+  validates_presence_of :profile, :nick, :disabled
 
   def sheet
     UserSheet.new(nick:nick,
@@ -43,5 +24,20 @@ class User
       location:profile.location) do |sheet|
         sheet._id = id
       end
+  end
+
+  def disabled?
+    disabled
+  end
+
+  def enable
+    !disabled ? false : begin
+      self.disabled = false
+      true
+    end
+  end
+
+  def disable
+    disabled ? false : self.disabled = true
   end
 end

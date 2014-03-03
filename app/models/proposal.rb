@@ -8,9 +8,10 @@ class Proposal
   field :composer_id, type:Moped::BSON::ObjectId
   field :receiver_id, type:Moped::BSON::ObjectId
   field :state,       default:'new'
+  field :actionable,  type:Boolean, default:true
 
-  validates_presence_of :goods, :composer_id, :receiver_id
-  validates_inclusion_of :state, in: ['new','signed','confirmed','broken','ghosted','discarded']
+  validates_presence_of :goods, :composer_id, :receiver_id, :actionable
+  validates_inclusion_of :state, in: ['new','signed','confirmed']
 
   validate :check_user_equality,
            :check_composer_goods,
@@ -45,62 +46,6 @@ class Proposal
   end
 
   public
-  def state_machine(machine = nil)
-    @state_machine ||= begin
-      machine ||= MicroMachine.new(state)
-
-      machine.when(:sign, 'new' => 'signed')
-      machine.when(:confirm, 'signed' => 'confirmed')
-      machine.when(:break, 'new' => 'broken', 'signed' => 'broken')
-      machine.when(:reset, 'signed' => 'new', 'broken' => 'new')
-      machine.when(:ghost, 'new' => 'ghosted', 'signed' => 'ghosted', 'broken' => 'ghosted')
-      machine.when(:discard, 'ghosted' => 'discarded')
-
-      machine.on(:any) do
-        self.state = @state_machine.state
-      end
-      machine
-    end
-  end
-
-  def sign
-    state_machine.trigger(:sign)
-  end
-
-  def confirm
-    state_machine.trigger(:confirm)
-  end
-
-  def break
-    state_machine.trigger(:break)
-  end
-
-  def reset
-    state_machine.trigger(:reset)
-  end
-
-  def ghost
-    state_machine.trigger(:ghost)
-  end
-
-  def discard
-    state_machine.trigger(:discard)
-  end
-
-  def update_state
-    if ['new', 'signed', 'broken'].include?(state)
-      if goods.where(state:'available').size + goods.type(Cash).size == goods.size
-        reset
-      elsif (goods.where(state:'unavailable').size > 0) && (goods.or({ state:'ghosted' }, { state:'discarded' }).size == 0)
-        self.break
-      else
-        ghost
-      end
-    else
-      false
-    end
-  end
-
   def composer
     proposal_container.user_sheets.find(composer_id)
   end
@@ -115,5 +60,55 @@ class Proposal
 
   def cash?
     goods.type(Cash).exists?
+  end
+
+  def state_machine(machine = nil)
+    @state_machine ||= begin
+      machine ||= MicroMachine.new(state)
+
+      machine.when(:sign, 'new' => 'signed')
+      machine.when(:confirm, 'signed' => 'confirmed')
+      machine.when(:reset, 'signed' => 'new')
+
+      machine.on(:any) do
+        self.state = @state_machine.state
+      end
+      machine
+    end
+  end
+
+  def sign
+    actionable? ? state_machine.trigger(:sign) : false
+  end
+
+  def confirm
+    !actionable? ? false : begin
+      deactivate
+      state_machine.trigger(:confirm)
+    end
+  end
+
+  def reset
+    actionable? ? state_machine.trigger(:reset) : false
+  end
+
+  def update_state
+    return false unless actionable
+    if goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size
+      state == 'new' ? true : reset
+    else
+      deactivate
+    end
+  end
+
+  def actionable?
+    actionable
+  end
+
+  def deactivate
+    !actionable ? false : begin
+      self.actionable = false
+      true
+    end
   end
 end

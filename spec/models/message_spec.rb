@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Message do
-  let(:message) { Fabricate.build(:message) }
+  let(:user) { Fabricate.build(:user_with_items) }
+  let(:message) { Fabricate.build(:message, user:user) }
 
   # Relations
   it { should be_embedded_in :message_container }
@@ -17,9 +18,11 @@ describe Message do
   it { should validate_length_of(:text).within(1..160) }
 
   # Methods
-  describe '#user' do
+  describe '#user_sheet' do
+    let(:user_sheet) { user.sheet }
+
     it 'returns the owner user_sheet' do
-      expect(message.user).to eq message.message_container.user_sheets.find(message.user_id)
+      expect(message.user_sheet).to eq user_sheet
     end
   end
 

@@ -5,23 +5,23 @@ class Product < Good
   field :name
   field :description
   field :owner_id,   type:Moped::BSON::ObjectId
-  field :quantity,   type:Integer
-  field :state,      default:'available'
+  field :state,      default:'on_sale'
 
   auto_update :name, :description, :images, using: :item
 
   validates_presence_of :_id, :name, :description, :owner_id
-  validates :quantity, allow_nil: false, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates_inclusion_of :state, in: ['available','unavailable','ghosted','discarded']
+  validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
+
+  def item
+    Item.find(_id)
+  end
 
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
 
-      machine.when(:available, 'unavailable' => 'available')
-      machine.when(:unavailable, 'available' => 'unavailable')
-      machine.when(:ghost, 'available' => 'ghosted', 'unavailable' => 'ghosted')
-      machine.when(:discard, 'ghosted' => 'discarded')
+      machine.when(:withdraw, 'on_sale' => 'withdrawn')
+      machine.when(:sell, 'on_sale' => 'sold')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -30,31 +30,11 @@ class Product < Good
     end
   end
 
-  def available
-    state_machine.trigger(:available)
-  end
-
-  def unavailable
-    state_machine.trigger(:unavailable)
-  end
-
-  def ghost
-    state_machine.trigger(:ghost)
-  end
-
-  def discard
-    state_machine.trigger(:discard)
-  end
-
-  def item
-    Item.find(_id)
+  def withdraw
+    state_machine.trigger(:withdraw)
   end
 
   def sell
-    self.item.sell(quantity)
-  end
-
-  def available?
-    self.item.available?(self.quantity)
+    state_machine.trigger(:sell)
   end
 end

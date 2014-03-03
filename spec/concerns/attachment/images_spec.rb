@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Attachment::Images do
   # Variables
-  let (:test_class) do
+  let(:test_class) do
     Struct.new(nil) do
       include Mongoid::Document
       include Attachment::Images

@@ -8,5 +8,5 @@ class Alert
   field :location, type: Array
 
   validates_presence_of :user, :location
-  validates :text, length: { minimum: 1, maximum: 160 }
+  validates_length_of :text, minimum: 1, maximum: 160
 end
