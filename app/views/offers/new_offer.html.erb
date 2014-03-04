@@ -40,12 +40,12 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item)%>"  side="left">
+              <div class="item" id="<%= id(item) %>" stock="1" name="<%= name(item) %>" description="<%= description(item)%>"  side="left">
                 <div class="item_image">
                   <%= item_big_image(item) %>
                 </div>
                 <!-- <div class="item_quantity">
-                  <div class="quantity_number"><%= stock(item) %></div>
+                  <div class="quantity_number"><%#= stock(item) %></div>
                 </div> -->
                 <div class="item_description">
                   <div class="text">
@@ -70,12 +70,12 @@
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="<%= stock(item) %>" name="<%= name(item) %>" description="<%= description(item)%>"  side="right">
+              <div class="item" id="<%= id(item) %>" stock="1" name="<%= name(item) %>" description="<%= description(item)%>"  side="right">
                 <div class="item_image">
                   <%= item_big_image(item) %>
                 </div>
                 <!-- <div class="item_quantity">
-                  <div class="quantity_number"><%= stock(item) %></div>
+                  <div class="quantity_number"><%#= stock(item) %></div>
                 </div> -->
                 <div class="item_description">
                   <div class="text">
