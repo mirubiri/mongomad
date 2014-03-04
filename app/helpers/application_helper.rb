@@ -164,20 +164,20 @@
   end
 
   # Static images
-  def user_header_image
-    cl_image_tag("static/header.jpg", :width => 240, :height => 160, :crop => :scale)
+  def header_image
+    cl_image_tag("static/images/header.jpg", :width => 240, :height => 160, :crop => :scale)
   end
 
   def no_requests_image
-    cl_image_tag("static/no_requests.png", :width => 218, :height => 200, :crop => :scale)
+    cl_image_tag("static/images/no_requests.png", :width => 218, :height => 200, :crop => :scale)
   end
 
   def no_offers_image
-    cl_image_tag("static/no_offers.png", :width => 269, :height => 358, :crop => :scale)
+    cl_image_tag("static/images/no_offers.png", :width => 269, :height => 358, :crop => :scale)
   end
 
   def add_item_image
-    cl_image_tag("static/add_item.png", :width => 152, :height => 152, :crop => :scale)
+    cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
   end
 
   def star_icon_image
@@ -194,6 +194,10 @@
 
   def video_icon_image
     cl_image_tag("static/icons/video.png", :width => 20, :height => 10, :crop => :scale)
+  end
+
+  def initial_message_icon_image
+    cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
   end
 
   def friends_menu_icon_image
