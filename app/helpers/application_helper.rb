@@ -180,43 +180,43 @@
     cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
   end
 
-  def star_icon_image
+  def star_icon
     cl_image_tag("static/icons/star.png", :width => 25, :height => 23, :crop => :scale)
   end
 
-  def friends_icon_image
+  def friends_icon
     cl_image_tag("static/icons/friends_black.png", :width => 34, :height => 20, :crop => :scale)
   end
 
-  def sound_icon_image
+  def sound_icon
     cl_image_tag("static/icons/sound.png", :width => 11, :height => 14, :crop => :scale)
   end
 
-  def video_icon_image
+  def video_icon
     cl_image_tag("static/icons/video.png", :width => 20, :height => 10, :crop => :scale)
   end
 
-  def initial_message_icon_image
+  def initial_message_icon
     cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
   end
 
-  def friends_menu_icon_image
+  def friends_menu_icon
     cl_image_tag("static/icons/friends_white.png", :width => 26, :height => 26, :crop => :scale)
   end
 
-  def products_menu_icon_image
+  def products_menu_icon
     cl_image_tag("static/icons/products.png", :width => 26, :height => 26, :crop => :scale)
   end
 
-  def negotiations_menu_icon_image
+  def negotiations_menu_icon
     cl_image_tag("static/icons/negotiations.png", :width => 26, :height => 26, :crop => :scale)
   end
 
-  def deals_menu_icon_image
+  def deals_menu_icon
     cl_image_tag("static/icons/deals.png", :width => 26, :height => 26, :crop => :scale)
   end
 
-  def logout_menu_icon_image
+  def logout_menu_icon
     cl_image_tag("static/icons/logout.png", :width => 19, :height => 21, :crop => :scale)
   end
 
