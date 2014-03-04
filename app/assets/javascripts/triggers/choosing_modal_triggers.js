@@ -59,7 +59,7 @@ function loadOfferModalScripts(){
 
     }
     else {
-      alert("No queda stock");
+      alert("Already Choosen");
     }
 
   });
@@ -76,7 +76,7 @@ function loadOfferModalScripts(){
 
     }
     else {
-      alert("No queda stock");
+      alert("Already Choosen");
     }
 
   });
