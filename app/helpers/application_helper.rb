@@ -229,15 +229,15 @@
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 68, :height => 68, :crop => :scale, :radius => :max)
   end
 
-  def profile_user_face_image(object)
+  def profile_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
   end
 
-  def request_user_face_image(object)
+  def request_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :scale)
   end
 
-  def new_new_request_user_image(object)
+  def new_request_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
