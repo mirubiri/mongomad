@@ -38,7 +38,7 @@
 
             <div class="oponent_info">
               <div class="oponent_image">
-                <%= negotiation_user_face_image(composer(agreement(deal))) %>
+                <%= deal_user_image(composer(agreement(deal))) %>
               </div>
               <div class="oponent_description">
                 <div class="oponent_name">
@@ -58,7 +58,7 @@
               <div class="recieved">
                 <% composer_products(agreement(deal)).each do |product| %>
                   <div class="image_container">
-                    <%= item_image_big(product) %>
+                    <%= item_big_image(product) %>
                     <div class="description">
                       <%= name(product) %>
                     </div>
@@ -68,7 +68,7 @@
               <div class="given">
                 <% receiver_products(agreement(deal)).each do |product| %>
                   <div class="image_container">
-                    <%= item_image_small(product) %>
+                    <%= item_small_image(product) %>
                     <div class="description">
                       <%= name(product) %>
                     </div>
@@ -99,7 +99,7 @@
               <% messages(deal).each do |message| %>
                 <div class="comment">
                   <div class="comment_user_image">
-                    <%= message_user_face_image(message) %>
+                    <%= deal_message_user_image(message) %>
                   </div>
                   <div class="comment_text">
                     <%= text(message) %>

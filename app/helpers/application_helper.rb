@@ -55,10 +55,6 @@
   #   cl_image_path(object._id + ".jpg")
   # end
 
-  # def image_service_tag(object)
-  #   cl_image_tag(object._id + ".jpg")
-  # end
-
   def images(object)
     user_sheet(object).images
   end
@@ -164,46 +160,6 @@
   end
 
   # Static images
-  def header_image
-    cl_image_tag("static/images/header.jpg", :width => 240, :height => 160, :crop => :scale)
-  end
-
-  def no_requests_image
-    cl_image_tag("static/images/no_requests.png", :width => 218, :height => 200, :crop => :scale)
-  end
-
-  def no_offers_image
-    cl_image_tag("static/images/no_offers.png", :width => 269, :height => 358, :crop => :scale)
-  end
-
-  def add_item_image
-    cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
-  end
-
-  def money_image
-    cl_image_tag("static/images/money.png", :width => 148, :height => 105, :crop => :scale)
-  end
-
-  def star_icon
-    cl_image_tag("static/icons/star.png", :width => 25, :height => 23, :crop => :scale)
-  end
-
-  def friends_icon
-    cl_image_tag("static/icons/friends_black.png", :width => 34, :height => 20, :crop => :scale)
-  end
-
-  def sound_icon
-    cl_image_tag("static/icons/sound.png", :width => 11, :height => 14, :crop => :scale)
-  end
-
-  def video_icon
-    cl_image_tag("static/icons/video.png", :width => 20, :height => 10, :crop => :scale)
-  end
-
-  def initial_message_icon
-    cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
-  end
-
   def friends_menu_icon
     cl_image_tag("static/icons/friends_white.png", :width => 26, :height => 26, :crop => :scale)
   end
@@ -224,45 +180,108 @@
     cl_image_tag("static/icons/logout.png", :width => 19, :height => 21, :crop => :scale)
   end
 
-  #Dynamic images
-  def header_user_face_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 68, :height => 68, :crop => :scale, :radius => :max)
+  def header_image
+    cl_image_tag("static/images/header.jpg", :width => 240, :height => 160, :crop => :scale)
   end
 
-  def user_logged_face_image(object)
+  def star_icon
+    cl_image_tag("static/icons/star.png", :width => 25, :height => 23, :crop => :scale)
+  end
+
+  def friends_icon
+    cl_image_tag("static/icons/friends_black.png", :width => 34, :height => 20, :crop => :scale)
+  end
+
+  def no_requests_image
+    cl_image_tag("static/images/no_requests.png", :width => 218, :height => 200, :crop => :scale)
+  end
+
+  def no_offers_image
+    cl_image_tag("static/images/no_offers.png", :width => 269, :height => 358, :crop => :scale)
+  end
+
+  def add_item_image
+    cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
+  end
+
+  def initial_message_icon
+    cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
+  end
+
+  def money_image
+    cl_image_tag("static/images/money.png", :width => 148, :height => 105, :crop => :scale)
+  end
+
+  def sound_icon
+    cl_image_tag("static/icons/sound.png", :width => 11, :height => 14, :crop => :scale)
+  end
+
+  def video_icon
+    cl_image_tag("static/icons/video.png", :width => 20, :height => 10, :crop => :scale)
+  end
+
+  # Dynamic images
+  def logged_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale, :radius => :max)
+  end
+
+  def header_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 68, :height => 68, :crop => :scale, :radius => :max)
   end
 
   def profile_user_face_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
   end
 
-  def message_user_face_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale)
-  end
-
   def request_user_face_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :scale)
   end
 
-  def offer_user_face_image(object)
+  def new_new_request_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
-  def negotiation_user_face_image(object)
+  # def hexagon_image_path(object)
+  #   cl_image_path((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  # end
+
+  def offer_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
+  end
+
+  def offer_tab_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+  end
+
+  def negotiation_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
   end
 
-  def item_image_big(object)
+  def negotiation_tab_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+  end
+
+  def negotiation_message_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale)
+  end
+
+  def deal_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
+  end
+
+  def deal_message_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale)
+  end
+
+  def alert_user_image(object)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :scale)
+  end
+
+  def item_big_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 152, :height => 152, :crop => :scale)
   end
 
-  def item_image_small(object)
+  def item_small_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
-  end
-
-  #TODO: Revisar
-  def cu_image_service_path(object)
-    cl_image_path(object._id + ".jpg", :width => 60, :height => 60, :crop => :fill)
   end
 end

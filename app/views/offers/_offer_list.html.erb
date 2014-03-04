@@ -10,7 +10,7 @@
           <div class="recieved">
             <% composer_products(offer).each do |product| %>
               <div class="image_container">
-                <%= item_image_big(product) %>
+                <%= item_big_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -20,7 +20,7 @@
           <div class="given">
             <% receiver_products(offer).each do |product| %>
               <div class="image_container">
-                <%= item_image_small(product) %>
+                <%= item_small_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -33,19 +33,19 @@
 
           <!-- <div class="honeycombs">
             <div class="comb">
-              <img src="<%= cu_image_service_path(main_image(composer(offer))) %>" />
+              <img src="<%= hexagon_image_path(composer(offer)) %>" />
             </div>
           </div> -->
 
 
          <!--  <div class="hexagon_container">
-            <%#= offer_user_face_image(composer(offer)) %>
+            <%#= offer_user_image(composer(offer)) %>
             <%#= image_tag("/assets/images/hexagon.png") %>
           </div> -->
 
 
           <div class="profile_image">
-            <%= link_to offer_user_face_image(composer(offer)),
+            <%= link_to offer_user_image(composer(offer)),
               :controller => "users",
               :action => "show",
               :id => id(composer(offer))

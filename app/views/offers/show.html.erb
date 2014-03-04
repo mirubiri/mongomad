@@ -8,7 +8,7 @@
     <div class="recieved">
       <% composer_products(offer).each do |product| %>
         <div class="image_container">
-          <%= item_image_big(product) %>
+          <%= item_big_image(product) %>
           <div class="description">
             <%= name(product) %>
           </div>
@@ -18,7 +18,7 @@
     <div class="given">
       <% receiver_products(offer).each do |product| %>
         <div class="image_container">
-          <%= item_image_big(product) %>
+          <%= item_big_image(product) %>
           <div class="quantity_container"><%= quantity(product) %></div>
         </div>
       <% end %>
@@ -27,7 +27,7 @@
 
   <div class="offer_info">
     <div class="profile_image">
-      <%= link_to offer_user_face_image(composer(offer)),
+      <%= link_to offer_user_image(composer(offer)),
         :controller => "users",
         :action => "show",
         :id => id(composer(offer))

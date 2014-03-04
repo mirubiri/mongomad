@@ -5,7 +5,7 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(receiver(proposal(@negotiation))) %>">
           <div class="user_products_selector user_selected" id="receiver_selector_area">
             <div class="user_image">
-              <%= profile_user_face_image(receiver(proposal(@negotiation))) %>
+              <%= negotiation_tab_user_image(receiver(proposal(@negotiation))) %>
             </div>
             <div class="description">
               <%= first_name(receiver(proposal(@negotiation))) %>
@@ -15,7 +15,7 @@
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(composer(proposal(@negotiation)) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= profile_user_face_image(composer(proposal(@negotiation))) %>
+              <%= negotiation_tab_user_image(composer(proposal(@negotiation))) %>
             </div>
             <div class="description">
               <%= first_name(composer(proposal(@negotiation))) %>
@@ -33,7 +33,7 @@
             <div class="product" item_id="<%= id(item)%>" stock="<%= stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_image_big(item) %>
+                <%= item_big_image(item) %>
               </div>
               <div class="product_title">
                 <%= name(item) %>
@@ -52,7 +52,7 @@
             <div class="product" item_id="<%= id(item)%>" stock="<%= stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_image_big(item) %>
+                <%= item_big_image(item) %>
               </div>
               <div class="product_title">
                 <%= name(item) %>
@@ -91,7 +91,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_image_big(product) %>
+                    <%= item_big_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -113,7 +113,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_image_small(product) %>
+                    <%= item_small_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -140,7 +140,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_image_big(product) %>
+                    <%= item_big_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -162,7 +162,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_image_small(product)) %>
+                    <%= item_small_image(product)) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -184,7 +184,7 @@
 
         <div class="offer_info">
           <div class="profile_image">
-            <%= offer_user_face_image(@user) %>
+            <%= negotiation_user_image(@user) %>
           </div>
           <div class="offer_buttons">
             <%= form.submit "submit", :id => 'edit-offer-send-button' %>
