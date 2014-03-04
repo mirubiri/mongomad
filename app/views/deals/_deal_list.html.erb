@@ -82,7 +82,6 @@
            <%= form_for [@user,@deal], url: {action: "pusher_message"}, :remote => true do |form| %>
             <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
             <input type="hidden" name="deal_id" value="<%= id(deal)%>">
-            <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0">
             <%= form.submit "Send", :id => "send_message_button" %>
            <% end %>
           </div>

@@ -107,7 +107,6 @@
             <%= form_for :negotiation, url: {action: "pusher_message"}, :remote => true do |form| %>
               <textarea class="txt_area_writer" id="message_writer" name="message"></textarea>
               <input type="hidden" name="negotiation_id" value="<%= id(negotiation)%>">
-              <input type="hidden" name="sender_image_tag" id="sender_image_tag" value="0">
               <%= form.submit "Send", :id => "send_message_button" %>
             <% end %>
           </div>
