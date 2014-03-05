@@ -37,12 +37,12 @@
             <div class="text">Add a Product</div>
           </div>
 
-          <div class="item_options">
-            <%= link_to "Edit Product",
+          <!-- <div class="item_options">
+            <%#= link_to "Edit Product",
               edit_user_item_path(@user,item),
               :class => "item_buttons_style",
               :remote => true %>
-          </div>
+          </div> -->
         </div>
 
         <% items(@user).reverse_each do |item| %>
@@ -64,12 +64,12 @@
               </div>
             </div>
 
-            <!-- <div class="item_options">
-              <%#= link_to "Edit Product",
+            <div class="item_options">
+              <%= link_to "Edit Product",
                 edit_user_item_path(@user,item),
                 :class => "item_buttons_style",
                 :remote => true %>
-            </div> -->
+            </div>
           </div>
         <% end %>
       </aside>

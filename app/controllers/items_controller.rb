@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
+    @item = Item.new
 
     respond_to do |format|
       format.html # new.html.erb
