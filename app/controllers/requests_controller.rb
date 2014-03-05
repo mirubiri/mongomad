@@ -1,14 +1,5 @@
-# hash_request
-#   id o request_id (para el editar / borrar)
-#   user_id
-#   request
-#     text : valor
-
 class RequestsController < ApplicationController
-  # GET /requests
-  # GET /requests.json
   def index
-    # user  (user_id)
     @user = User.find(params[:user_id])
 
     respond_to do |format|
@@ -16,10 +7,8 @@ class RequestsController < ApplicationController
     end
   end
 
-  # GET /requests/1
-  # GET /requests/1.json
   def show
-    # request (id)
+    @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
     respond_to do |format|
@@ -27,63 +16,49 @@ class RequestsController < ApplicationController
     end
   end
 
-  # GET /requests/new
-  # GET /requests/new.json
   def new
-    # user  (user_id)
-    # request nil
     @user = User.find(params[:user_id])
-    @request = Request.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.js # render new.js.erb }
+      format.js # render new.js.erb
     end
   end
 
-  # GET /requests/1/edit
   def edit
-    # user  (user_id)
-    # request (id)
     @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
 
     respond_to do |format|
-      format.html
-      format.js
+      format.html # edit.html.erb
+      format.js # render edit.js.erb
     end
   end
 
-  # POST /requests
-  # POST /requests.json
   def create
-    # request (id)
     @user = User.find(params[:user_id])
-    @request = Request.new(params[:request])
-    @request.user = @user
-    @request.user_sheet = @user.sheet
+    @request = Request.new(user:@user, user_sheet:@user.sheet, text:params[:request][:text])
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
       if @request.save
-        format.html { redirect_to @user, notice: 'Request was successfully created.' }
+        format.html { redirect_to @user, notice: 'Request has been successfully created.' }
         format.js { render 'add_request_in_list', :layout => false, :locals => { :request => @request }, :status => :created }
       else
-        format.html { redirect_to @user, notice: 'Request was not created.' }
-        format.js { render 'add_request_in_list', notice: 'wowww' }
+        format.html { redirect_to @user, notice: 'Request has not been created.' }
+        format.js { render 'add_request_in_list' }
       end
     end
   end
 
-  # PUT /requests/1
-  # PUT /requests/1.json
   def update
-    # request (id)
     @user = User.find(params[:user_id])
     @request = Request.find(params[:id])
+    @request.text = params[:request][:text]
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @request.update_attributes(params[:request])
-        format.html { redirect_to user_path(@user), notice: 'Request was successfully updated.' }
+      if @request.save
+        format.html { redirect_to user_path(@user), notice: 'Request has been successfully updated.' }
         format.js { render 'reload_requests', :layout => false }
       else
         format.html { render action: "edit" }
@@ -91,15 +66,16 @@ class RequestsController < ApplicationController
     end
   end
 
-  # DELETE /requests/1
-  # DELETE /requests/1.json
   def destroy
-    # request (id)
     @request = Request.find(params[:id])
-    @request.destroy
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      format.html { redirect_to user_offers_url }
+      if @request.destroy
+        format.html { redirect_to user_offers_url }
+      else
+        # ni idea :)
+      end
     end
   end
 end
