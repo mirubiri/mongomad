@@ -16,7 +16,8 @@
   end
 
   def composer_products(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       products(proposal(object), composer(object))
     else
       products(object, composer(object))
@@ -51,10 +52,6 @@
     object._id
   end
 
-  # def image_service_path(object)
-  #   cl_image_path(object._id + ".jpg")
-  # end
-
   def images(object)
     user_sheet(object).images
   end
@@ -76,7 +73,8 @@
   end
 
   def message(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       object.message
     else
       messages(object).last
@@ -120,7 +118,8 @@
   end
 
   def receiver_products(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       products(proposal(object), receiver(object))
     else
       products(object, receiver(object))
@@ -148,19 +147,14 @@
   end
 
   def user_sheet(object)
-    if object.class == User
+    case object.class
+    when User
       object.sheet
-    elsif object.class == Request
-      object.user_sheet
-    elsif object.class == Message
+    when Request, Message
       object.user_sheet
     else
       object
     end
-  end
-
-  def quantity(object)
-    1
   end
 
   # Static images
@@ -245,10 +239,6 @@
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
-  # def hexagon_image_path(object)
-  #   cl_image_path((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
-  # end
-
   def offer_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
@@ -287,5 +277,10 @@
 
   def item_small_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  end
+
+  #TODO: Revisar
+  def quantity(object)
+    1
   end
 end
