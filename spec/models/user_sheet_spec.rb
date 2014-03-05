@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UserSheet do
+  # Variables
   let(:user) { Fabricate.build(:user) }
   let(:user_sheet) { user.sheet }
 

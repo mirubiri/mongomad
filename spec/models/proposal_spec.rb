@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Proposal do
+  # Variables
   let(:user_composer) { Fabricate.build(:user_with_items) }
   let(:user_receiver) { Fabricate.build(:user_with_items) }
   let(:proposal) { Fabricate.build(:proposal, composer:user_composer, receiver:user_receiver) }

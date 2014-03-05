@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  # Variables
   let(:user) { Fabricate.build(:user) }
 
   # Relations

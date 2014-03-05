@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Message do
+  # Variables
   let(:user) { Fabricate.build(:user_with_items) }
   let(:message) { Fabricate.build(:message, user:user) }
 

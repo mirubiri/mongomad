@@ -3,8 +3,8 @@ require 'spec_helper'
 class Test::Source
   include Mongoid::Document
 
-  field :one, type:String, default:"updated!"
-  field :two, type:String, default:"updated!"
+  field :one, type:String, default:'updated!'
+  field :two, type:String, default:'updated!'
 end
 
 class Test::Copy

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Request do
+  # Variables
   let(:request) { Fabricate.build(:request) }
 
   # Relations
