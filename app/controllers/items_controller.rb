@@ -1,16 +1,6 @@
-# hash_item
-#   id o item_id (para el editar / borrar)
-#   user_id
-#   item
-#     name : valor
-#     description : valor
-
 class ItemsController < ApplicationController
-  # GET /items
-  # GET /items.json
   def index
     @user = User.find(params[:user_id])
-    @item = Item.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,8 +8,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
@@ -30,11 +18,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/new
-  # GET /items/new.json
   def new
     @user = User.find(params[:user_id])
-    @item = Item.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +27,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1/edit
   def edit
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
@@ -53,33 +37,30 @@ class ItemsController < ApplicationController
     end
   end
 
-  # POST /items
-  # POST /items.json
   def create
     @user = User.find(params[:user_id])
-    hash_uploaded_image = Cloudinary::Uploader.upload(params[:item][:image])
-    @item = Item.new(name:params[:item][:name], description:params[:item][:description], stock:params[:item][:stock])
-    @item.images << Fabricate.build(:image_face, id:hash_uploaded_image["public_id"])
+    @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
+    @item.images << Fabricate.build(:image_face, id:Cloudinary::Uploader.upload(params[:item][:image])["public_id"])
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
       if @user.items << @item
         format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
-        flash[:message] = @item.errors.to_a
         format.html { render action: "index" }
       end
     end
   end
 
-  # PUT /items/1
-  # PUT /items/1.json
   def update
+    #TODO: REVISAR
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @item.update_attributes(params[:user_item])
+      if @item.save
         format.html { redirect_to user_items_path(@user), notice: 'item was successfully updated.' }
         format.js { render 'reload_items', :layout => false }
       else
@@ -88,14 +69,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      format.html { redirect_to user_items_url }
+      if @item.destroy
+        format.html { redirect_to user_items_url }
+      else
+        # ni idea :)
+      end
     end
   end
 end

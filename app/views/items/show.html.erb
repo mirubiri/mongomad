@@ -1,8 +1,7 @@
-
 <div class="item_overview" id="show-item-modal">
-
-  <div class="overview_image" id="overview_image"><%= item_big_image(item) %></div>
-
+  <div class="overview_image" id="overview_image">
+    <%= item_big_image(item) %>
+  </div>
   <div class="overview_description">
     <div class="overview_description_title" id="overview_description_title">
       <%= name(item) %>
@@ -11,9 +10,6 @@
       <%= description(item) %>
     </div>
   </div>
-  <p>
-    <%= link_to "Edit Product",
-        edit_user_item_path(@user,item),
-        :remote => true %>
+  <p> <%= link_to "Edit product", edit_user_item_path(@user, item), :remote => true %>
   </p>
 </div>
