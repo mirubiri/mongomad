@@ -202,12 +202,14 @@
     cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
   end
 
+  #TODO: Tamaño diferente al original (29x27)
   def initial_message_icon
-    cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
+    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
+  #TODO: Tamaño diferente al original (148x105)
   def money_image
-    cl_image_tag("static/images/money.png", :width => 148, :height => 105, :crop => :scale)
+    cl_image_tag("static/images/money.png", :width => 165, :height => 165, :crop => :scale)
   end
 
   def sound_icon
@@ -244,7 +246,7 @@
   end
 
   def offer_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
   def negotiation_user_image(object)
@@ -252,7 +254,7 @@
   end
 
   def negotiation_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
   def negotiation_message_user_image(object)
@@ -272,7 +274,7 @@
   end
 
   def item_big_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 152, :height => 152, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def item_small_image(object)
