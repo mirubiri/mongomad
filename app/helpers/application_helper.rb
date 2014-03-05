@@ -159,6 +159,10 @@
     end
   end
 
+  def quantity(object)
+    1
+  end
+
   # Static images
   def friends_menu_icon
     cl_image_tag("static/icons/friends_white.png", :width => 26, :height => 26, :crop => :scale)

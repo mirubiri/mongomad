@@ -19,7 +19,9 @@
       <% receiver_products(offer).each do |product| %>
         <div class="image_container">
           <%= item_big_image(product) %>
-          <div class="quantity_container"><%= quantity(product) %></div>
+          <div class="description">
+            <%= name(product) %>
+          </div>
         </div>
       <% end %>
     </div>
