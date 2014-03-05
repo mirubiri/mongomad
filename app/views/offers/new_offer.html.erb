@@ -28,19 +28,19 @@
         <div class="products_list">
           <div id="receiver_content_area">
 
-            <div class="item" id="receiver_money" stock="1" quantity="0" side="left">
+            <div class="item" id="receiver_money" side="left" type="Cash">
               <div class="item_image">
                 <%= money_image %>
               </div>
               <div class="item_description">
                 <div class="text">
-                  <textarea rows="1" placeholder="dinero"></textarea>
+                  <textarea rows="1" placeholder="0€"></textarea>
                 </div>
               </div>
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="1" name="<%= name(item) %>" description="<%= description(item)%>"  side="left">
+              <div class="item" id="<%= id(item) %>" side="left" type="Product">
                 <div class="item_image">
                   <%= item_big_image(item) %>
                 </div>
@@ -58,19 +58,19 @@
           </div>
           <div id="composer_content_area" class="hidden_container">
 
-            <div class="item" id="composer_money" stock="1" quantity="0" side="left">
+            <div class="item" id="composer_money" side="right" type="Cash">
               <div class="item_image">
                 <%= money_image %>
               </div>
               <div class="item_description">
                 <div class="text">
-                  <textarea rows="1" placeholder="dinero"></textarea>
+                  <textarea rows="1" placeholder="0€"></textarea>
                 </div>
               </div>
             </div>
 
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" stock="1" name="<%= name(item) %>" description="<%= description(item)%>"  side="right">
+              <div class="item" id="<%= id(item) %>" side="right" type="Product">
                 <div class="item_image">
                   <%= item_big_image(item) %>
                 </div>
@@ -102,22 +102,21 @@
       </div>
     </div>
 
-    <input type="hidden" name="offer[user_receiver_id]" value="<%= id(@user) %>" />
-    <input type="hidden" name="offer[money_attributes][user_id]" value="nil" id="usuario_id" />
-    <input type="hidden" name="offer[money_attributes][quantity]" value="0" id="usuario_dinero" />
+    <input type="hidden" name="offer[receiver_id]" value="<%= id(@user) %>" />
+    <input type="hidden" name="offer[initial_message]" value="this is the first message in offer" />
 
-    <div class="offer_summary">
+    <div class="offer_summary" id="offer_summary" maxItems="0">
       <div class="offer_inform">
         <div class="offer_header">
           <%= nick(@user).capitalize %>
         </div>
         <div class="offer_products">
-          <div class="recieved" id="summary_offer_received_products_container">
+          <div class="summaryleft">
               <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
               </div>
           </div>
-          <div class="given" id="summary_offer_given_products_container">
+          <div class="summaryright">
             <div class="money_given" id="dineroOfrecesEnSumario">
               <div class="money_composition"></div>
             </div>
