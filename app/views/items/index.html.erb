@@ -37,14 +37,12 @@
             <div class="text">Add a Product</div>
           </div>
 
-          <!-- <div class="item_options">
-            <%# if controller.controller_name === "items" %>
-              <%#= link_to "ADD A PRODUCT",
-                new_user_item_path(@user),
-                {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
-            <%# end %>
-          </div> -->
-
+          <div class="item_options">
+            <%= link_to "Edit Product",
+              edit_user_item_path(@user,item),
+              :class => "item_buttons_style",
+              :remote => true %>
+          </div>
         </div>
 
         <% items(@user).reverse_each do |item| %>

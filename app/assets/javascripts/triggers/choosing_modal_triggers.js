@@ -45,70 +45,22 @@ function loadOfferModalScripts(){
   }
 
 
-
-  $('#receiver_content_area').on('click','.item',function(e){
-
-    //$(this).addToOffer("#summary_offer_received_products_container");
-
-    var item = $(this);
-
-    if ( have_stock(item) ) {
-
-      itemAddition("received","receiver",item);
-      deduct_1_to_item(item);
-
-    }
-    else {
-      alert("Already Choosen");
-    }
-
+  $('#receiver_content_area').on('click','img',function(e){
+    $(this).parent().parent().addProductToSummary();
   });
 
 
-  $('#composer_content_area').on('click','.item',function(e){
-
-    var item = $(this);
-
-    if ( have_stock(item) ) {
-
-      itemAddition("given","composer",item);
-      deduct_1_to_item(item);
-
-    }
-    else {
-      alert("Already Choosen");
-    }
-
+  $('#composer_content_area').on('click','img',function(e){
+    $(this).parent().parent().addProductToSummary();
   });
 
 
-
-  $('#summary_offer_received_products_container').on('click','.item',function(e){
-    itemSubtraction("his","received","receiver",$(this));
+  $('.summaryleft').on('click','img',function(e){
+    $(this).parent().parent().removeProductFromSummary();
   });
 
-  $('#summary_offer_given_products_container').on('click','.item',function(e){
-    itemSubtraction("my","given","composer",$(this));
-  });
-
-  $('#dineroPidesBotonAgregar').on('click',function(e){
-    e.preventDefault();
-    addMoneyToSumary("Pides","Ofreces","receiver");
-  });
-
-  $('#dineroOfrecesBotonAgregar').on('click',function(e){
-    e.preventDefault();
-    addMoneyToSumary("Ofreces","Pides","receiver");
-  });
-
-  $('#dineroPidesEnSumario a').on('click',function(e){
-    e.preventDefault();
-    deleteMoneySumary("Ofreces",$(this));
-  });
-
-  $('#dineroOfrecesEnSumario a').on('click',function(e){
-    e.preventDefault();
-    deleteMoneySumary("Pides",$(this));
+  $('.summaryright').on('click','img',function(e){
+    $(this).parent().parent().removeProductFromSummary();
   });
 
 }
