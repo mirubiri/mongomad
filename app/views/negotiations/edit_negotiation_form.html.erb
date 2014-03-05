@@ -68,7 +68,7 @@
     <% if(usuario == "composer") %>
       <input type="hidden" name="proposal[user_receiver_id]" value="<%= id(receiver(proposal(@negotiation))) %>" />
     <% else %>
-      <input type="hidden" name="proposal[user_composer_id]" value="<%= id(composer(proposal(@negotiation)) %>" />
+      <input type="hidden" name="proposal[user_composer_id]" value="<%= id(composer(proposal(@negotiation))) %>" />
     <% end %>
 
     <input type="hidden" name="proposal[money_attributes][user_id]" value="nil" id="usuario_id" />
@@ -162,7 +162,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_small_image(product)) %>
+                    <%= item_small_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
