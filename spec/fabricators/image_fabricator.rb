@@ -9,6 +9,6 @@ Fabricator(:image_product, from: :"attachment/image") do
 end
 
 Fabricator(:image_money, from: :"attachment/image") do
- id { %w(uploads/cash/cash1 uploads/cash/cash2 uploads/cash/cash3 uploads/cash/cash4 uploads/cash/cash5).sample }
+  id { %w(uploads/cash/cash1 uploads/cash/cash2 uploads/cash/cash3 uploads/cash/cash4 uploads/cash/cash5).sample }
   main true
 end

@@ -5,6 +5,6 @@ end
 
 Fabricator(:user_with_items, from: :user) do
   after_build do |user|
-    user.items = 3.times.map { Fabricate(:item, user:user) }
+    user.items = 7.times.map { Fabricate(:item, user:user) }
   end
 end

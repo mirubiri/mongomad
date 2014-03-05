@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Product do
+  # Variables
   let(:item) { Fabricate(:item) }
   let(:product) { Fabricate.build(:product, item:item) }
 

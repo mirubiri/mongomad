@@ -16,7 +16,8 @@
   end
 
   def composer_products(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       products(proposal(object), composer(object))
     else
       products(object, composer(object))
@@ -51,10 +52,6 @@
     object._id
   end
 
-  # def image_service_path(object)
-  #   cl_image_path(object._id + ".jpg")
-  # end
-
   def images(object)
     user_sheet(object).images
   end
@@ -76,7 +73,8 @@
   end
 
   def message(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       object.message
     else
       messages(object).last
@@ -120,7 +118,8 @@
   end
 
   def receiver_products(object)
-    if object.class == Offer
+    case object.class
+    when Offer
       products(proposal(object), receiver(object))
     else
       products(object, receiver(object))
@@ -148,19 +147,14 @@
   end
 
   def user_sheet(object)
-    if object.class == User
+    case object.class
+    when User
       object.sheet
-    elsif object.class == Request
-      object.user_sheet
-    elsif object.class == Message
+    when Request, Message
       object.user_sheet
     else
       object
     end
-  end
-
-  def quantity(object)
-    1
   end
 
   # Static images
@@ -208,12 +202,14 @@
     cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :scale)
   end
 
+  #TODO: Tamaño diferente al original (29x27)
   def initial_message_icon
-    cl_image_tag("static/icons/initial_message.png", :width => 29, :height => 27, :crop => :scale)
+    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
+  #TODO: Tamaño diferente al original (148x105)
   def money_image
-    cl_image_tag("static/images/money.png", :width => 148, :height => 105, :crop => :scale)
+    cl_image_tag("static/images/money.png", :width => 165, :height => 165, :crop => :scale)
   end
 
   def sound_icon
@@ -245,16 +241,12 @@
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
-  # def hexagon_image_path(object)
-  #   cl_image_path((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
-  # end
-
   def offer_user_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
   def offer_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
   def negotiation_user_image(object)
@@ -262,7 +254,7 @@
   end
 
   def negotiation_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
   end
 
   def negotiation_message_user_image(object)
@@ -282,10 +274,15 @@
   end
 
   def item_big_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 152, :height => 152, :crop => :scale)
+    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def item_small_image(object)
     cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  end
+
+  #TODO: Revisar
+  def quantity(object)
+    1
   end
 end
