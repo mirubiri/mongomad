@@ -5,14 +5,14 @@
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
             <div class="user_image">
-              <%= profile_user_image(@user) %>
+              <%= offer_modal_user_image(@user) %>
             </div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
-              <%= profile_user_image(@user) %>
+              <%= offer_modal_user_image(@user) %>
             </div>
           </div>
         </a>
@@ -42,7 +42,7 @@
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" side="left" type="Product">
                 <div class="item_image">
-                  <%= item_big_image(item) %>
+                  <%= offer_modal_receiver_product_image(item) %>
                 </div>
                 <div class="item_description">
                   <div class="text">
@@ -68,7 +68,7 @@
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" side="right" type="Product">
                 <div class="item_image">
-                  <%= item_big_image(item) %>
+                  <%= offer_modal_composer_product_image(item) %>
                 </div>
                 <div class="item_description">
                   <div class="text">
@@ -108,7 +108,7 @@
             <% receiver_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>"  side="left" type="Product">
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
-                  <%= item_big_image(product) %>
+                  <%= offer_modal_receiver_product_image(product) %>
                 </div>
                 <div class="item_description">
                   <div class="text">
@@ -138,7 +138,7 @@
             <% composer_products(@offer).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>"  side="right" type="Product">
                 <div class="item_image">
-                  <%= item_small_image(product) %>
+                  <%= offer_modal_composer_product_image(product) %>
                 </div>
                 <div class="item_description">
                   <div class="text">
@@ -164,7 +164,7 @@
         </div>
         <div class="offer_info">
           <div class="profile_image">
-            <%= offer_user_image(@user) %>
+            <%= offer_modal_user_image(@user) %>
           </div>
           <div class="description">
             <div class="offer_message">

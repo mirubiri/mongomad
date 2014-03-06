@@ -34,7 +34,7 @@
   <% items(@user).reverse_each do |item| %>
     <div class="item" id="<%= id(item) %>">
       <div class="item_image">
-        <%= link_to item_big_image(item),
+        <%= link_to products_wall_item_image(item),
           user_item_path(@user,item),
           {:remote => true}
         %>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="item_options">
-        <%= link_to "Edit Product",
+        <%= link_to "Edit product",
           edit_user_item_path(@user,item),
           :class => "item_buttons_style",
           :remote => true %>

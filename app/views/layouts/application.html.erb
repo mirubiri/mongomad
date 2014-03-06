@@ -58,6 +58,7 @@
 
     channel.bind('my_event', function(data) {
       var negotiation_id = data.negotiation_id;
+      //TODO SERGIO: Me esta pidiendo negotiation_message_user_image nada más iniciar la aplicacion, no debería
       var user_image_tag = "<%= escape_javascript(negotiation_message_user_image(@user)) %>";
 
       $("#"+negotiation_id).find('#conversationofnegotiation').append('<div class="comment"><div class="comment_user_image">'+user_image_tag+'</div><div class="comment_text">'+data.message+'</div><div class="comment_datetime">22/01/2014 11:05am</div></div>');
@@ -67,7 +68,8 @@
 
     channel_deals.bind('my_event', function(data) {
       var deal_id = data.deal_id;
-      var user_image_tag = "<%= escape_javascript(negotiation_message_user_image(@user)) %>";
+      //TODO SERGIO: Me esta pidiendo deal_message_user_image nada más iniciar la aplicacion cuando tengo un user con ofertas, no debería
+      var user_image_tag = "<%= escape_javascript(deal_message_user_image(@user)) %>";
 
       $("#"+deal_id).find('#conversationofnegotiation').append('<div class="comment"><div class="comment_user_image">'+user_image_tag+'</div><div class="comment_text">'+data.message+'</div><div class="comment_datetime">22/01/2014 11:05am</div></div>');
       $("#"+deal_id).find("#message_writer").val('');

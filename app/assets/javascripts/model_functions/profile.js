@@ -17,7 +17,7 @@ function setProfileContainersHeights(){
 
   $('.person_info').css({'height': alturaPerfil  + 'px'});
   $('.person_info,.statistics').equalHeightColumns();
-  $('.comments_recieved').css({'height': alturaComentarios  + 'px'});
+  $('.comments_received').css({'height': alturaComentarios  + 'px'});
 }
 
 function profileImageSelection(input) {

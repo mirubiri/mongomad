@@ -1,9 +1,9 @@
 <div class="new-request-form" id="new-request-form">
-  <%= form_for [@user, Request.new], :remote => true do |form| %>
+  <%= form_for [@user, @request], :remote => true do |form| %>
     <div class="new_petition_content">
       <div class="petition_transparent_side">
         <div class="petition_user_image">
-          <%= new_request_user_image(@user) %>
+          <%= request_modal_user_image(@user) %>
         </div>
       </div>
 

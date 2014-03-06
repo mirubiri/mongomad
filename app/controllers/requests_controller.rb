@@ -18,6 +18,7 @@ class RequestsController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
+    @request = Request.new
 
     respond_to do |format|
       format.js # render new.js.erb

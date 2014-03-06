@@ -2,11 +2,9 @@
   <%= render :partial => 'application/header' %>
 <% end %>
 
-
 <% content_for :user_side do %>
   <%= render :partial => 'application/user_container' %>
 <% end %>
-
 
 <% content_for :content_side do %>
 
@@ -53,7 +51,7 @@
                 </div>
               </div>
               <div class="info_element">
-                <div class="info_element_title">Birthdate:</div>
+                <div class="info_element_title">Birth date:</div>
                 <div class="info_element_description">
                   <%= birth_date(@user) %>
                 </div>
@@ -77,11 +75,11 @@
                 <div class="result_number">50</div>
               </div>
               <div class="result_block">
-                <div class="result_title">Total use time</div>
+                <div class="result_title">Total usage time</div>
                 <div class="result_number">500h</div>
               </div>
               <div class="result_block">
-                <div class="result_title">Dayle use average</div>
+                <div class="result_title">Daily usage average</div>
                 <div class="result_number">2h</div>
               </div>
             </div>
@@ -90,73 +88,29 @@
             </div>
           </div>
         </div>
-        <div class="comments_recieved">
-          <div class="title">COMENTS</div>
+        <div class="comments_received">
+          <div class="title">COMMENTS</div>
           <div id="comment_list">
-            <div class="comment">
-              <div class="comment_header">
-                <div class="profile_image"></div>
-                <div class="description">
-                  <div class="username_and_valuation">
-                    <div class="user_name">User Name</div>
-                    <div class="user_valuation">User Value</div>
+            <% 5.times do |i|%>
+              <div class="comment">
+                <div class="comment_header">
+                  <div class="profile_image">
+                    <%= comment_user_image(@user) %>
                   </div>
-                  <div class="comment_user_text">Comment Text</div>
+                  <div class="description">
+                    <div class="username_and_valuation">
+                      <div class="user_name">User Name</div>
+                      <div class="user_valuation">User Value</div>
+                    </div>
+                    <div class="comment_user_text">Comment Text</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="comment">
-              <div class="comment_header">
-                <div class="profile_image"></div>
-                <div class="description">
-                  <div class="username_and_valuation">
-                    <div class="user_name">User Name</div>
-                    <div class="user_valuation">User Value</div>
-                  </div>
-                  <div class="comment_user_text">Comment Text</div>
-                </div>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="comment_header">
-                <div class="profile_image"></div>
-                <div class="description">
-                  <div class="username_and_valuation">
-                    <div class="user_name">User Name</div>
-                    <div class="user_valuation">User Value</div>
-                  </div>
-                  <div class="comment_user_text">Comment Text</div>
-                </div>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="comment_header">
-                <div class="profile_image"></div>
-                <div class="description">
-                  <div class="username_and_valuation">
-                    <div class="user_name">User Name</div>
-                    <div class="user_valuation">User Value</div>
-                  </div>
-                  <div class="comment_user_text">Comment Text</div>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
-
-
     </aside>
-
   </section>
-
 </div>
-
-
 <% end %>
-
-
-
-
-
-

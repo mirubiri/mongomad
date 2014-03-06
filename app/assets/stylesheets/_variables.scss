@@ -308,7 +308,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     margin: $productsTopMargin 0px $productsBottomMargin $productsLeftMargin;
     padding-bottom: 35px;
 
-    .recieved{
+    .received{
       width: $bigImageDimension;
       float:left;
       overflow: auto;
@@ -532,7 +532,7 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     .profile_image{
       @include box-sizing(border-box);
       @include border-radius(5px, 5px);
-      @include proportions(18%,40px);
+      @include proportions(41px,41px);
       @include border_Element_into_container;
 
       float:left;

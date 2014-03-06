@@ -50,10 +50,10 @@
             </div>
 
             <div class="offer_items">
-              <div class="recieved">
+              <div class="received">
                 <% composer_products(proposal(negotiation)).each do |product| %>
                   <div class="image_container">
-                    <%= item_big_image(product) %>
+                    <%= negotiation_receiver_product_image(product) %>
                     <div class="artistic_layer_big">
                       <%= name(product) %>
                     </div>
@@ -63,7 +63,7 @@
               <div class="given">
                 <% receiver_products(proposal(negotiation)).each do |product| %>
                   <div class="image_container">
-                    <%= item_small_image(product) %>
+                    <%= negotiation_composer_product_image(product) %>
                   </div>
                 <% end %>
               </div>
