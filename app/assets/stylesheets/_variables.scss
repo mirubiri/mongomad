@@ -344,13 +344,12 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
     .given{
       width: $smallImageDimension;
       float: right;
-      overflow: auto;
       margin: 0px $productRightMargin 0px 0px;
 
       .image_container{
         @include box-sizing(border-box);
         @include proportions($smallImageDimension,$smallImageDimension);
-        margin:0px 0px 5px 0px;
+        margin:0px 0px 0px 0px;
         position: relative;
         //background-image: url("/assets/images/pictureframe.png");
         //background-size: $smallBackgroundSize $smallBackgroundSize;
