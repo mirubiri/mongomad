@@ -39,6 +39,9 @@ class ItemsController < ApplicationController
   end
 
   def create
+    puts "*******************************************************************************"
+    puts params
+    puts "*******************************************************************************"
     @user = User.find(params[:user_id])
     @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
     @item.images << Fabricate.build(:image_face, id:Cloudinary::Uploader.upload(params[:item][:image])["public_id"])

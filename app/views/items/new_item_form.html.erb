@@ -11,9 +11,12 @@
           </div>
           <div class="input_container">
             <div class="input_text">ATTACH PHOTO</div>
-              <%= form.file_field :image,
-                :id => "item_image",
-                :onchange => "imageSelection(this);" %>
+
+            <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this)"}) %>
+
+            <!-- <%#= form.file_field :image,
+              :id => "item_image",
+              :onchange => "imageSelection(this);" %> -->
           </div>
         </div>
         <div class="new_item_description">
@@ -42,6 +45,8 @@
   <% end %>
 </div>
 
+
+
 <script type="text/javascript">
   // $("#item_image_container").draggable({
   //   stop: function(ev, ui) {
@@ -62,6 +67,7 @@
   //       }
   //   }
   // });
+
 
   $("#item_image_container").on('load', function (event) {
       $(this).wheelzoom();
