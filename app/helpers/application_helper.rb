@@ -246,11 +246,11 @@ module ApplicationHelper
   end
 
   def offer_modal_composer_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :scale)
   end
 
   def offer_modal_receiver_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :scale)
   end
 
   def negotiation_user_image(object)
@@ -274,11 +274,11 @@ module ApplicationHelper
   end
 
   def negotiation_modal_composer_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :scale)
   end
 
   def negotiation_modal_receiver_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :scale)
   end
 
   def deal_user_image(object)
