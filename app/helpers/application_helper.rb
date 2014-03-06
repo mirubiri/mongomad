@@ -1,4 +1,4 @@
- module ApplicationHelper
+module ApplicationHelper
   def alerts(object)
     object.alerts
   end
@@ -32,9 +32,9 @@
     object.deals
   end
 
-  def description(object)
-    object.description
-  end
+#   def description(object)
+#     object.description
+#   end
 
   def first_name(object)
     user_sheet(object).first_name
@@ -44,25 +44,25 @@
     first_name(object) + " " + last_name(object)
   end
 
-  def gender(object)
-    object.profile.gender
-  end
+#   def gender(object)
+#     object.profile.gender
+#   end
 
   def id(object)
     object._id
   end
 
-  def images(object)
-    user_sheet(object).images
-  end
+#   def images(object)
+#     user_sheet(object).images
+#   end
 
   def items(object)
     User.find(object._id).items
   end
 
-  def language(object)
-    object.profile.language
-  end
+#   def language(object)
+#     object.profile.language
+#   end
 
   def last_name(object)
     user_sheet(object).last_name
@@ -105,10 +105,6 @@
     object.proposal
   end
 
-  def proposals(object)
-    object.proposals
-  end
-
   def received_offers(object)
     object.received_offers
   end
@@ -130,20 +126,8 @@
     object.requests
   end
 
-  def sent_offers(object)
-    object.sent_offers
-  end
-
-  def state(object)
-    object.state
-  end
-
   def text(object)
     object.text
-  end
-
-  def user(object)
-    object.user
   end
 
   def user_sheet(object)
@@ -204,7 +188,7 @@
 
   #TODO: Tamaño diferente al original (29x27)
   def initial_message_icon
-    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :scale, :radius => :max)
+    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :scale)
   end
 
   #TODO: Tamaño diferente al original (148x105)
@@ -222,67 +206,111 @@
 
   # Dynamic images
   def logged_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale, :radius => :max)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 30, :height => 30, :crop => :scale, :radius => :max)
   end
 
   def header_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 68, :height => 68, :crop => :scale, :radius => :max)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 68, :height => 68, :crop => :scale, :radius => :max)
   end
 
   def profile_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 122, :height => 122, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 122, :height => 122, :crop => :scale)
+  end
+
+  def comment_user_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :scale)
   end
 
   def request_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 39, :height => 39, :crop => :scale)
   end
 
-  def new_request_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
+  def request_modal_user_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
   def offer_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 48, :height => 48, :crop => :scale, :radius => :max)
   end
 
-  def offer_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
+  def offer_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  end
+
+  def offer_receiver_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+  end
+
+  def offer_modal_user_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
+  end
+
+  def offer_modal_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+  end
+
+  def offer_modal_receiver_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def negotiation_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
   end
 
-  def negotiation_tab_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
+  def negotiation_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  end
+
+  def negotiation_receiver_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def negotiation_message_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 30, :height => 30, :crop => :scale)
+  end
+
+  def negotiation_modal_user_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :scale, :radius => :max)
+  end
+
+  def negotiation_modal_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
+  end
+
+  def negotiation_modal_receiver_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def deal_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 64, :height => 64, :crop => :scale, :radius => :max)
+  end
+
+  def deal_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :scale)
+  end
+
+  def deal_receiver_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
   def deal_message_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 30, :height => 30, :crop => :scale)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 30, :height => 30, :crop => :scale)
   end
 
-  def alert_user_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 39, :height => 39, :crop => :scale)
+#   def alert_user_image(object)
+#     cl_image_tag(id(main_image(object)) + ".jpg", :width => 39, :height => 39, :crop => :scale)
+#   end
+
+  def products_wall_item_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :scale)
   end
 
-  def item_big_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 158, :height => 158, :crop => :scale)
-  end
+#   def product_modal_item_image(object)
+#     cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :scale)
+#   end
 
-  def item_small_image(object)
-    cl_image_tag((user_sheet(object).main_image)._id + ".jpg", :width => 60, :height => 60, :crop => :scale)
-  end
-
-  #TODO: Revisar
-  def quantity(object)
-    1
-  end
+#   #TODO: Revisar
+#   def quantity(object)
+#     1
+#   end
 end

@@ -19,10 +19,10 @@
         </div>
 
         <div class="offer_items">
-          <div class="recieved">
+          <div class="received">
             <% composer_products(agreement(deal)).each do |product| %>
               <div class="image_container">
-                <%= item_big_image(product) %>
+                <%= deal_receiver_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -32,7 +32,7 @@
           <div class="given">
             <% receiver_products(agreement(deal)).each do |product| %>
               <div class="image_container">
-                <%= item_small_image(product) %>
+                <%= deal_composer_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -40,13 +40,6 @@
             <% end %>
           </div>
         </div>
-
-        <!-- <div class="offer_info">
-
-          <div class="offer_buttons">
-          </div>
-
-        </div> -->
       </div>
 
       <div class="dialog_container">

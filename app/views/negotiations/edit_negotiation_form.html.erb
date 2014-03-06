@@ -12,7 +12,7 @@
             </div>
           </div>
         </a>
-        <a href="#blank" id="new_offer_composer_selector" value="<%= id(composer(proposal(@negotiation)) %>">
+        <a href="#blank" id="new_offer_composer_selector" value="<%= id(composer(proposal(@negotiation))) %>">
           <div class="user_products_selector" id="composer_selector_area">
             <div class="user_image">
               <%= negotiation_tab_user_image(composer(proposal(@negotiation))) %>
@@ -33,7 +33,7 @@
             <div class="product" item_id="<%= id(item)%>" stock="<%= stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_big_image(item) %>
+                <%= negotiation_modal_receiver_product_image(item) %>
               </div>
               <div class="product_title">
                 <%= name(item) %>
@@ -52,7 +52,7 @@
             <div class="product" item_id="<%= id(item)%>" stock="<%= stock(item) %>">
               <div class="quantity_container"></div>
               <div class="product_image">
-                <%= item_big_image(item) %>
+                <%= negotiation_modal_composer_product_image(item) %>
               </div>
               <div class="product_title">
                 <%= name(item) %>
@@ -85,13 +85,13 @@
 
         <% if(usuario == "composer") %>
           <div class="offer_items">
-            <div class="recieved" id="summary_offer_received_products_container">
+            <div class="received" id="summary_offer_received_products_container">
               <% contador = 0 %>
               <% receiver_products(proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_big_image(product) %>
+                    <%= negotiation_modal_receiver_product_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -113,7 +113,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_small_image(product) %>
+                    <%= negotiation_modal_composer_product_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -140,7 +140,7 @@
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_big_image(product) %>
+                    <%= negotiation_modal_receiver_product_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -156,13 +156,13 @@
                 <div class="money_composition"></div>
               </div>
             </div>
-            <div class="recieved" id="summary_offer_given_products_container">
+            <div class="received" id="summary_offer_given_products_container">
               <% contador = 0 %>
               <% composer_products(proposal(@negotiation)).each do |product| %>
                 <div class="product" product_id="<%= id(product) %>" item_id="<%= id(product) %>"><div class="delete_button">x</div>
                   <div class="quantity_container"><%= quantity(product) %></div>
                   <div class="product_image">
-                    <%= item_small_image(product) %>
+                    <%= negotiation_modal_composer_product_image(product) %>
                   </div>
                   <div class="product_title">
                     <%= name(product) %>
@@ -184,7 +184,7 @@
 
         <div class="offer_info">
           <div class="profile_image">
-            <%= negotiation_user_image(@user) %>
+            <%= negotiation_modal_user_image(@user) %>
           </div>
           <div class="offer_buttons">
             <%= form.submit "submit", :id => 'edit-offer-send-button' %>

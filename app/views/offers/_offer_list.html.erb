@@ -7,10 +7,10 @@
         </div>
 
         <div class="offer_items">
-          <div class="recieved">
+          <div class="received">
             <% composer_products(offer).each do |product| %>
               <div class="image_container">
-                <%= item_big_image(product) %>
+                <%= offer_receiver_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -20,7 +20,7 @@
           <div class="given">
             <% receiver_products(offer).each do |product| %>
               <div class="image_container">
-                <%= item_small_image(product) %>
+                <%= offer_composer_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>
                 </div>
@@ -37,12 +37,10 @@
             </div>
           </div> -->
 
-
          <!--  <div class="hexagon_container">
             <%#= offer_user_image(composer(offer)) %>
             <%#= image_tag("/assets/images/hexagon.png") %>
           </div> -->
-
 
           <div class="profile_image">
             <%= link_to offer_user_image(composer(offer)),
@@ -59,7 +57,6 @@
           </div>
 
           <div class="offer_buttons" id="offer_buttons_navigation">
-
             <%= form_for [@user,@negotiation], :remote => true do |form| %>
               <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
               <%= form.submit "NEGOTIATE", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
@@ -78,7 +75,6 @@
                     {:remote => true,
                      :class => 'offer_buttons_style',
                      :id => "edit_offer_link"} %>
-
           </div>
 
         </div>
