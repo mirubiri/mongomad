@@ -31,6 +31,14 @@
 
 
 
+
+
+
+
+<!-- Activo la configuracion del cloudinary aqui para todas la navegacion -->
+<%= cloudinary_js_config %>
+
+
 <!-- Luego esto vendra dentro de un Yield pusher y cada .html rellenara como necesite -->
 <% if (controller.controller_name != "home") %>
 
@@ -71,6 +79,5 @@
   </script>
 
 <% end %>
-
 
 </html>
