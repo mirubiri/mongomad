@@ -1,4 +1,8 @@
-function imageSelection(input) {
+function imageSelection(input, selector) {
+
+  var input_selector = selector.toString();
+  alert(input_selector);
+
   if (input.files && input.files[0]) {
 
     var reader = new FileReader();
@@ -8,10 +12,26 @@ function imageSelection(input) {
         var image = new Image();
         image.src = e.target.result;
 
-        image.onload = function(event) {
-          $('#item_image_container').attr('src', this.src);
-          $('.image_container').height($('#item_image_container').height());
-        };
+        if (input_selector == "1"){
+            image.onload = function(event) {
+              $("#inputcontainer1").find('img').attr('src', this.src);
+              $('#item_image_container').attr('src', this.src);
+              $('.image_container').height($('#item_image_container').height());
+            };
+        }else if(input_selector == "2"){
+            image.onload = function(event) {
+              $("#inputcontainer2").find('img').attr('src', this.src);
+              $('#item_image_container').attr('src', this.src);
+              $('.image_container').height($('#item_image_container').height());
+            };
+        }else{
+            image.onload = function(event) {
+              $("#inputcontainer3").find('img').attr('src', this.src);
+              $('#item_image_container').attr('src', this.src);
+              $('.image_container').height($('#item_image_container').height());
+            };
+        }
+
     };
 
     reader.readAsDataURL(input.files[0]);

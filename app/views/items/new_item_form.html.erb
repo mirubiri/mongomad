@@ -14,22 +14,25 @@
         <div class="new_item_description">
 
           <div class="add_images">
-            <div class="add_image_container">
+            <div class="add_image_container" id="inputcontainer1">
+              <img src="">
               <div class="input_container">
                 <div class="input_text">+</div>
-                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this)"}) %>
+                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
               </div>
             </div>
             <div class="add_image_container">
-              <div class="input_container">
+              <div class="input_container" id="inputcontainer2">
+                <img src="">
                 <div class="input_text">+</div>
-                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this)"}) %>
+                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
               </div>
             </div>
             <div class="add_image_container">
-              <div class="input_container">
+              <div class="input_container" id="inputcontainer3">
+                <img src="">
                 <div class="input_text">+</div>
-                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this)"}) %>
+                <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
               </div>
             </div>
           </div>
@@ -83,8 +86,10 @@
   // });
 
 
-  $("#item_image_container").on('load', function (event) {
-      $(this).wheelzoom();
-      $(this).off( event );
-  });
+  // $("#item_image_container").mouseover(function(event) {
+  //     $(this).wheelzoom();
+  //   }).mouseout(function(event) {
+  //     $(this).off( event );
+  // });
+
 </script>
