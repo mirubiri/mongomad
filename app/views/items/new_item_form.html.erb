@@ -6,8 +6,8 @@
         <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->      </div>
       <div class="new_item_container">
         <div class="new_item_image">
-          <div class="image_container">
-            <img id="item_image_container" src="">
+          <div class="image_container" id="original_image_container">
+            <img src="">
           </div>
           PPAL IMAGE SELECTION
         </div>
@@ -17,21 +17,21 @@
             <div class="add_image_container" id="inputcontainer1">
               <img src="">
               <div class="input_container">
-                <div class="input_text">+</div>
+                <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
               </div>
             </div>
-            <div class="add_image_container">
-              <div class="input_container" id="inputcontainer2">
-                <img src="">
-                <div class="input_text">+</div>
+            <div class="add_image_container" id="inputcontainer2">
+              <img src="">
+              <div class="input_container">
+                <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
               </div>
             </div>
-            <div class="add_image_container">
-              <div class="input_container" id="inputcontainer3">
-                <img src="">
-                <div class="input_text">+</div>
+            <div class="add_image_container" id="inputcontainer3">
+              <img src="">
+              <div class="input_container">
+                <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
               </div>
             </div>
@@ -91,5 +91,17 @@
   //   }).mouseout(function(event) {
   //     $(this).off( event );
   // });
+
+  $("#item_image_container").on('load', function (event) {
+      $(this).wheelzoom();
+      $(this).off( event );
+  });
+
+  $(".add_image_container").on('click','img', function (event) {
+    if($(this).attr('src') != ''){
+      var image = $(this).clone();
+      $('#original_image_container').find('img').replaceWith(image);
+    }
+  });
 
 </script>

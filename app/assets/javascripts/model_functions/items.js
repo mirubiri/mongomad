@@ -15,20 +15,20 @@ function imageSelection(input, selector) {
         if (input_selector == "1"){
             image.onload = function(event) {
               $("#inputcontainer1").find('img').attr('src', this.src);
-              $('#item_image_container').attr('src', this.src);
-              $('.image_container').height($('#item_image_container').height());
+              var image = $("#inputcontainer1").find('img').clone();
+              $('#original_image_container').find('img').replaceWith(image);
             };
         }else if(input_selector == "2"){
             image.onload = function(event) {
               $("#inputcontainer2").find('img').attr('src', this.src);
-              $('#item_image_container').attr('src', this.src);
-              $('.image_container').height($('#item_image_container').height());
+              var image = $("#inputcontainer2").find('img').clone();
+              $('#original_image_container').find('img').replaceWith(image);
             };
         }else{
             image.onload = function(event) {
               $("#inputcontainer3").find('img').attr('src', this.src);
-              $('#item_image_container').attr('src', this.src);
-              $('.image_container').height($('#item_image_container').height());
+              var image = $("#inputcontainer3").find('img').clone();
+              $('#original_image_container').find('img').replaceWith(image);
             };
         }
 
