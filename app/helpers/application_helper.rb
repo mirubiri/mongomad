@@ -123,7 +123,7 @@ module ApplicationHelper
   end
 
   def requests(object)
-    object.requests.desc(:updated_at).to_a
+    object.requests.desc(:updated_at)
   end
 
   def text(object)
