@@ -1,7 +1,7 @@
 function imageSelection(input, selector) {
 
   var input_selector = selector.toString();
-  alert(input_selector);
+  //alert(input_selector);
 
   if (input.files && input.files[0]) {
 
