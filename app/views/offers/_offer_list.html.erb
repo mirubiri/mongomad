@@ -2,9 +2,7 @@
     <% received_offers(@user).reverse_each do |offer| %>
       <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
 
-        <div class="debug_container">
-          <%= offer_info(offer) %>
-        </div>
+        <div class="debug_container"><%#= debug_info(offer) %></div>
 
         <div class="offer_header">
           <%= first_name(composer(offer)) %>
@@ -15,9 +13,7 @@
             <% composer_products(offer).each do |product| %>
               <div class="image_container">
 
-                <div class="debug_container">
-                  <%= product_info(product) %>
-                </div>
+                <div class="debug_container"><%#= debug_info(product) %></div>
 
                 <%= offer_receiver_product_image(product) %>
                 <div class="description">
@@ -30,9 +26,7 @@
             <% receiver_products(offer).each do |product| %>
               <div class="image_container">
 
-                <div class="debug_container">
-                  <%= product_info(product) %>
-                </div>
+                <div class="debug_container"><%#= debug_info(product) %></div>
 
                 <%= offer_composer_product_image(product) %>
                 <div class="description">

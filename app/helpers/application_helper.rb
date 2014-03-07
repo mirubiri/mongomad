@@ -318,18 +318,24 @@ module ApplicationHelper
   def debug_info(object)
     case object.class
     when Item
-      "ITEM: state: #{item.state}, discarded: #{item.discarded}"
+      item_info(object.item)
     when Product
-      "PRODUCT: state: #{product.state} " + item_info(product.item)
+      "PRODUCT: state: #{object.state} " + item_info(object.item)
     when Offer
-      "OFFER: state: #{offer.state}, discarded: #{offer.discarded}, negotiating: #{offer.negotiating}, negotiated_times: #{offer.negotiated_times} " + proposal_info(proposal(offer))
+      "OFFER: state: #{object.state}, discarded: #{object.discarded}, negotiating: #{object.negotiating}, negotiated_times: #{object.negotiated_times} " + proposal_info(proposal(object))
     when Negotiation
-      "NEGOTIATION: absent_user: #{negotiation.absent_user}, discarded: #{negotiation.discarded} " + proposal_info(proposal(negotiation))
+      "NEGOTIATION: absent_user: #{object.absent_user}, discarded: #{object.discarded} " + proposal_info(proposal(object))
     when Deal
-      proposal_info(agreement(deal))
+      proposal_info(agreement(object))
     else
       "Debug Info"
     end
+  end
+
+
+
+  def item_info(item)
+    "ITEM: state: #{item.state}, discarded: #{item.discarded}"
   end
 
   def proposal_info(proposal)
