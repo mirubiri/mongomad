@@ -315,27 +315,24 @@ module ApplicationHelper
 #   end
 
   # TODO: ELIMINAR, solo para debug
-  def item_info(item)
-    "ITEM: state: #{item.state}, discarded: #{item.discarded}"
-  end
-
-  def product_info(product)
-    "PRODUCT: state: #{product.state}" + item_info(product.item)
+  def debug_info(object)
+    case object.class
+    when Item
+      "ITEM: state: #{item.state}, discarded: #{item.discarded}"
+    when Product
+      "PRODUCT: state: #{product.state} " + item_info(product.item)
+    when Offer
+      "OFFER: state: #{offer.state}, discarded: #{offer.discarded}, negotiating: #{offer.negotiating}, negotiated_times: #{offer.negotiated_times} " + proposal_info(proposal(offer))
+    when Negotiation
+      "NEGOTIATION: absent_user: #{negotiation.absent_user}, discarded: #{negotiation.discarded} " + proposal_info(proposal(negotiation))
+    when Deal
+      proposal_info(agreement(deal))
+    else
+      "Debug Info"
+    end
   end
 
   def proposal_info(proposal)
     "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
-  end
-
-  def offer_info(offer)
-    "OFFER: state: #{offer.state}, discarded: #{offer.discarded}, negotiated_times: #{offer.negotiated_times}, negotiating: #{offer.negotiating}" + proposal_info(proposal(offer))
-  end
-
-  def negotiation_info(negotiation)
-    "NEGOTIATION: absent_user: #{negotiation.absent_user}, discarded: #{negotiation.discarded}" + proposal_info(proposal(negotiation))
-  end
-
-  def deal_info(deal)
-    proposal_info(agreement(deal))
   end
 end
