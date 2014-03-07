@@ -332,8 +332,6 @@ module ApplicationHelper
     end
   end
 
-
-
   def item_info(item)
     "ITEM: state: #{item.state}, discarded: #{item.discarded}"
   end
