@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def date_time(object)
-    object.created_at
+    object.updated_at
   end
 
   def deals(object)
