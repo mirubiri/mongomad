@@ -38,7 +38,7 @@
 
       <div class="item_image">
         <%= link_to products_wall_item_image(item),
-          user_item_path(@user,item),
+          edit_user_item_path(@user,item),
           {:remote => true}
         %>
       </div>
@@ -53,12 +53,13 @@
         </div>
       </div>
 
-      <div class="item_options">
-        <%= link_to "Edit product",
-          edit_user_item_path(@user,item),
-          :class => "item_buttons_style",
-          :remote => true %>
-      </div>
+      <!-- <div class="item_options">
+        <%#= link_to "Edit product",
+        edit_user_item_path(@user,item),
+        :class => "item_buttons_style",
+        :remote => true %>
+      </div> -->
+
     </div>
   <% end %>
 <% end %>

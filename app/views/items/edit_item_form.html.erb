@@ -15,21 +15,21 @@
           <div class="add_images">
 
             <div class="add_image_container" id="inputcontainer1">
-              <img src="">
+              <%= product_modal_item_first_image(@item) %>
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer2">
-              <img src="">
+              <%= product_modal_item_second_image(@item) %>
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer3">
-              <img src="">
+              <%= product_modal_item_third_image(@item) %>
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
