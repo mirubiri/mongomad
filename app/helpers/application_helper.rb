@@ -305,9 +305,25 @@ module ApplicationHelper
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
 
-  def product_modal_item_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :fit)
+  def product_modal_item_first_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
   end
+
+  def product_modal_item_second_image(object)
+    if images(object)[1] != nil
+      cl_image_tag(id(images(object)[1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
+    else
+      "<img src=''>"
+    end
+  end
+
+  def product_modal_item_third_image(object)
+    if images(object)[1] != nil
+      cl_image_tag(id(images(object)[1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
+    else
+      "<img src=''>"
+    end
+ end
 
 #   #TODO: Revisar
 #   def quantity(object)
