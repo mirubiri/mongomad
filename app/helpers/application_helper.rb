@@ -328,7 +328,7 @@ module ApplicationHelper
   end
 
   def offer_info(offer)
-    "OFFER: state: #{offer.state}, discarded: #{offer.discarded}, negotiating: #{offer.negotiating}, negotiated: #{offer.negotiated}" + proposal_info(proposal(offer))
+    "OFFER: state: #{offer.state}, discarded: #{offer.discarded}, negotiated_times: #{offer.negotiated_times}, negotiating: #{offer.negotiating}" + proposal_info(proposal(offer))
   end
 
   def negotiation_info(negotiation)

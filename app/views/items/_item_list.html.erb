@@ -33,6 +33,11 @@
 
   <% items(@user).reverse_each do |item| %>
     <div class="item" id="<%= id(item) %>">
+
+      <div class="debug_container">
+        <%= item_info(item) %>
+      </div>
+
       <div class="item_image">
         <%= link_to products_wall_item_image(item),
           user_item_path(@user,item),

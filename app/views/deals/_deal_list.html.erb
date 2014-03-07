@@ -2,6 +2,10 @@
 
     <div class="deal" id="<%= id(deal) %>">
 
+      <div class="debug_container">
+          <%= deal_info(deal) %>
+        </div>
+
       <div class="negotiation_offer">
 
         <div class="oponent_info">
@@ -22,6 +26,11 @@
           <div class="received">
             <% composer_products(agreement(deal)).each do |product| %>
               <div class="image_container">
+
+                <div class="debug_container">
+                  <%= product_info(product) %>
+                </div>
+
                 <%= deal_receiver_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>
@@ -32,6 +41,11 @@
           <div class="given">
             <% receiver_products(agreement(deal)).each do |product| %>
               <div class="image_container">
+
+                <div class="debug_container">
+                  <%= product_info(product) %>
+                </div>
+
                 <%= deal_composer_product_image(product) %>
                 <div class="description">
                   <%= name(product) %>

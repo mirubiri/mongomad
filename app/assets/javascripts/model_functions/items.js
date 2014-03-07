@@ -19,6 +19,7 @@ function imageSelection(input) {
   }
 }
 
+
 (function ($)
 {
   $.fn.setItemWidth = function (){
