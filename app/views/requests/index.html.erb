@@ -25,7 +25,7 @@
       </nav>
 
       <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-        <% requests(@user).reverse_each do |request| %>
+        <% requests(@user).each do |request| %>
           <div class="request">
             <div class="profile_image">
               <%= request_user_image(request) %>

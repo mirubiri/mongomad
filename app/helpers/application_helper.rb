@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def date_time(object)
-    object.created_at
+    object.updated_at
   end
 
   def deals(object)
@@ -123,7 +123,7 @@ module ApplicationHelper
   end
 
   def requests(object)
-    object.requests
+    object.requests.desc(:updated_at)
   end
 
   def text(object)
@@ -331,8 +331,6 @@ module ApplicationHelper
       "Debug Info"
     end
   end
-
-
 
   def item_info(item)
     "ITEM: state: #{item.state}, discarded: #{item.discarded}"

@@ -1,9 +1,10 @@
-<% requests(@user).reverse_each do |request| %>
+<% requests(@user).each do |request| %>
   <div class="request">
     <div class="profile_image">
       <%= request_user_image(request)%>
     </div>
     <div class="description">
+      <%= date_time(request)%>
       <%= text(request) %>
     </div>
 
