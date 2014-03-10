@@ -343,7 +343,7 @@ module ApplicationHelper
   def debug_info(object)
     case object.class
     when Item
-      item_info(object.item)
+      item_info(object)
     when Product
       "PRODUCT: state: #{object.state} " + item_info(object.item)
     when Offer
