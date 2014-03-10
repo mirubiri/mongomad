@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+    @items = @user.items(:order => "created_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb

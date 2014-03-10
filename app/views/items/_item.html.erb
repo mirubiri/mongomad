@@ -1,0 +1,29 @@
+<div class="item" id="<%= id(item) %>">
+
+  <div class="debug_container"><%#= debug_info(item) %></div>
+
+  <div class="item_image">
+    <%= link_to products_wall_item_image(item),
+      edit_user_item_path(@user,item),
+      {:remote => true}
+    %>
+  </div>
+
+  <!-- <div class="item_quantity">
+    <div class="quantity_number"><%#= stock(item) %></div>
+  </div> -->
+
+  <div class="item_description">
+    <div class="text">
+      <%= name(item) %>
+    </div>
+  </div>
+
+  <!-- <div class="item_options">
+    <%#= link_to "Edit product",
+    edit_user_item_path(@user,item),
+    :class => "item_buttons_style",
+    :remote => true %>
+  </div> -->
+
+</div>

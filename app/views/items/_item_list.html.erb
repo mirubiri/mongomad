@@ -10,6 +10,8 @@
     </div>
   </div>
 <% else %>
+
+  <!-- Item vacio para añadir un item -->
   <div class="item">
     <div class="item_image">
       <%= link_to add_item_image,
@@ -21,45 +23,10 @@
     <div class="item_description">
       <div class="text">Add a Product</div>
     </div>
-
-    <!-- <div class="item_options">
-      <%# if controller.controller_name === "items" %>
-        <%#= link_to "ADD A PRODUCT",
-          new_user_item_path(@user),
-          {:remote => true, :role => "button", :class => "item_buttons_style"}  %>
-      <%# end %>
-    </div> -->
   </div>
+  <!-- Fin del item vacio -->
 
-  <% items(@user).reverse_each do |item| %>
-    <div class="item" id="<%= id(item) %>">
-
-      <div class="debug_container"><%#= debug_info(item) %></div>
-
-      <div class="item_image">
-        <%= link_to products_wall_item_image(item),
-          edit_user_item_path(@user,item),
-          {:remote => true}
-        %>
-      </div>
-
-      <!-- <div class="item_quantity">
-        <div class="quantity_number"><%#= stock(item) %></div>
-      </div> -->
-
-      <div class="item_description">
-        <div class="text">
-          <%= name(item) %>
-        </div>
-      </div>
-
-      <!-- <div class="item_options">
-        <%#= link_to "Edit product",
-        edit_user_item_path(@user,item),
-        :class => "item_buttons_style",
-        :remote => true %>
-      </div> -->
-
-    </div>
+  <% if @items %>
+    <%= render @items %>
   <% end %>
 <% end %>
