@@ -1,0 +1,87 @@
+<div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
+
+  <div class="debug_container"><%#= debug_info(offer) %></div>
+
+  <div class="offer_header">
+    <%= first_name(composer(offer)) %>
+  </div>
+
+  <div class="offer_items">
+    <div class="received">
+      <% composer_products(offer).each do |product| %>
+        <div class="image_container">
+
+          <div class="debug_container"><%#= debug_info(product) %></div>
+
+          <%= offer_receiver_product_image(product) %>
+          <div class="description">
+            <%= name(product) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="given">
+      <% receiver_products(offer).each do |product| %>
+        <div class="image_container">
+
+          <div class="debug_container"><%#= debug_info(product) %></div>
+
+          <%= offer_composer_product_image(product) %>
+          <div class="description">
+            <%= name(product) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="offer_info">
+
+    <!-- <div class="honeycombs">
+      <div class="comb">
+        <img src="<%#= hexagon_image_path(composer(offer)) %>" />
+      </div>
+    </div> -->
+
+   <!--  <div class="hexagon_container">
+      <%#= offer_user_image(composer(offer)) %>
+      <%#= image_tag("/assets/images/hexagon.png") %>
+    </div> -->
+
+    <div class="profile_image">
+      <%= link_to offer_user_image(composer(offer)),
+        :controller => "users",
+        :action => "show",
+        :id => id(composer(offer))
+      %>
+    </div>
+
+    <div class="description">
+      <div class="offer_message">
+        <%= message(offer) %>
+      </div>
+    </div>
+
+    <div class="offer_buttons" id="offer_buttons_navigation">
+      <%= form_for [@user,@negotiation], :remote => true do |form| %>
+        <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+        <%= form.submit "NEGOTIATE", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
+      <% end %>
+
+      <%= form_for [@user,@negotiation], :remote => true do |form| %>
+        <input type="hidden" name="offer_id" value="<%= id(offer)%>" />
+        <%= form.submit "THAT'S FOR ME", :url => user_negotiations_path(@user), :class => 'offer_buttons_style', :id => "negotiate_button" %>
+      <% end %>
+
+      <%= link_to "EDIT",
+              {:controller => "offers",
+              :action => "edit",
+              :user_id => id(@user),
+              :id => id(offer)},
+              {:remote => true,
+               :class => 'offer_buttons_style',
+               :id => "edit_offer_link"} %>
+    </div>
+
+  </div>
+</div>
