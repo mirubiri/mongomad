@@ -1,9 +1,0 @@
-<% if @negotiations %>
-  <%= render @negotiations %>
-<% end %>
-
-
-<script type="text/javascript">
-  var cl_image_path = '<%= negotiation_message_user_image(@user) %>';
-  $("#sender_image_tag").attr('value', cl_image_path);
-</script>
