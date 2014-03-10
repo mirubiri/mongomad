@@ -81,6 +81,13 @@
               {:remote => true,
                :class => 'offer_buttons_style',
                :id => "edit_offer_link"} %>
+
+      <%= link_to "DELETE",
+        user_offers_path(@user, id(offer)),
+        :method => :delete,
+        :confirm => "Are you sure?",
+        :class => 'offer_buttons_style' %>
+
     </div>
 
   </div>

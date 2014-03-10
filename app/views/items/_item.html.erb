@@ -19,11 +19,12 @@
     </div>
   </div>
 
-  <!-- <div class="item_options">
-    <%#= link_to "Edit product",
-    edit_user_item_path(@user,item),
-    :class => "item_buttons_style",
-    :remote => true %>
-  </div> -->
+  <div class="item_options">
+    <%= link_to "Delete product",
+    user_item_path(@user,item),
+    :metod => :delete,
+    :class => "item_buttons_style"
+    %>
+  </div>
 
 </div>

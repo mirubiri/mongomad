@@ -1,7 +1,7 @@
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
-$("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
-$("#ppal_container").replaceWith("<%=j render 'negotiation_list' %>");
+$("#leftContainer").html("<%=j render :partial => 'application/user_container' %>");
+$("#ppal_container").html("<%=j render 'negotiation_list' %>");
 
 $('.negotiation').regulateAsNegotiation();
 
