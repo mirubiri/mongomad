@@ -302,15 +302,11 @@ module ApplicationHelper
 #   end
 
   def products_wall_item_image(object)
-puts "*******************************************************************************"
-puts main_image(object)
-puts "*******************************************************************************"
-
-    cl_image_tag(main_image(object).id + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    cl_image_tag(id(images(object)[0]) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
 
   def product_modal_item_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    cl_image_tag(id(images(object)[0]) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
 
 
