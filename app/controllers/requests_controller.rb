@@ -1,6 +1,7 @@
 class RequestsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+    @requests = @user.requests.desc(:updated_at)
 
     respond_to do |format|
       format.html # index.html.erb
