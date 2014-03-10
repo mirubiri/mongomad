@@ -3,6 +3,10 @@ class ItemsController < ApplicationController
     @user = User.find(params[:user_id])
     @user.items.count == 0 ? @items = nil : @items = @user.items(:order => "created_at DESC")
 
+puts "*******************************************************************************"
+puts @items
+puts "*******************************************************************************"
+
     respond_to do |format|
       format.html # index.html.erb
       format.js # renders index.js.erb
@@ -44,8 +48,8 @@ class ItemsController < ApplicationController
     puts params
     puts "*******************************************************************************"
     @user = User.find(params[:user_id])
-    @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
-    @item.images << Attachment::Image.new(id:'uploads/items/dog_dark', main:true)
+    # @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
+    # @item.images << Attachment::Image.new(id:'uploads/items/dog_dark', main:true)
     # @item.images << Fabricate.build(:image_face, id:Cloudinary::Uploader.upload(params[:item][:image])["public_id"])
 
 
@@ -53,9 +57,7 @@ class ItemsController < ApplicationController
     # @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
     # @item.images << Image.new (_id:params[:images][0][:public_id], main:true)
 
-# @item = Fabricate.build(:item)
-
-
+     @item = Fabricate.build(:item)
 
 
     #TODO: REVISAR SERGIO

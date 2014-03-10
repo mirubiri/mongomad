@@ -1,7 +1,7 @@
 $('#new-item-form').dialog('close');
 
 $('#ppal_container')
-.prepend("<%= escape_javascript(render template: 'items/show', :locals => {:@item => item}).html_safe %>")
+.prepend("<%= escape_javascript(render partial: 'item', :locals => {:item => item}).html_safe %>")
 .masonry( 'reload' )
 .children()
 .first()
