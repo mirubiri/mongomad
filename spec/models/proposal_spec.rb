@@ -35,13 +35,13 @@ describe Proposal do
   it 'is invalid if composer has no goods' do
     proposal.goods.delete_all(owner_id:proposal.composer_id)
     expect(proposal).to have(1).error_on(:goods)
-    expect(proposal.errors_on(:goods)).to include('Composer should have at least one good.')
+    expect(proposal.errors_on(:goods)).to include('Composer should have one good at least.')
   end
 
   it 'is invalid if receiver has no goods' do
     proposal.goods.delete_all(owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
-    expect(proposal.errors_on(:goods)).to include('Receiver should have at least one good.')
+    expect(proposal.errors_on(:goods)).to include('Receiver should have one good at least.')
   end
 
   it 'is invalid if there is any good not owned by one of the users' do
@@ -60,7 +60,7 @@ describe Proposal do
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
     proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
     expect(proposal).to have(1).error_on(:goods)
-    expect(proposal.errors_on(:goods)).to include('Proposal should not have more than one cash.')
+    expect(proposal.errors_on(:goods)).to include('Proposal should have only one cash.')
   end
 
   # Methods
