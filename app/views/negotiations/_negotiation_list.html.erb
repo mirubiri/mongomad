@@ -1,5 +1,5 @@
 <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-  <% negotiations(@user).each do |negotiation| %>
+  <% if @negotiations %>
     <%= render @negotiations %>
   <% end %>
 </aside>
