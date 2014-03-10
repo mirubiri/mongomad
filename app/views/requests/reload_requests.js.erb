@@ -1,7 +1,5 @@
 $('#edit-request-form').dialog('close');
 
-$('#request_list_container')
-.html("<%= escape_javascript(render :partial => 'application/request_list').html_safe %>");
+$('#request_list_container').html("<%= escape_javascript(render :partial => 'application/request_list').html_safe %>");
 
-//Elimino la ventana modal
 delete $('#edit-request-form');
