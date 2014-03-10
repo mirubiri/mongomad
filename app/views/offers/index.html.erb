@@ -10,32 +10,37 @@
 
 <% content_for :content_side do %>
 
-<div class="right_container" id="rightContainer">
+  <div class="right_container" id="rightContainer">
 
-  <section class="main_container" id="content-side">
+    <section class="main_container" id="content-side">
 
-    <div class="add_request_invitation hidden_container" id="add_request_invitation">
-      <div class="arrow-left"></div>
-      <div class="invitation_text">WANT TO RECIBE OFFERS??</div>
-      <div class="invitation_button">
-        <%= link_to "THEN REQUEST SOMETHING",
-          new_user_request_path(@user),
-          {:remote => true, :class => "new_request_invitation_button_style"}
-        %>
+      <nav class="nav_bar" id="navigation_bar">
+        <%= render :partial => 'application/navigation_bar' %>
+      </nav>
+
+      <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
+        <%= render (@offers) || 'no_offers' %>
+      </aside>
+
+      <div class="add_request_invitation hidden_container" id="add_request_invitation">
+        <div class="arrow-left"></div>
+        <div class="invitation_text">WANT TO RECIBE OFFERS??</div>
+        <div class="invitation_button">
+          <%= link_to "THEN REQUEST SOMETHING",
+            new_user_request_path(@user),
+            {:remote => true, :class => "new_request_invitation_button_style"}
+          %>
+        </div>
       </div>
-    </div>
 
-    <nav class="nav_bar" id="navigation_bar">
-      <%= render :partial => 'application/navigation_bar' %>
-    </nav>
+    </section>
 
-    <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-      <%= render :partial => "offers/offer_list" %>
-    </aside>
-
-  </section>
-
-</div>
-
+  </div>
 
 <% end %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.honeycombs').honeycombs();
+    });
+</script>

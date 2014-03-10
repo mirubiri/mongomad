@@ -4,7 +4,7 @@ $('#new-offer-form').dialog('close');
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
 $("#leftContainer").replaceWith("<%=j render :partial => 'application/user_container' %>");
-$("#ppal_container").html("<%=j render :partial => 'offers/offer_list' %>");
+$("#ppal_container").html("<%=j render @offers %>");
 
 //Si estabamos mostrando el contenido de que no hay ofertas, lo eliminamos
 if( ($('.offer').length) === 0){
