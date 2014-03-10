@@ -26,11 +26,11 @@ class Proposal
   end
 
   def check_composer_goods
-    errors.add(:goods, "Composer should have at least one good.") unless products(composer_id).size > 0
+    errors.add(:goods, "Composer should have one good at least.") unless products(composer_id).size > 0
   end
 
   def check_receiver_goods
-    errors.add(:goods, "Receiver should have at least one good.") unless products(receiver_id).size > 0
+    errors.add(:goods, "Receiver should have one good at least.") unless products(receiver_id).size > 0
   end
 
   def check_orphan_goods
@@ -42,7 +42,7 @@ class Proposal
   end
 
   def check_multiple_cash
-    errors.add(:goods, "Proposal should not have more than one cash.") if goods.type(Cash).size > 1
+    errors.add(:goods, "Proposal should have only one cash.") if goods.type(Cash).size > 1
   end
 
   public
