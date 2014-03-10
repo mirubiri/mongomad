@@ -28,88 +28,9 @@
     </nav>
 
     <aside class="main_container_elementList" id="ppal_container" offerWidth="286">
-      <div class="profile_complete">
-        <div class="personal_data">
-          <div class="person_info">
-            <div class="title">PERSONAL INFO</div>
-            <div class="image_side">
-                <%= profile_user_image(@user) %>
-                <div class="name_address"><%= full_name(@user) %></div>
-                <div class="name_address">address</div>
-            </div>
-            <div class="info_side">
-              <div class="info_element">
-                <div class="info_element_title">E-Mail:</div>
-                <div class="info_element_description">
-                  <%#= email(@user) %>
-                </div>
-              </div>
-              <div class="info_element">
-                <div class="info_element_title">Phones:</div>
-                <div class="info_element_description">
-                  941128057
-                </div>
-              </div>
-              <div class="info_element">
-                <div class="info_element_title">Birth date:</div>
-                <div class="info_element_description">
-                  <%= birth_date(@user) %>
-                </div>
-              </div>
 
-              <%= link_to "editar mi perfil",
-                  edit_user_profile_path(@user),
-                  :remote => true %>
-            </div>
+      <%= render partial: 'profile' %>
 
-          </div>
-          <div class="statistics">
-            <div class="title">USER DATA</div>
-            <div class="result_side">
-              <div class="result_block">
-                <div class="result_title">Deals as buyer</div>
-                <div class="result_number">10</div>
-              </div>
-              <div class="result_block">
-                <div class="result_title">Deals as seller</div>
-                <div class="result_number">50</div>
-              </div>
-              <div class="result_block">
-                <div class="result_title">Total usage time</div>
-                <div class="result_number">500h</div>
-              </div>
-              <div class="result_block">
-                <div class="result_title">Daily usage average</div>
-                <div class="result_number">2h</div>
-              </div>
-            </div>
-            <div class="graphique_side">
-              <div class="graphique"></div>
-            </div>
-          </div>
-        </div>
-        <div class="comments_received">
-          <div class="title">COMMENTS</div>
-          <div id="comment_list">
-            <% 5.times do |i|%>
-              <div class="comment">
-                <div class="comment_header">
-                  <div class="profile_image">
-                    <%= comment_user_image(@user) %>
-                  </div>
-                  <div class="description">
-                    <div class="username_and_valuation">
-                      <div class="user_name">User Name</div>
-                      <div class="user_valuation">User Value</div>
-                    </div>
-                    <div class="comment_user_text">Comment Text</div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
     </aside>
   </section>
 </div>
