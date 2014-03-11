@@ -53,7 +53,7 @@ module ApplicationHelper
   end
 
   def images(object)
-    user_sheet(object).images
+    user_sheet(object).images.desc(:updated_at)
   end
 
   def items(object)
@@ -302,13 +302,12 @@ module ApplicationHelper
 #   end
 
   def products_wall_item_image(object)
-    cl_image_tag(id(images(object)[0]) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
 
-  def product_modal_item_image(object)
-    cl_image_tag(id(images(object)[0]) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+  def product_modal_item_main_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
-
 
   def product_modal_item_first_image(object)
     if images(object)[0] != nil
