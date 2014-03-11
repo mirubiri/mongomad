@@ -1,5 +1,4 @@
 <div class="item" id="<%= id(item) %>">
-
   <div class="debug_container"><%#= debug_info(item) %></div>
 
   <div class="item_image">
@@ -8,10 +7,6 @@
       {:remote => true}
     %>
   </div>
-
-  <!-- <div class="item_quantity">
-    <div class="quantity_number"><%#= stock(item) %></div>
-  </div> -->
 
   <div class="item_description">
     <div class="text">
@@ -22,9 +17,8 @@
   <div class="item_options">
     <%= link_to "Delete product",
     user_item_path(@user,item),
-    :metod => :delete,
+    :method => :delete,
     :class => "item_buttons_style"
     %>
   </div>
-
 </div>
