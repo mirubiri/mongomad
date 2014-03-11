@@ -1,7 +1,14 @@
 class ItemsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+
     @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
+
+    # if (@user.items.count == 0)
+    #   @items = nil
+    # else
+    #   @items = @user.items.desc(:updated_at)
+    # end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -61,9 +68,18 @@ class ItemsController < ApplicationController
   end
 
   def update
-    #TODO: REVISAR
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
+
+    @item.name = params[:item][:name]
+    @item.description = params[:item][:description]
+    @item.images.all.delete
+
+    params[:item][:images].each do |image_params|
+      @image = Attachment::Image.new(main:image_params[:main])
+      @image._id = image_params[:public_id]
+      @item.images << @image
+    end
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
