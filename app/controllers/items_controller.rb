@@ -1,11 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @user.items.count == 0 ? @items = nil : @items = @user.items(:order => "created_at DESC")
-
-puts "*******************************************************************************"
-puts @items
-puts "*******************************************************************************"
+    @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
 
     respond_to do |format|
       format.html # index.html.erb
