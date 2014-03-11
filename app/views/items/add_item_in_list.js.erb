@@ -1,10 +1,11 @@
 $('#new-item-form').dialog('close');
 
 $('#ppal_container')
-.prepend("<%= escape_javascript(render partial: 'item', :locals => {:item => item}).html_safe %>")
-.masonry( 'reload' )
 .children()
 .first()
+.after("<%= escape_javascript(render @item, :locals => {:item => item}).html_safe %>")
+.masonry( 'reload' )
+.next()
 .css('opacity', 0)
 .hide()
 .slideDown()
@@ -12,6 +13,4 @@ $('#ppal_container')
   { opacity: 1 },
   { queue: false, duration: 1500 }
 )
-.animate({backgroundColor: '#ffffff'}, 800)
-
-delete $('#new-item-form');
+.animate({backgroundColor: '#ffffff'}, 800);
