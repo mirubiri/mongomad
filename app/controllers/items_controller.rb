@@ -3,12 +3,6 @@ class ItemsController < ApplicationController
     @user = User.find(params[:user_id])
     @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
 
-    # if (@user.items.count == 0)
-    #   @items = nil
-    # else
-    #   @items = @user.items.desc(:updated_at)
-    # end
-
     respond_to do |format|
       format.html # index.html.erb
       format.js # renders index.js.erb
