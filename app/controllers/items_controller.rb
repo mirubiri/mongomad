@@ -44,21 +44,14 @@ puts "**************************************************************************
   end
 
   def create
-    puts "*******************************************************************************"
-    puts params
-    puts "*******************************************************************************"
     @user = User.find(params[:user_id])
-    @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
-    @item.images << Attachment::Image.new(_id:'uploads/items/dog_dark', main:true)
-    # # @item.images << Fabricate.build(:image_face, id:Cloudinary::Uploader.upload(params[:item][:image])["public_id"])
+    @item = Item.new(name:params[:item][:name], description:params[:item][:description])
 
-
-    # @user = User.find(params[:user_id])
-    # @item = Item.new(user:@user, name:params[:item][:name], description:params[:item][:description])
-    # @item.images << Image.new (_id:params[:images][0][:public_id], main:true)
-
-     # @item = Fabricate.build(:item)
-
+    params[:item][:images].each do |image_params|
+      @image = Attachment::Image.new(main:image_params[:main])
+      @image._id = image_params[:public_id]
+      @item.images << @image
+    end
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
