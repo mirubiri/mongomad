@@ -57,7 +57,7 @@ module ApplicationHelper
   end
 
   def items(object)
-    User.find(object._id).items
+    object.items.desc(:updated_at)
   end
 
 #   def language(object)
