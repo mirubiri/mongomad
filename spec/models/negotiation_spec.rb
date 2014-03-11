@@ -39,7 +39,7 @@ describe Negotiation do
   end
 
   it 'is invalid if both users are the same' do
-    negotiation.users[1]._id = negotiation.users[0]._id
+    negotiation.users[1].id = negotiation.users[0].id
     expect(negotiation).to have(1).error_on(:users)
     expect(negotiation.errors_on(:users)).to include('Negotiation users should not be equal.')
   end
@@ -51,13 +51,13 @@ describe Negotiation do
   end
 
   it 'is invalid if there is no sheet for first user' do
-    negotiation.users[0]._id = nil
+    negotiation.users[0].id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
     expect(negotiation.errors_on(:user_sheets)).to include('Negotiation should have one user_sheet for first user.')
   end
 
   it 'is invalid if there is no sheet for second user' do
-    negotiation.users[1]._id = nil
+    negotiation.users[1].id = nil
     expect(negotiation).to have(1).error_on(:user_sheets)
     expect(negotiation.errors_on(:user_sheets)).to include('Negotiation should have one user_sheet for second user.')
   end

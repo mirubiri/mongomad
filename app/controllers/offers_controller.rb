@@ -50,13 +50,13 @@ class OffersController < ApplicationController
     offer.sheets << @user_composer.sheet
     offer.sheets << @user_receiver.sheet
 
-    @proposal = Proposal.new(composer_id:@user_composer._id, receiver_id:@user_receiver._id)
+    @proposal = Proposal.new(composer_id:@user_composer.id, receiver_id:@user_receiver.id)
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        @good = Product.new(_id:@item._id, name:@item.name, description:@item.description, owner_id:@item.user._id, images:@item.images)
+        @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
       else
         @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
       end
@@ -86,7 +86,7 @@ class OffersController < ApplicationController
       if (good_params[:type] == 'Product')
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        @good = Product.new(_id:@item._id, name:@item.name, description:@item.description, owner_id:@item.user._id, images:@item.images)
+        @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
       else
         @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
       end

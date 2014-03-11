@@ -27,7 +27,7 @@ describe Deal do
   end
 
   it 'is invalid if both users are the same' do
-    deal.users[1]._id = deal.users[0]._id
+    deal.users[1].id = deal.users[0].id
     expect(deal).to have(1).error_on(:users)
     expect(deal.errors_on(:users)).to include('Deal users should not be equal.')
   end
@@ -39,13 +39,13 @@ describe Deal do
   end
 
   it 'is invalid if there is no sheet for first user' do
-    deal.users[0]._id = nil
+    deal.users[0].id = nil
     expect(deal).to have(1).error_on(:user_sheets)
     expect(deal.errors_on(:user_sheets)).to include('Deal should have one user_sheet for first user.')
   end
 
   it 'is invalid if there is no sheet for second user' do
-    deal.users[1]._id = nil
+    deal.users[1].id = nil
     expect(deal).to have(1).error_on(:user_sheets)
     expect(deal.errors_on(:user_sheets)).to include('Deal should have one user_sheet for second user.')
   end

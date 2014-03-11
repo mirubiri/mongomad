@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
 
     params[:item][:images].each do |image_params|
       @image = Attachment::Image.new(main:image_params[:main])
-      @image._id = image_params[:public_id]
+      @image.id = image_params[:public_id]
       @item.images << @image
     end
 
@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
 
     params[:item][:images].each do |image_params|
       @image = Attachment::Image.new(main:image_params[:main])
-      @image._id = image_params[:public_id]
+      @image.id = image_params[:public_id]
       @item.images << @image
     end
 

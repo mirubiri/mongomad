@@ -27,7 +27,7 @@ describe User do
   # Methods
   describe '#sheet' do
     let(:user_sheet) { Fabricate.build(:user_sheet, user:user) }
-    specify { expect(user.sheet._id).to eq user._id }
+    specify { expect(user.sheet.id).to eq user.id }
 
     it 'returns a UserSheet filled with user data' do
       expect(user.sheet).to eq user_sheet

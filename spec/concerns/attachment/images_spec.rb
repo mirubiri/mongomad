@@ -50,17 +50,17 @@ describe Attachment::Images do
     context 'given an existent image id' do
       it 'unsets the current main image' do
         previous_main = image_holder.main_image
-        image_holder.set_main_image(image_two._id)
+        image_holder.set_main_image(image_two.id)
         expect(previous_main.main).to eq false
       end
 
       it 'sets the given image to main' do
-        image_holder.set_main_image(image_two._id)
+        image_holder.set_main_image(image_two.id)
         expect(image_holder.main_image).to eq image_two
       end
 
       it 'returns true' do
-        expect(image_holder.set_main_image(image_two._id)).to eq true
+        expect(image_holder.set_main_image(image_two.id)).to eq true
       end
     end
 
@@ -68,11 +68,11 @@ describe Attachment::Images do
       let(:inexistent_image) { Fabricate.build(:image_product, id:'inexistent') }
 
       it 'do not change the main image to the given one' do
-        expect{ image_holder.set_main_image(inexistent_image._id) }.to_not change { image_holder.main_image }
+        expect{ image_holder.set_main_image(inexistent_image.id) }.to_not change { image_holder.main_image }
       end
 
       it 'returns false' do
-        expect(image_holder.set_main_image(inexistent_image._id)).to eq false
+        expect(image_holder.set_main_image(inexistent_image.id)).to eq false
       end
     end
   end
