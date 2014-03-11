@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @user.items << @item
-        format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
+        format.html { redirect_to user_items_url, notice: 'Item has been successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
         format.html { render action: "index" }
@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         @items = @user.items.desc(:updated_at)
-        format.html { redirect_to user_items_path(@user), notice: 'item was successfully updated.' }
+        format.html { redirect_to user_items_path(@user), notice: 'Item has been successfully updated.' }
         format.js { render 'reload_items', :layout => false }
       else
         format.html { render action: "edit" }
@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @item.destroy
-        format.html { redirect_to user_items_url }
+        format.html { redirect_to user_items_url, notice: 'Item has been successfully deleted.' }
       else
         # ni idea :)
       end
