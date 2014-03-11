@@ -1,19 +1,7 @@
-# hash_offer
-#   id o offer_id (para el editar / borrar)
-#   user_id
-    # offer
-    #   goods
-    #     [ type: cash/Product,
-    #       _id: id del product/item
-    #       quantity: en el caso de ser cash
-    #     ]
-#     initial_message : valor
-
 class OffersController < ApplicationController
  def index
     @user = User.find(params[:user_id])
-    @user.received_offers.count == 0 ? @offers = nil : @offers = @user.received_offers
-    @offer = Offer.new
+    @user.received_offers.count != 0 ? @offers = @user.received_offers : @offers = nil
     @negotiation = Negotiation.new
 
     respond_to do |format|
@@ -22,8 +10,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
   def show
     @offer = Offer.find(params[:id])
     @negotiation = Negotiation.new
@@ -33,11 +19,9 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/new
-  # GET /offers/new.json
   def new
-    @offer = Offer.new
     @user = User.find(params[:user_id])
+    @offer = Offer.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,7 +29,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/1/edit
   def edit
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:id])
@@ -56,20 +39,36 @@ class OffersController < ApplicationController
     end
   end
 
-  # POST /offers
-  # POST /offers.json
   def create
-  #TODO: revisar
-    @user = Fabricate(:user_with_items)
+    @user_composer = User.find(params[:user_id])
     @user_receiver = User.find(params[:offer][:user_receiver_id])
-    @offer = Fabricate.build(:offer, user_composer:@user, user_receiver:@user_receiver)
-    puts "*******************************"
-    puts @offer.valid?
-    puts "*******************************"
 
+    @offer = Offer.new(message:params[:offer][:message])
+    #TODO: Refactorizar cuando funcione :P
+    @offer.user_composer = @user_composer
+    @offer.user_receiver = @user_receiver
+    offer.sheets << @user_composer.sheet
+    offer.sheets << @user_receiver.sheet
+
+    @proposal = Proposal.new(composer_id:@user_composer._id, receiver_id:@user_receiver._id)
+
+    params[:offer][:goods].each do |good_params|
+      if (good_params[:type] == 'Product')
+        #TODO: reducir la búsqueda a los items del composer y del receiver
+        @item = Item.find(good_params[:item_id])
+        @good = Product.new(_id:@item._id, name:@item.name, description:@item.description, owner_id:@item.user._id, images:@item.images)
+      else
+        @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
+      end
+      @proposal.goods << @good
+    end
+
+    @offer.proposal = @proposal
+
+    #TODO: REVISAR SERGIO
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @user, notice: 'Offer was successfully created.' }
+        format.html { redirect_to @user, notice: 'Offer has been successfully created.' }
         format.js { render 'add_offer_in_list', :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
         format.html { render action: "new" }
@@ -77,30 +76,45 @@ class OffersController < ApplicationController
     end
   end
 
-  # PUT /offers/1
-  # PUT /offers/1.json
   def update
-    @user = User.find(params[:offer][:user_receiver_id])
     @offer = Offer.find(params[:id])
 
+    @offer.message = params[:offer][:message]
+    @offer.proposal.goods.delete
+
+    params[:offer][:goods].each do |good_params|
+      if (good_params[:type] == 'Product')
+        #TODO: reducir la búsqueda a los items del composer y del receiver
+        @item = Item.find(good_params[:item_id])
+        @good = Product.new(_id:@item._id, name:@item.name, description:@item.description, owner_id:@item.user._id, images:@item.images)
+      else
+        @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
+      end
+      @offer.proposal.goods << @good
+    end
+
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @offer.update_attributes params[:offer]
-        format.html { redirect_to @user, notice: 'Offer was successfully updated.' }
+      if @offer.save
+        format.html { redirect_to @user, notice: 'Offer has been successfully updated.' }
         format.js { render 'reload_offer_list', :layout => false}
       else
-        format.html { redirect_to @offer, notice: 'Offer wasnt updated.'}
+        format.html { redirect_to @offer, notice: 'Offer has not been updated.'}
       end
     end
   end
 
-  # DELETE /offers/1
-  # DELETE /offers/1.json
+
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      format.html { redirect_to user_offers_url }
+      if @offer.destroy
+        format.html { redirect_to user_offers_url, notice: 'Offer has been successfully deleted.' }
+      else
+        # ni idea :)
+      end
     end
   end
 end
