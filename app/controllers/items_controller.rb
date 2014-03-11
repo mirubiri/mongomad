@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-
     @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
 
     # if (@user.items.count == 0)
@@ -84,6 +83,7 @@ class ItemsController < ApplicationController
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @item.save
+        @items = @user.items.desc(:updated_at)
         format.html { redirect_to user_items_path(@user), notice: 'item was successfully updated.' }
         format.js { render 'reload_items', :layout => false }
       else

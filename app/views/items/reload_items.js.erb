@@ -4,12 +4,9 @@ $('#edit-item-form').dialog('close');
 //Cuando la modal se quita, oculto el contenedor principal, le cargo los datos nuevos y destruyo el masonry, todo esto no se ve
 $('#ppal_container')
 .hide()
-.html("<%= escape_javascript(render template: 'items/index').html_safe %>")
+.html("<%= escape_javascript(render @items).html_safe %>")
+.prepend("<%= escape_javascript(render 'no_item').html_safe %>")
 .masonry('destroy');
 
 //Recargo el masonry y dejo que se vea todo
-builditemMosaic();
 $('#ppal_container').show();
-
-//Elimino la ventana modal
-delete $('#edit-item-form');
