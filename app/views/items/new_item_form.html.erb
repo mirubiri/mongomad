@@ -19,7 +19,8 @@
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
-                <input type="hidden" name="item[images][0][public_id]" value="uploads/items/bicycle_white" />
+                <input type="hidden" name="item[images][][public_id]" value="uploads/items/bicycle_white" />
+                <input type="hidden" name="item[images][][main]" value="true" />
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer2">
@@ -27,7 +28,8 @@
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
-                <input type="hidden" name="item[images][1][public_id]" value="uploads/items/dog_dark" />
+                <input type="hidden" name="item[images][][public_id]" value="uploads/items/dog_dark" />
+                <input type="hidden" name="item[images][][main]" value="false" />
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer3">
@@ -35,7 +37,8 @@
               <div class="input_container">
                 <div class="input_text">add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
-                <input type="hidden" name="item[images][2][public_id]" value="uploads/items/dog_white" />
+                <input type="hidden" name="item[images][][public_id]" value="uploads/items/dog_white" />
+                <input type="hidden" name="item[images][][main]" value="false" />
               </div>
             </div>
           </div>
