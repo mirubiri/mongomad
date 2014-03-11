@@ -74,7 +74,7 @@ class RequestsController < ApplicationController
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @request.destroy
-        format.html { redirect_to user_offers_url }
+        format.html { redirect_to user_offers_url, notice: 'Request has been successfully deleted.' }
       else
         # ni idea :)
       end

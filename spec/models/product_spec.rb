@@ -27,11 +27,11 @@ describe Product do
 
   # Methods
   specify '.new' do
-    expect(Product.new._id).to eq nil
+    expect(Product.new.id).to eq nil
   end
 
   describe '#item' do
-    it 'returns the item corresponding to product._id' do
+    it 'returns the item corresponding to product.id' do
       expect(product.item).to eq item
     end
   end

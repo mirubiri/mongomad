@@ -23,7 +23,7 @@ class Deal
   end
 
   def check_user_equality
-    errors.add(:users, "Deal users should not be equal.") unless users[0]._id != users[1]._id
+    errors.add(:users, "Deal users should not be equal.") unless users[0].id != users[1].id
   end
 
   def check_number_of_sheets
@@ -31,20 +31,20 @@ class Deal
   end
 
   def check_first_user_sheet
-    errors.add(:user_sheets, "Deal should have one user_sheet for first user.") unless user_sheets.where(_id:users[0]._id).size == 1
+    errors.add(:user_sheets, "Deal should have one user_sheet for first user.") unless user_sheets.where(_id:users[0].id).size == 1
   end
 
   def check_second_user_sheet
-    errors.add(:user_sheets, "Deal should have one user_sheet for second user.") unless user_sheets.where(_id:users[1]._id).size == 1
+    errors.add(:user_sheets, "Deal should have one user_sheet for second user.") unless user_sheets.where(_id:users[1].id).size == 1
   end
 
   def check_orphan_proposals
     #TODO: Fusionar las dos consultas AND+AND en una OR(AND,AND)
-    errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.and({ composer_id:users[0]._id }, { receiver_id:users[1].id }).size + proposals.and({ composer_id:users[1]._id }, { receiver_id:users[0].id }).size == proposals.size
+    errors.add(:proposals, "All proposals should be owned by both users.") unless proposals.and({ composer_id:users[0].id }, { receiver_id:users[1].id }).size + proposals.and({ composer_id:users[1].id }, { receiver_id:users[0].id }).size == proposals.size
   end
 
   def check_orphan_messages
-    errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0]._id }, { user_id:users[1]._id }).size == messages.size
+    errors.add(:messages, "All messages should be owned by one of the users.") unless messages.or({ user_id:users[0].id }, { user_id:users[1].id }).size == messages.size
   end
 
   public

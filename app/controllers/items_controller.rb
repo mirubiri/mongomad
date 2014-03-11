@@ -3,12 +3,6 @@ class ItemsController < ApplicationController
     @user = User.find(params[:user_id])
     @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
 
-    # if (@user.items.count == 0)
-    #   @items = nil
-    # else
-    #   @items = @user.items.desc(:updated_at)
-    # end
-
     respond_to do |format|
       format.html # index.html.erb
       format.js # renders index.js.erb
@@ -51,14 +45,14 @@ class ItemsController < ApplicationController
 
     params[:item][:images].each do |image_params|
       @image = Attachment::Image.new(main:image_params[:main])
-      @image._id = image_params[:public_id]
+      @image.id = image_params[:public_id]
       @item.images << @image
     end
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @user.items << @item
-        format.html { redirect_to user_items_url, notice: 'item was successfully created.' }
+        format.html { redirect_to user_items_url, notice: 'Item has been successfully created.' }
         format.js { render 'add_item_in_list', :layout => false, :locals => { :item => @item }, :status => :created }
       else
         format.html { render action: "index" }
@@ -76,7 +70,7 @@ class ItemsController < ApplicationController
 
     params[:item][:images].each do |image_params|
       @image = Attachment::Image.new(main:image_params[:main])
-      @image._id = image_params[:public_id]
+      @image.id = image_params[:public_id]
       @item.images << @image
     end
 
@@ -84,7 +78,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         @items = @user.items.desc(:updated_at)
-        format.html { redirect_to user_items_path(@user), notice: 'item was successfully updated.' }
+        format.html { redirect_to user_items_path(@user), notice: 'Item has been successfully updated.' }
         format.js { render 'reload_items', :layout => false }
       else
         format.html { render action: "edit" }
@@ -98,7 +92,7 @@ class ItemsController < ApplicationController
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @item.destroy
-        format.html { redirect_to user_items_url }
+        format.html { redirect_to user_items_url, notice: 'Item has been successfully deleted.' }
       else
         # ni idea :)
       end

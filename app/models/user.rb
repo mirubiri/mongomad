@@ -22,7 +22,7 @@ class User
       last_name:profile.last_name,
       images:profile.images,
       location:profile.location) do |sheet|
-        sheet._id = id
+        sheet.id = id
       end
   end
 

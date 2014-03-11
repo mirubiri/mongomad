@@ -49,7 +49,7 @@ module ApplicationHelper
 #   end
 
   def id(object)
-    object._id
+    object.id
   end
 
   def images(object)
@@ -98,7 +98,7 @@ module ApplicationHelper
   end
 
   def products(object, user)
-    object.products(user._id)
+    object.products(user.id)
   end
 
   def proposal(object)
