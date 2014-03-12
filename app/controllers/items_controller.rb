@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @user.items.count != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
+    @user.items.size != 0 ? @items = @user.items.desc(:updated_at) : @items = nil
 
     respond_to do |format|
       format.html # index.html.erb
@@ -69,7 +69,7 @@ class ItemsController < ApplicationController
     @item.images.all.delete
 
     puts "*******************************************************************************"
-    puts @item.images.count
+    puts @item.images.size
     puts "*******************************************************************************"
 
     params[:item][:images].each do |image_params|
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
       @item.images << @image
       puts "*******************************************************************************"
       puts @item.valid?
-      puts @item.images.count
+      puts @item.images.size
       puts "*******************************************************************************"
     end
 

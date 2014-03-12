@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   # GET /deals.json
   def index
     @user = User.find(params[:user_id])
-    @user.deals.count == 0 ? @deals = nil : @deals = @user.deals
+    @user.deals.size == 0 ? @deals = nil : @deals = @user.deals
     @deal = Deal.new
 
     respond_to do |format|
