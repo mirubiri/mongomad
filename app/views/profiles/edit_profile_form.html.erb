@@ -2,42 +2,34 @@
 
     <%= form.fields_for :profile do |profile| %>
       <div class="person_info">
-
         <div class="title">PERSONAL INFO</div>
 
         <div class="image_side">
           <%= profile_user_image(@user) %>
           <div class="name"><textarea><%= full_name(@user) %></textarea></div>
-          <div class="address"><textarea><%= location(@user) %></textarea></div>
+          <div class="address"><textarea><%#= location(@user) %></textarea></div>
         </div>
 
         <div class="info_side">
-
           <div class="info_element">
             <div class="info_element_title">Gender: </div>
-            <div class="info_element_description">
-              <%= gender(@user) %>
-            </div>
+            <div class="info_element_description"><%= gender(@user) %></div>
           </div>
 
           <div class="info_element">
             <div class="info_element_title">Language:</div>
-            <div class="info_element_description">
-              <%= language(@user) %>
-            </div>
+            <div class="info_element_description"><%= language(@user) %></div>
           </div>
+
           <div class="info_element">
             <div class="info_element_title">Birth date:</div>
-            <div class="info_element_description">
-              <%= birth_date(@user) %>
-            </div>
+            <div class="info_element_description"><%= birth_date(@user) %></div>
           </div>
 
           <div class="profile_buttons">
             <%= link_to "Cancel", user_profile_path(@user), remote: true, :class => 'profile_buttons_style' %>
             <%= form.submit "Guardar", :id => 'edit-profile-send-button', :class => 'profile_buttons_style' %>
           </div>
-
         </div>
 
       </div>
