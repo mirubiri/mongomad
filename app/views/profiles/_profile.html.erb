@@ -5,19 +5,19 @@
       <div class="image_side">
           <%= profile_user_image(@user) %>
           <div class="name"><textarea readonly="readonly"><%= full_name(@user) %></textarea></div>
-          <div class="address"><textarea readonly="readonly">Logroño,España</textarea></div>
+          <div class="address"><textarea readonly="readonly"><%= location(@user) %></textarea></div>
       </div>
       <div class="info_side">
         <div class="info_element">
           <div class="info_element_title">Gender: </div>
           <div class="info_element_description">
-            <%#= email(@user) %>Male
+              <%= gender(@user) %>
           </div>
         </div>
         <div class="info_element">
           <div class="info_element_title">Language:</div>
           <div class="info_element_description">
-            English
+            <%= language(@user) %>
           </div>
         </div>
         <div class="info_element">
