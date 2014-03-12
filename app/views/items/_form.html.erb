@@ -1,41 +1,35 @@
 <div class="<%= yield :form_class %>" id="<%= yield :form_id %>">
   <%= form_for [@user, @item], :remote => true do |form| %>
     <div class="new_item_modal">
-      <div class="new_item_title">
-        <%= yield :form_title %>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->      </div>
+      <div class="new_item_title"><%= yield :form_title %></div>
       <div class="new_item_container">
         <div class="new_item_image">
-          <div class="image_container" id="original_image_container">
-            <img src="">
-          </div>
-          PPAL IMAGE SELECTION
+          <div class="image_container" id="original_image_container"><%= product_modal_item_main_image(@item) %></div>
         </div>
         <div class="new_item_description">
-
           <div class="add_images">
             <div class="add_image_container" id="inputcontainer1">
-              <img src="">
+              <%= product_modal_item_first_image(@item) %>
               <div class="input_container">
-                <div class="input_text">add</div>
+                <div class="input_text">Add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
                 <input type="hidden" name="item[images][][public_id]" value="<%= yield :first_item_id %>" />
                 <input type="hidden" name="item[images][][main]" value="false" />
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer2">
-              <img src="">
+              <%= product_modal_item_second_image(@item) %>
               <div class="input_container">
-                <div class="input_text">add</div>
+                <div class="input_text">Add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
                 <input type="hidden" name="item[images][][public_id]" value="<%= yield :second_item_id %>" />
                 <input type="hidden" name="item[images][][main]" value="true" />
               </div>
             </div>
             <div class="add_image_container" id="inputcontainer3">
-              <img src="">
+              <%= product_modal_item_third_image(@item) %>
               <div class="input_container">
-                <div class="input_text">add</div>
+                <div class="input_text">Add</div>
                 <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
                 <input type="hidden" name="item[images][][public_id]" value="<%= yield :third_item_id %>" />
                 <input type="hidden" name="item[images][][main]" value="false" />
@@ -48,17 +42,14 @@
                     :placeholder => "Product name...",
                     :size => "4x1" %>
           </div>
+
           <div class="description">
             <%= form.text_area :description,
                       :placeholder => "Product description...",
                       :size => "10x5" %>
           </div>
-          <!-- <div class="new_item_stock">
-            <%#= form.text_area :stock,
-                  :placeholder => "Available Quantity",
-                  :size => "4x1" %>
-          </div> -->
         </div>
+
         <div class="item_options">
           <%= form.submit  "Save",
           :id => 'new-item-send-button' %>
@@ -67,8 +58,6 @@
     </div>
   <% end %>
 </div>
-
-
 
 <script type="text/javascript">
   // $("#item_image_container").draggable({
@@ -91,7 +80,6 @@
   //   }
   // });
 
-
   // $("#item_image_container").mouseover(function(event) {
   //     $(this).wheelzoom();
   //   }).mouseout(function(event) {
@@ -109,5 +97,4 @@
       $('#original_image_container').find('img').replaceWith(image);
     }
   });
-
 </script>
