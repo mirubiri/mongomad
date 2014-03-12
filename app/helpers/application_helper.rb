@@ -8,9 +8,7 @@ module ApplicationHelper
   end
 
   def birth_date(object)
-    #TODO: Generar una fecha aleatoria en la fabrica
-    #object.profile.birth_date
-    '20/06/1975'
+    object.profile.birth_date
   end
 
   def composer(object)
@@ -312,7 +310,7 @@ module ApplicationHelper
   end
 
   def product_modal_item_main_image(object)
-    if images(object).count > 0
+    if images(object).size > 0
       cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
     else
       '<img src=''>'.html_safe
@@ -320,7 +318,7 @@ module ApplicationHelper
   end
 
   def product_modal_item_first_image(object)
-    if images(object).count > 0
+    if images(object).size > 0
       cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
@@ -328,7 +326,7 @@ module ApplicationHelper
   end
 
   def product_modal_item_second_image(object)
-    if images(object).count > 1
+    if images(object).size > 1
       cl_image_tag(id(images(object)[1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
@@ -336,17 +334,12 @@ module ApplicationHelper
   end
 
   def product_modal_item_third_image(object)
-    if images(object).count > 2
+    if images(object).size > 2
       cl_image_tag(id(images(object)[2]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
     end
- end
-
-#   #TODO: Revisar
-#   def quantity(object)
-#     1
-#   end
+  end
 
   # TODO: ELIMINAR, solo para debug
   def debug_info(object)
