@@ -9,15 +9,15 @@
       </div>
       <div class="info_side">
         <div class="info_element">
-          <div class="info_element_title">E-Mail: </div>
+          <div class="info_element_title">Gender: </div>
           <div class="info_element_description">
-            <%#= email(@user) %>respectopatronum@potter.hw
+            <%#= email(@user) %>Male
           </div>
         </div>
         <div class="info_element">
-          <div class="info_element_title">Phones:</div>
+          <div class="info_element_title">Language:</div>
           <div class="info_element_description">
-            941128057/639629586
+            English
           </div>
         </div>
         <div class="info_element">
@@ -27,9 +27,13 @@
           </div>
         </div>
 
-        <%= link_to "Edit my profile",
+        <div class="profile_buttons">
+          <%= link_to "Edit my profile",
             edit_user_profile_path(@user),
+            :class => 'profile_buttons_style',
             :remote => true %>
+        </div>
+
       </div>
 
     </div>
