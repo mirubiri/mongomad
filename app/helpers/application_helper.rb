@@ -312,29 +312,23 @@ module ApplicationHelper
   end
 
   def product_modal_item_main_image(object)
-    # if main_image(object) != nil
+    if images(object).count > 0
       cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
-    # else
-      # '<img src=''>'.html_safe
-    # end
-
-
-
-
-
-    # cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    else
+      '<img src=''>'.html_safe
+    end
   end
 
   def product_modal_item_first_image(object)
-    if images(object).count != nil
-      cl_image_tag(id(images(object)[0]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
+    if images(object).count > 0
+      cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
     end
   end
 
   def product_modal_item_second_image(object)
-    if images(object)[1] != nil
+    if images(object).count > 1
       cl_image_tag(id(images(object)[1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
@@ -342,7 +336,7 @@ module ApplicationHelper
   end
 
   def product_modal_item_third_image(object)
-    if images(object)[2] != nil
+    if images(object).count > 2
       cl_image_tag(id(images(object)[2]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
