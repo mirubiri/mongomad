@@ -68,25 +68,11 @@ class ItemsController < ApplicationController
     @item.description = params[:item][:description]
     @item.images.all.delete
 
-    puts "*******************************************************************************"
-    puts @item.images.size
-    puts "*******************************************************************************"
-
     params[:item][:images].each do |image_params|
       @image = Attachment::Image.new(main:image_params[:main])
       @image.id = image_params[:public_id]
-      puts "*******************************************************************************"
-      puts @image.valid?
       @item.images << @image
-      puts "*******************************************************************************"
-      puts @item.valid?
-      puts @item.images.size
-      puts "*******************************************************************************"
     end
-
-    puts "*******************************************************************************"
-    puts @item.persisted?
-    puts "*******************************************************************************"
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
