@@ -4,10 +4,8 @@ $('#ppal_container')
 .children()
 .first()
 .after("<%= escape_javascript(render @item, :locals => {:item => item}).html_safe %>")
-.masonry( 'reload' )
 .next()
 .css('opacity', 0)
-.hide()
 .slideDown()
 .animate(
   { opacity: 1 },

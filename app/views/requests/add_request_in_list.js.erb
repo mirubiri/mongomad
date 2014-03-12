@@ -4,15 +4,13 @@ if( ($('.request').length) === 0){
   $('#request_list_container > .no_elements').remove();
 }
 
-$('#request_list_container').prepend("<%= escape_javascript(render template: 'requests/show', :locals => {:@request => request}).html_safe %>");
-
 $('#request_list_container')
+.prepend("<%= escape_javascript(render @request, :locals => {:@request => request}).html_safe %>")
 .children()
 .first()
 .hide()
 .addClass("new_request_style")
-.delay(500)
-.show( "slide", 1000, function(){ $('#mainLayout').matchPrincipalContainersHeighs(); })
+.slideDown()
 .animate({backgroundColor: '#ffffff'}, 5000, function(){
   $(this).removeClass("new_request_style");
 });
