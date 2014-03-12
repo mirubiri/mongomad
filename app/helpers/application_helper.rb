@@ -311,7 +311,7 @@ module ApplicationHelper
 
   def product_modal_item_main_image(object)
     if images(object).size > 0
-      cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+      cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
     end
@@ -319,7 +319,7 @@ module ApplicationHelper
 
   def product_modal_item_first_image(object)
     if images(object).size > 0
-      cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
+      cl_image_tag(id(images(object)[0]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
     end
