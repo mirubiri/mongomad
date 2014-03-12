@@ -8,7 +8,9 @@ module ApplicationHelper
   end
 
   def birth_date(object)
-    object.profile.birth_date
+    #TODO: Generar una fecha aleatoria en la fabrica
+    #object.profile.birth_date
+    '20/06/1975'
   end
 
   def composer(object)
@@ -44,9 +46,9 @@ module ApplicationHelper
     first_name(object) + " " + last_name(object)
   end
 
-#   def gender(object)
-#     object.profile.gender
-#   end
+  def gender(object)
+    object.profile.gender
+  end
 
   def id(object)
     object.id
@@ -60,9 +62,13 @@ module ApplicationHelper
     object.items.desc(:updated_at)
   end
 
-#   def language(object)
-#     object.profile.language
-#   end
+  def language(object)
+    object.profile.language
+  end
+
+  def location(object)
+    user_sheet(object).nick
+  end
 
   def last_name(object)
     user_sheet(object).last_name
@@ -306,11 +312,21 @@ module ApplicationHelper
   end
 
   def product_modal_item_main_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    # if main_image(object) != nil
+      cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+    # else
+      # '<img src=''>'.html_safe
+    # end
+
+
+
+
+
+    # cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
   end
 
   def product_modal_item_first_image(object)
-    if images(object)[0] != nil
+    if images(object).count != nil
       cl_image_tag(id(images(object)[0]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
