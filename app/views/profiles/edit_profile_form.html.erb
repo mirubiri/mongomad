@@ -7,37 +7,38 @@
 
         <div class="image_side">
           <%= profile_user_image(@user) %>
-          <div class="name"><%= form.text_area :nick %></div>
+          <div class="name"><textarea readonly="readonly"><%= full_name(@user) %></textarea></div>
           <div class="address"><textarea readonly="readonly">Logroño,España</textarea></div>
-        </div>
+      </div>
 
 
         <div class="info_side">
+
           <div class="info_element">
-            <div class="info_element_title">E-Mail: </div>
+            <div class="info_element_title">Gender: </div>
             <div class="info_element_description">
-              <%#= email(@user) %>respectopatronum@potter.hw
+              <%#= email(@user) %>Male
+            </div>
+          </div>
+
+          <div class="info_element">
+            <div class="info_element_title">Language:</div>
+            <div class="info_element_description">
+              English
             </div>
           </div>
           <div class="info_element">
-            <div class="info_element_title">Phones:</div>
-            <div class="info_element_description">
-              941128057/639629586
-            </div>
-          </div>
-          <div class="info_element">
-            <div class="info_element_title">Birthdate:</div>
+            <div class="info_element_title">Birth date:</div>
             <div class="info_element_description">
               <%= birth_date(@user) %>
             </div>
           </div>
 
-          <div class="action">
-            <div class="send_button">
-              <button>Cancelar</button>
-              <%= form.submit "Guardar", :id => 'edit-profile-send-button' %>
-            </div>
+          <div class="profile_buttons">
+            <%= link_to "Cancel", user_profile_path(@user), remote: true, :class => 'profile_buttons_style' %>
+            <%= form.submit "Guardar", :id => 'edit-profile-send-button', :class => 'profile_buttons_style' %>
           </div>
+
         </div>
 
       </div>
@@ -46,5 +47,6 @@
 
 <% end %>
 
-
-
+<script type="text/javascript">
+  $('textarea').css('border','1px solid #d3d3d3');
+</script>
