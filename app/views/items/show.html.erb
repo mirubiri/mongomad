@@ -1,9 +1,9 @@
-<div class="item_overview" id="show-item-modal">
-  <div class="overview_image" id="overview_image">
-    <%= product_modal_item_main_image(item) %>
-  </div>
-  <div class="overview_description">
-    <div class="overview_description_title" id="overview_description_title"><%= name(item) %></div>
-    <div class="overview_description_text" id="overview_description_text"><%= description(item) %></div>
-  </div>
-</div>
+<% content_for :form_class do %>show-item-modal<% end %>
+<% content_for :form_id do %>show-item-modal<% end %>
+<% content_for :form_title do %>PRODUCT DESCRIPTION<% end %>
+
+<!-- #TODO: FOR DEBUGGIN PURPOSES -->
+<% content_for :first_item_id do %>uploads/items/car_white<% end %>
+<% content_for :second_item_id do %>uploads/items/dog_white<% end %>
+
+<%= render 'form' %>
