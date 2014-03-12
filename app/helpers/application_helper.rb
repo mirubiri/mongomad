@@ -64,9 +64,9 @@ module ApplicationHelper
     object.profile.language
   end
 
-  def location(object)
-    user_sheet(object).location
-  end
+  # def location(object)
+  #   user_sheet(object).location
+  # end
 
   def last_name(object)
     user_sheet(object).last_name
