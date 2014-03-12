@@ -65,7 +65,7 @@ module ApplicationHelper
   end
 
   def location(object)
-    user_sheet(object).nick
+    user_sheet(object).location
   end
 
   def last_name(object)
