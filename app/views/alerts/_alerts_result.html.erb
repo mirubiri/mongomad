@@ -1,5 +1,5 @@
 <% if (alerts(@user) != 0)%>
-  <% alerts(@user).count.times do |request| %>
+  <% alerts(@user).size.times do |request| %>
     <div class="request">
       <div class="profile_image">
         <% alert_user_image(@user) %>

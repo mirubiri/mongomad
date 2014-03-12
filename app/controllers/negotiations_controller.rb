@@ -3,7 +3,7 @@ class NegotiationsController < ApplicationController
   # GET /negotiations.json
   def index
     @user = User.find(params[:user_id])
-    @user.negotiations.count == 0 ? @negotiations = nil : @negotiations = @user.negotiations
+    @user.negotiations.size == 0 ? @negotiations = nil : @negotiations = @user.negotiations
     @negotiation = Negotiation.new
 
     respond_to do |format|

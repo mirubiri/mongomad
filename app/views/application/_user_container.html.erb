@@ -79,7 +79,7 @@
         </div>
 
         <aside class="requests_requestsList" id="request_list_container">
-          <% if (requests(@user).count != 0) %>
+          <% if (requests(@user).size != 0) %>
             <%= render :partial => 'application/request_list' %>
           <% else %>
             <%= render template: 'requests/no_request' %>
