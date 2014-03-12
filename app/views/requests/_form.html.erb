@@ -1,11 +1,8 @@
 <div class="<%= yield :form_class %>" id="<%= yield :form_id %>" >
   <%= form_for [@user, @request], :remote => true do |form| %>
     <div class="new_petition_content">
-
       <div class="petition_transparent_side">
-        <div class="petition_user_image">
-          <%= request_modal_user_image(@user) %>
-        </div>
+        <div class="petition_user_image"><%= request_modal_user_image(@user) %></div>
       </div>
 
       <div class="petition_user_side">
@@ -16,15 +13,15 @@
         <div class="petition_text">
           <%= form.text_area :text, :placeholder => "Make your request here...", :size => "24x6" %>
         </div>
+
         <div class="petitions_buttons_side">
           <div class="send_button">
             <button class="offer_buttons_style">X</button>
             <%= form.submit "Save", :class => 'offer_buttons_style', :id => 'new-request-send-button' %>
-            <div class="characters_left">89/150</div>
+            <div class="characters_left">150/150</div>
           </div>
         </div>
       </div>
-
     </div>
   <% end %>
 </div>

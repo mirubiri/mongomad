@@ -1,4 +1,4 @@
-<% if (items(@user).count == 0)%>
+<% if items(@user).count == 0 %>
   <div class="no_elements_in_ppal">
     <div class="empty_text">
       <div class="text_explanation">Add here the products you want to sell, change...</div>
@@ -10,7 +10,6 @@
     </div>
   </div>
 <% else %>
-  <!-- Item vacio para añadir un item -->
   <div class="item">
     <div class="item_image">
       <%= link_to add_item_image,
@@ -18,11 +17,8 @@
           {:remote => true}
       %>
     </div>
-
     <div class="item_description">
       <div class="text">Add a Product</div>
     </div>
   </div>
-  <!-- Fin del item vacio -->
 <% end %>
-
