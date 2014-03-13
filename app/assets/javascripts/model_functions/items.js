@@ -52,7 +52,7 @@ function imageSelection(input, selector) {
     if (parent.hasClass('main_container_elementList')) {
         var espacioUtil = parent.width();
     }else{
-        var espacioUtil = parent.width() + 15;//EN la modal siempre aparece la scrollbar al cargar ambos contenedores, y debo contar con su anchura
+        var espacioUtil = parent.width();//EN la modal siempre aparece la scrollbar al cargar ambos contenedores, y debo contar con su anchura
     }
 
     //alert(espacioUtil);
