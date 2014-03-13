@@ -111,6 +111,8 @@
 (function ($)
 {
   $.fn.removeProductFromSummary = function(){
+    var id = $(this).attr('id');
+    $(".products_list").find("#"+id).find('.offer_artistic_layer').remove();
     $(this).remove();
   };
 

@@ -47,11 +47,13 @@ function loadOfferModalScripts(){
 
   $('#receiver_content_area').on('click','img',function(e){
     $(this).parent().parent().addProductToSummary();
+    $(this).parent().parent().prepend('<div class="offer_artistic_layer"></div>');
   });
 
 
   $('#composer_content_area').on('click','img',function(e){
     $(this).parent().parent().addProductToSummary();
+    $(this).parent().parent().prepend('<div class="offer_artistic_layer"></div>');
   });
 
 
