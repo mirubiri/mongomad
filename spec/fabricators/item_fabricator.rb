@@ -1,6 +1,6 @@
 Fabricator(:item) do
   user
-  name        'Reproductor mp3'
-  description 'Un reproductor mp3 acojonante de bueno.'
+  name        { Faker::Name.first_name }
+  description { Faker::Lorem.sentence }
   images      { [ Fabricate.build(:image_product, main:true), Fabricate.build(:image_product) ] }
 end
