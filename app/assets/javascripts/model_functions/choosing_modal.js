@@ -100,7 +100,7 @@
       .removeAttr('style');
     }
 
-    $("#offer_summary").attr('maxItems',posicion);
+    //$("#offer_summary").attr('maxItems',posicion);
 
     return $(this);
   };

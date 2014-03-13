@@ -43,6 +43,8 @@ class OffersController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
+
     @user_composer = User.find(params[:user_id])
     @user_receiver = User.find(params[:offer][:user_receiver_id])
 
@@ -65,16 +67,15 @@ class OffersController < ApplicationController
     end
 
     @offer.proposal = @proposal
+    @offers = @user.received_offers
 
-
-
-
-  puts "*******************************************************************************"
+    puts "*******************************************************************************"
     puts @offer.valid?
     puts @offer.proposal.goods.first.id
     puts @offer.proposal.goods.last.id
     puts @offer.proposal.errors.messages
     puts "*******************************************************************************"  #TODO: REVISAR SERGIO
+
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @user, notice: 'Offer has been successfully created.' }
