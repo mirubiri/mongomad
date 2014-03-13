@@ -20,7 +20,9 @@ class OffersController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = User.first
+    @user2 = User.last
     @offer = Offer.new
 
     respond_to do |format|
@@ -30,7 +32,9 @@ class OffersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
+    @user = User.first
+    @user2 = User.last
     @offer = Offer.find(params[:id])
 
     respond_to do |format|
