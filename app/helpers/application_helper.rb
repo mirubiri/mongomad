@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def articles(object, user)
-    object.articles(user.id)
+    object.articles(user.id).desc(:updated_at)
   end
 
   def birth_date(object)
@@ -359,10 +359,12 @@ module ApplicationHelper
     end
   end
 
+  # TODO: ELIMINAR, solo para debug
   def item_info(item)
     "ITEM: state: #{item.state}, discarded: #{item.discarded}"
   end
 
+  # TODO: ELIMINAR, solo para debug
   def proposal_info(proposal)
     "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
   end
