@@ -46,14 +46,12 @@ function loadOfferModalScripts(){
 
 
   $('#receiver_content_area').on('click','img',function(e){
-    alert('receiver item');
     $(this).parent().parent().addProductToSummary();
     $(this).parent().parent().append('<div class="offer_artistic_layer"></div>');
   });
 
 
   $('#composer_content_area').on('click','img',function(e){
-    alert('composer item');
     $(this).parent().parent().addProductToSummary();
     $(this).parent().parent().append('<div class="offer_artistic_layer"></div>');
   });
