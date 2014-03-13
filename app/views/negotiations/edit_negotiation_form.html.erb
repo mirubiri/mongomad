@@ -113,7 +113,7 @@
         <div class="offer_products">
           <div class="summaryleft">
             <% contador = 0 %>
-            <% composer_products(proposal(@negotiation)).each do |product| %>
+            <% composer_articles(proposal(@negotiation)).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>"  side="left" type="Product">
                 <div class="item_image" style="width: 151.6px; height: 151.6px;">
                   <%= offer_modal_receiver_product_image(product) %>
@@ -143,7 +143,7 @@
 
           <div class="summaryright">
             <% contador = 0 %>
-            <% receiver_products(proposal(@negotiation)).each do |product| %>
+            <% receiver_articles(proposal(@negotiation)).each do |product| %>
               <div class="item newitem" id="<%= id(product) %>"  side="right" type="Product">
                 <div class="item_image">
                   <%= negotiation_modal_composer_product_image(product) %>

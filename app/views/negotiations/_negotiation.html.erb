@@ -20,7 +20,7 @@
 
     <div class="offer_items">
       <div class="received">
-        <% composer_products(proposal(negotiation)).each do |product| %>
+        <% composer_articles(proposal(negotiation)).each do |product| %>
           <div class="image_container">
             <div class="debug_container"><%#= debug_info(product) %></div>
             <%= negotiation_receiver_product_image(product) %>
@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <div class="given">
-        <% receiver_products(proposal(negotiation)).each do |product| %>
+        <% receiver_articles(proposal(negotiation)).each do |product| %>
           <div class="image_container">
             <div class="debug_container"><%#= debug_info(product) %></div>
             <%= negotiation_composer_product_image(product) %>

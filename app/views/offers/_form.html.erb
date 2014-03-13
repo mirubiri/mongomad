@@ -105,14 +105,15 @@
         <div class="offer_inform">
           <div class="offer_header"><%= nick(@user).capitalize %></div>
           <div class="offer_products">
-            <div class="summaryleft">
 
+
+            <div class="summaryleft">
 
             <!-- MODELO -->
               <% composer_articles(@offer).each do |good| %>
-                <% if good.type == "good" %>
+                <% if good._type == "Product" %>
                   <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <div class="item_image"><%= offer_modal_composer_good_image(good) %></div>
+                    <div class="item_image"><%= offer_modal_composer_product_image(good) %></div>
                     <div class="item_description">
                       <div class="text"><%= name(good) %></div>
                     </div>
@@ -123,8 +124,8 @@
                   </div>
                 <% else %>
                   <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    // imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    // valor del dinero
+                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
+                    valor del dinero -->
                     <div class="data_input">
                       <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
                       <input type="hidden" name="offer[goods][][owner_id]" value="<%= id(@user) %>">
@@ -136,21 +137,20 @@
             <!-- MODELO -->
 
 
-
               <!-- <%# contador = 0 %>
-              <%# composer_products(@offer).each do |product| %>
-                <div class="item newitem" id="<%= id(product) %>"  side="left" type="Product">
+              <%# composer_articles(@offer).each do |product| %>
+                <div class="item newitem" id="<%#= id(product) %>"  side="left" type="Product">
                   <div class="item_image" style="width: 151.6px; height: 151.6px;">
-                    <%= offer_modal_receiver_product_image(product) %>
+                    <%#= offer_modal_receiver_product_image(product) %>
                   </div>
                   <div class="item_description">
                     <div class="text">
-                      <%= name(product) %>
+                      <%#= name(product) %>
                     </div>
                   </div>
                   <div class="data_input">
-                    <input type="hidden" name="offer[goods][<%= contador %>][item_id]" value="<%= id(product) %>">
-                    <input type="hidden" name="offer[goods][<%= contador %>][type]" value="Product">
+                    <input type="hidden" name="offer[goods][<%#= contador %>][item_id]" value="<%#= id(product) %>">
+                    <input type="hidden" name="offer[goods][<%#= contador %>][type]" value="Product">
                   </div>
                 </div>
                 <%# contador += 1 %>
@@ -158,9 +158,9 @@
               <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
                 <div class="data_input">
-                  <input type="hidden" name="offer[goods][<% contador %>][item_id]" value="<%#= id(product) %>">
-                  <input type="hidden" name="offer[goods][<% contador %>][type]" value="Cash">
-                  <input type="hidden" name="offer[goods][<% contador %>][Quantity]" value="<%#= quantity(product) %>">
+                  <input type="hidden" name="offer[goods][<%# contador %>][item_id]" value="<%#= id(product) %>">
+                  <input type="hidden" name="offer[goods][<%# contador %>][type]" value="Cash">
+                  <input type="hidden" name="offer[goods][<%# contador %>][Quantity]" value="<%#= quantity(product) %>">
                  </div>
               </div>
             -->
@@ -171,9 +171,9 @@
             <div class="summaryright">
 
               <% receiver_articles(@offer).each do |good| %>
-                <% if good.type == "good" %>
+                <% if good._type == "Product" %>
                   <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <div class="item_image"><%= offer_modal_composer_good_image(good) %></div>
+                    <div class="item_image"><%= offer_modal_receiver_product_image(good) %></div>
                     <div class="item_description">
                       <div class="text"><%= name(good) %></div>
                     </div>
@@ -184,8 +184,8 @@
                   </div>
                 <% else %>
                   <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    // imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    // valor del dinero
+                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
+                    valor del dinero -->
                     <div class="data_input">
                       <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
                       <input type="hidden" name="offer[goods][][owner_id]" value="<%= id(@user) %>">
@@ -196,19 +196,19 @@
               <% end %>
 
                <!-- <%# contador = 0 %>
-              <%# receiver_products(@offer).each do |product| %>
-                <div class="item newitem" id="<%= id(product) %>"  side="right" type="Product">
+              <%# receiver_articles(@offer).each do |product| %>
+                <div class="item newitem" id="<%#= id(product) %>"  side="right" type="Product">
                   <div class="item_image">
-                    <%= offer_modal_composer_product_image(product) %>
+                    <%#= offer_modal_composer_product_image(product) %>
                   </div>
                   <div class="item_description">
                     <div class="text">
-                      <%= name(product) %>
+                      <%#= name(product) %>
                     </div>
                   </div>
                    <div class="data_input">
-                    <input type="hidden" name="offer[goods][<%= contador %>][item_id]" value="<%= id(product) %>">
-                    <input type="hidden" name="offer[goods][<%= contador %>][type]" value="Product">
+                    <input type="hidden" name="offer[goods][<%#= contador %>][item_id]" value="<%#= id(product) %>">
+                    <input type="hidden" name="offer[goods][<%#= contador %>][type]" value="Product">
                   </div>
                 </div>
                 <%# contador += 1 %>
@@ -216,9 +216,9 @@
               <div class="money_given" id="dineroOfrecesEnSumario">
                 <div class="money_composition"></div>
                 <div class="data_input">
-                  <input type="hidden" name="offer[goods][<% contador %>][item_id]" value="<%#= id(product) %>">
-                  <input type="hidden" name="offer[goods][<% contador %>][type]" value="Cash">
-                  <input type="hidden" name="offer[goods][<% contador %>][Quantity]" value="<%#= quantity(product) %>">
+                  <input type="hidden" name="offer[goods][<%# contador %>][item_id]" value="<%#= id(product) %>">
+                  <input type="hidden" name="offer[goods][<%# contador %>][type]" value="Cash">
+                  <input type="hidden" name="offer[goods][<%# contador %>][Quantity]" value="<%#= quantity(product) %>">
                 </div>
               </div>-->
 
