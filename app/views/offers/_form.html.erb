@@ -108,24 +108,24 @@
             <div class="summaryleft">
 
             <!-- MODELO -->
-          <!--   <% composer_products(@offer).each do |product| %>
-                <% if product.type == "Product" %>
-                  <div class="item newitem" id="<%= id(product) %>"  side="left" type="<%= product._type %>">
-                    <div class="item_image"><%= offer_modal_composer_product_image(product) %></div>
+          <!--   <% composer_goods(@offer).each do |good| %>
+                <% if good.type == "good" %>
+                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
+                    <div class="item_image"><%= offer_modal_composer_good_image(good) %></div>
                     <div class="item_description">
-                      <div class="text"><%= name(product) %></div>
+                      <div class="text"><%= name(good) %></div>
                     </div>
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= product._type %>">
-                      <input type="hidden" name="offer[goods][][item_id]" value="<%= id(product) %>">
+                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
+                      <input type="hidden" name="offer[goods][][item_id]" value="<%= id(good) %>">
                     </div>
                   </div>
                 <% else %>
-                  <div class="item newitem" id="<%= id(product) %>"  side="left" type="<%= product._type %>">
+                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
                     // imagen  estática de la moneda (se puede hacer un helper mas pequeño)
                     // valor del dinero
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= product._type %>">
+                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
                       <input type="hidden" name="offer[goods][][owner_id]" value="<%= AQUI EL USER ID %>">
                       <input type="hidden" name="offer[goods][][amount]" value="<%= cantidad de dineros %>">
                     </div>
