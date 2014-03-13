@@ -1,99 +1,67 @@
 <div class="<%= yield :form_class %>" id="<%= yield :form_id %>">
-  <%= form_for [@user,@offer], :remote => true do |form| %>
+  <%= form_for [@user, @offer], :remote => true do |form| %>
     <div class="products_area">
       <div class="title">
         <a href="#blank" id="new_offer_receiver_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="receiver_selector_area">
-            <div class="user_image">
-              <%= offer_modal_user_image(@user) %>
-            </div>
+            <div class="user_image"><%= offer_modal_user_image(@user) %></div>
           </div>
         </a>
         <a href="#blank" id="new_offer_composer_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="composer_selector_area">
-            <div class="user_image">
-              <%= offer_modal_user_image(@user) %>
-            </div>
+            <div class="user_image"><%= offer_modal_user_image(@user) %></div>
           </div>
         </a>
         <a href="#blank" id="new_message_selector" value="<%= id(@user) %>">
           <div class="user_products_selector" id="message_selector_area">
-            <div class="user_image">
-              <%= initial_message_icon %>
-            </div>
+            <div class="user_image"><%= initial_message_icon %></div>
           </div>
         </a>
       </div>
+
       <div class="products_container">
         <div class="products_list">
           <div id="receiver_content_area">
-
             <div class="item" id="receiver_money" side="left" type="Cash">
-              <div class="item_image">
-                <%= money_image %>
-              </div>
+              <div class="item_image"><%= money_image %></div>
               <div class="item_description">
-                <div class="text">
-                  <textarea rows="1" placeholder="0€"></textarea>
-                </div>
+                <div class="text"><textarea rows="1" placeholder="0.00€"></textarea></div>
               </div>
             </div>
-
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" side="left" type="Product">
-                <div class="item_image">
-                  <%= offer_modal_receiver_product_image(item) %>
-                </div>
-                <!-- <div class="item_quantity">
-                  <div class="quantity_number"><%#= stock(item) %></div>
-                </div> -->
+                <div class="item_image"><%= offer_modal_receiver_product_image(item) %></div>
                 <div class="item_description">
-                  <div class="text">
-                    <%= name(item) %>
-                  </div>
+                  <div class="text"><%= name(item) %></div>
                 </div>
               </div>
-
             <% end %>
           </div>
-          <div id="composer_content_area" class="hidden_container">
 
+          <div id="composer_content_area" class="hidden_container">
             <div class="item" id="composer_money" side="right" type="Cash">
-              <div class="item_image">
-                <%= money_image %>
-              </div>
+              <div class="item_image"><%= money_image %></div>
               <div class="item_description">
-                <div class="text">
-                  <textarea rows="1" placeholder="0€"></textarea>
-                </div>
+                <div class="text"><textarea rows="1" placeholder="0€"></textarea></div>
               </div>
             </div>
-
             <% items(@user).each do |item| %>
               <div class="item" id="<%= id(item) %>" side="right" type="Product">
-                <div class="item_image">
-                  <%= offer_modal_composer_product_image(item) %>
-                </div>
-                <!-- <div class="item_quantity">
-                  <div class="quantity_number"><%#= stock(item) %></div>
-                </div> -->
+                <div class="item_image"><%= offer_modal_composer_product_image(item) %></div>
                 <div class="item_description">
-                  <div class="text">
-                    <%= name(item) %>
-                  </div>
+                  <div class="text"><%= name(item) %></div>
                 </div>
               </div>
             <% end %>
           </div>
-          <div id="message_content_area" class="hidden_container">
-            Offer text
-          </div>
-        </div>
-        <div class="product_overview">
-          <div class="overview_image" id="overview_image">Imagen</div>
-          <div class="overview_image" id="overview_image">Imagen</div>
-          <div class="overview_image" id="overview_image">Imagen</div>
 
+          <div id="message_content_area" class="hidden_container">Offer initial message</div>
+        </div>
+
+        <div class="product_overview">
+          <% 3.times do %>
+            <div class="overview_image" id="overview_image">Imagen</div>
+          <% end %>
           <div class="overview_description">
             <div class="overview_description_title" id="overview_description_title">Product Title</div>
             <div class="overview_description_text" id="overview_description_text">Product Description</div>
@@ -102,20 +70,17 @@
       </div>
     </div>
 
-    <input type="hidden" name="offer[receiver_id]" value="<%= id(@user) %>" />
-    <input type="hidden" name="offer[initial_message]" value="this is the first message in offer" />
+    <input type="hidden" name="offer[user_receiver_id]" value="<%= id(@user) %>" />
 
     <% if controller.action_name == "new" %>
       <div class="offer_summary" id="offer_summary" maxItems="0">
         <div class="offer_inform">
-          <div class="offer_header">
-            <%= nick(@user).capitalize %>
-          </div>
+          <div class="offer_header"><%= nick(@user).capitalize %></div>
           <div class="offer_products">
             <div class="summaryleft">
-                <div class="money_received" id="dineroPidesEnSumario">
-                  <div class="money_composition"></div>
-                </div>
+              <div class="money_received" id="dineroPidesEnSumario">
+                <div class="money_composition"></div>
+              </div>
             </div>
             <div class="summaryright">
               <div class="money_given" id="dineroOfrecesEnSumario">
@@ -124,13 +89,9 @@
             </div>
           </div>
           <div class="offer_info">
-            <div class="profile_image">
-              <%= offer_modal_user_image(@user) %>
-            </div>
+            <div class="profile_image"><%= offer_modal_user_image(@user) %></div>
             <div class="description">
-              <div class="offer_message">
-                <%= form.text_area :message, :placeholder => "First Message", :rows => "2" %>
-              </div>
+              <div class="offer_message"><%= form.text_area :message, :placeholder => "First Message", :rows => "2" %></div>
             </div>
             <div class="offer_buttons">
               <%= form.submit "Submit", :url => user_offers_path(@user), :class => 'offer_buttons_style', :id => @offer_send_button_id %>
@@ -142,9 +103,7 @@
     <% else%>
       <div class="offer_summary" id="offer_summary" maxItems="0">
         <div class="offer_inform">
-          <div class="offer_header">
-            <%= nick(@user).capitalize %>
-          </div>
+          <div class="offer_header"><%= nick(@user).capitalize %></div>
           <div class="offer_products">
             <div class="summaryleft">
               <% contador = 0 %>

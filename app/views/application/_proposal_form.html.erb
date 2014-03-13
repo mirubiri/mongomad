@@ -1,6 +1,6 @@
 
 <%
-  if controller.controller_name === "offers"
+  if controller.controller_name == "offers"
     @form_model = @offer
     @receiver_id = id(@user)
     @receiver_image =  offer_modal_user_image(@user)

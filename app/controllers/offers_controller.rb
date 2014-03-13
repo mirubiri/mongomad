@@ -34,8 +34,8 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
 
     respond_to do |format|
-      format.html
-      format.js
+      format.html # edit.html.erb
+      format.js # render edit.js.erb
     end
   end
 

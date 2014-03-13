@@ -1,4 +1,4 @@
-<% if (controller.controller_name === "alerts") %>
+<% if controller.controller_name == "alerts" %>
 
   <!-- Barra de navegacion de alertas -->
   <div class="navbar" id="search_bar">
@@ -16,7 +16,7 @@
 
   <!-- Barra de navegacion general -->
   <ul class="nav" id="navigation_bar_menu">
-    <% if (controller.controller_name === "users") or (controller.controller_name === "offers") %>
+    <% if (controller.controller_name == "users") or (controller.controller_name == "offers") %>
       <li id="offers-tab" class="active">
     <% else %>
       <li id="offers-tab">
@@ -24,7 +24,7 @@
       <%= link_to "Offers", user_offers_path(@user), remote: true %>
     </li>
 
-    <% if controller.controller_name === "negotiations" %>
+    <% if controller.controller_name == "negotiations" %>
       <li id="negotiations-tab" class="active">
     <% else %>
       <li id="negotiations-tab">
@@ -32,7 +32,7 @@
       <%= link_to "Negotiations", user_negotiations_path(@user), remote: true %>
     </li>
 
-    <% if controller.controller_name === "deals" %>
+    <% if controller.controller_name == "deals" %>
       <li id="deals-tab" class="active">
     <% else %>
       <li id="deals-tab">
@@ -40,7 +40,7 @@
       <%= link_to "Deals", user_deals_path(@user), remote: true %>
     </li>
 
-    <% if (controller.controller_name === "items") %>
+    <% if controller.controller_name == "items" %>
       <li id="items-tab" class="active">
         <%= link_to "Products", user_items_path(@user), remote: true %>
       </li>
@@ -50,11 +50,4 @@
       </li>
     <% end %>
   </ul>
-
 <% end %>
-
-
-
-
-
-
