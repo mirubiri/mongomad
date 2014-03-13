@@ -20,8 +20,7 @@ class OffersController < ApplicationController
   end
 
   def new
-    # @user = User.find(params[:user_id])
-    @user = User.first
+    @user = User.find(params[:user_id])
     @user2 = User.last
     @offer = Offer.new
 
@@ -47,20 +46,18 @@ class OffersController < ApplicationController
     @user_composer = User.find(params[:user_id])
     @user_receiver = User.find(params[:offer][:user_receiver_id])
 
-    @offer = Offer.new(message:params[:offer][:message])
-    #TODO: Refactorizar cuando funcione :P
-    @offer.user_composer = @user_composer
-    @offer.user_receiver = @user_receiver
-    offer.sheets << @user_composer.sheet
-    offer.sheets << @user_receiver.sheet
-
+    @offer = Offer.new(message:params[:offer][:message], user_composer:@user_composer, user_receiver:@user_receiver, user_sheets: [@user_composer.sheet, @user_receiver.sheet])
     @proposal = Proposal.new(composer_id:@user_composer.id, receiver_id:@user_receiver.id)
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
+        puts good_params[:item_id]
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+        puts @item.id
+        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+        @good.id = @item.id
+        puts @good.id
       else
         @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
       end
@@ -69,7 +66,15 @@ class OffersController < ApplicationController
 
     @offer.proposal = @proposal
 
-    #TODO: REVISAR SERGIO
+
+
+
+  puts "*******************************************************************************"
+    puts @offer.valid?
+    puts @offer.proposal.goods.first.id
+    puts @offer.proposal.goods.last.id
+    puts @offer.proposal.errors.messages
+    puts "*******************************************************************************"  #TODO: REVISAR SERGIO
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @user, notice: 'Offer has been successfully created.' }
@@ -84,13 +89,19 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
 
     @offer.message = params[:offer][:message]
-    @offer.proposal.goods.delete
+puts "*******************************************************************************"
+puts @offer.proposal.goods.size
+    @offer.proposal.goods.delete_all
+puts @offer.proposal.goods.size
+puts "*******************************************************************************"
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+        @good.id = @item.id
+        # @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
       else
         @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
       end

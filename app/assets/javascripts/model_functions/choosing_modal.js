@@ -66,20 +66,20 @@
     var product_id = $(this).attr("id");
     var tipoElemento = $(this).attr("type");
     var productSide = $(this).attr("side");
-    var posicion = howMuchInputsAre(productSide) + 1;
+    //var posicion = howMuchInputsAre(productSide) + 1;
 
     if(tipoElemento == "Cash"){
       var quantity = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
-        "<input type=\"hidden\" name=\"offer[goods]["+posicion+"][item_id]\" value=\""+product_id+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods]["+posicion+"][type]\" value=\""+tipoElemento+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods]["+posicion+"][Quantity]\" value=\""+quantity+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][item_id]\" value=\""+product_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][type]\" value=\""+tipoElemento+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][Quantity]\" value=\""+quantity+"\" />" +
 
         "</div>";
     }else{
       var inputString ="<div class='data_input'>"+
-        "<input type=\"hidden\" name=\"offer[goods]["+posicion+"][item_id]\" value=\""+product_id+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods]["+posicion+"][type]\" value=\""+tipoElemento+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][item_id]\" value=\""+product_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][type]\" value=\""+tipoElemento+"\" />" +
         "</div>";
     }
 
