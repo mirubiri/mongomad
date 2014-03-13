@@ -7,6 +7,10 @@ module ApplicationHelper
     object.agreement
   end
 
+  def articles(object, user)
+    object.articles(user.id)
+  end
+
   def birth_date(object)
     object.profile.birth_date
   end
@@ -15,12 +19,12 @@ module ApplicationHelper
     object.composer
   end
 
-  def composer_products(object)
+  def composer_articles(object)
     case object.class
     when Offer
-      products(proposal(object), composer(object))
+      articles(proposal(object), composer(object))
     else
-      products(object, composer(object))
+      articles(object, composer(object))
     end
   end
 
@@ -101,10 +105,6 @@ module ApplicationHelper
     user_sheet(object).nick
   end
 
-  def products(object, user)
-    object.products(user.id)
-  end
-
   def proposal(object)
     object.proposal
   end
@@ -117,12 +117,12 @@ module ApplicationHelper
     object.receiver
   end
 
-  def receiver_products(object)
+  def receiver_articles(object)
     case object.class
     when Offer
-      products(proposal(object), receiver(object))
+      articles(proposal(object), receiver(object))
     else
-      products(object, receiver(object))
+      articles(object, receiver(object))
     end
   end
 

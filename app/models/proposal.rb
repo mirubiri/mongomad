@@ -26,11 +26,11 @@ class Proposal
   end
 
   def check_composer_goods
-    errors.add(:goods, "Composer should have one good at least.") unless products(composer_id).size > 0
+    errors.add(:goods, "Composer should have one good at least.") unless articles(composer_id).size > 0
   end
 
   def check_receiver_goods
-    errors.add(:goods, "Receiver should have one good at least.") unless products(receiver_id).size > 0
+    errors.add(:goods, "Receiver should have one good at least.") unless articles(receiver_id).size > 0
   end
 
   def check_orphan_goods
@@ -54,7 +54,7 @@ class Proposal
     proposal_container.user_sheets.find(receiver_id)
   end
 
-  def products(owner_id)
+  def articles(owner_id)
     goods.where(owner_id:owner_id)
   end
 
