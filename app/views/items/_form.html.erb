@@ -10,33 +10,52 @@
         </div>
         <div class="new_item_description">
           <div class="add_images">
+
             <div class="add_image_container" id="inputcontainer1">
               <%= product_modal_item_first_image(@item) %>
               <div class="input_container">
-                <div class="input_text">Add</div>
-                <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
-                <input type="hidden" name="item[images][][public_id]" value="<%= yield :first_item_id %>" />
-                <input type="hidden" name="item[images][][main]" value="false" />
+                <div class="input_text">+</div>
+                <% if images(@item).size > 0 %>
+                  <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
+                  <input type="hidden" name="item[images][][public_id]" value="<%= yield :first_item_id %>" />
+                  <input type="hidden" name="item[images][][main]" value="false" />
+                <% end %>
+              </div>
+              <div class="input_container" style="left: 60px;">
+                <div class="input_text delete_image_selected">-</div>
               </div>
             </div>
+
             <div class="add_image_container" id="inputcontainer2">
               <%= product_modal_item_second_image(@item) %>
               <div class="input_container">
-                <div class="input_text">Add</div>
-                <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
-                <input type="hidden" name="item[images][][public_id]" value="<%= yield :second_item_id %>" />
-                <input type="hidden" name="item[images][][main]" value="true" />
+                <div class="input_text">+</div>
+                <% if images(@item).size > 1 %>
+                  <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
+                  <input type="hidden" name="item[images][][public_id]" value="<%= yield :second_item_id %>" />
+                  <input type="hidden" name="item[images][][main]" value="true" />
+                <% end %>
+              </div>
+              <div class="input_container" style="left: 60px;">
+                <div class="input_text delete_image_selected">-</div>
               </div>
             </div>
+
             <div class="add_image_container" id="inputcontainer3">
               <%= product_modal_item_third_image(@item) %>
               <div class="input_container">
-                <div class="input_text">Add</div>
-                <%#= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
-                <input type="hidden" name="item[images][][public_id]" value="<%= yield :third_item_id %>" />
-                <input type="hidden" name="item[images][][main]" value="false" />
+                <div class="input_text">+</div>
+                <% if images(@item).size > 2 %>
+                  <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
+                  <input class="hidden_image_input" type="hidden" name="item[images][][public_id]" value="<%= yield :third_item_id %>" />
+                  <input class="hidden_image_input" type="hidden" name="item[images][][main]" value="false" />
+                <% end %>
+              </div>
+              <div class="input_container" style="left: 60px;">
+                <div class="input_text delete_image_selected">-</div>
               </div>
             </div>
+
           </div>
 
           <div class="title">
@@ -99,4 +118,11 @@
       $('#original_image_container').find('img').replaceWith(image);
     }
   });
+
+  $(".input_container").on('click', '.delete_image_selected', function (event){
+    $(this).closest('.add_image_container').find(".hidden_image_input").remove();
+    $(this).closest('.add_image_container').find('img').remove();
+    $(this).closest('.add_image_container').prepend("<img src=''>");
+  });
+
 </script>
