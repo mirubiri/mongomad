@@ -2,7 +2,7 @@
 
   <section class="main_container" id="content-side">
 
-    <% if (controller.controller_name === "alerts") %>
+    <% if (controller.controller_name == "alerts") %>
       <%= render :partial => 'application/search_bar' %>
     <% else %>
       <nav class="nav_bar" id="navigation_bar">

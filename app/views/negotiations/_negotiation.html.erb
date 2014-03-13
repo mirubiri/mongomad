@@ -22,9 +22,7 @@
       <div class="received">
         <% composer_products(proposal(negotiation)).each do |product| %>
           <div class="image_container">
-
             <div class="debug_container"><%#= debug_info(product) %></div>
-
             <%= negotiation_receiver_product_image(product) %>
             <div class="description">
               <%= name(product) %>
@@ -35,9 +33,7 @@
       <div class="given">
         <% receiver_products(proposal(negotiation)).each do |product| %>
           <div class="image_container">
-
             <div class="debug_container"><%#= debug_info(product) %></div>
-
             <%= negotiation_composer_product_image(product) %>
             <div class="description">
               <%= name(product) %>

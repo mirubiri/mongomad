@@ -14,7 +14,7 @@
 
 <body class="hidden_container" id="body">
 
-  <% if (controller.controller_name === "sessions") %>
+  <% if controller.controller_name == "sessions" %>
     <%= yield :logger %>
   <% else %>
     <%= yield :header %> <!-- uso yield, pq no todas las vistas tienen el mismo header -->
