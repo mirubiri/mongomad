@@ -80,11 +80,11 @@ describe Proposal do
     end
   end
 
-  describe 'products(owner_id)' do
-    it 'returns products for given user' do
+  describe 'articles(owner_id)' do
+    it 'returns articles for given user' do
       owner_id = proposal.goods.sample.owner_id
       expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
-      proposal.products(owner_id)
+      proposal.articles(owner_id)
     end
   end
 
