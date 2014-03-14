@@ -90,11 +90,11 @@ class OffersController < ApplicationController
     @negotiation = Negotiation.new
 
     @offer.message = params[:offer][:message]
-puts "*******************************************************************************"
-puts @offer.proposal.goods.size
-    @offer.proposal.goods.delete_all
-puts @offer.proposal.goods.size
-puts "*******************************************************************************"
+    puts "*******************************************************************************"
+    puts @offer.proposal.goods.size
+        @offer.proposal.goods.delete_all
+    puts @offer.proposal.goods.size
+    puts "*******************************************************************************"
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
@@ -127,7 +127,7 @@ puts "**************************************************************************
         format.html { redirect_to @user, notice: 'Offer has been successfully updated.' }
         format.js { render 'reload_offer_list', :layout => false}
       else
-        format.html { redirect_to @offer, notice: 'Offer has not been updated.'}
+        format.html { redirect_to user_offers_url, notice: 'Offer has not been updated.'}
       end
     end
   end

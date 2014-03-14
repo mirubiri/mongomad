@@ -48,6 +48,8 @@ class NegotiationsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
+    @negotiations = @user.negotiations
+
     # @offer = Fabricate.build(:offer)
 
     # puts "************************************"

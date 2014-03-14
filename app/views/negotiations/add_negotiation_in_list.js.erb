@@ -6,7 +6,7 @@ $("#ppal_container").html("<%=j render @negotiations %>");
 $('.negotiation').regulateAsNegotiation();
 
 $("#ppal_container")
-.prepend("<%= escape_javascript(render template: 'negotiations/show', :locals => {:negotiation => negotiation}).html_safe %>")
+.prepend("<%= escape_javascript(render @negotiation, :locals => {:negotiation => negotiation}).html_safe %>")
 .children()
 .first()
 .regulateAsNegotiation()
