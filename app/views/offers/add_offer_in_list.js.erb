@@ -1,5 +1,6 @@
-//Lo primero es eliminar la modal, porque ya se va a generar lo que queremos
+//Lo primero es eliminar las modales que se hayan podido quedar perdidas
 $('#new-offer-form').remove();
+$('#edit-offer-form').remove();
 
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
