@@ -87,6 +87,7 @@ class OffersController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:id])
+    @negotiation = Negotiation.new
 
     @offer.message = params[:offer][:message]
 puts "*******************************************************************************"
@@ -111,6 +112,7 @@ puts "**************************************************************************
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @offer.save
+        @offers = @user.received_offers.desc(:updated_at)
         format.html { redirect_to @user, notice: 'Offer has been successfully updated.' }
         format.js { render 'reload_offer_list', :layout => false}
       else
