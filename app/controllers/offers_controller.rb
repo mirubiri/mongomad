@@ -21,7 +21,6 @@ class OffersController < ApplicationController
 
   def new
     @user = User.find(params[:user_id])
-    @user2 = User.last
     @offer = Offer.new
 
     respond_to do |format|
@@ -31,9 +30,7 @@ class OffersController < ApplicationController
   end
 
   def edit
-    # @user = User.find(params[:user_id])
-    @user = User.first
-    @user2 = User.last
+    @user = User.find(params[:user_id])
     @offer = Offer.find(params[:id])
 
     respond_to do |format|
@@ -44,12 +41,13 @@ class OffersController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
+    @negotiation = Negotiation.new
 
-    @user_composer = User.find(params[:user_id])
-    @user_receiver = User.find(params[:offer][:user_receiver_id])
+    # @user_composer = User.find(params[:user_id])
+    # @user_receiver = User.find(params[:offer][:user_receiver_id])
 
-    @offer = Offer.new(message:params[:offer][:message], user_composer:@user_composer, user_receiver:@user_receiver, user_sheets: [@user_composer.sheet, @user_receiver.sheet])
-    @proposal = Proposal.new(composer_id:@user_composer.id, receiver_id:@user_receiver.id)
+    @offer = Offer.new(message:params[:offer][:message], user_composer:current_user, user_receiver:@user, user_sheets: [current_user.sheet, @user.sheet])
+    @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
