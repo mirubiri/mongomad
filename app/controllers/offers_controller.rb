@@ -42,10 +42,6 @@ class OffersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
-
-    # @user_composer = User.find(params[:user_id])
-    # @user_receiver = User.find(params[:offer][:user_receiver_id])
-
     @offer = Offer.new(message:params[:offer][:message], user_composer:current_user, user_receiver:@user, user_sheets: [current_user.sheet, @user.sheet])
     @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
 

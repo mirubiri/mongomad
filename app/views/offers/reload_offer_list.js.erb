@@ -1,4 +1,5 @@
-$('#edit-offer-form').dialog('close');
+//Elimino la modal de editar para evitar elementos perdidos en el DOM
+$('#edit-offer-form').remove();
 
 //Cargo en el contenedor principal los datos nuevos y destruyo el masonry.
 $('#ppal_container').html("<%= escape_javascript(render @offers).html_safe %>");
