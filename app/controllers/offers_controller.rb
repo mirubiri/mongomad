@@ -42,40 +42,29 @@ class OffersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
-
-    # @user_composer = User.find(params[:user_id])
-    # @user_receiver = User.find(params[:offer][:user_receiver_id])
-
     @offer = Offer.new(message:params[:offer][:message], user_composer:current_user, user_receiver:@user, user_sheets: [current_user.sheet, @user.sheet])
     @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
-        puts good_params[:item_id]
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        puts @item.id
         @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
         @good.id = @item.id
-        puts @good.id
       else
-        @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
+        @image = Attachment::Image.new(main:true)
+        @image.id = 'static/images/money'
+        @good = Cash.new(owner_id:good_params[:owner_id])
+        @good.money = Money.new(good_params[:amount])
+        @good.images << @image
       end
       @proposal.goods << @good
     end
-
     @offer.proposal = @proposal
-    @offers = @user.received_offers
-
-    puts "*******************************************************************************"
-    puts @offer.valid?
-    puts @offer.proposal.goods.first.id
-    puts @offer.proposal.goods.last.id
-    puts @offer.proposal.errors.messages
-    puts "*******************************************************************************"  #TODO: REVISAR SERGIO
 
     respond_to do |format|
       if @offer.save
+        @offers = @user.received_offers
         format.html { redirect_to @user, notice: 'Offer has been successfully created.' }
         format.js { render 'add_offer_in_list', :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
@@ -86,38 +75,26 @@ class OffersController < ApplicationController
 
   def update
     @user = User.find(params[:user_id])
-    @offer = Offer.find(params[:id])
     @negotiation = Negotiation.new
+    @offer = Offer.find(params[:id])
 
     @offer.message = params[:offer][:message]
-    puts "*******************************************************************************"
-    puts @offer.proposal.goods.size
-        @offer.proposal.goods.delete_all
-    puts @offer.proposal.goods.size
-    puts "*******************************************************************************"
+    @offer.proposal.goods.delete_all
 
     params[:offer][:goods].each do |good_params|
       if (good_params[:type] == 'Product')
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-puts "*******************************************************************************"
-puts@item.user_id
-puts@offer.proposal.composer_id
-puts@offer.proposal.receiver_id
-        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user_id, images:@item.images)
+        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
         @good.id = @item.id
-        # @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
       else
-        @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
+        @image = Attachment::Image.new(main:true)
+        @image.id = 'static/images/money'
+        @good = Cash.new(owner_id:good_params[:owner_id])
+        @good.money = Money.new(good_params[:amount])
+        @good.images << @image
       end
-      @offer.proposal.goods << @good
-puts @offer.proposal.goods.size
-#     @offer.proposal.goods.delete_all
-# puts @offer.proposal.goods.size
-puts @offer.valid?
-puts @offer.proposal.errors.messages
-puts "*******************************************************************************"
-
+      @proposal.goods << @good
     end
 
     #TODO: REVISAR SERGIO
@@ -132,7 +109,6 @@ puts "**************************************************************************
     end
   end
 
-
   def destroy
     @offer = Offer.find(params[:id])
 
@@ -145,5 +121,4 @@ puts "**************************************************************************
       end
     end
   end
-
 end
