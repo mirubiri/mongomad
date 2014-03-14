@@ -69,11 +69,11 @@
     //var posicion = howMuchInputsAre(productSide) + 1;
 
     if(tipoElemento == "Cash"){
-      var quantity = $(this).find('textarea').val();
+      var amount = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
         "<input type=\"hidden\" name=\"offer[goods][][item_id]\" value=\""+product_id+"\" />" +
         "<input type=\"hidden\" name=\"offer[goods][][type]\" value=\""+tipoElemento+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods][][Quantity]\" value=\""+quantity+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][amount]\" value=\""+amount+"\" />" +
 
         "</div>";
     }else{
