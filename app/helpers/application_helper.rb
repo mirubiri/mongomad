@@ -138,7 +138,9 @@ module ApplicationHelper
     case object.class
     when User
       object.sheet
-    when Request, Message
+    when Request
+      object.user_sheet
+    when Message
       object.user_sheet
     else
       object
