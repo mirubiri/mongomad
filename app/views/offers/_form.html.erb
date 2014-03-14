@@ -73,7 +73,7 @@
     <% if controller.action_name == "new" %>
       <div class="offer_summary" id="offer_summary" maxItems="0">
         <div class="offer_inform">
-          <div class="offer_header"><%= full_name(current_user).capitalize %></div>
+          <div class="offer_header"><%= full_name(current_user) %></div>
           <div class="offer_products">
             <div class="summaryleft">
               <div class="money_received" id="dineroPidesEnSumario">
@@ -101,7 +101,7 @@
     <% else%>
       <div class="offer_summary" id="offer_summary" maxItems="0">
         <div class="offer_inform">
-          <div class="offer_header"><%= nick(current_user).capitalize %></div>
+          <div class="offer_header"><%= full_name(current_user) %></div>
           <div class="offer_products">
 
             <div class="summaryleft">
