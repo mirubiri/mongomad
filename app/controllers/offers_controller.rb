@@ -96,13 +96,24 @@ class OffersController < ApplicationController
       if (good_params[:type] == 'Product')
         #TODO: reducir la búsqueda a los items del composer y del receiver
         @item = Item.find(good_params[:item_id])
-        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+puts "*******************************************************************************"
+puts@item.user_id
+puts@offer.proposal.composer_id
+puts@offer.proposal.receiver_id
+        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user_id, images:@item.images)
         @good.id = @item.id
         # @good = Product.new(_id:@item.id, name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
       else
         @good = Cash.new(owner_id:good_params[:owner_id], amount:good_params[:amount])
       end
       @offer.proposal.goods << @good
+puts @offer.proposal.goods.size
+#     @offer.proposal.goods.delete_all
+# puts @offer.proposal.goods.size
+puts @offer.valid?
+puts @offer.proposal.errors.messages
+puts "*******************************************************************************"
+
     end
 
     #TODO: REVISAR SERGIO
