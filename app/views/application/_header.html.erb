@@ -3,16 +3,16 @@
 
     <div class="header_user_data">
       <div class="header_user_description">
-        <div class="header_description_element"><%= first_name(@user) %></div>
+        <div class="header_description_element"><%= first_name(current_user) %></div>
         <br>
-        <div class="header_description_element"><%= last_name(@user) %></div>
+        <div class="header_description_element"><%= last_name(current_user) %></div>
       </div>
       <div class="header_user_image">
         <div class="header_user-image_container">
-          <%= link_to logged_user_image(@user),
+          <%= link_to logged_user_image(current_user),
               :controller => "users",
               :action => "show",
-              :id => id(@user)
+              :id => id(current_user)
           %>
         </div>
       </div>
@@ -22,25 +22,25 @@
       <nav class="header_menu">
           <div class="header_menu_icon">
             <%= link_to friends_menu_icon,
-                user_profile_path(@user),
+                user_profile_path(current_user),
                 :remote => true,
                 :id => "link_profile"%>
           </div>
           <div class="header_menu_icon">
             <%= link_to products_menu_icon,
-                user_items_path(@user),
+                user_items_path(current_user),
                 :remote => true,
                 :id => "link_items"%>
           </div>
           <div class="header_menu_icon">
             <%= link_to negotiations_menu_icon,
-                user_alerts_path(@user),
+                user_alerts_path(current_user),
                 :remote => true,
                 :id => "link_items"%>
           </div>
           <div class="header_menu_icon">
             <%= link_to deals_menu_icon,
-                user_deals_path(@user),
+                user_deals_path(current_user),
                 :remote => true,
                 :id => "link_items"%>
           </div>

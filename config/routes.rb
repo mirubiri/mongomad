@@ -5,6 +5,8 @@ Mongomad::Application.routes.draw do
 
   #Recursos del user
   resources :users do
+    get 'user_caption'
+
     resource :profile
     resources :requests
     resources :items
