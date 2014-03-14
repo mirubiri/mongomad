@@ -1,5 +1,5 @@
-//Lo primero es ocultar la modal, porque ya se va a generar lo que queremos
-$('#new-offer-form').dialog('close');
+//Lo primero es eliminar la modal, porque ya se va a generar lo que queremos
+$('#new-offer-form').remove();
 
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $("#navigation_bar").html("<%=j render :partial => 'application/navigation_bar' %>");
@@ -36,3 +36,4 @@ matchPrincipalContainersHeighs();
   //Elimino la ventana modal de forma definitiva, si no lo hago y abro una nueva, pese a que esté hide, los procesos se lanzaran para cada una
   //delete $(this);
 //});
+
