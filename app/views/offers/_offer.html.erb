@@ -80,7 +80,7 @@
                :id => "edit_offer_link"} %>
 
       <%= link_to "DELETE",
-        user_offers_path(@user, id(offer)),
+        user_offer_path(@user, offer),
         :method => :delete,
         :confirm => "Are you sure?",
         :class => 'offer_buttons_style' %>

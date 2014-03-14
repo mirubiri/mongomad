@@ -1,10 +1,7 @@
 class OffersController < ApplicationController
  def index
     @user = User.find(params[:user_id])
-    @user.received_offers.size != 0 ? @offers = @user.received_offers : @offers = nil
-puts "*******************************************************************************"
-puts @offers
-puts "*******************************************************************************"
+    @user.received_offers.size != 0 ? @offers = @user.received_offers.desc(:updated_at) : @offers = nil
     @negotiation = Negotiation.new
 
     respond_to do |format|
@@ -88,6 +85,7 @@ puts "**************************************************************************
   end
 
   def update
+    @user = User.find(params[:user_id])
     @offer = Offer.find(params[:id])
 
     @offer.message = params[:offer][:message]

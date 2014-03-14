@@ -11,6 +11,8 @@ if( ($('.offer').length) === 0){
   $('#ppal_container > .no_elements').remove();
 }
 
+$('#ppal_container').children().last().remove();
+
 //Agregamos el elemento en el ppal_container con una transicion para que el usuario vea como se añade
 $('#ppal_container')
 .prepend("<%= escape_javascript(render template: 'offers/show', :locals => {:offer => offer, :@negotiation => Negotiation.new}).html_safe %>")
