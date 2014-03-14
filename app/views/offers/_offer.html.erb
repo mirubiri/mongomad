@@ -50,10 +50,7 @@
 
     <div class="profile_image">
       <%= link_to offer_user_image(composer(offer)),
-        :controller => "users",
-        :action => "show",
-        :id => id(composer(offer))
-      %>
+        user_offers_url(offer.user_composer) %>
     </div>
 
     <div class="description">

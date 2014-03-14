@@ -27,10 +27,9 @@
           <div class="profile_image">
             <div class="image_wrapper">
               <%= link_to header_user_image(@user),
-                :controller => "users",
-                :action => "show",
-                :id => id(@user)
-              %>
+                user_profile_url(@user),
+                :remote => "true"
+                 %>
             </div>
           </div>
 

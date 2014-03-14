@@ -2,6 +2,9 @@ class OffersController < ApplicationController
  def index
     @user = User.find(params[:user_id])
     @user.received_offers.size != 0 ? @offers = @user.received_offers : @offers = nil
+puts "*******************************************************************************"
+puts @offers
+puts "*******************************************************************************"
     @negotiation = Negotiation.new
 
     respond_to do |format|

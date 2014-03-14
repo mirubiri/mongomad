@@ -10,10 +10,7 @@
       <div class="header_user_image">
         <div class="header_user-image_container">
           <%= link_to logged_user_image(current_user),
-              :controller => "users",
-              :action => "show",
-              :id => id(current_user)
-          %>
+              user_offers_url(current_user) %>
         </div>
       </div>
     </div>
