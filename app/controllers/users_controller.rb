@@ -72,4 +72,12 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
     end
   end
+
+  #TODO: Quitar cuando tengamos un sistema de logeo
+  def user_caption
+    env['rack.session'][:current_user_id]= params[:user_id]
+    @user = User.find(params[:user_id])
+    redirect_to user_offers_url(@user)
+  end
+
 end
