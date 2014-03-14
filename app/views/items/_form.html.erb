@@ -16,10 +16,10 @@
               <div class="input_container">
                 <div class="input_text">+</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"}) %>
-                <% if images(@item).size > 0 %>
+                <%# if images(@item).size > 0 %>
                   <input type="hidden" name="item[images][][public_id]" value="<%= yield :first_item_id %>" />
                   <input type="hidden" name="item[images][][main]" value="false" />
-                <% end %>
+                <%# end %>
               </div>
               <div class="input_container" style="left: 60px;">
                 <div class="input_text delete_image_selected">-</div>
@@ -31,10 +31,10 @@
               <div class="input_container">
                 <div class="input_text">+</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"}) %>
-                <% if images(@item).size > 1 %>
+                <%# if images(@item).size > 1 %>
                   <input type="hidden" name="item[images][][public_id]" value="<%= yield :second_item_id %>" />
                   <input type="hidden" name="item[images][][main]" value="true" />
-                <% end %>
+                <%# end %>
               </div>
               <div class="input_container" style="left: 60px;">
                 <div class="input_text delete_image_selected">-</div>
@@ -46,10 +46,10 @@
               <div class="input_container">
                 <div class="input_text">+</div>
                 <%= cl_image_upload_tag(:image_id, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"}) %>
-                <% if images(@item).size > 2 %>
+                <%# if images(@item).size > 2 %>
                   <input class="hidden_image_input" type="hidden" name="item[images][][public_id]" value="<%= yield :third_item_id %>" />
                   <input class="hidden_image_input" type="hidden" name="item[images][][main]" value="false" />
-                <% end %>
+                <%# end %>
               </div>
               <div class="input_container" style="left: 60px;">
                 <div class="input_text delete_image_selected">-</div>
