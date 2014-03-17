@@ -71,7 +71,7 @@
     if(tipoElemento == "Cash"){
       var amount = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
-        "<input type=\"hidden\" name=\"offer[goods][][item_id]\" value=\""+product_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[goods][][owner_id]\" value=\""+product_id+"\" />" +
         "<input type=\"hidden\" name=\"offer[goods][][type]\" value=\""+tipoElemento+"\" />" +
         "<input type=\"hidden\" name=\"offer[goods][][amount]\" value=\""+amount+"\" />" +
 
@@ -89,7 +89,7 @@
     // alert(posicion);
 
     if (isitemInOffer(productSide,product_id)){
-      alert("THE PRODUCT IS ALREADY CHOOSEN");
+     // alert("THE PRODUCT IS ALREADY CHOOSEN");
     }
     else{
       // TODO: If product is money, should clone with the quantity and be uneditable
@@ -139,8 +139,8 @@ function isitemInOffer(side, id){
 }
 
 
-function howMuchInputsAre(side){
-  var items = $("#offer_summary").attr('maxItems');
-  items = parseInt(items, 10);
-  return items;
-}
+// function howMuchInputsAre(side){
+//   var items = $("#offer_summary").attr('maxItems');
+//   items = parseInt(items, 10);
+//   return items;
+// }
