@@ -89,7 +89,9 @@
           <div class="offer_info">
             <div class="profile_image"><%= offer_modal_user_image(current_user) %></div>
             <div class="description">
-              <div class="offer_message"><%= form.text_area :message, :placeholder => "Initial message", :rows => "2" %></div>
+              <div class="offer_message">
+                <textarea cols="40" rows="2" id="offer_message" name="offer[message]" placeholder="Initial message" required maxlength="160"></textarea>
+              </div>
             </div>
             <div class="offer_buttons">
               <%= form.submit "Submit", :url => user_offers_path(@user), :class => 'offer_buttons_style', :id => @offer_send_button_id %>
@@ -165,7 +167,7 @@
             </div>
             <div class="description">
               <div class="offer_message">
-                <%= form.text_area :message, :placeholder => "First Message", :rows => "2" %>
+                <textarea cols="40" rows="2" id="offer_message" name="offer[message]" placeholder="Initial message" required maxlength="160"></textarea>
               </div>
             </div>
             <div class="offer_buttons">
