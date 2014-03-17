@@ -61,13 +61,17 @@
           <div class="title">
             <%= form.text_area :name,
                     :placeholder => "Product name...",
-                    :size => "4x1" %>
+                    :size => "4x1",
+                    :required => true,
+                    :maxlength => "20" %>
           </div>
 
           <div class="description">
             <%= form.text_area :description,
-                      :placeholder => "Product description...",
-                      :size => "10x5" %>
+                    :placeholder => "Product description...",
+                    :size => "10x5",
+                    :required => true,
+                    :maxlength => "200" %> %>
           </div>
         </div>
 
@@ -79,6 +83,10 @@
     </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+
+</script>
 
 <script type="text/javascript">
   // $("#item_image_container").draggable({

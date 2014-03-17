@@ -38,10 +38,12 @@ $(function(){
 //Control de la redireccion url cuando negociamos una oferta
 $(function(){
     $(document).on('mouseover mouseout','.no_elements', function(event) {
-      if (event.type == 'mouseover') {
-        $("#add_request_invitation").removeClass("hidden_container");
-      } else {
-        $("#add_request_invitation").addClass("hidden_container");
+      if(  ($('#ppal_container').children('.no_elements').length > 0) && ($('#request_list_container').children('.request').length == 0)  ){
+        if (event.type == 'mouseover'){
+          $("#add_request_invitation").removeClass("hidden_container");
+        }else {
+          //$("#add_request_invitation").addClass("hidden_container");
+        }
       }
     });
 });
