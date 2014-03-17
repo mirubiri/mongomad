@@ -1,7 +1,7 @@
 Fabricator(:user_sheet) do
   transient  :user
   user       { Fabricate(:user) }
-  id        { |attrs| attrs[:user].id }
+  id         { |attrs| attrs[:user].id }
   nick       { |attrs| attrs[:user].nick }
   first_name { |attrs| attrs[:user].profile.first_name }
   last_name  { |attrs| attrs[:user].profile.last_name }
