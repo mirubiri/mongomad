@@ -18,10 +18,10 @@ describe User do
   it { should be_timestamped_document }
   it { should have_field :nick }
   it { should have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
+  it { should validate_length_of(:nick).within(1..15) }
 
   # Validations
   it { should validate_presence_of :profile }
-  it { should validate_presence_of :nick }
   it { should validate_presence_of :disabled }
 
   # Methods
