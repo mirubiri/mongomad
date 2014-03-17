@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def alerts(object)
-    object.alerts
-  end
+  # def alerts(object)
+  #   object.alerts
+  # end
 
   def agreement(object)
     object.agreement
