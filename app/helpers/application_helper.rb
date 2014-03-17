@@ -7,6 +7,10 @@ module ApplicationHelper
     object.agreement
   end
 
+  def amount(object)
+    object.money.fractional
+  end
+
   def articles(object, user)
     object.articles(user.id).desc(:updated_at)
   end
@@ -134,9 +138,13 @@ module ApplicationHelper
     object.text
   end
 
-  # def user(object)
-  #   User.find(id(object))
-  # end
+  def type(object)
+    object._type
+  end
+
+  def user(object)
+    User.find(id(object))
+  end
 
   def user_sheet(object)
     case object.class
