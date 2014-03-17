@@ -72,15 +72,12 @@
     if(tipoElemento == "Cash"){
       var amount = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
-        "<input type=\"hidden\" name=\"offer[cash][][owner_id]\" value=\""+owner_id+"\" />" +
-        //"<input type=\"hidden\" name=\"offer[cash][][type]\" value=\""+tipoElemento+"\" />" +
-        "<input type=\"hidden\" name=\"offer[cash][][amount]\" value=\""+amount+"\" />" +
-
+        "<input type=\"hidden\" name=\"offer[cashs][][owner_id]\" value=\""+owner_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[cashs][][amount]\" value=\""+amount+"\" />" +
         "</div>";
     }else{
       var inputString ="<div class='data_input'>"+
         "<input type=\"hidden\" name=\"offer[products][][item_id]\" value=\""+product_id+"\" />" +
-        //"<input type=\"hidden\" name=\"offer[products][][type]\" value=\""+tipoElemento+"\" />" +
         "</div>";
     }
 
@@ -90,7 +87,7 @@
     // alert(posicion);
 
     if (isitemInOffer(productSide,product_id)){
-      alert("THE PRODUCT IS ALREADY CHOOSEN");
+     // alert("THE PRODUCT IS ALREADY CHOOSEN");
     }
     else{
       // TODO: If product is money, should clone with the quantity and be uneditable
@@ -140,8 +137,8 @@ function isitemInOffer(side, id){
 }
 
 
-function howMuchInputsAre(side){
-  var items = $("#offer_summary").attr('maxItems');
-  items = parseInt(items, 10);
-  return items;
-}
+// function howMuchInputsAre(side){
+//   var items = $("#offer_summary").attr('maxItems');
+//   items = parseInt(items, 10);
+//   return items;
+// }

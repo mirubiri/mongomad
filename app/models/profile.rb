@@ -12,5 +12,6 @@ class Profile
   field :birth_date, type: Date
   field :location,   type: Array
 
-  validates_presence_of :first_name, :last_name, :language, :location
+  validates_length_of :first_name, :last_name, minimum: 1, maximum: 15
+  validates_presence_of :language, :location
 end

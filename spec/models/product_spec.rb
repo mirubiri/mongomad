@@ -13,16 +13,16 @@ describe Product do
 
   # Attributes
   it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
-  it { should have_fields :name, :description }
   it { should have_field(:owner_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_fields :name, :description }
   it { should have_field(:state).with_default_value_of('on_sale') }
   it { should auto_update(:name, :description, :images).using :item }
 
   # Validations
   it { should validate_presence_of :_id }
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :description }
   it { should validate_presence_of :owner_id }
+  it { should validate_length_of(:name).within(1..20) }
+  it { should validate_length_of(:description).within(1..200) }
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
 
   # Methods

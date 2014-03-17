@@ -2,14 +2,16 @@ class Product < Good
   include AutoUpdate
 
   field :_id,        type:Moped::BSON::ObjectId, default:nil
+  field :owner_id,   type:Moped::BSON::ObjectId
   field :name
   field :description
-  field :owner_id,   type:Moped::BSON::ObjectId
   field :state,      default:'on_sale'
 
   auto_update :name, :description, :images, using: :item
 
-  validates_presence_of :_id, :name, :description, :owner_id
+  validates_presence_of :_id, :owner_id
+  validates_length_of :name, minimum: 1, maximum: 20
+  validates_length_of :description, minimum: 1, maximum: 200
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
   def item

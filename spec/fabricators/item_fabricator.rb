@@ -1,6 +1,6 @@
 Fabricator(:item) do
   user
-  name        { Faker::Name.first_name }
-  description { Faker::Lorem.sentence }
+  name        { Faker::Commerce.product_name.slice(0,20) }
+  description { Faker::Lorem.sentence(rand(1..60)).slice(0,200) }
   images      { [ Fabricate.build(:image_product, main:true), Fabricate.build(:image_product) ] }
 end

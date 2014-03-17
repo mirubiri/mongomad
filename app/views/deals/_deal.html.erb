@@ -79,7 +79,7 @@
     <div class="writting_box">
       <div class="message">
        <%= form_for [@user,@deal], url: {action: "pusher_message"}, :remote => true do |form| %>
-        <textarea class="txt_area_writer" id="message_writer" name="message" maxlength="160" required></textarea>
+        <textarea class="txt_area_writer" id="message_writer" name="message" maxlength="400" required></textarea>
         <input type="hidden" name="deal_id" value="<%= id(deal)%>">
         <%= form.submit "Send", :id => "send_message_button" %>
        <% end %>
