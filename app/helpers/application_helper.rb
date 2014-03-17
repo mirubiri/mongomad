@@ -364,4 +364,13 @@ module ApplicationHelper
   def proposal_info(proposal)
     "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
   end
+
+  # Negotiation helpers
+  def can_sign?(object, user)
+    object.gatekeeper(id(user), :sign)
+  end
+
+  def can_confirm?(object, user)
+    object.gatekeeper(id(user), :confirm)
+  end
 end
