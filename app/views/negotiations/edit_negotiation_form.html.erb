@@ -76,14 +76,14 @@
           <div class="offer_header"><%= full_name(current_user) %></div>
           <div class="offer_products">
             <div class="summaryleft">
-              <div class="money_received" id="dineroPidesEnSumario">
+              <!-- <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
-              </div>
+              </div> -->
             </div>
             <div class="summaryright">
-              <div class="money_given" id="dineroOfrecesEnSumario">
+            <!--   <div class="money_given" id="dineroOfrecesEnSumario">
                 <div class="money_composition"></div>
-              </div>
+              </div> -->
             </div>
           </div>
           <div class="offer_info">
@@ -106,15 +106,15 @@
 
             <div class="summaryleft">
               <% composer_articles(proposal(@negotiation)).each do |good| %>
-                <% if good._type == "Product" %>
+                <% if type(good) == "Product" %>
                   <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
                     <div class="item_image"><%= offer_modal_composer_product_image(good) %></div>
                     <div class="item_description">
                       <div class="text"><%= name(good) %></div>
                     </div>
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
-                      <input type="hidden" name="offer[goods][][item_id]" value="<%= id(good) %>">
+                      <!-- <input type="hidden" name="offer[products][][type]" value="<%= good._type %>"> -->
+                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(good) %>">
                     </div>
                   </div>
                 <% else %>
@@ -122,9 +122,9 @@
                     <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
                     valor del dinero -->
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
-                      <input type="hidden" name="offer[goods][][owner_id]" value="<%= id(@user) %>">
-                      <input type="hidden" name="offer[goods][][amount]" value="<%= good.money.fractional %>">
+                      <!-- <input type="hidden" name="offer[cash][][type]" value="<%= good._type %>"> -->
+                      <input type="hidden" name="offer[cash][][owner_id]" value="<%= id(@user) %>">
+                      <input type="hidden" name="offer[cash][][amount]" value="<%= good.money.fractional %>">
                     </div>
                   </div>
                 <% end %>
@@ -140,8 +140,8 @@
                       <div class="text"><%= name(good) %></div>
                     </div>
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
-                      <input type="hidden" name="offer[goods][][item_id]" value="<%= id(good) %>">
+                      <!-- <input type="hidden" name="offer[products][][type]" value="<%= good._type %>"> -->
+                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(good) %>">
                     </div>
                   </div>
                 <% else %>
@@ -149,9 +149,9 @@
                     <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
                     valor del dinero -->
                     <div class="data_input">
-                      <input type="hidden" name="offer[goods][][type]" value="<%= good._type %>">
-                      <input type="hidden" name="offer[goods][][owner_id]" value="<%= id(@user) %>">
-                      <input type="hidden" name="offer[goods][][amount]" value="<%= good.money.fractional %>">
+                      <!-- <input type="hidden" name="offer[cash][][type]" value="<%= good._type %>"> -->
+                      <input type="hidden" name="offer[cash][][owner_id]" value="<%= id(@user) %>">
+                      <input type="hidden" name="offer[cash][][amount]" value="<%= good.money.fractional %>">
                     </div>
                   </div>
                 <% end %>
