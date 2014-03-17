@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def alerts(object)
-    object.alerts
-  end
+  # def alerts(object)
+  #   object.alerts
+  # end
 
   def agreement(object)
     object.agreement
@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def deals(object)
-    object.deals
+    object.deals.desc(:updated_at)
   end
 
   def description(object)
@@ -90,7 +90,7 @@ module ApplicationHelper
   end
 
   def messages(object)
-    object.messages
+    object.messages.desc(:updated_at)
   end
 
   def name(object)
@@ -98,7 +98,7 @@ module ApplicationHelper
   end
 
   def negotiations(object)
-    object.negotiations
+    object.negotiations.desc(:updated_at)
   end
 
   def nick(object)
@@ -110,7 +110,7 @@ module ApplicationHelper
   end
 
   def received_offers(object)
-    object.received_offers
+    object.received_offers.desc(:updated_at)
   end
 
   def receiver(object)
@@ -312,32 +312,26 @@ module ApplicationHelper
   end
 
   def product_modal_item_main_image(object)
-    if images(object).size > 0
+    if images(object).size != 0
       cl_image_tag(id(main_image(object)) + ".jpg", :width => 270, :height => 270, :crop => :fit)
-    else
-      '<img src=''>'.html_safe
     end
   end
 
   def product_modal_item_first_image(object)
-    if images(object).size > 0
-      cl_image_tag(id(images(object)[0]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
-    else
-      '<img src=''>'.html_safe
-    end
+    product_modal_item_image(object, 1)
   end
 
   def product_modal_item_second_image(object)
-    if images(object).size > 1
-      cl_image_tag(id(images(object)[1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
-    else
-      '<img src=''>'.html_safe
-    end
+    product_modal_item_image(object, 2)
   end
 
   def product_modal_item_third_image(object)
-    if images(object).size > 2
-      cl_image_tag(id(images(object)[2]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
+    product_modal_item_image(object, 3)
+  end
+
+  def product_modal_item_image(object, index)
+    if images(object).size > index-1
+      cl_image_tag(id(images(object)[index-1]) + ".jpg", :width => 270, :height => 270, :crop => :fit)
     else
       '<img src=''>'.html_safe
     end
@@ -369,5 +363,14 @@ module ApplicationHelper
   # TODO: ELIMINAR, solo para debug
   def proposal_info(proposal)
     "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
+  end
+
+  # Negotiation helpers
+  def can_sign?(object, user)
+    object.gatekeeper(id(user), :sign)
+  end
+
+  def can_confirm?(object, user)
+    object.gatekeeper(id(user), :confirm)
   end
 end

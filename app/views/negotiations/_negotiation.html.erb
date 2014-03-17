@@ -1,7 +1,6 @@
 <div class="negotiation" id="<%= id(negotiation) %>">
 
   <div class="debug_container"><%#= debug_info(negotiation) %></div>
-
   <div class="negotiation_offer">
 
     <div class="oponent_info">
@@ -44,35 +43,30 @@
     </div>
 
     <div class="offer_info">
-
       <div class="offer_buttons">
         <%= link_to 'NEW',
-            edit_user_negotiation_path(@user,id(negotiation)),
-            class: "new_deal_button_style",
-            :remote => true %>
+          edit_user_negotiation_path(@user,id(negotiation)),
+          class: "new_deal_button_style",
+          :remote => true %>
 
-        <%# if (can_sign?(proposal(negotiation),@user)) %>
+       <!--  <% if can_sign?(negotiation), @user) %>
           <%= link_to 'SIGN',
               sign_user_negotiation_path(id(@user),id(negotiation)),
               class: "sign_deal_button_style",
               :remote => true %>
-        <%# end %>
-
-        <%# if (can_confirm?(proposal(negotiation),@user)) %>
+        <% elsif can_confirm?(negotiation), @user) %>
           <%= link_to 'CONFIRM',
               confirm_user_negotiation_path(id(@user),id(negotiation)),
               class: "sign_deal_button_style",
               :remote => true %>
-        <%# end %>
+        <% end %>
 
-        <%# if (can_cancel?(proposal(negotiation),@user)) %>
-          <%= link_to 'CANCEL',
-              cancel_user_negotiation_path(id(@user),id(negotiation)),
-              class: "cancel_deal_button_style",
-              :remote => true %>
-        <%# end %>
+        <%= link_to 'CANCEL',
+            cancel_user_negotiation_path(id(@user),id(negotiation)),
+            class: "cancel_deal_button_style",
+            :remote => true %>
+        <% end %> -->
       </div>
-
     </div>
   </div>
 
@@ -82,10 +76,10 @@
       <div class="option_icons">
         <div class="icon">
           <%= link_to "leave",
-            user_negotiations_path(@user, id(negotiation)),
-            :method => :delete,
-            :confirm => "Are you sure?",
-            :class => 'offer_buttons_style' %>
+              user_negotiations_path(@user, id(negotiation)),
+              :method => :delete,
+              :confirm => "Are you sure?",
+              :class => 'offer_buttons_style' %>
         </div>
       </div>
     </div>
@@ -93,15 +87,9 @@
     <div class="conversation" id="conversationofnegotiation">
       <% messages(negotiation).each do |message| %>
         <div class="comment">
-          <div class="comment_user_image">
-            <%= negotiation_message_user_image(@user) %>  <!-- TODO: cambiar @user por message -->
-          </div>
-          <div class="comment_text">
-            <%= text(message) %>
-          </div>
-          <div class="comment_datetime">
-            <%= date_time(message) %>
-          </div>
+          <div class="comment_user_image"><%= negotiation_message_user_image(@user) %></div>
+          <div class="comment_text"><%= text(message) %></div>
+          <div class="comment_datetime"><%= date_time(message) %></div>
         </div>
       <% end %>
       <div class="option_buttons">
