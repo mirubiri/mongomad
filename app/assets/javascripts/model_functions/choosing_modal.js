@@ -92,10 +92,17 @@
       alert("THE PRODUCT IS ALREADY CHOOSEN");
     }
     else{
+      // TODO: If product is money, should clone with the quantity and be uneditable
+      // var amount = $(this).find('textarea').val();
+      // $(this).clone(false).appendTo('.summary'+productSide)
+      // .find('textarea').attr('readonly','readonly').html(amount)
+      // .append(inputString)
+      // .removeAttr('style')
+      // .children('.item_image')
+      // .removeAttr('style');
+
       //alert("no estoy en el sumario");
-      var amount = $(this).find('textarea').val();
       $(this).clone(false).appendTo('.summary'+productSide)
-      .find('textarea').attr('readonly','readonly').html(amount)
       .append(inputString)
       .removeAttr('style')
       .children('.item_image')
