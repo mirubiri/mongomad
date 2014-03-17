@@ -13,4 +13,5 @@ class Profile
   field :location,   type: Array
 
   validates_presence_of :first_name, :last_name, :language, :location
+  validates_length_of :first_name, :last_name, minimum: 1, maximum: 20
 end
