@@ -7,6 +7,10 @@ module ApplicationHelper
     object.agreement
   end
 
+  def amount(object)
+    object.money.fractional
+  end
+
   def articles(object, user)
     object.articles(user.id).desc(:updated_at)
   end
