@@ -29,7 +29,7 @@
               </div>
             </div>
             <% items(current_user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" side="left" type="Product">
+              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>'  side="left" type="Product">
                 <div class="item_image"><%= offer_modal_receiver_product_image(item) %></div>
                 <div class="item_description">
                   <div class="text"><%= name(item) %></div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" side="right" type="Product">
+              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>'  side="right" type="Product">
                 <div class="item_image"><%= offer_modal_composer_product_image(item) %></div>
                 <div class="item_description">
                   <div class="text"><%= name(item) %></div>
@@ -59,8 +59,8 @@
         </div>
 
         <div class="product_overview">
-          <% 3.times do %>
-            <div class="overview_image" id="overview_image">Imagen</div>
+          <% 3.times do |i| %>
+            <div class="overview_image" id="overview_image<%= i %>">Imagen</div>
           <% end %>
           <div class="overview_description">
             <div class="overview_description_title" id="overview_description_title">Product Title</div>
