@@ -134,9 +134,9 @@ module ApplicationHelper
     object.text
   end
 
-  def user(object)
-    User.find(id(object))
-  end
+  # def user(object)
+  #   User.find(id(object))
+  # end
 
   def user_sheet(object)
     case object.class

@@ -72,21 +72,12 @@
     if(tipoElemento == "Cash"){
       var amount = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
-<<<<<<< HEAD
-        "<input type=\"hidden\" name=\"offer[goods][][owner_id]\" value=\""+product_id+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods][][type]\" value=\""+tipoElemento+"\" />" +
-        "<input type=\"hidden\" name=\"offer[goods][][amount]\" value=\""+amount+"\" />" +
-=======
-        "<input type=\"hidden\" name=\"offer[cash][][owner_id]\" value=\""+owner_id+"\" />" +
-        //"<input type=\"hidden\" name=\"offer[cash][][type]\" value=\""+tipoElemento+"\" />" +
-        "<input type=\"hidden\" name=\"offer[cash][][amount]\" value=\""+amount+"\" />" +
->>>>>>> e44d8aa9d444479feb8906951e9f35724588ae21
-
+        "<input type=\"hidden\" name=\"offer[cashs][][owner_id]\" value=\""+owner_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[cashs][][amount]\" value=\""+amount+"\" />" +
         "</div>";
     }else{
       var inputString ="<div class='data_input'>"+
         "<input type=\"hidden\" name=\"offer[products][][item_id]\" value=\""+product_id+"\" />" +
-        //"<input type=\"hidden\" name=\"offer[products][][type]\" value=\""+tipoElemento+"\" />" +
         "</div>";
     }
 
