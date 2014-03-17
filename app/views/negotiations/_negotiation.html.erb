@@ -45,27 +45,29 @@
     <div class="offer_info">
       <div class="offer_buttons">
         <%= link_to 'NEW',
-          edit_user_negotiation_path(@user,id(negotiation)),
-          class: "new_deal_button_style",
-          :remote => true %>
+            edit_user_negotiation_path(@user,id(negotiation)),
+            class: "new_deal_button_style",
+            :remote => true %>
 
-       <!--  <% if can_sign?(negotiation), @user) %>
+        <% if (can_sign?(negotiation,@user)) %>
           <%= link_to 'SIGN',
               sign_user_negotiation_path(id(@user),id(negotiation)),
               class: "sign_deal_button_style",
               :remote => true %>
-        <% elsif can_confirm?(negotiation), @user) %>
+        <% end %>
+
+        <% if (can_confirm?(negotiation,@user)) %>
           <%= link_to 'CONFIRM',
               confirm_user_negotiation_path(id(@user),id(negotiation)),
               class: "sign_deal_button_style",
               :remote => true %>
         <% end %>
 
+
         <%= link_to 'CANCEL',
             cancel_user_negotiation_path(id(@user),id(negotiation)),
             class: "cancel_deal_button_style",
             :remote => true %>
-        <% end %> -->
       </div>
     </div>
   </div>
