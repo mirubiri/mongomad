@@ -15,8 +15,8 @@ class UserSheet
   auto_update :nick, :first_name, :last_name, :location, :images, using: :current_sheet
 
   validates_presence_of :_id, :location
-  validates_length_of :nick, minimum: 1, maximum: 15
-  validates_length_of :first_name, :last_name, minimum: 1, maximum: 20
+  validates_length_of :nick, minimum: 1, maximum: 20
+  validates_length_of :first_name, :last_name, minimum: 1, maximum: 15
 
   def current_sheet
     User.find(id).sheet

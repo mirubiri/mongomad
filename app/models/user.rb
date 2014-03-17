@@ -15,7 +15,7 @@ class User
   field :disabled, type:Boolean, default:false
 
   validates_presence_of :profile, :disabled
-  validates_length_of :nick, minimum: 1, maximum: 15
+  validates_length_of :nick, minimum: 1, maximum: 20
 
   def sheet
     UserSheet.new(nick:nick,

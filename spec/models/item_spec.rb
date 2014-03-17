@@ -19,10 +19,10 @@ describe Item do
   # Validations
   it { should validate_presence_of :user }
   it { should_not have_autosave_on :user }
-  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
-  it { should validate_presence_of :discarded }
   it { should validate_length_of(:name).within(1..20) }
   it { should validate_length_of(:description).within(1..200) }
+  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
+  it { should validate_presence_of :discarded }
 
   # Methods
   describe '#state_machine(machine)' do

@@ -21,8 +21,8 @@ describe User do
 
   # Validations
   it { should validate_presence_of :profile }
+  it { should validate_length_of(:nick).within(1..20) }
   it { should validate_presence_of :disabled }
-  it { should validate_length_of(:nick).within(1..15) }
 
   # Methods
   describe '#sheet' do

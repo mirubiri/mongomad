@@ -10,10 +10,10 @@ class Item
   field :state,      default:'on_sale'
   field :discarded,  type:Boolean, default:false
 
-  validates_presence_of :user, :name, :description, :discarded
-  validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
+  validates_presence_of :user, :discarded
   validates_length_of :name, minimum: 1, maximum: 20
   validates_length_of :description, minimum: 1, maximum: 200
+  validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
   def state_machine(machine = nil)
     @state_machine ||= begin

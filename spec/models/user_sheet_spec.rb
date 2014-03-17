@@ -22,10 +22,10 @@ describe UserSheet do
   # Validations
   it { should_not validate_presence_of :user_sheet_container }
   it { should validate_presence_of :_id }
+  it { should validate_length_of(:nick).within(1..20) }
+  it { should validate_length_of(:first_name).within(1..15) }
+  it { should validate_length_of(:last_name).within(1..15) }
   it { should validate_presence_of :location }
-  it { should validate_length_of(:nick).within(1..15) }
-  it { should validate_length_of(:first_name).within(1..20) }
-  it { should validate_length_of(:last_name).within(1..20) }
 
   # Methods
   specify '.new' do
