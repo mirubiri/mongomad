@@ -11,6 +11,8 @@ class Product < Good
 
   validates_presence_of :_id, :name, :description, :owner_id
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
+  validates_length_of :name, minimum: 1, maximum: 20
+  validates_length_of :description, minimum: 1, maximum: 200
 
   def item
     Item.find(_id)
