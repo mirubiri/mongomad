@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def deals(object)
-    object.deals
+    object.deals.desc(:updated_at)
   end
 
   def description(object)
@@ -90,7 +90,7 @@ module ApplicationHelper
   end
 
   def messages(object)
-    object.messages
+    object.messages.desc(:updated_at)
   end
 
   def name(object)
@@ -98,7 +98,7 @@ module ApplicationHelper
   end
 
   def negotiations(object)
-    object.negotiations
+    object.negotiations.desc(:updated_at)
   end
 
   def nick(object)
@@ -110,7 +110,7 @@ module ApplicationHelper
   end
 
   def received_offers(object)
-    object.received_offers
+    object.received_offers.desc(:updated_at)
   end
 
   def receiver(object)
