@@ -56,34 +56,35 @@ class OffersController < ApplicationController
 # puts "*******************************************************************************"
 
 
-    if (params[:offer][:cash]!=nil)
-      # puts "ENTRAMOS A CASH"
-      params[:offer][:cash].each do |cash_params|
-        @image = Attachment::Image.new(main:true)
-        @image.id = 'static/images/money'
-        @good = Cash.new(owner_id:cash_params[:owner_id])
-        @good.money = Money.new(cash_params[:amount])
-        @good.images << @image
-    # puts "*******************************************************************************"
-# puts @good.valid?
-# puts "*******************************************************************************"
-        @proposal.goods << @good
-      end
-    end
 
-    if (params[:offer][:products]!=nil)
-      # puts "ENTRAMOS A products"
-      params[:offer][:products].each do |product_params|
-        #TODO: reducir la búsqueda a los items del composer y del receiver
-        @item = Item.find(product_params[:item_id])
-        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
-        @good.id = @item.id
-        @proposal.goods << @good
-# puts "*******************************************************************************"
-# puts @good.valid?
-# puts "*******************************************************************************"
-      end
-    end
+#     if (params[:offer][:cash]!=nil)
+#       # puts "ENTRAMOS A CASH"
+#       # params[:offer][:cash].each do |cash_params|
+#         @image = Attachment::Image.new(main:true)
+#         @image.id = 'static/images/money'
+#         @good = Cash.new(owner_id:cash_params[:owner_id])
+#         @good.money = Money.new(cash_params[:amount])
+#         @good.images << @image
+#     # puts "*******************************************************************************"
+# # puts @good.valid?
+# # puts "*******************************************************************************"
+#         @proposal.goods << @good
+#       end
+#     end
+
+#     if (params[:offer][:products]!=nil)
+#       # puts "ENTRAMOS A products"
+#       params[:offer][:products].each do |product_params|
+#         #TODO: reducir la búsqueda a los items del composer y del receiver
+#         @item = Item.find(product_params[:item_id])
+#         @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+#         @good.id = @item.id
+#         @proposal.goods << @good
+# # puts "*******************************************************************************"
+# # puts @good.valid?
+# # puts "*******************************************************************************"
+#       end
+#     end
 # puts @proposal.valid?
 
     # params[:offer][:products].each do |good_params|
@@ -120,7 +121,7 @@ class OffersController < ApplicationController
     #   end
     #   @proposal.goods << @good
     # end
-    @offer.proposal = @proposal
+    @offer.proposal = fill_proposal_goods(@proposal, params)
 
 # puts "*******************************************************************************"
 # puts @proposal.errors.messages
@@ -146,35 +147,35 @@ class OffersController < ApplicationController
     @offer.message = params[:offer][:message]
     @offer.proposal.goods.delete_all
 
+    fill_proposal_goods(@offer.proposal, params)
+#  if (params[:offer][:cash]!=nil)
+#       # puts "ENTRAMOS A CASH"
+#       params[:offer][:cash].each do |cash_params|
+#         @image = Attachment::Image.new(main:true)
+#         @image.id = 'static/images/money'
+#         @good = Cash.new(owner_id:cash_params[:owner_id])
+#         @good.money = Money.new(cash_params[:amount])
+#         @good.images << @image
+#     # puts "*******************************************************************************"
+# # puts @good.valid?
+# # puts "*******************************************************************************"
+#         @proposal.goods << @good
+#       end
+#     end
 
- if (params[:offer][:cash]!=nil)
-      # puts "ENTRAMOS A CASH"
-      params[:offer][:cash].each do |cash_params|
-        @image = Attachment::Image.new(main:true)
-        @image.id = 'static/images/money'
-        @good = Cash.new(owner_id:cash_params[:owner_id])
-        @good.money = Money.new(cash_params[:amount])
-        @good.images << @image
-    # puts "*******************************************************************************"
-# puts @good.valid?
-# puts "*******************************************************************************"
-        @proposal.goods << @good
-      end
-    end
-
-    if (params[:offer][:products]!=nil)
-      # puts "ENTRAMOS A products"
-      params[:offer][:products].each do |product_params|
-        #TODO: reducir la búsqueda a los items del composer y del receiver
-        @item = Item.find(product_params[:item_id])
-        @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
-        @good.id = @item.id
-        @proposal.goods << @good
-# puts "*******************************************************************************"
-# puts @good.valid?
-# puts "*******************************************************************************"
-      end
-    end
+#     if (params[:offer][:products]!=nil)
+#       # puts "ENTRAMOS A products"
+#       params[:offer][:products].each do |product_params|
+#         #TODO: reducir la búsqueda a los items del composer y del receiver
+#         @item = Item.find(product_params[:item_id])
+#         @good = Product.new(name:@item.name, description:@item.description, owner_id:@item.user.id, images:@item.images)
+#         @good.id = @item.id
+#         @proposal.goods << @good
+# # puts "*******************************************************************************"
+# # puts @good.valid?
+# # puts "*******************************************************************************"
+#       end
+#     end
 
 
 
@@ -209,7 +210,7 @@ class OffersController < ApplicationController
         format.html { redirect_to @user, notice: 'Offer has been successfully updated.' }
         format.js { render 'reload_offer_list', :layout => false}
       else
-        format.html { redirect_to user_offers_url, notice: 'Offer has not been updated.'}
+        format.html { redirect_to user_offers_url, notice: 'Offer has not been updated.' }
       end
     end
   end
@@ -225,5 +226,37 @@ class OffersController < ApplicationController
         # ni idea :)
       end
     end
+  end
+
+  private
+  def fill_proposal_goods (proposal, params)
+    if (params[:offer][:cash] != nil)
+        # puts "ENTRAMOS A CASH"
+        # params[:offer][:cash].each do |cash_params|
+      image = Attachment::Image.new(main:true)
+      image.id = 'static/images/money'
+      good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
+      good.money = Money.new(params[:offer][:cash][:amount])
+      good.images << image
+      # puts "*******************************************************************************"
+       # puts @good.valid?
+       # puts "*******************************************************************************"
+      proposal.goods << good
+    end
+
+    if (params[:offer][:products]!=nil)
+          # puts "ENTRAMOS A products"
+      params[:offer][:products].each do |product_params|
+        #TODO: reducir la búsqueda a los items del composer y del receiver
+        item = Item.find(product_params[:item_id])
+        good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
+        good.id = item.id
+        proposal.goods << good
+         # puts "*******************************************************************************"
+         # puts good.valid?
+          # puts "*******************************************************************************"
+      end
+    end
+    proposal
   end
 end
