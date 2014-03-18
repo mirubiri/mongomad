@@ -20,7 +20,7 @@
       </div>
 
       <div class="products_container">
-        <div class="products_list">
+        <div class="products_list" id="products_list">
           <div id="receiver_content_area">
             <div class="item" id="receiver_money" owner_id="<%= id(current_user) %>" side="left" type="Cash">
               <div class="item_image"><%= money_image %></div>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <% items(current_user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>'  side="left" type="Product">
+              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>' side="left" type="Product">
                 <div class="item_image"><%= offer_modal_receiver_product_image(item) %></div>
                 <div class="item_description">
                   <div class="text"><%= name(item) %></div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <% items(@user).each do |item| %>
-              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>'  side="right" type="Product">
+              <div class="item" id="<%= id(item) %>" image1='<%= product_modal_item_second_image(item) %>' image2='<%= product_modal_item_third_image(item) %>' side="right" type="Product">
                 <div class="item_image"><%= offer_modal_composer_product_image(item) %></div>
                 <div class="item_description">
                   <div class="text"><%= name(item) %></div>
@@ -76,20 +76,22 @@
           <div class="offer_header"><%= full_name(current_user) %></div>
           <div class="offer_products">
             <div class="summaryleft">
-              <!-- <div class="money_received" id="dineroPidesEnSumario">
+              <div class="money_received" id="dineroPidesEnSumario">
                 <div class="money_composition"></div>
-              </div> -->
+              </div>
             </div>
             <div class="summaryright">
-            <!--   <div class="money_given" id="dineroOfrecesEnSumario">
+              <div class="money_given" id="dineroOfrecesEnSumario">
                 <div class="money_composition"></div>
-              </div> -->
+              </div>
             </div>
           </div>
           <div class="offer_info">
             <div class="profile_image"><%= offer_modal_user_image(current_user) %></div>
             <div class="description">
-              <div class="offer_message"><%= form.text_area :message, :placeholder => "Initial message", :rows => "2" %></div>
+              <div class="offer_message">
+                <%= form.text_area :message, :placeholder => "Initial message", :rows => "2", :required => true, :maxlength => "160" %>
+              </div>
             </div>
             <div class="offer_buttons">
               <%= form.submit "Submit", :url => user_offers_path(@user), :class => 'offer_buttons_style', :id => @offer_send_button_id %>
@@ -105,26 +107,24 @@
           <div class="offer_products">
 
             <div class="summaryleft">
-              <% composer_articles(proposal(@negotiation)).each do |good| %>
-                <% if type(good) == "Product" %>
-                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <div class="item_image"><%= offer_modal_composer_product_image(good) %></div>
+              <% composer_articles(proposal(@negotiation)).each do |article| %>
+                <% if type(article) == "Product" %>
+                  <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
+                    <div class="item_image"><%= offer_modal_composer_product_image(article) %></div>
                     <div class="item_description">
-                      <div class="text"><%= name(good) %></div>
+                      <div class="text"><%= name(article) %></div>
                     </div>
                     <div class="data_input">
-                      <!-- <input type="hidden" name="offer[products][][type]" value="<%= good._type %>"> -->
-                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(good) %>">
+                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(article) %>">
                     </div>
                   </div>
                 <% else %>
-                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    valor del dinero -->
+                  <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
+                    <div class="item_image"><%= money_image %></div>
+                    <div class="item_description"><%= amount(article) %></div>
                     <div class="data_input">
-                      <!-- <input type="hidden" name="offer[cash][][type]" value="<%= good._type %>"> -->
-                      <input type="hidden" name="offer[cash][][owner_id]" value="<%= id(@user) %>">
-                      <input type="hidden" name="offer[cash][][amount]" value="<%= good.money.fractional %>">
+                      <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
+                      <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
                     </div>
                   </div>
                 <% end %>
@@ -132,26 +132,24 @@
             </div>
 
             <div class="summaryright">
-              <% receiver_articles(proposal(@negotiation)).each do |good| %>
-                <% if good._type == "Product" %>
-                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <div class="item_image"><%= offer_modal_receiver_product_image(good) %></div>
+              <% receiver_articles(proposal(@negotiation)).each do |article| %>
+                <% if type(article) == "Product" %>
+                  <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
+                    <div class="item_image"><%= offer_modal_composer_product_image(article) %></div>
                     <div class="item_description">
-                      <div class="text"><%= name(good) %></div>
+                      <div class="text"><%= name(article) %></div>
                     </div>
                     <div class="data_input">
-                      <!-- <input type="hidden" name="offer[products][][type]" value="<%= good._type %>"> -->
-                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(good) %>">
+                      <input type="hidden" name="offer[products][][item_id]" value="<%= id(article) %>">
                     </div>
                   </div>
                 <% else %>
-                  <div class="item newitem" id="<%= id(good) %>"  side="left" type="<%= good._type %>">
-                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    valor del dinero -->
+                  <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
+                    <div class="item_image"><%= money_image %></div>
+                    <div class="item_description"><%= amount(article) %></div>
                     <div class="data_input">
-                      <!-- <input type="hidden" name="offer[cash][][type]" value="<%= good._type %>"> -->
-                      <input type="hidden" name="offer[cash][][owner_id]" value="<%= id(@user) %>">
-                      <input type="hidden" name="offer[cash][][amount]" value="<%= good.money.fractional %>">
+                      <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
+                      <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
                     </div>
                   </div>
                 <% end %>
@@ -165,7 +163,6 @@
             </div>
             <div class="description">
               <div class="offer_message">
-                <%#= form.text_area :message, :placeholder => "First Message", :rows => "2" %>
               </div>
             </div>
             <div class="offer_buttons">
@@ -178,3 +175,4 @@
     <% end %>
   <% end %>
 </div>
+

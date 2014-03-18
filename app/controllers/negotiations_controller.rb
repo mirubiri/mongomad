@@ -158,7 +158,8 @@ puts "**************************************************************************
   # Prueba el canal de Pusher
   def pusher_message
     @user = User.find(params[:user_id])
-    Pusher.trigger('my_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
+    Pusher.trigger('my_negotiations_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
+    Pusher.trigger('my_negotiations_channel', 'my_notification', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
     respond_to do |format|
       format.js
     end

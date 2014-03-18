@@ -11,13 +11,13 @@
 
       <div class="petition_text_side">
         <div class="petition_text">
-          <%= form.text_area :text, :onkeyup => "countChar(this)", :placeholder => "Make your request here...", :size => "24x6", :required => true, :maxlength => "160" %>
+          <%= form.text_area :text, :id => "request_counter", :placeholder => "Make your request here...", :size => "24x6", :required => true, :maxlength => "160" %>
         </div>
         <div class="petitions_buttons_side">
           <div class="send_button">
             <!-- <button class="offer_buttons_style">X</button> -->
             <%= form.submit "Save", :class => 'offer_buttons_style', :id => 'new-request-send-button' %>
-            <div class="characters_left" id="charNum">160</div><div class="characters_left">/160</div>
+            <div class="characters_left" id="requestNum">160</div><div class="characters_left">/160</div>
           </div>
         </div>
       </div>
@@ -26,12 +26,14 @@
 </div>
 
 <script>
-  function countChar(val) {
-    var len = val.value.length;
-    if (len >= 161) {
-      val.value = val.value.substring(0, 161);
+  $('#request_counter').keyup(function () {
+    var max = 160;
+    var len = $(this).val().length;
+    if (len >= max) {
+      $('#charNum').text('0');
     } else {
-      $('#charNum').text(160 - len);
+      var char = max - len;
+      $('#requestNum').text(char);
     }
-  };
+  });
 </script>
