@@ -60,9 +60,7 @@
 (function ($)
 {
   $.fn.addProductToSummary = function(){
-
     //alert("empiezo a añadir");
-
     var product_id = $(this).attr("id");
     var owner_id = $(this).attr("owner_id");
     var tipoElemento = $(this).attr("type");
@@ -75,39 +73,28 @@
         "<input type=\"hidden\" name=\"offer[cash][owner_id]\" value=\""+owner_id+"\" />" +
         "<input type=\"hidden\" name=\"offer[cash][amount]\" value=\""+amount+"\" />" +
         "</div>";
+
+      $(this)
+      .clone(false).find('textarea').attr('readonly','readonly').html(amount)
+      .attr('required','required').attr('type','number').attr('min','0')
+      .closest('.item')
+      .appendTo('.summary'+productSide)
+      .append(inputString)
+      .removeAttr('style')
+      .children('.item_image')
+      .removeAttr('style');
+
     }else{
       var inputString ="<div class='data_input'>"+
         "<input type=\"hidden\" name=\"offer[products][][item_id]\" value=\""+product_id+"\" />" +
         "</div>";
-    }
 
-    // alert(product_id);
-    // alert(tipoElemento);
-    // alert(productSide);
-    // alert(posicion);
-
-    if (isitemInOffer(productSide,product_id)){
-     // alert("THE PRODUCT IS ALREADY CHOOSEN");
-    }
-    else{
-      // TODO: If product is money, should clone with the quantity and be uneditable
-      // var amount = $(this).find('textarea').val();
-      // $(this).clone(false).appendTo('.summary'+productSide)
-      // .find('textarea').attr('readonly','readonly').html(amount)
-      // .append(inputString)
-      // .removeAttr('style')
-      // .children('.item_image')
-      // .removeAttr('style');
-
-      //alert("no estoy en el sumario");
       $(this).clone(false).appendTo('.summary'+productSide)
       .append(inputString)
       .removeAttr('style')
       .children('.item_image')
       .removeAttr('style');
     }
-
-    //$("#offer_summary").attr('maxItems',posicion);
 
     return $(this);
   };
