@@ -8,47 +8,30 @@
 
   <div class="offer_items">
     <div class="received">
-      <% composer_articles(offer).each do |product| %>
-
+      <% composer_articles(offer).each do |article| %>
         <div class="image_container">
-
-          <div class="debug_container"><%#= debug_info(product) %></div>
-
-          <% if (type(product) == "Product") %>
-            <%= offer_receiver_product_image(product) %>
-            <div class="description">
-              <%= name(product) %>
-            </div>
+          <div class="debug_container"><%#= debug_info(article) %></div>
+          <% if (type(article) == "Product") %>
+            <%= offer_receiver_product_image(article) %>
+            <div class="description"><%= name(article) %></div>
           <% else %>
             <%= money_image %>
-            <div class="description">
-              <%= amount(product) %>
-            </div>
+            <div class="description"><%= amount(article) %></div>
           <% end %>
-
         </div>
-
-
       <% end %>
     </div>
     <div class="given">
       <% receiver_articles(offer).each do |product| %>
         <div class="image_container">
-
           <div class="debug_container"><%#= debug_info(product) %></div>
-
           <% if (type(product) == "Product") %>
             <%= offer_composer_product_image(product) %>
-            <div class="description">
-              <%= name(product) %>
-            </div>
+            <div class="description"><%= name(product) %></div>
           <% else %>
             <%= money_image %>
-            <div class="description">
-              <%= amount(product) %>
-            </div>
+            <div class="description"><%= amount(product) %></div>
           <% end %>
-
         </div>
       <% end %>
     </div>
