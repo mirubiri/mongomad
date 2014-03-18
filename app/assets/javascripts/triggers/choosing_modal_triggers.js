@@ -65,25 +65,23 @@ function loadOfferModalScripts(){
     });
   }
 
+  $('#products_list').on('click','img',function(e){
+    var padre  = $(this).parent().parent();
+    padre.addProductToSummary();
+    if (padre.attr("type") == "Cash"){
+      $('#products_list').find("[type=Cash]").append('<div class="offer_artistic_layer"></div>');
+    }else{
+      padre.append('<div class="offer_artistic_layer"></div>');
+    }
 
-  $('#receiver_content_area').on('click','img',function(e){
-    $(this).parent().parent().addProductToSummary();
-    $(this).parent().parent().append('<div class="offer_artistic_layer"></div>');
   });
 
-
-  $('#composer_content_area').on('click','img',function(e){
-    $(this).parent().parent().addProductToSummary();
-    $(this).parent().parent().append('<div class="offer_artistic_layer"></div>');
-  });
-
-
-  $('.summaryleft').on('click','img',function(e){
-    $(this).parent().parent().removeProductFromSummary();
-  });
-
-  $('.summaryright').on('click','img',function(e){
-    $(this).parent().parent().removeProductFromSummary();
+  $('#offer_summary').on('click','img',function(e){
+    var padre  = $(this).parent().parent();
+    if (padre.attr("type") == "Cash"){
+      $('#products_list').find("[type=Cash]").find('.offer_artistic_layer').remove();
+    }
+    padre.removeProductFromSummary();
   });
 
 }
