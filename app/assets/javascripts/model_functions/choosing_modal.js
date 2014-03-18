@@ -72,8 +72,8 @@
     if(tipoElemento == "Cash"){
       var amount = $(this).find('textarea').val();
       var inputString ="<div class='data_input'>"+
-        "<input type=\"hidden\" name=\"offer[cash][][owner_id]\" value=\""+owner_id+"\" />" +
-        "<input type=\"hidden\" name=\"offer[cash][][amount]\" value=\""+amount+"\" />" +
+        "<input type=\"hidden\" name=\"offer[cash][owner_id]\" value=\""+owner_id+"\" />" +
+        "<input type=\"hidden\" name=\"offer[cash][amount]\" value=\""+amount+"\" />" +
         "</div>";
     }else{
       var inputString ="<div class='data_input'>"+
