@@ -120,8 +120,8 @@
                   </div>
                 <% else %>
                   <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
-                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    valor del dinero -->
+                    <div class="item_image"><%= money_image %></div>
+                    <div class="item_description"><%= amount(article) %></div>
                     <div class="data_input">
                       <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
                       <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
@@ -145,8 +145,8 @@
                   </div>
                 <% else %>
                   <div class="item newitem" id="<%= id(article) %>"  side="left" type="<%= type(article) %>">
-                    <!-- imagen  estática de la moneda (se puede hacer un helper mas pequeño)
-                    valor del dinero -->
+                    <div class="item_image"><%= money_image %></div>
+                    <div class="item_description"><%= amount(article) %></div>
                     <div class="data_input">
                       <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
                       <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
