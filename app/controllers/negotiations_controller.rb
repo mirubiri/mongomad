@@ -1,10 +1,8 @@
 class NegotiationsController < ApplicationController
-  # GET /negotiations
-  # GET /negotiations.json
   def index
     @user = User.find(params[:user_id])
-    @user.negotiations.size == 0 ? @negotiations = nil : @negotiations = @user.negotiations
-    @negotiation = Negotiation.new
+    @user.negotiations.size != 0 ? @negotiations = @user.negotiations.desc(:updated_at) : @negotiations = nil
+    #@negotiation = Negotiation.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,8 +10,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # GET /negotiations/1
-  # GET /negotiations/1.json
   def show
     @negotiation = Negotiation.find(params[:id])
 
@@ -22,8 +18,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # GET /negotiations/new
-  # GET /negotiations/new.json
   def new
     @negotiation = Negotiation.new
 
@@ -32,10 +26,14 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # GET /negotiations/1/edit
   def edit
-    @user = User.find(params[:user_id])
     @negotiation = Negotiation.find(params[:id])
+
+    if current_user.id == @negotiation.proposal.composer_id
+      @user = User.find(@negotiation.proposal.receiver_id)
+    else
+      @user = User.find(@negotiation.proposal.composer_id)
+    end
 
     respond_to do |format|
       format.html # edit.html.erb
