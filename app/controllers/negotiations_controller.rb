@@ -116,11 +116,20 @@ class NegotiationsController < ApplicationController
   end
 
   def pusher_message
-    @user = User.find(params[:user_id])
+    @user = current_user
+    @negotiation = current_user.negotiations.find(params[:negotiation_id])
+    @message = Message.new(user_id:current_user.id, text:params[:message])
+    @negotiation.messages << @message
+
     Pusher.trigger('my_negotiations_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
     Pusher.trigger('my_negotiations_channel', 'my_notification', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
-    respond_to do |format|
+
+    #TODO: REVISAR SERGIO
+    if @negotiation.save
+      #@negotiations = current_user.negotiations.desc(:updated_at)
       format.js
+    else
+      #ni idea
     end
   end
 
