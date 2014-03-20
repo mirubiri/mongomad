@@ -1,5 +1,5 @@
 module RequestsHelper
-  # Image
+  # Images
   def request_user_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 39, :height => 39, :crop => :fit)
   end
