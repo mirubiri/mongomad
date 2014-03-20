@@ -39,27 +39,14 @@ class NegotiationsController < ApplicationController
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
     @negotiations = @user.negotiations
-
-    # @offer = Fabricate.build(:offer)
-
-    # puts "************************************"
-    @offer.valid?
-    # puts "************************************"
-
     @negotiation = Fabricate.build(:negotiation, offer:@offer)
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
       if @negotiation.save
-         # puts "************************************"
-          # puts "guarda la negociacion"
-          # puts "************************************"
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
       else
-        # puts "************************************"
-          # puts "no guarda la negociacion"
-          #puts @negotiation.errors.message
-          # puts "************************************"
         format.html { render action: "new" }
       end
     end
@@ -70,25 +57,6 @@ class NegotiationsController < ApplicationController
     @negotiation = current_user.negotiations.find(params[:id])
     @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
     @negotiation.proposals << fill_proposal_goods(@proposal, params)
-
-
-
-
-
-
-    # id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
-
-    # proposal = Negotiation::Proposal.new(params[:proposal])
-    # proposal.composer_id = id(@user)
-
-    # respond_to do |format|
-    #   if @negotiation.proposals << proposal
-    #     format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-    #     format.js { render 'reload_negotiations', :layout => false }
-    #   else
-    #     format.html { render action: "edit" }
-    #   end
-    # end
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
@@ -102,19 +70,16 @@ class NegotiationsController < ApplicationController
     end
   end
 
-
-  # DELETE /negotiations/1
-  # DELETE /negotiations/1.json
   def destroy
     @negotiation = Negotiation.find(params[:id])
     @negotiation.destroy
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
       format.html { redirect_to user_negotiations_url }
     end
   end
 
-  # Firma la propuesta
   #TODO: REVISAR
   def sign
     @negotiation = Negotiation.find(params[:id])
@@ -125,7 +90,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # Confirma la propuesta
   #TODO: REVISAR
   def confirm
     @negotiation = Negotiation.find(params[:id])
@@ -139,7 +103,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # Cancela la propuesta
   #TODO: REVISAR
   def cancel
     @user = User.find(params[:user_id])
@@ -152,7 +115,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # Prueba el canal de Pusher
   def pusher_message
     @user = User.find(params[:user_id])
     Pusher.trigger('my_negotiations_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
@@ -169,6 +131,7 @@ class NegotiationsController < ApplicationController
   end
 
   def fill_proposal_goods (proposal, params)
+    #TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL
     if (params[:offer][:cash] != nil)
       image = Attachment::Image.new(main:true)
       image.id = 'static/images/money'
