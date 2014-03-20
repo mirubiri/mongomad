@@ -1,21 +1,24 @@
-//Quito la ventana modal
-$('#edit-negotiation-form').dialog('close');
-delete $('#edit-negotiation-form');
+//Lo primero es eliminar las modales que se hayan podido quedar perdidas
+// $('#new-offer-form').remove();
+// $('#edit-offer-form').remove();
+$('#edit-negotiation-form').remove();
 
 //Cargo en el contenedor principal los datos nuevos y destruyo el masonry.
-$('#ppal_container').masonry('destroy')
-.html("<%= escape_javascript(render template: 'negotiations/index').html_safe %>");
+$('#ppal_container').html("<%= escape_javascript(render @negotiations).html_safe %>");
+$(body).scrollTop(0);
 
-//Acondiciono las anchuras y alturas de las negociaciones
-reloadDialogContainerWidth();
-maximizeConversationsHeights();
+//Carga sus funciones especificas de dibujado
+$('.negotiation').regulateAsNegotiation();
 
+//Controlo el evento de ponerse encima de un item
+$('.image_container').hideTitle();
 
 var negotiation_id = "<%= id(@negotiation) %>";
 
 $('#ppal_container')
 .find("#"+negotiation_id)
-.addClass("new_request_style")
+.prepend('<div class="edited_layer"></div>')
+.find('.edited_layer')
 .animate({backgroundColor: '#ffffff'}, 3000, function(){
-  $(this).removeClass("new_request_style");
+  $(this).remove();
 });
