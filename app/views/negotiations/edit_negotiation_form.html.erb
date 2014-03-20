@@ -82,7 +82,8 @@
                     <div class="text"><%= name(article) %></div>
                   </div>
                   <div class="data_input">
-                    <input type="hidden" name="proposal[products][][item_id]" value="<%= id(article) %>">
+                    <!-- TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL -->
+                    <input type="hidden" name="offer[products][][item_id]" value="<%= id(article) %>">
                   </div>
                 </div>
               <% else %>
@@ -90,8 +91,9 @@
                   <div class="item_image"><%= negotiation_modal_composer_money_image %></div>
                   <div class="item_description"><%= amount(article) %></div>
                   <div class="data_input">
-                    <input type="hidden" name="proposal[cash][owner_id]" value="<%= id(@user) %>">
-                    <input type="hidden" name="proposal[cash][amount]" value="<%= amount(article) %>">
+                    <!-- TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL -->
+                    <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
+                    <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
                   </div>
                 </div>
               <% end %>
@@ -107,7 +109,8 @@
                     <div class="text"><%= name(article) %></div>
                   </div>
                   <div class="data_input">
-                    <input type="hidden" name="proposal[products][][item_id]" value="<%= id(article) %>">
+                    <!-- TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL -->
+                    <input type="hidden" name="offer[products][][item_id]" value="<%= id(article) %>">
                   </div>
                 </div>
               <% else %>
@@ -115,8 +118,9 @@
                   <div class="item_image"><%= negotiation_modal_receiver_money_image %></div>
                   <div class="item_description"><%= amount(article) %></div>
                   <div class="data_input">
-                    <input type="hidden" name="proposal[cash][owner_id]" value="<%= id(@user) %>">
-                    <input type="hidden" name="proposal[cash][amount]" value="<%= amount(article) %>">
+                    <!-- TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL -->
+                    <input type="hidden" name="offer[cash][owner_id]" value="<%= id(@user) %>">
+                    <input type="hidden" name="offer[cash][amount]" value="<%= amount(article) %>">
                   </div>
                 </div>
               <% end %>
