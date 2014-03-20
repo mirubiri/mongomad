@@ -49,8 +49,7 @@ $width265px: 265px;
 //font-family
 $verdana: Verdana, Arial, Helvetica, sans-serif;
 
-
-//Inicio mixins Propiedades generales***************************
+//Inicio mixins Propiedades generales************************
 @mixin fixed_width($width,$minwidth,$maxwidth) {
   width: $width;
   min-width: $minwidth;
@@ -70,10 +69,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 //Fin mixins Propiedades generales***************************
 
 
-
-
-
-
 //Inicio mixins Contenedores*********************************
 @mixin rounded_border{
   @include border-radius(5px, 5px);
@@ -82,7 +77,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 @mixin border_Element_into_container{
   @include box-shadow(rgba(0,0,0,0.40) 0px 1px 2px);
   @include rounded_border;
-
 }
 
 @mixin top_main_header_style{
@@ -117,14 +111,10 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   margin:0px 8px 5px 8px;
   background-color: white;
 }
-//Fin mixins Contenedores*****************************************
+//Fin mixins Contenedores************************************
 
 
-
-
-
-//Inicio mixins de Product****************************************
-
+//Inicio mixins de Product***********************************
 @mixin big_images_style{
   @include box-sizing(border-box);
   @include border-radius(2px, 2px);
@@ -196,73 +186,68 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 }
 
 .product_of_user_selected{
-    @include fixed_width(100%,100%,100%);
-    @include fixed_height(100%,100%,100%);
-    position: absolute;
-    top: 35px;
-    left: 0px;
-    overflow:none;
-    background-color: white;
+  @include fixed_width(100%,100%,100%);
+  @include fixed_height(100%,100%,100%);
+  position: absolute;
+  top: 35px;
+  left: 0px;
+  overflow:none;
+  background-color: white;
 
-    .money{
-      @include center-horizontally(200px);
-      margin-top: 5px;
+  .money{
+    @include center-horizontally(200px);
+    margin-top: 5px;
 
-      textarea{
-        @include proportions(60%,24px);
-        float: left;
-        overflow: hidden;
-        border: $borde1px;
-        background-color: white;
-        color: #000000;
-        font-size: 12px;
-        resize: none;
-      }
-
-      button{
-        @include proportions(25%,30px);
-        float: left;
-        margin-left: 2px;
-      }
+    textarea{
+      @include proportions(60%,24px);
+      float: left;
+      overflow: hidden;
+      border: $borde1px;
+      background-color: white;
+      color: #000000;
+      font-size: 12px;
+      resize: none;
     }
 
-    .product_container{
-      @include fixed_width(470px,470px,470px);
-      @include fixed_height(470px,470px,470px);
-      margin:5px 0px 0px 0px;
-      overflow: auto;
-
-      .product{
-        @include big_images_style;
-        @include proportions(125px,125px);
-        @include border-radius(5px, 5px);
-        border: $borde1px;
-        float: left;
-        margin:5px 0px 0px 5px;
-        overflow: none;
-
-        .product_image{
-          overflow: auto;
-          img{
-            @include high-quality-image;
-            @include proportions(123px,123px);
-          }
-        }
-        .product_title{
-          @include center-horizontally(126px);
-          text-align: center;
-        }
-      }
+    button{
+      @include proportions(25%,30px);
+      float: left;
+      margin-left: 2px;
     }
   }
 
-//Fin mixins de Product****************************************
+  .product_container{
+    @include fixed_width(470px,470px,470px);
+    @include fixed_height(470px,470px,470px);
+    margin:5px 0px 0px 0px;
+    overflow: auto;
 
+    .product{
+      @include big_images_style;
+      @include proportions(125px,125px);
+      @include border-radius(5px, 5px);
+      border: $borde1px;
+      float: left;
+      margin:5px 0px 0px 5px;
+      overflow: none;
 
+      .product_image{
+        overflow: auto;
+        img{
+          @include high-quality-image;
+          @include proportions(123px,123px);
+        }
+      }
+      .product_title{
+        @include center-horizontally(126px);
+        text-align: center;
+      }
+    }
+  }
+}
+//Fin mixins de Product**************************************
 
-
-//Inicio mixins oferta**************************************
-
+//Inicio mixins oferta***************************************
 @mixin offer_header{
   .offer_header{
     @include proportions(100%,20px);
@@ -292,14 +277,13 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
       @include proportions(0px,0px);
       z-index: 1001;
       border:{
-            top: 5px solid #bbbbbb;
-            right: 10px solid transparent;
-            left: 10px solid transparent;
+        top: 5px solid #bbbbbb;
+        right: 10px solid transparent;
+        left: 10px solid transparent;
       }
     }
   }
 }
-
 
 @mixin offer_products{
   .offer_items{
@@ -350,9 +334,6 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
         @include proportions($smallImageDimension,$smallImageDimension);
         margin:0px 0px 0px 0px;
         position: relative;
-        //background-image: url("/assets/images/pictureframe.png");
-        //background-size: $smallBackgroundSize $smallBackgroundSize;
-        //background-repeat:no-repeat;
 
         img{
           @include box-sizing(border-box);
@@ -527,12 +508,9 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
   opacity: 0.70;
   z-index: 100;
 }
-
-//Fin mixins oferta**************************************
-
+//Fin mixins oferta******************************************
 
 //Inicio mixins request**************************************
-
 @mixin request{
   .request{
     @include center-horizontally(100%);
@@ -589,6 +567,19 @@ $verdana: Verdana, Arial, Helvetica, sans-serif;
 
   }
 }
+//Fin mixins request ****************************************
 
-//Fin mixins request**************************************
-
+//Inicio Layers Decorativos *********************************
+.edited_layer{
+  @include box-sizing(border-box);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  opacity: 0.50;
+  z-index: 100;
+  padding: 3px 3px;
+}
+//Fin Layers Decorativos ************************************
