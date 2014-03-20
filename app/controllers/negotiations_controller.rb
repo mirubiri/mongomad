@@ -2,7 +2,6 @@ class NegotiationsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @user.negotiations.size != 0 ? @negotiations = @user.negotiations.desc(:updated_at) : @negotiations = nil
-    #@negotiation = Negotiation.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,12 +27,7 @@ class NegotiationsController < ApplicationController
 
   def edit
     @negotiation = Negotiation.find(params[:id])
-
-    if current_user.id == @negotiation.proposal.composer_id
-      @user = User.find(@negotiation.proposal.receiver_id)
-    else
-      @user = User.find(@negotiation.proposal.composer_id)
-    end
+    @user = guess_receiver
 
     respond_to do |format|
       format.html # edit.html.erb
@@ -41,8 +35,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # POST /negotiations
-  # POST /negotiations.json
   def create
     @user = User.find(params[:user_id])
     @offer = Offer.find(params[:offer_id])
@@ -73,14 +65,17 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # PUT /negotiations/1
-  # PUT /negotiations/1.json
   def update
-puts "*******************************************************************************"
-puts "viene por el update"
-puts "*******************************************************************************"
     @user = User.find(params[:user_id])
-    @negotiation = negotiations(@user).find(params[:negotiation_id])
+    @negotiation = current_user.negotiations.find(params[:id])
+    @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
+    @negotiation.proposals << fill_proposal_goods(@proposal, params)
+
+
+
+
+
+
     # id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
 
     # proposal = Negotiation::Proposal.new(params[:proposal])
@@ -95,12 +90,16 @@ puts "**************************************************************************
     #   end
     # end
 
+    #TODO: REVISAR SERGIO
     respond_to do |format|
-      format.html { redirect_to @user, notice: 'Negotiation was successfully updated.' }
-      format.js { render 'reload_negotiations', :layout => false }
+      if @negotiation.save
+        @negotiations = current_user.negotiations.desc(:updated_at)
+        format.html { redirect_to current_user, notice: 'Negotiation was successfully updated.' }
+        format.js { render 'reload_negotiations', :layout => false }
+      else
+        #ni idea
+      end
     end
-
-
   end
 
 
@@ -161,5 +160,33 @@ puts "**************************************************************************
     respond_to do |format|
       format.js
     end
+  end
+
+  private
+  def guess_receiver
+    current_user.id == @negotiation.proposal.composer_id ? receiver_id = @negotiation.proposal.receiver_id : receiver_id = @negotiation.proposal.composer_id
+    User.find(receiver_id)
+  end
+
+  def fill_proposal_goods (proposal, params)
+    if (params[:offer][:cash] != nil)
+      image = Attachment::Image.new(main:true)
+      image.id = 'static/images/money'
+      good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
+      good.money = Money.new(params[:offer][:cash][:amount])
+      good.images << image
+      proposal.goods << good
+    end
+
+    if (params[:offer][:products]!=nil)
+      params[:offer][:products].each do |product_params|
+        #TODO: Reducir la búsqueda a los items del composer y del receiver
+        item = Item.find(product_params[:item_id])
+        good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
+        good.id = item.id
+        proposal.goods << good
+      end
+    end
+    proposal
   end
 end

@@ -19,25 +19,35 @@
 
     <div class="offer_items">
       <div class="received">
-        <% composer_articles(proposal(negotiation)).each do |product| %>
-          <div class="image_container">
-            <div class="debug_container"><%#= debug_info(product) %></div>
-            <%= negotiation_receiver_product_image(product) %>
-            <div class="description">
-              <%= name(product) %>
+        <% composer_articles(proposal(negotiation)).each do |article| %>
+          <% if (type(article) == "Product") %>
+            <div class="image_container" title="<%= name(article) %>">
+              <div class="debug_container"><%#= debug_info(article) %></div>
+              <%= negotiation_composer_product_image(article) %>
+              <!-- <div class="description"><%#= name(article) %></div> -->
+          <% else %>
+            <div class="image_container">
+              <div class="debug_container"><%#= debug_info(article) %></div>
+              <%= money_image %>
+              <div class="description"><%= amount(article) %></div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <div class="given">
-        <% receiver_articles(proposal(negotiation)).each do |product| %>
-          <div class="image_container">
-            <div class="debug_container"><%#= debug_info(product) %></div>
-            <%= negotiation_composer_product_image(product) %>
-            <div class="description">
-              <%= name(product) %>
+        <% receiver_articles(proposal(negotiation)).each do |article| %>
+          <% if (type(article) == "Product") %>
+            <div class="image_container" title="<%= name(article) %>">
+              <div class="debug_container"><%#= debug_info(article) %></div>
+              <%= negotiation_receiver_product_image(article) %>
+              <!-- <div class="description"><%#= name(article) %></div> -->
+          <% else %>
+            <div class="image_container">
+              <div class="debug_container"><%#= debug_info(article) %></div>
+              <%= money_image %>
+              <div class="description"><%= amount(article) %></div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

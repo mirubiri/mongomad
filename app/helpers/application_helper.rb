@@ -1,8 +1,4 @@
 module ApplicationHelper
-  # def alerts(object)
-  #   object.alerts
-  # end
-
   def agreement(object)
     object.agreement
   end
@@ -192,13 +188,13 @@ module ApplicationHelper
     cl_image_tag("static/icons/friends_black.png", :width => 34, :height => 20, :crop => :fit)
   end
 
-  def no_requests_image
-    cl_image_tag("static/images/no_requests.png", :width => 218, :height => 200, :crop => :fit)
-  end
+  # def no_requests_image
+  #   cl_image_tag("static/images/no_requests.png", :width => 218, :height => 200, :crop => :fit)
+  # end
 
-  def no_offers_image
-    cl_image_tag("static/images/no_offers.png", :width => 269, :height => 358, :crop => :fit)
-  end
+  # def no_offers_image
+  #   cl_image_tag("static/images/no_offers.png", :width => 269, :height => 358, :crop => :fit)
+  # end
 
   def add_item_image
     cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :fit)
@@ -236,7 +232,7 @@ module ApplicationHelper
   end
 
   def comment_user_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :fit)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :fit, :radius => :max)
   end
 
   def request_user_image(object)
@@ -247,17 +243,25 @@ module ApplicationHelper
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 48, :height => 48, :crop => :fit, :radius => :max)
   end
 
-  def offer_user_image(object)
+  def offer_composer_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 48, :height => 48, :crop => :fit, :radius => :max)
   end
 
   def offer_composer_product_image(object)
+    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
+  end
+
+  # def offer_composer_money_image(object)
+  #   cl_image_tag("static/images/money.png", :width => 158, :height => 158, :crop => :fit)
+  # end
+
+  def offer_receiver_product_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :fit)
   end
 
-  def offer_receiver_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
-  end
+  # def offer_receiver_money_image(object)
+  #   cl_image_tag("static/images/money.png", :width => 60, :height => 60, :crop => :fit)
+  # end
 
   def offer_modal_user_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :fit, :radius => :max)

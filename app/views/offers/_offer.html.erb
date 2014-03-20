@@ -1,10 +1,7 @@
 <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
 
   <div class="debug_container"><%#= debug_info(offer) %></div>
-
-  <div class="offer_header">
-    <%= full_name(composer(offer)) %>
-  </div>
+  <div class="offer_header"><%= full_name(composer(offer)) %></div>
 
   <div class="offer_items">
     <div class="received">
@@ -12,15 +9,16 @@
         <% if (type(article) == "Product") %>
           <div class="image_container" title="<%= name(article) %>">
             <div class="debug_container"><%#= debug_info(article) %></div>
-            <%= offer_receiver_product_image(article) %>
+            <%= offer_composer_product_image(article) %>
             <!-- <div class="description"><%#= name(article) %></div> -->
+          </div>
         <% else %>
           <div class="image_container">
             <div class="debug_container"><%#= debug_info(article) %></div>
             <%= money_image %>
             <div class="description"><%= amount(article) %></div>
+          </div>
         <% end %>
-        </div>
       <% end %>
     </div>
     <div class="given">
@@ -30,39 +28,26 @@
             <div class="debug_container"><%#= debug_info(article) %></div>
             <%= offer_receiver_product_image(article) %>
             <!-- <div class="description"><%#= name(article) %></div> -->
+          </div>
         <% else %>
           <div class="image_container">
             <div class="debug_container"><%#= debug_info(article) %></div>
             <%= money_image %>
             <div class="description"><%= amount(article) %></div>
+          </div>
         <% end %>
-        </div>
       <% end %>
     </div>
   </div>
 
   <div class="offer_info">
-
-    <!-- <div class="honeycombs">
-      <div class="comb">
-        <img src="<%#= hexagon_image_path(composer(offer)) %>" />
-      </div>
-    </div> -->
-
-   <!--  <div class="hexagon_container">
-      <%#= offer_user_image(composer(offer)) %>
-      <%#= image_tag("/assets/images/hexagon.png") %>
-    </div> -->
-
     <div class="profile_image">
-      <%= link_to offer_user_image(composer(offer)),
+      <%= link_to offer_composer_image(composer(offer)),
         user_offers_url(offer.user_composer) %>
     </div>
 
     <div class="description">
-      <div class="offer_message">
-        <%= message(offer) %>
-      </div>
+      <div class="offer_message"><%= message(offer) %></div>
     </div>
 
     <div class="offer_buttons" id="offer_buttons_navigation">
@@ -92,6 +77,5 @@
         :class => 'offer_buttons_style' %>
 
     </div>
-
   </div>
 </div>
