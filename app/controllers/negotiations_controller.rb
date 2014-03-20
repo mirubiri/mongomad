@@ -36,10 +36,10 @@ class NegotiationsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @offer = Offer.find(params[:offer_id])
-    @negotiations = @user.negotiations
-    @negotiation = Fabricate.build(:negotiation, offer:@offer)
+    # @user = User.find(params[:user_id])
+    # @offer = Offer.find(params[:offer_id])
+    # @negotiations = @user.negotiations
+    # @negotiation = Fabricate.build(:negotiation, offer:@offer)
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
@@ -53,8 +53,8 @@ class NegotiationsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
     @negotiation = current_user.negotiations.find(params[:id])
+    @user = guess_receiver
     @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
     @negotiation.proposals << fill_proposal_goods(@proposal, params)
 
