@@ -200,16 +200,6 @@ module ApplicationHelper
     cl_image_tag("static/images/add_item.png", :width => 152, :height => 152, :crop => :fit)
   end
 
-  #TODO: Tamaño diferente al original (29x27)
-  def initial_message_icon
-    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :fit)
-  end
-
-  #TODO: Tamaño diferente al original (148x105)
-  def money_image
-    cl_image_tag("static/images/money.png", :width => 165, :height => 165, :crop => :fit)
-  end
-
   def sound_icon
     cl_image_tag("static/icons/sound.png", :width => 11, :height => 14, :crop => :fit)
   end
@@ -227,37 +217,6 @@ module ApplicationHelper
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 68, :height => 68, :crop => :fit, :radius => :max)
   end
 
-
-
-
-  def negotiation_user_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 64, :height => 64, :crop => :fit, :radius => :max)
-  end
-
-  def negotiation_composer_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 60, :height => 60, :crop => :fit)
-  end
-
-  def negotiation_receiver_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)
-  end
-
-  def negotiation_message_user_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 30, :height => 30, :crop => :fit)
-  end
-
-  def negotiation_modal_user_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 50, :height => 50, :crop => :fit, :radius => :max)
-  end
-
-  def negotiation_modal_composer_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :fit)
-  end
-
-  def negotiation_modal_receiver_product_image(object)
-    cl_image_tag(id(main_image(object)) + ".jpg", :width => 165, :height => 165, :crop => :fit)
-  end
-
   def deal_user_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 64, :height => 64, :crop => :fit, :radius => :max)
   end
@@ -273,10 +232,6 @@ module ApplicationHelper
   def deal_message_user_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 30, :height => 30, :crop => :fit)
   end
-
-#   def alert_user_image(object)
-#     cl_image_tag(id(main_image(object)) + ".jpg", :width => 39, :height => 39, :crop => :fit)
-#   end
 
   def products_wall_item_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 158, :height => 158, :crop => :fit)

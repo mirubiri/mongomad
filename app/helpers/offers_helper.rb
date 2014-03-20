@@ -1,4 +1,9 @@
 module OffersHelper
+  # Static
+  def initial_message_icon
+    cl_image_tag("static/icons/initial_message.png", :width => 50, :height => 50, :crop => :fit)
+  end
+
   # Images
   def offer_composer_image(object)
     cl_image_tag(id(main_image(object)) + ".jpg", :width => 48, :height => 48, :crop => :fit, :radius => :max)
