@@ -6,7 +6,6 @@ $('#edit-offer-form').remove();
 $('#ppal_container').html("<%= escape_javascript(render @offers).html_safe %>");
 $(body).scrollTop(0);
 
-
 var offer_id = "<%= id(@offer) %>";
 
 $('#ppal_container')
