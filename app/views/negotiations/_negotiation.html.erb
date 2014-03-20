@@ -4,16 +4,10 @@
   <div class="negotiation_offer">
 
     <div class="oponent_info">
-      <div class="oponent_image">
-        <%= negotiation_user_image(composer(proposal(negotiation))) %>
-      </div>
+      <div class="oponent_image"><%= negotiation_composer_image(composer(proposal(negotiation))) %></div>
       <div class="oponent_description">
-        <div class="oponent_name">
-          <%= first_name(composer(proposal(negotiation))) %>
-        </div>
-        <div class="oponent_address">
-          <%= full_name(composer(proposal(negotiation))) %>
-        </div>
+        <div class="oponent_name"><%= first_name(composer(proposal(negotiation))) %></div>
+        <div class="oponent_address"><%= full_name(composer(proposal(negotiation))) %></div>
       </div>
     </div>
 
@@ -25,10 +19,11 @@
               <div class="debug_container"><%#= debug_info(article) %></div>
               <%= negotiation_composer_product_image(article) %>
               <!-- <div class="description"><%#= name(article) %></div> -->
+            </div>
           <% else %>
             <div class="image_container">
               <div class="debug_container"><%#= debug_info(article) %></div>
-              <%= money_image %>
+              <%= negotiation_composer_money_image %>
               <div class="description"><%= amount(article) %></div>
             </div>
           <% end %>
@@ -41,10 +36,11 @@
               <div class="debug_container"><%#= debug_info(article) %></div>
               <%= negotiation_receiver_product_image(article) %>
               <!-- <div class="description"><%#= name(article) %></div> -->
+            </div>
           <% else %>
             <div class="image_container">
               <div class="debug_container"><%#= debug_info(article) %></div>
-              <%= money_image %>
+              <%= negotiation_receiver_money_image %>
               <div class="description"><%= amount(article) %></div>
             </div>
           <% end %>

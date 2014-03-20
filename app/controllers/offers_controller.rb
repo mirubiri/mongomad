@@ -48,7 +48,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        @offers = @user.received_offers.desc(:updated_at)
+        @offers = @user.received_offers
         format.html { redirect_to @user, notice: 'Offer has been successfully created.' }
         format.js { render 'add_offer_in_list', :layout => false, :locals => { :offer => @offer }, :status => :created }
       else
@@ -60,8 +60,8 @@ class OffersController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
-    # @offer = current_user.sent_offers.find(params[:id])
-    @offer = Offer.find(params[:id])
+    @offer = current_user.sent_offers.find(params[:id])
+    # @offer = Offer.find(params[:id])
     @offer.message = params[:offer][:message]
     @offer.proposal.goods.delete_all
 
