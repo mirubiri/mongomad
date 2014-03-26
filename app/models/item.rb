@@ -15,6 +15,12 @@ class Item
   validates_length_of :description, minimum: 1, maximum: 200
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
+  def product
+    product = Product.new(name:name, description:description, owner_id:id, images:images)
+    product.id = id
+    product
+  end
+
   def state_machine(machine = nil)
     @state_machine ||= begin
       machine ||= MicroMachine.new(state)
