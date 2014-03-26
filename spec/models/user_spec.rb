@@ -26,11 +26,11 @@ describe User do
 
   # Methods
   describe '#sheet' do
-    let(:user_sheet) { Fabricate.build(:user_sheet, user:user) }
     specify { expect(user.sheet.id).to eq user.id }
 
     it 'returns a UserSheet filled with user data' do
-      expect(user.sheet).to eq user_sheet
+      expect(UserSheet).to receive(:new).with(nick:user.nick, first_name:user.profile.first_name, last_name:user.profile.last_name, images:user.profile.images, location:user.profile.location)
+      user.sheet
     end
   end
 
