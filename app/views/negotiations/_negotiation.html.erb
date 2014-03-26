@@ -1,6 +1,6 @@
 <div class="negotiation" id="<%= id(negotiation) %>">
 
-  <div class="debug_container"><%#= debug_info(negotiation) %></div>
+  <div class="debug_container"><%= debug_info(negotiation) %></div>
   <div class="negotiation_offer">
 
     <div class="oponent_info">
@@ -16,13 +16,13 @@
         <% composer_articles(proposal(negotiation)).each do |article| %>
           <% if (type(article) == "Product") %>
             <div class="image_container" title="<%= name(article) %>">
-              <div class="debug_container"><%#= debug_info(article) %></div>
+              <div class="debug_container"><%= debug_info(article) %></div>
               <%= negotiation_composer_product_image(article) %>
               <!-- <div class="description"><%#= name(article) %></div> -->
             </div>
           <% else %>
             <div class="image_container">
-              <div class="debug_container"><%#= debug_info(article) %></div>
+              <div class="debug_container"><%= debug_info(article) %></div>
               <%= negotiation_composer_money_image %>
               <div class="description"><%= amount(article) %></div>
             </div>
@@ -33,13 +33,13 @@
         <% receiver_articles(proposal(negotiation)).each do |article| %>
           <% if (type(article) == "Product") %>
             <div class="image_container" title="<%= name(article) %>">
-              <div class="debug_container"><%#= debug_info(article) %></div>
+              <div class="debug_container"><%= debug_info(article) %></div>
               <%= negotiation_receiver_product_image(article) %>
               <!-- <div class="description"><%#= name(article) %></div> -->
             </div>
           <% else %>
             <div class="image_container">
-              <div class="debug_container"><%#= debug_info(article) %></div>
+              <div class="debug_container"><%= debug_info(article) %></div>
               <%= negotiation_receiver_money_image %>
               <div class="description"><%= amount(article) %></div>
             </div>

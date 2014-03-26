@@ -1,6 +1,6 @@
 <div class="offer" id="<%= id(offer) %>" data-id="<%= date_time(offer) %>">
 
-  <div class="debug_container"><%#= debug_info(offer) %></div>
+  <div class="debug_container"><%= debug_info(offer) %></div>
   <div class="offer_header"><%= full_name(composer(offer)) %></div>
 
   <div class="offer_items">
@@ -8,13 +8,13 @@
       <% composer_articles(offer).each do |article| %>
         <% if (type(article) == "Product") %>
           <div class="image_container" title="<%= name(article) %>">
-            <div class="debug_container"><%#= debug_info(article) %></div>
+            <div class="debug_container"><%= debug_info(article) %></div>
             <%= offer_composer_product_image(article) %>
             <!-- <div class="description"><%#= name(article) %></div> -->
           </div>
         <% else %>
           <div class="image_container">
-            <div class="debug_container"><%#= debug_info(article) %></div>
+            <div class="debug_container"><%= debug_info(article) %></div>
             <%= offer_composer_money_image %>
             <div class="description"><%= amount(article) %></div>
           </div>
@@ -25,13 +25,13 @@
       <% receiver_articles(offer).each do |article| %>
         <% if (type(article) == "Product") %>
           <div class="image_container" title="<%= name(article) %>">
-            <div class="debug_container"><%#= debug_info(article) %></div>
+            <div class="debug_container"><%= debug_info(article) %></div>
             <%= offer_receiver_product_image(article) %>
             <!-- <div class="description"><%#= name(article) %></div> -->
           </div>
         <% else %>
           <div class="image_container">
-            <div class="debug_container"><%#= debug_info(article) %></div>
+            <div class="debug_container"><%= debug_info(article) %></div>
             <%= offer_receiver_money_image %>
             <div class="description"><%= amount(article) %></div>
           </div>
