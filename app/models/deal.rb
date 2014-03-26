@@ -31,11 +31,11 @@ class Deal
   end
 
   def check_first_user_sheet
-    errors.add(:user_sheets, "Deal should have one user_sheet for first user.") unless user_sheets.where(_id:users[0].id).size == 1
+    errors.add(:user_sheets, "Deal should have one user_sheet for first user.") unless user_sheets.where(id:users[0].id).size == 1
   end
 
   def check_second_user_sheet
-    errors.add(:user_sheets, "Deal should have one user_sheet for second user.") unless user_sheets.where(_id:users[1].id).size == 1
+    errors.add(:user_sheets, "Deal should have one user_sheet for second user.") unless user_sheets.where(id:users[1].id).size == 1
   end
 
   def check_orphan_proposals

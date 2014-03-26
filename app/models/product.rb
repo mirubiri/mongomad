@@ -15,7 +15,7 @@ class Product < Good
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
   def item
-    Item.find(_id)
+    Item.find(id)
   end
 
   def state_machine(machine = nil)

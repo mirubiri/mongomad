@@ -35,11 +35,11 @@ class Offer
   end
 
   def check_composer_sheet
-    errors.add(:user_sheets, "Offer should have one user_sheet for composer.") unless user_sheets.where(_id:user_composer_id).size == 1
+    errors.add(:user_sheets, "Offer should have one user_sheet for composer.") unless user_sheets.where(id:user_composer_id).size == 1
   end
 
   def check_receiver_sheet
-    errors.add(:user_sheets, "Offer should have one user_sheet for receiver.") unless user_sheets.where(_id:user_receiver_id).size == 1
+    errors.add(:user_sheets, "Offer should have one user_sheet for receiver.") unless user_sheets.where(id:user_receiver_id).size == 1
   end
 
   def check_orphan_proposal
