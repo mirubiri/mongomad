@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Product do
   # Variables
-  let(:item) { Fabricate(:item) }
+  let(:item) { Fabricate.build(:item) }
   let(:product) { Fabricate.build(:product, item:item) }
 
   # Modules
@@ -31,6 +31,7 @@ describe Product do
   end
 
   describe '#item' do
+    before(:each) { item.save }
     it 'returns the item corresponding to product.id' do
       expect(product.item).to eq item
     end
