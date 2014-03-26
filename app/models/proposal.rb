@@ -10,7 +10,7 @@ class Proposal
   field :state,       default:'new'
   field :actionable,  type:Boolean, default:true
 
-  validates_presence_of :goods, :composer_id, :receiver_id, :actionable
+  validates_presence_of  :goods, :composer_id, :receiver_id, :actionable
   validates_inclusion_of :state, in: ['new','signed','confirmed']
 
   validate :check_user_equality,

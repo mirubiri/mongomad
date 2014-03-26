@@ -14,9 +14,9 @@ class Offer
   field :negotiating,      type:Boolean, default:false
   field :negotiated_times, type:Integer, default:0
 
-  validates_presence_of :user_composer, :user_receiver, :user_sheets, :proposal, :discarded, :negotiating, :negotiated_times
-  validates_length_of :message, minimum: 1, maximum: 160
-  validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
+  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :discarded, :negotiating, :negotiated_times
+  validates_length_of       :message, minimum: 1, maximum: 160
+  validates_inclusion_of    :state, in: ['on_sale','withdrawn','sold']
   validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
 
   validate :check_user_equality,
