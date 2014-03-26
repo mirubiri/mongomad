@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Product do
   # Variables
   let(:item) { Fabricate.build(:item) }
-  let(:product) { Fabricate.build(:product, item:item) }
+  let(:product) { item.product }
 
   # Modules
   it { should include_module AutoUpdate }
@@ -32,6 +32,7 @@ describe Product do
 
   describe '#item' do
     before(:each) { item.save }
+
     it 'returns the item corresponding to product.id' do
       expect(product.item).to eq item
     end
