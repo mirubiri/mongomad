@@ -16,9 +16,9 @@ class Item
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
 
   def product
-    product = Product.new(name:name, description:description, owner_id:id, images:images)
-    product.id = id
-    product
+    Product.new(name:name, description:description, owner_id:id, images:images) do |product|
+      product.id = id
+    end
   end
 
   def state_machine(machine = nil)

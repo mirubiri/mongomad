@@ -18,13 +18,9 @@ class User
   validates_length_of   :nick, minimum: 1, maximum: 20
 
   def sheet
-    UserSheet.new(nick:nick,
-      first_name:profile.first_name,
-      last_name:profile.last_name,
-      images:profile.images,
-      location:profile.location) do |sheet|
-        sheet.id = id
-      end
+    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name, images:profile.images, location:profile.location) do |sheet|
+      sheet.id = id
+    end
   end
 
   def disabled?
