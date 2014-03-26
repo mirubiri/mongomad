@@ -42,9 +42,10 @@ class OffersController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
+
     @offer = Offer.new(message:params[:offer][:message], user_composer:current_user, user_receiver:@user, user_sheets: [current_user.sheet, @user.sheet])
-    @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
-    @offer.proposal = fill_proposal_goods(@proposal, params)
+    @offer.proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
+    @offer.proposal = fill_proposal_goods(@offer.proposal, params)
 
     respond_to do |format|
       if @offer.save
@@ -61,18 +62,13 @@ class OffersController < ApplicationController
     @user = User.find(params[:user_id])
     @negotiation = Negotiation.new
     @offer = current_user.sent_offers.find(params[:id])
-    # @offer = Offer.find(params[:id])
-    @offer.message = params[:offer][:message]
-    @offer.proposal.goods.delete_all
-
-    fill_proposal_goods(@offer.proposal, params)
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @offer.save
+      if update_offer(@offer, params)
         @offers = @user.received_offers.desc(:updated_at)
         format.html { redirect_to @user, notice: 'Offer has been successfully updated.' }
-        format.js { render 'reload_offer_list', :layout => false}
+        format.js { render 'reload_offer_list', :layout => false }
       else
         format.html { redirect_to user_offers_url, notice: 'Offer has not been updated.' }
       end
@@ -95,23 +91,35 @@ class OffersController < ApplicationController
   private
   def fill_proposal_goods (proposal, params)
     if (params[:offer][:cash] != nil)
-      image = Attachment::Image.new(main:true)
-      image.id = 'static/images/money'
-      good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
-      good.money = Money.new(params[:offer][:cash][:amount])
-      good.images << image
-      proposal.goods << good
+      cash = Cash.new(owner_id:params[:offer][:cash][:owner_id])
+      cash.money = Money.new(params[:offer][:cash][:amount])
+      cash.images << Attachment::Image.new(main:true) do |image|
+        image.id = 'static/images/money'
+      end
+      proposal.goods << cash
     end
 
-    if (params[:offer][:products]!=nil)
+    if (params[:offer][:products] != nil)
       params[:offer][:products].each do |product_params|
         #TODO: Reducir la búsqueda a los items del composer y del receiver
-        item = Item.find(product_params[:item_id])
-        good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
-        good.id = item.id
-        proposal.goods << good
+        product = Item.find(product_params[:item_id]).to_product
+        proposal.goods << product
       end
     end
     proposal
+  end
+
+  def update_offer(offer, params)
+    another_offer = offer.dup
+    another_offer.message = params[:offer][:message]
+    another_offer.proposal.goods = []
+    another_offer.proposal = fill_proposal_goods(offer.proposal, params)
+
+    if another_offer.valid?
+      offer.proposal = another_offer.proposal
+      offer.save
+    else
+      false
+    end
   end
 end
