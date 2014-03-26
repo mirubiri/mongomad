@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Product do
   # Variables
   let(:item) { Fabricate.build(:item) }
-  let(:product) { item.product }
+  let(:product) { item.to_product }
 
   # Modules
   it { should include_module AutoUpdate }
