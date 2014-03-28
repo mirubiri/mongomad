@@ -36,12 +36,21 @@ class NegotiationsController < ApplicationController
   end
 
   def create
+    # recoger datos de la oferta y del usuario
+    # generar la negociacion
+    # guardar la negociacion
+    #    salvar la negociacion
+    #    actualizar datos de la oferta en caso valido
+    #    salvar la oferta
+    #    devolver resultado
+
     @offer = Offer.find(params[:offer_id])
-    @negotiation = generate_negotiation_from_offer(@offer)
-    # update_offer_status(@offer)
-    # @user = User.find(params[:user_id])
-    # @negotiations = @user.negotiations
-    # @negotiation = Fabricate.build(:negotiation, offer:@offer)
+
+    # @negotiation = generate_negotiation_from_offer(@offer)
+    # # update_offer_status(@offer)
+    # # @user = User.find(params[:user_id])
+    # # @negotiations = @user.negotiations
+    # # @negotiation = Fabricate.build(:negotiation, offer:@offer)
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
@@ -55,10 +64,16 @@ class NegotiationsController < ApplicationController
   end
 
   def update
-    @negotiation = current_user.negotiations.find(params[:id])
-    @user = guess_receiver
-    @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
-    @negotiation.proposals << fill_proposal_goods(@proposal, params)
+    # recuperar la negociacion
+    # generar una nueva propuesta
+    # añadir la propuesta a la negociacion
+    # salvar la negociacion
+
+
+    # @negotiation = current_user.negotiations.find(params[:id])
+    # @user = guess_receiver
+    # @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
+    # @negotiation.proposals << fill_proposal_goods(@proposal, params)
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
