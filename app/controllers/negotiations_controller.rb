@@ -36,8 +36,10 @@ class NegotiationsController < ApplicationController
   end
 
   def create
+    @offer = Offer.find(params[:offer_id])
+    @negotiation = generate_negotiation_from_offer(@offer)
+    # update_offer_status(@offer)
     # @user = User.find(params[:user_id])
-    # @offer = Offer.find(params[:offer_id])
     # @negotiations = @user.negotiations
     # @negotiation = Fabricate.build(:negotiation, offer:@offer)
 
@@ -139,26 +141,30 @@ class NegotiationsController < ApplicationController
     User.find(receiver_id)
   end
 
-  def fill_proposal_goods (proposal, params)
-    #TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL
-    if (params[:offer][:cash] != nil)
-      image = Attachment::Image.new(main:true)
-      image.id = 'static/images/money'
-      good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
-      good.money = Money.new(params[:offer][:cash][:amount])
-      good.images << image
-      proposal.goods << good
-    end
+  # def fill_proposal_goods (proposal, params)
+  #   #TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL
+  #   if (params[:offer][:cash] != nil)
+  #     image = Attachment::Image.new(main:true)
+  #     image.id = 'static/images/money'
+  #     good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
+  #     good.money = Money.new(params[:offer][:cash][:amount])
+  #     good.images << image
+  #     proposal.goods << good
+  #   end
 
-    if (params[:offer][:products]!=nil)
-      params[:offer][:products].each do |product_params|
-        #TODO: Reducir la búsqueda a los items del composer y del receiver
-        item = Item.find(product_params[:item_id])
-        good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
-        good.id = item.id
-        proposal.goods << good
-      end
-    end
-    proposal
+  #   if (params[:offer][:products]!=nil)
+  #     params[:offer][:products].each do |product_params|
+  #       #TODO: Reducir la búsqueda a los items del composer y del receiver
+  #       item = Item.find(product_params[:item_id])
+  #       good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
+  #       good.id = item.id
+  #       proposal.goods << good
+  #     end
+  #   end
+  #   proposal
+  # end
+
+  def generate_negotiation_from_offer(offer)
+    negotiation = Negotiation.new()
   end
 end
