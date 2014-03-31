@@ -36,27 +36,13 @@ class NegotiationsController < ApplicationController
   end
 
   def create
-    # recoger datos de la oferta y del usuario
-    # generar la negociacion
-    # guardar la negociacion
-    #    salvar la negociacion
-    #    actualizar datos de la oferta en caso valido
-    #    salvar la oferta
-    #    devolver resultado
-
     @offer = Offer.find(params[:offer_id])
+    @negotiation = generate_negotiation_from_offer(@offer)
 
-    # @negotiation = generate_negotiation_from_offer(@offer)
-    # # update_offer_status(@offer)
-    # # @user = User.find(params[:user_id])
-    # # @negotiations = @user.negotiations
-    # # @negotiation = Fabricate.build(:negotiation, offer:@offer)
-
-    #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @negotiation.save
+      if save_negotiation_and_offer(@negotiation, @offer)
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
-        format.js {render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created}
+        format.js { render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created }
       else
         format.html { render action: "new" }
       end
@@ -87,50 +73,50 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  def destroy
-    @negotiation = Negotiation.find(params[:id])
-    @negotiation.destroy
+  # def destroy
+  #   @negotiation = Negotiation.find(params[:id])
+  #   @negotiation.destroy
 
-    #TODO: REVISAR SERGIO
-    respond_to do |format|
-      format.html { redirect_to user_negotiations_url }
-    end
-  end
+  #   #TODO: REVISAR SERGIO
+  #   respond_to do |format|
+  #     format.html { redirect_to user_negotiations_url }
+  #   end
+  # end
 
-  #TODO: REVISAR
-  def sign
-    @negotiation = Negotiation.find(params[:id])
-    proposal(@negotiation).sign_receiver
+  # #TODO: REVISAR
+  # def sign
+  #   @negotiation = Negotiation.find(params[:id])
+  #   proposal(@negotiation).sign_receiver
 
-    respond_to do |format|
-      format.js { render :partial => "negotiations/reload_negotiations_list" }
-    end
-  end
+  #   respond_to do |format|
+  #     format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #   end
+  # end
 
-  #TODO: REVISAR
-  def confirm
-    @negotiation = Negotiation.find(params[:id])
+  # #TODO: REVISAR
+  # def confirm
+  #   @negotiation = Negotiation.find(params[:id])
 
-    respond_to do |format|
-      if proposal(@negotiation).sign_receiver
-        format.js { render :partial => "negotiations/reload_negotiations_list" }
-      else
-        format.js { render :partial => "negotiations/reload_negotiations_list" }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if proposal(@negotiation).sign_receiver
+  #       format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #     else
+  #       format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #     end
+  #   end
+  # end
 
-  #TODO: REVISAR
-  def cancel
-    @user = User.find(params[:user_id])
-    @negotiation = Negotiation.find(params[:id])
+  # #TODO: REVISAR
+  # def cancel
+  #   @user = User.find(params[:user_id])
+  #   @negotiation = Negotiation.find(params[:id])
 
-    id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
+  #   id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
 
-    respond_to do |format|
-      format.js { render :partial => "negotiations/reload_negotiations_list" }
-    end
-  end
+  #   respond_to do |format|
+  #     format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #   end
+  # end
 
   def pusher_message
     @user = current_user
@@ -180,6 +166,39 @@ class NegotiationsController < ApplicationController
   # end
 
   def generate_negotiation_from_offer(offer)
-    negotiation = Negotiation.new()
+    negotiation = Negotiation.new
+    negotiation.users << offer.user_composer
+    negotiation.users << offer.user_receiver
+    negotiation.offer = offer
+    negotiation.user_sheets << offer.user_sheets.first
+    negotiation.user_sheets << offer.user_sheets.last
+    negotiation.proposals << offer.proposal
+    negotiation.messages << Message.new(user_id:offer.user_composer_id, text:offer.message)
+
+    # negotiation = Negotiation.new(users:[ offer.user_composer, offer.user_receiver ],
+    #   offer:offer,
+    #   user_sheets: offer.user_sheets,
+    #   proposals: [ offer.proposal ],
+    #   messages: [ Message.new(user_id:offer.user_composer_id, text:offer.message) ])
+    #   # negotiation.proposals << offer.proposal
+    link_offer_to_negotiation(offer, negotiation)
+    negotiation
+  end
+
+  def link_offer_to_negotiation(offer, negotiation)
+    offer.negotiation = negotiation
+    offer.negotiating = true
+    offer.negotiated_times += 1
+    # save_negotiation_and_offer(negotiation,offer)
+  end
+
+  def save_negotiation_and_offer(negotiation, offer)
+   # offer.save
+
+    # if offer.valid? && negotiation.valid?
+    #   offer.save && negotiation.save
+    # else
+    #   false
+    # end
   end
 end
