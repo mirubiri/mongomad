@@ -1,2 +1,0 @@
-class BaseValidator
-end
