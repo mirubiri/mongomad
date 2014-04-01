@@ -49,10 +49,6 @@ class Item
     end
   end
 
-  def discarded?
-    discarded
-  end
-
   def discard
     discarded ? false : self.discarded = true
   end
