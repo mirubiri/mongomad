@@ -1,6 +1,6 @@
 class NegotiationsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
+    @user = current_user
     @user.negotiations.size != 0 ? @negotiations = @user.negotiations.desc(:updated_at) : @negotiations = nil
 
     respond_to do |format|
@@ -126,17 +126,36 @@ class NegotiationsController < ApplicationController
   #   end
   # end
 
+  #TODO: REVISAR
+  def discard
+    @negotiation = Negotiation.find(params[:id])
+    @negotiation.proposal.discard
+
+    #TODO: REVISAR SERGIO
+    respond_to do |format|
+      if @negotiation.save
+        format.js { render :partial => "negotiations/reload_negotiations_list" }
+      else
+        # ni idea :)
+      end
+    end
+  end
+
   # #TODO: REVISAR
-  # def cancel
-  #   @user = User.find(params[:user_id])
+  # def leave
   #   @negotiation = Negotiation.find(params[:id])
+  #   @negotiation.proposal.discard
 
-  #   id(composer(proposal(@negotiation))) == id(@user) ? proposal(@negotiation).cancel_composer : proposal(@negotiation).cancel_receiver
-
+  #   #TODO: REVISAR SERGIO
   #   respond_to do |format|
-  #     format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #     if @negotiation.save
+  #       format.js { render :partial => "negotiations/reload_negotiations_list" }
+  #     else
+  #       # ni idea :)
+  #     end
   #   end
   # end
+
 
   def pusher_message
     @user = current_user
