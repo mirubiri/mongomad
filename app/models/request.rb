@@ -6,8 +6,9 @@ class Request
   embeds_one :user_sheet, as: :user_sheet_container
 
   field :text
+  field :discarded, type:Boolean, default:false
 
-  validates_presence_of :user, :user_sheet
+  validates_presence_of :user, :user_sheet, :discarded
   validates_length_of   :text, minimum: 1, maximum: 160
 
   validate :check_user_sheet
@@ -15,5 +16,14 @@ class Request
   private
   def check_user_sheet
     errors.add(:user_sheets, "Request should have one user_sheet for user.") unless user_id == user_sheet.id
+  end
+
+  # def discarded?
+  #   discarded
+  # end
+
+  public
+  def discard
+    discarded ? false : self.discarded = true
   end
 end
