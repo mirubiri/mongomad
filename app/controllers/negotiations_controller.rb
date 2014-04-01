@@ -252,21 +252,6 @@ class NegotiationsController < ApplicationController
     proposal
   end
 
-  # TODO: eliminar y usar las del controlador de offer
-  def get_products_from_items(item_ids)
-    item_ids.map { |id| Item.find(id[:item_id]).to_product }
-  end
-
-  # TODO: eliminar y usar las del controlador de offer
-  def parse_cash(cash_params)
-    cash = Cash.new(owner_id:cash_params[:owner_id])
-    cash.money = Money.new(cash_params[:amount])
-    cash.images << Attachment::Image.new(main:true) do |image|
-      image.id = 'static/images/money'
-    end
-    cash
-  end
-
   def add_proposal_to_negotiation(proposal, negotiation)
     disable_last_proposal(negotiation)
     negotiation.proposals << proposal
