@@ -10,11 +10,11 @@ class Offer
 
   field :message
   field :state,            default:'on_sale'
-  field :discarded,        type:Boolean, default:false
   field :negotiating,      type:Boolean, default:false
   field :negotiated_times, type:Integer, default:0
+  field :discarded,        type:Boolean, default:false
 
-  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :discarded, :negotiating, :negotiated_times
+  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :negotiating, :negotiated_times, :discarded
   validates_length_of       :message, minimum: 1, maximum: 160
   validates_inclusion_of    :state, in: ['on_sale','withdrawn','sold']
   validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
@@ -83,15 +83,15 @@ class Offer
     end
   end
 
+  def negotiating?
+    negotiating
+  end
+
   def discarded?
     discarded
   end
 
   def discard
     discarded ? false : self.discarded = true
-  end
-
-  def negotiating?
-    negotiating
   end
 end
