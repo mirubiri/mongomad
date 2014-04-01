@@ -104,17 +104,4 @@ class OffersController < ApplicationController
     offer.proposal.goods << goods
     offer
   end
-
-  def get_products_from_items(item_ids)
-    item_ids.map { |id| Item.find(id[:item_id]).to_product }
-  end
-
-  def parse_cash(cash_params)
-    cash = Cash.new(owner_id:cash_params[:owner_id])
-    cash.money = Money.new(cash_params[:amount])
-    cash.images << Attachment::Image.new(main:true) do |image|
-      image.id = 'static/images/money'
-    end
-    cash
-  end
 end
