@@ -34,24 +34,6 @@ describe User do
     end
   end
 
-  describe '#disabled?' do
-    context 'when user is enabled' do
-      before(:each) { user.disabled = false }
-
-      it 'returns false' do
-        expect(user.disabled?).to eq false
-      end
-    end
-
-    context 'when user is disabled' do
-      before(:each) { user.disabled = true }
-
-      it 'returns true' do
-        expect(user.disabled?).to eq true
-      end
-    end
-  end
-
   describe '#enable' do
     context 'when user is enabled' do
       before(:each) { user.disabled = false }
