@@ -24,7 +24,7 @@ class User
   end
 
   def enable
-    !disabled ? false : begin
+    !disabled? ? false : begin
       self.disabled = false
       true
     end
