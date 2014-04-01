@@ -28,24 +28,6 @@ describe Request do
   end
 
   # Methods
-  describe '#discarded?' do
-    context 'when request is discarded' do
-      before(:each) { request.discarded = true }
-
-      it 'returns true' do
-        expect(request.discarded?).to eq true
-      end
-    end
-
-    context 'when request is undiscarded' do
-      before(:each) { request.discarded = false }
-
-      it 'returns false' do
-        expect(request.discarded?).to eq false
-      end
-    end
-  end
-
   describe '#discard' do
     context 'when request is discarded' do
       before(:each) { request.discarded = true }
