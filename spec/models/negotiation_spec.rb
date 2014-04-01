@@ -230,24 +230,6 @@ describe Negotiation do
     end
   end
 
-  describe '#discarded?' do
-    context 'when negotiation is discarded' do
-      before(:each) { negotiation.discarded = true }
-
-      it 'returns true' do
-        expect(negotiation.discarded?).to eq true
-      end
-    end
-
-    context 'when negotiation is undiscarded' do
-      before(:each) { negotiation.discarded = false }
-
-      it 'returns false' do
-        expect(negotiation.discarded?).to eq false
-      end
-    end
-  end
-
   describe '#discard' do
     context 'when negotiation is discarded' do
       before(:each) { negotiation.discarded = true }
