@@ -77,10 +77,11 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
+    @offer.discard
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @offer.destroy
+      if @offer.save
         format.html { redirect_to user_offers_url, notice: 'Offer has been successfully deleted.' }
       else
         # ni idea :)
