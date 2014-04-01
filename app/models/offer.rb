@@ -83,14 +83,6 @@ class Offer
     end
   end
 
-  def negotiating?
-    negotiating
-  end
-
-  def discarded?
-    discarded
-  end
-
   def discard
     discarded ? false : self.discarded = true
   end
