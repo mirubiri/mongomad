@@ -50,6 +50,6 @@ class Item
   end
 
   def discard
-    discarded ? false : self.discarded = true
+    discarded? ? false : self.discarded = true
   end
 end
