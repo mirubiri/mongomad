@@ -18,10 +18,6 @@ class Request
     errors.add(:user_sheets, "Request should have one user_sheet for user.") unless user_id == user_sheet.id
   end
 
-  # def discarded?
-  #   discarded
-  # end
-
   public
   def discard
     discarded ? false : self.discarded = true
