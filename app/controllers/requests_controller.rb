@@ -70,10 +70,11 @@ class RequestsController < ApplicationController
 
   def destroy
     @request = Request.find(params[:id])
+    @request.discard
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
-      if @request.destroy
+      if @request.save
         format.html { redirect_to user_offers_url, notice: 'Request has been successfully deleted.' }
       else
         # ni idea :)
