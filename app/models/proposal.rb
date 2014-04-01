@@ -101,10 +101,6 @@ class Proposal
     end
   end
 
-  def actionable?
-    actionable
-  end
-
   def deactivate
     !actionable ? false : begin
       self.actionable = false
