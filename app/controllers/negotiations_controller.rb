@@ -38,9 +38,19 @@ class NegotiationsController < ApplicationController
   def create
     @offer = Offer.find(params[:offer_id])
     @negotiation = generate_negotiation_from_offer(@offer)
+    @offer = link_offer_to_negotiation(@offer, @negotiation)
+
+    # link_offer_to_negotiation(@offer, @negotiation)
+    # puts "*******************************************************************************"
+    # puts @offer.proposal.valid?
+    # puts @offer.proposal.errors.messages
+    # puts @negotiation.valid?
+    # puts @negotiation.errors.messages
+    # puts "*******************************************************************************"
 
     respond_to do |format|
       if save_negotiation_and_offer(@negotiation, @offer)
+        @negotiations = current_user.negotiations
         format.html { redirect_to user_negotiations_path, notice: 'Negotiation was successfully created.' }
         format.js { render 'add_negotiation_in_list', :layout => false, :locals => { :negotiation => @negotiation }, :status => :created }
       else
@@ -50,24 +60,34 @@ class NegotiationsController < ApplicationController
   end
 
   def update
+    @negotiation = current_user.negotiations.find(params[:id])
+    @proposal = generate_proposal_from_params(params[:offer])
+    # disable_last_proposal(@negotiation)
+    add_proposal_to_negotiation(@proposal, @negotiation)
+
+    # puts "*******************************************************************************"
+    # puts @proposal.valid?
+    # puts @proposal.errors.messages
+    # puts @negotiation.valid?
+    # puts @negotiation.errors.messages
+    # puts "*******************************************************************************"
+
     # recuperar la negociacion
     # generar una nueva propuesta
     # añadir la propuesta a la negociacion
     # salvar la negociacion
 
-
-    # @negotiation = current_user.negotiations.find(params[:id])
-    # @user = guess_receiver
-    # @proposal = Proposal.new(composer_id:current_user.id, receiver_id:@user.id)
-    # @negotiation.proposals << fill_proposal_goods(@proposal, params)
-
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @negotiation.save
+        # puts "*******************************************************************************"
+        # puts "hemos llegado me cawen la puta!"
+        # puts "*******************************************************************************"
         @negotiations = current_user.negotiations.desc(:updated_at)
         format.html { redirect_to current_user, notice: 'Negotiation was successfully updated.' }
         format.js { render 'reload_negotiations', :layout => false }
       else
+        # puts "ni pa dios!"
         #ni idea
       end
     end
@@ -121,11 +141,10 @@ class NegotiationsController < ApplicationController
   def pusher_message
     @user = current_user
     @negotiation = current_user.negotiations.find(params[:negotiation_id])
-    @message = Message.new(user_id:current_user.id, text:params[:message])
-    @negotiation.messages << @message
+    @negotiation.messages << Message.new(user_id:current_user.id, text:params[:message])
 
-    Pusher.trigger('my_negotiations_channel', 'my_event', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
-    Pusher.trigger('my_negotiations_channel', 'my_notification', {message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
+    Pusher.trigger('my_negotiations_channel', 'my_event', { message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
+    Pusher.trigger('my_negotiations_channel', 'my_notification', { message: params[:message], negotiation_id: params[:negotiation_id], sender_image_tag: params[:sender_image_tag] })
 
     #TODO: REVISAR SERGIO
     if @negotiation.save
@@ -142,29 +161,6 @@ class NegotiationsController < ApplicationController
     User.find(receiver_id)
   end
 
-  # def fill_proposal_goods (proposal, params)
-  #   #TODO: CAMBIAR EL NOMBRE AL HASH DE OFFER A PROPOSAL
-  #   if (params[:offer][:cash] != nil)
-  #     image = Attachment::Image.new(main:true)
-  #     image.id = 'static/images/money'
-  #     good = Cash.new(owner_id:params[:offer][:cash][:owner_id])
-  #     good.money = Money.new(params[:offer][:cash][:amount])
-  #     good.images << image
-  #     proposal.goods << good
-  #   end
-
-  #   if (params[:offer][:products]!=nil)
-  #     params[:offer][:products].each do |product_params|
-  #       #TODO: Reducir la búsqueda a los items del composer y del receiver
-  #       item = Item.find(product_params[:item_id])
-  #       good = Product.new(name:item.name, description:item.description, owner_id:item.user.id, images:item.images)
-  #       good.id = item.id
-  #       proposal.goods << good
-  #     end
-  #   end
-  #   proposal
-  # end
-
   def generate_negotiation_from_offer(offer)
     negotiation = Negotiation.new
     negotiation.users << offer.user_composer
@@ -180,25 +176,86 @@ class NegotiationsController < ApplicationController
     #   user_sheets: offer.user_sheets,
     #   proposals: [ offer.proposal ],
     #   messages: [ Message.new(user_id:offer.user_composer_id, text:offer.message) ])
-    #   # negotiation.proposals << offer.proposal
-    link_offer_to_negotiation(offer, negotiation)
+    # negotiation.proposals << offer.proposal
+
     negotiation
   end
 
   def link_offer_to_negotiation(offer, negotiation)
+    # puts "*******************************************************************************"
+    # puts negotiation.valid?
+    # puts negotiation.errors
+    # puts offer.valid?
+    # puts offer.errors
+    # puts "*******************************************************************************"
+
     offer.negotiation = negotiation
     offer.negotiating = true
     offer.negotiated_times += 1
-    # save_negotiation_and_offer(negotiation,offer)
+
+    # puts "*******************************************************************************"
+    # puts negotiation.valid?
+    # puts negotiation.errors
+    # puts offer.valid?
+    # puts offer.errors
+    # ap offer
+    # puts "*******************************************************************************"
+    offer
+    # offer.valid? && negotiation.valid?
   end
 
   def save_negotiation_and_offer(negotiation, offer)
-   # offer.save
+    if offer.valid? && negotiation.valid?
+      # puts "*******************************************************************************"
+      # puts "llegamos a salvar las cosas"
+      # puts "*******************************************************************************"
+      offer.save
+      # puts "salvamos offer"
+      negotiation.save
+      # puts "salvamos negotiation"
+    else
+      false
+    end
+  end
 
-    # if offer.valid? && negotiation.valid?
-    #   offer.save && negotiation.save
-    # else
-    #   false
-    # end
+  def generate_proposal_from_params(params)
+    proposal = Proposal.new(composer_id:current_user.id, receiver_id:guess_receiver.id)
+
+    products = get_products_from_items(params[:products])
+    cash = parse_cash(params[:cash]) if params[:cash]
+
+    goods = []
+    goods << products
+    goods << cash
+
+    proposal.goods = nil
+    proposal.goods << goods
+    proposal
+  end
+
+  # TODO: eliminar y usar las del controlador de offer
+  def get_products_from_items(item_ids)
+    item_ids.map { |id| Item.find(id[:item_id]).to_product }
+  end
+
+  # TODO: eliminar y usar las del controlador de offer
+  def parse_cash(cash_params)
+    cash = Cash.new(owner_id:cash_params[:owner_id])
+    cash.money = Money.new(cash_params[:amount])
+    cash.images << Attachment::Image.new(main:true) do |image|
+      image.id = 'static/images/money'
+    end
+    cash
+  end
+
+  def add_proposal_to_negotiation(proposal, negotiation)
+    disable_last_proposal(negotiation)
+    negotiation.proposals << proposal
+    negotiation
+  end
+
+  def disable_last_proposal(negotiation)
+    negotiation.proposals.last.actionable = false
+    negotiation
   end
 end
