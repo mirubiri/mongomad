@@ -17,9 +17,9 @@ describe Offer do
   it { should be_timestamped_document }
   it { should have_field :message }
   it { should have_field(:state).with_default_value_of('on_sale') }
-  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
   it { should have_field(:negotiating).of_type(Boolean).with_default_value_of(false) }
   it { should have_field(:negotiated_times).of_type(Integer).with_default_value_of(0) }
+  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :user_composer }
@@ -31,9 +31,9 @@ describe Offer do
   it { should validate_presence_of :proposal }
   it { should validate_length_of(:message).within(1..160) }
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
-  it { should validate_presence_of :discarded }
   it { should validate_presence_of :negotiating }
   it { should validate_numericality_of(:negotiated_times).greater_than_or_equal_to(0) }
+  it { should validate_presence_of :discarded }
 
   # Checks
   it 'is invalid if both users are the same' do
@@ -164,6 +164,24 @@ describe Offer do
     end
   end
 
+  describe '#negotiating?' do
+    context 'when offer is being negotiated' do
+      before(:each) { offer.negotiating = true }
+
+      it 'returns true' do
+        expect(offer.negotiating?).to eq true
+      end
+    end
+
+    context 'when offer is not being negotiated' do
+      before(:each) { offer.negotiating = false }
+
+      it 'returns false' do
+        expect(offer.negotiating?).to eq false
+      end
+    end
+  end
+
   describe '#discarded?' do
     context 'when offer is discarded' do
       before(:each) { offer.discarded = true }
@@ -204,24 +222,6 @@ describe Offer do
 
       it 'returns true' do
         expect(offer.discard).to eq true
-      end
-    end
-  end
-
-  describe '#negotiating?' do
-    context 'when offer is being negotiated' do
-      before(:each) { offer.negotiating = true }
-
-      it 'returns true' do
-        expect(offer.negotiating?).to eq true
-      end
-    end
-
-    context 'when offer is not being negotiated' do
-      before(:each) { offer.negotiating = false }
-
-      it 'returns false' do
-        expect(offer.negotiating?).to eq false
       end
     end
   end
