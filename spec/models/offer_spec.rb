@@ -164,42 +164,6 @@ describe Offer do
     end
   end
 
-  describe '#negotiating?' do
-    context 'when offer is being negotiated' do
-      before(:each) { offer.negotiating = true }
-
-      it 'returns true' do
-        expect(offer.negotiating?).to eq true
-      end
-    end
-
-    context 'when offer is not being negotiated' do
-      before(:each) { offer.negotiating = false }
-
-      it 'returns false' do
-        expect(offer.negotiating?).to eq false
-      end
-    end
-  end
-
-  describe '#discarded?' do
-    context 'when offer is discarded' do
-      before(:each) { offer.discarded = true }
-
-      it 'returns true' do
-        expect(offer.discarded?).to eq true
-      end
-    end
-
-    context 'when offer is undiscarded' do
-      before(:each) { offer.discarded = false }
-
-      it 'returns false' do
-        expect(offer.discarded?).to eq false
-      end
-    end
-  end
-
   describe '#discard' do
     context 'when offer is discarded' do
       before(:each) { offer.discarded = true }
