@@ -93,7 +93,7 @@ class Proposal
   end
 
   def update_state
-    return false unless actionable
+    return false unless actionable?
     if goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size
       state == 'new' ? true : reset
     else
@@ -102,7 +102,7 @@ class Proposal
   end
 
   def deactivate
-    !actionable ? false : begin
+    !actionable? ? false : begin
       self.actionable = false
       true
     end
