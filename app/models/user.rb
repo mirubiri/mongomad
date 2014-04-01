@@ -31,6 +31,6 @@ class User
   end
 
   def disable
-    disabled ? false : self.disabled = true
+    disabled? ? false : self.disabled = true
   end
 end
