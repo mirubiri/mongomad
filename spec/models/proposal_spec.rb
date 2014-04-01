@@ -306,24 +306,6 @@ describe Proposal do
     end
   end
 
-  describe '#actionable?' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      it 'returns true' do
-        expect(proposal.actionable?).to eq true
-      end
-    end
-
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
-      it 'returns false' do
-        expect(proposal.actionable?).to eq false
-      end
-    end
-  end
-
   describe '#deactivate' do
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
