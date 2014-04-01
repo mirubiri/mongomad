@@ -149,7 +149,7 @@ class NegotiationsController < ApplicationController
     negotiation.users << offer.user_composer
     negotiation.users << offer.user_receiver
     negotiation.offer = offer
-    negotiation.user_sheets = offer.user_sheets.
+    negotiation.user_sheets = offer.user_sheets
     negotiation.proposals << offer.proposal
     negotiation.messages << Message.new(user_id:offer.user_composer_id, text:offer.message)
     negotiation
