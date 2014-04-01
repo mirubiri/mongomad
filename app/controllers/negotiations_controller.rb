@@ -38,15 +38,7 @@ class NegotiationsController < ApplicationController
   def create
     @offer = Offer.find(params[:offer_id])
     @negotiation = generate_negotiation_from_offer(@offer)
-    @offer = link_offer_to_negotiation(@offer, @negotiation)
-
-    # link_offer_to_negotiation(@offer, @negotiation)
-    # puts "*******************************************************************************"
-    # puts @offer.proposal.valid?
-    # puts @offer.proposal.errors.messages
-    # puts @negotiation.valid?
-    # puts @negotiation.errors.messages
-    # puts "*******************************************************************************"
+    link_offer_to_negotiation(@offer, @negotiation)
 
     respond_to do |format|
       if save_negotiation_and_offer(@negotiation, @offer)
@@ -62,46 +54,19 @@ class NegotiationsController < ApplicationController
   def update
     @negotiation = current_user.negotiations.find(params[:id])
     @proposal = generate_proposal_from_params(params[:offer])
-    # disable_last_proposal(@negotiation)
     add_proposal_to_negotiation(@proposal, @negotiation)
-
-    # puts "*******************************************************************************"
-    # puts @proposal.valid?
-    # puts @proposal.errors.messages
-    # puts @negotiation.valid?
-    # puts @negotiation.errors.messages
-    # puts "*******************************************************************************"
-
-    # recuperar la negociacion
-    # generar una nueva propuesta
-    # añadir la propuesta a la negociacion
-    # salvar la negociacion
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
       if @negotiation.save
-        # puts "*******************************************************************************"
-        # puts "hemos llegado me cawen la puta!"
-        # puts "*******************************************************************************"
         @negotiations = current_user.negotiations.desc(:updated_at)
         format.html { redirect_to current_user, notice: 'Negotiation was successfully updated.' }
         format.js { render 'reload_negotiations', :layout => false }
       else
-        # puts "ni pa dios!"
         #ni idea
       end
     end
   end
-
-  # def destroy
-  #   @negotiation = Negotiation.find(params[:id])
-  #   @negotiation.destroy
-
-  #   #TODO: REVISAR SERGIO
-  #   respond_to do |format|
-  #     format.html { redirect_to user_negotiations_url }
-  #   end
-  # end
 
   # #TODO: REVISAR
   # def sign
@@ -156,7 +121,6 @@ class NegotiationsController < ApplicationController
   #   end
   # end
 
-
   def pusher_message
     @user = current_user
     @negotiation = current_user.negotiations.find(params[:negotiation_id])
@@ -185,53 +149,22 @@ class NegotiationsController < ApplicationController
     negotiation.users << offer.user_composer
     negotiation.users << offer.user_receiver
     negotiation.offer = offer
-    negotiation.user_sheets << offer.user_sheets.first
-    negotiation.user_sheets << offer.user_sheets.last
+    negotiation.user_sheets = offer.user_sheets.
     negotiation.proposals << offer.proposal
     negotiation.messages << Message.new(user_id:offer.user_composer_id, text:offer.message)
-
-    # negotiation = Negotiation.new(users:[ offer.user_composer, offer.user_receiver ],
-    #   offer:offer,
-    #   user_sheets: offer.user_sheets,
-    #   proposals: [ offer.proposal ],
-    #   messages: [ Message.new(user_id:offer.user_composer_id, text:offer.message) ])
-    # negotiation.proposals << offer.proposal
-
     negotiation
   end
 
   def link_offer_to_negotiation(offer, negotiation)
-    # puts "*******************************************************************************"
-    # puts negotiation.valid?
-    # puts negotiation.errors
-    # puts offer.valid?
-    # puts offer.errors
-    # puts "*******************************************************************************"
-
     offer.negotiation = negotiation
     offer.negotiating = true
     offer.negotiated_times += 1
-
-    # puts "*******************************************************************************"
-    # puts negotiation.valid?
-    # puts negotiation.errors
-    # puts offer.valid?
-    # puts offer.errors
-    # ap offer
-    # puts "*******************************************************************************"
     offer
-    # offer.valid? && negotiation.valid?
   end
 
   def save_negotiation_and_offer(negotiation, offer)
     if offer.valid? && negotiation.valid?
-      # puts "*******************************************************************************"
-      # puts "llegamos a salvar las cosas"
-      # puts "*******************************************************************************"
-      offer.save
-      # puts "salvamos offer"
-      negotiation.save
-      # puts "salvamos negotiation"
+      offer.save && negotiation.save
     else
       false
     end
