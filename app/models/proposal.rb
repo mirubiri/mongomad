@@ -94,7 +94,7 @@ class Proposal
 
   def update_state
     return false unless actionable?
-    if goods.where(state:'on_sale').size + goods.type(Cash).size == goods.size
+    if goods.or({ state:'on_sale' },{ _type:'Cash' }).size == goods.size
       state == 'new' ? true : reset
     else
       deactivate
