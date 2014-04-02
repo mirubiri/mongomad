@@ -283,7 +283,8 @@ module ApplicationHelper
 
   # TODO: ELIMINAR, solo para debug
   def item_info(item)
-    "ITEM: state: #{item.state}, discarded: #{item.discarded}"
+    # "ITEM: state: #{item.state}, discarded: #{item.discarded}"
+    "ITEM: state: #{item.state}"
   end
 
   # TODO: ELIMINAR, solo para debug
