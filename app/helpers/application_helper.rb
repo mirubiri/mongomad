@@ -269,11 +269,11 @@ module ApplicationHelper
     when Item
       item_info(object)
     when Product
-      "PRODUCT: state: #{object.state}, outdated: #{object.outdated} " + item_info(object.item)
+      "PRODUCT: #{object.state} / #{object.outdated} " + item_info(object.item)
     when Offer
-      "OFFER: state: #{object.state}, discarded: #{object.discarded}, negotiating: #{object.negotiating}, negotiated_times: #{object.negotiated_times} " + proposal_info(proposal(object))
+      "OFFER: #{object.state} / #{object.discarded} / #{object.negotiating} / #{object.negotiated_times} " + proposal_info(proposal(object))
     when Negotiation
-      "NEGOTIATION: absent_user: #{object.absent_user}, discarded: #{object.discarded} " + proposal_info(proposal(object))
+      "NEGOTIATION: #{object.absent_user} / #{object.discarded} / " + proposal_info(proposal(object))
     when Deal
       proposal_info(agreement(object))
     else
@@ -284,12 +284,13 @@ module ApplicationHelper
   # TODO: ELIMINAR, solo para debug
   def item_info(item)
     # "ITEM: state: #{item.state}, discarded: #{item.discarded}"
-    "ITEM: state: #{item.state}"
+    "ITEM: #{item.state}"
   end
 
   # TODO: ELIMINAR, solo para debug
   def proposal_info(proposal)
-    "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
+    # "PROPOSAL: state: #{proposal.state}, actionable: #{proposal.actionable}"
+    "PROPOSAL: #{proposal.state} / #{proposal.actionable}"
   end
 
   # Negotiation helpers
