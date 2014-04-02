@@ -269,7 +269,7 @@ module ApplicationHelper
     when Item
       item_info(object)
     when Product
-      "PRODUCT: state: #{object.state} " + item_info(object.item)
+      "PRODUCT: state: #{object.state}, outdated: #{object.outdated} " + item_info(object.item)
     when Offer
       "OFFER: state: #{object.state}, discarded: #{object.discarded}, negotiating: #{object.negotiating}, negotiated_times: #{object.negotiated_times} " + proposal_info(proposal(object))
     when Negotiation
