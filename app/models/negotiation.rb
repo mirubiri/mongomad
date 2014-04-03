@@ -9,9 +9,9 @@ class Negotiation
   embeds_many             :messages,   as: :message_container
 
   field :absent_user, type:Moped::BSON::ObjectId, default:nil
-  field :discarded,   type:Boolean, default:false
+  field :hidden,      type:Boolean, default:false
 
-  validates_presence_of :users, :user_sheets, :proposals, :messages, :discarded
+  validates_presence_of :users, :user_sheets, :proposals, :messages, :hidden
 
   validate :check_number_of_users,
            :check_user_equality,
@@ -61,7 +61,7 @@ class Negotiation
   end
 
   def gatekeeper(user_id, action)
-    return false unless !discarded?
+    return false unless !hidden?
     return false if ![users.first.id, users.last.id].include?(user_id)
     return false if cash_owner?(user_id) && action == :sign
     return false if !cash_owner?(user_id) && action == :confirm
@@ -74,12 +74,12 @@ class Negotiation
 
   def confirm_proposal(user_id)
     !gatekeeper(user_id, :confirm) ? false : begin
-      discard
+      hide
       proposal.confirm
     end
   end
 
-  def discard
-    discarded? ? false : self.discarded = true
+  def hide
+    hidden? ? false : self.hidden = true
   end
 end
