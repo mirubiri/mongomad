@@ -6,9 +6,9 @@ class Request
   embeds_one :user_sheet, as: :user_sheet_container
 
   field :text
-  field :discarded, type:Boolean, default:false
+  field :hidden, type:Boolean, default:false
 
-  validates_presence_of :user, :user_sheet, :discarded
+  validates_presence_of :user, :user_sheet, :hidden
   validates_length_of   :text, minimum: 1, maximum: 160
 
   validate :check_user_sheet
@@ -19,7 +19,7 @@ class Request
   end
 
   public
-  def discard
-    discarded? ? false : self.discarded = true
+  def hide
+    hidden? ? false : self.hidden = true
   end
 end
