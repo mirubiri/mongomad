@@ -77,7 +77,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.hide
+    @offer.withdraw
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
