@@ -70,7 +70,7 @@ class RequestsController < ApplicationController
 
   def destroy
     @request = Request.find(params[:id])
-    @request.discard
+    @request.hide
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
