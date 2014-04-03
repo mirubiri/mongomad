@@ -256,11 +256,6 @@ describe Negotiation do
     end
   end
 
-  describe '#kick(user_id)' do
-    pending "add methods to let user leave negotiation"
-    pending "when user leaves negotiation, discards negotiation"
-  end
-
   # Factories
   specify { expect(Fabricate.build(:negotiation)).to be_valid }
 end
