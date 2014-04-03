@@ -194,23 +194,6 @@ describe Offer do
     end
   end
 
-  describe '#negotiate' do
-    context 'when offer is being negotiated' do
-      pending 'dont create a new negotiation'
-      pending 'dont change assotiation/check assotiation'
-      pending 'dont change negotiating'
-      pending 'dont change negotiated times'
-      pending 'returns true'
-    end
-    context 'when offer is not being negotiated' do
-      pending 'create a new negotiation'
-      pending 'assotiate offer and negotiation'
-      pending 'set negotiating to true'
-      pending 'add 1 to negotiated times'
-      pending 'returns true'
-    end
-  end
-
   # Factories
   specify { expect(Fabricate.build(:offer)).to be_valid }
 end
