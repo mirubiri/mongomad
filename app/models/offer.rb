@@ -12,9 +12,9 @@ class Offer
   field :state,            default:'on_sale'
   field :negotiating,      type:Boolean, default:false
   field :negotiated_times, type:Integer, default:0
-  field :discarded,        type:Boolean, default:false
+  field :hidden,           type:Boolean, default:false
 
-  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :negotiating, :negotiated_times, :discarded
+  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :negotiating, :negotiated_times, :hidden
   validates_length_of       :message, minimum: 1, maximum: 160
   validates_inclusion_of    :state, in: ['on_sale','withdrawn','sold']
   validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
@@ -70,20 +70,19 @@ class Offer
   end
 
   def withdraw
-    discarded? ? false : begin
-      discard
+    hidden? ? false : begin
+      hide
       state_machine.trigger(:withdraw)
     end
   end
 
   def sell
-    discarded? ? false : begin
-      discard
+    hidden? ? false : begin
       state_machine.trigger(:sell)
     end
   end
 
-  def discard
-    discarded? ? false : self.discarded = true
+  def hide
+    hidden? ? false : self.hidden = true
   end
 end
