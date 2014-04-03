@@ -8,9 +8,9 @@ class Item
   field :name
   field :description
   field :state,      default:'on_sale'
- # field :discarded,  type:Boolean, default:false
+  field :hidden,     type:Boolean, default:false
 
-  validates_presence_of  :user#, :discarded
+  validates_presence_of  :user, :hidden
   validates_length_of    :name, minimum: 1, maximum: 20
   validates_length_of    :description, minimum: 1, maximum: 200
   validates_inclusion_of :state, in: ['on_sale','withdrawn','sold']
@@ -36,20 +36,19 @@ class Item
   end
 
   def withdraw
-    # discarded? ? false : begin
-      # discard
+    hidden? ? false : begin
+      hide
       state_machine.trigger(:withdraw)
-    # end
+    end
   end
 
   def sell
-    # discarded? ? false : begin
-      # discard
+    hidden? ? false : begin
       state_machine.trigger(:sell)
-    # end
+    end
   end
 
-  # def discard
-  #   discarded? ? false : self.discarded = true
-  # end
+  def hide
+    hidden? ? false : self.hidden = true
+  end
 end
