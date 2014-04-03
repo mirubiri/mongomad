@@ -21,7 +21,7 @@ describe Negotiation do
   # Attributes
   it { should be_timestamped_document }
   it { should have_field(:absent_user).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
+  it { should have_field(:hidden).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :users }
@@ -29,7 +29,7 @@ describe Negotiation do
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposals }
   it { should validate_presence_of :messages }
-  it { should validate_presence_of :discarded }
+  it { should validate_presence_of :hidden }
 
   # Checks
   it 'is invalid if there are more than two users' do
@@ -104,16 +104,16 @@ describe Negotiation do
   end
 
   describe '#gatekeeper(user_id, action)' do
-    context 'when negotiation is discarded' do
-      before(:each) { negotiation.discarded = true }
+    context 'when negotiation is hidden' do
+      before(:each) { negotiation.hidden = true }
 
       it 'returns false' do
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
       end
     end
 
-    context 'when negotiation is not discarded' do
-      before(:each) { negotiation.discarded = false }
+    context 'when negotiation is unhidden' do
+      before(:each) { negotiation.hidden = false }
 
       context 'when user belongs to negotiation' do
         context 'when action is :sign' do
@@ -160,8 +160,8 @@ describe Negotiation do
   end
 
   describe '#sign_proposal(user_id)' do
-    it 'does not change negotiation discarded field' do
-      expect{ negotiation.sign_proposal(composer_id) }.to_not change{ negotiation.discarded }
+    it 'does not change negotiation hidden field' do
+      expect{ negotiation.sign_proposal(composer_id) }.to_not change{ negotiation.hidden }
     end
 
     context 'when user can sign' do
@@ -203,8 +203,8 @@ describe Negotiation do
         negotiation.confirm_proposal(composer_id)
       end
 
-      it 'changes negotiation discarded field to true' do
-        expect{ negotiation.confirm_proposal(composer_id) }.to change { negotiation.discarded }.from(false).to(true)
+      it 'changes negotiation hidden field to true' do
+        expect{ negotiation.confirm_proposal(composer_id) }.to change { negotiation.hidden }.from(false).to(true)
       end
 
       it 'returns true' do
@@ -220,8 +220,8 @@ describe Negotiation do
         negotiation.confirm_proposal(composer_id)
       end
 
-      it 'does not change negotiation discarded field' do
-        expect{ negotiation.confirm_proposal(composer_id) }.to_not change{ negotiation.discarded }
+      it 'does not change negotiation hidden field' do
+        expect{ negotiation.confirm_proposal(composer_id) }.to_not change{ negotiation.hidden }
       end
 
       it 'returns false' do
@@ -230,28 +230,28 @@ describe Negotiation do
     end
   end
 
-  describe '#discard' do
-    context 'when negotiation is discarded' do
-      before(:each) { negotiation.discarded = true }
+  describe '#hide' do
+    context 'when negotiation is hidden' do
+      before(:each) { negotiation.hidden = true }
 
-      it 'does not change negotiation discarded field' do
-        expect{ negotiation.discard }.to_not change{ negotiation.discarded }
+      it 'does not change negotiation hidden field' do
+        expect{ negotiation.hide }.to_not change{ negotiation.hidden }
       end
 
       it 'returns false' do
-        expect(negotiation.discard).to eq false
+        expect(negotiation.hide).to eq false
       end
     end
 
-    context 'when negotiation is undiscarded' do
-      before(:each) { negotiation.discarded = false }
+    context 'when negotiation is unhidden' do
+      before(:each) { negotiation.hidden = false }
 
-      it 'changes negotiation discarded field to true' do
-        expect{ negotiation.discard }.to change{ negotiation.discarded }.from(false).to(true)
+      it 'changes negotiation hidden field to true' do
+        expect{ negotiation.hide }.to change{ negotiation.hidden }.from(false).to(true)
       end
 
       it 'returns true' do
-        expect(negotiation.discard).to eq true
+        expect(negotiation.hide).to eq true
       end
     end
   end
