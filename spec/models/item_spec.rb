@@ -99,7 +99,7 @@ describe Item do
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
       it 'changes item hidden field to true' do
-        expect{ item.send(action) }.to change{ item.hidden }.from(false).to(true)
+        expect{ item.withdraw }.to change{ item.hidden }.from(false).to(true)
       end
     end
   end
@@ -115,7 +115,7 @@ describe Item do
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
 
       it 'does not change item hidden field' do
-        expect{ item.send(action) }.to_not change{ item.hidden }
+        expect{ item.sell }.to_not change{ item.hidden }
       end
     end
   end
