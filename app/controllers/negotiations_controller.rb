@@ -92,9 +92,9 @@ class NegotiationsController < ApplicationController
   # end
 
   #TODO: REVISAR
-  def discard
+  def hide
     @negotiation = Negotiation.find(params[:id])
-    @negotiation.proposal.discard
+    @negotiation.proposal.hide
 
     #TODO: REVISAR SERGIO
     respond_to do |format|
