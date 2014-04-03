@@ -147,7 +147,7 @@ describe Offer do
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
       it 'changes offer hidden field to true' do
-        expect{ offer.send(action) }.to change{ offer.hidden }.from(false).to(true)
+        expect{ offer.withdraw }.to change{ offer.hidden }.from(false).to(true)
       end
     end
   end
@@ -163,7 +163,7 @@ describe Offer do
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
 
       it 'does not change offer hidden field' do
-        expect{ offer.send(action) }.to_not change{ offer.hidden }
+        expect{ offer.sell }.to_not change{ offer.hidden }
       end
     end
   end
