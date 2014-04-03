@@ -14,7 +14,7 @@ describe Item do
   it { should be_timestamped_document }
   it { should have_fields :name, :description }
   it { should have_field(:state).with_default_value_of('on_sale') }
-  it { should have_field(:discarded).of_type(Boolean).with_default_value_of(false) }
+  it { should have_field(:hidden).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should validate_presence_of :user }
@@ -22,7 +22,7 @@ describe Item do
   it { should validate_length_of(:name).within(1..20) }
   it { should validate_length_of(:description).within(1..200) }
   it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
-  it { should validate_presence_of :discarded }
+  it { should validate_presence_of :hidden }
 
   # Methods
   describe '#to_product' do
@@ -56,10 +56,6 @@ describe Item do
       expect{ item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
     end
 
-    it 'changes item discarded field to true' do
-      expect{ item.send(action) }.to change{ item.discarded }.from(false).to(true)
-    end
-
     it 'does not save the item' do
       item.send(action)
       expect(item).to_not be_persisted
@@ -83,8 +79,8 @@ describe Item do
       expect{ item.send(action) }.to_not change { item.state }
     end
 
-    it 'does not change item discarded field' do
-      expect{ item.send(action) }.to_not change{ item.discarded }
+    it 'does not change item hidden field' do
+      expect{ item.send(action) }.to_not change{ item.hidden }
     end
 
     it 'returns false' do
@@ -93,51 +89,59 @@ describe Item do
   end
 
   describe '#withdraw' do
-    context 'when item is discarded' do
-      before(:each) { item.discarded = true }
+    context 'when item is hidden' do
+      before(:each) { item.hidden = true }
       it_should_behave_like 'invalid state machine event', :withdraw, 'on_sale', 'withdrawn'
     end
 
-    context 'when item is not discarded' do
-      before(:each) { item.discarded = false }
+    context 'when item is unhidden' do
+      before(:each) { item.hidden = false }
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
+
+      it 'changes item hidden field to true' do
+        expect{ item.send(action) }.to change{ item.hidden }.from(false).to(true)
+      end
     end
   end
 
   describe '#sell' do
-    context 'when item is discarded' do
-      before(:each) { item.discarded = true }
+    context 'when item is hidden' do
+      before(:each) { item.hidden = true }
       it_should_behave_like 'invalid state machine event', :sell, 'on_sale', 'sold'
     end
 
-    context 'when item is not discarded' do
-      before(:each) { item.discarded = false }
+    context 'when item is unhidden' do
+      before(:each) { item.hidden = false }
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
+
+      it 'does not change item hidden field' do
+        expect{ item.send(action) }.to_not change{ item.hidden }
+      end
     end
   end
 
-  describe '#discard' do
-    context 'when item is discarded' do
-      before(:each) { item.discarded = true }
+  describe '#hide' do
+    context 'when item is hidden' do
+      before(:each) { item.hidden = true }
 
-      it 'does not change item discarded field' do
-        expect{ item.discard }.to_not change{ item.discarded }
+      it 'does not change item hidden field' do
+        expect{ item.hide }.to_not change{ item.hidden }
       end
 
       it 'returns false' do
-        expect(item.discard).to eq false
+        expect(item.hide).to eq false
       end
     end
 
-    context 'when item is undiscarded' do
-      before(:each) { item.discarded = false }
+    context 'when item is unhidden' do
+      before(:each) { item.hidden = false }
 
-      it 'changes item discarded field to true' do
-        expect{ item.discard }.to change{ item.discarded }.from(false).to(true)
+      it 'changes item hidden field to true' do
+        expect{ item.hide }.to change{ item.hidden }.from(false).to(true)
       end
 
       it 'returns true' do
-        expect(item.discard).to eq true
+        expect(item.hide).to eq true
       end
     end
   end
