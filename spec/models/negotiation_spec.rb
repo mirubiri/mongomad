@@ -2,12 +2,14 @@ require 'spec_helper'
 
 describe Negotiation do
   # Variables
-  let(:negotiation) { Fabricate.build(:negotiation) }
-  let(:composer_id) { negotiation.proposal.composer_id }
-  let(:receiver_id) { negotiation.proposal.receiver_id }
+  let(:negotiation)    { Fabricate.build(:negotiation) }
+  let(:composer_id)    { negotiation.proposal.composer_id }
+  let(:receiver_id)    { negotiation.proposal.receiver_id }
+  let(:cash_owner)     { composer_id }
+  let(:not_cash_owner) { receiver_id }
 
   let(:negotiation_with_cash) do
-    negotiation.proposal.goods << Fabricate.build(:cash, owner_id:composer_id)
+    negotiation.proposal.goods << Fabricate.build(:cash,owner_id:composer_id)
     negotiation
   end
 
@@ -81,7 +83,7 @@ describe Negotiation do
     end
   end
 
-  describe '#cash_owner(user_id)?' do
+  describe '#cash_owner?' do
     context 'when last proposal has cash' do
       context 'when user owns the cash' do
         it 'returns true' do
@@ -103,65 +105,71 @@ describe Negotiation do
     end
   end
 
-  describe '#gatekeeper(user_id, action)' do
-    context 'when negotiation is hidden' do
-      before(:each) { negotiation.hidden = true }
+  describe '#gatekeeper' do
 
-      it 'returns false' do
+    it 'returns false if user does not belong to negotiation' do
+      expect(negotiation.gatekeeper('0',:sign)).to eq false
+    end
+
+    it 'returns false if negotiation is hidden' do
+      negotiation.hide
+      expect(negotiation.gatekeeper(receiver_id,:sign)).to eq false
+    end
+
+    describe ':sign action' do
+      it 'returns false if proposal is not new' do
+        negotiation.proposal.state='signed'
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
+      end
+
+      context 'proposal has cash' do
+        it 'returns false for cash owner' do
+          expect(negotiation_with_cash.gatekeeper(cash_owner,:sign)).to eq false
+        end
+        it 'returns true for not cash owner' do
+          expect(negotiation_with_cash.gatekeeper(not_cash_owner,:sign)).to eq true
+        end
+      end
+
+      context 'proposal does not have cash' do
+        it 'returns true for receiver user' do
+          expect(negotiation.gatekeeper(receiver_id,:sign)).to eq true
+        end
+
+        it 'returns true for composer user' do
+          expect(negotiation.gatekeeper(composer_id,:sign)).to eq true
+        end
       end
     end
 
-    context 'when negotiation is unhidden' do
-      before(:each) { negotiation.hidden = false }
-
-      context 'when user belongs to negotiation' do
-        context 'when action is :sign' do
-          context 'when user has cash' do
-            it 'returns false' do
-              expect(negotiation_with_cash.gatekeeper(composer_id,:sign)).to eq false
-            end
-          end
-
-          context 'when user does not have cash' do
-            it 'returns true' do
-              expect(negotiation_with_cash.gatekeeper(receiver_id,:sign)).to eq true
-            end
-          end
-        end
-
-        context 'when action is :confirm' do
-          context 'when user has cash' do
-            it 'returns true' do
-              expect(negotiation_with_cash.gatekeeper(composer_id,:confirm)).to eq true
-            end
-          end
-
-          context 'when user does not have cash' do
-            it 'returns false' do
-              expect(negotiation_with_cash.gatekeeper(receiver_id,:confirm)).to eq false
-            end
-          end
-        end
-
-        context 'action is not :sign or :confirm' do
-          it 'returns true' do
-            expect(negotiation.gatekeeper(composer_id,:action)).to eq true
-          end
-        end
+    describe ':confirm action' do
+      it 'returns false if proposal is not signed' do
+        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
       end
 
-      context 'user does not belong to negotiation' do
-        it 'returns false' do
-          expect(negotiation.gatekeeper('0',:sign)).to eq false
+      context 'proposal has cash' do
+        it 'returns true for user with cash'
+        it 'returns false for user with no cash'
+      end
+
+      context 'proposal does not have cash' do
+        before {}
+        context 'composer signed' do
+          it 'returns true for receiver user'
+          it 'returns false for composer user'
+        end
+
+        context 'receiver signed' do
+          it 'returns false for receiver user'
+          it 'returns true for composer user'
         end
       end
     end
   end
 
-  describe '#sign_proposal(user_id)' do
+  describe '#sign_proposal' do
     it 'does not change negotiation hidden field' do
-      expect{ negotiation.sign_proposal(composer_id) }.to_not change{ negotiation.hidden }
+      expect { negotiation.sign_proposal(composer_id) }.to_not change { negotiation.hidden }
     end
 
     context 'when user can sign' do
@@ -191,7 +199,7 @@ describe Negotiation do
     end
   end
 
-  describe '#confirm_proposal(user_id)' do
+  describe '#confirm_proposal' do
     context 'when user can confirm' do
       before(:each) do
         negotiation.proposal.state = 'signed'
@@ -204,7 +212,7 @@ describe Negotiation do
       end
 
       it 'changes negotiation hidden field to true' do
-        expect{ negotiation.confirm_proposal(composer_id) }.to change { negotiation.hidden }.from(false).to(true)
+        expect { negotiation.confirm_proposal(composer_id) }.to change { negotiation.hidden }.from(false).to(true)
       end
 
       it 'returns true' do
@@ -221,7 +229,7 @@ describe Negotiation do
       end
 
       it 'does not change negotiation hidden field' do
-        expect{ negotiation.confirm_proposal(composer_id) }.to_not change{ negotiation.hidden }
+        expect { negotiation.confirm_proposal(composer_id) }.to_not change { negotiation.hidden }
       end
 
       it 'returns false' do
@@ -231,28 +239,9 @@ describe Negotiation do
   end
 
   describe '#hide' do
-    context 'when negotiation is hidden' do
-      before(:each) { negotiation.hidden = true }
-
-      it 'does not change negotiation hidden field' do
-        expect{ negotiation.hide }.to_not change{ negotiation.hidden }
-      end
-
-      it 'returns false' do
-        expect(negotiation.hide).to eq false
-      end
-    end
-
-    context 'when negotiation is unhidden' do
-      before(:each) { negotiation.hidden = false }
-
-      it 'changes negotiation hidden field to true' do
-        expect{ negotiation.hide }.to change{ negotiation.hidden }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(negotiation.hide).to eq true
-      end
+    it 'sets hidden to true' do
+      negotiation.hide
+      expect(negotiation.hidden).to eq true
     end
   end
 
