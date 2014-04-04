@@ -77,12 +77,10 @@ class Offer
   end
 
   def sell
-    hidden? ? false : begin
-      state_machine.trigger(:sell)
-    end
+    hidden? ? false : state_machine.trigger(:sell)
   end
 
   def hide
-    hidden? ? false : self.hidden = true
+    self.hidden = true
   end
 end
