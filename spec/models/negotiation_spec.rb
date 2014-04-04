@@ -195,7 +195,7 @@ describe Negotiation do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(true) }
 
       it 'calls sign method' do
-        expect(negotiation.proposal).to receive(:sign)
+        expect(negotiation.proposal).to receive(:sign).with(composer_id)
         negotiation.sign_proposal(composer_id)
       end
 
@@ -208,7 +208,7 @@ describe Negotiation do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:sign).and_return(false) }
 
       it 'does not call sign method' do
-        expect(negotiation.proposal).to_not receive(:sign)
+        expect(negotiation.proposal).to_not receive(:sign).with(composer_id)
         negotiation.sign_proposal(composer_id)
       end
 
@@ -226,7 +226,7 @@ describe Negotiation do
       end
 
       it 'calls confirm method' do
-        expect(negotiation.proposal).to receive(:confirm)
+        expect(negotiation.proposal).to receive(:confirm).with(composer_id)
         negotiation.confirm_proposal(composer_id)
       end
 
@@ -243,7 +243,7 @@ describe Negotiation do
       before(:each) { negotiation.stub(:gatekeeper).with(composer_id,:confirm).and_return(false) }
 
       it 'does not call confirm method' do
-        expect(negotiation.proposal).to_not receive(:confirm)
+        expect(negotiation.proposal).to_not receive(:confirm).with(composer_id)
         negotiation.confirm_proposal(composer_id)
       end
 

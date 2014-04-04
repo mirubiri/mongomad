@@ -4,7 +4,9 @@ describe Proposal do
   # Variables
   let(:user_composer) { Fabricate.build(:user_with_items) }
   let(:user_receiver) { Fabricate.build(:user_with_items) }
-  let(:proposal) { Fabricate.build(:proposal, composer:user_composer, receiver:user_receiver) }
+  let(:proposal)      { Fabricate.build(:proposal, composer:user_composer, receiver:user_receiver) }
+  let(:composer_id)   { proposal.composer_id }
+  let(:receiver_id)   { proposal.receiver_id }
 
   # Relations
   it { should be_embedded_in :proposal_container }
@@ -16,6 +18,7 @@ describe Proposal do
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
   it { should have_field(:signed_by).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:confirmed_by).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations
@@ -28,19 +31,19 @@ describe Proposal do
 
   # Checks
   it 'is invalid if composer and receiver are the same' do
-    proposal.receiver_id = proposal.composer_id
+    proposal.receiver_id = composer_id
     expect(proposal).to have(1).error_on(:users)
     expect(proposal.errors_on(:users)).to include('Composer and receiver should not be equal.')
   end
 
   it 'is invalid if composer has no goods' do
-    proposal.goods.delete_all(owner_id:proposal.composer_id)
+    proposal.goods.delete_all(owner_id:composer_id)
     expect(proposal).to have(1).error_on(:goods)
     expect(proposal.errors_on(:goods)).to include('Composer should have one good at least.')
   end
 
   it 'is invalid if receiver has no goods' do
-    proposal.goods.delete_all(owner_id:proposal.receiver_id)
+    proposal.goods.delete_all(owner_id:receiver_id)
     expect(proposal).to have(1).error_on(:goods)
     expect(proposal.errors_on(:goods)).to include('Receiver should have one good at least.')
   end
@@ -58,8 +61,8 @@ describe Proposal do
   end
 
   it 'is invalid if there are more than one cash' do
-    proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id)
-    proposal.goods << Fabricate.build(:cash, owner_id:proposal.receiver_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:composer_id)
+    proposal.goods << Fabricate.build(:cash, owner_id:receiver_id)
     expect(proposal).to have(1).error_on(:goods)
     expect(proposal.errors_on(:goods)).to include('Proposal should have only one cash.')
   end
@@ -164,6 +167,11 @@ describe Proposal do
 
       it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
 
+      it 'signs proposal by user' do
+        proposal.sign(composer_id)
+        expect(proposal.signed_by).to eq composer_id
+      end
+
       it 'does not change proposal actionable field' do
         expect { proposal.sign }.to_not change { proposal.actionable }
       end
@@ -171,7 +179,12 @@ describe Proposal do
 
     context 'when proposal is not actionable' do
       before(:each) { proposal.actionable = false }
+
       it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+
+      it 'does not change signed_by field' do
+        expect { proposal.sign(composer_id) }.to_not change { proposal.signed_by }
+      end
     end
   end
 
@@ -181,14 +194,24 @@ describe Proposal do
 
       it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
 
+      it 'confirms proposal by user' do
+        proposal.confirm(composer_id)
+        expect(proposal.signed_by).to eq composer_id
+      end
+
       it 'changes proposal actionable field to false' do
-        expect { proposal.confirm }.to change { proposal.actionable }.from(true).to(false)
+        expect { proposal.confirm(composer_id) }.to change { proposal.actionable }.from(true).to(false)
       end
     end
 
     context 'when proposal is not actionable' do
       before(:each) { proposal.actionable = false }
+
       it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
+
+      it 'does not change confirmed_by field' do
+        expect { proposal.sign }.to_not change { proposal.confirmed_by }
+      end
     end
   end
 
@@ -210,7 +233,7 @@ describe Proposal do
   end
 
   describe '#update_state' do
-    before { proposal.goods << Fabricate.build(:cash, owner_id:proposal.composer_id) }
+    before { proposal.goods << Fabricate.build(:cash, owner_id:composer_id) }
 
     context 'when proposal is actionable' do
       before(:each) { proposal.actionable = true }
