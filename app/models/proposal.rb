@@ -98,6 +98,7 @@ class Proposal
       state == 'new' ? true : reset
     else
       deactivate
+      true
     end
   end
 
