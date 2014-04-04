@@ -83,7 +83,7 @@ describe Offer do
     end
   end
 
-  describe '#state_machine(machine)' do
+  describe '#state_machine' do
     subject(:machine) { double().as_null_object }
     before(:each) { offer.state_machine(machine) }
 
@@ -101,7 +101,7 @@ describe Offer do
     end
 
     it "changes offer state from #{initial_state} to #{final_state}" do
-      expect{ offer.send(action) }.to change { offer.state }.from(initial_state).to(final_state)
+      expect { offer.send(action) }.to change { offer.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the offer' do
@@ -124,11 +124,11 @@ describe Offer do
     end
 
     it "does not change offer state" do
-      expect{ offer.send(action) }.to_not change { offer.state }
+      expect { offer.send(action) }.to_not change { offer.state }
     end
 
     it 'does not change offer hidden field' do
-      expect{ offer.send(action) }.to_not change{ offer.hidden }
+      expect { offer.send(action) }.to_not change { offer.hidden }
     end
 
     it 'returns false' do
@@ -147,7 +147,7 @@ describe Offer do
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
       it 'changes offer hidden field to true' do
-        expect{ offer.withdraw }.to change{ offer.hidden }.from(false).to(true)
+        expect { offer.withdraw }.to change { offer.hidden }.from(false).to(true)
       end
     end
   end
@@ -163,34 +163,15 @@ describe Offer do
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
 
       it 'does not change offer hidden field' do
-        expect{ offer.sell }.to_not change{ offer.hidden }
+        expect { offer.sell }.to_not change { offer.hidden }
       end
     end
   end
 
   describe '#hide' do
-    context 'when offer is hidden' do
-      before(:each) { offer.hidden = true }
-
-      it 'does not change offer hidden field' do
-        expect{ offer.hide }.to_not change{ offer.hidden }
-      end
-
-      it 'returns false' do
-        expect(offer.hide).to eq false
-      end
-    end
-
-    context 'when offer is unhidden' do
-      before(:each) { offer.hidden = false }
-
-      it 'changes offer hidden field to true' do
-        expect{ offer.hide }.to change{ offer.hidden }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(offer.hide).to eq true
-      end
+    it 'sets hidden field to true' do
+      offer.hide
+      expect(offer.hidden).to eq true
     end
   end
 

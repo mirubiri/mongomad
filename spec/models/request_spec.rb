@@ -29,28 +29,9 @@ describe Request do
 
   # Methods
   describe '#hide' do
-    context 'when request is hidden' do
-      before(:each) { request.hidden = true }
-
-      it 'does not change request hidden field' do
-        expect{ request.hide }.to_not change{ request.hidden }
-      end
-
-      it 'returns false' do
-        expect(request.hide).to eq false
-      end
-    end
-
-    context 'when request is unhidden' do
-      before(:each) { request.hidden = false }
-
-      it 'changes request hidden field to true' do
-        expect{ request.hide }.to change{ request.hidden }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(request.hide).to eq true
-      end
+    it 'sets hidden field to true' do
+      request.hide
+      expect(request.hidden).to eq true
     end
   end
 

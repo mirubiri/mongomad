@@ -20,6 +20,6 @@ class Request
 
   public
   def hide
-    hidden? ? false : self.hidden = true
+    self.hidden = true
   end
 end

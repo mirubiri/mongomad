@@ -37,12 +37,12 @@ describe AutoUpdate do
       before(:each) { copy.update_attributes(outdated:false) }
 
       it 'does not change any attribute' do
-        expect{ copy.auto_update }.to_not change{ copy.one }
-        expect{ copy.auto_update }.to_not change{ copy.two }
+        expect { copy.auto_update }.to_not change { copy.one }
+        expect { copy.auto_update }.to_not change { copy.two }
       end
 
       it 'does not change any outdated value' do
-        expect{ copy.auto_update }.to_not change{ copy.outdated }
+        expect { copy.auto_update }.to_not change { copy.outdated }
       end
 
       it 'does not retrieve original object' do
@@ -65,7 +65,7 @@ describe AutoUpdate do
       end
 
       it 'sets outdated status to false' do
-        expect{ copy.auto_update }.to change{ copy.outdated }.from(true).to(false)
+        expect { copy.auto_update }.to change { copy.outdated }.from(true).to(false)
       end
 
       it 'does not save the changes' do
@@ -80,7 +80,7 @@ describe AutoUpdate do
       before(:each) { copy.update_attributes(outdated:false) }
 
       it 'outdates the object' do
-        expect{ copy.outdate }.to change{ copy.outdated }.from(false).to(true)
+        expect { copy.outdate }.to change { copy.outdated }.from(false).to(true)
       end
 
       it 'does not save changes' do

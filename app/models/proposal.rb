@@ -94,17 +94,15 @@ class Proposal
 
   def update_state
     return false unless actionable?
-    if goods.or({ state:'on_sale' },{ _type:'Cash' }).size == goods.size
+    if goods.or({ state:'on_sale' }, { _type:'Cash' }).size == goods.size
       state == 'new' ? true : reset
     else
       deactivate
+      true
     end
   end
 
   def deactivate
-    !actionable? ? false : begin
-      self.actionable = false
-      true
-    end
+    self.actionable = false
   end
 end

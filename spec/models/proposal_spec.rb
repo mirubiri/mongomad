@@ -15,6 +15,7 @@ describe Proposal do
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
+  it { should have_field(:signed_by).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations
@@ -80,7 +81,7 @@ describe Proposal do
     end
   end
 
-  describe 'articles(owner_id)' do
+  describe 'articles' do
     it 'returns articles for given user' do
       owner_id = proposal.goods.sample.owner_id
       expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
@@ -103,7 +104,7 @@ describe Proposal do
     end
   end
 
-  describe '#state_machine(machine)' do
+  describe '#state_machine' do
     subject(:machine) { double().as_null_object }
     before(:each) { proposal.state_machine(machine) }
 
@@ -122,7 +123,7 @@ describe Proposal do
     end
 
     it "changes proposal state from #{initial_state} to #{final_state}" do
-      expect{ proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
+      expect { proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the proposal' do
@@ -145,11 +146,11 @@ describe Proposal do
     end
 
     it "does not change proposal state" do
-      expect{ proposal.send(action) }.to_not change { proposal.state }
+      expect { proposal.send(action) }.to_not change { proposal.state }
     end
 
     it 'does not change proposal actionable field' do
-      expect{ proposal.send(action) }.to_not change{ proposal.actionable }
+      expect { proposal.send(action) }.to_not change { proposal.actionable }
     end
 
     it 'returns false' do
@@ -164,7 +165,7 @@ describe Proposal do
       it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
 
       it 'does not change proposal actionable field' do
-        expect{ proposal.sign }.to_not change{ proposal.actionable }
+        expect { proposal.sign }.to_not change { proposal.actionable }
       end
     end
 
@@ -181,7 +182,7 @@ describe Proposal do
       it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
 
       it 'changes proposal actionable field to false' do
-        expect{ proposal.confirm }.to change { proposal.actionable }.from(true).to(false)
+        expect { proposal.confirm }.to change { proposal.actionable }.from(true).to(false)
       end
     end
 
@@ -198,7 +199,7 @@ describe Proposal do
       it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
 
       it 'does not change proposal actionable field' do
-        expect{ proposal.reset }.to_not change{ proposal.actionable }
+        expect { proposal.reset }.to_not change { proposal.actionable }
       end
     end
 
@@ -222,7 +223,7 @@ describe Proposal do
         end
 
         it 'does not change proposal actionable field' do
-          expect{ proposal.update_state }.to_not change{ proposal.actionable }
+          expect { proposal.update_state }.to_not change { proposal.actionable }
         end
 
         context 'when proposal is in new state' do
@@ -234,7 +235,7 @@ describe Proposal do
           end
 
           it 'does not change proposal state' do
-            expect{ proposal.update_state }.to_not change{ proposal.state }
+            expect { proposal.update_state }.to_not change { proposal.state }
           end
 
           it 'returns true' do
@@ -252,7 +253,7 @@ describe Proposal do
           end
 
           it 'changes proposal state from signed to new' do
-            expect{ proposal.update_state }.to change { proposal.state }.from('signed').to('new')
+            expect { proposal.update_state }.to change { proposal.state }.from('signed').to('new')
           end
 
           it 'returns the result of calling reset' do
@@ -271,11 +272,11 @@ describe Proposal do
         end
 
         it 'does not change proposal state' do
-          expect{ proposal.update_state }.to_not change{ proposal.state }
+          expect { proposal.update_state }.to_not change { proposal.state }
         end
 
         it 'changes proposal actionable field from true to false' do
-          expect{ proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
+          expect { proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
         end
 
         it 'returns true' do
@@ -293,11 +294,11 @@ describe Proposal do
       end
 
       it 'does not change proposal state' do
-        expect{ proposal.update_state }.to_not change{ proposal.state }
+        expect { proposal.update_state }.to_not change { proposal.state }
       end
 
       it 'does not change proposal actionable field' do
-        expect{ proposal.update_state }.to_not change{ proposal.actionable }
+        expect { proposal.update_state }.to_not change { proposal.actionable }
       end
 
       it 'returns false' do
@@ -307,28 +308,9 @@ describe Proposal do
   end
 
   describe '#deactivate' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      it 'changes proposal actionable field to false' do
-        expect{ proposal.deactivate }.to change{ proposal.actionable }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(proposal.deactivate).to eq true
-      end
-    end
-
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
-      it 'does not change proposal actionable field' do
-        expect{ proposal.deactivate }.to_not change{ proposal.actionable }
-      end
-
-      it 'returns false' do
-        expect(proposal.deactivate).to eq false
-      end
+    it 'sets actionable field to false' do
+      proposal.deactivate
+      expect(proposal.actionable).to eq false
     end
   end
 
