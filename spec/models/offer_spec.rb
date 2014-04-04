@@ -169,28 +169,9 @@ describe Offer do
   end
 
   describe '#hide' do
-    context 'when offer is hidden' do
-      before(:each) { offer.hidden = true }
-
-      it 'does not change offer hidden field' do
-        expect { offer.hide }.to_not change { offer.hidden }
-      end
-
-      it 'returns false' do
-        expect(offer.hide).to eq false
-      end
-    end
-
-    context 'when offer is unhidden' do
-      before(:each) { offer.hidden = false }
-
-      it 'changes offer hidden field to true' do
-        expect { offer.hide }.to change { offer.hidden }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(offer.hide).to eq true
-      end
+    it 'sets hidden field to true' do
+      offer.hide
+      expect(offer.hidden).to eq true
     end
   end
 
