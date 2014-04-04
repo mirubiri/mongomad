@@ -80,7 +80,7 @@ describe Proposal do
     end
   end
 
-  describe 'articles(owner_id)' do
+  describe 'articles' do
     it 'returns articles for given user' do
       owner_id = proposal.goods.sample.owner_id
       expect(proposal.goods).to receive(:where).with(owner_id:owner_id)
@@ -103,7 +103,7 @@ describe Proposal do
     end
   end
 
-  describe '#state_machine(machine)' do
+  describe '#state_machine' do
     subject(:machine) { double().as_null_object }
     before(:each) { proposal.state_machine(machine) }
 
