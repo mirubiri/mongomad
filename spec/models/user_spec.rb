@@ -39,7 +39,7 @@ describe User do
       before(:each) { user.disabled = false }
 
       it 'does not change user disabled field' do
-        expect{ user.enable }.to_not change{ user.disabled }
+        expect { user.enable }.to_not change { user.disabled }
       end
 
       it 'returns false' do
@@ -51,7 +51,7 @@ describe User do
       before(:each) { user.disabled = true }
 
       it 'changes user disabled field to false' do
-        expect{ user.enable }.to change{ user.disabled }.from(true).to(false)
+        expect { user.enable }.to change { user.disabled }.from(true).to(false)
       end
 
       it 'returns true' do
@@ -65,7 +65,7 @@ describe User do
       before(:each) { user.disabled = false }
 
       it 'changes user disabled field to true' do
-        expect{ user.disable }.to change{ user.disabled }.from(false).to(true)
+        expect { user.disable }.to change { user.disabled }.from(false).to(true)
       end
 
       it 'returns true' do
@@ -77,7 +77,7 @@ describe User do
       before(:each) { user.disabled = true }
 
       it 'does not change user disabled field' do
-        expect{ user.disable }.to_not change{ user.disabled }
+        expect { user.disable }.to_not change { user.disabled }
       end
 
       it 'returns false' do

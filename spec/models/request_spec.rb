@@ -33,7 +33,7 @@ describe Request do
       before(:each) { request.hidden = true }
 
       it 'does not change request hidden field' do
-        expect{ request.hide }.to_not change{ request.hidden }
+        expect { request.hide }.to_not change { request.hidden }
       end
 
       it 'returns false' do
@@ -45,7 +45,7 @@ describe Request do
       before(:each) { request.hidden = false }
 
       it 'changes request hidden field to true' do
-        expect{ request.hide }.to change{ request.hidden }.from(false).to(true)
+        expect { request.hide }.to change { request.hidden }.from(false).to(true)
       end
 
       it 'returns true' do

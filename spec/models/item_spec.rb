@@ -53,7 +53,7 @@ describe Item do
     end
 
     it "changes item state from #{initial_state} to #{final_state}" do
-      expect{ item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
+      expect { item.send(action) }.to change { item.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the item' do
@@ -76,11 +76,11 @@ describe Item do
     end
 
     it "does not change item state" do
-      expect{ item.send(action) }.to_not change { item.state }
+      expect { item.send(action) }.to_not change { item.state }
     end
 
     it 'does not change item hidden field' do
-      expect{ item.send(action) }.to_not change{ item.hidden }
+      expect { item.send(action) }.to_not change { item.hidden }
     end
 
     it 'returns false' do
@@ -99,7 +99,7 @@ describe Item do
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
       it 'changes item hidden field to true' do
-        expect{ item.withdraw }.to change{ item.hidden }.from(false).to(true)
+        expect { item.withdraw }.to change { item.hidden }.from(false).to(true)
       end
     end
   end
@@ -115,7 +115,7 @@ describe Item do
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
 
       it 'does not change item hidden field' do
-        expect{ item.sell }.to_not change{ item.hidden }
+        expect { item.sell }.to_not change { item.hidden }
       end
     end
   end
@@ -125,7 +125,7 @@ describe Item do
       before(:each) { item.hidden = true }
 
       it 'does not change item hidden field' do
-        expect{ item.hide }.to_not change{ item.hidden }
+        expect { item.hide }.to_not change { item.hidden }
       end
 
       it 'returns false' do
@@ -137,7 +137,7 @@ describe Item do
       before(:each) { item.hidden = false }
 
       it 'changes item hidden field to true' do
-        expect{ item.hide }.to change{ item.hidden }.from(false).to(true)
+        expect { item.hide }.to change { item.hidden }.from(false).to(true)
       end
 
       it 'returns true' do
