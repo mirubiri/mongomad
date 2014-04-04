@@ -57,7 +57,7 @@ class Negotiation
   end
 
   def cash_owner?(user_id)
-    proposal.cash? && proposal.goods.type(Cash).last.owner_id == user_id
+    proposal.cash? && (proposal.goods.type(Cash).last.owner_id == user_id)
   end
 
   def gatekeeper(user_id, action)
@@ -78,6 +78,6 @@ class Negotiation
   end
 
   def hide
-    self.hidden=true
+    self.hidden = true
   end
 end

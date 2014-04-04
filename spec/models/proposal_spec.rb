@@ -15,6 +15,7 @@ describe Proposal do
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
+  it { should have_field(:signed_by).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations

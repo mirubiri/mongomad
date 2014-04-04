@@ -87,13 +87,13 @@ describe Negotiation do
     context 'when last proposal has cash' do
       context 'when user owns the cash' do
         it 'returns true' do
-          expect(negotiation_with_cash.cash_owner?(composer_id)).to eq true
+          expect(negotiation_with_cash.cash_owner?(cash_owner)).to eq true
         end
       end
 
       context 'when user does not own the cash' do
         it 'returns false' do
-          expect(negotiation_with_cash.cash_owner?(receiver_id)).to eq false
+          expect(negotiation_with_cash.cash_owner?(not_cash_owner)).to eq false
         end
       end
     end
@@ -106,7 +106,6 @@ describe Negotiation do
   end
 
   describe '#gatekeeper' do
-
     it 'returns false if user does not belong to negotiation' do
       expect(negotiation.gatekeeper('0',:sign)).to eq false
     end
@@ -118,7 +117,7 @@ describe Negotiation do
 
     describe ':sign action' do
       it 'returns false if proposal is not new' do
-        negotiation.proposal.state='signed'
+        negotiation.proposal.state = 'signed'
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
       end
 
@@ -126,42 +125,62 @@ describe Negotiation do
         it 'returns false for cash owner' do
           expect(negotiation_with_cash.gatekeeper(cash_owner,:sign)).to eq false
         end
+
         it 'returns true for not cash owner' do
           expect(negotiation_with_cash.gatekeeper(not_cash_owner,:sign)).to eq true
         end
       end
 
       context 'proposal does not have cash' do
-        it 'returns true for receiver user' do
-          expect(negotiation.gatekeeper(receiver_id,:sign)).to eq true
-        end
-
         it 'returns true for composer user' do
           expect(negotiation.gatekeeper(composer_id,:sign)).to eq true
+        end
+
+        it 'returns true for receiver user' do
+          expect(negotiation.gatekeeper(receiver_id,:sign)).to eq true
         end
       end
     end
 
     describe ':confirm action' do
       it 'returns false if proposal is not signed' do
-        expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
+        negotiation.proposal.state = 'new'
+        expect(negotiation.gatekeeper(composer_id,:confirm)).to eq false
       end
 
       context 'proposal has cash' do
-        it 'returns true for user with cash'
-        it 'returns false for user with no cash'
+        it 'returns true for cash owner'
+          expect(negotiation_with_cash.gatekeeper(cash_owner,:confirm)).to eq true
+        end
+
+        it 'returns false for not cash owner'
+          expect(negotiation_with_cash.gatekeeper(not_cash_owner,:confirm)).to eq false
+        end
       end
 
       context 'proposal does not have cash' do
-        before {}
-        context 'composer signed' do
-          it 'returns true for receiver user'
-          it 'returns false for composer user'
+        context 'proposal signed by composer' do
+          before { negotiation.proposal.signed_by = composer_id }
+
+          it 'returns false for composer user' do
+            expect(negotiation.gatekeeper(composer_id,:confirm)).to eq false
+          end
+
+          it 'returns true for receiver user' do
+            expect(negotiation.gatekeeper(receiver_id,:confirm)).to eq true
+          end
         end
 
-        context 'receiver signed' do
-          it 'returns false for receiver user'
-          it 'returns true for composer user'
+        context 'proposal signed by receiver' do
+          before { negotiation.proposal.signed_by = receiver_id }
+
+          it 'returns true for composer user' do
+            expect(negotiation.gatekeeper(composer_id,:confirm)).to eq true
+          end
+
+          it 'returns false for receiver user' do
+            expect(negotiation.gatekeeper(receiver,:confirm)).to eq false
+          end
         end
       end
     end
@@ -239,7 +258,7 @@ describe Negotiation do
   end
 
   describe '#hide' do
-    it 'sets hidden to true' do
+    it 'sets hidden field to true' do
       negotiation.hide
       expect(negotiation.hidden).to eq true
     end
