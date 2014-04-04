@@ -121,28 +121,9 @@ describe Item do
   end
 
   describe '#hide' do
-    context 'when item is hidden' do
-      before(:each) { item.hidden = true }
-
-      it 'does not change item hidden field' do
-        expect { item.hide }.to_not change { item.hidden }
-      end
-
-      it 'returns false' do
-        expect(item.hide).to eq false
-      end
-    end
-
-    context 'when item is unhidden' do
-      before(:each) { item.hidden = false }
-
-      it 'changes item hidden field to true' do
-        expect { item.hide }.to change { item.hidden }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(item.hide).to eq true
-      end
+    it 'sets hidden to true' do
+      item.hide
+      expect(item.hidden).to eq true
     end
   end
 
