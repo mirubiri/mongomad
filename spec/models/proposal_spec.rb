@@ -307,28 +307,9 @@ describe Proposal do
   end
 
   describe '#deactivate' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      it 'changes proposal actionable field to false' do
-        expect { proposal.deactivate }.to change { proposal.actionable }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(proposal.deactivate).to eq true
-      end
-    end
-
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
-      it 'does not change proposal actionable field' do
-        expect { proposal.deactivate }.to_not change { proposal.actionable }
-      end
-
-      it 'returns false' do
-        expect(proposal.deactivate).to eq false
-      end
+    it 'sets actionable field to false' do
+      proposal.deactivate
+      expect(proposal.actionable).to eq false
     end
   end
 
