@@ -24,13 +24,10 @@ class User
   end
 
   def enable
-    !disabled? ? false : begin
-      self.disabled = false
-      true
-    end
+    self.disabled = false
   end
 
   def disable
-    disabled? ? false : self.disabled = true
+    self.disabled = true
   end
 end
