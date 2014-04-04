@@ -149,18 +149,18 @@ describe Negotiation do
       end
 
       context 'proposal has cash' do
-        it 'returns true for cash owner'
+        it 'returns true for cash owner' do
           expect(negotiation_with_cash.gatekeeper(cash_owner,:confirm)).to eq true
         end
 
-        it 'returns false for not cash owner'
+        it 'returns false for not cash owner' do
           expect(negotiation_with_cash.gatekeeper(not_cash_owner,:confirm)).to eq false
         end
       end
 
       context 'proposal does not have cash' do
         context 'proposal signed by composer' do
-          before { negotiation.proposal.signed_by = composer_id }
+          before { negotiation.proposal.signer = composer_id }
 
           it 'returns false for composer user' do
             expect(negotiation.gatekeeper(composer_id,:confirm)).to eq false
@@ -172,7 +172,7 @@ describe Negotiation do
         end
 
         context 'proposal signed by receiver' do
-          before { negotiation.proposal.signed_by = receiver_id }
+          before { negotiation.proposal.signer = receiver_id }
 
           it 'returns true for composer user' do
             expect(negotiation.gatekeeper(composer_id,:confirm)).to eq true

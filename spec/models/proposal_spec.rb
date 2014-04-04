@@ -17,8 +17,8 @@ describe Proposal do
   it { should have_field(:composer_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:receiver_id).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:state).with_default_value_of('new') }
-  it { should have_field(:signed_by).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:confirmed_by).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:signer).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:confirmer).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
 
   # Validations
@@ -167,13 +167,9 @@ describe Proposal do
 
       it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
 
-      it 'signs proposal by user' do
+      it 'signs proposal with the given user' do
         proposal.sign(composer_id)
-        expect(proposal.signed_by).to eq composer_id
-      end
-
-      it 'does not change proposal actionable field' do
-        expect { proposal.sign }.to_not change { proposal.actionable }
+        expect(proposal.signer).to eq composer_id
       end
     end
 
@@ -182,8 +178,8 @@ describe Proposal do
 
       it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
 
-      it 'does not change signed_by field' do
-        expect { proposal.sign(composer_id) }.to_not change { proposal.signed_by }
+      it 'does not change signer field' do
+        expect { proposal.sign(composer_id) }.to_not change { proposal.signer }
       end
     end
   end
@@ -196,11 +192,7 @@ describe Proposal do
 
       it 'confirms proposal by user' do
         proposal.confirm(composer_id)
-        expect(proposal.signed_by).to eq composer_id
-      end
-
-      it 'changes proposal actionable field to false' do
-        expect { proposal.confirm(composer_id) }.to change { proposal.actionable }.from(true).to(false)
+        expect(proposal.signer).to eq composer_id
       end
     end
 
@@ -209,8 +201,8 @@ describe Proposal do
 
       it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
 
-      it 'does not change confirmed_by field' do
-        expect { proposal.sign }.to_not change { proposal.confirmed_by }
+      it 'does not change confirmer field' do
+        expect { proposal.sign }.to_not change { proposal.confirmer }
       end
     end
   end
@@ -223,6 +215,16 @@ describe Proposal do
 
       it 'does not change proposal actionable field' do
         expect { proposal.reset }.to_not change { proposal.actionable }
+      end
+
+      it 'unsigns proposal' do
+        proposal.reset
+        expect(proposal.signer).to eq nil
+      end
+
+      it 'unconfirms proposal' do
+        proposal.reset
+        expect(proposal.confirmer).to eq nil
       end
     end
 

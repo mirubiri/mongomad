@@ -5,10 +5,12 @@ class Proposal
   embedded_in :proposal_container, polymorphic: true
   embeds_many :goods
 
-  field :composer_id, type:Moped::BSON::ObjectId
-  field :receiver_id, type:Moped::BSON::ObjectId
-  field :state,       default:'new'
-  field :actionable,  type:Boolean, default:true
+  field :composer_id,  type:Moped::BSON::ObjectId
+  field :receiver_id,  type:Moped::BSON::ObjectId
+  field :state,        default:'new'
+  field :signer,    type:Moped::BSON::ObjectId
+  field :confirmer, type:Moped::BSON::ObjectId
+  field :actionable,   type:Boolean, default:true
 
   validates_presence_of  :goods, :composer_id, :receiver_id, :actionable
   validates_inclusion_of :state, in: ['new','signed','confirmed']
@@ -77,14 +79,18 @@ class Proposal
     end
   end
 
-  def sign
-    actionable? ? state_machine.trigger(:sign) : false
+  def sign(user_id)
+    !actionable? ? false : begin
+      state_machine.trigger(:sign)
+      self.signer = user_id
+    end
   end
 
-  def confirm
+  def confirm(user_id)
     !actionable? ? false : begin
-      deactivate
       state_machine.trigger(:confirm)
+      self.confirmer = user_id
+      deactivate
     end
   end
 
