@@ -35,54 +35,16 @@ describe User do
   end
 
   describe '#enable' do
-    context 'when user is enabled' do
-      before(:each) { user.disabled = false }
-
-      it 'does not change user disabled field' do
-        expect { user.enable }.to_not change { user.disabled }
-      end
-
-      it 'returns false' do
-        expect(user.enable).to eq false
-      end
-    end
-
-    context 'when user is disabled' do
-      before(:each) { user.disabled = true }
-
-      it 'changes user disabled field to false' do
-        expect { user.enable }.to change { user.disabled }.from(true).to(false)
-      end
-
-      it 'returns true' do
-        expect(user.enable).to eq true
-      end
+    it 'sets disabled field to false' do
+      user.enable
+      expect(user.disabled).to eq false
     end
   end
 
   describe '#disable' do
-    context 'when user is enabled' do
-      before(:each) { user.disabled = false }
-
-      it 'changes user disabled field to true' do
-        expect { user.disable }.to change { user.disabled }.from(false).to(true)
-      end
-
-      it 'returns true' do
-        expect(user.disable).to eq true
-      end
-    end
-
-    context 'when user is disabled' do
-      before(:each) { user.disabled = true }
-
-      it 'does not change user disabled field' do
-        expect { user.disable }.to_not change { user.disabled }
-      end
-
-      it 'returns false' do
-        expect(user.disable).to eq false
-      end
+    it 'sets disabled field to true' do
+      user.disable
+      expect(user.disabled).to eq true
     end
   end
 
