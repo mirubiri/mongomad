@@ -121,7 +121,7 @@ describe Item do
   end
 
   describe '#hide' do
-    it 'sets hidden to true' do
+    it 'sets hidden field to true' do
       item.hide
       expect(item.hidden).to eq true
     end
