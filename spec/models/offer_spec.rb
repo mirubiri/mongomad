@@ -123,7 +123,7 @@ describe Offer do
       offer.send(action)
     end
 
-    it "does not change offer state" do
+    it 'does not change offer state' do
       expect { offer.send(action) }.to_not change { offer.state }
     end
 
