@@ -19,7 +19,7 @@ describe Proposal do
   it { should have_field(:state).with_default_value_of('new') }
   it { should have_field(:signer).of_type(Moped::BSON::ObjectId) }
   it { should have_field(:confirmer).of_type(Moped::BSON::ObjectId) }
-  it { should have_field(:actionable).of_type(Boolean).with_default_value_of(true) }
+  it { should have_field(:locked).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
   it { should_not validate_presence_of :proposal_container }
@@ -27,7 +27,7 @@ describe Proposal do
   it { should validate_presence_of :composer_id }
   it { should validate_presence_of :receiver_id }
   it { should validate_inclusion_of(:state).to_allow('new','signed','confirmed') }
-  it { should validate_presence_of :actionable }
+  it { should validate_presence_of :locked }
 
   # Checks
   it 'is invalid if composer and receiver are the same' do
@@ -152,8 +152,8 @@ describe Proposal do
       expect { proposal.send(action) }.to_not change { proposal.state }
     end
 
-    it 'does not change proposal actionable field' do
-      expect { proposal.send(action) }.to_not change { proposal.actionable }
+    it 'does not change proposal locked field' do
+      expect { proposal.send(action) }.to_not change { proposal.locked }
     end
 
     it 'returns false' do
@@ -162,60 +162,80 @@ describe Proposal do
   end
 
   describe '#sign' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
-
-      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
-
-      it 'signs proposal with the given user' do
-        proposal.sign(composer_id)
-        expect(proposal.signer).to eq composer_id
-      end
+    it 'does not change confirmer field' do
+      expect { proposal.sign(composer_id) }.to_not change { proposal.confirmer }
     end
 
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
+    context 'when proposal is locked' do
+      before(:each) { proposal.locked = true }
       it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
 
       it 'does not change signer field' do
         expect { proposal.sign(composer_id) }.to_not change { proposal.signer }
       end
     end
+
+    context 'when proposal is unlocked' do
+      before(:each) { proposal.locked = false }
+      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+
+      it 'given user signs proposal' do
+        proposal.sign(composer_id)
+        expect(proposal.signer).to eq composer_id
+      end
+
+      it 'does not change proposal locked field' do
+        expect { proposal.sign(composer_id) }.to_not change { proposal.locked }
+      end
+    end
   end
 
   describe '#confirm' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
+    it 'does not change signer field' do
+      expect { proposal.confirm(composer_id) }.to_not change { proposal.signer }
+    end
 
+    context 'when proposal is locked' do
+      before(:each) { proposal.locked = true }
+      it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
+
+      it 'does not change confirmer field' do
+        expect { proposal.confirm(composer_id) }.to_not change { proposal.confirmer }
+      end
+    end
+
+    context 'when proposal is unlocked' do
+      before(:each) { proposal.locked = false }
       it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
 
       it 'confirms proposal by user' do
         proposal.confirm(composer_id)
-        expect(proposal.signer).to eq composer_id
+        expect(proposal.confirmer).to eq composer_id
       end
-    end
 
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-
-      it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
-
-      it 'does not change confirmer field' do
-        expect { proposal.sign }.to_not change { proposal.confirmer }
+      it 'changes proposal locked field to true' do
+        expect { proposal.confirm(composer_id) }.to change { proposal.locked }.from(false).to(true)
       end
     end
   end
 
   describe '#reset' do
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
+    context 'when proposal is locked' do
+      before(:each) { proposal.locked = true }
+      it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
 
-      it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
-
-      it 'does not change proposal actionable field' do
-        expect { proposal.reset }.to_not change { proposal.actionable }
+      it 'does not change signer field' do
+        expect { proposal.reset }.to_not change { proposal.signer }
       end
+
+      it 'does not change confirmer field' do
+        expect { proposal.reset }.to_not change { proposal.confirmer }
+      end
+    end
+
+    context 'when proposal is unlocked' do
+      before(:each) { proposal.locked = false }
+      it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
 
       it 'unsigns proposal' do
         proposal.reset
@@ -226,19 +246,47 @@ describe Proposal do
         proposal.reset
         expect(proposal.confirmer).to eq nil
       end
-    end
 
-    context 'when proposal is not actionable' do
-      before(:each) { proposal.actionable = false }
-      it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
+      it 'does not change proposal locked field' do
+        expect { proposal.reset }.to_not change { proposal.locked }
+      end
     end
   end
 
   describe '#update_state' do
     before { proposal.goods << Fabricate.build(:cash, owner_id:composer_id) }
 
-    context 'when proposal is actionable' do
-      before(:each) { proposal.actionable = true }
+    context 'when proposal is locked' do
+      before(:each) { proposal.locked = true }
+
+      it 'does not call reset method' do
+        expect(proposal).to_not receive(:reset)
+        proposal.update_state
+      end
+
+      it 'does not change proposal state' do
+        expect { proposal.update_state }.to_not change { proposal.state }
+      end
+
+      it 'does not change signer field' do
+        expect { proposal.update_state }.to_not change { proposal.signer }
+      end
+
+      it 'does not change confirmer field' do
+        expect { proposal.update_state }.to_not change { proposal.confirmer }
+      end
+
+      it 'does not change proposal locked field' do
+        expect { proposal.update_state }.to_not change { proposal.locked }
+      end
+
+      it 'returns false' do
+        expect(proposal.update_state).to eq false
+      end
+    end
+
+    context 'when proposal is unlocked' do
+      before(:each) { proposal.locked = false }
 
       context 'when all products are on sale' do
         before(:each) do
@@ -247,8 +295,8 @@ describe Proposal do
           end
         end
 
-        it 'does not change proposal actionable field' do
-          expect { proposal.update_state }.to_not change { proposal.actionable }
+        it 'does not change proposal locked field' do
+          expect { proposal.update_state }.to_not change { proposal.locked }
         end
 
         context 'when proposal is in new state' do
@@ -261,6 +309,14 @@ describe Proposal do
 
           it 'does not change proposal state' do
             expect { proposal.update_state }.to_not change { proposal.state }
+          end
+
+          it 'does not change signer field' do
+            expect { proposal.update_state }.to_not change { proposal.signer }
+          end
+
+          it 'does not change confirmer field' do
+            expect { proposal.update_state }.to_not change { proposal.confirmer }
           end
 
           it 'returns true' do
@@ -279,6 +335,16 @@ describe Proposal do
 
           it 'changes proposal state from signed to new' do
             expect { proposal.update_state }.to change { proposal.state }.from('signed').to('new')
+          end
+
+          it 'unsigns proposal' do
+            proposal.update_state
+            expect(proposal.signer).to eq nil
+          end
+
+          it 'unconfirms proposal' do
+            proposal.update_state
+            expect(proposal.confirmer).to eq nil
           end
 
           it 'returns the result of calling reset' do
@@ -300,8 +366,16 @@ describe Proposal do
           expect { proposal.update_state }.to_not change { proposal.state }
         end
 
-        it 'changes proposal actionable field from true to false' do
-          expect { proposal.update_state }.to change { proposal.actionable }.from(true).to(false)
+        it 'does not change signer field' do
+          expect { proposal.update_state }.to_not change { proposal.signer }
+        end
+
+        it 'does not change confirmer field' do
+          expect { proposal.update_state }.to_not change { proposal.confirmer }
+        end
+
+        it 'changes proposal locked field from true to false' do
+          expect { proposal.update_state }.to change { proposal.locked }.from(true).to(false)
         end
 
         it 'returns true' do
@@ -309,33 +383,12 @@ describe Proposal do
         end
       end
     end
-
-    context 'when proposal is unactionable' do
-      before(:each) { proposal.actionable = false }
-
-      it 'does not call reset method' do
-        expect(proposal).to_not receive(:reset)
-        proposal.update_state
-      end
-
-      it 'does not change proposal state' do
-        expect { proposal.update_state }.to_not change { proposal.state }
-      end
-
-      it 'does not change proposal actionable field' do
-        expect { proposal.update_state }.to_not change { proposal.actionable }
-      end
-
-      it 'returns false' do
-        expect(proposal.update_state).to eq false
-      end
-    end
   end
 
-  describe '#deactivate' do
-    it 'sets actionable field to false' do
-      proposal.deactivate
-      expect(proposal.actionable).to eq false
+  describe '#lock' do
+    it 'sets locked field to true' do
+      proposal.lock
+      expect(proposal.locked).to eq true
     end
   end
 
