@@ -46,7 +46,7 @@ describe Product do
     it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
-  shared_examples 'valid state machine event' do |action, initial_state, final_state|
+  shared_examples 'state machine event' do |action, initial_state, final_state|
     before(:each) { product.state = initial_state }
     let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
@@ -71,11 +71,11 @@ describe Product do
   end
 
   describe '#withdraw' do
-    it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
+    it_should_behave_like 'state machine event', :withdraw, 'on_sale', 'withdrawn'
   end
 
   describe '#sell' do
-    it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
+    it_should_behave_like 'state machine event', :sell, 'on_sale', 'sold'
   end
 
   # Factories
