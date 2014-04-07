@@ -179,7 +179,7 @@ describe Negotiation do
           end
 
           it 'returns false for receiver user' do
-            expect(negotiation.gatekeeper(receiver,:confirm)).to eq false
+            expect(negotiation.gatekeeper(receiver_id,:confirm)).to eq false
           end
         end
       end
