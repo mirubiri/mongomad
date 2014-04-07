@@ -127,6 +127,10 @@ describe Offer do
       expect { offer.send(action) }.to_not change { offer.state }
     end
 
+    it 'does not change offer negotiating field' do
+      expect { offer.send(action) }.to_not change { offer.negotiating }
+    end
+
     it 'does not change offer hidden field' do
       expect { offer.send(action) }.to_not change { offer.hidden }
     end
@@ -146,6 +150,10 @@ describe Offer do
       before(:each) { offer.hidden = false }
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
+      it 'does not change offer negotiating field' do
+        expect { offer.send(action) }.to_not change { offer.negotiating }
+      end
+
       it 'changes offer hidden field to true' do
         expect { offer.withdraw }.to change { offer.hidden }.from(false).to(true)
       end
@@ -153,6 +161,8 @@ describe Offer do
   end
 
   describe '#sell' do
+    before(:each) { offer.negotiating = true }
+
     context 'when offer is hidden' do
       before(:each) { offer.hidden = true }
       it_should_behave_like 'invalid state machine event', :sell, 'on_sale', 'sold'
@@ -161,6 +171,10 @@ describe Offer do
     context 'when offer is unhidden' do
       before(:each) { offer.hidden = false }
       it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
+
+      it 'changes offer negotiating field to true' do
+        expect { offer.withdraw }.to change { offer.negotiating }.from(true).to(false)
+      end
 
       it 'does not change offer hidden field' do
         expect { offer.sell }.to_not change { offer.hidden }
