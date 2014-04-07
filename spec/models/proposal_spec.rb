@@ -220,6 +220,8 @@ describe Proposal do
   end
 
   describe '#reset' do
+    before(:each) { proposal.state = :signed }
+
     context 'when proposal is locked' do
       before(:each) { proposal.locked = true }
       # it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
