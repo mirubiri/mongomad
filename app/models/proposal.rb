@@ -5,14 +5,14 @@ class Proposal
   embedded_in :proposal_container, polymorphic: true
   embeds_many :goods
 
-  field :composer_id,  type:Moped::BSON::ObjectId
-  field :receiver_id,  type:Moped::BSON::ObjectId
-  field :state,        default:'new'
-  field :signer,    type:Moped::BSON::ObjectId
-  field :confirmer, type:Moped::BSON::ObjectId
-  field :actionable,   type:Boolean, default:true
+  field :composer_id, type:Moped::BSON::ObjectId
+  field :receiver_id, type:Moped::BSON::ObjectId
+  field :state,       default:'new'
+  field :signer,      type:Moped::BSON::ObjectId
+  field :confirmer,   type:Moped::BSON::ObjectId
+  field :locked,      type:Boolean, default:false
 
-  validates_presence_of  :goods, :composer_id, :receiver_id, :actionable
+  validates_presence_of  :goods, :composer_id, :receiver_id, :locked
   validates_inclusion_of :state, in: ['new','signed','confirmed']
 
   validate :check_user_equality,
@@ -80,35 +80,35 @@ class Proposal
   end
 
   def sign(user_id)
-    !actionable? ? false : begin
-      state_machine.trigger(:sign)
-      self.signer = user_id
-    end
+    # !actionable? ? false : begin
+    #   state_machine.trigger(:sign)
+    #   self.signer = user_id
+    # end
   end
 
   def confirm(user_id)
-    !actionable? ? false : begin
-      state_machine.trigger(:confirm)
-      self.confirmer = user_id
-      deactivate
-    end
+    # !actionable? ? false : begin
+    #   state_machine.trigger(:confirm)
+    #   self.confirmer = user_id
+    #   deactivate
+    # end
   end
 
   def reset
-    actionable? ? state_machine.trigger(:reset) : false
+    locked? ? false : state_machine.trigger(:reset)
   end
 
   def update_state
-    return false unless actionable?
-    if goods.or({ state:'on_sale' }, { _type:'Cash' }).size == goods.size
-      state == 'new' ? true : reset
-    else
-      deactivate
-      true
-    end
+    # return false unless actionable?
+    # if goods.or({ state:'on_sale' }, { _type:'Cash' }).size == goods.size
+    #   state == 'new' ? true : reset
+    # else
+    #   deactivate
+    #   true
+    # end
   end
 
-  def deactivate
-    self.actionable = false
+  def lock
+    self.locked = true
   end
 end
