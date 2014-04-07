@@ -100,7 +100,7 @@ describe Negotiation do
 
     context 'when last proposal does not have cash' do
       it 'returns false' do
-        expect(negotiation.cash_owner?(composer_id)).to eq false
+        expect(negotiation.cash_owner?(not_cash_owner)).to eq false
       end
     end
   end
