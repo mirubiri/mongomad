@@ -116,48 +116,48 @@ describe Proposal do
     it { should have_received(:when).with(:reset, 'signed' => 'new') }
   end
 
-  shared_examples 'valid state machine event' do |action, initial_state, final_state|
+  shared_examples 'valid state machine event' do |action, user_id, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
     let(:test_code) { "random_test_code:#{Faker::Number.number(8)}" }
 
     it "calls state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to receive(:trigger).with(action)
-      proposal.send(action)
+      proposal.send(action, user_id)
     end
 
     it "changes proposal state from #{initial_state} to #{final_state}" do
-      expect { proposal.send(action) }.to change { proposal.state }.from(initial_state).to(final_state)
+      expect { proposal.send(action, user_id) }.to change { proposal.state }.from(initial_state).to(final_state)
     end
 
     it 'does not save the proposal' do
-      proposal.send(action)
+      proposal.send(action, user_id)
       expect(proposal).to_not be_persisted
     end
 
     it "returns the result of calling state_machine.trigger(#{action})" do
       proposal.state_machine.stub(:trigger).with(action) { test_code }
-      expect(proposal.send(action)).to eq test_code
+      expect(proposal.send(action, user_id)).to eq test_code
     end
   end
 
-  shared_examples 'invalid state machine event' do |action, initial_state, final_state|
+  shared_examples 'invalid state machine event' do |action, user_id, initial_state, final_state|
     before(:each) { proposal.state = initial_state }
 
     it "does not call state_machine.trigger(#{action})" do
       expect(proposal.state_machine).to_not receive(:trigger).with(action)
-      proposal.send(action)
+      proposal.send(action, user_id)
     end
 
-    it "does not change proposal state" do
-      expect { proposal.send(action) }.to_not change { proposal.state }
+    it 'does not change proposal state' do
+      expect { proposal.send(action, user_id) }.to_not change { proposal.state }
     end
 
     it 'does not change proposal locked field' do
-      expect { proposal.send(action) }.to_not change { proposal.locked }
+      expect { proposal.send(action, user_id) }.to_not change { proposal.locked }
     end
 
     it 'returns false' do
-      expect(proposal.send(action)).to eq false
+      expect(proposal.send(action, user_id)).to eq false
     end
   end
 
@@ -168,7 +168,7 @@ describe Proposal do
 
     context 'when proposal is locked' do
       before(:each) { proposal.locked = true }
-      it_should_behave_like 'invalid state machine event', :sign, 'new', 'signed'
+      it_should_behave_like 'invalid state machine event', :sign, :composer_id, 'new', 'signed'
 
       it 'does not change signer field' do
         expect { proposal.sign(composer_id) }.to_not change { proposal.signer }
@@ -177,7 +177,7 @@ describe Proposal do
 
     context 'when proposal is unlocked' do
       before(:each) { proposal.locked = false }
-      it_should_behave_like 'valid state machine event', :sign, 'new', 'signed'
+      it_should_behave_like 'valid state machine event', :sign, :composer_id, 'new', 'signed'
 
       it 'given user signs proposal' do
         proposal.sign(composer_id)
@@ -197,7 +197,7 @@ describe Proposal do
 
     context 'when proposal is locked' do
       before(:each) { proposal.locked = true }
-      it_should_behave_like 'invalid state machine event', :confirm, 'signed', 'confirmed'
+      it_should_behave_like 'invalid state machine event', :confirm, :composer_id, 'signed', 'confirmed'
 
       it 'does not change confirmer field' do
         expect { proposal.confirm(composer_id) }.to_not change { proposal.confirmer }
@@ -206,7 +206,7 @@ describe Proposal do
 
     context 'when proposal is unlocked' do
       before(:each) { proposal.locked = false }
-      it_should_behave_like 'valid state machine event', :confirm, 'signed', 'confirmed'
+      it_should_behave_like 'valid state machine event', :confirm, :composer_id, 'signed', 'confirmed'
 
       it 'confirms proposal by user' do
         proposal.confirm(composer_id)
@@ -222,7 +222,16 @@ describe Proposal do
   describe '#reset' do
     context 'when proposal is locked' do
       before(:each) { proposal.locked = true }
-      it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
+      # it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
+
+      it 'does not call state_machine.trigger(:reset)' do
+        expect(proposal.state_machine).to_not receive(:trigger).with(:reset)
+        proposal.reset
+      end
+
+      it 'does not change proposal state' do
+        expect { proposal.reset }.to_not change { proposal.state }
+      end
 
       it 'does not change signer field' do
         expect { proposal.reset }.to_not change { proposal.signer }
@@ -231,11 +240,28 @@ describe Proposal do
       it 'does not change confirmer field' do
         expect { proposal.reset }.to_not change { proposal.confirmer }
       end
+
+      it 'does not change proposal locked field' do
+        expect { proposal.reset }.to_not change { proposal.locked }
+      end
+
+      it 'returns false' do
+        expect(proposal.reset).to eq false
+      end
     end
 
     context 'when proposal is unlocked' do
       before(:each) { proposal.locked = false }
-      it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
+      # it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
+
+      it 'calls state_machine.trigger(:reset)' do
+        expect(proposal.state_machine).to receive(:trigger).with(:reset)
+        proposal.reset
+      end
+
+      it 'changes proposal state from :signed to :new' do
+        expect { proposal.reset }.to change { proposal.state }.from(:signed).to(:new)
+      end
 
       it 'unsigns proposal' do
         proposal.reset
@@ -249,6 +275,17 @@ describe Proposal do
 
       it 'does not change proposal locked field' do
         expect { proposal.reset }.to_not change { proposal.locked }
+      end
+
+      it 'does not save the proposal' do
+        proposal.reset
+        expect(proposal).to_not be_persisted
+      end
+
+      it 'returns the result of calling state_machine.trigger(:reset)' do
+        test_code = "random_test_code:#{Faker::Number.number(8)}"
+        proposal.state_machine.stub(:trigger).with(:reset) { test_code }
+        expect(proposal.reset).to eq test_code
       end
     end
   end
