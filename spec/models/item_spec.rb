@@ -75,7 +75,7 @@ describe Item do
       item.send(action)
     end
 
-    it "does not change item state" do
+    it 'does not change item state' do
       expect { item.send(action) }.to_not change { item.state }
     end
 
