@@ -220,11 +220,10 @@ describe Proposal do
   end
 
   describe '#reset' do
-    before(:each) { proposal.state = :signed }
+    before(:each) { proposal.state = 'signed' }
 
     context 'when proposal is locked' do
       before(:each) { proposal.locked = true }
-      # it_should_behave_like 'invalid state machine event', :reset, 'signed', 'new'
 
       it 'does not call state_machine.trigger(:reset)' do
         expect(proposal.state_machine).to_not receive(:trigger).with(:reset)
@@ -254,7 +253,6 @@ describe Proposal do
 
     context 'when proposal is unlocked' do
       before(:each) { proposal.locked = false }
-      # it_should_behave_like 'valid state machine event', :reset, 'signed', 'new'
 
       it 'calls state_machine.trigger(:reset)' do
         expect(proposal.state_machine).to receive(:trigger).with(:reset)
@@ -262,7 +260,7 @@ describe Proposal do
       end
 
       it 'changes proposal state from :signed to :new' do
-        expect { proposal.reset }.to change { proposal.state }.from(:signed).to(:new)
+        expect { proposal.reset }.to change { proposal.state }.from('signed').to('new')
       end
 
       it 'unsigns proposal' do
@@ -413,8 +411,8 @@ describe Proposal do
           expect { proposal.update_state }.to_not change { proposal.confirmer }
         end
 
-        it 'changes proposal locked field from true to false' do
-          expect { proposal.update_state }.to change { proposal.locked }.from(true).to(false)
+        it 'changes proposal locked field from false to true' do
+          expect { proposal.update_state }.to change { proposal.locked }.from(false).to(true)
         end
 
         it 'returns true' do
