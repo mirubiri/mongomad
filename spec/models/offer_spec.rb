@@ -150,7 +150,7 @@ describe Offer do
       it_should_behave_like 'valid state machine event', :withdraw, 'on_sale', 'withdrawn'
 
       it 'does not change offer negotiating field' do
-        expect { offer.send(action) }.to_not change { offer.negotiating }
+        expect { offer.withdraw }.to_not change { offer.negotiating }
       end
 
       it 'changes offer hidden field to true' do
