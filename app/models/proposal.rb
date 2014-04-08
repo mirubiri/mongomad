@@ -80,32 +80,29 @@ class Proposal
   end
 
   def sign(user_id)
-    # !actionable? ? false : begin
-    #   state_machine.trigger(:sign)
-    #   self.signer = user_id
-    # end
+    locked? ? false : begin
+      self.signer = user_id
+      state_machine.trigger(:sign)
+    end
   end
 
   def confirm(user_id)
-    # !actionable? ? false : begin
-    #   state_machine.trigger(:confirm)
-    #   self.confirmer = user_id
-    #   deactivate
-    # end
+    locked? ? false : begin
+      self.confirmer = user_id
+      lock
+      state_machine.trigger(:confirm)
+    end
   end
 
   def reset
-    locked? ? false : state_machine.trigger(:reset)
+    locked ? false : state_machine.trigger(:reset)
   end
 
   def update_state
-    # return false unless actionable?
-    # if goods.or({ state:'on_sale' }, { _type:'Cash' }).size == goods.size
-    #   state == 'new' ? true : reset
-    # else
-    #   deactivate
-    #   true
-    # end
+    return false if locked?
+    goods.or({ state:'on_sale' }, { _type:'Cash' }).size != goods.size ? lock : begin
+      state == 'new' ? true : reset
+    end
   end
 
   def lock
