@@ -30,7 +30,7 @@ describe Offer do
   it { should validate_presence_of :user_sheets }
   it { should validate_presence_of :proposal }
   it { should validate_length_of(:message).within(1..160) }
-  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn','sold') }
+  it { should validate_inclusion_of(:state).to_allow('on_sale','withdrawn') }
   it { should validate_presence_of :negotiating }
   it { should validate_numericality_of(:negotiated_times).greater_than_or_equal_to(0) }
   it { should validate_presence_of :hidden }
@@ -88,7 +88,6 @@ describe Offer do
     before(:each) { offer.state_machine(machine) }
 
     it { should have_received(:when).with(:withdraw, 'on_sale' => 'withdrawn') }
-    it { should have_received(:when).with(:sell, 'on_sale' => 'sold') }
   end
 
   shared_examples 'valid state machine event' do |action, initial_state, final_state|
@@ -156,28 +155,6 @@ describe Offer do
 
       it 'changes offer hidden field to true' do
         expect { offer.withdraw }.to change { offer.hidden }.from(false).to(true)
-      end
-    end
-  end
-
-  describe '#sell' do
-    before(:each) { offer.negotiating = true }
-
-    context 'when offer is hidden' do
-      before(:each) { offer.hidden = true }
-      it_should_behave_like 'invalid state machine event', :sell, 'on_sale', 'sold'
-    end
-
-    context 'when offer is unhidden' do
-      before(:each) { offer.hidden = false }
-      it_should_behave_like 'valid state machine event', :sell, 'on_sale', 'sold'
-
-      it 'changes offer negotiating field to true' do
-        expect { offer.withdraw }.to change { offer.negotiating }.from(true).to(false)
-      end
-
-      it 'does not change offer hidden field' do
-        expect { offer.sell }.to_not change { offer.hidden }
       end
     end
   end
