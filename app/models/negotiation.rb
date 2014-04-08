@@ -61,20 +61,26 @@ class Negotiation
   end
 
   def gatekeeper(user_id, action)
-    return false if hidden?
-    return false unless [users.first.id, users.last.id].include?(user_id)
-    return false unless [:sign,:confirm].include?(action)
-    return false if action==:confirm && proposal.state != 'signed'
-    return false if cash_owner?(user_id) && (action == :sign)
-    true
+    if [users.first.id, users.last.id].include?(user_id) && !hidden?
+      if action == :sign && proposal.state == 'new'
+        return true if !proposal.cash?
+        return true if proposal.cash? && !cash_owner?(user_id)
+      end
+      if action == :confirm && proposal.state == 'signed'
+        return true if proposal.cash? && cash_owner?(user_id)
+        return true if !proposal.cash? && (proposal.signer == proposal.composer_id) && (user_id == proposal.receiver_id)
+        return true if !proposal.cash? && (proposal.signer == proposal.receiver_id) && (user_id == proposal.composer_id)
+      end
+   end
+   false
   end
 
   def sign_proposal(user_id)
-    gatekeeper(user_id, :sign) && proposal.sign
+    gatekeeper(user_id, :sign) && proposal.sign(user_id)
   end
 
   def confirm_proposal(user_id)
-    gatekeeper(user_id,:confirm) && proposal.confirm && hide
+    gatekeeper(user_id,:confirm) && proposal.confirm(user_id) && hide
   end
 
   def hide
