@@ -16,7 +16,7 @@ class Offer
 
   validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :negotiating, :negotiated_times, :hidden
   validates_length_of       :message, minimum: 1, maximum: 160
-  validates_inclusion_of    :state, in: ['on_sale','withdrawn','sold']
+  validates_inclusion_of    :state, in: ['on_sale','withdrawn']
   validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
 
   validate :check_user_equality,
@@ -60,7 +60,6 @@ class Offer
       machine ||= MicroMachine.new(state)
 
       machine.when(:withdraw, 'on_sale' => 'withdrawn')
-      machine.when(:sell, 'on_sale' => 'sold')
 
       machine.on(:any) do
         self.state = @state_machine.state
@@ -74,10 +73,6 @@ class Offer
       hide
       state_machine.trigger(:withdraw)
     end
-  end
-
-  def sell
-    hidden? ? false : state_machine.trigger(:sell)
   end
 
   def hide
