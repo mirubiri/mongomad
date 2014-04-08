@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
     @item.withdraw
-
+    #TODO: PONER A LOCK LAS PROPOSALS!!
     products = search_in_offers_products_to_withdraw(@item.id).to_a.concat search_in_negotiations_products_to_withdraw(@item.id).to_a
     products = withdraw_products(products)
 
