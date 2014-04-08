@@ -160,6 +160,7 @@ describe Offer do
   end
 
   describe '#hide' do
+    #TODO: tener en cuenta si la oferta esta withdrawn o no antes de hacer el hide
     it 'sets hidden field to true' do
       offer.hide
       expect(offer.hidden).to eq true
