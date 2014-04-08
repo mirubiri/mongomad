@@ -116,6 +116,8 @@ describe Negotiation do
     end
 
     describe ':sign action' do
+      before(:each) { negotiation.proposal.state = 'new' }
+
       it 'returns false if proposal is not new' do
         negotiation.proposal.state = 'signed'
         expect(negotiation.gatekeeper(composer_id,:sign)).to eq false
@@ -143,6 +145,8 @@ describe Negotiation do
     end
 
     describe ':confirm action' do
+      before(:each) { negotiation.proposal.state = 'signed' }
+
       it 'returns false if proposal is not signed' do
         negotiation.proposal.state = 'new'
         expect(negotiation.gatekeeper(composer_id,:confirm)).to eq false
