@@ -57,11 +57,9 @@ class ItemsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
-
     @item = update_item(@item, params[:item])
 
-    products = merge_arrays(search_in_offers_products_to_outdate(@item.id).to_a, search_in_negotiations_products_to_outdate(@item.id).to_a)
-
+    products = search_in_offers_products_to_outdate(@item.id).to_a.concat search_in_negotiations_products_to_outdate(@item.id).to_a
     products = outdate_products(products)
 
     #TODO: REVISAR SERGIO
@@ -79,11 +77,9 @@ class ItemsController < ApplicationController
   def destroy
     @user = User.find(params[:user_id])
     @item = @user.items.find(params[:id])
-
     @item.withdraw
 
-    products = merge_arrays(search_in_offers_products_to_withdraw(@item.id).to_a, search_in_negotiations_products_to_withdraw(@item.id).to_a)
-
+    products = search_in_offers_products_to_withdraw(@item.id).to_a.concat search_in_negotiations_products_to_withdraw(@item.id).to_a
     products = withdraw_products(products)
 
     #TODO: REVISAR SERGIO
@@ -172,17 +168,5 @@ class ItemsController < ApplicationController
 
   def save_item(item)
     item.valid? ? item.save : false
-  end
-
-  #TODO: Eliminar esta horribilidad :)
-  def merge_arrays(array1, array2)
-    array = []
-    array1.each do |element|
-      array << element
-    end
-    array2.each do |element|
-      array << element
-    end
-    array
   end
 end
