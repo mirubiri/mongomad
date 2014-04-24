@@ -2,7 +2,7 @@
 
 MoneyRails.configure do |config|
 
-  Money.assume_from_symbol = true
+  #Money.assume_from_symbol = true
 
   # To set the default currency
   #
