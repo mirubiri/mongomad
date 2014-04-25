@@ -1,0 +1,13 @@
+#expositor.expositor
+    section#expositor_container
+      #add_request_invitation.add_request_invitation.hidden_container
+        .arrow-left
+        .invitation_text WANT RECIBE OFFERS??
+        .invitation_button
+          = link_to "THEN REQUEST SOMETHING",                                  \
+            new_user_request_path(@user),                                      \
+            {:remote => true, :class => "new_request_invitation_button_style"} \
+      nav#navigation_bar.nav_bar
+        = render :partial => 'application/navigation_bar'
+      aside#ppal_container.main_container_elementList offerWidth="286"
+        = render @items

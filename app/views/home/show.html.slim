@@ -1,0 +1,39 @@
+
+<% content_for :content_side do %>
+
+  <!-- Session Filter Sergio -->
+  <span style="float:left; width: 100%; text-align: center"><p>Aqui vendra el inicio de sesion que pongamos, para seguir trabajando dejo paso a un usuario cualquiera. Por el momento pongo el listado de usuarios registrados y su acceso directo</p></span>
+
+  <% User.each do |user| %>
+
+    <span style="float:left; width: 100%; text-align: center;margin-bottom: 10px"><%= link_to nick(user),  user_user_caption_url(user) %></span>
+
+  <% end %>
+
+  <div class="logger_content" id="logger_container">
+    <div class="login_container_logo">
+      logo
+    </div>
+
+    <div class="login_container_coverage">
+      <div class="login_container">
+        <div class="login_container_header">
+          <div class="log_header_enter"></div>
+          <div class="log_header_reg"></div>
+        </div>
+        <div class="login_user_fields">
+          <div class="login_email_field"></div>
+          <div class="login_pass_field"></div>
+          <div class="rememberme_selector"></div>
+          <div class="signin_button"></div>
+          <div class="usuarios_registrados" style="float:left; width:100%">
+            <div>email: </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<% end %>
