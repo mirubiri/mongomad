@@ -1,15 +1,40 @@
 = content_for :proposal_composer_name
+  .proposal_composer_name
+  = name(user)
 
 = content_for :proposal_composer_image
+  .proposal_composer_image
+  = main_image(composer(proposal))
 
-= content_for :composer_products
+= content_for :proposal_composer_products
+  = render :partial 'item',
+  :collection @items,
+  :as '@composer_products',
+  :layout 'as_product_left'
 
-= content_for :receiver_products
-
-= content_for :proposal_image_small
-  .item-image-small
-    = main_image(item)
-
-= content_for :proposal_secondary_images
+= content_for :proposal_receiver_products
+  = render :partial 'item',
+  :collection @items,
+  :as '@receiver_products',
+  :layout 'as_product_left'
 
 = content_for :proposal_buttons
+  .proposal_buttons
+    = link_to 'NEW',                                     
+      edit_user_negotiation_path(@user,id(negotiation)), 
+      class: "new_deal_button_style",                    
+      remote => true                                    
+    - if (can_sign?(negotiation,@user))
+      = link_to 'SIGN',                                        
+        sign_user_negotiation_path(id(@user),id(negotiation)), 
+        class: "sign_deal_button_style",                       
+        remote => true                                        
+    - if (can_confirm?(negotiation,@user))
+      = link_to 'CONFIRM',                                        
+        confirm_user_negotiation_path(id(@user),id(negotiation)), 
+        class: "sign_deal_button_style",                          
+        remote => true                                           
+    = link_to 'DISCARD',                                      
+      cancel_user_negotiation_path(id(@user),id(negotiation)), 
+      class: "cancel_deal_button_style",                       
+      remote => true   
