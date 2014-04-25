@@ -1,0 +1,11 @@
+DOCTYPE html
+
+html
+
+  = render partial: 'application/metadata'
+
+  body
+    = render partial: 'sections/sneak', :layout => 'as-sneak'
+    = render partial: 'sections/alerts', :layout => 'as-alerts'
+    = render partial: 'sections/matcher', :layout => 'as-matcher'
+    = render partial: 'sections/footer', :layout => 'as-footer'
