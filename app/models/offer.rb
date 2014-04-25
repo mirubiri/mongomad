@@ -2,80 +2,22 @@ class Offer
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to  :user_composer, class_name: 'User', inverse_of: :sent_offers, autosave:false
-  belongs_to  :user_receiver, class_name: 'User', inverse_of: :received_offers, autosave:false
+  has_and_belongs_to_many :users
   belongs_to  :negotiation
-  embeds_many :user_sheets
+  embeds_many :user_sheets, class_name: 'UserSheet', as: :user_sheet_container
   embeds_one  :proposal,      as: :proposal_container
 
   field :message
-  field :state,            default:'on_sale'
-  field :negotiating,      type:Boolean, default:false
-  field :negotiated_times, type:Integer, default:0
-  field :hidden,           type:Boolean, default:false
 
-  validates_presence_of     :user_composer, :user_receiver, :user_sheets, :proposal, :negotiating, :negotiated_times, :hidden
-  validates_length_of       :message, minimum: 1, maximum: 160
-  validates_inclusion_of    :state, in: ['on_sale','withdrawn']
-  validates_numericality_of :negotiated_times, greater_than_or_equal_to: 0
+  private :users,:proposal,:user_sheets,:user_ids
 
-  validate :check_user_equality,
-           :check_number_of_sheets,
-           :check_composer_sheet,
-           :check_receiver_sheet,
-           :check_orphan_proposal
-
-  private
-  def check_user_equality
-    errors.add(:users, "Composer and receiver should not be equal.") unless user_composer_id != user_receiver_id
+  def add_participant(user)
+    users<<user
+    user_sheets<<user.sheet
   end
 
-  def check_number_of_sheets
-    errors.add(:user_sheets, "Offer should have only two user_sheets.") unless user_sheets.size == 2
-  end
-
-  def check_composer_sheet
-    errors.add(:user_sheets, "Offer should have one user_sheet for composer.") unless user_sheets.where(id:user_composer_id).size == 1
-  end
-
-  def check_receiver_sheet
-    errors.add(:user_sheets, "Offer should have one user_sheet for receiver.") unless user_sheets.where(id:user_receiver_id).size == 1
-  end
-
-  def check_orphan_proposal
-    errors.add(:proposal, "Proposal should be owned by both users.") unless (proposal.composer_id == user_composer_id) && (proposal.receiver_id == user_receiver_id)
-  end
-
-  public
   def composer
-    user_sheets.find(user_composer_id)
+    user_sheets.where(id:proposal.composer)
   end
 
-  def receiver
-    user_sheets.find(user_receiver_id)
-  end
-
-  def state_machine(machine = nil)
-    @state_machine ||= begin
-      machine ||= MicroMachine.new(state)
-
-      machine.when(:withdraw, 'on_sale' => 'withdrawn')
-
-      machine.on(:any) do
-        self.state = @state_machine.state
-      end
-      machine
-    end
-  end
-
-  def withdraw
-    hidden? ? false : begin
-      hide
-      state_machine.trigger(:withdraw)
-    end
-  end
-
-  def hide
-    self.hidden = true
-  end
 end

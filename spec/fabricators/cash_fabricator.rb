@@ -1,6 +1,5 @@
 Fabricator(:cash) do
-  proposal
+	user_id  { Faker::Number.number(3) }
   money    { Money.new(rand(1..5000)) }
-  owner_id { |attrs| attrs[:proposal].composer_id }
   images   { [ Fabricate.build(:image_money) ] }
 end

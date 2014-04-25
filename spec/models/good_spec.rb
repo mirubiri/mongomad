@@ -8,6 +8,7 @@ describe Good do
   it { should be_embedded_in :proposal }
 
   # Attributes
+  it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
   it { should be_timestamped_document }
 
   # Validations

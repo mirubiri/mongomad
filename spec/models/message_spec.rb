@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Message do
   # Variables
-  let(:user) { Fabricate.build(:user_with_items) }
-  let(:message) { Fabricate.build(:message, user:user) }
+  let(:user) { Fabricate.build(:user) }
+  let(:message) { Fabricate.build(:message, user_id:user.id) }
+  let(:user_sheet) { user.sheet }
 
   # Relations
   it { should be_embedded_in :message_container }
