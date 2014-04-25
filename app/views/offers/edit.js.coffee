@@ -1,6 +1,6 @@
 $('#edit-offer-form').remove();
 $('#new-offer-form').remove();
-$('#ppal_container').append("<%= escape_javascript(render :partial 'form', :layout 'as_offer_form', :locals :offer => @offer).html_safe %>");
+$('#ppal-container').append("<%= escape_javascript(render :partial 'form', :layout 'as_offer_form', :locals :offer => @offer).html_safe %>");
 $('#edit-offer-form').toModal();
 
 //$(".product_overview").hide();
