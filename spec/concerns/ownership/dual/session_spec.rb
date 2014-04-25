@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-class EmptyTestParticipantsSession
+class EmptyTestOwnershipSession
 end
 
-class TestParticipantsSession
-	include Participants::Couple
-	include Participants::Couple::Session
+class TestOwnershipSession
+	include Ownership::Dual
+	include Ownership::Dual::Session
 end
 
-describe 'Participants::Couple' do
-	subject(:klass) { TestParticipantsSession }
-	let(:empty_class) { EmptyTestParticipantsSession }
+describe 'Ownership::Dual' do
+	subject(:klass) { TestOwnershipSession }
+	let(:empty_class) { EmptyTestOwnershipSession }
 
-	it 'raise error if Participants::Couple is not included' do
-		expect { emty_class.include Participants::Couple::Session }.to raise_error
+	it 'raise error if Ownership::Dual is not included' do
+		expect { emty_class.include Ownership::Dual::Session }.to raise_error
 	end
 
 

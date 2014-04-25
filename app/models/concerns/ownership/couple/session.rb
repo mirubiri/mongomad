@@ -1,8 +1,8 @@
-module Participants::Couple::Session
+module Ownership::Dual::Session
   extend ActiveSupport::Concern
 
   included do
-    raise 'Participants::Couple is required by ::Session' unless self < Participants::Couple
+    raise 'Ownership::Dual is required by ::Session' unless self < Ownership::Dual
   end
 
   def login(user_id)
