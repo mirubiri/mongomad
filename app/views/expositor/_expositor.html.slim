@@ -1,14 +1,35 @@
 - content_for :expositor_navigation
-  ol
-    .navigation_tab
-      | Offers
-    .navigation_tab
-      | Negotiations
-    .navigation_tab
-      | Deals
-    .navigation_tab
-      | Products
+  .expositor-navigation
+    ol
+      .navigation_tab
+        - if (controller.controller_name == "users") or (controller.controller_name == "offers")
+          li#offers-tab.active
+        - else
+          li#offers-tab
+          = link_to "Offers", user_offers_path(@user), remote: true
+
+      .navigation_tab
+        - if controller.controller_name == "negotiations"
+          li#negotiations-tab.active
+        - else
+          li#negotiations-tab
+          = link_to "Negotiations", user_negotiations_path(@user), remote: true
+
+      .navigation_tab
+        - if controller.controller_name == "deals"
+          li#deals-tab.active
+        - else
+          li#deals-tab
+          = link_to "Deals", user_deals_path(@user), remote: true
+
+      .navigation_tab
+        - if controller.controller_name == "items"
+          li#items-tab.active
+        - else
+          li#items-tab
+          = link_to "Products", user_items_path(@user), remote: true
+
 
 - content_for :expositor_container
-  .main_container
+  .expositor_container#expositor_container
     == yield

@@ -1,1 +1,0 @@
-$("#ppal_container").html('<p>Sergio esto siento decirte que funciona</p>');
