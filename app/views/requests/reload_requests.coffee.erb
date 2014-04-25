@@ -6,7 +6,7 @@ request_id = "<%= id(@request) %>"
 
 $("#request_list_container").find("#" + request_id).addClass("new_request_style")
 .animate
-  backgroundColor: "#ffffff"
-, 3000, ->
-  $(this).removeClass "new_request_style"
+  backgroundColor: "#ffffff",
+  3000,
+  -> $(this).removeClass "new_request_style"
   return
