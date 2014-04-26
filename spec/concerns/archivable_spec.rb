@@ -10,22 +10,10 @@ describe Archivable do
   subject(:document) { document_class.new }
 
   it 'scopes all queries to archived=false' do
-  	expect(document_class.criteria.selector).to eq({"_archived"=>false})
+  	expect(document_class.criteria.selector).to eq({"archived"=>false})
   end
 
-  it { should have_field(:_archived).of_type(Boolean).with_default_value_of(false) }
-
-  describe '#archived?' do
-  	it 'returns true if document is archived' do
-  		document.save
-  		document.archive
-  		expect(document.archived?).to eq true
-  	end
-
-  	it 'returns false if document is not archived' do
-  		expect(document.archived?).to eq false
-  	end
-  end
+  it { should have_field(:archived).of_type(Boolean).with_default_value_of(false) }
 
   describe '#archive' do
   	context 'document is persisted' do

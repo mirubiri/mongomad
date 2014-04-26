@@ -13,7 +13,7 @@ describe 'Ownership::Dual' do
 	let(:empty_class) { EmptyTestOwnershipSession }
 
 	it 'raise error if Ownership::Dual is not included' do
-		expect { emty_class.include Ownership::Dual::Session }.to raise_error
+		expect { empty_class.include Ownership::Dual::Session }.to raise_error
 	end
 
 
