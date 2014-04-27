@@ -8,7 +8,7 @@ class TestOwnershipSession
 	include Ownership::Dual::Session
 end
 
-describe 'Ownership::Dual' do
+describe 'Ownership::Dual::Session' do
 	subject(:klass) { TestOwnershipSession }
 	let(:empty_class) { EmptyTestOwnershipSession }
 
@@ -16,17 +16,21 @@ describe 'Ownership::Dual' do
 		expect { empty_class.include Ownership::Dual::Session }.to raise_error
 	end
 
+	let(:owner) { Fabricate.build(:user) }
+	let(:non_owner) { Fabricate.build(:user) }
+  let(:document) do
+  	document=klass.new
+  	document.register(owner)
+  	document.register(Fabricate.build(:user))
+  	document
+  end
 
-  let(:document) { klass.new(user_ids:["0","1"]) }
-  let(:owner) { 0 }
-  let(:non_owner) { 2 }
+	describe '#login(user)' do
 
-	describe '#login(user_id)' do
-
-		context 'user_id is a owner' do
+		context 'user is a owner' do
 			it 'logs in the user' do
 				document.login(owner)
-				expect(document.logged).to eq owner
+				expect(document.logged_user).to eq owner.id
 			end
 
 			it 'returns true' do
@@ -34,18 +38,18 @@ describe 'Ownership::Dual' do
 			end
 		end
 
-		context 'user_id is not a owner' do
+		context 'user is not a owner' do
 			it 'returns false' do
 				expect(document.login(non_owner)).to eq false
 			end
 
 			it 'does not log in the user_id' do
 				document.login(non_owner)
-				expect(document.logged).to eq nil
+				expect(document.logged_user).to eq nil
 			end
 		end
 
-		context 'user_id is currently logged in' do
+		context 'user is currently logged in' do
 			it 'returns true' do
 				document.login(owner)
 				expect(document.login(owner)).to eq true
@@ -53,18 +57,18 @@ describe 'Ownership::Dual' do
 		end
 	end
 
-	describe '#logged' do
-		it 'returns the logged user_id' do
+	describe '#logged_user' do
+		it 'returns the logged user' do
 			document.login(owner)
-			expect(document.logged).to eq owner
+			expect(document.logged_user).to eq owner.id
 		end
 
 		it 'returns nil if nobody is logged' do
-			expect(document.logged).to eq nil
+			expect(document.logged_user).to eq nil
 		end
 	end
 
-	describe '#register(user_id)' do
+	describe '#register(user)' do
 		it 'registers a new user as owner' do
 			document.user_ids=[]
 			document.register(owner)
@@ -73,7 +77,7 @@ describe 'Ownership::Dual' do
 	end
 
 	describe '#registered?' do
-		it 'returns true if given user_id is a owner' do
+		it 'returns true if given user is a owner' do
 			expect(document.registered? owner).to eq true
 		end
 

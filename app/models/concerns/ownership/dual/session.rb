@@ -5,20 +5,21 @@ module Ownership::Dual::Session
     raise 'Ownership::Dual is required by ::Session' unless self < Ownership::Dual
   end
 
-  def login(user_id)
-    return false unless registered? user_id
-    true if @logged = user_id
+  def login(user)
+    return false unless registered? user
+    true if @logged = user.id
   end
 
-  def logged
+  def logged_user
     @logged
   end
 
-  def registered?(user_id)
-    (self.user_ids||=[]).include? user_id.to_s
+  def registered?(user)
+    (self.user_ids||=[]).include? user.id
   end
 
-  def register(user_id)
-    (self.user_ids||=[]) << user_id.to_s
+  def register(user)
+    (self.user_ids||=[]) << user.id
+    user_sheets << user.sheet
   end
 end

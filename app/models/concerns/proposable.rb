@@ -1,11 +1,15 @@
 module Proposable
-	include ActiveSupport::Concern
+	extend ActiveSupport::Concern
 
-	include do
-		include OwnerShip::Dual
-		include Ownership::Session
+	included do
+		include Ownership::Dual
+		include Ownership::Dual::Session
+		embeds_one :proposal, as: :proposal_container
 	end
 
 	module ClassMethods
+		def proposal_historic(state)
+			embeds_many :previous_proposals, class_name: "Proposal", as: :proposal_container if state == :on
+		end
 	end
 end
