@@ -68,17 +68,17 @@ describe 'Ownership::Dual' do
 		it 'registers a new user as owner' do
 			document.user_ids=[]
 			document.register(owner)
-			expect(document.owned_by?(owner)).to eq true
+			expect(document.registered?(owner)).to eq true
 		end
 	end
 
-	describe '#owned_by?' do
+	describe '#registered?' do
 		it 'returns true if given user_id is a owner' do
-			expect(document.owned_by? owner).to eq true
+			expect(document.registered? owner).to eq true
 		end
 
 		it 'returns false if given user is not a owner' do
-			expect(document.owned_by? non_owner).to eq false
+			expect(document.registered? non_owner).to eq false
 		end
 	end
 end

@@ -6,7 +6,7 @@ module Ownership::Dual::Session
   end
 
   def login(user_id)
-    return false unless owned_by? user_id
+    return false unless registered? user_id
     true if @logged = user_id
   end
 
@@ -14,7 +14,7 @@ module Ownership::Dual::Session
     @logged
   end
 
-  def owned_by?(user_id)
+  def registered?(user_id)
     (self.user_ids||=[]).include? user_id.to_s
   end
 
