@@ -6,7 +6,7 @@ module Ownership::Dual::Session
   end
 
   def login(user_id)
-    return false unless participant?(user_id)
+    return false unless owned_by? user_id
     true if @logged = user_id
   end
 
@@ -14,7 +14,11 @@ module Ownership::Dual::Session
     @logged
   end
 
-  def participant?(user_id)
-    user_ids.try(:include?,user_id.to_s)
+  def owned_by?(user_id)
+    (self.user_ids||=[]).include? user_id.to_s
+  end
+
+  def register(user_id)
+    (self.user_ids||=[]) << user_id.to_s
   end
 end
