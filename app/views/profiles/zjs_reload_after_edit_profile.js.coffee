@@ -1,3 +1,0 @@
-$('#edit-profile-form').dialog('close');
-$('#ppal_container').html("<%= escape_javascript(render :template => 'profiles/show').html_safe %>");
-delete $('#edit-profile-form');

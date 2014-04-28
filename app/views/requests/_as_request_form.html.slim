@@ -1,8 +1,0 @@
-.request-form
-  = form_for [@user, @request], :remote => true do |form|
-    .request-form-content
-      == yield :request_form_title
-      == yield :request_form_text
-      == yield :request_form_options
-
-

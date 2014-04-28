@@ -12,16 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
-//= require jquery.ui.widget
-//= require history_jquery_html5.min
-//= require masonry/jquery.masonry
-//= require jquery.iframe-transport
-//= require jquery.fileupload
-//= require modernizr
-//= require cloudinary
-//= require jquery.equal-height-columns
-//= require jquery.wheelzoom
-//= require_tree ./external_plugins
-//= require_tree ./model_functions
-//= require_tree ./triggers
+//= require_tree .

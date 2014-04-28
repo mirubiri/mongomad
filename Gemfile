@@ -9,14 +9,8 @@ gem 'rails','~>3.2.17'
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'compass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
-  gem 'stitch'
-  gem 'mini_magick'
-  gem 'modernizr-rails'
-  gem 'masonry-rails'
-  gem 'historyjs-rails'
   gem 'pusher'
 end
 
@@ -30,18 +24,12 @@ group :development,:test do
   gem 'awesome_print'
   gem 'mongoid'
   gem 'jquery-rails'
-  gem 'jquery-ui-rails'
   gem 'better_errors'
   gem 'micromachine'
   gem 'pundit'
   gem 'money-rails'
   gem 'cloudinary'
 end
-
-
-#Estos son los servidores de WebSockets para eventos y mensajes
-#gem 'eventmachine'
-#gem 'em-websocket'
 
 
 # To use ActiveModel has_secure_password

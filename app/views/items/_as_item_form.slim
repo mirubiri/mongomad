@@ -1,7 +1,0 @@
-.item-form
-  = form_for [@user, @item], :remote => true do |form|
-    .item-form-content
-      == yield :item_form_title
-      == yield :item_form_image
-      == yield :item_form_description
-      == yield :item_form_buttons
