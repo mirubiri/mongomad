@@ -29,6 +29,7 @@ group :development,:test do
   gem 'pundit'
   gem 'money-rails'
   gem 'cloudinary'
+  gem 'slim-rails'
 end
 
 
