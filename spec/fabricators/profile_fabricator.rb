@@ -1,5 +1,4 @@
 Fabricator(:profile) do
-  user       { Fabricate.build(:user, profile:nil) }
   first_name { Faker::Name.first_name.slice(0,15) }
   last_name  { Faker::Name.last_name.slice(0,15) }
   gender     'male'

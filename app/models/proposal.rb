@@ -3,109 +3,41 @@ class Proposal
   include Mongoid::Timestamps
 
   embedded_in :proposal_container, polymorphic: true
+  embeds_many :user_sheets
   embeds_many :goods
 
-  field :composer_id, type:Moped::BSON::ObjectId
-  field :receiver_id, type:Moped::BSON::ObjectId
-  field :state,       default:'new'
-  field :signer,      type:Moped::BSON::ObjectId
-  field :confirmer,   type:Moped::BSON::ObjectId
-  field :locked,      type:Boolean, default:false
+  field :composer_id
+  field :receiver_id
 
-  validates_presence_of  :goods, :composer_id, :receiver_id, :locked
-  validates_inclusion_of :state, in: ['new','signed','confirmed']
+  private :user_sheets,:goods
 
-  validate :check_user_equality,
-           :check_composer_goods,
-           :check_receiver_goods,
-           :check_orphan_goods,
-           :check_duplicated_goods,
-           :check_multiple_cash
-
-  private
-  def check_user_equality
-    errors.add(:users, "Composer and receiver should not be equal.") unless composer_id != receiver_id
-  end
-
-  def check_composer_goods
-    errors.add(:goods, "Composer should have one good at least.") unless articles(composer_id).size > 0
-  end
-
-  def check_receiver_goods
-    errors.add(:goods, "Receiver should have one good at least.") unless articles(receiver_id).size > 0
-  end
-
-  def check_orphan_goods
-    errors.add(:goods, "All goods should be owned by composer or receiver.") unless goods.or({ owner_id:composer_id }, { owner_id:receiver_id }).size == goods.size
-  end
-
-  def check_duplicated_goods
-    errors.add(:goods, "Proposal should not have any duplicated good.") unless goods.distinct(:id).size == goods.size
-  end
-
-  def check_multiple_cash
-    errors.add(:goods, "Proposal should have only one cash.") if goods.type(Cash).size > 1
-  end
-
-  public
   def composer
-    proposal_container.user_sheets.find(composer_id)
+    user_sheets.where(id:composer_id).first
+  end
+
+  def composer=(user)
+    composer_id || (self.composer_id=user.id) && (user_sheets<<user.sheet)
   end
 
   def receiver
-    proposal_container.user_sheets.find(receiver_id)
+    user_sheets.where(id:receiver_id).first
   end
 
-  def articles(owner_id)
-    goods.where(owner_id:owner_id)
+  def receiver=(user)
+    receiver_id || (self.receiver_id=user.id) && (user_sheets<<user.sheet)
   end
 
-  def cash?
-    goods.type(Cash).exists?
+  def composer_goods
+    goods.where(user_id:composer_id).to_a
   end
 
-  def state_machine(machine = nil)
-    @state_machine ||= begin
-      machine ||= MicroMachine.new(state)
-
-      machine.when(:sign, 'new' => 'signed')
-      machine.when(:confirm, 'signed' => 'confirmed')
-      machine.when(:reset, 'signed' => 'new')
-
-      machine.on(:any) do
-        self.state = @state_machine.state
-      end
-      machine
-    end
+  def receiver_goods
+    goods.where(user_id:receiver_id).to_a
   end
 
-  def sign(user_id)
-    locked? ? false : begin
-      self.signer = user_id
-      state_machine.trigger(:sign)
-    end
+  def composer_goods=(items)
+    goods<<items.map { |item| item.to_product }
   end
 
-  def confirm(user_id)
-    locked? ? false : begin
-      self.confirmer = user_id
-      lock
-      state_machine.trigger(:confirm)
-    end
-  end
-
-  def reset
-    locked ? false : state_machine.trigger(:reset)
-  end
-
-  def update_state
-    return false if locked?
-    goods.or({ state:'on_sale' }, { _type:'Cash' }).size != goods.size ? lock : begin
-      state == 'new' ? true : reset
-    end
-  end
-
-  def lock
-    self.locked = true
-  end
+  alias_method :receiver_goods=,:composer_goods=
 end

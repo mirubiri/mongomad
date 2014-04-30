@@ -3,8 +3,7 @@ class User
   include Mongoid::Timestamps
 
   has_many                :requests
-  has_many                :sent_offers,     class_name: 'Offer', inverse_of: :user_composer
-  has_many                :received_offers, class_name: 'Offer', inverse_of: :user_receiver
+  has_and_belongs_to_many :offers
   has_and_belongs_to_many :negotiations
   has_and_belongs_to_many :deals
   has_many                :items
