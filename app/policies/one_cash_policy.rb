@@ -1,1 +1,2 @@
-one_cash_policy.rb
+class OneCashPolicy
+end
