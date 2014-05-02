@@ -6,5 +6,6 @@ class Offer
   proposal_historic :false
 
   belongs_to :negotiation
+  
   field :message
 end

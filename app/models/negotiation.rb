@@ -5,6 +5,6 @@ class Negotiation
 
   proposal_historic :true
 
-  has_one                 :offer
-  embeds_many             :messages,   as: :message_container
+  has_one     :offer
+  embeds_many :messages,   as: :message_container
 end

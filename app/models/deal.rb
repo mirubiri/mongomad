@@ -5,5 +5,5 @@ class Deal
 
   proposal_historic :true
 
-  embeds_many             :messages,   as: :message_container
+  embeds_many :messages,   as: :message_container
 end
