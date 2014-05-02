@@ -2,17 +2,6 @@ require 'spec_helper'
 
 describe Offer do
 
-  let(:composer) { Fabricate.build(:user) }
-  let(:receiver) { Fabricate.build(:user) }
-  let(:proposal) do
-    Proposal.new
-    proposal.composer_id=composer.id
-    proposal.receiver_id=receiver.id
-  end
-  let(:composer_sheet) { composer.sheet }
-  let(:receiver_sheet) { receiver.sheet }
-  let(:offer) { Offer.new }
-
   specify { expect(Offer).to be < Proposable }
   
   # Relations
