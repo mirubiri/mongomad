@@ -4,12 +4,22 @@ module Proposable
 	included do
 		include Ownership::Dual
 		include Ownership::Dual::Session
-		embeds_one :proposal, as: :proposal_container
 	end
 
 	module ClassMethods
 		def proposal_historic(state)
-			embeds_many :previous_proposals, class_name: "Proposal", as: :proposal_container if state == :on
+			if state == :true		
+			  include HistoricMethods	
+				embeds_many :proposals, as: :proposal_container
+			end
+
+			embeds_one :proposal, as: :proposal_container if state == :false
+		end
+
+		module HistoricMethods
+			def proposal
+				proposals.last
+			end
 		end
 	end
 end
