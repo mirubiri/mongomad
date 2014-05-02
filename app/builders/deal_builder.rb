@@ -1,0 +1,2 @@
+class DealBuilder
+end

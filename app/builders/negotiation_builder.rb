@@ -1,0 +1,2 @@
+class NegotiationBuilder
+end
