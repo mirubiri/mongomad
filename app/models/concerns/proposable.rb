@@ -13,13 +13,19 @@ module Proposable
 				embeds_many :proposals, as: :proposal_container
 			end
 
-			embeds_one :proposal, as: :proposal_container if state == :false
+			if state == :false
+				include NonHistoricMethods
+			  embeds_one :proposal, as: :proposal_container
+			end
 		end
 
 		module HistoricMethods
 			def proposal
 				proposals.last
 			end
+		end
+
+		module NonHistoricMethods
 		end
 	end
 end
