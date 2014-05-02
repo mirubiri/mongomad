@@ -18,8 +18,8 @@ describe Proposal do
 
 
   let(:filled_proposal) do
-    proposal.composer=composer
-    proposal.receiver=receiver
+    proposal.composer_id=composer.id
+    proposal.receiver_id=receiver.id
     proposal
   end
 

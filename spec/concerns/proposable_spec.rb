@@ -66,4 +66,16 @@ describe 'Proposable' do
       expect(proposable.goods).to eq proposable.proposal.goods
     end
   end
+
+  describe '#composer_goods' do
+    it 'returns composer goods' do
+      expect(proposable.composer_goods).to eq proposable.proposal.composer_goods
+    end
+  end
+
+  describe '#receiver_goods' do
+    it 'return receiver goods' do
+      expect(proposable.receiver_goods).to eq proposable.proposal.receiver_goods
+    end
+  end
 end 

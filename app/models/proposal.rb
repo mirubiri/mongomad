@@ -8,22 +8,6 @@ class Proposal
   field :composer_id
   field :receiver_id
 
-  def composer
-    user_sheets.where(id:composer_id).first
-  end
-
-  def composer=(user)
-   self.composer_id=user.id
-  end
-
-  def receiver
-    user_sheets.where(id:receiver_id).first
-  end
-
-  def receiver=(user)
-    self.receiver_id=user.id
-  end
-
   def composer_goods
     goods.where(user_id:composer_id).to_a
   end

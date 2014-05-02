@@ -37,6 +37,14 @@ module Proposable
 		proposal && users.find(proposal.receiver_id)
 	end
 
+	def composer_goods
+		proposal && proposal.composer_goods
+	end
+
+	def receiver_goods
+		proposal && proposal.receiver_goods
+	end
+
 	def goods
 		proposal && proposal.goods
 	end
