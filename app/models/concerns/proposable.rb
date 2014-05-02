@@ -2,8 +2,8 @@ module Proposable
 	extend ActiveSupport::Concern
 
 	included do
-		include Ownership::Dual
-		include Ownership::Dual::Session
+		include Ownership
+		ownership :dual
 	end
 
 	module ClassMethods

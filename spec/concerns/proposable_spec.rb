@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 class Test::Proposable 
+  include Mongoid::Document
   include Proposable
   proposal_historic :false
 end
 
 class Test::ProposableHistoric
+  include Mongoid::Document
   include Proposable
   proposal_historic :true
 end
@@ -15,7 +17,7 @@ describe 'Proposable' do
   let(:historic_proposable) { Test::ProposableHistoric.new }
 
   subject { Test::Proposable }
-  it { should < Ownership::Dual }
+  it { should < Ownership }
 
   context 'proposal_historic is :false' do
     it { should embed_one(:proposal).of_type(Proposal) }
