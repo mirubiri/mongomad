@@ -1,1 +1,2 @@
-two_users_policy.rb
+class TwoUsersPolicy
+end
