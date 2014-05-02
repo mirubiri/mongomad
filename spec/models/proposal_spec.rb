@@ -11,17 +11,11 @@ describe Proposal do
   # Relations
   it { should be_embedded_in :proposal_container }
   it { should embed_many :goods }
-  it { should_not embed_many :user_sheets }
 
   # Attributes
   it { should be_timestamped_document }
   it { should have_fields(:composer_id,:receiver_id) }
-  it { should_not respond_to(:goods,:user_sheets) }
 
-
-  # Methods
-  it { should only_set_once(:composer_id).with(:composer_id=) }
-  it { should only_set_once(:receiver_id).with(:receiver_id=) }
 
   let(:filled_proposal) do
     proposal.composer=composer
