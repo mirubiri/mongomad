@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe Deal do
 
+  specify { expect(Deal).to be < Proposable }
+  specify { expect(Deal).to be < Conversation }
+
   # Relations
   it { should embed_many :proposals }
   it { should embed_many :messages }
@@ -11,5 +14,4 @@ describe Deal do
 
   # Validations
 
-  specify { expect(Deal).to be < Proposable }
 end
