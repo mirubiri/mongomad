@@ -28,4 +28,16 @@ module Proposable
 		module NonHistoricMethods
 		end
 	end
+
+	def composer
+		proposal && users.find(proposal.composer_id)
+	end
+
+	def receiver
+		proposal && users.find(proposal.receiver_id)
+	end
+
+	def goods
+		proposal && proposal.goods
+	end
 end
