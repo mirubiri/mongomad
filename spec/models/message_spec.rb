@@ -11,7 +11,7 @@ describe Message do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
+  it { should have_field(:user_id) }
   it { should have_field :text }
 
   # Validations
@@ -24,6 +24,10 @@ describe Message do
     let(:user_sheet) { user.sheet }
 
     it 'returns the owner user_sheet' do
+      container=Negotiation.new
+      container.user_sheets<<user_sheet
+
+      message.message_container=container
       expect(message.user_sheet).to eq user_sheet
     end
   end

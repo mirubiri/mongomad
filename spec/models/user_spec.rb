@@ -5,9 +5,6 @@ describe User do
   let(:user) { Fabricate.build(:user) }
 
   # Relations
-  it { should have_many :requests }
-  it { should have_many :items }
-  it { should have_many :alerts }
   it { should embed_one :profile }
 
   # Attributes

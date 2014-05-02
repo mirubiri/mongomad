@@ -2,9 +2,6 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  has_many                :requests
-  has_many                :items
-  has_many                :alerts
   embeds_one              :profile
 
   field :nick

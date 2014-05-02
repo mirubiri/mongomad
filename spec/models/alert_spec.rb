@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Alert do
-  # Relations
-  it { should belong_to :user }
+  
+  it { should include_module Ownership }
 
   # Attributes
   it { should be_timestamped_document }
@@ -10,11 +10,6 @@ describe Alert do
   it { should have_field(:location).of_type(Array) }
 
   # Validations
-  it { should validate_presence_of :user }
-  it { should_not have_autosave_on :user }
-  it { should validate_length_of(:text).within(1..160) }
-  it { should validate_presence_of :location }
 
   # Factories
-  specify { expect(Fabricate.build(:alert)).to be_valid }
 end

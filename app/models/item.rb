@@ -2,8 +2,9 @@ class Item
   include Mongoid::Document
   include Mongoid::Timestamps
   include Attachment::Images
+  include Ownership
 
-  belongs_to :user, autosave:false
+  ownership :single
 
   field :name
   field :description

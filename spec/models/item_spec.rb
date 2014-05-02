@@ -6,9 +6,9 @@ describe Item do
 
   # Modules
   it { should include_module Attachment::Images }
+  it { should include_module Ownership }
 
   # Relations
-  it { should belong_to :user }
 
   # Attributes
   it { should be_timestamped_document }
