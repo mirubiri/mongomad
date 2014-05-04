@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe 'DealBuilder' do
+describe DealBuilder do
 end
