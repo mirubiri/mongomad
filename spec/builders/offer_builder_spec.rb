@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe 'OfferBuilder' do
+describe OfferBuilder do
 end

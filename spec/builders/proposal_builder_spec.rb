@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe 'ProposalBuilder' do
+describe ProposalBuilder do
 end

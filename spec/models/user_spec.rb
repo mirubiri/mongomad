@@ -5,12 +5,6 @@ describe User do
   let(:user) { Fabricate.build(:user) }
 
   # Relations
-  it { should have_many :requests }
-  it { should have_and_belong_to_many :negotiations }
-  it { should have_and_belong_to_many :deals }
-  it { should have_and_belong_to_many :offers }
-  it { should have_many :items }
-  it { should have_many :alerts }
   it { should embed_one :profile }
 
   # Attributes

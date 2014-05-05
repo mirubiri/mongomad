@@ -6,7 +6,7 @@ module Ownership
       if ownership == :single
         include SingleMethods
         field :user_id
-        embeds_one :user_sheet, as: :user_sheet_container 
+        embeds_one :user_sheet, as: :user_sheet_container
       end
 
       if ownership == :dual
