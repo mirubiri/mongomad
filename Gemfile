@@ -18,7 +18,6 @@ group :development,:test do
   gem 'sendgrid'
   #gem 'geocoder'
 	gem 'rspec-rails'
-  gem 'rspec-cells'
 	gem 'fabrication'
 	gem 'mongoid-rspec'
   gem 'faker'
@@ -31,7 +30,6 @@ group :development,:test do
   gem 'money-rails'
   gem 'cloudinary'
   gem 'slim-rails'
-  gem 'cells'
 end
 
 # To use ActiveModel has_secure_password
