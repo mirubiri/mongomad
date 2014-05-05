@@ -7,6 +7,7 @@ describe ItemBuilder do
   let(:description) { 'a description' }
   let(:name) { 'a name' }
   let(:user) { Fabricate.build(:user) }
+  let(:user_id) { user.id }
   let(:user_sheet) { user.sheet }
 
   let(:filled_builder) do
@@ -15,12 +16,13 @@ describe ItemBuilder do
 			builder.images=image_ids_array
 			builder.name=name
 			builder.description=description
+			builder
   end
 
 	describe '#images=(array)' do
 		context 'no given array' do
 			it 'has [] as default value' do
-				expect(build.images).to eq []
+				expect(builder.images).to eq []
 			end
 		end
 
@@ -72,6 +74,31 @@ describe ItemBuilder do
 	end
 
 	describe '#create' do
+		%w[description name user main_image].each do |field|
+			it "returns false if #{field} is not set" do
+				filled_builder.send("#{field}=",nil)
+				expect(filled_builder.create).to eq false
+			end
+		end
+
+		it 'do not return false if images is unset' do
+			filled_builder.images=[]
+			expect(filled_builder.create).to be_true
+		end
+
+		describe 'returned offer' do
+			let(:item) { filled_builder.create }
+
+			it 'is an Offer' do
+				expect(item).to be_a_kind_of(Offer)
+			end
+
+			%w[ description name user_id main_image images].each do |field|
+				it "has the setted #{field}" do
+					expect(item.send(field)).to eq send(field)
+				end
+			end
+		end
 	end
 
 end
