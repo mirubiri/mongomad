@@ -8,12 +8,15 @@ html
   body
     .container_16
       .grid_16
-        = render :billboard
-
-      .grid_10
-        .l-logger.logger
+        = render :billboard        
+      
+      .grid_16
+        .grid_5
+         .ucard
+          = render :ucard
+        .grid_9
+          .expositor
             = yield
       
       .grid_16
         = render :footer
-
