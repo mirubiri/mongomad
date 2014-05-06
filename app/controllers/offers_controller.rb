@@ -1,4 +1,7 @@
 class OffersController < ApplicationController
+
+  layout 'exposition'
+
   # GET /offers
   # GET /offers.json
   def index

@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title Mongomad
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body
+    .container_16
+      .grid_16
+        = render :partial 'billboard', :layout 'layouts/billboard_layout'
+
+      .grid_10
+        .l-logger.logger
+            = yield
+      
+      .grid_16
+        = render :partial 'footer', :layout 'layouts/footer_layout'
+
