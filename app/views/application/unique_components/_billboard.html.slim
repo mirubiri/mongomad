@@ -1,0 +1,17 @@
+- content_for :logged_user
+  = render partial: 'shared_components/face_and_data', 
+           layout 'layouts/face_and_data_layout', 
+           locals: { class: 'user_logged' }  
+
+- content_for :navigation
+  = render partial: 'shared_components/navigation_bar',
+           layout 'layouts/navigation_bar_layout'
+
+- content_for :search
+  = render partial: 'search_bar',
+           layout 'layouts/search_bar_layout'
+           
+- content_for :options
+  = render partial: 'shared_components/icon_with_options',
+           layout 'layouts/icon_with_options_layout'
+

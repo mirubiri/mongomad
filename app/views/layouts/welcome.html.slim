@@ -8,12 +8,12 @@ html
   body
     .container_16
       .grid_16
-        = render :billboard
+        = render :partial 'billboard', :layout 'layouts/billboard_layout'
 
       .grid_10
         .l-logger.logger
             = yield
       
       .grid_16
-        = render :footer
+        = render :partial 'footer', :layout 'layouts/footer_layout'
 
