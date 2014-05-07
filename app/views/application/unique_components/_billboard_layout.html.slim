@@ -1,10 +1,10 @@
 header.billboard
   .logged_user
-    = yield :logged_user
+    = content_for :logged_user
   .navigation
-    = yield :navigation
+    = content_for :navigation_bar
   .search
-    = yield :search
+    = content_for :search_bar
   .options
-    = yield :options
+    = content_for :icon_with_options
 

@@ -1,16 +1,15 @@
-- content_for :logged_user do
-  /= render shared_partial('face_and_data'), layout: shared_layout('face_and_data')
-  | Logged User
+- content_for :logged_user
+  = render partial: shared_partial('face_and_data'),
+           layout: shared_layout('face_and_data')
 
-
-- content_for :navigation
+- content_for :navigation_bar
   = render partial: shared_partial('navigation_bar'),
-           layout:   shared_layout('navigation_bar')
+           layout:  shared_layout('navigation_bar')
 
-- content_for :search
+- content_for :search_bar
   = render partial: unique_partial('search_bar'),
-           layout:   unique_layout('search_bar')
+           layout:  unique_layout('search_bar')
 
-- content_for :options
+- content_for :icon_with_options
   = render partial: shared_partial('icon_with_options'),
-           layout:   shared_layout('icon_with_options')
+           layout:  shared_layout('icon_with_options')

@@ -8,16 +8,16 @@ html
   body
     .container_16
       .grid_16
-        = render partial: unique_partial(header),
-                 layout   unique_layout(header)
+        = render partial: unique_partial('header'),
+                 layout:  unique_layout('header')
       .grid_16
         .grid_5
           .user_card
-            = render partial: unique_partial(user_card),
-                     layout   unique_layout(user_card)
+            = render partial: unique_partial('user_card'),
+                     layout:  unique_layout('user_card')
         .grid_9
           .expositor
             = yield
       .grid_16
-        = render partial: unique_partial(footer),
-                 layout   unique_layout(footer)
+        = render partial: unique_partial('footer'),
+                 layout:  unique_layout('footer')

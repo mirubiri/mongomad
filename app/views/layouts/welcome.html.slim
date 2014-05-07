@@ -6,11 +6,13 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    .container_16
-      .grid_16
-        = render partial: unique_partial('billboard'), layout: unique_layout('billboard')
-      .grid_10
+    .container_12
+      .grid_12
+        = render partial: unique_partial('billboard'), 
+                 layout:  unique_layout('billboard')
+      .grid_8
         .l-logger.logger
           = yield
-      .grid_16
-        = render partial: unique_partial('footer'), layout: unique_layout('footer')
+      .grid_12
+        = render partial: unique_partial('footer'),
+                 layout:  unique_layout('footer')

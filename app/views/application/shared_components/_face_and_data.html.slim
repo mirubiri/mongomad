@@ -1,15 +1,15 @@
-- conten_for :face
+- content_for :face
   img
     //foto del tio
-- conten_for :data
+- content_for :data
   .data
-    div
-      - if class=='user_logged'
-        data.nombre
-      else
-        data.full_name
-    div
-      - if class=='user_logged'
-        data.surname 
-      else
-        data.location
+    / div
+    /   - if class == 'user_logged'
+    /     data.nombre
+    /   else
+    /     data.full_name
+    / div
+    /   - if class == 'user_logged'
+    /     data.surname 
+    /   else
+    /     data.location
