@@ -1,25 +1,25 @@
 - content_for :navigation_bar
   .menu_icon
     | menu1
-    /= link_to friends_menu_icon,      
-      /user_profile_path(current_user),
-      /remote => true,                 
-      /id => "link_profile"            
+    /= link_to cl_image_tag("static/icons/friends_white.png", :width => 26, :height => 26, :crop => :fit),
+    /  user_profile_path(current_user),
+    /  remote => true,
+    /  id => "link_profile"
   .menu_icon
     | menu2
-    /= link_to products_menu_icon,   
-      /user_items_path(current_user),
-      /remote => true,               
-     /id => "link_items"            
+    /= link_to cl_image_tag("static/icons/products.png", :width => 26, :height => 26, :crop => :fit),
+       /user_items_path(current_user),
+      /remote => true,
+     /id => "link_items"
   .menu_icon
     | menu3
-    /= link_to negotiations_menu_icon,
+    /= link_to  cl_image_tag("static/icons/negotiations.png", :width => 26, :height => 26, :crop => :fit),
       /user_alerts_path(current_user),
-      /remote => true,                
-      /id => "link_items"             
+      /remote => true,
+      /id => "link_items"
   .menu_icon
     | menu4
-    /= link_to deals_menu_icon,      
+    /= link_to cl_image_tag("static/icons/deals.png", :width => 26, :height => 26, :crop => :fit),
       /user_deals_path(current_user),
-     /remote => true,               
-     / id => "link_items"            
+     /remote => true,
+     / id => "link_items"
