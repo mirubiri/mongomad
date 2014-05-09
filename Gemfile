@@ -30,6 +30,7 @@ group :development,:test do
   gem 'money-rails'
   gem 'cloudinary'
   gem 'slim-rails'
+  gem 'devise'
 end
 
 
