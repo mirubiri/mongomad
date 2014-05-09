@@ -5,14 +5,14 @@ html
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body
-    .container_12
-      .grid_12
-        = render partial: unique_partial('billboard'), 
-                 layout:  unique_layout('billboard')
-      .grid_8
-        .l-logger.logger
-          = yield
-      .grid_12
-        = render partial: unique_partial('footer'),
-                 layout:  unique_layout('footer')
+  body    
+    .l_panel_top_fixed.m_component_expanded
+      = render partial: unique_partial('billboard'), 
+               layout:  unique_layout('billboard')
+          
+    .l_panel.l_component_centered.m_component
+      = yield
+
+    .l_panel_bottom_fixed.m_component_expanded
+      = render partial: unique_partial('footer'),
+               layout:  unique_layout('footer')
