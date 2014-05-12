@@ -1,8 +1,12 @@
-.m_component
+.mContainer
+  @include box-shadow(rgba(0,0,0,0.40) 0px 1px 2px)
+  @include border-radius(5px, 5px)
   border: 1px solid black
 
-.m_component_expanded
-  @extend .m_component
+.mContainer_expanded
+  @extend .mContainer
   width: 100%
 
-.billboard
+.mBillboard
+  div
+    float: left

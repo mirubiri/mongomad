@@ -6,13 +6,13 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body    
-    .l_panel_top_fixed.m_component_expanded
+    .lPanel_top.mContainer_expanded
       = render partial: unique_partial('billboard'), 
                layout:  unique_layout('billboard')
           
-    .l_panel.l_component_centered.m_component
+    .lPanel.lContainer_centered.mContainer
       = yield
 
-    .l_panel_bottom_fixed.m_component_expanded
+    .lPanel_bottom.mContainer_expanded
       = render partial: unique_partial('footer'),
                layout:  unique_layout('footer')

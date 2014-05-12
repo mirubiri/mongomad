@@ -1,23 +1,28 @@
-.l_panel
+//Paneles que componen la estructura básica de una vista
+.lPanel
+  
   padding: 10px 10px 0px 10px
   margin-bottom: 10px
   float: left
 
-.l_panel_top_fixed
-  @extend .l_panel
+.lPanel_top
+  @extend .lPanel
   top: 0px
 
-.l_panel_bottom_fixed
-  @extend .l_panel
+.lPanel_bottom
+  @extend .lPanel
   margin-bottom: 0px
 
-.l_component
+
+//Contenedores principales de información
+.lContainer
   margin-bottom: 10px
 
-.l_component_inline
-  @extend .l_component
+.lContainer_inline
+  @extend .lContainer
   margin-right: 10px
 
-.l_component_centered
-  @extend .l_component
+.lContainer_centered
+  @extend .lContainer
+
 
