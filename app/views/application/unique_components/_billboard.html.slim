@@ -1,6 +1,9 @@
 - content_for :logged_user
+  - @data = OpenStruct.new(name:"sergio gayer")
+  - @data.surname = "del horror"
   = render partial: shared_partial('face_and_data'),
-           layout:  shared_layout('face_and_data')
+           layout:  shared_layout('face_and_data'),
+           locals:  { data: @data }
 
 - content_for :navigation
   = render partial: shared_partial('navigation_bar'),

@@ -4,13 +4,13 @@
 - content_for :data
   .data
     div
-      | Name
+      = data.name
       /   - if class == 'user_logged'
       /     data.nombre
       /   else
       /     data.full_name
     div
-      | Surname
+      = data.surname
       /   - if class == 'user_logged'
       /     data.surname
       /   else
