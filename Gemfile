@@ -12,6 +12,7 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'pusher'
+  gem 'compass-rails'
 end
 
 group :development,:test do
@@ -31,7 +32,6 @@ group :development,:test do
   gem 'cloudinary'
   gem 'slim-rails'
   gem 'devise'
-  gem 'compass-rails'
 end
 
 
