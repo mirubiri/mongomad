@@ -1,15 +1,17 @@
 - content_for :face
-  img
-    //foto del tio
+  = rounded_image_tag("sample", 50, 50)
+
 - content_for :data
   .data
-    / div
-    /   - if class == 'user_logged'
-    /     data.nombre
-    /   else
-    /     data.full_name
-    / div
-    /   - if class == 'user_logged'
-    /     data.surname 
-    /   else
-    /     data.location
+    div
+      | Name
+      /   - if class == 'user_logged'
+      /     data.nombre
+      /   else
+      /     data.full_name
+    div
+      | Surname
+      /   - if class == 'user_logged'
+      /     data.surname
+      /   else
+      /     data.location
