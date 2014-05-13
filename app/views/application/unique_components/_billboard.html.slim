@@ -9,7 +9,8 @@
 
 - content_for :navigation
   - @data = OpenStruct.new
-  - @data.navigation_icons_hash = [ { public_id:'static/icons/friends_white.png', width:26, height:26 },
+  - @data.navigation_icons_hash = [ \
+    { public_id:'static/icons/friends_white.png', width:26, height:26 },
     { public_id:'static/icons/products.png', width:26, height:26 },
     { public_id:'static/icons/negotiations.png', width:26, height:26 },
     { public_id:'static/icons/deals.png', width:26, height:26 } ]
@@ -26,7 +27,7 @@
 - content_for :logging_options
   - @data = OpenStruct.new
   - @data.icon_hash = { public_id:'static/icons/logout.png', width:19, height:21 }
-  - @data.options_array = [ 'Logout', 'Login', 'Register' ]
+  - @data.options_hash = { text:'Logout', path:destroy_user_session_path }
 
   = render partial: shared_partial('icon_with_options'),
            layout:  shared_layout('icon_with_options'),
