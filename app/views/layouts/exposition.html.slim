@@ -1,23 +1,23 @@
 doctype html
 html
   head
-    title Mongomad
+    title Mongomad Welcome
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body
-    .container_16
-      .grid_16
-        = render partial: unique_partial('header'),
-                 layout:  unique_layout('header')
-      .grid_16
-        .grid_5
-          .user_card
-            = render partial: unique_partial('user_card'),
-                     layout:  unique_layout('user_card')
-        .grid_9
-          .expositor
-            = yield
-      .grid_16
-        = render partial: unique_partial('footer'),
-                 layout:  unique_layout('footer')
+  body    
+    header.lPanel_top.mBillboard#billboard
+      = render partial: unique_partial('billboard'), 
+               layout:  unique_layout('billboard')
+
+    
+    .lPanel.mExpanded
+      .lPanel.mProfile#profile
+        = render partial: unique_partial('profile'),
+                       layout:  unique_layout('profile')
+      .lPanel.mExpositor#expositor
+        = yield
+
+    .lPanel_bottom.mFooter#footer
+      = render partial: unique_partial('footer'),
+               layout:  unique_layout('footer')

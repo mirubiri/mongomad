@@ -3,6 +3,6 @@
 
 - content_for :options
   div
-    / opciones log_in log_out
+    = link_to "Sign Out", destroy_user_session_path
   div
     / opciones log_in log_out

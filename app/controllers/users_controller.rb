@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :authenticate_user!
+  layout 'exposition'
   
   # GET /users
   # GET /users.json

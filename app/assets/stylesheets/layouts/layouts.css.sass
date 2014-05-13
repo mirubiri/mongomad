@@ -1,9 +1,11 @@
 //Paneles que componen la estructura básica de una vista
 .lPanel
   @include box-sizing(border-box)
-  padding: 10px 10px 0px 10px
+  overflow: auto
+  padding: 10px 20px 0px 20px
   margin-bottom: 10px
   float: left
+  position: relative
 
 .lPanel_top
   @extend .lPanel
@@ -12,6 +14,15 @@
 .lPanel_bottom
   @extend .lPanel
   margin-bottom: 0px
+
+.lPanel_centered
+  position: relative
+  margin: auto
+  overflow: auto
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
 
 
 //Contenedores principales de información
