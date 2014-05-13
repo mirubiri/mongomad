@@ -1,9 +1,9 @@
-- content_for :icon
-  = static_image_tag("static/icons/logout.png", 19, 21)
+- single_content_for :icon
+  | icon
+  = static_image_tag(data.icon_hash[:public_id], data.icon_hash[:width], data.icon_hash[:height])
 
-- content_for :options
-  div
-    = link_to "Sign Out", destroy_user_session_path
-    | Register
-  div
-    | Log in
+- single_content_for :options
+  | options
+  - data.options_array.each do |option|
+    div
+      = link_to option

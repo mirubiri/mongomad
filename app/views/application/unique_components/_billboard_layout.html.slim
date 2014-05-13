@@ -1,11 +1,9 @@
--if current_user
-  div
-    = content_for :logged_user
+.logged_user
+  = content_for :logged_user
 
 = content_for :navigation
 
-div
-  = content_for :search
+= content_for :search
 
-div
+.logging_options
   = content_for :logging_options

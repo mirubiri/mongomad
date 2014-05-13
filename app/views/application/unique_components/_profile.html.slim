@@ -1,21 +1,21 @@
-- content_for :u_card
-  aside  
+- content_for :user_card
+  aside
   .img
-    
+
   .description
     .profile_image
       .image_wrapper
         / = link_to header_user_image(@user),
         /   user_profile_url(@user),
         /   remote => "true"
-    .relevan_data
+    .relevant_data
       .percentage
         .percentage_icon
-        
+
         .percentage_num 75%
       .numfriends
         .numfriends_icon
-        
+
         .numfriends_num 350
     .user_name
       .name
@@ -23,7 +23,6 @@
     .new_offer_button
       / = link_to "MAKE ME AN OFFER!",                                                     \
       / new_user_offer_path(id(@user)), :remote => true, class: "new_offer_button_style" \
-
 
 - content_for :requests_box
   p Lorem ipsum...

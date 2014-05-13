@@ -1,22 +1,33 @@
 - content_for :logged_user
   - @data = OpenStruct.new
-  - @data.public_id = 'sample'
-  - @data.shape = 'rounded'
-  - @data.width = 50
-  - @data.height = 50
-  - @data.data_array = ['name', 'surname222', 'blablabla']
+  - @data.face_hash = { public_id:'sample', shape:'rounded', width:50, height:50 }
+  - @data.data_array = [ 'user_name', 'user_surname' ]
+
   = render partial: shared_partial('face_and_data'),
            layout:  shared_layout('face_and_data'),
            locals:  { data: @data }
 
 - content_for :navigation
+  - @data = OpenStruct.new
+  - @data.navigation_icons_hash = [ { public_id:'static/icons/friends_white.png', width:26, height:26 },
+    { public_id:'static/icons/products.png', width:26, height:26 },
+    { public_id:'static/icons/negotiations.png', width:26, height:26 },
+    { public_id:'static/icons/deals.png', width:26, height:26 } ]
+
   = render partial: shared_partial('navigation_bar'),
-           layout:  shared_layout('navigation_bar')
+           layout:  shared_layout('navigation_bar'),
+           locals:  { data: @data }
+
 
 - content_for :search
   = render partial: unique_partial('search_bar'),
            layout:  unique_layout('search_bar')
 
 - content_for :logging_options
+  - @data = OpenStruct.new
+  - @data.icon_hash = { public_id:'static/icons/logout.png', width:19, height:21 }
+  - @data.options_array = [ 'Logout', 'Login', 'Register' ]
+
   = render partial: shared_partial('icon_with_options'),
-           layout:  shared_layout('icon_with_options')
+           layout:  shared_layout('icon_with_options'),
+           locals:  { data: @data }
