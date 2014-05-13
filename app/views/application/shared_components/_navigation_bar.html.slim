@@ -1,29 +1,6 @@
 - content_for :navigation_bar
-  li
-    | menu1
-    = static_image_tag("static/icons/friends_white.png", 26, 26)
-    / = link_to cl_image_tag("static/icons/friends_white.png", :width => 26, :height => 26, :crop => :fit),
-    /   user_profile_path(current_user),
-    /   remote => true,
-    /   id => "profile_link"
-  li
-    | menu2
-    = static_image_tag("static/icons/products.png", 26, 26)
-    / = link_to cl_image_tag("static/icons/products.png", :width => 26, :height => 26, :crop => :fit),
-    /   user_items_path(current_user),
-    /   remote => true,
-    /   id => "items_link"
-  li
-    | menu3
-    = static_image_tag("static/icons/negotiations.png", 26, 26)
-    / = link_to  cl_image_tag("static/icons/negotiations.png", :width => 26, :height => 26, :crop => :fit),
-    /   user_alerts_path(current_user),
-    /   remote => true,
-    /   id => "negotiations_link"
-  li
-    | menu4
-    = static_image_tag("static/icons/deals.png", 26, 26)
-    / = link_to cl_image_tag("static/icons/deals.png", :width => 26, :height => 26, :crop => :fit),
-    /   user_deals_path(current_user),
-    /   remote => true,
-    /   id => "deals_link"
+  - data.navigation_icons_hash.each do |icon|
+    li
+      | menu
+      = static_image_tag(icon[:public_id], icon[:width], icon[:height])
+
