@@ -1,11 +1,10 @@
-- content_for :face
-  - if data.shape == 'rounded'
-    - rounded_image_tag(data.public_id, data.width, data.heigth)
+- single_content_for :face
+  - if data.face_hash[:shape] == 'rounded'
+    = rounded_image_tag(data.face_hash[:public_id], data.face_hash[:width], data.face_hash[:height])
   - else
-    - squared_image_tag(data.public_id, data.width, data.heigth)
+    = squared_image_tag(data.face_hash[:public_id], data.face_hash[:width], data.face_hash[:height])
 
-- content_for :data
-  .data
-  - data.data_array.each do |printable_data|
+- single_content_for :data
+  - data.data_array.each do |data|
     div
-      = printable_data
+      = data
