@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def single_content_for(name, content = nil, &block)
+    @view_flow.set(name, ActiveSupport::SafeBuffer.new)
+    content_for(name, content, &block)
+  end
+
   def shared_partial(partial_name)
     "application/shared_components/#{partial_name}"
   end
