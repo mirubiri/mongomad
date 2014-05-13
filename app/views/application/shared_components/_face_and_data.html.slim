@@ -1,17 +1,11 @@
 - content_for :face
-  = rounded_image_tag("sample", 50, 50)
+  - if data.shape == 'rounded'
+    - rounded_image_tag(data.public_id, data.width, data.heigth)
+  - else
+    - squared_image_tag(data.public_id, data.width, data.heigth)
 
 - content_for :data
   .data
+  - data.data_array.each do |printable_data|
     div
-      = data.name
-      /   - if class == 'user_logged'
-      /     data.nombre
-      /   else
-      /     data.full_name
-    div
-      = data.surname
-      /   - if class == 'user_logged'
-      /     data.surname
-      /   else
-      /     data.location
+      = printable_data
