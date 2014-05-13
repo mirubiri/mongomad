@@ -1,8 +1,9 @@
 - content_for :icon
-  = cl_image_tag("static/icons/logout.png", :width => 19, :height => 21, :crop => :fit)
+  = static_image_tag("static/icons/logout.png", 19, 21)
 
 - content_for :options
   div
     = link_to "Sign Out", destroy_user_session_path
+    | Register
   div
-    / opciones log_in log_out
+    | Log in

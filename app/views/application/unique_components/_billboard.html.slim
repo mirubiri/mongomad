@@ -1,6 +1,13 @@
 - content_for :logged_user
+  - @data = OpenStruct.new
+  - @data.public_id = 'sample'
+  - @data.shape = 'rounded'
+  - @data.width = 50
+  - @data.height = 50
+  - @data.data_array = ['name', 'surname222', 'blablabla']
   = render partial: shared_partial('face_and_data'),
-           layout:  shared_layout('face_and_data')
+           layout:  shared_layout('face_and_data'),
+           locals:  { data: @data }
 
 - content_for :navigation
   = render partial: shared_partial('navigation_bar'),
