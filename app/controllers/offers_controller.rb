@@ -7,8 +7,11 @@ class OffersController < ApplicationController
   def index
     @offers = Offer.all
 
+    # datos de la offer
+    @data.offers = find_offers
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render 'index', locals: { data: @data } }
       format.json { render json: @offers }
     end
   end
