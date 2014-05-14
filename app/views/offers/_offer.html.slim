@@ -1,1 +1,11 @@
-p Lorem ipsum...
+/otros content fors
+- content_for :proposal
+  /datos de la propuesta , o no pq ya estan
+  - @data.proposal.composer_products = #@offer.proposal.products(composer)
+  - @data.proposal.receiver_products = #@offer.proposal.products(receiver)
+
+    = render partial: shared_partial('proposal'),
+             layout:  shared_layout('proposal'),
+             locals:  { data: @data }
+/otros content fors
+- content_for :buttons

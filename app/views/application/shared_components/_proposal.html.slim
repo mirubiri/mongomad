@@ -1,0 +1,19 @@
+- content_for :composer_products
+  - data.proposal.composer_products.each do |product|
+    - @data = OpenStruct.new
+    - @data.image_hash = { public_id:'sample', shape:'squared', width:80, height:80 }
+    - @data.text = 'product_name'
+
+    = render partial: shared_partial('product'),
+             layout:  shared_layout('product'),
+             locals:  { data: @data }
+
+- content_for :receiver_products
+  - data.proposal.receiver_products.each do |product|
+    - @data = OpenStruct.new
+    - @data.image_hash = { public_id:'sample', shape:'rounded', width:50, height:50 }
+    - @data.text = 'product_name'
+
+    = render partial: shared_partial('product'),
+             layout:  shared_layout('product'),
+             locals:  { data: @data }
