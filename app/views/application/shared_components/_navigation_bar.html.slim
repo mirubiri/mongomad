@@ -1,6 +1,5 @@
 - content_for :navigation_bar
   - data.navigation_icons_hash.each do |icon|
     li
-      | menu
       = static_image_tag(icon[:public_id], icon[:width], icon[:height])
 

@@ -1,9 +1,12 @@
-.logged_user
-  = content_for :logged_user
+.logSide
+  .mLoggedUser
+    = content_for :logged_user
 
-= content_for :navigation
+  = content_for :navigation
 
-= content_for :search
 
-.logging_options
-  = content_for :logging_options
+.searchSide
+  .loggin_options
+    = content_for :logging_options
+
+  = content_for :search
