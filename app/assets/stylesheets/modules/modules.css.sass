@@ -3,20 +3,22 @@
   @include box-shadow(rgba(0,0,0,0.40) 0px 1px 2px)
   @include border-radius(5px, 5px)
   border: 1px solid rgb(220,220,220)
-  background: rgba(236,240,241,0.5)
+  background-color: rgba(236,240,241,0.5)
+
+.mContainerSon
+  div
+    margin-bottom: 5px
+    margin-left: 5px
 
 .mExpanded
   width: 100%
 
+.mEndContainer
+  @extend .mContainer
+  background-color: white
+  color: black
 
 //Specific modules
-.mBillboard
-  @extend .mExpanded
-  margin-bottom: 15px
-  div
-    float: right
-    margin-right: 20px
-
 .mLogger
   width: 50%
 
@@ -41,3 +43,5 @@
   background-color: white
   margin-bottom: 10px
   height: 38px
+
+

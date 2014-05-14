@@ -1,9 +1,7 @@
-- single_content_for :icon
-  | icon
+- single_content_for :icon  
   = static_image_tag(data.icon_hash[:public_id], data.icon_hash[:width], data.icon_hash[:height])
 
-- single_content_for :options
-  | options
+- single_content_for :options  
   /- data.options_array.each do |option|
   /  div
   /    = link_to option, destroy_user_session_path
