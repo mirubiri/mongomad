@@ -1,34 +1,15 @@
-- content_for :logged_user
-  - @data = OpenStruct.new
-  - @data.face_hash = { public_id:'sample', shape:'rounded', width:50, height:50 }
-  - @data.data_array = [ 'user_name', 'user_surname' ]
+- content_for :logged_user_avatar
+  = render partial: unique_partial('logged_user_avatar'),
+           layout:  unique_layout('logged_user_avatar')
 
-  = render partial: unique_partial('user_logged_avatar'),
-           layout:  unique_layout('user_logged_avatar'),
-           locals:  { data: @data }
-
-- content_for :navigation
-  - @data = OpenStruct.new
-  - @data.navigation_icons_hash = [ \
-    { public_id:'static/icons/friends_white.png', width:26, height:26 },
-    { public_id:'static/icons/products.png', width:26, height:26 },
-    { public_id:'static/icons/negotiations.png', width:26, height:26 },
-    { public_id:'static/icons/deals.png', width:26, height:26 } ]
-
+- content_for :billboard_navigation_bar
   = render partial: unique_partial('billboard_navigation'),
-           layout:  unique_layout('billboard_navigation'),
-           locals:  { data: @data }
+           layout:  unique_layout('billboard_navigation')
 
-
-- content_for :search
+- content_for :search_bar
   = render partial: unique_partial('search_bar'),
            layout:  unique_layout('search_bar')
 
-- content_for :logging_options
-  - @data = OpenStruct.new
-  - @data.icon_hash = { public_id:'static/icons/logout.png', width:19, height:21 }
-  - @data.options_hash = { text:'Logout', path:destroy_user_session_path }
-
+- content_for :logout
   = render partial: unique_partial('logout'),
-           layout:  unique_layout('logout'),
-           locals:  { data: @data }
+           layout:  unique_layout('logout')

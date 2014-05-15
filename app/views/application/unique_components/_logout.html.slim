@@ -1,10 +1,5 @@
-- single_content_for :icon  
-  = static_image_tag(data.icon_hash[:public_id], data.icon_hash[:width], data.icon_hash[:height])
+- content_for :options
+  | options
 
-- single_content_for :options  
-  /- data.options_array.each do |option|
-  /  div
-  /    = link_to option, destroy_user_session_path
-  /- data.options_array.each do |option|
-  div
-    = link_to data.options_hash[:text], data.options_hash[:path]
+- content_for :icon
+  = static_image_tag('static/icons/logout.png', 19, 21)

@@ -1,5 +1,9 @@
-- single_content_for :navigation_bar
-  - data.navigation_icons_hash.each do |icon|
-    li
-      = static_image_tag(icon[:public_id], icon[:width], icon[:height])
-
+- content_for :navigation_bar
+  li
+    = static_image_tag('static/icons/friends_white.png', 26, 26)
+  li
+    = static_image_tag('static/icons/products.png', 26, 26)
+  li
+    = static_image_tag('static/icons/negotiations.png', 26, 26)
+  li
+    = static_image_tag('static/icons/deals.png', 26, 26)
