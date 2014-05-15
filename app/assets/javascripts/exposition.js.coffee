@@ -5,7 +5,13 @@ $(window).load (event) ->
   $mainHeight = $windowHeight - $billboardHeight - $footerHeight - 60
   $('body').height($windowHeight)
   $('#profile').height($mainHeight)
-  $("#profile,#expositor").equalHeightColumns()
+  $("#profile,#expositor").equalHeightColumns() 
+
+  $(".overridesPadding").each ->    
+    $width = $(this).parent().outerWidth() - 2
+    $(this).width($width)
+    return
+
   return
 
 $(window).resize (event) -> 
