@@ -1,5 +1,5 @@
 - content_for :composer_goods
-  - proposal.composer_goods.each do |good|
+  - proposal.goods.each do |good|
     - if good._type == 'Cash'
         = render partial: shared_partial('cash'),
                   layout:  shared_layout('cash')
@@ -8,7 +8,7 @@
                 layout: shared_layout('product')
 
 - content_for :receiver_goods
-  - proposal.receiver_goods.each do |good|
+  - proposal.goods.each do |good|
     - if good._type == 'Cash'
         = render partial: shared_partial('cash'),
                   layout:  shared_layout('cash')
