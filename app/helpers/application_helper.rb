@@ -24,20 +24,20 @@ module ApplicationHelper
     cl_image_tag(public_id,
       :width => 200, :height => 200,
       :html_width => width, :html_height => height,
-      :crop => :fit, :radius => :max)
+      :format => :png, :crop => :fit, :radius => :max)
   end
 
   def squared_image_tag(public_id, width, height)
     cl_image_tag(public_id,
       :width => 200, :height => 200,
       :html_width => width, :html_height => height,
-      :crop => :fit, :radius => 20)
+      :format => :png, :crop => :fit, :radius => 20)
   end
 
   def static_image_tag(public_id, width, height)
-    cl_image_tag(public_id,
+    cl_image_tag("static/icons/#{public_id}",
       :width => width, :height => height,
       :html_width => width, :html_height => height,
-      :crop => :fit)
+      :format => :png, :crop => :fit)
   end
 end
