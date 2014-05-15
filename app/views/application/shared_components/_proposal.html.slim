@@ -1,19 +1,17 @@
-- content_for :composer_products
-  - data.proposal.composer_products.each do |product|
-    - @data = OpenStruct.new
-    - @data.image_hash = { public_id:'sample', shape:'squared', width:80, height:80 }
-    - @data.text = 'product_name'
-
+- content_for :composer_goods
+  - proposal.composer_goods.each do |good|
+  - if good._type == 'Cash'
+      = render partial: shared_partial('cash'),
+                layout:  shared_layout('cash')
+  - else
     = render partial: shared_partial('product'),
-             layout:  shared_layout('product'),
-             locals:  { data: @data }
+              layout: shared_layout('product')
 
-- content_for :receiver_products
-  - data.proposal.receiver_products.each do |product|
-    - @data = OpenStruct.new
-    - @data.image_hash = { public_id:'sample', shape:'rounded', width:50, height:50 }
-    - @data.text = 'product_name'
-
+- content_for :receiver_goods
+  - proposal.receiver_goods.each do |good|
+  - if good._type == 'Cash'
+      = render partial: shared_partial('cash'),
+                layout:  shared_layout('cash')
+  - else
     = render partial: shared_partial('product'),
-             layout:  shared_layout('product'),
-             locals:  { data: @data }
+              layout: shared_layout('product')

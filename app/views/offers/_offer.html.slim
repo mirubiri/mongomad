@@ -1,10 +1,18 @@
-- single_content_for :title
+- content_for :title
   | title
-- single_content_for :proposal
-  | proposal
-- single_content_for :composer_face
+  / uso offer y le saco el titulo
+
+- content_for :proposal
+  / render y le paso proposal
+  = render partial: shared_partial('proposal'),
+           layout:  shared_layout('proposal'),
+           locals:  { proposal: offer.proposal }
+
+- content_for :composer_face
   | composer_face
-- single_content_for :message
+
+- content_for :message
   | message
-- single_content_for :buttons
+
+- content_for :buttons
   | buttons
