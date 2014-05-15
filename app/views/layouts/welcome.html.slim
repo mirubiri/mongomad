@@ -1,19 +1,17 @@
 doctype html
 html
   head
-    title Mongomad Welcome
+    title Mongomad
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body    
+  body
     header.lPanel_top.mBillboard
-      = render partial: unique_partial('billboard'), 
+      = render partial: unique_partial('billboard'),
                layout:  unique_layout('billboard')
-          
     .lPanel.mExpanded
       .lPanel_centered.mLogin
         = yield
-
     .lPanel_bottom.mFooter
       = render partial: unique_partial('footer'),
                layout:  unique_layout('footer')

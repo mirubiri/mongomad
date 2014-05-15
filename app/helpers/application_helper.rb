@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def shared_layout(layout_name)
-    "application/shared_components/#{layout_name}_layout"
+    "application/shared_components/layouts/#{layout_name}"
   end
 
   def unique_partial(partial_name)
@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def unique_layout(layout_name)
-    "application/unique_components/#{layout_name}_layout"
+    "application/unique_components/layouts/#{layout_name}"
   end
 
   def rounded_image_tag(public_id, width, height)

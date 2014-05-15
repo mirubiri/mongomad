@@ -3,8 +3,8 @@
   - @data.face_hash = { public_id:'sample', shape:'rounded', width:50, height:50 }
   - @data.data_array = [ 'user_name', 'user_surname' ]
 
-  = render partial: shared_partial('face_and_data'),
-           layout:  shared_layout('face_and_data'),
+  = render partial: unique_partial('user_logged_avatar'),
+           layout:  unique_layout('user_logged_avatar'),
            locals:  { data: @data }
 
 - content_for :navigation
@@ -15,8 +15,8 @@
     { public_id:'static/icons/negotiations.png', width:26, height:26 },
     { public_id:'static/icons/deals.png', width:26, height:26 } ]
 
-  = render partial: shared_partial('navigation_bar'),
-           layout:  shared_layout('navigation_bar'),
+  = render partial: unique_partial('billboard_navigation'),
+           layout:  unique_layout('billboard_navigation'),
            locals:  { data: @data }
 
 
@@ -29,6 +29,6 @@
   - @data.icon_hash = { public_id:'static/icons/logout.png', width:19, height:21 }
   - @data.options_hash = { text:'Logout', path:destroy_user_session_path }
 
-  = render partial: shared_partial('icon_with_options'),
-           layout:  shared_layout('icon_with_options'),
+  = render partial: unique_partial('logout'),
+           layout:  unique_layout('logout'),
            locals:  { data: @data }
