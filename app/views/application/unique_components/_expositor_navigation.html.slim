@@ -1,33 +1,25 @@
 - single_content_for :bar
   - if (controller.controller_name == "users") or (controller.controller_name == "offers")
       li#offers-tab.active_nav
-        /= link_to "Offers", user_offers_path(@user), remote: true
-        |Offers
+        = link_to "Offers", user_offers_path(current_user)
   - else
       li#offers-tab
-        /= link_to "Offers", user_offers_path(@user), remote: true
-        |Offers
+        = link_to "Offers", user_offers_path(current_user)
   - if controller.controller_name == "negotiations"
       li#negotiations-tab.active_nav
-        /= link_to "Negotiations", user_negotiations_path(@user), remote: true
-        |Negotiations
+        = link_to "Negotiations", user_negotiations_path(current_user)
   - else
       li#negotiations-tab
-        /= link_to "Negotiations", user_negotiations_path(@user), remote: true
-        |Negotiations
+        = link_to "Negotiations", user_negotiations_path(current_user)
   - if controller.controller_name == "deals"
       li#deals-tab.active_nav
-        /= link_to "Deals", user_deals_path(@user), remote: true
-        |Deals
+        = link_to "Deals", user_deals_path(current_user)
   - else
       li#deals-tab
-        /= link_to "Deals", user_deals_path(@user), remote: true
-        |Deals
+        = link_to "Deals", user_deals_path(current_user)
   - if controller.controller_name == "items"
       li#items-tab.active_nav
-        /= link_to "Products", user_items_path(@user), remote: true
-        |Products
+        = link_to "Products", user_items_path(current_user)
   - else
       li#items-tab
-        /= link_to "Products", user_items_path(@user), remote: true
-        |Products
+        = link_to "Products", user_items_path(current_user)
