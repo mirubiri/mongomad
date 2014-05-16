@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    @requests = Request.all
 
     respond_to do |format|
       format.html # index.html.erb

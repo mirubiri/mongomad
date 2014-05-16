@@ -25,5 +25,5 @@
       / new_user_offer_path(id(@user)), :remote => true, class: "new_offer_button_style" \
 
 - content_for :requests_box
-  p
-    | request
+  - @requests.each do |request|
+    = render partial: 'requests/request', layout: 'requests/layouts/request_layout', locals: { request: request }
