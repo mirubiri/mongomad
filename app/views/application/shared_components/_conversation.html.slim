@@ -1,0 +1,11 @@
+- single_content_for :messages_list
+  - messages.each do |message|
+    = render partial: shared_partial('message'),
+             layout:  shared_layout('message'),
+             locals:  { message: message }
+
+- single_content_for :writting_box
+  | writting_box
+
+- single_content_for :send_button
+  | send_button

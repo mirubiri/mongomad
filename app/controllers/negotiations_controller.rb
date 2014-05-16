@@ -1,4 +1,7 @@
 class NegotiationsController < ApplicationController
+
+  layout 'exposition'
+
   # GET /negotiations
   # GET /negotiations.json
   def index

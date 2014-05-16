@@ -1,0 +1,14 @@
+- single_content_for :composer_avatar
+  = render partial: shared_partial('composer_avatar'),
+           layout:  shared_layout('composer_avatar'),
+           locals:  { composer: deal.composer }
+
+- single_content_for :proposal
+  = render partial: shared_partial('proposal'),
+           layout:  shared_layout('proposal'),
+           locals:  { proposal: deal.proposal }
+
+- single_content_for :conversation
+  = render partial: shared_partial('conversation'),
+           layout:  shared_layout('conversation'),
+           locals:  { messages: deal.messages }

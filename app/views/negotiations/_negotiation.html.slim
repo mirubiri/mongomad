@@ -1,0 +1,20 @@
+- single_content_for :composer_avatar
+  = render partial: shared_partial('composer_avatar'),
+           layout:  shared_layout('composer_avatar'),
+           locals:  { composer: negotiation.composer }
+
+- single_content_for :proposal
+  = render partial: shared_partial('proposal'),
+           layout:  shared_layout('proposal'),
+           locals:  { proposal: negotiation.proposal }
+
+- single_content_for :conversation
+  = render partial: shared_partial('conversation'),
+           layout:  shared_layout('conversation'),
+           locals:  { messages: negotiation.messages }
+
+- single_content_for :leave_button
+  | leave_button
+
+- single_content_for :proposal_buttons
+  | proposal_buttons

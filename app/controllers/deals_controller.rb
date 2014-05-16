@@ -1,4 +1,7 @@
 class DealsController < ApplicationController
+
+  layout 'exposition'
+
   # GET /deals
   # GET /deals.json
   def index
