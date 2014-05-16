@@ -48,9 +48,21 @@ Mongomad::Application.routes.draw do
   #     resources :products
   #   end
 
+    #Recursos del user
+  resources :users do
+    get 'user_caption'
+    resource :profile
+    resources :requests
+    resources :items
+    resources :offers
+    resources :negotiations 
+    resources :deals 
+    resources :alerts
+  end
+
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'offers#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 
