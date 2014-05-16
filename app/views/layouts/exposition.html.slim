@@ -14,6 +14,8 @@ html
         = render partial: unique_partial('profile'),
                   layout: unique_layout('profile')
       .lPanel.mExpositor#expositor
+        = render partial: unique_partial('expositor_navigation'),
+                  layout: unique_layout('expositor_navigation')
         = yield
     .lPanel_bottom.mFooter#footer
       = render partial: unique_partial('footer'),
