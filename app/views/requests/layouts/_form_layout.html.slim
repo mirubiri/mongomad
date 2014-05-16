@@ -1,8 +1,12 @@
-.close_button
-  = content_for :close_button
-.logged_user_avatar
-  = content_for :logged_user_avatar
-.text_box
-  = content_for :text:box
-.send_button
-  = content_for :send_button
+= form_for [@user, @request], :remote => true do |form|
+  .close_button
+    = content_for :close_button
+
+  .logged_user_avatar
+    = content_for :logged_user_avatar
+
+  .text_box
+    = content_for :text:box
+
+  .send_button
+    = content_for :send_button

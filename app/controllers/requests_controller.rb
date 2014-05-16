@@ -1,4 +1,7 @@
 class RequestsController < ApplicationController
+
+  layout 'exposition'
+  
   # GET /requests
   # GET /requests.json
   def index

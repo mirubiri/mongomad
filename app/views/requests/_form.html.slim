@@ -1,9 +1,12 @@
 - content_for :close_button
   | close_button
+
 - content_for :logged_user_avatar
   = render partial: unique_partial('logged_user_avatar'),
            layout:  unique_layout('logged_user_avatar')
+
 - content_for :text_box
   | text_box
+  
 - content_for :send_button
   | send_button
