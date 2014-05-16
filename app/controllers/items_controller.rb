@@ -1,4 +1,7 @@
 class ItemsController < ApplicationController
+
+  layout 'exposition'
+
   # GET /items
   # GET /items.json
   def index
