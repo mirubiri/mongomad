@@ -1,2 +1,33 @@
-- content_for :navigation_bar
-  | Offers, Negotiations, Deals, Products
+- content_for :expositor_navigation_bar
+  - if (controller.controller_name == "users") or (controller.controller_name == "offers")
+      li#offers-tab.active_nav
+        /= link_to "Offers", user_offers_path(@user), remote: true
+        |Offers
+  - else
+      li#offers-tab
+        /= link_to "Offers", user_offers_path(@user), remote: true
+        |Offers
+  - if controller.controller_name == "negotiations"
+      li#negotiations-tab.active_nav
+        /= link_to "Negotiations", user_negotiations_path(@user), remote: true
+        |Negotiations
+  - else
+      li#negotiations-tab
+        /= link_to "Negotiations", user_negotiations_path(@user), remote: true
+        |Negotiations
+  - if controller.controller_name == "deals"
+      li#deals-tab.active_nav
+        /= link_to "Deals", user_deals_path(@user), remote: true
+        |Deals
+  - else
+      li#deals-tab
+        /= link_to "Deals", user_deals_path(@user), remote: true
+        |Deals
+  - if controller.controller_name == "items"
+      li#items-tab.active_nav
+        /= link_to "Products", user_items_path(@user), remote: true
+        |Products    
+  - else
+      li#items-tab
+        /= link_to "Products", user_items_path(@user), remote: true
+        |Products
