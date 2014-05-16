@@ -1,4 +1,4 @@
-- content_for :expositor_navigation_bar
+- single_content_for :bar
   - if (controller.controller_name == "users") or (controller.controller_name == "offers")
       li#offers-tab.active_nav
         /= link_to "Offers", user_offers_path(@user), remote: true
@@ -26,7 +26,7 @@
   - if controller.controller_name == "items"
       li#items-tab.active_nav
         /= link_to "Products", user_items_path(@user), remote: true
-        |Products    
+        |Products
   - else
       li#items-tab
         /= link_to "Products", user_items_path(@user), remote: true

@@ -1,9 +1,7 @@
 - single_content_for :title
   | title
-  / uso offer y le saco el titulo
 
 - single_content_for :proposal
-  / render y le paso proposal
   = render partial: shared_partial('proposal'),
            layout:  shared_layout('proposal'),
            locals:  { proposal: offer.proposal }

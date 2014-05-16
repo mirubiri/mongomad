@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
 
   layout 'exposition'
-  
+
   # GET /requests
   # GET /requests.json
   def index
@@ -28,6 +28,7 @@ class RequestsController < ApplicationController
   # GET /requests/new.json
   def new
     @request = Request.new
+    @requests = Request.all
 
     respond_to do |format|
       format.html # new.html.erb
