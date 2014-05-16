@@ -2,15 +2,16 @@
   | Listado de usuarios
 
   - User.all.each do |user|
-      p
-        = link_to user.email, user_user_caption_url(user)
-  / - content_for :login_fields
-  /   = form_tag session_path(:user) do
-  /     = text_field_tag 'user[email]'
-  /     = password_field_tag 'user[password]'
-  /     = check_box_tag 'user[remember_me]'
-  /     = label_tag 'user[remember_me]', 'Remember me'
-  /     button Sign in
-  /     = link_to "Forgot your password?", new_password_path(:user)
-  /     button Sign up
-  /     = link_to "Register", new_user_registration_path
+      div
+        p
+          = link_to user.sheet.nick, user_user_caption_url(user)
+          / - content_for :login_fields
+          /   = form_tag session_path(:user) do
+          /     = text_field_tag 'user[email]'
+          /     = password_field_tag 'user[password]'
+          /     = check_box_tag 'user[remember_me]'
+          /     = label_tag 'user[remember_me]', 'Remember me'
+          /     button Sign in
+          /     = link_to "Forgot your password?", new_password_path(:user)
+          /     button Sign up
+          /     = link_to "Register", new_user_registration_path
