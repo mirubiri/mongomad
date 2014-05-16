@@ -1,9 +1,9 @@
-= form_for @request do |f|
-  - if @request.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
-      ul
-        - @request.errors.full_messages.each do |message|
-          li = message
-
-  .actions = f.submit 'Save'
+- content_for :close_button
+  | close_button
+- content_for :logged_user_avatar
+  = render partial: unique_partial('logged_user_avatar'),
+           layout:  unique_layout('logged_user_avatar')
+- content_for :text_box
+  | text_box
+- content_for :send_button
+  | send_button
