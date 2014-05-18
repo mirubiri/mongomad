@@ -73,32 +73,7 @@ describe ItemBuilder do
 	describe '#errors' do
 	end
 
-	describe '#create' do
-		%w[description name user main_image].each do |field|
-			it "returns false if #{field} is not set" do
-				filled_builder.send("#{field}=",nil)
-				expect(filled_builder.create).to eq false
-			end
-		end
-
-		it 'do not return false if images is unset' do
-			filled_builder.images=[]
-			expect(filled_builder.create).to be_true
-		end
-
-		describe 'returned offer' do
-			let(:item) { filled_builder.create }
-
-			it 'is an Offer' do
-				expect(item).to be_a_kind_of(Offer)
-			end
-
-			%w[ description name user_id main_image images].each do |field|
-				it "has the setted #{field}" do
-					expect(item.send(field)).to eq send(field)
-				end
-			end
-		end
+	describe '#build' do
 	end
 
 end
