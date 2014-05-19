@@ -1,0 +1,19 @@
+.lPanel.mContainer.mExpanded
+  = form_for [@user, @offer] do |form|
+  .close_button
+    = content_for :close_button
+
+  div
+    .tabs
+      = content_for :tabs
+
+    .composition_box
+      = content_for :composition_box
+
+    = content_for :item_preview_inline
+
+  div
+    = content_for :proposal_preview
+
+  .send_button
+    = content_for :send_button
