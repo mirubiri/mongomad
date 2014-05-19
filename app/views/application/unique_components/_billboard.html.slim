@@ -1,6 +1,6 @@
-- content_for :logged_user_avatar
-  = render partial: unique_partial('logged_user_avatar'),
-           layout:  unique_layout('logged_user_avatar')
+- content_for :user_avatar
+  = render partial: unique_partial('user_avatar'),
+           layout:  unique_layout('user_avatar')
 
 - content_for :navigation_bar
   = render partial: unique_partial('billboard_navigation'),
