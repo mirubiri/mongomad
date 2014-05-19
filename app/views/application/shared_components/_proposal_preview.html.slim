@@ -1,0 +1,14 @@
+- content_for :composer_full_name
+  | composer_full_name
+
+- content_for :proposal
+    = render partial: shared_partial('proposal'),
+             layout:  shared_layout('proposal'),
+             locals:  { proposal: proposal }
+
+- content_for :message
+  | message
+
+- content_for :buttons
+  | button1
+  | button2
