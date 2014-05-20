@@ -14,17 +14,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/1
-  # GET /offers/1.json
-  def show
-    @offer = Offer.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @offer }
-    end
-  end
-
   # GET /offers/new
   # GET /offers/new.json
   def new

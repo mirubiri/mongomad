@@ -1,7 +1,7 @@
 Mongomad::Application.routes.draw do
   #devise_for :users
 
-# The priority is based upon order of creation:
+  # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
@@ -48,7 +48,7 @@ Mongomad::Application.routes.draw do
   #     resources :products
   #   end
 
-  #User resources
+  # User resources
   resources :users do
     get 'user_caption' # TODO: Una vez insertado devise esto se debe quitar
     resource :profile
