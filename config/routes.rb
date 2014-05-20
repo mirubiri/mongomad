@@ -53,7 +53,7 @@ Mongomad::Application.routes.draw do
     get 'user_caption' # TODO: Una vez insertado devise esto se debe quitar
     #resource :profile
     resources :requests, only: [:new, :edit]
-    resources :items, only: [:index, :new, :edit, :show]
+    resources :items, only: [:show, :index, :new, :edit]
     resources :offers, only: [:index, :new, :edit]
     resources :negotiations, only: [:index, :edit]
     resources :deals, only: [:index]
