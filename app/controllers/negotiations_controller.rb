@@ -14,47 +14,9 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # GET /negotiations/1
-  # GET /negotiations/1.json
-  def show
-    @negotiation = Negotiation.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @negotiation }
-    end
-  end
-
-  # GET /negotiations/new
-  # GET /negotiations/new.json
-  def new
-    @negotiation = Negotiation.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @negotiation }
-    end
-  end
-
   # GET /negotiations/1/edit
   def edit
     @negotiation = Negotiation.find(params[:id])
-  end
-
-  # POST /negotiations
-  # POST /negotiations.json
-  def create
-    @negotiation = Negotiation.new(params[:negotiation])
-
-    respond_to do |format|
-      if @negotiation.save
-        format.html { redirect_to @negotiation, notice: 'Negotiation was successfully created.' }
-        format.json { render json: @negotiation, status: :created, location: @negotiation }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @negotiation.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /negotiations/1

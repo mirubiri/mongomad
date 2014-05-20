@@ -2,28 +2,6 @@ class RequestsController < ApplicationController
 
   layout 'exposition'
 
-  # GET /requests
-  # GET /requests.json
-  def index
-    @requests = Request.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @requests }
-    end
-  end
-
-  # GET /requests/1
-  # GET /requests/1.json
-  def show
-    @request = Request.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @request }
-    end
-  end
-
   # GET /requests/new
   # GET /requests/new.json
   def new
