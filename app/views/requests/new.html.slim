@@ -1,1 +1,2 @@
-= render partial: 'form', layout: 'requests/layouts/form_layout'
+= form_for [@user, @request] do |form|
+  = render 'form', layout: 'requests/layouts/form_layout'

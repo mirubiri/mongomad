@@ -1,11 +1,14 @@
-.lPanel.mContainer.mExpanded
-  = form_for [@user, @negotiation] do |form|
-  .close_button
-    = content_for :close_button
+.close_button
+  = content_for :close_button
 
   div
     .tabs
-      = content_for :tabs
+      = content_for :composer_tab
+
+      = content_for :receiver_tab
+
+      - if data.controller == 'offers'
+        = content_for :message_tab
 
     .composition_box
       = content_for :composition_box

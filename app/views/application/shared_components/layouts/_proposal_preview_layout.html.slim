@@ -4,8 +4,12 @@
 .proposal
   = content_for :proposal
 
-.message
-  = content_for :message
+.composer_face
+  = content_for :composer_face
+
+- if data.controller == 'offers'
+  .message
+    = content_for :message
 
 .buttons
   = content_for :buttons

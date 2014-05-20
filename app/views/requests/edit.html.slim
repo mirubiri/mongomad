@@ -1,8 +1,2 @@
-h1 Editing request
-
-== render 'form'
-
-= link_to 'Show', @request
-'|
-= link_to 'Back', requests_path
-
+= form_for [@user, @request] do |form|
+  = render 'form', layout: 'requests/layouts/form_layout'
