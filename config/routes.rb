@@ -52,13 +52,15 @@ Mongomad::Application.routes.draw do
   resources :users do
     get 'user_caption' # TODO: Una vez insertado devise esto se debe quitar
     resource :profile
-    resources :requests
+    resources :requests, only: [:new, :edit]
     resources :items
-    resources :offers
-    resources :negotiations
-    resources :deals
+    resources :offers, only: [:index, :new, :edit]
+    resources :negotiations, only: [:index, :edit]
+    resources :deals, only: [:index]
     resources :alerts
   end
+
+  resources :users, only: [:index]
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
