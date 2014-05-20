@@ -100,7 +100,7 @@ GEM
       rake
       rspec (>= 2.14)
     moped (1.5.2)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     origin (1.1.0)
     orm_adapter (0.5.0)
     polyglot (0.3.4)
