@@ -21,8 +21,7 @@
       .name
       .address
     .new_offer_button
-      / = link_to "MAKE ME AN OFFER!",                                                     \
-      / new_user_offer_path(id(@user)), :remote => true, class: "new_offer_button_style" \
+      = button_to "New Offer", new_user_offer_path(current_user), method: :get
 
 - content_for :requests_box
   = render partial: shared_partial('requests_list'),

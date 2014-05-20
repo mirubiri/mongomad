@@ -19,6 +19,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @items = Item.all
+    @requests = Request.all
 
     respond_to do |format|
       format.html # new.html.erb

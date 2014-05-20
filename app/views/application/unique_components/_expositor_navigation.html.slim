@@ -19,7 +19,7 @@
         = link_to "Deals", user_deals_path(current_user)
   - if controller.controller_name == "items"
       li#items-tab.active_nav
-        = link_to "Products", user_items_path(current_user)
+        = link_to "Items", user_items_path(current_user)
   - else
       li#items-tab
-        = link_to "Products", user_items_path(current_user)
+        = link_to "Items", user_items_path(current_user)

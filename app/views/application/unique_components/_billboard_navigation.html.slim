@@ -1,9 +1,10 @@
+/TODO: Linkar el perfil
 - single_content_for :bar
   li
     = static_image_tag('friends_white', 26, 26)
   li
-    = static_image_tag('products', 26, 26)
+    = link_to static_image_tag('products', 26, 26), user_items_path(current_user)
   li
-    = static_image_tag('negotiations', 26, 26)
+    = link_to static_image_tag('negotiations', 26, 26), user_negotiations_path(current_user)
   li
-    = static_image_tag('deals', 26, 26)
+    = link_to static_image_tag('deals', 26, 26), user_deals_path(current_user)

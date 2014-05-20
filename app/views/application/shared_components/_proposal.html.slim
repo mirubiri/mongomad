@@ -1,21 +1,23 @@
 - single_content_for :composer_goods
-  - proposal.goods.each do |good|
-    - if good._type == 'Cash'
-      .cash
-        = render partial: shared_partial('cash'),
-                 layout:  shared_layout('cash')
-    - else
-      .product
-        = render partial: shared_partial('product'),
-                  layout: shared_layout('product')
+  - defined? proposal
+    - proposal.goods.each do |good|
+      - if good._type == 'Cash'
+        .cash
+          = render partial: shared_partial('cash'),
+                   layout:  shared_layout('cash')
+      - else
+        .product
+          = render partial: shared_partial('product'),
+                    layout: shared_layout('product')
 
 - single_content_for :receiver_goods
-  - proposal.goods.each do |good|
-    - if good._type == 'Cash'
-      .cash
-        = render partial: shared_partial('cash'),
-                 layout:  shared_layout('cash')
-    - else
-      .product
-        = render partial: shared_partial('product'),
-                  layout: shared_layout('product')
+  - defined? proposal
+    - proposal.goods.each do |good|
+      - if good._type == 'Cash'
+        .cash
+          = render partial: shared_partial('cash'),
+                   layout:  shared_layout('cash')
+      - else
+        .product
+          = render partial: shared_partial('product'),
+                    layout: shared_layout('product')
