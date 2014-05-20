@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     end
   end
 
-
   # TODO: Eliminar al poner el devise
   def user_caption
     env['rack.session'][:current_user_id]= params[:user_id]

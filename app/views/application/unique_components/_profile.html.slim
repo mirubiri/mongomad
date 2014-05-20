@@ -21,7 +21,7 @@
       .name
       .address
     .new_offer_button
-      = button_to "New Offer", new_user_offer_path(current_user), method: :get
+      = button_to "Make me an offer", new_user_offer_path(current_user), method: :get
 
 - content_for :requests_box
   = render partial: shared_partial('requests_list'),
