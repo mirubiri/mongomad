@@ -1,25 +1,10 @@
 - single_content_for :bar
-  - if (controller.controller_name == "users") or (controller.controller_name == "offers")
-      li#offers-tab.active_nav
-        = link_to "Offers", user_offers_path(current_user)
-  - else
-      li#offers-tab
-        = link_to "Offers", user_offers_path(current_user)
-  - if controller.controller_name == "negotiations"
-      li#negotiations-tab.active_nav
-        = link_to "Negotiations", user_negotiations_path(current_user)
-  - else
-      li#negotiations-tab
-        = link_to "Negotiations", user_negotiations_path(current_user)
-  - if controller.controller_name == "deals"
-      li#deals-tab.active_nav
-        = link_to "Deals", user_deals_path(current_user)
-  - else
-      li#deals-tab
-        = link_to "Deals", user_deals_path(current_user)
-  - if controller.controller_name == "items"
-      li#items-tab.active_nav
-        = link_to "Items", user_items_path(current_user)
-  - else
-      li#items-tab
-        = link_to "Items", user_items_path(current_user)
+  - location = controller.controller_name
+  li id='offers-tab' class=('active_nav' if (location == 'offers' || location == 'users'))
+    = link_to 'Offers', user_offers_path(current_user)
+  li id='negotiations-tab' class=('active_nav' if location == 'negotiations')
+    = link_to 'Negotiations', user_negotiations_path(current_user)
+  li id='deals-tab' class=('active_nav' if location == 'deals')
+    = link_to 'Deals', user_deals_path(current_user)
+  li id='items-tab' class=('active_nav' if location == 'items')
+    = link_to 'Items', user_items_path(current_user)
