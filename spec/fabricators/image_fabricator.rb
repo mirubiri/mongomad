@@ -1,4 +1,5 @@
 Fabricator(:image, from: :"Attachment::Image" ) do
+	id 'id'
 	x 0
 	y 0
 	width 100

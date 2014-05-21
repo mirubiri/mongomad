@@ -1,76 +1,59 @@
 require 'spec_helper'
 
 describe ItemBuilder do
-	let(:builder) { ItemBuilder }
-	let(:images ) { [Fabricate.build(:image),Fabricate.build(:image,main:true)] }
-	let(:image_id) { images.first.id }
+	let(:builder) { ItemBuilder.new }
+	let(:main_image) { Fabricate.build(:image,main:true) }
+	let(:image) { Fabricate.build(:image) }
+	let(:images) { [ image.attributes.symbolize_keys,main_image.attributes.symbolize_keys ] }
+
   let(:description) { 'a description' }
   let(:name) { 'a name' }
+
   let(:user) { Fabricate.build(:user) }
   let(:user_id) { user.id }
   let(:user_sheet) { user.sheet }
 
   let(:filled_builder) do
-  		builder.user=user
-			builder.main_image=image_id
-			builder.images=images
-			builder.name=name
-			builder.description=description
+  		builder.user user
+			builder.images images
+			builder.name name
+			builder.description description
 			builder
   end
 
-	describe '.images(array)' do
-		context 'no given array' do
-			it 'has [] as default value' do
-				expect(builder.images).to eq []
-			end
-		end
+  let(:item) { filled_builder.build }
 
-		context 'given an array' do
-			before(:each) { builder.images=images }
-			it 'returns the given array' do
-				expect(builder.images).to eq images
-			end
+	describe '#images(images)' do
+		it 'returns builder' do
+			expect(builder.images(images)).to eq builder
 		end
 	end
 
-	describe '.main_image(image_id)' do
-		context 'given an image id' do
-			before(:each) { builder.main_image=image_id }
-			it 'returns the given image_id' do
-				expect(builder.main_image).to eq image_id
-			end
+	describe '#description(description)' do
+		it 'returns builder' do
+			expect(builder.description(description)).to eq builder
 		end
 	end
 
-	describe '.description(description)' do
-		context 'given a description' do
-			before(:each) { builder.description=description }
-			it 'returns the given description' do
-				expect(builder.description).to eq description
-			end
+	describe '#name(name)' do
+		it 'returns builder' do
+			expect(builder.description(description)).to eq builder
 		end
 	end
 
-	describe '.name(name)' do
-		context 'given an image id' do
-			before(:each) { builder.name=name }
-			it 'returns the given name' do
-				expect(builder.name).to eq name
-			end
-		end
-	end
-
-	describe '.user(user)' do
-		context 'given a user' do
-			before(:each) { builder.user=user }
-			it 'returns the given user' do
-				expect(builder.user).to eq user
-			end
+	describe '#user(user)' do
+		it 'returns builder' do
+			expect(builder.user(user)).to eq builder
 		end
 	end
 
 	describe '#build' do
+		specify { expect(item.name).to eq name }
+		specify { expect(item.user).to eq user_sheet }
+		specify { expect(item.description).to eq description }
+		specify { expect(item.user_id).to eq user_id }
+		specify { expect(item.images).to include(image) }
+		specify { expect(item.main_image).to eq main_image }
 	end
 
 end
