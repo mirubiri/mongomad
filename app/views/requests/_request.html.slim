@@ -3,3 +3,8 @@
 
 - single_content_for :text
   | text
+
+- single_content_for :buttons
+  /= link_to 'delete', user_request_path(current_user, request._id), method: :delete, confirm: "Are you sure?"
+  /= link_to "edit", edit_user_request_path(current_user, request._id)
+

@@ -2,14 +2,9 @@ class UsersController < ApplicationController
 
   layout 'exposition'
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-
+  def show
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+      format.html # show.html.erb
     end
   end
 
