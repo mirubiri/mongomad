@@ -1,4 +1,4 @@
-= form_for [@user, @negotiation] do |form|
+= form_for [current_user, @negotiation] do |form|
   = render partial: shared_partial('proposal_form'),
            layout:  shared_layout('proposal_form'),
            locals:  { data: @data }
