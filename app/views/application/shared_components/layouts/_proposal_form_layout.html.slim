@@ -17,7 +17,17 @@
     = content_for :item_preview_inline
 
   div
-    = content_for :proposal_preview
+    .composer_full_name
+      = content_for :composer_full_name
+
+    .proposal
+      = content_for :proposal
+
+    .composer_face
+      = content_for :composer_face
+
+    .message
+      = content_for :message
 
   .send_button
     = content_for :send_button
