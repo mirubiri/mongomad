@@ -29,5 +29,6 @@ describe OfferBuilder do
 		specify { expect(offer.composer).to eq composer.sheet }
 		specify { expect(offer.receiver).to eq receiver.sheet }
 		specify { expect(offer).goods to include(item.to_product) }
+		specify { expect(offer).goods to include(cash.to_product) }
 	end
  end
