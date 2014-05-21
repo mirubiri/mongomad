@@ -1,2 +1,2 @@
-= form_for [@user, @request] do |form|
+= form_for [current_user, @request] do |form|
   = render 'form', layout: 'requests/layouts/form_layout'
