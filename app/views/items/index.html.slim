@@ -1,3 +1,5 @@
+= button_to "Add Item", new_user_item_path(current_user), method: :get
+
 = render partial: shared_partial('items_list'),
          layout:  shared_layout('items_list'),
          locals: { items: @items }
