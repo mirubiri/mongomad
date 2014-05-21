@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Product do
   # Modules
   it { should include_module AutoUpdate }
+  it { should include_module Attachment::Images }
 
   # Relations
   specify { Product.should < Good }

@@ -1,4 +1,5 @@
 class Product < Good
+  include Attachment::Images
   include AutoUpdate
 
   field :_id,        type:Moped::BSON::ObjectId, default:nil

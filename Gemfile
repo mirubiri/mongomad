@@ -28,7 +28,6 @@ group :development,:test do
   gem 'better_errors'
   gem 'micromachine'
   gem 'pundit'
-  gem 'money-rails'
   gem 'cloudinary'
   gem 'slim-rails'
   gem 'devise'

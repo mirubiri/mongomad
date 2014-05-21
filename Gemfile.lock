@@ -81,15 +81,6 @@ GEM
       treetop (~> 1.4.8)
     micromachine (1.1.0)
     mime-types (1.25.1)
-    monetize (0.3.0)
-      money (~> 6.1.0.beta1)
-    money (6.1.1)
-      i18n (~> 0.6.4)
-    money-rails (0.10.0)
-      activesupport (>= 3.0)
-      monetize (~> 0.3.0)
-      money (~> 6.1.1)
-      railties (>= 3.0)
     mongoid (3.1.6)
       activemodel (~> 3.2)
       moped (~> 1.4)
@@ -203,7 +194,6 @@ DEPENDENCIES
   faker
   jquery-rails
   micromachine
-  money-rails
   mongoid
   mongoid-rspec
   pundit
