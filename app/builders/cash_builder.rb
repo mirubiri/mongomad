@@ -1,1 +1,2 @@
-cash_builder.rb
+class CashBuilder
+end

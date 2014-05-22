@@ -1,1 +1,4 @@
-image_builder_spec.rb
+require 'spec_helper'
+
+describe ImageBuilder
+end

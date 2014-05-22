@@ -1,1 +1,2 @@
-image_builder.rb
+class ImageBuilder
+end
