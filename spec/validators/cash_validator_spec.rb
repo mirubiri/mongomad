@@ -1,0 +1,1 @@
+cash_validator_spec.rb

@@ -1,0 +1,1 @@
+offer_validator_spec.rb
