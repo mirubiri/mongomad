@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe OfferBuilder do
 
-	let(:builder) { OfferBuilder.new }
+	let(:proposal_builder) { ProposalBuilder.new }
+
+	let(:builder) { OfferBuilder.new(proposal_builder:proposal_builder) }
 	let(:composer) { Fabricate.build(:user) }
 	let(:receiver) { Fabricate.build(:user) }
 	let(:item) { Fabricate(:item) }
@@ -14,7 +16,6 @@ describe OfferBuilder do
 		builder.composer(composer).receiver(receiver).goods(goods).message('message')
 	end
 
-	let(:proposal) { builder.instance_variable_get(:@proposal_builder).build }
 	let(:offer) { filled_builder.build }
 
 	describe '#composer(user)' do
@@ -39,6 +40,6 @@ describe OfferBuilder do
 		specify { expect(offer.user_ids).to include(composer.id) }
 		specify { expect(offer.user_ids).to include(receiver.id) }
 		specify { expect(offer.message).to eq 'message'}
-		specify { expect(offer.proposal).to equal proposal }
+		specify { expect(offer.proposal).to equal proposal_builder.build }
 	end
 end
