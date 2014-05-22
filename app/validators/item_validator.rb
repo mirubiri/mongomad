@@ -1,1 +1,2 @@
-item_validator.rb
+class ItemValidator
+end

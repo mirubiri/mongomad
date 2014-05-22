@@ -1,1 +1,2 @@
-proposal_validator.rb
+class ProposalValidator
+end

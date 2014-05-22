@@ -1,1 +1,2 @@
-image_validator.rb
+class ImageValidator
+end

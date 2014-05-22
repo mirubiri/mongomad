@@ -1,1 +1,2 @@
-cash_validator.rb
+class CashValidator
+end

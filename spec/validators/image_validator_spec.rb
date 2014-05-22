@@ -1,1 +1,4 @@
-image_validator_spec.rb
+require 'spec_helper'
+
+describe ImageValidator
+end

@@ -1,1 +1,2 @@
-offer_validator.rb
+class OfferValidator
+end
