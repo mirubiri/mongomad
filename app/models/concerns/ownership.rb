@@ -11,9 +11,9 @@ module Ownership
 
       if ownership == :dual
         include DualMethods
-        field :user_ids, type:Array
+        field :user_ids, type:Array,default:[]
         embeds_many :user_sheets, as: :user_sheet_container
-      end 
+      end
     end
 
     module SingleMethods
