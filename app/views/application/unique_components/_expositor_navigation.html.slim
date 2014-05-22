@@ -1,10 +1,9 @@
 - single_content_for :bar
-  - location = controller.controller_name
-  li id='offers-tab' class=('active_nav' if (location == 'offers' || location == 'users'))
+  li id='offers-tab' class=active_class?('offers','users')
     = link_to 'Offers', user_offers_path(current_user)
-  li id='negotiations-tab' class=('active_nav' if location == 'negotiations')
+  li id='negotiations-tab' class=active_class?('negotiations')
     = link_to 'Negotiations', user_negotiations_path(current_user)
-  li id='deals-tab' class=('active_nav' if location == 'deals')
+  li id='deals-tab' class=active_class?('deals')
     = link_to 'Deals', user_deals_path(current_user)
-  li id='items-tab' class=('active_nav' if location == 'items')
+  li id='items-tab' class=active_class?('items')
     = link_to 'Items', user_items_path(current_user)

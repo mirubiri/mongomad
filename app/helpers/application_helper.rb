@@ -40,4 +40,10 @@ module ApplicationHelper
       :html_width => width, :html_height => height,
       :format => :png, :crop => :fit)
   end
+
+  def active_class?(*controller_names)
+    active = false
+    controller_names.each { |name| active ||= params[:controller] == name }
+    active ? 'active_nav' : nil
+  end
 end
