@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe OfferValidator
+describe OfferValidator do
 end

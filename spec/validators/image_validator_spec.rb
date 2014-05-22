@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe ImageValidator
+describe ImageValidator do
 end

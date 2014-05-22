@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe ImageBuilder
+describe ImageBuilder do
 end

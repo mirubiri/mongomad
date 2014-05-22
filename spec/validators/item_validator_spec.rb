@@ -1,4 +1,4 @@
 require 'spec_helper'
 
-describe ItemValidator
+describe ItemValidator do
 end
