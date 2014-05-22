@@ -23,6 +23,11 @@ class OfferBuilder
 		self
 	end
 
+	def message(message)
+		@offer.message = message
+		self
+	end
+
 	def build
 		@offer.proposal=@proposal_builder.build
 		@offer
