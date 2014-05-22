@@ -1,7 +1,7 @@
 class ProposalBuilder
 
-	def initialize()
-		@proposal=Proposal.new
+	def initialize(proposal=Proposal.new)
+		@proposal=proposal
 	end
 
 	def composer(user)

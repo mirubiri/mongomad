@@ -1,7 +1,7 @@
 class OfferBuilder
-	def initialize()
-		@offer=Offer.new
-		@proposal_builder=ProposalBuilder.new
+	def initialize(offer=Offer.new,proposal_builder=ProposalBuilder.new)
+		@offer=offer
+		@proposal_builder=proposal_builder
 	end
 
 	def composer(user)
