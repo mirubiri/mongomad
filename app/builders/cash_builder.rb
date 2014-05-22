@@ -1,0 +1,2 @@
+class CashBuilder
+end

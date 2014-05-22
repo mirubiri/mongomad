@@ -1,0 +1,2 @@
+class ImageBuilder
+end
