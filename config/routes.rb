@@ -49,12 +49,12 @@ Mongomad::Application.routes.draw do
   #   end
 
   # User resources
-  resources :users, only: [:show]
-  resources :requests, only: [:new, :edit]
-  resources :items, only: [:show, :index, :new, :edit]
-  resources :offers, only: [:index, :new, :edit]
-  resources :negotiations, only: [:index, :edit]
-  resources :deals, only: [:index]
+  resources :users
+  resources :requests
+  resources :items
+  resources :offers
+  resources :negotiations
+  resources :deals
   #resource :profile
   #resources :alerts
 
