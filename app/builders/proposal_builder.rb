@@ -16,7 +16,7 @@ class ProposalBuilder
 
 	def goods(goods)
 		@proposal.goods = goods.map do |good|
-			if good[:_type] == 'Cash'
+			if good[:id] == 'cash'
 				Cash.new(user_id:good[:user_id],amount:good[:amount])
 			else
 				Item.find(good[:id]).to_product
