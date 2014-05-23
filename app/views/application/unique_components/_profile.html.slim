@@ -21,9 +21,9 @@
       .name
       .address
     .new_offer_button
-      = button_to "Make me an offer", new_user_offer_path(current_user), method: :get
+      = button_to "Make me an offer", new_offer_path, method: :get
 
 - content_for :requests_box
-  = button_to "Add Request", new_user_request_path(current_user), method: :get
+  = button_to "Add Request", new_request_path, method: :get
   = render partial: shared_partial('requests_list'),
            layout:  shared_layout('requests_list')

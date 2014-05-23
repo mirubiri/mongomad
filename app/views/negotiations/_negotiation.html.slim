@@ -17,5 +17,5 @@
   | leave_button
 
 - single_content_for :proposal_buttons
-  = button_to "Edit Proposal", edit_user_negotiation_path(current_user, negotiation._id), method: :get
+  = button_to "Edit Proposal", edit_negotiation_path(negotiation._id), method: :get
 

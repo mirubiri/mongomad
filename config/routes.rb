@@ -49,16 +49,14 @@ Mongomad::Application.routes.draw do
   #   end
 
   # User resources
-  resources :users, only: [:show] do
-    get 'user_caption' # TODO: Una vez insertado devise esto se debe quitar
-    #resource :profile
-    resources :requests, only: [:new, :edit]
-    resources :items, only: [:show, :index, :new, :edit]
-    resources :offers, only: [:index, :new, :edit]
-    resources :negotiations, only: [:index, :edit]
-    resources :deals, only: [:index]
-    #resources :alerts
-  end
+  resources :users, only: [:show]
+  resources :requests, only: [:new, :edit]
+  resources :items, only: [:show, :index, :new, :edit]
+  resources :offers, only: [:index, :new, :edit]
+  resources :negotiations, only: [:index, :edit]
+  resources :deals, only: [:index]
+  #resource :profile
+  #resources :alerts
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

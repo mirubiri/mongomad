@@ -19,11 +19,4 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  # TODO: Eliminar al poner el devise
-  def user_caption
-    env['rack.session'][:current_user_id]= params[:user_id]
-    @user = User.find(params[:user_id])
-    redirect_to user_offers_url(@user)
-  end
 end
