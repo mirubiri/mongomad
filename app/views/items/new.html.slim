@@ -1,1 +1,2 @@
-= render partial: 'form', layout: 'items/layouts/form_layout'
+= form_for @item do |form|
+  = render partial: 'form', layout: 'items/layouts/form_layout', locals: { form:form }
