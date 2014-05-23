@@ -45,11 +45,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:item])
+    @item = Item.new
+    @item = ItemBuilder.new
+                       .user(current_user)
+                       .name(params[:item][:name])
+                       .description(params[:item][:description]).buid
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to offers_url }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -65,7 +69,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to offers_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
