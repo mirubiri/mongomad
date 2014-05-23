@@ -23,12 +23,12 @@ class RequestsController < ApplicationController
   # POST /requests
   # POST /requests.json
   def create
-    #@request = Request.new(params[:request])    
+    #@request = Request.new(params[:request])
     @request = Request.new
     @request.text = params[:request][:text]
 
     respond_to do |format|
-      if @request.save        
+      if @request.save
         format.html { redirect_to offers_url }
         format.json { render json: @request, status: :created, location: @request }
       else
