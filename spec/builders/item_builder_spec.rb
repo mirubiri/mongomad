@@ -4,7 +4,13 @@ describe ItemBuilder do
 	let(:builder) { ItemBuilder.new }
 	let(:main_image) { Fabricate.build(:image,main:true) }
 	let(:image) { Fabricate.build(:image) }
-	let(:images) { [ image.attributes.symbolize_keys,main_image.attributes.symbolize_keys ] }
+	let(:images) do
+		image_params=image.attributes.clone
+		main_image_params=main_image.attributes.clone
+		image_params["id"]=image_params.delete "_id"
+		main_image_params["id"]=main_image_params.delete "_id" 
+		[ image_params.symbolize_keys,main_image_params.symbolize_keys ]
+	end
 
   let(:description) { 'a description' }
   let(:name) { 'a name' }

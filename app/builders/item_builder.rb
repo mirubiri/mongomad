@@ -25,10 +25,10 @@ class ItemBuilder
 			Attachment::Image.new(
 				x: image[:x],
 				y: image[:y],
-				width: image[:width],
-				height: image[:height],
+				w: image[:w],
+				h: image[:h],
 				main: image[:main] ) do |i|
-					i.id=image[:_id]
+					i.id=image[:id]
 				end
 		end
 		self

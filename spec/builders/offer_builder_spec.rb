@@ -10,7 +10,7 @@ describe OfferBuilder do
 	let(:item) { Fabricate(:item) }
 	let(:product) { item.to_product }
 	let(:cash) { Fabricate.build(:cash,user_id:composer.id)}
-	let(:goods) { [{id:item.id,_type:'Product'},{user_id:cash.user_id,amount:cash.amount,_type:'Cash'}] }
+	let(:goods) { [{id:item.id},{id:'cash',user_id:cash.user_id,amount:cash.amount}] }
 
 	let(:filled_builder) do
 		builder.composer(composer).receiver(receiver).goods(goods).message('message')
