@@ -8,8 +8,6 @@ class Product < Good
 
   auto_update :name, :description, :images, using: :item
 
-  validates_presence_of  :_id, :user_id
-
   def withdraw
   end
 
