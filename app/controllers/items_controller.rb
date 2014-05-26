@@ -45,10 +45,15 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    preloaded_file = Cloudinary::PreloadedFile.new(params[:image_id])
+    preloaded_file1 = Cloudinary::PreloadedFile.new(params[:image_id1])
+    preloaded_file2 = Cloudinary::PreloadedFile.new(params[:image_id2])
+    preloaded_file3 = Cloudinary::PreloadedFile.new(params[:image_id3])
+
     builder = ItemBuilder.new
                          .user(current_user)
-                         .images([{ id:preloaded_file.public_id, main:true }])
+                         .images([{ id:preloaded_file1.public_id, main:false },
+                                  { id:preloaded_file2.public_id, main:true },
+                                  { id:preloaded_file3.public_id, main:false }])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
     item = builder.build

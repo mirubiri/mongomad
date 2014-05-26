@@ -1,7 +1,8 @@
 - content_for :images
-  = cl_image_upload_tag(:image_id)
-  = cl_image_upload_tag(:image_id)
-  = cl_image_upload_tag(:image_id)
+  = cl_image_upload_tag(:image_id1)
+  = cl_image_upload_tag(:image_id2)
+  = cl_image_upload_tag(:image_id3)
+  /= cl_image_upload_tag(:image_id, :html => {:multiple => true})
 
 - content_for :name
   = form.text_area :name,
