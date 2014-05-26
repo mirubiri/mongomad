@@ -6,7 +6,7 @@
            layout:  shared_layout('item_preview')
 
 - content_for :cloudinary
-  = cl_image_upload_tag(:image_id, :crop => :limit, :width => 1000, :height => 1000)
+  = cl_image_upload_tag(:image_id)
 
 - content_for :send_button
   = form.submit "Save"
