@@ -8,5 +8,19 @@
 - content_for :cloudinary
   = cl_image_upload_tag(:image_id, :crop => :limit, :width => 1000, :height => 1000)
 
+- content_for :title
+  = form.text_area :name,
+                    :placeholder => "Product name...",
+                    :size => "4x1",
+                    :required => true,
+                    :maxlength => "20"
+
+- content_for :description
+  = form.text_area :description,
+                    :placeholder => "Product description...",
+                    :size => "10x5",
+                    :required => true,
+                    :maxlength => "200"
+
 - content_for :send_button
   = form.submit "Save"
