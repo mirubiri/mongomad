@@ -4,3 +4,9 @@
 - content_for :item_preview
   = render partial: shared_partial('item_preview'),
            layout:  shared_layout('item_preview')
+
+- content_for :cloudinary
+  = cl_image_upload_tag(:image_id, :crop => :limit, :width => 1000, :height => 1000)
+
+- content_for :send_button
+  = form.submit "Save"
