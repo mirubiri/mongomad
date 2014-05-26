@@ -7,8 +7,8 @@ html
     = csrf_meta_tags
   body
     header.lPanel_top.mBillboard
-      = render partial: unique_partial('billboard'),
-               layout:  unique_layout('billboard')
+      = render partial: unique_partial('welcome_billboard'),
+               layout:  unique_layout('welcome_billboard')
 
     .lPanel_centered.mContainer.mLogin
       = yield
