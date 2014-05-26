@@ -13,9 +13,6 @@ describe User do
   it { should have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
 
   # Validations
-  it { should validate_presence_of :profile }
-  it { should validate_length_of(:nick).within(1..20) }
-  it { should validate_presence_of :disabled }
 
   # Methods
   describe '#sheet' do
