@@ -5,7 +5,8 @@ class ItemBuilder
 	end
 
 	def user(user)
-		@item.user_sheet=user.sheet
+		# TODO: Comentado hasta que creemos usuarios con sheet y perfil desde devise
+		#@item.user_sheet=user.sheet
 		@item.user_id=user.id
 		self
 	end
