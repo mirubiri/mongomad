@@ -3,16 +3,16 @@
   = cl_image_upload_tag(:image_id)
   = cl_image_upload_tag(:image_id)
 
-- content_for :title  
+- content_for :name
   = form.text_area :name,
-                    :placeholder => "Product name...",
-                    :size => "4x1",
-                    :required => true,
-                    :maxlength => "20"
+                   :placeholder => "Product name...",
+                   :size => "4x1",
+                   :maxlength => "20",
+                   :required => true
 
-- content_for :description  
+- content_for :description
   = form.text_area :description,
-                    :placeholder => "Product description...",
-                    :size => "10x5",
-                    :required => true,
-                    :maxlength => "200"
+                   :placeholder => "Product description...",
+                   :size => "10x5",
+                   :maxlength => "200",
+                   :required => true
