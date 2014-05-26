@@ -45,17 +45,21 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new
-    @item = ItemBuilder.new
-                       .user(current_user)
-                       .name(params[:item][:name])
-                       .description(params[:item][:description]).buid
+    preloaded_file = Cloudinary::PreloadedFile.new(params[:image_id])
+    builder = ItemBuilder.new
+                         .user(current_user)
+                         .images([{ id:preloaded.public_id, main:true }])
+                         #.name(params[:item][:name])
+                         #.description(params[:item][:description])
+    item = builder.build
 
     respond_to do |format|
-      if @item.save
-        format.html { redirect_to offers_url }
+      if item
+        item.save
+        format.html { redirect_to items_url }
         format.json { render json: @item, status: :created, location: @item }
       else
+        #builder.errors
         format.html { render action: "new" }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
