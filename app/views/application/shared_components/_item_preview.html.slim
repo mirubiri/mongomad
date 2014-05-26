@@ -1,10 +1,18 @@
 - content_for :images
-  | image 1
-  | image 2
-  | image 3
+  = cl_image_upload_tag(:image_id)
+  = cl_image_upload_tag(:image_id)
+  = cl_image_upload_tag(:image_id)
 
-- content_for :title
-  | title
+- content_for :title  
+  = form.text_area :name,
+                    :placeholder => "Product name...",
+                    :size => "4x1",
+                    :required => true,
+                    :maxlength => "20"
 
-- content_for :description
-  | description
+- content_for :description  
+  = form.text_area :description,
+                    :placeholder => "Product description...",
+                    :size => "10x5",
+                    :required => true,
+                    :maxlength => "200"
