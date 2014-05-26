@@ -1,6 +1,7 @@
 class CashBuilder
 	def initialize(cash=Cash.new)
 		@cash=cash
+		cash.id='cash'
 	end
 
 	def user(user)
