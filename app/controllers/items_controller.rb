@@ -48,9 +48,9 @@ class ItemsController < ApplicationController
     preloaded_file = Cloudinary::PreloadedFile.new(params[:image_id])
     builder = ItemBuilder.new
                          .user(current_user)
-                         .images([{ id:preloaded.public_id, main:true }])
-                         #.name(params[:item][:name])
-                         #.description(params[:item][:description])
+                         .images([{ id:preloaded_file.public_id, main:true }])
+                         .name(params[:item][:name])
+                         .description(params[:item][:description])
     item = builder.build
 
     respond_to do |format|

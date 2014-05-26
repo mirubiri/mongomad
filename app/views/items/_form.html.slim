@@ -3,7 +3,8 @@
 
 - content_for :item_preview
   = render partial: shared_partial('item_preview'),
-           layout:  shared_layout('item_preview')
+           layout:  shared_layout('item_preview'),
+           locals: {form:form}
 
 - content_for :send_button
   = form.submit "Save"
