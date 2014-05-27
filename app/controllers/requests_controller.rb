@@ -2,8 +2,6 @@ class RequestsController < ApplicationController
 
   layout 'exposition'
 
-  # GET /requests/new
-  # GET /requests/new.json
   def new
     @request = Request.new
     @requests = Request.all
@@ -14,14 +12,11 @@ class RequestsController < ApplicationController
     end
   end
 
-  # GET /requests/1/edit
   def edit
     @request = Request.find(params[:id])
     @requests = Request.all
   end
 
-  # POST /requests
-  # POST /requests.json
   def create
     #@request = Request.new(params[:request])
     @request = Request.new
@@ -38,8 +33,6 @@ class RequestsController < ApplicationController
     end
   end
 
-  # PUT /requests/1
-  # PUT /requests/1.json
   def update
     @request = Request.find(params[:id])
 
@@ -54,8 +47,6 @@ class RequestsController < ApplicationController
     end
   end
 
-  # DELETE /requests/1
-  # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id])
     @request.destroy

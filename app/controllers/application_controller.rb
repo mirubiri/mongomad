@@ -3,4 +3,3 @@ class ApplicationController < ActionController::Base
     offers_url
   end
 end
-

@@ -8,8 +8,16 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
+  def new
+    @item = Item.new
+    @requests = Request.all
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @item }
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy
