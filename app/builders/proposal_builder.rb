@@ -1,5 +1,4 @@
 class ProposalBuilder
-
 	def initialize(proposal:Proposal.new)
 		@proposal=proposal
 	end
@@ -28,5 +27,4 @@ class ProposalBuilder
 	def build
 		@proposal
 	end
-
 end

@@ -1,12 +1,10 @@
 class ItemBuilder
-
 	def initialize(item:Item.new)
 		@item=item
 	end
 
 	def user(user)
-		# TODO: Comentado hasta que creemos usuarios con sheet y perfil desde devise
-		#@item.user_sheet=user.sheet
+		@item.user_sheet=user.sheet
 		@item.user_id=user.id
 		self
 	end

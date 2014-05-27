@@ -1,15 +1,8 @@
-/*
- * application.scss
- *
- * Important! Do *not* use Sprockets "require" syntax.
- * Use @import to include other stylesheets and Compass mixins.
- */
-
-// Include some nice mixins
+//Include mixins
 @import "compass/css3";
 @import "compass/typography/links/unstyled-link";
 
-//include my files
+//Include my files
 @import "base/base";
 @import "layouts/layouts";
 @import "modules/modules";
