@@ -1,5 +1,5 @@
 Mongomad::Application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  devise_for :users, :controllers => { :registrations => "users/registrations" }
 
   devise_scope :user do
     root to: "devise/sessions#new"
