@@ -1,10 +1,11 @@
 - content_for :main_image
   div.preview
 
+
 - content_for :item_preview
   = render partial: shared_partial('item_preview'),
            layout:  shared_layout('item_preview'),
-           locals: {form:form}
+           locals:  { form:form }
 
 - content_for :send_button
   = form.submit "Save"

@@ -2,8 +2,6 @@ class OffersController < ApplicationController
 
   layout 'exposition'
 
-  # GET /offers
-  # GET /offers.json
   def index
     @offers = Offer.all
     @requests = Request.all
@@ -14,8 +12,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/new
-  # GET /offers/new.json
   def new
     @offer = Offer.new
     @items = Item.all
@@ -27,13 +23,10 @@ class OffersController < ApplicationController
     end
   end
 
-  # GET /offers/1/edit
   def edit
     @offer = Offer.find(params[:id])
   end
 
-  # POST /offers
-  # POST /offers.json
   def create
     @offer = Offer.new(params[:offer])
 
@@ -48,8 +41,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # PUT /offers/1
-  # PUT /offers/1.json
   def update
     @offer = Offer.find(params[:id])
 
@@ -64,8 +55,6 @@ class OffersController < ApplicationController
     end
   end
 
-  # DELETE /offers/1
-  # DELETE /offers/1.json
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy

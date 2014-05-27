@@ -1,5 +1,29 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
+  embeds_one :profile, autobuild: true
+
+  field :nick
+  field :disabled, type:Boolean, default:false
+
+  delegate :first_name,:last_name,:gender,:language,:birth_date,:location,
+    :first_name=,:last_name=,:gender=,:language=,:birth_date=,:location=, to: :profile
+
+  def sheet
+    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name, images:profile.images, location:profile.location) do |sheet|
+      sheet.id = id
+    end
+  end
+
+  def enable
+    self.disabled = false
+  end
+
+  def disable
+    self.disabled = true
+  end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -36,27 +60,4 @@ class User
   # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
   # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
   # field :locked_at,       type: Time
-  include Mongoid::Timestamps
-
-  embeds_one              :profile
-
-  field :nick
-  field :disabled, type:Boolean, default:false
-
-  # validates_presence_of :profile, :disabled
-  # validates_length_of   :nick, minimum: 1, maximum: 20
-
-  def sheet
-    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name, images:profile.images, location:profile.location) do |sheet|
-      sheet.id = id
-    end
-  end
-
-  def enable
-    self.disabled = false
-  end
-
-  def disable
-    self.disabled = true
-  end
 end

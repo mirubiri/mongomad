@@ -1,9 +1,5 @@
 - single_content_for :image
-  - if item.images.size == 1
-      / TODO: eliminar esta basura y sacar la principal
-      = squared_image_tag(item.images[0]._id,50,50)
-  - else
-      | image
+  = image_tag(item.images.where(main:true).first.id,80,80)
 
 - single_content_for :name
-  | name
+  = item.name

@@ -1,18 +1,18 @@
 - content_for :images
-  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
-  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
-  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
+  = form.cl_image_upload(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
+  = form.cl_image_upload(:image_id2, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
+  = form.cl_image_upload(:image_id3, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
 
-- content_for :title  
+- content_for :name
   = form.text_area :name,
-                    :placeholder => "Product name...",
-                    :size => "4x1",
-                    :required => true,
-                    :maxlength => "20"
+                   :placeholder => "Product name...",
+                   :size => "4x1",
+                   :maxlength => "20",
+                   :required => true
 
-- content_for :description  
+- content_for :description
   = form.text_area :description,
-                    :placeholder => "Product description...",
-                    :size => "10x5",
-                    :required => true,
-                    :maxlength => "200"
+                   :placeholder => "Product description...",
+                   :size => "10x5",
+                   :maxlength => "200",
+                   :required => true

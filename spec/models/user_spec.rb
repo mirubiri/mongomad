@@ -11,6 +11,19 @@ describe User do
   it { should be_timestamped_document }
   it { should have_field :nick }
   it { should have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
+  it { should delegate(:first_name).to :profile }
+  it { should delegate(:last_name).to :profile }
+  it { should delegate(:gender).to :profile }
+  it { should delegate(:location).to :profile }
+  it { should delegate(:language).to :profile }
+  it { should delegate(:birth_date).to :profile }
+
+  it { should delegate(:first_name=).to :profile }
+  it { should delegate(:last_name=).to :profile }
+  it { should delegate(:gender=).to :profile }
+  it { should delegate(:location=).to :profile }
+  it { should delegate(:language=).to :profile }
+  it { should delegate(:birth_date=).to :profile }
 
   # Validations
 

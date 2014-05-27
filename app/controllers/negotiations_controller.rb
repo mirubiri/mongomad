@@ -2,9 +2,6 @@ class NegotiationsController < ApplicationController
 
   layout 'exposition'
 
-  # GET /negotiations
-  # GET /negotiations.json
-  def index
     @negotiations = Negotiation.all
     @requests = Request.all
 
@@ -14,13 +11,10 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # GET /negotiations/1/edit
   def edit
     @negotiation = Negotiation.find(params[:id])
   end
 
-  # PUT /negotiations/1
-  # PUT /negotiations/1.json
   def update
     @negotiation = Negotiation.find(params[:id])
 
@@ -35,8 +29,6 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  # DELETE /negotiations/1
-  # DELETE /negotiations/1.json
   def destroy
     @negotiation = Negotiation.find(params[:id])
     @negotiation.destroy

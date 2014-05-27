@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
 
   layout 'exposition'
 
-  # GET /items
-  # GET /items.json
   def index
     @items = Item.all
     @requests = Request.all
@@ -14,8 +12,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/1
-  # GET /items/1.json
   def show
     @item = Item.find(params[:id])
 
@@ -25,32 +21,32 @@ class ItemsController < ApplicationController
     end
   end
 
-  # GET /items/new
-  # GET /items/new.json
   def new
     @item = Item.new
     @requests = Request.all
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @item }
     end
   end
 
-  # GET /items/1/edit
   def edit
     @item = Item.find(params[:id])
   end
 
-  # POST /items
-  # POST /items.json
   def create
-    preloaded_file = Cloudinary::PreloadedFile.new(params[:image_id])
+    preloaded_file1 = Cloudinary::PreloadedFile.new(params[:image_id1])
+    preloaded_file2 = Cloudinary::PreloadedFile.new(params[:image_id2])
+    preloaded_file3 = Cloudinary::PreloadedFile.new(params[:image_id3])
+
     builder = ItemBuilder.new
                          .user(current_user)
-                         .images([{ id:preloaded_file.public_id, main:true }])
+                         .images([{ id:preloaded_file1.public_id, main:false },
+                                  { id:preloaded_file2.public_id, main:true },
+                                  { id:preloaded_file3.public_id, main:false }])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
+
     item = builder.build
 
     respond_to do |format|
@@ -59,15 +55,12 @@ class ItemsController < ApplicationController
         format.html { redirect_to items_url }
         format.json { render json: @item, status: :created, location: @item }
       else
-        #builder.errors
         format.html { render action: "new" }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /items/1
-  # PUT /items/1.json
   def update
     @item = Item.find(params[:id])
 
@@ -82,8 +75,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
