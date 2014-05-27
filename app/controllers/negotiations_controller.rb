@@ -2,6 +2,7 @@ class NegotiationsController < ApplicationController
 
   layout 'exposition'
 
+  def index
     @negotiations = Negotiation.all
     @requests = Request.all
 
