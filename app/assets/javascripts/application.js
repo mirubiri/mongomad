@@ -15,4 +15,5 @@
 //= require_tree .
 //= require home
 //= require equal-height-columns
-//= require cloudinary 
+//= require cloudinary
+//= require upload_preview 

@@ -1,7 +1,7 @@
 - content_for :images
-  = cl_image_upload_tag(:image_id)
-  = cl_image_upload_tag(:image_id)
-  = cl_image_upload_tag(:image_id)
+  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
+  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
+  = form.cl_image_upload(:image_id, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300)
 
 - content_for :title  
   = form.text_area :name,
