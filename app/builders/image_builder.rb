@@ -28,8 +28,8 @@ class ImageBuilder
 		self
 	end
 
-	def id(id)
-		@image.id=id
+	def id(item_id)
+		@image.id=item_id
 		self
 	end
 
