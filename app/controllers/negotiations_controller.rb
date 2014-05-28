@@ -8,7 +8,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @negotiations }
+      #format.json { render json: @negotiations }
     end
   end
 
@@ -22,10 +22,10 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation.update_attributes(params[:negotiation])
         format.html { redirect_to @negotiation, notice: 'Negotiation was successfully updated.' }
-        format.json { head :no_content }
+        #format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @negotiation.errors, status: :unprocessable_entity }
+        #format.json { render json: @negotiation.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,7 +36,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to negotiations_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 end

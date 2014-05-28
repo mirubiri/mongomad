@@ -8,7 +8,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @offers }
+      #format.json { render json: @offers }
     end
   end
 
@@ -19,7 +19,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @offer }
+      #format.json { render json: @offer }
     end
   end
 
@@ -33,10 +33,10 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.save
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
-        format.json { render json: @offer, status: :created, location: @offer }
+        #format.json { render json: @offer, status: :created, location: @offer }
       else
         format.html { render action: "new" }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+        #format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,10 +47,10 @@ class OffersController < ApplicationController
     respond_to do |format|
       if @offer.update_attributes(params[:offer])
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }
-        format.json { head :no_content }
+        #format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @offer.errors, status: :unprocessable_entity }
+        #format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,7 +61,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to offers_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 end
