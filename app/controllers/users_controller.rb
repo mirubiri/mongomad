@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @item }
+      #format.json { render json: @item }
     end
   end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to users_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 end

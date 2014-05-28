@@ -10,7 +10,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @deals }
+      #format.json { render json: @deals }
     end
   end
 
@@ -22,10 +22,10 @@ class DealsController < ApplicationController
     respond_to do |format|
       if @deal.update_attributes(params[:deal])
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
-        format.json { head :no_content }
+        #format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @deal.errors, status: :unprocessable_entity }
+        #format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,7 +38,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to deals_url }
-      format.json { head :no_content }
+      #format.json { head :no_content }
     end
   end
 end
