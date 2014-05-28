@@ -1,5 +1,10 @@
 - content_for :main_image
   div.preview
+  div
+    <label>X <input type="text" size="4" id="x1" name="images[x]"></label>
+    <label>Y <input type="text" size="4" id="y1" name="images[y]"></label>
+    <label>H <input type="text" size="4" id="h" name="images[h]"></label>
+    <label>W <input type="text" size="4" id="w" name="images[w]"></label>
   div.progress_bar
 
 
@@ -7,6 +12,7 @@
   = render partial: shared_partial('item_preview'),
            layout:  shared_layout('item_preview'),
            locals:  { form:form }
+           
 
 - content_for :send_button
   = form.submit "Save"
