@@ -47,10 +47,10 @@ describe OfferBuilder do
 		specify { expect(offer.proposal).to equal proposal_builder.build }
 
 		context 'After reset' do
-			let(:new_offer) { Offer.new }
+			let!(:new_offer) { Offer.new }
 			before(:each) { Offer.stub(:new).and_return(new_offer) }
 
-			it 'returns a new item' do
+			it 'returns a new offer' do
 				filled_builder.reset
 				expect(filled_builder.build).to eq new_offer
 			end
