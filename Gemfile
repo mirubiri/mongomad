@@ -31,6 +31,7 @@ group :development,:test do
   gem 'cloudinary'
   gem 'slim-rails'
   gem 'devise'
+  gem 'binding_of_caller'
 end
 
 
