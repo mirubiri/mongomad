@@ -48,6 +48,11 @@ class UserBuilder
 		self
 	end
 
+	def reset
+		@user=User.new
+		true
+	end
+
 	def build
 		@user
 	end

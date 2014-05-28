@@ -12,7 +12,7 @@ describe OfferBuilder do
 	let(:cash) { Fabricate.build(:cash,user_id:composer.id)}
 	let(:goods) { [{id:item.id},{id:'cash',user_id:cash.user_id,amount:cash.amount}] }
 
-	let(:filled_builder) do
+	let!(:filled_builder) do
 		builder.composer(composer).receiver(receiver).goods(goods).message('message')
 	end
 
@@ -34,6 +34,10 @@ describe OfferBuilder do
 		specify { expect(builder.message 'message').to eq builder }
 	end
 
+	describe '#reset' do
+		specify { expect(filled_builder.reset).to eq true }
+	end
+
 	describe '#build' do
 		specify { expect(offer.composer).to eq composer.sheet }
 		specify { expect(offer.receiver).to eq receiver.sheet }
@@ -41,5 +45,20 @@ describe OfferBuilder do
 		specify { expect(offer.user_ids).to include(receiver.id) }
 		specify { expect(offer.message).to eq 'message'}
 		specify { expect(offer.proposal).to equal proposal_builder.build }
+
+		context 'After reset' do
+			let(:new_offer) { Offer.new }
+			before(:each) { Offer.stub(:new).and_return(new_offer) }
+
+			it 'returns a new item' do
+				filled_builder.reset
+				expect(filled_builder.build).to eq new_offer
+			end
+
+			it 'calls reset on proposal_builder' do
+				expect(proposal_builder).to receive(:reset)
+				filled_builder.reset
+			end
+		end
 	end
 end

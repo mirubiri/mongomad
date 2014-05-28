@@ -13,7 +13,7 @@ describe UserBuilder do
 	let(:nick) { 'nick' }
 	let(:password) { 'password' }
 
-	let(:filled_builder) do
+	let!(:filled_builder) do
 		builder.first_name(first_name)
 			.last_name(last_name)
 			.gender(gender)
@@ -63,6 +63,10 @@ describe UserBuilder do
 		specify { expect(builder.password password ).to eq builder }
 	end
 
+	describe '#reset' do
+		specify { expect(filled_builder.reset).to eq true}
+	end
+
 	describe '#build' do
 		specify { expect(user.first_name).to eq first_name}
 		specify { expect(user.last_name).to eq last_name }
@@ -73,5 +77,16 @@ describe UserBuilder do
 		specify { expect(user.birth_date).to eq birth_date}
 		specify { expect(user.gender).to eq gender }
 		specify { expect(user.disabled).to eq false }
+
+		context 'After reset' do
+			let(:new_user) { User.new }
+			before(:each) do
+				User.stub(:new).and_return(new_user)
+				filled_builder.reset
+			end
+			it 'returns a new item' do
+				expect(filled_builder.build).to eq new_user
+			end
+		end
 	end
 end

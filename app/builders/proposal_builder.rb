@@ -24,6 +24,11 @@ class ProposalBuilder
 		self
 	end
 
+	def reset
+		@proposal=Proposal.new
+		true
+	end
+
 	def build
 		@proposal
 	end

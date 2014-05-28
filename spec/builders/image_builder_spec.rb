@@ -9,7 +9,7 @@ describe ImageBuilder do
 	let(:item_id) { 'item_id' }
 	let(:main) { true }
 
-	let(:filled_builder) do
+	let!(:filled_builder) do
 		builder.x(x).y(y).h(h).w(w).main(main).id(item_id)
 	end
 
@@ -39,6 +39,10 @@ describe ImageBuilder do
 		specify { expect(builder.id item_id).to eq builder }
 	end
 
+	describe '#reset' do
+		specify { expect(builder.reset).to eq true}
+	end
+
 	describe '#build' do
 		specify { expect(image.x).to eq x }
 		specify { expect(image.y).to eq y }
@@ -46,5 +50,16 @@ describe ImageBuilder do
 		specify { expect(image.w).to eq w }
 		specify { expect(image.id).to eq item_id }
 		specify { expect(image.main).to eq main }
+
+		context 'After reset' do
+			let(:new_image) { Attachment::Image.new }
+			before(:each) do
+				Attachment::Image.stub(:new).and_return(new_image)
+				filled_builder.reset
+			end
+			it 'returns a new item' do
+				expect(filled_builder.build).to eq new_image
+			end
+		end
 	end
 end

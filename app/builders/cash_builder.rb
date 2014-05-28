@@ -14,6 +14,11 @@ class CashBuilder
 		self
 	end
 
+	def reset
+		@cash=Cash.new
+		true
+	end
+
 	def build
 		@cash
 	end

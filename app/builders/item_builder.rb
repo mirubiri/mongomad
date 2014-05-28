@@ -33,6 +33,11 @@ class ItemBuilder
 		self
 	end
 
+	def reset
+		@item=Item.new
+		true
+	end
+
 	def build
 		@item
 	end

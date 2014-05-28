@@ -33,6 +33,11 @@ class ImageBuilder
 		self
 	end
 
+	def reset
+		@image=Attachment::Image.new
+		true
+	end
+
 	def build
 		@image
 	end

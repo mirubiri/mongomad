@@ -8,7 +8,7 @@ describe ItemBuilder do
 		image_params=image.attributes.clone
 		main_image_params=main_image.attributes.clone
 		image_params["id"]=image_params.delete "_id"
-		main_image_params["id"]=main_image_params.delete "_id" 
+		main_image_params["id"]=main_image_params.delete "_id"
 		[ image_params.symbolize_keys,main_image_params.symbolize_keys ]
 	end
 
@@ -19,7 +19,7 @@ describe ItemBuilder do
   let(:user_id) { user.id }
   let(:user_sheet) { user.sheet }
 
-  let(:filled_builder) do
+  let!(:filled_builder) do
   		builder.user user
 			builder.images images
 			builder.name name
@@ -53,6 +53,10 @@ describe ItemBuilder do
 		end
 	end
 
+	describe '#reset' do
+		specify { expect(filled_builder.reset).to eq true }
+	end
+
 	describe '#build' do
 		specify { expect(item.name).to eq name }
 		specify { expect(item.user).to eq user_sheet }
@@ -60,6 +64,17 @@ describe ItemBuilder do
 		specify { expect(item.user_id).to eq user_id }
 		specify { expect(item.images).to include(image) }
 		specify { expect(item.main_image).to eq main_image }
+
+		context 'After reset' do
+			let(:new_item) { Item.new }
+			before(:each) do
+				Item.stub(:new).and_return(new_item)
+				filled_builder.reset
+			end
+			it 'returns a new item' do
+				expect(filled_builder.build).to eq new_item
+			end
+		end
 	end
 
 end

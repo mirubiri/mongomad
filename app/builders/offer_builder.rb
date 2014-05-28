@@ -28,6 +28,12 @@ class OfferBuilder
 		self
 	end
 
+	def reset
+		@offer=Offer.new
+		@proposal_builder.reset
+		true
+	end
+
 	def build
 		@offer.proposal=@proposal_builder.build
 		@offer
