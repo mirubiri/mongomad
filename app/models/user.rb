@@ -8,7 +8,8 @@ class User
   field :disabled, type:Boolean, default:false
 
   delegate :first_name,:last_name,:gender,:language,:birth_date,:location,
-    :first_name=,:last_name=,:gender=,:language=,:birth_date=,:location=, to: :profile
+    :first_name=,:last_name=,:gender=,:language=,:birth_date=,:location=,
+    :images,:images=, to: :profile
 
   def sheet
     UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name, images:profile.images, location:profile.location) do |sheet|

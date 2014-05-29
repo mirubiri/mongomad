@@ -17,6 +17,7 @@ describe User do
   it { should delegate(:location).to :profile }
   it { should delegate(:language).to :profile }
   it { should delegate(:birth_date).to :profile }
+  it { should delegate(:images).to :profile }
 
   it { should delegate(:first_name=).to :profile }
   it { should delegate(:last_name=).to :profile }
@@ -24,6 +25,7 @@ describe User do
   it { should delegate(:location=).to :profile }
   it { should delegate(:language=).to :profile }
   it { should delegate(:birth_date=).to :profile }
+  it { should delegate(:images=).to :profile }
 
   # Validations
 
