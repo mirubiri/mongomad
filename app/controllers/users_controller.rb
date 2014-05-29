@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       #format.json { render json: @item }
     end
   end
