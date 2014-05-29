@@ -16,5 +16,3 @@
 //= require home
 //= require equal-height-columns
 //= require cloudinary
-//= require upload_preview
-//= require jquery.Jcrop.min 
