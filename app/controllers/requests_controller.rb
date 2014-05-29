@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       #format.json { render json: @request }
     end
   end
@@ -18,7 +18,6 @@ class RequestsController < ApplicationController
   end
 
   def create
-    #@request = Request.new(params[:request])
     @request = Request.new
     @request.text = params[:request][:text]
 
