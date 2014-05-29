@@ -48,6 +48,19 @@ class UserBuilder
 		self
 	end
 
+	def images(images)
+		image=images.first
+		@user.images<< ImageBuilder.new
+										.x(image[:x])
+										.y(image[:y])
+										.w(image[:w])
+										.h(image[:h])
+										.id(image[:id])
+										.main(image[:main])
+										.build
+		self
+	end
+
 	def reset
 		@user=User.new
 		true

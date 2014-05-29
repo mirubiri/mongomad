@@ -6,11 +6,11 @@ describe ImageBuilder do
 	let(:y) { 2 }
 	let(:w) { 3 }
 	let(:h) { 4 }
-	let(:item_id) { 'item_id' }
+	let(:image_id) { 'image_id' }
 	let(:main) { true }
 
 	let!(:filled_builder) do
-		builder.x(x).y(y).h(h).w(w).main(main).item_id(item_id)
+		builder.x(x).y(y).h(h).w(w).main(main).id(image_id)
 	end
 
 	let(:image) { filled_builder.build }
@@ -35,8 +35,8 @@ describe ImageBuilder do
 		specify { expect(builder.main main).to eq builder }
 	end
 
-	describe '#item_id(item_id)' do
-		specify { expect(builder.item_id item_id).to eq builder }
+	describe '#id(item_id)' do
+		specify { expect(builder.id image_id).to eq builder }
 	end
 
 	describe '#reset' do
@@ -48,7 +48,7 @@ describe ImageBuilder do
 		specify { expect(image.y).to eq y }
 		specify { expect(image.h).to eq h }
 		specify { expect(image.w).to eq w }
-		specify { expect(image.id).to eq item_id }
+		specify { expect(image.id).to eq image_id }
 		specify { expect(image.main).to eq main }
 
 		context 'After reset' do

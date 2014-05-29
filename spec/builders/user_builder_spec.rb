@@ -13,6 +13,13 @@ describe UserBuilder do
 	let(:nick) { 'nick' }
 	let(:password) { 'password' }
 
+	let(:image) { Fabricate.build(:image,main:true) }
+	let(:image_attributes) do
+		image_params=image.attributes.clone
+		image_params["id"]=image_params.delete "_id"
+		[image_params.symbolize_keys]
+	end
+
 	let!(:filled_builder) do
 		builder.first_name(first_name)
 			.last_name(last_name)
@@ -23,6 +30,7 @@ describe UserBuilder do
 			.email(email)
 			.nick(nick)
 			.password(password)
+			.images(image_attributes)
 	end
 
 	let(:user) { filled_builder.build }
@@ -63,6 +71,10 @@ describe UserBuilder do
 		specify { expect(builder.password password ).to eq builder }
 	end
 
+	describe '#images(image)' do
+		specify { expect(builder.images image_attributes).to eq builder }
+	end
+
 	describe '#reset' do
 		specify { expect(filled_builder.reset).to eq true}
 	end
@@ -77,6 +89,7 @@ describe UserBuilder do
 		specify { expect(user.birth_date).to eq birth_date}
 		specify { expect(user.gender).to eq gender }
 		specify { expect(user.disabled).to eq false }
+		specify { expect(user.images).to include image }
 
 		context 'After reset' do
 			let(:new_user) { User.new }
