@@ -18,11 +18,15 @@ class RequestsController < ApplicationController
   end
 
   def create
-    @request = Request.new
-    @request.text = params[:request][:text]
+    builder = RequestBuilder.new
+              .user(current_user)
+              .text(params[:request][:text])
+
+    request = builder.build
 
     respond_to do |format|
-      if @request.save
+      if request
+        request.save
         format.html { redirect_to offers_url }
         #format.json { render json: @request, status: :created, location: @request }
       else
