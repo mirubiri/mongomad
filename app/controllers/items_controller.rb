@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       #format.json { render json: @items }
     end
   end
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       #format.json { render json: @item }
     end
   end
@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @requests = Request.all
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       #format.json { render json: @item }
     end
   end
@@ -35,7 +36,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    params[:item][:images].each do |image|      
+    params[:item][:images].each do |image|
       preloaded_file = Cloudinary::PreloadedFile.new(image[:id])
       image[:id] = preloaded_file.public_id
     end
