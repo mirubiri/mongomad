@@ -1,6 +1,6 @@
 imageSelection = (input, selector) ->
   input_selector = selector.toString()
-
+  
   if input.files and input.files[0]
     reader = new FileReader()
     reader.onload = (e) ->
@@ -32,6 +32,7 @@ imageSelection = (input, selector) ->
 
 $ ->
   $(".add_image_container").on "click", "img", (event) ->
+    alert("imagen pinchada")
     unless $(this).attr("src") is ""
       image = $(this).clone()
       $("#original_image_container").find("img").replaceWith image

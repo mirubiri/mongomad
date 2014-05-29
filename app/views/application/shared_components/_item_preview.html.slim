@@ -1,30 +1,33 @@
 - content_for :images
   #inputcontainer1.add_image_container
     img src="http://res.cloudinary.com/improcex/image/upload/c_fit,h_50,w_50/sample" width="50" height="50" alt=""
-    label.file_button
-      |+
-      span
-        = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:onchange => "imageSelection(this,'1')"})
-    label.file_button
-      |-
+    .input_container
+      .input_text +
+      = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:class => "image_upload", :onchange => "imageSelection(this,'1')"})
+        input name="item[images][][public_id]" type="hidden" value=(yield :first_item_id) /
+        input name="item[images][][main]" type="hidden" value="false" /
+    .input_container style=("left: 60px;") 
+      .input_text.delete_image_selected -
 
   #inputcontainer2.add_image_container
-   img src="http://res.cloudinary.com/improcex/image/upload/c_fit,h_50,w_50/sample" width="50" height="50" alt=""
-    label.file_button
-      |+
-      span
-        = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:onchange => "imageSelection(this,'2')"})
-    label.file_button
-      |-
+    img src="http://res.cloudinary.com/improcex/image/upload/c_fit,h_50,w_50/sample" width="50" height="50" alt=""
+    .input_container
+      .input_text +
+      = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:class => "image_upload", :onchange => "imageSelection(this,'2')"})
+        input name="item[images][][public_id]" type="hidden" value=(yield :second_item_id) /
+        input name="item[images][][main]" type="hidden" value="true" /
+    .input_container style=("left: 60px;") 
+      .input_text.delete_image_selected -
 
   #inputcontainer3.add_image_container
     img src="http://res.cloudinary.com/improcex/image/upload/c_fit,h_50,w_50/sample" width="50" height="50" alt=""
-    label.file_button
-      |+
-      span
-        = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:onchange => "imageSelection(this,'3')"})
-    label.file_button
-      |-
+    .input_container
+      .input_text +
+      = cl_image_upload_tag(:image_id1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:class => "image_upload", :onchange => "imageSelection(this,'3')"})
+        input.hidden_image_input name="item[images][][public_id]" type="hidden" value=(yield :third_item_id) /
+        input.hidden_image_input name="item[images][][main]" type="hidden" value="false" /
+    .input_container style=("left: 60px;") 
+      .input_text.delete_image_selected -
 
 
 - content_for :name
@@ -40,3 +43,7 @@
                    :size => "10x5",
                    :maxlength => "200",
                    :required => true
+
+
+
+
