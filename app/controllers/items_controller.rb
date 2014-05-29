@@ -35,15 +35,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    preloaded_file1 = Cloudinary::PreloadedFile.new(params[:image_id1])
-    preloaded_file2 = Cloudinary::PreloadedFile.new(params[:image_id2])
-    preloaded_file3 = Cloudinary::PreloadedFile.new(params[:image_id3])
+    params[:item][:images].each do |image|      
+      preloaded_file = Cloudinary::PreloadedFile.new(image[:id])
+      image[:id] = preloaded_file.public_id
+    end
 
     builder = ItemBuilder.new
                          .user(current_user)
-                         .images([{ id:preloaded_file1.public_id, main:false },
-                                  { id:preloaded_file2.public_id, main:true },
-                                  { id:preloaded_file3.public_id, main:false }])
+                         .images(params[:item][:images])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
 
