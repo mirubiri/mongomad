@@ -38,9 +38,14 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    builder = RequestBuilder.new(@request)        
+                            .text(params[:request][:text])
+
+    request = builder.build
 
     respond_to do |format|
-      if @request.update_attributes(params[:request])
+      if request
+        request.save
         format.html { redirect_to offers_url, notice: 'Request was successfully updated.' }
         #format.json { head :no_content }
       else
