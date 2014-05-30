@@ -19,9 +19,8 @@ class RequestsController < ApplicationController
 
   def create
     builder = RequestBuilder.new
-              .user(current_user)
-              .text(params[:request][:text])
-
+                            .user(current_user)
+                            .text(params[:request][:text])
     request = builder.build
 
     respond_to do |format|
@@ -40,7 +39,6 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     builder = RequestBuilder.new(@request)        
                             .text(params[:request][:text])
-
     request = builder.build
 
     respond_to do |format|
