@@ -13,7 +13,8 @@ html
     .lPanel.mExpanded
       .lPanel.mProfile#profile
         = render partial: unique_partial('profile'),
-                 layout:  unique_layout('profile')
+                 layout:  unique_layout('profile'),
+                 locals:  { requests: @requests }
 
       .lPanel.mExpositor#expositor
         .mUpperBar.overridesPadding

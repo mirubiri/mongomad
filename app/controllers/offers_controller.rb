@@ -7,7 +7,7 @@ class OffersController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       #format.json { render json: @offers }
     end
   end
@@ -18,7 +18,7 @@ class OffersController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       #format.json { render json: @offer }
     end
   end

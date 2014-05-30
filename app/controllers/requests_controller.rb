@@ -7,7 +7,7 @@ class RequestsController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       #format.json { render json: @request }
     end
   end
@@ -18,12 +18,14 @@ class RequestsController < ApplicationController
   end
 
   def create
-    #@request = Request.new(params[:request])
-    @request = Request.new
-    @request.text = params[:request][:text]
+    builder = RequestBuilder.new
+                            .user(current_user)
+                            .text(params[:request][:text])
+    request = builder.build
 
     respond_to do |format|
-      if @request.save
+      if request
+        request.save
         format.html { redirect_to offers_url }
         #format.json { render json: @request, status: :created, location: @request }
       else
@@ -35,9 +37,14 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    
+    builder = RequestBuilder.new(@request)        
+                            .text(params[:request][:text])
+    request = builder.build
 
     respond_to do |format|
-      if @request.update_attributes(params[:request])
+      if request
+        request.save
         format.html { redirect_to offers_url, notice: 'Request was successfully updated.' }
         #format.json { head :no_content }
       else

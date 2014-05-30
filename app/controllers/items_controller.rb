@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       #format.json { render json: @items }
     end
   end
@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       #format.json { render json: @item }
     end
   end
@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @requests = Request.all
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html
       #format.json { render json: @item }
     end
   end
@@ -35,18 +36,26 @@ class ItemsController < ApplicationController
   end
 
   def create
-    preloaded_file1 = Cloudinary::PreloadedFile.new(params[:image_id1])
-    preloaded_file2 = Cloudinary::PreloadedFile.new(params[:image_id2])
-    preloaded_file3 = Cloudinary::PreloadedFile.new(params[:image_id3])
+    if params[:image1].present?
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])         
+      params[:item][:images][0][:id] = preloaded_file.public_id
+    end
+
+    if params[:image2].present?
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])         
+      params[:item][:images][1][:id] = preloaded_file.public_id
+    end
+
+    if params[:image3].present?
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])         
+      params[:item][:images][2][:id] = preloaded_file.public_id
+    end
 
     builder = ItemBuilder.new
                          .user(current_user)
-                         .images([{ id:preloaded_file1.public_id, main:false },
-                                  { id:preloaded_file2.public_id, main:true },
-                                  { id:preloaded_file3.public_id, main:false }])
+                         .images(params[:item][:images])
                          .name(params[:item][:name])
-                         .description(params[:item][:description])
-
+                         .description(params[:item][:description]) 
     item = builder.build
 
     respond_to do |format|

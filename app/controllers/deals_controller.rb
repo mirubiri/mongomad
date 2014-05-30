@@ -2,20 +2,16 @@ class DealsController < ApplicationController
 
   layout 'exposition'
 
-  # GET /deals
-  # GET /deals.json
   def index
     @deals = Deal.all
     @requests = Request.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       #format.json { render json: @deals }
     end
   end
 
-  # PUT /deals/1
-  # PUT /deals/1.json
   def update
     @deal = Deal.find(params[:id])
 
@@ -30,8 +26,6 @@ class DealsController < ApplicationController
     end
   end
 
-  # DELETE /deals/1
-  # DELETE /deals/1.json
   def destroy
     @deal = Deal.find(params[:id])
     @deal.destroy

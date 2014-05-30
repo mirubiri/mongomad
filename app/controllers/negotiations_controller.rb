@@ -7,7 +7,7 @@ class NegotiationsController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       #format.json { render json: @negotiations }
     end
   end
