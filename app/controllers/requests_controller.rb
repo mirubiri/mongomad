@@ -37,6 +37,7 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
+    
     builder = RequestBuilder.new(@request)        
                             .text(params[:request][:text])
     request = builder.build
