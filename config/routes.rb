@@ -59,6 +59,7 @@ Mongomad::Application.routes.draw do
   resources :offers
   resources :negotiations
   resources :deals
+  resource  :profile
   #resource :profile
   #resources :alerts
 
