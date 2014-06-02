@@ -12,4 +12,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def update
+    @requests = Request.all
+
+    respond_to do |format|
+      format.html
+      #format.json { render json: @items }
+    end
+  end
+
 end

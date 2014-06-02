@@ -2,7 +2,7 @@
   #user_image
     img
   .add_image_container    
-    = cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this.value)"})
+    = cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this)"})
     
 
 - content_for :first_name
@@ -25,3 +25,6 @@
                     :size => "4x1",
                     :maxlength => "20",
                     :required => true
+
+- content_for :send_button
+  = form.submit "Save"

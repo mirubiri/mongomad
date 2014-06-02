@@ -1,4 +1,4 @@
 = cloudinary_js_config
 
-= form_for edit_profile_path do |form|
+= form_for :profile, method: :put do |form|
   = render partial: 'form', layout: 'profiles/layouts/form_layout', locals: { form: form }
