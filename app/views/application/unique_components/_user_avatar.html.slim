@@ -1,8 +1,8 @@
 - single_content_for :face
-  = image_tag('sample', 50, 50)
+  = image_tag(current_user.images.first.id, 50, 50)
 
 - content_for :data
   .data
-  | name
+    = current_user.profile.first_name
   .data
-  | surname
+    = current_user.profile.last_name
