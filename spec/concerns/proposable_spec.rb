@@ -43,7 +43,7 @@ describe 'Proposable' do
     end
   end
 
-  before(:each) do
+  before(:example) do
     proposable.build_proposal(composer_id:composer.id,receiver_id:receiver.id,goods:goods)
     proposable.user_ids=[composer.id,receiver.id]
     proposable.user_sheets=[composer.sheet,receiver.sheet]

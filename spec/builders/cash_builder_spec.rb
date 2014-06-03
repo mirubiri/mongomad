@@ -27,7 +27,7 @@ describe CashBuilder do
 
 		context 'After reset' do
 			let(:new_cash) { Cash.new }
-			before(:each) do
+			before(:example) do
 				allow(Cash).to receive(:new).and_return(new_cash)
 				filled_builder.reset
 			end

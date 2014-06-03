@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "users/new", :type => :view do
-  before(:each) do
+  before(:example) do
     assign(:user, stub_model(User).as_new_record)
   end
 

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "negotiations/index", :type => :view do
-  before(:each) do
+  before(:example) do
     assign(:negotiations, [
       stub_model(Negotiation),
       stub_model(Negotiation)

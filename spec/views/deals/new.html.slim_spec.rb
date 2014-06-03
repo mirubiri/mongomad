@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "deals/new", :type => :view do
-  before(:each) do
+  before(:example) do
     assign(:deal, stub_model(Deal).as_new_record)
   end
 

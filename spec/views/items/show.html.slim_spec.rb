@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "items/show", :type => :view do
-  before(:each) do
+  before(:example) do
     @item = assign(:item, stub_model(Item))
   end
 

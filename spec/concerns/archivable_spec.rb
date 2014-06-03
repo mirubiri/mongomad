@@ -17,7 +17,7 @@ describe Archivable do
 
   describe '#archive' do
   	context 'document is persisted' do
-  		before(:each) { document.save }
+  		before(:example) { document.save }
 
   		it 'sets the document as archived in the database' do
   			document.archive

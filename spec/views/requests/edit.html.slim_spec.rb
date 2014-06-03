@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "requests/edit", :type => :view do
-  before(:each) do
+  before(:example) do
     @request = assign(:request, stub_model(Request))
   end
 

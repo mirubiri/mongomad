@@ -93,7 +93,7 @@ describe UserBuilder do
 
 		context 'After reset' do
 			let(:new_user) { User.new }
-			before(:each) do
+			before(:example) do
 				allow(User).to receive(:new).and_return(new_user)
 				filled_builder.reset
 			end

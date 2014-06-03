@@ -53,7 +53,7 @@ describe ImageBuilder do
 
 		context 'After reset' do
 			let(:new_image) { Attachment::Image.new }
-			before(:each) do
+			before(:example) do
 				allow(Attachment::Image).to receive(:new).and_return(new_image)
 				filled_builder.reset
 			end

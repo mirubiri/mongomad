@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "offers/edit", :type => :view do
-  before(:each) do
+  before(:example) do
     @offer = assign(:offer, stub_model(Offer))
   end
 

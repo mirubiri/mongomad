@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "negotiations/edit", :type => :view do
-  before(:each) do
+  before(:example) do
     @negotiation = assign(:negotiation, stub_model(Negotiation))
   end
 

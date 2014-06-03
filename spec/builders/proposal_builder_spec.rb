@@ -39,7 +39,7 @@ describe ProposalBuilder do
 
 		context 'After reset' do
 			let(:new_proposal) { Proposal.new }
-			before(:each) do
+			before(:example) do
 				allow(Proposal).to receive(:new).and_return(new_proposal)
 				filled_builder.reset
 			end

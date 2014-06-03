@@ -28,7 +28,7 @@ describe UserSheet, :type => :model do
   end
 
   describe '#current_sheet' do
-    before(:each) do
+    before(:example) do
       user.save
       user_sheet.nick = 'outdated'
     end

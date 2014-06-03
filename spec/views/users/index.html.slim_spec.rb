@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "users/index", :type => :view do
-  before(:each) do
+  before(:example) do
     assign(:users, [
       stub_model(User),
       stub_model(User)
