@@ -9,11 +9,8 @@ describe Profile do
 
   # Attributes
   it { should be_timestamped_document }
-  it { should have_fields :first_name, :last_name, :gender, :language }
+  it { should have_fields :first_name, :last_name, :gender, :language, :location }
   it { should have_field(:birth_date).of_type(Date) }
-  it { should have_field(:location).of_type(Array) }
-
-  # Validations
 
   # Factories
   specify { expect(Fabricate.build(:profile)).to be_valid }
