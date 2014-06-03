@@ -1,26 +1,26 @@
 - content_for :images
   #inputcontainer1.add_image_container
     img
-    label
+    label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true})
+        = cl_image_upload_tag(:image1, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "imageSelection(this,'image1')"})
     label
       |-
-  #inputcontainer1.add_image_container
+  #inputcontainer2.add_image_container
     img
-    label
+    label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image2, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true})
+        = cl_image_upload_tag(:image2, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "imageSelection(this,'image2')"})
     label
       |-
-  #inputcontainer1.add_image_container
+  #inputcontainer3.add_image_container
     img
-    label
+    label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image3, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true})
+        = cl_image_upload_tag(:image3, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "imageSelection(this,'image3')"})
     label
       |-
 
