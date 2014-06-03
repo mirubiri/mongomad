@@ -1,30 +1,34 @@
 - content_for :mainImage
   #user_image
-    img
-  .add_image_container    
-    = cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this)"})
-    
+    | default image
+  .add_image_container
+
+    = cl_image_upload_tag(:user_image, :html => {:multiple => true, :onchange => "userImageChange(this)"})
+    /= cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this)"})
 
 - content_for :first_name
-   = form.text_area :first_name,
-                    :placeholder => "Your first name...",
-                    :size => "4x1",
-                    :maxlength => "20",
-                    :required => true
+  | First name
+  = form.text_area :first_name,
+                   :placeholder => "Your first name...",
+                   :size => "4x1",
+                   :maxlength => "20",
+                   :required => false
 
 - content_for :last_name
-   = form.text_area :last_name,
-                    :placeholder => "Your last name...",
-                    :size => "4x1",
-                    :maxlength => "20",
-                    :required => true
+  | Last name
+  = form.text_area :last_name,
+                   :placeholder => "Your last name...",
+                   :size => "4x1",
+                   :maxlength => "20",
+                   :required => false
 
 - content_for :location
-   = form.text_area :location,
-                    :placeholder => "Your location...",
-                    :size => "4x1",
-                    :maxlength => "20",
-                    :required => true
+  | Location
+  = form.text_area :location,
+                   :placeholder => "Your location...",
+                   :size => "4x1",
+                   :maxlength => "20",
+                   :required => false
 
 - content_for :send_button
   = form.submit "Save"
