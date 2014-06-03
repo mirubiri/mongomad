@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "users/show" do
+describe "users/show", :type => :view do
   before(:each) do
     @user = assign(:user, stub_model(User))
   end

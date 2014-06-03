@@ -29,7 +29,7 @@ describe RequestBuilder do
 
   describe '#reset' do
     it 'resets the builder' do
-      Request.stub(:new).and_return(new_request)
+      allow(Request).to receive(:new).and_return(new_request)
       filled_builder.reset
       expect(filled_builder.build).to eq new_request
     end

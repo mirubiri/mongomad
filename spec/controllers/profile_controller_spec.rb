@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ProfileController do
+describe ProfileController, :type => :controller do
 
 end

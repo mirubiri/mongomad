@@ -48,7 +48,7 @@ describe OfferBuilder do
 
 		context 'After reset' do
 			let!(:new_offer) { Offer.new }
-			before(:each) { Offer.stub(:new).and_return(new_offer) }
+			before(:each) { allow(Offer).to receive(:new).and_return(new_offer) }
 
 			it 'returns a new offer' do
 				filled_builder.reset

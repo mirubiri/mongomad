@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Good do
+describe Good, :type => :model do
   # Modules
 
   # Relations
-  it { should be_embedded_in :proposal }
+  it { is_expected.to be_embedded_in :proposal }
 
   # Attributes
-  it { should have_field(:user_id).of_type(Moped::BSON::ObjectId) }
-  it { should be_timestamped_document }
+  it { is_expected.to have_field(:user_id).of_type(Moped::BSON::ObjectId) }
+  it { is_expected.to be_timestamped_document }
 
   # Validations
-  it { should_not validate_presence_of :proposal }
+  it { is_expected.not_to validate_presence_of :proposal }
 end

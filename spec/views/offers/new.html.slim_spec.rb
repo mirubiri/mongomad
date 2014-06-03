@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "offers/new" do
+describe "offers/new", :type => :view do
   before(:each) do
     assign(:offer, stub_model(Offer).as_new_record)
   end

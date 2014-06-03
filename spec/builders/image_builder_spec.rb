@@ -54,7 +54,7 @@ describe ImageBuilder do
 		context 'After reset' do
 			let(:new_image) { Attachment::Image.new }
 			before(:each) do
-				Attachment::Image.stub(:new).and_return(new_image)
+				allow(Attachment::Image).to receive(:new).and_return(new_image)
 				filled_builder.reset
 			end
 			it 'returns a new image' do

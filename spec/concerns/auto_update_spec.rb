@@ -30,7 +30,7 @@ describe AutoUpdate do
     Test::Copy.create!
   end
 
-  it { should have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
 
   describe '#auto_update' do
     context 'when is updated' do

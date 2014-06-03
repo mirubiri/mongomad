@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe Profile do
+describe Profile, :type => :model do
   # Modules
-  it { should include_module Attachment::Images }
+  it { is_expected.to include_module Attachment::Images }
 
   # Relations
-  it { should be_embedded_in :user }
+  it { is_expected.to be_embedded_in :user }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_fields :first_name, :last_name, :gender, :language }
-  it { should have_field(:birth_date).of_type(Date) }
-  it { should have_field(:location).of_type(Array) }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_fields :first_name, :last_name, :gender, :language }
+  it { is_expected.to have_field(:birth_date).of_type(Date) }
+  it { is_expected.to have_field(:location).of_type(Array) }
 
   # Validations
 

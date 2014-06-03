@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe Offer do
+describe Offer, :type => :model do
 
   specify { expect(Offer).to be < Proposable }
   
   # Relations
-  it { should belong_to :negotiation }
+  it { is_expected.to belong_to :negotiation }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field :message }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field :message }
 end

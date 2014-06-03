@@ -24,15 +24,15 @@ describe 'Proposable' do
   end
 
   subject { Test::Proposable }
-  it { should < Ownership }
+  it { is_expected.to be < Ownership }
 
   context 'proposal_historic is :false' do
-    it { should embed_one(:proposal).of_type(Proposal) }
+    it { is_expected.to embed_one(:proposal).of_type(Proposal) }
   end
 
   context 'proposal_historic is true' do
     subject { Test::ProposableHistoric }
-    it { should embed_many(:proposals).of_type(Proposal) }
+    it { is_expected.to embed_many(:proposals).of_type(Proposal) }
 
     describe '#proposal' do
       it 'returns the last proposal' do

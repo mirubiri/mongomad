@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "negotiations/show" do
+describe "negotiations/show", :type => :view do
   before(:each) do
     @negotiation = assign(:negotiation, stub_model(Negotiation))
   end

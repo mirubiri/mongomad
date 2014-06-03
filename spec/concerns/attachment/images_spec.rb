@@ -24,7 +24,7 @@ describe Attachment::Images do
   subject { test_class }
 
   # Relations
-  it { should embed_many :images }
+  it { is_expected.to embed_many :images }
 
   # Checks
 

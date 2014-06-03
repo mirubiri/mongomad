@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe ItemsController do
+describe ItemsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Item. As you add validations to Item, be sure to
@@ -34,7 +34,7 @@ describe ItemsController do
     it "assigns all items as @items" do
       item = Item.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:items).should eq([item])
+      expect(assigns(:items)).to eq([item])
     end
   end
 
@@ -42,14 +42,14 @@ describe ItemsController do
     it "assigns the requested item as @item" do
       item = Item.create! valid_attributes
       get :show, {:id => item.to_param}, valid_session
-      assigns(:item).should eq(item)
+      expect(assigns(:item)).to eq(item)
     end
   end
 
   describe "GET new" do
     it "assigns a new item as @item" do
       get :new, {}, valid_session
-      assigns(:item).should be_a_new(Item)
+      expect(assigns(:item)).to be_a_new(Item)
     end
   end
 
@@ -57,7 +57,7 @@ describe ItemsController do
     it "assigns the requested item as @item" do
       item = Item.create! valid_attributes
       get :edit, {:id => item.to_param}, valid_session
-      assigns(:item).should eq(item)
+      expect(assigns(:item)).to eq(item)
     end
   end
 
@@ -71,29 +71,29 @@ describe ItemsController do
 
       it "assigns a newly created item as @item" do
         post :create, {:item => valid_attributes}, valid_session
-        assigns(:item).should be_a(Item)
-        assigns(:item).should be_persisted
+        expect(assigns(:item)).to be_a(Item)
+        expect(assigns(:item)).to be_persisted
       end
 
       it "redirects to the created item" do
         post :create, {:item => valid_attributes}, valid_session
-        response.should redirect_to(Item.last)
+        expect(response).to redirect_to(Item.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved item as @item" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Item.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Item).to receive(:save).and_return(false)
         post :create, {:item => {  }}, valid_session
-        assigns(:item).should be_a_new(Item)
+        expect(assigns(:item)).to be_a_new(Item)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Item.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Item).to receive(:save).and_return(false)
         post :create, {:item => {  }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -106,20 +106,20 @@ describe ItemsController do
         # specifies that the Item created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Item.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        expect_any_instance_of(Item).to receive(:update_attributes).with({ "these" => "params" })
         put :update, {:id => item.to_param, :item => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested item as @item" do
         item = Item.create! valid_attributes
         put :update, {:id => item.to_param, :item => valid_attributes}, valid_session
-        assigns(:item).should eq(item)
+        expect(assigns(:item)).to eq(item)
       end
 
       it "redirects to the item" do
         item = Item.create! valid_attributes
         put :update, {:id => item.to_param, :item => valid_attributes}, valid_session
-        response.should redirect_to(item)
+        expect(response).to redirect_to(item)
       end
     end
 
@@ -127,17 +127,17 @@ describe ItemsController do
       it "assigns the item as @item" do
         item = Item.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Item.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Item).to receive(:save).and_return(false)
         put :update, {:id => item.to_param, :item => {  }}, valid_session
-        assigns(:item).should eq(item)
+        expect(assigns(:item)).to eq(item)
       end
 
       it "re-renders the 'edit' template" do
         item = Item.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Item.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Item).to receive(:save).and_return(false)
         put :update, {:id => item.to_param, :item => {  }}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -153,7 +153,7 @@ describe ItemsController do
     it "redirects to the items list" do
       item = Item.create! valid_attributes
       delete :destroy, {:id => item.to_param}, valid_session
-      response.should redirect_to(items_url)
+      expect(response).to redirect_to(items_url)
     end
   end
 

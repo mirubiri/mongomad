@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe OffersController do
+describe OffersController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Offer. As you add validations to Offer, be sure to
@@ -34,7 +34,7 @@ describe OffersController do
     it "assigns all offers as @offers" do
       offer = Offer.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:offers).should eq([offer])
+      expect(assigns(:offers)).to eq([offer])
     end
   end
 
@@ -42,14 +42,14 @@ describe OffersController do
     it "assigns the requested offer as @offer" do
       offer = Offer.create! valid_attributes
       get :show, {:id => offer.to_param}, valid_session
-      assigns(:offer).should eq(offer)
+      expect(assigns(:offer)).to eq(offer)
     end
   end
 
   describe "GET new" do
     it "assigns a new offer as @offer" do
       get :new, {}, valid_session
-      assigns(:offer).should be_a_new(Offer)
+      expect(assigns(:offer)).to be_a_new(Offer)
     end
   end
 
@@ -57,7 +57,7 @@ describe OffersController do
     it "assigns the requested offer as @offer" do
       offer = Offer.create! valid_attributes
       get :edit, {:id => offer.to_param}, valid_session
-      assigns(:offer).should eq(offer)
+      expect(assigns(:offer)).to eq(offer)
     end
   end
 
@@ -71,29 +71,29 @@ describe OffersController do
 
       it "assigns a newly created offer as @offer" do
         post :create, {:offer => valid_attributes}, valid_session
-        assigns(:offer).should be_a(Offer)
-        assigns(:offer).should be_persisted
+        expect(assigns(:offer)).to be_a(Offer)
+        expect(assigns(:offer)).to be_persisted
       end
 
       it "redirects to the created offer" do
         post :create, {:offer => valid_attributes}, valid_session
-        response.should redirect_to(Offer.last)
+        expect(response).to redirect_to(Offer.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved offer as @offer" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Offer.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Offer).to receive(:save).and_return(false)
         post :create, {:offer => {  }}, valid_session
-        assigns(:offer).should be_a_new(Offer)
+        expect(assigns(:offer)).to be_a_new(Offer)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Offer.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Offer).to receive(:save).and_return(false)
         post :create, {:offer => {  }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -106,20 +106,20 @@ describe OffersController do
         # specifies that the Offer created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Offer.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        expect_any_instance_of(Offer).to receive(:update_attributes).with({ "these" => "params" })
         put :update, {:id => offer.to_param, :offer => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested offer as @offer" do
         offer = Offer.create! valid_attributes
         put :update, {:id => offer.to_param, :offer => valid_attributes}, valid_session
-        assigns(:offer).should eq(offer)
+        expect(assigns(:offer)).to eq(offer)
       end
 
       it "redirects to the offer" do
         offer = Offer.create! valid_attributes
         put :update, {:id => offer.to_param, :offer => valid_attributes}, valid_session
-        response.should redirect_to(offer)
+        expect(response).to redirect_to(offer)
       end
     end
 
@@ -127,17 +127,17 @@ describe OffersController do
       it "assigns the offer as @offer" do
         offer = Offer.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Offer.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Offer).to receive(:save).and_return(false)
         put :update, {:id => offer.to_param, :offer => {  }}, valid_session
-        assigns(:offer).should eq(offer)
+        expect(assigns(:offer)).to eq(offer)
       end
 
       it "re-renders the 'edit' template" do
         offer = Offer.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Offer.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Offer).to receive(:save).and_return(false)
         put :update, {:id => offer.to_param, :offer => {  }}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -153,7 +153,7 @@ describe OffersController do
     it "redirects to the offers list" do
       offer = Offer.create! valid_attributes
       delete :destroy, {:id => offer.to_param}, valid_session
-      response.should redirect_to(offers_url)
+      expect(response).to redirect_to(offers_url)
     end
   end
 

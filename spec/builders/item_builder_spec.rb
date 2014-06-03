@@ -68,7 +68,7 @@ describe ItemBuilder do
 		context 'After reset' do
 			let(:new_item) { Item.new }
 			before(:each) do
-				Item.stub(:new).and_return(new_item)
+				allow(Item).to receive(:new).and_return(new_item)
 				filled_builder.reset
 			end
 			it 'returns a new item' do

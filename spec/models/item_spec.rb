@@ -1,18 +1,18 @@
 require 'spec_helper'
 
-describe Item do
+describe Item, :type => :model do
   # Variables
   let(:item) { Fabricate.build(:item) }
 
   # Modules
-  it { should include_module Attachment::Images }
-  it { should include_module Ownership }
+  it { is_expected.to include_module Attachment::Images }
+  it { is_expected.to include_module Ownership }
 
   # Relations
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_fields :name, :description }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_fields :name, :description }
 
   # Validations
 

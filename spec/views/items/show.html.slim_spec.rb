@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "items/show" do
+describe "items/show", :type => :view do
   before(:each) do
     @item = assign(:item, stub_model(Item))
   end

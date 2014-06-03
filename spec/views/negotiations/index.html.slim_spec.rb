@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "negotiations/index" do
+describe "negotiations/index", :type => :view do
   before(:each) do
     assign(:negotiations, [
       stub_model(Negotiation),

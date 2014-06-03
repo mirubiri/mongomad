@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe NegotiationsController do
+describe NegotiationsController, :type => :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Negotiation. As you add validations to Negotiation, be sure to
@@ -34,7 +34,7 @@ describe NegotiationsController do
     it "assigns all negotiations as @negotiations" do
       negotiation = Negotiation.create! valid_attributes
       get :index, {}, valid_session
-      assigns(:negotiations).should eq([negotiation])
+      expect(assigns(:negotiations)).to eq([negotiation])
     end
   end
 
@@ -42,14 +42,14 @@ describe NegotiationsController do
     it "assigns the requested negotiation as @negotiation" do
       negotiation = Negotiation.create! valid_attributes
       get :show, {:id => negotiation.to_param}, valid_session
-      assigns(:negotiation).should eq(negotiation)
+      expect(assigns(:negotiation)).to eq(negotiation)
     end
   end
 
   describe "GET new" do
     it "assigns a new negotiation as @negotiation" do
       get :new, {}, valid_session
-      assigns(:negotiation).should be_a_new(Negotiation)
+      expect(assigns(:negotiation)).to be_a_new(Negotiation)
     end
   end
 
@@ -57,7 +57,7 @@ describe NegotiationsController do
     it "assigns the requested negotiation as @negotiation" do
       negotiation = Negotiation.create! valid_attributes
       get :edit, {:id => negotiation.to_param}, valid_session
-      assigns(:negotiation).should eq(negotiation)
+      expect(assigns(:negotiation)).to eq(negotiation)
     end
   end
 
@@ -71,29 +71,29 @@ describe NegotiationsController do
 
       it "assigns a newly created negotiation as @negotiation" do
         post :create, {:negotiation => valid_attributes}, valid_session
-        assigns(:negotiation).should be_a(Negotiation)
-        assigns(:negotiation).should be_persisted
+        expect(assigns(:negotiation)).to be_a(Negotiation)
+        expect(assigns(:negotiation)).to be_persisted
       end
 
       it "redirects to the created negotiation" do
         post :create, {:negotiation => valid_attributes}, valid_session
-        response.should redirect_to(Negotiation.last)
+        expect(response).to redirect_to(Negotiation.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved negotiation as @negotiation" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Negotiation.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Negotiation).to receive(:save).and_return(false)
         post :create, {:negotiation => {  }}, valid_session
-        assigns(:negotiation).should be_a_new(Negotiation)
+        expect(assigns(:negotiation)).to be_a_new(Negotiation)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Negotiation.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Negotiation).to receive(:save).and_return(false)
         post :create, {:negotiation => {  }}, valid_session
-        response.should render_template("new")
+        expect(response).to render_template("new")
       end
     end
   end
@@ -106,20 +106,20 @@ describe NegotiationsController do
         # specifies that the Negotiation created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Negotiation.any_instance.should_receive(:update_attributes).with({ "these" => "params" })
+        expect_any_instance_of(Negotiation).to receive(:update_attributes).with({ "these" => "params" })
         put :update, {:id => negotiation.to_param, :negotiation => { "these" => "params" }}, valid_session
       end
 
       it "assigns the requested negotiation as @negotiation" do
         negotiation = Negotiation.create! valid_attributes
         put :update, {:id => negotiation.to_param, :negotiation => valid_attributes}, valid_session
-        assigns(:negotiation).should eq(negotiation)
+        expect(assigns(:negotiation)).to eq(negotiation)
       end
 
       it "redirects to the negotiation" do
         negotiation = Negotiation.create! valid_attributes
         put :update, {:id => negotiation.to_param, :negotiation => valid_attributes}, valid_session
-        response.should redirect_to(negotiation)
+        expect(response).to redirect_to(negotiation)
       end
     end
 
@@ -127,17 +127,17 @@ describe NegotiationsController do
       it "assigns the negotiation as @negotiation" do
         negotiation = Negotiation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Negotiation.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Negotiation).to receive(:save).and_return(false)
         put :update, {:id => negotiation.to_param, :negotiation => {  }}, valid_session
-        assigns(:negotiation).should eq(negotiation)
+        expect(assigns(:negotiation)).to eq(negotiation)
       end
 
       it "re-renders the 'edit' template" do
         negotiation = Negotiation.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
-        Negotiation.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of(Negotiation).to receive(:save).and_return(false)
         put :update, {:id => negotiation.to_param, :negotiation => {  }}, valid_session
-        response.should render_template("edit")
+        expect(response).to render_template("edit")
       end
     end
   end
@@ -153,7 +153,7 @@ describe NegotiationsController do
     it "redirects to the negotiations list" do
       negotiation = Negotiation.create! valid_attributes
       delete :destroy, {:id => negotiation.to_param}, valid_session
-      response.should redirect_to(negotiations_url)
+      expect(response).to redirect_to(negotiations_url)
     end
   end
 
