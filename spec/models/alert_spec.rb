@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Alert, :type => :model do
-  
+
   it { is_expected.to include_module Ownership }
 
   # Attributes

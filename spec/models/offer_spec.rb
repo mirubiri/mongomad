@@ -1,9 +1,9 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Offer, :type => :model do
 
   specify { expect(Offer).to be < Proposable }
-  
+
   # Relations
   it { is_expected.to belong_to :negotiation }
 

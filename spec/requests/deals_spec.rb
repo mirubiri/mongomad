@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Deals", :type => :request do
   describe "GET /deals" do

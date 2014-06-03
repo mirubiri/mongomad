@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Attachment::Images do
   # Variables
@@ -8,7 +8,7 @@ describe Attachment::Images do
       include Attachment::Images
     end
   end
-  
+
   let(:image_one) { Fabricate.build(:image, main: true) }
   let(:image_two) { Fabricate.build(:image) }
   let(:image_three) { Fabricate.build(:image) }

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Negotiations", :type => :request do
   describe "GET /negotiations" do

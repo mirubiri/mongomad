@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe 'OneCashPolicy' do
   let(:cash) { [Fabricate.build(:cash)] }

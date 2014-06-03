@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ImageBuilder do
 	let(:builder) { ImageBuilder.new }

@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-class Test::Proposable 
+class Test::Proposable
   include Mongoid::Document
   include Proposable
   proposal_historic :false
@@ -18,7 +18,7 @@ describe 'Proposable' do
   let(:composer) { Fabricate.build(:user) }
   let(:receiver) { Fabricate.build(:user) }
   let(:goods) do
-    [ Fabricate.build(:item,user_id:composer.id).to_product, 
+    [ Fabricate.build(:item,user_id:composer.id).to_product,
       Fabricate.build(:item,user_id:receiver.id).to_product,
       Fabricate.build(:cash,user_id:composer).to_product ]
   end
@@ -51,7 +51,7 @@ describe 'Proposable' do
 
   describe '#composer' do
     it 'returns the user_sheet of the composer' do
-      expect(proposable.composer).to eq composer.sheet 
+      expect(proposable.composer).to eq composer.sheet
     end
   end
 
@@ -78,4 +78,4 @@ describe 'Proposable' do
       expect(proposable.receiver_goods).to eq proposable.proposal.receiver_goods
     end
   end
-end 
+end

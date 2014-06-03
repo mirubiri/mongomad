@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "items/edit", :type => :view do
   before(:each) do
