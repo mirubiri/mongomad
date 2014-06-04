@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Proposal do
+describe Proposal, :type => :model do
   # Variables
   let(:composer) { Fabricate.build(:user) }
   let(:receiver) { Fabricate.build(:user) }
@@ -9,12 +9,12 @@ describe Proposal do
   let(:receiver_sheet) { receiver.sheet }
 
   # Relations
-  it { should be_embedded_in :proposal_container }
-  it { should embed_many :goods }
+  it { is_expected.to be_embedded_in :proposal_container }
+  it { is_expected.to embed_many :goods }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_fields(:composer_id,:receiver_id) }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_fields(:composer_id,:receiver_id) }
 
 
   let(:filled_proposal) do

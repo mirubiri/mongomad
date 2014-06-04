@@ -1,18 +1,18 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Message do
+describe Message, :type => :model do
   # Variables
   let(:user) { Fabricate.build(:user) }
   let(:message) { Fabricate.build(:message, user_id:user.id) }
   let(:user_sheet) { user.sheet }
 
   # Relations
-  it { should be_embedded_in :message_container }
+  it { is_expected.to be_embedded_in :message_container }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field(:user_id) }
-  it { should have_field :text }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field(:user_id) }
+  it { is_expected.to have_field :text }
 
   # Validations
 

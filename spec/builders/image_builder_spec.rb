@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ImageBuilder do
 	let(:builder) { ImageBuilder.new }
@@ -53,8 +53,8 @@ describe ImageBuilder do
 
 		context 'After reset' do
 			let(:new_image) { Attachment::Image.new }
-			before(:each) do
-				Attachment::Image.stub(:new).and_return(new_image)
+			before(:example) do
+				allow(Attachment::Image).to receive(:new).and_return(new_image)
 				filled_builder.reset
 			end
 			it 'returns a new image' do

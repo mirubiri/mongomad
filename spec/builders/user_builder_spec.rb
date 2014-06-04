@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe UserBuilder do
 
@@ -93,8 +93,8 @@ describe UserBuilder do
 
 		context 'After reset' do
 			let(:new_user) { User.new }
-			before(:each) do
-				User.stub(:new).and_return(new_user)
+			before(:example) do
+				allow(User).to receive(:new).and_return(new_user)
 				filled_builder.reset
 			end
 			it 'returns a new item' do

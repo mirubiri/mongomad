@@ -1,11 +1,11 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Cash do
+describe Cash, :type => :model do
   # Relations
-  specify { Cash.should < Good }
+  specify { expect(Cash).to be < Good }
 
   # Attributes
-  it { should have_field(:amount) }
+  it { is_expected.to have_field(:amount) }
 
   # Validations
 

@@ -1,26 +1,37 @@
 - content_for :main_image
-  div.preview
+  #pan.preview
     img src=""
-  div#coodinates1
-    <input type="hidden" size="4" id="name1" name="item[images][1][main]" value=""></label>
-    <label>X <input type="text" size="4" id="x1" name="item[images][1][x]" value=""></label>
-    <label>Y <input type="text" size="4" id="y1" name="item[images][1][y]" value=""></label>
-    <label>H <input type="text" size="4" id="h" name="item[images][1][h]" value=""></label>
-    <label>W <input type="text" size="4" id="w" name="item[images][1][w]" value=""></label>
-  div#coodinates2
-    <input type="hidden" size="4" id="name2" name="item[images][2][main]" value=""></label>
-    <label>X <input type="text" size="4" id="x1" name="item[images][2][x]" value=""></label>
-    <label>Y <input type="text" size="4" id="y1" name="item[images][2][y]" value=""></label>
-    <label>H <input type="text" size="4" id="h" name="item[images][2][h]" value=""></label>
-    <label>W <input type="text" size="4" id="w" name="item[images][2][w]" value=""></label>
-  div#coodinates3
-    <input type="hidden" size="4" id="name3" name="item[images][3][main]" value=""></label>
-    <label>X <input type="text" size="4" id="x1" name="item[images][3][x]" value=""></label>
-    <label>Y <input type="text" size="4" id="y1" name="item[images][3][y]" value=""></label>
-    <label>H <input type="text" size="4" id="h" name="item[images][3][h]" value=""></label>
-    <label>W <input type="text" size="4" id="w" name="item[images][3][w]" value=""></label>
-  div.progress_bar
 
+  div#controls
+    a#zoomin href="#" 
+      br
+        | Zoom In
+    a#zoomout href="#" 
+      br
+        | Zoom Out  
+
+  div#output
+    div
+      input#name1 type="hidden" name="item[images][1][main]" value=""
+      input#x1_preview1 name="item[images][1][x]" type="hidden" value="0"
+      input#y1_preview1 name="item[images][1][y]" type="hidden" value="0"
+      input name="item[images][1][h]" type="hidden" value="300"
+      input name="item[images][1][w]" type="hidden" value="300"
+    div
+      input#name1 type="hidden" name="item[images][2][main]" value=""
+      input#x1_preview2 name="item[images][2][x]" type="hidden" value="0"
+      input#y1_preview2 name="item[images][2][y]" type="hidden" value="0"
+      input name="item[images][2][h]" type="hidden" value="300"
+      input name="item[images][2][w]" type="hidden" value="300"
+    div
+      input#name1 type="hidden" name="item[images][3][main]" value=""
+      input#x1_preview3 name="item[images][3][x]" type="hidden" value="0"
+      input#y1_preview3 name="item[images][3][y]" type="hidden" value="0"
+      input name="item[images][3][h]" type="hidden" value="300"
+      input name="item[images][3][w]" type="hidden" value="300"
+  
+  div.mExpanded
+    .progress_bar
 
 - content_for :item_preview
   = render partial: shared_partial('item_preview'),

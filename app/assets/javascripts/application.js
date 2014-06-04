@@ -17,3 +17,4 @@
 //= require home
 //= require equal-height-columns
 //= require cloudinary
+//= require jquery-panzoom

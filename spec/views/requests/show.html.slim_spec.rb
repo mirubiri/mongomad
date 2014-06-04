@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "requests/show" do
-  before(:each) do
+describe "requests/show", :type => :view do
+  before(:example) do
     @request = assign(:request, stub_model(Request))
   end
 

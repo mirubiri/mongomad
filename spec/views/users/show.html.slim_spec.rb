@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "users/show" do
-  before(:each) do
+describe "users/show", :type => :view do
+  before(:example) do
     @user = assign(:user, stub_model(User))
   end
 

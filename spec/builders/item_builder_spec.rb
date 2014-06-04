@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ItemBuilder do
 	let(:builder) { ItemBuilder.new }
@@ -67,8 +67,8 @@ describe ItemBuilder do
 
 		context 'After reset' do
 			let(:new_item) { Item.new }
-			before(:each) do
-				Item.stub(:new).and_return(new_item)
+			before(:example) do
+				allow(Item).to receive(:new).and_return(new_item)
 				filled_builder.reset
 			end
 			it 'returns a new item' do

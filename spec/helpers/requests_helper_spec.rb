@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # Specs in this file have access to a helper object that includes
 # the RequestsHelper. For example:
@@ -10,6 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe RequestsHelper do
+describe RequestsHelper, :type => :helper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

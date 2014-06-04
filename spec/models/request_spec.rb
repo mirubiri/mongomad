@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Request do
+describe Request, :type => :model do
   # Variables
   let(:request) { Fabricate.build(:request) }
 
@@ -9,8 +9,8 @@ describe Request do
   # Relations
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field :text }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field :text }
 
 
   # Validations

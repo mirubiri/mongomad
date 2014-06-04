@@ -26,7 +26,6 @@ group :development,:test do
   gem 'mongoid'
   gem 'jquery-rails'
   gem 'better_errors'
-  gem 'micromachine'
   gem 'pundit'
   gem 'cloudinary'
   gem 'slim-rails'
