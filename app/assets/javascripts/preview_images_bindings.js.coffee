@@ -5,7 +5,6 @@ $(document).ready ->
     $(".add_image_container").on "click", "img", (event, data) ->
       $("#pan").find('img').attr "src", $(this).attr "src"      
       preview_number = $(this).siblings(".preview_selector").children().first().children().first().attr "data-cloudinary-field"
-      draggandcrop("#pan img", preview_number)        
       return
 
   # Borra la preview al pulsar el boton '-'
