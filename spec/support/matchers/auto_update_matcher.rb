@@ -4,7 +4,7 @@ RSpec::Matchers.define :auto_update do |*fields|
     (definitions[:fields] - fields).empty? && definitions[:options][:using] == @source
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
   	actual_definitions = actual.auto_update_definitions
   	expected_definitions = { fields:fields, options:{ using:@source } }
     "expected that #{actual_definitions} to eq #{expected_definitions}"

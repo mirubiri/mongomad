@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 class Test::Archivable
 	include Mongoid::Document
@@ -13,11 +13,11 @@ describe Archivable do
   	expect(document_class.criteria.selector).to eq({"archived"=>false})
   end
 
-  it { should have_field(:archived).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to have_field(:archived).of_type(Boolean).with_default_value_of(false) }
 
   describe '#archive' do
   	context 'document is persisted' do
-  		before(:each) { document.save }
+  		before(:example) { document.save }
 
   		it 'sets the document as archived in the database' do
   			document.archive

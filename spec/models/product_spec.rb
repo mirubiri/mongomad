@@ -1,17 +1,17 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Product do
+describe Product, :type => :model do
   # Modules
-  it { should include_module AutoUpdate }
-  it { should include_module Attachment::Images }
+  it { is_expected.to include_module AutoUpdate }
+  it { is_expected.to include_module Attachment::Images }
 
   # Relations
-  specify { Product.should < Good }
+  specify { expect(Product).to be < Good }
 
   # Attributes
-  it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
-  it { should have_fields :name, :description }
-  it { should auto_update(:name, :description, :images).using :item }
+  it { is_expected.to have_field(:_id).of_type(Moped::BSON::ObjectId) }
+  it { is_expected.to have_fields :name, :description }
+  it { is_expected.to auto_update(:name, :description, :images).using :item }
 
   # Validations
 

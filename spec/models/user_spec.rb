@@ -1,31 +1,31 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User do
+describe User, :type => :model do
   # Variables
   let(:user) { Fabricate.build(:user) }
 
   # Relations
-  it { should embed_one :profile }
+  it { is_expected.to embed_one :profile }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field :nick }
-  it { should have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
-  it { should delegate(:first_name).to :profile }
-  it { should delegate(:last_name).to :profile }
-  it { should delegate(:gender).to :profile }
-  it { should delegate(:location).to :profile }
-  it { should delegate(:language).to :profile }
-  it { should delegate(:birth_date).to :profile }
-  it { should delegate(:images).to :profile }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field :nick }
+  it { is_expected.to have_field(:disabled).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to delegate(:first_name).to :profile }
+  it { is_expected.to delegate(:last_name).to :profile }
+  it { is_expected.to delegate(:gender).to :profile }
+  it { is_expected.to delegate(:location).to :profile }
+  it { is_expected.to delegate(:language).to :profile }
+  it { is_expected.to delegate(:birth_date).to :profile }
+  it { is_expected.to delegate(:images).to :profile }
 
-  it { should delegate(:first_name=).to :profile }
-  it { should delegate(:last_name=).to :profile }
-  it { should delegate(:gender=).to :profile }
-  it { should delegate(:location=).to :profile }
-  it { should delegate(:language=).to :profile }
-  it { should delegate(:birth_date=).to :profile }
-  it { should delegate(:images=).to :profile }
+  it { is_expected.to delegate(:first_name=).to :profile }
+  it { is_expected.to delegate(:last_name=).to :profile }
+  it { is_expected.to delegate(:gender=).to :profile }
+  it { is_expected.to delegate(:location=).to :profile }
+  it { is_expected.to delegate(:language=).to :profile }
+  it { is_expected.to delegate(:birth_date=).to :profile }
+  it { is_expected.to delegate(:images=).to :profile }
 
   # Validations
 

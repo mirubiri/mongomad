@@ -1,16 +1,16 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Deal do
+describe Deal, :type => :model do
 
   specify { expect(Deal).to be < Proposable }
   specify { expect(Deal).to be < Conversation }
 
   # Relations
-  it { should embed_many :proposals }
-  it { should embed_many :messages }
+  it { is_expected.to embed_many :proposals }
+  it { is_expected.to embed_many :messages }
 
   # Attributes
-  it { should be_timestamped_document }
+  it { is_expected.to be_timestamped_document }
 
   # Validations
 

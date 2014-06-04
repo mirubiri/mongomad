@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "offers/edit" do
-  before(:each) do
+describe "offers/edit", :type => :view do
+  before(:example) do
     @offer = assign(:offer, stub_model(Offer))
   end
 

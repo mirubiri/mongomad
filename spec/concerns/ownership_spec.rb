@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 class TestOwnershipSingle
   include Mongoid::Document
@@ -18,8 +18,8 @@ describe "Ownership" do
 
   context "ownership :single" do
     subject { TestOwnershipSingle }
-    it { should embed_one(:user_sheet).of_type(UserSheet) }
-    it { should have_field(:user_id) }
+    it { is_expected.to embed_one(:user_sheet).of_type(UserSheet) }
+    it { is_expected.to have_field(:user_id) }
 
     describe "#user" do
       it 'returns user_sheet' do
@@ -31,8 +31,8 @@ describe "Ownership" do
 
   context 'ownership :dual' do
     subject { TestOwnershipDual }
-    it { should embed_many(:user_sheets).of_type(UserSheet) }
-    it { should have_field(:user_ids).of_type(Array) }
+    it { is_expected.to embed_many(:user_sheets).of_type(UserSheet) }
+    it { is_expected.to have_field(:user_ids).of_type(Array) }
 
     describe '#users' do
       it 'returns user_sheets' do

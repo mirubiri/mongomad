@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CashBuilder do
 	let(:cash) { Fabricate.build(:cash) }
@@ -27,8 +27,8 @@ describe CashBuilder do
 
 		context 'After reset' do
 			let(:new_cash) { Cash.new }
-			before(:each) do
-				Cash.stub(:new).and_return(new_cash)
+			before(:example) do
+				allow(Cash).to receive(:new).and_return(new_cash)
 				filled_builder.reset
 			end
 			it 'returns a new item' do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 class TestConversation
   include Mongoid::Document
@@ -8,7 +8,7 @@ end
 describe 'Conversation' do
   subject { TestConversation }
 
-  it { should < Conversation }
+  it { is_expected.to be < Conversation }
 
-  it { should embed_many(:messages).of_type(Message) }
+  it { is_expected.to embed_many(:messages).of_type(Message) }
 end

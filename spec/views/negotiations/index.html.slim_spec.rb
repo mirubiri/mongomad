@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "negotiations/index" do
-  before(:each) do
+describe "negotiations/index", :type => :view do
+  before(:example) do
     assign(:negotiations, [
       stub_model(Negotiation),
       stub_model(Negotiation)

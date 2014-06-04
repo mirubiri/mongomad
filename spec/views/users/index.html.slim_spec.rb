@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "users/index" do
-  before(:each) do
+describe "users/index", :type => :view do
+  before(:example) do
     assign(:users, [
       stub_model(User),
       stub_model(User)

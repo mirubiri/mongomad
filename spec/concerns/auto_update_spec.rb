@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 class Test::Source
   include Mongoid::Document
@@ -30,11 +30,11 @@ describe AutoUpdate do
     Test::Copy.create!
   end
 
-  it { should have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
 
   describe '#auto_update' do
     context 'when is updated' do
-      before(:each) { copy.update_attributes(outdated:false) }
+      before(:example) { copy.update_attributes(outdated:false) }
 
       it 'does not change any attribute' do
         expect { copy.auto_update }.to_not change { copy.one }
@@ -56,7 +56,7 @@ describe AutoUpdate do
     end
 
     context 'when is outdated' do
-      before(:each) { copy.update_attributes(outdated:true) }
+      before(:example) { copy.update_attributes(outdated:true) }
 
       it 'updates all attributes' do
         copy.auto_update
@@ -77,7 +77,7 @@ describe AutoUpdate do
 
   describe '#outdate' do
     context 'when is updated' do
-      before(:each) { copy.update_attributes(outdated:false) }
+      before(:example) { copy.update_attributes(outdated:false) }
 
       it 'outdates the object' do
         expect { copy.outdate }.to change { copy.outdated }.from(false).to(true)
@@ -90,7 +90,7 @@ describe AutoUpdate do
     end
 
     context 'when is outdated' do
-      before(:each) { copy.update_attributes(outdated:true) }
+      before(:example) { copy.update_attributes(outdated:true) }
 
       it 'returns true' do
         expect(copy.outdate).to eq true

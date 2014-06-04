@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Alert do
-  
-  it { should include_module Ownership }
+describe Alert, :type => :model do
+
+  it { is_expected.to include_module Ownership }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field :text }
-  it { should have_field(:location).of_type(Array) }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field :text }
+  it { is_expected.to have_field(:location).of_type(Array) }
 
   # Validations
 

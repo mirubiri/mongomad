@@ -1,26 +1,26 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe UserSheet do
+describe UserSheet, :type => :model do
   # Variables
   let(:user) { Fabricate.build(:user) }
   let(:user_sheet) { user.sheet }
 
   # Modules
-  it { should include_module Attachment::Images }
-  it { should include_module AutoUpdate }
+  it { is_expected.to include_module Attachment::Images }
+  it { is_expected.to include_module AutoUpdate }
 
   # Relations
-  it { should be_embedded_in :user_sheet_container }
+  it { is_expected.to be_embedded_in :user_sheet_container }
 
   # Attributes
-  it { should be_timestamped_document }
-  it { should have_field(:_id).of_type(Moped::BSON::ObjectId) }
-  it { should have_fields :nick, :first_name, :last_name }
-  it { should have_field(:location).of_type(Array) }
-  it { should auto_update(:nick, :first_name, :last_name, :location, :images).using :current_sheet }
+  it { is_expected.to be_timestamped_document }
+  it { is_expected.to have_field(:_id).of_type(Moped::BSON::ObjectId) }
+  it { is_expected.to have_fields :nick, :first_name, :last_name }
+  it { is_expected.to have_field(:location).of_type(Array) }
+  it { is_expected.to auto_update(:nick, :first_name, :last_name, :location, :images).using :current_sheet }
 
   # Validations
-  it { should_not validate_presence_of :user_sheet_container }
+  it { is_expected.not_to validate_presence_of :user_sheet_container }
 
   # Methods
   specify '.new' do
@@ -28,7 +28,7 @@ describe UserSheet do
   end
 
   describe '#current_sheet' do
-    before(:each) do
+    before(:example) do
       user.save
       user_sheet.nick = 'outdated'
     end

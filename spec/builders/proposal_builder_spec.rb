@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ProposalBuilder do
 	let(:builder) { ProposalBuilder.new }
@@ -39,8 +39,8 @@ describe ProposalBuilder do
 
 		context 'After reset' do
 			let(:new_proposal) { Proposal.new }
-			before(:each) do
-				Proposal.stub(:new).and_return(new_proposal)
+			before(:example) do
+				allow(Proposal).to receive(:new).and_return(new_proposal)
 				filled_builder.reset
 			end
 			it 'returns a new item' do

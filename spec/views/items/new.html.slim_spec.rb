@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "items/new" do
-  before(:each) do
+describe "items/new", :type => :view do
+  before(:example) do
     assign(:item, stub_model(Item).as_new_record)
   end
 
