@@ -65,37 +65,41 @@
   width: 31%
   height: 100px
   margin-right: 8px
-  margin-bottom: 10px
+  margin-bottom: 40px
   img
-    position: absolute
-    top: 0
-    left: 0
+    position: relative
+    float: left
     width: 98%
     height: 100%
     background-color: white
-
-label
-  .filebutton
+    margin-bottom: 4px
+  label
+    @include box-sizing(border-box) 
+    float: left
+    margin-right: 3px
+    background-color: black
+    text-align: center
+    color: white
     width: 25px
     height: 25px
-    overflow: hidden
-    position: relative
-    background-color: white
-    color: red
+    padding-top: 3px
+    z-index: 1
+    font-weight: bolder    
 
-label
-  span
-    input
-      z-index: 999
-      line-height: 0
-      position: absolute
-      top: 0px
-      left: 0px
-      width: 25px
-      height: 25px
-      opacity: 0
-      filter: alpha(opacity = 0)
-      -ms-filter: "alpha(opacity=0)"
+
+.filebutton
+  position: absolute
+  top: 0
+  left: 0
+  width: 25px
+  height: 25px
+  input
+    float: left   
+    width: 25px
+    height: 25px
+    opacity: 0
+    filter: alpha(opacity = 0)
+    -ms-filter: "alpha(opacity=0)"
 
 #pan
   overflow: hidden
