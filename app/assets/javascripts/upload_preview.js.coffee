@@ -15,5 +15,12 @@ $(document).ready ->
       .attr "id","main_image"
     $(".progress_bar").width(0)
     preview_number = $(this).attr "data-cloudinary-field"
+    $('#main_image').Jcrop
+      onSelect: showCoords,
+      onChange: showCoords,
+      bgColor:     'white',
+      bgOpacity:   0.8,
+      setSelect:   [ 100, 100, 50, 50 ]
+      aspectRatio: 1
     true
   return
