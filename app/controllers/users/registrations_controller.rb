@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_to do |format|
       if user
         user.save
-        format.html { redirect_to offers_url }
+        format.html { redirect_to root_path }
         #format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
