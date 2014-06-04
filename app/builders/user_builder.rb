@@ -1,4 +1,5 @@
 class UserBuilder
+
 	def initialize(user=User.new)
 		@user=user
 	end
