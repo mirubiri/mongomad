@@ -10,5 +10,5 @@ class Profile
   field :gender
   field :language
   field :birth_date, type: Date
-  field :location
+  field :location, type: Array
 end
