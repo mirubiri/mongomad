@@ -1,3 +1,6 @@
-@showCoords = (c) ->  
-  $('#x1_preview1').val(c.x)
-  $('#y1_preview1').val(c.y)
+@showCoords = (c, selector) -> 
+  $("#x_preview" + selector).val(c.x)
+  $("#y_preview" + selector).val(c.y)
+  $("#h_preview" + selector).val(c.h)
+  $("#w_preview" + selector).val(c.w)
+

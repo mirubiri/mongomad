@@ -4,7 +4,21 @@ $(document).ready ->
   $ ->
     $(".add_image_container").on "click", "img", (event, data) ->
       $("#pan").find('img').attr "src", $(this).attr "src"      
-      preview_number = $(this).siblings(".preview_selector").children().first().children().first().attr "data-cloudinary-field"
+      preview_number = $(this).parent().siblings(".preview_selector").children().first().children().first().attr "data-cloudinary-field"
+      selector = preview_number.toString().substr(-1)
+
+      $('#main_image').Jcrop
+        onSelect: (coords) ->
+                    showCoords coords,selector
+                    showPreview coords,selector
+        onChange: (coords) ->
+                    showCoords coords,selector
+                    showPreview coords,selector
+        bgColor: 'white',
+        bgOpacity: 0.8,
+        setSelect: [ 100, 100, 50, 50 ],
+        aspectRatio: 1
+
       return
 
   # Borra la preview al pulsar el boton '-'
