@@ -1,7 +1,6 @@
 - content_for :user_card
-  aside
   .img
-    = static_image_tag('header', 240, 160)
+    = static_image_tag('header')
   .description
     .profile_image
       .image_wrapper
@@ -11,15 +10,19 @@
     .relevant_data
       .percentage
         .percentage_icon
-
-        .percentage_num 75%
+          = static_image_tag('star')
+        .percentage_num
+          | 75%
       .numfriends
         .numfriends_icon
-
-        .numfriends_num 350
+          = static_image_tag('friends')
+        .numfriends_num
+          | 350
     .user_name
       .name
-      .address
+        | name
+      .location
+        | location
     .new_offer_button
       = button_to "Make me an offer", new_offer_path, method: :get
 
