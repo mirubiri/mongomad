@@ -8,5 +8,5 @@
                 showPreview coords,preview_image_selector
     bgColor: 'white',
     bgOpacity: 0.8,
-    setSelect: [ 100, 100, 50, 50 ],
+    setSelect: [ 150, 150, 50, 50 ],
     aspectRatio: 1
