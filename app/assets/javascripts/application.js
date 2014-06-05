@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery-ui.min
 //= require_tree .
-//= require home
 //= require equal-height-columns
 //= require cloudinary
 //= require jquery.Jcrop.min
