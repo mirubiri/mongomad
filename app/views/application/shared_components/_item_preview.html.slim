@@ -1,27 +1,32 @@
 - content_for :images
-  #inputcontainer1.add_image_container
-    img#preview
-    label.preview_selector
+  .preview_box
+    #inputcontainer1.add_image_container
+      img#preview
+    label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image1)
-    label.delete_preview
+        = cl_image_upload_tag(:image1, :html => {:onchange => "imageSelection(this,'1')"})
+    label.preview_label.delete_preview
       |-
-  #inputcontainer2.add_image_container
-    img
-    label.preview_selector
+  
+  .preview_box      
+    #inputcontainer2.add_image_container
+      img
+    label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image2)
-    label.delete_preview
+        = cl_image_upload_tag(:image2, :html => {:onchange => "imageSelection(this,'2')"})
+    label.preview_label.delete_preview
       |-
-  #inputcontainer3.add_image_container
-    img
-    label.preview_selector
+
+  .preview_box
+    #inputcontainer3.add_image_container
+      img
+    label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image3)
-    label.delete_preview
+        = cl_image_upload_tag(:image3, :html => {:onchange => "imageSelection(this,'3')"})
+    label.preview_label.delete_preview
       |-
 
 - content_for :name
