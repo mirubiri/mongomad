@@ -1,8 +1,8 @@
 - single_content_for :face
-  /= image_tag(current_user.images.first.id, 50, 50)
+  | face_image
 
 - content_for :data
   .data
-    = current_user.profile.first_name
+    | first_name
   .data
-    = current_user.profile.last_name
+    | last_name
