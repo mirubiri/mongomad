@@ -5,17 +5,17 @@
     label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image1)
+        = cl_image_upload_tag(:image1, tags: 'development')
     label.preview_label.delete_preview
       |-
-  
-  .preview_box      
+
+  .preview_box
     #inputcontainer2.add_image_container
       img#preview2
     label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image2)
+        = cl_image_upload_tag(:image2, tags: 'development')
     label.preview_label.delete_preview
       |-
 
@@ -25,7 +25,7 @@
     label.preview_label.preview_selector
       |+
       span.filebutton
-        = cl_image_upload_tag(:image3)
+        = cl_image_upload_tag(:image3, tags: 'development')
     label.preview_label.delete_preview
       |-
 

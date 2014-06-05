@@ -3,7 +3,7 @@
     | default image
   .add_image_container
 
-    = cl_image_upload_tag(:user_image, :html => {:multiple => true, :onchange => "userImageChange(this)"})
+    = cl_image_upload_tag(:user_image, tags: 'development', :html => {:multiple => true, :onchange => "userImageChange(this)"})
     /= cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this)"})
 
 - content_for :first_name
