@@ -20,12 +20,12 @@ module ApplicationHelper
     "application/unique_components/layouts/#{layout_name}_layout"
   end
 
-  def image_tag(public_id, width, height)
-    cl_image_tag(public_id,
-      :width => width, :height => height,
-      :html_width => width, :html_height => height,
-      :crop => :fit)
-  end
+  # def image_tag(public_id, width, height)
+  #   cl_image_tag(public_id,
+  #     :width => width, :height => height,
+  #     :html_width => width, :html_height => height,
+  #     :crop => :fit)
+  # end
 
   def static_image_tag(public_id, width, height)
     cl_image_tag("static/#{public_id}",
