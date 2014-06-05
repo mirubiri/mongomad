@@ -1,5 +1,6 @@
 - single_content_for :image
-  = image_tag(item.images.where(main:true).first.id,80,80)
+  | image
+  /= image_tag(item.images.where(main:true).first.id,80,80)
 
 - single_content_for :name
   = item.name
