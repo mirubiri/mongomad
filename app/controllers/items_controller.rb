@@ -37,23 +37,14 @@ class ItemsController < ApplicationController
   end
 
   def create
-    index = 0
-    if params[:image1].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-      index += 1
-    end
-
-    if params[:image2].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-      index += 1
-    end
-
-    if params[:image3].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-      index += 1
+    filled_index = 0
+    1.upto(3) do |index|
+      image_symbol = ('image'+index.to_s).to_sym
+      if params[image_symbol].present?
+        preloaded_file = Cloudinary::PreloadedFile.new(params[image_symbol])
+        params[:item][:images][filled_index][:id] = preloaded_file.public_id
+        filled_index += 1
+      end
     end
 
     builder = ItemBuilder.new
@@ -79,20 +70,24 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.images = []
 
-    if params[:image1].present?
+    index = 0
+    if params[:image1].present? && params[:item][:images][index][:id] == nil
       preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
-      params[:item][:images][0][:id] = preloaded_file.public_id
+      params[:item][:images][index][:id] = preloaded_file.public_id
     end
+    index += 1
 
-    if params[:image2].present?
+    if params[:image2].present? && params[:item][:images][index][:id] == nil
       preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
-      params[:item][:images][1][:id] = preloaded_file.public_id
+      params[:item][:images][index][:id] = preloaded_file.public_id
     end
+    index += 1
 
-    if params[:image3].present?
+    if params[:image3].present? && params[:item][:images][index][:id] == nil
       preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
-      params[:item][:images][2][:id] = preloaded_file.public_id
+      params[:item][:images][index][:id] = preloaded_file.public_id
     end
+    index += 1
 
     builder = ItemBuilder.new(@item)
                          .images(params[:item][:images])

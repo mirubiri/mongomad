@@ -1,33 +1,14 @@
 - content_for :images
-  .preview_box
-    #inputcontainer1.add_image_container
-      img#preview1
-    label.preview_label.preview_selector
-      |+
-      span.filebutton
-        = cl_image_upload_tag(:image1, tags: 'development')
-    label.preview_label.delete_preview
-      |-
-
-  .preview_box
-    #inputcontainer2.add_image_container
-      img#preview2
-    label.preview_label.preview_selector
-      |+
-      span.filebutton
-        = cl_image_upload_tag(:image2, tags: 'development')
-    label.preview_label.delete_preview
-      |-
-
-  .preview_box
-    #inputcontainer3.add_image_container
-      img#preview3
-    label.preview_label.preview_selector
-      |+
-      span.filebutton
-        = cl_image_upload_tag(:image3, tags: 'development')
-    label.preview_label.delete_preview
-      |-
+  - 1.upto(3) do |index|
+    .preview_box
+      div id="inputcontainer#{index}" class='add_image_container'
+        img id="preview#{index}"
+      label.preview_label.preview_selector
+        | +
+        span.filebutton
+          = cl_image_upload_tag(('image'+index.to_s).to_sym, tags: 'development')
+      label.preview_label.delete_preview
+        | -
 
 - content_for :name
   | Product name
