@@ -37,26 +37,30 @@ class ItemsController < ApplicationController
   end
 
   def create
+    index = 0
     if params[:image1].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])         
-      params[:item][:images][0][:id] = preloaded_file.public_id
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
+      params[:item][:images][index][:id] = preloaded_file.public_id
+      index += 1
     end
 
     if params[:image2].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])         
-      params[:item][:images][1][:id] = preloaded_file.public_id
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
+      params[:item][:images][index][:id] = preloaded_file.public_id
+      index += 1
     end
 
     if params[:image3].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])         
-      params[:item][:images][2][:id] = preloaded_file.public_id
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
+      params[:item][:images][index][:id] = preloaded_file.public_id
+      index += 1
     end
 
     builder = ItemBuilder.new
                          .user(current_user)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
-                         .description(params[:item][:description]) 
+                         .description(params[:item][:description])
     item = builder.build
 
     respond_to do |format|
@@ -76,24 +80,24 @@ class ItemsController < ApplicationController
     @item.images = []
 
     if params[:image1].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])         
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
       params[:item][:images][0][:id] = preloaded_file.public_id
     end
 
     if params[:image2].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])         
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
       params[:item][:images][1][:id] = preloaded_file.public_id
     end
 
     if params[:image3].present?
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])         
+      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
       params[:item][:images][2][:id] = preloaded_file.public_id
     end
 
     builder = ItemBuilder.new(@item)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
-                         .description(params[:item][:description]) 
+                         .description(params[:item][:description])
     item = builder.build
 
     respond_to do |format|
