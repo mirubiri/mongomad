@@ -19,11 +19,6 @@ $(document).ready ->
       return
 
 
-  $ ->
-   $(".cloudinary-fileupload").change ->
-
-
-
   $(".cloudinary-fileupload").on "change", ->
     select_number = $(this)
                       .attr "data-cloudinary-field"

@@ -7,14 +7,21 @@
       reader.onload = (e) ->
 
         image = new Image()
-        image.src = e.target.result
-
-        reloadProgressBar()
-        setPreviewImage(image)
-        addCoordinates(selector)
-        addCropToSelector('#main_image',selector)
+        image.src = e.target.result        
 
         image.onload = (event) ->
+
+          originalWidth = this.width
+          originalHeight = this.height
+          showedWidth = $("#pan").width()
+          showedHeight = $("#pan").height()
+          factorX = originalWidth/showedWidth
+          factorY = originalHeight/showedHeight
+
+          reloadProgressBar()
+          setPreviewImage(image)
+          addCoordinates(selector)
+          addCropToSelector('#main_image',selector, factorX, factorY)
           $("#inputcontainer" + selector).find("img").attr "src", image.src          
           return
         
