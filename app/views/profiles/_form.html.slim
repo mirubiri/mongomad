@@ -1,10 +1,18 @@
 - content_for :mainImage
-  #user_image
-    | default image
-  .add_image_container
+  
+  #pan.preview
+    img src=""
 
-    = cl_image_upload_tag(:user_image, tags: 'development', :html => {:multiple => true, :onchange => "userImageChange(this)"})
-    /= cl_image_upload_tag(:user_image, :format => 'jpg', :quality => 30, :crop => 'fit', :width => 300, :height => 300, :html => {:multiple => true, :onchange => "userImageChange(this)"})
+  label.preview_label.preview_selector
+    |+
+    span.filebutton
+      = cl_image_upload_tag(:user_image, tags: 'development') 
+
+  div#output 
+  
+  div.mExpanded
+    .progress_bar   
+  
 
 - content_for :first_name
   | First name

@@ -14,7 +14,7 @@ $(document).ready ->
   # Borra la preview al pulsar el boton '-'
   $ ->
     $(".delete_preview").on "click", (event) ->
-      preview_number = $(this).siblings(".add_image_container").find("img").src "id"
+      preview_number = $(this).siblings(".add_image_container").find("img").attr "id"
       selector = preview_number.toString().substr(-1)
       $(this).siblings(".add_image_container").find("img").remove()
       $(this).siblings(".add_image_container").prepend '<img src="" id="preview'+selector+'">'
