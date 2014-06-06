@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @requests = Request.all
   end
 
   def create

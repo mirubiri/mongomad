@@ -10,12 +10,14 @@ $(document).ready ->
       addCropToSelector('#main_image',selector)
       return
 
+  
   # Borra la preview al pulsar el boton '-'
   $ ->
     $(".delete_preview").on "click", (event) ->
-      $(this).closest(".add_image_container").find(".hidden_image_input").remove()
-      $(this).closest(".add_image_container").find("img").remove()
-      $(this).closest(".add_image_container").prepend "<img src=''>"
+      preview_number = $(this).siblings(".add_image_container").find("img").src "id"
+      selector = preview_number.toString().substr(-1)
+      $(this).siblings(".add_image_container").find("img").remove()
+      $(this).siblings(".add_image_container").prepend '<img src="" id="preview'+selector+'">'
       return
 
 

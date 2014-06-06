@@ -3,3 +3,7 @@
 
 - single_content_for :name
   = item.name
+
+- single_content_for :buttons
+  = link_to 'delete', item_path(item.id), method: :delete, confirm: "Are you sure?"
+  = link_to 'edit', edit_item_path(item.id)
