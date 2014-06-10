@@ -1,6 +1,7 @@
 @imageSelection = (input, selector) ->
 
-  $(".cloudinary-fileupload").bind "cloudinarydone" , (e, data) ->      
+  # El selector me previene del bubbling sobre el resto de inputs de cloudinary
+  $("input[data-cloudinary-field='image"+selector+"']").on "cloudinarydone" , (e, data) -> 
 
     if input.files and input.files[0]
       reader = new FileReader()
@@ -30,6 +31,9 @@
       reader.readAsDataURL input.files[0]
 
     return
+
+    $(".cloudinary-fileupload").unbind();
+
   return
 
 
