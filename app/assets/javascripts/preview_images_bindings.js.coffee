@@ -5,6 +5,8 @@ $(document).ready ->
     $(".add_image_container").on "click", "img", (event, data) ->
       replaceMainWidthPreview($(this))
       preview_selected = previewNumberFromAddImageButton($(this))
+      deleteCoordinatesOfPreview($(this))
+      addCoordinates(preview_selected)
       addCropToSelector('#main_image',preview_selected)
       return
 
