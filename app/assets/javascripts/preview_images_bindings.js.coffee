@@ -72,3 +72,5 @@ previewNumberFromAddImageButton = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').remove()  
+
+  
