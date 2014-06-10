@@ -21,6 +21,11 @@ $(document).ready ->
       return
 
 
+  $ ->
+    $(".preview_selector").on "click", (event) ->
+      deleteCoordinatesOfPreview($(this))
+      return
+
 
   $(".cloudinary-fileupload").on "change", ->
     select_number = $(this)
@@ -63,7 +68,7 @@ previewNumberFromAddImageButton = (element) ->
   selector = preview_number.toString().substr(-1)
   return selector
 
-deleteCoordinatesOfPreview = (element) ->
+@deleteCoordinatesOfPreview = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').remove()  
