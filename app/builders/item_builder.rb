@@ -1,5 +1,5 @@
 class ItemBuilder
-	def initialize(item:Item.new)
+	def initialize(item=Item.new)
 		@item=item
 	end
 

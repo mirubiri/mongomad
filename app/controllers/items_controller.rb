@@ -68,26 +68,26 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.images = []
+    # @item.images = []
 
-    index = 0
-    if params[:image1].present? && params[:item][:images][index][:id] == nil
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-    end
-    index += 1
+    # index = 0
+    # if params[:image1].present? && params[:item][:images][index][:id] == nil
+    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
+    #   params[:item][:images][index][:id] = preloaded_file.public_id
+    # end
+    # index += 1
 
-    if params[:image2].present? && params[:item][:images][index][:id] == nil
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-    end
-    index += 1
+    # if params[:image2].present? && params[:item][:images][index][:id] == nil
+    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
+    #   params[:item][:images][index][:id] = preloaded_file.public_id
+    # end
+    # index += 1
 
-    if params[:image3].present? && params[:item][:images][index][:id] == nil
-      preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
-      params[:item][:images][index][:id] = preloaded_file.public_id
-    end
-    index += 1
+    # if params[:image3].present? && params[:item][:images][index][:id] == nil
+    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
+    #   params[:item][:images][index][:id] = preloaded_file.public_id
+    # end
+    # index += 1
 
     builder = ItemBuilder.new(@item)
                          .images(params[:item][:images])
@@ -98,7 +98,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if item
         item.save
-        format.html { redirect_to offers_url }
+        format.html { redirect_to items_url }
         #format.json { head :no_content }
       else
         format.html { render action: "edit" }
