@@ -11,7 +11,8 @@ $(document).ready ->
   
   # Borra la preview al pulsar el boton '-'
   $ ->
-    $(".delete_preview").on "click", (event) ->      
+    $(".delete_preview").on "click", (event) ->
+      deleteCoordinatesOfPreview($(this))
       deleteMainImage()
       deletePreviewSelected($(this))
       deleteHiddenInputForPreview($(this))
@@ -59,3 +60,8 @@ previewNumberFromAddImageButton = (element) ->
   preview_number = element.parent().siblings(".preview_selector").children().first().children().first().attr "data-cloudinary-field"
   selector = preview_number.toString().substr(-1)
   return selector
+
+deleteCoordinatesOfPreview = (element) ->
+  preview_number = element.siblings(".add_image_container").attr "id"
+  selector = preview_number.toString().substr(-1)
+  $('#coordinates'+selector+'').remove()  
