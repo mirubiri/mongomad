@@ -18,6 +18,9 @@ $(document).ready ->
       selector = preview_number.toString().substr(-1)
       $(this).siblings(".add_image_container").find("img").remove()
       $(this).siblings(".add_image_container").prepend '<img src="" id="preview'+selector+'">'
+      preview_number = $(this).siblings(".add_image_container").attr "id"
+      selector = preview_number.toString().substr(-1)
+      $('input:hidden[name=image'+selector+']').remove()
       return
 
 
