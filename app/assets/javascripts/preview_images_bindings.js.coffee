@@ -5,6 +5,8 @@ $(document).ready ->
     $(".add_image_container").on "click", "img", (event, data) ->
       replaceMainWidthPreview($(this))
       preview_selected = previewNumberFromAddImageButton($(this))
+      deleteCoordinatesOfPreview($(this))
+      addCoordinates(preview_selected)
       addCropToSelector('#main_image',preview_selected)
       return
 
@@ -18,6 +20,11 @@ $(document).ready ->
       deleteHiddenInputForPreview($(this))
       return
 
+
+  $ ->
+    $(".preview_selector").on "click", (event) ->
+      deleteCoordinatesOfPreview($(this))
+      return
 
 
   $(".cloudinary-fileupload").on "change", ->
@@ -61,7 +68,7 @@ previewNumberFromAddImageButton = (element) ->
   selector = preview_number.toString().substr(-1)
   return selector
 
-deleteCoordinatesOfPreview = (element) ->
+@deleteCoordinatesOfPreview = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').remove()  
