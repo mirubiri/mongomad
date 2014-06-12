@@ -3,11 +3,22 @@ $(document).ready ->
   # Al pinchar en una de las previews, reemplaza la imagen principal por esta
   $ ->
     $(".add_image_container").on "click", "img", (event, data) ->
+
       replaceMainWidthPreview($(this))
       preview_selected = previewNumberFromAddImageButton($(this))
-      deleteCoordinatesOfPreview($(this))
+      
+      factorX = $("#coordinates" + preview_selected).attr "factorX"
+      factorY = $("#coordinates" + preview_selected).attr "factorY"
+
+      deleteCoordinatesOfPreviewFromImage($(this))
       addCoordinates(preview_selected)
-      addCropToSelector('#main_image',preview_selected)
+
+      $("#coordinates" + preview_selected).attr "factorX", factorX
+      $("#coordinates" + preview_selected).attr "factorY", factorY
+
+      addCropToSelector('#main_image',preview_selected,factorX,factorY)
+      imageSelection($(this),preview_selected)      
+      setPreviewAsMain(preview_selected)
       return
 
   
@@ -68,9 +79,13 @@ previewNumberFromAddImageButton = (element) ->
   selector = preview_number.toString().substr(-1)
   return selector
 
-@deleteCoordinatesOfPreview = (element) ->
+deleteCoordinatesOfPreview = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').remove()  
 
-  
+
+deleteCoordinatesOfPreviewFromImage = (element) ->
+  preview_number = element.parent(".add_image_container").attr "id"
+  selector = preview_number.toString().substr(-1)
+  $('#coordinates'+selector+'').remove() 

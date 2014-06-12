@@ -23,7 +23,10 @@
           setPreviewImage(image)
           addCoordinates(selector)
           addCropToSelector('#main_image',selector, factorX, factorY)
-          $("#inputcontainer" + selector).find("img").attr "src", image.src          
+          
+          $("#inputcontainer" + selector).find("img").attr "src", image.src
+          $("#coordinates" + selector).attr "factorX", factorX
+          $("#coordinates" + selector).attr "factorY", factorY              
           return
         
         return
@@ -48,6 +51,8 @@ setPreviewImage = (image) ->
     .attr "src", image.src
     .attr "id","main_image"
 
+
+
 @setPreviewAsMain = (selector) ->
   $("input[id^='name']").attr "value","false"
-  $('input[id="name'+selector+'"]').attr "value","false"
+  $('input[id="name'+selector+'"]').attr "value","true"
