@@ -1,11 +1,13 @@
 - content_for :main_image
+
   #pan.preview
     img src=""
 
   div#output
     - item.images.each_with_index do |image, index|
+      img id="image#{index+1}" src="#{cl_image_path(image.id)}"
       div id="coordinates#{index+1}"
-        input id="id_preview#{index+1}" name="item[images][][id]" type="text" value=image.id url_value=cl_image_path(image.id)
+        input id="id_preview#{index+1}" name="item[images][][id]" type="text" value=image.id
         input id="main_preview#{index+1}" name="item[images][][main]" type="text" value="#{image.main}"
         input id="x_preview#{index+1}" name="item[images][][x]" type="text" value=image.x
         input id="y_preview#{index+1}" name="item[images][][y]" type="text" value=image.y
