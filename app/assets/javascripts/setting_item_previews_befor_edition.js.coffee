@@ -9,8 +9,7 @@ $(document).ready ->
       selector = preview_number.toString().substr(-1)
 
       imageSelectionBeforeItemEdition(element,selector)
-      $("#coordinates" + selector)
-      $(this).remove()
+      element.remove()
       return
 
 
