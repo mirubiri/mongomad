@@ -20,6 +20,8 @@
 
           reloadProgressBar()
           setPreviewImage(image)
+
+          deleteCoordinatesBlock(selector)
           addCoordinates(selector)
           addCropToSelector('#main_image',selector, factorX, factorY)
 
@@ -41,6 +43,8 @@
 reloadProgressBar = ->
   $(".progress_bar").width(0)
 
+deleteCoordinatesBlock = (selector) ->  
+  $('#coordinates'+selector+'').remove()  
 
 @setPreviewImage = (image) ->
   $(".preview").find('img')
@@ -55,3 +59,5 @@ reloadProgressBar = ->
 @setPreviewAsMain = (selector) ->
   $("input[id^='id_preview']").attr "value","false"
   $('input[id="id_preview'+selector+'"]').attr "value","true"
+
+

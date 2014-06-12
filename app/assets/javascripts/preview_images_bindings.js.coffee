@@ -10,15 +10,17 @@ $(document).ready ->
       factorX = $("#coordinates" + preview_selected).attr "factorX"
       factorY = $("#coordinates" + preview_selected).attr "factorY"
 
-      deleteCoordinatesBlockFromImage($(this))
-      addCoordinates(preview_selected)
+      if $('id_preview'+preview_selected+'').attr "value" != "nil"
+        deleteCoordinatesBlockFromImage($(this))
+        addCoordinates(preview_selected)
 
-      $("#coordinates" + preview_selected).attr "factorX", factorX
-      $("#coordinates" + preview_selected).attr "factorY", factorY
+        $("#coordinates" + preview_selected).attr "factorX", factorX
+        $("#coordinates" + preview_selected).attr "factorY", factorY
 
-      addCropToSelector('#main_image',preview_selected,factorX,factorY)
-      imageSelectionFromCloudinaryInput($(this),preview_selected)      
-      setPreviewAsMain(preview_selected)
+        addCropToSelector('#main_image',preview_selected,factorX,factorY)
+        imageSelectionFromCloudinaryInput($(this),preview_selected)      
+        setPreviewAsMain(preview_selected)
+
       return
 
   
@@ -29,12 +31,6 @@ $(document).ready ->
       deleteMainImage()
       deletePreviewSelected($(this))
       deleteHiddenInputForPreview($(this))
-      return
-
-
-  $ ->
-    $(".preview_selector").on "click", (event) ->
-      deleteCoordinatesBlock($(this))
       return
 
 
@@ -78,11 +74,6 @@ previewNumberFromAddImageButton = (element) ->
   preview_number = element.parent().siblings(".preview_selector").children().first().children().first().attr "data-cloudinary-field"
   selector = preview_number.toString().substr(-1)
   return selector
-
-deleteCoordinatesBlock = (element) ->
-  preview_number = element.siblings(".add_image_container").attr "id"
-  selector = preview_number.toString().substr(-1)
-  $('#coordinates'+selector+'').remove()  
 
 
 deleteCoordinatesBlockFromImage = (element) ->
