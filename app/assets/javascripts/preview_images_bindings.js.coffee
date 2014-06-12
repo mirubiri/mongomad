@@ -17,9 +17,9 @@ $(document).ready ->
         $("#coordinates" + preview_selected).attr "factorX", factorX
         $("#coordinates" + preview_selected).attr "factorY", factorY
 
-        addCropToSelector('#main_image',preview_selected,factorX,factorY)
-        imageSelectionFromCloudinaryInput($(this),preview_selected)      
-        setPreviewAsMain(preview_selected)
+      addCropToSelector('#main_image',preview_selected,factorX,factorY)
+      imageSelectionFromCloudinaryInput($(this),preview_selected)      
+      setPreviewAsMain(preview_selected)
 
       return
 
