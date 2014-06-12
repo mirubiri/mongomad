@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
 
   def edit
     @request = Request.find(params[:id])
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
   end
 
   def create
@@ -37,8 +37,8 @@ class RequestsController < ApplicationController
 
   def update
     @request = Request.find(params[:id])
-    
-    builder = RequestBuilder.new(@request)        
+
+    builder = RequestBuilder.new(@request)
                             .text(params[:request][:text])
     request = builder.build
 

@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   layout 'exposition'
 
   def index
-    @items = Item.all
-    @requests = Request.all
+    @items = Item.where(user_id:current_user.id)
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
   end
 
   def create
@@ -68,26 +68,16 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    # @item.images = []
+    @item.images = []
 
-    # index = 0
-    # if params[:image1].present? && params[:item][:images][index][:id] == nil
-    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image1])
-    #   params[:item][:images][index][:id] = preloaded_file.public_id
-    # end
-    # index += 1
-
-    # if params[:image2].present? && params[:item][:images][index][:id] == nil
-    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image2])
-    #   params[:item][:images][index][:id] = preloaded_file.public_id
-    # end
-    # index += 1
-
-    # if params[:image3].present? && params[:item][:images][index][:id] == nil
-    #   preloaded_file = Cloudinary::PreloadedFile.new(params[:image3])
-    #   params[:item][:images][index][:id] = preloaded_file.public_id
-    # end
-    # index += 1
+    1.upto(3) do |index|
+      image_symbol = ('image'+index.to_s).to_sym
+      if params[image_symbol].present?
+        preloaded_file = Cloudinary::PreloadedFile.new(params[image_symbol])
+        params[:item][:images][index][:id] = preloaded_file.public_id
+      end
+    end
+    params[:item][:images].delete({"id"=>"nil"})
 
     builder = ItemBuilder.new(@item)
                          .images(params[:item][:images])
