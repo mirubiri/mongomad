@@ -17,7 +17,7 @@ $(document).ready ->
       $("#coordinates" + preview_selected).attr "factorY", factorY
 
       addCropToSelector('#main_image',preview_selected,factorX,factorY)
-      imageSelection($(this),preview_selected)      
+      imageSelectionFromCloudinaryInput($(this),preview_selected)      
       setPreviewAsMain(preview_selected)
       return
 
@@ -43,7 +43,7 @@ $(document).ready ->
                       .attr "data-cloudinary-field"
                       .toString()
                       .substr(-1)
-    imageSelection(this,select_number)
+    imageSelectionFromCloudinaryInput(this,select_number)
     return
 
 

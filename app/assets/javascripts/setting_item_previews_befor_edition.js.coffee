@@ -2,21 +2,36 @@ $(document).ready ->
 
   # Al pinchar en una de las previews, reemplaza la imagen principal por esta
   $ ->
-    $(".add_image_container").on "click", "img", (event, data) ->
+    $("#output").find('img').each ->
+      element = $(this)
 
-      replaceMainWidthPreview($(this))
-      preview_selected = previewNumberFromAddImageButton($(this))
-      
-      factorX = $("#coordinates" + preview_selected).attr "factorX"
-      factorY = $("#coordinates" + preview_selected).attr "factorY"
+      preview_number = element.attr "id"
+      selector = preview_number.toString().substr(-1)
 
-      deleteCoordinatesOfPreviewFromImage($(this))
-      addCoordinates(preview_selected)
-
-      $("#coordinates" + preview_selected).attr "factorX", factorX
-      $("#coordinates" + preview_selected).attr "factorY", factorY
-
-      addCropToSelector('#main_image',preview_selected,factorX,factorY)
-      imageSelection($(this),preview_selected)      
-      setPreviewAsMain(preview_selected)
+      imageSelectionBeforeItemEdition(element,selector)
+      $("#coordinates" + selector)
+      $(this).remove()
       return
+
+
+imageSelectionBeforeItemEdition = (input, selector) ->    
+  
+  image = new Image()
+  image.src = input.attr "src"
+
+  originalWidth = image.width
+  originalHeight = image.height
+  showedWidth = $("#pan").width()
+  showedHeight = $("#pan").height()
+  factorX = originalWidth/showedWidth
+  factorY = originalHeight/showedHeight  
+
+  setPreviewImage(image)
+  addCropToSelector('#main_image',selector, factorX, factorY)
+  
+  $("#inputcontainer" + selector).find("img").attr "src", image.src 
+
+  $("#coordinates" + selector).attr "factorX", factorX
+  $("#coordinates" + selector).attr "factorY", factorY 
+
+  return
