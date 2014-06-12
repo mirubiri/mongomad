@@ -3,8 +3,8 @@ class ItemsController < ApplicationController
   layout 'exposition'
 
   def index
-    @items = Item.all
-    @requests = Request.all
+    @items = Item.where(user_id:current_user.id)
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
   end
 
   def create

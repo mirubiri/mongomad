@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def new
     @item = Item.new
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html

@@ -4,7 +4,7 @@ class DealsController < ApplicationController
 
   def index
     @deals = Deal.all
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html

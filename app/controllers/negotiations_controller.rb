@@ -4,7 +4,7 @@ class NegotiationsController < ApplicationController
 
   def index
     @negotiations = Negotiation.all
-    @requests = Request.all
+    @requests = Request.where(user_id:current_user.id)
 
     respond_to do |format|
       format.html
