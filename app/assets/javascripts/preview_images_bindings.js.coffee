@@ -10,7 +10,7 @@ $(document).ready ->
       factorX = $("#coordinates" + preview_selected).attr "factorX"
       factorY = $("#coordinates" + preview_selected).attr "factorY"
 
-      deleteCoordinatesOfPreviewFromImage($(this))
+      deleteCoordinatesBlockFromImage($(this))
       addCoordinates(preview_selected)
 
       $("#coordinates" + preview_selected).attr "factorX", factorX
@@ -25,7 +25,7 @@ $(document).ready ->
   # Borra la preview al pulsar el boton '-'
   $ ->
     $(".delete_preview").on "click", (event) ->
-      deleteCoordinatesOfPreview($(this))
+      deleteCoordinatesOnlyValues($(this))
       deleteMainImage()
       deletePreviewSelected($(this))
       deleteHiddenInputForPreview($(this))
@@ -34,7 +34,7 @@ $(document).ready ->
 
   $ ->
     $(".preview_selector").on "click", (event) ->
-      deleteCoordinatesOfPreview($(this))
+      deleteCoordinatesBlock($(this))
       return
 
 
@@ -79,13 +79,20 @@ previewNumberFromAddImageButton = (element) ->
   selector = preview_number.toString().substr(-1)
   return selector
 
-deleteCoordinatesOfPreview = (element) ->
+deleteCoordinatesBlock = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').remove()  
 
 
-deleteCoordinatesOfPreviewFromImage = (element) ->
+deleteCoordinatesBlockFromImage = (element) ->
   preview_number = element.parent(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
-  $('#coordinates'+selector+'').remove() 
+  $('#coordinates'+selector+'').remove()
+
+
+deleteCoordinatesOnlyValues = (element) ->
+  preview_number = element.siblings(".add_image_container").attr "id"
+  selector = preview_number.toString().substr(-1)
+  $('#coordinates'+selector+'').find('#id_preview'+selector+'').siblings().remove()
+  $('#coordinates'+selector+'').find('#id_preview'+selector+'').attr "value","nil"

@@ -53,5 +53,5 @@ reloadProgressBar = ->
 
 
 @setPreviewAsMain = (selector) ->
-  $("input[id^='name']").attr "value","false"
-  $('input[id="name'+selector+'"]').attr "value","true"
+  $("input[id^='id_preview']").attr "value","false"
+  $('input[id="id_preview'+selector+'"]').attr "value","true"
