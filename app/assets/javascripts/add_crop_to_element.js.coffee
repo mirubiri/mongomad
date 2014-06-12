@@ -1,5 +1,4 @@
 @addCropToSelector = (id_selector,preview_image_selector,factorX,factorY) ->
-
   $(id_selector).Jcrop
     onSelect: (coords) ->
                 showCoords coords,preview_image_selector,factorX,factorY
