@@ -45,6 +45,7 @@ $(document).ready ->
     imageSelectionFromCloudinaryInput(this,select_number)
     return
 
+    
 
 
 

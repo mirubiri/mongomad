@@ -7,7 +7,7 @@
       reader = new FileReader()
       reader.onload = (e) ->
         image = new Image()
-        image.src = e.target.result        
+        image.src = e.target.result
 
         image.onload = (event) ->
 
@@ -24,10 +24,11 @@
           deleteCoordinatesBlock(selector)
           addCoordinates(selector)
           addCropToSelector('#main_image',selector, factorX, factorY)
+          setCoordinatesIdasCloudinaryId(selector)
 
           $("#inputcontainer" + selector).find("img").attr "src", image.src
           $("#coordinates" + selector).attr "factorX", factorX
-          $("#coordinates" + selector).attr "factorY", factorY              
+          $("#coordinates" + selector).attr "factorY", factorY
           return
         
         return
@@ -38,13 +39,22 @@
     return
   return
 
-
-
 reloadProgressBar = ->
   $(".progress_bar").width(0)
 
 deleteCoordinatesBlock = (selector) ->  
-  $('#coordinates'+selector+'').remove()  
+  $('#coordinates'+selector+'').remove()
+
+
+setCoordinatesIdasCloudinaryId = (selector) ->
+  inputValue = $('input[name=image'+selector+']').attr "value"
+  idChar = inputValue.toString()
+  positionBar = idChar.lastIndexOf("/");
+  positionDot = idChar.indexOf(".");
+  publicId = idChar.slice(positionBar+1,positionDot)
+  $('input[id=id_preview'+selector+']').attr "value",publicId
+  $('input[name=image'+selector+']').remove()
+
 
 @setPreviewImage = (image) ->
   $(".preview").find('img')
