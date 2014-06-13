@@ -6,20 +6,22 @@ $(document).ready ->
 
       replaceMainWidthPreview($(this))
       preview_selected = previewNumberFromAddImageButton($(this))
-      
+
       factorX = $("#coordinates" + preview_selected).attr "factorX"
       factorY = $("#coordinates" + preview_selected).attr "factorY"
 
-      if $('id_preview'+preview_selected+'').attr "value" != "nil"
-        deleteCoordinatesBlockFromImage($(this))
-        addCoordinates(preview_selected)
+      imageValue = $(this).attr "src"
 
-        $("#coordinates" + preview_selected).attr "factorX", factorX
-        $("#coordinates" + preview_selected).attr "factorY", factorY
+      if imageValue != ""
+        setPreviewAsMain(preview_selected)
+      else
+        setNextPreviewAsMain
+
+      $("#coordinates" + preview_selected).attr "factorX", factorX
+      $("#coordinates" + preview_selected).attr "factorY", factorY
 
       addCropToSelector('#main_image',preview_selected,factorX,factorY)
       imageSelectionFromCloudinaryInput($(this),preview_selected)      
-      setPreviewAsMain(preview_selected)
 
       return
 
@@ -31,6 +33,7 @@ $(document).ready ->
       deleteMainImage()
       deletePreviewSelected($(this))
       deleteHiddenInputForPreview($(this))
+      setNextPreviewAsMain($(this))
       return
 
 
@@ -76,14 +79,15 @@ previewNumberFromAddImageButton = (element) ->
   return selector
 
 
-deleteCoordinatesBlockFromImage = (element) ->
-  preview_number = element.parent(".add_image_container").attr "id"
-  selector = preview_number.toString().substr(-1)
-  $('#coordinates'+selector+'').remove()
-
-
 deleteCoordinatesOnlyValues = (element) ->
   preview_number = element.siblings(".add_image_container").attr "id"
   selector = preview_number.toString().substr(-1)
   $('#coordinates'+selector+'').find('#id_preview'+selector+'').siblings().remove()
   $('#coordinates'+selector+'').find('#id_preview'+selector+'').attr "value","nil"
+
+
+setNextPreviewAsMain = (element) ->
+  numOfMainPreview = $('[id^=main_preview][value="true"]').length
+
+  if numOfMainPreview == 0
+    $("[id^=main_preview]").first().attr "value","true"  

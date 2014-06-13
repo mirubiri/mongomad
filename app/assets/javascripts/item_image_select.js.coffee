@@ -54,10 +54,8 @@ deleteCoordinatesBlock = (selector) ->
     .attr "src", image.src
     .attr "id","main_image"
 
-
-
 @setPreviewAsMain = (selector) ->
-  $("input[id^='id_preview']").attr "value","false"
-  $('input[id="id_preview'+selector+'"]').attr "value","true"
+  $("input[id^='main_preview']").attr "value","false"
+  $('input[id="main_preview'+selector+'"]').attr "value","true"
 
 
