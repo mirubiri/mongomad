@@ -7,12 +7,12 @@
     - item.images.each_with_index do |image, index|
       img id="image#{index+1}" src="#{cl_image_path(image.id)}"
       div id="coordinates#{index+1}"
-        input id="id_preview#{index+1}" name="item[images][][id]" type="text" value=image.id
-        input id="main_preview#{index+1}" name="item[images][][main]" type="text" value="#{image.main}"
-        input id="x_preview#{index+1}" name="item[images][][x]" type="text" value=image.x
-        input id="y_preview#{index+1}" name="item[images][][y]" type="text" value=image.y
-        input id="h_preview#{index+1}" name="item[images][][h]" type="text" value=image.h
-        input id="w_preview#{index+1}" name="item[images][][w]" type="text" value=image.w
+        input id="id_preview#{index+1}" name="item[images][#{index+1}][id]" type="hidden" value=image.id
+        input id="main_preview#{index+1}" name="item[images][#{index+1}][main]" type="hidden" value="#{image.main}"
+        input id="x_preview#{index+1}" name="item[images][#{index+1}][x]" type="hidden" value=image.x
+        input id="y_preview#{index+1}" name="item[images][#{index+1}][y]" type="hidden" value=image.y
+        input id="h_preview#{index+1}" name="item[images][#{index+1}][h]" type="hidden" value=image.h
+        input id="w_preview#{index+1}" name="item[images][#{index+1}][w]" type="hidden" value=image.w
 
   div.mExpanded
     .progress_bar
