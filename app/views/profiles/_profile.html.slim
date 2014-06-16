@@ -1,0 +1,39 @@
+- content_for :mainImage
+
+  / #pan.preview
+  /   img src=""
+
+  / label.preview_label.preview_selector
+  /   |+
+  /   span.filebutton
+  /     = cl_image_upload_tag(:user_image, tags: 'development')
+
+  / div#output
+
+  / div.mExpanded
+  /   .progress_bar
+
+
+- content_for :first_name
+  / | First name
+  / = form.text_area :first_name,
+  /                  :placeholder => "Your first name...",
+  /                  :size => "4x1",
+  /                  :maxlength => "20",
+  /                  :required => false
+
+- content_for :last_name
+  / | Last name
+  / = form.text_area :last_name,
+  /                  :placeholder => "Your last name...",
+  /                  :size => "4x1",
+  /                  :maxlength => "20",
+  /                  :required => false
+
+- content_for :location
+  / | Location
+  / = form.text_area :location,
+  /                  :placeholder => "Your location...",
+  /                  :size => "4x1",
+  /                  :maxlength => "20",
+  /                  :required => false

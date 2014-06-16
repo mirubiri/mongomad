@@ -1,2 +1,7 @@
-- content_for :bar_data
-  | Contenido del header en la pantalla de bienvenida
+- content_for :navigation_bar
+  = render partial: unique_partial('billboard_navigation'),
+           layout:  unique_layout('billboard_navigation')
+
+- content_for :search_bar
+  = render partial: unique_partial('search_bar'),
+           layout:  unique_layout('search_bar')
