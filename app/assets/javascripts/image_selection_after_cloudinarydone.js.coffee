@@ -1,5 +1,4 @@
 @imageSelectionFromCloudinaryInput = (input, selector) ->
-
   # El selector me previene del bubbling sobre el resto de inputs de cloudinary
   $("input[data-cloudinary-field='image"+selector+"']").on "cloudinarydone" , (e, data) -> 
 
@@ -38,34 +37,3 @@
       
     return
   return
-
-reloadProgressBar = ->
-  $(".progress_bar").width(0)
-
-deleteCoordinatesBlock = (selector) ->  
-  $('#coordinates'+selector+'').remove()
-
-
-setCoordinatesIdasCloudinaryId = (selector) ->
-  inputValue = $('input[name=image'+selector+']').attr "value"
-  idChar = inputValue.toString()
-  positionBar = idChar.lastIndexOf("/");
-  positionDot = idChar.indexOf(".");
-  publicId = idChar.slice(positionBar+1,positionDot)
-  $('input[id=id_preview'+selector+']').attr "value",publicId
-  $('input[name=image'+selector+']').remove()
-
-
-@setPreviewImage = (image) ->
-  $(".preview").find('img')
-    .removeAttr "src"
-
-  $(".preview").find('img')
-    .attr "src", image.src
-    .attr "id","main_image"
-
-@setPreviewAsMain = (selector) ->
-  $("input[id^='main_preview']").attr "value","false"
-  $('input[id="main_preview'+selector+'"]').attr "value","true"
-
-
