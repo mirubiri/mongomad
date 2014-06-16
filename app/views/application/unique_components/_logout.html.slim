@@ -2,4 +2,4 @@
   | options
 
 - content_for :icon
-  = link_to static_image_tag('logout'), destroy_user_session_path
+  = link_to static_image_tag('logout'), destroy_user_session_path, :method => :delete
