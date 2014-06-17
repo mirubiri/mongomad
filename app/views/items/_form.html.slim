@@ -6,7 +6,7 @@
   div#output
     - item.images.each_with_index do |image, index|
       img id="image#{index+1}" src="#{cl_image_path(image.id)}"
-      div id="coordinates#{index+1}"
+      div id="coordinates#{index+1}" cropX1="#{image.x}" cropY1="#{image.y}" cropX2="#{image.h}" cropY2="#{image.w}"
         input id="id_preview#{index+1}" name="item[images][][id]" type="hidden" value=image.id
         input id="main_preview#{index+1}" name="item[images][][main]" type="hidden" value="#{image.main}"
         input id="x_preview#{index+1}" name="item[images][][x]" type="hidden" value=image.x
