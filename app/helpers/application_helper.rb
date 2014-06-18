@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def element(name,view:'default',data:nil)
-    element="/application/elements/#{name}"
+    element="/application/elements/#{name}/#{name}"
     view="application/elements/#{name}/views/#{view}"
     
     render partial:element, 
