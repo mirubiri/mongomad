@@ -1,4 +1,4 @@
-$(document).ready ->
+$(window).load ->
 
   # Al pinchar en una de las previews, reemplaza la imagen principal por esta
   $ ->

@@ -1,4 +1,23 @@
 module ApplicationHelper
+
+  def element(name,view:'default',data:nil)
+    element="elements/#{name}/#{name}"
+    view="elements/#{name}/views/#{view}"
+    
+    render partial:element, 
+      layout: view,
+      object: data
+  end
+
+  def component(name,view:'default',data:nil)
+    element="elements/components/#{name}"
+    view="elements/components/#{name}/views/#{view}"
+
+    render partial:element, 
+      layout: view,
+      object: data
+  end
+
   def single_content_for(name, content = nil, &block)
     @view_flow.set(name, ActiveSupport::SafeBuffer.new)
     content_for(name, content, &block)

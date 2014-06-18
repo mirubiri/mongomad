@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   layout 'welcome'
 
   def index

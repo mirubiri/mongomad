@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
 
-  layout 'exposition'
-
   def index
     # @items = Item.where(user_id:current_user.id)
     # @requests = Request.where(user_id:current_user.id)

@@ -1,7 +1,5 @@
 class NegotiationsController < ApplicationController
-
-  layout 'exposition'
-
+  
   def index
     @negotiations = Negotiation.all
     # @requests = Request.where(user_id:current_user.id)

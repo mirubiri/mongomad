@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
 
-  layout 'exposition'
-
   def show
     @profile = Profile.new
     # @requests = Request.where(user_id:current_user.id)
