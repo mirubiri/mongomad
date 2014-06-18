@@ -4,7 +4,8 @@ class OffersController < ApplicationController
 
   def index
     @offers = Offer.all
-    @requests = Request.where(user_id:current_user.id)
+    # @requests = Request.where(user_id:current_user.id)
+    @requests = Request.all
 
     respond_to do |format|
       format.html
@@ -14,8 +15,10 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
-    @items = Item.where(user_id:current_user.id)
-    @requests = Request.where(user_id:current_user.id)
+    # @items = Item.where(user_id:current_user.id)
+    # @requests = Request.where(user_id:current_user.id)
+    @items = Item.all
+    @requests = Request.all
 
     respond_to do |format|
       format.html

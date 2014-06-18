@@ -1,9 +1,9 @@
-- single_content_for :image
+- content_for :image
   = object_main_image_tag(item,100,100)
 
-- single_content_for :name
+- content_for :name
   = item.name
 
-- single_content_for :buttons
+- content_for :buttons
   = link_to 'delete', item_path(item.id), method: :delete, confirm: "Are you sure?"
   = link_to 'edit', edit_item_path(item.id)

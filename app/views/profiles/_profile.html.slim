@@ -1,5 +1,6 @@
+/locals: profile
 - content_for :mainImage
-
+  | user_image
   / #pan.preview
   /   img src=""
 
@@ -15,7 +16,7 @@
 
 
 - content_for :first_name
-  / | First name
+  | First name
   / = form.text_area :first_name,
   /                  :placeholder => "Your first name...",
   /                  :size => "4x1",
@@ -23,7 +24,7 @@
   /                  :required => false
 
 - content_for :last_name
-  / | Last name
+  | Last name
   / = form.text_area :last_name,
   /                  :placeholder => "Your last name...",
   /                  :size => "4x1",
@@ -31,7 +32,7 @@
   /                  :required => false
 
 - content_for :location
-  / | Location
+  | Location
   / = form.text_area :location,
   /                  :placeholder => "Your location...",
   /                  :size => "4x1",

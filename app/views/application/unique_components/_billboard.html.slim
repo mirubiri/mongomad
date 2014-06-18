@@ -1,6 +1,7 @@
 - content_for :user_avatar
   = render partial: unique_partial('user_avatar'),
            layout:  unique_layout('user_avatar')
+           /locals:  { user:user }
 
 - content_for :navigation_bar
   = render partial: unique_partial('billboard_navigation'),
@@ -9,6 +10,10 @@
 - content_for :search_bar
   = render partial: unique_partial('search_bar'),
            layout:  unique_layout('search_bar')
+
+- content_for :login
+  / = render partial: unique_partial('login'),
+  /          layout:  unique_layout('login_inline')
 
 - content_for :logout
   = render partial: unique_partial('logout'),

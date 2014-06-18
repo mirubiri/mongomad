@@ -1,21 +1,21 @@
-- single_content_for :composer_avatar
+/locals: negotiation
+- content_for :composer_avatar
   = render partial: shared_partial('composer_avatar'),
            layout:  shared_layout('composer_avatar'),
            locals:  { composer: negotiation.composer }
 
-- single_content_for :proposal
-  = render partial: shared_partial('proposal'),
+- content_for :proposal
+  = render partial: shared_partial('proposal_preview'),
            layout:  shared_layout('proposal'),
            locals:  { proposal: negotiation.proposal }
 
-- single_content_for :conversation
+- content_for :conversation
   = render partial: shared_partial('conversation'),
            layout:  shared_layout('conversation'),
            locals:  { messages: negotiation.messages }
 
-- single_content_for :leave_button
+- content_for :leave_button
   | leave_button
 
-- single_content_for :proposal_buttons
+- content_for :proposal_buttons
   = button_to "Edit Proposal", edit_negotiation_path(negotiation._id), method: :get
-

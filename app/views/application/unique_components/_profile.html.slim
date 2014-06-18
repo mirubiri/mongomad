@@ -5,8 +5,9 @@
     .description
       .profile_image
         .image_wrapper
-          / = link_to header_user_image(@user),
-          /   user_profile_url(@user),
+          / locals:  { user:user }
+          / = link_to header_user_image(user),
+          /   user_profile_url(user),
           /   remote => "true"
       .relevant_data
         .percentage
@@ -29,6 +30,7 @@
 
 - content_for :requests_box
   = button_to "Add Request", new_request_path, method: :get
+
   = render partial: shared_partial('requests_list'),
            layout:  shared_layout('requests_list'),
-           locals: { requests: requests }
+           locals: { requests:requests }

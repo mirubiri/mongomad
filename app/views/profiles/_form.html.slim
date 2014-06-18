@@ -1,18 +1,19 @@
+/locals: { form:form, profile:profile }
 - content_for :mainImage
-  
+
   #pan.preview
     img src=""
 
   label.preview_label.preview_selector
     |+
     span.filebutton
-      = cl_image_upload_tag(:user_image, tags: 'development') 
+      = cl_image_upload_tag(:user_image, tags: 'development')
 
-  div#output 
-  
+  div#output
+
   div.mExpanded
-    .progress_bar   
-  
+    .progress_bar
+
 
 - content_for :first_name
   | First name

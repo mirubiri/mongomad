@@ -1,3 +1,4 @@
+/locals: requests
 - content_for :requests_list
   - requests.each do |request|
-    = render partial: 'requests/request', layout: 'requests/layouts/request_layout', locals: { request: request }
+    = render partial: 'requests/request', layout: 'requests/layouts/request_layout', locals: { request:request }

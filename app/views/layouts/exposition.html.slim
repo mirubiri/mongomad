@@ -9,14 +9,15 @@ html
 
   body
     header.lPanel_top.mBillboard#billboard
-      = render partial: unique_partial('exposition_billboard'),
-               layout:  unique_layout('exposition_billboard')
+      = render partial: unique_partial('billboard'),
+               layout:  unique_layout('billboard')
+               /locals:  { user:current_user }
 
     .lPanel.mExpanded
       .lPanel.mProfile#profile
         = render partial: unique_partial('profile'),
                  layout:  unique_layout('profile'),
-                 locals:  { requests: @requests }
+                 locals:  { requests:@requests }
 
       .lPanel.mExpositor#expositor
         .mUpperBar.overridesPadding

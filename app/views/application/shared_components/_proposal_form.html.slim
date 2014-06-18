@@ -1,3 +1,5 @@
+/locals:  { form:form, proposal:offer.proposal }
+/locals:  { form:form, proposal:negotiation.proposal }
 - content_for :close_button
   | close_button
 
@@ -13,11 +15,10 @@
   .message
     | message
 
-- content_for :composition_box
+- content_for :goods_selector
   .composer_goods
     .composer_cash
-      = render partial: shared_partial('cash'),
-               layout:  shared_layout('cash')
+      | image_cash
 
     .composer_items
       = render partial: shared_partial('items_list'),
@@ -26,8 +27,7 @@
 
   .receiver_goods
     .receiver_cash
-       = render partial: shared_partial('cash'),
-                layout:  shared_layout('cash')
+      | image_cash
 
     .receiver_items
       = render partial: shared_partial('items_list'),
@@ -46,8 +46,8 @@
 
 - content_for :proposal
     = render partial: shared_partial('proposal'),
-             layout:  shared_layout('proposal'),
-             locals:  { proposal: proposal }
+             layout:  shared_layout('proposal')
+             /locals:  { proposal: proposal }
 
 - content_for :message
   | message

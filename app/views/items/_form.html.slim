@@ -4,6 +4,7 @@
     img src=""
 
   div#output
+    /TODO: eliminar horribilidad
     - item.images.each_with_index do |image, index|
       img id="image#{index+1}" src="#{cl_image_path(image.id)}"
       div id="coordinates#{index+1}"
@@ -17,10 +18,38 @@
   div.mExpanded
     .progress_bar
 
-- content_for :item_preview
-  = render partial: shared_partial('item_preview'),
-           layout:  shared_layout('item_preview'),
-           locals:  { form:form, item:@item }
+/- content_for :item_preview
+/ = render partial: shared_partial('item_preview'),
+/          layout:  shared_layout('item_preview')
+/          /locals:  { form:form, item:@item }
+
+- content_for :images
+/   - 1.upto(3) do |index|
+/     .preview_box
+/       div id="inputcontainer#{index}" class='add_image_container'
+/         img id="preview#{index}" src=""
+/       label.preview_label.preview_selector
+/         | +
+/         span.filebutton
+/           = cl_image_upload_tag(('image'+index.to_s).to_sym, tags: 'development')
+/       label.preview_label.delete_preview
+/         | -
+
+- content_for :name
+/   | Product name
+/   = form.text_area :name,
+/                    :placeholder => "Product name...",
+/                    :size => "4x1",
+/                    :maxlength => "20",
+/                    :required => false
+
+- content_for :description
+/   | Product description
+/   = form.text_area :description,
+/                    :placeholder => "Product description...",
+/                    :size => "10x5",
+/                    :maxlength => "200",
+/                    :required => false
 
 - content_for :send_button
   = form.submit "Save"

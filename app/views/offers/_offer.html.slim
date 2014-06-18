@@ -1,17 +1,17 @@
-- single_content_for :title
+/locals: offer
+- content_for :title
   | title
 
-- single_content_for :proposal
-  = render partial: shared_partial('proposal'),
+- content_for :proposal
+  = render partial: shared_partial('proposal_preview'),
            layout:  shared_layout('proposal'),
            locals:  { proposal: offer.proposal }
 
-- single_content_for :composer_face
+- content_for :composer_face
   | composer_face
 
-- single_content_for :message
+- content_for :message
   | message
 
-- single_content_for :buttons
+- content_for :buttons
   = button_to "Edit this offer", edit_offer_path(offer._id), method: :get
-

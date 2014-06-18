@@ -1,5 +1,5 @@
-/locals:  { form:form, proposal:offer.proposal }
-/locals:  { form:form, proposal:negotiation.proposal }
+/locals:  { proposal:offer.proposal }
+/locals:  { proposal:negotiation.proposal }
 - content_for :composer_goods
   - proposal.goods.each do |good|
     - if good._type == 'Cash'

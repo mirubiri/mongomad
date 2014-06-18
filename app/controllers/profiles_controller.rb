@@ -4,7 +4,8 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.new
-    @requests = Request.where(user_id:current_user.id)
+    # @requests = Request.where(user_id:current_user.id)
+    @requests = Request.all
 
     respond_to do |format|
       format.html
@@ -12,8 +13,9 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def update
-    @requests = Request.where(user_id:current_user.id)
+  def edit
+    # @requests = Request.where(user_id:current_user.id)
+    @requests = Request.all
 
     if params[:image].present?
       preloaded_file = Cloudinary::PreloadedFile.new(params[:image])

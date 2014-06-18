@@ -1,3 +1,4 @@
+/locals: items
 - content_for :items_list
   - items.each do |item|
-    = render partial: 'items/item', layout: 'items/layouts/item_layout', locals: { item: item }
+    = render partial: 'items/item', layout: 'items/layouts/item_layout', locals: { item:item }
