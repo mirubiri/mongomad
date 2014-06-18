@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
 
-  layout 'exposition'
-
   def show
     respond_to do |format|
       format.html

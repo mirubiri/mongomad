@@ -1,7 +1,5 @@
 class DealsController < ApplicationController
 
-  layout 'exposition'
-
   def index
     @deals = Deal.all
     @requests = Request.where(user_id:current_user.id)

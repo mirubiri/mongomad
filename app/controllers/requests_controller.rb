@@ -1,7 +1,5 @@
 class RequestsController < ApplicationController
 
-  layout 'exposition'
-
   def new
     @request = Request.new
     @requests = Request.where(user_id:current_user.id)

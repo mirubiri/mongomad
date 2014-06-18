@@ -8,8 +8,22 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
 
   body
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+    header.lPanel_top.mBillboard#billboard
+      = render partial: unique_partial('expositor_billboard'),
+               layout:  unique_layout('expositor_billboard')
+
+    .lPanel.mExpanded
+      .lPanel.mProfile#profile
+        = render partial: unique_partial('profile'),
+                 layout:  unique_layout('profile'),
+                 locals:  { requests: @requests }
+
+      .lPanel.mExpositor#expositor
+        .mUpperBar.overridesPadding
+          = render partial: unique_partial('expositor_navigation'),
+                   layout:  unique_layout('expositor_navigation')
+        = yield
+
+    .lPanel_bottom.mFooter#footer
+      = render partial: unique_partial('footer'),
+               layout:  unique_layout('footer')
