@@ -1,8 +1,8 @@
 module ApplicationHelper
 
   def element(name,view:'default',data:nil)
-    element="/application/elements/#{name}/#{name}"
-    view="application/elements/#{name}/views/#{view}"
+    element="elements/#{name}/#{name}"
+    view="elements/#{name}/views/#{view}"
     
     render partial:element, 
       layout: view,
@@ -10,8 +10,8 @@ module ApplicationHelper
   end
 
   def component(name,view:'default',data:nil)
-    element="/application/components/#{name}"
-    view="application/components/#{name}/views/#{view}"
+    element="elements/components/#{name}"
+    view="elements/components/#{name}/views/#{view}"
 
     render partial:element, 
       layout: view,
