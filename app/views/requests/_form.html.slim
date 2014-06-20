@@ -1,0 +1,9 @@
+- content_for :text_box
+  = form.text_area :text,
+                   :placeholder => "Make your request here...",
+                   :size => "24x6",
+                   :required => true,
+                   :maxlength => "160"
+
+- content_for :send_button
+  = form.submit "Save"
