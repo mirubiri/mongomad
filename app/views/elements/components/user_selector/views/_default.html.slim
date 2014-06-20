@@ -1,0 +1,8 @@
+.user_selector
+  = content_for :composer_tab
+
+  = content_for :receiver_tab
+
+  / TODO: revisar el condicional
+  - if data.controller == 'offers'
+    = content_for :message_tab
