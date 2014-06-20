@@ -18,7 +18,7 @@ module ApplicationHelper
       object: data
   end
 
-  def single_content_for(name, content = nil, &block)
+  def single_content_for(name,content=nil,&block)
     @view_flow.set(name, ActiveSupport::SafeBuffer.new)
     content_for(name, content, &block)
   end
@@ -27,7 +27,7 @@ module ApplicationHelper
     cl_image_tag("static/#{public_id}")
   end
 
-  def object_main_image_tag(object, width, height)
+  def object_main_image_tag(object,width,height)
     main_image = object.images.where(main:true).first
     cl_image_tag(main_image.id,
       :transformation => {
