@@ -1,0 +1,14 @@
+- content_for :negotiation_composer_avatar
+  = component('oponent_avatar')
+
+- content_for :negotiation_proposal
+  = component('proposal')
+
+- content_for :negotiation_conversation
+  = component('conversation')
+
+- content_for :negotiation_leave_button
+  | leave_button
+
+- content_for :negotiation_proposal_buttons
+  = button_to "Edit Proposal", edit_negotiation_path(negotiation._id), method: :get
