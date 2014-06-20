@@ -1,0 +1,5 @@
+- content_for :logout_icon
+  = link_to static_image_tag('logout'), destroy_user_session_path, :method => :delete
+
+- content_for :logout_options
+  | options
