@@ -1,0 +1,29 @@
+- content_for :user_profile
+  aside
+    .img
+      = static_image_tag('header')
+    .description
+      .profile_image
+        .image_wrapper
+          / locals:  { user:user }
+          / = link_to header_user_image(user),
+          /   user_profile_url(user),
+          /   remote => "true"
+      .relevant_data
+        .percentage
+          .percentage_icon
+            = static_image_tag('star')
+          .percentage_num
+            | 75%
+        .numfriends
+          .numfriends_icon
+            = static_image_tag('friends')
+          .numfriends_num
+            | 350
+      .user_name
+        .name
+          | name
+        .location
+          | location
+      .new_offer_button
+        = button_to "Make me an offer", new_offer_path, method: :get
