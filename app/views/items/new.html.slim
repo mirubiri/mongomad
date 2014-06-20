@@ -1,0 +1,35 @@
+.new_item#new_item
+
+  #pan.preview
+    img src=""
+
+    div#output
+      /TODO: eliminar horribilidad
+      - item.images.each_with_index do |image, index|
+        img id="image#{index+1}" src="#{cl_image_path(image.id)}"
+        div id="coordinates#{index+1}" cropX1="#{image.x}" cropY1="#{image.y}" cropX2="#{image.h}" cropY2="#{image.w}"
+          input id="id_preview#{index+1}" name="item[images][][id]" type="hidden" value=image.id
+          input id="main_preview#{index+1}" name="item[images][][main]" type="hidden" value="#{image.main}"
+          input id="x_preview#{index+1}" name="item[images][][x]" type="hidden" value=image.x
+          input id="y_preview#{index+1}" name="item[images][][y]" type="hidden" value=image.y
+          input id="h_preview#{index+1}" name="item[images][][h]" type="hidden" value=image.h
+          input id="w_preview#{index+1}" name="item[images][][w]" type="hidden" value=image.w
+
+    div.mExpanded
+      .progress_bar
+
+  .previews
+    - 1.upto(3) do |index|
+      .preview_box
+        div id="inputcontainer#{index}" class='add_image_container'
+          img id="preview#{index}" src=""
+        label.preview_label.preview_selector
+          | +
+          span.filebutton
+            = cl_image_upload_tag(('image'+index.to_s).to_sym, tags: 'development')
+        label.preview_label.delete_preview
+          | -
+
+  
+
+    = render 'form'
