@@ -1,0 +1,17 @@
+- content_for :preview_images
+  - 1.upto(3) do |index|
+   .preview_box
+     div id="inputcontainer#{index}" class='preview_image'
+       img id="preview#{index}" src=""
+     label.preview_label.preview_selector
+       | +
+       span.filebutton
+         = cl_image_upload_tag(('image'+index.to_s).to_sym, tags: 'development')
+     label.preview_label.delete_preview
+       | -
+
+- content_for :item_descriptor
+  .title
+    - item.title
+  .description
+    - item.description
