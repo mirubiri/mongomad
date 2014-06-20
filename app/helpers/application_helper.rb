@@ -3,8 +3,8 @@ module ApplicationHelper
   def element(name,view:'default',data:nil)
     element="elements/#{name}/#{name}"
     view="elements/#{name}/views/#{view}"
-    
-    render partial:element, 
+
+    render partial:element,
       layout: view,
       object: data
   end
@@ -13,7 +13,7 @@ module ApplicationHelper
     element="elements/components/#{name}"
     view="elements/components/#{name}/views/#{view}"
 
-    render partial:element, 
+    render partial:element,
       layout: view,
       object: data
   end
@@ -21,22 +21,6 @@ module ApplicationHelper
   def single_content_for(name, content = nil, &block)
     @view_flow.set(name, ActiveSupport::SafeBuffer.new)
     content_for(name, content, &block)
-  end
-
-  def shared_partial(partial_name)
-    "application/shared_components/#{partial_name}"
-  end
-
-  def shared_layout(layout_name)
-    "application/shared_components/layouts/#{layout_name}_layout"
-  end
-
-  def unique_partial(partial_name)
-    "application/unique_components/#{partial_name}"
-  end
-
-  def unique_layout(layout_name)
-    "application/unique_components/layouts/#{layout_name}_layout"
   end
 
   def static_image_tag(public_id)
