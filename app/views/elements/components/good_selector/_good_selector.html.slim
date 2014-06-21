@@ -1,9 +1,11 @@
 - content_for :good_selector
   .composer_goods
     - composer_items.each do |item|
+    / Para que poneis ¿¿"default"??
       = element("good","default",data:{ item:item }) 
 
   .receiver_goods
     - receiver_items.each do |item|
+    / Para que poneis ¿¿"default"??
       = element("good","default",data:{ item:item }) 
 

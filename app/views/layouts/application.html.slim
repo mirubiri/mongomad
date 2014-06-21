@@ -1,5 +1,6 @@
 doctype html
 html
+  /head y header deberían ser layouts parciales para no repetirnos en cada layout
   head
     title Mongomad
     = stylesheet_link_tag    "application", :media => "all"
@@ -8,6 +9,9 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
   body
     div.header#header
+
+      / Todo lo que viene a continuación metedlo en el elemento omni_bar
+
       = element("avatar")
       = element("user_navigation")
       = element("search")
@@ -17,14 +21,16 @@ html
 
 
     div.main#main
-      div.left-box.#leftBox
+      div.left-box#leftBox
+      / .decorative_top no es una clase, la decoración estará en .left-box
         .decorative_top
         = element("profile")   
         = element("petitioner")   
 
 
-      div.right-box.#rightBox
+      div.right-box#rightBox
         div.expositor#expositor
+        / La clase debería ser solo expositor, ¿por qué aparece right-box?
           = component("expositor_navigator")
           = yield
 
