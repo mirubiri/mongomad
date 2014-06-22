@@ -1,15 +1,11 @@
-/ No se que previsualiza "previewer"
-/ No se de que son las "preview_images"
 - content_for :preview_images
   - item.images.each do |index|
    .preview_box
      .preview_image
        -image(item)    
 
-/ No se que es "descriptor"
 - content_for :item_descriptor
   .title
     - item.title
   .description
     - item.description
-
