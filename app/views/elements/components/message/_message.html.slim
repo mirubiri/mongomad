@@ -1,0 +1,10 @@
+/locals: request
+- content_for :avatar
+  | image
+
+- content_for :text
+  = message.text
+
+- content_for :timestamp
+  | Fecha
+  | Hora
