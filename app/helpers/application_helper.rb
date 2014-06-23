@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def component(name,view:'default',data:nil)
-    element="elements/components/#{name}"
+    element="elements/components/#{name}/#{name}"
     view="elements/components/#{name}/views/#{view}"
 
     render partial:element,
