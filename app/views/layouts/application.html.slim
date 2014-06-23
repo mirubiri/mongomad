@@ -7,7 +7,7 @@ html
     = csrf_meta_tags
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
   body
-    div.header#header
+    .header#header
       = element("avatar")
       = element("user_navigation")
       = element("search")
@@ -16,19 +16,19 @@ html
       = element("logout")
 
 
-    div.main#main
-      div.left-box.#leftBox
+    .main#main
+      .left-box#leftBox
         .decorative_top
         = element("profile")   
-        = element("petitioner")   
+        = element("petitioner",data:@requests)   
 
 
-      div.right-box.#rightBox
-        div.expositor#expositor
-          = component("expositor_navigator")
+      .right-box#rightBox
+        expositor#expositor
+          = component("expositor_navigation")
           = yield
 
-    div.footer#footer
+    .footer#footer
       | Copyright &copy; 2014 Improcex Ingenier&iacute;a Inform&aacute;tica S.L. All Rights Reserved.
 
 

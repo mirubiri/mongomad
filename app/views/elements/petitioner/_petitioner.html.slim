@@ -1,7 +1,0 @@
-- content_for :petitioner
-  = button_to "Add Request", new_request_path, method: :get
-
-  .request_list
-    - requests.each do |request|
-      = element("request","default",data:{request:request})
-
