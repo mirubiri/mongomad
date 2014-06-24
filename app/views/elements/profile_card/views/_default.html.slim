@@ -1,2 +1,23 @@
-.profile#profile
-  = content_for :user_profile
+.profile_card#profileCard
+  aside
+    .head_image
+      = yield :head_image
+
+    .user_card
+      .image
+         = yield :image
+
+      .reputation
+         = yield :reputation
+
+      .friends
+         = yield :friends
+
+      .name
+         = yield :name
+
+      .location
+         = yield :location
+
+      .make_offer_button
+         = yield :make_offer_button

@@ -1,9 +1,14 @@
-- content_for :request_face
+- content_for :image
   | image
 
-- content_for :request_text
+- content_for :text
   = request.text
 
-- content_for :request_buttons
-  = link_to 'delete', request_path(request.id), method: :delete, confirm: "Are you sure?"
-  = link_to 'edit', edit_request_path(request.id)
+- content_for :controls
+  = link_to 'delete',
+    request_path(request.id),
+    method: :delete,
+    confirm: "Are you sure?"
+
+  = link_to 'edit',
+    edit_request_path(request.id)

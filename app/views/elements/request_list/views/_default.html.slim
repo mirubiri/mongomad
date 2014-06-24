@@ -1,2 +1,6 @@
-.request_list#request_list
-  = content_for :request_list
+.request_list#requestList
+  .add_request_button
+    = yield :add_request_button
+
+  .requests
+    = yield :requests

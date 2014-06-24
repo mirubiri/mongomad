@@ -1,0 +1,28 @@
+- content_for :head_image
+  = static_image_tag('header')
+
+- content_for :image
+  | user_image
+
+- content_for :reputation
+  .icon
+    = static_image_tag('star')
+  .value
+    | 75%
+
+- content_for :friends
+  .icon
+    = static_image_tag('friends')
+  .number
+    | 350
+
+- content_for :name
+    | name
+
+- content_for :location
+    | location
+
+- content_for :make_offer_button
+  = button_to "Make me an offer",
+    new_offer_path,
+    method: :get

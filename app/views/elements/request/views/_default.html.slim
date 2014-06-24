@@ -1,9 +1,9 @@
-.lContainerSon.mEndContainer.request
-  .face
-    = content_for :request_face
+.request
+  .image
+    = yield :image
 
   .text
-    = content_for :request_text
+    = yield :text
 
-  .buttons
-    = content_for :request_buttons
+  .controls
+    = yield :controls
