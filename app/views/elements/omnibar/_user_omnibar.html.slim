@@ -1,3 +1,6 @@
+- content_for :avatar
+  = element('avatar')
+
 - content_for :user_omnibar
   li
     = link_to static_image_tag('negotiations'), negotiations_path
@@ -8,3 +11,11 @@
   li
     = link_to static_image_tag('profile'), profile_path
 
+- content_for :search
+  = element('search')
+
+- content_for :inline_login
+  = element('inline_login')
+
+- content_for :inline_logout
+  = element('inline_logout')

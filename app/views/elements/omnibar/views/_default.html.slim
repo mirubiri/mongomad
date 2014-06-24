@@ -1,2 +1,14 @@
-7nav.user_omnibar
-  = content_for :user_omnibar
+.avatar#avatar
+  = yield :avatar
+
+nav.user_omnibar
+  = yield :user_omnibar
+
+.search#search
+  = yield :search
+
+.inline_login#inlineLogin
+  = yield :inline_login
+
+.inline_logout#inlinelogout
+  = yield :inline_logout

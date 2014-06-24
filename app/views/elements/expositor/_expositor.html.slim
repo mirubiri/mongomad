@@ -1,0 +1,11 @@
+- content_for :navigation
+  li id='offers-tab' class=active_tab?('offers','users')
+    = link_to 'Offers', offers_path
+  li id='negotiations-tab' class=active_tab?('negotiations')
+    = link_to 'Negotiations', negotiations_path
+  li id='deals-tab' class=active_tab?('deals')
+    = link_to 'Deals', deals_path
+  li id='items-tab' class=active_tab?('items')
+    = link_to 'Items', items_path
+  li id='profile-tab' class=active_tab?('profiles')
+    = link_to 'Profile', profile_path
