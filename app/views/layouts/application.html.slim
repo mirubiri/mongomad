@@ -6,29 +6,13 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
+
   body
-    .header#header
-      = element("avatar")
-      = element("user_navigation")
-      = element("search")
-      / = element("login","login_inline")
-      / = element("registerer","registerer_inline")
-      = element("logout")
+    .omnibar#omnibar
+      = element('omnibar')
 
+    .dashboard#dashboard
+      = element('dashboard')
 
-    .main#main
-      .left-box#leftBox
-        .decorative_top
-        = element("profile")   
-        = element("petitioner",data:@requests)   
-
-
-      .right-box#rightBox
-        expositor#expositor
-          = component("expositor_navigation")
-          = yield
-
-    .footer#footer
-      | Copyright &copy; 2014 Improcex Ingenier&iacute;a Inform&aacute;tica S.L. All Rights Reserved.
-
-
+    .expositor#expositor
+      = element('expositor')
