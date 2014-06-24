@@ -33,6 +33,8 @@ gem 'faker', group: [:development,:test]
 gem 'better_errors',group: [:development,:test]
 gem 'bindig_of_caller',group: [:development,:test]
 
+gem 'slim-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
