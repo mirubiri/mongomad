@@ -1,5 +1,5 @@
 - content_for :avatar
-  = element('avatar')
+  = component('avatar')
 
 - content_for :user_omnibar
   li
@@ -12,10 +12,10 @@
     = link_to static_image_tag('profile'), profile_path
 
 - content_for :search
-  = element('search')
+  = component('search')
 
 - content_for :inline_login
-  = element('inline_login')
+  = component('inline_login')
 
 - content_for :inline_logout
-  = element('inline_logout')
+  = component('inline_logout')
