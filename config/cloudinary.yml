@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: improcex
+  api_key: '679381134621623'
+  api_secret: SXEDrLI27adfp2n95bJ2q_WMUGw
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: improcex
+  api_key: '679381134621623'
+  api_secret: SXEDrLI27adfp2n95bJ2q_WMUGw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: improcex
+  api_key: '679381134621623'
+  api_secret: SXEDrLI27adfp2n95bJ2q_WMUGw
+  enhance_image_tag: true
+  static_image_support: false
