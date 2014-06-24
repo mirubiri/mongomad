@@ -1,15 +1,15 @@
 .offer
   .title
-    = content_for :title
+    = yield :title
 
   .proposal
-    = content_for :proposal
+    = yield :proposal
 
-  .composer_face
-    = content_for :avatar
+  .avatar
+    = yield :avatar
 
   .message
-    = content_for :message
+    = yield :message
 
-  .buttons
-    = content_for :controls
+  .controls
+    = yield :controls

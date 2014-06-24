@@ -1,15 +1,16 @@
-/locals: offer
 - content_for :title
-  | title
+  | offer_title
 
 - content_for :proposal
-  = element('proposal')
+  = component('proposal')
 
 - content_for :avatar
-  | composer_avatar
+  = element('avatar')
 
 - content_for :message
   | message
 
 - content_for :controls
-  = button_to "Edit this offer", edit_offer_path(offer._id), method: :get
+  = button_to "Edit this offer",
+    edit_offer_path(offer.id),
+    method: :get
