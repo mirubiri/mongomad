@@ -1,2 +1,0 @@
-class OneProductPerUserPolicy
-end
