@@ -18,13 +18,12 @@ module ApplicationHelper
       object: data
   end
 
-  def single_content_for(name,content=nil,&block)
-    @view_flow.set(name, ActiveSupport::SafeBuffer.new)
-    content_for(name, content, &block)
-  end
-
   def static_image_tag(public_id)
     cl_image_tag("static/#{public_id}")
+  end
+
+  def yield_content(content_key)
+    view_flow.content.delete(content_key)
   end
 
   def object_main_image_tag(object,width,height)
