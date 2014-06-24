@@ -1,15 +1,15 @@
 .negotiation
-  .oponent_avatar
-    = content_for :negotation_oponent_avatar
+  .avatar
+    = yield :avatar
 
   .proposal
-    = content_for :negotation_proposal
+    = yield :proposal
 
   .conversation
-    = content_for :negotation_conversation
+    = yield :conversation
 
-  .leave_button
-    = content_for :negotation_leave_button
+  .leave_negotiation_button
+    = yield :leave_negotiation_button
 
-  .proposal_buttons
-    = content_for :negotation_proposal_buttons
+  .proposal_controls
+    = yield :proposal_controls

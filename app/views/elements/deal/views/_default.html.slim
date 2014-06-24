@@ -1,9 +1,9 @@
 .deal
   .avatar
-    = content_for :avatar
+    = yield :avatar
 
   .proposal
-    = content_for :proposal
+    = yield :proposal
 
   .conversation
-    = content_for :conversation
+    = yield :conversation

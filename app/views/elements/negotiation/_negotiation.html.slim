@@ -1,15 +1,16 @@
-/ local negotiation
-- content_for :negotiation_composer_avatar
-  = component('oponent_avatar')
+- content_for :avatar
+  = component('avatar')
 
-- content_for :negotiation_proposal
+- content_for :proposal
   = component('proposal')
 
-- content_for :negotiation_conversation
+- content_for :conversation
   = component('conversation')
 
-- content_for :negotiation_leave_button
-  | leave_button
+- content_for :leave_negotiation_button
+  | leave_negotiation
 
-- content_for :negotiation_proposal_buttons
-  = button_to "Edit Proposal", edit_negotiation_path(negotiation._id), method: :get
+- content_for :proposal_controls
+  = button_to "Edit this proposal",
+    edit_negotiation_path(negotiation.id),
+    method: :get
