@@ -1,12 +1,7 @@
 .negotiation
-  .avatar
-    = yield_content :avatar
-
-  .proposal
-    = yield_content :proposal
-
-  .conversation
-    = yield_content :conversation
+  = yield_content :avatar
+  = yield_content :proposal
+  = yield_content :conversation
 
   .leave_negotiation_control
     = yield_content :leave_negotiation_control
