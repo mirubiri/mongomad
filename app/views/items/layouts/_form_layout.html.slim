@@ -1,4 +1,9 @@
 = form_for @item do |form|
-  = content_for :name
-  = content_for :description
-  = content_for :send_control
+  .output
+    = yield_content :output
+  .name  
+    = yield_content :name
+  .description
+    = yield_content :description
+  .control
+    = yield_content :send_control
