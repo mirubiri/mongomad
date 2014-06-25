@@ -1,9 +1,9 @@
 .message
   .avatar
-    = content_for :avatar
+    = yield_content :avatar
 
   .text
-    = content_for :text
+    = yield_content :text
 
   .timestamp
-    = content_for :timestamp
+    = yield_content :timestamp
