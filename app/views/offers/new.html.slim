@@ -1,9 +1,9 @@
 .new_offer#new_offer
   
   div.goods_side
-    = component("user_selector")
-    = component("good_selector")
-    = component("previewr")
+    = component :user_selector
+    = component :good_selector
+    = component :previewr
 
   div.proposal_side
     .proposal_preview
@@ -11,7 +11,7 @@
       .title
         | Composer Name
 
-      = element("proposal")
+      = element :proposal
 
       .composer_avatar
         | Avatar del composer

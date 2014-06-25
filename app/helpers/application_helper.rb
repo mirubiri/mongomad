@@ -4,7 +4,7 @@ module ApplicationHelper
     element="elements/#{name}/#{name}"
     view="elements/#{name}/views/#{view}"
 
-    render partial:element,
+    render partial: element,
       layout: view,
       object: data
   end
@@ -13,7 +13,7 @@ module ApplicationHelper
     element="elements/components/#{name}/#{name}"
     view="elements/components/#{name}/views/#{view}"
 
-    render partial:element,
+    render partial: element,
       layout: view,
       object: data
   end

@@ -2,10 +2,10 @@
   | offer_title
 
 - content_for :proposal
-  = component('proposal')
+  = component :proposal
 
 - content_for :avatar
-  = component('avatar', view:'composer')
+  = component :avatar, view: :composer
 
 - content_for :message
   | message
