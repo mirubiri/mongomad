@@ -1,8 +1,9 @@
-.image
-  = yield_content :image
+.avatar_with_location
+  .image
+    = yield_content :image
 
-.user_data
-  .full_name
-    | full_name
-  .location
-    | location
+  .user_data
+    .full_name
+      | full_name
+    .location
+      | location

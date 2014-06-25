@@ -1,8 +1,9 @@
-.messages_list
-  = content_for :messages
+- content_for :messages
+  - messages.each do |message|
+    = element :message
 
-.writting_box
-  = content_for :message_input
+- content_for :message_input
+  | message_input
 
-.send_control
-  = content_for :send_message_control
+- content_for :send_message_control
+  | send_message_control
