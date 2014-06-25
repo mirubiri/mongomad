@@ -4,5 +4,5 @@
     method: :get
 
 - content_for :requests
-  - request_list.each do |request|
+  - @requests.each do |request|
      = element :request, data:request
