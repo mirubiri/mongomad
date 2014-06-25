@@ -1,23 +1,23 @@
 .profile_card#profileCard
   aside
     .head_image
-      = yield :head_image
+      = yield_content :head_image
 
     .user_card
       .image
-         = yield :image
+         = yield_content :image
 
       .reputation
-         = yield :reputation
+         = yield_content :reputation
 
       .friends
-         = yield :friends
+         = yield_content :friends
 
       .name
-         = yield :name
+         = yield_content :name
 
       .location
-         = yield :location
+         = yield_content :location
 
       .make_offer_button
-         = yield :make_offer_button
+         = yield_content :make_offer_button
