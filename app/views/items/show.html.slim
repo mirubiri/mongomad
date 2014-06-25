@@ -1,2 +1,13 @@
 .item_show#item_show
-  = component :previewr, data: @item
+  .main_image
+    = object_main_image_tag(item,150,150)
+
+  - item.images.each do |index|
+   .preview_box
+     .preview_image
+       -image(item)    
+
+  .title
+    - item.title
+  .description
+    - item.description
