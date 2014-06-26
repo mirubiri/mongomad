@@ -1,7 +1,7 @@
 - content_for :composer_goods
   - proposal.goods.each do |good|
-    = good._type == 'Cash' ? element :good, view: :as_cash : element :good
+    = good._type == 'Cash' ? element :cash : element :item, view :as_product
 
 - content_for :receiver_goods
   - proposal.goods.each do |good|
-    = good._type == 'Cash' ? element :good, view: :as_cash : element :good
+    = good._type == 'Cash' ? element :cash : element :item, view :as_product
