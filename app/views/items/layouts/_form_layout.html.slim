@@ -1,4 +1,7 @@
 = form_for @item do |form|
+  .previews
+    = yield_content :previews
+
   .output
     = yield_content :output
 
