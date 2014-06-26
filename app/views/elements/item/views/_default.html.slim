@@ -1,9 +1,9 @@
 .item
   .image
-    | item_image
+    = yield_content :image
 
   .name
-    | item_name
+    = yield_content :name
 
   .controls
     | edit
