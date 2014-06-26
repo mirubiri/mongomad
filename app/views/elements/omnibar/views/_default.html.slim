@@ -5,8 +5,5 @@
     = yield_content :user_omnibar
 
   = yield_content :search
-
-  - if content_for?(:inline_login)
-    = yield_content :inline_login
-
+  = yield_content :inline_login
   = yield_content :inline_logout

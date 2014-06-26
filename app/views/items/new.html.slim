@@ -1,11 +1,20 @@
 .new_item#new_item
 
-  .image_loader
-    #pan.preview
-      img src=""
+  #pan.preview
+    img src=""
+    
+  .progress_bar
 
-    .progress_bar
+  .previews
+    - 1.upto(3) do |index|
+      .preview_box
+        div id="inputcontainer#{index}" class='add_image_container'
+          img id="preview#{index}" src=""
+        label.preview_label.preview_selector
+          | +
+          span.filebutton
+            = cl_image_upload_tag(('image'+index.to_s).to_sym, tags: 'development')
+        label.preview_label.delete_preview
+          | -  
 
-  .image_descriptor
-    = form_for @item do |form|
-      = render partial: 'form', layout: 'items/layouts/form_layout', locals: {form:form, item:@item}
+    = render 'form'

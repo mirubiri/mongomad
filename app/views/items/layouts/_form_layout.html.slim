@@ -1,14 +1,12 @@
-.previews
-  = yield_content :previews
+= form_for @item do |form|
+  .output
+    = yield_content :output
 
-.output#output
-  = yield_content :output
+  .name
+    = yield_content :name
 
-.name
-  = yield_content :name
+  .description
+    = yield_content :description
 
-.description
-  = yield_content :description
-
-.send_control
-  = yield_content :send_control
+  .send_control
+    = yield_content :send_control
