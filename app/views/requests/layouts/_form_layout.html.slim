@@ -1,6 +1,5 @@
-= form_for @request do |form|
-  .text_input
-    = yield_content :text_input
+.text_input
+  = yield_content :text_input
 
-  .send_control
-    = yield_content :send_control
+.send_control
+  = yield_content :send_control

@@ -14,8 +14,9 @@
 - content_for :search
   = component :search
 
-- content_for :inline_login
-  = component :inline_login
+- if !user_signed_in?
+  - content_for :inline_login
+    = component :inline_login
 
 - content_for :inline_logout
   = component :inline_logout

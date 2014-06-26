@@ -1,5 +1,5 @@
 class NegotiationsController < ApplicationController
-  
+
   def index
     @negotiations = Negotiation.all
     # @requests = Request.where(user_id:current_user.id)
@@ -13,6 +13,12 @@ class NegotiationsController < ApplicationController
 
   def edit
     @negotiation = Negotiation.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :template => "proposal/edit" }
+      #format.json { render json: @offer }
+    end
+
   end
 
   def update
