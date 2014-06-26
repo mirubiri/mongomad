@@ -7,4 +7,5 @@
     .progress_bar 
 
   .image_descriptor
-    = render 'form'
+    = form_for @item do |form|
+      = render partial: 'form', layout: 'items/layouts/form_layout', locals: {form:form}
