@@ -36,7 +36,7 @@
       .title
         | composer_full_name
 
-      = component :proposal
+      = component :proposal, locals: {proposal:@negotiation.proposal}
 
       .avatar
         | composer_image

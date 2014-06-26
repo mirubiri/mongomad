@@ -1,10 +1,2 @@
-- content_for :message
-  | Product description
-  = form.text_area :message,
-                   :placeholder => "Enter your initial message...",
-                   :size => "10x5",
-                   :maxlength => "200",
-                   :required => false
-
 - content_for :send_control
   = form.submit "Save"
