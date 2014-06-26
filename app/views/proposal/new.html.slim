@@ -12,14 +12,14 @@
           | image_cash
         .composer_items
           /each recorriendo los items del composer
-          /element: good
+          /element: item
 
       .receiver_goods
         .receiver_cash
           | image_cash
         .receiver_items
           /each recorriendo los items del receiver
-          /element: good
+          /element: item
 
     .good_previewer
       .images
@@ -44,4 +44,4 @@
         | composer_image
 
       = form_for @offer do |form|
-        = render partial: 'form', layout: 'proposal/layouts/offer', locals: {form:form}
+        = render partial: 'form', layout: 'proposal/layouts/offer', locals: { form:form }

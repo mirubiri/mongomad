@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  
+
   def index
     @offers = Offer.all
     # @requests = Request.where(user_id:current_user.id)
@@ -19,7 +19,7 @@ class OffersController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html {render :template => "proposal/new"}
+      format.html { render :template => "proposal/new" }
       #format.json { render json: @offer }
     end
   end

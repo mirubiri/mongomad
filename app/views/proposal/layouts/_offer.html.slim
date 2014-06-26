@@ -1,11 +1,9 @@
 .proposal_form#offer_form
-
   | Product description
-
   = form.text_area :message,
                    :placeholder => "Enter your initial message...",
                    :size => "10x5",
                    :maxlength => "200",
                    :required => false
-  
+
   = yield_content :send_control

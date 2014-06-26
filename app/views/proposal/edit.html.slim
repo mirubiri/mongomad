@@ -12,14 +12,14 @@
           | image_cash
         .composer_items
           /each recorriendo los items del composer
-          /element: good
+          /element: item
 
       .receiver_goods
         .receiver_cash
           | image_cash
         .receiver_items
           /each recorriendo los items del receiver
-          /element: good
+          /element: item
 
     .good_previewer
       .images
@@ -36,10 +36,10 @@
       .title
         | composer_full_name
 
-      = component :proposal, locals: {proposal:@negotiation.proposal}
+      = component :proposal, locals: { proposal:@negotiation.proposal }
 
       .avatar
         | composer_image
 
       = form_for @negotiation do |form|
-        = render partial: 'form', layout: 'proposal/layouts/negotiation', locals: {form:form}
+        = render partial: 'form', layout: 'proposal/layouts/negotiation', locals: { form:form }
