@@ -21,7 +21,7 @@
           /each recorriendo los items del receiver
           /element: good
 
-   .good_previewer
+    .good_previewer
       .images
         - 1.upto(3) do |index|
           .image
@@ -41,5 +41,5 @@
       .avatar
         | composer_image
 
-      = form_for @negotiation do |form|
+      = form_for @offer do |form|
         = render partial: 'form', layout: 'proposal/layouts/offer', locals: {form:form}

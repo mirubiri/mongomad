@@ -19,7 +19,7 @@ class OffersController < ApplicationController
     @requests = Request.all
 
     respond_to do |format|
-      format.html
+      format.html {render :template => "proposal/new"}
       #format.json { render json: @offer }
     end
   end

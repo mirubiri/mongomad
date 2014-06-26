@@ -11,8 +11,14 @@ class NegotiationsController < ApplicationController
     end
   end
 
-  def edit
+  def edit    
     @negotiation = Negotiation.find(params[:id])
+
+    respond_to do |format|
+      format.html {render :template => "proposal/edit"}
+      #format.json { render json: @offer }
+    end
+
   end
 
   def update
