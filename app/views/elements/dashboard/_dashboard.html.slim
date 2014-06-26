@@ -2,7 +2,7 @@
   = element :profile_card
 
 - content_for :request_list
-  = element :request_list, data:dashboard
+  = element :request_list, locals:{ requests:requests }
 
 - content_for :business_info
   = element :business_info
