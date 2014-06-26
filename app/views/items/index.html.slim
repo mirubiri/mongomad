@@ -1,2 +1,4 @@
+= button_to 'add product', new_item_path, :method => :get
+
 - @items.each do |item|
   = element :item, locals:{ item:item }
