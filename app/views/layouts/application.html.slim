@@ -8,8 +8,8 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
 
   body
-    = element :omnibar
+    = element :omnibar, data: @data.visited_user
 
     div.main
-      = element :dashboard, data: dashboard
+      = element :dashboard, data: @data
       = element :expositor
