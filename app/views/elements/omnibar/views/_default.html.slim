@@ -1,12 +1,9 @@
 .omnibar
-  = yield_content :avatar
+   = component :avatar, data: omnibar
 
-  nav.user_omnibar
-    = yield_content :user_omnibar
+  nav.navigation_controls
+    = yield_content :navigation_controls
 
   = yield_content :search
 
-  - if content_for?(:inline_login)
-    = yield_content :inline_login
-
-  = yield_content :inline_logout
+  = component :inline_logout
