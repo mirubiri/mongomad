@@ -29,11 +29,11 @@ class OffersController < ApplicationController
   end
 
   def create
-    @data.offer = Offer.new(params[:offer])
+    offer = Offer.new(params[:offer])
 
     respond_to do |format|
-      if @offer.save
-        format.html { redirect_to @data.offer, notice: 'Offer was successfully created.' }
+      if offer.save
+        format.html { redirect_to offer, notice: 'Offer was successfully created.' }
         #format.json { render json: @data.offer, status: :created, location: @data.offer }
       else
         format.html { render action: "new" }
@@ -43,10 +43,10 @@ class OffersController < ApplicationController
   end
 
   def update
-    @data.offer = Offer.find(params[:id])
+    offer = Offer.find(params[:id])
 
     respond_to do |format|
-      if @data.offer.update_attributes(params[:offer])
+      if offer.update_attributes(params[:offer])
         format.html { redirect_to @data.offer, notice: 'Offer was successfully updated.' }
         #format.json { head :no_content }
       else
@@ -57,8 +57,8 @@ class OffersController < ApplicationController
   end
 
   def destroy
-    @data.offer = Offer.find(params[:id])
-    @data.offer.destroy
+    offer = Offer.find(params[:id])
+    offer.destroy
 
     respond_to do |format|
       format.html { redirect_to offers_url }
