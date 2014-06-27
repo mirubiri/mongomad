@@ -5,4 +5,6 @@
   .title
     | Make a new request
 
-  = render partial: 'form', layout: 'requests/layouts/form_layout', locals: { request:@data.request }
+  = render partial: 'form',
+           layout:  'requests/layouts/form_layout',
+           locals:  { request:@data.request }
