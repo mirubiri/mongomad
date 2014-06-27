@@ -1,8 +1,8 @@
 - content_for :profile_card
-  = element :profile_card
+  = element :profile_card, data: dashboard.visited_user
 
 - content_for :request_list
-  = element :request_list, data: request
+  = element :request_list, data: dashboard.requests
 
 - content_for :business_info
   = element :business_info
