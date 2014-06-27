@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
 
   def index
-    @data.offers = Offer.where(user_id:@data.visited_user.id)
+    @data.offers = Offer.all
 
     respond_to do |format|
       format.html
