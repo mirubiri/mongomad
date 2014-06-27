@@ -1,9 +1,10 @@
-- content_for :text_input
-  = form.text_area :text,
-                   :placeholder => "Write your request here...",
-                   :size => "24x6",
-                   :required => true,
-                   :maxlength => "160"
+= form_for @request do |form|
+  - content_for :text_input
+    = form.text_area :text,
+                     :placeholder => "Write your request here...",
+                     :size => "24x6",
+                     :required => true,
+                     :maxlength => "160"
 
-- content_for :send_control
-  = form.submit "Save"
+  - content_for :send_control
+    = form.submit "Save"
