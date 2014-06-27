@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
     params[:item][:images].delete({"id"=>"nil"})
 
     builder = ItemBuilder.new
-                         .user(@data.visited_user)
+                         .user(current_user)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
     item.images = []
     params[:item][:images].delete({"id"=>"nil"})
 
-    builder = ItemBuilder.new(@data.item)
+    builder = ItemBuilder.new(item)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
