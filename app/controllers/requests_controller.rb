@@ -15,7 +15,7 @@ class RequestsController < ApplicationController
 
   def create
     builder = RequestBuilder.new
-                            .user(@data.visited_user)
+                            .user(current_user)
                             .text(params[:request][:text])
     request = builder.build
 
