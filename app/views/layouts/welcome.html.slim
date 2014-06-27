@@ -8,7 +8,7 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
 
   body
-    = element :omnibar, data: @data.visited_user
+    = element :omnibar, view: :not_logged
 
     div.main
       = yield
