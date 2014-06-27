@@ -1,47 +1,41 @@
 class ItemsController < ApplicationController
 
   def index
-    # @items = Item.where(user_id:current_user.id)
-    # @requests = Request.where(user_id:current_user.id)
-    @items = Item.all
-    @requests = Request.all
+    @data.visited_user_items = Item.where(user_id:@data.visited_user.id)
 
     respond_to do |format|
       format.html
-      #format.json { render json: @items }
+      #format.json { render json: @data.items }
     end
   end
 
   def show
-    @item = Item.find(params[:id])
+    @data.item = Item.find(params[:id])
 
     respond_to do |format|
       format.html
-      #format.json { render json: @item }
+      #format.json { render json: @data.item }
     end
   end
 
   def new
-    @item = Item.new
-    # @requests = Request.where(user_id:current_user.id)
-    @requests = Request.all
+    @data.item = Item.new
 
     respond_to do |format|
       format.html
-      #format.json { render json: @item }
+      #format.json { render json: @data.item }
     end
   end
 
   def edit
-    @item = Item.find(params[:id])
-    # @requests = Request.where(user_id:current_user.id)
-    @requests = Request.all
+    @data.item = Item.find(params[:id])
   end
 
   def create
     params[:item][:images].delete({"id"=>"nil"})
+
     builder = ItemBuilder.new
-                         .user(current_user)
+                         .user(@data.visited_user)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
@@ -51,20 +45,20 @@ class ItemsController < ApplicationController
       if item
         item.save
         format.html { redirect_to items_url }
-        #format.json { render json: @item, status: :created, location: @item }
+        #format.json { render json: @data.item, status: :created, location: @data.item }
       else
         format.html { render action: "new" }
-        #format.json { render json: @item.errors, status: :unprocessable_entity }
+        #format.json { render json: @data.item.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    @item = Item.find(params[:id])
-    @item.images = []
+    item = Item.find(params[:id])
+    item.images = []
     params[:item][:images].delete({"id"=>"nil"})
 
-    builder = ItemBuilder.new(@item)
+    builder = ItemBuilder.new(@data.item)
                          .images(params[:item][:images])
                          .name(params[:item][:name])
                          .description(params[:item][:description])
@@ -77,14 +71,14 @@ class ItemsController < ApplicationController
         #format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        #format.json { render json: @item.errors, status: :unprocessable_entity }
+        #format.json { render json: @data.item.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
-    @item = Item.find(params[:id])
-    @item.destroy
+    item = Item.find(params[:id])
+    item.destroy
 
     respond_to do |format|
       format.html { redirect_to items_url }
