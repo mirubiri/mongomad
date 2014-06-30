@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def index
-    @data.visited_user_items = Item.where(user_id:@data.visited_user.id)
+    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
 
     respond_to do |format|
       format.html
