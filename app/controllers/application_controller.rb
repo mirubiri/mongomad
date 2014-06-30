@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
 
   def data_variable_definition
     @data = OpenStruct.new
-    # @data.visited_user = visited_user
-    # @data.requests = Request.where(user_id:@data.visited_user.id)
+    # @data.viewed_user = viewed_user
+    # @data.requests = Request.where(user_id:@data.viewed_user.id)
   end
 
-  def visited_user
+  def viewed_user
     #recuperar id del usuario
   end
 end

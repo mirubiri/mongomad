@@ -1,8 +1,13 @@
 class OffersController < ApplicationController
 
-  def index
-    @data.offers = Offer.all
 
+
+  def index
+
+     @data.offers = Offer.all
+
+ puts @data.hola
+# puts "estamos en offers"
     respond_to do |format|
       format.html
       #format.json { render json: @data.offers }
@@ -12,19 +17,19 @@ class OffersController < ApplicationController
   def new
     @data.offer = Offer.new
     @data.current_user = current_user
-    @data.visited_user_items = Item.where(user_id:@data.visited_user.id)
+    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
     @data.current_user_items = Item.where(user_id:@data.current_user.id)
 
     respond_to do |format|
       format.html { render :template => "proposal/new" }
-      #format.json { render json: @data.offer }
+      #format.json { render json: @data.offer
     end
   end
 
   def edit
     @data.offer = Offer.find(params[:id])
     @data.current_user = current_user
-    @data.visited_user_items = Item.where(user_id:@data.visited_user.id)
+    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
     @data.current_user_items = Item.where(user_id:@data.current_user.id)
   end
 
