@@ -10,7 +10,7 @@ module ApplicationHelper
 
     render partial: element,
       layout: view,
-      object: data
+      locals:{name.to_sym => data}
   end
 
   def component(name,view:'default',data:nil)
@@ -19,7 +19,7 @@ module ApplicationHelper
 
     render partial: component,
       layout: view,
-      object: data
+      locals:{name.to_sym => data}
   end
 
   def active_tab?(*controller_names)
