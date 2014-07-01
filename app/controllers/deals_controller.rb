@@ -1,8 +1,6 @@
 class DealsController < ApplicationController
 
   def index
-    @data.deals = Deal.all
-
     respond_to do |format|
       format.html
       #format.json { render json: @data.deals }
