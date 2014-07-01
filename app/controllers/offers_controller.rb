@@ -1,13 +1,7 @@
 class OffersController < ApplicationController
-
-
-
   def index
+    @data.offers = Offer.all
 
-     @data.offers = Offer.all
-
- puts @data.hola
-# puts "estamos en offers"
     respond_to do |format|
       format.html
       #format.json { render json: @data.offers }
