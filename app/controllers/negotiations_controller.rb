@@ -2,7 +2,7 @@ class NegotiationsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      format.html  { render 'index', locals:{ data:@data } }
       #format.json { render json: @data.negotiations }
     end
   end
@@ -11,7 +11,7 @@ class NegotiationsController < ApplicationController
     negotiation = Negotiation.find(params[:id])
 
     respond_to do |format|
-      format.html { render :template => "proposal/edit", locals:{ negotiation:negotiation } }
+      format.html { render :template => 'proposal/edit', locals:{ negotiation:negotiation } }
       #format.json { render json: negotiation }
     end
 

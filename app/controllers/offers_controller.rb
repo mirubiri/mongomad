@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   def index
     respond_to do |format|
-      format.html
+      format.html { render 'index', locals:{ data:@data } }
       #format.json { render json: offers }
     end
   end
@@ -10,7 +10,7 @@ class OffersController < ApplicationController
     offer = Offer.new
 
     respond_to do |format|
-      format.html { render :template => "proposal/new", locals:{ offer:offer } }
+      format.html { render :template => 'proposal/new', locals:{ offer:offer } }
       #format.json { render json: offer
     end
   end

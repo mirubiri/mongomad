@@ -2,7 +2,7 @@ class DealsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html
+      format.html { render 'index', locals:{ data:@data } }
       #format.json { render json: @data.deals }
     end
   end
