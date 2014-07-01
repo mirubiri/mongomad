@@ -17,11 +17,11 @@
     | 350
 
 - content_for :name
-    | name
-    = profile_card.first_name + ' ' + profile_card.last_name
+  | name
+  = profile_card.first_name + ' ' + profile_card.last_name
 
 - content_for :location
-    | location
+  | location
 
 - content_for :make_offer_control
   = button_to "Make me an offer",

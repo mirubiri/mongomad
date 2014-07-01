@@ -6,20 +6,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @item = Item.new
-    # @requests = Request.where(user_id:current_user.id)
-    @requests = Request.all
-
-    respond_to do |format|
-      format.html
-      #format.json { render json: @item }
-    end
-  end
-
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    user = User.find(params[:id])
+    user.destroy
 
     respond_to do |format|
       format.html { redirect_to users_url }

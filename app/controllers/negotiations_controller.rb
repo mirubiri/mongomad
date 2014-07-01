@@ -1,8 +1,6 @@
 class NegotiationsController < ApplicationController
 
   def index
-    @data.negotiations = Negotiation.all
-
     respond_to do |format|
       format.html
       #format.json { render json: @data.negotiations }
@@ -10,11 +8,11 @@ class NegotiationsController < ApplicationController
   end
 
   def edit
-    @data.negotiation = Negotiation.find(params[:id])
+    negotiation = Negotiation.find(params[:id])
 
     respond_to do |format|
-      format.html { render :template => "proposal/edit" }
-      #format.json { render json: @data.offer }
+      format.html { render :template => "proposal/edit", locals:{ negotiation:negotiation } }
+      #format.json { render json: negotiation }
     end
 
   end
@@ -27,8 +25,8 @@ class NegotiationsController < ApplicationController
         format.html { redirect_to negotiation, notice: 'Negotiation was successfully updated.' }
         #format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @data.negotiation.errors, status: :unprocessable_entity }
+        format.html { render 'index' }
+        #format.json { render json: negotiation.errors, status: :unprocessable_entity }
       end
     end
   end

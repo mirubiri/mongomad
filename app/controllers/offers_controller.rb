@@ -1,30 +1,18 @@
 class OffersController < ApplicationController
   def index
-    @data.offers = Offer.all
-
     respond_to do |format|
       format.html
-      #format.json { render json: @data.offers }
+      #format.json { render json: offers }
     end
   end
 
   def new
-    @data.offer = Offer.new
-    @data.current_user = current_user
-    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
-    @data.current_user_items = Item.where(user_id:@data.current_user.id)
+    offer = Offer.new
 
     respond_to do |format|
-      format.html { render :template => "proposal/new" }
-      #format.json { render json: @data.offer
+      format.html { render :template => "proposal/new", locals:{ offer:offer } }
+      #format.json { render json: offer
     end
-  end
-
-  def edit
-    @data.offer = Offer.find(params[:id])
-    @data.current_user = current_user
-    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
-    @data.current_user_items = Item.where(user_id:@data.current_user.id)
   end
 
   def create
@@ -32,11 +20,11 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if offer.save
-        format.html { redirect_to offer, notice: 'Offer was successfully created.' }
-        #format.json { render json: @data.offer, status: :created, location: @data.offer }
+        format.html { redirect_to offers_url, notice: 'Offer was successfully created.' }
+        #format.json { render json: offer, status: :created, location: offer }
       else
-        format.html { render action: "new" }
-        #format.json { render json: @data.offer.errors, status: :unprocessable_entity }
+        format.html { render 'new' }
+        #format.json { render json: offer.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,11 +34,11 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if offer.update_attributes(params[:offer])
-        format.html { redirect_to @data.offer, notice: 'Offer was successfully updated.' }
+        format.html { redirect_to offers_url, notice: 'Offer was successfully updated.' }
         #format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @data.offer.errors, status: :unprocessable_entity }
+        format.html { render 'index' }
+        #format.json { render json: offer.errors, status: :unprocessable_entity }
       end
     end
   end

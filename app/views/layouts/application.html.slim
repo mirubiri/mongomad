@@ -8,8 +8,11 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
 
   body
-    = element :omnibar, data:@data.viewed_user
+    - if user_signed_in?
+      = element :omnibar, data:data.omnibar
+    - else
+      = element :omnibar, view: :not_signed, data:data.omnibar
 
     div.main
-      = element :dashboard, data:@data
+      = element :dashboard, data:data.dashboard
       = element :expositor

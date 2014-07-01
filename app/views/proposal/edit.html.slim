@@ -36,10 +36,10 @@
       .title
         | composer_full_name
 
-      = component :proposal, data: @negotiation.proposal
+      = component :proposal, data:negotiation.proposal
 
       .avatar
         | composer_image
 
-      = form_for @negotiation do |form|
-        = render partial: 'form', layout: 'proposal/layouts/negotiation', locals: { form:form }
+      = form_for negotiation do |form|
+        = render partial: 'form', layout: 'proposal/layouts/negotiation', locals:{ form:form }

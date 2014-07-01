@@ -12,11 +12,11 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if deal.update_attributes(params[:deal])
-        format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
+        format.html { redirect_to deals_url, notice: 'Deal was successfully updated.' }
         #format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @deal.errors, status: :unprocessable_entity }
+        format.html { render 'index' }
+        #format.json { render json: deal.errors, status: :unprocessable_entity }
       end
     end
   end

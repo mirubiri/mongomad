@@ -1,9 +1,18 @@
 .omnibar
-  = component :avatar, data: omnibar
+  = yiel_content :logo
+
+  = component :avatar, data:omnibar.avatar
 
   nav.navigation_controls
-    = yield_content :navigation_controls
+    li
+      = link_to static_image_tag('negotiations'), negotiations_path
+    li
+      = link_to static_image_tag('deals'), deals_path
+    li
+      = link_to static_image_tag('items'), items_path
+    li
+      = link_to static_image_tag('profile'), profile_path
 
-  = yield_content :search
+  = component :search
 
   = component :inline_logout

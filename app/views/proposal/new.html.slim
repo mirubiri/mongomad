@@ -43,5 +43,5 @@
       .avatar
         | composer_image
 
-      = form_for @offer do |form|
-        = render partial: 'form', layout: 'proposal/layouts/offer', locals: { form:form }
+      = form_for offer do |form|
+        = render partial: 'form', layout: 'proposal/layouts/offer', locals:{ form:form }

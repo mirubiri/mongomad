@@ -1,34 +1,37 @@
 class ItemsController < ApplicationController
 
   def index
-    @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
-
     respond_to do |format|
       format.html
-      #format.json { render json: @data.items }
+      #format.json { render json: items }
     end
   end
 
   def show
-    @data.item = Item.find(params[:id])
+    item = Item.find(params[:id])
 
     respond_to do |format|
-      format.html
-      #format.json { render json: @data.item }
+      format.html { render 'show', locals:{ item:item } }
+      #format.json { render json: item }
     end
   end
 
   def new
-    @data.item = Item.new
+    item = Item.new
 
     respond_to do |format|
-      format.html
-      #format.json { render json: @data.item }
+      format.html { render 'new', locals:{ item:item } }
+      #format.json { render json: item }
     end
   end
 
   def edit
-    @data.item = Item.find(params[:id])
+    item = Item.find(params[:id])
+
+    respond_to do |format|
+      format.html { render 'edit', locals:{ item:item } }
+      #format.json { render json: item }
+    end
   end
 
   def create
@@ -45,10 +48,10 @@ class ItemsController < ApplicationController
       if item
         item.save
         format.html { redirect_to items_url }
-        #format.json { render json: @data.item, status: :created, location: @data.item }
+        #format.json { render json: item, status: :created, location: item }
       else
-        format.html { render action: "new" }
-        #format.json { render json: @data.item.errors, status: :unprocessable_entity }
+        format.html { render 'new' }
+        #format.json { render json: item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,8 +73,8 @@ class ItemsController < ApplicationController
         format.html { redirect_to items_url }
         #format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        #format.json { render json: @data.item.errors, status: :unprocessable_entity }
+        format.html { render 'index' }
+        #format.json { render json: item.errors, status: :unprocessable_entity }
       end
     end
   end
