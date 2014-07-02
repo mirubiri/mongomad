@@ -1,0 +1,2 @@
+class TwoUsersPolicy
+end

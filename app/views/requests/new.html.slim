@@ -1,0 +1,10 @@
+.new_request#new_request
+  .face
+    | Image
+
+  .title
+    | Make a new request
+
+  = render partial: 'form',
+           layout:  'requests/layouts/form_layout',
+           locals:  { request:request }

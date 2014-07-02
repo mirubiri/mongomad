@@ -1,0 +1,10 @@
+.edit_item#edit_item
+
+  .image_loader
+    #pan.preview
+      = object_main_image_tag(item,100,100)
+
+    .progress_bar
+
+  .image_descriptor
+    = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }

@@ -1,0 +1,12 @@
+.avatar
+  .image
+    = yield_content :image
+
+  .user_data
+    .first_name
+      | first_name
+      = avatar.first_name
+
+    .last_name
+      | last_name
+      = avatar.last_name

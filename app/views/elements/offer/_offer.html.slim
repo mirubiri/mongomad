@@ -1,0 +1,16 @@
+- content_for :title
+  | composer_name
+
+- content_for :proposal
+  = component :proposal
+
+- content_for :avatar
+  = component :avatar, view: :with_location
+
+- content_for :message
+  | message
+
+- content_for :controls
+  = button_to "Edit this offer",
+    edit_offer_path(offer.id),
+    method: :get

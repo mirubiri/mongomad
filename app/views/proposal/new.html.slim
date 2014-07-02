@@ -1,0 +1,47 @@
+.new_proposal#new_proposal
+  .goods_side
+    .user_selector
+      .composer_face
+        | composer_face
+      .receiver_face
+        | receiver_face
+
+    .good_selector
+      .composer_goods
+        .composer_cash
+          | image_cash
+        .composer_items
+          /each recorriendo los items del composer
+          /element: item
+
+      .receiver_goods
+        .receiver_cash
+          | image_cash
+        .receiver_items
+          /each recorriendo los items del receiver
+          /element: item
+
+    .good_previewer
+      .images
+        - 1.upto(3) do |index|
+          .image
+            | image
+      .name
+        | name
+      .description
+        | description
+
+  .proposal_side
+    .proposal_preview
+      .title
+        | composer_full_name
+
+      .proposal
+        .composer_goods
+        .receiver_goods
+
+      .avatar
+        | composer_image
+
+      = form_for offer do |form|
+        = render partial: 'form', layout: 'proposal/layouts/offer', locals:{ form:form }

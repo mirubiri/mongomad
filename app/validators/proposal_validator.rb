@@ -1,0 +1,2 @@
+class ProposalValidator
+end

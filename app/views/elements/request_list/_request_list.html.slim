@@ -1,0 +1,8 @@
+- content_for :add_request_control
+  = button_to "Add Request",
+    new_request_path,
+    method: :get
+
+- content_for :requests
+  - request_list.each do |request|
+     = element :request, data:request

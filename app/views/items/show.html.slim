@@ -1,0 +1,14 @@
+.item_show#item_show
+  .main_image
+    = object_main_image_tag(item,300,300)
+
+  - item.images.each do |index|
+    .preview_box
+      .preview_image
+        | item_image
+
+  .title
+    | title
+
+  .description
+    | description

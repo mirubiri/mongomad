@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require turbolinks
 //= require_tree .
+//= require equal-height-columns
+//= require cloudinary
+//= require jquery.Jcrop.min

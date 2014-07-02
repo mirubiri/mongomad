@@ -1,0 +1,16 @@
+- content_for :avatar
+  = component :avatar, view: :with_location
+
+- content_for :proposal
+  = component :proposal
+
+- content_for :conversation
+  = component :conversation
+
+- content_for :leave_negotiation_control
+  | leave_negotiation
+
+- content_for :proposal_controls
+  = button_to "Edit this proposal",
+    edit_negotiation_path(negotiation.id),
+    method: :get

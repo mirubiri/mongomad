@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+//Include mixins
+@import "compass/css3";
+@import "compass/typography/links/unstyled-link";
+
+//Include my files
+@import "base/base";
+@import "layouts/layouts";
+@import "modules/modules";
+@import "modules/billboard";
+@import "jquery-ui.min";
+@import "jquery.Jcrop.min";

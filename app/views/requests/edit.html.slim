@@ -1,0 +1,11 @@
+.edit_request#edit_request
+  .face
+    | Image
+
+  .title
+    | Edit your request
+
+  = render partial: 'form',
+           layout:  'requests/layouts/form_layout',
+           locals:  { request:request }
+

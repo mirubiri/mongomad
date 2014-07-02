@@ -1,0 +1,10 @@
+.new_item#new_item
+
+  .image_loader
+    #pan.preview
+      img src=""
+
+    .progress_bar
+
+  .image_descriptor
+    = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }

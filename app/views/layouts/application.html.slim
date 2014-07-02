@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Mongomad
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
+
+  body
+    - if user_signed_in?
+      = element :omnibar, data:data.omnibar
+    - else
+      = element :omnibar, view: :not_signed, data:data.omnibar
+
+    div.main
+      = element :dashboard, data:data.dashboard
+      = element :expositor
