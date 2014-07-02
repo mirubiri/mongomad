@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Cash, :type => :model do
+describe Cash do
   # Relations
   specify { expect(Cash).to be < Good }
 

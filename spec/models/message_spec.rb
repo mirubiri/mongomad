@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Message, :type => :model do
+describe Message do
   # Variables
   let(:user) { Fabricate.build(:user) }
   let(:message) { Fabricate.build(:message, user_id:user.id) }

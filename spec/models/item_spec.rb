@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Item, :type => :model do
+describe Item do
   # Variables
   let(:item) { Fabricate.build(:item) }
 

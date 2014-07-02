@@ -12,7 +12,7 @@ class TestOwnershipDual
   ownership :dual
 end
 
-describe "Ownership", type: :model do
+describe Ownership do
   let(:single) { TestOwnershipSingle.new }
   let(:dual) { TestOwnershipDual.new }
 

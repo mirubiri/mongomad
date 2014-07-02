@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Attachment::Image, type: :model do
+describe Attachment::Image do
   # Relations
   it { is_expected.to be_embedded_in :attachable }
 

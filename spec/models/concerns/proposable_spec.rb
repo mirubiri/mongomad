@@ -12,7 +12,7 @@ class TestProposableHistoric
   proposal_historic :true
 end
 
-describe 'Proposable', type: :model do
+describe Proposable do
   let(:proposable) { TestProposable.new }
   let(:historic_proposable) { TestProposableHistoric.new }
   let(:composer) { Fabricate.build(:user) }

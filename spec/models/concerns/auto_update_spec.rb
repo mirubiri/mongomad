@@ -21,7 +21,7 @@ class TestCopy
   end
 end
 
-describe AutoUpdate, type: :model do
+describe AutoUpdate do
   let!(:source) do
     TestSource.create!
   end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Product, :type => :model do
+describe Product do
   # Modules
   it { is_expected.to include_module AutoUpdate }
   it { is_expected.to include_module Attachment::Images }

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User, :type => :model do
+describe User do
   # Variables
   let(:user) { Fabricate.build(:user) }
 

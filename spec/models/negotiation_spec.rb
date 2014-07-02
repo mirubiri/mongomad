@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Negotiation, :type => :model do
+describe Negotiation do
 
   specify { expect(Negotiation).to be < Proposable }
   specify { expect(Negotiation).to be < Conversation }

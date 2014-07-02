@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Alert, :type => :model do
+describe Alert do
 
   it { is_expected.to include_module Ownership }
 

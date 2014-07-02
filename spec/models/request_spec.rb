@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Request, :type => :model do
+describe Request do
   # Variables
   let(:request) { Fabricate.build(:request) }
 

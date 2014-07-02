@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Proposal, :type => :model do
+describe Proposal do
   # Variables
   let(:composer) { Fabricate.build(:user) }
   let(:receiver) { Fabricate.build(:user) }

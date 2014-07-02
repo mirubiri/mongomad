@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Deal, :type => :model do
+describe Deal do
 
   specify { expect(Deal).to be < Proposable }
   specify { expect(Deal).to be < Conversation }

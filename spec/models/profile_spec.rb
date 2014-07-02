@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Profile, :type => :model do
+describe Profile do
   # Modules
   it { is_expected.to include_module Attachment::Images }
 

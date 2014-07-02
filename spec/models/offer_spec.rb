@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Offer, :type => :model do
+describe Offer do
 
   specify { expect(Offer).to be < Proposable }
 

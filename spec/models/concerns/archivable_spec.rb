@@ -5,7 +5,7 @@ class TestArchivable
 	include Archivable
 end
 
-describe Archivable, type: :model do
+describe Archivable do
 	let(:document_class) { TestArchivable }
   subject(:document) { document_class.new }
 
