@@ -61,15 +61,15 @@ Rails.application.routes.draw do
   #   end
 
   # User resources
-  resources :users
-  resources :requests
-  resources :items
-  resources :offers
-  resources :negotiations
-  resources :deals
-  resource  :profile
-  #resource :profile
-  #resources :alerts
+  resources :users do
+    resources :requests
+    resources :items
+    resources :offers
+    resources :negotiations
+    resources :deals
+    resource  :profile
+    #resources :alerts
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
