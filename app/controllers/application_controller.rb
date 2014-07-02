@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
 
   def data_variable_definition
     @data = OpenStruct.new
-    @data.current_user = current_user
-    @data.viewed_user = viewed_user
+    @data.current_user = User.first
+    @data.viewed_user = User.first
     @data.current_user_items = Item.where(user_id:@data.current_user.id)
     @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
 
