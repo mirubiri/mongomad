@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :data_variable_definition
 
   def after_sign_in_path_for(user)
-    offers_url
+    user_offers_url(current_user)
   end
 
   def data_variable_definition

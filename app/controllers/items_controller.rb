@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if item
         item.save
-        format.html { redirect_to items_url }
+        format.html { redirect_to user_items_url(current_user) }
         #format.json { render json: item, status: :created, location: item }
       else
         format.html { render 'new' }
@@ -70,7 +70,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if item
         item.save
-        format.html { redirect_to items_url }
+        format.html { redirect_to user_items_url(current_user) }
         #format.json { head :no_content }
       else
         format.html { render 'index' }
@@ -84,7 +84,7 @@ class ItemsController < ApplicationController
     item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
+      format.html { redirect_to user_items_url(current_user) }
       #format.json { head :no_content }
     end
   end

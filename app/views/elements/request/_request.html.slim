@@ -6,9 +6,9 @@
 
 - content_for :controls
   = link_to 'delete',
-    request_path(request.id),
+    user_request_path(current_user,request.id),
     method: :delete,
     confirm: "Are you sure?"
 
   = link_to 'edit',
-    edit_request_path(request.id)
+    edit_user_request_path(current_user,request.id)

@@ -12,5 +12,5 @@
 
 - content_for :controls
   = button_to "Edit this offer",
-    edit_offer_path(offer.id),
+    edit_user_offer_path(current_user,offer),
     method: :get

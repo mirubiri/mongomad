@@ -25,5 +25,5 @@
 
 - content_for :make_offer_control
   = button_to "Make me an offer",
-    new_offer_path,
+    new_user_offer_path(current_user),
     method: :get

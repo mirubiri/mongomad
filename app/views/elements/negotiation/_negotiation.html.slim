@@ -12,5 +12,5 @@
 
 - content_for :proposal_controls
   = button_to "Edit this proposal",
-    edit_negotiation_path(negotiation.id),
+    edit_user_negotiation_path(current_user,negotiation),
     method: :get
