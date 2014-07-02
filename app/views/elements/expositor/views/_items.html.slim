@@ -1,0 +1,10 @@
+.expositor
+  nav.navigation
+    = yield_content :navigation
+
+  = button_to 'Add item',
+    new_user_item_path(current_user),
+    :method => :get
+
+  - data.expositor.items.each do |item|
+    = element :item, data:item

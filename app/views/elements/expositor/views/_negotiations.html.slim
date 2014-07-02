@@ -1,0 +1,6 @@
+.expositor
+  nav.navigation
+    = yield_content :navigation
+
+  - data.expositor.negotiations.each do |negotiation|
+    = element :negotiation, data:negotiation

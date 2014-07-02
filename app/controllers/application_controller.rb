@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
 
   def data_variable_definition
     @data = OpenStruct.new
-    @data.current_user = User.first
+    current_user = User.first
     @data.viewed_user = User.first
-    @data.current_user_items = Item.where(user_id:@data.current_user.id)
+    current_user_items = Item.where(user_id:current_user.id)
     @data.viewed_user_items = Item.where(user_id:@data.viewed_user.id)
 
     @data.omnibar = OpenStruct.new
-    @data.omnibar.avatar = @data.current_user
+    @data.omnibar.avatar = current_user
 
     @data.dashboard = OpenStruct.new
     @data.dashboard.profile_card = @data.viewed_user
