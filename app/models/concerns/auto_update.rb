@@ -3,7 +3,7 @@ module AutoUpdate
 
   included do
     cattr_accessor :auto_update_definitions
-    field :outdated, type:Boolean, default:false
+    field :outdated, type:Mongoid::Boolean, default:false
   end
 
   module ClassMethods

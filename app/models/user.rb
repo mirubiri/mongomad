@@ -38,7 +38,7 @@ class User
   embeds_one :profile, autobuild: true
 
   field :nick
-  field :disabled, type:Boolean, default:false
+  field :disabled, type:Mongoid::Boolean, default:false
 
   delegate :first_name,:last_name,:gender,:language,:birth_date,:location,
     :first_name=,:last_name=,:gender=,:language=,:birth_date=,:location=,

@@ -2,8 +2,8 @@ module Archivable
 	extend ActiveSupport::Concern
 
   included do
-    field :archived, type:Boolean, default:false
-  	default_scope where(archived:false)
+    field :archived, type:Mongoid::Boolean, default:false
+  	default_scope ->{ where(archived:false) }
   end
 
   def archive

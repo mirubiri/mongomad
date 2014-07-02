@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-class Test::Source
+class TestSource
   include Mongoid::Document
 
   field :one, type:String, default:'updated!'
   field :two, type:String, default:'updated!'
 end
 
-class Test::Copy
+class TestCopy
   include Mongoid::Document
   include AutoUpdate
 
@@ -17,20 +17,20 @@ class Test::Copy
   auto_update :one, :two, using: :original
 
   def original
-    Test::Source.last
+    TestSource.last
   end
 end
 
-describe AutoUpdate do
+describe AutoUpdate, type: :model do
   let!(:source) do
-    Test::Source.create!
+    TestSource.create!
   end
 
   subject(:copy) do
-    Test::Copy.create!
+    TestCopy.create!
   end
 
-  it { is_expected.to have_field(:outdated).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to have_field(:outdated).of_type(Mongoid::Boolean).with_default_value_of(false) }
 
   describe '#auto_update' do
     context 'when is updated' do

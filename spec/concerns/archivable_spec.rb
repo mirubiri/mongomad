@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-class Test::Archivable
+class TestArchivable
 	include Mongoid::Document
 	include Archivable
 end
 
-describe Archivable do
-	let(:document_class) { Test::Archivable }
+describe Archivable, type: :model do
+	let(:document_class) { TestArchivable }
   subject(:document) { document_class.new }
 
   it 'scopes all queries to archived=false' do
   	expect(document_class.criteria.selector).to eq({"archived"=>false})
   end
 
-  it { is_expected.to have_field(:archived).of_type(Boolean).with_default_value_of(false) }
+  it { is_expected.to have_field(:archived).of_type(Mongoid::Boolean).with_default_value_of(false) }
 
   describe '#archive' do
   	context 'document is persisted' do

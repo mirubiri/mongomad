@@ -5,7 +5,7 @@ class TestConversation
   include Conversation
 end
 
-describe 'Conversation' do
+describe 'Conversation', type: :model do
   subject { TestConversation }
 
   it { is_expected.to be < Conversation }

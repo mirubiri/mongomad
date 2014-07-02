@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Attachment::Images do
+describe Attachment::Images, type: :model do
   # Variables
   let(:test_class) do
     Struct.new(nil) do

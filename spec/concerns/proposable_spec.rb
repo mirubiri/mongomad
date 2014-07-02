@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-class Test::Proposable
+class TestProposable
   include Mongoid::Document
   include Proposable
   proposal_historic :false
 end
 
-class Test::ProposableHistoric
+class TestProposableHistoric
   include Mongoid::Document
   include Proposable
   proposal_historic :true
 end
 
-describe 'Proposable' do
-  let(:proposable) { Test::Proposable.new }
-  let(:historic_proposable) { Test::ProposableHistoric.new }
+describe 'Proposable', type: :model do
+  let(:proposable) { TestProposable.new }
+  let(:historic_proposable) { TestProposableHistoric.new }
   let(:composer) { Fabricate.build(:user) }
   let(:receiver) { Fabricate.build(:user) }
   let(:goods) do
@@ -23,7 +23,7 @@ describe 'Proposable' do
       Fabricate.build(:cash,user_id:composer).to_product ]
   end
 
-  subject { Test::Proposable }
+  subject { TestProposable }
   it { is_expected.to be < Ownership }
 
   context 'proposal_historic is :false' do
@@ -31,7 +31,7 @@ describe 'Proposable' do
   end
 
   context 'proposal_historic is true' do
-    subject { Test::ProposableHistoric }
+    subject { TestProposableHistoric }
     it { is_expected.to embed_many(:proposals).of_type(Proposal) }
 
     describe '#proposal' do
