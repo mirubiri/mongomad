@@ -37,6 +37,7 @@ gem 'slim-rails'
 gem 'compass-rails'
 gem 'cloudinary'
 gem 'devise'
+gem 'transpec'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
