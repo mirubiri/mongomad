@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :data,:visited_user
+  layout :layout_by_resource
+
+
+  def layout_by_resource
+    if devise_controller?
+      'welcome'
+    else
+      "application"
+    end
+  end
 
   class DataValue
     def offers
