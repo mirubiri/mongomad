@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def visited_user
-    #TODO: Recuperar id del usuario
+    @_visited_user ||= User.find(params[:id])
   end
 end
