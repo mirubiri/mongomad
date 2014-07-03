@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
 
     def requests
-      @requests ||= Request.where(user_id:@visited_user.id)
+      @requests ||= Request.where(user_id:visited_user.id)
     end
 
     def visited_user
@@ -38,20 +38,26 @@ class ApplicationController < ActionController::Base
     end
 
     def offers
-      @offers ||= Offer.where("proposal.composer_id"=>@visited_user.id)
+      @offers ||= Offer.where("proposal.composer_id"=>visited_user.id)
     end
 
     def negotiations
-      @negotiations ||= Negotiation.where(user_ids:@current_user.id)
+      @negotiations ||= Negotiation.where(user_ids:current_user.id)
     end
 
     def deals
-      @deals ||= Deal.where(user_ids:@current_user.id)
+      @deals ||= Deal.where(user_ids:current_user.id)
     end
 
-    def items
-      @requests ||= Item.where(user_id:@visited_user.id)
+    def my_items
+      @my_items ||= Item.where(user_id:current_user.id)
     end
+
+    def his_items
+      @his_items ||= Item.where(user_id:visited_user.id)
+    end
+
+    alias_method :items, :my_items
   end
 
   def visited_user
