@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def visited_user
-    @_visited_user ||= User.find(params[:id])
+    @_visited_user ||= User.find(params[:user_id])
   end
 
   def data
