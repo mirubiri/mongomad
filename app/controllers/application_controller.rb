@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :define_data
+
+  helper_method :data,:visited_user
 
   class DataValue
     def offers
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
     @_visited_user ||= User.find(params[:id])
   end
 
-  def define_data
+  def data
     @data ||= DataValue.new
   end
 end
