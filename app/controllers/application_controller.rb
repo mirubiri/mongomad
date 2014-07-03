@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     end
 
     def negotiations
-      @negotiations || = Negotiation.where(user_ids:current_user.id)
+      @negotiations ||= Negotiation.where(user_ids:current_user.id)
     end
 
     def deals
