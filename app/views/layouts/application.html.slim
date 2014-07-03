@@ -9,10 +9,10 @@ html
 
   body
     - if user_signed_in?
-      = element :omnibarcurrent_user
+      = element :omnibar, data:@data
     - else
-      = element :omnibar, view: :not_signedcurrent_user
+      = element :omnibar, view: :not_signed, data:@data
 
     div.main
-      = element :dashboardcurrent_user
-      = element :expositor, view: yield_content(:expositor_view)current_user
+      = element :dashboard, data:@data
+      = element :expositor, view: yield_content(:expositor_view), data:@data
