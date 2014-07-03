@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   end
 
   class DataValue
-
     def initialize(current_user,visited_user)
       @visited_user=visited_user
       @current_user=current_user

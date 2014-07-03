@@ -2,8 +2,8 @@ class NegotiationsController < ApplicationController
 
   def index
     respond_to do |format|
-      format.html  { render 'index', locals:{ data:@data } }
-      #format.json { render json: @data.negotiations }
+      format.html
+      #format.json { render json: data.negotiations }
     end
   end
 
@@ -36,7 +36,7 @@ class NegotiationsController < ApplicationController
     negotiation.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_negotiations_url(current_user) }
+      format.html { redirect_to user_negotiations_url(data.current_user) }
       #format.json { head :no_content }
     end
   end

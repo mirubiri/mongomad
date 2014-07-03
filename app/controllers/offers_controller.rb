@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   def index
     respond_to do |format|
-      format.html { render 'index', locals:{ data:@data } }
+      format.html
       #format.json { render json: offers }
     end
   end
@@ -20,7 +20,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if offer.save
-        format.html { redirect_to user_offers_url(current_user), notice: 'Offer was successfully created.' }
+        format.html { redirect_to user_offers_url(data.current_user), notice: 'Offer was successfully created.' }
         #format.json { render json: offer, status: :created, location: offer }
       else
         format.html { render 'new' }
@@ -34,7 +34,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if offer.update_attributes(params[:offer])
-        format.html { redirect_to user_offers_url(current_user), notice: 'Offer was successfully updated.' }
+        format.html { redirect_to user_offers_url(data.current_user), notice: 'Offer was successfully updated.' }
         #format.json { head :no_content }
       else
         format.html { render 'index' }
@@ -48,7 +48,7 @@ class OffersController < ApplicationController
     offer.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_offers_url(current_user) }
+      format.html { redirect_to user_offers_url(data.current_user) }
       #format.json { head :no_content }
     end
   end

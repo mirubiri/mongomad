@@ -3,8 +3,8 @@
     = yield_content :navigation
 
   = button_to 'Add item',
-    new_user_item_path(current_user),
+    new_user_item_path(data.current_user),
     :method => :get
 
-  - data.expositor.items.each do |item|
-    = element :item, data:@data
+  - data.items.each do |item|
+    = element :deal

@@ -2,5 +2,5 @@
   nav.navigation
     = yield_content :navigation
 
-  - data.expositor.deals.each do |deal|
-    = element :deal, data:@data
+  - data.deals.each do |deal|
+    = element :deal
