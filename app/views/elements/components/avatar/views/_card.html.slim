@@ -1,0 +1,19 @@
+.avatar
+  .image
+    = yield_content :image
+
+  .user_data
+    .full_name
+      | full_name
+
+    .location
+      | location
+
+    .reputation
+      = static_image_tag('star')
+      | 75%
+
+    .friends
+      = static_image_tag('friends')
+      | 350
+
