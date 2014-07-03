@@ -4,16 +4,20 @@
 
   .user_data
     .full_name
-      | full_name
+      = data.visited_user.first_name + ' ' + data.visited_user.last_name
 
     .location
       | location
 
     .reputation
-      = static_image_tag('star')
-      | 75%
+      .icon
+         = static_image_tag('star')
+      .value
+        | 75%
 
     .friends
-      = static_image_tag('friends')
-      | 350
+      .icon
+        = static_image_tag('friends')
+      .number
+        | 350
 
