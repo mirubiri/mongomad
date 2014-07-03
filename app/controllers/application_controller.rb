@@ -24,6 +24,19 @@ class ApplicationController < ActionController::Base
       @visited_user=visited_user
       @current_user=current_user
     end
+
+    def requests
+      @requests ||= Request.where(user_id:@visited_user.id)
+    end
+
+    def visited_user
+      @visited_user
+    end
+
+    def current_user
+      @current_user
+    end
+
     def offers
       @offers ||= Offer.where("proposal.composer_id"=>@visited_user.id)
     end
@@ -34,10 +47,6 @@ class ApplicationController < ActionController::Base
 
     def deals
       @deals ||= Deal.where(user_ids:@current_user.id)
-    end
-
-    def requests
-      @requests ||= Request.where(user_id:@visited_user.id)
     end
 
     def items
