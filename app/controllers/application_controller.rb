@@ -19,24 +19,29 @@ class ApplicationController < ActionController::Base
   end
 
   class DataValue
+
+    def initialize(current_user,visited_user)
+      @visited_user=visited_user
+      @current_user=current_user
+    end
     def offers
-      @offers ||= Offer.where("proposal.composer_id"=>visited_user.id)
+      @offers ||= Offer.where("proposal.composer_id"=>@visited_user.id)
     end
 
     def negotiations
-      @negotiations ||= Negotiation.where(user_ids:current_user.id)
+      @negotiations ||= Negotiation.where(user_ids:@current_user.id)
     end
 
     def deals
-      @deals ||= Deal.where(user_ids:current_user.id)
+      @deals ||= Deal.where(user_ids:@current_user.id)
     end
 
     def requests
-      @requests ||= Request.where(user_id:visited_user.id)
+      @requests ||= Request.where(user_id:@visited_user.id)
     end
 
     def items
-      @requests ||= Item.where(user_id:visited_user.id)
+      @requests ||= Item.where(user_id:@visited_user.id)
     end
   end
 
@@ -45,6 +50,6 @@ class ApplicationController < ActionController::Base
   end
 
   def data
-    @data ||= DataValue.new
+    @data ||= DataValue.new(current_user,visited_user)
   end
 end
