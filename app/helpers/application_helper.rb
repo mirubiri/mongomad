@@ -4,22 +4,22 @@ module ApplicationHelper
     view_flow.content.delete(content_key)
   end
 
-  def element(name,view: :default,data:nil,state:nil)
+  def element(name,view: :default,state:nil)
     element="elements/#{name}/#{name}"
     view="elements/#{name}/views/#{view}"
 
     render partial: element,
       layout: view,
-      locals:{name.to_sym => data,state:state}
+      locals:{state:state}
   end
 
-  def component(name,view: :default,data:nil,state:nil)
+  def component(name,view: :default,state:nil)
     component="elements/components/#{name}/#{name}"
     view="elements/components/#{name}/views/#{view}"
 
     render partial: component,
       layout: view,
-      locals:{name.to_sym => data,state:state}
+      locals:{state:state}
   end
 
   def active_tab?(*controller_names)
