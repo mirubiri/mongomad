@@ -15,4 +15,4 @@ html
 
     div.main
       = element :dashboard, data:data.dashboard
-      = element :expositor, view: yield_content :expositor_view, data:data.expositor
+      = element :expositor, view: yield_content(:expositor_view), data:data.expositor
