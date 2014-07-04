@@ -1,4 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
+  def new
+
+    email = params[:user][:email]
+    password = params[:user][:password]
+    self.resource = resource_class.new
+
+    respond_to do |format|
+        format.html { render locals: {email:email,password:password} }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
+    end
+  end
+
   def create
     builder = UserBuilder.new
                          .email(params[:user][:email])
@@ -16,4 +29,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+
 end

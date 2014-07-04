@@ -1,5 +1,5 @@
 h2
-  | Sign in
+  | Logeate
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   div
     = f.label :email
@@ -15,4 +15,18 @@ h2
       = f.label :remember_me
   div
     = f.submit "Sign in"
-  = link_to 'or register', new_user_registration_path
+
+h2
+  | ¿eres nuevo en mongo? Registrate
+
+= form_for :user, url: new_user_registration_path, method: :get do |form|
+  div
+    = form.label :email
+    br
+    = form.email_field :email, autofocus: true
+  div
+    = form.label :password
+    br
+    = form.password_field :password, autocomplete: "off"
+  div
+    = form.submit "Enviar"
