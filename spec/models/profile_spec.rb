@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Profile do
   let(:profile) { Fabricate.build(:profile) }
   let(:splited_name) { profile.full_name.split}
-  let(:first_name) { splited_name.take 1 }
+  let(:first_name) { splited_name.take(1)[0] }
   let(:surnames) { splited_name.drop(1).join(' ') }
 
   # Modules

@@ -18,7 +18,7 @@ class UserSheet
   end
 
   def first_name
-    full_name.split.take 1
+    full_name.split.take(1)[0]
   end
 
   def surnames
