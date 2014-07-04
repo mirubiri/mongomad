@@ -11,16 +11,16 @@ describe User do
   it { is_expected.to be_timestamped_document }
   it { is_expected.to have_field :nick }
   it { is_expected.to have_field(:disabled).of_type(Mongoid::Boolean).with_default_value_of(false) }
+  it { is_expected.to delegate(:full_name).to :profile }
   it { is_expected.to delegate(:first_name).to :profile }
-  it { is_expected.to delegate(:last_name).to :profile }
+  it { is_expected.to delegate(:surnames).to :profile }
   it { is_expected.to delegate(:gender).to :profile }
   it { is_expected.to delegate(:location).to :profile }
   it { is_expected.to delegate(:language).to :profile }
   it { is_expected.to delegate(:birth_date).to :profile }
   it { is_expected.to delegate(:images).to :profile }
 
-  it { is_expected.to delegate(:first_name=).to :profile }
-  it { is_expected.to delegate(:last_name=).to :profile }
+  it { is_expected.to delegate(:full_name=).to :profile}
   it { is_expected.to delegate(:gender=).to :profile }
   it { is_expected.to delegate(:location=).to :profile }
   it { is_expected.to delegate(:language=).to :profile }
@@ -34,7 +34,7 @@ describe User do
     specify { expect(user.sheet.id).to eq user.id }
 
     it 'returns a UserSheet filled with user data' do
-      expect(UserSheet).to receive(:new).with(nick:user.nick, first_name:user.profile.first_name, last_name:user.profile.last_name, images:user.profile.images, location:user.profile.location)
+      expect(UserSheet).to receive(:new).with(nick:user.nick, full_name:user.profile.full_name, images:user.profile.images, location:user.profile.location)
       user.sheet
     end
   end

@@ -44,12 +44,12 @@ class User
   field :nick
   field :disabled, type:Mongoid::Boolean, default:false
 
-  delegate :first_name,:last_name,:gender,:language,:birth_date,:location,
-    :first_name=,:last_name=,:gender=,:language=,:birth_date=,:location=,
+  delegate :first_name,:surnames,:gender,:language,:birth_date,:location,
+    :full_name=,:full_name,:gender=,:language=,:birth_date=,:location=,
     :images,:images=, to: :profile
 
   def sheet
-    UserSheet.new(nick:nick, first_name:profile.first_name, last_name:profile.last_name, images:profile.images, location:profile.location) do |sheet|
+    UserSheet.new(nick:nick, full_name:profile.full_name, images:profile.images, location:profile.location) do |sheet|
       sheet.id = id
     end
   end

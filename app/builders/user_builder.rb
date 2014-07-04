@@ -14,13 +14,8 @@ class UserBuilder
 		self
 	end
 
-	def first_name(first_name)
-		@user.first_name=first_name
-		self
-	end
-
-	def last_name(last_name)
-		@user.last_name=last_name
+	def full_name(full_name)
+		@user.full_name=full_name
 		self
 	end
 

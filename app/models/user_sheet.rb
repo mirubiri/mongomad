@@ -8,13 +8,20 @@ class UserSheet
 
   field :_id,       type:BSON::ObjectId, default:nil
   field :nick
-  field :first_name
-  field :last_name
+  field :full_name
   field :location,  type: Array
 
-  auto_update :nick, :first_name, :last_name, :location, :images, using: :current_sheet
+  auto_update :nick, :full_name, :location, :images, using: :current_sheet
 
   def current_sheet
     User.find(id).sheet
+  end
+
+  def first_name
+    full_name.split.take 1
+  end
+
+  def surnames
+    full_name.split.drop(1).join(' ')
   end
 end

@@ -3,8 +3,7 @@ require 'rails_helper'
 describe UserBuilder do
 
 	let(:builder) { UserBuilder.new }
-	let(:first_name) { 'first_name'}
-	let(:last_name) {'last_name'}
+	let(:full_name) { 'full name'}
 	let(:gender) { :male }
 	let(:language) { 'spanish' }
 	let(:birth_date) {Date.parse '15/10/1981'}
@@ -21,8 +20,7 @@ describe UserBuilder do
 	end
 
 	let!(:filled_builder) do
-		builder.first_name(first_name)
-			.last_name(last_name)
+		builder.full_name(full_name)
 			.gender(gender)
 			.language(language)
 			.birth_date(birth_date)
@@ -36,11 +34,7 @@ describe UserBuilder do
 	let(:user) { filled_builder.build }
 
 	describe '#first_name' do
-		specify { expect(builder.first_name first_name ).to eq builder }
-	end
-
-	describe '#last_name' do
-		specify { expect(builder.last_name last_name ).to eq builder }
+		specify { expect(builder.full_name full_name ).to eq builder }
 	end
 
 	describe '#gender' do
@@ -80,8 +74,7 @@ describe UserBuilder do
 	end
 
 	describe '#build' do
-		specify { expect(user.first_name).to eq first_name}
-		specify { expect(user.last_name).to eq last_name }
+		specify { expect(user.full_name).to eq full_name}
 		specify { expect(user.email).to eq email }
 		specify { expect(user.password).to eq password }
 		specify { expect(user.nick).to eq nick }

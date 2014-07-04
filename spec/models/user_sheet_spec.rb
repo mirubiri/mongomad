@@ -15,9 +15,9 @@ describe UserSheet do
   # Attributes
   it { is_expected.to be_timestamped_document }
   it { is_expected.to have_field(:_id).of_type(BSON::ObjectId) }
-  it { is_expected.to have_fields :nick, :first_name, :last_name }
+  it { is_expected.to have_fields :nick, :full_name }
   it { is_expected.to have_field(:location).of_type(Array) }
-  it { is_expected.to auto_update(:nick, :first_name, :last_name, :location, :images).using :current_sheet }
+  it { is_expected.to auto_update(:nick, :full_name, :location, :images).using :current_sheet }
 
   # Validations
   it { is_expected.not_to validate_presence_of :user_sheet_container }
@@ -35,6 +35,18 @@ describe UserSheet do
 
     it 'returns the current version of this sheet' do
       expect(user_sheet.current_sheet).to eq user.sheet
+    end
+  end
+
+  describe '#first_name' do
+    it 'returns the first word in full_name ' do
+      expect(user_sheet.first_name).to eq user.first_name
+    end
+  end
+
+  describe '#surnames' do
+    it 'returns the surnames on full_name' do
+      expect(user_sheet.surnames).to eq user.surnames
     end
   end
 
