@@ -3,7 +3,7 @@ class DealsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      #format.json { render json: data.deals }
+      #format.json { render json: deals }
     end
   end
 
@@ -12,7 +12,7 @@ class DealsController < ApplicationController
 
     respond_to do |format|
       if deal.update_attributes(params[:deal])
-        format.html { redirect_to user_deals_url(data.current_user), notice: 'Deal was successfully updated.' }
+        format.html { redirect_to user_deals_url(current_user), notice: 'Deal was successfully updated.' }
         #format.json { head :no_content }
       else
         format.html { render 'index' }
@@ -26,7 +26,7 @@ class DealsController < ApplicationController
     deal.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_deals_url(data.current_user) }
+      format.html { redirect_to user_deals_url(current_user) }
       #format.json { head :no_content }
     end
   end

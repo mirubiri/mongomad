@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
       params[:profile][:images] = preloaded_file.public_id
     end
 
-    builder = UserBuilder.new(data.current_user)
+    builder = UserBuilder.new(current_user)
                          .first_name(params[:profile][:first_name])
                          .last_name(params[:profile][:last_name])
                          .location(params[:profile][:location])
