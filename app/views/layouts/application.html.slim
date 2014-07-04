@@ -9,7 +9,7 @@ html
 
   body
     - if user_signed_in?
-      = element :omnibar
+      = element :omnibar, view: :signed
     - else
       = element :omnibar, view: :not_signed
 
