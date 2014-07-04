@@ -66,4 +66,5 @@ class ApplicationController < ActionController::Base
 
   def data
     @data ||= DataValue.new(current_user,visited_user)
-  endç
+  end
+end
