@@ -1,14 +1,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
-  def after_sign_up_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || user_offers_path(current_user)
-  end
-
   def new
+    if params[:user]
+      full_name = params[:user][:full_name]
+      email = params[:user][:email]
+      password = params[:user][:password]
+    end
 
-    full_name = params[:user][:full_name]
-    email = params[:user][:email]
-    password = params[:user][:password]
     self.resource = resource_class.new
 
     respond_to do |format|
@@ -17,21 +15,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
+    user_params=params[:user]
     builder = UserBuilder.new
-                         .email(params[:user][:email])
-                         .password(params[:user][:password])
+                         .email(user_params[:email])
+                         .password(user_params[:password])
+                         .full_name(user_params[:full_name])
     user = builder.build
 
     respond_to do |format|
       if user
         user.save
-        format.html { redirect_to root_path }
-        #format.json { render json: @user, status: :created, location: @user }
+        sign_in user
+        format.html { redirect_to user_offers_path(current_user) }
       else
-        format.html { render 'new' }
+        format.html { redirect_to root_path }
         #format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
-
 end
