@@ -61,10 +61,9 @@ class ApplicationController < ActionController::Base
 
   def visited_user
     user_id = params[:user_id] || params[:id]
-    if user_id @_visited_user ||= User.find(user_id)
+    @_visited_user ||= User.find(user_id) if user_id
   end
 
   def data
     @data ||= DataValue.new(current_user,visited_user)
-  end
-end
+  endç
