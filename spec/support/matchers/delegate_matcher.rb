@@ -18,7 +18,7 @@ RSpec::Matchers.define :delegate do |method|
     allow(@target).to receive(@method) { :return_value }
 
     if method.slice('=')
-      @actual.send(@method,:value) == :return_value
+      @actual.send(@method,:value) == :value
     else
       @actual.send(@method) == :return_value
     end
