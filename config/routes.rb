@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     root to: "devise/sessions#new"
+    post 'users/sign_up' => 'users/registrations#new'
   end
 
   # User resources
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
     resource  :profile
     #resources :alerts
   end
+
+  # match 'users/sign_up' => 'users/registrations#new', as: :users_sign_up, via: [:post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
