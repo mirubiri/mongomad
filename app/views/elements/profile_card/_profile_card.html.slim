@@ -6,5 +6,5 @@
 
 - content_for :make_offer_control
   = button_to "Make me an offer",
-    new_user_offer_path(data.current_user),
+    new_user_offer_path(data.visited_user),
     method: :get
