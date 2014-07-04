@@ -6,13 +6,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def new
 
+    full_name = params[:user][:full_name]
     email = params[:user][:email]
     password = params[:user][:password]
     self.resource = resource_class.new
 
     respond_to do |format|
-        format.html { render locals: {email:email,password:password} }
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.html { render locals: {email:email,password:password,full_name:full_name} }
     end
   end
 
