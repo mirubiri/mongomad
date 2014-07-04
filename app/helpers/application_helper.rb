@@ -22,6 +22,10 @@ module ApplicationHelper
       locals:{name.to_sym => data,state:state}
   end
 
+  def my_page?
+    current_user == visited_user
+  end
+
   def active_tab?(*controller_names)
     active = false
     controller_names.each { |name| active ||= params[:controller] == name }
