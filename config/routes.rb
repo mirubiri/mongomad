@@ -3,10 +3,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-
-
   devise_scope :user do
-    post 'users/sign_up' => 'devise/registrations#new'
+    post 'users/sign_up', to: 'devise/registrations#new'
   end
 
   # User resources
