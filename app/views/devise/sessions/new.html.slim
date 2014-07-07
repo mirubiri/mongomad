@@ -9,16 +9,3 @@
       = f.label :remember_me
   div
     = f.submit "iniciar sesión"
-
-h2
-  | ¿eres nuevo en mongo? Registrate
-
-= form_for :user, url: users_sign_up_path do |form|
-  div
-    = form.text_field :full_name, :placeholder => "nombre completo"
-  div
-    = form.email_field :email, :placeholder => "correo electrónico"
-  div
-    = form.password_field :password, :placeholder => "contraseña", autocomplete: "off"
-  div
-    = form.submit "Registrate en Mongo"

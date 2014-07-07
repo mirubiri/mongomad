@@ -5,15 +5,15 @@ br
   div
     = f.label :full_name, 'Nombre completo'
     br
-    = f.text_field :full_name, :value => full_name, autofocus: true
+    = f.text_field :full_name, value: (request[:user][:full_name] if request[:user]), autofocus: true
   div
     = f.label :email, 'Dirección de correo electrónico'
     br
-    = f.email_field :email, :value => email
+    = f.email_field :email, value: (request[:user][:email] if request[:user])
   div
     = f.label :password, 'Crea una contraseña'
     br
-    = f.password_field :password, :value => password, autocomplete: "off"
+    = f.password_field :password, value: (request[:user][:password] if request[:user]), autocomplete: "off"
   div
     = f.label :nick, 'Elige tu nombre de usuario'
     br

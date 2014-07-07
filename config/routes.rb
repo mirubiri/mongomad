@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users
+
+  root 'home#index'
+
+
 
   devise_scope :user do
-    root to: "devise/sessions#new"
-    post 'users/sign_up' => 'users/registrations#new'
+    post 'users/sign_up' => 'devise/registrations#new'
   end
 
   # User resources
-  resources :users, path:'' do
+  resources :users,except:[:create,:index,:new],path:'' do
     resources :requests
     resources :items
     resources :offers
