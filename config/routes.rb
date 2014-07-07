@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   # User resources
-  resources :users do
+  resources :users, path:'' do
     resources :requests
     resources :items
     resources :offers
