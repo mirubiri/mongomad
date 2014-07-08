@@ -16,3 +16,6 @@ html
     div.main
       = element :dashboard
       = element :expositor, view: yield_content(:expositor)
+
+      / TODO: yield aqui pintará todas las modales hasta que se lancen por JQUERY
+      = yield

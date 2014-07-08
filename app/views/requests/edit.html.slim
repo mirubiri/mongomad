@@ -8,4 +8,5 @@
   .title
     | Edit your request
 
-  = render partial: 'form', layout: 'requests/layouts/form_layout', locals: { request:request }
+  = form_for [current_user, request] do |form|
+    = render partial: 'form', layout: 'requests/layouts/form_layout', locals: { form:form }
