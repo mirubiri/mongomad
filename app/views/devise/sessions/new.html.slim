@@ -1,11 +1,21 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+= form_for(:user, url: user_session) do |login|
   div
-    = f.email_field :email, :placeholder => "nombre de usuario o correo electrónico", autofocus: true
+    = login.email_field :email, :placeholder => "nombre de usuario o correo electrónico", autofocus: true
   div
-    = f.password_field :password, :placeholder => "contraseña", autocomplete: "off"
+    = login.password_field :password, :placeholder => "contraseña", autocomplete: "off"
   - if devise_mapping.rememberable?
     div
-      = f.check_box :remember_me
-      = f.label :remember_me
+      = login.check_box :remember_me
+      = login.label :remember_me
   div
-    = f.submit "iniciar sesión"
+    = login.submit "iniciar sesión"
+
+= form_for :user, url: users_sign_up_path do |registration|
+  div
+    = registration.text_field :full_name, :placeholder => "nombre completo"
+  div
+    = registration.email_field :email, :placeholder => "correo electrónico"
+  div
+    = registration.password_field :password, :placeholder => "contraseña", autocomplete: "off"
+  div
+    = registration.submit "Registrate en Mongo"

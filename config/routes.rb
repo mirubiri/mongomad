@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'home#index'
-
   devise_scope :user do
+    root 'devise/sessions#new'
     post 'users/sign_up', to: 'devise/registrations#new'
   end
 
