@@ -8,3 +8,6 @@
       = link_to 'Deals', user_deals_path(data.visited_user)
   li id='items-tab' class=active_tab?('items')
     = link_to 'Items', user_items_path(data.visited_user)
+
+  /TODO: esto aqui hasta que todo lo que tiene que en ir modales este conectado
+  = yield
