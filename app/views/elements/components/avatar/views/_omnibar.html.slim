@@ -3,6 +3,8 @@
     = yield_content :image
 
   .user_data
-    .nick
-      = data.visited_user.nick
+    .first_name
+      = data.visited_user.first_name
 
+    .surnames
+      = data.visited_user.surnames

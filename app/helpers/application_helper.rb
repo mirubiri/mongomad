@@ -52,7 +52,11 @@ module ApplicationHelper
       :crop => :fit)
   end
 
-  def has_images?(object)
-    object != nil && object.images.size != 0
+  def user_image(user,width,height)
+    if user != nil && user.images.size != 0
+      object_main_image_tag(user,width,height)
+    else
+      static_image_tag('default_user')
+    end
   end
 end
