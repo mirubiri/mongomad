@@ -1,17 +1,17 @@
 .omnibar
   = yield_content :logo
 
-  = component :avatar
+  = component :avatar, view: :omnibar
 
   nav.navigation_controls
     li
-      = link_to static_image_tag('negotiations'), user_negotiations_path(data.current_user)
+      = link_to static_image_tag('negotiations'), user_negotiations_path(current_user)
     li
-      = link_to static_image_tag('deals'), user_deals_path(data.current_user)
+      = link_to static_image_tag('deals'), user_deals_path(current_user)
     li
-      = link_to static_image_tag('items'), user_items_path(data.current_user)
+      = link_to static_image_tag('items'), user_items_path(current_user)
     li
-      = link_to static_image_tag('profile'), user_profile_path(data.current_user)
+      = link_to static_image_tag('profile'), user_profile_path(current_user)
 
   = component :search
 
