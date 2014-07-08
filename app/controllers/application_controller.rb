@@ -3,8 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   helper_method :data,:visited_user
   layout :layout_by_resource
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:full_name,:password,:email,:nick) }
+  end
 
   def after_sign_in_path_for(resource)
     user_offers_path(current_user)

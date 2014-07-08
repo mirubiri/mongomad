@@ -1,22 +1,22 @@
 h1
   | Únete hoy a Mongo
 br
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= form_for(:user, url: user_registration_path) do |registration|
   div
-    = f.label :full_name, 'Nombre completo'
+    = registration.label :full_name, 'Nombre completo'
     br
-    = f.text_field :full_name, value: (request[:user][:full_name] if request[:user]), autofocus: true
+    = registration.text_field :full_name, value: (request[:user][:full_name] if request[:user]), autofocus: true
   div
-    = f.label :email, 'Dirección de correo electrónico'
+    = registration.label :email, 'Dirección de correo electrónico'
     br
-    = f.email_field :email, value: (request[:user][:email] if request[:user])
+    = registration.email_field :email, value: (request[:user][:email] if request[:user])
   div
-    = f.label :password, 'Crea una contraseña'
+    = registration.label :password, 'Crea una contraseña'
     br
-    = f.password_field :password, value: (request[:user][:password] if request[:user]), autocomplete: "off"
+    = registration.password_field :password, value: (request[:user][:password] if request[:user]), autocomplete: "off"
   div
-    = f.label :nick, 'Elige tu nombre de usuario'
+    = registration.label :nick, 'Elige tu nombre de usuario'
     br
-    = f.text_field :nick, autocomplete: "off"
+    = registration.text_field :nick, autocomplete: "off"
   div
-    = f.submit "Crear mi cuenta"
+    = registration.submit "Crear mi cuenta"
