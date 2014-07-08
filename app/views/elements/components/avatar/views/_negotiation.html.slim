@@ -1,0 +1,10 @@
+.avatar
+  .image
+    = yield_content :image
+
+  .user_data
+    .nick
+      = data.visited_user.nick
+
+    .location
+      | location
