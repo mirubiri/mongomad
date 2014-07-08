@@ -1,4 +1,4 @@
-= form_for [data.current_user,request] do |form|
+= form_for [current_user, request] do |form|
   - content_for :text_input
     = form.text_area :text,
                      :placeholder => "Write your request here...",
