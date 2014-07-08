@@ -51,4 +51,8 @@ module ApplicationHelper
       :html_height => height,
       :crop => :fit)
   end
+
+  def has_images?(object)
+    object != nil && object.images.size != 0
+  end
 end

@@ -1,2 +1,5 @@
 - content_for :image
-  | avatar_image
+  - if has_images?(avatar)
+    = object_main_image_tag(avatar,80,80)
+  - else
+    = static_image_tag('default_user')

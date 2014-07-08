@@ -2,7 +2,7 @@
   = static_image_tag('header')
 
 - content_for :avatar
-  = component :avatar, view: :card
+  = component :avatar, view: :card, data:data.visited_user
 
 - content_for :make_offer_control
   = button_to "Make me an offer",
