@@ -2,24 +2,24 @@
   .goods_side
     .user_selector
       .composer_face
-        | composer_face
+        = user_image(current_user,100,100)
       .receiver_face
-        | receiver_face
+        = user_image(data.visited_user,100,100)
 
     .good_selector
       .composer_goods
         .composer_cash
-          | image_cash
+          = element :good, view: :cash
         .composer_items
-          /each recorriendo los items del composer
-          /element: item
+          - data.my_items.each do |item|
+            = element :good, view: :item, data:item
 
       .receiver_goods
         .receiver_cash
-          | image_cash
+          = element :good, view: :cash
         .receiver_items
-          /each recorriendo los items del receiver
-          /element: item
+          - data.his_items.each do |item|
+            = element :good, view: :item, data:item
 
     .good_previewer
       .images
@@ -34,14 +34,14 @@
   .proposal_side
     .proposal_preview
       .title
-        | composer_full_name
+        = current_user.full_name
 
       .proposal
         .composer_goods
         .receiver_goods
 
       .avatar
-        | composer_image
+        = user_image(current_user,80,80)
 
       = form_for [current_user,offer] do |form|
         = render partial: 'form', layout: 'proposal/layouts/offer', locals:{ form:form }
