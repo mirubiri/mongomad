@@ -1,3 +1,6 @@
+- content_for :expositor
+  | offers
+
 .new_proposal#new_proposal
   .goods_side
     .user_selector
@@ -43,5 +46,4 @@
       .avatar
         = user_image(current_user,80,80)
 
-      = form_for [current_user,offer] do |form|
-        = render partial: 'form', layout: 'proposal/layouts/offer', locals:{ form:form }
+      = render partial: 'proposal/offer_form', layout: 'proposal/layouts/offer', locals:{ offer:offer }
