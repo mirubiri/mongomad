@@ -56,7 +56,7 @@ module ApplicationHelper
     if user != nil && user.images.size != 0
       object_main_image_tag(user,width,height)
     else
-      static_image_tag('default_user')
+      static_image_tag('user_default')
     end
   end
 end
