@@ -1,6 +1,6 @@
 @imageSelectionFromCloudinaryInput = (input, selector) ->
   # El selector me previene del bubbling sobre el resto de inputs de cloudinary
-  $("input[data-cloudinary-field='image"+selector+"']").on "cloudinarydone" , (e, data) -> 
+  $("input[data-cloudinary-field='item[image"+selector+"]']").on "cloudinarydone" , (e, data) ->
 
     if input.files and input.files[0]
       reader = new FileReader()
@@ -25,15 +25,15 @@
           addCropToSelector('#main_image',selector, factorX, factorY)
           setCoordinatesIdasCloudinaryId(selector)
 
-          $("#inputcontainer" + selector).find("img").attr "src", image.src
+          $("#preview" + selector).attr "src", image.src
           $("#coordinates" + selector).attr "factorX", factorX
           $("#coordinates" + selector).attr "factorY", factorY
           return
-        
+
         return
 
       reader.readAsDataURL input.files[0]
       setPreviewAsMain(selector)
-      
+
     return
   return

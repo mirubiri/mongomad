@@ -1,5 +1,5 @@
-= form_for [current_user,item] do |form|
-  -content_for :previews
+= form_for [current_user,item] do |item_form|
+  .previews
     - 1.upto(3) do |index|
       .preview_box
         div id="inputcontainer#{index}" class='add_image_container'
@@ -7,36 +7,36 @@
         label.preview_label.preview_selector
           | +
           span.filebutton
-            = form.cl_image_upload(('image'+index.to_s).to_sym, tags: 'development')
+            = item_form.cl_image_upload(('image'+index.to_s).to_sym, tags: 'development')
         label.preview_label.delete_preview
           | -
 
-  - content_for :output
-    - @item.images.each_with_index do |image, index|
+  .output#output
+    - item.images.each_with_index do |image, index|
       img id="image#{index+1}" src="#{cl_image_path(image.id)}"
       div id="coordinates#{index+1}" cropX1="#{image.x}" cropY1="#{image.y}" cropX2="#{image.h}" cropY2="#{image.w}"
-        - form.input id="id_preview#{index+1}" name="item[images][][id]" type="hidden" value=image.id
-        - form.input id="main_preview#{index+1}" name="item[images][][main]" type="hidden" value="#{image.main}"
-        - form.input id="x_preview#{index+1}" name="item[images][][x]" type="hidden" value=image.x
-        - form.input id="y_preview#{index+1}" name="item[images][][y]" type="hidden" value=image.y
-        - form.input id="h_preview#{index+1}" name="item[images][][h]" type="hidden" value=image.h
-        - form.input id="w_preview#{index+1}" name="item[images][][w]" type="hidden" value=image.w
+        - item_form.hidden_field id="id_preview#{index+1}" ,name="item[images][][id]" ,type="hidden" ,value=image.id
+        - item_form.hidden_field id="main_preview#{index+1}" ,name="item[images][][main]" ,type="hidden" ,value="#{image.main}"
+        - item_form.hidden_field id="x_preview#{index+1}" ,name="item[images][][x]" ,type="hidden" ,value=image.x
+        - item_form.hidden_field id="y_preview#{index+1}" ,name="item[images][][y]" ,type="hidden" ,value=image.y
+        - item_form.hidden_field id="h_preview#{index+1}" ,name="item[images][][h]" ,type="hidden" ,value=image.h
+        - item_form.hidden_field id="w_preview#{index+1}" ,name="item[images][][w]" ,type="hidden" ,value=image.w
 
-  - content_for :name
-      | Product name
-      = form.text_area :name,
-                       :placeholder => "Name your product...",
-                       :size => "4x1",
-                       :maxlength => "20",
-                       :required => false
+  .name
+    | Product name
+    = item_form.text_area :name,
+                     :placeholder => "Name your product...",
+                     :size => "4x1",
+                     :maxlength => "20",
+                     :required => false
 
-  - content_for :description
-      | Product description
-      = form.text_area :description,
-                   :placeholder => "Describe your product...",
-                   :size => "10x5",
-                   :maxlength => "200",
-                   :required => false
+  .description
+    | Product description
+    = item_form.text_area :description,
+                 :placeholder => "Describe your product...",
+                 :size => "10x5",
+                 :maxlength => "200",
+                 :required => false
 
-  - content_for :send_control
-      = form.submit "Save"
+  .send_control
+    = item_form.submit "Save"

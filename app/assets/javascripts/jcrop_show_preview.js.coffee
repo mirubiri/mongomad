@@ -1,5 +1,5 @@
 @showPreview = (coords, selector) ->
-  maxX = $('#inputcontainer1').width()  
+  maxX = $('#inputcontainer1').width()
   maxY = $('#inputcontainer1').height()
   rx = maxX / coords.w
   ry = maxY / coords.h

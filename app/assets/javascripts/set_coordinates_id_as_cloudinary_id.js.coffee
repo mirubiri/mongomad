@@ -1,5 +1,5 @@
 @setCoordinatesIdasCloudinaryId = (selector) ->
-  inputValue = $('input[name=image'+selector+']').attr "value"
+  inputValue = $("input[name='item[image"+selector+"]']").attr "value"
   idChar = inputValue.toString()
   positionBar = idChar.lastIndexOf("/");
   positionDot = idChar.indexOf(".");

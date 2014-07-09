@@ -20,6 +20,6 @@ $(document).ready ->
       $("#coordinates" + preview_selected).attr "factorX", factorX
       $("#coordinates" + preview_selected).attr "factorY", factorY
 
-      imageSelectionAfterPreviewClick($(this),preview_selected)      
+      imageSelectionAfterPreviewClick($(this),preview_selected)
 
       return
