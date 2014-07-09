@@ -1,9 +1,0 @@
-= form_for [current_user, request] do |form|
-
-  = form.text_area :text,
-                 :placeholder => "Write your request here...",
-                 :size => "24x6",
-                 :required => true,
-                 :maxlength => "160"
-
-  = form.submit "Save"

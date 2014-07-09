@@ -4,6 +4,9 @@
 - content_for :avatar
   = component :avatar, view: :card, data:data.visited_user
 
+- content_for :requester
+  = component :requester
+
 - content_for :make_offer_control
   = button_to "Make me an offer",
     new_user_offer_path(data.visited_user),
