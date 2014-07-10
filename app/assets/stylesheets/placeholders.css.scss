@@ -1,0 +1,49 @@
+//Basic placeholders
+
+%container{
+  @include box-sizing(border-box);
+  overflow: visible;
+  padding: 10px 20px 0px 20px;
+  margin-bottom: 10px;
+  float: left;
+  position: relative;
+}
+
+
+%element{
+  @include box-shadow(rgba(0,0,0,0.40) 0px 1px 2px);
+  @include border-radius(5px, 5px);
+  border: 1px solid rgb(220,220,220);
+  background-color: rgba(236,240,241,0.5);
+}
+
+
+%component{
+  @include box-shadow(rgba(0,0,0,0.40) 0px 1px 2px);
+  @include border-radius(5px, 5px);
+  border: 1px solid rgb(220,220,220);
+  background-color: rgba(236,240,241,0.5);
+}
+
+
+%top{
+  top: 0px;
+}
+
+
+%bottom{
+  bottom: 0px;
+}
+
+
+%centered{
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+%expanded{
+  width: 100%;
+}
