@@ -2,20 +2,14 @@
 .mLogin
   width: 500px
 
-.mFooter
-  @extend .mExpanded
-  text-align: center
-
-.mExpositor
-  @extend .mContainer
-  float: right
-  width: 73.5%
 
 .mProfile
   @extend .mContainer
   overflow: visible
   float: left
   width: 25%
+
+
 
 .mUpperBar
   position: relative
@@ -24,6 +18,11 @@
   background-color: white
   margin-bottom: 10px
   height: 38px
+
+
+
+
+
 
 .preview
   @include border-radius(5px, 5px)
@@ -62,6 +61,7 @@
     height: 120px
     background-color: white
 
+
 label.preview_label
   @include box-sizing(border-box)
   float: left
@@ -89,6 +89,7 @@ label.preview_label
     opacity: 0
     filter: alpha(opacity = 0)
     -ms-filter: "alpha(opacity=0)"
+
 
 #pan
   overflow: hidden

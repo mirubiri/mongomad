@@ -1,1 +1,5 @@
-.dashboard{}
+.dashboard{
+  @extend %container;
+  @extend %element;
+  float: left;
+}

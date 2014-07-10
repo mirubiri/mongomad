@@ -1,10 +1,12 @@
-.profile_card{}
-  aside{}
-    .head_image{}
+.profile_card{
+  @extend %element;
+}
 
-    .user_card{}
+.head_image{}
 
-    .requester{}
+.user_card{}
 
-    .make_offer_control{}
+.requester{}
+
+.make_offer_control{}
 

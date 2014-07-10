@@ -1,11 +1,8 @@
-.expositor{}
-  nav.navigation{}
+.expositor{
+  @extend %container;
+  @extend %element;
+  float: right;
+  width: 73.5%;
+}
 
-.expositor{}
-  nav.navigation{}
-
-.expositor{}
-  nav.navigation{}
-
-.expositor{}
-  nav.navigation{}
+nav.navigation{}

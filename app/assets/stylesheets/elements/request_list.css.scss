@@ -1,4 +1,7 @@
-.request_list{}
-  .add_request_control{}
+.request_list{
+  @extend %element;
+}
 
-  .requests{}
+.add_request_control{}
+
+.requests{}

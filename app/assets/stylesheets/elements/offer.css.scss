@@ -1,6 +1,9 @@
-.offer{}
+.offer{
+  @extend %element;
+
   .title{}
 
   .message{}
 
   .controls{}
+}

@@ -1,1 +1,6 @@
-.business_info{}
+.business_info{
+  @extend %element;
+  @extend %expanded;
+  text-align: center;
+  float: left;
+}

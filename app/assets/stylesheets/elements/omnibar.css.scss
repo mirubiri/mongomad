@@ -1,15 +1,7 @@
-.omnibar{}
+.omnibar{
+  @extend %element;
+}
 
-.omnibar{}
-
-  nav.navigation_controls{}
-    li{}
-
-    li{}
-
-    li{}
-
-    li{}
-
-.omnibar{}
-
+.navigation_controls{
+  li{}
+}

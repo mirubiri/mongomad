@@ -1,7 +1,10 @@
-.request{}
-  .image{}
+.request{
+  @extend %element;
+}
 
-  .text{}
+.image{}
 
-  .controls{}
+.text{}
+
+.controls{}
 
