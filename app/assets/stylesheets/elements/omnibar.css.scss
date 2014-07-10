@@ -1,7 +1,13 @@
 .omnibar{
+  @extend %container;
   @extend %element;
+  @extend %expanded;
+  div,nav{float:left;}
+}
+
+.logo{
 }
 
 .navigation_controls{
-  li{}
+  float: left;
 }

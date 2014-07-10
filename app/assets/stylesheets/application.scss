@@ -16,13 +16,11 @@
 @import "compass/typography/links/unstyled-link";
 
 //Include my files
-@import "base/base";
 @import "mixins";
 @import "placeholders";
-@import "elements/*";
+@import "base/*";
 @import "components/*";
-@import "layouts/layouts";
-@import "modules/modules";
-@import "modules/billboard";
+@import "elements/*";
+@import "modules/*";
 @import "jquery-ui.min";
 @import "jquery.Jcrop.min";

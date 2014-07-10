@@ -1,40 +1,25 @@
 .avatar{
-  @extend %component
+  @extend %component;
+  width: 300px;
+}
 
-  //REPETIDO
-  .full_name{
-  }
+.full_name{}
 
-  .image{
-  }
+.image{}
 
-  .user_data{
-  }
-    .first_name{
-    }
+.friends{
+  .icon{}
+  .number{}
+}
 
-    .surnames{
-    }
-    .nick{
-    }
+.reputation{
+  .icon{}
+  .value{}
+}
 
-    .full_name{
-    }
-
-    .location{
-    }
-
-    .reputation{
-    }
-      .icon{
-      }
-      .value{
-      }
-
-    .friends{
-    }
-      .icon{
-      }
-      .number{
-      }
+.user_data{
+  .first_name{}
+  .surnames{}
+  .nick{}
+  .location{}
 }
