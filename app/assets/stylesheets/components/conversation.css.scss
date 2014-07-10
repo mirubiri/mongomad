@@ -1,6 +1,11 @@
-.conversation{}
-  .messages{}
+.conversation{
+   @extend %component;
+  .messages{
+  }
 
-  .message_input{}
+  .message_input{
+  }
 
-  .send_message_control{}
+  .send_message_control{
+  }
+}

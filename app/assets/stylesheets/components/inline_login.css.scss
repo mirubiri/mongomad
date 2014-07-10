@@ -1,1 +1,3 @@
-.inline_login{}
+.inline_login{
+  @extend %component;
+}

@@ -1,2 +1,6 @@
-.inline_logout{}
-  .icon{}
+.inline_logout{
+  @extend %component;
+
+  .icon{
+  }
+}

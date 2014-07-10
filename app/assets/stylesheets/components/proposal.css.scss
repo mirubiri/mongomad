@@ -1,4 +1,9 @@
-.proposal{}
-  .composer_goods{}
+.proposal{
+  @extend %component;
 
-  .receiver_goods{}
+  .composer_goods{
+  }
+
+  .receiver_goods{
+  }
+}

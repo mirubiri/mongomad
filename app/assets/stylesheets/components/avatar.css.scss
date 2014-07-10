@@ -1,40 +1,40 @@
-.avatar{}
-  .image{}
+.avatar{
+  @extend %component
 
-  .user_data{}
-    .full_name{}
+  //REPETIDO
+  .full_name{
+  }
 
-    .location{}
+  .image{
+  }
 
-    .reputation{}
-      .icon{}
-      .value{}
+  .user_data{
+  }
+    .first_name{
+    }
 
-    .friends{}
-      .icon{}
-      .number{}
-.avatar{}
-  .image{}
+    .surnames{
+    }
+    .nick{
+    }
 
-  .user_data{}
-    .nick{}
+    .full_name{
+    }
 
-    .location{}
-.avatar{}
-  .image{}
+    .location{
+    }
 
-  .user_data{}
-    .nick{}
+    .reputation{
+    }
+      .icon{
+      }
+      .value{
+      }
 
-    .location{}
-.avatar{}
-  .full_name{}
-
-  .image{}
-.avatar{}
-  .image{}
-
-  .user_data{}
-    .first_name{}
-
-    .surnames{}
+    .friends{
+    }
+      .icon{
+      }
+      .number{
+      }
+}

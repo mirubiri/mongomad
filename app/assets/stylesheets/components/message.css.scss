@@ -1,6 +1,12 @@
-.message{}
-  .avatar{}
+.message{
+  @extend %component;
 
-  .text{}
+  .avatar{
+  }
 
-  .timestamp{}
+  .text{
+  }
+
+  .timestamp{
+  }
+}
