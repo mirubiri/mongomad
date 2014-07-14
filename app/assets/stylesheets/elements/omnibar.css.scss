@@ -1,13 +1,8 @@
 .omnibar{
-  @include box-sizing(border-box);
+  @extend %container;
+  @extend %element;
   @extend %expanded;
-  padding: 10px;
-  overflow: auto;
-  margin-bottom: 10px;
-  div,nav{
-    float:left;
-    margin-right: 5px;
-  }
+  div,nav{float:left;}
 }
 
 .logo{
