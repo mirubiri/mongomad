@@ -1,5 +1,4 @@
 body{
-  padding: 0px 10px 0px 10px;
   display: block;
   overflow: auto;
   width: 100%;
@@ -19,6 +18,18 @@ body{
 
 .main{
   @extend %expanded;
+  float: left;
+  padding: 0px 10px;
+}
+
+
+.bezel{
+  position: relative;
+  top: -10px;
+  left: -20px;
+  background-color: white;
+  margin-bottom: 10px;
+  height: 38px;
 }
 
 
