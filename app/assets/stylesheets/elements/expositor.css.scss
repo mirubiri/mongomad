@@ -1,13 +1,8 @@
 .expositor{
-  @extend .container;
-  padding: 0px;
-  float: left;
-  width: 72%;
-
-  .navigation{
-    @extend .element;
-    height: 30px;
-  }
-
+  @extend %container;
+  @extend %element;
+  float: right;
+  width: 73.5%;
 }
 
+nav.navigation{}

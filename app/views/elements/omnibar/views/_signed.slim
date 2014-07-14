@@ -1,9 +1,8 @@
 .omnibar
-  = component :avatar, view: :omnibar, data:current_user
-
   .logo
     = yield_content :logo
 
+  = component :avatar, view: :omnibar, data:current_user
 
   nav.navigation_controls
     li

@@ -3,13 +3,13 @@ $(window).load (event) ->
   $billboardHeight = $('#billboard').outerHeight(true)
   $footerHeight = $('#footer').outerHeight(true)
   $mainHeight = $windowHeight - $billboardHeight - $footerHeight - 60
-  $dashboardHeight = $('#dashboard').height()
+  $profileHeight = $('#profile').height()
   $expositorHeight = $('#expositor').height()
 
-  $('#dashboard').height($mainHeight) if $dashboardHeight < $mainHeight
+  $('#profile').height($mainHeight) if $profileHeight < $mainHeight
   $('#expositor').height($mainHeight) if $expositorHeight < $mainHeight
 
-  $("#dashboard,#expositor").equalHeightColumns()
+  $("#profile,#expositor").equalHeightColumns()
   $(".overridesPadding").each ->
     $width = $(this).parent().outerWidth() - 2
     $(this).width($width)
@@ -21,13 +21,13 @@ $(window).resize (event) ->
   $billboardHeight = $('#billboard').outerHeight(true)
   $footerHeight = $('#footer').outerHeight(true)
   $mainHeight = $windowHeight - $billboardHeight - $footerHeight - 60
-  $dashboardHeight = $('#dashboard').height()
+  $profileHeight = $('#profile').height()
   $expositorHeight = $('#expositor').height()
 
-  $('#dashboard').height($mainHeight) if $dashboardHeight < $mainHeight
+  $('#profile').height($mainHeight) if $profileHeight < $mainHeight
   $('#expositor').height($mainHeight) if $expositorHeight < $mainHeight
 
-  $("#dashboard,#expositor").equalHeightColumns()
+  $("#profile,#expositor").equalHeightColumns()
   $(".overridesPadding").each ->
     $width = $(this).parent().outerWidth() - 2
     $(this).width($width)
