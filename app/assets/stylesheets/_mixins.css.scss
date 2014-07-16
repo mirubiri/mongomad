@@ -1,3 +1,37 @@
+@mixin placement($position: static, $float: none, $zindex: auto) {
+  position: $position;
+  float: $float; //usar el misin de compass
+  z-index: $zindex;
+}
+
+@mixin fixing($top: auto, $right: auto, $bottom: auto, $left: auto){
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin displaying($display: inline, $overflow: visible){
+  display: $display;
+  overflow: $overflow;
+}
+
+@mixin dimensions($height: auto, $width: auto){
+  height: $height;
+  width: $position;
+}
+
+@mixin spacing($margin: 0 0 0 0, $padding: 0 0 0 0){
+  margin: $margin;
+  padding: $padding;
+}
+
+// @include placement(position: "valor", float: "valor", zindex: "valor")
+// @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
+// @include displaying(display: "valor", overflow: "valor")
+// @include dimensions(height: "valor", width: "valor")
+// @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
+
 // %top{
 //   top: 0px;
 // }

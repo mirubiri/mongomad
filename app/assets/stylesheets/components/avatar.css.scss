@@ -1,7 +1,13 @@
 .avatar{
   @extend %component;
+  @include placement(position: "valor", float: "valor", zindex: "valor")
+  @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
+  @include displaying(display: "valor", overflow: "valor")
+  @include dimensions(height: "valor", width: "valor")
+  @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
   // width: 300px;
 }
+
 
 // .full_name{}
 
