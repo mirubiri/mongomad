@@ -1,29 +1,33 @@
-@mixin placement($position: static, $float: none, $zindex: auto) {
-  position: $position;
-  float: $float; //usar el misin de compass
-  z-index: $zindex;
+@mixin placement($position: null, $float: null, $zindex: null) {
+  @if $position { position: $position; }
+  @if $float { float: $float; } //usar el misin de compass
+  @if $zindex:  { z-index: : $z-index;  }
 }
 
-@mixin fixing($top: auto, $right: auto, $bottom: auto, $left: auto){
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
+@mixin fixing($top: null, $right: null, $bottom: null, $left: null){
+  @if $top { top: $top; }
+  @if $right { right: $right; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
 }
 
-@mixin displaying($display: inline, $overflow: visible){
-  display: $display;
-  overflow: $overflow;
+@mixin displaying($display: null, $overflow: null){
+  @if $display { display: $display; }
+  @if $overflow { overflow: $overflow; }
 }
 
 @mixin dimensions($height: auto, $width: auto){
-  height: $height;
-  width: $position;
+  @if $height { height: $height; }
+  @if $width { width: $width; }
 }
 
-@mixin spacing($margin: 0 0 0 0, $padding: 0 0 0 0){
-  margin: $margin;
-  padding: $padding;
+@mixin spacing($marginMap: ($top: null, $right: null, $bottom: null, $left: null), $paddingMap: ($top: null, $right: null, $bottom: null, $left: null)){
+  @each $marginSide in $marginMap {
+    @if map-get($marginMap, $marginSide) { margin-+$marginside: map-get($marginMap, $marginSide)+; }
+  }
+  @each $paddingSide in $paddingMap {
+    @if map-get($paddingMap, $paddingSide) { padding-+$paddingside: map-get($paddingMap, $paddingSide)+; }
+  }
 }
 
 @mixin centered{ //siempre se incluye el ultimo
@@ -38,5 +42,24 @@
 // @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
 // @include displaying(display: "valor", overflow: "valor")
 // @include dimensions(height: "valor", width: "valor")
-// @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
+// @include spacing(margin: ($top: null, $right: null, $bottom: null, $left: null), padding: ($top: null, $right: null, $bottom: null, $left: null))
+
+//  %top{
+//    top: 0px;
+// // }
+
+// %bottom{
+//   bottom: 0px;
+// }
+
+// %centered{
+//   float: none;
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// %expanded{
+//   width: 100%;
+// }
 
