@@ -26,27 +26,17 @@
   padding: $padding;
 }
 
+@mixin centered{ //siempre se incluye el ultimo
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 // @include placement(position: "valor", float: "valor", zindex: "valor")
 // @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
 // @include displaying(display: "valor", overflow: "valor")
 // @include dimensions(height: "valor", width: "valor")
 // @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
 
-// %top{
-//   top: 0px;
-// }
-
-// %bottom{
-//   bottom: 0px;
-// }
-
-// %centered{
-//   float: none;
-//   display: block;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// %expanded{
-//   width: 100%;
-// }
