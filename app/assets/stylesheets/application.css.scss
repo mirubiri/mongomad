@@ -11,16 +11,18 @@
  * file per style scope.
  */
 
-//Include mixins
+//Include compass mixins
 @import "compass/css3";
 @import "compass/typography/links/unstyled-link";
 
-//Include my files
-@import "mixins";
-@import "placeholders";
+//Include scss files
 @import "base/*";
 @import "components/*";
 @import "elements/*";
-@import "modules/*";
+@import "variables";
+@import "functions";
+@import "mixins";
+
+//Inclyde Jquery files
 @import "jquery-ui.min";
 @import "jquery.Jcrop.min";

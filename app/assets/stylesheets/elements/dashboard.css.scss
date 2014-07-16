@@ -1,6 +1,6 @@
 .dashboard{
-  @extend %container;
   @extend %element;
-  float: left;
-  width: 25%;
+  @extend %container;
+  // float: left;
+  // width: 25%;
 }

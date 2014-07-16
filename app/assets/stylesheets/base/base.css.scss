@@ -1,65 +1,65 @@
-body{
-  padding: 0px 10px 0px 10px;
-  display: block;
-  overflow: auto;
-  width: 100%;
-  float: left;
-  margin: 0px;
-  padding: 0px;
-  background-color: rgb(100,152,173);
-  overflow: -moz-scrollbars-vertical;
-  overflow-y: scroll;
-  color: white;
-  font-size: 15px;
-  font-family: "Roboto";
-  font-size: 12;
-  font-weight: normal;
-  line-height: 18px;
-}
+// body{
+//   padding: 0px 10px 0px 10px;
+//   display: block;
+//   overflow: auto;
+//   width: 100%;
+//   float: left;
+//   margin: 0px;
+//   padding: 0px;
+//   background-color: rgb(100,152,173);
+//   overflow: -moz-scrollbars-vertical;
+//   overflow-y: scroll;
+//   color: white;
+//   font-size: 15px;
+//   font-family: "Roboto";
+//   font-size: 12;
+//   font-weight: normal;
+//   line-height: 18px;
+// }
 
-.main{
-  @extend %expanded;
-}
-
-
-nav{
-  height: 100%;
-  color: black;
-  li{
-    display: inline-block;
-    height: 100%;
-    padding: 0px 10px;
-  }
-}
+// .main{
+//   @extend %expanded;
+// }
 
 
-.active_nav{
-  background-color: rgb(100,152,173);
-}
+// nav{
+//   height: 100%;
+//   color: black;
+//   li{
+//     display: inline-block;
+//     height: 100%;
+//     padding: 0px 10px;
+//   }
+// }
 
 
-a{
-  @include unstyled-link;
-  display: block;
-  height: 100%;
-}
+// .active_nav{
+//   background-color: rgb(100,152,173);
+// }
 
 
-input{
-  @include border-radius(5px, 5px);
-}
+// a{
+//   @include unstyled-link;
+//   display: block;
+//   height: 100%;
+// }
 
-.progress_bar{
-  height: 50px;
-  width: 0px;
-  background: red;
-}
 
-textarea{
-  width: 100%;
-  resize: none;
-}
+// input{
+//   @include border-radius(5px, 5px);
+// }
 
-.hidden{
-  visibility: hidden;
-}
+// .progress_bar{
+//   height: 50px;
+//   width: 0px;
+//   background: red;
+// }
+
+// textarea{
+//   width: 100%;
+//   resize: none;
+// }
+
+// .hidden{
+//   visibility: hidden;
+// }

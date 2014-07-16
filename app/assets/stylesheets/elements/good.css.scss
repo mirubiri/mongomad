@@ -1,11 +1,22 @@
-.good{
+%good{
   @extend %element;
+  // .image{}
 
-  .image{}
+  // .amount{}
 
-  .amount{}
+  // .name{}
 
-  .name{}
+  // .controls{}
+}
 
-  .controls{}
+.item{
+  @extend %good;
+}
+
+.product{
+  @extend %good;
+}
+
+.cash{
+  @extend %good;
 }
