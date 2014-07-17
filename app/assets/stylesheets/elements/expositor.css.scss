@@ -1,13 +1,9 @@
 .expositor{
-  @extend %element;
   @extend %container;
-  @include placement(position: "valor", float: "valor", zindex: "valor")
-  @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
-  @include displaying(display: "valor", overflow: "valor")
-  @include dimensions(height: "valor", width: "valor")
-  @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
-  // float: right;
-  // width: 73.5%;
+  @include placement(float: right);
+  @include displaying(overflow: auto);
+  @include dimensions(width: "73.5%");
+  @include spacing(padding: "10px");
 }
 
 // nav.navigation{}
