@@ -1,10 +1,9 @@
 .avatar{
   @extend %component;
-  @include placement(position: relative, float: "valor", zindex: "valor")
-  @include displaying(display: "valor", overflow: "valor")
-  @include dimensions(height: "valor", width: "valor")
-  @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
-  // width: 300px;
+  @include placement(position: relative, float: left);
+  @include displaying(overflow: auto);
+  @include dimensions(width: "300px");
+  @include spacing(margin: "0px 50px 0px 0px", padding: "5px");
 }
 
 
