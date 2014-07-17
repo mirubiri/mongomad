@@ -37,6 +37,16 @@
   margin-right: auto;
 }
 
+%centered{
+  float: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%expanded{
+  width: 100%;
+}
 
 // @include placement(position: "valor", float: "valor", zindex: "valor")
 // @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
@@ -51,15 +61,3 @@
 // %bottom{
 //   bottom: 0px;
 // }
-
-// %centered{
-//   float: none;
-//   display: block;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// %expanded{
-//   width: 100%;
-// }
-
