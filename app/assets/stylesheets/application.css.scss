@@ -16,13 +16,13 @@
 //@import "compass/typography/links/unstyled-link";
 
 //Include scss files
-@import "base/*";
-@import "components/*";
-@import "elements/*";
 @import "variables";
 @import "functions";
 @import "mixins";
+@import "base/*";
+@import "components/*";
+@import "elements/*";
 
-//Inclyde Jquery files
-@import "jquery-ui.min";
-@import "jquery.Jcrop.min";
+//Include Jquery files
+//@import "jquery-ui.min";
+//@import "jquery.Jcrop.min";
