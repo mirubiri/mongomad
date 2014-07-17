@@ -1,9 +1,7 @@
 .conversation{
   @extend %component;
-  @include placement(position: "valor", float: "valor", zindex: "valor")
-  @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
-  @include displaying(display: "valor", overflow: "valor")
-  @include dimensions(height: "valor", width: "valor")
+  @include placement(position: relative, float: left);
+  @include dimensions(height: "250px", width: "70%");
   @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
 }
 
