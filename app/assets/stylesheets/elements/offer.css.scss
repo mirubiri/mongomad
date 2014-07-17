@@ -1,13 +1,22 @@
 .offer{
   @extend %element;
-  @include placement(position: "valor", float: "valor", zindex: "valor")
-  @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
-  @include displaying(display: "valor", overflow: "valor")
-  @include dimensions(height: "valor", width: "valor")
-  @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
-  // .title{}
+  @include placement(position: relative, float: left);
+  @include displaying(overflow: auto);
+  @include dimensions(width: "300px");
+  @include spacing(margin: "0px 5px 5px 0px", padding: "valor" "valor" "valor" "valor");
 
-  // .message{}
+  .title{
+    @include spacing(margin: "0px", padding: "5px");
+    @extend %expanded;
+  }
 
-  // .controls{}
+  .message{
+    @include dimensions(height: "25px", width: "80%");
+    @extend %centered;
+  }
+
+  .controls{
+    @include dimensions(height: "25px", width: "80%");
+    @extend %centered;
+  }
 }
