@@ -1,5 +1,5 @@
-- content_for :image
-  = user_image(data.visited_user,100,100)
+- content_for :avatar
+  = component :avatar, view: :request, data:data.visited_user
 
 - content_for :text
   = request.text
