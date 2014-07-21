@@ -4,22 +4,22 @@ module ApplicationHelper
     view_flow.content.delete(content_key)
   end
 
-  def element(name,view: :default,data:nil,state:nil)
+  def element(name,view: :default, data:nil, state:nil)
     element="elements/#{name}/#{name}"
     view="elements/#{name}/views/#{view}"
 
     render partial: element,
       layout: view,
-      locals:{name.to_sym => data,state:state}
+      locals:{ name.to_sym => data, state:state }
   end
 
-  def component(name,view: :default,data:nil,state:nil)
+  def component(name,view: :default, data:nil, state:nil)
     component="elements/components/#{name}/#{name}"
     view="elements/components/#{name}/views/#{view}"
 
     render partial: component,
       layout: view,
-      locals:{name.to_sym => data,state:state}
+      locals:{ name.to_sym => data, state:state }
   end
 
   def my_page?
@@ -36,27 +36,41 @@ module ApplicationHelper
     cl_image_tag("static/#{public_id}")
   end
 
-  def object_main_image_tag(object,width,height)
-    main_image = object.images.where(main:true).first
-    cl_image_tag(main_image.id,
-      :transformation => {
-        :x => main_image.x,
-        :y => main_image.y,
-        :width => main_image.w,
-        :height => main_image.h,
-        :crop => :crop },
-      :width => width,
-      :height => height,
-      :html_width => width,
-      :html_height => height,
-      :crop => :fit)
-  end
-
-  def user_image(user,width,height)
-    if user != nil && user.images.size != 0
-      object_main_image_tag(user,width,height)
+  def user_image_tag(user, width, height)
+    if user != nil && user.images != 0
+      image = user.images.first
+      cl_image_tag(image.id,
+        :transformation => {
+          :x => image.x,
+          :y => image.y,
+          :width => image.w,
+          :height => image.h,
+          :crop => :crop },
+        :width => 50,
+        :height => 50,
+        :html_width => width,
+        :html_height => height,
+        :crop => :fit)
     else
       static_image_tag('user_default')
+    end
+  end
+
+  def item_main_image_tag(item, width, height)
+    if item != nil
+      main_image = item.images.where(main:true).first
+      cl_image_tag(main_image.id,
+        :transformation => {
+          :x => main_image.x,
+          :y => main_image.y,
+          :width => main_image.w,
+          :height => main_image.h,
+          :crop => :crop },
+        :width => 150,
+        :height => 150,
+        :html_width => width,
+        :html_height => height,
+        :crop => :fit)
     end
   end
 end
