@@ -21,33 +21,48 @@
   //_width: ;
 
   //SPACING
-  //_margin: ;
+  margin: $omnibar-components-margin;
   //_padding: ;
-
-
-  // @include placement(position: relative, float: left);
-  // @include displaying(overflow: auto);
-  // @include dimensions(width: "300px");
-  // @include spacing(margin: "0px 50px 0px 0px", padding: "5px");
 }
 
-// .full_name {}
+.full_name {
+  margin: $data-margin;
+}
 
-// .image {}
+.image {
+  margin: $image-text-margin;
+}
 
-// .friends {
-//   .icon {}
-//   .number {}
-// }
+.friends {
+  margin: $profile-card-icon-margin;
+  padding-left: 5px;
+  .icon {
+    margin: $data-margin;
+  }
+  .number {}
+}
 
-// .reputation {
-//   .icon {}
-//   .value {}
-// }
+.reputation {
+  margin: $profile-card-icon-margin;
+  padding-right: 5px;
+  float: right;
+  .icon {
+    margin: $data-margin;
+  }
+  .value {}
+}
 
-// .user_data {
-//   .first_name {}
-//   .surnames {}
-//   .nick {}
-//   .location {}
-// }
+.user_data {
+  .first_name {
+    margin: $data-margin;
+  }
+  .surnames {
+    margin: $data-margin;
+  }
+  .nick {
+    margin: $data-margin;
+  }
+  .location {
+    margin: $data-margin;
+  }
+}
