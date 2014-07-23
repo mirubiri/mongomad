@@ -1,44 +1,27 @@
 //WHIDTH VARIABLES
-$avatar-image-width;
-$nav-icon-width;
-$inline-login-field-width;
-$avatar-icon-width;
-$item-image-width;
-
-//HEIGHT VARIABLES
-$omnibar-hijo-height;
-$avatar-data-height;
-$nav_icon_height;
-$inline-login-hijo-height;
-$bisel-height;
-$avatar_image_height;
-$avatar-hijo-height;
-$avatar-icon-height;
-$requester-hijo-height;
-$item-image-width;
-$element_button_height;
+$inline-login-field-width: 100px;
 
 //MARGIN VARIABLES
-$omnibar-components-margin;
-$image-text-margin;
-$ppal-element-margin;
-$profile-card-element-margin;
-$data-margin;
-$profile-card-icon-margin;
-$good-bottom-margin;
-$message-margin;
-$title-description-margin;
+$omnibar-components-margin: 50px;
+$image-text-margin: 5px;
+$ppal-element-margin: 0px 0px 10px 0px;
+$profile-card-element-margin: 0px 0px 5px 0px;
+$data-margin: 5px;
+$profile-card-icon-margin: 5px;
+$good-bottom-margin: 5px;
+$message-margin: 10px;
+$title-description-margin: 5px;
 
 //PADDING VARIABLES
-$container-padding;
-$nav-icon-padding;
-$inline-loggin-padding;
-$button-box-padding;
-$element-padding;
-$text-box-padding;
-$title-padding;
-$component-padding;
-$nav-link-padding;
+$container-padding: 5px;
+$nav-icon-padding: 0px;
+$inline-loggin-padding: 0px;
+$button-box-padding: 10px 5px;
+$element-padding: 15px;
+$text-box-padding: 15px;
+$title-padding: 5px 5px;
+$component-padding: 25px;
+$nav-link-padding: 12px 5px;
 
 //COLOR VARIABLES
 $container-bgcolor: rgb(177,206,206);
@@ -52,3 +35,8 @@ $blue-button-bgcolor: rgb(58,157,223);
 $grey-button-bgcolor: rgb(183,183,183);
 $grey-border-color: rgb(137,137,137);
 $white-bgcolor: rgb(253,253,253);
+
+//TEXT VARIABLES
+$small-font: 10px;
+$medium-font: 12px;
+$big-font: 14px;
