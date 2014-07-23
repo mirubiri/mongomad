@@ -1,3 +1,5 @@
+@import "variables";
+
 .conversation{
   @extend %component;
   @include placement(position: relative, float: left);

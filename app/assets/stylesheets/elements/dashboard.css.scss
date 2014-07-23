@@ -1,3 +1,5 @@
+@import "variables";
+
 .dashboard{
   @extend %container;
   @include placement(position: relative, float: left);

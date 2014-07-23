@@ -1,3 +1,5 @@
+@import "variables";
+
 .expositor{
   @extend %container;
   @include placement(float: right);
