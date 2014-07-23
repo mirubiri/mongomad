@@ -21,7 +21,7 @@
   //_width: ;
 
   //SPACING
-  //_margin: ;
+  margin: $ppal-element-margin;
   //_padding: ;
 
   // @extend %expanded;
@@ -30,6 +30,8 @@
   // @include spacing(margin: "0px 0px 10px 0px");)
 }
 
-// .leave_negotiation_control {}
+ .leave_negotiation_control {
+   padding: $button-box-padding;
+ }
 
 // .proposal_controls {}

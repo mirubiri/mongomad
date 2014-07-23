@@ -21,7 +21,7 @@
   //_width: ;
 
   //SPACING
-  //_margin: ;
+  margin: $ppal-element-margin;
   //_padding: ;
 
 
@@ -30,18 +30,21 @@
   // @include dimensions(width: "300px");
   // @include spacing(margin: "0px 5px 5px 0px", padding: "valor" "valor" "valor" "valor");
 
-  // .title {
-  //   @include spacing(margin: "0px", padding: "5px");
-  //   @extend %expanded;
-  // }
+  .title {
+    padding: $title-padding;
+    // @include spacing(margin: "0px", padding: "5px");
+    // @extend %expanded;
+  }
 
-  // .message {
-  //   @include dimensions(height: "25px", width: "80%");
-  //   @extend %centered;
-  // }
+  .message {
+    padding: $text-box-padding;
+    // @include dimensions(height: "25px", width: "80%");
+    // @extend %centered;
+  }
 
-  // .controls {
-  //   @include dimensions(height: "25px", width: "80%");
-  //   @extend %centered;
-  // }
+  .controls {
+    padding: $button-box-padding;
+    // @include dimensions(height: "25px", width: "80%");
+    // @extend %centered;
+  }
 }

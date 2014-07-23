@@ -23,9 +23,32 @@
 
   //SPACING
   //_margin: ;
-  //_padding: ;
+  padding: $container-padding;
 
+    .bezel {
+      //PLACEMENT
+      //_position: ;
+      //_float: ;
+      //_z-index: ;
 
+      //FIXING
+      //_top: ;
+      //_right: ;
+      //_bottom: ;
+      //_left: ;
+
+      //DISPLAYING
+      //_display: ;
+      //_overflow: ;
+
+      //DIMENSIONS
+      //_height: ;
+      //_width: ;
+
+      //SPACING
+      //_margin: ;
+      padding: $container-padding;
+  }
   // @include placement(position: relative, float: left);
   // @include displaying(overflow: auto);
   // @include dimensions(width: "25%");

@@ -21,10 +21,20 @@
   //_width: ;
 
   //SPACING
-  //_margin: ;
+  margin: $ppal-element-margin;
   //_padding: ;
 
+// .head_image {}
 
+// .user_card {}
+
+  .requester {
+    margin: $profile-card-element-margin;
+  }
+
+  .make_offer_control {
+    margin: $profile-card-element-margin;
+  }
 
   // @extend %expanded;
   // @include placement(position: relative, float: left);
@@ -32,10 +42,3 @@
   // @include spacing(padding: "0px");
 }
 
-// .head_image {}
-
-// .user_card {}
-
-// .requester {}
-
-// .make_offer_control {}
