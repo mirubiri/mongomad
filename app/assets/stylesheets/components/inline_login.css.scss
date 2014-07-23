@@ -1,11 +1,33 @@
-@import "variables";
-
-.inline_login{
+.inline_login {
   @extend %component;
-  @include placement(position: "valor", float: "valor", zindex: "valor")
-  @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
-  @include displaying(display: "valor", overflow: "valor")
-  @include dimensions(height: "valor", width: "valor")
-  @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+  // @include placement(position: "valor", float: "valor", zindex: "valor")
+  // @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
+  // @include displaying(display: "valor", overflow: "valor")
+  // @include dimensions(height: "valor", width: "valor")
+  // @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
 }
 

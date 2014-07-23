@@ -1,31 +1,53 @@
-@import "variables";
-
-.avatar{
+.avatar {
   @extend %component;
-  @include placement(position: relative, float: left);
-  @include displaying(overflow: auto);
-  @include dimensions(width: "300px");
-  @include spacing(margin: "0px 50px 0px 0px", padding: "5px");
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @include placement(position: relative, float: left);
+  // @include displaying(overflow: auto);
+  // @include dimensions(width: "300px");
+  // @include spacing(margin: "0px 50px 0px 0px", padding: "5px");
 }
 
+// .full_name {}
 
-// .full_name{}
+// .image {}
 
-// .image{}
-
-// .friends{
-//   .icon{}
-//   .number{}
+// .friends {
+//   .icon {}
+//   .number {}
 // }
 
-// .reputation{
-//   .icon{}
-//   .value{}
+// .reputation {
+//   .icon {}
+//   .value {}
 // }
 
-// .user_data{
-//   .first_name{}
-//   .surnames{}
-//   .nick{}
-//   .location{}
+// .user_data {
+//   .first_name {}
+//   .surnames {}
+//   .nick {}
+//   .location {}
 // }

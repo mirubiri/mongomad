@@ -1,13 +1,35 @@
-@import "variables";
-
-.request_list{
+.request_list {
   @extend %element;
-  @extend %expanded;
-  @include placement(position: relative, float: left);
-  @include displaying(display: block, overflow: auto);
-  @include spacing(padding: "0px");
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @extend %expanded;
+  // @include placement(position: relative, float: left);
+  // @include displaying(display: block, overflow: auto);
+  // @include spacing(padding: "0px");
 }
 
-// .add_request_control{}
-
-// .requests{}
+// .add_request_control {}
+// .requests {}

@@ -1,9 +1,32 @@
-@import "variables";
-
-.deal{
+.deal {
   @extend %element;
-  @extend %expanded;
-  @include placement(float: left);
-  @include displaying(display: relative, overflow: auto);
-  @include spacing(margin: "0px 0px 10px 0px");
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @extend %expanded;
+  // @include placement(float: left);
+  // @include displaying(display: relative, overflow: auto);
+  // @include spacing(margin: "0px 0px 10px 0px");
 }

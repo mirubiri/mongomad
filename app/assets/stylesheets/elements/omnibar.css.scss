@@ -1,17 +1,41 @@
-@import "variables";
-
-.omnibar{
+.omnibar {
+  @extend %element;
   @extend %container;
-  @extend %expanded;
-  @include placement(float: left);
-  @include fixing(top: 0, left: 0);
-  @include displaying(display: inline, overflow: auto);
-  @include spacing(margin: "0px 0px 10px 0px", padding: "5px 10px");
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @extend %expanded;
+  // @include placement(float: left);
+  // @include fixing(top: 0, left: 0);
+  // @include displaying(display: inline, overflow: auto);
+  // @include spacing(margin: "0px 0px 10px 0px", padding: "5px 10px");
 }
 
-// .logo{
+// .logo {
 // }
 
-// .navigation_controls{
+// .navigation_controls {
 //   float: left;
 // }

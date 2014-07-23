@@ -1,9 +1,33 @@
-@import "variables";
-
-.dashboard{
+.dashboard {
+  @extend %element;
   @extend %container;
-  @include placement(position: relative, float: left);
-  @include displaying(overflow: auto);
-  @include dimensions(width: "25%");
-  @include spacing(margin: "0px", padding: "10px");
+
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
+
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
+
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @include placement(position: relative, float: left);
+  // @include displaying(overflow: auto);
+  // @include dimensions(width: "25%");
+  // @include spacing(margin: "0px", padding: "10px");
 }

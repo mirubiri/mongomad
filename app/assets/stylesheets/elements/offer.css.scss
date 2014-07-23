@@ -1,24 +1,47 @@
-@import "variables";
-
-.offer{
+.offer {
   @extend %element;
-  @include placement(position: relative, float: left);
-  @include displaying(overflow: auto);
-  @include dimensions(width: "300px");
-  @include spacing(margin: "0px 5px 5px 0px", padding: "valor" "valor" "valor" "valor");
 
-  .title{
-    @include spacing(margin: "0px", padding: "5px");
-    @extend %expanded;
-  }
+  //PLACEMENT
+  //_position: ;
+  //_float: ;
+  //_z-index: ;
 
-  .message{
-    @include dimensions(height: "25px", width: "80%");
-    @extend %centered;
-  }
+  //FIXING
+  //_top: ;
+  //_right: ;
+  //_bottom: ;
+  //_left: ;
 
-  .controls{
-    @include dimensions(height: "25px", width: "80%");
-    @extend %centered;
-  }
+  //DISPLAYING
+  //_display: ;
+  //_overflow: ;
+
+  //DIMENSIONS
+  //_height: ;
+  //_width: ;
+
+  //SPACING
+  //_margin: ;
+  //_padding: ;
+
+
+  // @include placement(position: relative, float: left);
+  // @include displaying(overflow: auto);
+  // @include dimensions(width: "300px");
+  // @include spacing(margin: "0px 5px 5px 0px", padding: "valor" "valor" "valor" "valor");
+
+  // .title {
+  //   @include spacing(margin: "0px", padding: "5px");
+  //   @extend %expanded;
+  // }
+
+  // .message {
+  //   @include dimensions(height: "25px", width: "80%");
+  //   @extend %centered;
+  // }
+
+  // .controls {
+  //   @include dimensions(height: "25px", width: "80%");
+  //   @extend %centered;
+  // }
 }
