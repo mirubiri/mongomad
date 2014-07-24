@@ -1,34 +1,7 @@
 .business_info {
   @extend %element;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
+  display: block;
   padding: $ppal-element-margin;
-
-
-  // @extend %expanded;
-  // @include placement(position: relative, float: left);
-  // @include displaying(display: block, overflow: auto);
-  // @include spacing(padding: "0px");
-  // text-align: center;
+  text-align: center;
 }
 

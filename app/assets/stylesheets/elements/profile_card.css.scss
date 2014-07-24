@@ -1,44 +1,17 @@
 .profile_card {
   @extend %element;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
+  display: block;
   margin: $ppal-element-margin;
-  //_padding: ;
 
-// .head_image {}
-
-// .user_card {}
-
-  .requester {
+  div{
     margin: $profile-card-element-margin;
   }
-
-  .make_offer_control {
-    margin: $profile-card-element-margin;
-  }
-
-  // @extend %expanded;
-  // @include placement(position: relative, float: left);
-  // @include displaying(display: block, overflow: auto);
-  // @include spacing(padding: "0px");
 }
 
+//.head_image {}
+
+//.user_card {}
+
+//.requester {}
+
+//.make_offer_control {}

@@ -1,56 +1,10 @@
 .dashboard {
   @extend %element;
-  @extend %container;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
+  width: 25%;
   padding: $container-padding;
 
-    .bezel {
-      //PLACEMENT
-      //_position: ;
-      //_float: ;
-      //_z-index: ;
-
-      //FIXING
-      //_top: ;
-      //_right: ;
-      //_bottom: ;
-      //_left: ;
-
-      //DISPLAYING
-      //_display: ;
-      //_overflow: ;
-
-      //DIMENSIONS
-      //_height: ;
-      //_width: ;
-
-      //SPACING
-      //_margin: ;
-      padding: $container-padding;
+  .bezel {
+    width: 100%;
+    padding: $container-padding;
   }
-  // @include placement(position: relative, float: left);
-  // @include displaying(overflow: auto);
-  // @include dimensions(width: "25%");
-  // @include spacing(margin: "0px", padding: "10px");
 }

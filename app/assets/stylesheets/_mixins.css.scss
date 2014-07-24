@@ -1,6 +1,6 @@
-//@mixin centered{ //Incluirlo como el último mixing siempre
-//  float: none;
-//  display: block;
-//  margin-left: auto;
-//  margin-right: auto;
-//}
+@mixin centered{ //Incluirlo como el último mixing siempre
+ float: none;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}

@@ -1,34 +1,8 @@
 .expositor {
   @extend %element;
-  @extend %container;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
+  float: right;
+  width: 73.5%;
   padding: $container-padding;
-
-//   @include placement(float: right);
-//   @include displaying(overflow: auto);
-//   @include dimensions(width: "73.5%");
-//   @include spacing(padding: "10px");
 }
 
 // nav.navigation {}

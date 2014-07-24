@@ -1,134 +1,31 @@
 %good {
   @extend %element;
+  margin: $good-bottom-margin;
+  width: auto;
 
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
+  .image {
+    width: 100%;
+  }
 
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
+  .amount {
+    width: 100%;
+    height: $good-data-heigth;
+  }
 
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
+  .name {
+    width: 100%;
+    height: $good-data-heigth;
+  }
 
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
-  //_padding: ;
-
-
-  // @include placement(float: left);
-  // @include displaying(overflow: auto);
-  // @include spacing(margin: "0px 5px 0px 0px");
-
-  // .image {
-  //   @extend %expanded;
-  //   @include spacing(margin: "0px 0px 5px 0px");
-  // }
-
-  // .amount {
-  //   @include dimensions(height: "25px", width: "80%");
-  //   @extend %centered;
-  // }
-
-  // .name {
-  //   @include dimensions(height: "25px", width: "80%");
-  //   @extend %centered;
-  // }
-
-  // .controls {
-  //   @include dimensions(height: "25px", width: "80%");
-  //   @extend %centered;
-  // }
+  .controls {
+    width: 100%;
+    height: $good-data-heigth;
+  }
 }
 
 
-.item {
-  @extend %good;
+.item {@extend %good;}
 
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
+.product {@extend %good;}
 
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  margin: $ppal-element-margin;
-  //_padding: ;
-
-}
-
-.product {
-  @extend %good;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
-  //_padding: ;
-}
-
-.cash {
-  @extend %good;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
-  //_padding: ;
-}
+.cash {@extend %good;}
