@@ -1,6 +1,10 @@
 .avatar {
-  @extend %component;
-  margin: $omnibar-components-margin;
+  float: left;
+  margin-right: $omnibar-components-margin;
+}
+
+.image_omnibar{
+  margin-right: $image-text-margin;
 }
 
 .full_name {
@@ -19,6 +23,8 @@
   }
   .number {}
 }
+
+
 
 .reputation {
   margin: $profile-card-icon-margin;

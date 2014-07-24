@@ -57,7 +57,7 @@ module ApplicationHelper
         :html_height => height,
         :crop => :fit)
     else
-      static_image_tag('user_default')
+      static_image_tag('user_default',40,40)
     end
   end
 

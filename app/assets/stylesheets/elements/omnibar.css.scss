@@ -1,17 +1,22 @@
 .omnibar {
   @extend %element;
-  @include box-shadow(rgb(0,0,0) 0px 0px 0px);
+  box-shadow: none;
   background-color: transparent;
   border: 0px;
   width: 100%;
   display: inline;
   padding: $container-padding;
 
-  div{
-    margin-right: $omnibar-components-margin;
+  div, nav{
+    float: left;
+    display: inline;
   }
 }
 
-// .logo {}
+.logo {
+  margin-right: $omnibar-components-margin;
+}
 
-// .navigation_controls {}
+.navigation_controls{
+  margin-right: $omnibar-components-margin;
+}
