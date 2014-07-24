@@ -1,49 +1,25 @@
-// body{
+body{
+  display: block;
+  overflow: auto;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  float: left;
+  background-color: $body-bgcolor;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+  color: white;
+  font-size: 15px;
+  font-family: "Roboto";
+  font-weight: normal;
+  line-height: 18px;
+}
 
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
-  //_padding: ;
-
-//   padding: 0px 10px 0px 10px;
-//   display: block;
-//   overflow: auto;
-//   width: 100%;
-//   float: left;
-//   margin: 0px;
-//   padding: 0px;
-//   background-color: rgb(100,152,173);
-//   overflow: -moz-scrollbars-vertical;
-//   overflow-y: scroll;
-//   color: white;
-//   font-size: 15px;
-//   font-family: "Roboto";
-//   font-size: 12;
-//   font-weight: normal;
-//   line-height: 18px;
-// }
-
-// .main{
-//   @extend %expanded;
-// }
+.main{
+  float: left;
+  width: 100%;
+  padding: 20px 10px 10px 10px;
+}
 
 
 // nav{

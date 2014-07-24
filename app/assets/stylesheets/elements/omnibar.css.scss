@@ -1,13 +1,14 @@
 .omnibar {
   @extend %element;
-  width: auto;
-  top: 0;
-  left: 0;
+  @include box-shadow(rgb(0,0,0) 0px 0px 0px);
+  background-color: transparent;
+  border: 0px;
+  width: 100%;
   display: inline;
   padding: $container-padding;
 
   div{
-    margin: $omnibar-components-margin;
+    margin-right: $omnibar-components-margin;
   }
 }
 
