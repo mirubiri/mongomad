@@ -1,21 +1,25 @@
-= form_for(:user, url: user_session) do |login|
-  div
-    = login.email_field :email, :placeholder => "nombre de usuario o correo electrónico", autofocus: true
-  div
-    = login.password_field :password, :placeholder => "contraseña", autocomplete: "off"
-  - if devise_mapping.rememberable?
+.login
+  h4
+    |sign in
+  = form_for(:user, url: user_session) do |login|
     div
-      = login.check_box :remember_me
-      = login.label :remember_me
-  div
-    = login.submit "iniciar sesión"
-
-= form_for :user, url: users_sign_up_path do |registration|
-  div
-    = registration.text_field :full_name, :placeholder => "nombre completo"
-  div
-    = registration.email_field :email, :placeholder => "correo electrónico"
-  div
-    = registration.password_field :password, :placeholder => "contraseña", autocomplete: "off"
-  div
-    = registration.submit "Registrate en Mongo"
+      = login.email_field :email, :placeholder => "nombre de usuario o correo electrónico", autofocus: true
+    div
+      = login.password_field :password, :placeholder => "contraseña", autocomplete: "off"
+    - if devise_mapping.rememberable?
+      div
+        = login.check_box :remember_me
+        = login.label :remember_me
+    div
+      = login.submit "iniciar sesión"
+  h4
+    |or register
+  = form_for :user, url: users_sign_up_path do |registration|
+    div
+      = registration.text_field :full_name, :placeholder => "nombre completo"
+    div
+      = registration.email_field :email, :placeholder => "correo electrónico"
+    div
+      = registration.password_field :password, :placeholder => "contraseña", autocomplete: "off"
+    div
+      = registration.submit "Registrate en Mongo"

@@ -1,0 +1,7 @@
+.login{
+  @extend %element;
+  width: 200px;
+  @include centered;
+  padding: $container-padding;
+  color: $title-font-color;
+}
