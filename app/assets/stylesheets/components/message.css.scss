@@ -1,38 +1,16 @@
 .message {
   @extend %component;
+  margin: $message-margin;
+  padding: $text-box-padding;
 
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
+  .avatar {
+    margin: $image-text-margin;
+  }
 
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
-  //_padding: ;
-
-  // @include placement(position: "valor", float: "valor", zindex: "valor")
-  // @include fixing(top: "valor", right: "valor", bottom: "valor", left: "valor")
-  // @include displaying(display: "valor", overflow: "valor")
-  // @include dimensions(height: "valor", width: "valor")
-  // @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor")
-
-  // .avatar {}
-
-  // .text {}
+  .text {
+    margin: $data-margin;
+    padding-left: 5px;
+  }
 
   // .timestamp {}
 }

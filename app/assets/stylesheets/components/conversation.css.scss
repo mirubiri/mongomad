@@ -1,32 +1,7 @@
 .conversation {
   @extend %component;
-
-  //PLACEMENT
-  //_position: ;
-  //_float: ;
-  //_z-index: ;
-
-  //FIXING
-  //_top: ;
-  //_right: ;
-  //_bottom: ;
-  //_left: ;
-
-  //DISPLAYING
-  //_display: ;
-  //_overflow: ;
-
-  //DIMENSIONS
-  //_height: ;
-  //_width: ;
-
-  //SPACING
-  //_margin: ;
+  width: 70%;
   padding: $text-box-padding;
-
-  // @include placement(position: relative, float: left);
-  // @include dimensions(height: "250px", width: "70%");
-  // @include spacing(margin: "valor" "valor" "valor" "valor", padding: "valor" "valor" "valor" "valor");
 }
 
 .messages{

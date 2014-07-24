@@ -89,6 +89,7 @@
 // }
 
 div{
+  @include box-sizing(border-box);
   position: relative;
   float: left;
   overflow: auto;
