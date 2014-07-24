@@ -11,12 +11,30 @@
     float: left;
     display: inline;
   }
+
+  .avatar{
+    width: 15%;
+  }
+
+  .logo {
+    width: 5%;
+    margin-right: $omnibar-components-margin;
+  }
+
+  .navigation_controls{
+    text-align: center;
+    width: 30%;
+    margin-right: $omnibar-components-margin;
+  }
+
+  .search{
+    width: 20%;
+  }
+
+  .inline_logout{
+    width: 5%;
+  }
+
 }
 
-.logo {
-  margin-right: $omnibar-components-margin;
-}
 
-.navigation_controls{
-  margin-right: $omnibar-components-margin;
-}
