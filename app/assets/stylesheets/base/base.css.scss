@@ -36,7 +36,7 @@ nav{
 
 
 .active_nav{
-  background-color: rgb(100,152,173);
+  background-color: $nav-selected;
 }
 
 
@@ -58,10 +58,16 @@ input{
 }
 
 textarea{
+  float: left;
   width: 100%;
+  height: auto;
   resize: none;
 }
 
 .hidden{
   visibility: hidden;
+}
+
+a{
+  @include unstyled-link;
 }

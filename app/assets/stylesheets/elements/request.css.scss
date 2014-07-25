@@ -1,10 +1,18 @@
 .request {
   @extend %element;
-  padding: $component-padding;
+  padding: $element-padding;
+
+  .avatar{
+    float: left;
+  }
+
+  .text {
+    float: left;
+  }
+
 }
 
 // .image {}
 
-// .text {}
 
 // .controls {}

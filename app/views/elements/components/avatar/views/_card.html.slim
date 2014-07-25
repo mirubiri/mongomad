@@ -3,12 +3,6 @@
     = user_image_tag(avatar,80,80)
 
   .user_data
-    .full_name
-      = avatar.full_name
-
-    .location
-      | location
-
     .reputation
       .icon
          = static_image_tag('star', 20,20)
@@ -20,3 +14,10 @@
         = static_image_tag('friends', 20,20)
       .number
         | 350
+
+    .full_name
+      = avatar.full_name
+
+    .location
+      | location
+
