@@ -1,18 +1,29 @@
 .request {
   @extend %element;
-  padding: $element-padding;
+  padding: $container-padding;
+  border: none;
+  border-bottom: 1px solid $grey-border-color;
+  border-radius: 0px;
+  overflow: hidden;
 
   .avatar{
     float: left;
+    margin-right: $image-text-margin;
+    img{width: 40px; height: 40px;}
   }
 
   .text {
     float: left;
+    color: $text-font-color;
+  }
+
+  .controls {
+    width: 100%;
+    float: left;
+    padding-right: $additional-control-padding;
+    color: $text-font-color;
+    font-size: $small-font;
+    a{float: right; margin-right: 5px;}
   }
 
 }
-
-// .image {}
-
-
-// .controls {}
