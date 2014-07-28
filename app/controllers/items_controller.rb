@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html { render 'new', locals:{ item:item } }
-      #format.json { render json: item }
+      format.js { render 'new.js.coffee', locals:{ item:item } }
     end
   end
 

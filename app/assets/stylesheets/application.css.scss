@@ -11,9 +11,14 @@
  * file per style scope.
  */
 
+//Include Jquery files
+@import "jquery-ui.min";
+@import "jquery.Jcrop.min";
+@import "simpleModal";
+
 //Include compass mixins
-//@import "compass/css3";
-//@import "compass/typography/links/unstyled-link";
+@import "compass/css3";
+@import "compass/typography/links/unstyled-link";
 
 //Include scss files
 @import "compass/css3";
@@ -25,6 +30,3 @@
 @import "components/*";
 @import "elements/*";
 
-//Include Jquery files
-//@import "jquery-ui.min";
-//@import "jquery.Jcrop.min";

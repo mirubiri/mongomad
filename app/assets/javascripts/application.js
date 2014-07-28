@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui.min
+//= require jquery.simplemodal.1.4.4.min.js
 //= require turbolinks
 //= require_tree .
 //= require equal-height-columns

@@ -2,5 +2,6 @@
   nav.navigation
     = yield_content :navigation
 
-  - data.offers.each do |offer|
-    = element :offer
+  .elements_list#elements_list
+    - data.offers.each do |offer|
+      = element :offer

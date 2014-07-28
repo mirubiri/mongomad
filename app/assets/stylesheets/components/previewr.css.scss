@@ -1,0 +1,101 @@
+.image_loader{
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  width: 45%;
+}
+
+.image_descriptor{
+  @include box-sizing(border-box);
+  float: left;
+  overflow: auto;
+  width: 55%;
+}
+
+.previews{
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  width: 100%;
+}
+
+.preview{
+  background-color: transparent;
+  overflow: auto;
+  img{
+    background-color: $white-bgcolor;
+    width: $item-preview-big;
+    height: $item-preview-big;
+    max-width: $item-preview-big;
+    max-height: $item-preview-big;
+  }
+}
+
+.image_selection_area{
+  width: 48%;
+  float: left;
+  div{
+    float: left;
+  }
+}
+
+.preview_box{
+  float: left;
+  width: $item-snapshoot;
+  height: $item-snapshoot;
+  margin-right: 8px;
+  margin-bottom: 60px;
+}
+
+.add_image_container{
+  float: left;
+  width: $item-snapshoot;
+  height: $item-snapshoot;
+  overflow: hidden;
+  margin-bottom: 4px;
+  img{
+    float: left;
+    width: $item-snapshoot;
+    height: $item-snapshoot;
+    background-color: white;
+  }
+}
+
+label.preview_label{
+  @include box-sizing(border-box);
+  float: left;
+  margin-right: 3px;
+  background-color: black;
+  text-align: center;
+  color: white;
+  width: 25px;
+  height: 25px;
+  padding-top: 3px;
+  z-index: 10;
+  font-weight: bolder;
+}
+
+
+.filebutton{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  input{
+    float: left;
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+  }
+}
+
+#pan{
+  overflow: hidden;
+}
+
+.preview_label{
+  position: relative;
+}

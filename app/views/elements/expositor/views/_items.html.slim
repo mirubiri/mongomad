@@ -4,7 +4,9 @@
 
   = button_to 'Add item',
     new_user_item_path(current_user),
-    :method => :get
+    :method => :get,
+    :remote => true
 
-  - data.items.each do |item|
-    = element :good, view: :item
+  .elements_list#elements_list
+    - data.items.each do |item|
+      = element :good, view: :item
