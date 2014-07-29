@@ -1,4 +1,8 @@
 .search {
   @extend %component;
   margin-right: $omnibar-components-margin;
+  input{
+    width: 100%;
+    height: 100%;
+  }
 }

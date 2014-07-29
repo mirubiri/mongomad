@@ -20,7 +20,7 @@ body{
   @include box-sizing(border-box);
   float: left;
   width: 100%;
-  padding: 10px;
+  padding: $container-padding;
 }
 
 
@@ -37,6 +37,7 @@ nav{
 
 .active_nav{
   background-color: $nav-selected;
+  a{color: $white-font-text;}
 }
 
 
@@ -44,6 +45,7 @@ a{
   //@include unstyled-link;
   display: block;
   height: 100%;
+  @include unstyled-link;
 }
 
 
@@ -66,8 +68,4 @@ textarea{
 
 .hidden{
   visibility: hidden;
-}
-
-a{
-  @include unstyled-link;
 }

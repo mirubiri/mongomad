@@ -3,17 +3,17 @@
     = user_image_tag(avatar,80,80)
 
   .user_data
-    .reputation
-      .icon
-         = static_image_tag('star', 20,20)
-      .value
-        | 75%
+    / .reputation
+    /   .icon
+    /      = static_image_tag('star', 20,20)
+    /   .value
+    /     | 75%
 
-    .friends
-      .icon
-        = static_image_tag('friends', 20,20)
-      .number
-        | 350
+    / .friends
+    /   .icon
+    /     = static_image_tag('friends', 20,20)
+    /   .number
+    /     | 350
 
     .full_name
       = avatar.full_name

@@ -1,6 +1,6 @@
 .request {
   @extend %element;
-  padding: $container-padding;
+  padding: $message-box-padding;
   border: none;
   border-bottom: 1px solid $grey-border-color;
   border-radius: 0px;
@@ -15,6 +15,7 @@
   .text {
     float: left;
     color: $text-font-color;
+    font-size: $medium-font;
   }
 
   .controls {

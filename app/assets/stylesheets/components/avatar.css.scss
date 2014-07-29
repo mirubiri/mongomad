@@ -24,8 +24,6 @@
   .number {}
 }
 
-
-
 .reputation {
   margin: $profile-card-icon-margin;
   padding-right: 5px;
@@ -37,16 +35,14 @@
 }
 
 .user_data {
-  .first_name {
-    margin: $data-margin;
-  }
-  .surnames {
-    margin: $data-margin;
-  }
-  .nick {
+  .full_name{
+    text-align: center;
+    color: $title-font-color;
     margin: $data-margin;
   }
   .location {
+    text-align: center;
+    color: $text-font-color;
     margin: $data-margin;
   }
 }

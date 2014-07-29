@@ -1,10 +1,3 @@
-$(window).load (event) ->
-  expandMain()
-
-$(window).resize (event) ->
-  expandMain()
-
-
 @expandMain = ->
   $windowHeight = $(window).height()
   $omnibarHeight = $('#omnibar').outerHeight(true)

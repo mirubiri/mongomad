@@ -10,7 +10,19 @@ nav.navigation {
   background-color: $white-bgcolor;
   li{
     @include box-sizing(border-box);
-    padding-top: 5px;
-    border-right: 1px solid $grey-border-color;
+    padding: 0px;
+    border-right: 2px solid $blue-nav-border-color;
+    color: $nav-font-color;
+    font-size: $medium-font;
+    font-weight: bold;
+    a{padding: 5px 20px 0px 20px;}
   }
+}
+
+.elements_list{
+  @include box-sizing(border-box);
+  float: left;
+  width: 100%;
+  overflow: auto;
+  padding: $element-padding;
 }

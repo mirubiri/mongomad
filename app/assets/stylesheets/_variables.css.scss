@@ -7,7 +7,7 @@ $good-data-heigth: 25px;
 //MARGIN VARIABLES
 $omnibar-components-margin: 50px;
 $image-text-margin: 5px;
-$ppal-element-margin: 0px 0px 10px 0px;
+$ppal-element-margin: 0px 0px 20px 0px;
 $profile-card-element-margin: 0px 0px 5px 0px;
 $data-margin: 5px;
 $profile-card-icon-margin: 5px;
@@ -16,11 +16,12 @@ $message-margin: 10px;
 $title-description-margin: 5px;
 
 //PADDING VARIABLES
-$container-padding: 5px;
+$container-padding: 5px 30px;
 $nav-icon-padding: 0px;
 $inline-loggin-padding: 0px;
 $button-box-padding: 10px 5px;
 $element-padding: 15px;
+$message-box-padding: 5px 10px;
 $text-box-padding: 15px;
 $title-padding: 5px 5px;
 $component-padding: 25px;
@@ -28,17 +29,20 @@ $nav-link-padding: 12px 5px;
 $additional-control-padding: 5px;
 
 //COLOR VARIABLES
-$container-bgcolor: rgb(177,206,206);
+$container-bgcolor: #B1D4E1;
 $body-bgcolor: rgb(90,148,173);
-$nav-selected: rgb(177,206,206);
+$nav-selected: #B1D4E1;
 $title-font-color: black;
 $text-font-color: rgb(153,153,153);
+$nav-font-color: #839091;
 $red-button-bgcolor: rgb(231,74,57);
 $white-font-text: rgb(253,253,253);
 $blue-button-bgcolor: rgb(58,157,223);
 $grey-button-bgcolor: rgb(183,183,183);
 $grey-border-color: rgb(137,137,137);
+$blue-nav-border-color: #9DC4D1;
 $white-bgcolor: rgb(253,253,253);
+$grey-shadow-color: #9BB3B8;
 
 //TEXT VARIABLES
 $small-font: 10px;
