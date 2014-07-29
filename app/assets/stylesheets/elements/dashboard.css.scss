@@ -1,5 +1,6 @@
 .dashboard {
   @extend %element;
+  overflow: visible;
   background-color: $container-bgcolor;
   width: 25%;
 }
@@ -23,7 +24,7 @@
 
 .container{
   float: left;
-  overflow: auto;
+  overflow: visible;
   padding: $element-padding;
 }
 
@@ -41,7 +42,7 @@
     @include box-sizing(border-box);
     margin-top: -25px;
     width: 100%;
-    padding: 0px 10px;
+    padding: $dashboard-component-padding;
 
     .image_card{
       position: relative;
@@ -114,5 +115,5 @@
   width: 98%;
   border: none;
   box-shadow: none;
-  padding: 0px 10px;
+  padding: $dashboard-component-padding;
 }

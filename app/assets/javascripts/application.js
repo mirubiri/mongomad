@@ -19,3 +19,4 @@
 //= require equal-height-columns
 //= require cloudinary
 //= require jquery.Jcrop.min
+//= require characterCountdown.min
