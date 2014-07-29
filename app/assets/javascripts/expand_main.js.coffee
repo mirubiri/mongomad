@@ -9,8 +9,4 @@
   $('#expositor').height($mainHeight) if $expositorHeight < $mainHeight
 
   $("#dashboard,#expositor").equalHeightColumns()
-  $(".overridesPadding").each ->
-    $width = $(this).parent().outerWidth() - 2
-    $(this).width($width)
-    return
   return

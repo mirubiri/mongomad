@@ -18,6 +18,7 @@ body{
 
 .main{
   @include box-sizing(border-box);
+  overflow: auto;
   float: left;
   width: 100%;
   padding: $container-padding;
