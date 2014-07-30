@@ -32,8 +32,8 @@ module ApplicationHelper
     active ? 'active_nav' : nil
   end
 
-  def static_image_tag(public_id, width:nil, height:nil)
-    cl_image_tag("static/#{public_id}", :width => width, :height => height, :crop => :fit)
+  def static_image_tag(public_id, width=nil, height=nil)
+    cl_image_tag("static/#{public_id}", :width => width, :height => height, :crop => :fill)
   end
 
   # def user_image_tag(user, width, height)
