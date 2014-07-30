@@ -47,21 +47,21 @@ module ApplicationHelper
     end
   end
 
-  # def item_main_image_tag(item, width, height)
-  #   if item != nil
-  #     main_image = item.images.where(main:true).first
-  #     cl_image_tag(main_image.id,
-  #       :transformation => {
-  #         :x => main_image.x,
-  #         :y => main_image.y,
-  #         :width => main_image.w,
-  #         :height => main_image.h,
-  #         :crop => :crop },
-  #       :width => 150,
-  #       :height => 150,
-  #       :html_width => width,
-  #       :html_height => height,
-  #       :crop => :fit)
-  #   end
-  # end
+  def item_main_image_tag(item, width=155, height=155)
+    if item != nil
+      image = item.images.where(main:true).first
+      cl_image_tag(image.id,
+        :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
+        :width => width, :height => heith, :crop => :fit)
+    end
+  end
+
+  def item_image_tag(item, index=0, width=155, height=155)
+    if item != nil
+      image = item.images[index]
+      cl_image_tag(image.id,
+        :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
+        :width => width, :height => heith, :crop => :fit)
+    end
+  end
 end
