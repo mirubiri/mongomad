@@ -41,7 +41,7 @@ module ApplicationHelper
       image = user.images.first
       cl_image_tag(image.id,
         :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
-        :width => width, :height => heith, :crop => :fit)
+        :width => width, :height => height, :crop => :fit)
     else
       static_image_tag('user_default',width,height)
     end
@@ -52,7 +52,7 @@ module ApplicationHelper
       image = item.images.where(main:true).first
       cl_image_tag(image.id,
         :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
-        :width => width, :height => heith, :crop => :fit)
+        :width => width, :height => height, :crop => :fit)
     end
   end
 
@@ -61,7 +61,7 @@ module ApplicationHelper
       image = item.images[index]
       cl_image_tag(image.id,
         :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
-        :width => width, :height => heith, :crop => :fit)
+        :width => width, :height => height, :crop => :fit)
     end
   end
 end
