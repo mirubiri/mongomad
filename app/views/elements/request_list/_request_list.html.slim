@@ -1,8 +1,3 @@
-- content_for :add_request_control
-  = button_to "Add Request",
-    new_user_request_path(data.visited_user),
-    method: :get
-
 - content_for :requests
   - data.requests.each do |request|
     = element :request, data:request
