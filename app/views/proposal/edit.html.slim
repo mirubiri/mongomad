@@ -5,9 +5,9 @@
   .goods_side
     .user_selector
       .composer_face
-        = user_image(current_user,100,100)
+        = user_image_tag(current_user)
       .receiver_face
-        = user_image(data.visited_user,100,100)
+        = user_image_tag(data.visited_user)
 
     .good_selector
       .composer_goods
@@ -43,6 +43,6 @@
       = component :proposal
 
       .avatar
-         = user_image(current_user,80,80)
+         = user_image_tag(current_user)
 
       = render partial: 'proposal/negotiation_form', layout: 'proposal/layouts/negotiation', locals:{ negotiation:negotiation }

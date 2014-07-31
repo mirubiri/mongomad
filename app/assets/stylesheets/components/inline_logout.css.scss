@@ -1,5 +1,12 @@
 .inline_logout {
   @extend %component;
-  margin-right: $omnibar-components-margin;
+  box-shadow: none;
+  margin-right: 0px;
   height: 30px;
+  overflow: hidden;
+  background-color: transparent;
+  .icon{
+    float: right;
+    img{width: 25px;height: 25px;}
+  }
 }
