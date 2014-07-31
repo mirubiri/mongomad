@@ -19,3 +19,5 @@
 //= require cloudinary
 //= require jquery.Jcrop.min
 //= require characterCountdown.min
+//= jquery.iframe-transport.js
+//= jquery.fileupload.js
