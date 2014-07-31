@@ -2,7 +2,7 @@ $(document).ready ->
 
   # Al pinchar en una de las previews, reemplaza la imagen principal por esta
   $ ->
-    $("#expositor").on "click", "img", (event, data) ->
+    $("body").on "click", "img", (event, data) ->
 
       replaceMainWidthPreview($(this))
       preview_selected = previewNumberFromAddImageButton($(this))
