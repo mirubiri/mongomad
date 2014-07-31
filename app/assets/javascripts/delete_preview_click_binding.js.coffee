@@ -1,6 +1,5 @@
 $ ->
-
-  $(".delete_preview").on "click", (event) ->
+  $("body").on "click", ".delete_preview" , (e, data) ->
     deleteCoordinatesOnlyValues($(this))
     deleteMainImage()
     deletePreviewSelected($(this))

@@ -1,7 +1,6 @@
 @imageSelectionFromCloudinaryInput = (input, selector) ->
   # El selector me previene del bubbling sobre el resto de inputs de cloudinary
-  $("input[data-cloudinary-field='item[image"+selector+"]']").on "cloudinarydone" , (e, data) ->
-
+  $("body").on "cloudinarydone", "input[data-cloudinary-field='item[image"+selector+"]']" , (e, data) ->
     if input.files and input.files[0]
       reader = new FileReader()
       reader.onload = (e) ->

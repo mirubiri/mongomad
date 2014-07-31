@@ -1,25 +1,22 @@
-$(document).ready ->
+$ ->
+  $("body").on "click", "img", (event, data) ->
 
-  # Al pinchar en una de las previews, reemplaza la imagen principal por esta
-  $ ->
-    $("body").on "click", "img", (event, data) ->
+    replaceMainWidthPreview($(this))
+    preview_selected = previewNumberFromAddImageButton($(this))
 
-      replaceMainWidthPreview($(this))
-      preview_selected = previewNumberFromAddImageButton($(this))
+    factorX = $("#coordinates" + preview_selected).attr "factorX"
+    factorY = $("#coordinates" + preview_selected).attr "factorY"
 
-      factorX = $("#coordinates" + preview_selected).attr "factorX"
-      factorY = $("#coordinates" + preview_selected).attr "factorY"
+    imageValue = $(this).attr "src"
 
-      imageValue = $(this).attr "src"
+    if imageValue != ""
+      setPreviewAsMain(preview_selected)
+    else
+      setNextPreviewAsMain
 
-      if imageValue != ""
-        setPreviewAsMain(preview_selected)
-      else
-        setNextPreviewAsMain
+    $("#coordinates" + preview_selected).attr "factorX", factorX
+    $("#coordinates" + preview_selected).attr "factorY", factorY
 
-      $("#coordinates" + preview_selected).attr "factorX", factorX
-      $("#coordinates" + preview_selected).attr "factorY", factorY
+    imageSelectionAfterPreviewClick($(this),preview_selected)
 
-      imageSelectionAfterPreviewClick($(this),preview_selected)
-
-      return
+    return
