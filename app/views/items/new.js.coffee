@@ -1,0 +1,3 @@
+$('#item_form').remove();
+$("#expositor").append "<%=j render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item } %>"
+$("#item_form").toModal()
