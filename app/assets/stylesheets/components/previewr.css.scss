@@ -20,6 +20,9 @@
 }
 
 .preview{
+  width: $item-preview-big;
+  height: $item-preview-big;
+  border: 1px solid $grey-border-color;
   background-color: transparent;
   overflow: auto;
   img{
