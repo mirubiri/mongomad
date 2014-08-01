@@ -1,12 +1,20 @@
-.inline_logout {
-  @extend %component;
-  box-shadow: none;
-  margin-right: 0px;
-  height: 30px;
-  overflow: hidden;
-  background-color: transparent;
-  .icon{
+%inline_logout {
+  .inline_logout {
+    @extend %component;
+
     float: right;
-    img{width: 25px;height: 25px;}
+    padding-top: 10px;
+    margin-right: 0px;
+    width: 5%;
+    text-align: right;
+    box-shadow: none;
+    height: 30px;
+    overflow: hidden;
+    background-color: transparent;
+
+    .icon {
+      float: right;
+      img { width: 25px;height: 25px; }
+    }
   }
 }

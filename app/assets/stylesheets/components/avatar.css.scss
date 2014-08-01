@@ -6,6 +6,9 @@
     //img{width: 40px;height: 40px;}
 
     @if $location == omnibar {
+      padding-top: 5px;
+      width: 15%;
+
       .image {
       }
       .user_data {

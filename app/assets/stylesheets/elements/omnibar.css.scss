@@ -1,49 +1,48 @@
-.omnibar {
-  @extend %element;
-  box-shadow: none;
-  background-color: transparent;
-  border: 0px;
-  width: 100%;
-  display: inline;
-  padding: $container-padding;
-
-  div, nav{
-    float: left;
+@mixin omnibar($state) {
+  .omnibar {
+    @extend %element;
+    box-shadow: none;
+    background-color: transparent;
+    border: 0px;
+    width: 100%;
     display: inline;
-  }
+    padding: $container-padding;
 
-  .avatar{
-    padding-top: 5px;
-    width: 15%;
-  }
+    div, nav{
+      float: left;
+      display: inline;
+    }
 
+    @extend %logo;
+
+    @if $location == not_signed {
+      @extend %search;
+      @extend %inline_login;
+      //link_to register
+    }
+    @else if $location == signed {
+      @include avatar("omnibar");
+      @extend %navigation_controls;
+      @extend %search;
+      @extend %inline_logout;
+    }
+  }
+}
+
+%logo {
   .logo {
     width: 5%;
     margin-right: $omnibar-components-margin;
   }
+}
 
-  .navigation_controls{
+%navigation_controls {
+  .navigation_controls {
     padding-top: 5px;
     text-align: center;
     width: 40%;
     margin-right: $omnibar-components-margin;
-  }
 
-  .search{
-    background-color: transparent;
-    margin-top: 10px;
-    width: 15%;
-    text-align: right;
+    li {}
   }
-
-  .inline_logout{
-    float: right;
-    padding-top: 10px;
-    margin-right: 0px;
-    width: 5%;
-    text-align: right;
-  }
-
 }
-
-
