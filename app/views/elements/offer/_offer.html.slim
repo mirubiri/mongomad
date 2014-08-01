@@ -1,14 +1,14 @@
 - content_for :title
-  | composer_name
+  = data.visited_user.full_name
 
 - content_for :proposal
-  = component :proposal
+  = component :proposal, data:offer.proposal
 
 - content_for :avatar
   = component :avatar, view: :offer, data:data.visited_user
 
 - content_for :message
-  | message
+  = offer.message
 
 - content_for :controls
   = button_to "Edit this offer",

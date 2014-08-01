@@ -17,11 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def layout_by_resource
-    if devise_controller?
-      'welcome'
-    else
-      "application"
-    end
+    devise_controller? ? 'welcome' : 'application'
   end
 
   class DataValue
