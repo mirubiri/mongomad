@@ -11,7 +11,7 @@
  * file per style scope.
  */
 
-//Compass mixins
+//Compass
 @import "compass/css3/border-radius";
 @import "compass/css3/box-sizing";
 @import "compass/css3/box-shadow";
@@ -25,6 +25,8 @@
 
 @import "base/component";
 @import "base/element";
+
+@import "elements/good";
 
 @import "components/avatar";
 @import "components/conversation";
@@ -40,7 +42,6 @@
 @import "elements/dashboard";
 @import "elements/deal";
 @import "elements/expositor";
-@import "elements/good";
 @import "elements/login";
 @import "elements/negotiation";
 @import "elements/offer";
@@ -51,7 +52,24 @@
 
 @import "base/base";
 
+@import "pages/item/new";
+@import "pages/item/edit";
+@import "pages/item/show";
+@import "pages/item/form";
+@import "pages/item/item";
+
+@import "pages/profile/edit";
+@import "pages/profile/show";
+@import "pages/profile/form";
+@import "pages/profile/profile";
+
+@import "pages/proposal/new";
+@import "pages/proposal/edit";
+@import "pages/proposal/offer_form";
+@import "pages/proposal/negotiation_form";
+@import "pages/proposal/proposal";
+
 //Jquery
-@import "jquery-ui";
+@import "jquery-ui"; //elegir los modulos necesarios unicamente
 @import "jquery.Jcrop.min";
 @import "simpleModal";

@@ -2,6 +2,6 @@
   nav.navigation
     = yield_content :navigation
 
-  .elements_list#elements_list
+  .element_list#element_list
     - data.deals.each do |deal|
-      = element :deal
+      = element :deal, data:deal

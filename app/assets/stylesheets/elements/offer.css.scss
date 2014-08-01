@@ -1,18 +1,23 @@
-.offer {
-  @extend %element;
-  width: 300px;
-  margin: $ppal-element-margin;
+%offer {
+  .offer {
+    @extend %element;
+    width: 300px;
+    margin: $ppal-element-margin;
 
-  .title {
-    padding: $title-padding;
-    width: 100%;
-  }
+    .title {
+      padding: $title-padding;
+      width: 100%;
+    }
 
-  .message {
-    padding: $text-box-padding;
-  }
+    @extend %proposal;
+    @include avatar("offer");
 
-  .controls {
-    padding: $button-box-padding;
+    .message {
+      padding: $text-box-padding;
+    }
+
+    .controls {
+      padding: $button-box-padding;
+    }
   }
 }

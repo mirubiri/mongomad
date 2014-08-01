@@ -1,12 +1,20 @@
-.proposal {
-  @extend %component;
-  padding: $component-padding;
-}
+%proposal {
+  .proposal {
+    @extend %component;
+    padding: $component-padding;
 
-.composer_goods {
-  margin: $good-bottom-margin;
-}
+    .composer_goods {
+      margin: $good-bottom-margin;
 
-.receiver_goods {
-  margin: $good-bottom-margin;
+      @include product("composer_product");
+      @include cash("composer_cash");
+    }
+
+    .receiver_goods {
+      margin: $good-bottom-margin;
+
+      @include product("receiver_product");
+      @include cash("receiver_cash");
+    }
+  }
 }

@@ -1,3 +1,4 @@
+//TODO: darle una vuelta
 .image_loader{
   @include box-sizing(border-box);
   overflow: auto;
@@ -20,13 +21,14 @@
 }
 
 .preview{
-  width: $item-preview-big;
-  height: $item-preview-big;
-  border: 1px solid $grey-border-color;
   background-color: transparent;
   overflow: auto;
   img{
     background-color: $white-bgcolor;
+    width: $item-preview-big;
+    height: $item-preview-big;
+    max-width: $item-preview-big;
+    max-height: $item-preview-big;
   }
 }
 

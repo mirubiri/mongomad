@@ -1,10 +1,18 @@
-.negotiation {
-  @extend %element;
-  margin: $ppal-element-margin;
+%negotiation {
+  .negotiation {
+    @extend %element;
+    margin: $ppal-element-margin;
+
+    @include avatar("negotiation");
+    @extend %proposal;
+    @extend %conversation;
+
+    .leave_negotiation_control {
+      padding: $button-box-padding;
+    }
+
+    .proposal_controls  {
+      //estilo botones propuesta
+    }
+  }
 }
-
- .leave_negotiation_control {
-   padding: $button-box-padding;
- }
-
-// .proposal_controls {}

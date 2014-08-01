@@ -1,4 +1,10 @@
-.deal {
-  @extend %element;
-  margin: $ppal-element-margin;
+%deal {
+  .deal {
+    @extend %element;
+    margin: $ppal-element-margin;
+
+    @include avatar("deal");
+    @extend %proposal;
+    @extend %conversation;
+  }
 }

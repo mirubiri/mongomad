@@ -1,17 +1,19 @@
-.conversation {
-  @extend %component;
-  width: 70%;
-  padding: $text-box-padding;
-}
+%conversation {
+  .conversation {
+    @extend %component;
+    width: 70%;
+    padding: $text-box-padding;
 
-.messages{
-  padding: $component-padding;
-}
+    .messages {
+      padding: $component-padding;
+    }
 
-.message_input {
-  padding: $text-box-padding;
-}
+    .message_input {
+      padding: $text-box-padding;
+    }
 
-.send_message_control {
-  padding: $button-box-padding;
+    .send_message_control {
+      padding: $button-box-padding;
+    }
+  }
 }

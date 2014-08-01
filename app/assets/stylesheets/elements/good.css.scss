@@ -1,36 +1,86 @@
 %good {
   @extend %element;
+
   margin: $good-bottom-margin;
   width: auto;
+}
 
-  .image {
-    width: 100%;
+
+%item {
+  .item {
+    @extend %good;
+
+   .image {
+      width: 100%;
+    }
+
+    .name {
+      width: 100%;
+      height: $good-data-heigth;
+    }
+
+    .controls {
+      width: 100%;
+      height: $good-data-heigth;
+    }
+  }
+}
+
+@mixin product($type) {
+  @extend %good;
+
+  @if $type == composer_product {
+    .image { //completar
+      width: 100%;
+    }
   }
 
-  .amount {
-    width: 100%;
-    height: $good-data-heigth;
+  @else if $type == receiver_product {
+    .image { //completar
+      width: 100%;
+    }
+  }
+
+  @else if $type == selectable_product {
+    .image { //completar
+      width: 100%;
+    }
   }
 
   .name {
     width: 100%;
     height: $good-data-heigth;
   }
+}
 
-  .controls {
+@mixin cash($type) {
+  @extend %good;
+
+  @if $type == composer_cash {
+    .image { //completar
+      width: 100%;
+    }
+  }
+
+  @else if $type == receiver_cash {
+    .image { //completar
+      width: 100%;
+    }
+  }
+
+  @else if $type == selectable_cash {
+    .image { //completar
+      width: 100%;
+    }
+  }
+
+  .amount {
     width: 100%;
     height: $good-data-heigth;
   }
 }
 
-
-.item {@extend %good;}
-
-.product {@extend %good;}
-
-.cash {@extend %good;}
-
-.item_form{
-  margin-top: 5px;
-  overflow: auto;
-}
+// .item_form{
+//   margin-top: 5px;
+//   overflow: auto;
+// }

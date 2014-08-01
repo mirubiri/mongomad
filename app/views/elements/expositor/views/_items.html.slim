@@ -2,11 +2,11 @@
   nav.navigation
     = yield_content :navigation
 
-  .elements_list#elements_list
+  .element_list#element_list
     = button_to 'Add item',
     new_user_item_path(current_user),
     :method => :get,
     :remote => true
 
     - data.items.each do |item|
-      = element :good, view: :item
+      = element :good, view: :item, data:item

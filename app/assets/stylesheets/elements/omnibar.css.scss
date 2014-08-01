@@ -1,42 +1,24 @@
-@mixin omnibar($state) {
-  .omnibar {
-    @extend %element;
-    box-shadow: none;
-    background-color: transparent;
-    border: 0px;
-    width: 100%;
+.omnibar {
+  @extend %element;
+
+  box-shadow: none;
+  background-color: transparent;
+  border: 0px;
+  width: 100%;
+  display: inline;
+  padding: $container-padding;
+
+  div, nav{
+    float: left;
     display: inline;
-    padding: $container-padding;
-
-    div, nav{
-      float: left;
-      display: inline;
-    }
-
-    @extend %logo;
-
-    @if $location == not_signed {
-      @extend %search;
-      @extend %inline_login;
-      //link_to register
-    }
-    @else if $location == signed {
-      @include avatar("omnibar");
-      @extend %navigation_controls;
-      @extend %search;
-      @extend %inline_logout;
-    }
   }
-}
 
-%logo {
+  @include avatar("omnibar");
   .logo {
     width: 5%;
     margin-right: $omnibar-components-margin;
   }
-}
 
-%navigation_controls {
   .navigation_controls {
     padding-top: 5px;
     text-align: center;
@@ -45,4 +27,9 @@
 
     li {}
   }
+
+  @extend %search;
+  @extend %inline_login;
+  a {} //link_to register
+  @extend %inline_logout;
 }

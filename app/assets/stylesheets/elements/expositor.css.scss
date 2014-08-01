@@ -3,26 +3,34 @@
   background-color: $container-bgcolor;
   float: right;
   width: 73%;
-}
 
-nav.navigation {
-  height: 30px;
-  background-color: $white-bgcolor;
-  li{
+  nav.navigation {
+    height: 30px;
+    background-color: $white-bgcolor;
+
+    li {
+      @include box-sizing(border-box);
+      padding: 0px;
+      border-right: 2px solid $blue-nav-border-color;
+      color: $nav-font-color;
+      font-size: $medium-font;
+      font-weight: bold;
+
+      a {padding: 5px 20px 0px 20px;}
+    }
+  }
+
+  .element_list {
     @include box-sizing(border-box);
-    padding: 0px;
-    border-right: 2px solid $blue-nav-border-color;
-    color: $nav-font-color;
-    font-size: $medium-font;
-    font-weight: bold;
-    a{padding: 5px 20px 0px 20px;}
+    float: left;
+    width: 100%;
+    overflow: auto;
+    padding: $element-padding;
+
+    @extend %item;
+    @extend %offer;
+    @extend %negotiation;
+    @extend %deal;
   }
 }
 
-.elements_list{
-  @include box-sizing(border-box);
-  float: left;
-  width: 100%;
-  overflow: auto;
-  padding: $element-padding;
-}
