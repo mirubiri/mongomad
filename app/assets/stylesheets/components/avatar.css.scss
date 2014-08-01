@@ -1,11 +1,79 @@
-.avatar {
-  float: left;
-  margin-right: $omnibar-components-margin;
-  img{width: 40px;height: 40px;}
+@mixin avatar($location) {
+  .avatar {
+    @extend %component;
+    float: left;
+    margin-right: $omnibar-components-margin;
+    //img{width: 40px;height: 40px;}
+
+    @if $location == omnibar {
+      .image {
+      }
+      .user_data {
+        // .first_name
+        // .surnames
+      }
+    }
+
+    @else if $location == card {
+      .image {
+      }
+      .user_data {
+        // .reputation
+        //   .icon
+        //   .value
+
+        // .friends
+        //   .icon
+        //   .number
+
+        // .full_name
+
+        // .location
+      }
+    }
+
+    @else if $location == request {
+      .image {
+      }
+    }
+
+    @else if $location == offer {
+      .full_name {
+      }
+      .image {
+      }
+    }
+
+    @else if $location == negotiation {
+      .image {
+      }
+      .user_data {
+        // .nick
+        // .location
+      }
+    }
+
+    @else if $location == deal {
+      .image {
+      }
+      .user_data {
+        // .nick
+        // .location
+      }
+    }
+
+    @else if $location == message {
+      .image {
+      }
+    }
+  }
+}
+
+/*
 }
 
 .image_omnibar{
-  margin-right: $image-text-margin;
+
 }
 
 .full_name {
@@ -47,3 +115,88 @@
     margin: $data-margin;
   }
 }
+
+
+
+
+  request
+  .avatar{
+    float: left;
+    margin-right: $image-text-margin;
+    img{width: 40px; height: 40px;}
+  }
+
+
+  user_card
+
+  .avatar{
+    @include box-sizing(border-box);
+    margin-top: -25px;
+    width: 100%;
+    padding: $dashboard-component-padding;
+
+    .image_card{
+      position: relative;
+      top: -30px;
+      left: 80px;
+      width: 86px;
+      height: 86px;
+      @include border-radius(43px, 43px);
+      background-color: white;
+      text-align: center;
+      img{
+        position: relative;
+        top: 7px;
+        width: 70px;
+        height: 70px;
+        @include border-radius(35px, 35px);
+        border: 1px solid $grey-border-color;
+      }
+    }
+
+    .user_data{
+      position: relative;
+      top: -40px;
+      left: 0px;
+      height: 60px;
+
+      .reputation{
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        .icon{
+          float: left;
+          width: 100%;
+          img{float:left;}
+        }
+        .value{
+          float: left;
+          width: 100%;
+          text-align: left;
+          color:$title-font-color;
+        }
+      }
+
+       .friends{
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        .icon{
+          float: right;
+          width: 100%;
+          img{float:right;}
+        }
+        .number{
+          float: left;
+          width: 100%;
+          text-align: right;
+          color:$title-font-color;
+        }
+      }
+    }
+  }
+}
+
+*/

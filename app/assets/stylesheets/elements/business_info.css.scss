@@ -1,7 +1,16 @@
-.business_info {
-  @extend %element;
-  display: block;
-  padding: $ppal-element-margin;
-  text-align: center;
-}
+@mixin business_info($location) {
+  .business_info {
+    @if $location == welcome {
+      //estilo para business_info fuera de dashboard
+    }
 
+    @else if $location == dashboard {
+      @extend %element;
+      display: block;
+      padding: $ppal-element-margin;
+      text-align: center;
+
+      @extend %dashboard_component_title;
+    }
+  }
+}

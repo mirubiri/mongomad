@@ -75,3 +75,5 @@ textarea:focus {
 .hidden{
   visibility: hidden;
 }
+
+@include business_info("welcome");

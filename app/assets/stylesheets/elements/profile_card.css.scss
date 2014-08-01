@@ -2,30 +2,46 @@
   @extend %element;
   display: block;
   margin: $ppal-element-margin;
+
+  @extend %head_image;
+  @extend %user_card;
 }
 
-//.head_image {}
-
-//.user_card {}
-
-.requester {
-  float: left;
+%head_image{
+  .head_image {
+    img {width: 100%;}
+  }
 }
 
-.make_offer_control {
-  @include box-sizing(border-box);
-  float: left;
-  width: 100%;
-  padding: $dashboard-component-padding;
-  margin-bottom: 20px;
-
-  input{
+%user_card {
+  .user_card {
+    position: relative;
+    float: left;
     width: 100%;
-    height: 40px;
-    @include border-radius(10px, 10px);
-    background-color: $red-button-bgcolor;
-    color: $white-font-text;
-    border: none;
-    font-weight: bold;
+    height: 80px;
+
+    @include avatar("card");
+    @extend %requester;
+    @extend %make_offer_control;
+  }
+}
+
+%make_offer_control {
+  .make_offer_control {
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
+    padding: $dashboard-component-padding;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+      height: 40px;
+      @include border-radius(10px, 10px);
+      background-color: $red-button-bgcolor;
+      color: $white-font-text;
+      border: none;
+      font-weight: bold;
+    }
   }
 }

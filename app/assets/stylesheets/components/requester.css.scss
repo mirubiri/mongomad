@@ -1,30 +1,39 @@
-.requester {
-  @extend %component;
-  overflow: auto;
-  margin: $profile-card-element-margin;
-
-  textarea{
-    width: 99%;
-    height: 20px;
-    border: 2px solid $container-bgcolor;
-    @include border-radius(5px, 5px);
-    margin-bottom: 5px;
-  }
-
-  input{
-      float: right;
-      padding: 10px 15px;
-      margin: 0px;
-      @include border-radius(5px, 5px);
-      background-color: $blue-button-bgcolor;
-      color: $white-font-text;
-      border: none;
-      font-weight: bold;
-  }
-
-  .countdown{
+%requester {
+  .requester {
+    @extend %component;
+    @include box-sizing(border-box);
+    overflow: auto;
+    margin: $profile-card-element-margin;
     float: left;
-    color: $text-font-color;
-  }
+    width: 98%;
+    border: none;
+    box-shadow: none;
+    padding: $dashboard-component-padding;
 
+
+    textarea{
+      width: 99%;
+      height: 20px;
+      border: 2px solid $container-bgcolor;
+      @include border-radius(5px, 5px);
+      margin-bottom: 5px;
+    }
+
+    .countdown{
+      float: left;
+      color: $text-font-color;
+    }
+
+    input{
+        float: right;
+        padding: 10px 15px;
+        margin: 0px;
+        @include border-radius(5px, 5px);
+        background-color: $blue-button-bgcolor;
+        color: $white-font-text;
+        border: none;
+        font-weight: bold;
+    }
+  }
 }
+
