@@ -19,7 +19,6 @@
 
     @extend %profile_card;
     @extend %request_list;
-    @include business_info("dashboard");
+    //> .dashboard_business_info;
   }
-
 }
