@@ -1,21 +1,12 @@
-%profile_card {
-  .profile_card {
-    @extend .element;
-    display: block;
-    margin: $ppal-element-margin;
+.profile_card {
+  @extend .element;
+  display: block;
+  margin: $ppal-element-margin;
 
-    @extend %head_image;
-    @extend %user_card;
-  }
-}
-
-%head_image{
   .head_image {
     img {width: 100%;}
   }
-}
 
-%user_card {
   .user_card {
     position: relative;
     float: left;
@@ -23,27 +14,25 @@
     height: 80px;
 
     //> .profile_card_avatar;
-    @extend %requester;
-    @extend %make_offer_control;
+    //> .requester;
+    //> .make_offer_control;
   }
 }
 
-%make_offer_control {
-  .make_offer_control {
-    @include box-sizing(border-box);
-    float: left;
-    width: 100%;
-    padding: $dashboard-component-padding;
-    margin-bottom: 20px;
+.make_offer_control {
+  @include box-sizing(border-box);
+  float: left;
+  width: 100%;
+  padding: $dashboard-component-padding;
+  margin-bottom: 20px;
 
-    input {
-      width: 100%;
-      height: 40px;
-      @include border-radius(10px, 10px);
-      background-color: $red-button-bgcolor;
-      color: $white-font-text;
-      border: none;
-      font-weight: bold;
-    }
+  input {
+    width: 100%;
+    height: 40px;
+    @include border-radius(10px, 10px);
+    background-color: $red-button-bgcolor;
+    color: $white-font-text;
+    border: none;
+    font-weight: bold;
   }
 }

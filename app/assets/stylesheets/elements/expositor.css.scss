@@ -28,9 +28,9 @@
     padding: $element-padding;
 
     //> .item;
-    @extend %offer;
-    @extend %negotiation;
-    @extend %deal;
+    //> .offer;
+    //> .negotiation;
+    //> .deal;
   }
 }
 
