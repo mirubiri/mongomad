@@ -22,7 +22,7 @@
     width: 100%;
     height: 80px;
 
-    @include avatar("card");
+    //> .profile_card_avatar;
     @extend %requester;
     @extend %make_offer_control;
   }

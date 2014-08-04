@@ -3,7 +3,7 @@
     @extend %element;
     margin: $ppal-element-margin;
 
-    @include avatar("deal");
+    //> .deal_avatar;
     @extend %proposal;
     @extend %conversation;
   }

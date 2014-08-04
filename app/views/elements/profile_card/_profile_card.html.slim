@@ -2,7 +2,7 @@
   = static_image_tag('header',250,200)
 
 - content_for :avatar
-  = component :avatar, view: :card, data:data.visited_user
+  = component :avatar, view: :profile_card, data:data.visited_user
 
 - content_for :requester
   = component :requester

@@ -13,7 +13,7 @@
     display: inline;
   }
 
-  @include avatar("omnibar");
+  //> .omnibar_avatar;
   .logo {
     width: 5%;
     margin-right: $omnibar-components-margin;

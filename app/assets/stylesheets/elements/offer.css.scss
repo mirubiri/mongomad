@@ -10,7 +10,7 @@
     }
 
     @extend %proposal;
-    @include avatar("offer");
+    //> .offer_avatar;
 
     .message {
       padding: $text-box-padding;
