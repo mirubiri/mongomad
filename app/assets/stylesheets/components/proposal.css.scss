@@ -6,15 +6,15 @@
     .composer_goods {
       margin: $good-bottom-margin;
 
-      @include product("composer_product");
-      @include cash("composer_cash");
+      //> .composer_product;
+      //> .composer_cash;
     }
 
     .receiver_goods {
       margin: $good-bottom-margin;
 
-      @include product("receiver_product");
-      @include cash("receiver_cash");
+      //> .receiver_product;
+      //> .receiver_cash;
     }
   }
 }
