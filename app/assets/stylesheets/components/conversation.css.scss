@@ -1,6 +1,6 @@
 %conversation {
   .conversation {
-    @extend %component;
+    @extend .component;
     width: 70%;
     padding: $text-box-padding;
 

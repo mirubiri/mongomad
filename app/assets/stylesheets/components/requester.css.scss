@@ -1,6 +1,6 @@
 %requester {
   .requester {
-    @extend %component;
+    @extend .component;
     @include box-sizing(border-box);
     overflow: auto;
     margin: $profile-card-element-margin;
