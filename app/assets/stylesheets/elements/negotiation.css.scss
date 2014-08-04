@@ -1,6 +1,6 @@
 %negotiation {
   .negotiation {
-    @extend %element;
+    @extend .element;
     margin: $ppal-element-margin;
 
     //> .negotiation_avatar;

@@ -1,6 +1,6 @@
 %request {
   .request {
-    @extend %element;
+    @extend .element;
     padding: $message-box-padding;
     border: none;
     border-bottom: 1px solid $grey-border-color;

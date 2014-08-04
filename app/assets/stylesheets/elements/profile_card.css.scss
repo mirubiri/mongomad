@@ -1,6 +1,6 @@
 %profile_card {
   .profile_card {
-    @extend %element;
+    @extend .element;
     display: block;
     margin: $ppal-element-margin;
 

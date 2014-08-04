@@ -1,6 +1,6 @@
 %offer {
   .offer {
-    @extend %element;
+    @extend .element;
     width: 300px;
     margin: $ppal-element-margin;
 
