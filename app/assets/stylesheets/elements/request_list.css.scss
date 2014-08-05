@@ -1,10 +1,8 @@
-%request_list {
-  .request_list {
-    @extend .element;
-    display: block;
-    margin: $ppal-element-margin;
+.request_list {
+  @extend .element;
+  display: block;
+  margin: $ppal-element-margin;
 
-    @extend %dashboard_component_title;
-    @extend %request;
-  }
+  @extend %dashboard_component_title;
+  //> .request;
 }

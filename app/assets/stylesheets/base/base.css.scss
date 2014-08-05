@@ -1,4 +1,4 @@
-body{
+body {
   @include box-sizing(border-box);
   display: block;
   width: 100%;
@@ -16,7 +16,7 @@ body{
   line-height: 18px;
 }
 
-.main{
+.main {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
@@ -24,7 +24,7 @@ body{
   padding: $container-padding;
 }
 
-nav{
+nav {
   height: 100%;
   color: black;
   li{
@@ -34,29 +34,29 @@ nav{
   }
 }
 
-.active_nav{
+.active_nav {
   background-color: $nav-selected;
   a{color: $white-font-text;}
 }
 
-a{
+a {
   //@include unstyled-link;
   display: block;
   height: 100%;
   @include unstyled-link;
 }
 
-input{
+input {
   @include border-radius(5px, 5px);
 }
 
-.progress_bar{
+.progress_bar {
   height: 50px;
   width: 0px;
   background: red;
 }
 
-textarea{
+textarea {
   float: left;
   width: 100%;
   height: auto;
@@ -68,7 +68,7 @@ textarea:focus {
     border:1px solid blue;
 }
 
-.hidden{
+.hidden {
   visibility: hidden;
 }
 

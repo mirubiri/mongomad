@@ -28,8 +28,8 @@
     li {}
   }
 
-  @extend %search;
-  @extend %inline_login;
+  //> .search;
+  //> .inline_login;
   a {} //link_to register
-  @extend %inline_logout;
+  //> .inline_logout;
 }

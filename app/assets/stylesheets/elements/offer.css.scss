@@ -1,23 +1,21 @@
-%offer {
-  .offer {
-    @extend .element;
-    width: 300px;
-    margin: $ppal-element-margin;
+.offer {
+  @extend .element;
+  width: 300px;
+  margin: $ppal-element-margin;
 
-    .title {
-      padding: $title-padding;
-      width: 100%;
-    }
+  .title {
+    padding: $title-padding;
+    width: 100%;
+  }
 
-    @extend %proposal;
-    //> .offer_avatar;
+  //> .proposal;
+  //> .offer_avatar;
 
-    .message {
-      padding: $text-box-padding;
-    }
+  .message {
+    padding: $text-box-padding;
+  }
 
-    .controls {
-      padding: $button-box-padding;
-    }
+  .controls {
+    padding: $button-box-padding;
   }
 }

@@ -1,20 +1,19 @@
-%proposal {
-  .proposal {
-    @extend .component;
-    padding: $component-padding;
+.proposal {
+  @extend .component;
+  padding: $component-padding;
 
-    .composer_goods {
-      margin: $good-bottom-margin;
+  .composer_goods {
+    margin: $good-bottom-margin;
 
-      //> .composer_product;
-      //> .composer_cash;
-    }
+    //> .composer_product;
+    //> .composer_cash;
+  }
 
-    .receiver_goods {
-      margin: $good-bottom-margin;
+  .receiver_goods {
+    margin: $good-bottom-margin;
 
-      //> .receiver_product;
-      //> .receiver_cash;
-    }
+    //> .receiver_product;
+    //> .receiver_cash;
   }
 }
+

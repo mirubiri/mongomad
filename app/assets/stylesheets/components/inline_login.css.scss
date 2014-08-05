@@ -1,6 +1,4 @@
-%inline_login {
-  .inline_login {
-    @extend .component;
-    margin: $omnibar-components-margin;
-  }
+.inline_login {
+  @extend .component;
+  margin: $omnibar-components-margin;
 }

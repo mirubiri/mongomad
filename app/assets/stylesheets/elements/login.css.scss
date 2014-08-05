@@ -1,7 +1,8 @@
 .login{
   @extend .element;
+
   width: 200px;
-  @include centered;
+  @extend %centered;
   padding: $container-padding;
   color: $title-font-color;
 }
