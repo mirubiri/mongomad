@@ -6,5 +6,5 @@
     = good.name
 
   .controls
-    | edit
+    = link_to "edit", edit_user_item_path(current_user,good.id)
     | delete
