@@ -1,4 +1,4 @@
-.good {
+%good {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
@@ -14,7 +14,7 @@
 }
 
 .item {
-  @extend .good;
+  @extend %good;
 
  .image {
     width: 100%;
@@ -32,7 +32,10 @@
 }
 
 .product {
-  @extend .good;
+  @extend %good;
+
+  //> .image-big;
+  //> .image-small;
 
   .name {
     width: 100%;
@@ -40,59 +43,14 @@
   }
 }
 
-.composer_product {
-  @extend .product;
-
-  .image { //completar
-    width: 100%;
-  }
-}
-
-.receiver_product {
-  @extend .product;
-
-  .image { //completar
-    width: 100%;
-  }
-}
-
-// .selectable_product {
-//   @extend .product;
-
-//   .image { //completar
-//     width: 100%;
-//   }
-// }
-
 .cash {
   @extend .good;
+
+  //> .image-big;
+  //> .image-small;
 
   .amount {
     width: 100%;
     height: $good-data-heigth;
   }
 }
-
-.composer_cash {
-  @extend .cash;
-
-  .image { //completar
-    width: 100%;
-  }
-}
-
-.receiver_cash {
-  @extend .cash;
-
-  .image { //completar
-    width: 100%;
-  }
-}
-
-// .selectable_cash {
-//   @extend .cash;
-
-//   .image { //completar
-//     width: 100%;
-//   }
-// }

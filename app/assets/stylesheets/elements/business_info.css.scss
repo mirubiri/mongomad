@@ -2,12 +2,9 @@
 // }
 
 .welcome_business_info {
-  @extend .business_info;
 }
 
 .dashboard_business_info {
-  @extend .business_info;
-
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);

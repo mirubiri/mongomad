@@ -1,13 +1,13 @@
 - content_for :composer_goods
    - proposal.composer_goods.each do |good|
     - if good._type == 'Cash'
-      = element :good, view: :cash, data:good, state:'composer'
+      = element :good, view: :cash, data:good, state:'big'
     - else
-      = element :good, view: :product, data:good, state:'composer'
+      = element :good, view: :product, data:good, state:'big'
 
 - content_for :receiver_goods
    - proposal.receiver_goods.each do |good|
     - if good._type == 'Cash'
-      = element :good, view: :cash, data:good, state:'receiver'
+      = element :good, view: :cash, data:good, state:'small'
     - else
-      = element :good, view: :product, data:good, state:'receiver'
+      = element :good, view: :product, data:good, state:'small'
