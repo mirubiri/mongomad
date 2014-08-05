@@ -1,23 +1,66 @@
-%dashboard_component_title {
-  .dashboard_component_title {
-    width: 100%;
-    height: 25px;
-    float: left;
-    overflow: auto;
-    background-color: $grey-button-bgcolor;
-    padding-top: 5px;
-    color: $white-font-text;
-    text-align: center;
-  }
-}
+// %left-relative-placed {
+//   float: left;
+//   position: relative;
+// }
 
-%grey-shadow{
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-}
+// %right-absolute-placed {
+//   float: right;
+//   position: absolute;
+// }
 
-%centered {
-  float: none;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+// %left-relative-placed {
+//   float: left;
+//   position: relative;
+// }
+
+// %right-absolute-placed {
+//   float: right;
+//   position: absolute;
+// }
+
+// %inline-adaptative-displayed {
+//   display: inline;
+//   overflow: auto;
+// }
+
+// %inblock-adaptative-displayed {
+//   display: inline-block;
+//   overflow: auto;
+// }
+
+// %relative-wide-expanded {
+//   position: relative;
+//   float: left;
+//   width: 100%;
+// }
+
+// %absolute-wide-expanded {
+//   position: absolute;
+//   float: left;
+//   width: 100%;
+// }
+
+
+// %dashboard_component_title {
+//   .dashboard_component_title {
+//     width: 100%;
+//     height: 25px;
+//     float: left;
+//     overflow: auto;
+//     background-color: $grey-button-bgcolor;
+//     padding-top: 5px;
+//     color: $white-font-text;
+//     text-align: center;
+//   }
+// }
+
+// %grey-shadow{
+//   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+// }
+
+// %centered {
+//   float: none;
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
