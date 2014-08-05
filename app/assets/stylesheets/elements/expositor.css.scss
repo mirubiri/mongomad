@@ -27,7 +27,7 @@
     overflow: auto;
     padding: $element-padding;
 
-    @extend %item;
+    //> .item;
     @extend %offer;
     @extend %negotiation;
     @extend %deal;

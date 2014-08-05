@@ -1,4 +1,4 @@
-%good {
+.good {
   @extend %element;
 
   margin: $good-bottom-margin;
@@ -6,47 +6,26 @@
   color: $text-font-color;
 }
 
+.item {
+  @extend .good;
 
-%item {
-  .item {
-    @extend %good;
+ .image {
+    width: 100%;
+  }
 
-   .image {
-      width: 100%;
-    }
+  .name {
+    width: 100%;
+    height: $good-data-heigth;
+  }
 
-    .name {
-      width: 100%;
-      height: $good-data-heigth;
-    }
-
-    .controls {
-      width: 100%;
-      height: $good-data-heigth;
-    }
+  .controls {
+    width: 100%;
+    height: $good-data-heigth;
   }
 }
 
-@mixin product($type) {
-  @extend %good;
-
-  @if $type == composer_product {
-    .image { //completar
-      width: 100%;
-    }
-  }
-
-  @else if $type == receiver_product {
-    .image { //completar
-      width: 100%;
-    }
-  }
-
-  @else if $type == selectable_product {
-    .image { //completar
-      width: 100%;
-    }
-  }
+.product {
+  @extend .good;
 
   .name {
     width: 100%;
@@ -54,26 +33,32 @@
   }
 }
 
-@mixin cash($type) {
-  @extend %good;
+.composer_product {
+  @extend .product;
 
-  @if $type == composer_cash {
-    .image { //completar
-      width: 100%;
-    }
+  .image { //completar
+    width: 100%;
   }
+}
 
-  @else if $type == receiver_cash {
-    .image { //completar
-      width: 100%;
-    }
-  }
+.receiver_product {
+  @extend .product;
 
-  @else if $type == selectable_cash {
-    .image { //completar
-      width: 100%;
-    }
+  .image { //completar
+    width: 100%;
   }
+}
+
+// .selectable_product {
+//   @extend .product;
+
+//   .image { //completar
+//     width: 100%;
+//   }
+// }
+
+.cash {
+  @extend .good;
 
   .amount {
     width: 100%;
@@ -81,7 +66,26 @@
   }
 }
 
-// .item_form{
-//   margin-top: 5px;
-//   overflow: auto;
+.composer_cash {
+  @extend .cash;
+
+  .image { //completar
+    width: 100%;
+  }
+}
+
+.receiver_cash {
+  @extend .cash;
+
+  .image { //completar
+    width: 100%;
+  }
+}
+
+// .selectable_cash {
+//   @extend .cash;
+
+//   .image { //completar
+//     width: 100%;
+//   }
 // }
