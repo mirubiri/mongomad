@@ -1,0 +1,28 @@
+// @mixin top-left-fixed($top, $left) {
+//   top: $top;
+//   left: $left;
+// }
+
+// @mixin top-right-fixed($top, $right) {
+//   top: $top;
+//   right: $right;
+// }
+
+// @mixin bottom-left-fixed($bottom, $left) {
+//   bottom: $bottom;
+//   left: $left;
+// }
+
+// @mixin bottom-right-fixed($bottom, $right) {
+//   bottom: $bottom;
+//   right: $right;
+// }
+
+// @mixin proportion-fixed($width:null, $heith:null) {
+//   @if $width { width: $width; }
+//   @if $height { height: $height; }
+//   @if $width { min-width: $width; }
+//   @if $height { min-height: $height; }
+//   @if $width { max-width: $width; }
+//   @if $height { max-height: $height; }
+// }
