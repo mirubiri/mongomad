@@ -24,7 +24,6 @@ body{
   padding: $container-padding;
 }
 
-
 nav{
   height: 100%;
   color: black;
@@ -35,12 +34,10 @@ nav{
   }
 }
 
-
 .active_nav{
   background-color: $nav-selected;
   a{color: $white-font-text;}
 }
-
 
 a{
   //@include unstyled-link;
@@ -48,7 +45,6 @@ a{
   height: 100%;
   @include unstyled-link;
 }
-
 
 input{
   @include border-radius(5px, 5px);
