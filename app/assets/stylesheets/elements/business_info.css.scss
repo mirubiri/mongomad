@@ -8,7 +8,7 @@
 .dashboard_business_info {
   @extend .business_info;
 
-  @extend %element;
+  @extend .element;
   display: block;
   padding: $ppal-element-margin;
   text-align: center;

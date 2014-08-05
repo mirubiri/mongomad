@@ -1,5 +1,5 @@
 .good {
-  @extend %element;
+  @extend .element;
 
   margin: $good-bottom-margin;
   width: auto;

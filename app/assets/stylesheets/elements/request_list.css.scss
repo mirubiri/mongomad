@@ -1,6 +1,6 @@
 %request_list {
   .request_list {
-    @extend %element;
+    @extend .element;
     display: block;
     margin: $ppal-element-margin;
 

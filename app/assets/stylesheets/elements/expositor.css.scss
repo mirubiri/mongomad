@@ -1,5 +1,5 @@
 .expositor {
-  @extend %element;
+  @extend .element;
   background-color: $container-bgcolor;
   float: right;
   width: 73%;

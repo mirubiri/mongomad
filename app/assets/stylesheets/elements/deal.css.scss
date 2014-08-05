@@ -1,6 +1,6 @@
 %deal {
   .deal {
-    @extend %element;
+    @extend .element;
     margin: $ppal-element-margin;
 
     //> .deal_avatar;

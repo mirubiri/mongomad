@@ -1,5 +1,5 @@
 .dashboard {
-  @extend %element;
+  @extend .element;
   overflow: auto;
   overflow-y: hidden;
   background-color: $container-bgcolor;

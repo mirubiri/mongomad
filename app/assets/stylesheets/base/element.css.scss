@@ -1,4 +1,4 @@
-%element {
+.element {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);

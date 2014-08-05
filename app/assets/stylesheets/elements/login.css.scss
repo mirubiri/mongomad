@@ -1,5 +1,5 @@
 .login{
-  @extend %element;
+  @extend .element;
   width: 200px;
   @include centered;
   padding: $container-padding;
