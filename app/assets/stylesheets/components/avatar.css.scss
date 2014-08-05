@@ -1,209 +1,163 @@
-@mixin avatar($location) {
-  .avatar {
-    @extend %component;
-    float: left;
-    margin-right: $omnibar-components-margin;
-    //img{width: 40px;height: 40px;}
+.avatar {
+  @extend %component;
+  float: left;
+  margin-right: $omnibar-components-margin;
+}
 
-    @if $location == omnibar {
-      padding-top: 5px;
-      width: 15%;
+.omnibar_avatar {
+  @extend .avatar;
 
-      .image {
-      }
-      .user_data {
-        // .first_name
-        // .surnames
-      }
-    }
+  padding-top: 5px;
+  width: 15%;
 
-    @else if $location == card {
-      .image {
-      }
-      .user_data {
-        // .reputation
-        //   .icon
-        //   .value
+  .image {
+  }
 
-        // .friends
-        //   .icon
-        //   .number
-
-        // .full_name
-
-        // .location
-      }
-    }
-
-    @else if $location == request {
-      .image {
-      }
-    }
-
-    @else if $location == offer {
-      .full_name {
-      }
-      .image {
-      }
-    }
-
-    @else if $location == negotiation {
-      .image {
-      }
-      .user_data {
-        // .nick
-        // .location
-      }
-    }
-
-    @else if $location == deal {
-      .image {
-      }
-      .user_data {
-        // .nick
-        // .location
-      }
-    }
-
-    @else if $location == message {
-      .image {
-      }
-    }
+  .user_data {
+    // .first_name
+    // .surnames
   }
 }
 
 
+.profile_card_avatar {
+  @extend .avatar;
 
+  @include box-sizing(border-box);
+  margin-top: -25px;
+  width: 100%;
+  padding: $dashboard-component-padding;
 
-
-/*
-}
-
-.image_omnibar{
-
-}
-
-.full_name {
-  margin: $data-margin;
-}
-
-.image {
-  margin: $image-text-margin;
-}
-
-.friends {
-  margin: $profile-card-icon-margin;
-  padding-left: 5px;
-  .icon {
-    margin: $data-margin;
-  }
-  .number {}
-}
-
-.reputation {
-  margin: $profile-card-icon-margin;
-  padding-right: 5px;
-  float: right;
-  .icon {
-    margin: $data-margin;
-  }
-  .value {}
-}
-
-.user_data {
-  .full_name{
+  .image {
+    position: relative;
+    top: -30px;
+    left: 80px;
+    width: 86px;
+    height: 86px;
+    @include border-radius(43px, 43px);
+    background-color: white;
     text-align: center;
-    color: $title-font-color;
-    margin: $data-margin;
-  }
-  .location {
-    text-align: center;
-    color: $text-font-color;
-    margin: $data-margin;
-  }
-}
 
-
-
-
-  request
-  .avatar{
-    float: left;
-    margin-right: $image-text-margin;
-    img{width: 40px; height: 40px;}
-  }
-
-
-  user_card
-
-  .avatar{
-    @include box-sizing(border-box);
-    margin-top: -25px;
-    width: 100%;
-    padding: $dashboard-component-padding;
-
-    .image_card{
+    img{
       position: relative;
-      top: -30px;
-      left: 80px;
-      width: 86px;
-      height: 86px;
-      @include border-radius(43px, 43px);
-      background-color: white;
+      top: 7px;
+      width: 70px;
+      height: 70px;
+      @include border-radius(35px, 35px);
+      border: 1px solid $grey-border-color;
+    }
+  }
+
+  .user_data {
+    position: relative;
+    top: -40px;
+    left: 0px;
+    height: 60px;
+
+    // .reputation {
+    //   margin: $profile-card-icon-margin;
+    //   padding-right: 5px;
+    //   float: right;
+
+    //   .icon{
+    //     margin: $data-margin;
+    //     float: left;
+    //     width: 100%;
+    //     img{float:left;}
+    //   }
+
+    //   .value{
+    //     float: left;
+    //     width: 100%;
+    //     text-align: left;
+    //     color:$title-font-color;
+    //   }
+    // }
+
+    // .friends {
+    //   margin: $profile-card-icon-margin;
+    //   padding-left: 5px;
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+
+    //   .icon{
+    //     margin: $data-margin;
+    //     float: right;
+    //     width: 100%;
+    //     img{float:right;}
+    //   }
+
+    //   .number{
+    //     float: left;
+    //     width: 100%;
+    //     text-align: right;
+    //     color:$title-font-color;
+    //   }
+    // }
+
+    .full_name{
       text-align: center;
-      img{
-        position: relative;
-        top: 7px;
-        width: 70px;
-        height: 70px;
-        @include border-radius(35px, 35px);
-        border: 1px solid $grey-border-color;
-      }
+      color: $title-font-color;
+      margin: $data-margin;
     }
 
-    .user_data{
-      position: relative;
-      top: -40px;
-      left: 0px;
-      height: 60px;
-
-      .reputation{
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        .icon{
-          float: left;
-          width: 100%;
-          img{float:left;}
-        }
-        .value{
-          float: left;
-          width: 100%;
-          text-align: left;
-          color:$title-font-color;
-        }
-      }
-
-       .friends{
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        .icon{
-          float: right;
-          width: 100%;
-          img{float:right;}
-        }
-        .number{
-          float: left;
-          width: 100%;
-          text-align: right;
-          color:$title-font-color;
-        }
-      }
+    .location {
+      text-align: center;
+      color: $text-font-color;
+      margin: $data-margin;
     }
   }
 }
 
-*/
+.request_avatar {
+  @extend .avatar;
+
+  float: left;
+  margin-right: $image-text-margin;
+
+  .image {
+     width: 40px;
+     height: 40px;
+  }
+}
+
+.offer_avatar {
+  @extend .avatar;
+
+  .full_name {
+    margin: $data-margin;
+  }
+
+  .image {
+    margin: $image-text-margin;
+  }
+}
+
+.negotiation_avatar {
+  @extend .avatar;
+
+  .image {
+  }
+
+  .user_data {
+    // .nick
+    // .location
+  }
+}
+
+.deal_avatar {
+  @extend .avatar;
+
+  .image {
+  }
+
+  .user_data {
+    // .nick
+    // .location
+  }
+}
+
+.message_avatar {
+  @extend .avatar;
+}
