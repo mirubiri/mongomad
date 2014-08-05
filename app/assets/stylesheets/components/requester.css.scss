@@ -1,5 +1,10 @@
 .requester {
-  @extend .component;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
   @include box-sizing(border-box);
   margin: $profile-card-element-margin;
   width: 98%;

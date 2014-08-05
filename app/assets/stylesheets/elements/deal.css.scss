@@ -1,5 +1,12 @@
 .deal {
-  @extend .element;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  @include box-sizing(border-box);
+  width: 100%;
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
   margin: $ppal-element-margin;
 
   //> .deal_avatar;

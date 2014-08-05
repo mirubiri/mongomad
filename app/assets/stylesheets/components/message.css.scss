@@ -1,5 +1,10 @@
 .message {
-  @extend .component;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
   margin: $message-margin;
   padding: $text-box-padding;
 

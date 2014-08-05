@@ -8,7 +8,14 @@
 .dashboard_business_info {
   @extend .business_info;
 
-  @extend .element;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  @include box-sizing(border-box);
+  width: 100%;
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
   display: block;
   padding: $ppal-element-margin;
   text-align: center;
