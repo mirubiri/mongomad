@@ -1,4 +1,14 @@
-.avatar {
+// .avatar {
+//   @extend %grey-shadow;
+//   @include border-radius(5px, 5px);
+//   position: relative;
+//   float: left;
+//   overflow: auto;
+//   background-color: $white-bgcolor;
+//   margin-right: $omnibar-components-margin;
+// }
+
+.omnibar_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   position: relative;
@@ -6,10 +16,6 @@
   overflow: auto;
   background-color: $white-bgcolor;
   margin-right: $omnibar-components-margin;
-}
-
-.omnibar_avatar {
-  @extend .avatar;
 
   padding-top: 5px;
   width: 15%;
@@ -24,7 +30,13 @@
 }
 
 .profile_card_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 
   @include box-sizing(border-box);
   margin-top: -25px;
@@ -114,7 +126,13 @@
 }
 
 .request_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 
   float: left;
   margin-right: $image-text-margin;
@@ -126,7 +144,13 @@
 }
 
 .offer_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 
   .full_name {
     margin: $data-margin;
@@ -138,7 +162,13 @@
 }
 
 .negotiation_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 
   .image {
   }
@@ -150,7 +180,13 @@
 }
 
 .deal_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 
   .image {
   }
@@ -162,5 +198,11 @@
 }
 
 .message_avatar {
-  @extend .avatar;
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  position: relative;
+  float: left;
+  overflow: auto;
+  background-color: $white-bgcolor;
+  margin-right: $omnibar-components-margin;
 }
