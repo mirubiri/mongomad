@@ -1,5 +1,5 @@
 .message {
-  @extend %component;
+  @extend .component;
   margin: $message-margin;
   padding: $text-box-padding;
 

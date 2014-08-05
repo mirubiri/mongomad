@@ -1,6 +1,6 @@
 %inline_logout {
   .inline_logout {
-    @extend %component;
+    @extend .component;
 
     float: right;
     padding-top: 10px;

@@ -1,6 +1,6 @@
 %proposal {
   .proposal {
-    @extend %component;
+    @extend .component;
     padding: $component-padding;
 
     .composer_goods {
