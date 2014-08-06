@@ -1,15 +1,11 @@
 .login{
-  @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
   overflow: auto;
   background-color: $white-bgcolor;
-
-  width: 200px;
-  @extend %centered;
+  width: 235px;
   padding: $container-padding;
   color: $title-font-color;
+  @extend %grey-shadow;
+  @extend %centered;
 }
