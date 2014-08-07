@@ -1,23 +1,14 @@
 .inline_logout {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
 
-  float: right;
-  padding-top: 10px;
-  margin-right: 0px;
-  width: 5%;
   text-align: right;
   box-shadow: none;
-  height: 30px;
-  overflow: hidden;
   background-color: transparent;
 
   .icon {
-    float: right;
-    img { width: 25px;height: 25px; }
+    img {
+    }
   }
 }

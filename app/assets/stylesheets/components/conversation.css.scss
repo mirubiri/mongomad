@@ -1,22 +1,14 @@
 .conversation {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  width: 70%;
-  padding: $text-box-padding;
 
   .messages {
-    padding: $component-padding;
   }
 
   .message_input {
-    padding: $text-box-padding;
   }
 
   .send_message_control {
-    padding: $button-box-padding;
   }
 }

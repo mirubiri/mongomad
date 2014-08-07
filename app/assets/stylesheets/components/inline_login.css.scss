@@ -1,9 +1,5 @@
 .inline_login {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin: $omnibar-components-margin;
 }

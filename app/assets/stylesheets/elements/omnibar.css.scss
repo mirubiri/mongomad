@@ -2,18 +2,11 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
 
   box-shadow: none;
   background-color: transparent;
   border: 0px;
-  width: 100%;
-  display: inline;
-  padding: $container-padding;
 
   div, nav{
     float: left;
@@ -22,15 +15,10 @@
 
   //> .omnibar_avatar;
   .logo {
-    width: 5%;
-    margin-right: $omnibar-components-margin;
   }
 
   .navigation_controls {
-    padding-top: 5px;
     text-align: center;
-    width: 40%;
-    margin-right: $omnibar-components-margin;
 
     li {}
   }

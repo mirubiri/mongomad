@@ -1,35 +1,23 @@
 .request {
   @extend %grey-shadow;
-  @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  padding: $message-box-padding;
   border: none;
   border-bottom: 1px solid $grey-border-color;
   border-radius: 0px;
-  overflow: hidden;
 
   //> .request_card_avatar;
 
   .text {
-    float: left;
     color: $text-font-color;
     font-size: $medium-font;
   }
 
   .controls {
-    width: 100%;
-    float: left;
-    padding-right: $additional-control-padding;
     color: $text-font-color;
     font-size: $small-font;
     a {
-      float: right;
-      margin-right: 5px;
+
     }
   }
 }

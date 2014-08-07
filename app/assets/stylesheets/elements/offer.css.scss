@@ -2,27 +2,17 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  width: 300px;
-  margin: $ppal-element-margin;
 
   .title {
-    padding: $title-padding;
-    width: 100%;
   }
 
   //> .proposal;
   //> .offer_avatar;
 
   .message {
-    padding: $text-box-padding;
   }
 
   .controls {
-    padding: $button-box-padding;
   }
 }

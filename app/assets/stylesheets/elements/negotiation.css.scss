@@ -2,19 +2,13 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin: $ppal-element-margin;
 
   //> .negotiation_avatar;
   //> .proposal;
   //> .conversation;
 
   .leave_negotiation_control {
-    padding: $button-box-padding;
   }
 
   .proposal_controls  {
