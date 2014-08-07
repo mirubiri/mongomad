@@ -112,31 +112,26 @@
 .offer_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
+  margin-right: ;
 
   .full_name {
-    margin: $data-margin;
+
   }
 
   .image {
-    margin: $image-text-margin;
+    img {}
   }
 }
 
 .negotiation_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
+
 
   .image {
+    img {}
   }
 
   .user_data {
@@ -148,13 +143,12 @@
 .deal_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
+
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
+
 
   .image {
+    img {}
   }
 
   .user_data {
@@ -166,10 +160,5 @@
 .message_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
-  margin: $image-text-margin;
 }

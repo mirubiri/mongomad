@@ -698,7 +698,7 @@ $offer-avatar-overflow-y:
      $offer-avatar-width:
 
 //spacing
-    $offer-avatar-margin:
+    $offer-avatar-margin: 0px $omnibar-components-margin 0px 0px;
    $offer-avatar-padding:
 
 
@@ -727,7 +727,7 @@ $offer-avatar-full-name-overflow-y:
      $offer-avatar-full-name-width:
 
 //spacing
-    $offer-avatar-full-name-margin:
+    $offer-avatar-full-name-margin: $data-margin;
    $offer-avatar-full-name-padding:
 
 
@@ -756,7 +756,7 @@ $offer-avatar-image-overflow-y:
      $offer-avatar-image-width:
 
 //spacing
-    $offer-avatar-image-margin:
+    $offer-avatar-image-margin: $image-text-margin;
    $offer-avatar-image-padding:
 
 
@@ -794,8 +794,8 @@ $offer-avatar-image-img-overflow-y:
 //negotiation-avatar
 
 //placement
-  $negotiation-avatar-position:
-     $negotiation-avatar-float:
+  $negotiation-avatar-position: relative;
+     $negotiation-avatar-float: left;
    $negotiation-avatar-z-index:
 
 //fixing
@@ -806,7 +806,7 @@ $offer-avatar-image-img-overflow-y:
 
 //displaying
    $negotiation-avatar-display:
-  $negotiation-avatar-overflow:
+  $negotiation-avatar-overflow: auto;
 $negotiation-avatar-overflow-y:
 
 //dimensions
@@ -814,7 +814,7 @@ $negotiation-avatar-overflow-y:
      $negotiation-avatar-width:
 
 //spacing
-    $negotiation-avatar-margin:
+    $negotiation-avatar-margin: 0px $omnibar-components-margin 0px 0px;
    $negotiation-avatar-padding:
 
 
@@ -968,8 +968,8 @@ $negotiation-avatar-user-data-location-overflow-y:
 //deal-avatar
 
 //placement
-  $deal-avatar-position:
-     $deal-avatar-float:
+  $deal-avatar-position: relative;
+     $deal-avatar-float: left;
    $deal-avatar-z-index:
 
 //fixing
@@ -980,7 +980,7 @@ $negotiation-avatar-user-data-location-overflow-y:
 
 //displaying
    $deal-avatar-display:
-  $deal-avatar-overflow:
+  $deal-avatar-overflow: auto;
 $deal-avatar-overflow-y:
 
 //dimensions
@@ -988,7 +988,7 @@ $deal-avatar-overflow-y:
      $deal-avatar-width:
 
 //spacing
-    $deal-avatar-margin:
+    $deal-avatar-margin: 0px $omnibar-components-margin 0px 0px;
    $deal-avatar-padding:
 
 
@@ -1142,8 +1142,8 @@ $deal-avatar-user-data-location-overflow-y:
 //message-avatar
 
 //placement
-  $message-avatar-position:
-     $message-avatar-float:
+  $message-avatar-position: relative;
+     $message-avatar-float: left;
    $message-avatar-z-index:
 
 //fixing
@@ -1154,7 +1154,7 @@ $deal-avatar-user-data-location-overflow-y:
 
 //displaying
    $message-avatar-display:
-  $message-avatar-overflow:
+  $message-avatar-overflow: auto;
 $message-avatar-overflow-y:
 
 //dimensions
@@ -1162,7 +1162,7 @@ $message-avatar-overflow-y:
      $message-avatar-width:
 
 //spacing
-    $message-avatar-margin:
+    $message-avatar-margin: 0px $image-text-margin 0px 0px;
    $message-avatar-padding:
 
 
