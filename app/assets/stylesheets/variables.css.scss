@@ -1171,8 +1171,8 @@ $message-avatar-overflow-y:
 //conversation
 
 //placement
-  $conversation-position:
-     $conversation-float:
+  $conversation-position: relative;
+     $conversation-float: left;
    $conversation-z-index:
 
 //fixing
@@ -1183,16 +1183,16 @@ $message-avatar-overflow-y:
 
 //displaying
    $conversation-display:
-  $conversation-overflow:
+  $conversation-overflow: auto;
 $conversation-overflow-y:
 
 //dimensions
     $conversation-height:
-     $conversation-width:
+     $conversation-width: 70%;
 
 //spacing
     $conversation-margin:
-   $conversation-padding:
+   $conversation-padding: $text-box-padding;
 
 
 
@@ -1221,7 +1221,7 @@ $conversation-messages-overflow-y:
 
 //spacing
     $conversation-messages-margin:
-   $conversation-messages-padding:
+   $conversation-messages-padding: $component-padding;
 
 
 
@@ -1250,7 +1250,7 @@ $conversation-message-input-overflow-y:
 
 //spacing
     $conversation-message-input-margin:
-   $conversation-message-input-padding:
+   $conversation-message-input-padding: $text-box-padding;
 
 
 
@@ -1279,7 +1279,7 @@ $conversation-send-message-control-overflow-y:
 
 //spacing
     $conversation-send-message-control-margin:
-   $conversation-send-message-control-padding:
+   $conversation-send-message-control-padding: $button-box-padding;
 
 
 
@@ -1287,8 +1287,8 @@ $conversation-send-message-control-overflow-y:
 //inline-login
 
 //placement
-  $inline-login-position:
-     $inline-login-float:
+  $inline-login-position: relative;
+     $inline-login-float: left;
    $inline-login-z-index:
 
 //fixing
@@ -1299,7 +1299,7 @@ $conversation-send-message-control-overflow-y:
 
 //displaying
    $inline-login-display:
-  $inline-login-overflow:
+  $inline-login-overflow: auto;
 $inline-login-overflow-y:
 
 //dimensions
@@ -1307,7 +1307,7 @@ $inline-login-overflow-y:
      $inline-login-width:
 
 //spacing
-    $inline-login-margin:
+    $inline-login-margin: $omnibar-components-margin;
    $inline-login-padding:
 
 
@@ -1316,8 +1316,8 @@ $inline-login-overflow-y:
 //inline-logout
 
 //placement
-  $inline-logout-position:
-     $inline-logout-float:
+  $inline-logout-position: relative;
+     $inline-logout-float: right;
    $inline-logout-z-index:
 
 //fixing
@@ -1328,16 +1328,16 @@ $inline-login-overflow-y:
 
 //displaying
    $inline-logout-display:
-  $inline-logout-overflow:
+  $inline-logout-overflow: hidden;
 $inline-logout-overflow-y:
 
 //dimensions
-    $inline-logout-height:
-     $inline-logout-width:
+    $inline-logout-height: 30px;
+     $inline-logout-width: 5%;
 
 //spacing
-    $inline-logout-margin:
-   $inline-logout-padding:
+    $inline-logout-margin: 0px;
+   $inline-logout-padding: 10px 0px 0px 0px;
 
 
 
@@ -1346,7 +1346,7 @@ $inline-logout-overflow-y:
 
 //placement
   $inline-logout-icon-position:
-     $inline-logout-icon-float:
+     $inline-logout-icon-float: right;
    $inline-logout-icon-z-index:
 
 //fixing
@@ -1370,12 +1370,18 @@ $inline-logout-icon-overflow-y:
 
 
 
+//inline-logout-icon-img
+$inline-logout-icon-img-height: 25px;
+ $inline-logout-icon-img-width: 25px;
+
+
+
 
 //message
 
 //placement
-  $message-position:
-     $message-float:
+  $message-position: relative;
+     $message-float: left;
    $message-z-index:
 
 //fixing
@@ -1386,7 +1392,7 @@ $inline-logout-icon-overflow-y:
 
 //displaying
    $message-display:
-  $message-overflow:
+  $message-overflow: auto;
 $message-overflow-y:
 
 //dimensions
@@ -1394,8 +1400,8 @@ $message-overflow-y:
      $message-width:
 
 //spacing
-    $message-margin:
-   $message-padding:
+    $message-margin: $message-margin;
+   $message-padding: $text-box-padding;
 
 
 
@@ -1423,8 +1429,8 @@ $message-text-overflow-y:
      $message-text-width:
 
 //spacing
-    $message-text-margin:
-   $message-text-padding:
+    $message-text-margin: $data-margin;
+   $message-text-padding: 0px 0px 0px 5px;
 
 
 
@@ -1461,8 +1467,8 @@ $message-timestamp-overflow-y:
 //proposal
 
 //placement
-  $proposal-position:
-     $proposal-float:
+  $proposal-position: relative;
+     $proposal-float: left;
    $proposal-z-index:
 
 //fixing
@@ -1473,7 +1479,7 @@ $message-timestamp-overflow-y:
 
 //displaying
    $proposal-display:
-  $proposal-overflow:
+  $proposal-overflow: auto;
 $proposal-overflow-y:
 
 //dimensions
@@ -1482,7 +1488,7 @@ $proposal-overflow-y:
 
 //spacing
     $proposal-margin:
-   $proposal-padding:
+   $proposal-padding: $component-padding;
 
 
 
@@ -1510,7 +1516,7 @@ $proposal-composer-goods-overflow-y:
      $proposal-composer-goods-width:
 
 //spacing
-    $proposal-composer-goods-margin:
+    $proposal-composer-goods-margin: $good-bottom-margin;
    $proposal-composer-goods-padding:
 
 
@@ -1539,7 +1545,7 @@ $proposal-receiver-goods-overflow-y:
      $proposal-receiver-goods-width:
 
 //spacing
-    $proposal-receiver-goods-margin:
+    $proposal-receiver-goods-margin: $good-bottom-margin;
    $proposal-receiver-goods-padding:
 
 
@@ -1548,8 +1554,8 @@ $proposal-receiver-goods-overflow-y:
 //requester
 
 //placement
-  $requester-position:
-     $requester-float:
+  $requester-position: relative;
+     $requester-float: left;
    $requester-z-index:
 
 //fixing
@@ -1560,16 +1566,16 @@ $proposal-receiver-goods-overflow-y:
 
 //displaying
    $requester-display:
-  $requester-overflow:
+  $requester-overflow: auto;
 $requester-overflow-y:
 
 //dimensions
     $requester-height:
-     $requester-width:
+     $requester-width: 98%;
 
 //spacing
-    $requester-margin:
-   $requester-padding:
+    $requester-margin: $profile-card-element-margin;
+   $requester-padding: $dashboard-component-padding;
 
 
 
@@ -1593,11 +1599,11 @@ $requester-overflow-y:
 $requester-textarea-overflow-y:
 
 //dimensions
-    $requester-textarea-height:
-     $requester-textarea-width:
+    $requester-textarea-height: 20px;
+     $requester-textarea-width: 99%;
 
 //spacing
-    $requester-textarea-margin:
+    $requester-textarea-margin: 0px 0px 5px 0px;
    $requester-textarea-padding:
 
 
@@ -1607,7 +1613,7 @@ $requester-textarea-overflow-y:
 
 //placement
   $requester-countdown-position:
-     $requester-countdown-float:
+     $requester-countdown-float: left;
    $requester-countdown-z-index:
 
 //fixing
@@ -1636,7 +1642,7 @@ $requester-countdown-overflow-y:
 
 //placement
   $requester-input-position:
-     $requester-input-float:
+     $requester-input-float: right;
    $requester-input-z-index:
 
 //fixing
@@ -1655,8 +1661,18 @@ $requester-input-overflow-y:
      $requester-input-width:
 
 //spacing
-    $requester-input-margin:
-   $requester-input-padding:
+    $requester-input-margin: 0px;
+   $requester-input-padding: 10px 15px;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1664,8 +1680,8 @@ $requester-input-overflow-y:
 //search
 
 //placement
-  $search-position:
-     $search-float:
+  $search-position: relative;
+     $search-float: left;
    $search-z-index:
 
 //fixing
@@ -1676,15 +1692,15 @@ $requester-input-overflow-y:
 
 //displaying
    $search-display:
-  $search-overflow:
+  $search-overflow: auto;
 $search-overflow-y:
 
 //dimensions
     $search-height:
-     $search-width:
+     $search-width: 15%;
 
 //spacing
-    $search-margin:
+    $search-margin: 10px $omnibar-components-margin 0px 0px;
    $search-padding:
 
 
@@ -1709,8 +1725,8 @@ $search-overflow-y:
 $search-input-overflow-y:
 
 //dimensions
-    $search-input-height:
-     $search-input-width:
+    $search-input-height: 100%;
+     $search-input-width: 100%;
 
 //spacing
     $search-input-margin:
@@ -1751,8 +1767,8 @@ $welcome-business-info-overflow-y:
 //dashboard-business-info
 
 //placement
-  $dashboard-business-info-position:
-     $dashboard-business-info-float:
+  $dashboard-business-info-position: relative;
+     $dashboard-business-info-float: left;
    $dashboard-business-info-z-index:
 
 //fixing
@@ -1762,17 +1778,24 @@ $welcome-business-info-overflow-y:
       $dashboard-business-info-left:
 
 //displaying
-   $dashboard-business-info-display:
-  $dashboard-business-info-overflow:
+   $dashboard-business-info-display: block;
+  $dashboard-business-info-overflow: auto;
 $dashboard-business-info-overflow-y:
 
 //dimensions
     $dashboard-business-info-height:
-     $dashboard-business-info-width:
+     $dashboard-business-info-width: 100%;
 
 //spacing
     $dashboard-business-info-margin:
-   $dashboard-business-info-padding:
+   $dashboard-business-info-padding: $ppal-element-margin;
+
+
+
+
+
+
+
 
 
 
@@ -1780,8 +1803,8 @@ $dashboard-business-info-overflow-y:
 //dashboard
 
 //placement
-  $dashboard-position:
-     $dashboard-float:
+  $dashboard-position: relative;
+     $dashboard-float: left;
    $dashboard-z-index:
 
 //fixing
@@ -1792,12 +1815,12 @@ $dashboard-business-info-overflow-y:
 
 //displaying
    $dashboard-display:
-  $dashboard-overflow:
-$dashboard-overflow-y:
+  $dashboard-overflow: auto;
+$dashboard-overflow-y: hidden;
 
 //dimensions
     $dashboard-height:
-     $dashboard-width:
+     $dashboard-width: 25%;
 
 //spacing
     $dashboard-margin:
@@ -1825,8 +1848,8 @@ $dashboard-overflow-y:
 $dashboard-bezel-overflow-y:
 
 //dimensions
-    $dashboard-bezel-height:
-     $dashboard-bezel-width:
+    $dashboard-bezel-height: 30px;
+     $dashboard-bezel-width: 100%;
 
 //spacing
     $dashboard-bezel-margin:
@@ -1839,7 +1862,7 @@ $dashboard-bezel-overflow-y:
 
 //placement
   $dashboard-container-position:
-     $dashboard-container-float:
+     $dashboard-container-float: left;
    $dashboard-container-z-index:
 
 //fixing
@@ -1850,8 +1873,8 @@ $dashboard-bezel-overflow-y:
 
 //displaying
    $dashboard-container-display:
-  $dashboard-container-overflow:
-$dashboard-container-overflow-y:
+  $dashboard-container-overflow: auto;
+$dashboard-container-overflow-y: hidden;
 
 //dimensions
     $dashboard-container-height:
@@ -1859,7 +1882,18 @@ $dashboard-container-overflow-y:
 
 //spacing
     $dashboard-container-margin:
-   $dashboard-container-padding:
+   $dashboard-container-padding: $element-padding;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1867,8 +1901,8 @@ $dashboard-container-overflow-y:
 //deal
 
 //placement
-  $deal-position:
-     $deal-float:
+  $deal-position: relative;
+     $deal-float: left;
    $deal-z-index:
 
 //fixing
@@ -1879,16 +1913,26 @@ $dashboard-container-overflow-y:
 
 //displaying
    $deal-display:
-  $deal-overflow:
+  $deal-overflow: auto;
 $deal-overflow-y:
 
 //dimensions
     $deal-height:
-     $deal-width:
+     $deal-width: 100%;
 
 //spacing
-    $deal-margin:
+    $deal-margin: $ppal-element-margin;
    $deal-padding:
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1896,8 +1940,8 @@ $deal-overflow-y:
 //expositor
 
 //placement
-  $expositor-position:
-     $expositor-float:
+  $expositor-position: relative;
+     $expositor-float: right;
    $expositor-z-index:
 
 //fixing
@@ -1908,16 +1952,26 @@ $deal-overflow-y:
 
 //displaying
    $expositor-display:
-  $expositor-overflow:
+  $expositor-overflow: auto;
 $expositor-overflow-y:
 
 //dimensions
     $expositor-height:
-     $expositor-width:
+     $expositor-width: 73%;
 
 //spacing
     $expositor-margin:
    $expositor-padding:
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1941,7 +1995,7 @@ $expositor-overflow-y:
 $expositor-navigation-overflow-y:
 
 //dimensions
-    $expositor-navigation-height:
+    $expositor-navigation-height: 30px;
      $expositor-navigation-width:
 
 //spacing
@@ -1975,7 +2029,7 @@ $expositor-navigation-li-overflow-y:
 
 //spacing
     $expositor-navigation-li-margin:
-   $expositor-navigation-li-padding:
+   $expositor-navigation-li-padding: 0px;
 
 
 
@@ -2004,7 +2058,7 @@ $expositor-navigation-li-a-overflow-y:
 
 //spacing
     $expositor-navigation-li-a-margin:
-   $expositor-navigation-li-a-padding:
+   $expositor-navigation-li-a-padding: 5px 20px 0px 20px;
 
 
 
@@ -2013,7 +2067,7 @@ $expositor-navigation-li-a-overflow-y:
 
 //placement
   $expositor-element-list-position:
-     $expositor-element-list-float:
+     $expositor-element-list-float: left;
    $expositor-element-list-z-index:
 
 //fixing
@@ -2024,16 +2078,27 @@ $expositor-navigation-li-a-overflow-y:
 
 //displaying
    $expositor-element-list-display:
-  $expositor-element-list-overflow:
+  $expositor-element-list-overflow: auto;
 $expositor-element-list-overflow-y:
 
 //dimensions
     $expositor-element-list-height:
-     $expositor-element-list-width:
+     $expositor-element-list-width: 100%;
 
 //spacing
     $expositor-element-list-margin:
-   $expositor-element-list-padding:
+   $expositor-element-list-padding: $element-padding;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2041,8 +2106,8 @@ $expositor-element-list-overflow-y:
 //good
 
 //placement
-  $good-position:
-     $good-float:
+  $good-position: relative;
+     $good-float: left;
    $good-z-index:
 
 //fixing
@@ -2053,15 +2118,15 @@ $expositor-element-list-overflow-y:
 
 //displaying
    $good-display:
-  $good-overflow:
+  $good-overflow: auto;
 $good-overflow-y:
 
 //dimensions
     $good-height:
-     $good-width:
+     $good-width: auto;
 
 //spacing
-    $good-margin:
+    $good-margin: $good-bottom-margin;
    $good-padding:
 
 
@@ -2116,7 +2181,7 @@ $item-image-overflow-y:
 
 //dimensions
     $item-image-height:
-     $item-image-width:
+     $item-image-width: 100%;
 
 //spacing
     $item-image-margin:
@@ -2173,8 +2238,8 @@ $item-image-img-overflow-y:
 $item-name-overflow-y:
 
 //dimensions
-    $item-name-height:
-     $item-name-width:
+    $item-name-height: $good-data-heigth;
+     $item-name-width: 100%;
 
 //spacing
     $item-name-margin:
@@ -2202,12 +2267,15 @@ $item-name-overflow-y:
 $item-controls-overflow-y:
 
 //dimensions
-    $item-controls-height:
-     $item-controls-width:
+    $item-controls-height: $good-data-heigth;
+     $item-controls-width: 100%;
 
 //spacing
     $item-controls-margin:
    $item-controls-padding:
+
+
+
 
 
 
@@ -2260,12 +2328,16 @@ $product-overflow-y:
 $product-name-overflow-y:
 
 //dimensions
-    $product-name-height:
-     $product-name-width:
+    $product-name-height: $good-data-heigth;
+     $product-name-width: 100%;
 
 //spacing
     $product-name-margin:
    $product-name-padding:
+
+
+
+
 
 
 
@@ -2318,12 +2390,24 @@ $cash-overflow-y:
 $cash-amount-overflow-y:
 
 //dimensions
-    $cash-amount-height:
-     $cash-amount-width:
+    $cash-amount-height: $good-data-heigth;
+     $cash-amount-width: 100%;
 
 //spacing
     $cash-amount-margin:
    $cash-amount-padding:
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2343,16 +2427,26 @@ $cash-amount-overflow-y:
 
 //displaying
    $login-display:
-  $login-overflow:
+  $login-overflow: auto;
 $login-overflow-y:
 
 //dimensions
     $login-height:
-     $login-width:
+     $login-width: 235px;
 
 //spacing
     $login-margin:
-   $login-padding:
+   $login-padding: $container-padding;
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2360,8 +2454,8 @@ $login-overflow-y:
 //negotiation
 
 //placement
-  $negotiation-position:
-     $negotiation-float:
+  $negotiation-position: relative;
+     $negotiation-float: left;
    $negotiation-z-index:
 
 //fixing
@@ -2372,15 +2466,15 @@ $login-overflow-y:
 
 //displaying
    $negotiation-display:
-  $negotiation-overflow:
+  $negotiation-overflow: auto;
 $negotiation-overflow-y:
 
 //dimensions
     $negotiation-height:
-     $negotiation-width:
+     $negotiation-width: 100%;
 
 //spacing
-    $negotiation-margin:
+    $negotiation-margin: $ppal-element-margin;
    $negotiation-padding:
 
 
@@ -2410,7 +2504,7 @@ $negotiation-leave-negotiation-control-overflow-y:
 
 //spacing
     $negotiation-leave-negotiation-control-margin:
-   $negotiation-leave-negotiation-control-padding:
+   $negotiation-leave-negotiation-control-padding: $button-box-padding;
 
 
 
@@ -2444,11 +2538,25 @@ $negotiation-proposal-controls-overflow-y:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //offer
 
 //placement
-  $offer-position:
-     $offer-float:
+  $offer-position: relative;
+     $offer-float: left;
    $offer-z-index:
 
 //fixing
@@ -2459,15 +2567,15 @@ $negotiation-proposal-controls-overflow-y:
 
 //displaying
    $offer-display:
-  $offer-overflow:
+  $offer-overflow: auto;
 $offer-overflow-y:
 
 //dimensions
     $offer-height:
-     $offer-width:
+     $offer-width: 300px;
 
 //spacing
-    $offer-margin:
+    $offer-margin: $ppal-element-margin;
    $offer-padding:
 
 
@@ -2493,11 +2601,11 @@ $offer-title-overflow-y:
 
 //dimensions
     $offer-title-height:
-     $offer-title-width:
+     $offer-title-width: 100%;
 
 //spacing
     $offer-title-margin:
-   $offer-title-padding:
+   $offer-title-padding: $title-padding;
 
 
 
@@ -2526,7 +2634,7 @@ $offer-message-overflow-y:
 
 //spacing
     $offer-message-margin:
-   $offer-message-padding:
+   $offer-message-padding: $text-box-padding;
 
 
 
@@ -2555,7 +2663,15 @@ $offer-controls-overflow-y:
 
 //spacing
     $offer-controls-margin:
-   $offer-controls-padding:
+   $offer-controls-padding: $button-box-padding;
+
+
+
+
+
+
+
+
 
 
 
@@ -2563,8 +2679,8 @@ $offer-controls-overflow-y:
 //omnibar
 
 //placement
-  $omnibar-position:
-     $omnibar-float:
+  $omnibar-position: relative;
+     $omnibar-float: left;
    $omnibar-z-index:
 
 //fixing
@@ -2574,17 +2690,17 @@ $offer-controls-overflow-y:
       $omnibar-left:
 
 //displaying
-   $omnibar-display:
-  $omnibar-overflow:
+   $omnibar-display: inline;
+  $omnibar-overflow: auto;
 $omnibar-overflow-y:
 
 //dimensions
     $omnibar-height:
-     $omnibar-width:
+     $omnibar-width: 100%;
 
 //spacing
     $omnibar-margin:
-   $omnibar-padding:
+   $omnibar-padding: $container-padding;
 
 
 
@@ -2609,10 +2725,10 @@ $omnibar-logo-overflow-y:
 
 //dimensions
     $omnibar-logo-height:
-     $omnibar-logo-width:
+     $omnibar-logo-width: 5%;
 
 //spacing
-    $omnibar-logo-margin:
+    $omnibar-logo-margin: 0px $omnibar-components-margin 0px 0px;
    $omnibar-logo-padding:
 
 
@@ -2638,11 +2754,22 @@ $omnibar-navigation-controls-overflow-y:
 
 //dimensions
     $omnibar-navigation-controls-height:
-     $omnibar-navigation-controls-width:
+     $omnibar-navigation-controls-width: 40%;
 
 //spacing
-    $omnibar-navigation-controls-margin:
-   $omnibar-navigation-controls-padding:
+    $omnibar-navigation-controls-margin: 0px $omnibar-components-margin 0px 0px;
+   $omnibar-navigation-controls-padding: 5px 0px 0px 0px;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2651,7 +2778,7 @@ $omnibar-navigation-controls-overflow-y:
 
 //placement
   $profile-card-position:
-     $profile-card-float:
+     $profile-card-float: left;
    $profile-card-z-index:
 
 //fixing
@@ -2661,16 +2788,16 @@ $omnibar-navigation-controls-overflow-y:
       $profile-card-left:
 
 //displaying
-   $profile-card-display:
+   $profile-card-display: block;
   $profile-card-overflow:
 $profile-card-overflow-y:
 
 //dimensions
     $profile-card-height:
-     $profile-card-width:
+     $profile-card-width: 100%;
 
 //spacing
-    $profile-card-margin:
+    $profile-card-margin: $ppal-element-margin;
    $profile-card-padding:
 
 
@@ -2696,7 +2823,7 @@ $profile-card-head-image-overflow-y:
 
 //dimensions
     $profile-card-head-image-height:
-     $profile-card-head-image-width:
+     $profile-card-head-image-width: 100%;
 
 //spacing
     $profile-card-head-image-margin:
@@ -2725,7 +2852,7 @@ $profile-card-head-image-img-overflow-y:
 
 //dimensions
     $profile-card-head-image-img-height:
-     $profile-card-head-image-img-width:
+     $profile-card-head-image-img-width: 100%;
 
 //spacing
     $profile-card-head-image-img-margin:
@@ -2737,8 +2864,8 @@ $profile-card-head-image-img-overflow-y:
 //profile-card-user-card
 
 //placement
-  $profile-card-user-card-position:
-     $profile-card-user-card-float:
+  $profile-card-user-card-position: relative;
+     $profile-card-user-card-float: left;
    $profile-card-user-card-z-index:
 
 //fixing
@@ -2753,8 +2880,8 @@ $profile-card-head-image-img-overflow-y:
 $profile-card-user-card-overflow-y:
 
 //dimensions
-    $profile-card-user-card-height:
-     $profile-card-user-card-width:
+    $profile-card-user-card-height: 80px;
+     $profile-card-user-card-width: 100%;
 
 //spacing
     $profile-card-user-card-margin:
@@ -2767,7 +2894,7 @@ $profile-card-user-card-overflow-y:
 
 //placement
   $make-offer-control-position:
-     $make-offer-control-float:
+     $make-offer-control-float: left;
    $make-offer-control-z-index:
 
 //fixing
@@ -2782,13 +2909,12 @@ $profile-card-user-card-overflow-y:
 $make-offer-control-overflow-y:
 
 //dimensions
-    $make-offer-control-height:
-     $make-offer-control-width:
+    $make-offer-control-height: 0px 0px 20px 0px;
+     $make-offer-control-width: 100%;
 
 //spacing
     $make-offer-control-margin:
-   $make-offer-control-padding:
-
+   $make-offer-control-padding: $dashboard-component-padding;
 
 
 
@@ -2811,8 +2937,8 @@ $make-offer-control-overflow-y:
 $make-offer-control-input-overflow-y:
 
 //dimensions
-    $make-offer-control-input-height:
-     $make-offer-control-input-width:
+    $make-offer-control-input-height: 40px;
+     $make-offer-control-input-width: 100%;
 
 //spacing
     $make-offer-control-input-margin:
@@ -2821,11 +2947,19 @@ $make-offer-control-input-overflow-y:
 
 
 
+
+
+
+
+
+
+
+
 //request
 
 //placement
-  $request-position:
-     $request-float:
+  $request-position: relative;
+     $request-float: left;
    $request-z-index:
 
 //fixing
@@ -2836,16 +2970,16 @@ $make-offer-control-input-overflow-y:
 
 //displaying
    $request-display:
-  $request-overflow:
+  $request-overflow: hidden;
 $request-overflow-y:
 
 //dimensions
     $request-height:
-     $request-width:
+     $request-width: 100%;
 
 //spacing
     $request-margin:
-   $request-padding:
+   $request-padding: $message-box-padding;
 
 
 
@@ -2854,7 +2988,7 @@ $request-overflow-y:
 
 //placement
   $request-text-position:
-     $request-text-float:
+     $request-text-float: left;
    $request-text-z-index:
 
 //fixing
@@ -2883,7 +3017,7 @@ $request-text-overflow-y:
 
 //placement
   $request-controls-position:
-     $request-controls-float:
+     $request-controls-float: left;
    $request-controls-z-index:
 
 //fixing
@@ -2899,11 +3033,11 @@ $request-controls-overflow-y:
 
 //dimensions
     $request-controls-height:
-     $request-controls-width:
+     $request-controls-width: 100%;
 
 //spacing
     $request-controls-margin:
-   $request-controls-padding:
+   $request-controls-padding: 0px $additional-control-padding 0px 0px;
 
 
 
@@ -2912,7 +3046,7 @@ $request-controls-overflow-y:
 
 //placement
   $request-controls-a-position:
-     $request-controls-a-float:
+     $request-controls-a-float: right;
    $request-controls-a-z-index:
 
 //fixing
@@ -2931,8 +3065,20 @@ $request-controls-a-overflow-y:
      $request-controls-a-width:
 
 //spacing
-    $request-controls-a-margin:
+    $request-controls-a-margin: 0px 5px 0px 0px;
    $request-controls-a-padding:
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2940,8 +3086,8 @@ $request-controls-a-overflow-y:
 //request-list
 
 //placement
-  $request-list-position:
-     $request-list-float:
+  $request-list-position: relative;
+     $request-list-float: left;
    $request-list-z-index:
 
 //fixing
@@ -2951,16 +3097,16 @@ $request-controls-a-overflow-y:
       $request-list-left:
 
 //displaying
-   $request-list-display:
-  $request-list-overflow:
+   $request-list-display: block;
+  $request-list-overflow: auto;
 $request-list-overflow-y:
 
 //dimensions
     $request-list-height:
-     $request-list-width:
+     $request-list-width: 100%;
 
 //spacing
-    $request-list-margin:
+    $request-list-margin: $ppal-element-margin;
    $request-list-padding:
 
 

@@ -2,14 +2,8 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
 
-  margin: $good-bottom-margin;
-  width: auto;
   color: $text-font-color;
 }
 
@@ -17,17 +11,12 @@
   @extend %good;
 
  .image {
-    width: 100%;
   }
 
   .name {
-    width: 100%;
-    height: $good-data-heigth;
   }
 
   .controls {
-    width: 100%;
-    height: $good-data-heigth;
   }
 }
 
@@ -38,8 +27,6 @@
   //> .image-small;
 
   .name {
-    width: 100%;
-    height: $good-data-heigth;
   }
 }
 
@@ -50,7 +37,5 @@
   //> .image-small;
 
   .amount {
-    width: 100%;
-    height: $good-data-heigth;
   }
 }

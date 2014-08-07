@@ -1,10 +1,7 @@
 .login{
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  overflow: auto;
   background-color: $white-bgcolor;
-  width: 235px;
-  padding: $container-padding;
   color: $title-font-color;
   @extend %grey-shadow;
   @extend %centered;
