@@ -8,15 +8,14 @@
   margin: $message-margin;
   padding: $text-box-padding;
 
-  .avatar {
-    margin: $image-text-margin;
-  }
+  //> .message_avatar;
 
   .text {
     margin: $data-margin;
     padding-left: 5px;
   }
 
-  // .timestamp {}
+  .timestamp {
+  }
 }
 
