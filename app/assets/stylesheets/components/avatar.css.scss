@@ -11,16 +11,9 @@
 .omnibar_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
-
-  padding-top: 5px;
-  width: 15%;
-
   .image {
+    img {}
   }
 
   .user_data {
@@ -32,23 +25,10 @@
 .profile_card_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
-
   @include box-sizing(border-box);
-  margin-top: -25px;
-  width: 100%;
-  padding: $dashboard-component-padding;
 
   .image {
-    position: relative;
-    top: -30px;
-    left: 80px;
-    width: 86px;
-    height: 86px;
     @include border-radius(43px, 43px);
     background-color: white;
     text-align: center;
@@ -64,10 +44,6 @@
   }
 
   .user_data {
-    position: relative;
-    top: -40px;
-    left: 0px;
-    height: 60px;
 
     // .reputation {
     //   margin: $profile-card-icon-margin;
@@ -114,13 +90,11 @@
     .full_name{
       text-align: center;
       color: $title-font-color;
-      margin: $data-margin;
     }
 
     .location {
       text-align: center;
       color: $text-font-color;
-      margin: $data-margin;
     }
   }
 }
@@ -128,18 +102,10 @@
 .request_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  position: relative;
-  float: left;
-  overflow: auto;
   background-color: $white-bgcolor;
-  margin-right: $omnibar-components-margin;
-
-  float: left;
-  margin-right: $image-text-margin;
 
   .image {
-     width: 40px;
-     height: 40px;
+    img {}
   }
 }
 

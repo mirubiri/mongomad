@@ -69,8 +69,8 @@ $item-snapshoot: 120px;
 //omnibar-avatar
 
 //placement
-  $omnibar-avatar-position:
-     $omnibar-avatar-float:
+  $omnibar-avatar-position: relative;
+     $omnibar-avatar-float: left;
    $omnibar-avatar-z-index:
 
 //fixing
@@ -81,16 +81,16 @@ $item-snapshoot: 120px;
 
 //displaying
    $omnibar-avatar-display:
-  $omnibar-avatar-overflow:
+  $omnibar-avatar-overflow: auto;
 $omnibar-avatar-overflow-y:
 
 //dimensions
     $omnibar-avatar-height:
-     $omnibar-avatar-width:
+     $omnibar-avatar-width: 15%;
 
 //spacing
-    $omnibar-avatar-margin:
-   $omnibar-avatar-padding:
+    $omnibar-avatar-margin: 0px $omnibar-components-margin 0px 0px;
+   $omnibar-avatar-padding: 5px 0px 0px 0px;
 
 
 
@@ -243,8 +243,8 @@ $omnibar-avatar-user-data-surnames-overflow-y:
 //profile-card-avatar
 
 //placement
-  $profile-card-avatar-position:
-     $profile-card-avatar-float:
+  $profile-card-avatar-position: relative;
+     $profile-card-avatar-float: left;
    $profile-card-avatar-z-index:
 
 //fixing
@@ -255,16 +255,16 @@ $omnibar-avatar-user-data-surnames-overflow-y:
 
 //displaying
    $profile-card-avatar-display:
-  $profile-card-avatar-overflow:
+  $profile-card-avatar-overflow: auto;
 $profile-card-avatar-overflow-y:
 
 //dimensions
     $profile-card-avatar-height:
-     $profile-card-avatar-width:
+     $profile-card-avatar-width: 100%;
 
 //spacing
-    $profile-card-avatar-margin:
-   $profile-card-avatar-padding:
+    $profile-card-avatar-margin: -25px $omnibar-components-margin 0px 0px;
+   $profile-card-avatar-padding: $dashboard-component-padding;
 
 
 
@@ -272,15 +272,15 @@ $profile-card-avatar-overflow-y:
 //profile-card-avatar-image
 
 //placement
-  $profile-card-avatar-image-position:
+  $profile-card-avatar-image-position: relative;
      $profile-card-avatar-image-float:
    $profile-card-avatar-image-z-index:
 
 //fixing
-       $profile-card-avatar-image-top:
+       $profile-card-avatar-image-top: -30px;
      $profile-card-avatar-image-right:
     $profile-card-avatar-image-bottom:
-      $profile-card-avatar-image-left:
+      $profile-card-avatar-image-left: 80px;
 
 //displaying
    $profile-card-avatar-image-display:
@@ -288,8 +288,8 @@ $profile-card-avatar-overflow-y:
 $profile-card-avatar-image-overflow-y:
 
 //dimensions
-    $profile-card-avatar-image-height:
-     $profile-card-avatar-image-width:
+    $profile-card-avatar-image-height: 86px;
+     $profile-card-avatar-image-width: 86px;
 
 //spacing
     $profile-card-avatar-image-margin:
@@ -301,15 +301,15 @@ $profile-card-avatar-image-overflow-y:
 //profile-card-avatar-image-img
 
 //placement
-  $profile-card-avatar-image-img-position:
+  $profile-card-avatar-image-img-position: relative;
      $profile-card-avatar-image-img-float:
    $profile-card-avatar-image-img-z-index:
 
 //fixing
-       $profile-card-avatar-image-img-top:
+       $profile-card-avatar-image-img-top: -40px;
      $profile-card-avatar-image-img-right:
     $profile-card-avatar-image-img-bottom:
-      $profile-card-avatar-image-img-left:
+      $profile-card-avatar-image-img-left: 0px;
 
 //displaying
    $profile-card-avatar-image-img-display:
@@ -317,7 +317,7 @@ $profile-card-avatar-image-overflow-y:
 $profile-card-avatar-image-img-overflow-y:
 
 //dimensions
-    $profile-card-avatar-image-img-height:
+    $profile-card-avatar-image-img-height: 60px;
      $profile-card-avatar-image-img-width:
 
 //spacing
@@ -553,7 +553,7 @@ $profile-card-avatar-user-data-full-name-overflow-y:
      $profile-card-avatar-user-data-full-name-width:
 
 //spacing
-    $profile-card-avatar-user-data-full-name-margin:
+    $profile-card-avatar-user-data-full-name-margin: $data-margin;
    $profile-card-avatar-user-data-full-name-padding:
 
 
@@ -582,7 +582,7 @@ $profile-card-avatar-user-data-location-overflow-y:
      $profile-card-avatar-user-data-location-width:
 
 //spacing
-    $profile-card-avatar-user-data-location-margin:
+    $profile-card-avatar-user-data-location-margin: $data-margin;
    $profile-card-avatar-user-data-location-padding:
 
 
@@ -591,8 +591,8 @@ $profile-card-avatar-user-data-location-overflow-y:
 //request-avatar
 
 //placement
-  $request-avatar-position:
-     $request-avatar-float:
+  $request-avatar-position: relative;
+     $request-avatar-float: left;
    $request-avatar-z-index:
 
 //fixing
@@ -603,7 +603,7 @@ $profile-card-avatar-user-data-location-overflow-y:
 
 //displaying
    $request-avatar-display:
-  $request-avatar-overflow:
+  $request-avatar-overflow: auto;
 $request-avatar-overflow-y:
 
 //dimensions
@@ -611,7 +611,7 @@ $request-avatar-overflow-y:
      $request-avatar-width:
 
 //spacing
-    $request-avatar-margin:
+    $request-avatar-margin: $image-text-margin;
    $request-avatar-padding:
 
 
@@ -636,8 +636,8 @@ $request-avatar-overflow-y:
 $request-avatar-image-overflow-y:
 
 //dimensions
-    $request-avatar-image-height:
-     $request-avatar-image-width:
+    $request-avatar-image-height: 40px;
+     $request-avatar-image-width: 40px;
 
 //spacing
     $request-avatar-image-margin:
@@ -678,8 +678,8 @@ $request-avatar-image-img-overflow-y:
 //offer-avatar
 
 //placement
-  $offer-avatar-position:
-     $offer-avatar-float:
+  $offer-avatar-position: relative;
+     $offer-avatar-float: left;
    $offer-avatar-z-index:
 
 //fixing
@@ -690,7 +690,7 @@ $request-avatar-image-img-overflow-y:
 
 //displaying
    $offer-avatar-display:
-  $offer-avatar-overflow:
+  $offer-avatar-overflow: auto;
 $offer-avatar-overflow-y:
 
 //dimensions
