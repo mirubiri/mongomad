@@ -1,9 +1,0 @@
-.inline_logout {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
-  background-color: $white-bgcolor;
-
-  text-align: right;
-  box-shadow: none;
-  background-color: transparent;
-}
