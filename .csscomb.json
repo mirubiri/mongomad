@@ -7,7 +7,7 @@
     "eof-newline": true,
     "leading-zero": true,
     "quotes": "single",
-    "remove-empty-rulesets": true,
+    "remove-empty-rulesets": false,
     "sort-order-fallback": "abc",
     "space-after-colon": " ",
     "space-before-colon": "",
