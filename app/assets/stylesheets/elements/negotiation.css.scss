@@ -3,15 +3,4 @@
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
   background-color: $white-bgcolor;
-
-  //> .negotiation_avatar;
-  //> .proposal;
-  //> .conversation;
-
-  .leave_negotiation_control {
-  }
-
-  .proposal_controls  {
-    //estilo botones propuesta
-  }
 }

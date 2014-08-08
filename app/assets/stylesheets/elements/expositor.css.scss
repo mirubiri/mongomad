@@ -14,20 +14,11 @@
       color: $nav-font-color;
       font-size: $medium-font;
       font-weight: bold;
-
-      a {
-
-      }
     }
   }
 
   .element_list {
     @include box-sizing(border-box);
-
-    //> .item;
-    //> .offer;
-    //> .negotiation;
-    //> .deal;
   }
 }
 

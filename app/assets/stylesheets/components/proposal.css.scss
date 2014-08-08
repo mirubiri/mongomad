@@ -2,17 +2,5 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
-
-  .composer_goods {
-
-    //> .product;
-    //> .cash;
-  }
-
-  .receiver_goods {
-
-    //> .product;
-    //> .cash;
-  }
 }
 

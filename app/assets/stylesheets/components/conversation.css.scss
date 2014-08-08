@@ -2,13 +2,4 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
-
-  .messages {
-  }
-
-  .message_input {
-  }
-
-  .send_message_control {
-  }
 }

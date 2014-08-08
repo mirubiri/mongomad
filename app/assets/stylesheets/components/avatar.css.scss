@@ -12,14 +12,6 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
-  .image {
-    img {}
-  }
-
-  .user_data {
-    // .first_name
-    // .surnames
-  }
 }
 
 .profile_card_avatar {
@@ -44,49 +36,6 @@
   }
 
   .user_data {
-
-    // .reputation {
-    //   margin: $profile-card-icon-margin;
-    //   padding-right: 5px;
-    //   float: right;
-
-    //   .icon{
-    //     margin: $data-margin;
-    //     float: left;
-    //     width: 100%;
-    //     img{float:left;}
-    //   }
-
-    //   .value{
-    //     float: left;
-    //     width: 100%;
-    //     text-align: left;
-    //     color:$title-font-color;
-    //   }
-    // }
-
-    // .friends {
-    //   margin: $profile-card-icon-margin;
-    //   padding-left: 5px;
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-
-    //   .icon{
-    //     margin: $data-margin;
-    //     float: right;
-    //     width: 100%;
-    //     img{float:right;}
-    //   }
-
-    //   .number{
-    //     float: left;
-    //     width: 100%;
-    //     text-align: right;
-    //     color:$title-font-color;
-    //   }
-    // }
-
     .full_name{
       text-align: center;
       color: $title-font-color;
@@ -103,10 +52,6 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
-
-  .image {
-    img {}
-  }
 }
 
 .offer_avatar {
@@ -114,30 +59,12 @@
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
   margin-right: ;
-
-  .full_name {
-
-  }
-
-  .image {
-    img {}
-  }
 }
 
 .negotiation_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   background-color: $white-bgcolor;
-
-
-  .image {
-    img {}
-  }
-
-  .user_data {
-    // .nick
-    // .location
-  }
 }
 
 .deal_avatar {
@@ -145,16 +72,6 @@
   @include border-radius(5px, 5px);
 
   background-color: $white-bgcolor;
-
-
-  .image {
-    img {}
-  }
-
-  .user_data {
-    // .nick
-    // .location
-  }
 }
 
 .message_avatar {

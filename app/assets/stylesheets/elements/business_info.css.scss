@@ -1,9 +1,3 @@
-// .business_info {
-// }
-
-.welcome_business_info {
-}
-
 .dashboard_business_info {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);

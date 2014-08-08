@@ -9,33 +9,12 @@
 
 .item {
   @extend %good;
-
- .image {
-  }
-
-  .name {
-  }
-
-  .controls {
-  }
 }
 
 .product {
   @extend %good;
-
-  //> .image-big;
-  //> .image-small;
-
-  .name {
-  }
 }
 
 .cash {
   @extend .good;
-
-  //> .image-big;
-  //> .image-small;
-
-  .amount {
-  }
 }
