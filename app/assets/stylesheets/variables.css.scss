@@ -1,10 +1,8 @@
-//WIDTH VARIABLES
+
 $inline-login-field-width: 100px;
 
-//HEIGHT VARIABLES
 $good-data-heigth: 25px;
 
-//MARGIN VARIABLES
 $omnibar-components-margin: 50px;
 $image-text-margin: 5px;
 $ppal-element-margin: 0px 0px 20px 0px;
@@ -15,7 +13,6 @@ $good-bottom-margin: 5px;
 $message-margin: 10px;
 $title-description-margin: 5px;
 
-//PADDING VARIABLES
 $container-padding: 5px 30px;
 $nav-icon-padding: 0px;
 $inline-loggin-padding: 0px;
@@ -29,7 +26,6 @@ $nav-link-padding: 12px 5px;
 $additional-control-padding: 5px;
 $dashboard-component-padding: 0px 10px;
 
-//COLOR VARIABLES
 $container-bgcolor: #B1D4E1;
 $body-bgcolor: rgb(90,148,173);
 $nav-selected: #B1D4E1;
@@ -45,3069 +41,379 @@ $blue-nav-border-color: #9DC4D1;
 $white-bgcolor: rgb(253,253,253);
 $grey-shadow-color: #9BB3B8;
 
-//TEXT VARIABLES
 $small-font: 10px;
 $medium-font: 12px;
 $big-font: 14px;
 
-//IMAGE WIDTHS
 $item-preview-big: 300px;
 $item-snapshoot: 120px;
 
-//$image_big_width
-//$image_small_width
-
-
-//==================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
-
-
-
-
-
-
-
-//omnibar-avatar
-
-//placement
   $omnibar-avatar-position: relative;
      $omnibar-avatar-float: left;
-   $omnibar-avatar-z-index:
 
-//fixing
-       $omnibar-avatar-top:
-     $omnibar-avatar-right:
-    $omnibar-avatar-bottom:
-      $omnibar-avatar-left:
-
-//displaying
-   $omnibar-avatar-display:
   $omnibar-avatar-overflow: auto;
-$omnibar-avatar-overflow-y:
 
-//dimensions
-    $omnibar-avatar-height:
      $omnibar-avatar-width: 15%;
 
-//spacing
     $omnibar-avatar-margin: 0px $omnibar-components-margin 0px 0px;
    $omnibar-avatar-padding: 5px 0px 0px 0px;
 
-
-
-
-//omnibar-avatar-image
-
-//placement
-  $omnibar-avatar-image-position:
-     $omnibar-avatar-image-float:
-   $omnibar-avatar-image-z-index:
-
-//fixing
-       $omnibar-avatar-image-top:
-     $omnibar-avatar-image-right:
-    $omnibar-avatar-image-bottom:
-      $omnibar-avatar-image-left:
-
-//displaying
-   $omnibar-avatar-image-display:
-  $omnibar-avatar-image-overflow:
-$omnibar-avatar-image-overflow-y:
-
-//dimensions
-    $omnibar-avatar-image-height:
-     $omnibar-avatar-image-width:
-
-//spacing
-    $omnibar-avatar-image-margin:
-   $omnibar-avatar-image-padding:
-
-
-
-
-//omnibar-avatar-image-img
-
-//placement
-  $omnibar-avatar-image-img-position:
-     $omnibar-avatar-image-img-float:
-   $omnibar-avatar-image-img-z-index:
-
-//fixing
-       $omnibar-avatar-image-img-top:
-     $omnibar-avatar-image-img-right:
-    $omnibar-avatar-image-img-bottom:
-      $omnibar-avatar-image-img-left:
-
-//displaying
-   $omnibar-avatar-image-img-display:
-  $omnibar-avatar-image-img-overflow:
-$omnibar-avatar-image-img-overflow-y:
-
-//dimensions
-    $omnibar-avatar-image-img-height:
-     $omnibar-avatar-image-img-width:
-
-//spacing
-    $omnibar-avatar-image-img-margin:
-   $omnibar-avatar-image-img-padding:
-
-
-
-
-//omnibar-avatar-user-data
-
-//placement
-  $omnibar-avatar-user-data-position:
-     $omnibar-avatar-user-data-float:
-   $omnibar-avatar-user-data-z-index:
-
-//fixing
-       $omnibar-avatar-user-data-top:
-     $omnibar-avatar-user-data-right:
-    $omnibar-avatar-user-data-bottom:
-      $omnibar-avatar-user-data-left:
-
-//displaying
-   $omnibar-avatar-user-data-display:
-  $omnibar-avatar-user-data-overflow:
-$omnibar-avatar-user-data-overflow-y:
-
-//dimensions
-    $omnibar-avatar-user-data-height:
-     $omnibar-avatar-user-data-width:
-
-//spacing
-    $omnibar-avatar-user-data-margin:
-   $omnibar-avatar-user-data-padding:
-
-
-
-
-//omnibar-avatar-user-data-first-name
-
-//placement
-  $omnibar-avatar-user-data-first-name-position:
-     $omnibar-avatar-user-data-first-name-float:
-   $omnibar-avatar-user-data-first-name-z-index:
-
-//fixing
-       $omnibar-avatar-user-data-first-name-top:
-     $omnibar-avatar-user-data-first-name-right:
-    $omnibar-avatar-user-data-first-name-bottom:
-      $omnibar-avatar-user-data-first-name-left:
-
-//displaying
-   $omnibar-avatar-user-data-first-name-display:
-  $omnibar-avatar-user-data-first-name-overflow:
-$omnibar-avatar-user-data-first-name-overflow-y:
-
-//dimensions
-    $omnibar-avatar-user-data-first-name-height:
-     $omnibar-avatar-user-data-first-name-width:
-
-//spacing
-    $omnibar-avatar-user-data-first-name-margin:
-   $omnibar-avatar-user-data-first-name-padding:
-
-
-
-
-//omnibar-avatar-user-data-surnames
-
-//placement
-  $omnibar-avatar-user-data-surnames-position:
-     $omnibar-avatar-user-data-surnames-float:
-   $omnibar-avatar-user-data-surnames-z-index:
-
-//fixing
-       $omnibar-avatar-user-data-surnames-top:
-     $omnibar-avatar-user-data-surnames-right:
-    $omnibar-avatar-user-data-surnames-bottom:
-      $omnibar-avatar-user-data-surnames-left:
-
-//displaying
-   $omnibar-avatar-user-data-surnames-display:
-  $omnibar-avatar-user-data-surnames-overflow:
-$omnibar-avatar-user-data-surnames-overflow-y:
-
-//dimensions
-    $omnibar-avatar-user-data-surnames-height:
-     $omnibar-avatar-user-data-surnames-width:
-
-//spacing
-    $omnibar-avatar-user-data-surnames-margin:
-   $omnibar-avatar-user-data-surnames-padding:
-
-
-
-
-//profile-card-avatar
-
-//placement
   $profile-card-avatar-position: relative;
      $profile-card-avatar-float: left;
-   $profile-card-avatar-z-index:
 
-//fixing
-       $profile-card-avatar-top:
-     $profile-card-avatar-right:
-    $profile-card-avatar-bottom:
-      $profile-card-avatar-left:
-
-//displaying
-   $profile-card-avatar-display:
   $profile-card-avatar-overflow: auto;
-$profile-card-avatar-overflow-y:
 
-//dimensions
-    $profile-card-avatar-height:
      $profile-card-avatar-width: 100%;
 
-//spacing
     $profile-card-avatar-margin: -25px $omnibar-components-margin 0px 0px;
    $profile-card-avatar-padding: $dashboard-component-padding;
 
-
-
-
-//profile-card-avatar-image
-
-//placement
   $profile-card-avatar-image-position: relative;
-     $profile-card-avatar-image-float:
-   $profile-card-avatar-image-z-index:
 
-//fixing
        $profile-card-avatar-image-top: -30px;
-     $profile-card-avatar-image-right:
-    $profile-card-avatar-image-bottom:
+
       $profile-card-avatar-image-left: 80px;
 
-//displaying
-   $profile-card-avatar-image-display:
-  $profile-card-avatar-image-overflow:
-$profile-card-avatar-image-overflow-y:
-
-//dimensions
     $profile-card-avatar-image-height: 86px;
      $profile-card-avatar-image-width: 86px;
 
-//spacing
-    $profile-card-avatar-image-margin:
-   $profile-card-avatar-image-padding:
-
-
-
-
-//profile-card-avatar-image-img
-
-//placement
   $profile-card-avatar-image-img-position: relative;
-     $profile-card-avatar-image-img-float:
-   $profile-card-avatar-image-img-z-index:
 
-//fixing
        $profile-card-avatar-image-img-top: -40px;
-     $profile-card-avatar-image-img-right:
-    $profile-card-avatar-image-img-bottom:
+
       $profile-card-avatar-image-img-left: 0px;
 
-//displaying
-   $profile-card-avatar-image-img-display:
-  $profile-card-avatar-image-img-overflow:
-$profile-card-avatar-image-img-overflow-y:
-
-//dimensions
     $profile-card-avatar-image-img-height: 60px;
-     $profile-card-avatar-image-img-width:
 
-//spacing
-    $profile-card-avatar-image-img-margin:
-   $profile-card-avatar-image-img-padding:
-
-
-
-
-//profile-card-avatar-user-data
-
-//placement
-  $profile-card-avatar-user-data-position:
-     $profile-card-avatar-user-data-float:
-   $profile-card-avatar-user-data-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-top:
-     $profile-card-avatar-user-data-right:
-    $profile-card-avatar-user-data-bottom:
-      $profile-card-avatar-user-data-left:
-
-//displaying
-   $profile-card-avatar-user-data-display:
-  $profile-card-avatar-user-data-overflow:
-$profile-card-avatar-user-data-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-height:
-     $profile-card-avatar-user-data-width:
-
-//spacing
-    $profile-card-avatar-user-data-margin:
-   $profile-card-avatar-user-data-padding:
-
-
-
-
-//profile-card-avatar-user-data-reputation
-
-//placement
-  $profile-card-avatar-user-data-reputation-position:
-     $profile-card-avatar-user-data-reputation-float:
-   $profile-card-avatar-user-data-reputation-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-reputation-top:
-     $profile-card-avatar-user-data-reputation-right:
-    $profile-card-avatar-user-data-reputation-bottom:
-      $profile-card-avatar-user-data-reputation-left:
-
-//displaying
-   $profile-card-avatar-user-data-reputation-display:
-  $profile-card-avatar-user-data-reputation-overflow:
-$profile-card-avatar-user-data-reputation-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-reputation-height:
-     $profile-card-avatar-user-data-reputation-width:
-
-//spacing
-    $profile-card-avatar-user-data-reputation-margin:
-   $profile-card-avatar-user-data-reputation-padding:
-
-
-
-
-//profile-card-avatar-user-data-reputation-icon
-
-//placement
-  $profile-card-avatar-user-data-reputation-icon-position:
-     $profile-card-avatar-user-data-reputation-icon-float:
-   $profile-card-avatar-user-data-reputation-icon-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-reputation-icon-top:
-     $profile-card-avatar-user-data-reputation-icon-right:
-    $profile-card-avatar-user-data-reputation-icon-bottom:
-      $profile-card-avatar-user-data-reputation-icon-left:
-
-//displaying
-   $profile-card-avatar-user-data-reputation-icon-display:
-  $profile-card-avatar-user-data-reputation-icon-overflow:
-$profile-card-avatar-user-data-reputation-icon-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-reputation-icon-height:
-     $profile-card-avatar-user-data-reputation-icon-width:
-
-//spacing
-    $profile-card-avatar-user-data-reputation-icon-margin:
-   $profile-card-avatar-user-data-reputation-icon-padding:
-
-
-
-
-//profile-card-avatar-user-data-reputation-value
-
-//placement
-  $profile-card-avatar-user-data-reputation-value-position:
-     $profile-card-avatar-user-data-reputation-value-float:
-   $profile-card-avatar-user-data-reputation-value-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-reputation-value-top:
-     $profile-card-avatar-user-data-reputation-value-right:
-    $profile-card-avatar-user-data-reputation-value-bottom:
-      $profile-card-avatar-user-data-reputation-value-left:
-
-//displaying
-   $profile-card-avatar-user-data-reputation-value-display:
-  $profile-card-avatar-user-data-reputation-value-overflow:
-$profile-card-avatar-user-data-reputation-value-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-reputation-value-height:
-     $profile-card-avatar-user-data-reputation-value-width:
-
-//spacing
-    $profile-card-avatar-user-data-reputation-value-margin:
-   $profile-card-avatar-user-data-reputation-value-padding:
-
-
-
-
-//profile-card-avatar-user-data-friends
-
-//placement
-  $profile-card-avatar-user-data-friends-position:
-     $profile-card-avatar-user-data-friends-float:
-   $profile-card-avatar-user-data-friends-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-friends-top:
-     $profile-card-avatar-user-data-friends-right:
-    $profile-card-avatar-user-data-friends-bottom:
-      $profile-card-avatar-user-data-friends-left:
-
-//displaying
-   $profile-card-avatar-user-data-friends-display:
-  $profile-card-avatar-user-data-friends-overflow:
-$profile-card-avatar-user-data-friends-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-friends-height:
-     $profile-card-avatar-user-data-friends-width:
-
-//spacing
-    $profile-card-avatar-user-data-friends-margin:
-   $profile-card-avatar-user-data-friends-padding:
-
-
-
-
-//profile-card-avatar-user-data-friends-icon
-
-//placement
-  $profile-card-avatar-user-data-friends-icon-position:
-     $profile-card-avatar-user-data-friends-icon-float:
-   $profile-card-avatar-user-data-friends-icon-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-friends-icon-top:
-     $profile-card-avatar-user-data-friends-icon-right:
-    $profile-card-avatar-user-data-friends-icon-bottom:
-      $profile-card-avatar-user-data-friends-icon-left:
-
-//displaying
-   $profile-card-avatar-user-data-friends-icon-display:
-  $profile-card-avatar-user-data-friends-icon-overflow:
-$profile-card-avatar-user-data-friends-icon-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-friends-icon-height:
-     $profile-card-avatar-user-data-friends-icon-width:
-
-//spacing
-    $profile-card-avatar-user-data-friends-icon-margin:
-   $profile-card-avatar-user-data-friends-icon-padding:
-
-
-
-
-//profile-card-avatar-user-data-friends-number
-
-//placement
-  $profile-card-avatar-user-data-friends-number-position:
-     $profile-card-avatar-user-data-friends-number-float:
-   $profile-card-avatar-user-data-friends-number-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-friends-number-top:
-     $profile-card-avatar-user-data-friends-number-right:
-    $profile-card-avatar-user-data-friends-number-bottom:
-      $profile-card-avatar-user-data-friends-number-left:
-
-//displaying
-   $profile-card-avatar-user-data-friends-number-display:
-  $profile-card-avatar-user-data-friends-number-overflow:
-$profile-card-avatar-user-data-friends-number-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-friends-number-height:
-     $profile-card-avatar-user-data-friends-number-width:
-
-//spacing
-    $profile-card-avatar-user-data-friends-number-margin:
-   $profile-card-avatar-user-data-friends-number-padding:
-
-
-
-
-//profile-card-avatar-user-data-full-name
-
-//placement
-  $profile-card-avatar-user-data-full-name-position:
-     $profile-card-avatar-user-data-full-name-float:
-   $profile-card-avatar-user-data-full-name-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-full-name-top:
-     $profile-card-avatar-user-data-full-name-right:
-    $profile-card-avatar-user-data-full-name-bottom:
-      $profile-card-avatar-user-data-full-name-left:
-
-//displaying
-   $profile-card-avatar-user-data-full-name-display:
-  $profile-card-avatar-user-data-full-name-overflow:
-$profile-card-avatar-user-data-full-name-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-full-name-height:
-     $profile-card-avatar-user-data-full-name-width:
-
-//spacing
     $profile-card-avatar-user-data-full-name-margin: $data-margin;
-   $profile-card-avatar-user-data-full-name-padding:
 
-
-
-
-//profile-card-avatar-user-data-location
-
-//placement
-  $profile-card-avatar-user-data-location-position:
-     $profile-card-avatar-user-data-location-float:
-   $profile-card-avatar-user-data-location-z-index:
-
-//fixing
-       $profile-card-avatar-user-data-location-top:
-     $profile-card-avatar-user-data-location-right:
-    $profile-card-avatar-user-data-location-bottom:
-      $profile-card-avatar-user-data-location-left:
-
-//displaying
-   $profile-card-avatar-user-data-location-display:
-  $profile-card-avatar-user-data-location-overflow:
-$profile-card-avatar-user-data-location-overflow-y:
-
-//dimensions
-    $profile-card-avatar-user-data-location-height:
-     $profile-card-avatar-user-data-location-width:
-
-//spacing
     $profile-card-avatar-user-data-location-margin: $data-margin;
-   $profile-card-avatar-user-data-location-padding:
 
-
-
-
-//request-avatar
-
-//placement
   $request-avatar-position: relative;
      $request-avatar-float: left;
-   $request-avatar-z-index:
 
-//fixing
-       $request-avatar-top:
-     $request-avatar-right:
-    $request-avatar-bottom:
-      $request-avatar-left:
-
-//displaying
-   $request-avatar-display:
   $request-avatar-overflow: auto;
-$request-avatar-overflow-y:
 
-//dimensions
-    $request-avatar-height:
-     $request-avatar-width:
-
-//spacing
     $request-avatar-margin: $image-text-margin;
-   $request-avatar-padding:
 
-
-
-
-//request-avatar-image
-
-//placement
-  $request-avatar-image-position:
-     $request-avatar-image-float:
-   $request-avatar-image-z-index:
-
-//fixing
-       $request-avatar-image-top:
-     $request-avatar-image-right:
-    $request-avatar-image-bottom:
-      $request-avatar-image-left:
-
-//displaying
-   $request-avatar-image-display:
-  $request-avatar-image-overflow:
-$request-avatar-image-overflow-y:
-
-//dimensions
     $request-avatar-image-height: 40px;
      $request-avatar-image-width: 40px;
 
-//spacing
-    $request-avatar-image-margin:
-   $request-avatar-image-padding:
-
-
-
-
-//request-avatar-image-img
-
-//placement
-  $request-avatar-image-img-position:
-     $request-avatar-image-img-float:
-   $request-avatar-image-img-z-index:
-
-//fixing
-       $request-avatar-image-img-top:
-     $request-avatar-image-img-right:
-    $request-avatar-image-img-bottom:
-      $request-avatar-image-img-left:
-
-//displaying
-   $request-avatar-image-img-display:
-  $request-avatar-image-img-overflow:
-$request-avatar-image-img-overflow-y:
-
-//dimensions
-    $request-avatar-image-img-height:
-     $request-avatar-image-img-width:
-
-//spacing
-    $request-avatar-image-img-margin:
-   $request-avatar-image-img-padding:
-
-
-
-
-//offer-avatar
-
-//placement
   $offer-avatar-position: relative;
      $offer-avatar-float: left;
-   $offer-avatar-z-index:
 
-//fixing
-       $offer-avatar-top:
-     $offer-avatar-right:
-    $offer-avatar-bottom:
-      $offer-avatar-left:
-
-//displaying
-   $offer-avatar-display:
   $offer-avatar-overflow: auto;
-$offer-avatar-overflow-y:
 
-//dimensions
-    $offer-avatar-height:
-     $offer-avatar-width:
-
-//spacing
     $offer-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-   $offer-avatar-padding:
 
-
-
-
-//offer-avatar-full-name
-
-//placement
-  $offer-avatar-full-name-position:
-     $offer-avatar-full-name-float:
-   $offer-avatar-full-name-z-index:
-
-//fixing
-       $offer-avatar-full-name-top:
-     $offer-avatar-full-name-right:
-    $offer-avatar-full-name-bottom:
-      $offer-avatar-full-name-left:
-
-//displaying
-   $offer-avatar-full-name-display:
-  $offer-avatar-full-name-overflow:
-$offer-avatar-full-name-overflow-y:
-
-//dimensions
-    $offer-avatar-full-name-height:
-     $offer-avatar-full-name-width:
-
-//spacing
     $offer-avatar-full-name-margin: $data-margin;
-   $offer-avatar-full-name-padding:
 
-
-
-
-//offer-avatar-image
-
-//placement
-  $offer-avatar-image-position:
-     $offer-avatar-image-float:
-   $offer-avatar-image-z-index:
-
-//fixing
-       $offer-avatar-image-top:
-     $offer-avatar-image-right:
-    $offer-avatar-image-bottom:
-      $offer-avatar-image-left:
-
-//displaying
-   $offer-avatar-image-display:
-  $offer-avatar-image-overflow:
-$offer-avatar-image-overflow-y:
-
-//dimensions
-    $offer-avatar-image-height:
-     $offer-avatar-image-width:
-
-//spacing
     $offer-avatar-image-margin: $image-text-margin;
-   $offer-avatar-image-padding:
 
-
-
-
-//offer-avatar-image-img
-
-//placement
-  $offer-avatar-image-img-position:
-     $offer-avatar-image-img-float:
-   $offer-avatar-image-img-z-index:
-
-//fixing
-       $offer-avatar-image-img-top:
-     $offer-avatar-image-img-right:
-    $offer-avatar-image-img-bottom:
-      $offer-avatar-image-img-left:
-
-//displaying
-   $offer-avatar-image-img-display:
-  $offer-avatar-image-img-overflow:
-$offer-avatar-image-img-overflow-y:
-
-//dimensions
-    $offer-avatar-image-img-height:
-     $offer-avatar-image-img-width:
-
-//spacing
-    $offer-avatar-image-img-margin:
-   $offer-avatar-image-img-padding:
-
-
-
-
-//negotiation-avatar
-
-//placement
   $negotiation-avatar-position: relative;
      $negotiation-avatar-float: left;
-   $negotiation-avatar-z-index:
 
-//fixing
-       $negotiation-avatar-top:
-     $negotiation-avatar-right:
-    $negotiation-avatar-bottom:
-      $negotiation-avatar-left:
-
-//displaying
-   $negotiation-avatar-display:
   $negotiation-avatar-overflow: auto;
-$negotiation-avatar-overflow-y:
 
-//dimensions
-    $negotiation-avatar-height:
-     $negotiation-avatar-width:
-
-//spacing
     $negotiation-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-   $negotiation-avatar-padding:
 
-
-
-
-//negotiation-avatar-image
-
-//placement
-  $negotiation-avatar-image-position:
-     $negotiation-avatar-image-float:
-   $negotiation-avatar-image-z-index:
-
-//fixing
-       $negotiation-avatar-image-top:
-     $negotiation-avatar-image-right:
-    $negotiation-avatar-image-bottom:
-      $negotiation-avatar-image-left:
-
-//displaying
-   $negotiation-avatar-image-display:
-  $negotiation-avatar-image-overflow:
-$negotiation-avatar-image-overflow-y:
-
-//dimensions
-    $negotiation-avatar-image-height:
-     $negotiation-avatar-image-width:
-
-//spacing
-    $negotiation-avatar-image-margin:
-   $negotiation-avatar-image-padding:
-
-
-
-
-//negotiation-avatar-image-img
-
-//placement
-  $negotiation-avatar-image-img-position:
-     $negotiation-avatar-image-img-float:
-   $negotiation-avatar-image-img-z-index:
-
-//fixing
-       $negotiation-avatar-image-img-top:
-     $negotiation-avatar-image-img-right:
-    $negotiation-avatar-image-img-bottom:
-      $negotiation-avatar-image-img-left:
-
-//displaying
-   $negotiation-avatar-image-img-display:
-  $negotiation-avatar-image-img-overflow:
-$negotiation-avatar-image-img-overflow-y:
-
-//dimensions
-    $negotiation-avatar-image-img-height:
-     $negotiation-avatar-image-img-width:
-
-//spacing
-    $negotiation-avatar-image-img-margin:
-   $negotiation-avatar-image-img-padding:
-
-
-
-
-//negotiation-avatar-user-data
-
-//placement
-  $negotiation-avatar-user-data-position:
-     $negotiation-avatar-user-data-float:
-   $negotiation-avatar-user-data-z-index:
-
-//fixing
-       $negotiation-avatar-user-data-top:
-     $negotiation-avatar-user-data-right:
-    $negotiation-avatar-user-data-bottom:
-      $negotiation-avatar-user-data-left:
-
-//displaying
-   $negotiation-avatar-user-data-display:
-  $negotiation-avatar-user-data-overflow:
-$negotiation-avatar-user-data-overflow-y:
-
-//dimensions
-    $negotiation-avatar-user-data-height:
-     $negotiation-avatar-user-data-width:
-
-//spacing
-    $negotiation-avatar-user-data-margin:
-   $negotiation-avatar-user-data-padding:
-
-
-
-
-//negotiation-avatar-user-data-nick
-
-//placement
-  $negotiation-avatar-user-data-nick-position:
-     $negotiation-avatar-user-data-nick-float:
-   $negotiation-avatar-user-data-nick-z-index:
-
-//fixing
-       $negotiation-avatar-user-data-nick-top:
-     $negotiation-avatar-user-data-nick-right:
-    $negotiation-avatar-user-data-nick-bottom:
-      $negotiation-avatar-user-data-nick-left:
-
-//displaying
-   $negotiation-avatar-user-data-nick-display:
-  $negotiation-avatar-user-data-nick-overflow:
-$negotiation-avatar-user-data-nick-overflow-y:
-
-//dimensions
-    $negotiation-avatar-user-data-nick-height:
-     $negotiation-avatar-user-data-nick-width:
-
-//spacing
-    $negotiation-avatar-user-data-nick-margin:
-   $negotiation-avatar-user-data-nick-padding:
-
-
-
-
-//negotiation-avatar-user-data-location
-
-//placement
-  $negotiation-avatar-user-data-location-position:
-     $negotiation-avatar-user-data-location-float:
-   $negotiation-avatar-user-data-location-z-index:
-
-//fixing
-       $negotiation-avatar-user-data-location-top:
-     $negotiation-avatar-user-data-location-right:
-    $negotiation-avatar-user-data-location-bottom:
-      $negotiation-avatar-user-data-location-left:
-
-//displaying
-   $negotiation-avatar-user-data-location-display:
-  $negotiation-avatar-user-data-location-overflow:
-$negotiation-avatar-user-data-location-overflow-y:
-
-//dimensions
-    $negotiation-avatar-user-data-location-height:
-     $negotiation-avatar-user-data-location-width:
-
-//spacing
-    $negotiation-avatar-user-data-location-margin:
-   $negotiation-avatar-user-data-location-padding:
-
-
-
-
-//deal-avatar
-
-//placement
   $deal-avatar-position: relative;
      $deal-avatar-float: left;
-   $deal-avatar-z-index:
 
-//fixing
-       $deal-avatar-top:
-     $deal-avatar-right:
-    $deal-avatar-bottom:
-      $deal-avatar-left:
-
-//displaying
-   $deal-avatar-display:
   $deal-avatar-overflow: auto;
-$deal-avatar-overflow-y:
 
-//dimensions
-    $deal-avatar-height:
-     $deal-avatar-width:
-
-//spacing
     $deal-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-   $deal-avatar-padding:
 
-
-
-
-//deal-avatar-image
-
-//placement
-  $deal-avatar-image-position:
-     $deal-avatar-image-float:
-   $deal-avatar-image-z-index:
-
-//fixing
-       $deal-avatar-image-top:
-     $deal-avatar-image-right:
-    $deal-avatar-image-bottom:
-      $deal-avatar-image-left:
-
-//displaying
-   $deal-avatar-image-display:
-  $deal-avatar-image-overflow:
-$deal-avatar-image-overflow-y:
-
-//dimensions
-    $deal-avatar-image-height:
-     $deal-avatar-image-width:
-
-//spacing
-    $deal-avatar-image-margin:
-   $deal-avatar-image-padding:
-
-
-
-
-//deal-avatar-image-img
-
-//placement
-  $deal-avatar-image-img-position:
-     $deal-avatar-image-img-float:
-   $deal-avatar-image-img-z-index:
-
-//fixing
-       $deal-avatar-image-img-top:
-     $deal-avatar-image-img-right:
-    $deal-avatar-image-img-bottom:
-      $deal-avatar-image-img-left:
-
-//displaying
-   $deal-avatar-image-img-display:
-  $deal-avatar-image-img-overflow:
-$deal-avatar-image-img-overflow-y:
-
-//dimensions
-    $deal-avatar-image-img-height:
-     $deal-avatar-image-img-width:
-
-//spacing
-    $deal-avatar-image-img-margin:
-   $deal-avatar-image-img-padding:
-
-
-
-
-//deal-avatar-user-data
-
-//placement
-  $deal-avatar-user-data-position:
-     $deal-avatar-user-data-float:
-   $deal-avatar-user-data-z-index:
-
-//fixing
-       $deal-avatar-user-data-top:
-     $deal-avatar-user-data-right:
-    $deal-avatar-user-data-bottom:
-      $deal-avatar-user-data-left:
-
-//displaying
-   $deal-avatar-user-data-display:
-  $deal-avatar-user-data-overflow:
-$deal-avatar-user-data-overflow-y:
-
-//dimensions
-    $deal-avatar-user-data-height:
-     $deal-avatar-user-data-width:
-
-//spacing
-    $deal-avatar-user-data-margin:
-   $deal-avatar-user-data-padding:
-
-
-
-
-//deal-avatar-user-data-nick
-
-//placement
-  $deal-avatar-user-data-nick-position:
-     $deal-avatar-user-data-nick-float:
-   $deal-avatar-user-data-nick-z-index:
-
-//fixing
-       $deal-avatar-user-data-nick-top:
-     $deal-avatar-user-data-nick-right:
-    $deal-avatar-user-data-nick-bottom:
-      $deal-avatar-user-data-nick-left:
-
-//displaying
-   $deal-avatar-user-data-nick-display:
-  $deal-avatar-user-data-nick-overflow:
-$deal-avatar-user-data-nick-overflow-y:
-
-//dimensions
-    $deal-avatar-user-data-nick-height:
-     $deal-avatar-user-data-nick-width:
-
-//spacing
-    $deal-avatar-user-data-nick-margin:
-   $deal-avatar-user-data-nick-padding:
-
-
-
-
-//deal-avatar-user-data-location
-
-//placement
-  $deal-avatar-user-data-location-position:
-     $deal-avatar-user-data-location-float:
-   $deal-avatar-user-data-location-z-index:
-
-//fixing
-       $deal-avatar-user-data-location-top:
-     $deal-avatar-user-data-location-right:
-    $deal-avatar-user-data-location-bottom:
-      $deal-avatar-user-data-location-left:
-
-//displaying
-   $deal-avatar-user-data-location-display:
-  $deal-avatar-user-data-location-overflow:
-$deal-avatar-user-data-location-overflow-y:
-
-//dimensions
-    $deal-avatar-user-data-location-height:
-     $deal-avatar-user-data-location-width:
-
-//spacing
-    $deal-avatar-user-data-location-margin:
-   $deal-avatar-user-data-location-padding:
-
-
-
-
-//message-avatar
-
-//placement
   $message-avatar-position: relative;
      $message-avatar-float: left;
-   $message-avatar-z-index:
 
-//fixing
-       $message-avatar-top:
-     $message-avatar-right:
-    $message-avatar-bottom:
-      $message-avatar-left:
-
-//displaying
-   $message-avatar-display:
   $message-avatar-overflow: auto;
-$message-avatar-overflow-y:
 
-//dimensions
-    $message-avatar-height:
-     $message-avatar-width:
-
-//spacing
     $message-avatar-margin: 0px $image-text-margin 0px 0px;
-   $message-avatar-padding:
 
-
-
-
-//conversation
-
-//placement
   $conversation-position: relative;
      $conversation-float: left;
-   $conversation-z-index:
 
-//fixing
-       $conversation-top:
-     $conversation-right:
-    $conversation-bottom:
-      $conversation-left:
-
-//displaying
-   $conversation-display:
   $conversation-overflow: auto;
-$conversation-overflow-y:
 
-//dimensions
-    $conversation-height:
      $conversation-width: 70%;
 
-//spacing
-    $conversation-margin:
    $conversation-padding: $text-box-padding;
 
-
-
-
-//conversation-messages
-
-//placement
-  $conversation-messages-position:
-     $conversation-messages-float:
-   $conversation-messages-z-index:
-
-//fixing
-       $conversation-messages-top:
-     $conversation-messages-right:
-    $conversation-messages-bottom:
-      $conversation-messages-left:
-
-//displaying
-   $conversation-messages-display:
-  $conversation-messages-overflow:
-$conversation-messages-overflow-y:
-
-//dimensions
-    $conversation-messages-height:
-     $conversation-messages-width:
-
-//spacing
-    $conversation-messages-margin:
    $conversation-messages-padding: $component-padding;
 
-
-
-
-//conversation-message-input
-
-//placement
-  $conversation-message-input-position:
-     $conversation-message-input-float:
-   $conversation-message-input-z-index:
-
-//fixing
-       $conversation-message-input-top:
-     $conversation-message-input-right:
-    $conversation-message-input-bottom:
-      $conversation-message-input-left:
-
-//displaying
-   $conversation-message-input-display:
-  $conversation-message-input-overflow:
-$conversation-message-input-overflow-y:
-
-//dimensions
-    $conversation-message-input-height:
-     $conversation-message-input-width:
-
-//spacing
-    $conversation-message-input-margin:
    $conversation-message-input-padding: $text-box-padding;
 
-
-
-
-//conversation-send-message-control
-
-//placement
-  $conversation-send-message-control-position:
-     $conversation-send-message-control-float:
-   $conversation-send-message-control-z-index:
-
-//fixing
-       $conversation-send-message-control-top:
-     $conversation-send-message-control-right:
-    $conversation-send-message-control-bottom:
-      $conversation-send-message-control-left:
-
-//displaying
-   $conversation-send-message-control-display:
-  $conversation-send-message-control-overflow:
-$conversation-send-message-control-overflow-y:
-
-//dimensions
-    $conversation-send-message-control-height:
-     $conversation-send-message-control-width:
-
-//spacing
-    $conversation-send-message-control-margin:
    $conversation-send-message-control-padding: $button-box-padding;
 
-
-
-
-//inline-login
-
-//placement
   $inline-login-position: relative;
      $inline-login-float: left;
-   $inline-login-z-index:
 
-//fixing
-       $inline-login-top:
-     $inline-login-right:
-    $inline-login-bottom:
-      $inline-login-left:
-
-//displaying
-   $inline-login-display:
   $inline-login-overflow: auto;
-$inline-login-overflow-y:
 
-//dimensions
-    $inline-login-height:
-     $inline-login-width:
-
-//spacing
     $inline-login-margin: $omnibar-components-margin;
-   $inline-login-padding:
 
-
-
-
-//inline-logout
-
-//placement
   $inline-logout-position: relative;
      $inline-logout-float: right;
-   $inline-logout-z-index:
 
-//fixing
-       $inline-logout-top:
-     $inline-logout-right:
-    $inline-logout-bottom:
-      $inline-logout-left:
-
-//displaying
-   $inline-logout-display:
   $inline-logout-overflow: hidden;
-$inline-logout-overflow-y:
 
-//dimensions
     $inline-logout-height: 30px;
      $inline-logout-width: 5%;
 
-//spacing
     $inline-logout-margin: 0px;
    $inline-logout-padding: 10px 0px 0px 0px;
 
-
-
-
-//inline-logout-icon
-
-//placement
-  $inline-logout-icon-position:
      $inline-logout-icon-float: right;
-   $inline-logout-icon-z-index:
 
-//fixing
-       $inline-logout-icon-top:
-     $inline-logout-icon-right:
-    $inline-logout-icon-bottom:
-      $inline-logout-icon-left:
-
-//displaying
-   $inline-logout-icon-display:
-  $inline-logout-icon-overflow:
-$inline-logout-icon-overflow-y:
-
-//dimensions
-    $inline-logout-icon-height:
-     $inline-logout-icon-width:
-
-//spacing
-    $inline-logout-icon-margin:
-   $inline-logout-icon-padding:
-
-
-
-//inline-logout-icon-img
 $inline-logout-icon-img-height: 25px;
  $inline-logout-icon-img-width: 25px;
 
-
-
-
-//message
-
-//placement
   $message-position: relative;
      $message-float: left;
-   $message-z-index:
 
-//fixing
-       $message-top:
-     $message-right:
-    $message-bottom:
-      $message-left:
-
-//displaying
-   $message-display:
   $message-overflow: auto;
-$message-overflow-y:
 
-//dimensions
-    $message-height:
-     $message-width:
-
-//spacing
     $message-margin: $message-margin;
    $message-padding: $text-box-padding;
 
-
-
-
-//message-text
-
-//placement
-  $message-text-position:
-     $message-text-float:
-   $message-text-z-index:
-
-//fixing
-       $message-text-top:
-     $message-text-right:
-    $message-text-bottom:
-      $message-text-left:
-
-//displaying
-   $message-text-display:
-  $message-text-overflow:
-$message-text-overflow-y:
-
-//dimensions
-    $message-text-height:
-     $message-text-width:
-
-//spacing
     $message-text-margin: $data-margin;
    $message-text-padding: 0px 0px 0px 5px;
 
-
-
-
-//message-timestamp
-
-//placement
-  $message-timestamp-position:
-     $message-timestamp-float:
-   $message-timestamp-z-index:
-
-//fixing
-       $message-timestamp-top:
-     $message-timestamp-right:
-    $message-timestamp-bottom:
-      $message-timestamp-left:
-
-//displaying
-   $message-timestamp-display:
-  $message-timestamp-overflow:
-$message-timestamp-overflow-y:
-
-//dimensions
-    $message-timestamp-height:
-     $message-timestamp-width:
-
-//spacing
-    $message-timestamp-margin:
-   $message-timestamp-padding:
-
-
-
-
-//proposal
-
-//placement
   $proposal-position: relative;
      $proposal-float: left;
-   $proposal-z-index:
 
-//fixing
-       $proposal-top:
-     $proposal-right:
-    $proposal-bottom:
-      $proposal-left:
-
-//displaying
-   $proposal-display:
   $proposal-overflow: auto;
-$proposal-overflow-y:
 
-//dimensions
-    $proposal-height:
-     $proposal-width:
-
-//spacing
-    $proposal-margin:
    $proposal-padding: $component-padding;
 
-
-
-
-//proposal-composer-goods
-
-//placement
-  $proposal-composer-goods-position:
-     $proposal-composer-goods-float:
-   $proposal-composer-goods-z-index:
-
-//fixing
-       $proposal-composer-goods-top:
-     $proposal-composer-goods-right:
-    $proposal-composer-goods-bottom:
-      $proposal-composer-goods-left:
-
-//displaying
-   $proposal-composer-goods-display:
-  $proposal-composer-goods-overflow:
-$proposal-composer-goods-overflow-y:
-
-//dimensions
-    $proposal-composer-goods-height:
-     $proposal-composer-goods-width:
-
-//spacing
     $proposal-composer-goods-margin: $good-bottom-margin;
-   $proposal-composer-goods-padding:
 
-
-
-
-//proposal-receiver-goods
-
-//placement
-  $proposal-receiver-goods-position:
-     $proposal-receiver-goods-float:
-   $proposal-receiver-goods-z-index:
-
-//fixing
-       $proposal-receiver-goods-top:
-     $proposal-receiver-goods-right:
-    $proposal-receiver-goods-bottom:
-      $proposal-receiver-goods-left:
-
-//displaying
-   $proposal-receiver-goods-display:
-  $proposal-receiver-goods-overflow:
-$proposal-receiver-goods-overflow-y:
-
-//dimensions
-    $proposal-receiver-goods-height:
-     $proposal-receiver-goods-width:
-
-//spacing
     $proposal-receiver-goods-margin: $good-bottom-margin;
-   $proposal-receiver-goods-padding:
 
-
-
-
-//requester
-
-//placement
   $requester-position: relative;
      $requester-float: left;
-   $requester-z-index:
 
-//fixing
-       $requester-top:
-     $requester-right:
-    $requester-bottom:
-      $requester-left:
-
-//displaying
-   $requester-display:
   $requester-overflow: auto;
-$requester-overflow-y:
 
-//dimensions
-    $requester-height:
      $requester-width: 98%;
 
-//spacing
     $requester-margin: $profile-card-element-margin;
    $requester-padding: $dashboard-component-padding;
 
-
-
-
-//requester-textarea
-
-//placement
-  $requester-textarea-position:
-     $requester-textarea-float:
-   $requester-textarea-z-index:
-
-//fixing
-       $requester-textarea-top:
-     $requester-textarea-right:
-    $requester-textarea-bottom:
-      $requester-textarea-left:
-
-//displaying
-   $requester-textarea-display:
-  $requester-textarea-overflow:
-$requester-textarea-overflow-y:
-
-//dimensions
     $requester-textarea-height: 20px;
      $requester-textarea-width: 99%;
 
-//spacing
     $requester-textarea-margin: 0px 0px 5px 0px;
-   $requester-textarea-padding:
 
-
-
-
-//requester-countdown
-
-//placement
-  $requester-countdown-position:
      $requester-countdown-float: left;
-   $requester-countdown-z-index:
 
-//fixing
-       $requester-countdown-top:
-     $requester-countdown-right:
-    $requester-countdown-bottom:
-      $requester-countdown-left:
-
-//displaying
-   $requester-countdown-display:
-  $requester-countdown-overflow:
-$requester-countdown-overflow-y:
-
-//dimensions
-    $requester-countdown-height:
-     $requester-countdown-width:
-
-//spacing
-    $requester-countdown-margin:
-   $requester-countdown-padding:
-
-
-
-
-//requester-input
-
-//placement
-  $requester-input-position:
      $requester-input-float: right;
-   $requester-input-z-index:
 
-//fixing
-       $requester-input-top:
-     $requester-input-right:
-    $requester-input-bottom:
-      $requester-input-left:
-
-//displaying
-   $requester-input-display:
-  $requester-input-overflow:
-$requester-input-overflow-y:
-
-//dimensions
-    $requester-input-height:
-     $requester-input-width:
-
-//spacing
     $requester-input-margin: 0px;
    $requester-input-padding: 10px 15px;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//search
-
-//placement
   $search-position: relative;
      $search-float: left;
-   $search-z-index:
 
-//fixing
-       $search-top:
-     $search-right:
-    $search-bottom:
-      $search-left:
-
-//displaying
-   $search-display:
   $search-overflow: auto;
-$search-overflow-y:
 
-//dimensions
-    $search-height:
      $search-width: 15%;
 
-//spacing
     $search-margin: 10px $omnibar-components-margin 0px 0px;
-   $search-padding:
 
-
-
-
-//search-input
-
-//placement
-  $search-input-position:
-     $search-input-float:
-   $search-input-z-index:
-
-//fixing
-       $search-input-top:
-     $search-input-right:
-    $search-input-bottom:
-      $search-input-left:
-
-//displaying
-   $search-input-display:
-  $search-input-overflow:
-$search-input-overflow-y:
-
-//dimensions
     $search-input-height: 100%;
      $search-input-width: 100%;
 
-//spacing
-    $search-input-margin:
-   $search-input-padding:
-
-
-
-
-//welcome-business-info
-
-//placement
-  $welcome-business-info-position:
-     $welcome-business-info-float:
-   $welcome-business-info-z-index:
-
-//fixing
-       $welcome-business-info-top:
-     $welcome-business-info-right:
-    $welcome-business-info-bottom:
-      $welcome-business-info-left:
-
-//displaying
-   $welcome-business-info-display:
-  $welcome-business-info-overflow:
-$welcome-business-info-overflow-y:
-
-//dimensions
-    $welcome-business-info-height:
-     $welcome-business-info-width:
-
-//spacing
-    $welcome-business-info-margin:
-   $welcome-business-info-padding:
-
-
-
-
-//dashboard-business-info
-
-//placement
   $dashboard-business-info-position: relative;
      $dashboard-business-info-float: left;
-   $dashboard-business-info-z-index:
 
-//fixing
-       $dashboard-business-info-top:
-     $dashboard-business-info-right:
-    $dashboard-business-info-bottom:
-      $dashboard-business-info-left:
-
-//displaying
    $dashboard-business-info-display: block;
   $dashboard-business-info-overflow: auto;
-$dashboard-business-info-overflow-y:
 
-//dimensions
-    $dashboard-business-info-height:
      $dashboard-business-info-width: 100%;
 
-//spacing
-    $dashboard-business-info-margin:
    $dashboard-business-info-padding: $ppal-element-margin;
 
-
-
-
-
-
-
-
-
-
-
-//dashboard
-
-//placement
   $dashboard-position: relative;
      $dashboard-float: left;
-   $dashboard-z-index:
 
-//fixing
-       $dashboard-top:
-     $dashboard-right:
-    $dashboard-bottom:
-      $dashboard-left:
-
-//displaying
-   $dashboard-display:
   $dashboard-overflow: auto;
 $dashboard-overflow-y: hidden;
 
-//dimensions
-    $dashboard-height:
      $dashboard-width: 25%;
 
-//spacing
-    $dashboard-margin:
-   $dashboard-padding:
-
-
-
-
-//dashboard-bezel
-
-//placement
-  $dashboard-bezel-position:
-     $dashboard-bezel-float:
-   $dashboard-bezel-z-index:
-
-//fixing
-       $dashboard-bezel-top:
-     $dashboard-bezel-right:
-    $dashboard-bezel-bottom:
-      $dashboard-bezel-left:
-
-//displaying
-   $dashboard-bezel-display:
-  $dashboard-bezel-overflow:
-$dashboard-bezel-overflow-y:
-
-//dimensions
     $dashboard-bezel-height: 30px;
      $dashboard-bezel-width: 100%;
 
-//spacing
-    $dashboard-bezel-margin:
-   $dashboard-bezel-padding:
-
-
-
-
-//dashboard-container
-
-//placement
-  $dashboard-container-position:
      $dashboard-container-float: left;
-   $dashboard-container-z-index:
 
-//fixing
-       $dashboard-container-top:
-     $dashboard-container-right:
-    $dashboard-container-bottom:
-      $dashboard-container-left:
-
-//displaying
-   $dashboard-container-display:
   $dashboard-container-overflow: auto;
 $dashboard-container-overflow-y: hidden;
 
-//dimensions
-    $dashboard-container-height:
-     $dashboard-container-width:
-
-//spacing
-    $dashboard-container-margin:
    $dashboard-container-padding: $element-padding;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//deal
-
-//placement
   $deal-position: relative;
      $deal-float: left;
-   $deal-z-index:
 
-//fixing
-       $deal-top:
-     $deal-right:
-    $deal-bottom:
-      $deal-left:
-
-//displaying
-   $deal-display:
   $deal-overflow: auto;
-$deal-overflow-y:
 
-//dimensions
-    $deal-height:
      $deal-width: 100%;
 
-//spacing
     $deal-margin: $ppal-element-margin;
-   $deal-padding:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//expositor
-
-//placement
   $expositor-position: relative;
      $expositor-float: right;
-   $expositor-z-index:
 
-//fixing
-       $expositor-top:
-     $expositor-right:
-    $expositor-bottom:
-      $expositor-left:
-
-//displaying
-   $expositor-display:
   $expositor-overflow: auto;
-$expositor-overflow-y:
 
-//dimensions
-    $expositor-height:
      $expositor-width: 73%;
 
-//spacing
-    $expositor-margin:
-   $expositor-padding:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//expositor-navigation
-
-//placement
-  $expositor-navigation-position:
-     $expositor-navigation-float:
-   $expositor-navigation-z-index:
-
-//fixing
-       $expositor-navigation-top:
-     $expositor-navigation-right:
-    $expositor-navigation-bottom:
-      $expositor-navigation-left:
-
-//displaying
-   $expositor-navigation-display:
-  $expositor-navigation-overflow:
-$expositor-navigation-overflow-y:
-
-//dimensions
     $expositor-navigation-height: 30px;
-     $expositor-navigation-width:
 
-//spacing
-    $expositor-navigation-margin:
-   $expositor-navigation-padding:
-
-
-
-
-//expositor-navigation-li
-
-//placement
-  $expositor-navigation-li-position:
-     $expositor-navigation-li-float:
-   $expositor-navigation-li-z-index:
-
-//fixing
-       $expositor-navigation-li-top:
-     $expositor-navigation-li-right:
-    $expositor-navigation-li-bottom:
-      $expositor-navigation-li-left:
-
-//displaying
-   $expositor-navigation-li-display:
-  $expositor-navigation-li-overflow:
-$expositor-navigation-li-overflow-y:
-
-//dimensions
-    $expositor-navigation-li-height:
-     $expositor-navigation-li-width:
-
-//spacing
-    $expositor-navigation-li-margin:
    $expositor-navigation-li-padding: 0px;
 
-
-
-
-//expositor-navigation-li-a
-
-//placement
-  $expositor-navigation-li-a-position:
-     $expositor-navigation-li-a-float:
-   $expositor-navigation-li-a-z-index:
-
-//fixing
-       $expositor-navigation-li-a-top:
-     $expositor-navigation-li-a-right:
-    $expositor-navigation-li-a-bottom:
-      $expositor-navigation-li-a-left:
-
-//displaying
-   $expositor-navigation-li-a-display:
-  $expositor-navigation-li-a-overflow:
-$expositor-navigation-li-a-overflow-y:
-
-//dimensions
-    $expositor-navigation-li-a-height:
-     $expositor-navigation-li-a-width:
-
-//spacing
-    $expositor-navigation-li-a-margin:
    $expositor-navigation-li-a-padding: 5px 20px 0px 20px;
 
-
-
-
-//expositor-element-list
-
-//placement
-  $expositor-element-list-position:
      $expositor-element-list-float: left;
-   $expositor-element-list-z-index:
 
-//fixing
-       $expositor-element-list-top:
-     $expositor-element-list-right:
-    $expositor-element-list-bottom:
-      $expositor-element-list-left:
-
-//displaying
-   $expositor-element-list-display:
   $expositor-element-list-overflow: auto;
-$expositor-element-list-overflow-y:
 
-//dimensions
-    $expositor-element-list-height:
      $expositor-element-list-width: 100%;
 
-//spacing
-    $expositor-element-list-margin:
    $expositor-element-list-padding: $element-padding;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//good
-
-//placement
   $good-position: relative;
      $good-float: left;
-   $good-z-index:
 
-//fixing
-       $good-top:
-     $good-right:
-    $good-bottom:
-      $good-left:
-
-//displaying
-   $good-display:
   $good-overflow: auto;
-$good-overflow-y:
 
-//dimensions
-    $good-height:
      $good-width: auto;
 
-//spacing
     $good-margin: $good-bottom-margin;
-   $good-padding:
 
-
-
-
-//item
-
-//placement
-  $item-position:
-     $item-float:
-   $item-z-index:
-
-//fixing
-       $item-top:
-     $item-right:
-    $item-bottom:
-      $item-left:
-
-//displaying
-   $item-display:
-  $item-overflow:
-$item-overflow-y:
-
-//dimensions
-    $item-height:
-     $item-width:
-
-//spacing
-    $item-margin:
-   $item-padding:
-
-
-
-
-//item-image
-
-//placement
-  $item-image-position:
-     $item-image-float:
-   $item-image-z-index:
-
-//fixing
-       $item-image-top:
-     $item-image-right:
-    $item-image-bottom:
-      $item-image-left:
-
-//displaying
-   $item-image-display:
-  $item-image-overflow:
-$item-image-overflow-y:
-
-//dimensions
-    $item-image-height:
      $item-image-width: 100%;
 
-//spacing
-    $item-image-margin:
-   $item-image-padding:
-
-
-
-
-//item-image-img
-
-//placement
-  $item-image-img-position:
-     $item-image-img-float:
-   $item-image-img-z-index:
-
-//fixing
-       $item-image-img-top:
-     $item-image-img-right:
-    $item-image-img-bottom:
-      $item-image-img-left:
-
-//displaying
-   $item-image-img-display:
-  $item-image-img-overflow:
-$item-image-img-overflow-y:
-
-//dimensions
-    $item-image-img-height:
-     $item-image-img-width:
-
-//spacing
-    $item-image-img-margin:
-   $item-image-img-padding:
-
-
-
-
-//item-name
-
-//placement
-  $item-name-position:
-     $item-name-float:
-   $item-name-z-index:
-
-//fixing
-       $item-name-top:
-     $item-name-right:
-    $item-name-bottom:
-      $item-name-left:
-
-//displaying
-   $item-name-display:
-  $item-name-overflow:
-$item-name-overflow-y:
-
-//dimensions
     $item-name-height: $good-data-heigth;
      $item-name-width: 100%;
 
-//spacing
-    $item-name-margin:
-   $item-name-padding:
-
-
-
-
-//item-controls
-
-//placement
-  $item-controls-position:
-     $item-controls-float:
-   $item-controls-z-index:
-
-//fixing
-       $item-controls-top:
-     $item-controls-right:
-    $item-controls-bottom:
-      $item-controls-left:
-
-//displaying
-   $item-controls-display:
-  $item-controls-overflow:
-$item-controls-overflow-y:
-
-//dimensions
     $item-controls-height: $good-data-heigth;
      $item-controls-width: 100%;
 
-//spacing
-    $item-controls-margin:
-   $item-controls-padding:
-
-
-
-
-
-
-
-//product
-
-//placement
-  $product-position:
-     $product-float:
-   $product-z-index:
-
-//fixing
-       $product-top:
-     $product-right:
-    $product-bottom:
-      $product-left:
-
-//displaying
-   $product-display:
-  $product-overflow:
-$product-overflow-y:
-
-//dimensions
-    $product-height:
-     $product-width:
-
-//spacing
-    $product-margin:
-   $product-padding:
-
-
-
-
-//product-name
-
-//placement
-  $product-name-position:
-     $product-name-float:
-   $product-name-z-index:
-
-//fixing
-       $product-name-top:
-     $product-name-right:
-    $product-name-bottom:
-      $product-name-left:
-
-//displaying
-   $product-name-display:
-  $product-name-overflow:
-$product-name-overflow-y:
-
-//dimensions
     $product-name-height: $good-data-heigth;
      $product-name-width: 100%;
 
-//spacing
-    $product-name-margin:
-   $product-name-padding:
-
-
-
-
-
-
-
-
-//cash
-
-//placement
-  $cash-position:
-     $cash-float:
-   $cash-z-index:
-
-//fixing
-       $cash-top:
-     $cash-right:
-    $cash-bottom:
-      $cash-left:
-
-//displaying
-   $cash-display:
-  $cash-overflow:
-$cash-overflow-y:
-
-//dimensions
-    $cash-height:
-     $cash-width:
-
-//spacing
-    $cash-margin:
-   $cash-padding:
-
-
-
-
-//cash-amount
-
-//placement
-  $cash-amount-position:
-     $cash-amount-float:
-   $cash-amount-z-index:
-
-//fixing
-       $cash-amount-top:
-     $cash-amount-right:
-    $cash-amount-bottom:
-      $cash-amount-left:
-
-//displaying
-   $cash-amount-display:
-  $cash-amount-overflow:
-$cash-amount-overflow-y:
-
-//dimensions
     $cash-amount-height: $good-data-heigth;
      $cash-amount-width: 100%;
 
-//spacing
-    $cash-amount-margin:
-   $cash-amount-padding:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//login
-
-//placement
-  $login-position:
-     $login-float:
-   $login-z-index:
-
-//fixing
-       $login-top:
-     $login-right:
-    $login-bottom:
-      $login-left:
-
-//displaying
-   $login-display:
   $login-overflow: auto;
-$login-overflow-y:
 
-//dimensions
-    $login-height:
      $login-width: 235px;
 
-//spacing
-    $login-margin:
    $login-padding: $container-padding;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//negotiation
-
-//placement
   $negotiation-position: relative;
      $negotiation-float: left;
-   $negotiation-z-index:
 
-//fixing
-       $negotiation-top:
-     $negotiation-right:
-    $negotiation-bottom:
-      $negotiation-left:
-
-//displaying
-   $negotiation-display:
   $negotiation-overflow: auto;
-$negotiation-overflow-y:
 
-//dimensions
-    $negotiation-height:
      $negotiation-width: 100%;
 
-//spacing
     $negotiation-margin: $ppal-element-margin;
-   $negotiation-padding:
 
-
-
-
-//negotiation-leave-negotiation-control
-
-//placement
-  $negotiation-leave-negotiation-control-position:
-     $negotiation-leave-negotiation-control-float:
-   $negotiation-leave-negotiation-control-z-index:
-
-//fixing
-       $negotiation-leave-negotiation-control-top:
-     $negotiation-leave-negotiation-control-right:
-    $negotiation-leave-negotiation-control-bottom:
-      $negotiation-leave-negotiation-control-left:
-
-//displaying
-   $negotiation-leave-negotiation-control-display:
-  $negotiation-leave-negotiation-control-overflow:
-$negotiation-leave-negotiation-control-overflow-y:
-
-//dimensions
-    $negotiation-leave-negotiation-control-height:
-     $negotiation-leave-negotiation-control-width:
-
-//spacing
-    $negotiation-leave-negotiation-control-margin:
    $negotiation-leave-negotiation-control-padding: $button-box-padding;
 
-
-
-
-//negotiation-proposal-controls
-
-//placement
-  $negotiation-proposal-controls-position:
-     $negotiation-proposal-controls-float:
-   $negotiation-proposal-controls-z-index:
-
-//fixing
-       $negotiation-proposal-controls-top:
-     $negotiation-proposal-controls-right:
-    $negotiation-proposal-controls-bottom:
-      $negotiation-proposal-controls-left:
-
-//displaying
-   $negotiation-proposal-controls-display:
-  $negotiation-proposal-controls-overflow:
-$negotiation-proposal-controls-overflow-y:
-
-//dimensions
-    $negotiation-proposal-controls-height:
-     $negotiation-proposal-controls-width:
-
-//spacing
-    $negotiation-proposal-controls-margin:
-   $negotiation-proposal-controls-padding:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//offer
-
-//placement
   $offer-position: relative;
      $offer-float: left;
-   $offer-z-index:
 
-//fixing
-       $offer-top:
-     $offer-right:
-    $offer-bottom:
-      $offer-left:
-
-//displaying
-   $offer-display:
   $offer-overflow: auto;
-$offer-overflow-y:
 
-//dimensions
-    $offer-height:
      $offer-width: 300px;
 
-//spacing
     $offer-margin: $ppal-element-margin;
-   $offer-padding:
 
-
-
-
-//offer-title
-
-//placement
-  $offer-title-position:
-     $offer-title-float:
-   $offer-title-z-index:
-
-//fixing
-       $offer-title-top:
-     $offer-title-right:
-    $offer-title-bottom:
-      $offer-title-left:
-
-//displaying
-   $offer-title-display:
-  $offer-title-overflow:
-$offer-title-overflow-y:
-
-//dimensions
-    $offer-title-height:
      $offer-title-width: 100%;
 
-//spacing
-    $offer-title-margin:
    $offer-title-padding: $title-padding;
 
-
-
-
-//offer-message
-
-//placement
-  $offer-message-position:
-     $offer-message-float:
-   $offer-message-z-index:
-
-//fixing
-       $offer-message-top:
-     $offer-message-right:
-    $offer-message-bottom:
-      $offer-message-left:
-
-//displaying
-   $offer-message-display:
-  $offer-message-overflow:
-$offer-message-overflow-y:
-
-//dimensions
-    $offer-message-height:
-     $offer-message-width:
-
-//spacing
-    $offer-message-margin:
    $offer-message-padding: $text-box-padding;
 
-
-
-
-//offer-controls
-
-//placement
-  $offer-controls-position:
-     $offer-controls-float:
-   $offer-controls-z-index:
-
-//fixing
-       $offer-controls-top:
-     $offer-controls-right:
-    $offer-controls-bottom:
-      $offer-controls-left:
-
-//displaying
-   $offer-controls-display:
-  $offer-controls-overflow:
-$offer-controls-overflow-y:
-
-//dimensions
-    $offer-controls-height:
-     $offer-controls-width:
-
-//spacing
-    $offer-controls-margin:
    $offer-controls-padding: $button-box-padding;
 
-
-
-
-
-
-
-
-
-
-
-
-//omnibar
-
-//placement
   $omnibar-position: relative;
      $omnibar-float: left;
-   $omnibar-z-index:
 
-//fixing
-       $omnibar-top:
-     $omnibar-right:
-    $omnibar-bottom:
-      $omnibar-left:
-
-//displaying
    $omnibar-display: inline;
   $omnibar-overflow: auto;
-$omnibar-overflow-y:
 
-//dimensions
-    $omnibar-height:
      $omnibar-width: 100%;
 
-//spacing
-    $omnibar-margin:
    $omnibar-padding: $container-padding;
 
-
-
-
-//omnibar-logo
-
-//placement
-  $omnibar-logo-position:
-     $omnibar-logo-float:
-   $omnibar-logo-z-index:
-
-//fixing
-       $omnibar-logo-top:
-     $omnibar-logo-right:
-    $omnibar-logo-bottom:
-      $omnibar-logo-left:
-
-//displaying
-   $omnibar-logo-display:
-  $omnibar-logo-overflow:
-$omnibar-logo-overflow-y:
-
-//dimensions
-    $omnibar-logo-height:
      $omnibar-logo-width: 5%;
 
-//spacing
     $omnibar-logo-margin: 0px $omnibar-components-margin 0px 0px;
-   $omnibar-logo-padding:
 
-
-
-
-//omnibar-navigation-controls
-
-//placement
-  $omnibar-navigation-controls-position:
-     $omnibar-navigation-controls-float:
-   $omnibar-navigation-controls-z-index:
-
-//fixing
-       $omnibar-navigation-controls-top:
-     $omnibar-navigation-controls-right:
-    $omnibar-navigation-controls-bottom:
-      $omnibar-navigation-controls-left:
-
-//displaying
-   $omnibar-navigation-controls-display:
-  $omnibar-navigation-controls-overflow:
-$omnibar-navigation-controls-overflow-y:
-
-//dimensions
-    $omnibar-navigation-controls-height:
      $omnibar-navigation-controls-width: 40%;
 
-//spacing
     $omnibar-navigation-controls-margin: 0px $omnibar-components-margin 0px 0px;
    $omnibar-navigation-controls-padding: 5px 0px 0px 0px;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//profile-card
-
-//placement
-  $profile-card-position:
      $profile-card-float: left;
-   $profile-card-z-index:
 
-//fixing
-       $profile-card-top:
-     $profile-card-right:
-    $profile-card-bottom:
-      $profile-card-left:
-
-//displaying
    $profile-card-display: block;
-  $profile-card-overflow:
-$profile-card-overflow-y:
 
-//dimensions
-    $profile-card-height:
      $profile-card-width: 100%;
 
-//spacing
     $profile-card-margin: $ppal-element-margin;
-   $profile-card-padding:
 
-
-
-
-//profile-card-head-image
-
-//placement
-  $profile-card-head-image-position:
-     $profile-card-head-image-float:
-   $profile-card-head-image-z-index:
-
-//fixing
-       $profile-card-head-image-top:
-     $profile-card-head-image-right:
-    $profile-card-head-image-bottom:
-      $profile-card-head-image-left:
-
-//displaying
-   $profile-card-head-image-display:
-  $profile-card-head-image-overflow:
-$profile-card-head-image-overflow-y:
-
-//dimensions
-    $profile-card-head-image-height:
      $profile-card-head-image-width: 100%;
 
-//spacing
-    $profile-card-head-image-margin:
-   $profile-card-head-image-padding:
-
-
-
-
-//profile-card-head-image-img
-
-//placement
-  $profile-card-head-image-img-position:
-     $profile-card-head-image-img-float:
-   $profile-card-head-image-img-z-index:
-
-//fixing
-       $profile-card-head-image-img-top:
-     $profile-card-head-image-img-right:
-    $profile-card-head-image-img-bottom:
-      $profile-card-head-image-img-left:
-
-//displaying
-   $profile-card-head-image-img-display:
-  $profile-card-head-image-img-overflow:
-$profile-card-head-image-img-overflow-y:
-
-//dimensions
-    $profile-card-head-image-img-height:
      $profile-card-head-image-img-width: 100%;
 
-//spacing
-    $profile-card-head-image-img-margin:
-   $profile-card-head-image-img-padding:
-
-
-
-
-//profile-card-user-card
-
-//placement
   $profile-card-user-card-position: relative;
      $profile-card-user-card-float: left;
-   $profile-card-user-card-z-index:
 
-//fixing
-       $profile-card-user-card-top:
-     $profile-card-user-card-right:
-    $profile-card-user-card-bottom:
-      $profile-card-user-card-left:
-
-//displaying
-   $profile-card-user-card-display:
-  $profile-card-user-card-overflow:
-$profile-card-user-card-overflow-y:
-
-//dimensions
     $profile-card-user-card-height: 80px;
      $profile-card-user-card-width: 100%;
 
-//spacing
-    $profile-card-user-card-margin:
-   $profile-card-user-card-padding:
-
-
-
-
-//make-offer-control
-
-//placement
-  $make-offer-control-position:
      $make-offer-control-float: left;
-   $make-offer-control-z-index:
 
-//fixing
-       $make-offer-control-top:
-     $make-offer-control-right:
-    $make-offer-control-bottom:
-      $make-offer-control-left:
-
-//displaying
-   $make-offer-control-display:
-  $make-offer-control-overflow:
-$make-offer-control-overflow-y:
-
-//dimensions
     $make-offer-control-height: 0px 0px 20px 0px;
      $make-offer-control-width: 100%;
 
-//spacing
-    $make-offer-control-margin:
    $make-offer-control-padding: $dashboard-component-padding;
 
-
-
-//make-offer-control-input
-
-//placement
-  $make-offer-control-input-position:
-     $make-offer-control-input-float:
-   $make-offer-control-input-z-index:
-
-//fixing
-       $make-offer-control-input-top:
-     $make-offer-control-input-right:
-    $make-offer-control-input-bottom:
-      $make-offer-control-input-left:
-
-//displaying
-   $make-offer-control-input-display:
-  $make-offer-control-input-overflow:
-$make-offer-control-input-overflow-y:
-
-//dimensions
     $make-offer-control-input-height: 40px;
      $make-offer-control-input-width: 100%;
 
-//spacing
-    $make-offer-control-input-margin:
-   $make-offer-control-input-padding:
-
-
-
-
-
-
-
-
-
-
-
-
-//request
-
-//placement
   $request-position: relative;
      $request-float: left;
-   $request-z-index:
 
-//fixing
-       $request-top:
-     $request-right:
-    $request-bottom:
-      $request-left:
-
-//displaying
-   $request-display:
   $request-overflow: hidden;
-$request-overflow-y:
 
-//dimensions
-    $request-height:
      $request-width: 100%;
 
-//spacing
-    $request-margin:
    $request-padding: $message-box-padding;
 
-
-
-
-//request-text
-
-//placement
-  $request-text-position:
      $request-text-float: left;
-   $request-text-z-index:
 
-//fixing
-       $request-text-top:
-     $request-text-right:
-    $request-text-bottom:
-      $request-text-left:
-
-//displaying
-   $request-text-display:
-  $request-text-overflow:
-$request-text-overflow-y:
-
-//dimensions
-    $request-text-height:
-     $request-text-width:
-
-//spacing
-    $request-text-margin:
-   $request-text-padding:
-
-
-
-
-//request-controls
-
-//placement
-  $request-controls-position:
      $request-controls-float: left;
-   $request-controls-z-index:
 
-//fixing
-       $request-controls-top:
-     $request-controls-right:
-    $request-controls-bottom:
-      $request-controls-left:
-
-//displaying
-   $request-controls-display:
-  $request-controls-overflow:
-$request-controls-overflow-y:
-
-//dimensions
-    $request-controls-height:
      $request-controls-width: 100%;
 
-//spacing
-    $request-controls-margin:
    $request-controls-padding: 0px $additional-control-padding 0px 0px;
 
-
-
-
-//request-controls-a
-
-//placement
-  $request-controls-a-position:
      $request-controls-a-float: right;
-   $request-controls-a-z-index:
 
-//fixing
-       $request-controls-a-top:
-     $request-controls-a-right:
-    $request-controls-a-bottom:
-      $request-controls-a-left:
-
-//displaying
-   $request-controls-a-display:
-  $request-controls-a-overflow:
-$request-controls-a-overflow-y:
-
-//dimensions
-    $request-controls-a-height:
-     $request-controls-a-width:
-
-//spacing
     $request-controls-a-margin: 0px 5px 0px 0px;
-   $request-controls-a-padding:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//request-list
-
-//placement
   $request-list-position: relative;
      $request-list-float: left;
-   $request-list-z-index:
 
-//fixing
-       $request-list-top:
-     $request-list-right:
-    $request-list-bottom:
-      $request-list-left:
-
-//displaying
    $request-list-display: block;
   $request-list-overflow: auto;
-$request-list-overflow-y:
 
-//dimensions
-    $request-list-height:
      $request-list-width: 100%;
 
-//spacing
     $request-list-margin: $ppal-element-margin;
-   $request-list-padding:
-
-
-
