@@ -1,7 +1,7 @@
 {
     "exclude": [
-        "aplication.css.scss",
-        "variables.css.scss"
+        "**/application.css.scss",
+        "**/variables.css.scss"
     ],
     "always-semicolon": true,
     "block-indent": 2,
