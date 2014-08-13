@@ -1,4 +1,8 @@
 {
+    "exclude": [
+        "aplication.css.scss",
+        "variables.css.scss"
+    ],
     "always-semicolon": true,
     "block-indent": 2,
     "color-case": "lower",
