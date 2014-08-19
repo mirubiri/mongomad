@@ -1,7 +1,7 @@
-.profile_card {
-  @extend %grey-shadow;
+.profile-card {
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
+  @extend %grey-shadow;
 
   float: left;
 
@@ -12,14 +12,26 @@
   margin: $ppal-element-margin;
 
   background-color: $white-bgcolor;
-  .head_image {
+
+  .head-image {
     img {
+      @include border-radius(5px 5px 0px 0px);
       width: 100%;
     }
   }
+
 }
 
-.make_offer_control {
+.user-card{
+  @include box-sizing(border-box);
+  float: left;
+  width: 100%;
+  padding: $element-padding;
+}
+
+
+
+.make-offer-control {
   @include box-sizing(border-box);
   input {
     @include border-radius(10px, 10px);

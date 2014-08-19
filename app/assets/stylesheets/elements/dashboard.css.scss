@@ -1,11 +1,27 @@
 .dashboard {
+
+  float: left;
+  width: 25%;
+
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
 
-  background-color: $white-bgcolor;
   background-color: $container-bgcolor;
+
   .bezel {
+    @include border-radius(5px 5px 0px 0px);
+    float: left;
+    width: 100%;
+    height: $top-container-bezel-height;
     background-color: $white-bgcolor;
   }
+
+  .container{
+    @include box-sizing(border-box);
+    padding: $element-padding;
+    float: left;
+    width: 100%;
+  }
 }
+

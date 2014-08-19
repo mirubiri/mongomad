@@ -24,61 +24,62 @@
 }
 
 
+.avatar-profile-card {
+
+  height: 90px;
+
+  .image {
+
+    @include box-sizing(border-box);
+
+    margin: 0 auto;
+    position: relative;
+    top: -70px;
+
+    width: 92px;
+    height: 92px;
+
+    @include border-radius(46px, 46px);
+    background-color: $white-bgcolor;
+
+    padding: 6px;
+
+    text-align: center;
+
+    img {
+      @include box-sizing(border-box);
+
+      height: 100%;
+      width: 100%;
+
+      @include border-radius(50%, 50%);
+
+      border: 1px solid $grey-border-color;
+    }
+  }
+
+  .user-data {
+
+    @include box-sizing(border-box);
+
+    margin: 0 auto;
+    position: relative;
+    top: -70px;
+
+    .full-name {
+      color: $title-font-color;
+
+      text-align: center;
+    }
+    .location {
+      color: $text-font-color;
+
+      text-align: center;
+    }
+  }
+}
 
 
-
-
-
-
-
-
-
-
-// .omnibar_avatar {
-//   @extend %grey-shadow;
-//   @include border-radius(5px, 5px);
-
-//   background-color: $white-bgcolor;
-// }
-
-// .profile_card_avatar {
-//   @extend %grey-shadow;
-//   @include border-radius(5px, 5px);
-//   @include box-sizing(border-box);
-
-//   background-color: $white-bgcolor;
-//   .image {
-//     @include border-radius(43px, 43px);
-
-//     background-color: white;
-
-//     text-align: center;
-//     img {
-//       @include border-radius(35px, 35px);
-
-//       position: relative;
-
-//       top: 7px;
-
-//       height: 70px;
-//       width: 70px;
-
-//       border: 1px solid $grey-border-color;
-//     }
-//   }
-//   .user_data {
-//     .full_name {
-//       color: $title-font-color;
-
-//       text-align: center;
-//     }
-//     .location {
-//       color: $text-font-color;
-
-//       text-align: center;
-//     }
-//   }
-// }
 
 // .request_avatar {
 //   @extend %grey-shadow;
