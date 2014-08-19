@@ -78,20 +78,18 @@ nav {
 //   background: red;
 // }
 
-// textarea {
-//   float: left;
+textarea {
+  float: left;
 
-//   height: auto;
-//   width: 100%;
+  height: auto;
+  width: 100%;
 
-//   resize: none;
-// }
+  resize: none;
+}
 
-// textarea:focus {
-//   border: 1px solid blue;
-
-//   outline: none !important;
-// }
+textarea:focus {
+  outline: none !important;
+}
 
 // .hidden {
 //   visibility: hidden;

@@ -24,9 +24,12 @@
 }
 
 
+
+
 .avatar-profile-card {
 
-  height: 90px;
+  height: 70px;
+  text-align: center;
 
   .image {
 
@@ -44,7 +47,6 @@
 
     padding: 6px;
 
-    text-align: center;
 
     img {
       @include box-sizing(border-box);
@@ -68,13 +70,9 @@
 
     .full-name {
       color: $title-font-color;
-
-      text-align: center;
     }
     .location {
       color: $text-font-color;
-
-      text-align: center;
     }
   }
 }

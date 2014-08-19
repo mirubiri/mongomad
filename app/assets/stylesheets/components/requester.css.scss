@@ -1,21 +1,47 @@
 .requester {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
+
   @include box-sizing(border-box);
 
-  border: none;
-  box-shadow: none;
+  float: left;
+  width: 100%;
+  overflow: auto;
 
-  background-color: $white-bgcolor;
+  margin: $ppal-element-margin;
+
+  form{
+    @include box-sizing(border-box);
+    float: left;
+    width: 100%;
+    overflow: auto;
+  }
+
   textarea {
+    @include box-sizing(border-box);
+    min-height: 38px;
+    float: left;
+    width: 100%;
+    overflow: auto;
     @include border-radius(5px, 5px);
 
     border: 2px solid $container-bgcolor;
   }
+
   .countdown {
+    @include box-sizing(border-box);
+    float: left;
+    width: auto;
+    overflow: visible;
     color: $text-font-color;
+    margin-top: 2px;
   }
+
   input {
+    float: right;
+
+    margin-top:4px;
+
+    height: 20px;
+
     @include border-radius(5px, 5px);
 
     border: none;
