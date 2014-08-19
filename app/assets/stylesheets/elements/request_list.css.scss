@@ -1,8 +1,13 @@
-.request_list {
+.request-list {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  @include box-sizing(border-box);
-  @extend %dashboard_component_title;
+  @extend %dashboard-component-title;
+
+  float: left;
+
+  width: 100%;
+
+  margin: $ppal-element-margin;
 
   background-color: $white-bgcolor;
 }

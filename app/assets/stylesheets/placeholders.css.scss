@@ -1,12 +1,31 @@
-%centered {
-  float: none;
+// %centered {
+//   float: none;
 
-  display: block;
+//   display: block;
 
-  margin-right: auto;
-  margin-left: auto;
+//   margin-right: auto;
+//   margin-left: auto;
+// }
+
+%grey-shadow {
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
 }
 
-%grey-shadow{
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+%dashboard-component-title {
+  .dashboard-component-title {
+    @include box-sizing(border-box);
+
+    float: left;
+
+    height: 30px;
+    width: 100%;
+
+    padding: 5px;
+
+    color: $white-font-text;
+
+    background-color: $grey-bgcolor;
+
+    text-align: center;
+  }
 }

@@ -1,8 +1,7 @@
 .search {
+  @include box-sizing(border-box);
 
   float: left;
-
-  @include box-sizing(border-box);
 
   width: 40%;
 

@@ -1,8 +1,11 @@
-.dashboard_business_info {
+.business-info-dashboard {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  @include box-sizing(border-box);
-  @extend %dashboard_component_title;
+  @extend %dashboard-component-title;
+
+  float: left;
+
+  color: $text-font-color;
 
   background-color: $white-bgcolor;
 

@@ -1,54 +1,62 @@
 .requester {
-
   @include box-sizing(border-box);
 
   float: left;
-  width: 100%;
+
   overflow: auto;
 
+  width: 100%;
+
   margin: $ppal-element-margin;
-
-  form{
+  form {
     @include box-sizing(border-box);
-    float: left;
-    width: 100%;
-    overflow: auto;
-  }
 
+    float: left;
+
+    overflow: auto;
+
+    width: 100%;
+  }
   textarea {
     @include box-sizing(border-box);
-    min-height: 38px;
-    float: left;
-    width: 100%;
-    overflow: auto;
     @include border-radius(5px, 5px);
+
+    float: left;
+
+    overflow: auto;
+
+    width: 100%;
+    min-height: 38px;
 
     border: 2px solid $container-bgcolor;
   }
-
   .countdown {
     @include box-sizing(border-box);
+
     float: left;
-    width: auto;
+
     overflow: visible;
-    color: $text-font-color;
+
+    width: auto;
+
     margin-top: 2px;
+
+    color: $text-font-color;
   }
-
   input {
-    float: right;
+    @include border-radius(5px, 5px);
 
-    margin-top:4px;
+    float: right;
 
     height: 20px;
 
-    @include border-radius(5px, 5px);
+    margin-top: 4px;
 
     border: none;
 
     font-weight: bold;
+    color: $white-font-text;
 
     background-color: $blue-button-bgcolor;
-    color: $white-font-text;
   }
 }

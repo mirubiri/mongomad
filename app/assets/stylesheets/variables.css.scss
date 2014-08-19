@@ -37,7 +37,8 @@ $text-font-color: rgb(153,153,153);
 $red-button-bgcolor: rgb(231,74,57);
 $white-font-text: rgb(253,253,253);
 $blue-button-bgcolor: rgb(58,157,223);
-// $grey-button-bgcolor: rgb(183,183,183);
+$grey-bgcolor: rgb(183,183,183);
+//$grey-button-bgcolor: rgb(183,183,183);
 $grey-border-color: rgb(137,137,137);
 // $blue-nav-border-color: #9DC4D1;
 $white-bgcolor: rgb(253,253,253);
@@ -45,9 +46,10 @@ $grey-shadow-color: #9BB3B8;
 
 $dashboard-padding: 0px 10px 0px  0px;
 
-// $small-font: 10px;
-// $medium-font: 12px;
-// $big-font: 14px;
+$small-font-size: 10px;
+$medium-font-size: 12px;
+$default-font-size: 15px;
+$big-font-size: 14px;
 
 // $item-preview-big: 300px;
 // $item-snapshoot: 120px;

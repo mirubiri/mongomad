@@ -1,13 +1,10 @@
-.inline-logout{
+.inline-logout {
+  @include box-sizing(border-box);
 
   float: left;
 
-  @include box-sizing(border-box);
-
   width: 10%;
-
-  .icon{
+  .icon {
     float: right;
   }
-
 }

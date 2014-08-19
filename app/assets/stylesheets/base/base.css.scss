@@ -14,12 +14,12 @@ body {
   padding: 0;
 
   font-family: 'Roboto';
-  font-size: 15px;
+  font-size: $default-font-size;
   font-weight: normal;
   line-height: 18px;
+  color: white;
 
   background-color: $body-bgcolor;
-  color: white;
 }
 
 .main {
@@ -37,7 +37,6 @@ body {
 
 nav {
   height: 100%;
-
   li {
     display: inline-block;
 
@@ -58,14 +57,9 @@ nav {
 //   }
 // }
 
-// a {
-//   @include unstyled-link;
-//   //@include unstyled-link;
-
-//   display: block;
-
-//   height: 100%;
-// }
+a {
+  @include unstyled-link;
+}
 
 // input {
 //   @include border-radius(5px, 5px);

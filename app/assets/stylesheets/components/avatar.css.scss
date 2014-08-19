@@ -23,9 +23,6 @@
   }
 }
 
-
-
-
 .avatar-profile-card {
 
   height: 70px;
@@ -77,11 +74,15 @@
   }
 }
 
+.avatar-request {
+  .image {
+    width: 15%;
+    float: left;
+    @include border-radius(5px, 5px);
 
-
-// .request_avatar {
-//   @extend %grey-shadow;
-//   @include border-radius(5px, 5px);
-
-//   background-color: $white-bgcolor;
-// }
+    img {
+      height: 40px;
+      width: 40px;
+    }
+  }
+}

@@ -12,20 +12,22 @@
   margin: $ppal-element-margin;
 
   background-color: $white-bgcolor;
-
   .head-image {
     img {
       @include border-radius(5px 5px 0px 0px);
+
       width: 100%;
     }
   }
-
 }
 
-.user-card{
+.user-card {
   @include box-sizing(border-box);
+
   float: left;
+
   width: 100%;
+
   padding: $element-padding;
 }
 
@@ -33,22 +35,25 @@
 
 .make-offer-control {
   @include box-sizing(border-box);
+
   float: left;
-  width: 100%;
+
   overflow: auto;
 
+  width: 100%;
   input {
-    float: left;
-    width: 100%;
-    height: $button-height;
-
     @include border-radius(5px, 5px);
+
+    float: left;
+
+    height: $button-height;
+    width: 100%;
 
     border: none;
 
     font-weight: bold;
+    color: $white-font-text;
 
     background-color: $red-button-bgcolor;
-    color: $white-font-text;
   }
 }
