@@ -4,7 +4,7 @@ body {
   float: left;
 
   display: block;
-  overflow: -moz-scrollbars-vertical;
+  overflow: vertical;
   overflow-y: scroll;
 
   width: 100%;
@@ -22,75 +22,75 @@ body {
   color: white;
 }
 
-.main {
-  @include box-sizing(border-box);
+// .main {
+//   @include box-sizing(border-box);
 
-  float: left;
+//   float: left;
 
-  overflow: auto;
+//   overflow: auto;
 
-  width: 100%;
+//   width: 100%;
 
-  padding: $container-padding;
-}
+//   padding: $container-padding;
+// }
 
-nav {
-  height: 100%;
+// nav {
+//   height: 100%;
 
-  color: black;
-  li {
-    display: inline-block;
+//   color: black;
+//   li {
+//     display: inline-block;
 
-    height: 100%;
+//     height: 100%;
 
-    padding: 0 10px;
-  }
-}
+//     padding: 0 10px;
+//   }
+// }
 
-.active_nav {
-  background-color: $nav-selected;
-  a {
-    color: $white-font-text;
-  }
-}
+// .active_nav {
+//   background-color: $nav-selected;
+//   a {
+//     color: $white-font-text;
+//   }
+// }
 
-a {
-  @include unstyled-link;
-  //@include unstyled-link;
+// a {
+//   @include unstyled-link;
+//   //@include unstyled-link;
 
-  display: block;
+//   display: block;
 
-  height: 100%;
-}
+//   height: 100%;
+// }
 
-input {
-  @include border-radius(5px, 5px);
-}
+// input {
+//   @include border-radius(5px, 5px);
+// }
 
-.progress_bar {
-  height: 50px;
-  width: 0;
+// .progress_bar {
+//   height: 50px;
+//   width: 0;
 
-  background: red;
-}
+//   background: red;
+// }
 
-textarea {
-  float: left;
+// textarea {
+//   float: left;
 
-  height: auto;
-  width: 100%;
+//   height: auto;
+//   width: 100%;
 
-  resize: none;
-}
+//   resize: none;
+// }
 
-textarea:focus {
-  border: 1px solid blue;
+// textarea:focus {
+//   border: 1px solid blue;
 
-  outline: none !important;
-}
+//   outline: none !important;
+// }
 
-.hidden {
-  visibility: hidden;
-}
+// .hidden {
+//   visibility: hidden;
+// }
 
-//> .welcome_business_info;
+// //> .welcome_business_info;

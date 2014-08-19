@@ -1,419 +1,419 @@
 
-$inline-login-field-width: 100px;
+// $inline-login-field-width: 100px;
 
-$good-data-heigth: 25px;
+// $good-data-heigth: 25px;
 
-$omnibar-components-margin: 50px;
-$image-text-margin: 5px;
-$ppal-element-margin: 0px 0px 20px 0px;
-$profile-card-element-margin: 0px 0px 20px 0px;
-$data-margin: 5px;
-$profile-card-icon-margin: 5px;
-$good-bottom-margin: 5px;
-$message-margin: 10px;
-$title-description-margin: 5px;
+// $omnibar-components-margin: 50px;
+// $image-text-margin: 5px;
+// $ppal-element-margin: 0px 0px 20px 0px;
+// $profile-card-element-margin: 0px 0px 20px 0px;
+// $data-margin: 5px;
+// $profile-card-icon-margin: 5px;
+// $good-bottom-margin: 5px;
+// $message-margin: 10px;
+// $title-description-margin: 5px;
 
-$container-padding: 5px 30px;
-$nav-icon-padding: 0px;
-$inline-loggin-padding: 0px;
-$button-box-padding: 10px 5px;
-$element-padding: 15px;
-$message-box-padding: 5px 10px;
-$text-box-padding: 15px;
-$title-padding: 5px 5px;
-$component-padding: 25px;
-$nav-link-padding: 12px 5px;
-$additional-control-padding: 5px;
-$dashboard-component-padding: 0px 10px;
+// $container-padding: 5px 30px;
+// $nav-icon-padding: 0px;
+// $inline-loggin-padding: 0px;
+// $button-box-padding: 10px 5px;
+// $element-padding: 15px;
+// $message-box-padding: 5px 10px;
+// $text-box-padding: 15px;
+// $title-padding: 5px 5px;
+// $component-padding: 25px;
+// $nav-link-padding: 12px 5px;
+// $additional-control-padding: 5px;
+// $dashboard-component-padding: 0px 10px;
 
-$container-bgcolor: #B1D4E1;
+// $container-bgcolor: #B1D4E1;
 $body-bgcolor: rgb(90,148,173);
-$nav-selected: #B1D4E1;
-$title-font-color: black;
-$text-font-color: rgb(153,153,153);
-$nav-font-color: #839091;
-$red-button-bgcolor: rgb(231,74,57);
-$white-font-text: rgb(253,253,253);
-$blue-button-bgcolor: rgb(58,157,223);
-$grey-button-bgcolor: rgb(183,183,183);
-$grey-border-color: rgb(137,137,137);
-$blue-nav-border-color: #9DC4D1;
-$white-bgcolor: rgb(253,253,253);
-$grey-shadow-color: #9BB3B8;
+// $nav-selected: #B1D4E1;
+// $title-font-color: black;
+// $text-font-color: rgb(153,153,153);
+// $nav-font-color: #839091;
+// $red-button-bgcolor: rgb(231,74,57);
+// $white-font-text: rgb(253,253,253);
+// $blue-button-bgcolor: rgb(58,157,223);
+// $grey-button-bgcolor: rgb(183,183,183);
+// $grey-border-color: rgb(137,137,137);
+// $blue-nav-border-color: #9DC4D1;
+// $white-bgcolor: rgb(253,253,253);
+// $grey-shadow-color: #9BB3B8;
 
-$small-font: 10px;
-$medium-font: 12px;
-$big-font: 14px;
+// $small-font: 10px;
+// $medium-font: 12px;
+// $big-font: 14px;
 
-$item-preview-big: 300px;
-$item-snapshoot: 120px;
+// $item-preview-big: 300px;
+// $item-snapshoot: 120px;
 
-  $omnibar-avatar-position: relative;
-     $omnibar-avatar-float: left;
+//   $omnibar-avatar-position: relative;
+//      $omnibar-avatar-float: left;
 
-  $omnibar-avatar-overflow: auto;
+//   $omnibar-avatar-overflow: auto;
 
-     $omnibar-avatar-width: 15%;
+//      $omnibar-avatar-width: 15%;
 
-    $omnibar-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-   $omnibar-avatar-padding: 5px 0px 0px 0px;
+//     $omnibar-avatar-margin: 0px $omnibar-components-margin 0px 0px;
+//    $omnibar-avatar-padding: 5px 0px 0px 0px;
 
-  $profile-card-avatar-position: relative;
-     $profile-card-avatar-float: left;
+//   $profile-card-avatar-position: relative;
+//      $profile-card-avatar-float: left;
 
-  $profile-card-avatar-overflow: auto;
+//   $profile-card-avatar-overflow: auto;
 
-     $profile-card-avatar-width: 100%;
+//      $profile-card-avatar-width: 100%;
 
-    $profile-card-avatar-margin: -25px $omnibar-components-margin 0px 0px;
-   $profile-card-avatar-padding: $dashboard-component-padding;
+//     $profile-card-avatar-margin: -25px $omnibar-components-margin 0px 0px;
+//    $profile-card-avatar-padding: $dashboard-component-padding;
 
-  $profile-card-avatar-image-position: relative;
+//   $profile-card-avatar-image-position: relative;
 
-       $profile-card-avatar-image-top: -30px;
+//        $profile-card-avatar-image-top: -30px;
 
-      $profile-card-avatar-image-left: 80px;
+//       $profile-card-avatar-image-left: 80px;
 
-    $profile-card-avatar-image-height: 86px;
-     $profile-card-avatar-image-width: 86px;
+//     $profile-card-avatar-image-height: 86px;
+//      $profile-card-avatar-image-width: 86px;
 
-  $profile-card-avatar-image-img-position: relative;
+//   $profile-card-avatar-image-img-position: relative;
 
-       $profile-card-avatar-image-img-top: -40px;
+//        $profile-card-avatar-image-img-top: -40px;
 
-      $profile-card-avatar-image-img-left: 0px;
+//       $profile-card-avatar-image-img-left: 0px;
 
-    $profile-card-avatar-image-img-height: 60px;
+//     $profile-card-avatar-image-img-height: 60px;
 
-    $profile-card-avatar-user-data-full-name-margin: $data-margin;
+//     $profile-card-avatar-user-data-full-name-margin: $data-margin;
 
-    $profile-card-avatar-user-data-location-margin: $data-margin;
+//     $profile-card-avatar-user-data-location-margin: $data-margin;
 
-  $request-avatar-position: relative;
-     $request-avatar-float: left;
+//   $request-avatar-position: relative;
+//      $request-avatar-float: left;
 
-  $request-avatar-overflow: auto;
+//   $request-avatar-overflow: auto;
 
-    $request-avatar-margin: $image-text-margin;
+//     $request-avatar-margin: $image-text-margin;
 
-    $request-avatar-image-height: 40px;
-     $request-avatar-image-width: 40px;
+//     $request-avatar-image-height: 40px;
+//      $request-avatar-image-width: 40px;
 
-  $offer-avatar-position: relative;
-     $offer-avatar-float: left;
+//   $offer-avatar-position: relative;
+//      $offer-avatar-float: left;
 
-  $offer-avatar-overflow: auto;
+//   $offer-avatar-overflow: auto;
 
-    $offer-avatar-margin: 0px $omnibar-components-margin 0px 0px;
+//     $offer-avatar-margin: 0px $omnibar-components-margin 0px 0px;
 
-    $offer-avatar-full-name-margin: $data-margin;
+//     $offer-avatar-full-name-margin: $data-margin;
 
-    $offer-avatar-image-margin: $image-text-margin;
+//     $offer-avatar-image-margin: $image-text-margin;
 
-  $negotiation-avatar-position: relative;
-     $negotiation-avatar-float: left;
+//   $negotiation-avatar-position: relative;
+//      $negotiation-avatar-float: left;
 
-  $negotiation-avatar-overflow: auto;
+//   $negotiation-avatar-overflow: auto;
 
-    $negotiation-avatar-margin: 0px $omnibar-components-margin 0px 0px;
+//     $negotiation-avatar-margin: 0px $omnibar-components-margin 0px 0px;
 
-  $deal-avatar-position: relative;
-     $deal-avatar-float: left;
+//   $deal-avatar-position: relative;
+//      $deal-avatar-float: left;
 
-  $deal-avatar-overflow: auto;
+//   $deal-avatar-overflow: auto;
 
-    $deal-avatar-margin: 0px $omnibar-components-margin 0px 0px;
+//     $deal-avatar-margin: 0px $omnibar-components-margin 0px 0px;
 
-  $message-avatar-position: relative;
-     $message-avatar-float: left;
+//   $message-avatar-position: relative;
+//      $message-avatar-float: left;
 
-  $message-avatar-overflow: auto;
+//   $message-avatar-overflow: auto;
 
-    $message-avatar-margin: 0px $image-text-margin 0px 0px;
+//     $message-avatar-margin: 0px $image-text-margin 0px 0px;
 
-  $conversation-position: relative;
-     $conversation-float: left;
+//   $conversation-position: relative;
+//      $conversation-float: left;
 
-  $conversation-overflow: auto;
+//   $conversation-overflow: auto;
 
-     $conversation-width: 70%;
+//      $conversation-width: 70%;
 
-   $conversation-padding: $text-box-padding;
+//    $conversation-padding: $text-box-padding;
 
-   $conversation-messages-padding: $component-padding;
+//    $conversation-messages-padding: $component-padding;
 
-   $conversation-message-input-padding: $text-box-padding;
+//    $conversation-message-input-padding: $text-box-padding;
 
-   $conversation-send-message-control-padding: $button-box-padding;
+//    $conversation-send-message-control-padding: $button-box-padding;
 
-  $inline-login-position: relative;
-     $inline-login-float: left;
+//   $inline-login-position: relative;
+//      $inline-login-float: left;
 
-  $inline-login-overflow: auto;
+//   $inline-login-overflow: auto;
 
-    $inline-login-margin: $omnibar-components-margin;
+//     $inline-login-margin: $omnibar-components-margin;
 
-  $inline-logout-position: relative;
-     $inline-logout-float: right;
+//   $inline-logout-position: relative;
+//      $inline-logout-float: right;
 
-  $inline-logout-overflow: hidden;
+//   $inline-logout-overflow: hidden;
 
-    $inline-logout-height: 30px;
-     $inline-logout-width: 5%;
+//     $inline-logout-height: 30px;
+//      $inline-logout-width: 5%;
 
-    $inline-logout-margin: 0px;
-   $inline-logout-padding: 10px 0px 0px 0px;
+//     $inline-logout-margin: 0px;
+//    $inline-logout-padding: 10px 0px 0px 0px;
 
-     $inline-logout-icon-float: right;
+//      $inline-logout-icon-float: right;
 
-$inline-logout-icon-img-height: 25px;
- $inline-logout-icon-img-width: 25px;
+// $inline-logout-icon-img-height: 25px;
+//  $inline-logout-icon-img-width: 25px;
 
-  $message-position: relative;
-     $message-float: left;
+//   $message-position: relative;
+//      $message-float: left;
 
-  $message-overflow: auto;
+//   $message-overflow: auto;
 
-    $message-margin: $message-margin;
-   $message-padding: $text-box-padding;
+//     $message-margin: $message-margin;
+//    $message-padding: $text-box-padding;
 
-    $message-text-margin: $data-margin;
-   $message-text-padding: 0px 0px 0px 5px;
+//     $message-text-margin: $data-margin;
+//    $message-text-padding: 0px 0px 0px 5px;
 
-  $proposal-position: relative;
-     $proposal-float: left;
+//   $proposal-position: relative;
+//      $proposal-float: left;
 
-  $proposal-overflow: auto;
+//   $proposal-overflow: auto;
 
-   $proposal-padding: $component-padding;
+//    $proposal-padding: $component-padding;
 
-    $proposal-composer-goods-margin: $good-bottom-margin;
+//     $proposal-composer-goods-margin: $good-bottom-margin;
 
-    $proposal-receiver-goods-margin: $good-bottom-margin;
+//     $proposal-receiver-goods-margin: $good-bottom-margin;
 
-  $requester-position: relative;
-     $requester-float: left;
+//   $requester-position: relative;
+//      $requester-float: left;
 
-  $requester-overflow: auto;
+//   $requester-overflow: auto;
 
-     $requester-width: 98%;
+//      $requester-width: 98%;
 
-    $requester-margin: $profile-card-element-margin;
-   $requester-padding: $dashboard-component-padding;
+//     $requester-margin: $profile-card-element-margin;
+//    $requester-padding: $dashboard-component-padding;
 
-    $requester-textarea-height: 20px;
-     $requester-textarea-width: 99%;
+//     $requester-textarea-height: 20px;
+//      $requester-textarea-width: 99%;
 
-    $requester-textarea-margin: 0px 0px 5px 0px;
+//     $requester-textarea-margin: 0px 0px 5px 0px;
 
-     $requester-countdown-float: left;
+//      $requester-countdown-float: left;
 
-     $requester-input-float: right;
+//      $requester-input-float: right;
 
-    $requester-input-margin: 0px;
-   $requester-input-padding: 10px 15px;
+//     $requester-input-margin: 0px;
+//    $requester-input-padding: 10px 15px;
 
-  $search-position: relative;
-     $search-float: left;
+//   $search-position: relative;
+//      $search-float: left;
 
-  $search-overflow: auto;
+//   $search-overflow: auto;
 
-     $search-width: 15%;
+//      $search-width: 15%;
 
-    $search-margin: 10px $omnibar-components-margin 0px 0px;
+//     $search-margin: 10px $omnibar-components-margin 0px 0px;
 
-    $search-input-height: 100%;
-     $search-input-width: 100%;
+//     $search-input-height: 100%;
+//      $search-input-width: 100%;
 
-  $dashboard-business-info-position: relative;
-     $dashboard-business-info-float: left;
+//   $dashboard-business-info-position: relative;
+//      $dashboard-business-info-float: left;
 
-   $dashboard-business-info-display: block;
-  $dashboard-business-info-overflow: auto;
+//    $dashboard-business-info-display: block;
+//   $dashboard-business-info-overflow: auto;
 
-     $dashboard-business-info-width: 100%;
+//      $dashboard-business-info-width: 100%;
 
-   $dashboard-business-info-padding: $ppal-element-margin;
+//    $dashboard-business-info-padding: $ppal-element-margin;
 
-  $dashboard-position: relative;
-     $dashboard-float: left;
+//   $dashboard-position: relative;
+//      $dashboard-float: left;
 
-  $dashboard-overflow: auto;
-$dashboard-overflow-y: hidden;
+//   $dashboard-overflow: auto;
+// $dashboard-overflow-y: hidden;
 
-     $dashboard-width: 25%;
+//      $dashboard-width: 25%;
 
-    $dashboard-bezel-height: 30px;
-     $dashboard-bezel-width: 100%;
+//     $dashboard-bezel-height: 30px;
+//      $dashboard-bezel-width: 100%;
 
-     $dashboard-container-float: left;
+//      $dashboard-container-float: left;
 
-  $dashboard-container-overflow: auto;
-$dashboard-container-overflow-y: hidden;
+//   $dashboard-container-overflow: auto;
+// $dashboard-container-overflow-y: hidden;
 
-   $dashboard-container-padding: $element-padding;
+//    $dashboard-container-padding: $element-padding;
 
-  $deal-position: relative;
-     $deal-float: left;
+//   $deal-position: relative;
+//      $deal-float: left;
 
-  $deal-overflow: auto;
+//   $deal-overflow: auto;
 
-     $deal-width: 100%;
+//      $deal-width: 100%;
 
-    $deal-margin: $ppal-element-margin;
+//     $deal-margin: $ppal-element-margin;
 
-  $expositor-position: relative;
-     $expositor-float: right;
+//   $expositor-position: relative;
+//      $expositor-float: right;
 
-  $expositor-overflow: auto;
+//   $expositor-overflow: auto;
 
-     $expositor-width: 73%;
+//      $expositor-width: 73%;
 
-    $expositor-navigation-height: 30px;
+//     $expositor-navigation-height: 30px;
 
-   $expositor-navigation-li-padding: 0px;
+//    $expositor-navigation-li-padding: 0px;
 
-   $expositor-navigation-li-a-padding: 5px 20px 0px 20px;
+//    $expositor-navigation-li-a-padding: 5px 20px 0px 20px;
 
-     $expositor-element-list-float: left;
+//      $expositor-element-list-float: left;
 
-  $expositor-element-list-overflow: auto;
+//   $expositor-element-list-overflow: auto;
 
-     $expositor-element-list-width: 100%;
+//      $expositor-element-list-width: 100%;
 
-   $expositor-element-list-padding: $element-padding;
+//    $expositor-element-list-padding: $element-padding;
 
-  $good-position: relative;
-     $good-float: left;
+//   $good-position: relative;
+//      $good-float: left;
 
-  $good-overflow: auto;
+//   $good-overflow: auto;
 
-     $good-width: auto;
+//      $good-width: auto;
 
-    $good-margin: $good-bottom-margin;
+//     $good-margin: $good-bottom-margin;
 
-     $item-image-width: 100%;
+//      $item-image-width: 100%;
 
-    $item-name-height: $good-data-heigth;
-     $item-name-width: 100%;
+//     $item-name-height: $good-data-heigth;
+//      $item-name-width: 100%;
 
-    $item-controls-height: $good-data-heigth;
-     $item-controls-width: 100%;
+//     $item-controls-height: $good-data-heigth;
+//      $item-controls-width: 100%;
 
-    $product-name-height: $good-data-heigth;
-     $product-name-width: 100%;
+//     $product-name-height: $good-data-heigth;
+//      $product-name-width: 100%;
 
-    $cash-amount-height: $good-data-heigth;
-     $cash-amount-width: 100%;
+//     $cash-amount-height: $good-data-heigth;
+//      $cash-amount-width: 100%;
 
-  $login-overflow: auto;
+//   $login-overflow: auto;
 
-     $login-width: 235px;
+//      $login-width: 235px;
 
-   $login-padding: $container-padding;
+//    $login-padding: $container-padding;
 
-  $negotiation-position: relative;
-     $negotiation-float: left;
+//   $negotiation-position: relative;
+//      $negotiation-float: left;
 
-  $negotiation-overflow: auto;
+//   $negotiation-overflow: auto;
 
-     $negotiation-width: 100%;
+//      $negotiation-width: 100%;
 
-    $negotiation-margin: $ppal-element-margin;
+//     $negotiation-margin: $ppal-element-margin;
 
-   $negotiation-leave-negotiation-control-padding: $button-box-padding;
+//    $negotiation-leave-negotiation-control-padding: $button-box-padding;
 
-  $offer-position: relative;
-     $offer-float: left;
+//   $offer-position: relative;
+//      $offer-float: left;
 
-  $offer-overflow: auto;
+//   $offer-overflow: auto;
 
-     $offer-width: 300px;
+//      $offer-width: 300px;
 
-    $offer-margin: $ppal-element-margin;
+//     $offer-margin: $ppal-element-margin;
 
-     $offer-title-width: 100%;
+//      $offer-title-width: 100%;
 
-   $offer-title-padding: $title-padding;
+//    $offer-title-padding: $title-padding;
 
-   $offer-message-padding: $text-box-padding;
+//    $offer-message-padding: $text-box-padding;
 
-   $offer-controls-padding: $button-box-padding;
+//    $offer-controls-padding: $button-box-padding;
 
-  $omnibar-position: relative;
-     $omnibar-float: left;
+//   $omnibar-position: relative;
+//      $omnibar-float: left;
 
-   $omnibar-display: inline;
-  $omnibar-overflow: auto;
+//    $omnibar-display: inline;
+//   $omnibar-overflow: auto;
 
-     $omnibar-width: 100%;
+//      $omnibar-width: 100%;
 
-   $omnibar-padding: $container-padding;
+//    $omnibar-padding: $container-padding;
 
-     $omnibar-logo-width: 5%;
+//      $omnibar-logo-width: 5%;
 
-    $omnibar-logo-margin: 0px $omnibar-components-margin 0px 0px;
+//     $omnibar-logo-margin: 0px $omnibar-components-margin 0px 0px;
 
-     $omnibar-navigation-controls-width: 40%;
+//      $omnibar-navigation-controls-width: 40%;
 
-    $omnibar-navigation-controls-margin: 0px $omnibar-components-margin 0px 0px;
-   $omnibar-navigation-controls-padding: 5px 0px 0px 0px;
+//     $omnibar-navigation-controls-margin: 0px $omnibar-components-margin 0px 0px;
+//    $omnibar-navigation-controls-padding: 5px 0px 0px 0px;
 
-     $profile-card-float: left;
+//      $profile-card-float: left;
 
-   $profile-card-display: block;
+//    $profile-card-display: block;
 
-     $profile-card-width: 100%;
+//      $profile-card-width: 100%;
 
-    $profile-card-margin: $ppal-element-margin;
+//     $profile-card-margin: $ppal-element-margin;
 
-     $profile-card-head-image-width: 100%;
+//      $profile-card-head-image-width: 100%;
 
-     $profile-card-head-image-img-width: 100%;
+//      $profile-card-head-image-img-width: 100%;
 
-  $profile-card-user-card-position: relative;
-     $profile-card-user-card-float: left;
+//   $profile-card-user-card-position: relative;
+//      $profile-card-user-card-float: left;
 
-    $profile-card-user-card-height: 80px;
-     $profile-card-user-card-width: 100%;
+//     $profile-card-user-card-height: 80px;
+//      $profile-card-user-card-width: 100%;
 
-     $make-offer-control-float: left;
+//      $make-offer-control-float: left;
 
-    $make-offer-control-height: 0px 0px 20px 0px;
-     $make-offer-control-width: 100%;
+//     $make-offer-control-height: 0px 0px 20px 0px;
+//      $make-offer-control-width: 100%;
 
-   $make-offer-control-padding: $dashboard-component-padding;
+//    $make-offer-control-padding: $dashboard-component-padding;
 
-    $make-offer-control-input-height: 40px;
-     $make-offer-control-input-width: 100%;
+//     $make-offer-control-input-height: 40px;
+//      $make-offer-control-input-width: 100%;
 
-  $request-position: relative;
-     $request-float: left;
+//   $request-position: relative;
+//      $request-float: left;
 
-  $request-overflow: hidden;
+//   $request-overflow: hidden;
 
-     $request-width: 100%;
+//      $request-width: 100%;
 
-   $request-padding: $message-box-padding;
+//    $request-padding: $message-box-padding;
 
-     $request-text-float: left;
+//      $request-text-float: left;
 
-     $request-controls-float: left;
+//      $request-controls-float: left;
 
-     $request-controls-width: 100%;
+//      $request-controls-width: 100%;
 
-   $request-controls-padding: 0px $additional-control-padding 0px 0px;
+//    $request-controls-padding: 0px $additional-control-padding 0px 0px;
 
-     $request-controls-a-float: right;
+//      $request-controls-a-float: right;
 
-    $request-controls-a-margin: 0px 5px 0px 0px;
+//     $request-controls-a-margin: 0px 5px 0px 0px;
 
-  $request-list-position: relative;
-     $request-list-float: left;
+//   $request-list-position: relative;
+//      $request-list-float: left;
 
-   $request-list-display: block;
-  $request-list-overflow: auto;
+//    $request-list-display: block;
+//   $request-list-overflow: auto;
 
-     $request-list-width: 100%;
+//      $request-list-width: 100%;
 
-    $request-list-margin: $ppal-element-margin;
+//     $request-list-margin: $ppal-element-margin;

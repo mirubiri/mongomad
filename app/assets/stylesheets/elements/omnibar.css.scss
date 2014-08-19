@@ -1,19 +1,18 @@
 .omnibar {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
   @include box-sizing(border-box);
 
-  border: 0;
-  box-shadow: none;
+  overflow: auto;
 
-  background-color: $white-bgcolor;
   background-color: transparent;
+
   div, nav {
     float: left;
 
     display: inline;
   }
-  .navigation_controls {
+
+  .navigation-controls {
     text-align: center;
   }
+
 }
