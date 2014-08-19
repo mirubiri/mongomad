@@ -2,7 +2,9 @@
 
   float: left;
 
-  background-color: transparent;
+  @include box-sizing(border-box);
 
-  text-align: right;
+  width: 30%;
+
+  text-align: center;
 }

@@ -1,12 +1,15 @@
 .avatar-omnibar {
   float: left;
 
-  overflow: auto;
+  @include box-sizing(border-box);
 
-  margin-right: $omnibar-components-margin;
+  width: 15%;
+
+  overflow: visible;
 
   .image {
     float: left;
+    margin-right: 5px;
     img {
       height: 40px;
       width: 40px;

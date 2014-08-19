@@ -35,23 +35,21 @@ body {
 }
 
 
+nav {
+  height: 100%;
+
+  li {
+    display: inline-block;
+
+    height: 100%;
+
+    padding: 0 10px;
+  }
+}
 
 
 
 
-
-// nav {
-//   height: 100%;
-
-//   color: black;
-//   li {
-//     display: inline-block;
-
-//     height: 100%;
-
-//     padding: 0 10px;
-//   }
-// }
 
 // .active_nav {
 //   background-color: $nav-selected;
