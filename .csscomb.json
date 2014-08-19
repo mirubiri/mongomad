@@ -76,12 +76,12 @@
             "font-family",
             "font-size",
             "font-weight",
-            "line-height"
+            "line-height",
+            "color"
         ],
         [
             "background-color",
-            "background",
-            "color"
+            "background"
         ]
     ]
 }

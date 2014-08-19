@@ -1,8 +1,8 @@
-.profile_card_avatar
+.avatar-profile-card
   .image
     = yield_content :image
 
-  .user_data
+  .user-data
     / .reputation
     /   .icon
     /      = static_image_tag('star',20,20)
@@ -15,7 +15,7 @@
     /   .number
     /     | 350
 
-    .full_name
+    .full-name
       = avatar.full_name
 
     .location

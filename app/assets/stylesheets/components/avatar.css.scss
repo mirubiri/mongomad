@@ -1,52 +1,85 @@
-.omnibar_avatar {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
+.avatar-omnibar {
+  float: left;
 
-  background-color: $white-bgcolor;
-}
+  overflow: auto;
 
-.profile_card_avatar {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
-  @include box-sizing(border-box);
+  margin-right: $omnibar-components-margin;
 
-  background-color: $white-bgcolor;
   .image {
-    @include border-radius(43px, 43px);
-
-    background-color: white;
-
-    text-align: center;
+    float: left;
     img {
-      @include border-radius(35px, 35px);
-
-      position: relative;
-
-      top: 7px;
-
-      height: 70px;
-      width: 70px;
-
-      border: 1px solid $grey-border-color;
+      height: 40px;
+      width: 40px;
     }
   }
-  .user_data {
-    .full_name {
-      color: $title-font-color;
 
-      text-align: center;
-    }
-    .location {
-      color: $text-font-color;
-
-      text-align: center;
-    }
+  .user-data  {
+    float: left;
+    .first-name {}
+    .surnames {}
   }
 }
 
-.request_avatar {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
 
-  background-color: $white-bgcolor;
-}
+
+
+
+
+
+
+
+
+
+
+// .omnibar_avatar {
+//   @extend %grey-shadow;
+//   @include border-radius(5px, 5px);
+
+//   background-color: $white-bgcolor;
+// }
+
+// .profile_card_avatar {
+//   @extend %grey-shadow;
+//   @include border-radius(5px, 5px);
+//   @include box-sizing(border-box);
+
+//   background-color: $white-bgcolor;
+//   .image {
+//     @include border-radius(43px, 43px);
+
+//     background-color: white;
+
+//     text-align: center;
+//     img {
+//       @include border-radius(35px, 35px);
+
+//       position: relative;
+
+//       top: 7px;
+
+//       height: 70px;
+//       width: 70px;
+
+//       border: 1px solid $grey-border-color;
+//     }
+//   }
+//   .user_data {
+//     .full_name {
+//       color: $title-font-color;
+
+//       text-align: center;
+//     }
+//     .location {
+//       color: $text-font-color;
+
+//       text-align: center;
+//     }
+//   }
+// }
+
+// .request_avatar {
+//   @extend %grey-shadow;
+//   @include border-radius(5px, 5px);
+
+//   background-color: $white-bgcolor;
+// }
