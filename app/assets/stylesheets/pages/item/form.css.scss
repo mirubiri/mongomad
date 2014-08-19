@@ -1,102 +1,131 @@
 //TODO: darle una vuelta
 .image_loader {
   @include box-sizing(border-box);
-  overflow: auto;
+
   float: left;
+
+  overflow: auto;
+
   width: 45%;
 }
 
-.image_descriptor{
+.image_descriptor {
   @include box-sizing(border-box);
+
   float: left;
+
   overflow: auto;
+
   width: 55%;
 }
 
-.previews{
+.previews {
   @include box-sizing(border-box);
-  overflow: auto;
+
   float: left;
+
+  overflow: auto;
+
   width: 100%;
 }
 
-.preview{
-  background-color: transparent;
+.preview {
   overflow: auto;
-  img{
-    background-color: $white-bgcolor;
-    width: $item-preview-big;
+
+  background-color: transparent;
+  img {
     height: $item-preview-big;
-    max-width: $item-preview-big;
+    width: $item-preview-big;
     max-height: $item-preview-big;
+    max-width: $item-preview-big;
+
+    background-color: $white-bgcolor;
   }
 }
 
-.image_selection_area{
-  width: 48%;
+.image_selection_area {
   float: left;
-  div{
+
+  width: 48%;
+  div {
     float: left;
   }
 }
 
-.preview_box{
+.preview_box {
   float: left;
-  width: $item-snapshoot;
+
   height: $item-snapshoot;
+  width: $item-snapshoot;
+
   margin-right: 8px;
   margin-bottom: 60px;
 }
 
-.add_image_container{
+.add_image_container {
   float: left;
-  width: $item-snapshoot;
-  height: $item-snapshoot;
+
   overflow: hidden;
+
+  height: $item-snapshoot;
+  width: $item-snapshoot;
+
   margin-bottom: 4px;
-  img{
+  img {
     float: left;
-    width: $item-snapshoot;
+
     height: $item-snapshoot;
+    width: $item-snapshoot;
+
     background-color: white;
   }
 }
 
-label.preview_label{
+label.preview_label {
   @include box-sizing(border-box);
+
   float: left;
-  margin-right: 3px;
-  background-color: black;
-  text-align: center;
-  color: white;
-  width: 25px;
-  height: 25px;
-  padding-top: 3px;
   z-index: 10;
+
+  height: 25px;
+  width: 25px;
+
+  margin-right: 3px;
+  padding-top: 3px;
+
   font-weight: bolder;
+
+  background-color: black;
+  color: white;
+
+  text-align: center;
 }
 
 
-.filebutton{
+.filebutton {
   position: absolute;
+
   top: 0;
   left: 0;
-  width: 25px;
+
   height: 25px;
-  input{
+  width: 25px;
+  input {
     float: left;
-    width: 25px;
+
     height: 25px;
+    width: 25px;
+
+    -ms-filter: 'alpha(opacity=0)';
+        filter: alpha(opacity = 0);
     opacity: 0;
-    filter: alpha(opacity = 0);
-    -ms-filter: "alpha(opacity=0)";
   }
 }
 
-#pan{
+#pan {
   overflow: hidden;
 }
 
-.preview_label{
+.preview_label {
   position: relative;
 }

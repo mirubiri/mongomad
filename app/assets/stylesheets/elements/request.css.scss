@@ -1,18 +1,21 @@
 .request {
   @extend %grey-shadow;
   @include box-sizing(border-box);
-  background-color: $white-bgcolor;
+
   border: none;
+
+  background-color: $white-bgcolor;
+
   border-bottom: 1px solid $grey-border-color;
-  border-radius: 0px;
-
+  border-radius: 0;
   .text {
-    color: $text-font-color;
     font-size: $medium-font;
-  }
 
-  .controls {
     color: $text-font-color;
+  }
+  .controls {
     font-size: $small-font;
+
+    color: $text-font-color;
   }
 }

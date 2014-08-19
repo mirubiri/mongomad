@@ -1,8 +1,9 @@
-.login{
+.login {
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  background-color: $white-bgcolor;
-  color: $title-font-color;
   @extend %grey-shadow;
   @extend %centered;
+
+  background-color: $white-bgcolor;
+  color: $title-font-color;
 }

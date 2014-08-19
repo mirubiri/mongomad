@@ -1,39 +1,45 @@
 .omnibar_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
+
   background-color: $white-bgcolor;
 }
 
 .profile_card_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  background-color: $white-bgcolor;
   @include box-sizing(border-box);
 
+  background-color: $white-bgcolor;
   .image {
     @include border-radius(43px, 43px);
-    background-color: white;
-    text-align: center;
 
-    img{
-      position: relative;
-      top: 7px;
-      width: 70px;
-      height: 70px;
+    background-color: white;
+
+    text-align: center;
+    img {
       @include border-radius(35px, 35px);
+
+      position: relative;
+
+      top: 7px;
+
+      height: 70px;
+      width: 70px;
+
       border: 1px solid $grey-border-color;
     }
   }
-
   .user_data {
-    .full_name{
-      text-align: center;
+    .full_name {
       color: $title-font-color;
-    }
 
-    .location {
       text-align: center;
+    }
+    .location {
       color: $text-font-color;
+
+      text-align: center;
     }
   }
 }
@@ -41,5 +47,6 @@
 .request_avatar {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
+
   background-color: $white-bgcolor;
 }

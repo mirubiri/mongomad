@@ -2,23 +2,23 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
+
   background-color: $white-bgcolor;
   background-color: $container-bgcolor;
-
   nav.navigation {
     background-color: $white-bgcolor;
-
     li {
       @include box-sizing(border-box);
-      border-right: 2px solid $blue-nav-border-color;
-      color: $nav-font-color;
+
       font-size: $medium-font;
       font-weight: bold;
+
+      color: $nav-font-color;
+
+      border-right: 2px solid $blue-nav-border-color;
     }
   }
-
   .element_list {
     @include box-sizing(border-box);
   }
 }
-

@@ -1,25 +1,28 @@
 .requester {
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
-  background-color: $white-bgcolor;
   @include box-sizing(border-box);
+
   border: none;
   box-shadow: none;
 
-  textarea{
-    border: 2px solid $container-bgcolor;
+  background-color: $white-bgcolor;
+  textarea {
     @include border-radius(5px, 5px);
-  }
 
-  .countdown{
+    border: 2px solid $container-bgcolor;
+  }
+  .countdown {
     color: $text-font-color;
   }
+  input {
+    @include border-radius(5px, 5px);
 
-  input{
-      @include border-radius(5px, 5px);
-      background-color: $blue-button-bgcolor;
-      color: $white-font-text;
-      border: none;
-      font-weight: bold;
+    border: none;
+
+    font-weight: bold;
+
+    background-color: $blue-button-bgcolor;
+    color: $white-font-text;
   }
 }

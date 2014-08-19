@@ -1,49 +1,66 @@
 body {
   @include box-sizing(border-box);
-  display: block;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0px;
-  padding: 0px;
+
   float: left;
-  background-color: $body-bgcolor;
+
+  display: block;
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
-  color: white;
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Roboto';
   font-size: 15px;
-  font-family: "Roboto";
   font-weight: normal;
   line-height: 18px;
+
+  background-color: $body-bgcolor;
+  color: white;
 }
 
 .main {
   @include box-sizing(border-box);
-  overflow: auto;
+
   float: left;
+
+  overflow: auto;
+
   width: 100%;
+
   padding: $container-padding;
 }
 
 nav {
   height: 100%;
+
   color: black;
-  li{
+  li {
     display: inline-block;
+
     height: 100%;
-    padding: 0px 10px;
+
+    padding: 0 10px;
   }
 }
 
 .active_nav {
   background-color: $nav-selected;
-  a{color: $white-font-text;}
+  a {
+    color: $white-font-text;
+  }
 }
 
 a {
-  //@include unstyled-link;
-  display: block;
-  height: 100%;
   @include unstyled-link;
+  //@include unstyled-link;
+
+  display: block;
+
+  height: 100%;
 }
 
 input {
@@ -52,20 +69,24 @@ input {
 
 .progress_bar {
   height: 50px;
-  width: 0px;
+  width: 0;
+
   background: red;
 }
 
 textarea {
   float: left;
-  width: 100%;
+
   height: auto;
+  width: 100%;
+
   resize: none;
 }
 
 textarea:focus {
-    outline: none !important;
-    border:1px solid blue;
+  border: 1px solid blue;
+
+  outline: none !important;
 }
 
 .hidden {

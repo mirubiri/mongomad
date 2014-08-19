@@ -2,25 +2,33 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  width: 100%;
+
   float: left;
-  background-color: $white-bgcolor;
+
   display: block;
+
+  width: 100%;
+
   margin: $ppal-element-margin;
 
+  background-color: $white-bgcolor;
   .head_image {
-    img {width: 100%;}
+    img {
+      width: 100%;
+    }
   }
 }
 
 .make_offer_control {
   @include box-sizing(border-box);
-
   input {
     @include border-radius(10px, 10px);
+
+    border: none;
+
+    font-weight: bold;
+
     background-color: $red-button-bgcolor;
     color: $white-font-text;
-    border: none;
-    font-weight: bold;
   }
 }
