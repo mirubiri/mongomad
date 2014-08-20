@@ -36,26 +36,24 @@ body {
 
 
 nav {
-  height: 100%;
+  height: auto;
+
   li {
     display: inline-block;
 
-    height: 100%;
-
-    padding: 0 10px;
+    a{
+      padding: 0 10px;
+      height: 100%;
+    }
   }
 }
 
-
-
-
-
-// .active_nav {
-//   background-color: $nav-selected;
-//   a {
-//     color: $white-font-text;
-//   }
-// }
+.active_nav {
+  background-color: $nav-selected;
+  a {
+    color: $white-font-text;
+  }
+}
 
 a {
   @include unstyled-link;

@@ -1,23 +1,46 @@
 .expositor {
+
+  float: right;
+  overflow: auto;
+
+  width: calc(75% - 20px);
+
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
 
-  background-color: $white-bgcolor;
   background-color: $container-bgcolor;
+
   nav.navigation {
+    float: left;
+    overflow: auto;
+    width: 100%;
+    height: $top-container-bezel-height;
+
+
     background-color: $white-bgcolor;
+
     li {
+      float: left;
+      height: 100%;
+
+      padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 3px;
       @include box-sizing(border-box);
 
-      font-size: $medium-font;
+      font-size: $medium-font-size;
       font-weight: bold;
       color: $nav-font-color;
 
       border-right: 2px solid $blue-nav-border-color;
+
+      a{
+        display:block;
+        height: 100%;
+      }
     }
   }
-  .element_list {
+
+  .element-list {
     @include box-sizing(border-box);
   }
 }

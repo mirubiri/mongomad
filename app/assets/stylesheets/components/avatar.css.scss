@@ -78,24 +78,19 @@
 }
 
 
-
-
 .avatar-request {
+  @include box-sizing(border-box);
   float: left;
   overflow: visible;
-  width: 20%;
 
   .image {
-    width: 40px;
-    height: 40px;
-
-    margin: 0 auto;
-
-    @include border-radius(5px, 5px);
+    float: left;
+    overflow: visible;
 
     img {
-      height: 100%;
-      width: 100%;
+      display: block;
+      height: $avatar-request-image-width;
+      width: $avatar-request-image-width;
     }
   }
 }

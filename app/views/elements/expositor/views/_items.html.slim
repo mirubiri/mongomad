@@ -2,7 +2,7 @@
   nav.navigation
     = yield_content :navigation
 
-  .element_list#element_list
+  .element-list#element-list
     = button_to 'Add item',
     new_user_item_path(current_user),
     :method => :get,
