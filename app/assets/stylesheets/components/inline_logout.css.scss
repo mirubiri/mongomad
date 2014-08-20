@@ -6,5 +6,10 @@
   width: 10%;
   .icon {
     float: right;
+    img{
+      display: block;
+      width: 25px;
+      height: 25px;
+    }
   }
 }
