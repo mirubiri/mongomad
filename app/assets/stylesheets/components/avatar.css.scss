@@ -23,6 +23,9 @@
   }
 }
 
+
+
+
 .avatar-profile-card {
 
   height: 70px;
@@ -74,15 +77,25 @@
   }
 }
 
+
+
+
 .avatar-request {
+  float: left;
+  overflow: visible;
+  width: 20%;
+
   .image {
-    width: 15%;
-    float: left;
+    width: 40px;
+    height: 40px;
+
+    margin: 0 auto;
+
     @include border-radius(5px, 5px);
 
     img {
-      height: 40px;
-      width: 40px;
+      height: 100%;
+      width: 100%;
     }
   }
 }

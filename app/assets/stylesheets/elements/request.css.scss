@@ -9,18 +9,20 @@
   padding: 0 5px 0 5px;
 
   border-bottom: 1px solid $grey-border-color;
+
   .text {
     @include box-sizing(border-box);
 
     float: left;
 
-    width: 85%;
+    width: 80%;
 
     padding: 0 5px 0 5px;
 
     font-size: $medium-font-size;
     color: $text-font-color;
   }
+
   .controls {
     @include box-sizing(border-box);
 
