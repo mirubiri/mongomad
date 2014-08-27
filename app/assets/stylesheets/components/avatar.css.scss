@@ -1,74 +1,70 @@
 .avatar-omnibar {
-  float: left;
-
   @include box-sizing(border-box);
 
-  width: 15%;
+  float: left;
 
   overflow: visible;
 
+  width: 15%;
   .image {
     float: left;
+
     margin-right: 5px;
     img {
       display: block;
+
       height: 40px;
       width: 40px;
     }
   }
-
-  .user-data  {
+  .user-data {
     float: left;
-    .first-name {}
-    .surnames {}
+    .first-name {
+      //
+    }
+    .surnames {
+      //
+    }
   }
 }
 
-
-
-
 .avatar-profile-card {
-
   height: 70px;
+
   text-align: center;
-
   .image {
-
     @include box-sizing(border-box);
+    @include border-radius(46px, 46px);
 
-    margin: 0 auto;
     position: relative;
+
     top: -70px;
 
-    width: 92px;
     height: 92px;
+    width: 92px;
 
-    @include border-radius(46px, 46px);
-    background-color: $white-bgcolor;
-
+    margin: 0 auto;
     padding: 6px;
 
-
+    background-color: $white-bgcolor;
     img {
       @include box-sizing(border-box);
+      @include border-radius(50%, 50%);
 
       height: 100%;
       width: 100%;
 
-      @include border-radius(50%, 50%);
-
       border: 1px solid $grey-border-color;
     }
   }
-
   .user-data {
-
     @include box-sizing(border-box);
 
-    margin: 0 auto;
     position: relative;
+
     top: -70px;
 
+    margin: 0 auto;
     .full-name {
       color: $title-font-color;
     }
@@ -81,15 +77,17 @@
 
 .avatar-request {
   @include box-sizing(border-box);
-  float: left;
-  overflow: visible;
 
+  float: left;
+
+  overflow: visible;
   .image {
     float: left;
-    overflow: visible;
 
+    overflow: visible;
     img {
       display: block;
+
       height: $avatar-request-image-width;
       width: $avatar-request-image-width;
     }
@@ -99,14 +97,12 @@
 
 .avatar-offer {
   float: left;
-
   .full-name {
-
+    //
   }
-
   .image {
     img {
-
+      //
     }
   }
 }
