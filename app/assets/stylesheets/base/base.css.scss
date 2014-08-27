@@ -1,24 +1,24 @@
 body {
-  @include box-sizing(border-box);
+  @include box-sizing($body-box-sizing);
 
-  float: left;
+  float: $body-float;
 
-  display: block;
-  overflow: auto;
-  overflow-y: scroll;
+  display: $body-display;
+  overflow: $body-overflow;
+  overflow-y: $body-overflow-y;
 
-  width: 100%;
+  width: $body-width;
 
-  margin: 0;
-  padding: 0;
+  margin: $body-margin;
+  padding: $body-padding;
 
-  font-family: 'Roboto';
-  font-size: $default-font-size;
-  font-weight: normal;
-  line-height: 18px;
-  color: white;
+  font-family: $body-font-family;
+  font-size: $body-font-size;
+  font-weight: $body-font-weight;
+  line-height: $body-line-weight;
+  color: $body-color;
 
-  background-color: $body-bgcolor;
+  background-color: $body-background-color;
 }
 
 .main {
