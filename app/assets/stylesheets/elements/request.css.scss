@@ -1,14 +1,15 @@
 .request {
   @include box-sizing(border-box);
 
-  float: left;
+  float: $request-flotation;
 
-  width: 100%;
+  width: $request-width;
 
-  margin-top: 5px;
-  padding: 0 5px 0 5px;
+  margin-top: $request-margin;
+  padding: $request-padding;
 
-  border-bottom: 1px solid $grey-border-color;
+  border-bottom: $request-border-bottom;
+
   .text {
     @include box-sizing(border-box);
 
@@ -21,6 +22,7 @@
     font-size: $medium-font-size;
     color: $text-font-color;
   }
+
   .controls {
     @include box-sizing(border-box);
 
@@ -35,4 +37,5 @@
 
     text-align: right;
   }
+
 }
