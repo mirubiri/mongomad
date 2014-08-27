@@ -1,32 +1,32 @@
 //TODO: darle una vuelta
 .image_loader {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
 
   width: 45%;
+
+  @include box-sizing(border-box);
 }
 
 .image_descriptor {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
 
   width: 55%;
+
+  @include box-sizing(border-box);
 }
 
 .previews {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
 
   width: 100%;
+
+  @include box-sizing(border-box);
 }
 
 .preview {
@@ -82,8 +82,6 @@
 }
 
 label.preview_label {
-  @include box-sizing(border-box);
-
   float: left;
   z-index: 10;
 
@@ -97,14 +95,14 @@ label.preview_label {
   color: white;
 
   background-color: black;
-
   text-align: center;
+
+  @include box-sizing(border-box);
 }
 
 
 .filebutton {
   position: absolute;
-
   top: 0;
   left: 0;
 

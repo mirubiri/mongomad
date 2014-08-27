@@ -1,9 +1,9 @@
 .inline-logout {
-  @include box-sizing(border-box);
-
   float: left;
 
   width: 10%;
+
+  @include box-sizing(border-box);
   .icon {
     float: right;
     img {

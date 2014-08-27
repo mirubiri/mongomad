@@ -1,8 +1,4 @@
 .profile-card {
-  @include border-radius(5px, 5px);
-  @include box-sizing(border-box);
-  @extend %grey-shadow;
-
   float: left;
 
   display: block;
@@ -12,40 +8,42 @@
   margin: $ppal-element-margin;
 
   background-color: $white-bgcolor;
+
+  @include border-radius(5px, 5px);
+  @include box-sizing(border-box);
+  @extend %grey-shadow;
   .head-image {
     img {
-      @include border-radius(5px 5px 0px 0px);
-
       display: block;
 
       width: 100%;
+
+      @include border-radius(5px 5px 0px 0px);
     }
   }
 }
 
 .user-card {
-  @include box-sizing(border-box);
-
   float: left;
 
   width: 100%;
 
   padding: $element-padding;
+
+  @include box-sizing(border-box);
 }
 
 
 
 .make-offer-control {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
 
   width: 100%;
-  input {
-    @include border-radius(5px, 5px);
 
+  @include box-sizing(border-box);
+  input {
     float: left;
 
     height: $button-height;
@@ -57,5 +55,7 @@
     color: $white-font-text;
 
     background-color: $red-button-bgcolor;
+
+    @include border-radius(5px, 5px);
   }
 }

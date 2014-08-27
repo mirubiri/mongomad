@@ -1,11 +1,11 @@
 .avatar-omnibar {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: visible;
 
   width: 15%;
+
+  @include box-sizing(border-box);
   .image {
     float: left;
 
@@ -33,11 +33,7 @@
 
   text-align: center;
   .image {
-    @include box-sizing(border-box);
-    @include border-radius(46px, 46px);
-
     position: relative;
-
     top: -70px;
 
     height: 92px;
@@ -47,24 +43,26 @@
     padding: 6px;
 
     background-color: $white-bgcolor;
-    img {
-      @include box-sizing(border-box);
-      @include border-radius(50%, 50%);
 
+    @include box-sizing(border-box);
+    @include border-radius(46px, 46px);
+    img {
       height: 100%;
       width: 100%;
 
       border: 1px solid $grey-border-color;
+
+      @include box-sizing(border-box);
+      @include border-radius(50%, 50%);
     }
   }
   .user-data {
-    @include box-sizing(border-box);
-
     position: relative;
-
     top: -70px;
 
     margin: 0 auto;
+
+    @include box-sizing(border-box);
     .full-name {
       color: $title-font-color;
     }
@@ -76,11 +74,11 @@
 
 
 .avatar-request {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: visible;
+
+  @include box-sizing(border-box);
   .image {
     float: left;
 

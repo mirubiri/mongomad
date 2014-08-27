@@ -1,6 +1,4 @@
 .requester {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
@@ -8,19 +6,18 @@
   width: 100%;
 
   margin: $ppal-element-margin;
-  form {
-    @include box-sizing(border-box);
 
+  @include box-sizing(border-box);
+  form {
     float: left;
 
     overflow: auto;
 
     width: 100%;
+
+    @include box-sizing(border-box);
   }
   textarea {
-    @include box-sizing(border-box);
-    @include border-radius(5px, 5px);
-
     float: left;
 
     overflow: auto;
@@ -29,10 +26,11 @@
     min-height: 38px;
 
     border: 2px solid $container-bgcolor;
+
+    @include box-sizing(border-box);
+    @include border-radius(5px, 5px);
   }
   .countdown {
-    @include box-sizing(border-box);
-
     float: left;
 
     overflow: visible;
@@ -42,10 +40,10 @@
     margin-top: 2px;
 
     color: $text-font-color;
+
+    @include box-sizing(border-box);
   }
   input {
-    @include border-radius(5px, 5px);
-
     float: right;
 
     height: 20px;
@@ -58,5 +56,7 @@
     color: $white-font-text;
 
     background-color: $blue-button-bgcolor;
+
+    @include border-radius(5px, 5px);
   }
 }

@@ -1,9 +1,9 @@
 .search {
-  @include box-sizing(border-box);
-
   float: left;
 
   width: 40%;
 
   text-align: center;
+
+  @include box-sizing(border-box);
 }

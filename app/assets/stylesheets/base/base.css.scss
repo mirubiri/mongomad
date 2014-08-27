@@ -1,6 +1,4 @@
 body {
-  @include box-sizing($body-box-sizing);
-
   float: $body-float;
 
   display: $body-display;
@@ -19,11 +17,11 @@ body {
   color: $body-color;
 
   background-color: $body-background-color;
+
+  @include box-sizing($body-box-sizing);
 }
 
 .main {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: visible;
@@ -31,6 +29,8 @@ body {
   width: 100%;
 
   padding: $container-padding;
+
+  @include box-sizing(border-box);
 }
 
 

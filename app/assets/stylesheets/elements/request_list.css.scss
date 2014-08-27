@@ -1,8 +1,4 @@
 .request-list {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
-  @extend %dashboard-component-title;
-
   float: $request-list-flotation;
 
   width: $request-list-width;
@@ -10,4 +6,8 @@
   margin: $ppal-element-margin;
 
   background-color: $white-bgcolor;
+
+  @extend %grey-shadow;
+  @include border-radius(5px, 5px);
+  @extend %dashboard-component-title;
 }

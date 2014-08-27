@@ -1,6 +1,4 @@
 .omnibar {
-  @include box-sizing(border-box);
-
   float: left;
 
   overflow: auto;
@@ -10,6 +8,8 @@
   padding: $container-padding;
 
   background-color: transparent;
+
+  @include box-sizing(border-box);
   .navigation-controls {
     float: left;
 

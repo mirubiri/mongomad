@@ -1,10 +1,10 @@
 .login {
+  color: $title-font-color;
+
+  background-color: $white-bgcolor;
+
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
   @extend %grey-shadow;
   @extend %centered;
-
-  color: $title-font-color;
-
-  background-color: $white-bgcolor;
 }

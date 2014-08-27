@@ -13,8 +13,6 @@
 
 %dashboard-component-title {
   .dashboard-component-title {
-    @include box-sizing(border-box);
-
     float: left;
 
     height: 30px;
@@ -25,7 +23,8 @@
     color: $white-font-text;
 
     background-color: $grey-bgcolor;
-
     text-align: center;
+
+    @include box-sizing(border-box);
   }
 }

@@ -1,6 +1,4 @@
 .request {
-  @include box-sizing(border-box);
-
   float: $request-flotation;
 
   width: $request-width;
@@ -8,11 +6,10 @@
   margin-top: $request-margin;
   padding: $request-padding;
 
+  @include box-sizing(border-box);
+
   border-bottom: $request-border-bottom;
-
   .text {
-    @include box-sizing(border-box);
-
     float: left;
 
     width: 80%;
@@ -21,11 +18,10 @@
 
     font-size: $medium-font-size;
     color: $text-font-color;
-  }
 
-  .controls {
     @include box-sizing(border-box);
-
+  }
+  .controls {
     float: right;
 
     width: 100%;
@@ -36,6 +32,7 @@
     color: blue;
 
     text-align: right;
-  }
 
+    @include box-sizing(border-box);
+  }
 }
