@@ -73,15 +73,8 @@
 
   @include box-sizing(border-box);
   .image {
-    float: left;
-
-    overflow: visible;
-    img {
-      display: block;
-
-      height: $avatar-request-image-width;
-      width: $avatar-request-image-width;
-    }
+    @extend %default-image-container;
+    @include squared-image(40px);
   }
 }
 
