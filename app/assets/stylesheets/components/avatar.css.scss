@@ -19,9 +19,8 @@
   }
   .user-data {
     float: left;
-
-    @extend %white-medium-font;
     div {
+      @extend %white-medium-font;
       @include left-aligned-text-container(100%);
     }
   }
