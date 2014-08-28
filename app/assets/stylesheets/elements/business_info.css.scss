@@ -1,7 +1,7 @@
 .business-info-dashboard {
   float: left;
 
-  color: $text-font-color;
+  @extend %grey-big-font;
 
   background-color: $white-bgcolor;
   text-align: center;

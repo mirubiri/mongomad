@@ -32,11 +32,8 @@ $top-container-bezel-height: 30px;
 $container-bgcolor: #B1D4E1;
 $body-bgcolor: rgb(90,148,173);
 $nav-selected: #B1D4E1;
-$title-font-color: black;
-$text-font-color: rgb(153,153,153);
 $nav-font-color: #839091;
 $red-button-bgcolor: rgb(231,74,57);
-$white-font-text: rgb(253,253,253);
 $blue-button-bgcolor: rgb(58,157,223);
 $grey-bgcolor: rgb(183,183,183);
 //$grey-button-bgcolor: rgb(183,183,183);
@@ -47,10 +44,6 @@ $grey-shadow-color: #9BB3B8;
 
 $dashboard-padding: 0px 10px 0px  0px;
 
-$small-font-size: 10px;
-$medium-font-size: 12px;
-$default-font-size: 15px;
-$big-font-size: 14px;
 
 
 $avatar-request-image-width: 40px;
@@ -78,8 +71,25 @@ $request-border-bottom: 1px solid $grey-border-color;
 
 
 //-----------------------------------------------------
+//FONTS
+$small-font-size: 10px;
+$medium-font-size: 12px;
+$big-font-size: 14px;
+
+$title-font-color: black;
+$text-font-color: rgb(153,153,153);
+$white-font-text: rgb(253,253,253);
+
+$black-font-color: black;
+$grey-font-color: rgb(153,153,153);
+$white-font-color: rgb(253,253,253);
+
+
+
+
+
   $body-font-family: 'Roboto';
-  $body-font-size: $default-font-size;
+  $body-font-size: $big-font-size;
   $body-font-weight: normal;
   $body-line-height: 18px;
   $body-color: white;
@@ -106,375 +116,3 @@ $request-border-bottom: 1px solid $grey-border-color;
 
 
 
-
-
-
-//   $omnibar-avatar-position: relative;
-//      $omnibar-avatar-float: left;
-
-//   $omnibar-avatar-overflow: auto;
-
-//      $omnibar-avatar-width: 15%;
-
-//     $omnibar-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-//    $omnibar-avatar-padding: 5px 0px 0px 0px;
-
-//   $profile-card-avatar-position: relative;
-//      $profile-card-avatar-float: left;
-
-//   $profile-card-avatar-overflow: auto;
-
-//      $profile-card-avatar-width: 100%;
-
-//     $profile-card-avatar-margin: -25px $omnibar-components-margin 0px 0px;
-//    $profile-card-avatar-padding: $dashboard-component-padding;
-
-//   $profile-card-avatar-image-position: relative;
-
-//        $profile-card-avatar-image-top: -30px;
-
-//       $profile-card-avatar-image-left: 80px;
-
-//     $profile-card-avatar-image-height: 86px;
-//      $profile-card-avatar-image-width: 86px;
-
-//   $profile-card-avatar-image-img-position: relative;
-
-//        $profile-card-avatar-image-img-top: -40px;
-
-//       $profile-card-avatar-image-img-left: 0px;
-
-//     $profile-card-avatar-image-img-height: 60px;
-
-//     $profile-card-avatar-user-data-full-name-margin: $data-margin;
-
-//     $profile-card-avatar-user-data-location-margin: $data-margin;
-
-//   $request-avatar-position: relative;
-//      $request-avatar-float: left;
-
-//   $request-avatar-overflow: auto;
-
-//     $request-avatar-margin: $image-text-margin;
-
-//     $request-avatar-image-height: 40px;
-//      $request-avatar-image-width: 40px;
-
-//   $offer-avatar-position: relative;
-//      $offer-avatar-float: left;
-
-//   $offer-avatar-overflow: auto;
-
-//     $offer-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-
-//     $offer-avatar-full-name-margin: $data-margin;
-
-//     $offer-avatar-image-margin: $image-text-margin;
-
-//   $negotiation-avatar-position: relative;
-//      $negotiation-avatar-float: left;
-
-//   $negotiation-avatar-overflow: auto;
-
-//     $negotiation-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-
-//   $deal-avatar-position: relative;
-//      $deal-avatar-float: left;
-
-//   $deal-avatar-overflow: auto;
-
-//     $deal-avatar-margin: 0px $omnibar-components-margin 0px 0px;
-
-//   $message-avatar-position: relative;
-//      $message-avatar-float: left;
-
-//   $message-avatar-overflow: auto;
-
-//     $message-avatar-margin: 0px $image-text-margin 0px 0px;
-
-//   $conversation-position: relative;
-//      $conversation-float: left;
-
-//   $conversation-overflow: auto;
-
-//      $conversation-width: 70%;
-
-//    $conversation-padding: $text-box-padding;
-
-//    $conversation-messages-padding: $component-padding;
-
-//    $conversation-message-input-padding: $text-box-padding;
-
-//    $conversation-send-message-control-padding: $button-box-padding;
-
-//   $inline-login-position: relative;
-//      $inline-login-float: left;
-
-//   $inline-login-overflow: auto;
-
-//     $inline-login-margin: $omnibar-components-margin;
-
-//   $inline-logout-position: relative;
-//      $inline-logout-float: right;
-
-//   $inline-logout-overflow: hidden;
-
-//     $inline-logout-height: 30px;
-//      $inline-logout-width: 5%;
-
-//     $inline-logout-margin: 0px;
-//    $inline-logout-padding: 10px 0px 0px 0px;
-
-//      $inline-logout-icon-float: right;
-
-// $inline-logout-icon-img-height: 25px;
-//  $inline-logout-icon-img-width: 25px;
-
-//   $message-position: relative;
-//      $message-float: left;
-
-//   $message-overflow: auto;
-
-//     $message-margin: $message-margin;
-//    $message-padding: $text-box-padding;
-
-//     $message-text-margin: $data-margin;
-//    $message-text-padding: 0px 0px 0px 5px;
-
-//   $proposal-position: relative;
-//      $proposal-float: left;
-
-//   $proposal-overflow: auto;
-
-//    $proposal-padding: $component-padding;
-
-//     $proposal-composer-goods-margin: $good-bottom-margin;
-
-//     $proposal-receiver-goods-margin: $good-bottom-margin;
-
-//   $requester-position: relative;
-//      $requester-float: left;
-
-//   $requester-overflow: auto;
-
-//      $requester-width: 98%;
-
-//     $requester-margin: $profile-card-element-margin;
-//    $requester-padding: $dashboard-component-padding;
-
-//     $requester-textarea-height: 20px;
-//      $requester-textarea-width: 99%;
-
-//     $requester-textarea-margin: 0px 0px 5px 0px;
-
-//      $requester-countdown-float: left;
-
-//      $requester-input-float: right;
-
-//     $requester-input-margin: 0px;
-//    $requester-input-padding: 10px 15px;
-
-//   $search-position: relative;
-//      $search-float: left;
-
-//   $search-overflow: auto;
-
-//      $search-width: 15%;
-
-//     $search-margin: 10px $omnibar-components-margin 0px 0px;
-
-//     $search-input-height: 100%;
-//      $search-input-width: 100%;
-
-//   $dashboard-business-info-position: relative;
-//      $dashboard-business-info-float: left;
-
-//    $dashboard-business-info-display: block;
-//   $dashboard-business-info-overflow: auto;
-
-//      $dashboard-business-info-width: 100%;
-
-//    $dashboard-business-info-padding: $ppal-element-margin;
-
-//   $dashboard-position: relative;
-//      $dashboard-float: left;
-
-//   $dashboard-overflow: auto;
-// $dashboard-overflow-y: hidden;
-
-//      $dashboard-width: 25%;
-
-//     $dashboard-bezel-height: 30px;
-//      $dashboard-bezel-width: 100%;
-
-//      $dashboard-container-float: left;
-
-//   $dashboard-container-overflow: auto;
-// $dashboard-container-overflow-y: hidden;
-
-//    $dashboard-container-padding: $element-padding;
-
-//   $deal-position: relative;
-//      $deal-float: left;
-
-//   $deal-overflow: auto;
-
-//      $deal-width: 100%;
-
-//     $deal-margin: $ppal-element-margin;
-
-//   $expositor-position: relative;
-//      $expositor-float: right;
-
-//   $expositor-overflow: auto;
-
-//      $expositor-width: 73%;
-
-//     $expositor-navigation-height: 30px;
-
-//    $expositor-navigation-li-padding: 0px;
-
-//    $expositor-navigation-li-a-padding: 5px 20px 0px 20px;
-
-//      $expositor-element-list-float: left;
-
-//   $expositor-element-list-overflow: auto;
-
-//      $expositor-element-list-width: 100%;
-
-//    $expositor-element-list-padding: $element-padding;
-
-//   $good-position: relative;
-//      $good-float: left;
-
-//   $good-overflow: auto;
-
-//      $good-width: auto;
-
-//     $good-margin: $good-bottom-margin;
-
-//      $item-image-width: 100%;
-
-//     $item-name-height: $good-data-heigth;
-//      $item-name-width: 100%;
-
-//     $item-controls-height: $good-data-heigth;
-//      $item-controls-width: 100%;
-
-//     $product-name-height: $good-data-heigth;
-//      $product-name-width: 100%;
-
-//     $cash-amount-height: $good-data-heigth;
-//      $cash-amount-width: 100%;
-
-//   $login-overflow: auto;
-
-//      $login-width: 235px;
-
-//    $login-padding: $container-padding;
-
-//   $negotiation-position: relative;
-//      $negotiation-float: left;
-
-//   $negotiation-overflow: auto;
-
-//      $negotiation-width: 100%;
-
-//     $negotiation-margin: $ppal-element-margin;
-
-//    $negotiation-leave-negotiation-control-padding: $button-box-padding;
-
-//   $offer-position: relative;
-//      $offer-float: left;
-
-//   $offer-overflow: auto;
-
-//      $offer-width: 300px;
-
-//     $offer-margin: $ppal-element-margin;
-
-//      $offer-title-width: 100%;
-
-//    $offer-title-padding: $title-padding;
-
-//    $offer-message-padding: $text-box-padding;
-
-//    $offer-controls-padding: $button-box-padding;
-
-//   $omnibar-position: relative;
-//      $omnibar-float: left;
-
-//    $omnibar-display: inline;
-//   $omnibar-overflow: auto;
-
-//      $omnibar-width: 100%;
-
-//    $omnibar-padding: $container-padding;
-
-//      $omnibar-logo-width: 5%;
-
-//     $omnibar-logo-margin: 0px $omnibar-components-margin 0px 0px;
-
-//      $omnibar-navigation-controls-width: 40%;
-
-//     $omnibar-navigation-controls-margin: 0px $omnibar-components-margin 0px 0px;
-//    $omnibar-navigation-controls-padding: 5px 0px 0px 0px;
-
-//      $profile-card-float: left;
-
-//    $profile-card-display: block;
-
-//      $profile-card-width: 100%;
-
-//     $profile-card-margin: $ppal-element-margin;
-
-//      $profile-card-head-image-width: 100%;
-
-//      $profile-card-head-image-img-width: 100%;
-
-//   $profile-card-user-card-position: relative;
-//      $profile-card-user-card-float: left;
-
-//     $profile-card-user-card-height: 80px;
-//      $profile-card-user-card-width: 100%;
-
-//      $make-offer-control-float: left;
-
-//     $make-offer-control-height: 0px 0px 20px 0px;
-//      $make-offer-control-width: 100%;
-
-//    $make-offer-control-padding: $dashboard-component-padding;
-
-//     $make-offer-control-input-height: 40px;
-//      $make-offer-control-input-width: 100%;
-
-//   $request-position: relative;
-//      $request-float: left;
-
-//   $request-overflow: hidden;
-
-//      $request-width: 100%;
-
-//    $request-padding: $message-box-padding;
-
-//      $request-text-float: left;
-
-//      $request-controls-float: left;
-
-//      $request-controls-width: 100%;
-
-//    $request-controls-padding: 0px $additional-control-padding 0px 0px;
-
-//      $request-controls-a-float: right;
-
-//     $request-controls-a-margin: 0px 5px 0px 0px;
-
-//   $request-list-position: relative;
-//      $request-list-float: left;
-
-//    $request-list-display: block;
-//   $request-list-overflow: auto;
-
-//      $request-list-width: 100%;
-
-//     $request-list-margin: $ppal-element-margin;

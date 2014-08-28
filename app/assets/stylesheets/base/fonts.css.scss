@@ -2,7 +2,21 @@
   font-family: $body-font-family;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
-  line-height: $body-line-weight;
+  line-height: $body-line-height;
   color: $body-color;
 }
 
+%grey-small-font{
+  font-size: $small-font-size;
+  color: $grey-font-color;
+}
+
+%grey-medium-font{
+  font-size: $medium-font-size;
+  color: $grey-font-color;
+}
+
+%grey-big-font{
+  font-size: $big-font-size;
+  color: $grey-font-color;
+}
