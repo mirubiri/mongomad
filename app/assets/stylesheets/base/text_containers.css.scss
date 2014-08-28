@@ -1,4 +1,4 @@
-@mixin left-aligned-text-container($width:100%) {
+@mixin left-aligned-text-container($width) {
   @include box-sizing(border-box);
   float:left;
   width: $width;
@@ -6,9 +6,10 @@
   text-align: left;
 }
 
-@mixin centered-text-container($width:100%) {
+@mixin centered-text-container($padding) {
   @include box-sizing(border-box);
   float:left;
-  width: $width;
+  width: 100%;
+  padding: $padding;
   text-align: center;
 }
