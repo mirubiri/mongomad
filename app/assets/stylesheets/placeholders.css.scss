@@ -17,10 +17,7 @@
 
     height: 30px;
     width: 100%;
-
-    padding: 5px;
-
-    @include centered-text-container();
+    @include centered-text-container(5px 0 0 0);
     @extend %white-big-font;
     background-color: $grey-bgcolor;
 

@@ -21,7 +21,7 @@
     float: left;
     @extend %white-medium-font;
     div{
-      @include left-aligned-text-container();
+      @include left-aligned-text-container(100%);
     }
   }
 }
@@ -62,11 +62,11 @@
     @include box-sizing(border-box);
 
     .full-name {
-      @include centered-text-container();
+      @include centered-text-container(0);
       @extend %black-big-font;
     }
     .location {
-      @include centered-text-container();
+      @include centered-text-container(0);
       @extend %grey-big-font;
     }
   }
