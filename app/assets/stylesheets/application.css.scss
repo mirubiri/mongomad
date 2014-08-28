@@ -19,9 +19,6 @@
 
 // //SCSS files
 @import "variables";
-// @import "functions";
-@import "placeholders";
-// @import "mixins";
 
 @import "base/base";
 @import "base/buttons";
@@ -30,7 +27,7 @@
 @import "base/images";
 @import "base/text_containers";
 
-@import "elements/good";
+@import "placeholders";
 
 @import "components/avatar";
 // @import "components/conversation";
@@ -44,6 +41,7 @@
 @import "elements/dashboard";
 // @import "elements/deal";
 @import "elements/expositor";
+@import "elements/good";
 // @import "elements/login";
 // @import "elements/negotiation";
 @import "elements/offer";
@@ -51,8 +49,6 @@
 @import "elements/profile_card";
 @import "elements/request";
 @import "elements/request_list";
-
-
 
 // @import "pages/item/form";
 
