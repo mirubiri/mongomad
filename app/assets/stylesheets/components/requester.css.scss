@@ -26,6 +26,7 @@
     min-height: 38px;
 
     border: 2px solid $container-bgcolor;
+    @extend %black-big-font;
 
     @include box-sizing(border-box);
     @include border-radius(5px, 5px);
