@@ -1,4 +1,4 @@
-%warning-button {
+%button {
   input {
     float: left;
 
@@ -7,31 +7,28 @@
 
     border: none;
 
-    font-weight: bold;
-    color: $white-font-color;
-
-    background-color: $red-button-bgcolor;
-
+    @extend %white-big-bold-font;
     @include border-radius(5px, 5px);
   }
 }
 
+%warning-button {
+  @extend %button;
+  input {
+    background-color: $red-button-bgcolor;
+  }
+}
 
 %send-button {
+  @extend %button;
   input {
     float: right;
 
     height: 20px;
 
     margin-top: 4px;
-
-    border: none;
-
-    font-weight: bold;
-    color: $white-font-color;
+    width:auto;
 
     background-color: $blue-button-bgcolor;
-
-    @include border-radius(5px, 5px);
   }
 }
