@@ -57,6 +57,8 @@
     position: relative;
     top: -70px;
 
+    overflow: auto;
+
     margin: 0 auto;
 
     @include box-sizing(border-box);
