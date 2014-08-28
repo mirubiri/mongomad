@@ -15,3 +15,23 @@
     @include border-radius(5px, 5px);
   }
 }
+
+
+%send-button{
+  input {
+    float: right;
+
+    height: 20px;
+
+    margin-top: 4px;
+
+    border: none;
+
+    font-weight: bold;
+    color: $white-font-color;
+
+    background-color: $blue-button-bgcolor;
+
+    @include border-radius(5px, 5px);
+  }
+}
