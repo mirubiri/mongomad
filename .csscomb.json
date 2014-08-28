@@ -14,14 +14,14 @@
     "remove-empty-rulesets": true,
     "sort-order-fallback": "abc",
     "space-after-colon": " ",
-    "space-before-colon": "",
     "space-after-combinator": " ",
-    "space-before-combinator": " ",
     "space-after-declaration": "\n",
     "space-after-opening-brace": "\n",
+    "space-after-selector-delimiter": " ",
+    "space-before-colon": "",
+    "space-before-combinator": " ",
     "space-before-opening-brace": " ",
     "space-before-closing-brace": "\n",
-    "space-after-selector-delimiter": " ",
     "space-before-selector-delimiter": "",
     "space-between-declarations": "\n",
     "strip-spaces": true,
@@ -31,28 +31,25 @@
     "verbose": true,
     "sort-order": [
         [
+            "$include"
+        ],
+        [
             "position",
             "float",
             "z-index",
             "top",
             "right",
             "bottom",
-            "left"
-        ],
-        [
+            "left",
             "display",
             "overflow",
-            "overflow-y"
-        ],
-        [
+            "overflow-y",
             "height",
             "width",
             "min-height",
             "min-width",
             "max-height",
-            "max-width"
-        ],
-        [
+            "max-width",
             "margin-top",
             "margin-right",
             "margin-bottom",
@@ -62,26 +59,17 @@
             "padding-right",
             "padding-bottom",
             "padding-left",
-            "padding"
-        ],
-        [
+            "padding",
             "border",
-            "box-shadow"
-        ],
-        [
+            "box-shadow",
             "font-family",
             "font-size",
             "font-weight",
             "line-height",
-            "color"
-        ],
-        [
+            "color",
             "background-color",
             "text-align",
             "resize"
-        ],
-        [
-            "$include"
         ]
     ]
 }
