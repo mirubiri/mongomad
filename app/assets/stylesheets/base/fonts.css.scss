@@ -16,6 +16,11 @@
   color: $grey-font-color;
 }
 
+%grey-medium-bold-font{
+  @extend %grey-medium-font;
+  font-weight: bold;
+}
+
 %grey-big-font{
   font-size: $big-font-size;
   color: $grey-font-color;
@@ -26,7 +31,18 @@
   color: $black-font-color;
 }
 
+%white-medium-font{
+  font-size: $medium-font-size;
+  color: $white-font-color;
+}
+
+%white-medium-bold-font{
+  @extend %white-medium-font;
+  font-weight: bold;
+}
+
 %white-big-font{
   font-size: $big-font-size;
   color: $white-font-color;
 }
+

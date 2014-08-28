@@ -46,7 +46,7 @@ nav {
 .active_nav {
   background-color: $nav-selected;
   a {
-    @extend %white-big-font;
+    @extend %white-medium-bold-font;
   }
 }
 

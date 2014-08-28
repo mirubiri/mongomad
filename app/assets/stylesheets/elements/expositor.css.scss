@@ -26,9 +26,7 @@
 
       padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
 
-      font-size: $medium-font-size;
-      font-weight: bold;
-      color: $nav-font-color;
+      @extend %grey-medium-bold-font;
 
       @include box-sizing(border-box);
 
