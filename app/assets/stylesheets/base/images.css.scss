@@ -7,8 +7,10 @@
   }
 }
 @mixin squared-image($size) {
-  height: $size;
-  width: $size;
+  img {
+    height: $size;
+    width: $size;
+  }
 }
 
 @mixin upper-rounded-corners-image($width, $height: null) {
