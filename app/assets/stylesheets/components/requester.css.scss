@@ -39,7 +39,7 @@
 
     margin-top: 2px;
 
-    color: $text-font-color;
+    color: $grey-font-color;
 
     @include box-sizing(border-box);
   }
@@ -53,7 +53,7 @@
     border: none;
 
     font-weight: bold;
-    color: $white-font-text;
+    color: $white-font-color;
 
     background-color: $blue-button-bgcolor;
 

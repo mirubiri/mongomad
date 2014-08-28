@@ -59,10 +59,10 @@
 
     @include box-sizing(border-box);
     .full-name {
-      color: $title-font-color;
+      @extend %black-big-font;
     }
     .location {
-      color: $text-font-color;
+      @extend %grey-big-font;
     }
   }
 }

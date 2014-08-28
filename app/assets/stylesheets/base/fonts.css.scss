@@ -21,8 +21,12 @@
   color: $grey-font-color;
 }
 
-
-%black-medium-font{
-  font-size: $medium-font-size;
+%black-big-font{
+  font-size: $big-font-size;
   color: $black-font-color;
+}
+
+%white-big-font{
+  font-size: $big-font-size;
+  color: $white-font-color;
 }
