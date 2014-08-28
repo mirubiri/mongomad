@@ -1,13 +1,10 @@
 %default-image-container {
-  // @include box-sizing(border-box);
-  // float: ;
-  // width: ;
-  // height: ;
-  // padding: ;
-  // text-align: center;
-  // // margin-left: auto;
-  // // margin-right: auto;
+  @include box-sizing(border-box);
+  float: left;
+  overflow: auto;
+  //padding: ;
 }
 
 %clip-image-container {
+
 }

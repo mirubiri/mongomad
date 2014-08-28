@@ -7,9 +7,7 @@
 
   @include box-sizing(border-box);
   .image {
-    float: left;
-
-    // margin-right: 5px;
+    @extend %default-image-container;
     @include squared-image(40px);
   }
   .user-data {
