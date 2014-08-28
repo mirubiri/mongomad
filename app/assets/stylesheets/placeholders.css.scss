@@ -20,10 +20,10 @@
 
     padding: 5px;
 
-    color: $white-font-color;
-
+    @include centered-text-container();
+    @extend %white-big-font;
     background-color: $grey-bgcolor;
-    text-align: center;
+
 
     @include box-sizing(border-box);
   }
