@@ -78,6 +78,11 @@ $request-border-bottom: 1px solid $grey-border-color;
 
 
 //-----------------------------------------------------
+  $body-font-family: 'Roboto';
+  $body-font-size: $default-font-size;
+  $body-font-weight: normal;
+  $body-line-height: 18px;
+  $body-color: white;
 
 
   $body-box-sizing: border-box;
@@ -93,11 +98,6 @@ $request-border-bottom: 1px solid $grey-border-color;
   $body-margin: 0;
   $body-padding: 0;
 
-  $body-font-family: 'Roboto';
-  $body-font-size: $default-font-size;
-  $body-font-weight: normal;
-  $body-line-height: 18px;
-  $body-color: white;
 
   $body-background-color: $body-bgcolor;
 

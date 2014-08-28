@@ -10,11 +10,8 @@ body {
   margin: $body-margin;
   padding: $body-padding;
 
-  font-family: $body-font-family;
-  font-size: $body-font-size;
-  font-weight: $body-font-weight;
-  line-height: $body-line-weight;
-  color: $body-color;
+  @extend %body-font;
+
 
   background-color: $body-background-color;
 
