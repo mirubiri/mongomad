@@ -1,5 +1,5 @@
 .login {
-  color: $title-font-color;
+  @extend %grey-medium-font;
 
   background-color: $white-bgcolor;
 
