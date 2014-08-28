@@ -1,0 +1,17 @@
+%warning-button {
+  input {
+    float: left;
+
+    height: $button-height;
+    width: 100%;
+
+    border: none;
+
+    font-weight: bold;
+    color: $white-font-color;
+
+    background-color: $red-button-bgcolor;
+
+    @include border-radius(5px, 5px);
+  }
+}

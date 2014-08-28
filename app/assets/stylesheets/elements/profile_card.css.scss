@@ -43,19 +43,7 @@
   width: 100%;
 
   @include box-sizing(border-box);
-  input {
-    float: left;
 
-    height: $button-height;
-    width: 100%;
+  @extend %warning-button;
 
-    border: none;
-
-    font-weight: bold;
-    color: $white-font-color;
-
-    background-color: $red-button-bgcolor;
-
-    @include border-radius(5px, 5px);
-  }
 }

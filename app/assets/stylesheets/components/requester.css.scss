@@ -44,6 +44,7 @@
 
     @include box-sizing(border-box);
   }
+
   input {
     float: right;
 
@@ -60,4 +61,5 @@
 
     @include border-radius(5px, 5px);
   }
+
 }
