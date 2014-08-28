@@ -10,9 +10,6 @@ body {
   margin: $body-margin;
   padding: $body-padding;
 
-
-
-
   background-color: $body-background-color;
 
   @include box-sizing($body-box-sizing);

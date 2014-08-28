@@ -1,52 +1,59 @@
-%body-font{
+%body-font {
   font-family: $body-font-family;
   font-weight: $body-font-weight;
   line-height: $body-line-height;
 }
 
-%grey-small-font{
-  @extend %body-font;
+%grey-small-font {
   font-size: $small-font-size;
   color: $grey-font-color;
+
+  @extend %body-font;
 }
 
-%grey-medium-font{
-  @extend %body-font;
+%grey-medium-font {
   font-size: $medium-font-size;
   color: $grey-font-color;
-}
 
-%grey-medium-bold-font{
-  @extend %grey-medium-font;
-  font-weight: bold;
-}
-
-%grey-big-font{
   @extend %body-font;
+}
+
+%grey-medium-bold-font {
+  font-weight: bold;
+
+  @extend %grey-medium-font;
+}
+
+%grey-big-font {
   font-size: $big-font-size;
   color: $grey-font-color;
+
+  @extend %body-font;
 }
 
-%black-big-font{
-  @extend %body-font;
+%black-big-font {
   font-size: $big-font-size;
   color: $black-font-color;
+
+  @extend %body-font;
 }
 
-%white-medium-font{
-  @extend %body-font;
+%white-medium-font {
   font-size: $medium-font-size;
   color: $white-font-color;
-}
 
-%white-medium-bold-font{
-  @extend %white-medium-font;
-  font-weight: bold;
-}
-
-%white-big-font{
   @extend %body-font;
+}
+
+%white-medium-bold-font {
+  font-weight: bold;
+
+  @extend %white-medium-font;
+}
+
+%white-big-font {
   font-size: $big-font-size;
   color: $white-font-color;
-}
 
+  @extend %body-font;
+}

@@ -6,7 +6,6 @@
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @extend %dashboard-component-title;
-
   .info {
     @include centered-text-container(5px);
     @extend %grey-big-font;

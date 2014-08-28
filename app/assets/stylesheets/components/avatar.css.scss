@@ -19,8 +19,9 @@
   }
   .user-data {
     float: left;
+
     @extend %white-medium-font;
-    div{
+    div {
       @include left-aligned-text-container(100%);
     }
   }
@@ -28,7 +29,6 @@
 
 .avatar-profile-card {
   height: 70px;
-
   .image {
     position: relative;
     top: -70px;
@@ -60,7 +60,6 @@
     margin: 0 auto;
 
     @include box-sizing(border-box);
-
     .full-name {
       @include centered-text-container(0);
       @extend %black-big-font;

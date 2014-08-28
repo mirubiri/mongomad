@@ -1,15 +1,23 @@
 @mixin left-aligned-text-container($width) {
-  @include box-sizing(border-box);
-  float:left;
+  float: left;
+
   width: $width;
+
   padding: $left-aligned-text-container-padding;
+
   text-align: left;
+
+  @include box-sizing(border-box);
 }
 
 @mixin centered-text-container($padding) {
-  @include box-sizing(border-box);
-  float:left;
+  float: left;
+
   width: 100%;
+
   padding: $padding;
+
   text-align: center;
+
+  @include box-sizing(border-box);
 }

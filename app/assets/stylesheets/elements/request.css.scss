@@ -9,13 +9,11 @@
   @include box-sizing(border-box);
 
   border-bottom: $request-border-bottom;
-
   .text {
     @include box-sizing(border-box);
     @include left-aligned-text-container(80%);
     @extend %grey-medium-font;
   }
-
   .controls {
     float: right;
 

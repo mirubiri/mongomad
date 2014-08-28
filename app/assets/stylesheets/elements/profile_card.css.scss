@@ -43,7 +43,5 @@
   width: 100%;
 
   @include box-sizing(border-box);
-
   @extend %warning-button;
-
 }
