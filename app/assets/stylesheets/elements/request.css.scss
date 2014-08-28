@@ -9,16 +9,13 @@
   @include box-sizing(border-box);
 
   border-bottom: $request-border-bottom;
+
   .text {
-    float: left;
-
-    width: 80%;
-
-    padding: 0 5px 0 5px;
-
-    @extend %grey-medium-font;
     @include box-sizing(border-box);
+    @include left-aligned-text-container(80%);
+    @extend %grey-medium-font;
   }
+
   .controls {
     float: right;
 
