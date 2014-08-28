@@ -19,12 +19,7 @@
   }
   .user-data {
     float: left;
-    .first-name {
-      //
-    }
-    .surnames {
-      //
-    }
+    @extend %white-medium-font;
   }
 }
 
