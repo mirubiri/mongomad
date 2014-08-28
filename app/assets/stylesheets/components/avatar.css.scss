@@ -9,13 +9,8 @@
   .image {
     float: left;
 
-    margin-right: 5px;
-    img {
-      display: block;
-
-      height: 40px;
-      width: 40px;
-    }
+    // margin-right: 5px;
+    @include squared-image(40px);
   }
   .user-data {
     float: left;
