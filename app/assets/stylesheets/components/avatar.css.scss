@@ -20,13 +20,15 @@
   .user-data {
     float: left;
     @extend %white-medium-font;
+    div{
+      @include left-aligned-text-container();
+    }
   }
 }
 
 .avatar-profile-card {
   height: 70px;
 
-  text-align: center;
   .image {
     position: relative;
     top: -70px;
@@ -58,10 +60,13 @@
     margin: 0 auto;
 
     @include box-sizing(border-box);
+
     .full-name {
+      @include centered-text-container();
       @extend %black-big-font;
     }
     .location {
+      @include centered-text-container();
       @extend %grey-big-font;
     }
   }

@@ -23,6 +23,13 @@
 @import "placeholders";
 // @import "mixins";
 
+@import "base/base";
+@import "base/buttons";
+@import "base/fonts";
+@import "base/image_containers";
+@import "base/images";
+@import "base/text_containers";
+
 @import "elements/good";
 
 @import "components/avatar";
@@ -46,12 +53,6 @@
 @import "elements/request_list";
 
 
-@import "base/base";
-@import "base/buttons";
-@import "base/fonts";
-@import "base/image_containers";
-@import "base/images";
-@import "base/text_containers";
 
 // @import "pages/item/form";
 

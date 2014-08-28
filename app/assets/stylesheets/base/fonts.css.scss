@@ -1,17 +1,17 @@
 %body-font{
   font-family: $body-font-family;
-  font-size: $body-font-size;
   font-weight: $body-font-weight;
   line-height: $body-line-height;
-  color: $body-color;
 }
 
 %grey-small-font{
+  @extend %body-font;
   font-size: $small-font-size;
   color: $grey-font-color;
 }
 
 %grey-medium-font{
+  @extend %body-font;
   font-size: $medium-font-size;
   color: $grey-font-color;
 }
@@ -22,16 +22,19 @@
 }
 
 %grey-big-font{
+  @extend %body-font;
   font-size: $big-font-size;
   color: $grey-font-color;
 }
 
 %black-big-font{
+  @extend %body-font;
   font-size: $big-font-size;
   color: $black-font-color;
 }
 
 %white-medium-font{
+  @extend %body-font;
   font-size: $medium-font-size;
   color: $white-font-color;
 }
@@ -42,6 +45,7 @@
 }
 
 %white-big-font{
+  @extend %body-font;
   font-size: $big-font-size;
   color: $white-font-color;
 }
