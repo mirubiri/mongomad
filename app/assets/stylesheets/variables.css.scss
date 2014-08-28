@@ -4,10 +4,9 @@
 // $good-data-heigth: 25px;
 
 $button-height: 30px;
-
 $omnibar-components-margin: 50px;
 // $image-text-margin: 5px;
-$ppal-element-margin: 0px 0px 20px 0px;
+$ppal-element-margin: 0 0 20px 0;
 // $profile-card-element-margin: 0px 0px 20px 0px;
 // $data-margin: 5px;
 // $profile-card-icon-margin: 5px;
@@ -15,7 +14,6 @@ $ppal-element-margin: 0px 0px 20px 0px;
 // $message-margin: 10px;
 // $title-description-margin: 5px;
 $expositor-element-margin: 5px;
-
 $container-padding: 8px 30px;
 // $nav-icon-padding: 0px;
 // $inline-loggin-padding: 0px;
@@ -29,91 +27,62 @@ $element-padding: 15px;
 // $additional-control-padding: 5px;
 
 $top-container-bezel-height: 30px;
-$container-bgcolor: #B1D4E1;
+$container-bgcolor: #b1d4e1;
 $body-bgcolor: rgb(90,148,173);
-$nav-selected: #B1D4E1;
+$nav-selected: #b1d4e1;
 $nav-font-color: #839091;
 $red-button-bgcolor: rgb(231,74,57);
 $blue-button-bgcolor: rgb(58,157,223);
 $grey-bgcolor: rgb(183,183,183);
 //$grey-button-bgcolor: rgb(183,183,183);
 $grey-border-color: rgb(137,137,137);
-$blue-nav-border-color: #9DC4D1;
+$blue-nav-border-color: #9dc4d1;
 $white-bgcolor: rgb(253,253,253);
-$grey-shadow-color: #9BB3B8;
-
-$dashboard-padding: 0px 10px 0px  0px;
-
-
-
+$grey-shadow-color: #9bb3b8;
+$dashboard-padding: 0 10px 0  0;
 $avatar-request-image-width: 40px;
 $item-image-width: 155px;
-
 
 // Request List
 $request-list-flotation: left;
 $request-list-width: 100%;
 
-
 // Request
 $request-flotation: left;
 $request-width: 100%;
-$request-margin: 5px 0px 0px 0px;
+$request-margin: 5px 0 0 0;
 $request-padding: 0 5px 0 5px;
 $request-border-bottom: 1px solid $grey-border-color;
 
-
-//Left-align-text-container
-$left-aligned-text-container-padding: 0 5px 0 5px;
-
-
-
-
-
 // $item-preview-big: 300px;
 // $item-snapshoot: 120px;
-
 
 //-----------------------------------------------------
 //FONTS
 $small-font-size: 10px;
 $medium-font-size: 12px;
 $big-font-size: 14px;
-
-
 $black-font-color: black;
 $grey-font-color: rgb(153,153,153);
 $white-font-color: rgb(253,253,253);
 
+//BASE
+$body-float: left;
+$body-display: block;
+$body-overflow: auto;
+$body-overflow-y: scroll;
+$body-width: 100%;
+$body-margin: 0;
+$body-padding: 0;
+$body-background-color: $body-bgcolor;
 
+//main
+$main-float: left;
+$main-overflow: visible;
+$main-width: 100%;
+$main-padding: $container-padding;
 
-
-
-  $body-font-family: 'Roboto';
-  $body-font-size: $big-font-size;
-  $body-font-weight: normal;
-  $body-line-height: 18px;
-  $body-color: white;
-
-
-  $body-box-sizing: border-box;
-
-  $body-float: left;
-
-  $body-display: block;
-  $body-overflow: auto;
-  $body-overflow-y: scroll;
-
-  $body-width: 100%;
-
-  $body-margin: 0;
-  $body-padding: 0;
-
-
-  $body-background-color: $body-bgcolor;
-
-
-
-
-
-
+//mixin body-font
+$body-font-family: 'Roboto';
+$body-font-weight: normal;
+$body-line-height: 18px;

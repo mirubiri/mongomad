@@ -12,18 +12,14 @@ body {
 
   background-color: $body-background-color;
 
-  @include box-sizing($body-box-sizing);
+  @include box-sizing(border-box);
 }
 
 .main {
-  float: left;
-
-  overflow: visible;
-
-  width: 100%;
-
-  padding: $container-padding;
-
+  float: $main-float;
+  overflow: $main-overflow;
+  width: $main-width;
+  padding: $main-padding;
   @include box-sizing(border-box);
 }
 
