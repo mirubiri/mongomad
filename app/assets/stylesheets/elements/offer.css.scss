@@ -20,14 +20,29 @@
 
   }
 
-  .message {
-    min-height: 50px;
-    @include left-aligned-text-container(100%);
-    @extend %grey-medium-font;
-  }
-
-  .controls {
+  .message-zone{
     float: left;
+    width: 100%;
+    overflow: auto;
+    background-color: $grey-bgcolor;
+
+    .message {
+      min-height: 50px;
+      @include left-aligned-text-container(100%);
+      @extend %grey-medium-font;
+      background: transparent;
+    }
+
+    .controls {
+      float: left;
+      width: 100%;
+      padding: 5px;
+      @include box-sizing(border-box);
+
+      @extend %control-button;
+      background: transparent;
+    }
+
   }
 
 }

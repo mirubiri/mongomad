@@ -17,6 +17,13 @@
   }
 }
 
+%control-button {
+  @extend %button;
+  input {
+    background-color: $grey-button-bgcolor;
+  }
+}
+
 %send-button {
   @extend %button;
   input {
