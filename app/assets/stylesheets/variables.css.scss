@@ -60,15 +60,6 @@ $proposal-border-bottom: 1px solid $grey-border-color;
 // $item-preview-big: 300px;
 // $item-snapshoot: 120px;
 
-//-----------------------------------------------------
-//FONTS
-$small-font-size: 10px;
-$medium-font-size: 12px;
-$big-font-size: 14px;
-$black-font-color: black;
-$grey-font-color: rgb(153,153,153);
-$white-font-color: rgb(253,253,253);
-
 //BASE
 $body-float: left;
 $body-display: block;
@@ -85,7 +76,18 @@ $main-overflow: visible;
 $main-width: 100%;
 $main-padding: $container-padding;
 
-//mixin body-font
+
+//-----------------------------------------------------
+//FONTS MIXINS
 $body-font-family: 'Roboto';
-$body-font-weight: normal;
 $body-line-height: 18px;
+
+$small-font-size: 10px;
+$medium-font-size: 12px;
+$big-font-size: 14px;
+
+$black-font-color: black;
+$grey-font-color: rgb(153,153,153);
+$white-font-color: rgb(253,253,253);
+
+$bold-weight: bold;
