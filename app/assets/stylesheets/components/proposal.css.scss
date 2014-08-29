@@ -1,16 +1,31 @@
 .proposal {
 
+  @include box-sizing(border-box);
+
+  float: left;
+
+  width: 100%;
+
   padding: $element-padding;
 
   background-color: $white-bgcolor;
 
   border-bottom: $proposal-border-bottom;
 
-
   .composer-goods {
-    //
+    float: left;
+    width: 65%;
+    overflow: auto;
+    @include product(165px);
+    .product{float: left;}
+
   }
+
   .receiver-goods {
-    //
+    float: right;
+    width: 35%;
+    overflow: auto;
+    @include product(70px);
+    .product{float: right;}
   }
 }

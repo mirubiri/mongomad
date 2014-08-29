@@ -55,9 +55,11 @@
 
 
 .avatar-offer {
-  height: 80px;
+  float: left;
+  width: 100%;
+  height: 0px;
   .image {
-    @include clip-image-container(64px);
+    @include offer-avatar-container(48px);
     @include bordered-rounded-image(100%);
   }
   .full-name {

@@ -8,6 +8,7 @@
   background-color: $white-bgcolor;
 
   .title {
+    float: left;
     overflow: none;
     height: 25px;
 
@@ -20,6 +21,7 @@
   }
 
   .message {
+    min-height: 50px;
     @include left-aligned-text-container(100%);
     @extend %grey-medium-font;
   }
