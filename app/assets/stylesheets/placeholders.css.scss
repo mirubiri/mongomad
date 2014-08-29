@@ -13,15 +13,13 @@
 
 %dashboard-component-title {
   .dashboard-component-title {
-    float: left;
-
-    height: 30px;
-    width: 100%;
-
-    background-color: $grey-bgcolor;
-
     @include centered-text-container(5px 0 0 0);
     @extend %white-big-font;
     @include box-sizing(border-box);
+
+    float: left;
+    height: 30px;
+    width: 100%;
+    background-color: $grey-bgcolor;
   }
 }

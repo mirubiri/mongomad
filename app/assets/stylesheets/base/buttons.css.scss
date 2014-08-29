@@ -1,14 +1,12 @@
 %button {
   input {
-    float: left;
-
-    height: $button-height;
-    width: 100%;
-
-    border: none;
-
     @extend %white-big-bold-font;
     @include border-radius(5px, 5px);
+
+    float: left;
+    height: $button-height;
+    width: 100%;
+    border: none;
   }
 }
 
@@ -23,12 +21,9 @@
   @extend %button;
   input {
     float: right;
-
     height: 20px;
-
+    width: auto;
     margin-top: 4px;
-    width:auto;
-
     background-color: $blue-button-bgcolor;
   }
 }

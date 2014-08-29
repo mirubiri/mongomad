@@ -2,9 +2,10 @@
   img {
     @include box-sizing(border-box);
     @include border-radius(50%, 50%);
-    border: 1px solid $grey-border-color;
+
     height: $size;
     width: $size;
+    border: 1px solid $grey-border-color;
   }
 }
 
@@ -19,9 +20,9 @@
   img {
     @include border-radius(5px 5px 0px 0px);
     @include box-sizing(border-box);
-    border: 1px solid $grey-border-color;
 
     width: $width;
+    border: 1px solid $grey-border-color;
     @if $height {
       height: $height;
     }
@@ -35,9 +36,9 @@
   img {
     @include border-radius(5px);
     @include box-sizing(border-box);
-    border: 1px solid $grey-border-color;
 
     width: $width;
+    border: 1px solid $grey-border-color;
     @if $height {
       height: $height;
     }

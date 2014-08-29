@@ -1,11 +1,10 @@
 .business-info-dashboard {
-  float: left;
-
-  background-color: $white-bgcolor;
-
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @extend %dashboard-component-title;
+
+  float: left;
+  background-color: $white-bgcolor;
   .info {
     @include centered-text-container(5px);
     @extend %grey-big-font;

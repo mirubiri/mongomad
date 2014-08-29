@@ -1,50 +1,37 @@
 .requester {
-  position: relative;
-
-  top: 0px;
-
-  overflow: auto;
-
-  width: 100%;
-
-  margin: $ppal-element-margin;
-
   @include box-sizing(border-box);
   @extend %send-button;
+
+  position: relative;
+  top: 0;
+  overflow: auto;
+  width: 100%;
+  margin: $ppal-element-margin;
   form {
-    float: left;
-
-    overflow: auto;
-
-    width: 100%;
-
     @include box-sizing(border-box);
+
+    float: left;
+    overflow: auto;
+    width: 100%;
   }
   textarea {
-    float: left;
-
-    overflow: auto;
-
-    width: 100%;
-    min-height: 38px;
-
-    border: 2px solid $container-bgcolor;
-
     @extend %black-big-font;
     @include box-sizing(border-box);
     @include border-radius(5px, 5px);
+
+    float: left;
+    overflow: auto;
+    width: 100%;
+    min-height: 38px;
+    border: 2px solid $container-bgcolor;
   }
   .countdown {
-    float: left;
-
-    overflow: visible;
-
-    width: auto;
-
-    margin-top: 2px;
-
-    color: $grey-font-color;
-
     @include box-sizing(border-box);
+
+    float: left;
+    overflow: visible;
+    width: auto;
+    margin-top: 2px;
+    color: $grey-font-color;
   }
 }

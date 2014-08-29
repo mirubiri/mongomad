@@ -1,11 +1,10 @@
 %good {
-  float: left;
-
-  background-color: $white-bgcolor;
-
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
+
+  float: left;
+  background-color: $white-bgcolor;
 }
 
 
@@ -13,23 +12,18 @@
   @extend %good;
 
   width: $item-image-width;
-
   margin: 0 10px 10px 0;
   padding: 5px;
-
   .image {
     @extend %default-image-container;
     @include upper-rounded-corners-image(155px);
   }
-
   .name {
     @extend %text-container;
     @extend %grey-big-font;
   }
-
-  .controls{
+  .controls {
     float: left;
     width: 100%;
   }
-
 }

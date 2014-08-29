@@ -1,9 +1,9 @@
 .login {
-  background-color: $white-bgcolor;
-
   @extend %grey-medium-font;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
   @extend %grey-shadow;
   @extend %centered;
+
+  background-color: $white-bgcolor;
 }

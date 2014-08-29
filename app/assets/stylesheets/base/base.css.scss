@@ -1,26 +1,23 @@
 body {
-  float: $body-float;
+  @include box-sizing(border-box);
 
+  float: $body-float;
   display: $body-display;
   overflow: $body-overflow;
   overflow-y: $body-overflow-y;
-
   width: $body-width;
-
   margin: $body-margin;
   padding: $body-padding;
-
   background-color: $body-background-color;
-
-  @include box-sizing(border-box);
 }
 
 .main {
+  @include box-sizing(border-box);
+
   float: $main-float;
   overflow: $main-overflow;
   width: $main-width;
   padding: $main-padding;
-  @include box-sizing(border-box);
 }
 
 
@@ -59,10 +56,8 @@ a {
 
 textarea {
   float: left;
-
   height: auto;
   width: 100%;
-
   resize: none;
 }
 

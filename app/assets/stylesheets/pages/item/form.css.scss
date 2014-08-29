@@ -1,51 +1,42 @@
 //TODO: darle una vuelta
 .image_loader {
-  float: left;
-
-  overflow: auto;
-
-  width: 45%;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  width: 45%;
 }
 
 .image_descriptor {
-  float: left;
-
-  overflow: auto;
-
-  width: 55%;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  width: 55%;
 }
 
 .previews {
-  float: left;
-
-  overflow: auto;
-
-  width: 100%;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  width: 100%;
 }
 
 .preview {
   overflow: auto;
-
   background-color: transparent;
   img {
     height: $item-preview-big;
     width: $item-preview-big;
     max-height: $item-preview-big;
     max-width: $item-preview-big;
-
     background-color: $white-bgcolor;
   }
 }
 
 .image_selection_area {
   float: left;
-
   width: 48%;
   div {
     float: left;
@@ -54,50 +45,39 @@
 
 .preview_box {
   float: left;
-
   height: $item-snapshoot;
   width: $item-snapshoot;
-
   margin-right: 8px;
   margin-bottom: 60px;
 }
 
 .add_image_container {
   float: left;
-
   overflow: hidden;
-
   height: $item-snapshoot;
   width: $item-snapshoot;
-
   margin-bottom: 4px;
   img {
     float: left;
-
     height: $item-snapshoot;
     width: $item-snapshoot;
-
     background-color: white;
   }
 }
 
 label.preview_label {
+  @include box-sizing(border-box);
+
   float: left;
   z-index: 10;
-
   height: 25px;
   width: 25px;
-
   margin-right: 3px;
   padding-top: 3px;
-
   font-weight: bolder;
   color: white;
-
   background-color: black;
   text-align: center;
-
-  @include box-sizing(border-box);
 }
 
 
@@ -105,12 +85,10 @@ label.preview_label {
   position: absolute;
   top: 0;
   left: 0;
-
   height: 25px;
   width: 25px;
   input {
     float: left;
-
     height: 25px;
     width: 25px;
 

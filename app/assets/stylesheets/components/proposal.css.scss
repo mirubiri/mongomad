@@ -1,8 +1,8 @@
 .proposal {
-  background-color: $white-bgcolor;
-
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
+
+  background-color: $white-bgcolor;
   .composer-goods {
     //
   }

@@ -1,20 +1,14 @@
 .omnibar {
-  float: left;
-
-  overflow: auto;
-
-  width: 100%;
-
-  padding: $container-padding;
-
-  background-color: transparent;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  width: 100%;
+  padding: $container-padding;
+  background-color: transparent;
   .navigation-controls {
     float: left;
-
     width: 35%;
-
     text-align: center;
   }
 }

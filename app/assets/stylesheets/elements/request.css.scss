@@ -1,12 +1,10 @@
 .request {
+  @include box-sizing(border-box);
+
   float: $request-flotation;
-
   width: $request-width;
-
   margin-top: $request-margin;
   padding: $request-padding;
-
-  @include box-sizing(border-box);
 
   border-bottom: $request-border-bottom;
   .text {
@@ -15,17 +13,13 @@
     @extend %grey-medium-font;
   }
   .controls {
+    @include box-sizing(border-box);
+
     float: right;
-
     width: 100%;
-
     padding-right: 5px;
-
     font-size: $small-font-size;
     color: blue;
-
     text-align: right;
-
-    @include box-sizing(border-box);
   }
 }

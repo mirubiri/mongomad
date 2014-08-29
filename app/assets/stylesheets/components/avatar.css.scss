@@ -1,11 +1,9 @@
 .avatar-omnibar {
-  float: left;
-
-  overflow: visible;
-
-  width: 15%;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: visible;
+  width: 15%;
   .image {
     @extend %default-image-container;
     @include squared-image(40px);
@@ -26,14 +24,12 @@
     @include bordered-rounded-image(100%);
   }
   .user-data {
+    @include box-sizing(border-box);
+
     position: relative;
     top: -70px;
-
     overflow: auto;
-
     margin: 0 auto;
-
-    @include box-sizing(border-box);
     .full-name {
       @include centered-text-container(0);
       @extend %black-big-font;
@@ -47,11 +43,10 @@
 
 
 .avatar-request {
-  float: left;
-
-  overflow: visible;
-
   @include box-sizing(border-box);
+
+  float: left;
+  overflow: visible;
   .image {
     @extend %default-image-container;
     @include squared-image(40px);

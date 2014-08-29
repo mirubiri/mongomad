@@ -1,49 +1,39 @@
 .profile-card {
-  float: left;
-
-  display: block;
-
-  width: 100%;
-
-  margin: $ppal-element-margin;
-
-  background-color: $white-bgcolor;
-
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
   @extend %grey-shadow;
+
+  float: left;
+  display: block;
+  width: 100%;
+  margin: $ppal-element-margin;
+  background-color: $white-bgcolor;
   .head-image {
     img {
-      display: block;
-
-      width: 100%;
-
       @include border-radius(5px 5px 0px 0px);
+
+      display: block;
+      width: 100%;
     }
   }
 }
 
 .user-card {
-  float: left;
-
-  width: 100%;
-
-  padding: $element-padding;
-
   @include box-sizing(border-box);
+
+  float: left;
+  width: 100%;
+  padding: $element-padding;
 }
 
 
 
 .make-offer-control {
-  position: relative;
-
-  top: 0px;
-
-  overflow: auto;
-
-  width: 100%;
-
   @include box-sizing(border-box);
   @extend %warning-button;
+
+  position: relative;
+  top: 0;
+  overflow: auto;
+  width: 100%;
 }

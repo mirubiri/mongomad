@@ -1,33 +1,25 @@
 .expositor {
-  float: right;
-
-  overflow: visible;
-
-  width: calc(75% - 20px);
-
-  background-color: $container-bgcolor;
-
   @extend %grey-shadow;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
+
+  float: right;
+  overflow: visible;
+  width: calc(75% - 20px);
+  background-color: $container-bgcolor;
   nav.navigation {
     float: left;
-
     overflow: auto;
-
     height: $top-container-bezel-height;
     width: 100%;
-
     background-color: $white-bgcolor;
     li {
-      float: left;
-
-      height: 100%;
-
-      padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
-
       @extend %grey-medium-bold-font;
       @include box-sizing(border-box);
+
+      float: left;
+      height: 100%;
+      padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
 
       border-right: 2px solid $blue-nav-border-color;
     }
@@ -37,9 +29,7 @@
   }
   .element-list {
     float: left;
-
     overflow: auto;
-
     padding: $element-padding - $expositor-element-margin;
   }
 }
