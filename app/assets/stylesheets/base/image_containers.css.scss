@@ -2,7 +2,6 @@
   @include box-sizing(border-box);
   float: left;
   overflow: auto;
-  //padding: ;
 }
 
 @mixin clip-image-container($size) {
