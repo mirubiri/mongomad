@@ -22,20 +22,10 @@
 
   @extend %good;
   .image {
-    float: left;
-
-    width: 100%;
-
-    @include box-sizing(border-box);
-    img {
-      height: 100%;
-      width: 100%;
-
-      border: 1px solid #bbb;
-
-      @include box-sizing(border-box);
-    }
+    @extend %default-image-container;
+    @include upper-rounded-corners-image(155px);
   }
+
   .name {
     float: left;
 
