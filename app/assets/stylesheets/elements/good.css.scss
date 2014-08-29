@@ -35,7 +35,8 @@
     float: left;
     background-color: $white-bgcolor;
 
-    width: $width;
+    width: $width - 10px;
+    max-width: $width - 10px;
     margin: 0 0px 10px 0;
 
     .image-big {
