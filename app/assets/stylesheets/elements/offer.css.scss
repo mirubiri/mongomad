@@ -21,12 +21,9 @@
   }
 
 
-
   .message {
-    float: left;
-    // width: 100%;
-    // font-size: $medium-font-size;
-    // color: $grey-font-color;
+    @include left-aligned-text-container(100%);
+    @extend %grey-medium-font;
   }
 
   .controls {
