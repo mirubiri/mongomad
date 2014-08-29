@@ -1,5 +1,5 @@
 %good {
-  color: $grey-font-color;
+  float: left;
 
   background-color: $white-bgcolor;
 
@@ -10,44 +10,26 @@
 
 
 .item {
-  float: left;
+  @extend %good;
 
   width: $item-image-width;
 
-  margin-top: 0;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-left: 0;
+  margin: 0 10px 10px 0;
   padding: 5px;
 
-  @extend %good;
   .image {
     @extend %default-image-container;
     @include upper-rounded-corners-image(155px);
   }
 
   .name {
-    float: left;
-
-    overflow: none;
-
-    width: 100%;
-    max-height: 40px;
-
-    margin: 0 0 0 0;
-    padding: 8px;
-
-    @include box-sizing(border-box);
-    .text {
-      float: left;
-
-      overflow: none;
-
-      width: 100%;
-
-      font-size: 11px;
-
-      text-align: center;
-    }
+    @extend %text-container;
+    @extend %grey-big-font;
   }
+
+  .controls{
+    float: left;
+    width: 100%;
+  }
+
 }

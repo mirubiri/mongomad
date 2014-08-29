@@ -18,6 +18,8 @@
 @mixin upper-rounded-corners-image($width, $height: null) {
   img {
     @include border-radius(5px 5px 0px 0px);
+    @include box-sizing(border-box);
+    border: 1px solid $grey-border-color;
 
     width: $width;
     @if $height {
@@ -29,9 +31,11 @@
   }
 }
 
-@mixin full-rounded-corners-image($width, $height: null) {ç
+@mixin full-rounded-corners-image($width, $height: null) {
   img {
     @include border-radius(5px);
+    @include box-sizing(border-box);
+    border: 1px solid $grey-border-color;
 
     width: $width;
     @if $height {
