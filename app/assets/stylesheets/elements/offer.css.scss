@@ -6,32 +6,31 @@
   width: 285px;
   margin: $expositor-element-margin;
   background-color: $white-bgcolor;
+
   .title {
-    // float: left;
-    // float: left;
-    // overflow: none;
-    // height: 25px;
-    // width: 100%;
-    // margin-bottom: 18px;
-    // padding-top: 5px;
-    // font-size: 13px;
-    // font-weight: bold;
-    // line-height: normal;
-    // color: $blue-button-bgcolor;
-    // color: rgb(41,128,185);
-    // background-color: rgb(243,243,243);
-    // border-bottom: solid 1px #dddddd;
-    // border-bottom: 1px solid $grey-border-color;
-    // text-align: center;
-    // text-align: center;
+    overflow: none;
+    height: 25px;
+    margin-bottom: 18px;
+
+    background-color: rgb(243,243,243);
+    border-bottom: 1px solid $grey-border-color;
+
+    @include centered-text-container(5px 0px 0px 0px);
+    @extend %grey-medium-font;
+
   }
+
+
+
   .message {
     float: left;
     // width: 100%;
     // font-size: $medium-font-size;
     // color: $grey-font-color;
   }
+
   .controls {
     float: left;
   }
+
 }
