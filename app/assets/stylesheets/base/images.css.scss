@@ -15,25 +15,29 @@
 }
 
 @mixin upper-rounded-corners-image($width, $height: null) {
-  @include border-radius(5px 5px 0px 0px);
+  img {
+    @include border-radius(5px 5px 0px 0px);
 
-  width: $width;
-  @if $height {
-    height: $height;
-  }
-  @else {
-    height: $width;
+    width: $width;
+    @if $height {
+      height: $height;
+    }
+    @else {
+      height: $width;
+    }
   }
 }
 
-@mixin full-rounded-corners-image($width, $height: null) {
-  @include border-radius(5px);
+@mixin full-rounded-corners-image($width, $height: null) {ç
+  img {
+    @include border-radius(5px);
 
-  width: $width;
-  @if $height {
-    height: $height;
-  }
-  @else {
-    height: $width;
+    width: $width;
+    @if $height {
+      height: $height;
+    }
+    @else {
+      height: $width;
+    }
   }
 }
