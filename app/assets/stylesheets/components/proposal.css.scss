@@ -1,8 +1,12 @@
 .proposal {
-  @extend %grey-shadow;
-  @include border-radius(5px, 5px);
+
+  padding: $element-padding;
 
   background-color: $white-bgcolor;
+
+  border-bottom: $proposal-border-bottom;
+
+
   .composer-goods {
     //
   }

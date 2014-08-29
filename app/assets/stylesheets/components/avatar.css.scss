@@ -55,7 +55,7 @@
 
 
 .avatar-offer {
-  height: 50px;
+  height: 80px;
   .image {
     @include clip-image-container(64px);
     @include bordered-rounded-image(100%);

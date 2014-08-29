@@ -10,7 +10,6 @@
   .title {
     overflow: none;
     height: 25px;
-    margin-bottom: 18px;
 
     background-color: rgb(243,243,243);
     border-bottom: 1px solid $grey-border-color;
@@ -19,7 +18,6 @@
     @extend %grey-medium-font;
 
   }
-
 
   .message {
     @include left-aligned-text-container(100%);
