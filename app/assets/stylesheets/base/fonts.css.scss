@@ -1,65 +1,20 @@
-%body-font {
+.font {
   font-family: $body-font-family;
-  font-weight: $body-font-weight;
   line-height: $body-line-height;
 }
 
-%grey-small-font {
-  @extend %body-font;
+@mixin regular-font($size, $color) {
+  @extend .font;
 
-  font-size: $small-font-size;
-  color: $grey-font-color;
+  font-weight: regular;
+  font-size: $size;
+  color: $color;
 }
 
-%grey-medium-font {
-  @extend %body-font;
-
-  font-size: $medium-font-size;
-  color: $grey-font-color;
-}
-
-%grey-medium-bold-font {
-  @extend %grey-medium-font;
+@mixin regular-font($size, $color) {
+  @extend .font;
 
   font-weight: bold;
-}
-
-%grey-big-font {
-  @extend %body-font;
-
-  font-size: $big-font-size;
-  color: $grey-font-color;
-}
-
-%black-big-font {
-  @extend %body-font;
-
-  font-size: $big-font-size;
-  color: $black-font-color;
-}
-
-%white-medium-font {
-  @extend %body-font;
-
-  font-size: $medium-font-size;
-  color: $white-font-color;
-}
-
-%white-medium-bold-font {
-  @extend %white-medium-font;
-
-  font-weight: bold;
-}
-
-%white-big-font {
-  @extend %body-font;
-
-  font-size: $big-font-size;
-  color: $white-font-color;
-}
-
-%white-big-bold-font {
-  @extend %white-big-font;
-
-  font-weight: bold;
+  font-size: $size;
+  color: $color;
 }
