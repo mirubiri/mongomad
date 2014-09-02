@@ -1,8 +1,9 @@
 .request
-  = yield_content :avatar
+  .request-message
+    = yield_content :avatar
 
-  .text
-    = yield_content :text
+    .text
+      = yield_content :text
 
   .controls
     = yield_content :controls
