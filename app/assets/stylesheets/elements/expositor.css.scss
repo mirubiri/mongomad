@@ -14,7 +14,7 @@
     width: 100%;
     background-color: $white-bgcolor;
     li {
-      @extend %grey-medium-bold-font;
+      @include regular-font($medium-font-size, $grey-font-color);
       @include box-sizing(border-box);
 
       float: left;
@@ -24,9 +24,7 @@
       border-right: 2px solid $blue-nav-border-color;
     }
   }
-  a {
-    //
-  }
+
   .element-list {
     float: left;
     overflow: auto;

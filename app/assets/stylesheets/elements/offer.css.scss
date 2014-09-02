@@ -16,8 +16,7 @@
     border-bottom: 1px solid $grey-border-color;
 
     @include centered-text-container(5px 0px 0px 0px);
-    @extend %grey-medium-font;
-
+    @include regular-font($medium-font-size, $grey-font-color);
   }
 
   .message-zone{
@@ -29,7 +28,7 @@
     .message {
       min-height: 50px;
       @include left-aligned-text-container(100%);
-      @extend %grey-medium-font;
+      @include regular-font($medium-font-size, $grey-font-color);
       background: transparent;
     }
 

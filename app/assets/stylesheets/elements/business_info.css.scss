@@ -7,6 +7,6 @@
   background-color: $white-bgcolor;
   .info {
     @include centered-text-container(5px);
-    @extend %grey-big-font;
+    @include regular-font($big-font-size, $grey-font-color);
   }
 }

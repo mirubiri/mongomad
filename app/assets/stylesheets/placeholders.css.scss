@@ -14,7 +14,7 @@
 %dashboard-component-title {
   .dashboard-component-title {
     @include centered-text-container(5px 0 0 0);
-    @extend %white-big-font;
+    @include regular-font($big-font-size, $white-font-color);
     @include box-sizing(border-box);
 
     float: left;

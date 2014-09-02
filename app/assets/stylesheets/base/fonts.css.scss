@@ -11,7 +11,7 @@
   color: $color;
 }
 
-@mixin regular-font($size, $color) {
+@mixin bold-font($size, $color) {
   @extend .font;
 
   font-weight: bold;

@@ -20,7 +20,7 @@
   }
   .name {
     @extend %text-container;
-    @extend %grey-big-font;
+    @include regular-font($big-font-size, $grey-font-color);
   }
   .controls {
     float: left;
@@ -29,7 +29,7 @@
 }
 
 @mixin product($width){
-  .product{
+  .product {
     @include box-sizing(border-box);
 
     float: left;
@@ -51,7 +51,7 @@
     }
     .name {
       @extend %text-container;
-      @extend %grey-big-font;
+      @include regular-font($big-font-size, $grey-font-color);
     }
   }
 }

@@ -1,6 +1,6 @@
 %button {
   input {
-    @extend %white-big-bold-font;
+    @include bold-font($big-font-size, $white-font-color);
     @include border-radius(5px, 5px);
 
     float: left;
