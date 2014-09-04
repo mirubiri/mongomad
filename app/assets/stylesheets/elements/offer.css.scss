@@ -1,8 +1,5 @@
 .offer {
-    @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-@include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
 
   float: left;
@@ -19,7 +16,10 @@
     border-bottom: 1px solid $grey-border-color;
 
     @include centered-text-container(5px 0px 0px 0px);
-    @include regular-font($medium-font-size, $grey-font-color);
+
+    font-weight: regular;
+    font-size: $medium-font-size;
+    color: $grey-font-color;
   }
 
   .message-zone{
@@ -31,7 +31,11 @@
     .message {
       min-height: 50px;
       @include left-aligned-text-container(100%);
-      @include regular-font($medium-font-size, $grey-font-color);
+
+      font-weight: regular;
+      font-size: $medium-font-size;
+      color: $grey-font-color;
+
       background: transparent;
     }
 

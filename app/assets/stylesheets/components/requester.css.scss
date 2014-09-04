@@ -14,7 +14,10 @@
     width: 100%;
   }
   textarea {
-    @include regular-font($big-font-size, $black-font-color);
+    font-weight: regular;
+    font-size: $big-font-size;
+    color: $black-font-color;
+
     @include box-sizing(border-box);
     @include border-radius(5px, 5px);
 

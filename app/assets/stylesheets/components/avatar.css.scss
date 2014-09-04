@@ -11,7 +11,10 @@
   .user-data {
     float: left;
     div {
-      @include regular-font($medium-font-size, $white-font-color);
+      font-weight: regular;
+      font-size: $medium-font-size;
+      color: $white-font-color;
+
       @include left-aligned-text-container(100%);
     }
   }
@@ -32,11 +35,17 @@
     margin: 0 auto;
     .full-name {
       @include centered-text-container(0);
-      @include regular-font($big-font-size, $black-font-color);
+
+      font-weight: regular;
+      font-size: $big-font-size;
+      color: $black-font-color;
     }
     .location {
       @include centered-text-container(0);
-      @include regular-font($big-font-size, $grey-font-color);
+
+      font-weight: regular;
+      font-size: $big-font-size;
+      color: $grey-font-color;
     }
   }
 }
@@ -65,7 +74,10 @@
   .full-name {
     @include box-sizing(border-box);
     @include centered-text-container(0);
-    @include regular-font($big-font-size, $black-font-color);
+
+    font-weight: regular;
+    font-size: $big-font-size;
+    color: $black-font-color;
 
     position: relative;
     top: -50px;

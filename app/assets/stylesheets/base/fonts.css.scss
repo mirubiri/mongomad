@@ -1,10 +1,4 @@
-.font {
-  font-family: $body-font-family;
-  line-height: $body-line-height;
-}
-
 @mixin regular-font($size, $color) {
-  @extend .font;
 
   font-weight: regular;
   font-size: $size;
@@ -12,7 +6,6 @@
 }
 
 @mixin bold-font($size, $color) {
-  @extend .font;
 
   font-weight: bold;
   font-size: $size;

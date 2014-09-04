@@ -10,7 +10,10 @@
   .text {
     @include box-sizing(border-box);
     @include left-aligned-text-container(80%);
-    @include regular-font($medium-font-size, $grey-font-color);
+
+    font-weight: regular;
+    font-size: $medium-font-size;
+    color: $grey-font-color;
   }
   .controls {
     @include box-sizing(border-box);
