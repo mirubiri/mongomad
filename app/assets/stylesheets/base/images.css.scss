@@ -1,15 +1,1 @@
-@mixin full-rounded-corners-image($width, $height: null) {
-  img {
-    @include border-radius(5px);
-    @include box-sizing(border-box);
 
-    width: $width;
-    border: 1px solid $grey-border-color;
-    @if $height {
-      height: $height;
-    }
-    @else {
-      height: $width;
-    }
-  }
-}
