@@ -5,7 +5,10 @@
   overflow: visible;
   width: 15%;
   .image {
-    @extend %default-image-container;
+    @include box-sizing(border-box);
+
+    float: left;
+    overflow: auto;
     @include squared-image(40px);
   }
   .user-data {
@@ -57,7 +60,10 @@
   float: left;
   overflow: visible;
   .image {
-    @extend %default-image-container;
+    @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
     @include squared-image(40px);
   }
 }

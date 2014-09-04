@@ -15,7 +15,11 @@
   margin: 0 10px 10px 0;
   padding: 5px;
   .image {
-    @extend %default-image-container;
+    @include box-sizing(border-box);
+
+    float: left;
+    overflow: auto;
+
     @include upper-rounded-corners-image(155px);
   }
   .name {
@@ -44,12 +48,17 @@
 
     .image-big {
       @include box-sizing(border-box);
-      @extend %default-image-container;
+
+      float: left;
+      overflow: auto;
       @include upper-rounded-corners-image(155px);
     }
     .image-small {
       @include box-sizing(border-box);
-      @extend %default-image-container;
+
+      float: left;
+      overflow: auto;
+
       @include upper-rounded-corners-image(60px);
     }
     .name {
