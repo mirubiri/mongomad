@@ -1,7 +1,1 @@
-@mixin centered-text-container($padding) {
-  @include box-sizing(border-box);
 
-  width: 100%;
-  padding: $padding;
-  text-align: center;
-}

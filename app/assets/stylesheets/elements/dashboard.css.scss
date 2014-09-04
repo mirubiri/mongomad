@@ -27,7 +27,12 @@
 }
 
 .dashboard-component-title {
-  @include centered-text-container(5px 0 0 0);
+  @include box-sizing(border-box);
+
+  width: 100%;
+  padding: 5px 0 0 0;
+  text-align: center;
+
   @extend %white-big-font;
   @include box-sizing(border-box);
 

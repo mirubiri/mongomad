@@ -54,14 +54,22 @@
     overflow: auto;
     margin: 0 auto;
     .full-name {
-      @include centered-text-container(0);
+      @include box-sizing(border-box);
+
+      width: 100%;
+      padding: 0px;
+      text-align: center;
 
       font-weight: regular;
       font-size: $big-font-size;
       color: $black-font-color;
     }
     .location {
-      @include centered-text-container(0);
+      @include box-sizing(border-box);
+
+      width: 100%;
+      padding: 0;
+      text-align: center;
 
       font-weight: regular;
       font-size: $big-font-size;
@@ -106,7 +114,11 @@
   }
   .full-name {
     @include box-sizing(border-box);
-    @include centered-text-container(0);
+      @include box-sizing(border-box);
+
+  width: 100%;
+  padding: 0;
+  text-align: center;
 
     font-weight: regular;
     font-size: $big-font-size;
