@@ -26,7 +26,18 @@
 .avatar-profile-card {
   height: 70px;
   .image {
-    @include clip-image-container(92px);
+    @include box-sizing(border-box);
+
+    @include border-radius($profile-card-image-size/2, $profile-card-image-size/2);
+
+    position: relative;
+    top: -($profile-card-image-size)*0.75;
+    height: $profile-card-image-size;
+    width: $profile-card-image-size;
+    margin: 0 auto;
+    padding: 6px;
+    background-color: $white-bgcolor;
+
     @include bordered-rounded-image(100%);
   }
   .user-data {
