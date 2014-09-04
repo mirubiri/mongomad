@@ -1,16 +1,3 @@
-@mixin clip-image-container($size) {
-  @include box-sizing(border-box);
-  @include border-radius($size/2, $size/2);
-
-  position: relative;
-  top: -($size)*0.75;
-  height: $size;
-  width: $size;
-  margin: 0 auto;
-  padding: 6px;
-  background-color: $white-bgcolor;
-}
-
 @mixin offer-avatar-container($size) {
   @include box-sizing(border-box);
   @include border-radius($size/2, $size/2);
