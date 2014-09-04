@@ -1,19 +1,6 @@
-%text-container {
+@mixin centered-text-container($padding) {
   @include box-sizing(border-box);
 
-  float: left;
-  width: 100%;
-}
-
-@mixin left-aligned-text-container($width) {
-  @extend %text-container;
-
-  width: $width;
-  padding: 0 5px 0 5px;
-  text-align: left;
-}
-
-@mixin centered-text-container($padding) {
   width: 100%;
   padding: $padding;
   text-align: center;

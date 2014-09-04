@@ -29,8 +29,15 @@
     background-color: $grey-bgcolor;
 
     .message {
+      @include box-sizing(border-box);
+
       min-height: 50px;
-      @include left-aligned-text-container(100%);
+
+      float: left;
+      width: 100%;
+
+      padding: 0 5px 0 5px;
+      text-align: left;
 
       font-weight: regular;
       font-size: $medium-font-size;

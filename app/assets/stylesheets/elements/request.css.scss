@@ -9,7 +9,13 @@
   border-bottom: $request-border-bottom;
   .text {
     @include box-sizing(border-box);
-    @include left-aligned-text-container(80%);
+
+    float: left;
+    width: 100%;
+
+    width: 80%;
+    padding: 0 5px 0 5px;
+    text-align: left;
 
     font-weight: regular;
     font-size: $medium-font-size;
