@@ -1,4 +1,4 @@
-%button {
+.button {
   input {
     @include bold-font($big-font-size, $white-font-color);
     @include border-radius(5px, 5px);
@@ -10,22 +10,22 @@
   }
 }
 
-%warning-button {
-  @extend %button;
+.warning-button {
+  @extend .button;
   input {
     background-color: $red-button-bgcolor;
   }
 }
 
-%control-button {
-  @extend %button;
+.control-button {
+  @extend .button;
   input {
     background-color: $grey-button-bgcolor;
   }
 }
 
-%send-button {
-  @extend %button;
+.send-button {
+  @extend .button;
   input {
     float: right;
     height: 20px;

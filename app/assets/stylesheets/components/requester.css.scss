@@ -1,6 +1,5 @@
 .requester {
   @include box-sizing(border-box);
-  @extend %send-button;
 
   position: relative;
   top: 0;

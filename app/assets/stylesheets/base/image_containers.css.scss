@@ -5,6 +5,10 @@
   overflow: auto;
 }
 
+
+
+
+
 @mixin clip-image-container($size) {
   @include box-sizing(border-box);
   @include border-radius($size/2, $size/2);
@@ -17,6 +21,9 @@
   padding: 6px;
   background-color: $white-bgcolor;
 }
+
+
+
 
 
 @mixin offer-avatar-container($size) {

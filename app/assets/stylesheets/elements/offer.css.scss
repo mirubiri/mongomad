@@ -1,5 +1,8 @@
 .offer {
-  @extend %grey-shadow;
+    @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+@include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
 
   float: left;
@@ -38,7 +41,6 @@
       padding: 5px;
       @include box-sizing(border-box);
 
-      @extend %control-button;
       background: transparent;
     }
 

@@ -2,8 +2,17 @@
   @extend %grey-medium-font;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  @extend %grey-shadow;
-  @extend %centered;
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+
+  float: none;
+
+  display: block;
+
+  margin-right: auto;
+  margin-left: auto;
 
   background-color: $white-bgcolor;
 }
