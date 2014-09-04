@@ -38,7 +38,9 @@ nav {
 .active_nav {
   background-color: $nav-selected;
   a {
-    @include bold-font($medium-font-size, $white-font-color);
+    font-weight: bold;
+    font-size: $medium-font-size;
+    color: $white-font-color;
   }
 }
 
