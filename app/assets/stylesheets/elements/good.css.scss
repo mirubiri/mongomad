@@ -20,7 +20,19 @@
     float: left;
     overflow: auto;
 
-    @include upper-rounded-corners-image(155px);
+    img {
+      @include border-radius(5px 5px 0px 0px);
+      @include box-sizing(border-box);
+
+      width: 155px;
+      border: 1px solid $grey-border-color;
+      @if $height {
+        height: $height;
+      }
+      @else {
+        height: 155px;
+      }
+    }
   }
   .name {
     @extend %text-container;
@@ -51,7 +63,19 @@
 
       float: left;
       overflow: auto;
-      @include upper-rounded-corners-image(155px);
+      img {
+        @include border-radius(5px 5px 0px 0px);
+        @include box-sizing(border-box);
+
+        width: 155px;
+        border: 1px solid $grey-border-color;
+        @if $height {
+          height: $height;
+        }
+        @else {
+          height: 155px;
+        }
+      }
     }
     .image-small {
       @include box-sizing(border-box);
@@ -59,7 +83,19 @@
       float: left;
       overflow: auto;
 
-      @include upper-rounded-corners-image(60px);
+      img {
+        @include border-radius(5px 5px 0px 0px);
+        @include box-sizing(border-box);
+
+        width: 60px;
+        border: 1px solid $grey-border-color;
+        @if $height {
+          height: $height;
+        }
+        @else {
+          height: 60px;
+        }
+      }
     }
     .name {
       @extend %text-container;
