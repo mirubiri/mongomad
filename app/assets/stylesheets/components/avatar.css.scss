@@ -9,7 +9,10 @@
 
     float: left;
     overflow: auto;
-    @include squared-image(40px);
+    img {
+      height: 40px;
+      width: 40px;
+    }
   }
   .user-data {
     float: left;
@@ -94,9 +97,12 @@
   .image {
     @include box-sizing(border-box);
 
-  float: left;
-  overflow: auto;
-    @include squared-image(40px);
+    float: left;
+    overflow: auto;
+    img {
+      height: 40px;
+      width: 40px;
+    }
   }
 }
 
