@@ -1,14 +1,3 @@
-@mixin bordered-rounded-image($size) {
-  img {
-    @include box-sizing(border-box);
-    @include border-radius(50%, 50%);
-
-    height: $size;
-    width: $size;
-    border: 1px solid $grey-border-color;
-  }
-}
-
 @mixin squared-image($size) {
   img {
     height: $size;

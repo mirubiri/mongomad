@@ -44,7 +44,14 @@
     padding: 6px;
     background-color: $white-bgcolor;
 
-    @include bordered-rounded-image(100%);
+    img {
+      @include box-sizing(border-box);
+      @include border-radius(50%, 50%);
+
+      height: 100%;
+      width: 100%;
+      border: 1px solid $grey-border-color;
+    }
   }
   .user-data {
     @include box-sizing(border-box);
@@ -110,7 +117,14 @@
     margin: 0 auto;
     background-color: $white-bgcolor;
 
-    @include bordered-rounded-image(100%);
+    img {
+      @include box-sizing(border-box);
+      @include border-radius(50%, 50%);
+
+      height: 100%;
+      width: 100%;
+      border: 1px solid $grey-border-color;
+    }
   }
   .full-name {
     @include box-sizing(border-box);
