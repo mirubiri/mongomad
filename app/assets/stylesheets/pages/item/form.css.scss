@@ -4,7 +4,7 @@
 
   float: left;
   overflow: auto;
-  width: 45%;
+  width: $image-loader-width;
 }
 
 .image_descriptor {
@@ -12,7 +12,7 @@
 
   float: left;
   overflow: auto;
-  width: 55%;
+  width: $image-descriptor-width;
 }
 
 .previews {
@@ -25,7 +25,7 @@
 
 .preview {
   overflow: auto;
-  background-color: transparent;
+  background-color: $preview-background-color;
   img {
     height: $item-preview-big;
     width: $item-preview-big;
@@ -37,7 +37,7 @@
 
 .image_selection_area {
   float: left;
-  width: 48%;
+  width: $image-selection-area-width;
   div {
     float: left;
   }
@@ -47,8 +47,7 @@
   float: left;
   height: $item-snapshoot;
   width: $item-snapshoot;
-  margin-right: 8px;
-  margin-bottom: 60px;
+  margin: $preview-box-margin;
 }
 
 .add_image_container {
@@ -56,7 +55,7 @@
   overflow: hidden;
   height: $item-snapshoot;
   width: $item-snapshoot;
-  margin-bottom: 4px;
+  margin: $add-image-container-margin;
   img {
     float: left;
     height: $item-snapshoot;
@@ -65,19 +64,23 @@
   }
 }
 
+
 label.preview_label {
   @include box-sizing(border-box);
 
   float: left;
   z-index: 10;
-  height: 25px;
-  width: 25px;
-  margin-right: 3px;
-  padding-top: 3px;
-  font-weight: bolder;
-  color: white;
-  background-color: black;
-  text-align: center;
+  height: $preview-label-size;
+  width: $preview-label-size;
+  margin: $preview-label-margin;
+  padding: $preview-label-padding;
+
+  font-weight: bold;
+  font-size: $medium-font-size;
+  color: $white-font-color;
+
+  background-color: $preview-label-background-color;
+  text-align: $preview-alignment;
 }
 
 
@@ -85,12 +88,12 @@ label.preview_label {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: $preview-label-size;
+  width: $preview-label-size;
   input {
     float: left;
-    height: 25px;
-    width: 25px;
+    height: $preview-label-size;
+    width: $preview-label-size;
 
     -ms-filter: 'alpha(opacity=0)';
         filter: alpha(opacity = 0);
