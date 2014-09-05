@@ -1,12 +1,9 @@
 .request-list {
-    @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-@include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
 
   float: $request-list-flotation;
   width: $request-list-width;
-  margin: $ppal-element-margin;
-  background-color: $white-bgcolor;
+  margin: $request-list-margin;
+  background-color: $request-list-bgcolor;
 }
