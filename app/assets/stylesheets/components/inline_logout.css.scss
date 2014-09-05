@@ -2,13 +2,13 @@
   @include box-sizing(border-box);
 
   float: left;
-  width: 10%;
+  width: $inline-logout-width;
   .icon {
     float: right;
     img {
       display: block;
-      height: 25px;
-      width: 25px;
+      height: $inline-logout-icon-size;
+      width: $inline-logout-icon-size;
     }
   }
 }
