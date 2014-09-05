@@ -1,4 +1,4 @@
-%good {
+.good {
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
@@ -9,7 +9,7 @@
 
 
 .item {
-  @extend %good;
+  @extend .good;
 
   width: $item-image-width;
   margin: 0 10px 10px 0;
@@ -35,7 +35,10 @@
     }
   }
   .name {
-    @extend %text-container;
+    @include box-sizing(border-box);
+
+    float: left;
+    width: 100%;
 
     font-weight: regular;
     font-size: $big-font-size;
@@ -98,7 +101,11 @@
       }
     }
     .name {
-      @extend %text-container;
+      @include box-sizing(border-box);
+
+      float: left;
+      width: 100%;
+
       font-weight: regular;
       font-size: $big-font-size;
       color: $grey-font-color;    }

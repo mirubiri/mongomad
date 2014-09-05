@@ -30,7 +30,7 @@ nav {
     display: inline-block;
     a {
       height: 100%;
-      padding: 0 10px;
+      padding: $nav-link-padding;
     }
   }
 }
