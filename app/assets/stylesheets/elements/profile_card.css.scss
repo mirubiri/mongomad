@@ -1,7 +1,7 @@
 .profile-card {
-  @include border-radius(5px, 5px);
+  @include border-radius($profile-card-border-radius, $profile-card-border-radius);
   @include box-sizing(border-box);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
+  @include box-shadow($profile-card-box-shadow);
 
   float: left;
   display: block;
