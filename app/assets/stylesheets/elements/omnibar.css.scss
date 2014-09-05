@@ -5,10 +5,10 @@
   overflow: auto;
   width: 100%;
   padding: $container-padding;
-  background-color: transparent;
+  background-color: $omnibar-bgcolor;
   .navigation-controls {
     float: left;
-    width: 35%;
-    text-align: center;
+    width: $omnibar-navigation-width;
+    text-align: $omnibar-navigation-alignment;
   }
 }
