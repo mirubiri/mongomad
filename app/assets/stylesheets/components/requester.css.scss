@@ -24,8 +24,8 @@
     float: left;
     overflow: auto;
     width: 100%;
-    min-height: 38px;
-    border: 2px solid $container-bgcolor;
+    min-height: $requester-textarea-min-height;
+    border: $requester-textarea-border;
   }
   .countdown {
     @include box-sizing(border-box);
@@ -33,7 +33,7 @@
     float: left;
     overflow: visible;
     width: auto;
-    margin-top: 2px;
+    margin: $requester-countdown-margin;
     color: $grey-font-color;
   }
 }
