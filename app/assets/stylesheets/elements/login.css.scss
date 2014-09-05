@@ -1,18 +1,16 @@
 .login {
-  @extend %grey-medium-font;
+  font-weight: regular;
+  font-size: $medium-font-size;
+  color: $grey-font-color;
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
 
   float: none;
 
   display: block;
 
-  margin-right: auto;
-  margin-left: auto;
+  margin: $margin-auto;
 
   background-color: $white-bgcolor;
 }
