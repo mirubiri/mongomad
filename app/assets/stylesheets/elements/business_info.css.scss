@@ -8,8 +8,8 @@
     @include box-sizing(border-box);
 
     width: 100%;
-    padding: 5px;
-    text-align: center;
+    padding: $business-info-dashboard-padding;
+    text-align: $business-info-dashboard-text-align;
 
     font-weight: regular;
     font-size: $big-font-size;
