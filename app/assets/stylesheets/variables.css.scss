@@ -131,6 +131,7 @@ $white-font-color: rgb(253,253,253);
 $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
+$profile-card-head-image-radius: 5px 5px 0px 0px;
 
 
 
@@ -169,3 +170,8 @@ $inline-logout-icon-size: 25px;
 //SEARCH
 $search-width: 40%;
 $search-alignment: center;
+
+
+//PROFILE-CARD
+$profile-card-margin: $ppal-element-margin;
+$profile-card-bgcolor: $white-bgcolor;
