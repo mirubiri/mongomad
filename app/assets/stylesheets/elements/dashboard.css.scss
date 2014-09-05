@@ -33,7 +33,10 @@
   padding: 5px 0 0 0;
   text-align: center;
 
-  @extend %white-big-font;
+  font-weight: bold;
+  font-size: $big-font-size;
+  color: $white-font-color;
+
   @include box-sizing(border-box);
 
   float: left;
