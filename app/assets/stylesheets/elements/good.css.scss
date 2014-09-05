@@ -12,8 +12,8 @@
   @extend .good;
 
   width: $item-image-width;
-  margin: 0 10px 10px 0;
-  padding: 5px;
+  margin: $item-margin;
+  padding: $item-padding;
   .image {
     @include box-sizing(border-box);
 
@@ -24,14 +24,9 @@
       @include border-radius(5px 5px 0px 0px);
       @include box-sizing(border-box);
 
-      width: 155px;
-      border: 1px solid $grey-border-color;
-      @if $height {
-        height: $height;
-      }
-      @else {
-        height: 155px;
-      }
+      width: $item-image-size;
+      border: $item-image-border;
+      height: $item-image-size;
     }
   }
   .name {
@@ -59,7 +54,7 @@
 
     width: $width - 10px;
     max-width: $width - 10px;
-    margin: 0 0px 10px 0;
+    margin:$product-margin;
 
     .image-big {
       @include box-sizing(border-box);
@@ -71,13 +66,8 @@
         @include box-sizing(border-box);
 
         width: 155px;
-        border: 1px solid $grey-border-color;
-        @if $height {
-          height: $height;
-        }
-        @else {
-          height: 155px;
-        }
+        border: $product-image-border;
+        height: 155px;
       }
     }
     .image-small {
@@ -91,13 +81,8 @@
         @include box-sizing(border-box);
 
         width: 60px;
-        border: 1px solid $grey-border-color;
-        @if $height {
-          height: $height;
-        }
-        @else {
-          height: 60px;
-        }
+        border: $product-image-border;
+        height: 60px;
       }
     }
     .name {

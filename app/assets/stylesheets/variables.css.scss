@@ -131,8 +131,12 @@ $white-font-color: rgb(253,253,253);
 $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
+<<<<<<< HEAD
 $profile-card-head-image-radius: 5px 5px 0px 0px;
 
+=======
+$item-image-size: 155px;
+>>>>>>> extract variables from good(item and product)
 
 
 //BUTTONS
@@ -203,3 +207,18 @@ $expositor-width: calc(75% - 20px);
 //EXPOSITOR-NAV-NAVIGATION-LI
 $expositor-navigation-lib-padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
 $expositor-navigation-lib-border-right: 2px solid $blue-nav-border-color;
+
+
+//ITEM
+$item-margin: 0 10px 10px 0;
+$item-padding: 5px;
+
+//ITEM-IMAGE
+$item-image-border: 1px solid $grey-border-color;
+
+//PRODUCT
+$product-margin: 0 0px 10px 0;
+
+//PRODUCT-IMAGE
+$product-image-border: 1px solid $grey-border-color;
+
