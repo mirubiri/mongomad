@@ -5,7 +5,7 @@
 
   float: right;
   overflow: visible;
-  width: calc(75% - 20px);
+  width: $expositor-width;
   background-color: $container-bgcolor;
   nav.navigation {
     float: left;
@@ -23,9 +23,9 @@
 
       float: left;
       height: 100%;
-      padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
+      padding-top:$expositor-navigation-li-padding-top;
 
-      border-right: 2px solid $blue-nav-border-color;
+      border-right:$expositor-navigation-lib-right;
     }
   }
 

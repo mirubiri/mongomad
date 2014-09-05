@@ -196,3 +196,10 @@ $dashboard-width: 25%;
 $dashboard-component-title-padding: 5px 0 0 0;
 $dashboard-component-title-text-align: center;
 $dashboard-component-title-height: 30px;
+
+//EXPOSITOR
+$expositor-width: calc(75% - 20px);
+
+//EXPOSITOR-NAV-NAVIGATION-LI
+$expositor-navigation-lib-padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
+$expositor-navigation-lib-border-right: 2px solid $blue-nav-border-color;
