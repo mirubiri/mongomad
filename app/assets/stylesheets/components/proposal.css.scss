@@ -6,7 +6,7 @@
 
   width: 100%;
 
-  padding: 15px 15px 30px 15px;
+  padding: $proposal-padding;
 
   background-color: $white-bgcolor;
 
@@ -14,18 +14,18 @@
 
   .composer-goods {
     float: left;
-    width: 65%;
+    width: $proposal-composer-goods-side-size;
     overflow: auto;
-    @include product(165px);
+    @include product($proposal-composer-good-size);
     .product{float: left;}
 
   }
 
   .receiver-goods {
     float: right;
-    width: 35%;
+    width: $proposal-receiver-goods-side-size;
     overflow: auto;
-    @include product(70px);
+    @include product($proposal-receiver-good-size);
     .product{float: right;}
   }
 }
