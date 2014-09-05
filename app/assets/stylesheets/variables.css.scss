@@ -32,6 +32,7 @@ $nav-selected: #b1d4e1;
 $nav-font-color: #839091;
 $red-button-bgcolor: rgb(231,74,57);
 $blue-button-bgcolor: rgb(58,157,223);
+$blue-font-color: blue;
 $grey-bgcolor: rgb(230,230,230);
 $grey-button-bgcolor: rgb(183,183,183);
 $grey-border-color: rgb(137,137,137);
@@ -57,6 +58,8 @@ $request-width: 100%;
 $request-margin: 5px 0 0 0;
 $request-padding: 5px 5px 5px 5px;
 $request-border-bottom: 1px solid $grey-border-color;
+$request-controls-padding: 0px 5px 0px 0px;
+$request-controls-alignment: right;
 
 
 //REQUESTER
@@ -148,6 +151,9 @@ $avatar-omnibar-width: 15%;
 //AVATAR-PROFILE-CARD
 $avatar-profile-card-height: 70px;
 $avatar-profile-card-image-padding: 6px;
+
+//AVATAR-REQUEST
+$request-avatar-size: 40px;
 
 
 

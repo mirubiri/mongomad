@@ -94,14 +94,17 @@
 
   float: left;
   overflow: visible;
+  width: $request-avatar-size;
+  height: $request-avatar-size;
+
   .image {
     @include box-sizing(border-box);
 
     float: left;
     overflow: auto;
     img {
-      height: $omnibar-avatar-image-size;
-      width: $omnibar-avatar-image-size;
+      height: $request-avatar-size;
+      width: $request-avatar-size;
     }
   }
 }

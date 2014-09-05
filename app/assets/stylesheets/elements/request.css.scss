@@ -7,27 +7,42 @@
   padding: $request-padding;
 
   border-bottom: $request-border-bottom;
-  .text {
-    @include box-sizing(border-box);
 
+  display: flex;
+
+  .request-message{
     float: left;
+    width: 100%;
+    overflow: auto;
 
-    width: 80%;
-    padding: $centered-text-padding;
-    text-align: left;
+    .text {
+      @include box-sizing(border-box);
 
-    font-weight: regular;
-    font-size: $medium-font-size;
-    color: $grey-font-color;
+      float: left;
+      flex: auto;
+
+      padding: $centered-text-padding;
+      text-align: left;
+
+      font-weight: regular;
+      font-size: $medium-font-size;
+      color: $grey-font-color;
+    }
   }
   .controls {
     @include box-sizing(border-box);
 
     float: right;
     width: 100%;
-    padding-right: 5px;
+    padding: $request-controls-padding;
+
+    font-weight: regular;
     font-size: $small-font-size;
-    color: blue;
-    text-align: right;
+    color: $blue-font-color;
+
+    font-size: $small-font-size;
+    color: $blue-font-color;
+
+    text-align: $request-controls-alignment;
   }
 }
