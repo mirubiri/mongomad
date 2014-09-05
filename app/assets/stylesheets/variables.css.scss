@@ -208,7 +208,6 @@ $expositor-width: calc(75% - 20px);
 $expositor-navigation-lib-padding-top: ($top-container-bezel-height - $medium-font-size)/2 - 4px;
 $expositor-navigation-lib-border-right: 2px solid $blue-nav-border-color;
 
-
 //ITEM
 $item-margin: 0 10px 10px 0;
 $item-padding: 5px;
@@ -222,4 +221,23 @@ $product-margin: 0 0px 10px 0;
 //PRODUCT-IMAGE
 $product-image-border: 1px solid $grey-border-color;
 
+//OFFER
+$offer-width: 285px;
+
+//OFFER-TITLE
+$offer-title-height: 25px;
+$offer-title-background-color: rgb(243,243,243);
+$offer-title-border-bottom: 1px solid $grey-border-color;
+$offer-title-padding: 5px 0px 0px 0px;
+$offer-title-text-align: center;
+
+//OFFER-MESSAGE
+$offer-message-min-height: 50px;
+$offer-message-text-align: left;
+$offer-message-background: transparent;
+
+
+//OFFER-CONTROLS
+$offer-controls-padding: 5px;
+$offer-controls-background: transparent;
 

@@ -3,23 +3,23 @@
   @include border-radius(5px, 5px);
 
   float: left;
-  width: 285px;
+  width: $offer-width;
   margin: $expositor-element-margin;
   background-color: $white-bgcolor;
 
   .title {
     float: left;
     overflow: none;
-    height: 25px;
+    height: $offer-title-height;
 
-    background-color: rgb(243,243,243);
-    border-bottom: 1px solid $grey-border-color;
+    background-color: $offer-title-background-color;
+    border-bottom:  $offer-title-border-bottom;
 
     @include box-sizing(border-box);
 
     width: 100%;
-    padding: 5px 0px 0px 0px;
-    text-align: center;
+    padding: $offer-title-padding;
+    text-align:  $offer-title-text-align;
 
     font-weight: regular;
     font-size: $medium-font-size;
@@ -35,28 +35,28 @@
     .message {
       @include box-sizing(border-box);
 
-      min-height: 50px;
+      min-height: $offer-message-min-height;
 
       float: left;
       width: 100%;
 
       padding: $centered-text-padding;
-      text-align: left;
+      text-align: $offer-message-text-align;
 
       font-weight: regular;
       font-size: $medium-font-size;
       color: $grey-font-color;
 
-      background: transparent;
+      background: $offer-controls-background;
     }
 
     .controls {
       float: left;
       width: 100%;
-      padding: 5px;
+      padding: $offer-controls-padding;
       @include box-sizing(border-box);
 
-      background: transparent;
+      background: $offer-controls-background;
     }
 
   }
