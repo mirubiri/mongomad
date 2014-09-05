@@ -3,15 +3,15 @@
 
   float: left;
   overflow: visible;
-  width: 15%;
+  width: $avatar-omnibar-width;
   .image {
     @include box-sizing(border-box);
 
     float: left;
     overflow: auto;
     img {
-      height: 40px;
-      width: 40px;
+      height: $omnibar-avatar-image-size;
+      width: $omnibar-avatar-image-size;
     }
   }
   .user-data {
@@ -26,14 +26,14 @@
       float: left;
       width: 100%;
 
-      padding: 0 5px 0 5px;
+      padding: $centered-text-padding;
       text-align: left;
     }
   }
 }
 
 .avatar-profile-card {
-  height: 70px;
+  height: $avatar-profile-card-height;
   .image {
     @include box-sizing(border-box);
 
@@ -43,8 +43,8 @@
     top: -($profile-card-image-size)*0.75;
     height: $profile-card-image-size;
     width: $profile-card-image-size;
-    margin: 0 auto;
-    padding: 6px;
+    margin: $margin-auto;
+    padding: $avatar-profile-card-image-padding;
     background-color: $white-bgcolor;
 
     img {
@@ -60,14 +60,14 @@
     @include box-sizing(border-box);
 
     position: relative;
-    top: -70px;
+    top: -($avatar-profile-card-height);
     overflow: auto;
-    margin: 0 auto;
+    margin: $margin-auto;
     .full-name {
       @include box-sizing(border-box);
 
       width: 100%;
-      padding: 0px;
+      padding: $user-fullname-padding;
       text-align: center;
 
       font-weight: regular;
@@ -78,7 +78,7 @@
       @include box-sizing(border-box);
 
       width: 100%;
-      padding: 0;
+      padding: $user-location-padding;
       text-align: center;
 
       font-weight: regular;
@@ -100,8 +100,8 @@
     float: left;
     overflow: auto;
     img {
-      height: 40px;
-      width: 40px;
+      height: $omnibar-avatar-image-size;
+      width: $omnibar-avatar-image-size;
     }
   }
 }
@@ -120,7 +120,7 @@
     top: -($offer-avatar-image-size)*0.55;
     height: $offer-avatar-image-size;
     width: $offer-avatar-image-size;
-    margin: 0 auto;
+    margin: $margin-auto;
     background-color: $white-bgcolor;
 
     img {
@@ -136,17 +136,17 @@
     @include box-sizing(border-box);
       @include box-sizing(border-box);
 
-  width: 100%;
-  padding: 0;
-  text-align: center;
+    width: 100%;
+    padding: $user-fullname-padding;
+    text-align: center;
 
     font-weight: regular;
     font-size: $big-font-size;
     color: $black-font-color;
 
     position: relative;
-    top: -50px;
+    top: -($offer-avatar-image-size);
     overflow: auto;
-    margin: 0 auto;
+    margin: $margin-auto;
   }
 }

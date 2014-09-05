@@ -1,5 +1,4 @@
-//GENERAL VARIABLES
-
+//GLOBAL VARIABLES
 $omnibar-components-margin: 50px;
 // $inline-login-field-width: 100px;
 
@@ -15,6 +14,7 @@ $ppal-element-margin: 0 0 20px 0;
 $expositor-element-margin: 5px;
 $container-padding: 8px 30px;
 $nav-link-padding: 0 10px;
+$margin-auto: 0 auto;
 // $inline-loggin-padding: 0px;
 // $button-box-padding: 10px 5px;
 $element-padding: 15px;
@@ -42,20 +42,19 @@ $dashboard-padding: 0 10px 0  0;
 $avatar-request-image-width: 40px;
 $item-image-width: 165px;
 
-// Request List
+//REQUEST-LIST
 $request-list-flotation: left;
 $request-list-width: 100%;
 
-// Request
+//REQUEST
 $request-flotation: left;
 $request-width: 100%;
 $request-margin: 5px 0 0 0;
 $request-padding: 5px 5px 5px 5px;
 $request-border-bottom: 1px solid $grey-border-color;
 
-// Proposal
+//PROPOSAL
 $proposal-border-bottom: 1px solid $grey-border-color;
-
 // $item-preview-big: 300px;
 // $item-snapshoot: 120px;
 
@@ -69,15 +68,14 @@ $body-margin: 0;
 $body-padding: 0;
 $body-background-color: $body-bgcolor;
 
-//main
+//MAIN
 $main-float: left;
 $main-overflow: visible;
 $main-width: 100%;
 $main-padding: $container-padding;
 
 
-//-----------------------------------------------------
-//FONTS MIXINS
+//FONTS
 $body-font-family: 'Roboto';
 $body-line-height: 20px;
 
@@ -93,9 +91,29 @@ $white-font-color: rgb(253,253,253);
 //IMAGES
 $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
+$omnibar-avatar-image-size: 40px;
 
 
 //BUTTONS
 $button-height: 30px;
 $send-button-height: 20px;
 $send-button-margin-top: 4px;
+
+//AVATAR-GENERAL
+$user-fullname-padding: 0;
+$user-location-padding: 0;
+
+//AVATAR-OMNIBAR
+$avatar-omnibar-width: 15%;
+
+
+//AVATAR-PROFILE-CARD
+$avatar-profile-card-height: 70px;
+$avatar-profile-card-image-padding: 6px;
+
+
+//AVATAR-REQUEST
+
+
+//TEXT-CONTAINER
+$centered-text-padding: 0 5px 0 5px;
