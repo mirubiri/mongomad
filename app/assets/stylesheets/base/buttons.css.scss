@@ -31,9 +31,9 @@
   @extend .button;
   input {
     float: right;
-    height: 20px;
+    height: $send-button-height;
     width: auto;
-    margin-top: 4px;
+    margin-top: $send-button-margin-top;
     background-color: $blue-button-bgcolor;
   }
 }
