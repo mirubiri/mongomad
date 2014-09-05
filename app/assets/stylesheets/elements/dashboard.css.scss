@@ -1,13 +1,10 @@
 .dashboard {
-    @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-@include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
 
   float: left;
-  width: 25%;
+  width: $dashboard-width;
   background-color: $container-bgcolor;
   .bezel {
     @include border-radius(5px 5px 0px 0px);
@@ -30,8 +27,8 @@
   @include box-sizing(border-box);
 
   width: 100%;
-  padding: 5px 0 0 0;
-  text-align: center;
+  padding:  $dashboard-component-title-padding;
+  text-align: $dashboard-component-title-text-align;
 
   font-weight: bold;
   font-size: $big-font-size;
@@ -40,7 +37,6 @@
   @include box-sizing(border-box);
 
   float: left;
-  height: 30px;
-  width: 100%;
+  height: $dashboard-component-title-height;
   background-color: $grey-bgcolor;
 }
