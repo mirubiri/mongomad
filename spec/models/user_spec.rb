@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe User do
+
+  # modules
+
+  it { is_expected.to include_module Archivable }
   # Variables
   let(:user) { Fabricate.build(:user) }
 
@@ -27,8 +31,6 @@ describe User do
   it { is_expected.to delegate(:birth_date=).to :profile }
   it { is_expected.to delegate(:images=).to :profile }
 
-  # Validations
-
   # Methods
   describe '#sheet' do
     specify { expect(user.sheet.id).to eq user.id }
@@ -38,7 +40,7 @@ describe User do
       user.sheet
     end
   end
-  
+
   # Factories
   specify { expect(Fabricate.build(:user)).to be_valid }
 end

@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Archivable
 
   def self.serialize_into_session(record)
     [record.id.to_s, record.authenticatable_salt]
