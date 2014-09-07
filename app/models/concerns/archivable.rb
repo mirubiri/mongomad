@@ -9,4 +9,8 @@ module Archivable
   def archive
   	archived? || persisted? && update_attributes(archived:true)
   end
+
+  def unarchive
+    archived? && persisted? && update_attributes(archived:false)
+  end
 end

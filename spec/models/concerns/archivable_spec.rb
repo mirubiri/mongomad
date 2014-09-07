@@ -40,4 +40,34 @@ describe Archivable do
   		end
   	end
   end
+
+  describe '#unarchive' do
+    context 'document persisted' do
+      before(:example) do 
+        document.save
+        document.archive
+      end
+
+      it 'sets the document as unarchived in the database' do
+        document.unarchive
+        expect(document.reload.archived?).to eq false
+      end
+
+      it 'returns true' do
+        expect(document.unarchive).to eq true
+      end
+    end
+
+    context 'document not persisted' do
+      it 'returns false' do
+        expect(document.unarchive).to eq false
+      end
+
+      it 'does not save the document' do
+        document.unarchive
+        expect(document).to_not be_persisted
+      end
+    end
+
+  end
 end
