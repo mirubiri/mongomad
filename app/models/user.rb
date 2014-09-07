@@ -53,12 +53,4 @@ class User
       sheet.id = id
     end
   end
-
-  def enable
-    self.disabled = false
-  end
-
-  def disable
-    self.disabled = true
-  end
 end

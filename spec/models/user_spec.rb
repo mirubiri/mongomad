@@ -38,21 +38,7 @@ describe User do
       user.sheet
     end
   end
-
-  describe '#enable' do
-    it 'sets disabled field to false' do
-      user.enable
-      expect(user.disabled).to eq false
-    end
-  end
-
-  describe '#disable' do
-    it 'sets disabled field to true' do
-      user.disable
-      expect(user.disabled).to eq true
-    end
-  end
-
+  
   # Factories
   specify { expect(Fabricate.build(:user)).to be_valid }
 end
