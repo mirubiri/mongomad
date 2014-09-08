@@ -1,18 +1,20 @@
 .business-info-dashboard {
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include border-radius(5px, 5px);
+  @include box-shadow($business-info-shadow);
+  @include border-radius($business-info-radius, $business-info-radius);
 
   float: left;
-  background-color: $white-bgcolor;
+  background-color: $business-info-bgcolor;
+
   .info {
     @include box-sizing(border-box);
 
     width: 100%;
-    padding: $business-info-dashboard-padding;
-    text-align: $business-info-dashboard-text-align;
+    padding: $business-info-padding;
+    text-align: $business-info-text-align;
 
-    font-weight: regular;
-    font-size: $big-font-size;
-    color: $grey-font-color;
+    font-weight: $bussines-info-font-weight;
+    font-size: $bussines-info-font-size;
+    color: $bussines-info-font-color;
   }
+
 }

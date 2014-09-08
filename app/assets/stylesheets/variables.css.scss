@@ -24,6 +24,8 @@ $element-padding: 15px;
 // $component-padding: 25px;
 // $nav-link-padding: 12px 5px;
 // $additional-control-padding: 5px;
+$5px-radius: 5px;
+$5px-padding: 5px;
 
 $top-container-bezel-height: 30px;
 $container-bgcolor: #b1d4e1;
@@ -42,6 +44,12 @@ $grey-shadow-color: #9bb3b8;
 $dashboard-padding: 0 10px 0  0;
 $avatar-request-image-width: 40px;
 $item-image-width: 165px;
+$general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px;
+
+
+
+
+
 
 
 
@@ -132,7 +140,7 @@ $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
 
-$profile-card-head-image-radius: 5px 5px 0px 0px;
+$profile-card-head-image-radius: $5px-radius $5px-radius 0px 0px;
 $item-image-size: 155px;
 
 
@@ -173,10 +181,10 @@ $search-alignment: center;
 
 
 //PROFILE-CARD
-$profile-card-border-radius: 5px;
+$profile-card-border-radius: $5px-radius;
 $profile-card-margin: $ppal-element-margin;
 $profile-card-bgcolor: $white-bgcolor;
-$profile-card-box-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px;
+$profile-card-box-shadow: $general-shadow;
 
 
 //OMNIBAR
@@ -185,9 +193,15 @@ $omnibar-navigation-width: 35%;
 $omnibar-navigation-alignment: center;
 
 
-//BUSINESS-INFO-DASHBOARD
-$business-info-dashboard-padding: 5px;
-$business-info-dashboard-text-align: center;
+//BUSINESS-INFO
+$business-info-radius: $5px-radius;
+$business-info-padding: $5px-padding;
+$business-info-text-align: center;
+$business-info-shadow: $general-shadow;
+$business-info-bgcolor: $white-bgcolor;
+$bussines-info-font-weight: regular;
+$bussines-info-font-size: $big-font-size;
+$bussines-info-font-color: $grey-font-color;
 
 
 //DASHBOARD
