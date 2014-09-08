@@ -1,4 +1,4 @@
 Fabricator(:cash) do
-	user_id  { Faker::Number.number(3) }
+	user_id  { Faker::Code.isbn }
   amount   '100€'
 end
