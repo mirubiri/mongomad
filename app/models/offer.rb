@@ -4,8 +4,6 @@ class Offer
   include Proposable
 
   proposal_historic :false
-
-  belongs_to :negotiation
   
   field :message
 end

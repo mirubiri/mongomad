@@ -5,6 +5,4 @@ class Negotiation
   include Conversation
 
   proposal_historic :true
-
-  has_one :offer
 end

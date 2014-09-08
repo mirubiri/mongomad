@@ -5,8 +5,6 @@ describe Negotiation do
   specify { expect(Negotiation).to be < Proposable }
   specify { expect(Negotiation).to be < Conversation }
 
-  # Relations
-  it { is_expected.to have_one :offer }
   it { is_expected.to embed_many :messages }
 
   # Attributes

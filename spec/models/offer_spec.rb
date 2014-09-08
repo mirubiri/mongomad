@@ -5,7 +5,6 @@ describe Offer do
   specify { expect(Offer).to be < Proposable }
 
   # Relations
-  it { is_expected.to belong_to :negotiation }
 
   # Attributes
   it { is_expected.to be_timestamped_document }
