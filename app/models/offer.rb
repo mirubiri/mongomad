@@ -5,5 +5,6 @@ class Offer
 
   proposal_historic :false
   
+  field :negotiation_id
   field :message
 end

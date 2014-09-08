@@ -9,4 +9,5 @@ describe Offer do
   # Attributes
   it { is_expected.to be_timestamped_document }
   it { is_expected.to have_field :message }
+  it { is_expected.to have_field :negotiation_id }
 end
