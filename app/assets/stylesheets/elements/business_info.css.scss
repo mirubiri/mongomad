@@ -1,16 +1,16 @@
 .business-info-dashboard {
-  @include box-shadow($bussiness-info-shadow);
-  @include border-radius($bussiness-info-radius, $bussiness-info-radius);
+  @include box-shadow($bussines-info-shadow);
+  @include border-radius($bussines-info-radius, $bussines-info-radius);
 
   float: left;
-  background-color: $bussiness-info-bgcolor;
+  background-color: $bussines-info-bgcolor;
 
   .info {
     @include box-sizing(border-box);
 
     width: 100%;
-    padding: $bussiness-info-padding;
-    text-align: $bussiness-info-text-align;
+    padding: $bussines-info-padding;
+    text-align: $bussines-info-text-align;
 
     font-weight: $bussines-info-font-weight;
     font-size: $bussines-info-font-size;
