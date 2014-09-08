@@ -194,6 +194,18 @@ $omnibar-navigation-alignment: center;
 
 
 //BUSINESS-INFO
+$bussiness-info-radius: $5px-radius;
+$bussiness-info-padding: $5px-padding;
+$bussiness-info-text-align: center;
+$bussiness-info-shadow: $general-shadow;
+$bussiness-info-bgcolor: $white-bgcolor;
+$bussines-info-font-weight: regular;
+$bussines-info-font-size: $big-font-size;
+$bussines-info-font-color: $grey-font-color;
+
+
+//DASHBOARD
+$dashboard-width: 25%;
 $business-info-radius: $5px-radius;
 $business-info-padding: $5px-padding;
 $business-info-text-align: center;
@@ -202,10 +214,6 @@ $business-info-bgcolor: $white-bgcolor;
 $bussines-info-font-weight: regular;
 $bussines-info-font-size: $big-font-size;
 $bussines-info-font-color: $grey-font-color;
-
-
-//DASHBOARD
-$dashboard-width: 25%;
 
 
 //DASHBOARD-COMPONENT-TITLE
