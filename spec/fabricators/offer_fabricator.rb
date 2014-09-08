@@ -13,5 +13,5 @@ Fabricator(:offer) do
   proposal do |attrs| 
     Fabricate.build(:proposal,composer_id:attrs[:composer_id],receiver_id:attrs[:receiver_id])
   end
-  message { |attrs| Fabricate.build(:message,user_id:attrs[:composer_id])}
+  message { Faker::Lorem.sentence(rand(1..60)).slice(0,200) }
 end
