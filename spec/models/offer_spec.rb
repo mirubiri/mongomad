@@ -9,5 +9,17 @@ describe Offer do
   # Attributes
   it { is_expected.to be_timestamped_document }
   it { is_expected.to have_field :message }
-  it { is_expected.to have_field :negotiation_id }
+  it { is_expected.to have_field :negotiationa_id }
+
+  # Methods
+
+  describe '#negotiable?' do
+    it 'is false when offer is not persisted ' do
+      expect(Offer.new.negotiable?).to eq false
+    end
+
+    it 'is true when offer is persisted' do
+      expect(Offer.create.negotiable?).to eq true
+    end
+  end
 end

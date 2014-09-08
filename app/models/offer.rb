@@ -7,4 +7,8 @@ class Offer
   
   field :negotiation_id
   field :message
+
+  def negotiable?
+    persisted?
+  end
 end
