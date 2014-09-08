@@ -9,6 +9,6 @@ class Offer
   field :message
 
   def negotiable?
-    persisted?
+    persisted? && negotiation_id?
   end
 end
