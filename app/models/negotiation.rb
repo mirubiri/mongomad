@@ -5,4 +5,6 @@ class Negotiation
   include Conversation
 
   proposal_historic :true
+
+  field :offer_id
 end
