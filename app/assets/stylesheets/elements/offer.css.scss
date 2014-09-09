@@ -31,15 +31,6 @@
       background: $offer-controls-background;
     }
 
-    .controls {
-      float: left;
-      width: 100%;
-      padding: $offer-controls-padding;
-      @include box-sizing(border-box);
-
-      background: $offer-controls-background;
-    }
-
   }
 
 }

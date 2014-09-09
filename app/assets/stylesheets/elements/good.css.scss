@@ -39,10 +39,6 @@
     font-size: $big-font-size;
     color: $grey-font-color;
   }
-  .controls {
-    float: left;
-    width: 100%;
-  }
 }
 
 @mixin product($width){

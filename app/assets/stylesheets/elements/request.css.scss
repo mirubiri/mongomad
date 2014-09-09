@@ -29,20 +29,5 @@
       color: $grey-font-color;
     }
   }
-  .controls {
-    @include box-sizing(border-box);
 
-    float: right;
-    width: 100%;
-    padding: $request-controls-padding;
-
-    font-weight: regular;
-    font-size: $small-font-size;
-    color: $blue-font-color;
-
-    font-size: $small-font-size;
-    color: $blue-font-color;
-
-    text-align: $request-controls-alignment;
-  }
 }
