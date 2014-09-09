@@ -84,12 +84,13 @@
   text-align: $request-controls-alignment;
 }
 
-.navigation-selected-text{
-
-}
-
-.navigation-unselected-text{
-
+.active_nav {
+  background-color: $nav-selected;
+  a {
+    font-weight: bold;
+    font-size: $medium-font-size;
+    color: $white-font-color;
+  }
 }
 
 
