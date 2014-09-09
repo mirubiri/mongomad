@@ -7,25 +7,6 @@
   margin: $expositor-element-margin;
   background-color: $white-bgcolor;
 
-  .title {
-    float: left;
-    overflow: none;
-    height: $offer-title-height;
-
-    background-color: $offer-title-background-color;
-    border-bottom:  $offer-title-border-bottom;
-
-    @include box-sizing(border-box);
-
-    width: 100%;
-    padding: $offer-title-padding;
-    text-align:  $offer-title-text-align;
-
-    font-weight: regular;
-    font-size: $medium-font-size;
-    color: $grey-font-color;
-  }
-
   .message-zone{
     float: left;
     width: 100%;

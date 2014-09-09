@@ -49,7 +49,22 @@
 }
 
 .title{
+  @include box-sizing(border-box);
+  float: left;
 
+  overflow: none;
+  height: $title-height;
+
+  width: 100%;
+  padding: $centered-text-padding;
+  text-align: center;
+
+  font-weight: bold;
+  font-size: $big-font-size;
+  color: $white-font-color;
+
+  background-color: $title-background-color;
+  border-bottom:  $title-border-bottom;
 }
 
 .control-name{

@@ -22,21 +22,3 @@
     padding: $element-padding;
   }
 }
-
-.dashboard-component-title {
-  @include box-sizing(border-box);
-
-  width: 100%;
-  padding:  $dashboard-component-title-padding;
-  text-align: $dashboard-component-title-text-align;
-
-  font-weight: bold;
-  font-size: $big-font-size;
-  color: $white-font-color;
-
-  @include box-sizing(border-box);
-
-  float: left;
-  height: $dashboard-component-title-height;
-  background-color: $grey-bgcolor;
-}
