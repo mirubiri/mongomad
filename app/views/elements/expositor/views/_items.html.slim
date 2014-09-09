@@ -6,7 +6,8 @@
     = button_to 'Add item',
     new_user_item_path(current_user),
     :method => :get,
-    :remote => true
+    :remote => true,
+    class: "send-button"
 
     - data.items.each do |item|
       = element :good, view: :item, data:item
