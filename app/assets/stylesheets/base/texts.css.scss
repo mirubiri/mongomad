@@ -1,27 +1,27 @@
 .user-data{
-  font-weight: regular;
-  font-size: $medium-font-size;
-  color: $white-font-color;
-
   @include box-sizing(border-box);
 
   float: left;
   width: 100%;
 
-  padding: $centered-text-padding;
-  text-align: left;
+  font-weight: $user-data-font-weight;
+  font-size: $user-data-font-size;
+  color: $user-data-color;
+
+  padding: $user-data-padding;
+  text-align: $user-data-text-align;
 }
 
 .user-nick{
   @include box-sizing(border-box);
 
   width: 100%;
-  padding: $user-fullname-padding;
-  text-align: center;
+  padding: $user-nick-padding;
+  text-align: $user-nick-text-align;
 
-  font-weight: regular;
-  font-size: $big-font-size;
-  color: $black-font-color;
+  font-weight: $user-nick-font-weight;
+  font-size: $user-nick-font-size;
+  color: $user-nick-color;
 }
 
 .user-location{
@@ -29,23 +29,23 @@
 
   width: 100%;
   padding: $user-location-padding;
-  text-align: center;
+  text-align: $user-location-text-align;
 
-  font-weight: regular;
-  font-size: $big-font-size;
-  color: $grey-font-color;
+  font-weight: $user-location-font-weight;
+  font-size: $user-location-font-size;
+  color: $user-location-color;
 }
 
 .message-text{
   @include box-sizing(border-box);
 
   width: 100%;
-  padding: $centered-text-padding;
-  text-align: left;
+  padding: $message-text-padding;
+  text-align: $message-text-text-align;
 
-  font-weight: regular;
-  font-size: $medium-font-size;
-  color: $grey-font-color;
+  font-weight: $message-text-font-weight;
+  font-size: $message-text-font-size;
+  color: $message-text-color;
 }
 
 .title{
@@ -56,15 +56,15 @@
   height: $title-height;
 
   width: 100%;
-  padding: $centered-text-padding;
-  text-align: center;
+  padding: $title-padding;
+  text-align: $title-text-align;
 
-  font-weight: bold;
-  font-size: $big-font-size;
-  color: $white-font-color;
+  font-weight: $title-font-weight;
+  font-size: $title-font-size;
+  color: $title-color;
 
   background-color: $title-background-color;
-  border-bottom:  $title-border-bottom;
+  //border-bottom:  $title-border-bottom;
 }
 
 .controls{
@@ -72,24 +72,21 @@
 
   float: right;
   width: 100%;
-  padding: $request-controls-padding;
+  padding: $controls-padding;
 
-  font-weight: regular;
-  font-size: $small-font-size;
-  color: $blue-font-color;
+  font-weight: $controls-font-weight;
+  font-size: $controls-font-size;
+  color: $controls-color;
 
-  font-size: $small-font-size;
-  color: $blue-font-color;
-
-  text-align: $request-controls-alignment;
+  text-align: $controls-text-align;
 }
 
 .active_nav {
-  background-color: $nav-selected;
+  background-color: $active_nav-background-color;
   a {
-    font-weight: bold;
-    font-size: $medium-font-size;
-    color: $white-font-color;
+    font-weight: $active_nav-font-weight;
+    font-size: $active_nav-font-size;
+    color: $active_nav-color;
   }
 }
 
@@ -99,16 +96,13 @@
 
   float: right;
   width: 100%;
-  padding: $request-controls-padding;
+  padding: $timestamp-padding;
 
-  font-weight: regular;
-  font-size: $small-font-size;
-  color: $blue-font-color;
+  font-weight: $timestamp-font-weight;
+  font-size: $timestamp-font-size;
+  color: $timestamp-color;
 
-  font-size: $small-font-size;
-  color: $blue-font-color;
-
-  text-align: right;
+  text-align: $timestamp-text-align;
 }
 
 
@@ -116,12 +110,12 @@
   @include box-sizing(border-box);
 
   width: 100%;
-  padding: $centered-text-padding;
-  text-align: center;
+  padding: $description-padding;
+  text-align: $description-text-align;
 
-  font-weight: regular;
-  font-size: $medium-font-size;
-  color: $grey-font-color;
+  font-weight: $description-font-weight;
+  font-size: $description-font-size;
+  color: $description-color;
 }
 
 .good-name{
@@ -130,7 +124,7 @@
   float: left;
   width: 100%;
 
-  font-weight: regular;
-  font-size: $big-font-size;
-  color: $grey-font-color;
+  font-weight: $good-name-font-weight;
+  font-size: $good-name-font-size;
+  color: $good-name-color;
 }
