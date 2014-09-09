@@ -2,7 +2,7 @@
   .image
     = yield_content :image
 
-  .user-data
+  .data-side
     / .reputation
     /   .icon
     /      = static_image_tag('star',20,20)
@@ -15,9 +15,9 @@
     /   .number
     /     | 350
 
-    .full-name
+    .user-nick
       = avatar.full_name
 
-    .location
+    .user-location
       | location
 

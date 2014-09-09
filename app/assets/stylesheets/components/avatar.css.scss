@@ -14,21 +14,8 @@
       width: $omnibar-avatar-image-size;
     }
   }
-  .user-data {
+  .data-side {
     float: left;
-    div {
-      font-weight: regular;
-      font-size: $medium-font-size;
-      color: $white-font-color;
-
-      @include box-sizing(border-box);
-
-      float: left;
-      width: 100%;
-
-      padding: $centered-text-padding;
-      text-align: left;
-    }
   }
 }
 
@@ -56,35 +43,13 @@
       border: 1px solid $grey-border-color;
     }
   }
-  .user-data {
+  .data-side {
     @include box-sizing(border-box);
 
     position: relative;
     top: -($avatar-profile-card-height);
     overflow: auto;
     margin: $margin-auto;
-    .full-name {
-      @include box-sizing(border-box);
-
-      width: 100%;
-      padding: $user-fullname-padding;
-      text-align: center;
-
-      font-weight: regular;
-      font-size: $big-font-size;
-      color: $black-font-color;
-    }
-    .location {
-      @include box-sizing(border-box);
-
-      width: 100%;
-      padding: $user-location-padding;
-      text-align: center;
-
-      font-weight: regular;
-      font-size: $big-font-size;
-      color: $grey-font-color;
-    }
   }
 }
 
@@ -135,21 +100,5 @@
       border: 1px solid $grey-border-color;
     }
   }
-  .full-name {
-    @include box-sizing(border-box);
-      @include box-sizing(border-box);
 
-    width: 100%;
-    padding: $user-fullname-padding;
-    text-align: center;
-
-    font-weight: regular;
-    font-size: $big-font-size;
-    color: $black-font-color;
-
-    position: relative;
-    top: -($offer-avatar-image-size);
-    overflow: auto;
-    margin: $margin-auto;
-  }
 }
