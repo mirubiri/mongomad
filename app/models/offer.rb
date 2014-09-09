@@ -9,6 +9,11 @@ class Offer
   field :message
 
   def negotiable?
-    persisted? && negotiation_id?
+    persisted? && !negotiation_id?
+  end
+
+  def negotiate
+    negotiable=NegotiationStarter.new(self)
+    negotiable.start
   end
 end
