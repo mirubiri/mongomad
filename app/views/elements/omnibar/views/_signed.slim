@@ -5,13 +5,13 @@
 
   nav.navigation-controls
     li
-      = link_to static_image_tag('negotiations'), user_negotiations_path(current_user)
+      = link_to static_image_tag('negotiations','icon-image'), user_negotiations_path(current_user)
     li
-      = link_to static_image_tag('deals'), user_deals_path(current_user)
+      = link_to static_image_tag('deals','icon-image'), user_deals_path(current_user)
     li
-      = link_to static_image_tag('items'), user_items_path(current_user)
+      = link_to static_image_tag('items','icon-image'), user_items_path(current_user)
     li
-      = link_to static_image_tag('profile'), user_profile_path(current_user)
+      = link_to static_image_tag('profile','icon-image'), user_profile_path(current_user)
 
   = component :search
 

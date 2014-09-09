@@ -20,3 +20,39 @@
   height: $request-avatar-size;
   width: $request-avatar-size;
 }
+
+.icon-image {
+  height: 35px;
+  width: 35px;
+}
+
+.composer-good-image {
+  @include box-sizing(border-box);
+  @include border-radius(5px 5px 0px 0px);
+  @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  height: 155px;
+  width: 155px;
+  border: $product-image-border;
+}
+
+.receiver-good-image {
+  @include box-sizing(border-box);
+  @include border-radius(5px 5px 0px 0px);
+  @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
+  height: 60px;
+  width: 60px;
+  border: $product-image-border;
+}
+
+.profile-card-composition-image {
+  @include border-radius($profile-card-head-image-radius);
+
+  display: block;
+  width: 100%;
+}

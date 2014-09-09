@@ -1,6 +1,5 @@
 .product
-  div class="image-#{state}"
-    = item_main_image_tag(good)
+  = item_main_image_tag(good,"#{state}-good-image")
 
   .good-name
     = good.name

@@ -39,33 +39,5 @@
     max-width: $width - 10px;
     margin: $product-margin;
     background-color: $white-bgcolor;
-    .image-big {
-      @include box-sizing(border-box);
-
-      float: left;
-      overflow: auto;
-      img {
-        @include border-radius(5px 5px 0px 0px);
-        @include box-sizing(border-box);
-
-        height: 155px;
-        width: 155px;
-        border: $product-image-border;
-      }
-    }
-    .image-small {
-      @include box-sizing(border-box);
-
-      float: left;
-      overflow: auto;
-      img {
-        @include border-radius(5px 5px 0px 0px);
-        @include box-sizing(border-box);
-
-        height: 60px;
-        width: 60px;
-        border: $product-image-border;
-      }
-    }
   }
 }
