@@ -57,12 +57,12 @@ module ApplicationHelper
     end
   end
 
-  def item_image_tag(item, index=0, css_class, width=155, height=155)
-    if item != nil && item.images.size > index
-      image = item.images[index]
-      cl_image_tag(image.id,
-        :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
-        :width => width, :height => height, :crop => :fit, :class => css_class )
-    end
-  end
+  # def item_image_tag(item, index=0, css_class, width=155, height=155)
+  #   if item != nil && item.images.size > index
+  #     image = item.images[index]
+  #     cl_image_tag(image.id,
+  #       :transformation => { :x => image.x, :y => image.y, :width => image.w, :height => image.h, :crop => :crop },
+  #       :width => width, :height => height, :crop => :fit, :class => css_class )
+  #   end
+  # end
 end
