@@ -16,24 +16,25 @@ describe Offer do
   # Methods
 
   describe '#negotiable?' do
-    it 'is not negotiable when not saved' do
-      expect(offer).not_to be_negotiable
+    it 'calls #negotiating and negates the result' do
+      expect(offer.negotiable?).to eq !offer.negotiating?
+    end
+  end
+
+  describe '#negotiating?' do
+    it 'returns false if the offer is not saved' do
+      expect(offer.negotiating?).to eq false
     end
 
-    it 'is not negotiable when not saved and negotiation_id set' do
+    it 'returns false if the offer is saved and is not being negotiated' do
+      allow(offer).to receive(:persisted?) { true }
+      expect(offer.negotiating?).to eq false
+    end
+
+    it 'returns true if the offer is saved and is being negotiated' do
+      allow(offer).to receive(:persisted?) { true }
       offer.negotiation_id=1
-      expect(offer).not_to be_negotiable
-    end
-
-    it 'is not negotiable when saved and negotiation_id set' do
-      offer.negotiation_id=1
-      offer.save
-      expect(offer).not_to be_negotiable
-    end
-
-    it 'is negotiable when saved and negotiation_id not set' do
-      offer.save
-      expect(offer).to be_negotiable
+      expect(offer.negotiating?).to eq true
     end
   end
 
