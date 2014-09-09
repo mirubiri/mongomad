@@ -11,3 +11,12 @@
   height: $omnibar-avatar-image-size;
   width: $omnibar-avatar-image-size;
 }
+
+.request-user-image {
+    @include box-sizing(border-box);
+
+    float: left;
+    overflow: auto;
+      height: $request-avatar-size;
+      width: $request-avatar-size;
+}
