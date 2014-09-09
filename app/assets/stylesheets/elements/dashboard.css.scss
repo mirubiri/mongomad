@@ -1,11 +1,11 @@
 .dashboard {
-  @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
-  @include border-radius(5px, 5px);
+  @include box-shadow($dashboard-shadow);
+  @include border-radius($dashboard-radius, $dashboard-radius);
   @include box-sizing(border-box);
 
   float: left;
   width: $dashboard-width;
-  background-color: $container-bgcolor;
+  background-color: $dashboard-bgcolor;
   .bezel {
     @include border-radius(5px 5px 0px 0px);
 

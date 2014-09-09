@@ -24,8 +24,8 @@ $element-padding: 15px;
 // $component-padding: 25px;
 // $nav-link-padding: 12px 5px;
 // $additional-control-padding: 5px;
-$5px-radius: 5px;
-$5px-padding: 5px;
+$five-pix-radius: 5px;
+$five-pix-padding: 5px;
 
 $top-container-bezel-height: 30px;
 $container-bgcolor: #b1d4e1;
@@ -45,12 +45,6 @@ $dashboard-padding: 0 10px 0  0;
 $avatar-request-image-width: 40px;
 $item-image-width: 165px;
 $general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px;
-
-
-
-
-
-
 
 
 //REQUEST-LIST
@@ -140,7 +134,7 @@ $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
 
-$profile-card-head-image-radius: $5px-radius $5px-radius 0px 0px;
+$profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0px 0px;
 $item-image-size: 155px;
 
 
@@ -181,7 +175,7 @@ $search-alignment: center;
 
 
 //PROFILE-CARD
-$profile-card-border-radius: $5px-radius;
+$profile-card-border-radius: $five-pix-radius;
 $profile-card-margin: $ppal-element-margin;
 $profile-card-bgcolor: $white-bgcolor;
 $profile-card-box-shadow: $general-shadow;
@@ -194,11 +188,11 @@ $omnibar-navigation-alignment: center;
 
 
 //BUSINESS-INFO
-$bussiness-info-radius: $5px-radius;
-$bussiness-info-padding: $5px-padding;
-$bussiness-info-text-align: center;
-$bussiness-info-shadow: $general-shadow;
-$bussiness-info-bgcolor: $white-bgcolor;
+$bussines-info-radius: $five-pix-radius;
+$bussines-info-padding: $five-pix-padding;
+$bussines-info-text-align: center;
+$bussines-info-shadow: $general-shadow;
+$bussines-info-bgcolor: $white-bgcolor;
 $bussines-info-font-weight: regular;
 $bussines-info-font-size: $big-font-size;
 $bussines-info-font-color: $grey-font-color;
@@ -206,14 +200,17 @@ $bussines-info-font-color: $grey-font-color;
 
 //DASHBOARD
 $dashboard-width: 25%;
-$bussines-info-radius: $5px-radius;
-$bussines-info-padding: $5px-padding;
-$bussines-info-text-align: center;
-$bussines-info-shadow: $general-shadow;
-$bussines-info-bgcolor: $white-bgcolor;
-$bussines-info-font-weight: regular;
-$bussines-info-font-size: $big-font-size;
-$bussines-info-font-color: $grey-font-color;
+$dashboard-radius: $five-pix-radius;
+$dashboard-padding: $five-pix-padding;
+$dashboard-text-align: center;
+$dashboard-shadow: $general-shadow;
+$dashboard-bgcolor: $white-bgcolor;
+$dashboard-font-weight: regular;
+$dashboard-font-size: $big-font-size;
+$dashboard-font-color: $grey-font-color;
+
+//BEZEL
+
 
 
 //DASHBOARD-COMPONENT-TITLE

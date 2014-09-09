@@ -1,39 +1,31 @@
 .button {
-  input {
-    font-weight: bold;
-    font-size: $big-font-size;
-    color: $white-font-color;
+  font-weight: bold;
+  font-size: $big-font-size;
+  color: $white-font-color;
 
-    @include border-radius(5px, 5px);
+  @include border-radius(5px, 5px);
 
-    float: left;
-    height: $button-height;
-    width: 100%;
-    border: none;
-  }
+  float: left;
+  height: $button-height;
+  width: 100%;
+  border: none;
 }
 
 .warning-button {
   @extend .button;
-  input {
-    background-color: $red-button-bgcolor;
-  }
+  background-color: $red-button-bgcolor;
 }
 
 .control-button {
   @extend .button;
-  input {
-    background-color: $grey-button-bgcolor;
-  }
+  background-color: $grey-button-bgcolor;
 }
 
 .send-button {
   @extend .button;
-  input {
-    float: right;
-    height: $send-button-height;
-    width: auto;
-    margin-top: $send-button-margin-top;
-    background-color: $blue-button-bgcolor;
-  }
+  float: right;
+  height: $send-button-height;
+  width: auto;
+  margin-top: $send-button-margin-top;
+  background-color: $blue-button-bgcolor;
 }

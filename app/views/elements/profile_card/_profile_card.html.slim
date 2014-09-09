@@ -10,4 +10,5 @@
 - content_for :make_offer_control
   = button_to "MAKE ME AN OFFER",
     new_user_offer_path(data.visited_user),
-    method: :get
+    method: :get,
+    class: "warning-button"

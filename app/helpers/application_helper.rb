@@ -33,7 +33,7 @@ module ApplicationHelper
   end
 
   def static_image_tag(public_id, width=35, height=35)
-    cl_image_tag("static/#{public_id}", :width => width, :height => height, :crop => :fill)
+    cl_image_tag("static/#{public_id}", :width => width, :height => height, :crop => :fill )
   end
 
   def user_image_tag(user, width=80, height=80)
