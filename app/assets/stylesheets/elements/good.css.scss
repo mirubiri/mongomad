@@ -19,29 +19,26 @@
 
     float: left;
     overflow: auto;
-
     img {
       @include border-radius(5px 5px 0px 0px);
       @include box-sizing(border-box);
 
+      height: $item-image-size;
       width: $item-image-size;
       border: $item-image-border;
-      height: $item-image-size;
     }
   }
 }
 
-@mixin product($width){
+@mixin product($width) {
   .product {
     @include box-sizing(border-box);
 
     float: left;
-    background-color: $white-bgcolor;
-
     width: $width - 10px;
     max-width: $width - 10px;
-    margin:$product-margin;
-
+    margin: $product-margin;
+    background-color: $white-bgcolor;
     .image-big {
       @include box-sizing(border-box);
 
@@ -51,9 +48,9 @@
         @include border-radius(5px 5px 0px 0px);
         @include box-sizing(border-box);
 
+        height: 155px;
         width: 155px;
         border: $product-image-border;
-        height: 155px;
       }
     }
     .image-small {
@@ -61,14 +58,13 @@
 
       float: left;
       overflow: auto;
-
       img {
         @include border-radius(5px 5px 0px 0px);
         @include box-sizing(border-box);
 
+        height: 60px;
         width: 60px;
         border: $product-image-border;
-        height: 60px;
       }
     }
   }

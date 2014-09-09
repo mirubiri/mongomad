@@ -6,31 +6,24 @@
   width: $offer-width;
   margin: $expositor-element-margin;
   background-color: $white-bgcolor;
-
-  .message-zone{
+  .message-zone {
     float: left;
-    width: 100%;
     overflow: auto;
+    width: 100%;
     background-color: $grey-bgcolor;
-
     .message {
       @include box-sizing(border-box);
 
-      min-height: $offer-message-min-height;
-
       float: left;
       width: 100%;
-
+      min-height: $offer-message-min-height;
       padding: $centered-text-padding;
-      text-align: $offer-message-text-align;
-
-      font-weight: regular;
       font-size: $medium-font-size;
+      font-weight: regular;
       color: $grey-font-color;
+      text-align: $offer-message-text-align;
 
       background: $offer-controls-background;
     }
-
   }
-
 }

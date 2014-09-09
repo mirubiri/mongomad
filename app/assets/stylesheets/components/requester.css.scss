@@ -14,10 +14,6 @@
     width: 100%;
   }
   textarea {
-    font-weight: regular;
-    font-size: $big-font-size;
-    color: $black-font-color;
-
     @include box-sizing(border-box);
     @include border-radius(5px, 5px);
 
@@ -26,6 +22,9 @@
     width: 100%;
     min-height: $requester-textarea-min-height;
     border: $requester-textarea-border;
+    font-size: $big-font-size;
+    font-weight: regular;
+    color: $black-font-color;
   }
   .countdown {
     @include box-sizing(border-box);

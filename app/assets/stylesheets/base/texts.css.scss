@@ -1,130 +1,116 @@
-.user-data{
+.user-data {
   @include box-sizing(border-box);
 
   float: left;
   width: 100%;
-
-  font-weight: $user-data-font-weight;
-  font-size: $user-data-font-size;
-  color: $user-data-color;
-
   padding: $user-data-padding;
+  font-size: $user-data-font-size;
+  font-weight: $user-data-font-weight;
+  color: $user-data-color;
   text-align: $user-data-text-align;
 }
 
-.user-nick{
+.user-nick {
   @include box-sizing(border-box);
 
   width: 100%;
   padding: $user-nick-padding;
-  text-align: $user-nick-text-align;
-
-  font-weight: $user-nick-font-weight;
   font-size: $user-nick-font-size;
+  font-weight: $user-nick-font-weight;
   color: $user-nick-color;
+  text-align: $user-nick-text-align;
 }
 
-.user-location{
+.user-location {
   @include box-sizing(border-box);
 
   width: 100%;
   padding: $user-location-padding;
-  text-align: $user-location-text-align;
-
-  font-weight: $user-location-font-weight;
   font-size: $user-location-font-size;
+  font-weight: $user-location-font-weight;
   color: $user-location-color;
+  text-align: $user-location-text-align;
 }
 
-.message-text{
+.message-text {
   @include box-sizing(border-box);
 
   width: 100%;
   padding: $message-text-padding;
-  text-align: $message-text-text-align;
-
-  font-weight: $message-text-font-weight;
   font-size: $message-text-font-size;
+  font-weight: $message-text-font-weight;
   color: $message-text-color;
+  text-align: $message-text-text-align;
 }
 
-.title{
+.title {
   @include box-sizing(border-box);
-  float: left;
 
+  float: left;
   overflow: none;
   height: $title-height;
-
   width: 100%;
   padding: $title-padding;
-  text-align: $title-text-align;
-
-  font-weight: $title-font-weight;
   font-size: $title-font-size;
+  font-weight: $title-font-weight;
   color: $title-color;
-
   background-color: $title-background-color;
+  text-align: $title-text-align;
   //border-bottom:  $title-border-bottom;
 }
 
-.controls{
+.controls {
   @include box-sizing(border-box);
 
   float: right;
   width: 100%;
   padding: $controls-padding;
-
-  font-weight: $controls-font-weight;
   font-size: $controls-font-size;
+  font-weight: $controls-font-weight;
   color: $controls-color;
-
   text-align: $controls-text-align;
 }
 
 .active_nav {
   background-color: $active_nav-background-color;
   a {
-    font-weight: $active_nav-font-weight;
     font-size: $active_nav-font-size;
+    font-weight: $active_nav-font-weight;
     color: $active_nav-color;
   }
 }
 
 
-.timestamp{
+.timestamp {
   @include box-sizing(border-box);
 
   float: right;
   width: 100%;
   padding: $timestamp-padding;
-
-  font-weight: $timestamp-font-weight;
   font-size: $timestamp-font-size;
+  font-weight: $timestamp-font-weight;
   color: $timestamp-color;
-
   text-align: $timestamp-text-align;
 }
 
 
-.description{
+.description {
   @include box-sizing(border-box);
 
   width: 100%;
   padding: $description-padding;
-  text-align: $description-text-align;
-
-  font-weight: $description-font-weight;
   font-size: $description-font-size;
+  font-weight: $description-font-weight;
   color: $description-color;
+  text-align: $description-text-align;
 }
 
-.good-name{
+.good-name {
   @include box-sizing(border-box);
 
   float: left;
   width: 100%;
-
-  font-weight: $good-name-font-weight;
   font-size: $good-name-font-size;
+  font-weight: $good-name-font-weight;
   color: $good-name-color;
 }

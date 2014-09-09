@@ -13,10 +13,10 @@
 }
 
 .request-user-image {
-    @include box-sizing(border-box);
+  @include box-sizing(border-box);
 
-    float: left;
-    overflow: auto;
-      height: $request-avatar-size;
-      width: $request-avatar-size;
+  float: left;
+  overflow: auto;
+  height: $request-avatar-size;
+  width: $request-avatar-size;
 }

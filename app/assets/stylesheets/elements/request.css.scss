@@ -2,32 +2,27 @@
   @include box-sizing(border-box);
 
   float: $request-flotation;
+  display: flex;
   width: $request-width;
   margin-top: $request-margin;
   padding: $request-padding;
 
   border-bottom: $request-border-bottom;
-
-  display: flex;
-
-  .request-message{
+  .request-message {
     float: left;
-    width: 100%;
     overflow: auto;
-
+    width: 100%;
     .text {
       @include box-sizing(border-box);
 
       float: left;
-      flex: auto;
-
       padding: $centered-text-padding;
+      font-size: $medium-font-size;
+      font-weight: regular;
+      color: $grey-font-color;
       text-align: left;
 
-      font-weight: regular;
-      font-size: $medium-font-size;
-      color: $grey-font-color;
+      flex: auto;
     }
   }
-
 }

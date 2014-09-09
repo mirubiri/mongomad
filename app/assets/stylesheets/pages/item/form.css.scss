@@ -74,11 +74,9 @@ label.preview_label {
   width: $preview-label-size;
   margin: $preview-label-margin;
   padding: $preview-label-padding;
-
-  font-weight: bold;
   font-size: $medium-font-size;
+  font-weight: bold;
   color: $white-font-color;
-
   background-color: $preview-label-background-color;
   text-align: $preview-alignment;
 }

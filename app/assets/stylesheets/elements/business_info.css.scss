@@ -4,17 +4,14 @@
 
   float: left;
   background-color: $bussines-info-bgcolor;
-
   .info {
     @include box-sizing(border-box);
 
     width: 100%;
     padding: $bussines-info-padding;
-    text-align: $bussines-info-text-align;
-
-    font-weight: $bussines-info-font-weight;
     font-size: $bussines-info-font-size;
+    font-weight: $bussines-info-font-weight;
     color: $bussines-info-font-color;
+    text-align: $bussines-info-text-align;
   }
-
 }

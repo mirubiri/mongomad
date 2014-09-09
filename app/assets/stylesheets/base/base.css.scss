@@ -8,10 +8,9 @@ body {
   width: $body-width;
   margin: $body-margin;
   padding: $body-padding;
-  background-color: $body-background-color;
-
   font-family: $body-font-family;
   line-height: $body-line-height;
+  background-color: $body-background-color;
 }
 
 .main {
@@ -38,8 +37,8 @@ nav {
 .active_nav {
   background-color: $nav-selected;
   a {
-    font-weight: bold;
     font-size: $medium-font-size;
+    font-weight: bold;
     color: $white-font-color;
   }
 }
