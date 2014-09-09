@@ -113,7 +113,15 @@
 
 
 .description{
+  @include box-sizing(border-box);
 
+  width: 100%;
+  padding: $centered-text-padding;
+  text-align: center;
+
+  font-weight: regular;
+  font-size: $medium-font-size;
+  color: $grey-font-color;
 }
 
 .good-name{
@@ -125,9 +133,4 @@
   font-weight: regular;
   font-size: $big-font-size;
   color: $grey-font-color;
-}
-
-
-.button-name{
-
 }
