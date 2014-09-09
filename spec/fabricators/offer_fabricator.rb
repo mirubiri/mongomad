@@ -1,4 +1,5 @@
 Fabricator(:offer) do
+  transient :cash
   transient :composer_id
   transient :receiver_id
   composer_id { Faker::Code.isbn }
@@ -11,7 +12,7 @@ Fabricator(:offer) do
     ]
   end
   proposal do |attrs| 
-    Fabricate.build(:proposal,composer_id:attrs[:composer_id],receiver_id:attrs[:receiver_id])
+    Fabricate.build(:proposal,composer_id:attrs[:composer_id],receiver_id:attrs[:receiver_id],cash: attrs[:cash])
   end
   message { Faker::Lorem.sentence(rand(1..60)).slice(0,200) }
 end
