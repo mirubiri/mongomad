@@ -94,17 +94,39 @@
 }
 
 
-.input-text{
+.timestamp{
+  @include box-sizing(border-box);
 
+  float: right;
+  width: 100%;
+  padding: $request-controls-padding;
+
+  font-weight: regular;
+  font-size: $small-font-size;
+  color: $blue-font-color;
+
+  font-size: $small-font-size;
+  color: $blue-font-color;
+
+  text-align: right;
 }
 
-.timestamp-text{
-
-}
 
 .description{
 
 }
+
+.good-name{
+  @include box-sizing(border-box);
+
+  float: left;
+  width: 100%;
+
+  font-weight: regular;
+  font-size: $big-font-size;
+  color: $grey-font-color;
+}
+
 
 .button-name{
 

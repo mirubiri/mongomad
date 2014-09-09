@@ -22,7 +22,7 @@
         - item_form.hidden_field id="h_preview#{index+1}", name="item[images][][h]", type="hidden", value=image.h
         - item_form.hidden_field id="w_preview#{index+1}", name="item[images][][w]", type="hidden", value=image.w
 
-  .name
+  .good-name
     | Product name
     = item_form.text_area :name,
                      :placeholder => "Name your product...",

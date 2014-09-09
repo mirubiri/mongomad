@@ -29,16 +29,6 @@
       height: $item-image-size;
     }
   }
-  .name {
-    @include box-sizing(border-box);
-
-    float: left;
-    width: 100%;
-
-    font-weight: regular;
-    font-size: $big-font-size;
-    color: $grey-font-color;
-  }
 }
 
 @mixin product($width){
@@ -81,14 +71,5 @@
         height: 60px;
       }
     }
-    .name {
-      @include box-sizing(border-box);
-
-      float: left;
-      width: 100%;
-
-      font-weight: regular;
-      font-size: $big-font-size;
-      color: $grey-font-color;    }
   }
 }
