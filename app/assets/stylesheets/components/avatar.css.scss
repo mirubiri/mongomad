@@ -4,16 +4,9 @@
   float: left;
   overflow: visible;
   width: $avatar-omnibar-width;
-  .image {
-    @include box-sizing(border-box);
 
-    float: left;
-    overflow: auto;
-    img {
-      height: $omnibar-avatar-image-size;
-      width: $omnibar-avatar-image-size;
-    }
-  }
+  //>.omnibar-user-image
+
   .data-side {
     float: left;
   }
