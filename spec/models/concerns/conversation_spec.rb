@@ -8,7 +8,5 @@ end
 describe Conversation do
   subject { TestConversation }
 
-  it { is_expected.to be < Conversation }
-
   it { is_expected.to embed_many(:messages).of_type(Message) }
 end
