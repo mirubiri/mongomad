@@ -259,79 +259,81 @@ $offer-message-background: transparent;
 $offer-controls-padding: 5px;
 $offer-controls-background: transparent;
 
+
+
 //TEXTS
-  //user-data
-  $user-data-font-weight: regular;
-  $user-data-font-size: $medium-font-size;
-  $user-data-color: $white-font-color;
-  $user-data-padding: $centered-text-padding;
-  $user-data-text-align: left;
+//user-data
+$user-data-font-weight: regular;
+$user-data-font-size: $medium-font-size;
+$user-data-color: $white-font-color;
+$user-data-padding: $centered-text-padding;
+$user-data-text-align: left;
 
-  //user-nick{
-  $user-nick-padding: $user-fullname-padding;
-  $user-nick-text-align: center;
-  $user-nick-font-weight: regular;
-  $user-nick-font-size: $big-font-size;
-  $user-nick-color: $black-font-color;
+//user-nick{
+$user-nick-padding: $user-fullname-padding;
+$user-nick-text-align: center;
+$user-nick-font-weight: regular;
+$user-nick-font-size: $big-font-size;
+$user-nick-color: $black-font-color;
 
-  //user-location{
-  $user-location-padding: $user-location-padding;
-  $user-location-text-align: center;
-  $user-location-font-weight: regular;
-  $user-location-font-size: $big-font-size;
-  $user-location-color: $grey-font-color;
+//user-location{
+$user-location-padding: $user-location-padding;
+$user-location-text-align: center;
+$user-location-font-weight: regular;
+$user-location-font-size: $big-font-size;
+$user-location-color: $grey-font-color;
 
-  //message-text{
-  $message-text-padding: $centered-text-padding;
-  $message-text-text-align: left;
-  $message-text-font-weight: regular;
-  $message-text-font-size: $medium-font-size;
-  $message-text-color: $grey-font-color;
+//message-text{
+$message-text-padding: $centered-text-padding;
+$message-text-text-align: left;
+$message-text-font-weight: regular;
+$message-text-font-size: $medium-font-size;
+$message-text-color: $grey-font-color;
 
-  //title{
-  $title-height: $title-height;
-  $title-padding: $centered-text-padding;
-  $title-text-align: center;
-  $title-font-weight: bold;
-  $title-font-size: $big-font-size;
-  $title-color: $white-font-color;
-  $title-background-color: $title-background-color;
-  $title-border-bottom:  $title-border-bottom;
+//title{
+$title-height: $title-height;
+$title-padding: $centered-text-padding;
+$title-text-align: center;
+$title-font-weight: bold;
+$title-font-size: $big-font-size;
+$title-color: $white-font-color;
+$title-background-color: $title-background-color;
+$title-border-bottom:  $title-border-bottom;
 
-  //controls{
-  $controls-padding: $request-controls-padding;
-  $controls-font-weight: regular;
-  $controls-font-size: $small-font-size;
-  $controls-color: $blue-font-color;
-  $controls-font-size: $small-font-size;
-  $controls-color: $blue-font-color;
-  $controls-text-align: $request-controls-alignment;
+//controls{
+$controls-padding: $request-controls-padding;
+$controls-font-weight: regular;
+$controls-font-size: $small-font-size;
+$controls-color: $blue-font-color;
+$controls-font-size: $small-font-size;
+$controls-color: $blue-font-color;
+$controls-text-align: $request-controls-alignment;
 
-  //active_nav{
-  $active_nav-background-color: $nav-selected;
-  $active_nav-font-weight: bold;
-  $active_nav-font-size: $medium-font-size;
-  $active_nav-color: $white-font-color;
-
-
-  //timestamp{
-  $timestamp-padding: $request-controls-padding;
-  $timestamp-font-weight: regular;
-  $timestamp-font-size: $small-font-size;
-  $timestamp-color: $blue-font-color;
-  $timestamp-font-size: $small-font-size;
-  $timestamp-color: $blue-font-color;
-  $timestamp-text-align: right;
+//active_nav{
+$active_nav-background-color: $nav-selected;
+$active_nav-font-weight: bold;
+$active_nav-font-size: $medium-font-size;
+$active_nav-color: $white-font-color;
 
 
-  //description{
-  $description-padding: $centered-text-padding;
-  $description-text-align: center;
-  $description-font-weight: regular;
-  $description-font-size: $medium-font-size;
-  $description-color: $grey-font-color;
+//timestamp{
+$timestamp-padding: $request-controls-padding;
+$timestamp-font-weight: regular;
+$timestamp-font-size: $small-font-size;
+$timestamp-color: $blue-font-color;
+$timestamp-font-size: $small-font-size;
+$timestamp-color: $blue-font-color;
+$timestamp-text-align: right;
 
-  //good-name{
-  $good-name-font-weight: regular;
-  $good-name-font-size: $big-font-size;
-  $good-name-color: $grey-font-color;
+
+//description{
+$description-padding: $centered-text-padding;
+$description-text-align: center;
+$description-font-weight: regular;
+$description-font-size: $medium-font-size;
+$description-color: $grey-font-color;
+
+//good-name{
+$good-name-font-weight: regular;
+$good-name-font-size: $big-font-size;
+$good-name-color: $grey-font-color;
