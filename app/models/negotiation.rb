@@ -13,10 +13,6 @@ class Negotiation
     @ncourse ||= NegotiationCourse.new(self)
   end
 
-  def negotiating?
-    user_ids.count == 2
-  end
-
   def leave(user_id)
     _initialize_ncourse
     @ncourse.leave(user_id)

@@ -17,17 +17,6 @@ describe Negotiation do
   #methods
   
   before(:example) { allow(NegotiationCourse).to receive(:new) { ncourse } }
-  
-  describe '#negotiating?' do
-    it 'returns false if one user left' do
-      negotiation.leave(composer_id)
-      expect(negotiation).not_to be_negotiating
-    end
-
-    it 'returns true if both users in' do
-      expect(negotiation).to be_negotiating
-    end
-  end
 
   describe '#leave' do
     it 'calls NegotiationCourse#leave' do
