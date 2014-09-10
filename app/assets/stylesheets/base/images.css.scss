@@ -29,7 +29,6 @@
 .composer-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0px 0px);
-  @include box-sizing(border-box);
 
   float: left;
   overflow: auto;
@@ -41,7 +40,6 @@
 .receiver-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0px 0px);
-  @include box-sizing(border-box);
 
   float: left;
   overflow: auto;
