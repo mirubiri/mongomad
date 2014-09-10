@@ -19,6 +19,6 @@ class Offer
   end
 
   def negotiating?
-    !negotiable?
+    not negotiable?
   end
 end

@@ -9,7 +9,7 @@ class NegotiationCourse
   end
 
   def _one_user_left?
-    !negotiation.user_ids.empty?
+    not negotiation.user_ids.empty?
   end
 
   def leave(user_id)
