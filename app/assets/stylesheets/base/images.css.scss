@@ -63,3 +63,24 @@
   width: 100%;
   border: 1px solid $grey-border-color;
 }
+
+.negotiation-user-image {
+  @include border-radius(50%, 50%);
+
+  height: 64px;
+  width: 64px;
+}
+
+.deal-user-image {
+  @include border-radius(50%, 50%);
+
+  height: 64px;
+  width: 64px;
+}
+
+.message-user-image {
+  @include border-radius(50%, 50%);
+
+  height: 40px;
+  width: 40px;
+}
