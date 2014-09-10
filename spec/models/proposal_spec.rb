@@ -41,6 +41,16 @@ describe Proposal do
     end
   end
 
+  describe '#negotiable?' do
+    let!(:policy) { NegotiableProposalPolicy.new(proposal) }
+
+    it 'calls NegotiableProposalPolicy#negotiable?' do 
+      allow(NegotiableProposalPolicy).to receive(:new) { policy }
+      expect(policy).to receive(:negotiable?)
+      proposal.negotiable?
+    end
+  end
+
   # Factories
 
 end

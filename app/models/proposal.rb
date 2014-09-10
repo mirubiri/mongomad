@@ -20,5 +20,10 @@ class Proposal
     goods<<items.map { |item| item.to_product }
   end
 
+  def negotiable?
+    @policy ||=NegotiableProposalPolicy.new(self)
+    @policy.negotiable?
+  end
+
   alias_method :receiver_goods=,:composer_goods=
 end
