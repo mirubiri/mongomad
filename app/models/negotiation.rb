@@ -10,7 +10,7 @@ class Negotiation
   field :signer
 
   def _initialize_ncourse
-    NegotiationCourse.new(self)
+    @ncourse ||= NegotiationCourse.new(self)
   end
 
   def negotiating?
@@ -18,12 +18,12 @@ class Negotiation
   end
 
   def leave(user_id)
-    @ncourse ||= _initialize_ncourse
+    _initialize_ncourse
     @ncourse.leave(user_id)
   end
 
   def sign(user_id)
-    @ncourse ||= _initialize_ncourse
+    _initialize_ncourse
     @ncourse.sign(user_id)
   end
 
