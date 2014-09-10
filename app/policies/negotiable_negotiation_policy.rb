@@ -4,17 +4,17 @@ class NegotiableNegotiationPolicy
     @proposal_negotiable=negotiation.proposal.negotiable?
   end
 
-  def one_user?
+  def _one_user?
     @negotiation.user_ids.count == 1
   end
 
-  def proposal_negotiable?
+  def _proposal_negotiable?
     @negotiation.proposal.negotiable?
   end
 
   def negotiable?
-    return false if one_user?
-    return false unless proposal_negotiable?
+    return false if _one_user?
+    return false unless _proposal_negotiable?
     true
   end
 
