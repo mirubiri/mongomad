@@ -3,8 +3,10 @@ require 'rails_helper'
 describe Offer do
 
   let(:offer) { Fabricate.build(:offer) }
+  let!(:policy) { NegotiableOfferPolicy.new(offer) }
+  before(:example) { allow(NegotiableOfferPolicy).to receive(:new) {policy} }
 
-  specify { expect(Offer).to be < Proposable }
+  it { is_expected.to include_module Proposable }
 
   # Relations
 
@@ -16,26 +18,18 @@ describe Offer do
   # Methods
 
   describe '#negotiable?' do
-    it 'calls #negotiating and negates the result' do
-      expect(offer.negotiable?).to eq !offer.negotiating?
+    it 'calls NegotiableOfferPolicy#negotiable?' do
+      expect(policy).to receive(:negotiable?)
+      offer.negotiable?
     end
   end
 
   describe '#negotiating?' do
-    it 'returns false if the offer is not saved' do
-      expect(offer.negotiating?).to eq false
+
+    it 'negates offer#negotiable? returned value' do
+      expect(offer.negotiating?).to eq !offer.negotiable?
     end
 
-    it 'returns false if the offer is saved and is not being negotiated' do
-      allow(offer).to receive(:persisted?) { true }
-      expect(offer.negotiating?).to eq false
-    end
-
-    it 'returns true if the offer is saved and is being negotiated' do
-      allow(offer).to receive(:persisted?) { true }
-      offer.negotiation_id=1
-      expect(offer.negotiating?).to eq true
-    end
   end
 
   describe '#negotiate' do
