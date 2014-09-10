@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe NegotiationCourse do
-  let(:negotiation) { Fabricate.build(:negotiation) }
+  let(:negotiation) { Fabricate(:offer).negotiate }
   let(:ncourse) { NegotiationCourse.new(negotiation) }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
@@ -49,18 +49,18 @@ describe NegotiationCourse do
       end
 
       it 'makes started offer negotiable again' do
-        offer=double('offer').as_null_object()
-        allow(Offer).to receive(:find).with(negotiation.offer_id) { offer }
-        expect(offer).to receive(:negotiation_id=).with(nil)
         ncourse.leave(composer_id)
+        offer=Offer.find(negotiation.offer_id)
+        expect(offer.negotiation_id).to eq nil
       end
     end
 
     context 'one user in' do
-      before(:example) { negotiation.leave(:composer_id) }
+      before(:example) { negotiation.leave(composer_id) }
+
       it 'destroys the negotiation' do
-        expect(negotiation).to receive(:destroy)
         ncourse.leave(receiver_id)
+        expect(negotiation).to be_destroyed
       end
     end
 

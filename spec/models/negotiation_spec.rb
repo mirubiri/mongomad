@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe Negotiation do
-  let(:negotiation) { Fabricate.build(:negotiation) }
+  let(:negotiation) { Fabricate(:offer).negotiate }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
-  let(:ncourse) { NegotiationCourse.new(negotiation) }
+  let!(:ncourse) { NegotiationCourse.new(negotiation) }
 
   it { is_expected.to include_module Proposable }
   it { is_expected.to include_module Conversation }
@@ -49,12 +49,12 @@ describe Negotiation do
     end
 
     it 'returns composer_id if composer owns cash' do
-      negotiation=Fabricate.build(:negotiation,cash: :composer)
+      negotiation=Fabricate(:offer,cash: :composer).negotiate
       expect(negotiation.cash_owner).to eq negotiation.composer.id
     end
 
     it 'returns receiver_id if receiver owns cash' do
-      negotiation=Fabricate.build(:negotiation,cash: :receiver)
+      negotiation=Fabricate(:offer,cash: :receiver).negotiate
       expect(negotiation.cash_owner).to eq negotiation.receiver.id
     end
   end

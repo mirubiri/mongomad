@@ -4,8 +4,20 @@ class NegotiationCourse
     self.negotiation=negotiation
   end
 
+  def _make_offer_negotiable
+    Offer.find(negotiation.offer_id).update_attributes(negotiation_id:nil)
+  end
+
+  def _one_user_left?
+    !negotiation.user_ids.empty?
+  end
+
   def leave(user_id)
-    !negotiation.user_ids.delete_one(user_id).nil?
+    deleted = negotiation.user_ids.delete(user_id) { false }
+    _make_offer_negotiable if _one_user_left?
+
+    return negotiation.destroy unless _one_user_left?
+    deleted
   end
 
   def sign(user_id)
