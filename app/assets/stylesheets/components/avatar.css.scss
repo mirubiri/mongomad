@@ -23,14 +23,6 @@
     margin: $margin-auto;
     padding: $avatar-profile-card-image-padding;
     background-color: $white-bgcolor;
-    img {
-      @include box-sizing(border-box);
-      @include border-radius(50%, 50%);
-
-      height: 100%;
-      width: 100%;
-      border: 1px solid $grey-border-color;
-    }
   }
   .data-side {
     @include box-sizing(border-box);
