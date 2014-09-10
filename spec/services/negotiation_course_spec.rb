@@ -8,8 +8,8 @@ describe NegotiationCourse do
 
   describe '#sign' do
 
-    it 'returns false if not negotiating' do
-      allow(negotiation).to receive(:negotiating?) { false }
+    it 'returns false if not negotiable' do
+      allow(negotiation).to receive(:negotiable?) { false }
       expect(ncourse.sign(composer_id)).to eq false
     end
 
@@ -72,20 +72,20 @@ describe NegotiationCourse do
   end
 
   describe '#confirm' do
-    it 'returns false if not signed' do
+    xit 'returns false if not signed' do
     end
 
-    it 'returns false if signed and given user_id signed' do
+    xit 'returns false if signed and given user_id signed' do
     end
 
-    it 'returns false if given user_id is not a participant' do
+    xit 'returns false if given user_id is not a participant' do
     end
 
     context 'signed and given user_id not signed' do
-      it 'creates a new deal' do
+      xit 'creates a new deal' do
       end
 
-      it 'destroys the negotiation' do
+      xit 'destroys the negotiation' do
       end
     end
 

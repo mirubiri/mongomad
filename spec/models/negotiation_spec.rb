@@ -5,6 +5,7 @@ describe Negotiation do
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
   let!(:ncourse) { NegotiationCourse.new(negotiation) }
+  let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
 
   it { is_expected.to include_module Proposable }
   it { is_expected.to include_module Conversation }
@@ -16,7 +17,17 @@ describe Negotiation do
 
   #methods
   
-  before(:example) { allow(NegotiationCourse).to receive(:new) { ncourse } }
+  before(:example) do 
+    allow(NegotiationCourse).to receive(:new) { ncourse }
+    allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
+  end
+
+  describe '#negotiable?' do
+    it 'calls NegotiationCourse#negotiable?' do
+      expect(negotiable_policy).to receive(:negotiable?)
+      negotiation.negotiable?
+    end
+  end
 
   describe '#leave' do
     it 'calls NegotiationCourse#leave' do

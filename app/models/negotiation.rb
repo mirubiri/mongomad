@@ -26,4 +26,9 @@ class Negotiation
   def cash_owner
     goods.type(Cash).first.try(:user_id)
   end
+
+  def negotiable?
+    @policy ||=NegotiableNegotiationPolicy.new(self)
+    @policy.negotiable?
+  end
 end
