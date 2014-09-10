@@ -6,11 +6,12 @@ class NegotiationStarter
   end
 
   def start
-    return _negotiate_offer if offer.negotiable?
+    return negotiate_offer if offer.negotiable?
     false
   end
 
-  def _build_negotiation
+  private 
+  def build_negotiation
     negotiation=Negotiation.new
     negotiation.proposals<<offer.proposal
     negotiation.user_sheets=offer.user_sheets
@@ -19,8 +20,8 @@ class NegotiationStarter
     negotiation
   end
 
-  def _negotiate_offer
-    negotiation=_build_negotiation
+  def negotiate_offer
+    negotiation=build_negotiation
     if negotiation.save
       self.negotiation=negotiation
       offer.update_attributes(negotiation_id:negotiation.id)

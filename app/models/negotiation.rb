@@ -9,18 +9,12 @@ class Negotiation
   field :offer_id
   field :signer
 
-  def _initialize_ncourse
-    @ncourse ||= NegotiationCourse.new(self)
-  end
-
   def leave(user_id)
-    _initialize_ncourse
-    @ncourse.leave(user_id)
+    ncourse.leave(user_id)
   end
 
   def sign(user_id)
-    _initialize_ncourse
-    @ncourse.sign(user_id)
+    ncourse.sign(user_id)
   end
 
   def cash_owner
@@ -30,5 +24,12 @@ class Negotiation
   def negotiable?
     @policy ||=NegotiableNegotiationPolicy.new(self)
     @policy.negotiable?
+  end
+
+  
+  private
+
+  def ncourse
+    @ncourse ||= NegotiationCourse.new(self)
   end
 end
