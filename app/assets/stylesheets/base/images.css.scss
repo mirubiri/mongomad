@@ -93,3 +93,32 @@
   width: 100%;
   border: 1px solid $grey-border-color;
 }
+
+.good-image {
+  @include border-radius(5px 5px 0px 0px);
+  @include box-sizing(border-box);
+
+  height: $item-image-size;
+  width: $item-image-size;
+  border: $item-image-border;
+}
+
+.factory-model-image {
+  height: 300px;
+  width: 300px;
+}
+
+.factory-snapshot-image {
+  height: 80px;
+  width: 80px;
+}
+
+.showcase-choice-image {
+  height: 120px;
+  width: 120px;
+}
+
+.showcase-display-image {
+  height: 500px;
+  width: 500px;
+}
