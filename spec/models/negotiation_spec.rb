@@ -4,7 +4,7 @@ describe Negotiation do
   let(:negotiation) { Fabricate(:offer).negotiate }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
-  let!(:ncourse) { NegotiationCourse.new(negotiation) }
+  let!(:nlcmanager) { NegotiationLifeCycleManager.new(negotiation) }
   let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
   let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
   let!(:confirm_policy) { CanConfirmNegotiationPolicy.new(negotiation)}
@@ -19,14 +19,14 @@ describe Negotiation do
   #methods
   
   before(:example) do 
-    allow(NegotiationCourse).to receive(:new) { ncourse }
+    allow(NegotiationLifeCycleManager).to receive(:new) { nlcmanager }
     allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
     allow(CanSignNegotiationPolicy).to receive(:new) { sign_policy }
     allow(CanConfirmNegotiationPolicy).to receive(:new) { confirm_policy}
   end
 
   describe '#negotiable?' do
-    it 'calls NegotiationCourse#negotiable?' do
+    it 'calls NegotiationLifeCycleManager#negotiable?' do
       expect(negotiable_policy).to receive(:negotiable?)
       negotiation.negotiable?
     end
@@ -47,22 +47,22 @@ describe Negotiation do
   end
 
   describe '#leave' do
-    it 'calls NegotiationCourse#leave' do
-      expect(ncourse).to receive(:leave).with(composer_id)
+    it 'calls NegotiationLifeCycleManager#leave' do
+      expect(nlcmanager).to receive(:leave).with(composer_id)
       negotiation.leave(composer_id)
     end
   end
 
   describe '#sign' do
-    it 'calls NegotiationCourse#sign' do
-      expect(ncourse).to receive(:sign).with(composer_id)
+    it 'calls NegotiationLifeCycleManager#sign' do
+      expect(nlcmanager).to receive(:sign).with(composer_id)
       negotiation.sign(composer_id)
     end
   end
 
   describe '#confirm' do
-    it 'calls NegotiationCourse#confirm' do
-      expect(ncourse).to receive(:confirm).with(receiver_id)
+    it 'calls NegotiationLifeCycleManager#confirm' do
+      expect(nlcmanager).to receive(:confirm).with(receiver_id)
       negotiation.confirm(receiver_id)
     end
   end

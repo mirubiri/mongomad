@@ -1,4 +1,4 @@
-class NegotiationCourse
+class NegotiationLifeCycleManager
   attr_accessor :negotiation
   def initialize(negotiation)
     self.negotiation=negotiation

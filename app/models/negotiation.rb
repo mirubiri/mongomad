@@ -10,15 +10,15 @@ class Negotiation
   field :signer
 
   def leave(user_id)
-    ncourse.leave(user_id)
+    nlcmanager.leave(user_id)
   end
 
   def sign(user_id)
-    ncourse.sign(user_id)
+    nlcmanager.sign(user_id)
   end
 
   def confirm(user_id)
-    ncourse.confirm(user_id)
+    nlcmanager.confirm(user_id)
   end
 
   def cash_owner
@@ -44,8 +44,8 @@ class Negotiation
     @negotiable_policy ||=NegotiableNegotiationPolicy.new(self)
   end
 
-  def ncourse
-    @ncourse ||= NegotiationCourse.new(self)
+  def nlcmanager
+    @nlcmanager ||= NegotiationLifeCycleManager.new(self)
   end
 
   def can_sign_policy
