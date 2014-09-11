@@ -1,42 +1,33 @@
 require 'rails_helper'
 
 describe NegotiationCourse do
-  let(:negotiation) { Fabricate(:offer).negotiate }
+  let(:negotiation) { Fabricate(:negotiation,cash: :composer) }
   let(:ncourse) { NegotiationCourse.new(negotiation) }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
+  let(:signer_id) { receiver_id }
+  let(:non_signer_id) { composer_id }
 
   describe '#sign' do
-
-    it 'returns false if not negotiable' do
-      allow(negotiation).to receive(:negotiable?) { false }
-      expect(ncourse.sign(composer_id)).to eq false
-    end
-
-    it 'returns false if signed' do
-      ncourse.sign(composer_id)
-      allow(negotiation).to receive(:signer?) { true }
-      expect(ncourse.sign(composer_id)).to eq false
-    end
-
-    it 'returns false if given user_id is not participating' do
-      expect(ncourse.sign('non_participant')).to eq false
-    end
-
-    it 'returns false if given user has money' do
-      negotiation=Fabricate.build(:negotiation,cash: :composer)
-      expect(ncourse.sign(negotiation.composer.id)).to eq false
-    end
-
-    context 'given user has no money and not signed' do
-      before(:example) { negotiation= Fabricate.build(:negotiation,cash: :composer)}
+    context 'given user can sign' do
       it 'returns true' do
-        expect(ncourse.sign(receiver_id)).to eq true
+        expect(ncourse.sign(signer_id)).to eq true
       end
 
       it 'signs the negotiation by the given user' do
-        ncourse.sign(receiver_id)
-        expect(negotiation.signer).to eq receiver_id
+        ncourse.sign(signer_id)
+        expect(negotiation.signer).to eq signer_id
+      end
+    end
+    
+    context 'given user cannot sign' do
+      it 'returns false' do
+        expect(ncourse.sign(non_signer_id)).to eq false
+      end
+
+      it 'does not sign the negotiation by the given user' do
+        ncourse.sign(non_signer_id)
+        expect(negotiation.signer).to eq nil
       end
     end
   end

@@ -26,10 +26,18 @@ class Negotiation
     @policy.negotiable?
   end
 
+  def can_sign?(user_id)
+    can_sign_policy.can_sign?(user_id)
+  end
+
   
   private
 
   def ncourse
     @ncourse ||= NegotiationCourse.new(self)
+  end
+
+  def can_sign_policy
+    @can_sign_policy ||= CanSignNegotiationPolicy.new(self)
   end
 end

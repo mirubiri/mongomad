@@ -6,7 +6,8 @@ describe Negotiation do
   let(:receiver_id) { negotiation.receiver.id }
   let!(:ncourse) { NegotiationCourse.new(negotiation) }
   let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
-
+  let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
+  
   it { is_expected.to include_module Proposable }
   it { is_expected.to include_module Conversation }
 
@@ -20,12 +21,20 @@ describe Negotiation do
   before(:example) do 
     allow(NegotiationCourse).to receive(:new) { ncourse }
     allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
+    allow(CanSignNegotiationPolicy).to receive(:new) { sign_policy }
   end
 
   describe '#negotiable?' do
     it 'calls NegotiationCourse#negotiable?' do
       expect(negotiable_policy).to receive(:negotiable?)
       negotiation.negotiable?
+    end
+  end
+
+  describe '#can_sign?(user_id)' do
+    it 'calls CanSignNegotiationPolicy#can_sign?' do
+      expect(sign_policy).to receive(:can_sign?).with(composer_id)
+      negotiation.can_sign?(composer_id)
     end
   end
 
