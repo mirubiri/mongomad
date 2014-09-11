@@ -59,15 +59,16 @@
   float: left;
   height: 0;
   width: 100%;
-  .image {
-    @include box-sizing(border-box);
-    @include border-radius($offer-avatar-image-size/2, $offer-avatar-image-size/2);
+}
 
-    position: relative;
-    top: -($offer-avatar-image-size)*0.55;
-    height: $offer-avatar-image-size;
-    width: $offer-avatar-image-size;
-    margin: $margin-auto;
-    background-color: $white-bgcolor;
-  }
+.offer-avatar-image-wrapper {
+  @include box-sizing(border-box);
+  @include border-radius($offer-avatar-image-size/2, $offer-avatar-image-size/2);
+
+  position: relative;
+  top: -($offer-avatar-image-size)*0.55;
+  height: $offer-avatar-image-size;
+  width: $offer-avatar-image-size;
+  margin: $margin-auto;
+  background-color: $white-bgcolor;
 }
