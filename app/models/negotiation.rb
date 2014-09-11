@@ -21,9 +21,8 @@ class Negotiation
     goods.type(Cash).first.try(:user_id)
   end
 
-  def negotiable?
-    @policy ||=NegotiableNegotiationPolicy.new(self)
-    @policy.negotiable?
+  def negotiable? 
+    negotiable_policy.negotiable?
   end
 
   def can_sign?(user_id)
@@ -32,6 +31,10 @@ class Negotiation
 
   
   private
+
+  def negotiable_policy
+    @negotiable_policy ||=NegotiableNegotiationPolicy.new(self)
+  end
 
   def ncourse
     @ncourse ||= NegotiationCourse.new(self)
