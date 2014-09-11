@@ -13,12 +13,14 @@ class NegotiationLifeCycleManager
   end
 
   def sign(user_id)
-    return false unless negotiation.negotiable?
-    return false unless negotiation.user_ids.include? user_id
-    return false if negotiation.signer?
-    return false if negotiation.cash_owner == user_id
+    return false unless negotiation.can_sign?(user_id)
     negotiation.signer=user_id
     true
+  end
+
+  def confirm(user_id)
+    return false unless negotiation.can_confirm? user_id
+    deal_maker.make_deal
   end
 
   private
@@ -29,5 +31,9 @@ class NegotiationLifeCycleManager
 
   def one_user?
     not negotiation.user_ids.empty?
+  end
+
+  def deal_maker
+    @deal_maker ||= DealMaker.new(negotiation)
   end
 end
