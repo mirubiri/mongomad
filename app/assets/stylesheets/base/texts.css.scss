@@ -114,3 +114,14 @@
   font-weight: $good-name-font-weight;
   color: $good-name-color;
 }
+
+
+.welcome-info {
+  @include box-sizing(border-box);
+  text-align: center;
+
+  width: 100%;
+  font-size: $welcome-info-font-size;
+  font-weight: $welcome-info-font-weight;
+  color: $welcome-info-color;
+}
