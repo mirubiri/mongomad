@@ -17,6 +17,10 @@ class Negotiation
     ncourse.sign(user_id)
   end
 
+  def confirm(user_id)
+    ncourse.confirm(user_id)
+  end
+
   def cash_owner
     goods.type(Cash).first.try(:user_id)
   end

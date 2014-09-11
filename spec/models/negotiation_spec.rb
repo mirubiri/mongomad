@@ -60,6 +60,13 @@ describe Negotiation do
     end
   end
 
+  describe '#confirm' do
+    it 'calls NegotiationCourse#confirm' do
+      expect(ncourse).to receive(:confirm).with(receiver_id)
+      negotiation.confirm(receiver_id)
+    end
+  end
+
   describe '#cash_owner' do
     it 'returns nil if no cash in goods' do
       expect(negotiation.cash_owner).to eq nil

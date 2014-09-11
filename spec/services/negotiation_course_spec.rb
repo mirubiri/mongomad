@@ -32,6 +32,21 @@ describe NegotiationCourse do
     end
   end
 
+  describe '#confirm' do
+    context 'given user can confirm' do
+      it 'calls DealMaker with negotiation' do
+      end
+    end
+
+    context 'given user cannot confirm' do
+      it 'returns false' do
+      end
+
+      it 'doesnt call DealMaker with negotiation' do
+      end
+    end
+  end
+
   describe '#leave' do
     context 'both users in' do
       it 'removes the given user from the negotiation' do
