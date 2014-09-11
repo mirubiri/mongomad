@@ -93,24 +93,4 @@ describe NegotiationLifeCycleManager do
       end
     end
   end
-
-  describe '#confirm' do
-    xit 'returns false if not signed' do
-    end
-
-    xit 'returns false if signed and given user_id signed' do
-    end
-
-    xit 'returns false if given user_id is not a participant' do
-    end
-
-    context 'signed and given user_id not signed' do
-      xit 'creates a new deal' do
-      end
-
-      xit 'destroys the negotiation' do
-      end
-    end
-
-  end
 end
