@@ -29,6 +29,10 @@ class Negotiation
     can_sign_policy.can_sign?(user_id)
   end
 
+  def can_confirm?(user_id)
+    can_confirm_policy.can_confirm?(user_id)
+  end
+
   
   private
 
@@ -42,5 +46,9 @@ class Negotiation
 
   def can_sign_policy
     @can_sign_policy ||= CanSignNegotiationPolicy.new(self)
+  end
+
+  def can_confirm_policy
+    @can_confirm_policy ||= CanConfirmNegotiationPolicy.new(self)
   end
 end
