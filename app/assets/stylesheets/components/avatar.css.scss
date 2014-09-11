@@ -42,16 +42,6 @@
   overflow: visible;
   height: $request-avatar-size;
   width: $request-avatar-size;
-  .image {
-    @include box-sizing(border-box);
-
-    float: left;
-    overflow: auto;
-    img {
-      height: $request-avatar-size;
-      width: $request-avatar-size;
-    }
-  }
 }
 
 
