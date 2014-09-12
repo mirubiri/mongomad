@@ -62,6 +62,11 @@ textarea {
   height: auto;
   width: 100%;
   resize: none;
+  font-family: $body-font-family;
+}
+
+input{
+  font-family: $body-font-family;
 }
 
 textarea:focus {

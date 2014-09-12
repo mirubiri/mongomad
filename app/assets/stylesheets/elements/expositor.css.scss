@@ -7,28 +7,30 @@
   overflow: visible;
   width: $expositor-width;
   background-color: $container-bgcolor;
-  nav.navigation {
-    float: left;
-    overflow: auto;
-    height: $top-container-bezel-height;
-    width: 100%;
-    background-color: $white-bgcolor;
-    li {
-      @include box-sizing(border-box);
+}
 
-      float: left;
-      height: 100%;
-      padding-top: $expositor-navigation-lib-padding-top;
-      font-size: $medium-font-size;
-      font-weight: regular;
-      color: $grey-font-color;
+.element-list {
+  float: left;
+  overflow: auto;
+  padding: $element-padding - $expositor-element-margin;
+}
 
-      border-right: $expositor-navigation-lib-border-right;
-    }
-  }
-  .element-list {
+nav.navigation {
+  float: left;
+  overflow: auto;
+  height: $top-container-bezel-height;
+  width: 100%;
+  background-color: $white-bgcolor;
+  li {
+    @include box-sizing(border-box);
+
     float: left;
-    overflow: auto;
-    padding: $element-padding - $expositor-element-margin;
+    height: 100%;
+    padding-top: $expositor-navigation-lib-padding-top;
+    font-size: $medium-font-size;
+    font-weight: regular;
+    color: $grey-font-color;
+
+    border-right: $expositor-navigation-lib-border-right;
   }
 }
