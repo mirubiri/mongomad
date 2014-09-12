@@ -9,13 +9,7 @@
   background-color: $container-bgcolor;
 }
 
-.element-list {
-  float: left;
-  overflow: auto;
-  padding: $element-padding - $expositor-element-margin;
-}
-
-nav.navigation {
+.expositor-navigation {
   float: left;
   overflow: auto;
   height: $top-container-bezel-height;
@@ -34,3 +28,11 @@ nav.navigation {
     border-right: $expositor-navigation-lib-border-right;
   }
 }
+
+.element-list {
+  float: left;
+  overflow: auto;
+  padding: $element-padding - $expositor-element-margin;
+}
+
+

@@ -22,20 +22,22 @@ body {
   padding: $main-padding;
 }
 
-a {
-  @include unstyled-link;
-}
 
 nav {
   height: auto;
-  li {
-    display: inline-block;
-    a {
-      height: 100%;
-      padding: $nav-link-padding;
-    }
-  }
 }
+
+li {
+  display: inline-block;
+}
+
+a {
+  @include unstyled-link;
+
+  height: 100%;
+  padding: $nav-link-padding;
+}
+
 
 .active_nav {
   background-color: $active_nav-background-color;
