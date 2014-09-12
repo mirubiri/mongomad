@@ -13,11 +13,7 @@ class NegotiableNegotiationPolicy
 
 
   private
-
-  def one_user?
-    @negotiation.user_ids.count == 1
-  end
-
+  
   def proposal_negotiable?
     @negotiation.proposal.negotiable?
   end
