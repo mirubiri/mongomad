@@ -14,12 +14,13 @@
   width: $item-image-width;
   margin: $item-margin;
   padding: $item-padding;
-  .image {
-    @include box-sizing(border-box);
+}
 
-    float: left;
-    overflow: auto;
-  }
+.good-image {
+  @include box-sizing(border-box);
+
+  float: left;
+  overflow: auto;
 }
 
 @mixin product($width) {
