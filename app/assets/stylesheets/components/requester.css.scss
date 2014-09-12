@@ -26,13 +26,14 @@
     font-weight: regular;
     color: $black-font-color;
   }
-  .countdown {
-    @include box-sizing(border-box);
+}
 
-    float: left;
-    overflow: visible;
-    width: auto;
-    margin: $requester-countdown-margin;
-    color: $grey-font-color;
-  }
+.countdown {
+  @include box-sizing(border-box);
+
+  float: left;
+  overflow: visible;
+  width: auto;
+  margin: $requester-countdown-margin;
+  color: $grey-font-color;
 }

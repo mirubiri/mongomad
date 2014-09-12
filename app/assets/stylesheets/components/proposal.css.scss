@@ -7,24 +7,26 @@
   background-color: $white-bgcolor;
 
   border-bottom: $proposal-border-bottom;
-  .composer-goods {
-    @include product($proposal-composer-good-size);
+}
 
+.composer-goods {
+  @include product($proposal-composer-good-size);
+
+  float: left;
+  overflow: auto;
+  width: $proposal-composer-goods-side-size;
+  .product {
     float: left;
-    overflow: auto;
-    width: $proposal-composer-goods-side-size;
-    .product {
-      float: left;
-    }
   }
-  .receiver-goods {
-    @include product($proposal-receiver-good-size);
+}
 
+.receiver-goods {
+  @include product($proposal-receiver-good-size);
+
+  float: right;
+  overflow: auto;
+  width: $proposal-receiver-goods-side-size;
+  .product {
     float: right;
-    overflow: auto;
-    width: $proposal-receiver-goods-side-size;
-    .product {
-      float: right;
-    }
   }
 }
