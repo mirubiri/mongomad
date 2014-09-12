@@ -13,8 +13,8 @@ class NegotiableNegotiationPolicy
 
 
   private
-  
+
   def proposal_negotiable?
-    @negotiation.proposal.negotiable?
+    @proposal_negotiable ||= negotiation.proposal.negotiable?
   end
 end
