@@ -1,10 +1,10 @@
 - content_for :navigation
   li id='offers-tab' class=active_tab?('offers','users')
-    = link_to 'OFFERS', user_offers_path(data.visited_user)
+    = link_to 'Offers', user_offers_path(data.visited_user)
   - if my_page?
     li id='negotiations-tab' class=active_tab?('negotiations')
-      = link_to 'NEGOTIATIONS', user_negotiations_path(data.visited_user)
+      = link_to 'Negotiations', user_negotiations_path(data.visited_user)
     li id='deals-tab' class=active_tab?('deals')
-      = link_to 'DEALS', user_deals_path(data.visited_user)
+      = link_to 'Deals', user_deals_path(data.visited_user)
   li id='items-tab' class=active_tab?('items')
-    = link_to 'ITEMS', user_items_path(data.visited_user)
+    = link_to 'Items', user_items_path(data.visited_user)
