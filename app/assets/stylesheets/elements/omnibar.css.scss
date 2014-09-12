@@ -6,9 +6,10 @@
   width: 100%;
   padding: $container-padding;
   background-color: $omnibar-bgcolor;
-  .navigation-controls {
-    float: left;
-    width: $omnibar-navigation-width;
-    text-align: $omnibar-navigation-alignment;
-  }
+}
+
+.navigation-controls {
+  float: left;
+  width: $omnibar-navigation-width;
+  text-align: $omnibar-navigation-alignment;
 }
