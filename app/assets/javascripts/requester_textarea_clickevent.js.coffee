@@ -7,6 +7,6 @@ $ ->
     return
 
   $(".requester").focusout ->
-    $(this).find("textarea").animate({height: "20px"}, 0)
+    $(this).find("textarea").animate({height: "50px"}, 0)
     $(this).find("textarea").siblings().hide()
     return
