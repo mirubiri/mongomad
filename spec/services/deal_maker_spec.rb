@@ -3,7 +3,7 @@ require 'rails_helper'
 describe DealMaker do
   let(:negotiation) { Fabricate.build(:negotiation) }
   
-  describe '#make_deal(negotiation)' do
+  xdescribe '#make_deal(negotiation)' do
     context 'Negotiation is confirmed' do
     end
 
