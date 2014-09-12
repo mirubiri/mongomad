@@ -14,16 +14,4 @@
   float: left;
   overflow: auto;
   width: 100%;
-  .text {
-    @include box-sizing(border-box);
-
-    float: left;
-    padding: $centered-text-padding;
-    font-size: $medium-font-size;
-    font-weight: regular;
-    color: $grey-font-color;
-    text-align: left;
-
-    flex: auto;
-  }
 }

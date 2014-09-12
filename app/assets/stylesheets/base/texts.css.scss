@@ -34,6 +34,7 @@
 
 .message-text {
   @include box-sizing(border-box);
+  float: left;
 
   width: 100%;
   padding: $message-text-padding;
@@ -62,7 +63,7 @@
 .controls {
   @include box-sizing(border-box);
 
-  float: right;
+  float: left;
   width: 100%;
   padding: $controls-padding;
   font-size: $controls-font-size;
