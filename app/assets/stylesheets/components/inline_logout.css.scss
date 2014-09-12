@@ -3,12 +3,13 @@
 
   float: right;
   width: $inline-logout-width;
-  .icon {
-    float: right;
-    img {
-      display: block;
-      height: $inline-logout-icon-size;
-      width: $inline-logout-icon-size;
-    }
+}
+
+.inline-logout-icon {
+  float: right;
+  img {
+    display: block;
+    height: $inline-logout-icon-size;
+    width: $inline-logout-icon-size;
   }
 }
