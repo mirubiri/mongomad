@@ -6,14 +6,7 @@
   float: left;
   width: $dashboard-width;
   background-color: $dashboard-bgcolor;
-  .bezel {
-    @include border-radius(5px 5px 0px 0px);
 
-    float: left;
-    height: $top-container-bezel-height;
-    width: 100%;
-    background-color: $white-bgcolor;
-  }
   .container {
     @include box-sizing(border-box);
 
@@ -21,4 +14,14 @@
     width: 100%;
     padding: $element-padding;
   }
+}
+
+
+.bezel {
+  @include border-radius(5px 5px 0px 0px);
+
+  float: left;
+  width: 100%;
+  height: $top-container-bezel-height;
+  background-color: $white-bgcolor;
 }
