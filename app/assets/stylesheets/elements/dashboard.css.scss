@@ -6,14 +6,14 @@
   float: left;
   width: $dashboard-width;
   background-color: $dashboard-bgcolor;
+}
 
-  .container {
-    @include box-sizing(border-box);
+.dashboard-sections {
+  @include box-sizing(border-box);
 
-    float: left;
-    width: 100%;
-    padding: $element-padding;
-  }
+  float: left;
+  width: 100%;
+  padding: $element-padding;
 }
 
 
