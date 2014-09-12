@@ -8,21 +8,22 @@
   padding: $request-padding;
 
   border-bottom: $request-border-bottom;
-  .request-message {
+}
+
+.request-message {
+  float: left;
+  overflow: auto;
+  width: 100%;
+  .text {
+    @include box-sizing(border-box);
+
     float: left;
-    overflow: auto;
-    width: 100%;
-    .text {
-      @include box-sizing(border-box);
+    padding: $centered-text-padding;
+    font-size: $medium-font-size;
+    font-weight: regular;
+    color: $grey-font-color;
+    text-align: left;
 
-      float: left;
-      padding: $centered-text-padding;
-      font-size: $medium-font-size;
-      font-weight: regular;
-      color: $grey-font-color;
-      text-align: left;
-
-      flex: auto;
-    }
+    flex: auto;
   }
 }
