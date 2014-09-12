@@ -35,13 +35,14 @@ nav {
 }
 
 .active_nav {
-  background-color: $nav-selected;
+  background-color: $active_nav-background-color;
   a {
-    font-size: $medium-font-size;
-    font-weight: bold;
-    color: $white-font-color;
+    font-size: $active_nav-font-size;
+    font-weight: $active_nav-font-weight;
+    color: $active_nav-color;
   }
 }
+
 
 a {
   @include unstyled-link;
