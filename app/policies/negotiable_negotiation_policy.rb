@@ -1,16 +1,17 @@
 class NegotiableNegotiationPolicy
+  attr_accessor :negotiation
+
   def initialize(negotiation)
-    @negotiation=negotiation
-    @proposal_negotiable=negotiation.proposal.negotiable?
+    self.negotiation=negotiation
   end
   
   def negotiable?
-    return false if one_user?
+    return false if negotiation.abandoned?
     return false unless proposal_negotiable?
     true
   end
 
-  
+
   private
 
   def one_user?

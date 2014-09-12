@@ -9,8 +9,7 @@ class Offer
   field :message
 
   def negotiable?
-    @policy ||= NegotiableOfferPolicy.new(self)
-    @policy.negotiable?
+    negotiable_policy.negotiable?
   end
 
   def negotiate
@@ -19,6 +18,12 @@ class Offer
   end
 
   def negotiating?
-    not negotiable?
+    negotiation_id?
+  end
+
+  private
+
+  def negotiable_policy
+    @negotiable_policy ||= NegotiableOfferPolicy.new(self)
   end
 end

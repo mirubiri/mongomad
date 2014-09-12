@@ -6,12 +6,15 @@ describe NegotiableNegotiationPolicy do
   let(:policy) { NegotiableNegotiationPolicy.new(negotiation) }
 
   describe '#negotiable?' do
-    it 'is false when a user has left the negotiation' do
-      negotiation.user_ids.pop
+    it 'is false when negotiation is abandoned' do
+      allow(negotiation).to receive(:abandoned?) { true }
       expect(policy.negotiable?).to eq false
     end
 
-    context 'both users are in the negotiation' do
+    context 'negotiation is not abandoned' do
+      before(:example) do
+        allow(negotiation).to receive(:abandoned?) { false }
+      end
       it 'is false when proposal is not negotiable' do
         allow(negotiation.proposal).to receive(:negotiable?) { false }
         expect(policy.negotiable?).to eq false

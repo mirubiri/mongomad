@@ -11,12 +11,13 @@ describe NegotiableOfferPolicy do
 
     it 'is true when offer is saved and is not being negotiated' do
       allow(offer).to receive(:persisted?) { true }
+      allow(offer).to receive(:negotiating?) { false }
       expect(policy.negotiable?).to eq true
     end
 
     it 'is false when offer is saved and is being negotiated' do
       allow(offer).to receive(:persisted?) { true }
-      offer.negotiation_id=1
+      allow(offer).to receive(:negotiating?) { true }
       expect(policy.negotiable?).to eq false
     end
   end

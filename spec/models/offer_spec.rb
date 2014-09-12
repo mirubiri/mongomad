@@ -25,11 +25,15 @@ describe Offer do
   end
 
   describe '#negotiating?' do
-
-    it 'negates offer#negotiable? returned value' do
-      expect(offer.negotiating?).to eq !offer.negotiable?
+    it 'returns true if is beign negotiated' do
+      offer.negotiation_id='some'
+      expect(offer.negotiating?).to eq true
     end
 
+    it 'returns false if is not beign negotiated' do
+      offer.negotiation_id=nil
+      expect(offer.negotiating?).to eq false
+    end
   end
 
   describe '#negotiate' do
