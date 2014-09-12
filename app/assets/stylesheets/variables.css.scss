@@ -136,6 +136,7 @@ $omnibar-avatar-image-size: 40px;
 
 $profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0px 0px;
 $item-image-size: 155px;
+$receiver-good-image-size: 60px;
 
 
 
@@ -345,19 +346,33 @@ $welcome-info-font-weight: regular;
 $welcome-info-color: $white-font-color;
 
 
+<<<<<<< HEAD
 
-//Images
 //logo-image
+$logo-image-height: 40px;
+$logo-image-width: 150px;
 
-//omnibar-user-imag
+//omnibar-user-image
+$omnibar-user-image-height: $omnibar-avatar-image-size;
+$omnibar-user-image-width: $omnibar-avatar-image-size;
 
 //request-user-image
+$request-user-image-height: $request-avatar-size;
+$request-user-image-width: $request-avatar-size;
 
 //icon-image
+$icon-image-height: 40px;
+$icon-image-width: 150px;
 
 //composer-good-image
+$composer-good-image-height: $item-image-size;
+$composer-good-image-width: $item-image-size;
+$composer-good-image-border: $product-image-border;
 
 //receiver-good-image
+$receiver-good-image-height: $receiver-good-image-size;
+$receiver-good-image-width: $receiver-good-image-size;
+$receiver-good-image-border: $product-image-border;
 
 //profile-card-composition-image
 

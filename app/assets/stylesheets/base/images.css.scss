@@ -1,7 +1,7 @@
 .logo-image {
   float: left;
-  height: 40px;
-  width: 150px;
+  height: $logo-image-height;
+  width: $logo-image-width;
 }
 
 .omnibar-user-image {
@@ -9,8 +9,8 @@
 
   float: left;
   overflow: auto;
-  height: $omnibar-avatar-image-size;
-  width: $omnibar-avatar-image-size;
+  height: $omnibar-user-image-height;
+  width: $omnibar-user-image-width;
 }
 
 .request-user-image {
@@ -18,13 +18,13 @@
 
   float: left;
   overflow: auto;
-  height: $request-avatar-size;
-  width: $request-avatar-size;
+  height: $request-user-image-height;
+  width: $request-user-image-height;
 }
 
 .icon-image {
-  height: 35px;
-  width: 35px;
+  height: $icon-image-height;
+  width: $icon-image-width;
 }
 
 .composer-good-image {
@@ -33,9 +33,9 @@
 
   float: left;
   overflow: auto;
-  height: 155px;
-  width: 155px;
-  border: $product-image-border;
+  height: $composer-good-image-height;
+  width: $composer-good-image-width;
+  border: $composer-good-image-border;
 }
 
 .receiver-good-image {
@@ -44,9 +44,9 @@
 
   float: left;
   overflow: auto;
-  height: 60px;
-  width: 60px;
-  border: $product-image-border;
+  height: $receiver-good-image-height;
+  width: $receiver-good-image-width;
+  border: $receiver-good-image-border;
 }
 
 .profile-card-composition-image {
