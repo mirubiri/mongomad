@@ -13,19 +13,20 @@
     overflow: auto;
     width: 100%;
   }
-  textarea {
-    @include box-sizing(border-box);
-    @include border-radius(5px, 5px);
+}
 
-    float: left;
-    overflow: auto;
-    width: 100%;
-    min-height: $requester-textarea-min-height;
-    border: $requester-textarea-border;
-    font-size: $big-font-size;
-    font-weight: regular;
-    color: $black-font-color;
-  }
+.requester-textarea {
+  @include box-sizing(border-box);
+  @include border-radius(5px, 5px);
+
+  float: left;
+  overflow: auto;
+  width: 100%;
+  min-height: $requester-textarea-min-height;
+  border: $requester-textarea-border;
+  font-size: $big-font-size;
+  font-weight: regular;
+  color: $black-font-color;
 }
 
 .countdown {
