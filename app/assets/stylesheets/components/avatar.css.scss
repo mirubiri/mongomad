@@ -5,11 +5,11 @@
   overflow: visible;
   width: $avatar-omnibar-width;
   //>.omnibar-user-image
-  .data-side {
-    float: left;
-  }
 }
 
+  .avatar-omnibar-data-side {
+    float: left;
+  }
 .avatar-profile-card {
   height: $avatar-profile-card-height;
 }
