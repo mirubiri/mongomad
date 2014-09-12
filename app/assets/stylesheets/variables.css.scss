@@ -363,21 +363,42 @@ $welcome-info-color: $white-font-color;
 //profile-card-composition-image
 
 //profile-card-user-image
+$profile-card-user-image-border: 1px solid $grey-border-color;
+
 
 //negotiation-user-image
+$negotiation-user-image-height: 64px;
+$negotiation-user-image-width: 64px;
 
 //deal-user-image
+$deal-user-image-height: 64px;
+$deal-user-image-width: 64px;
 
 //message-user-image
+$message-user-image-height: 40px;
+$message-user-image-width: 40px;
 
 //offer-user-image
+$offer-user-image-border: 1px solid $grey-border-color;
 
 //good-image
+$good-image-height: $item-image-size;
+$good-image-width: $item-image-size;
+$good-image-border: $item-image-border;
+$good-image-radius: 5px 5px 0px 0px;
 
 //factory-model-image
+$factory-model-image-height: 300px;
+$factory-model-image-width: 300px;
 
 //factory-snapshot-image
+$factory-snapshot-image-height: 80px;
+$factory-snapshot-image-width: 80px;
 
 //showcase-choice-image
+$showcase-choice-image-height: 120px;
+$showcase-choice-image-width: 120px;
 
 //showcase-display-image
+$showcase-display-image-height: 500px;
+$showcase-display-image-width: 500px;
