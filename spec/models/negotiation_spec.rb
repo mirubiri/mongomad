@@ -1,13 +1,18 @@
 require 'rails_helper'
 
 describe Negotiation do
-  let(:negotiation) { Fabricate(:offer).negotiate }
+  let(:negotiation) { Fabricate(:negotiation) }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
-  let!(:nlcmanager) { NegotiationLifeCycleManager.new(negotiation) }
+
+  let!(:negotiation_signer) { NegotiationSigner.new(negotiation) }
+  let!(:negotiation_confirmer) { NegotiationConfirmer.new(negotiation) }
+  let!(:negotiation_user_abandoner) { NegotiationUserAbandoner.new(negotiation) }
   let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
   let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
   let!(:confirm_policy) { CanConfirmNegotiationPolicy.new(negotiation)}
+  
+
   it { is_expected.to include_module Proposable }
   it { is_expected.to include_module Conversation }
 
@@ -15,14 +20,29 @@ describe Negotiation do
   it { is_expected.to be_timestamped_document }
   it { is_expected.to have_field :offer_id}
   it { is_expected.to have_field :signer }
+  it { is_expected.to have_field :confirmer }
 
   #methods
   
   before(:example) do 
-    allow(NegotiationLifeCycleManager).to receive(:new) { nlcmanager }
     allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
     allow(CanSignNegotiationPolicy).to receive(:new) { sign_policy }
     allow(CanConfirmNegotiationPolicy).to receive(:new) { confirm_policy}
+
+    allow(NegotiationSigner).to receive(:new) { negotiation_signer }
+    allow(NegotiationConfirmer).to receive(:new) { negotiation_confirmer }
+    allow(NegotiationUserAbandoner).to receive(:new) { negotiation_user_abandoner }
+  end
+
+  describe '#abandoned?' do
+    it 'returns true if a user abandoned the negotiation' do
+      negotiation.abandon(composer_id)
+      expect(negotiation.reload.abandoned?).to eq true
+    end
+
+    it 'returns false if no user abandoned the negotiation' do
+      expect(negotiation.abandoned?).to eq false
+    end
   end
 
   describe '#negotiable?' do
@@ -46,24 +66,24 @@ describe Negotiation do
     end
   end
 
-  describe '#leave' do
-    it 'calls NegotiationLifeCycleManager#leave' do
-      expect(nlcmanager).to receive(:leave).with(composer_id)
-      negotiation.leave(composer_id)
+  describe '#abandon(user_id)' do
+    it 'calls NegotiationUserAbandoner#abandon' do
+      expect(negotiation_user_abandoner).to receive(:abandon).with(composer_id)
+      negotiation.abandon(composer_id)
     end
   end
 
-  describe '#sign' do
-    it 'calls NegotiationLifeCycleManager#sign' do
-      expect(nlcmanager).to receive(:sign).with(composer_id)
+  describe '#sign(user_id)' do
+    it 'calls NegotiationSigner#sign' do
+      expect(negotiation_signer).to receive(:sign).with(composer_id)
       negotiation.sign(composer_id)
     end
   end
 
-  describe '#confirm' do
-    it 'calls NegotiationLifeCycleManager#confirm' do
-      expect(nlcmanager).to receive(:confirm).with(receiver_id)
-      negotiation.confirm(receiver_id)
+  describe '#confirm(user_id)' do
+    it 'calls NegotiationConfirmer#confirm' do
+      expect(negotiation_confirmer).to receive(:confirm).with(composer_id)
+      negotiation.confirm(composer_id)
     end
   end
 

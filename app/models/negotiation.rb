@@ -8,17 +8,18 @@ class Negotiation
 
   field :offer_id
   field :signer
+  field :confirmer
 
-  def leave(user_id)
-    nlcmanager.leave(user_id)
+  def abandon(user_id)
+    negotiation_user_abandoner.abandon(user_id)
   end
 
   def sign(user_id)
-    nlcmanager.sign(user_id)
+    negotiation_signer.sign(user_id)
   end
 
   def confirm(user_id)
-    nlcmanager.confirm(user_id)
+    negotiation_confirmer.confirm(user_id)
   end
 
   def cash_owner
@@ -27,6 +28,10 @@ class Negotiation
 
   def negotiable? 
     negotiable_policy.negotiable?
+  end
+
+  def abandoned?
+    user_ids.count < 2
   end
 
   def can_sign?(user_id)
@@ -44,8 +49,16 @@ class Negotiation
     @negotiable_policy ||=NegotiableNegotiationPolicy.new(self)
   end
 
-  def nlcmanager
-    @nlcmanager ||= NegotiationLifeCycleManager.new(self)
+  def negotiation_signer
+    @nlcmanager ||= NegotiationSigner.new(self)
+  end
+
+  def negotiation_confirmer
+    @nlcmanager ||= NegotiationConfirmer.new(self)
+  end
+
+  def negotiation_user_abandoner
+    @nlcmanager ||= NegotiationUserAbandoner.new(self)
   end
 
   def can_sign_policy
