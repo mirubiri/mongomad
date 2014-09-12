@@ -50,6 +50,11 @@ $general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px
 
 
 
+//active_nav{
+$active_nav-background-color: $nav-selected;
+$active_nav-font-weight: bold;
+$active_nav-font-size: $medium-font-size;
+$active_nav-color: $white-font-color;
 
 
 //REQUEST-LIST
@@ -307,11 +312,6 @@ $controls-font-size: $small-font-size;
 $controls-color: $blue-font-color;
 $controls-text-align: $request-controls-alignment;
 
-//active_nav{
-$active_nav-background-color: $nav-selected;
-$active_nav-font-weight: bold;
-$active_nav-font-size: $medium-font-size;
-$active_nav-color: $white-font-color;
 
 
 //timestamp{

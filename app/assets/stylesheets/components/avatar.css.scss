@@ -12,26 +12,28 @@
 
 .avatar-profile-card {
   height: $avatar-profile-card-height;
-  .image {
-    @include box-sizing(border-box);
-    @include border-radius($profile-card-image-size/2, $profile-card-image-size/2);
+}
 
-    position: relative;
-    top: -($profile-card-image-size)*0.75;
-    height: $profile-card-image-size;
-    width: $profile-card-image-size;
-    margin: $margin-auto;
-    padding: $avatar-profile-card-image-padding;
-    background-color: $white-bgcolor;
-  }
-  .data-side {
-    @include box-sizing(border-box);
+.avatar-profile-data-side {
+  @include box-sizing(border-box);
 
-    position: relative;
-    top: -($avatar-profile-card-height);
-    overflow: auto;
-    margin: $margin-auto;
-  }
+  position: relative;
+  top: -($avatar-profile-card-height);
+  overflow: auto;
+  margin: $margin-auto;
+}
+
+.offer-avatar-image-wrapper {
+  @include box-sizing(border-box);
+  @include border-radius($profile-card-image-size/2, $profile-card-image-size/2);
+
+  position: relative;
+  top: -($profile-card-image-size)*0.75;
+  height: $profile-card-image-size;
+  width: $profile-card-image-size;
+  margin: $margin-auto;
+  padding: $avatar-profile-card-image-padding;
+  background-color: $white-bgcolor;
 }
 
 

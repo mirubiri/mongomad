@@ -22,6 +22,9 @@ body {
   padding: $main-padding;
 }
 
+a {
+  @include unstyled-link;
+}
 
 nav {
   height: auto;
@@ -41,11 +44,6 @@ nav {
     font-weight: $active_nav-font-weight;
     color: $active_nav-color;
   }
-}
-
-
-a {
-  @include unstyled-link;
 }
 
 // input {
