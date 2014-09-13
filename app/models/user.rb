@@ -1,10 +1,13 @@
 class User
   include Mongoid::Document
   include Archivable
+  
+  # Hack para que funcione Devise con Mongoid 4
 
   def self.serialize_into_session(record)
     [record.id.to_s, record.authenticatable_salt]
   end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
