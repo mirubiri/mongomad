@@ -46,7 +46,7 @@ describe Negotiation do
   end
 
   describe '#negotiable?' do
-    it 'calls NegotiationLifeCycleManager#negotiable?' do
+    it 'calls NegotiableNegotiation#negotiable?' do
       expect(negotiable_policy).to receive(:negotiable?)
       negotiation.negotiable?
     end
@@ -93,12 +93,12 @@ describe Negotiation do
     end
 
     it 'returns composer_id if composer owns cash' do
-      negotiation=Fabricate(:offer,cash: :composer).negotiate
+      negotiation=Fabricate(:negotiation,cash: :composer)
       expect(negotiation.cash_owner).to eq negotiation.composer.id
     end
 
     it 'returns receiver_id if receiver owns cash' do
-      negotiation=Fabricate(:offer,cash: :receiver).negotiate
+      negotiation=Fabricate(:negotiation,cash: :receiver)
       expect(negotiation.cash_owner).to eq negotiation.receiver.id
     end
   end

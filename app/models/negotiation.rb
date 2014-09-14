@@ -50,15 +50,15 @@ class Negotiation
   end
 
   def negotiation_signer
-    @nlcmanager ||= NegotiationSigner.new(self)
+    @negotiation_signer ||= NegotiationSigner.new(self)
   end
 
   def negotiation_confirmer
-    @nlcmanager ||= NegotiationConfirmer.new(self)
+    @negotiation_confirmer ||= NegotiationConfirmer.new(self)
   end
 
   def negotiation_user_abandoner
-    @nlcmanager ||= NegotiationUserAbandoner.new(self)
+    @negotiation_abandoner ||= NegotiationUserAbandoner.new(self)
   end
 
   def can_sign_policy
