@@ -1,20 +1,20 @@
 .requester {
   @include box-sizing(border-box);
+  overflow: auto;
   position: relative;
   top: 0;
-  margin: $ppal-element-margin;
   width: 100%;
-  overflow: auto;
+  margin: $ppal-element-margin;
 }
 
 .requester-textarea {
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
+  overflow: auto;
   float: left;
-  border: $requester-textarea-border;
   width: 100%;
   min-height: $requester-textarea-min-height;
-  overflow: auto;
+  border: $requester-textarea-border;
   color: $black-font-color;
   font-size: $big-font-size;
   font-weight: regular;
@@ -22,9 +22,9 @@
 
 .countdown {
   @include box-sizing(border-box);
-  float: left;
-  margin: $requester-countdown-margin;
-  width: auto;
   overflow: visible;
+  float: left;
+  width: auto;
+  margin: $requester-countdown-margin;
   color: $grey-font-color;
 }

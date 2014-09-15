@@ -3,21 +3,21 @@
   @include border-radius($dashboard-radius, $dashboard-radius);
   @include box-sizing(border-box);
   float: left;
-  background-color: $dashboard-bgcolor;
   width: $dashboard-width;
+  background-color: $dashboard-bgcolor;
 }
 
 .dashboard-sections {
   @include box-sizing(border-box);
   float: left;
-  padding: $element-padding;
   width: 100%;
+  padding: $element-padding;
 }
 
 .bezel {
   @include border-radius(5px 5px 0 0);
   float: left;
-  background-color: $white-bgcolor;
   width: 100%;
   height: $top-container-bezel-height;
+  background-color: $white-bgcolor;
 }

@@ -2,25 +2,25 @@
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0 -1px 2px);
   @include border-radius(5px, 5px);
   float: left;
-  margin: $expositor-element-margin;
-  background-color: $white-bgcolor;
   width: $offer-width;
+  background-color: $white-bgcolor;
+  margin: $expositor-element-margin;
 }
 
 .message-zone {
-  float: left;
-  background-color: $grey-bgcolor;
-  width: 100%;
   overflow: auto;
+  float: left;
+  width: 100%;
+  background-color: $grey-bgcolor;
 }
 
 .message {
   @include box-sizing(border-box);
   float: left;
-  background: $offer-controls-background;
-  padding: $centered-text-padding;
   width: 100%;
   min-height: $offer-message-min-height;
+  background: $offer-controls-background;
+  padding: $centered-text-padding;
   text-align: $offer-message-text-align;
   color: $grey-font-color;
   font-size: $medium-font-size;

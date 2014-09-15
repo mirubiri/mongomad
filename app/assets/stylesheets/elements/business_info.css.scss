@@ -7,8 +7,8 @@
 
 .info {
   @include box-sizing(border-box);
-  padding: $bussines-info-padding;
   width: 100%;
+  padding: $bussines-info-padding;
   text-align: $bussines-info-text-align;
   color: $bussines-info-font-color;
   font-size: $bussines-info-font-size;

@@ -1,8 +1,8 @@
 .user-data {
   @include box-sizing(border-box);
   float: left;
-  padding: $user-data-padding;
   width: 100%;
+  padding: $user-data-padding;
   text-align: $user-data-text-align;
   color: $user-data-color;
   font-size: $user-data-font-size;
@@ -11,8 +11,8 @@
 
 .user-nick {
   @include box-sizing(border-box);
-  padding: $user-nick-padding;
   width: 100%;
+  padding: $user-nick-padding;
   text-align: $user-nick-text-align;
   color: $user-nick-color;
   font-size: $user-nick-font-size;
@@ -21,8 +21,8 @@
 
 .user-location {
   @include box-sizing(border-box);
-  padding: $user-location-padding;
   width: 100%;
+  padding: $user-location-padding;
   text-align: $user-location-text-align;
   color: $user-location-color;
   font-size: $user-location-font-size;
@@ -32,8 +32,8 @@
 .message-text {
   @include box-sizing(border-box);
   float: left;
-  padding: $message-text-padding;
   width: 100%;
+  padding: $message-text-padding;
   text-align: $message-text-text-align;
   color: $message-text-color;
   font-size: $message-text-font-size;
@@ -42,12 +42,12 @@
 
 .title {
   @include box-sizing(border-box);
+  overflow: none;
   float: left;
-  background-color: $title-background-color;
-  padding: $title-padding;
   width: 100%;
   height: $title-height;
-  overflow: none;
+  background-color: $title-background-color;
+  padding: $title-padding;
   text-align: $title-text-align;
   color: $title-color;
   font-size: $title-font-size;
@@ -58,8 +58,8 @@
 .controls {
   @include box-sizing(border-box);
   float: left;
-  padding: $controls-padding;
   width: 100%;
+  padding: $controls-padding;
   text-align: $controls-text-align;
   color: $controls-color;
   font-size: $controls-font-size;
@@ -69,8 +69,8 @@
 .timestamp {
   @include box-sizing(border-box);
   float: right;
-  padding: $timestamp-padding;
   width: 100%;
+  padding: $timestamp-padding;
   text-align: $timestamp-text-align;
   color: $timestamp-color;
   font-size: $timestamp-font-size;
@@ -79,8 +79,8 @@
 
 .description {
   @include box-sizing(border-box);
-  padding: $description-padding;
   width: 100%;
+  padding: $description-padding;
   text-align: $description-text-align;
   color: $description-color;
   font-size: $description-font-size;

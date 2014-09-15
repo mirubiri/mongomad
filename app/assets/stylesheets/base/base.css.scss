@@ -1,29 +1,28 @@
 body {
   @include box-sizing(border-box);
   display: $body-display;
-  float: $body-float;
-  margin: $body-margin;
-  background-color: $body-background-color;
-  padding: $body-padding;
-  width: $body-width;
   overflow: $body-overflow;
   overflow-y: $body-overflow-y;
+  float: $body-float;
+  width: $body-width;
+  background-color: $body-background-color;
+  margin: $body-margin;
+  padding: $body-padding;
   line-height: $body-line-height;
   font-family: $body-font-family;
 }
 
 .main {
   @include box-sizing(border-box);
-  float: $main-float;
-  padding: $main-padding;
-  width: $main-width;
   overflow: $main-overflow;
+  float: $main-float;
+  width: $main-width;
+  padding: $main-padding;
 }
 
 nav {
   height: auto;
 }
-
 
 li {
   @include inline-block;
@@ -32,8 +31,8 @@ li {
 
 a {
   @include unstyled-link;
-  padding: $nav-link-padding;
   height: 100%;
+  padding: $nav-link-padding;
 }
 
 .active-nav {
