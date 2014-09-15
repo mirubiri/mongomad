@@ -43,21 +43,21 @@
 .preview_box {
   float: left;
   margin: $preview-box-margin;
-  width: $item-snapshoot;
-  height: $item-snapshoot;
+  width: $preview-box-width;
+  height: $preview-box-height;
 }
 
 .add_image_container {
   float: left;
   margin: $add-image-container-margin;
-  width: $item-snapshoot;
-  height: $item-snapshoot;
+  width: $add-image-container-width;
+  height: $add-image-container-height;
   overflow: hidden;
   img {
     float: left;
     background-color: white;
-    width: $item-snapshoot;
-    height: $item-snapshoot;
+    width: 100%;
+    height: 100%;
   }
 }
 
