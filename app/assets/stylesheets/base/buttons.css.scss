@@ -1,8 +1,8 @@
 %button {
   @include border-radius(5px, 5px);
   float: left;
-  height: $button-height;
   width: 100%;
+  height: $button-height;
   border: none;
   font-family: $body-font-family;
   font-size: $big-font-size;
@@ -12,22 +12,19 @@
 
 .warning-button {
   @extend %button;
-
   background-color: $red-button-bgcolor;
 }
 
 .control-button {
   @extend %button;
-
   background-color: $grey-button-bgcolor;
 }
 
 .send-button {
   @extend %button;
-
   float: right;
-  height: $send-button-height;
   width: auto;
+  height: $send-button-height;
   margin-top: $send-button-margin-top;
   background-color: $blue-button-bgcolor;
 }

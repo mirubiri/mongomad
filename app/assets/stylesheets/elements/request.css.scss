@@ -1,17 +1,15 @@
 .request {
   @include box-sizing(border-box);
-
-  float: $request-flotation;
   display: flex;
+  float: $request-flotation;
   width: $request-width;
   margin-top: $request-margin;
   padding: $request-padding;
-
   border-bottom: $request-border-bottom;
 }
 
 .request-message {
-  float: left;
   overflow: auto;
+  float: left;
   width: 100%;
 }

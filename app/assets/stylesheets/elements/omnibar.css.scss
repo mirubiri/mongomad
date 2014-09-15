@@ -1,8 +1,7 @@
 .omnibar {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: auto;
+  float: left;
   width: 100%;
   padding: $container-padding;
   background-color: $omnibar-bgcolor;

@@ -1,19 +1,16 @@
 .proposal {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   padding: $proposal-padding;
-  background-color: $white-bgcolor;
-
   border-bottom: $proposal-border-bottom;
+  background-color: $white-bgcolor;
 }
 
 .composer-goods {
   @include product($proposal-composer-good-size);
-
-  float: left;
   overflow: auto;
+  float: left;
   width: $proposal-composer-goods-side-size;
   .product {
     float: left;
@@ -22,9 +19,8 @@
 
 .receiver-goods {
   @include product($proposal-receiver-good-size);
-
-  float: right;
   overflow: auto;
+  float: right;
   width: $proposal-receiver-goods-side-size;
   .product {
     float: right;

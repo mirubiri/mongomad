@@ -1,6 +1,5 @@
 .user-data {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   padding: $user-data-padding;
@@ -12,7 +11,6 @@
 
 .user-nick {
   @include box-sizing(border-box);
-
   width: 100%;
   padding: $user-nick-padding;
   font-size: $user-nick-font-size;
@@ -23,7 +21,6 @@
 
 .user-location {
   @include box-sizing(border-box);
-
   width: 100%;
   padding: $user-location-padding;
   font-size: $user-location-font-size;
@@ -35,7 +32,6 @@
 .message-text {
   @include box-sizing(border-box);
   float: left;
-
   width: 100%;
   padding: $message-text-padding;
   font-size: $message-text-font-size;
@@ -46,11 +42,10 @@
 
 .title {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: none;
-  height: $title-height;
+  float: left;
   width: 100%;
+  height: $title-height;
   padding: $title-padding;
   font-size: $title-font-size;
   font-weight: $title-font-weight;
@@ -62,7 +57,6 @@
 
 .controls {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   padding: $controls-padding;
@@ -74,7 +68,6 @@
 
 .timestamp {
   @include box-sizing(border-box);
-
   float: right;
   width: 100%;
   padding: $timestamp-padding;
@@ -86,7 +79,6 @@
 
 .description {
   @include box-sizing(border-box);
-
   width: 100%;
   padding: $description-padding;
   font-size: $description-font-size;
@@ -97,7 +89,6 @@
 
 .good-name {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   font-size: $good-name-font-size;
@@ -108,10 +99,9 @@
 
 .welcome-info {
   @include box-sizing(border-box);
-  text-align: center;
-
   width: 100%;
   font-size: $welcome-info-font-size;
   font-weight: $welcome-info-font-weight;
   color: $welcome-info-color;
+  text-align: center;
 }

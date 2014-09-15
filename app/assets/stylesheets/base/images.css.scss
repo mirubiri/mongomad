@@ -1,53 +1,52 @@
 .logo-image {
   float: left;
-  height: $logo-image-height;
   width: $logo-image-width;
+  height: $logo-image-height;
 }
 
 .omnibar-user-image {
+  @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  height: $omnibar-user-image-height;
   width: $omnibar-user-image-width;
-  @include box-sizing(border-box);
+  height: $omnibar-user-image-height;
 }
 
 .request-user-image {
   @include box-sizing(border-box);
-  float: left;
-  height: $request-user-image-height;
   overflow: auto;
+  float: left;
   width: $request-user-image-height;
+  height: $request-user-image-height;
 }
 
 .icon-image {
-  height: $icon-image-height;
   width: $icon-image-width;
+  height: $icon-image-height;
 }
 
 .composer-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0 0);
+  overflow: auto;
+  float: left;
+  width: $composer-good-image-width;
   height: $composer-good-image-height;
   border: $composer-good-image-border;
-  float: left;
-  overflow: auto;
-  width: $composer-good-image-width;
 }
 
 .receiver-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0 0);
-  float: left;
-  height: $receiver-good-image-height;
   overflow: auto;
+  float: left;
   width: $receiver-good-image-width;
+  height: $receiver-good-image-height;
   border: $receiver-good-image-border;
 }
 
 .profile-card-composition-image {
   @include border-radius($profile-card-head-image-radius);
-
   display: block;
   width: 100%;
 }
@@ -55,60 +54,57 @@
 .profile-card-user-image {
   @include box-sizing(border-box);
   @include border-radius(50%, 50%);
-  height: 100%;
   width: 100%;
+  height: 100%;
   border: $profile-card-user-image-border;
 }
 
 .negotiation-user-image {
   @include border-radius(50%, 50%);
-
-  height: $negotiation-user-image-height;
   width: $negotiation-user-image-width;
+  height: $negotiation-user-image-height;
 }
 
 .deal-user-image {
-
-  height: $deal-user-image-height;
-  width: $deal-user-image-width;
   @include border-radius(50%, 50%);
+  width: $deal-user-image-width;
+  height: $deal-user-image-height;
 }
 
 .message-user-image {
   @include border-radius(50%, 50%);
-
-  height: $message-user-image-height;
   width: $message-user-image-width;
+  height: $message-user-image-height;
 }
 
 .offer-user-image {
-  height: 100%;
   width: 100%;
+  height: 100%;
   border: $offer-user-image-border;
 }
 
 .good-image {
-  height: $item-image-size;
   width: $item-image-size;
+  height: $item-image-size;
   border: $item-image-border;
 }
 
 .factory-model-image {
-  height: $factory-model-image-height;
   width: $factory-model-image-width;
+  height: $factory-model-image-height;
 }
 
 .factory-snapshot-image {
-  height: $factory-snapshot-image-height;
   width: $factory-snapshot-image-width;
+  height: $factory-snapshot-image-height;
 }
 
 .showcase-choice-image {
-  height: $showcase-choice-image-height;
   width: $showcase-choice-image-width;
+  height: $showcase-choice-image-height;
 }
 
 .showcase-display-image {
-  height: $showcase-display-image-height;
   width: $showcase-display-image-width;
+  height: $showcase-display-image-height;
 }

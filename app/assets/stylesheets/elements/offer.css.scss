@@ -1,7 +1,6 @@
 .offer {
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
-
   float: left;
   width: $offer-width;
   margin: $expositor-element-margin;
@@ -9,15 +8,14 @@
 }
 
 .message-zone {
-  float: left;
   overflow: auto;
+  float: left;
   width: 100%;
   background-color: $grey-bgcolor;
 }
 
 .message {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   min-height: $offer-message-min-height;
@@ -25,7 +23,6 @@
   font-size: $medium-font-size;
   font-weight: regular;
   color: $grey-font-color;
-  text-align: $offer-message-text-align;
-
   background: $offer-controls-background;
+  text-align: $offer-message-text-align;
 }

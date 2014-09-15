@@ -2,37 +2,32 @@
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px);
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-
-  float: right;
   overflow: visible;
+  float: right;
   width: $expositor-width;
   background-color: $container-bgcolor;
 }
 
 .expositor-navigation {
-  float: left;
   overflow: auto;
-  height: $top-container-bezel-height;
+  float: left;
   width: 100%;
+  height: $top-container-bezel-height;
   background-color: $white-bgcolor;
   li {
     @include box-sizing(border-box);
-
     float: left;
     height: 100%;
     padding-top: $expositor-navigation-lib-padding-top;
+    border-right: $expositor-navigation-lib-border-right;
     font-size: $medium-font-size;
     font-weight: regular;
     color: $grey-font-color;
-
-    border-right: $expositor-navigation-lib-border-right;
   }
 }
 
 .element-list {
-  float: left;
   overflow: auto;
+  float: left;
   padding: $element-padding - $expositor-element-margin;
 }
-
-

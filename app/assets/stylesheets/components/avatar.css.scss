@@ -1,36 +1,33 @@
 .avatar-omnibar {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: visible;
+  float: left;
   width: $avatar-omnibar-width;
   //>.omnibar-user-image
 }
 
-  .avatar-omnibar-data-side {
-    float: left;
-  }
+.avatar-omnibar-data-side {
+  float: left;
+}
 .avatar-profile-card {
   height: $avatar-profile-card-height;
 }
 
 .avatar-profile-data-side {
   @include box-sizing(border-box);
-
+  overflow: auto;
   position: relative;
   top: -($avatar-profile-card-height);
-  overflow: auto;
   margin: $margin-auto;
 }
 
 .profile-avatar-image-wrapper {
   @include box-sizing(border-box);
   @include border-radius($profile-card-image-size/2, $profile-card-image-size/2);
-
   position: relative;
   top: -($profile-card-image-size)*0.75;
-  height: $profile-card-image-size;
   width: $profile-card-image-size;
+  height: $profile-card-image-size;
   margin: $margin-auto;
   padding: $avatar-profile-card-image-padding;
   background-color: $white-bgcolor;
@@ -39,28 +36,26 @@
 
 .avatar-request {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: visible;
-  height: $request-avatar-size;
+  float: left;
   width: $request-avatar-size;
+  height: $request-avatar-size;
 }
 
 
 .avatar-offer {
   float: left;
-  height: 0;
   width: 100%;
+  height: 0;
 }
 
 .offer-avatar-image-wrapper {
   @include box-sizing(border-box);
   @include border-radius($offer-avatar-image-size/2, $offer-avatar-image-size/2);
-
   position: relative;
   top: -($offer-avatar-image-size)*0.55;
-  height: $offer-avatar-image-size;
   width: $offer-avatar-image-size;
+  height: $offer-avatar-image-size;
   margin: $margin-auto;
   background-color: $white-bgcolor;
 }

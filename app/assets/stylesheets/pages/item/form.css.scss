@@ -1,25 +1,22 @@
 //TODO: darle una vuelta
 .image_loader {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: auto;
+  float: left;
   width: $image-loader-width;
 }
 
 .image_descriptor {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: auto;
+  float: left;
   width: $image-descriptor-width;
 }
 
 .previews {
   @include box-sizing(border-box);
-
-  float: left;
   overflow: auto;
+  float: left;
   width: 100%;
 }
 
@@ -27,10 +24,10 @@
   overflow: auto;
   background-color: $preview-background-color;
   img {
-    height: $item-preview-big;
     width: $item-preview-big;
-    max-height: $item-preview-big;
     max-width: $item-preview-big;
+    height: $item-preview-big;
+    max-height: $item-preview-big;
     background-color: $white-bgcolor;
   }
 }
@@ -45,21 +42,21 @@
 
 .preview_box {
   float: left;
-  height: $item-snapshoot;
   width: $item-snapshoot;
+  height: $item-snapshoot;
   margin: $preview-box-margin;
 }
 
 .add_image_container {
-  float: left;
   overflow: hidden;
-  height: $item-snapshoot;
+  float: left;
   width: $item-snapshoot;
+  height: $item-snapshoot;
   margin: $add-image-container-margin;
   img {
     float: left;
-    height: $item-snapshoot;
     width: $item-snapshoot;
+    height: $item-snapshoot;
     background-color: white;
   }
 }
@@ -67,11 +64,10 @@
 
 label.preview_label {
   @include box-sizing(border-box);
-
   float: left;
   z-index: 10;
-  height: $preview-label-size;
   width: $preview-label-size;
+  height: $preview-label-size;
   margin: $preview-label-margin;
   padding: $preview-label-padding;
   font-size: $medium-font-size;
@@ -86,12 +82,12 @@ label.preview_label {
   position: absolute;
   top: 0;
   left: 0;
-  height: $preview-label-size;
   width: $preview-label-size;
+  height: $preview-label-size;
   input {
     float: left;
-    height: $preview-label-size;
     width: $preview-label-size;
+    height: $preview-label-size;
 
     -ms-filter: 'alpha(opacity=0)';
         filter: alpha(opacity = 0);

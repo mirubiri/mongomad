@@ -1,6 +1,5 @@
 .search {
   @include box-sizing(border-box);
-
   float: left;
   width: $search-width;
   text-align: $search-alignment;

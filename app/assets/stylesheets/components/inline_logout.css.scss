@@ -1,6 +1,5 @@
 .inline-logout {
   @include box-sizing(border-box);
-
   float: right;
   width: $inline-logout-width;
 }
@@ -9,7 +8,7 @@
   float: right;
   img {
     display: block;
-    height: $inline-logout-icon-size;
     width: $inline-logout-icon-size;
+    height: $inline-logout-icon-size;
   }
 }

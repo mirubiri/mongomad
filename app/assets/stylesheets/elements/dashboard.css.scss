@@ -2,7 +2,6 @@
   @include box-shadow($dashboard-shadow);
   @include border-radius($dashboard-radius, $dashboard-radius);
   @include box-sizing(border-box);
-
   float: left;
   width: $dashboard-width;
   background-color: $dashboard-bgcolor;
@@ -10,7 +9,6 @@
 
 .dashboard-sections {
   @include box-sizing(border-box);
-
   float: left;
   width: 100%;
   padding: $element-padding;
@@ -19,7 +17,6 @@
 
 .bezel {
   @include border-radius(5px 5px 0px 0px);
-
   float: left;
   width: 100%;
   height: $top-container-bezel-height;
