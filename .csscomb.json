@@ -26,6 +26,7 @@
     "space-between-declarations": "\n",
     "strip-spaces": true,
     "tab-size": 2,
+    "unitless-zero": true,
     "vendor-prefix-align": true,
     "verbose": true,
     "sort-order": [
