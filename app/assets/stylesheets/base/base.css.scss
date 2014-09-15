@@ -7,10 +7,9 @@ body {
   padding: $body-padding;
   width: $body-width;
   overflow: $body-overflow;
+  overflow-y: $body-overflow-y;
   line-height: $body-line-height;
   font-family: $body-font-family;
-
-  overflow-y: $body-overflow-y;
 }
 
 .main {
@@ -21,26 +20,19 @@ body {
   overflow: $main-overflow;
 }
 
-
 nav {
   height: auto;
 }
 
-
-
 li {
-  display: inline-block;
+  @include inline-block;
 }
-
-
 
 a {
   @include unstyled-link;
   padding: $nav-link-padding;
   height: 100%;
 }
-
-
 
 .active_nav {
   background-color: $active-nav-background-color;
@@ -51,11 +43,9 @@ a {
   }
 }
 
-
 // .progress_bar {
 //   height: 50px;
 //   width: 0;
-
 //   background: red;
 // }
 
@@ -68,11 +58,9 @@ textarea {
   resize: none;
 }
 
-
 textarea:focus {
   outline: none !important;
 }
-
 
 input {
   @include border-radius(5px, 5px);
@@ -82,5 +70,3 @@ input {
 // .hidden {
 //   visibility: hidden;
 // }
-
-// //> .welcome_business_info;
