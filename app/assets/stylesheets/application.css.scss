@@ -8,13 +8,14 @@
 // compiled file so the styles you add here take precedence over styles defined in any styles
 // defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 // file per style scope.
- 
+
 
 //Compass
 @import 'compass/css3/border-radius';
 @import 'compass/css3/box-sizing';
 @import 'compass/css3/box-shadow';
 @import 'compass/typography/links/unstyled-link';
+@import 'compass/css3/opacity';
 
 @import 'compass/css3/inline-block';
 
