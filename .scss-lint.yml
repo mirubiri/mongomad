@@ -74,11 +74,16 @@ linters:
     ignore_unspecified: false
     order:
       - display
+      - overflow
+      - overflow-y
+      - float
+      - clear
       - position
+      - z-index
       - top
-      - right
       - bottom
       - left
+      - right
       - columns
       - column-gap
       - column-fill
@@ -86,34 +91,32 @@ linters:
       - column-span
       - column-count
       - column-width
-      - float
-      - clear
       - transform
       - transition
       - visibility
       - opacity
-      - z-index
-      - margin
-      - margin-top
-      - margin-right
-      - margin-bottom
-      - margin-left
+      - width
+      - min-width
+      - max-width
+      - height
+      - min-height
+      - max-height
       - outline
       - border
       - border-top
-      - border-right
       - border-bottom
       - border-left
+      - border-right
       - border-width
       - border-top-width
-      - border-right-width
       - border-bottom-width
       - border-left-width
+      - border-right-width
       - border-style
       - border-top-style
-      - border-right-style
       - border-bottom-style
       - border-left-style
+      - border-right-style
       - border-radius
       - border-top-left-radius
       - border-top-right-radius
@@ -121,9 +124,11 @@ linters:
       - border-bottom-right-radius
       - border-color
       - border-top-color
-      - border-right-color
       - border-bottom-color
       - border-left-color
+      - border-right-color
+      - border-collapse
+      - border-spacing
       - box-shadow
       - background
       - background-color
@@ -132,24 +137,19 @@ linters:
       - background-position
       - background-size
       - cursor
+      - margin
+      - margin-top
+      - margin-bottom
+      - margin-left
+      - margin-right
       - padding
       - padding-top
-      - padding-right
       - padding-bottom
       - padding-left
-      - width
-      - min-width
-      - max-width
-      - height
-      - min-height
-      - max-height
-      - overflow
-      - overflow-y
+      - padding-right
       - list-style
       - caption-side
       - table-layout
-      - border-collapse
-      - border-spacing
       - empty-cells
       - vertical-align
       - text-align
