@@ -1,6 +1,5 @@
 body {
   @include box-sizing(border-box);
-
   float: $body-float;
   display: $body-display;
   overflow: $body-overflow;
@@ -15,10 +14,9 @@ body {
 
 .main {
   @include box-sizing(border-box);
-
   float: $main-float;
-  overflow: $main-overflow;
   width: $main-width;
+  overflow: $main-overflow;
   padding: $main-padding;
 }
 
@@ -46,10 +44,11 @@ a {
 
 .active_nav {
   background-color: $active-nav-background-color;
+
   a {
+    color: $active-nav-color;
     font-size: $active-nav-font-size;
     font-weight: $active-nav-font-weight;
-    color: $active-nav-color;
   }
 }
 
@@ -63,9 +62,9 @@ a {
 
 textarea {
   float: left;
+  resize: none;
   height: auto;
   width: 100%;
-  resize: none;
   font-family: $body-font-family;
 }
 
@@ -75,7 +74,7 @@ textarea:focus {
 }
 
 
-input{
+input {
   font-family: $body-font-family;
   @include border-radius(5px, 5px);
 }
