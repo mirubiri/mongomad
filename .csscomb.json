@@ -60,15 +60,15 @@
             "border-top",
             "border-right",
             "border-bottom",
-            "border-left",          
-            "border",          
+            "border-left",
+            "border",
             "box-shadow",
             "font-family",
             "font-size",
             "font-weight",
             "line-height",
             "color",
-            "background"
+            "background",
             "background-color",
             "text-align",
             "resize"
