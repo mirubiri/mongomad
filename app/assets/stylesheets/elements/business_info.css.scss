@@ -7,10 +7,10 @@
 
 .info {
   @include box-sizing(border-box);
-  width: 100%;
   padding: $bussines-info-padding;
+  width: 100%;
+  text-align: $bussines-info-text-align;
+  color: $bussines-info-font-color;
   font-size: $bussines-info-font-size;
   font-weight: $bussines-info-font-weight;
-  color: $bussines-info-font-color;
-  text-align: $bussines-info-text-align;
 }

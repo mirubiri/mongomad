@@ -1,34 +1,34 @@
 //TODO: darle una vuelta
 .image_loader {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
   width: $image-loader-width;
+  overflow: auto;
 }
 
 .image_descriptor {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
   width: $image-descriptor-width;
+  overflow: auto;
 }
 
 .previews {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
   width: 100%;
+  overflow: auto;
 }
 
 .preview {
-  overflow: auto;
   background-color: $preview-background-color;
+  overflow: auto;
   img {
+    background-color: $white-bgcolor;
     width: $item-preview-big;
     max-width: $item-preview-big;
     height: $item-preview-big;
     max-height: $item-preview-big;
-    background-color: $white-bgcolor;
   }
 }
 
@@ -42,22 +42,22 @@
 
 .preview_box {
   float: left;
+  margin: $preview-box-margin;
   width: $item-snapshoot;
   height: $item-snapshoot;
-  margin: $preview-box-margin;
 }
 
 .add_image_container {
-  overflow: hidden;
   float: left;
+  margin: $add-image-container-margin;
   width: $item-snapshoot;
   height: $item-snapshoot;
-  margin: $add-image-container-margin;
+  overflow: hidden;
   img {
     float: left;
+    background-color: white;
     width: $item-snapshoot;
     height: $item-snapshoot;
-    background-color: white;
   }
 }
 
@@ -66,15 +66,15 @@ label.preview_label {
   @include box-sizing(border-box);
   float: left;
   z-index: 10;
+  margin: $preview-label-margin;
+  background-color: $preview-label-background-color;
+  padding: $preview-label-padding;
   width: $preview-label-size;
   height: $preview-label-size;
-  margin: $preview-label-margin;
-  padding: $preview-label-padding;
+  text-align: $preview-alignment;
+  color: $white-font-color;
   font-size: $medium-font-size;
   font-weight: bold;
-  color: $white-font-color;
-  background-color: $preview-label-background-color;
-  text-align: $preview-alignment;
 }
 
 
@@ -86,12 +86,12 @@ label.preview_label {
   height: $preview-label-size;
   input {
     float: left;
+    opacity: 0;
     width: $preview-label-size;
     height: $preview-label-size;
 
     -ms-filter: 'alpha(opacity=0)';
         filter: alpha(opacity = 0);
-    opacity: 0;
   }
 }
 

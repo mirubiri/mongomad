@@ -1,10 +1,10 @@
 .omnibar {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
-  width: 100%;
-  padding: $container-padding;
   background-color: $omnibar-bgcolor;
+  padding: $container-padding;
+  width: 100%;
+  overflow: auto;
 }
 
 .navigation-controls {

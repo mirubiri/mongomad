@@ -1,30 +1,30 @@
 .requester {
   @include box-sizing(border-box);
-  overflow: auto;
   position: relative;
   top: 0;
-  width: 100%;
   margin: $ppal-element-margin;
+  width: 100%;
+  overflow: auto;
 }
 
 .requester-textarea {
   @include box-sizing(border-box);
   @include border-radius(5px, 5px);
-  overflow: auto;
   float: left;
+  border: $requester-textarea-border;
   width: 100%;
   min-height: $requester-textarea-min-height;
-  border: $requester-textarea-border;
+  overflow: auto;
+  color: $black-font-color;
   font-size: $big-font-size;
   font-weight: regular;
-  color: $black-font-color;
 }
 
 .countdown {
   @include box-sizing(border-box);
-  overflow: visible;
   float: left;
-  width: auto;
   margin: $requester-countdown-margin;
+  width: auto;
+  overflow: visible;
   color: $grey-font-color;
 }

@@ -3,22 +3,22 @@
   @include border-radius($dashboard-radius, $dashboard-radius);
   @include box-sizing(border-box);
   float: left;
-  width: $dashboard-width;
   background-color: $dashboard-bgcolor;
+  width: $dashboard-width;
 }
 
 .dashboard-sections {
   @include box-sizing(border-box);
   float: left;
-  width: 100%;
   padding: $element-padding;
+  width: 100%;
 }
 
 
 .bezel {
   @include border-radius(5px 5px 0 0);
   float: left;
+  background-color: $white-bgcolor;
   width: 100%;
   height: $top-container-bezel-height;
-  background-color: $white-bgcolor;
 }

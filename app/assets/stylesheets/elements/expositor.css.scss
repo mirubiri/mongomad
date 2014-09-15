@@ -2,32 +2,32 @@
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0 -1px 2px);
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
-  overflow: visible;
   float: right;
-  width: $expositor-width;
   background-color: $container-bgcolor;
+  width: $expositor-width;
+  overflow: visible;
 }
 
 .expositor-navigation {
-  overflow: auto;
   float: left;
+  background-color: $white-bgcolor;
   width: 100%;
   height: $top-container-bezel-height;
-  background-color: $white-bgcolor;
+  overflow: auto;
   li {
     @include box-sizing(border-box);
     float: left;
-    height: 100%;
-    padding-top: $expositor-navigation-lib-padding-top;
     border-right: $expositor-navigation-lib-border-right;
+    padding-top: $expositor-navigation-lib-padding-top;
+    height: 100%;
+    color: $grey-font-color;
     font-size: $medium-font-size;
     font-weight: regular;
-    color: $grey-font-color;
   }
 }
 
 .element-list {
-  overflow: auto;
   float: left;
   padding: $element-padding - $expositor-element-margin;
+  overflow: auto;
 }

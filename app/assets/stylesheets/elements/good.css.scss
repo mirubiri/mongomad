@@ -9,24 +9,24 @@
 
 .item {
   @extend .good;
-  width: $item-image-width;
   margin: $item-margin;
   padding: $item-padding;
+  width: $item-image-width;
 }
 
 .good-image {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
+  overflow: auto;
 }
 
 @mixin product($width) {
   .product {
     @include box-sizing(border-box);
     float: left;
-    width: $width - 10px;
-    max-width: $width - 10px;
     margin: $product-margin;
     background-color: $white-bgcolor;
+    width: $width - 10px;
+    max-width: $width - 10px;
   }
 }

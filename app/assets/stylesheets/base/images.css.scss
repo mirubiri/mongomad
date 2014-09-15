@@ -6,18 +6,18 @@
 
 .omnibar-user-image {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
   width: $omnibar-user-image-width;
   height: $omnibar-user-image-height;
+  overflow: auto;
 }
 
 .request-user-image {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
   width: $request-user-image-height;
   height: $request-user-image-height;
+  overflow: auto;
 }
 
 .icon-image {
@@ -28,21 +28,21 @@
 .composer-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0 0);
-  overflow: auto;
   float: left;
+  border: $composer-good-image-border;
   width: $composer-good-image-width;
   height: $composer-good-image-height;
-  border: $composer-good-image-border;
+  overflow: auto;
 }
 
 .receiver-good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0 0);
-  overflow: auto;
   float: left;
+  border: $receiver-good-image-border;
   width: $receiver-good-image-width;
   height: $receiver-good-image-height;
-  border: $receiver-good-image-border;
+  overflow: auto;
 }
 
 .profile-card-composition-image {
@@ -54,9 +54,9 @@
 .profile-card-user-image {
   @include box-sizing(border-box);
   @include border-radius(50%, 50%);
+  border: $profile-card-user-image-border;
   width: 100%;
   height: 100%;
-  border: $profile-card-user-image-border;
 }
 
 .negotiation-user-image {
@@ -78,15 +78,15 @@
 }
 
 .offer-user-image {
+  border: $offer-user-image-border;
   width: 100%;
   height: 100%;
-  border: $offer-user-image-border;
 }
 
 .good-image {
+  border: $item-image-border;
   width: $item-image-size;
   height: $item-image-size;
-  border: $item-image-border;
 }
 
 .factory-model-image {

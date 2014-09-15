@@ -1,23 +1,24 @@
 body {
   @include box-sizing(border-box);
   display: $body-display;
-  overflow: $body-overflow;
-  overflow-y: $body-overflow-y;
   float: $body-float;
-  width: $body-width;
   margin: $body-margin;
-  padding: $body-padding;
-  font-family: $body-font-family;
-  line-height: $body-line-height;
   background-color: $body-background-color;
+  padding: $body-padding;
+  width: $body-width;
+  overflow: $body-overflow;
+  line-height: $body-line-height;
+  font-family: $body-font-family;
+
+  overflow-y: $body-overflow-y;
 }
 
 .main {
   @include box-sizing(border-box);
-  overflow: $main-overflow;
   float: $main-float;
-  width: $main-width;
   padding: $main-padding;
+  width: $main-width;
+  overflow: $main-overflow;
 }
 
 
@@ -35,8 +36,8 @@ li {
 
 a {
   @include unstyled-link;
-  height: 100%;
   padding: $nav-link-padding;
+  height: 100%;
 }
 
 
@@ -44,9 +45,9 @@ a {
 .active_nav {
   background-color: $active-nav-background-color;
   a {
+    color: $active-nav-color;
     font-size: $active-nav-font-size;
     font-weight: $active-nav-font-weight;
-    color: $active-nav-color;
   }
 }
 
@@ -63,6 +64,7 @@ textarea {
   width: 100%;
   height: auto;
   font-family: $body-font-family;
+
   resize: none;
 }
 

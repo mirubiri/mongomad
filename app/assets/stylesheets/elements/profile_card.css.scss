@@ -4,24 +4,24 @@
   @include box-shadow($profile-card-box-shadow);
   display: block;
   float: left;
-  width: 100%;
   margin: $profile-card-margin;
   background-color: $profile-card-bgcolor;
+  width: 100%;
 }
 
 .user-card {
   @include box-sizing(border-box);
   float: left;
-  width: 100%;
   padding: $element-padding;
+  width: 100%;
 }
 
 
 
 .make-offer-control {
   @include box-sizing(border-box);
-  overflow: auto;
   position: relative;
   top: 0;
   width: 100%;
+  overflow: auto;
 }

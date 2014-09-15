@@ -1,13 +1,13 @@
 %button {
   @include border-radius(5px, 5px);
   float: left;
+  border: none;
   width: 100%;
   height: $button-height;
-  border: none;
+  color: $white-font-color;
   font-family: $body-font-family;
   font-size: $big-font-size;
   font-weight: bold;
-  color: $white-font-color;
 }
 
 .warning-button {
@@ -23,8 +23,8 @@
 .send-button {
   @extend %button;
   float: right;
-  width: auto;
-  height: $send-button-height;
   margin-top: $send-button-margin-top;
   background-color: $blue-button-bgcolor;
+  width: auto;
+  height: $send-button-height;
 }
