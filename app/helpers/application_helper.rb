@@ -29,7 +29,7 @@ module ApplicationHelper
   def active_tab?(*controller_names)
     active = false
     controller_names.each { |name| active ||= params[:controller] == name }
-    active ? 'active_nav' : nil
+    active ? 'active-nav' : nil
   end
 
   def static_image_tag(public_id, css_class)

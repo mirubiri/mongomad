@@ -1,7 +1,7 @@
 %button {
   @include border-radius(5px, 5px);
   float: left;
-  border: none;
+  border: 0;
   width: 100%;
   height: $button-height;
   color: $white-font-color;

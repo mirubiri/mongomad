@@ -1,4 +1,4 @@
-.good {
+%good {
   @include box-shadow($grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0 -1px 2px);
   @include border-radius(5px, 5px);
   @include box-sizing(border-box);
@@ -6,9 +6,8 @@
   background-color: $white-bgcolor;
 }
 
-
 .item {
-  @extend .good;
+  @extend %good;
   margin: $item-margin;
   padding: $item-padding;
   width: $item-image-width;

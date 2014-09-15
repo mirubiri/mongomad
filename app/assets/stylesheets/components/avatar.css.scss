@@ -3,12 +3,12 @@
   float: left;
   width: $avatar-omnibar-width;
   overflow: visible;
-  //>.omnibar-user-image
 }
 
 .avatar-omnibar-data-side {
   float: left;
 }
+
 .avatar-profile-card {
   height: $avatar-profile-card-height;
 }
@@ -25,7 +25,7 @@
   @include box-sizing(border-box);
   @include border-radius($profile-card-image-size/2, $profile-card-image-size/2);
   position: relative;
-  top: -($profile-card-image-size)*0.75;
+  top: -($profile-card-image-size)*.75;
   margin: $margin-auto;
   background-color: $white-bgcolor;
   padding: $avatar-profile-card-image-padding;
@@ -53,7 +53,7 @@
   @include box-sizing(border-box);
   @include border-radius($offer-avatar-image-size/2, $offer-avatar-image-size/2);
   position: relative;
-  top: -($offer-avatar-image-size)*0.55;
+  top: -($offer-avatar-image-size)*.55;
   margin: $margin-auto;
   background-color: $white-bgcolor;
   width: $offer-avatar-image-size;

@@ -1,4 +1,3 @@
-//TODO: darle una vuelta
 .image_loader {
   @include box-sizing(border-box);
   float: left;
@@ -23,6 +22,7 @@
 .preview {
   background-color: $preview-background-color;
   overflow: auto;
+
   img {
     background-color: $white-bgcolor;
     width: $item-preview-big;
@@ -35,6 +35,7 @@
 .image_selection_area {
   float: left;
   width: $image-selection-area-width;
+
   div {
     float: left;
   }
@@ -53,14 +54,14 @@
   width: $add-image-container-width;
   height: $add-image-container-height;
   overflow: hidden;
+
   img {
     float: left;
-    background-color: white;
-    width: 100%;
-    height: 100%;
+    background-color: #fff;
+    width: $item-snapshoot;
+    height: $item-snapshoot;
   }
 }
-
 
 label.preview_label {
   @include box-sizing(border-box);
@@ -77,21 +78,18 @@ label.preview_label {
   font-weight: bold;
 }
 
-
 .filebutton {
   position: absolute;
   top: 0;
   left: 0;
   width: $preview-label-size;
   height: $preview-label-size;
+
   input {
     float: left;
-    opacity: 0;
+    @include opacity(0);
     width: $preview-label-size;
     height: $preview-label-size;
-
-    -ms-filter: 'alpha(opacity=0)';
-        filter: alpha(opacity = 0);
   }
 }
 
