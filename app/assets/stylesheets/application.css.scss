@@ -1,58 +1,57 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- */
+// This is a manifest file that'll be compiled into application.css, which will include all the files
+// listed below.
+//
+// Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+// or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+//
+// You're free to add application-wide styles to this file and they'll appear at the bottom of the
+// compiled file so the styles you add here take precedence over styles defined in any styles
+// defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+// file per style scope.
+ 
 
 //Compass
-@import "compass/css3/border-radius";
-@import "compass/css3/box-sizing";
-@import "compass/css3/box-shadow";
-@import "compass/typography/links/unstyled-link";
+@import 'compass/css3/border-radius';
+@import 'compass/css3/box-sizing';
+@import 'compass/css3/box-shadow';
+@import 'compass/typography/links/unstyled-link';
 
-// //SCSS files
-@import "variables";
+//SCSS files
+@import 'variables';
 
-@import "base/texts";
-@import "base/base";
-@import "base/buttons";
-// @import "base/image_containers";
-@import "base/images";
-// @import "base/text_containers";
+@import 'base/texts';
+@import 'base/base';
+@import 'base/buttons';
+// @import 'base/image_containers';
+@import 'base/images';
+// @import 'base/text_containers';
 
-// @import "placeholders";
+// @import 'placeholders';
 
-@import "components/avatar";
-// @import "components/conversation";
-// @import "components/inline_login";
-@import "components/inline_logout";
-// @import "components/message";
-@import "elements/good";
-@import "components/proposal";
-@import "components/requester";
-@import "components/search";
-@import "elements/business_info";
-@import "elements/dashboard";
-// @import "elements/deal";
-@import "elements/expositor";
-// @import "elements/login";
-// @import "elements/negotiation";
-@import "elements/offer";
-@import "elements/omnibar";
-@import "elements/profile_card";
-@import "elements/request";
-@import "elements/request_list";
+@import 'components/avatar';
+// @import 'components/conversation';
+// @import 'components/inline_login';
+@import 'components/inline_logout';
+// @import 'components/message';
+@import 'elements/good';
+@import 'components/proposal';
+@import 'components/requester';
+@import 'components/search';
+@import 'elements/business_info';
+@import 'elements/dashboard';
+// @import 'elements/deal';
+@import 'elements/expositor';
+// @import 'elements/login';
+// @import 'elements/negotiation';
+@import 'elements/offer';
+@import 'elements/omnibar';
+@import 'elements/profile_card';
+@import 'elements/request';
+@import 'elements/request_list';
 
-// @import "pages/item/form";
+// @import 'pages/item/form';
 
 // //Jquery
-// @import "jquery-ui"; //elegir los modulos necesarios unicamente
-// @import "jquery.Jcrop.min";
-// @import "simpleModal";
+// @import 'jquery-ui'; //elegir los modulos necesarios unicamente
+// @import 'jquery.Jcrop.min';
+// @import 'simpleModal';
