@@ -18,6 +18,10 @@ class Negotiation
     negotiation_signer.sign(user_id)
   end
 
+  def unsign(user_id)
+    negotiation_signer.unsign(user_id)
+  end
+
   def confirm(user_id)
     negotiation_confirmer.confirm(user_id)
   end
@@ -36,6 +40,10 @@ class Negotiation
 
   def can_sign?(user_id)
     can_sign_policy.can_sign?(user_id)
+  end
+
+  def can_unsign?(user_id)
+    can_unsign_policy.can_unsign?(user_id)
   end
 
   def can_confirm?(user_id)
@@ -63,6 +71,10 @@ class Negotiation
 
   def can_sign_policy
     @can_sign_policy ||= CanSignNegotiationPolicy.new(self)
+  end
+
+  def can_unsign_policy
+    @can_unsign_policy ||= CanUnsignNegotiationPolicy.new(self) 
   end
 
   def can_confirm_policy

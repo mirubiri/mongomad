@@ -36,5 +36,31 @@ describe '#sign' do
     end
   end
 end
+
+describe '#unsign' do
+  before(:example) { negotiation.sign(signer_id) }
+
+  context 'given user can unsign' do
+    before(:example) do
+      allow(negotiation).to receive(:can_unsign?) { true }
+    end
+
+    it 'returns true' do
+      expect(negotiation_signer.unsign(signer_id)).to eq true    
+    end
+
+    it 'unsigns the negotiation' do
+      negotiation_signer.unsign(signer_id)
+      expect(negotiation.signer).to eq nil
+    end
+  end
+
+  context 'given user can not unsign' do
+    before(:example) do
+      allow(negotiation).to receive(:can_unsign?) { false }
+    end 
+    
+  end
+end
   
 end

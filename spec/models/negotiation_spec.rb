@@ -10,7 +10,9 @@ describe Negotiation do
   let!(:negotiation_user_abandoner) { NegotiationUserAbandoner.new(negotiation) }
   let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
   let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
+  let!(:unsign_policy) { CanUnsignNegotiationPolicy.new(negotiation) }
   let!(:confirm_policy) { CanConfirmNegotiationPolicy.new(negotiation)}
+
   
 
   it { is_expected.to include_module Proposable }
@@ -27,6 +29,7 @@ describe Negotiation do
   before(:example) do 
     allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
     allow(CanSignNegotiationPolicy).to receive(:new) { sign_policy }
+    allow(CanUnsignNegotiationPolicy).to receive(:new) { unsign_policy }  
     allow(CanConfirmNegotiationPolicy).to receive(:new) { confirm_policy}
 
     allow(NegotiationSigner).to receive(:new) { negotiation_signer }
@@ -59,6 +62,14 @@ describe Negotiation do
     end
   end
 
+  describe '#can_unsign?(user_id' do
+    it 'calls CanUnsignNegotiationPolicy#can_unsign?' do
+      negotiation.sign(composer_id)
+      expect(unsign_policy).to receive(:can_unsign?).with(composer_id)
+      negotiation.can_unsign?(composer_id)
+    end
+  end
+
   describe '#can_confirm?(user_id)' do
     it 'calls CanSignNegotiationPolicy#can_confirm?' do
       expect(confirm_policy).to receive(:can_confirm?).with(composer_id)
@@ -70,6 +81,14 @@ describe Negotiation do
     it 'calls NegotiationUserAbandoner#abandon' do
       expect(negotiation_user_abandoner).to receive(:abandon).with(composer_id)
       negotiation.abandon(composer_id)
+    end
+  end
+
+  describe '#unsign(user_id)' do
+    it 'calls NegotiationSigner#unsign' do
+      negotiation.sign(composer_id)
+      expect(negotiation_signer).to receive(:unsign).with(composer_id)
+      negotiation.unsign(composer_id)
     end
   end
 
