@@ -1,6 +1,5 @@
-.button {
+%button {
   @include border-radius(5px, 5px);
-
   float: left;
   height: $button-height;
   width: 100%;
@@ -12,19 +11,19 @@
 }
 
 .warning-button {
-  @extend .button;
+  @extend %button;
 
   background-color: $red-button-bgcolor;
 }
 
 .control-button {
-  @extend .button;
+  @extend %button;
 
   background-color: $grey-button-bgcolor;
 }
 
 .send-button {
-  @extend .button;
+  @extend %button;
 
   float: right;
   height: $send-button-height;
