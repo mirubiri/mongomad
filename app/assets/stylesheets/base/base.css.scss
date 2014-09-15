@@ -20,7 +20,6 @@ body {
   overflow: $main-overflow;
 }
 
-
 nav {
   height: auto;
 }
@@ -37,9 +36,9 @@ a {
   height: 100%;
 }
 
-
-.active_nav {
+.active-nav {
   background-color: $active-nav-background-color;
+
   a {
     color: $active-nav-color;
     font-size: $active-nav-font-size;
