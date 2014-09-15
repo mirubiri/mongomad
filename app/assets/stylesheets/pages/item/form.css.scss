@@ -1,11 +1,11 @@
-.image_loader {
+.item-form-image-loader {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
   width: $image-loader-width;
 }
 
-.image_descriptor {
+.item-form-descriptor {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;

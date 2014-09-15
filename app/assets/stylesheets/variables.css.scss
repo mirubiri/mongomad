@@ -26,7 +26,6 @@ $element-padding: 15px;
 // $additional-control-padding: 5px;
 $five-pix-radius: 5px;
 $five-pix-padding: 5px;
-
 $top-container-bezel-height: 30px;
 $container-bgcolor: #b1d4e1;
 $body-bgcolor: rgb(90, 148, 173);
@@ -107,47 +106,17 @@ $proposal-receiver-good-size: 70px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 //ITEM-FORM
 $image-loader-width: 45%;
 $image-descriptor-width: 55%;
-
 $preview-background-color: transparent;
 $image-selection-area-width: 48%;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $preview-box-margin: 0 8px 60px 0;
 $preview-box-width: $previewer-ppal-image-size;
 $preview-box-height: $previewer-ppal-image-size;
-
 $add-image-container-margin: 0 0 4px 0;
 $add-image-container-width: $previewer-ppal-image-size;
 $add-image-container-height: $previewer-ppal-image-size;
-
 $preview-label-size: 25px;
 $preview-label-margin: 0 3px 0 0;
 $preview-label-padding: 3px 0 0 0;
@@ -185,7 +154,6 @@ $main-padding: $container-padding;
 $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
-
 $profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0 0;
 $item-image-size: 155px;
 $receiver-good-image-size: 60px;
@@ -443,6 +411,3 @@ $good-image-height: $item-image-size;
 $good-image-width: $item-image-size;
 $good-image-border: $item-image-border;
 $good-image-radius: 5px 5px 0 0;
-
-
-
