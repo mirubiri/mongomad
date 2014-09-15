@@ -27,9 +27,13 @@ nav {
   height: auto;
 }
 
+
+
 li {
   display: inline-block;
 }
+
+
 
 a {
   @include unstyled-link;
@@ -37,6 +41,7 @@ a {
   height: 100%;
   padding: $nav-link-padding;
 }
+
 
 
 .active_nav {
@@ -48,9 +53,6 @@ a {
   }
 }
 
-// input {
-//   @include border-radius(5px, 5px);
-// }
 
 // .progress_bar {
 //   height: 50px;
@@ -67,12 +69,15 @@ textarea {
   font-family: $body-font-family;
 }
 
-input{
-  font-family: $body-font-family;
-}
 
 textarea:focus {
   outline: none !important;
+}
+
+
+input{
+  font-family: $body-font-family;
+  @include border-radius(5px, 5px);
 }
 
 // .hidden {
