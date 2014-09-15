@@ -45,11 +45,11 @@ a {
 
 
 .active_nav {
-  background-color: $active_nav-background-color;
+  background-color: $active-nav-background-color;
   a {
-    font-size: $active_nav-font-size;
-    font-weight: $active_nav-font-weight;
-    color: $active_nav-color;
+    font-size: $active-nav-font-size;
+    font-weight: $active-nav-font-weight;
+    color: $active-nav-color;
   }
 }
 

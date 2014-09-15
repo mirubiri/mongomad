@@ -29,24 +29,24 @@ $five-pix-padding: 5px;
 
 $top-container-bezel-height: 30px;
 $container-bgcolor: #b1d4e1;
-$body-bgcolor: rgb(90,148,173);
+$body-bgcolor: rgb(90, 148, 173);
 $nav-selected: #b1d4e1;
 $nav-font-color: #839091;
-$red-button-bgcolor: rgb(231,74,57);
-$red-button-bgcolor: rgb(231,74,57);
-$blue-button-bgcolor: rgb(58,157,223);
-$blue-font-color: blue;
-$grey-bgcolor: rgb(230,230,230);
+$red-button-bgcolor: rgb(231, 74, 57);
+$red-button-bgcolor: rgb(231, 74, 57);
+$blue-button-bgcolor: rgb(58, 157, 223);
+$blue-font-color: #00f;
+$grey-bgcolor: rgb(230, 230, 230);
 $blue-bgcolor: #b1d4e1;
-$grey-button-bgcolor: rgb(183,183,183);
-$grey-border-color: rgb(137,137,137);
+$grey-button-bgcolor: rgb(183, 183, 183);
+$grey-border-color: rgb(137, 137, 137);
 $blue-nav-border-color: #9dc4d1;
-$white-bgcolor: rgb(253,253,253);
+$white-bgcolor: rgb(253, 253, 253);
 $grey-shadow-color: #9bb3b8;
-$dashboard-padding: 0 10px 0  0;
+$dashboard-padding: 0 10px 0 0;
 $avatar-request-image-width: 40px;
 $item-image-width: 165px;
-$general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0px -1px 2px;
+$general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px, $grey-shadow-color 0 -1px 2px;
 
 //FONTS
 $body-font-family: 'Roboto';
@@ -54,16 +54,16 @@ $body-line-height: 20px;
 $small-font-size: 12px;
 $medium-font-size: 14px;
 $big-font-size: 16px;
-$black-font-color: black;
-$grey-font-color: rgb(153,153,153);
-$white-font-color: rgb(253,253,253);
+$black-font-color: #000;
+$grey-font-color: rgb(153, 153, 153);
+$white-font-color: rgb(253, 253, 253);
 
 
 //active_nav{
-$active_nav-background-color: $nav-selected;
-$active_nav-font-weight: bold;
-$active_nav-font-size: $medium-font-size;
-$active_nav-color: $white-font-color;
+$active-nav-background-color: $nav-selected;
+$active-nav-font-weight: bold;
+$active-nav-font-size: $medium-font-size;
+$active-nav-color: $white-font-color;
 
 
 //REQUEST-LIST
@@ -79,14 +79,14 @@ $request-width: 100%;
 $request-margin: 5px 0 0 0;
 $request-padding: 5px;
 $request-border-bottom: 1px solid $grey-border-color;
-$request-controls-padding: 0px 5px 0px 0px;
+$request-controls-padding: 0 5px 0 0;
 $request-controls-alignment: right;
 
 
 //REQUESTER
 $requester-textarea-min-height: 38px;
 $requester-textarea-border: 2px solid $container-bgcolor;
-$requester-countdown-margin: 2px 0px 0px 0px;
+$requester-countdown-margin: 2px 0 0 0;
 
 
 
@@ -104,11 +104,11 @@ $image-loader-width: 45%;
 $image-descriptor-width: 55%;
 $preview-background-color: transparent;
 $image-selection-area-width: 48%;
-$preview-box-margin: 0px 8px 60px 0px;
-$add-image-container-margin: 0px 0px 4px 0px;
+$preview-box-margin: 0 8px 60px 0;
+$add-image-container-margin: 0 0 4px 0;
 $preview-label-size: 25px;
-$preview-label-margin: 0px 3px 0px 0px;
-$preview-label-padding: 3px 0px 0px 0px;
+$preview-label-margin: 0 3px 0 0;
+$preview-label-padding: 3px 0 0 0;
 $preview-label-background-color: black;
 $preview-alignment: center;
 
@@ -139,7 +139,7 @@ $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
 
-$profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0px 0px;
+$profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0 0;
 $item-image-size: 155px;
 $receiver-good-image-size: 60px;
 
@@ -237,7 +237,7 @@ $item-padding: 5px;
 $item-image-border: 1px solid $grey-border-color;
 
 //PRODUCT
-$product-margin: 0 0px 10px 0;
+$product-margin: 0 0 10px 0;
 
 //PRODUCT-IMAGE
 $product-image-border: 1px solid $grey-border-color;
@@ -247,9 +247,9 @@ $offer-width: 285px;
 
 //TITLE
 $title-height: 25px;
-$title-background-color: rgb(205,205,205);
+$title-background-color: rgb(205, 205, 205);
 $title-border-bottom: 1px solid $grey-border-color;
-$title-padding: 5px 0px 0px 0px;
+$title-padding: 5px 0 0 0;
 $title-text-align: center;
 
 //OFFER-MESSAGE
@@ -301,7 +301,7 @@ $title-font-weight: bold;
 $title-font-size: $big-font-size;
 $title-color: $white-font-color;
 $title-background-color: $title-background-color;
-$title-border-bottom:  $title-border-bottom;
+$title-border-bottom: $title-border-bottom;
 
 //controls{
 $controls-padding: $request-controls-padding;
@@ -395,7 +395,7 @@ $offer-user-image-border: 1px solid $grey-border-color;
 $good-image-height: $item-image-size;
 $good-image-width: $item-image-size;
 $good-image-border: $item-image-border;
-$good-image-radius: 5px 5px 0px 0px;
+$good-image-radius: 5px 5px 0 0;
 
 //factory-model-image
 $factory-model-image-height: 300px;

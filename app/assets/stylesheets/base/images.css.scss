@@ -5,20 +5,18 @@
 }
 
 .omnibar-user-image {
-  @include box-sizing(border-box);
-
-  float: left;
   overflow: auto;
+  float: left;
   height: $omnibar-user-image-height;
   width: $omnibar-user-image-width;
+  @include box-sizing(border-box);
 }
 
 .request-user-image {
   @include box-sizing(border-box);
-
   float: left;
-  overflow: auto;
   height: $request-user-image-height;
+  overflow: auto;
   width: $request-user-image-height;
 }
 
@@ -29,22 +27,20 @@
 
 .composer-good-image {
   @include box-sizing(border-box);
-  @include border-radius(5px 5px 0px 0px);
-
+  @include border-radius(5px 5px 0 0);
+  height: $composer-good-image-height;
+  border: $composer-good-image-border;
   float: left;
   overflow: auto;
-  height: $composer-good-image-height;
   width: $composer-good-image-width;
-  border: $composer-good-image-border;
 }
 
 .receiver-good-image {
   @include box-sizing(border-box);
-  @include border-radius(5px 5px 0px 0px);
-
+  @include border-radius(5px 5px 0 0);
   float: left;
-  overflow: auto;
   height: $receiver-good-image-height;
+  overflow: auto;
   width: $receiver-good-image-width;
   border: $receiver-good-image-border;
 }
@@ -59,7 +55,6 @@
 .profile-card-user-image {
   @include box-sizing(border-box);
   @include border-radius(50%, 50%);
-
   height: 100%;
   width: 100%;
   border: $profile-card-user-image-border;
@@ -73,10 +68,10 @@
 }
 
 .deal-user-image {
-  @include border-radius(50%, 50%);
 
   height: $deal-user-image-height;
   width: $deal-user-image-width;
+  @include border-radius(50%, 50%);
 }
 
 .message-user-image {
@@ -87,18 +82,12 @@
 }
 
 .offer-user-image {
-  @include box-sizing(border-box);
-  @include border-radius(50%, 50%);
-
   height: 100%;
   width: 100%;
   border: $offer-user-image-border;
 }
 
 .good-image {
-  @include border-radius($good-image-radius);
-  @include box-sizing(border-box);
-
   height: $item-image-size;
   width: $item-image-size;
   border: $item-image-border;
