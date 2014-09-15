@@ -130,7 +130,8 @@
             "font-smoothing",
             "font-style",
             "content",
-            "quotes"
+            "quotes",
+            "resize"
         ],
         [
             "..."
