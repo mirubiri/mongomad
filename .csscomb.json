@@ -103,6 +103,7 @@
             "min-height",
             "max-height",
             "overflow",
+            "overflow-y",
             "list-style",
             "caption-side",
             "table-layout",
