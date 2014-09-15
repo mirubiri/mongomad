@@ -65,17 +65,12 @@ $active-nav-font-weight: bold;
 $active-nav-font-size: $medium-font-size;
 $active-nav-color: $white-font-color;
 
-//PREVIER SIZES
-$factory-model-image-size: 300px;
 
-//factory-snapshot-image
-$factory-snapshot-image-size: 80px;
-
-//showcase-choice-image
-$showcase-choice-image-size: 120px;
-
-//showcase-display-image
-$showcase-display-image-size: 500px;
+//PREVIEWER SIZES
+$previewer-ppal-image-size: 300px;
+$previewer-snapshot-image-size: 80px;
+$showcase-ppal-image-size: 500px;
+$showcase-snapshot-image-size: 120px;
 
 
 //REQUEST-LIST
@@ -127,10 +122,7 @@ $preview-alignment: center;
 
 //ITEM PREVIEW
 $preview-background-color: white;
-$item-preview-big: ;
-$white-bgcolor;
-
-
+$item-preview-big: $previewer-ppal-image-size;
 
 
 //BASE
