@@ -16,7 +16,7 @@
 
 
 .bezel {
-  @include border-radius(5px 5px 0px 0px);
+  @include border-radius(5px 5px 0 0);
   float: left;
   width: 100%;
   height: $top-container-bezel-height;
