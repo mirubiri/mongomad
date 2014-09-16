@@ -16,6 +16,10 @@ describe NegotiationUserAbandoner do
         expect(negotiation.user_ids).not_to include user_id
       end
 
+      it 'does not call negotiation.destroy' do
+        expect(negotiation).not_to receive(:destroy)
+      end
+
       it 'returns true' do
         expect(negotiation_user_abandoner.abandon(user_id)).to eq true
       end
@@ -27,8 +31,8 @@ describe NegotiationUserAbandoner do
       end
 
       it 'destroys the negotiation' do
+        expect(negotiation).to receive(:destroy)
         negotiation_user_abandoner.abandon(user_id)
-        expect(negotiation).to be_destroyed
       end
     end
 
@@ -39,6 +43,10 @@ describe NegotiationUserAbandoner do
 
       it 'returns false' do
         expect(negotiation_user_abandoner.abandon('non_participant')).to eq false
+      end
+
+      it 'does not call negotiation.destroy' do
+        expect(negotiation).not_to receive(:destroy)
       end
     end
   end
