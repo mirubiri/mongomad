@@ -1,0 +1,3 @@
+describe MessagePoster do
+  
+end
