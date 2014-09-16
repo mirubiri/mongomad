@@ -8,6 +8,8 @@ describe Negotiation do
   let!(:negotiation_signer) { NegotiationSigner.new(negotiation) }
   let!(:negotiation_confirmer) { NegotiationConfirmer.new(negotiation) }
   let!(:negotiation_user_abandoner) { NegotiationUserAbandoner.new(negotiation) }
+  let!(:message_poster) { MessagePoster.new(negotiation) }
+  let!(:negotiation_proposer) { NegotiationProposer.new(negotiation) }
   let!(:negotiable_policy) { NegotiableNegotiationPolicy.new(negotiation) }
   let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
   let!(:unsign_policy) { CanUnsignNegotiationPolicy.new(negotiation) }
@@ -37,6 +39,8 @@ describe Negotiation do
     allow(NegotiationSigner).to receive(:new) { negotiation_signer }
     allow(NegotiationConfirmer).to receive(:new) { negotiation_confirmer }
     allow(NegotiationUserAbandoner).to receive(:new) { negotiation_user_abandoner }
+    allow(NegotiationProposer).to receive(:new) { negotiation_proposer }
+    allow(MessagePoster).to receive(:new) { message_poster }
   end
 
   describe '#authorized?(user)' do
@@ -112,6 +116,20 @@ describe Negotiation do
     it 'calls NegotiationConfirmer#confirm' do
       expect(negotiation_confirmer).to receive(:confirm).with(composer_id)
       negotiation.confirm(composer_id)
+    end
+  end
+
+  describe '#propose(proposal)' do
+    it 'calls NegotiationProposer#propose' do
+      expect(negotiation_proposer).to receive(:propose).with(new_proposal)
+      negotiation.propose(new_proposal)
+    end
+  end
+
+  describe '#post_message(user_id,message)' do
+    it 'calls MessagePoster#post_message' do
+      expect(message_poster).to receive(:post_message).with(user_id:composer_id,message:'message')
+      negotiation.post_message(user_id:user_id,message:'message')
     end
   end
 
