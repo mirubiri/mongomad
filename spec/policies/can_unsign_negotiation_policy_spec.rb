@@ -22,7 +22,8 @@ describe CanUnsignNegotiationPolicy do
       expect(policy.can_unsign? not_signer_id).to eq false
     end
 
-    it 'returns false if given user is unknown' do
+    it 'returns false if given user is not authorized' do
+      allow(negotiation).to receive(:authorized?) { false }
     	expect(policy.can_unsign? 'unknown').to eq false
     end
   end

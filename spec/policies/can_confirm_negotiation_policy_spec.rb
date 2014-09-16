@@ -23,8 +23,8 @@ describe CanConfirmNegotiationPolicy do
       expect(policy.can_confirm? confirmer_id).to eq false
     end
     
-    it 'returns false if given user_id is not in the negotiation' do
-      negotiation.signer=signer_id
+    it 'returns false if given user_id is not authorized' do
+      allow(negotiation).to receive(:authorized?) { false }
       expect(policy.can_confirm? 'unknown_user').to eq false
     end
 

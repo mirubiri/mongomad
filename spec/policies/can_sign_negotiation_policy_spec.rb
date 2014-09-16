@@ -18,7 +18,8 @@ describe CanSignNegotiationPolicy do
       expect(policy.can_sign? composer_id).to eq false
     end
 
-    it 'returns false if user_id is not in the negotiation' do
+    it 'returns false if user_id is not authorized' do
+      allow(:negotiation).to receive(:authorized?) { false }
       expect(policy.can_sign? 'unknown_user').to eq false
     end
 
