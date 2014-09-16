@@ -1,10 +1,11 @@
 .edit_item#edit_item
 
-  .item-form-image-uploader
-    #pan.preview
-      = item_main_image_tag(item,300,300)
+  .item-form-body
+    .item-image-uploader
+      #pan.preview
+        = item_main_image_tag(item,300,300)
 
-    .progress_bar
+      .progress_bar
 
-  .item-form-descriptor
-    = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }
+    .item-form-descriptor
+      = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }

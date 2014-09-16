@@ -107,20 +107,29 @@ $proposal-receiver-good-size: 70px;
 
 
 //ITEM-FORM
+$item-form-body-padding: 10px 5px;
+
 $image-uploader-width: 45%;
 $image-descriptor-width: 55%;
+
+$item-image-miniatures-margin: 10px 0 0 0;
 $preview-background-color: transparent;
-$image-selection-area-width: 48%;
 $preview-box-margin: 0 8px 60px 0;
 $preview-box-width: $previewer-ppal-image-size;
 $preview-box-height: $previewer-ppal-image-size;
-$add-image-container-margin: 0 0 4px 0;
-$add-image-container-width: $previewer-ppal-image-size;
-$add-image-container-height: $previewer-ppal-image-size;
-$preview-label-size: 25px;
-$preview-label-margin: 0 3px 0 0;
-$preview-label-padding: 3px 0 0 0;
-$preview-label-background-color: #000;
+
+$cropped-image-grid-width: $previewer-snapshot-image-size;
+$cropped-image-grid-height: $previewer-snapshot-image-size;
+$cropped-image-grid-margin: 0 5px 0 0;
+
+$cropped-image-margin: 0 0 4px 0;
+$cropped-image-width: $previewer-snapshot-image-size;
+$cropped-image-height: $previewer-snapshot-image-size;
+
+$cropped-image-button-size: 25px;
+$cropped-image-button-margin: 0 3px 0 0;
+$cropped-image-button-padding: 3px 0 0 0;
+$cropped-image-button-background-color: #000;
 $preview-alignment: center;
 
 
