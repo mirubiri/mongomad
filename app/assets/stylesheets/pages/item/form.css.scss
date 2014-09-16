@@ -1,8 +1,8 @@
-.item-form-image-loader {
+.item-form-image-uploader {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  width: $image-loader-width;
+  width: $image-uploader-width;
 }
 
 .item-form-descriptor {
@@ -12,7 +12,7 @@
   width: $image-descriptor-width;
 }
 
-.previews {
+.item-image-miniatures {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
