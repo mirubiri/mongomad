@@ -122,6 +122,7 @@ describe Negotiation do
   
   describe '#propose(proposal)' do
     let!(:negotiation_proposer) { NegotiationProposer.new(negotiation) }
+    let!(:new_proposal) { Fabricate.build(:proposal,composer_id:composer_id,receiver_id:receiver_id) }
     
     it 'calls NegotiationProposer#propose' do
       allow(NegotiationProposer).to receive(:new) { negotiation_proposer }
