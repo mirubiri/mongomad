@@ -1,5 +1,6 @@
 .item-form-body {
-  @include box-sizing(border-box);  
+  @include box-sizing(border-box); 
+  overflow: auto; 
   float: left;
   width: 100%;
   padding: $item-form-body-padding;
@@ -7,21 +8,21 @@
 
 .item-image-uploader {
   @include box-sizing(border-box);
-  overflow: auto;
   float: left;
+  overflow: auto;
   width: $image-uploader-width;
 }
 
 .item-form-descriptor {
   @include box-sizing(border-box);
-  overflow: auto;
+  overflow: visible;
   float: left;
   width: $image-descriptor-width;
 }
 
 
 .preview {
-  overflow: auto;
+  float: left;
   background-color: $preview-background-color;
 
   img {
@@ -37,7 +38,7 @@
 .item-image-miniatures {
   @include box-sizing(border-box);
   margin: $item-image-miniatures-margin;
-  overflow: visible;
+  overflow: auto;
   float: left;
   width: 100%;
 }
@@ -46,7 +47,7 @@
   float: left;
   overflow: visible;
   width: $cropped-image-grid-width;
-  height: $cropped-image-grid-height;
+  height: $cropped-image-grid-height + 30;
   margin: $cropped-image-grid-margin;
 }
 
