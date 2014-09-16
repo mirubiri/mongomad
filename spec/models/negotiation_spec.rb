@@ -12,6 +12,7 @@ describe Negotiation do
   let!(:sign_policy) { CanSignNegotiationPolicy.new(negotiation) }
   let!(:unsign_policy) { CanUnsignNegotiationPolicy.new(negotiation) }
   let!(:confirm_policy) { CanConfirmNegotiationPolicy.new(negotiation)}
+  let!(:authorized_policy ) { AuthorizedNegotiationPolicy.new(negotiation) }
 
   
 
@@ -30,11 +31,19 @@ describe Negotiation do
     allow(NegotiableNegotiationPolicy).to receive(:new) { negotiable_policy }
     allow(CanSignNegotiationPolicy).to receive(:new) { sign_policy }
     allow(CanUnsignNegotiationPolicy).to receive(:new) { unsign_policy }  
-    allow(CanConfirmNegotiationPolicy).to receive(:new) { confirm_policy}
+    allow(CanConfirmNegotiationPolicy).to receive(:new) { confirm_policy }
+    allow(AuthorizedNegotiationPolicy).to receive(:new) { authorized_policy }
 
     allow(NegotiationSigner).to receive(:new) { negotiation_signer }
     allow(NegotiationConfirmer).to receive(:new) { negotiation_confirmer }
     allow(NegotiationUserAbandoner).to receive(:new) { negotiation_user_abandoner }
+  end
+
+  describe '#authorized?(user)' do
+    it 'calls AuthorizedNegotiationPolicy#authorized?' do
+      expect(authorized_policy).to receive(:authorized?).with(composer_id)
+      negotiation.authorized? composer_id
+    end
   end
 
   describe '#abandoned?' do

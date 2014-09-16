@@ -14,6 +14,10 @@ class Negotiation
     negotiation_user_abandoner.abandon(user_id)
   end
 
+  def authorized?(user_id)
+    authorized_policy.authorized? user_id
+  end
+
   def sign(user_id)
     negotiation_signer.sign(user_id)
   end
@@ -67,6 +71,10 @@ class Negotiation
 
   def negotiation_user_abandoner
     @negotiation_abandoner ||= NegotiationUserAbandoner.new(self)
+  end
+
+  def authorized_policy
+    @authorized_policy ||= AuthorizedNegotiationPolicy.new(self)
   end
 
   def can_sign_policy
