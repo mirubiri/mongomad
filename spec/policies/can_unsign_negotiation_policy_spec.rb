@@ -9,11 +9,6 @@ describe CanUnsignNegotiationPolicy do
   describe '#can_unsign?(user_id)' do
   	before(:example) { negotiation.sign(signer_id) }
 
-    it 'returns false if negotiation is not negotiable' do
-      allow(negotiation).to receive(:negotiable?) { false }
-      expect(policy.can_unsign? signer_id).to eq false
-    end
-
     it 'returns true if negotiation was signed by the given user_id' do
       expect(policy.can_unsign? signer_id).to eq true
     end

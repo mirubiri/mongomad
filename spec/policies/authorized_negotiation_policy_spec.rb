@@ -7,6 +7,10 @@ describe AuthorizedNegotiationPolicy do
   let(:unauthorized_id) { 'unauthorized'}
 
   describe '#authorized?' do
+    it 'returns false if negotiation is not negotiable' do
+      allow(negotiation).to receive(:negotiable?) { false }
+      expect(authorizer.authorized? authorized_id).to eq false
+    end
     it 'returns true if user_id is participating in the negotiation' do
     	expect(authorizer.authorized? authorized_id).to eq true
     end
