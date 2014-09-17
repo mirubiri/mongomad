@@ -39,7 +39,9 @@
   overflow: visible;
   float: left;
   width: $request-avatar-size;
+  min-width: $request-avatar-size;
   height: $request-avatar-size;
+  min-height: $request-avatar-size;
 }
 
 
