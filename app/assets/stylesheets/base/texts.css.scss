@@ -64,6 +64,7 @@
   color: $controls-color;
   font-size: $controls-font-size;
   font-weight: $controls-font-weight;
+  a {padding-right: 0;padding-left: 0}
 }
 
 .timestamp {
