@@ -51,6 +51,7 @@ $general-shadow: $grey-shadow-color 1px 1px 2px, $grey-shadow-color -1px 1px 2px
 //FONTS
 $body-font-family: 'Roboto';
 $body-line-height: 20px;
+$extra-small-font-size: 10px;
 $small-font-size: 12px;
 $medium-font-size: 14px;
 $big-font-size: 16px;
@@ -88,6 +89,7 @@ $request-padding: 5px;
 $request-border-bottom: 1px solid $grey-border-color;
 $request-controls-padding: 0 5px 0 0;
 $request-controls-alignment: right;
+$request-controls-height: 12px;
 
 
 //REQUESTER
@@ -336,7 +338,7 @@ $controls-padding: $request-controls-padding;
 $controls-font-weight: regular;
 $controls-font-size: $small-font-size;
 $controls-color: $blue-font-color;
-$controls-font-size: $small-font-size;
+$controls-font-size: $extra-small-font-size;
 $controls-color: $blue-font-color;
 $controls-text-align: $request-controls-alignment;
 

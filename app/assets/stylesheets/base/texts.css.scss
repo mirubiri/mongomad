@@ -59,6 +59,7 @@
   @include box-sizing(border-box);
   float: left;
   width: 100%;
+  height: $request-controls-height;
   padding: $controls-padding;
   text-align: $controls-text-align;
   color: $controls-color;
