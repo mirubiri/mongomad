@@ -23,6 +23,6 @@ module ImageHelper
        transformation:[ 
         {x:image.x, y:image.y, width:image.w, height:image.h, crop:crop },
         {width:width, height:height, crop:fit, class:klass}
-       ])
+       ]) if image
   end
 end
