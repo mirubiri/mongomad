@@ -6,9 +6,10 @@
     = item_main_image_tag(item,500,500)
 
   - item.images.each do |index|
-    .cropped-image-grid
-      .preview_image
-        | item_image
+    .item-miniature-wrapper
+      .cropped-image-grid
+        .preview_image
+          | item_image
 
   .title
     | title

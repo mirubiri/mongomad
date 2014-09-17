@@ -9,16 +9,17 @@
 
       .item-image-miniatures
         - 1.upto(3) do |index|
-          .cropped-image-grid
-            div id="inputcontainer#{index}" class='cropped-image'
-              img id="preview#{index}" src=""
-            label.cropped-image-button.preview_selector
-              | +
-              span.cropped-image-button-label
-                = item_form.cl_image_upload(('image'+index.to_s).to_sym, tags: 'development')
-            label.cropped-image-button.delete_preview
-              | -
-    
+          .item-miniature-wrapper
+            .cropped-image-grid
+              div id="inputcontainer#{index}" class='cropped-image'
+                img id="preview#{index}" src=""
+              label.cropped-image-button.preview_selector
+                | +
+                span.cropped-image-button-label
+                  = item_form.cl_image_upload(('image'+index.to_s).to_sym, tags: 'development')
+              label.cropped-image-button.delete_preview
+                | -
+
     .item-form-descriptor
       .output#output
         - item.images.each_with_index do |image, index|

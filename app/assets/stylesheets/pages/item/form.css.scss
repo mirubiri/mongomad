@@ -37,14 +37,21 @@
 
 .item-image-miniatures {
   @include box-sizing(border-box);
+  display: flex;
+  flex-direction: row;
   margin: $item-image-miniatures-margin;
   overflow: auto;
   float: left;
   width: $previewer-ppal-image-size;
+  text-align: center;
 }
 
+.item-miniature-wrapper {
+  flex-grow: 1;
+}
+
+
 .cropped-image-grid {
-  float: left;
   overflow: visible;
   width: $cropped-image-grid-width;
   height: $cropped-image-grid-height + 30;
