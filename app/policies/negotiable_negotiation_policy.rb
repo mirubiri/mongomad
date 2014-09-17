@@ -6,11 +6,8 @@ class NegotiableNegotiationPolicy
   end
   
   def negotiable?
-    return false if negotiation.abandoned?
-    return false unless proposal_negotiable?
-    true
+    proposal_negotiable?
   end
-
 
   private
 

@@ -22,6 +22,12 @@ describe CanConfirmNegotiationPolicy do
       expect(policy.can_confirm? 'unknown_user').to eq false
     end
 
+    it 'returns false if proposal is not negotiable' do
+      negotiation.signer=signer_id
+      allow(negotiation).to receive(:negotiable?) { false }
+      expect(policy.can_confirm? confirmer_id).to eq false
+    end
+
     it 'returns true in any other case' do
       negotiation.signer=signer_id
       expect(policy.can_confirm? confirmer_id).to eq true

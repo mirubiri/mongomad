@@ -17,6 +17,11 @@ describe CanUnsignNegotiationPolicy do
       expect(policy.can_unsign? not_signer_id).to eq false
     end
 
+    it 'returns false if proposal is not negotiable' do
+      allow(negotiation).to receive(:negotiable?) { false }
+      expect(policy.can_unsign? signer_id).to eq false
+    end
+
     it 'returns false if given user is not authorized' do
       allow(negotiation).to receive(:authorized?) { false }
     	expect(policy.can_unsign? 'unknown').to eq false
