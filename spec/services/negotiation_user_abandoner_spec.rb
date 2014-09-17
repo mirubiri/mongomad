@@ -49,5 +49,7 @@ describe NegotiationUserAbandoner do
         expect(negotiation).not_to receive(:destroy)
       end
     end
+
+    pending 'falla cuando un usuario desconocido es el ultimo en abandonar la negociacion'
   end
 end
