@@ -34,6 +34,7 @@ $nav-font-color: #839091;
 $red-button-bgcolor: rgb(231, 74, 57);
 $red-button-bgcolor: rgb(231, 74, 57);
 $blue-button-bgcolor: rgb(58, 157, 223);
+$green-button-bgcolor: rgb(0, 153, 0);
 $blue-font-color: #00f;
 $grey-bgcolor: rgb(230, 230, 230);
 $blue-bgcolor: #b1d4e1;
@@ -108,6 +109,7 @@ $proposal-receiver-good-size: 70px;
 
 //ITEM-FORM
 $item-form-body-padding: 10px 5px;
+$item-form-body-margin: 0 0 10px 0;
 
 $image-uploader-width: 45%;
 $image-descriptor-width: 55%;
@@ -358,10 +360,11 @@ $description-font-size: $medium-font-size;
 $description-color: $grey-font-color;
 
 
-//good-name{
-$good-name-font-weight: regular;
-$good-name-font-size: $big-font-size;
-$good-name-color: $grey-font-color;
+//good-data{
+$good-data-font-weight: regular;
+$good-data-font-size: $big-font-size;
+$good-data-color: $grey-font-color;
+$good-data-margin: 0 0 10px 0;
 
 
 //welcome-info

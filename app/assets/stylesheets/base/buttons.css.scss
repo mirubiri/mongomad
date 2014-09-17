@@ -15,6 +15,12 @@
   background-color: $red-button-bgcolor;
 }
 
+.save-button {
+  @extend %button;
+  @include border-radius(0, 0);
+  background-color: $green-button-bgcolor;
+}
+
 .control-button {
   @extend %button;
   background-color: $grey-button-bgcolor;

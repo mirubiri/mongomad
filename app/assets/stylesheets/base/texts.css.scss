@@ -87,13 +87,14 @@
   font-weight: $description-font-weight;
 }
 
-.good-name {
+.good-data {
   @include box-sizing(border-box);
   float: left;
   width: 100%;
-  color: $good-name-color;
-  font-size: $good-name-font-size;
-  font-weight: $good-name-font-weight;
+  color: $good-data-color;
+  font-size: $good-data-font-size;
+  font-weight: $good-data-font-weight;
+  margin: $good-data-margin;
 }
 
 

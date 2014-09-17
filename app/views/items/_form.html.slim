@@ -32,22 +32,20 @@
             - item_form.hidden_field id="h_preview#{index+1}", name="item[images][][h]", type="hidden", value=image.h
             - item_form.hidden_field id="w_preview#{index+1}", name="item[images][][w]", type="hidden", value=image.w
 
-      .good-name
+      .good-data
         | Product name
         = item_form.text_area :name,
                          :placeholder => "Name your product...",
                          :maxlength => "20",
                          :required => false
 
-      .description
+      .good-data
         | Product description
         = item_form.text_area :description,
-                     :placeholder => "Describe your product...",
-                     :maxlength => "200",
-                     :required => false
+                         :placeholder => "Describe your product...",
+                         :maxlength => "200",
+                         :rows => "11",
+                         :required => false
 
-    .controls
-      .send_control
-
-        = item_form.submit "Save",
-          class: 'warning-button'
+  = item_form.submit "Save",
+    class: 'save-button'
