@@ -19,10 +19,10 @@ module ImageHelper
   private
   
   def base(h:,w:,klass:,image:)
-    cl_image_tag(image.id,
-       transformation:[ 
+    cl_image_tag(image.id, class:klass,
+       transformation:[
         {x:image.x, y:image.y, width:image.w, height:image.h, crop: :crop },
-        {width:w, height:h, crop: :fit, class:klass}
+        {width:w, height:h, crop: :fit}
        ]) if image
   end
 end
