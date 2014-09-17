@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/mgomes/mongoid-rspec.git
+  revision: e45f5f573c2c211f0863cd3ff3cb7f1bacd6985b
+  specs:
+    mongoid-rspec (2.0.0)
+      mongoid (~> 4.0.0)
+      rake
+      rspec (>= 2.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -91,10 +100,6 @@ GEM
       moped (~> 2.0.0)
       origin (~> 2.1)
       tzinfo (>= 0.3.37)
-    mongoid-rspec (1.10.0)
-      mongoid (>= 3.0.1)
-      rake
-      rspec (>= 2.14)
     moped (2.0.0)
       bson (~> 2.2)
       connection_pool (~> 2.0)
@@ -207,7 +212,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   mongoid (~> 4.0)
-  mongoid-rspec
+  mongoid-rspec!
   pundit
   rails (~> 4.1)
   rspec-rails

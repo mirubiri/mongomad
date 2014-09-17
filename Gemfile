@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 gem 'mongoid', '~> 4.0'
 
 gem 'rspec-rails', group: [:development,:test]
-gem 'mongoid-rspec', group: [:development,:test]
+gem 'mongoid-rspec', github: 'mgomes/mongoid-rspec', group: [:development,:test]
 gem 'fabrication',group: [:development,:test]
 gem 'faker', group: [:development,:test]
 gem 'better_errors',group: [:development,:test]
