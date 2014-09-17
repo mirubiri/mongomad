@@ -50,7 +50,7 @@ class User
 
   delegate :first_name,:surnames,:gender,:language,:birth_date,:location,
     :full_name=,:full_name,:gender=,:language=,:birth_date=,:location=,
-    :images,:images=, to: :profile
+    :images,:images=,:main_image, to: :profile
 
   def sheet
     UserSheet.new(nick:nick, full_name:profile.full_name, images:profile.images, location:profile.location) do |sheet|

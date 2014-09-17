@@ -30,6 +30,7 @@ describe User do
   it { is_expected.to delegate(:language=).to :profile }
   it { is_expected.to delegate(:birth_date=).to :profile }
   it { is_expected.to delegate(:images=).to :profile }
+  it { is_expected.to delegate(:main_image).to :profile }
 
   # Methods
   describe '#sheet' do
