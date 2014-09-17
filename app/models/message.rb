@@ -8,6 +8,6 @@ class Message
   field :text
 
   def user_sheet
-    message_container.user_sheets.find(user_id)
+    message_container.user_sheets.find(id)
   end
 end

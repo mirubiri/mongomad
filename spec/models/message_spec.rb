@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Message do
   # Variables
   let(:user) { Fabricate.build(:user) }
-  let(:message) { Fabricate.build(:message, user_id:user.id) }
+  let(:message) { Fabricate.build(:message, id:user.id) }
   let(:user_sheet) { user.sheet }
 
   # Relations
@@ -31,7 +31,4 @@ describe Message do
       expect(message.user_sheet).to eq user_sheet
     end
   end
-
-  # Factories
-  specify { expect(Fabricate.build(:message)).to be_valid }
 end
