@@ -7,7 +7,14 @@ describe NegotiationProposer do
   let(:proposal) { Fabricate.build(:proposal,composer_id:composer_id,receiver_id:receiver_id) }
   let(:proposer) { NegotiationProposer.new(negotiation) }
 
-  shared_examples 'cannot propose' do
+
+  describe '#propose(proposal)' do
+
+    context 'a participant in the given proposal is not authorized' do
+      before(:example) do
+        allow(negotiation).to receive(:authorized?).with(composer_id) { false }
+      end
+
       it 'returns false' do
         expect(proposer.propose(proposal)).to eq false
       end
@@ -19,17 +26,6 @@ describe NegotiationProposer do
       it 'does not reset the negotiation course' do
         expect(negotiation).not_to receive(:reset_course)
       end
-  end
-
-  describe '#propose(proposal)' do
-    context 'negotition is not negotiable' do
-      before(:example) { allow(negotiation).to receive(:negotiable?) { false }}
-      include_examples 'cannot propose'
-    end
-    
-    context 'a participant in the given proposal is not in the negotiation' do
-      before(:example) { proposal.composer_id='non_participant_id' }
-      include_examples 'cannot propose'
     end
 
     context 'participants of the proposal belongs to the negotiation' do
