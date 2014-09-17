@@ -26,16 +26,6 @@ describe Negotiation do
     end
   end
 
-  describe '#participates?' do
-    it 'returns true if given user_id participates in the negotiation' do
-      expect(negotiation.participates? composer_id).to eq true
-    end
-
-    it 'returns false if given user_id is not participating in the negotiation' do
-      expect(negotiation.participates? 'non_participant').to eq false
-    end
-  end
-
   describe '#reset_course' do
     context 'negotiation is negotiable' do
       before(:example) { negotiation.sign(composer_id) }
