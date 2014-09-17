@@ -42,5 +42,7 @@ describe NegotiationProposer do
         proposer.propose(proposal) 
       end
     end
+
+    pending 'Pensar si implementar CanProposeNegotiationPolicy'
   end  
 end
