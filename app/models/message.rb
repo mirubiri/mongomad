@@ -4,7 +4,7 @@ class Message
 
   embedded_in :message_container, polymorphic: true
 
-  field :user_id, type:BSON::ObjectId
+  field :_id, default:nil
   field :text
 
   def user_sheet

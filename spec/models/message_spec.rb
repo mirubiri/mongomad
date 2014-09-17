@@ -11,12 +11,15 @@ describe Message do
 
   # Attributes
   it { is_expected.to be_timestamped_document }
-  it { is_expected.to have_field(:user_id) }
   it { is_expected.to have_field :text }
 
   # Validations
 
   # Methods
+  describe '#id' do
+    it { is_expected.to have_attributes(id:nil) }
+  end
+  
   describe '#user_sheet' do
     let(:user_sheet) { user.sheet }
 
