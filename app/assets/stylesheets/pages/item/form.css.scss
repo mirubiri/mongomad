@@ -1,6 +1,6 @@
 .item-form-body {
-  @include box-sizing(border-box); 
-  overflow: auto; 
+  @include box-sizing(border-box);
+  overflow: auto;
   float: left;
   width: 100%;
   padding: $item-form-body-padding;
@@ -40,7 +40,7 @@
   margin: $item-image-miniatures-margin;
   overflow: auto;
   float: left;
-  width: 100%;
+  width: $previewer-ppal-image-size;
 }
 
 .cropped-image-grid {
