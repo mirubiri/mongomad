@@ -26,6 +26,40 @@ describe Negotiation do
     end
   end
 
+  describe '#participates?' do
+    it 'returns true if given user_id participates in the negotiation' do
+      expect(negotiation.participates? composer_id).to eq true
+    end
+
+    it 'returns false if given user_id is not participating in the negotiation' do
+      expect(negotiation.participates? 'non_participant').to eq false
+    end
+  end
+
+  describe '#reset_course' do
+    context 'negotiation is negotiable' do
+      before(:example) { negotiation.sign(composer_id) }
+      it 'set signer to nil' do
+        expect{negotiation.reset_course}.to change{negotiation.signer}.to nil
+      end
+
+      it 'returns true' do
+        expect(negotiation.reset_course).to eq true
+      end
+    end
+
+    context 'negotiation is not negotiable' do
+      before(:example) { allow(negotiation).to receive(:negotiable?) { false } }
+      it 'returns false' do
+        expect(negotiation.reset_course).to eq false
+      end
+
+      it 'do not change signer' do
+        expect{ negotiation.reset_course}.not_to change{negotiation.signer}
+      end
+    end
+  end
+
   describe '#abandoned?' do
     
     it 'returns true if a user abandoned the negotiation' do
