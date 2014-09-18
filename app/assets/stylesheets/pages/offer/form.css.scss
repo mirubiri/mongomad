@@ -1,28 +1,24 @@
-.proposal {
-  width: auto;
-  min-height: 84px;
-  max-height: none;
-  height: auto;
-  padding: 0px;
+.proposal-grid{
+  @include box-sizing(border-box);
+  float: left;
+  width: 50%;
+  overflow: auto;
 }
 
-.goods_side
+.goods-grid{
+  @include box-sizing(border-box);
+  float: left;
+  width: 50%;
+  overflow: auto;
+}
 
 .user_selector
 
 .good_selector
 
-.composer_goods
-
 .composer_products
 
 .product
-
-.good-data
-
-.product
-
-.receiver_goods
 
 .receiver_products
 
@@ -32,19 +28,11 @@
 
 .product
 
-.good-data
-
 .good_previewer
-
-.good-data
 
 .description
 
-.proposal_side
-
 .proposal_preview
-
-.proposal
 
 .proposal_form
 

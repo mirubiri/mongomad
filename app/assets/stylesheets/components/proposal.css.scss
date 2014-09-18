@@ -2,6 +2,7 @@
   @include box-sizing(border-box);
   float: left;
   width: 100%;
+  overflow: auto;
   border-bottom: $proposal-border-bottom;
   background-color: $white-bgcolor;
   padding: $proposal-padding;
