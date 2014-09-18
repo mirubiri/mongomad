@@ -12,17 +12,17 @@
     .good_selector
       .composer_goods
         .composer_cash
-          /= element :good, view: :cash
+          //= element :good, view: :cash
         .composer_products
           - data.my_items.each do |item|
-            = element :good, view: :product, data:item, state:'composer'
+            = element :good, view: :product, data:item
 
       .receiver_goods
         .receiver_cash
-          /= element :good, view: :cash
+          = element :good, view: :cash
         .receiver_products
           - data.his_items.each do |item|
-            = element :good, view: :product, data:item, state:'receiver'
+            = element :good, view: :product, data:item
 
     .good_previewer
       .images
@@ -41,7 +41,6 @@
         .receiver_goods
 
       .avatar
-        = small_image_tag(current_user.main_image,'offer-user-image')
-
+        //= user_image_tag(current_user)
 
       = render partial: 'proposal/offer_form', layout: 'proposal/layouts/offer', locals:{ offer:offer }
