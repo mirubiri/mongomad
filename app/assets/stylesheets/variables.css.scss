@@ -58,7 +58,7 @@ $black-font-color: #000;
 $grey-font-color: rgb(153, 153, 153);
 $white-font-color: rgb(253, 253, 253);
 
-//active_nav
+//ACTIVE NAV
 $active-nav-background-color: $nav-selected;
 $active-nav-font-weight: bold;
 $active-nav-font-size: $medium-font-size;
@@ -70,13 +70,11 @@ $previewer-snapshot-image-size: 80px;
 $showcase-ppal-image-size: 500px;
 $showcase-snapshot-image-size: 120px;
 
-
 //REQUEST-LIST
 $request-list-flotation: left;
 $request-list-width: 100%;
 $request-list-margin: $ppal-element-margin;
 $request-list-bgcolor: $white-bgcolor;
-
 
 //REQUEST
 $request-flotation: left;
@@ -88,13 +86,10 @@ $request-controls-padding: 0 5px 0 0;
 $request-controls-alignment: right;
 $request-controls-height: 12px;
 
-
 //REQUESTER
 $requester-textarea-min-height: 38px;
 $requester-textarea-border: 2px solid $container-bgcolor;
 $requester-countdown-margin: 2px 0 0 0;
-
-
 
 //PROPOSAL
 $proposal-border-bottom: 1px solid $grey-border-color;
@@ -103,8 +98,6 @@ $proposal-composer-goods-side-size: 65%;
 $proposal-receiver-goods-side-size: 35%;
 $proposal-composer-good-size: 165px;
 $proposal-receiver-good-size: 70px;
-
-
 
 //ITEM-FORM
 $item-form-body-padding: 10px 5px;
@@ -133,11 +126,9 @@ $cropped-image-button-padding: 3px 0 0 0;
 $cropped-image-button-background-color: #000;
 $preview-alignment: center;
 
-
 //ITEM PREVIEW
 $preview-background-color: #fff;
 $item-preview-big: $previewer-ppal-image-size;
-
 
 //BASE
 $body-float: left;
@@ -149,33 +140,24 @@ $body-margin: 0;
 $body-padding: 0;
 $body-background-color: $body-bgcolor;
 
-
 //MAIN
 $main-float: left;
 $main-overflow: visible;
 $main-width: 100%;
 $main-padding: $container-padding;
 
-
-
-
-
 //IMAGES
 $profile-card-image-size: 92px;
 $offer-avatar-image-size: 48px;
 $omnibar-avatar-image-size: 40px;
 $profile-card-head-image-radius: $five-pix-radius $five-pix-radius 0 0;
-$item-image-size: 155px;
-$receiver-good-image-size: 60px;
-
-
+$good-image-big-size: 155px;
+$good-image-small-size: 60px;
 
 //BUTTONS
 $button-height: 30px;
 $send-button-height: 20px;
 $send-button-margin-top: 4px;
-
-
 
 //AVATAR-GENERAL
 $user-fullname-padding: 0;
@@ -191,7 +173,6 @@ $avatar-profile-card-image-padding: 6px;
 //AVATAR-REQUEST
 $request-avatar-size: 40px;
 
-
 //TEXT-CONTAINER
 $centered-text-padding: 0 5px 0 5px;
 
@@ -199,11 +180,9 @@ $centered-text-padding: 0 5px 0 5px;
 $inline-logout-width: 10%;
 $inline-logout-icon-size: 25px;
 
-
 //SEARCH
 $search-width: 25%;
 $search-alignment: center;
-
 
 //PROFILE-CARD
 $profile-card-border-radius: $five-pix-radius;
@@ -211,12 +190,10 @@ $profile-card-margin: $ppal-element-margin;
 $profile-card-bgcolor: $white-bgcolor;
 $profile-card-box-shadow: $general-shadow;
 
-
 //OMNIBAR
 $omnibar-bgcolor: transparent;
 $omnibar-navigation-width: 35%;
 $omnibar-navigation-alignment: center;
-
 
 //BUSINESS-INFO
 $bussines-info-radius: $five-pix-radius;
@@ -228,7 +205,6 @@ $bussines-info-font-weight: regular;
 $bussines-info-font-size: $big-font-size;
 $bussines-info-font-color: $grey-font-color;
 
-
 //DASHBOARD
 $dashboard-width: 25%;
 $dashboard-radius: $five-pix-radius;
@@ -239,10 +215,6 @@ $dashboard-bgcolor: $blue-bgcolor;
 $dashboard-font-weight: regular;
 $dashboard-font-size: $big-font-size;
 $dashboard-font-color: $grey-font-color;
-
-
-//BEZEL
-
 
 //DASHBOARD-COMPONENT-TITLE
 $dashboard-component-title-padding: 5px 0 0 0;
@@ -284,12 +256,9 @@ $offer-message-min-height: 50px;
 $offer-message-text-align: left;
 $offer-message-background: transparent;
 
-
 //OFFER-CONTROLS
 $offer-controls-padding: 5px;
 $offer-controls-background: transparent;
-
-
 
 //TEXTS
 //user-data
@@ -339,8 +308,6 @@ $controls-font-size: $extra-small-font-size;
 $controls-color: $blue-font-color;
 $controls-text-align: $request-controls-alignment;
 
-
-
 //timestamp{
 $timestamp-padding: $request-controls-padding;
 $timestamp-font-weight: regular;
@@ -350,7 +317,6 @@ $timestamp-font-size: $small-font-size;
 $timestamp-color: $blue-font-color;
 $timestamp-text-align: right;
 
-
 //description{
 $description-padding: $centered-text-padding;
 $description-text-align: center;
@@ -358,24 +324,20 @@ $description-font-weight: regular;
 $description-font-size: $medium-font-size;
 $description-color: $grey-font-color;
 
-
 //good-data{
 $good-data-font-weight: regular;
 $good-data-font-size: $big-font-size;
 $good-data-color: $grey-font-color;
 $good-data-margin: 0 0 10px 0;
 
-
 //welcome-info
 $welcome-info-font-size: $medium-font-size;
 $welcome-info-font-weight: regular;
 $welcome-info-color: $white-font-color;
 
-
 //logo-image.
 $logo-image-height: 40px;
 $logo-image-width: 150px;
-
 
 //omnibar-user-image
 $omnibar-user-image-height: $omnibar-avatar-image-size;
@@ -389,21 +351,18 @@ $request-user-image-width: $request-avatar-size;
 $icon-image-height: 40px;
 $icon-image-width: 40px;
 
-//composer-good-image
-$composer-good-image-height: $item-image-size;
-$composer-good-image-width: $item-image-size;
-$composer-good-image-border: $product-image-border;
+//good-image-big
+$good-image-big-height: $good-image-big-size;
+$good-image-big-width: $good-image-big-size;
+$good-image-big-border: $product-image-border;
 
-//receiver-good-image
-$receiver-good-image-height: $receiver-good-image-size;
-$receiver-good-image-width: $receiver-good-image-size;
-$receiver-good-image-border: $product-image-border;
-
-//profile-card-composition-image
+//good-image-small
+$good-image-small-height: $good-image-small-size;
+$good-image-small-width: $good-image-small-size;
+$good-image-small-border: $product-image-border;
 
 //profile-card-user-image
 $profile-card-user-image-border: 1px solid $grey-border-color;
-
 
 //negotiation-user-image
 $negotiation-user-image-height: 64px;

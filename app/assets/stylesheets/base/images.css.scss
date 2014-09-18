@@ -4,45 +4,17 @@
   height: $logo-image-height;
 }
 
+.icon-image {
+  width: $icon-image-width;
+  height: $icon-image-height;
+}
+
 .omnibar-user-image {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
   width: $omnibar-user-image-width;
   height: $omnibar-user-image-height;
-}
-
-.request-user-image {
-  @include box-sizing(border-box);
-  overflow: auto;
-  float: left;
-  width: $request-user-image-height;
-  height: $request-user-image-height;
-}
-
-.icon-image {
-  width: $icon-image-width;
-  height: $icon-image-height;
-}
-
-.composer-good-image {
-  @include box-sizing(border-box);
-  @include border-radius(5px 5px 0 0);
-  overflow: auto;
-  float: left;
-  width: $composer-good-image-width;
-  height: $composer-good-image-height;
-  border: $composer-good-image-border;
-}
-
-.receiver-good-image {
-  @include box-sizing(border-box);
-  @include border-radius(5px 5px 0 0);
-  overflow: auto;
-  float: left;
-  width: $receiver-good-image-width;
-  height: $receiver-good-image-height;
-  border: $receiver-good-image-border;
 }
 
 .profile-card-composition-image {
@@ -57,6 +29,26 @@
   width: 100%;
   height: 100%;
   border: $profile-card-user-image-border;
+}
+
+.selector-user-image {
+  @include border-radius(50%, 50%);
+  width: $message-user-image-width;
+  height: $message-user-image-height;
+}
+
+.request-user-image {
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  width: $request-user-image-height;
+  height: $request-user-image-height;
+}
+
+.offer-user-image {
+  width: 100%;
+  height: 100%;
+  border: $offer-user-image-border;
 }
 
 .negotiation-user-image {
@@ -77,16 +69,24 @@
   height: $message-user-image-height;
 }
 
-.offer-user-image {
-  width: 100%;
-  height: 100%;
-  border: $offer-user-image-border;
+.good-image-big {
+  @include box-sizing(border-box);
+  @include border-radius(5px 5px 0 0);
+  overflow: auto;
+  float: left;
+  width: $good-image-big-width;
+  height: $good-image-big-height;
+  border: $good-image-big-border;
 }
 
-.good-image {
-  width: $item-image-size;
-  height: $item-image-size;
-  border: $item-image-border;
+.good-image-small {
+  @include box-sizing(border-box);
+  @include border-radius(5px 5px 0 0);
+  overflow: auto;
+  float: left;
+  width: $good-image-small-width;
+  height: $good-image-small-height;
+  border: $good-image-small-border;
 }
 
 .previewer-model-image {

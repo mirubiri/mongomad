@@ -13,12 +13,6 @@
   padding: $item-padding;
 }
 
-.good-image {
-  @include box-sizing(border-box);
-  overflow: auto;
-  float: left;
-}
-
 @mixin product($width) {
   .product {
     @include box-sizing(border-box);
