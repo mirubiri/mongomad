@@ -11,7 +11,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       format.html { render :template => 'proposal/new', locals:{ offer:offer } }
-      format.js { render template: "proposal/new.js.coffee" }
+      format.js { render 'new', locals:{ offer:offer } }
     end
   end
 
