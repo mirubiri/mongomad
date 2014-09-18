@@ -41,6 +41,7 @@
         .receiver_goods
 
       .avatar
-        //= user_image_tag(current_user)
+        = small_image_tag(current_user.main_image,'offer-user-image')
+
 
       = render partial: 'proposal/offer_form', layout: 'proposal/layouts/offer', locals:{ offer:offer }

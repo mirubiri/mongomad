@@ -14,15 +14,14 @@ module ImageHelper
 
   def small_image_tag(image,klass)
     base(h:80,w:80,klass:klass,image:image)
-  end  
+  end
 
   private
-  
   def base(h:,w:,klass:,image:)
     cl_image_tag(image.id, class:klass,
-       transformation:[
+      transformation:[
         {x:image.x, y:image.y, width:image.w, height:image.h, crop: :crop },
         {width:w, height:h, crop: :fit}
-       ]) if image
+      ]) if image
   end
 end
