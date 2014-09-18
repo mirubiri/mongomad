@@ -5,9 +5,9 @@
   .goods_side
     .user_selector
       .composer_face
-        = user_image_tag(current_user)
+        = small_image_tag(current_user.main_image,'composer-good-image')
       .receiver_face
-        = user_image_tag(data.visited_user)
+        = small_image_tag(data.visited_user.main_image,'receiver-good-image')
 
     .good_selector
       .composer_goods
@@ -41,6 +41,6 @@
         .receiver_goods
 
       .avatar
-        = user_image_tag(current_user)
+        //= user_image_tag(current_user)
 
       = render partial: 'proposal/offer_form', layout: 'proposal/layouts/offer', locals:{ offer:offer }
