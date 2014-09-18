@@ -2,10 +2,10 @@
   = component :avatar, view: :negotiation, data:data.visited_user
 
 - content_for :proposal
-  = component :proposal
+  = component :proposal, data:negotiation.proposal
 
 - content_for :conversation
-  = component :conversation
+  = component :conversation, data:negotiation.messages
 
 - content_for :leave_negotiation_control
   | leave_negotiation
