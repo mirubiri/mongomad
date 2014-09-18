@@ -3,14 +3,14 @@
   overflow: auto;
   float: left;
   width: 100%;
-  padding: $item-form-body-padding;
   margin: $item-form-body-margin;
+  padding: $item-form-body-padding;
 }
 
 .item-image-uploader {
   @include box-sizing(border-box);
-  float: left;
   overflow: auto;
+  float: left;
   width: $image-uploader-width;
 }
 
@@ -21,11 +21,9 @@
   width: $image-descriptor-width;
 }
 
-
 .preview {
   float: left;
   background-color: $preview-background-color;
-
   img {
     width: $item-preview-big;
     max-width: $item-preview-big;
@@ -35,23 +33,21 @@
   }
 }
 
-
 .item-image-miniatures {
   @include box-sizing(border-box);
   display: flex;
-  flex-direction: row;
-  margin: $item-image-miniatures-margin;
   overflow: auto;
   float: left;
   width: $previewer-ppal-image-size;
+  margin: $item-image-miniatures-margin;
   text-align: center;
-}
 
+  flex-direction: row;
+}
 
 .item-miniature-wrapper {
   flex-grow: 1;
 }
-
 
 .cropped-image-grid {
   overflow: visible;
@@ -60,14 +56,12 @@
   margin: $cropped-image-grid-margin;
 }
 
-
 .cropped-image {
   overflow: hidden;
   float: left;
   width: $cropped-image-width;
   height: $cropped-image-height;
   margin: $cropped-image-margin;
-
   img {
     float: left;
     width: 100%;
@@ -75,8 +69,6 @@
     background-color: #fff;
   }
 }
-
-
 
 label.cropped-image-button {
   @include box-sizing(border-box);
@@ -99,7 +91,6 @@ label.cropped-image-button {
   left: 0;
   width: $cropped-image-button-size;
   height: $cropped-image-button-size;
-
   input {
     @include opacity(0);
     float: left;
@@ -111,5 +102,3 @@ label.cropped-image-button {
 #pan {
   overflow: hidden;
 }
-
-

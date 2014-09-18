@@ -31,13 +31,14 @@
 
 .message-text {
   @include box-sizing(border-box);
-  flex: auto;
   float: left;
   padding: $message-text-padding;
   text-align: $message-text-text-align;
   color: $message-text-color;
   font-size: $message-text-font-size;
   font-weight: $message-text-font-weight;
+
+  flex: auto;
 }
 
 .title {
@@ -65,7 +66,10 @@
   color: $controls-color;
   font-size: $controls-font-size;
   font-weight: $controls-font-weight;
-  a {padding-right: 0;padding-left: 0}
+  a {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .timestamp {
@@ -93,10 +97,10 @@
   @include box-sizing(border-box);
   float: left;
   width: 100%;
+  margin: $good-data-margin;
   color: $good-data-color;
   font-size: $good-data-font-size;
   font-weight: $good-data-font-weight;
-  margin: $good-data-margin;
 }
 
 

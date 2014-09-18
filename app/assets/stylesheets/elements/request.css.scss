@@ -1,6 +1,6 @@
 .request {
-  float: $request-flotation;
   @include box-sizing(border-box);
+  float: $request-flotation;
   width: $request-width;
   border-bottom: $request-border-bottom;
   margin-top: $request-margin;
@@ -8,8 +8,8 @@
 }
 
 .request-message-grid {
-  float: left;
   display: flex;
-  width: 100%;
   overflow: auto;
+  float: left;
+  width: 100%;
 }
