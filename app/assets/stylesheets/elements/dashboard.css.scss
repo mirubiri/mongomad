@@ -4,6 +4,7 @@
   @include box-sizing(border-box);
   float: left;
   width: $dashboard-width;
+  min-width: $dashboard-width;
   background-color: $dashboard-bgcolor;
 }
 
