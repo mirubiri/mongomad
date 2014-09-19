@@ -25,7 +25,7 @@ linters:
     style: same_line # or 'new_line'
 
   EmptyLineBetweenBlocks:
-    enabled: true
+    enabled: false  #TODO: habilitar
     ignore_single_line_blocks: false
 
   EmptyRule:
@@ -179,7 +179,7 @@ linters:
     extra_properties: []
 
   SelectorDepth:
-    enabled: true
+    enabled: false #TODO: habilitar
     max_depth: 1
 
   Shorthand:
