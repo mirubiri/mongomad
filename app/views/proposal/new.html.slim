@@ -1,6 +1,6 @@
 - content_for :expositor
   | offers
-  
+
 .proposal#new_proposal
   .goods_side
     .user_selector
@@ -13,15 +13,14 @@
 
         .composer_products
           - data.my_items.each do |item|
-            = element :good, view: :product, data:item, state:big
+            = element :good, view: :product_big, data:item
 
       .receiver_goods
-        .receiver_cash
           = static_image_tag('cash','good-image-big')
 
         .receiver_products
           - data.his_items.each do |item|
-            = element :good, view: :product, data:item, state:big
+            = element :good, view: :product_big, data:item
 
     .good_previewer
       .images
