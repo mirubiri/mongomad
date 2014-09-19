@@ -1,39 +1,13 @@
-.proposal-grid{
+.proposal-grid {
   @include box-sizing(border-box);
+  overflow: auto;
   float: left;
   width: 50%;
-  overflow: auto;
 }
 
-.goods-grid{
+.goods-grid {
   @include box-sizing(border-box);
+  overflow: auto;
   float: left;
   width: 50%;
-  overflow: auto;
 }
-
-.user_selector
-
-.good_selector
-
-.composer_products
-
-.product
-
-.receiver_products
-
-.product
-
-.good-data
-
-.product
-
-.good_previewer
-
-.description
-
-.proposal_preview
-
-.proposal_form
-
-.new_offer
