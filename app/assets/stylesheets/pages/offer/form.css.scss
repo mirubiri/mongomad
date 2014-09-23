@@ -12,13 +12,25 @@
   width: $goods-grid-widht;
 }
 
-.user_selector {
+.users_layer {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
+  width: $user-selector-width;
   padding: $user-selector-padding;
 }
 
-.good_previewer {
+.goods_layer {
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  width: $goods-layer-width;
+  padding: $goods-layer-padding;
+}
 
+.good_previewer {
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  padding: $good-previewer-padding;
 }

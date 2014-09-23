@@ -246,6 +246,9 @@ $product-image-border: 1px solid $grey-border-color;
 //OFFER
 $offer-width: 285px;
 
+
+
+
 //TITLE
 $title-height: 25px;
 $title-background-color: rgb(205, 205, 205);
@@ -253,14 +256,23 @@ $title-border-bottom: 1px solid $grey-border-color;
 $title-padding: 5px 0 0 0;
 $title-text-align: center;
 
+
+
+
 //OFFER-MESSAGE
 $offer-message-min-height: 50px;
 $offer-message-text-align: left;
 $offer-message-background: transparent;
 
+
+
+
 //OFFER-CONTROLS
 $offer-controls-padding: 5px;
 $offer-controls-background: transparent;
+
+
+
 
 //TEXTS
 //user-data
@@ -382,7 +394,12 @@ $message-user-image-width: 40px;
 $offer-user-image-border: 1px solid $grey-border-color;
 
 
+
 //OFFER FORM
 $proposal-grid-widht: 50%;
 $goods-grid-widht: 50%;
+$user-selector-width: 100%;
 $user-selector-padding: 5px;
+$goods-layer-width: 100%;
+$goods-layer-padding: 5px;
+$good-previewer-padding: 5px;

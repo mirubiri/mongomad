@@ -3,11 +3,11 @@
 
 .proposal#new_proposal
   .goods_side
-    .user_selector
+    .users_layer
       = small_image_tag(current_user.main_image,'selector-user-image')
       = small_image_tag(data.visited_user.main_image,'selector-user-image')
 
-    .good_selector
+    .goods_layer
       .composer_goods
         = static_image_tag('cash','good-image-big')
 
