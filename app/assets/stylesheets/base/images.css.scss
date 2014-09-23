@@ -100,14 +100,14 @@
 
 %good-image-big {
   @include good-image;
-  width: $good-image-big-image-width;
-  height: $good-image-big-image-height;
+  width: $good-image-big-width;
+  height: $good-image-big-height;
 }
 
 %good-image-small {
   @include good-image;  
-  width: $good-image-small-image-width;
-  height: $good-image-small-image-height;
+  width: $good-image-small-width;
+  height: $good-image-small-height;
 }
 
 .product-composer-image {
