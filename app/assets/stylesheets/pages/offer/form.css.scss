@@ -35,8 +35,14 @@
   width: 0;
   height: 100%;
   padding: $good-previewer-padding;
+  background-color: #f00;
 }
 
 #slide-panel {
+  @include transition-property(width);
+  @include transition-duration(1s);
+}
 
+#slide-panel:hover {
+  width: 100%;
 }

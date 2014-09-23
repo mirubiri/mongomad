@@ -49,10 +49,10 @@
           - data.his_items.each do |item|
             = element :good, view: :product_big, data:item
 
-    .good_previewer
-      .images
-        - 1.upto(3) do |index|
-          .image
+      .good_previewer#slide-panel
+        .images
+          - 1.upto(3) do |index|
+            .image
 
-      .good-data
-      .description
+        .good-data
+        .description

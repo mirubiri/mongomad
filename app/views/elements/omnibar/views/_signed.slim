@@ -5,28 +5,28 @@
 
   nav.navigation-controls
     li
-      = link_to [image_tag static_image_path('negotiations'),
+      = link_to (image_tag static_image_path('negotiations'),
         class: 'icon-image',
         alt: 'negotiations',
-        title: 'negotiations'],
+        title: 'negotiations'),
         user_negotiations_path(current_user)
     li
-      = link_to [image_tag static_image_path('deals'),
+      = link_to (image_tag static_image_path('deals'),
         class: 'icon-image',
         alt: 'deals',
-        title: 'deals'],
+        title: 'deals'),
         user_deals_path(current_user)
     li
-      = link_to [image_tag static_image_path('items'),
+      = link_to (image_tag static_image_path('items'),
         class: 'icon-image',
         alt: 'items',
-        title: 'items'],
+        title: 'items'),
         user_items_path(current_user)
     li
-      = link_to [image_tag static_image_path('profile'),
+      = link_to (image_tag static_image_path('profile'),
         class: 'icon-image',
         alt: 'profile',
-        title: 'profile'],
+        title: 'profile'),
         user_profile_path(current_user)
 
   = component :search
