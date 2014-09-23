@@ -85,7 +85,7 @@
   height: $showcase-ppal-image-size;
 }
 
-@mixin good-image {
+%good-image {
   @include box-sizing(border-box);
   @include border-radius(5px 5px 0 0);
   overflow: auto;
@@ -94,13 +94,13 @@
 }
 
 %good-image-big {
-  @include good-image;
+  @extend %good-image;
   width: $good-image-big-width;
   height: $good-image-big-height;
 }
 
 %good-image-small {
-  @include good-image;  
+  @extend %good-image;  
   width: $good-image-small-width;
   height: $good-image-small-height;
 }
