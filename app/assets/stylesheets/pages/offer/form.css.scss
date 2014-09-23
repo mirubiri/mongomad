@@ -13,7 +13,10 @@
 }
 
 .user_selector {
-
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  padding: $user-selector-padding;
 }
 
 .good_previewer {
