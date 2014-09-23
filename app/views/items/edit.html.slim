@@ -3,7 +3,10 @@
   .item-form-body
     .item-image-uploader
       #pan.preview
-        = big_image_tag(item.main_image,'previewer-model-image')
+        = image_tag big_image_path(item.main_image),
+          class: 'previewer-model-image',
+          alt: 'item.main_image.id',
+          title: 'item.main_image.id'
 
       .progress_bar
 

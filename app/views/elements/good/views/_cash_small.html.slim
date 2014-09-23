@@ -1,5 +1,8 @@
 .cash
-  = static_image_tag('cash',"good-image-small")
+  = image_tag static_image_path('cash'),
+    class: 'good-image-small',
+    alt: 'cash',
+    title: 'cash'
 
   .amount
     = good.amount

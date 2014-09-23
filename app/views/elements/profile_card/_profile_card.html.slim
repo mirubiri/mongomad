@@ -1,5 +1,8 @@
 - content_for :head_image
-  = static_image_tag('header','profile-card-composition-image')
+  = image_tag static_image_path('header'),
+    class: 'profile-card-composition-image',
+    alt: 'header',
+    title: 'header'
 
 - content_for :avatar
   = component :avatar, view: :profile_card, data:data.visited_user

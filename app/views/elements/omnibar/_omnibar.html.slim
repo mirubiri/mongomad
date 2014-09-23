@@ -1,2 +1,5 @@
 - content_for :logo
-  = static_image_tag('logo','logo-image')
+  = image_tag static_image_path('logo'),
+    class: 'logo-image',
+    alt: 'logo',
+    title: 'logo'

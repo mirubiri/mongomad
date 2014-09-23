@@ -1,5 +1,8 @@
 .product
-  = medium_image_tag(good.main_image,"good-image-big")
+  = image_tag medium_image_path(good.main_image),
+    class: 'good-image-big',
+    alt: 'good.main_image.id',
+    title: 'good.main_image.id'
 
   .good-data
     = good.name

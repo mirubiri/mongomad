@@ -1,3 +1,6 @@
 .avatar-offer
   .offer-avatar-image-wrapper
-    = small_image_tag(avatar.main_image,'offer-user-image')
+    = image_tag small_image_path(avatar.main_image),
+      class: 'offer-user-image',
+      alt: avatar.main_image.id,
+      title: avatar.main_image.id

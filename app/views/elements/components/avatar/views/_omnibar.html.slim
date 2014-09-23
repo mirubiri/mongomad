@@ -1,5 +1,8 @@
 .avatar-omnibar
-  = small_image_tag(avatar.main_image,'omnibar-user-image')
+  = image_tag small_image_path(avatar.main_image),
+    class: 'omnibar-user-image',
+    alt: avatar.main_image.id,
+    title: avatar.main_image.id
 
   .avatar-omnibar-data-side
     .user-data

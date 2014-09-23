@@ -1,7 +1,7 @@
 module ImageHelper
 
   def static_image_path(public_id)
-    cl_image_tag("static/#{public_id}")
+    cl_image_path("static/#{public_id}")
   end
 
   def big_image_path(image)

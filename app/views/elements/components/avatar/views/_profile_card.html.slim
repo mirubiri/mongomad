@@ -1,19 +1,26 @@
 .avatar-profile-card
   .profile-avatar-image-wrapper
-    = small_image_tag(avatar.main_image,'profile-card-user-image')
+    = image_tag small_image_path(avatar.main_image),
+      class: 'profile-card-user-image',
+      alt: avatar.main_image.id,
+      title: avatar.main_image.id
 
   .avatar-profile-data-side
-    / .reputation
-    /   .icon
-    /      = static_image_tag('star')
-    /   .value
-    /     | 75%
+    .reputation
+      / = image_tag static_image_path('star'),
+      /   class: 'star-icon-image',
+      /   alt: 'star',
+      /   title: 'star'
+      .value
+        | 75%
 
-    / .friends
-    /   .icon
-    /     = static_image_tag('friends')
-    /   .number
-    /     | 350
+    .friends
+      / = image_tag static_image_path('friends'),
+      /   class: 'friends-icon-image',
+      /   alt: 'friends',
+      /   title: 'friends'
+      .number
+        | 350
 
     .user-nick
       = avatar.full_name

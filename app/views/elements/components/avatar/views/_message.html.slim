@@ -1,2 +1,5 @@
 .avatar-message
-  = small_image_tag(avatar.main_image,'message-user-image')
+  = image_tag small_image_path(avatar.main_image),
+  class: 'message-user-image',
+  alt: avatar.main_image.id,
+  title: avatar.main_image.id
