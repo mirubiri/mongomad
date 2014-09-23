@@ -50,6 +50,9 @@
         .composer_goods
         .receiver_goods
 
-      = small_image_tag(current_user.main_image,'offer-user-image')
+      = image_tag small_image_path(current_user.main_image),
+        class: 'offer-user-image',
+        alt: 'current_user.main_image.id',
+        title: 'current_user.main_image.id'
 
       = render partial: 'proposal/offer_form', layout: 'proposal/layouts/offer', locals:{ offer:offer }
