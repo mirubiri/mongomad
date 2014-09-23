@@ -2,14 +2,14 @@
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  width: $proposal-grid-widht;
+  width: $proposal-grid-width;
 }
 
 .goods-grid {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  width: $goods-grid-widht;
+  width: $goods-grid-width;
 }
 
 .users_layer {
