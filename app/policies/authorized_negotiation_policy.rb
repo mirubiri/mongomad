@@ -6,6 +6,6 @@ class AuthorizedNegotiationPolicy
 
 	def authorized?(user_id)
 		return false if negotiation.abandoned?
-		negotiation.user_ids.include? user_id
+		negotiation.participant? user_id
 	end
 end
