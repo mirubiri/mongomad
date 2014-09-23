@@ -2,12 +2,20 @@
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  width: 50%;
+  width: $proposal-grid-widht;
 }
 
 .goods-grid {
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
-  width: 50%;
+  width: $goods-grid-widht;
+}
+
+.user_selector {
+
+}
+
+.good_previewer {
+
 }
