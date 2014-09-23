@@ -69,25 +69,6 @@
   height: $message-user-image-height;
 }
 
-.good-image-big {
-  @include box-sizing(border-box);
-  @include border-radius(5px 5px 0 0);
-  overflow: auto;
-  float: left;
-  width: $good-image-big-width;
-  height: $good-image-big-height;
-  border: $good-image-big-border;
-}
-
-.good-image-small {
-  @include box-sizing(border-box);
-  @include border-radius(5px 5px 0 0);
-  overflow: auto;
-  float: left;
-  width: $good-image-small-width;
-  height: $good-image-small-height;
-  border: $good-image-small-border;
-}
 
 .previewer-model-image {
   width: $previewer-ppal-image-size;
@@ -107,4 +88,48 @@
 .showcase-display-image {
   width: $showcase-ppal-image-size;
   height: $showcase-ppal-image-size;
+}
+
+@mixin good-image {
+  @include box-sizing(border-box);
+  @include border-radius(5px 5px 0 0);
+  overflow: auto;
+  float: left;
+  border: $good-image-border;  
+}
+
+%good-image-big {
+  @include good-image;
+  width: $good-image-big-image-width;
+  height: $good-image-big-image-height;
+}
+
+%good-image-small {
+  @include good-image;  
+  width: $good-image-small-image-width;
+  height: $good-image-small-image-height;
+}
+
+.product-composer-image {
+  @extend %good-image-big;
+}
+
+.product-receiver-image {
+  @extend %good-image-small;
+}
+
+.cash-composer-image {
+  @extend %good-image-big;
+}
+
+.cash-receiver-image {
+  @extend %good-image-small;
+}
+
+.item-image {
+  @extend %good-image-big;
+}
+
+.product-image {
+  @extend %good-image-big;
 }

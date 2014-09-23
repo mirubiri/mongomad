@@ -1,0 +1,12 @@
+.item
+  = image_tag medium_image_path(good.main_image),
+    class: 'item-image',
+    alt: 'good.main_image.id',
+    title: 'good.main_image.id'
+
+  .good-data
+    = good.name
+
+  .controls
+    = link_to "edit", edit_user_item_path(current_user,good.id)
+    | delete

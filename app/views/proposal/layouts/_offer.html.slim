@@ -37,7 +37,7 @@
 
         .composer_products
           - data.my_items.each do |item|
-            = element :good, view: :product_big, data:item
+            = element :good, view: :product, data:item
 
       .receiver_goods
         = image_tag static_image_path('cash'),
@@ -47,7 +47,7 @@
 
         .receiver_products
           - data.his_items.each do |item|
-            = element :good, view: :product_big, data:item
+            = element :good, view: :product, data:item
 
       .good_previewer#slide-panel
         .images

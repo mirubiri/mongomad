@@ -246,9 +246,6 @@ $product-image-border: 1px solid $grey-border-color;
 //OFFER
 $offer-width: 285px;
 
-
-
-
 //TITLE
 $title-height: 25px;
 $title-background-color: rgb(205, 205, 205);
@@ -256,23 +253,14 @@ $title-border-bottom: 1px solid $grey-border-color;
 $title-padding: 5px 0 0 0;
 $title-text-align: center;
 
-
-
-
 //OFFER-MESSAGE
 $offer-message-min-height: 50px;
 $offer-message-text-align: left;
 $offer-message-background: transparent;
 
-
-
-
 //OFFER-CONTROLS
 $offer-controls-padding: 5px;
 $offer-controls-background: transparent;
-
-
-
 
 //TEXTS
 //user-data
@@ -365,15 +353,17 @@ $request-user-image-width: $request-avatar-size;
 $icon-image-height: 40px;
 $icon-image-width: 40px;
 
-//good-image-big
+//@good-image
+$good-image-border: $product-image-border;
+
+//%good-image-big
 $good-image-big-height: $good-image-big-size;
 $good-image-big-width: $good-image-big-size;
-$good-image-big-border: $product-image-border;
 
-//good-image-small
+//%good-image-small
 $good-image-small-height: $good-image-small-size;
 $good-image-small-width: $good-image-small-size;
-$good-image-small-border: $product-image-border;
+
 
 //profile-card-user-image
 $profile-card-user-image-border: 1px solid $grey-border-color;
@@ -392,8 +382,6 @@ $message-user-image-width: 40px;
 
 //offer-user-image
 $offer-user-image-border: 1px solid $grey-border-color;
-
-
 
 //OFFER FORM
 $proposal-grid-widht: 50%;
