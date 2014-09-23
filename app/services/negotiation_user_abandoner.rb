@@ -6,12 +6,11 @@ class NegotiationUserAbandoner
   end
 
   def abandon(user_id)
-    unless negotiation.abandoned?
-      make_offer_negotiable
-      remove_user(user_id)
-    else
-      negotiation.destroy
-    end
+    return false unless negotiation.participant? user_id
+    return negotiation.destroy if negotiation.abandoned?
+    
+    make_offer_negotiable
+    remove_user(user_id)
   end
 
   private

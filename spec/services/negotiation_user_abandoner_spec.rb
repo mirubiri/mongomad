@@ -5,6 +5,20 @@ describe NegotiationUserAbandoner do
   let(:negotiation_user_abandoner) { NegotiationUserAbandoner.new(negotiation) }
   let(:user_id) { negotiation.composer.id }
 
+  shared_examples 'non participant user' do
+    context 'given user is not participating in the negotiation' do
+      before(:example) { allow(negotiation).to receive(:participant?) { false } }
+    
+      it 'returns false' do
+        expect(negotiation_user_abandoner.abandon('non_participant')).to eq false
+      end
+
+      it 'does not call negotiation.destroy' do
+        expect(negotiation).not_to receive(:destroy)
+      end
+    end
+  end
+
   describe '#abandon(user_id)' do
     context 'negotiation is not abandoned' do
       before(:example) do
@@ -23,6 +37,8 @@ describe NegotiationUserAbandoner do
       it 'returns true' do
         expect(negotiation_user_abandoner.abandon(user_id)).to eq true
       end
+
+      include_examples 'non participant user'
     end
 
     context 'negotiation is abandoned' do
@@ -34,22 +50,8 @@ describe NegotiationUserAbandoner do
         expect(negotiation).to receive(:destroy)
         negotiation_user_abandoner.abandon(user_id)
       end
+
+      include_examples 'non participant user'
     end
-
-    context 'given user is not participating' do
-      before(:example) do
-        allow(negotiation).to receive(:abandoned?) { false }
-      end
-
-      it 'returns false' do
-        expect(negotiation_user_abandoner.abandon('non_participant')).to eq false
-      end
-
-      it 'does not call negotiation.destroy' do
-        expect(negotiation).not_to receive(:destroy)
-      end
-    end
-
-    pending 'falla cuando un usuario desconocido es el ultimo en abandonar la negociacion'
   end
 end
