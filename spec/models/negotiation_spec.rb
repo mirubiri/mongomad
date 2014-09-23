@@ -4,6 +4,7 @@ describe Negotiation do
   let(:negotiation) { Fabricate(:negotiation) }
   let(:composer_id) { negotiation.composer.id }
   let(:receiver_id) { negotiation.receiver.id }
+  let(:message) { Fabricate.build(:message,id:composer_id) }
 
   it { is_expected.to include_module Proposable }
   it { is_expected.to include_module Conversation }
@@ -155,13 +156,13 @@ describe Negotiation do
     end
   end
 
-  describe '#post_message(user_id,message)' do
+  describe '#post_message(message)' do
     let!(:message_poster) { MessagePoster.new(negotiation) }
     
     it 'calls MessagePoster#post_message' do
       allow(MessagePoster).to receive(:new) { message_poster }
-      expect(message_poster).to receive(:post_message).with(user_id:composer_id,message:'message')
-      negotiation.post_message(user_id:user_id,message:'message')
+      expect(message_poster).to receive(:post_message).with(message)
+      negotiation.post_message(message)
     end
   end
 
