@@ -62,6 +62,10 @@ class Negotiation
     negotiation_proposer.propose(proposal)
   end
 
+  def participant?(user_id)
+    user_ids.include? user_id
+  end
+
   def reset_course
     negotiable? && update_attributes(signer:nil)
   end

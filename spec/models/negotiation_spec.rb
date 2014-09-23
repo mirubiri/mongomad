@@ -180,4 +180,14 @@ describe Negotiation do
       expect(negotiation.cash_owner).to eq negotiation.receiver.id
     end
   end
+
+  describe '#participant?' do
+    it 'returns false if given user_id is not participating in the negotiation' do
+      expect(negotiation.participant? composer_id).to eq true
+    end
+
+    it 'returns true if given user_id is participating in the negotiation' do
+      expect(negotiation.participant? 'non_participant').to eq false
+    end
+  end
 end
