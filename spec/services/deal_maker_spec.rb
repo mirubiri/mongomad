@@ -35,6 +35,8 @@ describe DealMaker do
         expect{deal_maker.make_deal}.not_to change{ Deal.count }
       end
 
+      xit 'saves the new deal'
+
       it 'does not destroy the negotiation' do
         deal_maker.make_deal
         expect(negotiation).not_to be_destroyed
