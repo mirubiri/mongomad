@@ -172,6 +172,28 @@
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#post_message-instance_method" title="#post_message (instance method)">- (Object) <strong>post_message</strong>(message) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -270,10 +292,50 @@
   </div>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="post_message-instance_method">
+  
+    - (<tt>Object</tt>) <strong>post_message</strong>(message) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+8
+9
+10
+11
+12</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/services/message_poster.rb', line 8</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_post_message'>post_message</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_conversable'>conversable</span><span class='period'>.</span><span class='id identifier rubyid_authorized?'>authorized?</span> <span class='id identifier rubyid_message'>message</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_conversable'>conversable</span><span class='period'>.</span><span class='id identifier rubyid_messages'>messages</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_message'>message</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
     <div id="footer">
-  Generated on Tue Sep 23 09:39:08 2014 by
+  Generated on Wed Sep 24 07:17:28 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>
