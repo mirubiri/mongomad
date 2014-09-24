@@ -54,8 +54,8 @@ class Negotiation
     can_confirm_policy.can_confirm?(user_id)
   end
 
-  def post_message(user_id:,message:)
-    message_poster.post_message(user_id:user_id,message:message)
+  def post_message(message)
+    message_poster.post_message(message)
   end
 
   def propose(proposal)
