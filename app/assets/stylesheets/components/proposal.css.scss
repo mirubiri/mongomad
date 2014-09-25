@@ -3,6 +3,7 @@
   overflow: auto;
   float: left;
   width: 100%;
+  min-height: $proposal-min-height;
   border-bottom: $proposal-border-bottom;
   background-color: $white-bgcolor;
   padding: $proposal-padding;

@@ -93,6 +93,7 @@ $requester-countdown-margin: 2px 0 0 0;
 
 //PROPOSAL
 $proposal-border-bottom: 1px solid $grey-border-color;
+$proposal-min-height: 250px;
 $proposal-padding: 15px 15px 30px 15px;
 $proposal-composer-goods-side-size: 65%;
 $proposal-receiver-goods-side-size: 35%;
@@ -384,6 +385,7 @@ $message-user-image-width: 40px;
 $offer-user-image-border: 1px solid $grey-border-color;
 
 //OFFER FORM
+$offer-form-body-padding: 10px;
 $proposal-grid-width: 50%;
 $goods-grid-width: 50%;
 $user-selector-width: 100%;
