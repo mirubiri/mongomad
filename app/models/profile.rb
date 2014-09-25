@@ -18,4 +18,8 @@ class Profile
   def surnames
     full_name.split.drop(1).join(' ')
   end
+
+  def main_image
+    images.where(main:true).first || '/static/user_default'
+  end
 end

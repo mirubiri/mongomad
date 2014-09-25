@@ -6,6 +6,7 @@ describe Profile do
   let(:many_words_full_name) { "one two three"}
   let(:first_word) { "one" }
   let(:other_words) { "two three"}
+  let(:image) { profile.main_image }
 
   # Modules
   it { is_expected.to include_module Attachment::Images }
@@ -54,6 +55,22 @@ describe Profile do
 
       it 'returns the surnames on full_name' do
         expect(profile.surnames).to eq other_words
+      end
+    end
+  end
+
+  describe '#main_image' do
+    context 'profile has main_image' do
+      it 'returns the main_image' do
+        expect(profile.main_image).to eq image
+      end
+    end
+
+    context 'profile has not main_image' do
+      before(:example) { profile.images.destroy }
+
+      it 'returns a default image' do
+        expect(profile.main_image).to eq '/static/user_default'
       end
     end
   end
