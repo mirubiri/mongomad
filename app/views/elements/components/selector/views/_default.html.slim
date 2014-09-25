@@ -1,0 +1,21 @@
+.users_layer
+  = yield_content :users
+
+.goods_layer
+
+  .composer_goods
+
+    = yield_content :composer_products
+
+  .receiver_goods
+
+    = yield_content :receiver_products
+
+.good_previewer#slide-panel
+
+  .images
+    = yield_content :preview_product_images
+
+  .good-data
+
+  .description

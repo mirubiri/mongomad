@@ -1,0 +1,33 @@
+- content_for :users
+  = image_tag small_image_path(current_user.main_image),
+    class: 'selector-user-image',
+    alt: 'current_user.main_image.id',
+    title: 'current_user.main_image.id'
+  = image_tag small_image_path(data.visited_user.main_image),
+    class: 'selector-user-image',
+    alt: 'data.visited_user.main_image.id',
+    title: 'data.visited_user.main_image.id'
+
+- content_for :composer_products
+  = image_tag static_image_path('cash'),
+    class: 'good-image-big',
+    alt: 'cash',
+    title: 'cash'
+
+  .composer_products
+    - data.my_items.each do |item|
+      = element :good, view: :product, data:item
+
+- content_for :receiver_products
+  = image_tag static_image_path('cash'),
+    class: 'good-image-big',
+    alt: 'cash',
+    title: 'cash'
+
+  .receiver_products
+    - data.his_items.each do |item|
+      = element :good, view: :product, data:item
+
+- content_for :preview_product_images
+  - 1.upto(3) do |index|
+    .image
