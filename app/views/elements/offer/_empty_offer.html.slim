@@ -1,0 +1,16 @@
+- content_for :title
+  = current_user.full_name
+
+- content_for :proposal
+  = empty_component :proposal
+
+- content_for :avatar
+  = component :avatar, view: :offer, data:current_user
+
+- content_for :message
+
+- content_for :controls
+  = button_to "Save",
+    new_user_offer_path(current_user,offer),
+    method: :get,
+    class: "control-button"

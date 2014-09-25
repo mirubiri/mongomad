@@ -7,18 +7,18 @@
   .offer-form-body
 
     .proposal-grid
-      = element :offer, data:offer
+      = empty_element :offer, data:offer
 
     .goods-grid
-      = element :selector
+      = component :selector
 
     .message-zone
-      = form.text_area :message,
-                       :placeholder => "Enter your initial message...",
-                       :size => "10x5",
-                       :maxlength => "200",
-                       :class => "message",
-                       :required => false
+      = text_area :message,
+                  :placeholder => "Enter your initial message...",
+                  :size => "10x5",
+                  :maxlength => "200",
+                  :class => "message",
+                  :required => false
 
   .controls
     div#offer_form
