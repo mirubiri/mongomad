@@ -6,12 +6,12 @@ module ApplicationHelper
 
   def element(name, view: :default, data:NullObject.new, state:nil)
     base_element(name,view:view,data:data,state:state,
-      route:"elements/")
+      route:"elements")
   end
 
   def component(name, view: :default, data:NullObject.new, state:nil)
     base_element(name,view:view,data:data,state:state,
-      route:"elements/components/")
+      route:"elements/components")
   end
 
   def my_page?
