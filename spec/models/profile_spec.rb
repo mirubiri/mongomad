@@ -7,6 +7,7 @@ describe Profile do
   let(:first_word) { "one" }
   let(:other_words) { "two three"}
   let(:image) { profile.main_image }
+  let(:default_image) { Fabricate.build(:image,id:'/static/user_default') }
 
   # Modules
   it { is_expected.to include_module Attachment::Images }
@@ -70,7 +71,7 @@ describe Profile do
       before(:example) { profile.images.destroy }
 
       it 'returns a default image' do
-        expect(profile.main_image).to eq '/static/user_default'
+        expect(profile.main_image).to eq default_image
       end
     end
   end
