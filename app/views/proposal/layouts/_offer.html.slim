@@ -7,10 +7,10 @@
   .offer-form-body
 
     .proposal-grid
-      = empty_element :offer, data:offer
+      = element :offer, data:offer
 
     .goods-grid
-      = component :selector
+      = element :selector
 
       .message-zone
         = text_area :message,
