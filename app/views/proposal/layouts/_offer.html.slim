@@ -12,6 +12,7 @@
     .goods-grid
       = element :selector
 
+<<<<<<< HEAD
       .message-zone
         = text_area :message,
                     :placeholder => "Enter your initial message...",
@@ -19,6 +20,15 @@
                     :maxlength => "200",
                     :class => "message",
                     :required => false
+=======
+    .message-zone
+      = form.text_area :message,
+                       :placeholder => "Enter your initial message...",
+                       :size => "10x5",
+                       :maxlength => "200",
+                       :class => "message",
+                       :required => false
+>>>>>>> parent of 3e01ce9... add empty_offer and empty_proposal
 
   .controls
     div#offer_form
