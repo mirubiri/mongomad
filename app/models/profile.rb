@@ -20,6 +20,6 @@ class Profile
   end
 
   def main_image
-    images.where(main:true).first || Attachment::Image.new(id:'/static/user_default')
+    images.where(main:true).first || Attachment::Image.new(id:'static/user_default')
   end
 end
