@@ -9,13 +9,16 @@
   overflow: auto;
   float: left;
   width: $proposal-grid-width;
+  height: $proposal-grid-height;
 }
 
 .goods-grid {
+  position: relative;
   @include box-sizing(border-box);
-  overflow: auto;
+  overflow: none;
   float: left;
   width: $goods-grid-width;
+  height: $goods-grid-height;
 }
 
 .users_layer {
@@ -35,12 +38,14 @@
 }
 
 .good_previewer {
+  position: absolute;
+  top: 0;
+  right: 0;
   @include box-sizing(border-box);
   overflow: auto;
-  float: right;
-  width: 0;
+  width: 10px;
   height: 100%;
-  background-color: #f00;
+  background-color: rgb(210,210,210);
   padding: $good-previewer-padding;
 }
 

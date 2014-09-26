@@ -32,6 +32,7 @@
 }
 
 .selector-user-image {
+  border: 1px solid #000;
   @include border-radius(50%, 50%);
   width: $message-user-image-width;
   height: $message-user-image-height;
