@@ -2,6 +2,6 @@
   .expositor-navigation
     = yield_content :navigation
 
-  .component-list#component-list
+  .expositor-list#expositor-list
     - data.negotiations.each do |negotiation|
       = component :negotiation, data:negotiation

@@ -2,6 +2,6 @@
   .expositor-navigation
     = yield_content :navigation
 
-  .element-list#element-list
+  .expositor-list#expositor-list
     - data.deals.each do |deal|
       = component :deal, data:deal
