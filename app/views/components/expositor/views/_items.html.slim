@@ -2,7 +2,7 @@
   .expositor-navigation
     = yield_content :navigation
 
-  .element-list#element-list
+  .component-list#component-list
     = button_to 'Add item',
     new_user_item_path(current_user),
     :method => :get,
@@ -10,4 +10,4 @@
     class: "send-button"
 
     - data.items.each do |item|
-      = element :good, view: :item, data:item
+      = component :good, view: :item, data:item

@@ -8,9 +8,9 @@ html
     link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"
 
   body
-    = element :omnibar, view: :welcome
+    = component :omnibar, view: :welcome
 
     div.main
       = yield
 
-    = element :business_info, view: :welcome
+    = component :business_info, view: :welcome

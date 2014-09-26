@@ -16,7 +16,7 @@
 
   .composer_products
     - data.my_items.each do |item|
-      = element :good, view: :product, data:item
+      = component :good, view: :product, data:item
 
 - content_for :receiver_products
   = image_tag static_image_path('cash'),
@@ -26,7 +26,7 @@
 
   .receiver_products
     - data.his_items.each do |item|
-      = element :good, view: :product, data:item
+      = component :good, view: :product, data:item
 
 - content_for :preview_product_images
   - 1.upto(3) do |index|

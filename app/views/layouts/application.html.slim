@@ -9,13 +9,13 @@ html
 
   body
     - if user_signed_in?
-      = element :omnibar, view: :signed
+      = component :omnibar, view: :signed
     - else
-      = element :omnibar, view: :not_signed
+      = component :omnibar, view: :not_signed
 
     div.main
-      = element :dashboard
-      = element :expositor, view: yield_content(:expositor)
+      = component :dashboard
+      = component :expositor, view: yield_content(:expositor)
 
       / TODO: yield aqui pintará todas las modales hasta que se lancen por JQUERY
       = yield
