@@ -8,11 +8,11 @@
 }
 
 .message-zone {
-  overflow: none;
+  @include box-sizing(border-box);
   float: left;
   width: 100%;
-  min-height: 110px;
   background-color: $grey-bgcolor;
+  padding: $message-zone-padding;
 }
 
 .message {
