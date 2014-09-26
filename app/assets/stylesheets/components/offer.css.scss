@@ -9,10 +9,10 @@
 
 .message-zone {
   @include box-sizing(border-box);
-  float: left;
-  width: 100%;
-  background-color: $grey-bgcolor;
-  padding: $message-zone-padding;
+  float: $offer-message-zone-float;
+  width: $offer-message-zone-width;
+  background-color: $offer-message-zone-bgcolor;
+  padding: $offer-message-zone-padding;
 }
 
 .message {
