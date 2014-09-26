@@ -8,9 +8,10 @@
 }
 
 .message-zone {
-  overflow: auto;
+  overflow: none;
   float: left;
   width: 100%;
+  min-height: 110px;
   background-color: $grey-bgcolor;
 }
 

@@ -24,6 +24,7 @@
 .control-button {
   @extend %button;
   background-color: $grey-button-bgcolor;
+  text-align: center;
 }
 
 .send-button {
@@ -33,4 +34,9 @@
   height: $send-button-height;
   background-color: $blue-button-bgcolor;
   margin-top: $send-button-margin-top;
+}
+
+.not-top-rounded-button {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

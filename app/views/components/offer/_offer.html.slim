@@ -11,7 +11,7 @@
   = offer.message
 
 - content_for :controls
-  = button_to "Edit this offer",
+  = link_to "Edit this offer",
     edit_user_offer_path(current_user,offer),
     method: :get,
-    class: "control-button"
+    class: "control-button not-top-rounded-button"
