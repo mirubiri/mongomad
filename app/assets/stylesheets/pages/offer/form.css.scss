@@ -2,43 +2,37 @@
   @include box-sizing(border-box);
   overflow: none;
   float: left;
-  padding: $offer-form-body-padding;
   width: 100%;
-}
-
-.proposal-grid {
-  @include box-sizing(border-box);
-  overflow: auto;
-  float: left;
-  width: $proposal-grid-width;
-  height: $proposal-grid-height;
+  padding: $offer-form-body-padding;
 }
 
 .goods-grid {
   @include box-sizing(border-box);
+  display: flex;
   overflow: none;
   float: left;
   position: relative;
   width: $goods-grid-width;
   height: $goods-grid-height;
-  display: flex;
+  margin-left: 10px;
+
   flex-direction: column;
 }
 
 .products-list {
   @include box-sizing(border-box);
   overflow: visible;
-  height: 100%;
   position: absolute;
-  top: 5px;
-  left: 5px;
+  height: 100%;
 }
 
 .users_layer {
   @include box-sizing(border-box);
-  overflow: auto;
-  float: left;
+  position: absolute;
+  top: 0;
+  right: -50px;
   width: $user-selector-width;
+  height: $user-selector-height;
   padding: $user-selector-padding;
 }
 
@@ -48,7 +42,7 @@
   float: left;
   position: relative;
   width: $goods-layer-width;
-  padding: $goods-layer-padding;
+
   flex: auto;
 }
 
@@ -70,7 +64,6 @@
   width: $offer-form-message-width;
   height: $offer-form-message-height;
   padding: $offer-form-message-padding;
-
 }
 
 #slide-panel {
