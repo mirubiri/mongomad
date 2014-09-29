@@ -261,6 +261,12 @@ $offer-message-min-height: 60px;
 $offer-message-text-align: left;
 $offer-message-background: transparent;
 
+//message-zone
+$offer-message-zone-float: left;
+$offer-message-zone-width: 100%;
+$offer-message-zone-bgcolor: $grey-bgcolor;
+$offer-message-zone-padding: 30px 0 0 0;
+
 //OFFER-CONTROLS
 $offer-controls-padding: 5px;
 $offer-controls-background: transparent;
@@ -387,19 +393,9 @@ $message-user-image-width: 40px;
 $offer-user-image-border: 1px solid $grey-border-color;
 
 //OFFER FORM
-$offer-form-wrapper-padding: 25px;
 $offer-form-body-padding: 10px;
-$goods-grid-height: 410px;
-$goods-grid-width: 55%;
-$user-selector-width: 48px;
-$user-selector-height: 100%;
-$goods-layer-width: 100%;
-$good-previewer-padding: 5px;
-$offer-message-zone-float: left;
-$offer-message-zone-width: 100%;
-$offer-message-zone-bgcolor: $grey-bgcolor;
-$offer-message-zone-padding: 30px 0 0 0;
 $offer-form-message-float: left;
-$offer-form-message-width: 100%;
 $offer-form-message-height: 52px;
-$offer-form-message-padding: 0 0 0 0;
+$offer-form-message-padding: 0;
+
+$user-selector-width: $message-user-image-width+2;

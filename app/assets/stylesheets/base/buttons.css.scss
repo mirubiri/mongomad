@@ -21,10 +21,11 @@
   background-color: $green-button-bgcolor;
 }
 
-.control-button {
+.close-button {
   @extend %button;
-  background-color: $grey-button-bgcolor;
-  text-align: center;
+  @include border-radius(0, 0);
+  background-color: $red-button-bgcolor;
+  margin-top: 5px;
 }
 
 .send-button {
@@ -34,6 +35,12 @@
   height: $send-button-height;
   background-color: $blue-button-bgcolor;
   margin-top: $send-button-margin-top;
+}
+
+.control-button {
+  @extend %button;
+  background-color: $grey-button-bgcolor;
+  text-align: center;
 }
 
 .not-top-rounded-button {

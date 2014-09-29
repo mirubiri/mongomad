@@ -1,5 +1,7 @@
 .offer-form-body {
   @include box-sizing(border-box);
+  display: flex;
+  align-items: stretch;
   overflow: none;
   float: left;
   width: 100%;
@@ -9,73 +11,27 @@
 .goods-grid {
   @include box-sizing(border-box);
   display: flex;
+  flex: auto;
   flex-direction: column;
+  align-items: stretch;
   overflow: none;
   float: left;
   position: relative;
-  width: $goods-grid-width;
-  height: $goods-grid-height;
   margin-left: 10px;
-  padding: 5px 0;
-}
-
-.goods-layer {
-  @include box-sizing(border-box);
-  display: flex;
-  flex: auto;
-  flex-direction: row-reverse;
-  overflow: auto;
-  float: left;
-  position: relative;
-  width: $goods-layer-width;
+  padding: 5px 5px 0 0;
 }
 
 .offer-form-message {
   @include box-sizing(border-box);
   float: $offer-form-message-float;
-  width: $offer-form-message-width;
   height: $offer-form-message-height;
   padding: $offer-form-message-padding;
 }
 
-.users-layer {
-  @include box-sizing(border-box);
+.new-offer-controls {
   float: right;
-  width: $user-selector-width;
-  height: $user-selector-height;
-}
-
-.products-grid {
-  @include box-sizing(border-box);
-  flex: auto;
-  overflow: auto;
-}
-
-.products-list {
-  @include box-sizing(border-box);
-  overflow: visible;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.good-previewer {
   @include box-sizing(border-box);
   overflow: auto;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0;
-  height: 100%;
-  background-color: rgb(210, 210, 210);
-  padding: 0;
-}
-
-#slide-panel {
-  @include transition-property(width);
-  @include transition-duration(1s);
-}
-
-#slide-panel:hover {
+  padding: 0 15px 10px 15px;
   width: 100%;
 }

@@ -1,0 +1,52 @@
+.goods-layer {
+  @include box-sizing(border-box);
+  display: flex;
+  flex: auto;
+  flex-direction: row-reverse;
+  overflow: auto;
+  float: left;
+  position: relative;
+  align-items: stretch;
+}
+
+.users-layer {
+  @include box-sizing(border-box);
+  float: right;
+  width: $user-selector-width;
+}
+
+.products-grid {
+  @include box-sizing(border-box);
+  position: relative;
+  flex: auto;
+  overflow: auto;
+}
+
+.products-list {
+  @include box-sizing(border-box);
+  overflow: visible;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.good-previewer {
+  @include box-sizing(border-box);
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background-color: rgb(210, 210, 210);
+  padding: 0;
+}
+
+#slide-panel {
+  @include transition-property(width);
+  @include transition-duration(1s);
+}
+
+#slide-panel:hover {
+  width: 100%;
+}

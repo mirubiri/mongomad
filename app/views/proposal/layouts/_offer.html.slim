@@ -17,7 +17,8 @@
                     :class => "message",
                     :required => false
 
-  .controls
+  .new-offer-controls
     div#offer-form
       = yield
-    = button_tag 'boton'
+    = button_tag 'Close',
+      class: 'close-button'
