@@ -29,9 +29,9 @@
 }
 
 .new-offer-controls {
-  float: right;
   @include box-sizing(border-box);
   overflow: auto;
-  padding: 0 15px 10px 15px;
+  float: right;
   width: 100%;
+  padding: 0 15px 10px;
 }
