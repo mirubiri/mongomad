@@ -74,6 +74,18 @@ linters:
     ignore_unspecified: false
     order:
       - display
+      - flex
+      - flex-direction
+      - flex-grow
+      - flex-wrap
+      - flex-shrink
+      - flex-basis
+      - flex-flow
+      - order
+      - justify-content
+      - align-self
+      - align-items
+      - align-content
       - overflow
       - overflow-y
       - float
@@ -173,6 +185,8 @@ linters:
       - content
       - quotes
       - resize
+
+
 
   PropertySpelling:
     enabled: true
