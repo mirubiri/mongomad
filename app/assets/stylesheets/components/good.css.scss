@@ -15,7 +15,7 @@
 
 .product {
   @include box-sizing(border-box);
-  overflow: auto;
+  overflow: hidden;
   float: left;
   width: $product-size;
   max-width: $product-size;

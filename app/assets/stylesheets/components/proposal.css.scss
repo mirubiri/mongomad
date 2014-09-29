@@ -10,19 +10,23 @@
 }
 
 .composer-goods {
-  overflow: auto;
+  overflow: hidden;
   float: left;
   width: $proposal-composer-goods-side-size;
   .product {
     float: left;
+    width: $proposal-composer-good-size;
+    height: $proposal-composer-good-size;
   }
 }
 
 .receiver-goods {
-  overflow: auto;
+  overflow: hidden;
   float: right;
   width: $proposal-receiver-goods-side-size;
   .product {
     float: right;
+    width: $proposal-receiver-good-size;
+    height: $proposal-receiver-good-size;
   }
 }
