@@ -31,14 +31,13 @@
 
 .message-text {
   @include box-sizing(border-box);
+  flex: auto;
   float: left;
   padding: $message-text-padding;
   text-align: $message-text-text-align;
   color: $message-text-color;
   font-size: $message-text-font-size;
   font-weight: $message-text-font-weight;
-
-  flex: auto;
 }
 
 .title {
