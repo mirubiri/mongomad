@@ -10,7 +10,7 @@
   font-weight: bold;
 }
 
-.warning-button {
+.make-offer-button {
   @extend %button;
   background-color: $red-button-bgcolor;
 }
@@ -40,6 +40,7 @@
 .control-button {
   @extend %button;
   background-color: $grey-button-bgcolor;
+  padding-top: 5px;
   text-align: center;
 }
 
