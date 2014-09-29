@@ -37,6 +37,8 @@ gem 'binding_of_caller',group: [:development,:test]
 
 gem 'yard',group: [:development,:test]
 gem 'yard-mongoid',group: [:development,:test]
+gem 'yard-delegate', group: [:development,:test]
+gem 'scss-lint', group: [:development,:test]
 
 gem 'naught'
 gem 'slim-rails'
