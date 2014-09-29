@@ -10,7 +10,6 @@
 }
 
 .composer-goods {
-  @include product($proposal-composer-good-size);
   overflow: auto;
   float: left;
   width: $proposal-composer-goods-side-size;
@@ -20,7 +19,6 @@
 }
 
 .receiver-goods {
-  @include product($proposal-receiver-good-size);
   overflow: auto;
   float: right;
   width: $proposal-receiver-goods-side-size;

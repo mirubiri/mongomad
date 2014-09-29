@@ -13,13 +13,14 @@
   padding: $item-padding;
 }
 
-@mixin product($width) {
-  .product {
-    @include box-sizing(border-box);
-    float: left;
-    width: $width - 10px;
-    max-width: $width - 10px;
-    background-color: $white-bgcolor;
-    margin: $product-margin;
-  }
+.product {
+  @include box-sizing(border-box);
+  overflow: auto;
+  float: left;
+  width: $product-size;
+  max-width: $product-size;
+  height: $product-size;
+  max-height: $product-size;
+  background-color: $product-bgcolor;
+  margin: $product-margin;
 }
