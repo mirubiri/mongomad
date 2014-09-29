@@ -20,9 +20,8 @@
           alt: 'cash',
           title: 'cash'
 
-        .composer_products
-          - data.my_items.each do |item|
-            = component :good, view: :product, data:item
+        - data.my_items.each do |item|
+          = component :good, view: :product, data:item
 
       .receiver_goods
         = image_tag static_image_path('cash'),
@@ -30,9 +29,8 @@
           alt: 'cash',
           title: 'cash'
 
-        .receiver_products
-          - data.his_items.each do |item|
-            = component :good, view: :product, data:item
+        - data.his_items.each do |item|
+          = component :good, view: :product, data:item
 
     .good_previewer
       .images

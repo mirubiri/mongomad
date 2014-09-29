@@ -21,6 +21,12 @@
   height: $goods-grid-height;
 }
 
+.composer_products {
+  float: left;
+  overflow: auto;
+  width: 100%;
+}
+
 .users_layer {
   @include box-sizing(border-box);
   overflow: auto;
