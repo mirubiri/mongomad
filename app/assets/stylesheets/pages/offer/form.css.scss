@@ -1,6 +1,6 @@
 .offer-form-body {
-  float: left;
   overflow: none;
+  float: left;
   padding: $offer-form-body-padding;
 }
 
@@ -13,17 +13,17 @@
 }
 
 .goods-grid {
-  position: relative;
   @include box-sizing(border-box);
   overflow: none;
   float: left;
+  position: relative;
   width: $goods-grid-width;
   height: $goods-grid-height;
 }
 
 .products-list {
-  float: left;
   overflow: auto;
+  float: left;
   width: 100%;
 }
 
@@ -44,14 +44,14 @@
 }
 
 .good_previewer {
+  @include box-sizing(border-box);
+  overflow: auto;
   position: absolute;
   top: 0;
   right: 0;
-  @include box-sizing(border-box);
-  overflow: auto;
   width: 10px;
   height: 100%;
-  background-color: rgb(210,210,210);
+  background-color: rgb(210, 210, 210);
   padding: $good-previewer-padding;
 }
 
