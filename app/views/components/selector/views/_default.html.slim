@@ -1,17 +1,18 @@
-.users_layer
-  = yield_content :users
 
-.goods_layer
+.goods-layer
+  .users-layer
+    = yield_content :users
 
-  .products-list#composer_goods
+  .products-grid
+    .products-list#composer-goods
 
-    = yield_content :composer_products
+      = yield_content :composer_products
 
-  .products-list#receiver_goods
+    .products-list#receiver-goods
 
-    = yield_content :receiver_products
+      = yield_content :receiver_products
 
-.good_previewer#slide-panel
+.good-previewer#slide-panel
 
   .images
     = yield_content :preview_product_images

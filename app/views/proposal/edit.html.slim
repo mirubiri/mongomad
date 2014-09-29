@@ -1,9 +1,9 @@
 - content_for :expositor
   | negotiations
 
-.proposal#edit_proposal
-  .goods_side
-    .users_layer
+.proposal#edit-proposal
+  .goods-side
+    .users-layer
       = image_tag small_image_path(current_user.main_image),
         class: 'selector-user-image',
         alt: 'current_user.main_image.id',
@@ -13,8 +13,8 @@
         alt: 'data.visited_user.main_image.id',
         title: 'data.visited_user.main_image.id'
 
-    .goods_layer
-      .composer_goods
+    .goods-layer
+      .composer-goods
         = image_tag static_image_path('cash'),
           class: 'product-image',
           alt: 'cash',
@@ -23,7 +23,7 @@
         - data.my_items.each do |item|
           = component :good, view: :product, data:item
 
-      .receiver_goods
+      .receiver-goods
         = image_tag static_image_path('cash'),
           class: 'product-image',
           alt: 'cash',
@@ -32,7 +32,7 @@
         - data.his_items.each do |item|
           = component :good, view: :product, data:item
 
-    .good_previewer
+    .good-previewer
       .images
         - 1.upto(3) do |index|
           .image
@@ -45,8 +45,8 @@
         = current_user.full_name
 
       .proposal
-        .composer_goods
-        .receiver_goods
+        .composer-goods
+        .receiver-goods
 
       = component :proposal
 
