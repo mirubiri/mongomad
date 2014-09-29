@@ -1,7 +1,9 @@
 .offer-form-body {
+  @include box-sizing(border-box);
   overflow: none;
   float: left;
   padding: $offer-form-body-padding;
+  width: 100%;
 }
 
 .proposal-grid {
@@ -19,12 +21,17 @@
   position: relative;
   width: $goods-grid-width;
   height: $goods-grid-height;
+  display: flex;
+  flex-direction: column;
 }
 
 .products-list {
-  overflow: auto;
-  float: left;
-  width: 100%;
+  @include box-sizing(border-box);
+  overflow: visible;
+  height: 100%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
 
 .users_layer {
@@ -39,8 +46,10 @@
   @include box-sizing(border-box);
   overflow: auto;
   float: left;
+  position: relative;
   width: $goods-layer-width;
   padding: $goods-layer-padding;
+  flex: auto;
 }
 
 .good_previewer {
@@ -49,10 +58,19 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 10px;
+  width: 0;
   height: 100%;
   background-color: rgb(210, 210, 210);
-  padding: $good-previewer-padding;
+  padding: 0;
+}
+
+.offer-form-message {
+  @include box-sizing(border-box);
+  float: $offer-form-message-float;
+  width: $offer-form-message-width;
+  height: $offer-form-message-height;
+  padding: $offer-form-message-padding;
+
 }
 
 #slide-panel {
