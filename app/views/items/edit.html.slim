@@ -4,11 +4,9 @@
     .item-image-uploader
       #pan.preview
         = image_tag big_image_path(item.main_image),
-          class: 'previewer-model-image',
-          alt: 'item.main_image.id',
-          title: 'item.main_image.id'
+          class: 'previewer-model-image'
 
-      .progress_bar
+      .progress-bar
 
     .item-form-descriptor
       = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }

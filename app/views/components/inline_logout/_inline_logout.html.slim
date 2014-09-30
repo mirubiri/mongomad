@@ -1,8 +1,5 @@
 - content_for :icon
   = link_to (image_tag static_image_path('logout'),
-    class: 'profile-card-user-image',
-    alt: 'logout',
-    title: 'logout'),
+    class: 'profile-card-user-image'),
     destroy_user_session_path,
     :method => :delete
-

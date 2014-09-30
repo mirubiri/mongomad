@@ -4,18 +4,14 @@
 .item_show#item_show
   .main_image
     = image_tag big_image_path(item.main_image),
-      class: 'showcase-display-image',
-      alt: 'item.main_image.id',
-      title: 'item.main_image.id'
+      class: 'showcase-display-image'
 
   - item.images.each do |index|
     .item-miniature-wrapper
       .cropped-image-grid
         .preview_image
           = image_tag medium_image_path(item.images[index]),
-            class: 'showcase-choice-image',
-            alt: 'item.images[index].id',
-            title: 'item.images[index].id'
+            class: 'showcase-choice-image'
 
   .title
     | title

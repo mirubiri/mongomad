@@ -1,30 +1,29 @@
 - content_for :users
   = image_tag small_image_path(current_user.main_image),
-    class: 'selector-user-image',
-    alt: 'current_user.main_image.id',
-    title: 'current_user.main_image.id'
+    class: 'selector-user-image'
+
   = image_tag small_image_path(data.visited_user.main_image),
-    class: 'selector-user-image',
-    alt: 'data.visited_user.main_image.id',
-    title: 'data.visited_user.main_image.id'
+    class: 'selector-user-image'
 
 - content_for :composer_products
   = image_tag static_image_path('cash'),
-    class: 'product-image',
-    alt: 'cash',
-    title: 'cash'
+    class: 'item-modal-image'
+
+  .good-data
+    | Cash
 
   - data.my_items.each do |item|
-    = component :good, view: :product, data:item
+    = component :good, view: :item_modal, data:item
 
 - content_for :receiver_products
   = image_tag static_image_path('cash'),
-    class: 'product-image',
-    alt: 'cash',
-    title: 'cash'
+    class: 'item-modal-image'
 
-  - data.his_items.each do |item|
-    = component :good, view: :product, data:item
+  .good-data
+    | Cash
+
+  - data.my_items.each do |item|
+    = component :good, view: :item_modal, data:item
 
 - content_for :preview_product_images
   - 1.upto(3) do |index|

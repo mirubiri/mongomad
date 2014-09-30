@@ -71,7 +71,6 @@
   height: $message-user-image-height;
 }
 
-
 .previewer-model-image {
   width: $previewer-ppal-image-size;
   height: $previewer-ppal-image-size;
@@ -107,19 +106,11 @@
   height: $good-image-small-height;
 }
 
-.product-composer-image {
+.good-composer-image {
   @extend %good-image-big;
 }
 
-.product-receiver-image {
-  @extend %good-image-small;
-}
-
-.cash-composer-image {
-  @extend %good-image-big;
-}
-
-.cash-receiver-image {
+.good-receiver-image {
   @extend %good-image-small;
 }
 
@@ -127,6 +118,6 @@
   @extend %good-image-big;
 }
 
-.product-image {
+.item-modal-image {
   @extend %good-image-big;
 }

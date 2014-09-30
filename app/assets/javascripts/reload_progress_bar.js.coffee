@@ -1,2 +1,2 @@
 @reloadProgressBar = ->
-  $(".progress_bar").width(0)
+  $(".progress-bar").width(0)

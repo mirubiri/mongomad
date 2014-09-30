@@ -7,7 +7,7 @@
     new_user_item_path(current_user),
     :method => :get,
     :remote => true,
-    class: "send-button"
+    class: 'send-button'
 
     - data.items.each do |item|
       = component :good, view: :item, data:item
