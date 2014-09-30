@@ -5,22 +5,3 @@
   float: left;
   background-color: $white-bgcolor;
 }
-
-.item {
-  @extend %good;
-  width: $item-image-width;
-  margin: $item-margin;
-  padding: $item-padding;
-}
-
-.product {
-  @include box-sizing(border-box);
-  overflow: hidden;
-  float: left;
-  width: $product-size;
-  max-width: $product-size;
-  height: $product-size;
-  max-height: $product-size;
-  background-color: $product-bgcolor;
-  margin: $product-margin;
-}

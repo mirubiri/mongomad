@@ -1,0 +1,6 @@
+.item {
+  @extend %good;
+  width: $item-image-width;
+  margin: $item-margin;
+  padding: $item-padding;
+}

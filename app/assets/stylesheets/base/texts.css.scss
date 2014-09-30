@@ -90,7 +90,7 @@
   font-weight: $description-font-weight;
 }
 
-.good-data {
+%good-data {
   @include box-sizing(border-box);
   float: left;
   width: 100%;
@@ -100,7 +100,6 @@
   font-weight: $good-data-font-weight;
 }
 
-
 .welcome-info {
   @include box-sizing(border-box);
   width: 100%;
@@ -108,4 +107,16 @@
   color: $welcome-info-color;
   font-size: $welcome-info-font-size;
   font-weight: $welcome-info-font-weight;
+}
+
+.item-data {
+  @extend %good-data;
+}
+
+.product-data {
+  @extend %good-data;
+}
+
+.cash-data {
+  @extend %good-data;
 }

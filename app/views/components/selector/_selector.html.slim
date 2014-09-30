@@ -5,26 +5,20 @@
   = image_tag small_image_path(data.visited_user.main_image),
     class: 'selector-user-image'
 
-- content_for :composer_products
-  = image_tag static_image_path('cash'),
-    class: 'item-modal-image'
+- content_for :composer_cash
+  = component :cash, view: :selector
 
-  .good-data
-    | Cash
-
+- content_for :composer_items
   - data.my_items.each do |item|
-    = component :good, view: :item_modal, data:item
+    = component :item, view: :selector, data:item
 
-- content_for :receiver_products
-  = image_tag static_image_path('cash'),
-    class: 'item-modal-image'
+- content_for :receiver_cash
+  = component :cash, view: :selector
 
-  .good-data
-    | Cash
-
+- content_for :receiver_items
   - data.my_items.each do |item|
-    = component :good, view: :item_modal, data:item
+    = component :item, view: :selector, data:item
 
-- content_for :preview_product_images
+- content_for :preview_item_images
   - 1.upto(3) do |index|
     .image

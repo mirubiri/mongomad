@@ -1,0 +1,26 @@
+%cash {
+  @extend %good;
+  overflow: hidden;
+  //width: $product-size;
+  max-width: $product-size;
+  //height: $product-size;
+  max-height: $product-size;
+  background-color: $product-bgcolor;
+  margin: $product-margin;
+}
+
+.cash-selector {
+  @extend %cash;
+}
+
+.cash-composer {
+  @extend %cash;
+  width: $proposal-composer-good-size;
+  height: $proposal-composer-good-size;
+}
+.cash-receiver {
+  @extend %cash;
+  float: right;
+  width: $proposal-receiver-good-size;
+  height: $proposal-receiver-good-size;
+}

@@ -1,22 +1,20 @@
-
 .goods-layer
   .users-layer
     = yield_content :users
 
   .products-grid
     .products-list#composer-goods
-
-      = yield_content :composer_products
+      = yield_content :composer_cash
+      = yield_content :composer_items
 
     .products-list#receiver-goods
-
-      = yield_content :receiver_products
+      = yield_content :receiver_cash
+      = yield_content :receiver_items
 
 .good-previewer#slide-panel
-
   .images
-    = yield_content :preview_product_images
+    = yield_content :preview_item_images
 
-  .good-data
+  .item-data
 
   .description

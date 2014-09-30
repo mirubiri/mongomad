@@ -1,0 +1,9 @@
+.item
+  .item-showcase-image
+    = yield_content :image
+
+  = yield_content :name
+
+  .controls
+    = link_to 'edit', edit_user_item_path(current_user, good.id)
+    | delete

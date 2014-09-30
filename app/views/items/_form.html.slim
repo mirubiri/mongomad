@@ -32,14 +32,14 @@
             - item_form.hidden_field id="h_preview#{index+1}", name="item[images][][h]", type="hidden", value=image.h
             - item_form.hidden_field id="w_preview#{index+1}", name="item[images][][w]", type="hidden", value=image.w
 
-      .good-data
+      .item-data
         | Product name
         = item_form.text_area :name,
                          :placeholder => "Name your product...",
                          :maxlength => "20",
                          :required => false
 
-      .good-data
+      .item-data
         | Product description
         = item_form.text_area :description,
                          :placeholder => "Describe your product...",

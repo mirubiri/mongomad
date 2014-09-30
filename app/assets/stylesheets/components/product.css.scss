@@ -1,0 +1,22 @@
+%product {
+  @extend %good;
+  overflow: hidden;
+  //width: $product-size;
+  max-width: $product-size;
+  //height: $product-size;
+  max-height: $product-size;
+  background-color: $product-bgcolor;
+  margin: $product-margin;
+}
+
+.product-composer {
+  @extend %product;
+  width: $proposal-composer-good-size;
+  height: $proposal-composer-good-size;
+}
+.product-receiver {
+  @extend %product;
+  float: right;
+  width: $proposal-receiver-good-size;
+  height: $proposal-receiver-good-size;
+}
