@@ -3,10 +3,10 @@
   display: flex;
   flex: auto;
   flex-direction: row-reverse;
+  align-items: stretch;
   overflow: auto;
   float: left;
   position: relative;
-  align-items: stretch;
 }
 
 .users-layer {
@@ -17,9 +17,9 @@
 
 .products-grid {
   @include box-sizing(border-box);
-  position: relative;
   flex: auto;
   overflow: auto;
+  position: relative;
 }
 
 .products-list {
