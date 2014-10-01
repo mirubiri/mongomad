@@ -1,6 +1,5 @@
 $ = jQuery
 
-
 $.fn.extend
 
   toModal: ->
