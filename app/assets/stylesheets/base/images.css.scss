@@ -87,7 +87,6 @@
 }
 
 %good-image {
-  @include box-sizing(border-box);
   @include border-radius(5px);
   float: left;
   border: $good-image-border;
