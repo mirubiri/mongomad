@@ -1,6 +1,6 @@
 .avatar-deal
-  = image_tag small_image_path(avatar.main_image),
-    class: 'deal-user-image'
+  .deal-user-image
+    = yield_content :image
 
   .avatar-negotiation-data-side
     .user-nick

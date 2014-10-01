@@ -1,3 +1,3 @@
 .avatar-message
-  = image_tag small_image_path(avatar.main_image),
-  class: 'message-user-image'
+  .message-user-image
+    = yield_content :image

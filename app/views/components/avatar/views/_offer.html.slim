@@ -1,4 +1,4 @@
 .avatar-offer
   .offer-avatar-image-wrapper
-    = image_tag small_image_path(avatar.main_image),
-      class: 'offer-user-image'
+    .offer-user-image
+      = yield_content :image

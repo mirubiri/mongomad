@@ -1,6 +1,6 @@
 .avatar-omnibar
-  = image_tag small_image_path(avatar.main_image),
-    class: 'omnibar-user-image'
+  .omnibar-user-image
+    = yield_content :image
 
   .avatar-omnibar-data-side
     .user-data
