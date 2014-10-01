@@ -5,8 +5,10 @@
   padding: $user-data-padding;
   text-align: $user-data-text-align;
   color: $user-data-color;
-  font-size: $user-data-font-size;
-  font-weight: $user-data-font-weight;
+  font: {
+    size: $user-data-font-size;
+    weight: $user-data-font-weight;
+  }
 }
 
 .user-nick {
@@ -25,8 +27,10 @@
   padding: $user-location-padding;
   text-align: $user-location-text-align;
   color: $user-location-color;
-  font-size: $user-location-font-size;
-  font-weight: $user-location-font-weight;
+  font: {
+    size: $user-location-font-size;
+    weight: $user-location-font-weight;
+  }
 }
 
 .message-text {
@@ -36,8 +40,10 @@
   padding: $message-text-padding;
   text-align: $message-text-text-align;
   color: $message-text-color;
-  font-size: $message-text-font-size;
-  font-weight: $message-text-font-weight;
+  font: {
+    size: $message-text-font-size;
+    weight: $message-text-font-weight;
+  }
 }
 
 .title {
@@ -50,9 +56,10 @@
   padding: $title-padding;
   text-align: $title-text-align;
   color: $title-color;
-  font-size: $title-font-size;
-  font-weight: $title-font-weight;
-  //border-bottom:  $title-border-bottom;
+  font: {
+    size: $title-font-size;
+    weight: $title-font-weight;
+  }
 }
 
 .controls {
@@ -61,8 +68,12 @@
   width: 100%;
   text-align: $controls-text-align;
   color: $controls-color;
-  font-size: $controls-font-size;
-  font-weight: $controls-font-weight;
+
+  font: {
+    size: $controls-font-size;
+    weight: $controls-font-weight;
+  }
+
   a {
     padding-left: 0;
     padding-right: 0;
@@ -76,8 +87,10 @@
   padding: $timestamp-padding;
   text-align: $timestamp-text-align;
   color: $timestamp-color;
-  font-size: $timestamp-font-size;
-  font-weight: $timestamp-font-weight;
+  font: {
+    size: $timestamp-font-size;
+    weight: $timestamp-font-weight;
+  }
 }
 
 .description {
@@ -86,8 +99,11 @@
   padding: $description-padding;
   text-align: $description-text-align;
   color: $description-color;
-  font-size: $description-font-size;
-  font-weight: $description-font-weight;
+
+  font: {
+    size: $description-font-size;
+    weight: $description-font-weight;
+  }
 }
 
 %good-data {
@@ -96,8 +112,10 @@
   width: 100%;
   margin: $good-data-margin;
   color: $good-data-color;
-  font-size: $good-data-font-size;
-  font-weight: $good-data-font-weight;
+  font: {
+    size: $good-data-font-size;
+    weight: $good-data-font-weight;
+  }
 }
 
 .welcome-info {
@@ -105,8 +123,10 @@
   width: 100%;
   text-align: center;
   color: $welcome-info-color;
-  font-size: $welcome-info-font-size;
-  font-weight: $welcome-info-font-weight;
+  font: {
+    size: $welcome-info-font-size;
+    weight: $welcome-info-font-weight;
+  }
 }
 
 .item-data {

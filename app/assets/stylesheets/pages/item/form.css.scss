@@ -80,8 +80,10 @@ label.cropped-image-button {
   padding: $cropped-image-button-padding;
   text-align: $preview-alignment;
   color: $white-font-color;
-  font-size: $medium-font-size;
-  font-weight: bold;
+  font: {
+    size: $medium-font-size;
+    weight: bold;
+  }
 }
 
 .cropped-image-button-label {

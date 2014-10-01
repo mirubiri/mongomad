@@ -104,30 +104,15 @@
   height: $good-image-small-height;
 }
 
-.item-selector-image {
-  @extend %good-image-big;
-}
-
-.item-showcase-image {
-  @extend %good-image-big;
-}
-
-.product-composer-image {
-  @extend %good-image-big;
-}
-
-.product-receiver-image {
-  @extend %good-image-small;
-}
-
-.cash-selector-image {
-  @extend %good-image-big;
-}
-
+.item-selector-image,
+.item-showcase-image,
+.product-composer-image,
+.cash-selector-image,
 .cash-composer-image {
   @extend %good-image-big;
 }
 
+.product-receiver-image,
 .cash-receiver-image {
   @extend %good-image-small;
 }

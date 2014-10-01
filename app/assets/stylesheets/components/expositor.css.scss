@@ -21,8 +21,10 @@
     border-right: $expositor-navigation-lib-border-right;
     padding-top: $expositor-navigation-lib-padding-top;
     color: $grey-font-color;
-    font-size: $medium-font-size;
-    font-weight: regular;
+    font: {
+      size: $medium-font-size;
+      weight: regular;
+    }
   }
 }
 

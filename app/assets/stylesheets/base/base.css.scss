@@ -39,8 +39,10 @@ a {
   background-color: $active-nav-background-color;
   a {
     color: $active-nav-color;
-    font-size: $active-nav-font-size;
-    font-weight: $active-nav-font-weight;
+    font: {
+      size: $active-nav-font-size;
+      weight: $active-nav-font-weight;
+    }
   }
 }
 

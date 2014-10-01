@@ -5,9 +5,11 @@
   height: $button-height;
   border: 0;
   color: $white-font-color;
-  font-family: $body-font-family;
-  font-size: $big-font-size;
-  font-weight: bold;
+  font: {
+    family: $body-font-family;
+    size: $big-font-size;
+    weight: bold;
+  }
 }
 
 .make-offer-button {

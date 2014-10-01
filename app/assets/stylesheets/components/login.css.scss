@@ -7,6 +7,8 @@
   background-color: $white-bgcolor;
   margin: $margin-auto;
   color: $grey-font-color;
-  font-size: $medium-font-size;
-  font-weight: regular;
+  font: {
+    size: $medium-font-size;
+    weight: regular;
+  }
 }

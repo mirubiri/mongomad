@@ -11,6 +11,8 @@
   padding: $bussines-info-padding;
   text-align: $bussines-info-text-align;
   color: $bussines-info-font-color;
-  font-size: $bussines-info-font-size;
-  font-weight: $bussines-info-font-weight;
+  font: {
+    size: $bussines-info-font-size;
+    weight: $bussines-info-font-weight;
+  }
 }

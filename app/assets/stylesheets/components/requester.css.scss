@@ -16,8 +16,10 @@
   min-height: $requester-textarea-min-height;
   border: $requester-textarea-border;
   color: $black-font-color;
-  font-size: $big-font-size;
-  font-weight: regular;
+  font: {
+    size: $big-font-size;
+    weight: regular;
+  }
 }
 
 .countdown {
