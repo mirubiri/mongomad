@@ -2,26 +2,4 @@
   .Item-selector-image
     = yield_content :image
 
-
-
-
-
-
-
-
-
-
-= yield_content :mediaClass
-   | item
-
-= yield_content :mediaImageClass
-  | item__selector__image
-
-
-= content_for :mediaImage
-  .item__selector__image
-    = content_for :item_image
-
-
-= content_for :mediaBody
-    = content_for :item_name
+  = yield_content :name

@@ -2,20 +2,3 @@
   img class="Media-image" src= (yield_content :img_url)
   .Media-body
     = yield_content :body
-
-
-
-
-
-
-
-
-div class="media__object #{= yield_content :mediaClass}"
-
-  div class="media__object__image #{= yield_content :mediaImageClass}"
-    = yield_content :mediaImage
-
-
-  div class="media__object__body #{= yield_content :mediaBodyClass}"
-    = yield_content :mediaBody
-
