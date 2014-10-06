@@ -1,0 +1,9 @@
+.conversation
+  .conversation__messages
+    = yield_content :messages
+
+  .conversation__message__input
+    = yield_content :message_input
+
+  .conversation__send__message__control
+    = yield_content :send_message_control
