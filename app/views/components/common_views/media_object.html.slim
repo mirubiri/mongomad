@@ -1,4 +1,4 @@
 .Media
-  img class="Media-image" src=(yield_content :img_url)
+  img class="Media-image" src= (yield_content :img_url)
   .Media-body
-    yield_content :body
+    = yield_content :body
