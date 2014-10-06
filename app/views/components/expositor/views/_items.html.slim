@@ -1,8 +1,8 @@
 .expositor#expositor
-  .expositor-navigation
+  .expositor__navigation
     = yield_content :navigation
 
-  .expositor-list#expositor-list
+  .expositor__list#expositor-list
     = button_to 'Add item',
     new_user_item_path(current_user),
     :method => :get,
