@@ -1,13 +1,14 @@
 .offer
-  .title
+  .offer__title
     = yield_content :title
 
   = yield_content :proposal
   = yield_content :avatar
 
-  .message-zone
-    .message
+
+  .offer__message
+    .text
       = yield_content :message
 
-  .controls
+  .offer__controls
     = yield_content :controls
