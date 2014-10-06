@@ -5,6 +5,7 @@ describe NegotiationConfirmer do
   let(:confirmer_id) { negotiation.composer.id }
   let(:negotiation_confirmer) { NegotiationConfirmer.new(negotiation) }
   let!(:deal_maker) { DealMaker.new(negotiation) }
+  let(:new_deal) { Deal.new }
 
   describe '#confirm(user_id)' do
     context 'given user_id can confirm' do
@@ -23,9 +24,10 @@ describe NegotiationConfirmer do
         negotiation_confirmer.confirm(confirmer_id)
       end
 
-      it 'returns true' do
-        result=negotiation_confirmer.confirm(confirmer_id)
-        expect(result).to eq true
+      it 'returns the new deal' do
+        allow(DealMaker).to receive(:new).with(negotiation) { deal_maker }
+        allow(deal_maker).to receive(:make_deal) { new_deal }
+        expect(negotiation_confirmer.confirm(confirmer_id)).to eq new_deal
       end
     end
 
