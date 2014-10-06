@@ -1,5 +1,24 @@
 .Item
   .Item-showcase-image
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.item
+  .item__image
     = yield_content :image
 
   = yield_content :name
@@ -7,3 +26,8 @@
   .Controls
     = link_to 'edit', edit_user_item_path(current_user, good.id)
     | delete
+
+
+= yield_content :mediaImage
+
+= yield_content :mediaBody
