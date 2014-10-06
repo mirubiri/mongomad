@@ -1,7 +1,7 @@
-.expositor#expositor
-  .expositor__navigation
+.Expositor#Expositor
+  .Expositor-navigation
     = yield_content :navigation
 
-  .expositor__list#expositor-list
+  .Expositor-list#Expositor-list
     - data.offers.each do |offer|
       = component :offer, data:offer
