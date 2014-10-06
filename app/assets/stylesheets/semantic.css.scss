@@ -12,23 +12,18 @@
   }
 }
 
+.Media {
+  display: flex;
+  align-items: flex-start;
+}
 
+.Media-image {
+  margin-right: 1em;
+}
 
-
-.media {}
-
-.media-image {}
-
-.media-body {}
-
-
-
-
-
-
-
-
-
+.Media-body {
+  flex: 1;
+}
 
 .nonradius {
   @include border-radius(0, 0);
