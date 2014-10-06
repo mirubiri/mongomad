@@ -1,3 +1,2 @@
 class ItemSeller
-  
 end
