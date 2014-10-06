@@ -7,7 +7,7 @@ describe Profile do
   let(:first_word) { "one" }
   let(:other_words) { "two three"}
   let(:image) { profile.main_image }
-  let(:default_image) { Fabricate.build(:image,id:'/static/user_default') }
+  let(:default_image) { Fabricate.build(:image,id: DEFAULT_IMAGE_URL[:user]) }
 
   # Modules
   it { is_expected.to include_module Attachment::Images }
