@@ -1,0 +1,40 @@
+.btn {
+  @include border-radius(5px);
+  //float: left;
+  //width: 100%;
+  height: 30px;
+  border: 0;
+  color: rgb(253, 253, 253);
+  font: {
+    family: 'Roboto';
+    size: 16px;
+    weight: bold;
+  }
+}
+
+
+
+
+.media {}
+
+.media-image {}
+
+.media-body {}
+
+
+
+
+
+
+
+
+
+
+.nonradius {
+  @include border-radius(0, 0);
+}
+
+.non-top-radius {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
