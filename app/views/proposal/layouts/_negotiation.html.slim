@@ -1,2 +1,29 @@
-.proposal_form#negotiation_form
+= component :modal_object
+
+
+
+= content_for :modal_class
+  proposal_form
+
+
+= content_for :modal_id
+  negotiation_form
+
+
+= content_for :modal_title_class
+  negotiation-form-title
+
+
+= content_for :modal_body_class
+  negotiation-form-body
+
+= content_for :modal_controls_class
+  negotiation-form-controls
+
+
+= content_for :title
+  .title
+    |Añade un nuevo producto
+
+= content_for :body
   = yield
