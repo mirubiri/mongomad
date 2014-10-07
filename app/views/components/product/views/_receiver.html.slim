@@ -1,3 +1,9 @@
-.product-receiver
-  .product-receiver-image
-    = yield_content :image
+= component :mediaObject
+
+
+
+= content_for :media_class
+  productReceiver
+
+= content_for :img_class
+  productReceiver__image
