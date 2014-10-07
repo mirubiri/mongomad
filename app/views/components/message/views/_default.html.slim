@@ -1,9 +1,19 @@
-.message
-  .conversation-message
-    = yield_content :avatar
+= component :mediaObject
 
-    .message-text
-      = yield_content :text
+
+
+= content_for :media_class
+  message
+
+= content_for :img_class
+  message__image
+
+= content_for :media_body_class
+  message__body
+
+= content_for :mediaBody
+  .message__text
+    = yield_content :text
 
   .timestamp
     = yield_content :timestamp
