@@ -1,19 +1,10 @@
-= component :mediaObject
+.avatar-negotiation
+  .negotiation-user-image
+    = yield_content :image
 
+  .avatar-negotiation-data-side
+    .user-nick
+      = avatar.nick
 
-
-= content_for :media_class
-  negotiation-avatar
-
-= content_for :img_class
-  negotiation-avatar-image
-
-= content_for :media_body_class
-  negotiation-avatar-data
-
-= content_for :mediaBody
-  .user-nick
-    = avatar.nick
-
-  .user-location
-    | location
+    .user-location
+      | location

@@ -1,4 +1,4 @@
-div class="media #{yield_content :media_class}"
-  img class="media-image #{yield_content :img_class}" src= (yield_content :img_url)
-  div class="media-body #{yield_content :media_body_class}"
-    = yield_content :mediaBody
+.Media
+  img class="Media-image" src= (yield_content :img_url)
+  .Media-body
+    = yield_content :body

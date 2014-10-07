@@ -1,19 +1,10 @@
-= component :mediaObject
+.avatar-omnibar
+  .omnibar-user-image
+    = yield_content :image
 
+  .avatar-omnibar-data-side
+    .user-data
+      = avatar.first_name
 
-
-= content_for :media_class
-  omnibar-avatar
-
-= content_for :img_class
-  omnibar-avatar-image
-
-= content_for :media_body_class
-  omnibar-avatar-data
-
-= content_for :mediaBody
-  .user-data
-    = avatar.first_name
-
-  .user-data
-    = avatar.surnames
+    .user-data
+      = avatar.surnames
