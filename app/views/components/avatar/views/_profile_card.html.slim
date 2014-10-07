@@ -1,24 +1,31 @@
-.avatar-profile-card
-  .profile-avatar-image-wrapper
-    .profile-card-user-image
-      = yield_content :image
+= component :mediaObject
 
-  .avatar-profile-data-side
-    .reputation
-      / = image_tag static_image_path('star'),
-      /   class: 'star-icon-image'
-      / .value
-      /  | 75%
 
-    .friends
-      / = image_tag static_image_path('friends'),
-      /   class: 'friends-icon-image'
-      / .number
-      /  | 350
 
-    .user-nick
-      = avatar.full_name
+= content_for :media_class
+  profileCard-avatar
 
-    .user-location
-      | location
+= content_for :img_class
+  profileCard-avatar-image
+
+= content_for :media_body_class
+  profileCard-avatar-data
+
+= content_for :mediaBody
+    .profileCard__avatar__imageWrapper
+      .profileCard__userImage
+        = yield_content :image
+
+    .profileCard__dataSide
+      .reputation
+        | 75%
+
+      .friends
+        | 350
+
+      .user-nick
+        = avatar.full_name
+
+      .user-location
+        | location
 
