@@ -1,16 +1,6 @@
-= component :mediaObject
+.product-composer
+  .product-composer-image
+    = yield_content :image
 
-
-
-= content_for :media_class
-  productComposer
-
-= content_for :img_class
-  productComposer__image
-
-= content_for :media_body_class
-  productComposer__data
-
-= content_for :mediaBody
-  .productComposer-data
+  .product-data
     = product.name
