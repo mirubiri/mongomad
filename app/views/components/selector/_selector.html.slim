@@ -18,7 +18,3 @@
 - content_for :receiver_items
   - data.my_items.each do |item|
     = component :item, view: :selector, data:item
-
-- content_for :preview_item_images
-  - 1.upto(3) do |index|
-    .image

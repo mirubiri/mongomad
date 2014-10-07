@@ -1,8 +1,8 @@
-.goods-layer
-  .users-layer
+.goodsLayer
+  .goodsLayer__users
     = yield_content :users
 
-  .products-grid
+  .goodsLayer__products
     .products-list#composer-goods
       = yield_content :composer_cash
       = yield_content :composer_items
@@ -11,10 +11,5 @@
       = yield_content :receiver_cash
       = yield_content :receiver_items
 
-.good-previewer#slide-panel
-  .images
-    = yield_content :preview_item_images
-
-  .item-data
-
-  .description
+.goodPreviewer#slide-panel
+  //render item show
