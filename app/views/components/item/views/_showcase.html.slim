@@ -1,20 +1,9 @@
-= component :mediaObject
+.Item
+  .Item-showcase-image
+    = yield_content :image
 
-
-
-= content_for :media_class
-  item__Showcase
-
-= content_for :img_class
-  itemShowcase__image
-
-= content_for :media_body_class
-  itemShowcase__data
-
-= content_for :mediaBody
   = yield_content :name
 
   .Controls
     = link_to 'edit', edit_user_item_path(current_user, good.id)
     | delete
-
