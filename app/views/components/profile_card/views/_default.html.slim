@@ -1,10 +1,10 @@
-.profile-card
+.profileCard
   aside
     = yield_content :head_image
 
-    .user-card
+    .profileCard__userCard
       = yield_content :avatar
       = yield_content :requester
 
-      .make-offer-control
+      .makeOffer__button
         = yield_content :make_offer_control
