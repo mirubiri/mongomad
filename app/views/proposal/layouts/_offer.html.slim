@@ -1,31 +1,8 @@
-= component :modal_object
+.offer-form#new-proposal
 
-
-
-= content_for :modal_class
-  offer-form
-
-
-= content_for :modal_id
-  new-proposal
-
-
-= content_for :modal_title_class
-  offer-form-title
-
-
-= content_for :modal_body_class
-  offer-form-body
-
-= content_for :modal_controls_class
-  offer-form-controls
-
-
-= content_for :title
   .title
     | Hazme tu oferta
 
-= content_for :body
   .offer-form-body
     = component :offer
 
@@ -45,4 +22,3 @@
       = yield
     = button_tag 'Close',
       class: 'close-button'
-
