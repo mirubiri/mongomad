@@ -1,9 +1,19 @@
-.request
-  .request-message-grid
-    = yield_content :avatar
+= component :mediaObject
 
-    .message-text
-      = yield_content :text
 
-  .controls.hidden
+
+= content_for :media_class
+  request
+
+= content_for :img_class
+  request__image
+
+= content_for :media_body_class
+  request__body
+
+= content_for :mediaBody
+  .request__text
+    = yield_content :text
+
+  .requestControls.hidden
     = yield_content :controls

@@ -1,5 +1,5 @@
-- content_for :avatar
-  = component :avatar, view: :request, data:data.visited_user
+- content_for :img_url
+  = image_tag small_image_path(data.visited_user.main_image)
 
 - content_for :text
   = request.text
