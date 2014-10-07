@@ -1,5 +1,22 @@
-.item-form#item-form
+= component :modal
+
+
+= content_for :modal_title_class
+  item-form
+
+= content_for :modal_id
+  item-form
+
+= content_for :modal_body_class
+  item-form-body
+
+= content_for :modal_controls_class
+  item-form-controls
+
+
+= content_for :title
   .title
     |Añade un nuevo producto
-  = yield
 
+= content_for :body
+  = yield
