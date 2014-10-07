@@ -1,14 +1,12 @@
-// TANTO EDIT COMO SHOW SE REFIEREN A LA VISTA DEL FORMULARIO
+.edit_item#edit_item
 
-//.edit_item#edit_item
+  .item-form-body
+    .item-image-uploader
+      #pan.preview
+        = image_tag big_image_path(item.main_image),
+          class: 'previewer-model-image'
 
-//  .item-form-body
-//    .item-image-uploader
-//      #pan.preview
-//        = image_tag big_image_path(item.main_image),
-//          class: 'previewer-model-image'
+      .progress-bar
 
-//      .progress-bar
-
-//    .item-form-descriptor
-//      = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }
+    .item-form-descriptor
+      = render partial: 'form', layout: 'items/layouts/form_layout', locals:{ item:item }
