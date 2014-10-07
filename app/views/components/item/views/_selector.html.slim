@@ -1,5 +1,15 @@
-.Item
-  .Item-selector-image
-    = yield_content :image
+= component :mediaObject
 
+
+
+= content_for :media_class
+  item__selector
+
+= content_for :img_class
+  itemSelector__image
+
+= content_for :media_body_class
+  itemSelector__data
+
+= content_for :mediaBody
   = yield_content :name
